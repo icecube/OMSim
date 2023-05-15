@@ -1,0 +1,73 @@
+{
+   "jName": "pmt_ETEL_9320KFL-KFB",
+   "jFrontalShape": "SphereEllipse",
+   "jBulbBackShape" :"Simple",
+   "jOuterShape": {
+      "jTotalLenght": {
+         "jValue": 95.0,
+         "jUnit": "mm"
+      },
+      "jTubeWidth": {
+         "jValue": 52.4,
+         "jUnit": "mm"
+      },
+      "jOutRad": {
+         "jValue": 67.4,
+         "jUnit": "mm"
+      },
+      "jEllipseXYaxis": {
+         "jValue": 43.35055056259607,
+         "jUnit": "mm"
+      },
+      "jEllipseZaxis": {
+         "jValue": 27.519754018353428,
+         "jUnit": "mm"
+      },
+      "jSphereEllipseTransition_r": {
+         "jValue": 27.77405386653094,
+         "jUnit": "mm"
+      },
+      "jSpherePos_y": {
+         "jValue": 3.208733010892201,
+         "jUnit": "mm"
+      },
+      "jEllipsePos_y": {
+         "jValue": 43.502632637808674,
+         "jUnit": "mm"
+      }
+   },
+   "jInnerShape": {
+      "jTotalLenght": {
+         "jValue": 91.0,
+         "jUnit": "mm"
+      },
+      "jTubeWidth": {
+         "jValue": 48.4,
+         "jUnit": "mm"
+      },
+      "jOutRad": {
+         "jValue": 65.4,
+         "jUnit": "mm"
+      },
+      "jEllipseXYaxis": {
+         "jValue": 41.33196448968964,
+         "jUnit": "mm"
+      },
+      "jEllipseZaxis": {
+         "jValue": 25.381830907626714,
+         "jUnit": "mm"
+      },
+      "jSphereEllipseTransition_r": {
+         "jValue": 26.37155942445716,
+         "jUnit": "mm"
+      },
+      "jSpherePos_y": {
+         "jValue": 3.1464291847017307,
+         "jUnit": "mm"
+      },
+      "jEllipsePos_y": {
+         "jValue": 43.50435441398616,
+         "jUnit": "mm"
+      }
+   }
+}

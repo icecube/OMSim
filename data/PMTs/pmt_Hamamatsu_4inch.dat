@@ -1,0 +1,73 @@
+{
+   "jName": "pmt_Hamamatsu_4inch",
+   "jFrontalShape": "SphereEllipse",
+   "jBulbBackShape" :"Simple",
+   "jOuterShape": {
+      "jTotalLenght": {
+         "jValue": 106.0,
+         "jUnit": "mm"
+      },
+      "jTubeWidth": {
+         "jValue": 51.9,
+         "jUnit": "mm"
+      },
+      "jOutRad": {
+         "jValue": 61.64645091583246,
+         "jUnit": "mm"
+      },
+      "jEllipseXYaxis": {
+         "jValue": 51.1432056574129,
+         "jUnit": "mm"
+      },
+      "jEllipseZaxis": {
+         "jValue": 28.507896354636,
+         "jUnit": "mm"
+      },
+      "jSphereEllipseTransition_r": {
+         "jValue": 48.52601019112752,
+         "jUnit": "mm"
+      },
+      "jSpherePos_y": {
+         "jValue": -19.827311743234773,
+         "jUnit": "mm"
+      },
+      "jEllipsePos_y": {
+         "jValue": 9.227433207867062,
+         "jUnit": "mm"
+      }
+   },
+   "jInnerShape": {
+      "jTotalLenght": {
+         "jValue": 103.3,
+         "jUnit": "mm"
+      },
+      "jTubeWidth": {
+         "jValue": 49.199999999999996,
+         "jUnit": "mm"
+      },
+      "jOutRad": {
+         "jValue": 60.29645091583246,
+         "jUnit": "mm"
+      },
+      "jEllipseXYaxis": {
+         "jValue": 49.81459131154273,
+         "jUnit": "mm"
+      },
+      "jEllipseZaxis": {
+         "jValue": 26.316906498964553,
+         "jUnit": "mm"
+      },
+      "jSphereEllipseTransition_r": {
+         "jValue": 46.81318372047438,
+         "jUnit": "mm"
+      },
+      "jSpherePos_y": {
+         "jValue": -19.824343240434672,
+         "jUnit": "mm"
+      },
+      "jEllipsePos_y": {
+         "jValue": 9.260541075552954,
+         "jUnit": "mm"
+      }
+   }
+}

@@ -1,0 +1,12 @@
+{
+   "jName": "NoOptic_Reflector",
+   "jDataType": "NoOptic",
+   "jComponents": {
+      "G4_Al": 1.0
+   },
+   "jDensity": {
+      "jValue": 2.7,
+      "jUnit": "g/cm3"
+   },
+   "jState": "kStateSolid"
+}

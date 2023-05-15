@@ -1,0 +1,25 @@
+{
+   "jName": "Refl_StainlessSteelGround",
+   "jProperties": [
+      "REFLECTIVITY"
+   ],
+   "jWavelength_REFLECTIVITY": [
+      294.27,
+      350.0,
+      411.69,
+      498.51,
+      579.52,
+      688.53
+   ],
+   "jValues_REFLECTIVITY": [
+      0.4987,
+      0.5426,
+      0.577,
+      0.6038,
+      0.6185,
+      0.6367
+   ],
+   "jModel": "unified",
+   "jFinish": "ground",
+   "jType": "dielectric_metal"
+}

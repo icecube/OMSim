@@ -1,0 +1,44 @@
+
+
+/vis/open RayTracer 600x600-0+0
+
+
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+
+/vis/drawVolume
+
+
+
+
+/vis/geometry/set/visibility World_log 0
+/vis/viewer/set/style surface #surface, clouds
+/vis/viewer/set/hiddenMarker false
+/vis/viewer/set/viewpointThetaPhi 120 150
+
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings
+
+/vis/viewer/set/upVector 0 0 1
+
+/vis/viewer/set/viewpointVector 1 0 0
+/vis/viewer/set/lightsVector 1 0 0 
+
+/vis/viewer/set/viewpointVector -1 0 0.6
+/vis/viewer/set/lightsVector -1 0 0.6
+
+/vis/viewer/set/background white
+
+/vis/set/touchable World_phys 0 PMT_0 0 #use find path
+#/vis/touchable/centreAndZoomInOn PMT_0
+/vis/viewer/zoom 4.75
+
+/vis/rayTracer/lightDirection 0 0 1
+/vis/rayTracer/target 0 0 -5 cm
+/vis/rayTracer/eyePosition 0 0 0 cm
+/vis/rayTracer/column 3158
+
+/vis/rayTracer/row 3158
+#/vis/rayTracer/attenuation 2 mm
+
+/vis/viewer/refresh

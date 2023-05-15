@@ -1,0 +1,17 @@
+{
+   "jName": "Refl_100ground",
+   "jProperties": [
+      "REFLECTIVITY"
+   ],
+   "jWavelength_REFLECTIVITY": [
+      150.0,
+      730.0
+   ],
+   "jValues_REFLECTIVITY": [
+      1.0,
+      1.0
+   ],
+   "jModel": "unified",
+   "jFinish": "ground",
+   "jType": "dielectric_metal"
+}

@@ -1,0 +1,43 @@
+{
+   "jName": "Refl_BlackDuctTapePolished",
+   "jProperties": [
+      "REFLECTIVITY"
+   ],
+   "jWavelength_REFLECTIVITY": [
+      258.41,
+      274.34,
+      290.27,
+      318.58,
+      359.29,
+      384.07,
+      405.31,
+      437.17,
+      469.03,
+      504.42,
+      541.59,
+      587.61,
+      631.86,
+      672.57,
+      713.27
+   ],
+   "jValues_REFLECTIVITY": [
+      0.0622,
+      0.0549,
+      0.0492,
+      0.0463,
+      0.0457,
+      0.0481,
+      0.0501,
+      0.0494,
+      0.0481,
+      0.0472,
+      0.0469,
+      0.0472,
+      0.046,
+      0.0449,
+      0.0447
+   ],
+   "jModel": "unified",
+   "jFinish": "polished",
+   "jType": "dielectric_metal"
+}

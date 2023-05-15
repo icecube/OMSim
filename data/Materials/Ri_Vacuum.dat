@@ -1,0 +1,20 @@
+{
+   "jName": "Ri_Vacuum",
+   "jDataType": "Ri",
+   "jComponents": {
+      "G4_AIR": 1.0
+   },
+   "jDensity": {
+      "jValue": 0.0258,
+      "jUnit": "mg/cm3"
+   },
+   "jState": "kStateGas",
+   "jRefractiveIdx": [
+      1.0003,
+      1.0003
+   ],
+   "jRefractiveIdxWavelength": [
+      150,
+      730
+   ]
+}

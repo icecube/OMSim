@@ -1,0 +1,17 @@
+{
+   "jName": "Refl_100polished",
+   "jProperties": [
+      "REFLECTIVITY"
+   ],
+   "jWavelength_REFLECTIVITY": [
+      150.0,
+      730.0
+   ],
+   "jValues_REFLECTIVITY": [
+      1.0,
+      1.0
+   ],
+   "jModel": "unified",
+   "jFinish": "polished",
+   "jType": "dielectric_metal"
+}
