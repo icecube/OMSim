@@ -2,12 +2,8 @@
 #include "G4ios.hh"
 //since Geant4.10: include units manually
 #include "G4SystemOfUnits.hh"
+#include "OMSimCommandArgsTable.hh"
 
-extern G4int gDOM;
-
-OMSimAnalysisManager::OMSimAnalysisManager(){}
-
-OMSimAnalysisManager::~OMSimAnalysisManager(){}
 
 void OMSimAnalysisManager::Write()
 {	
@@ -36,14 +32,14 @@ void OMSimAnalysisManager::Write()
 }
 
 void OMSimAnalysisManager::WriteAccept()
-{
+{   G4int lDOMIdx = OMSimCommandArgsTable::getInstance().get<G4int>("detector_type");
 	int num_pmts;
-	if (gDOM==0){num_pmts = 1;} //single PMT
-	else if (gDOM==1){num_pmts = 24;} //mDOM
-	else if (gDOM==2){num_pmts = 1;} //PDOM
-	else if (gDOM==3){num_pmts = 16;} //LOM16
-	else if (gDOM==4){num_pmts = 18;} //LOM18
-	else if (gDOM==5){num_pmts = 2;} //DEGG
+	if (lDOMIdx==1){num_pmts = 1;} //single PMT
+	else if (lDOMIdx==2){num_pmts = 24;} //mDOM
+	else if (lDOMIdx==3){num_pmts = 1;} //PDOM
+	else if (lDOMIdx==4){num_pmts = 16;} //LOM16
+	else if (lDOMIdx==5){num_pmts = 18;} //LOM18
+	else if (lDOMIdx==6){num_pmts = 2;} //DEGG
     else{num_pmts = 99;} //custom
 
 	

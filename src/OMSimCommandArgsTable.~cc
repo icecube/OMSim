@@ -1,0 +1,47 @@
+#include <map>
+#include <variant>
+#include <string>
+#include <stdexcept>
+#include "globals.hh"
+
+class OMSimCommandArgsTable {
+public:
+    using Key = std::string;
+    using Value = std::variant<G4int, G4double, G4String, G4bool>;  // Add other types as needed
+
+    static OMSimCommandArgsTable& getInstance() {
+        static OMSimCommandArgsTable instance;
+        return instance;
+    }
+
+    void setParameter(const Key& key, const Value& value) {
+        if (mFinalized) {
+            throw std::runtime_error("Cannot modify OMSimCommandArgsTable after it's been finalized!");
+        }
+        mParameters[key] = value;
+    }
+
+    template <typename T>
+    T get(const std::string& key) {
+        try {
+            return std::get<T>(mParameters.at(key));
+        } catch (const std::out_of_range& e) {
+            throw std::invalid_argument("Parameter " + key + " does not exist");
+        } catch (const std::bad_variant_access& e) {
+            throw std::invalid_argument("Failed to get parameter " + key + " as type " + typeid(T).name());
+        }
+    }
+
+    void finalize() {
+        mFinalized = true;
+    }
+
+private:
+    OMSimCommandArgsTable() = default;
+    ~OMSimCommandArgsTable() = default;
+    OMSimCommandArgsTable(const OMSimCommandArgsTable&) = delete;
+    OMSimCommandArgsTable& operator=(const OMSimCommandArgsTable&) = delete;
+
+    bool mFinalized = false;
+    std::map<Key, Value> mParameters;
+};

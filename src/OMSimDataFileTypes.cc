@@ -14,8 +14,6 @@
 #include <numeric>
 
 namespace pt = boost::property_tree;
-
-extern std::vector<double> readColumnDouble (G4String fn, int col);
 /*
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  *                                  Base Abstract Classes
@@ -124,7 +122,7 @@ void abcMaterialData::CreateMaterial()
         mMaterial->AddMaterial(mMatDatBase->FindOrBuildMaterial(componentName), componentFraction);
     }
     G4String mssg = "New Material defined: " + mMaterial->GetName();
-    info(mssg);
+    debug(mssg);
 }
 /**
  * Extracts absorption length and adds it to the material property table 
@@ -241,8 +239,8 @@ void IceCubeIce::ExtractInformation()
     lMPT_spice->AddConstProperty("MIEHG_BACKWARD", mMIE_spice_const[1]);
     lMPT_spice->AddConstProperty("MIEHG_FORWARD_RATIO", mMIE_spice_const[2]);
     lIceMie->SetMaterialPropertiesTable(lMPT_spice);
-    G4String mssg = "Ice properties at depth " + std::to_string(mSpice_Depth[mSpiceDepth_pos] / m) + " m.";
-    notice(mssg);
+    G4String mssg = "Optical ice properties calculated for depth " + std::to_string(mSpice_Depth[mSpiceDepth_pos] / m) + " m.";
+    info(mssg);
     //now give the properties to the bubble column, which are basically the same ones but with the chosen scattering lenght
     G4MaterialPropertiesTable* lMPT_holeice = new G4MaterialPropertiesTable();
     lMPT_holeice->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
@@ -356,7 +354,7 @@ void ReflectiveSurface::ExtractInformation()
 
     mOpticalSurface->SetMaterialPropertiesTable(lMPT);
     G4String mssg = "New Optical Surface: " + mObjectName;
-    info(mssg);
+    debug(mssg);
 }
 
 /**

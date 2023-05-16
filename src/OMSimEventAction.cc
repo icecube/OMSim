@@ -12,7 +12,6 @@
 #include "G4RunManager.hh"
 //#include "TH1.h"
 
-extern OMSimAnalysisManager gAnalysisManager;
 
 OMSimEventAction::OMSimEventAction()
 {}
@@ -22,7 +21,7 @@ OMSimEventAction::~OMSimEventAction()
 
 void OMSimEventAction::BeginOfEventAction(const G4Event* evt)
 {
-	gAnalysisManager.current_event_id = evt->GetEventID();
+	OMSimAnalysisManager::getInstance().current_event_id = evt->GetEventID();
 }
 
 void OMSimEventAction::EndOfEventAction(const G4Event* evt)

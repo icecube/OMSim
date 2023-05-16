@@ -14,12 +14,29 @@
 #include "G4OpticalParameters.hh"
 #include "G4MaterialPropertyVector.hh"
 
-extern std::vector<G4String> explode(G4String s, char d);
-extern OMSimAnalysisManager gAnalysisManager;
-extern OMSimPMTResponse* gPhotocathodeResponse;
-extern G4String	gHittype;
+std::vector<G4String> explode(G4String s, char d) {
+	std::vector<G4String> o;
+	int i,j;
+	i = s.find_first_of("#");
+	if (i == 0) return o;
+ 	while (s.size() > 0) {
+		i = s.find_first_of(d);
+		j = s.find_last_of(d);
+		o.push_back(s.substr(0, i));
+		if (i == j) {
+			o.push_back(s.substr(j+1));
+			break;
+		}
+		s.erase(0,i+1);
+ 	}
+	return o;// o beinhaltet s ohne d
+}
 
-
+std::vector<G4String> explode(char* cs, char d) {
+	std::vector<G4String> o;
+	G4String s = cs;
+	return explode(s,d);
+}
 
 OMSimTrackingAction::OMSimTrackingAction()
 :G4UserTrackingAction()
@@ -55,7 +72,10 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track* aTrack)
 
         std::vector<G4String> n = explode(aTrack->GetStep()->GetPreStepPoint()->GetTouchableHandle()->GetVolume(2)->GetName(),'_');
 
-        gAnalysisManager.stats_PMT_hit.push_back(atoi(n.at(1)));	
+        OMSimPMTResponse& lPhotocathodeResponse = OMSimPMTResponse::getInstance();
+	    OMSimAnalysisManager& lAnalysisManager = OMSimAnalysisManager::getInstance();
+
+        lAnalysisManager.stats_PMT_hit.push_back(atoi(n.at(1)));	
         G4ThreeVector lGlobalPosition = aTrack->GetPosition();
         G4ThreeVector lLocalPosition = aTrack->GetStep()->GetPostStepPoint()->GetTouchableHandle()->GetHistory()->GetTopTransform().TransformPoint(lGlobalPosition);
 
@@ -63,17 +83,17 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track* aTrack)
         G4double y = lLocalPosition.y()/mm;
         G4double lR = std::sqrt(x*x+y*y);
 
-        gAnalysisManager.lPulses.push_back(gPhotocathodeResponse->ProcessPhotocathodeHit(x, y, h*c/lEkin));
-        if (gHittype == "individual") {
+        lAnalysisManager.lPulses.push_back(lPhotocathodeResponse.ProcessPhotocathodeHit(x, y, h*c/lEkin));
+
             G4ThreeVector lDeltaPos = aTrack->GetVertexPosition() - lGlobalPosition;
-            gAnalysisManager.stats_photon_direction.push_back(aTrack->GetMomentumDirection());
-            gAnalysisManager.stats_photon_position.push_back(aTrack->GetPosition());
-            gAnalysisManager.stats_event_id.push_back(gAnalysisManager.current_event_id);
-            gAnalysisManager.stats_photon_flight_time.push_back(aTrack->GetLocalTime());
-            gAnalysisManager.stats_photon_track_length.push_back(aTrack->GetTrackLength()/m);
-            gAnalysisManager.stats_hit_time.push_back(aTrack->GetGlobalTime());
-            gAnalysisManager.stats_photon_energy.push_back(lEkin/eV);
-            gAnalysisManager.stats_event_distance.push_back(lDeltaPos.mag()/m);}
+            lAnalysisManager.stats_photon_direction.push_back(aTrack->GetMomentumDirection());
+            lAnalysisManager.stats_photon_position.push_back(aTrack->GetPosition());
+            lAnalysisManager.stats_event_id.push_back(lAnalysisManager.current_event_id);
+            lAnalysisManager.stats_photon_flight_time.push_back(aTrack->GetLocalTime());
+            lAnalysisManager.stats_photon_track_length.push_back(aTrack->GetTrackLength()/m);
+            lAnalysisManager.stats_hit_time.push_back(aTrack->GetGlobalTime());
+            lAnalysisManager.stats_photon_energy.push_back(lEkin/eV);
+            lAnalysisManager.stats_event_distance.push_back(lDeltaPos.mag()/m);
     }
     }
 }

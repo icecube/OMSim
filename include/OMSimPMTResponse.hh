@@ -11,7 +11,11 @@
 class OMSimPMTResponse
 {
 public:
-    OMSimPMTResponse();
+
+    static OMSimPMTResponse& getInstance() { // Meyers singleton
+        static OMSimPMTResponse instance;
+        return instance;
+    }
 
 
     struct PMTPulse{
@@ -48,7 +52,11 @@ private:
     PMTPulse GetPulseFromKey(G4double pWavelengthKey);
 
     G4double WavelengthInterpolatedValue(std::map<G4double, TGraph2D*> pMap, G4double pWavelengthKey1, G4double pWavelengthKey2);
-    
+
+    OMSimPMTResponse();
+    ~OMSimPMTResponse() = default;
+    OMSimPMTResponse(const OMSimPMTResponse&) = delete;
+    OMSimPMTResponse& operator=(const OMSimPMTResponse&) = delete;
 
 };
 

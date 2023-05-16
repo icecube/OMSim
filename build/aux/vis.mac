@@ -1,0 +1,169 @@
+# Macro file for the visualization setting in the initialization phase 
+# of the B1 example when running in interactive mode
+#
+
+# Use these open statements to open selected visualization
+#
+# Use this open statement to create an OpenGL view:
+/vis/open OGLS 600x600-0+0
+
+#/vis/open RayTracerX 600x600-0+0
+
+#
+# Use this open statement to create an OpenInventor view:
+#/vis/open OI
+#
+# Use this open statement to create a .prim file suitable for
+# viewing in DAWN:
+#/vis/open DAWNFILE
+#
+# Use this open statement to create a .heprep file suitable for
+# viewing in HepRApp:
+# /vis/open HepRepFile
+#
+# Use this open statement to create a .wrl file suitable for
+# viewing in a VRML viewer:
+#/vis/open VRML2FILE
+#
+# Disable auto refresh and quieten vis messages whilst scene and
+# trajectories are established:
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+#
+# Draw geometry:
+/vis/drawVolume
+#
+# Specify view angle:
+/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/set/lightsVector -1 0 0
+#
+# Specify style (surface, wireframe, auxiliary edges,...)
+/vis/viewer/set/style wireframe
+/vis/viewer/set/auxiliaryEdge true
+/vis/viewer/set/lineSegmentsPerCircle 100
+#
+# Draw smooth trajectories at end of event, showing trajectory points
+# as markers 2 pixels wide:
+/vis/scene/add/trajectories smooth
+
+# Generic context
+/vis/modeling/trajectories/create/generic
+/vis/modeling/trajectories/generic-0/default/setDrawStepPts true
+/vis/modeling/trajectories/generic-0/default/setStepPtsSize 5
+/vis/modeling/trajectories/generic-0/default/setStepPtsColour yellow
+
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByParticleID-0/default/setStepPtsSize 5
+/vis/modeling/trajectories/drawByParticleID-0/set gamma cyan
+/vis/modeling/trajectories/drawByParticleID-0/setRGBA opticalphoton 1 0.6 0 1
+/vis/modeling/trajectories/drawByParticleID-0/set e- blue
+/vis/modeling/trajectories/drawByParticleID-0/set e+ red
+
+#/vis/modeling/trajectories/create/drawByAttribute
+#/vis/modeling/trajectories/drawByAttribute-0/verbose true
+#/vis/modeling/trajectories/drawByAttribute-0/setAttribute IMag
+#/vis/modeling/trajectories/drawByAttribute-0/addInterval interval1 1.6 eV 2.0 eV
+#/vis/modeling/trajectories/drawByAttribute-0/interval1/setLineColour red
+
+# /vis/modeling/trajectories/create/drawByAttribute
+# /vis/modeling/trajectories/drawByAttribute-0/verbose true
+# /vis/modeling/trajectories/drawByAttribute-0/setAttribute IMag
+# /vis/modeling/trajectories/drawByAttribute-0/default/setDrawStepPts true
+# /vis/modeling/trajectories/drawByAttribute-0/default/setStepPtsSize 2
+# 
+# /vis/modeling/trajectories/drawByAttribute-0/addInterval interval1 1.6 eV 2.0 eV
+# /vis/modeling/trajectories/drawByAttribute-0/addInterval interval2 2.0 eV 2.1 eV
+# /vis/modeling/trajectories/drawByAttribute-0/addInterval interval3 2.1 eV 2.3 eV
+# /vis/modeling/trajectories/drawByAttribute-0/addInterval interval4 2.3 eV 2.6 eV
+# /vis/modeling/trajectories/drawByAttribute-0/addInterval interval5 2.6 eV 2.7 eV
+# /vis/modeling/trajectories/drawByAttribute-0/addInterval interval6 2.7 eV 2.9 eV
+# /vis/modeling/trajectories/drawByAttribute-0/addInterval interval7 2.9 eV 3.1 eV
+# 
+# /vis/modeling/trajectories/drawByAttribute-0/interval1/setLineColour red
+# /vis/modeling/trajectories/drawByAttribute-0/interval2/setLineColourRGBA 1 0.6 0 1
+# /vis/modeling/trajectories/drawByAttribute-0/interval3/setLineColour yellow
+# /vis/modeling/trajectories/drawByAttribute-0/interval4/setLineColour green
+# /vis/modeling/trajectories/drawByAttribute-0/interval5/setLineColour cyan
+# /vis/modeling/trajectories/drawByAttribute-0/interval6/setLineColour blue
+# /vis/modeling/trajectories/drawByAttribute-0/interval7/setLineColourRGBA 0.6 0.4 0.6 1
+
+# (if too many tracks cause core dump => /tracking/storeTrajectory 0)
+#
+# Draw hits at end of event:
+#/vis/scene/add/hits
+#
+# Don't draw neutrinos:
+/vis/filtering/trajectories/create/particleFilter
+/vis/filtering/trajectories/particleFilter-0/add nu_e
+/vis/filtering/trajectories/particleFilter-0/add anti_nu_e
+/vis/filtering/trajectories/particleFilter-0/add nu_mu
+/vis/filtering/trajectories/particleFilter-0/add anti_nu_mu
+/vis/filtering/trajectories/particleFilter-0/add nu_tau
+/vis/filtering/trajectories/particleFilter-0/add anti_nu_tau
+/vis/filtering/trajectories/particleFilter-0/invert true
+#
+# To invert the above, drawing all particles except gammas,
+# keep the above two lines but also add:
+#/vis/filtering/trajectories/particleFilter-0/invert true
+#
+# Many other options are available with /vis/modeling and /vis/filtering.
+# For example, to select colour by particle ID:
+#/vis/modeling/trajectories/create/drawByParticleID
+#/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+# To select or override default colours (note: e+ is blue by default):
+#/vis/modeling/trajectories/list
+#/vis/modeling/trajectories/drawByParticleID-0/set e+ yellow
+#
+# To superimpose all of the events from a given run:
+/vis/scene/endOfEventAction accumulate
+#
+# Decorations
+# Name
+/vis/set/textColour green
+/vis/set/textLayout right
+#/vis/scene/add/text2D 0.9 -.9 24 ! ! exampleB1
+# or, if your system does not support right-adjustment
+#/vis/scene/add/text2D 0 -.9 24 ! ! exampleB1
+/vis/set/textLayout    # Revert to normal (left adjusted) layout
+/vis/set/textColour    # Revert to default text colour (blue)
+#
+# Axes, scale, etc.
+#/vis/scene/add/scale   # Simple scale line
+#/vis/scene/add/axes    # Simple axes: x=red, y=green, z=blue.
+#/vis/scene/add/eventID # Drawn at end of event
+#/vis/scene/add/date    # Date stamp
+#/vis/scene/add/logo2D  # Simple logo
+#/vis/scene/add/logo    # 3D logo
+#
+# Frame
+/vis/set/colour red
+/vis/set/lineWidth 2
+#/vis/scene/add/frame   # Simple frame around the view
+/vis/set/colour        # Revert to default colour (white)
+/vis/set/lineWidth     # Revert to default line width (1.)
+#
+# Attach text to one edge of Shape1, with a small, fixed offset
+#/vis/scene/add/text 0 6 -4 cm 18 4 4 Shape1
+# Attach text to one corner of Shape2, with a small, fixed offset
+#/vis/scene/add/text 6 7 10 cm 18 4 4 Shape2
+#
+# To get nice view
+/vis/geometry/set/visibility World_log 0
+/vis/viewer/set/style surface #surface, clouds
+/vis/viewer/set/hiddenMarker true
+/vis/viewer/set/viewpointThetaPhi 120 150
+#
+# Re-establish auto refreshing and verbosity:
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings
+#
+# For file-based drivers, use this to create an empty detector view:
+#/vis/viewer/flush
+
+/vis/viewer/set/upVector 0 0 1
+/vis/viewer/set/viewpointVector 0 1 0
+/vis/viewer/set/background white
+/vis/viewer/set/lineSegmentsPerCircle 24
+
+#/vis/viewer/addCutawayPlane 0 0 0 m 0 1 0   /vis/viewer/set/lightsVector 1 1 1

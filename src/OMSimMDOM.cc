@@ -33,20 +33,13 @@
 #include <G4UnitsTable.hh>
 #include "G4VisAttributes.hh"
 #include "G4Torus.hh"
-
-
-extern G4int gDOM;
-extern G4bool gharness_ropes;
-extern G4bool gVisual;
-extern G4double gmdomseparation;
-extern G4int gn_mDOMs;
-
+#include "OMSimCommandArgsTable.hh"
 
 mDOM::mDOM(OMSimInputData* pData, G4bool pPlaceHarness) {
     mPlaceHarness = false;//pPlaceHarness;
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
-    if (gVisual){
+    if (OMSimCommandArgsTable::getInstance().get<bool>("visual")){
     mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_1mm");
     }
     else{
@@ -78,7 +71,7 @@ void mDOM::GetSharedData() {
     mNrPolarPMTs = mData->GetValue(mDataKey,"jNrPolarPMTs");
     mNrEqPMTs = mData->GetValue(mDataKey,"jNrEqPMTs");
     mGlassInRad = mGlassOutRad - mGlassThick;
-    mRefConeAngle = gRefCone_angle * deg;
+    mRefConeAngle = mData->GetValue(mDataKey, "jReflectorConeAngle");
     mTotalNrPMTs = (mNrPolarPMTs + mNrEqPMTs) * 2;
     mPMToffset = mPMTManager->GetDistancePMTCenterToPMTtip();
     mRefConeIdealInRad = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;

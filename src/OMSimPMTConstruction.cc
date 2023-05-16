@@ -32,8 +32,6 @@
 #include "G4VisAttributes.hh"
 #include "OMSimLogger.hh"
 #include "CADMesh.hh" 
-extern G4bool gVisual;
-extern G4int gPMT;
 
 
 /**
@@ -425,11 +423,11 @@ G4LogicalVolume* OMSimPMTConstruction::GetLogicalVolume()
  */
 void OMSimPMTConstruction::SelectPMT(G4String pPMTtoSelect)
 {
-    if (pPMTtoSelect.substr(0, 6) == "argPMT")
-    {
-        const G4String lPMTTypes[] = { "pmt_Hamamatsu_R15458", "pmt_ETEL_9320KFL-KFB", "pmt_HZC_XP82B2F", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100" };
-        pPMTtoSelect = lPMTTypes[gPMT];
-    }
+    // if (pPMTtoSelect.substr(0, 6) == "argPMT")
+    // {
+    //     const G4String lPMTTypes[] = { "pmt_Hamamatsu_R15458", "pmt_ETEL_9320KFL-KFB", "pmt_HZC_XP82B2F", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100" };
+    //     pPMTtoSelect = lPMTTypes[gPMT];
+    // }
     mSelectedPMT = pPMTtoSelect;
 
     //Check if requested PMT is in the table of PMTs

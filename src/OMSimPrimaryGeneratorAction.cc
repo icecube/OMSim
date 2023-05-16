@@ -5,7 +5,6 @@
 #include "G4GeneralParticleSource.hh"
 #include "G4ParticleTypes.hh"
 
-extern double gworldsize;
 
 
 OMSimPrimaryGeneratorAction::OMSimPrimaryGeneratorAction()

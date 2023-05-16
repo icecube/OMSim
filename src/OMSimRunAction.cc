@@ -9,10 +9,7 @@
 #include "OMSimAnalysisManager.hh"
 #include <time.h>
 #include <sys/time.h>
-extern G4String	ghitsfilename;
-extern G4String	gHittype;
-extern OMSimAnalysisManager gAnalysisManager;
-
+#include "OMSimCommandArgsTable.hh"
 
 OMSimRunAction::OMSimRunAction(){}
 OMSimRunAction::~OMSimRunAction(){}
@@ -25,19 +22,14 @@ void OMSimRunAction::BeginOfRunAction(const G4Run*)
 
 void OMSimRunAction::EndOfRunAction(const G4Run*)
 {
+G4String lFileName = OMSimCommandArgsTable::getInstance().get<G4String>("output_file");
 
-gAnalysisManager.datafile.open(ghitsfilename.c_str(), std::ios::out|std::ios::app);
-
-	if (gHittype == "individual") {
-		gAnalysisManager.Write(); // for K40 analysis
-	}
-	if (gHittype == "collective") {
-		gAnalysisManager.WriteAccept(); // mainly for acceptance 
-	}
-	
+OMSimAnalysisManager& lAnalysisManager = OMSimAnalysisManager::getInstance();
+lAnalysisManager.datafile.open(lFileName.c_str(), std::ios::out|std::ios::app);
+lAnalysisManager.Write();
 // 	Close output data file
-gAnalysisManager.datafile.close();
-gAnalysisManager.Reset();
+lAnalysisManager.datafile.close();
+lAnalysisManager.Reset();
 //double finishtime=clock() / CLOCKS_PER_SEC;
 //G4cout << "Computation time: " << finishtime-startingtime << " seconds." << G4endl;
 }

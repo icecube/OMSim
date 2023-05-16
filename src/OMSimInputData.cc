@@ -25,14 +25,9 @@
 #include <G4UnitsTable.hh>
 #include <dirent.h>
 #include <cmath>
-#include "OMSimArgumentTable.hh"
+#include "OMSimCommandArgsTable.hh"
 
 namespace pt = boost::property_tree;
-extern G4int gEnvironment;
-extern G4int gGlass;
-extern G4int gGel;
-extern G4int gConeMat;
-extern G4double gInnercolumn_b_inv;
 
 OMSimInputData::OMSimInputData()
 {
@@ -56,7 +51,7 @@ void ParameterTable::AppendParameterTable(G4String pFileName)
     const G4String lName = lJsonTree.get<G4String>("jName");
     mTable[lName] = lJsonTree;
     G4String mssg = lName + " added to dictionary...";
-    info(mssg);
+    debug(mssg);
 }
 
 /**
@@ -133,40 +128,6 @@ G4bool ParameterTable::CheckIfKeyInTable(G4String pKey)
 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
 
-// /**
-// * Get values from a pTree with its unit, transforming it to a G4double
-// * @param pKey Name of json tree in file
-// * @param pParameter Name of parameter in json tree
-// * @return G4double of the value and its unit
-// */
-// G4double OMSimInputData::GetValue(G4String pKey, G4String pParameter)
-// {
-//     return Get(pKey, pParameter);
-// }
-
-// /**
-// * Get string value from a pTree
-// * @param pKey Name of json tree in file
-// * @param pParameter Name of parameter in json tree
-// * @return G4double of the value and its unit
-// */
-// G4String OMSimInputData::GetString(G4String pKey, G4String pParameter)
-// {
-//     return GetString(pKey, pParameter);
-// }
-
-// /**
-// * Changes the value of an existing parameter in json file. You have to think about what you are doing here.
-// * @param pKey Name of json tree in file
-// * @param pParameter Name of parameter in json tree
-// * @param pValue Value to set
-// */
-// void OMSimInputData::SetValue(G4String pKey, G4String pParameter, G4double pValue)
-// {
-//     Set(pKey, pParameter, pValue);
-// }
-
-
 /**
 * Get a G4Material. In order to get custom built materials, method SearchFolders() should have already been called.
 * Standard materials from Geant4 are also transfered directly (if found through FindOrBuildMaterial()).
@@ -186,12 +147,20 @@ G4Material* OMSimInputData::GetMaterial(G4String pName)
         G4String lGel[] = { "RiAbs_Gel_Wacker612Measured", "RiAbs_Gel_Shin-Etsu", "RiAbs_Gel_QGel900", "RiAbs_Gel_Wacker612Company", "Ri_Vacuum" };
         G4String lWorld[] = { "Ri_Air", "IceCubeICE", "IceCubeICE_SPICE" };
 
+        //Get user argument parameters
+        OMSimCommandArgsTable& lArgs = OMSimCommandArgsTable::getInstance();
+        G4int lGlassIndex = lArgs.get<G4int>("glass");
+        G4int lGelIndex = lArgs.get<G4int>("gel");
+        G4int lEnvironmentIndex = lArgs.get<G4int>("environment");
+
         if (pName == "argVesselGlass")
-            return GetMaterial(lGlass[gGlass]);
+            return GetMaterial(lGlass[lGlassIndex]);
+
         else if (pName == "argGel")
-            return GetMaterial(lGel[gGel]);
+            return GetMaterial(lGel[lGelIndex]);
+
         else if (pName == "argWorld")
-            return GetMaterial(lWorld[gEnvironment]);
+            return GetMaterial(lWorld[lEnvironmentIndex]);
     }
 
     //If it is not an argument material, the material is looked up.
@@ -212,9 +181,10 @@ G4OpticalSurface* OMSimInputData::GetOpticalSurface(G4String pName)
 
     //Check if requested material is an argument surface
     if (pName.substr(0, 12) == "argReflector")
-    {
+    {   
         G4String lRefCones[] = { "Refl_V95Gel", "Refl_V98Gel", "Refl_Aluminium", "Refl_Total98" };
-        return GetOpticalSurface(lRefCones[gConeMat]);
+        G4int lReflectiveIndex = OMSimCommandArgsTable::getInstance().get<G4int>("reflective_surface");
+        return GetOpticalSurface(lRefCones[lReflectiveIndex]);
     }
     //If not, we look in the dictionary
     else
@@ -265,7 +235,6 @@ void OMSimInputData::ScannDataDirectory()
     while ((lFile = readdir(lDirectory)))
     {
         const std::string fileName = lFile->d_name;
-        G4cout <<  OMSimArgumentTable::getInstance().worldSize << G4endl;
         
         if (lFile->d_type == 8)
         {

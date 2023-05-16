@@ -1,0 +1,82 @@
+/run/verbose 0
+/run/initialize
+/control/execute ../aux/vis.mac
+/vis/open OGLS 600x600-0+0
+/vis/sceneHandler/create OGLS
+/vis/viewer/create ! ! 600x600-0+0
+/vis/viewer/refresh
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+/vis/drawVolume
+/vis/scene/create
+/vis/scene/add/volume world -1 -1 none m 0 0 0 0 0 0
+/vis/sceneHandler/attach
+/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/set/lightsVector -1 0 0
+/vis/viewer/set/style wireframe
+/vis/viewer/set/auxiliaryEdge true
+/vis/viewer/set/lineSegmentsPerCircle 100
+/vis/scene/add/trajectories smooth
+/tracking/storeTrajectory 2
+/vis/scene/notifyHandlers
+/vis/modeling/trajectories/create/generic
+/vis/modeling/trajectories/generic-0/default/setDrawStepPts true
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/generic-0/default/setStepPtsSize 5
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/generic-0/default/setStepPtsColour yellow
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/default/setStepPtsSize 5
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set gamma cyan
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/setRGBA opticalphoton 1 0.6 0 1
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set e- blue
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set e+ red
+/vis/scene/notifyHandlers scene-0
+/vis/filtering/trajectories/create/particleFilter
+/vis/filtering/trajectories/particleFilter-0/add nu_e
+/vis/scene/notifyHandlers scene-0
+/vis/filtering/trajectories/particleFilter-0/add anti_nu_e
+/vis/scene/notifyHandlers scene-0
+/vis/filtering/trajectories/particleFilter-0/add nu_mu
+/vis/scene/notifyHandlers scene-0
+/vis/filtering/trajectories/particleFilter-0/add anti_nu_mu
+/vis/scene/notifyHandlers scene-0
+/vis/filtering/trajectories/particleFilter-0/add nu_tau
+/vis/scene/notifyHandlers scene-0
+/vis/filtering/trajectories/particleFilter-0/add anti_nu_tau
+/vis/scene/notifyHandlers scene-0
+/vis/filtering/trajectories/particleFilter-0/invert true
+/vis/scene/notifyHandlers scene-0
+/vis/scene/endOfEventAction accumulate
+/vis/set/textColour green
+/vis/set/textLayout right
+/vis/set/textLayout
+/vis/set/textColour
+/vis/set/colour red
+/vis/set/lineWidth 2
+/vis/set/colour
+/vis/set/lineWidth
+/vis/geometry/set/visibility World_log 0
+/vis/scene/notifyHandlers
+/vis/viewer/set/style surface
+/vis/viewer/set/hiddenMarker true
+/vis/viewer/set/viewpointThetaPhi 120 150
+/vis/viewer/set/autoRefresh true
+/vis/viewer/refresh
+/vis/verbose warnings
+/vis/viewer/set/upVector 0 0 1
+/vis/viewer/refresh
+/vis/viewer/set/viewpointVector 0 1 0
+/vis/viewer/refresh
+/vis/viewer/set/background white
+/vis/viewer/refresh
+/vis/viewer/set/lineSegmentsPerCircle 24
+/vis/viewer/refresh
+/run/beamOn 0

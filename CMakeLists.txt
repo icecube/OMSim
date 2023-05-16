@@ -15,6 +15,7 @@ else()
 	find_package(Geant4 REQUIRED)
 endif()
 
+find_package(spdlog REQUIRED)
 
 # location of Geant4 libraries
 set (CMAKE_MODULE_PATH /data/geant4/geant4.10.7_ubuntu_20.04/install/lib/Geant4-10.7.1/Modules/)
@@ -46,7 +47,7 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.h)
 #add_executable(OMSim_xyz OMSim_xyz.cc ${sources})# ${headers})
 add_executable(OMSim OMSim.cc ${sources})# ${headers})
 #target_link_libraries(OMSim_xyz ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0)
-target_link_libraries(OMSim ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0 Boost::program_options)
+target_link_libraries(OMSim ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0 Boost::program_options spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>)
 
 
 # which auxiliary files out of the source directory should be copied to the directory of the binary

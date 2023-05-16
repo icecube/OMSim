@@ -36,12 +36,6 @@
 #include "G4Torus.hh"
 
 
-extern G4int gDOM;
-extern G4bool gharness_ropes;
-extern G4bool gVisual;
-extern G4double gmdomseparation;
-extern G4int gn_mDOMs;
-
 mDOMHarness::mDOMHarness(mDOM* pMDOM, OMSimInputData* pData) {
     mOM = pMDOM;
     mData = pData;
