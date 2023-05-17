@@ -393,6 +393,30 @@ src/OMSimMDOM.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OMSim.dir/build.make CMakeFiles/OMSim.dir/src/OMSimMDOM.cc.s
 .PHONY : src/OMSimMDOM.cc.s
 
+src/OMSimMDOMFlasher.o: src/OMSimMDOMFlasher.cc.o
+.PHONY : src/OMSimMDOMFlasher.o
+
+# target to build an object file
+src/OMSimMDOMFlasher.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OMSim.dir/build.make CMakeFiles/OMSim.dir/src/OMSimMDOMFlasher.cc.o
+.PHONY : src/OMSimMDOMFlasher.cc.o
+
+src/OMSimMDOMFlasher.i: src/OMSimMDOMFlasher.cc.i
+.PHONY : src/OMSimMDOMFlasher.i
+
+# target to preprocess a source file
+src/OMSimMDOMFlasher.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OMSim.dir/build.make CMakeFiles/OMSim.dir/src/OMSimMDOMFlasher.cc.i
+.PHONY : src/OMSimMDOMFlasher.cc.i
+
+src/OMSimMDOMFlasher.s: src/OMSimMDOMFlasher.cc.s
+.PHONY : src/OMSimMDOMFlasher.s
+
+# target to generate assembly for a file
+src/OMSimMDOMFlasher.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OMSim.dir/build.make CMakeFiles/OMSim.dir/src/OMSimMDOMFlasher.cc.s
+.PHONY : src/OMSimMDOMFlasher.cc.s
+
 src/OMSimMDOMHarness.o: src/OMSimMDOMHarness.cc.o
 .PHONY : src/OMSimMDOMHarness.o
 
@@ -699,6 +723,9 @@ help:
 	@echo "... src/OMSimMDOM.o"
 	@echo "... src/OMSimMDOM.i"
 	@echo "... src/OMSimMDOM.s"
+	@echo "... src/OMSimMDOMFlasher.o"
+	@echo "... src/OMSimMDOMFlasher.i"
+	@echo "... src/OMSimMDOMFlasher.s"
 	@echo "... src/OMSimMDOMHarness.o"
 	@echo "... src/OMSimMDOMHarness.i"
 	@echo "... src/OMSimMDOMHarness.s"

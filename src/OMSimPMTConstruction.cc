@@ -136,7 +136,7 @@ void OMSimPMTConstruction::PlaceIt(G4Transform3D pTransform, G4LogicalVolume*& p
 std::tuple<G4VSolid*, G4VSolid*> OMSimPMTConstruction::GetBulbSolid(G4String pSide)
 {
     G4SubtractionSolid* lVacuumPhotocathodeSolid;
-    G4String lBulbBackShape = mData->GetString(mSelectedPMT, "jBulbBackShape");
+    G4String lBulbBackShape = mData->GetValue<G4String>(mSelectedPMT, "jBulbBackShape");
     if (lBulbBackShape == "Simple") mSimpleBulb = true;
 
     if (mSimpleBulb || !mInternalReflections)
@@ -171,14 +171,14 @@ std::tuple<G4VSolid*, G4VSolid*> OMSimPMTConstruction::BulbConstructionSimple(G4
  */
 std::tuple<G4VSolid*, G4VSolid*> OMSimPMTConstruction::BulbConstructionFull(G4String pSide)
 {
-    G4double lLineFitSlope = mData->GetValue(mSelectedPMT, pSide + ".jLineFitSlope");
-    G4double lEllipseConeTransition_x = mData->GetValue(mSelectedPMT, pSide + ".jEllipseConeTransition_x");
-    G4double lEllipseConeTransition_y = mData->GetValue(mSelectedPMT, pSide + ".jEllipseConeTransition_y");
-    G4double lConeTorusTransition_x = mData->GetValue(mSelectedPMT, pSide + ".jConeTorusTransition_x");
-    G4double lTorusCircleR = mData->GetValue(mSelectedPMT, pSide + ".jTorusCircleR");
-    G4double lTorusCirclePos_x = mData->GetValue(mSelectedPMT, pSide + ".jTorusCirclePos_x");
-    G4double lTorusCirclePos_y = mData->GetValue(mSelectedPMT, pSide + ".jTorusCirclePos_y");
-    G4double lTorusTubeTransition_y = mData->GetValue(mSelectedPMT, pSide + ".jTorusTubeTransition_y");
+    G4double lLineFitSlope = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jLineFitSlope");
+    G4double lEllipseConeTransition_x = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jEllipseConeTransition_x");
+    G4double lEllipseConeTransition_y = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jEllipseConeTransition_y");
+    G4double lConeTorusTransition_x = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jConeTorusTransition_x");
+    G4double lTorusCircleR = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jTorusCircleR");
+    G4double lTorusCirclePos_x = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jTorusCirclePos_x");
+    G4double lTorusCirclePos_y = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jTorusCirclePos_y");
+    G4double lTorusTubeTransition_y = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jTorusTubeTransition_y");
 
     G4VSolid* lBulbSolid = FrontalBulbConstruction(pSide);
     // Defining volume with boundaries of photocathode volume
@@ -288,15 +288,15 @@ void OMSimPMTConstruction::DynodeSystemConstructionCAD(G4LogicalVolume* pMother)
  */
 void OMSimPMTConstruction::ReadGlobalParameters(G4String pSide)
 {
-    mOutRad = mData->GetValue(mSelectedPMT, pSide + ".jOutRad");
-    mEllipseXYaxis = mData->GetValue(mSelectedPMT, pSide + ".jEllipseXYaxis");
-    mEllipseZaxis = mData->GetValue(mSelectedPMT, pSide + ".jEllipseZaxis");
-    mSpherePos_y = mData->GetValue(mSelectedPMT, pSide + ".jSpherePos_y");
-    mEllipsePos_y = mData->GetValue(mSelectedPMT, pSide + ".jEllipsePos_y");
-    mSphereEllipseTransition_r = mData->GetValue(mSelectedPMT, pSide + ".jSphereEllipseTransition_r");
+    mOutRad = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jOutRad");
+    mEllipseXYaxis = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jEllipseXYaxis");
+    mEllipseZaxis = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis");
+    mSpherePos_y = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jSpherePos_y");
+    mEllipsePos_y = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y");
+    mSphereEllipseTransition_r = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jSphereEllipseTransition_r");
     if (pSide != "jPhotocathodeInnerSide") {
-        mTotalLenght = mData->GetValue(mSelectedPMT, pSide + ".jTotalLenght");
-        mTubeWidth = mData->GetValue(mSelectedPMT, pSide + ".jTubeWidth");
+        mTotalLenght = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jTotalLenght");
+        mTubeWidth = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jTubeWidth");
         G4double lFrontToEllipse_y = mOutRad + mSpherePos_y - mEllipsePos_y;
         mMissingTubeLength = (mTotalLenght - lFrontToEllipse_y) * 0.5 * mm;
     }
@@ -305,7 +305,7 @@ void OMSimPMTConstruction::ReadGlobalParameters(G4String pSide)
 
 G4VSolid* OMSimPMTConstruction::FrontalBulbConstruction(G4String pSide)
 {
-    G4String lFrontalShape = mData->GetString(mSelectedPMT, "jFrontalShape");
+    G4String lFrontalShape = mData->GetValue<G4String>(mSelectedPMT, "jFrontalShape");
     ReadGlobalParameters(pSide);
     if (lFrontalShape == "SphereEllipse")
         return SphereEllipsePhotocathode();
@@ -359,9 +359,9 @@ G4UnionSolid* OMSimPMTConstruction::SphereEllipsePhotocathode()
  */
 G4UnionSolid* OMSimPMTConstruction::SphereDoubleEllipsePhotocathode(G4String pSide)
 {
-    G4double lEllipseXYaxis_2 = mData->GetValue(mSelectedPMT, pSide + ".jEllipseXYaxis_2");
-    G4double lEllipseZaxis_2 = mData->GetValue(mSelectedPMT, pSide + ".jEllipseZaxis_2");
-    G4double lEllipsePos_y_2 = mData->GetValue(mSelectedPMT, pSide + ".jEllipsePos_y_2");
+    G4double lEllipseXYaxis_2 = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jEllipseXYaxis_2");
+    G4double lEllipseZaxis_2 = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis_2");
+    G4double lEllipsePos_y_2 = mData->GetValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y_2");
 
     G4double lSphereAngle = asin(mSphereEllipseTransition_r / mOutRad);
     // PMT frontal glass envelope as union of sphere and ellipse

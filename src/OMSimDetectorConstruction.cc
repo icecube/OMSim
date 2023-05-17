@@ -31,6 +31,7 @@
 #include "G4LogicalVolume.hh"
 
 #include "OMSimCommandArgsTable.hh"
+#include "OMSimMDOMFlasher.hh"
 
 
 OMSimDetectorConstruction::OMSimDetectorConstruction()
@@ -79,9 +80,15 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
     G4LogicalVolume* VacuumLog = new G4LogicalVolume(Vacuum, mData->GetMaterial("Ri_Vacuum"), "PMTvacuum");
 
     
-    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), GlassLog, "PMTGlass", mWorldLogical, false, 0, true);
+    //new G4PVPlacement(0, G4ThreeVector(0, 0, 0), GlassLog, "PMTGlass", mWorldLogical, false, 0, true);
     //new G4PVPlacement(0, G4ThreeVector(0, 0, -(1*mm+10*nm)), PhotocathodeLog, "Photocathode", mWorldLogical, false, 0, true);
-    new G4PVPlacement(0, G4ThreeVector(0, 0, -(1*cm+1*mm)), VacuumLog, "PMTvacuum", mWorldLogical, false, 0, true);
+    //new G4PVPlacement(0, G4ThreeVector(0, 0, -(1*cm+1*mm)), VacuumLog, "PMTvacuum", mWorldLogical, false, 0, true);
+
+    //mDOMFlasher *lFlashers = new mDOMFlasher(mData);
+    //lFlashers->PlaceIt(G4ThreeVector(1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "2");
+    mDOM *lOpticalModule = new mDOM(mData);
+    lOpticalModule->PlaceIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "1");
+    //lOpticalModule->PlaceIt(G4ThreeVector(1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "2");
 
     /*    
     switch (OMSimCommandArgsTable::getInstance().get<G4int>("detector_type")) {

@@ -1,5 +1,5 @@
 {
-   "jName": "om_mDOM_",
+   "jName": "om_mDOM",
    "jGlassOutRad": {
       "jValue": 176.5,
       "jUnit": "mm"
@@ -32,7 +32,7 @@
       "jValue": 15,
       "jUnit": "mm"
    },
-   "mRefConeSheetThickness": {
+   "jRefConeSheetThickness": {
       "jValue": 0.5,
       "jUnit": "mm"
    },
@@ -54,6 +54,7 @@
    },
    "jNrPolarPMTs": 4,
    "jNrEqPMTs": 8,
+   "jReflectorConeAngle": 51,
    "jPolEqPMTPhiPhase": {
       "jValue": 0,
       "jUnit": "deg"

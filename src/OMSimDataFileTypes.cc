@@ -29,29 +29,6 @@ abcDataFile::abcDataFile(G4String pFileName)
     mFileName = pFileName;
 }
 
-template <typename T>
-/**
- * Transforms the values inside a pTree-array to a vector. The values can be also transformed to a G4double.
- * @param pVector  vector where the (transformed) values are saved
- * @param pTree    pTree containing json data
- * @param pKey     json attribute label where values are found
- * @param pScaling Values of array are multiplied by this factor. You can set the fisical unit with this.
- * @param pInverse In case you need the inverse of a value x, 1/x is appended (e.g. transforming from nm to eV)
- */
-void abcDataFile::ParseToVector(std::vector<T> &pVector, pt::ptree pTree, std::basic_string<char> pKey, G4double pScaling, bool pInverse)
-{
-    for (pt::ptree::value_type &ridx : pTree.get_child(pKey))
-    { // get array from element with key "pKey" of the json
-        if (pInverse)
-        { // if we need 1/x
-            pVector.push_back(pScaling / ridx.second.get_value<T>());
-        }
-        else
-        { // otherwise we only by scaling factor
-            pVector.push_back(ridx.second.get_value<T>() * pScaling);
-        }
-    }
-}
 
 /**
  * @brief Sorts two vectors (sortVector & referenceVector) based on the order of values in referenceVector.
@@ -95,17 +72,15 @@ void abcDataFile::sortVectorByReference(std::vector<G4double> &referenceVector, 
  */
 void abcMaterialData::CreateMaterial()
 {
-
-    pt::read_json(mFileName, mJsonTree); // read json file into mJsonTree
-
-    mFileData->AppendParameterTable(mFileName);
+    mJsonTree = mFileData->AppendAndReturnTree(mFileName);
+    
     mMPT = new G4MaterialPropertiesTable();
     mMatDatBase = G4NistManager::Instance();
 
     mObjectName = mJsonTree.get<G4String>("jName");
     const G4String lDataType = mJsonTree.get<G4String>("jDataType");
 
-    const G4double lDensity = mFileData->GetValue(mObjectName, "jDensity");
+    const G4double lDensity = mFileData->GetValueWithUnit(mObjectName, "jDensity");
 
     const G4String lState_str = mJsonTree.get<G4String>("jState");
     const G4State lState = GetState(lState_str);
@@ -130,8 +105,8 @@ void abcMaterialData::ExtractAbsorptionLength()
 {
     std::vector<G4double> lAbsLength;
     std::vector<G4double> lAbsLengthEnergy;
-    ParseToVector(lAbsLength, mJsonTree, "jAbsLength", 1 * mm, false);
-    ParseToVector(lAbsLengthEnergy, mJsonTree, "jAbsLengthWavelength", mHC_eVnm, true);
+    mFileData->ParseKeyContentToVector(lAbsLength, mJsonTree, "jAbsLength", 1 * mm, false);
+    mFileData->ParseKeyContentToVector(lAbsLengthEnergy, mJsonTree, "jAbsLengthWavelength", mHC_eVnm, true);
     sortVectorByReference(lAbsLengthEnergy, lAbsLength);
     mMPT->AddProperty("ABSLENGTH", &lAbsLengthEnergy[0], &lAbsLength[0], static_cast<int>(lAbsLength.size()));
 }
@@ -142,8 +117,8 @@ void abcMaterialData::ExtractRefractionIndex()
 {
     std::vector<G4double> lRefractionIndex;
     std::vector<G4double> lRefractionIndexEnergy;
-    ParseToVector(lRefractionIndex, mJsonTree, "jRefractiveIdx", 1., false);
-    ParseToVector(lRefractionIndexEnergy, mJsonTree, "jRefractiveIdxWavelength", mHC_eVnm, true);
+    mFileData->ParseKeyContentToVector(lRefractionIndex, mJsonTree, "jRefractiveIdx", 1., false);
+    mFileData->ParseKeyContentToVector(lRefractionIndexEnergy, mJsonTree, "jRefractiveIdxWavelength", mHC_eVnm, true);
     sortVectorByReference(lRefractionIndexEnergy, lRefractionIndex);
     mMPT->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
 }
@@ -204,19 +179,19 @@ void IceCubeIce::ExtractInformation()
 {
     CreateMaterial(); // creates IceCubeICE
 
-    G4Material *lIceMie = new G4Material("IceCubeICE_SPICE", mFileData->GetValue(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid);      // create IceCubeICE_SPICE
-    G4Material *lBubleColumnMie = new G4Material("Mat_BubColumn", mFileData->GetValue(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid); // create IceCubeICE_SPICE
+    G4Material *lIceMie = new G4Material("IceCubeICE_SPICE", mFileData->GetValueWithUnit(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid);      // create IceCubeICE_SPICE
+    G4Material *lBubleColumnMie = new G4Material("Mat_BubColumn", mFileData->GetValueWithUnit(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid); // create IceCubeICE_SPICE
     std::vector<G4double> lMieScatteringLength;
     std::vector<G4double> lMieScatteringLength_BubleColumn;
     std::vector<G4double> lWavelength;
     std::vector<G4double> lRefractionIndex;
     std::vector<G4double> lRefractionIndexEnergy;
     std::vector<G4double> lAbsLength;
-    ParseToVector(lRefractionIndexEnergy, mJsonTree, "jWavelength_spice", mHC_eVnm, true);
-    ParseToVector(lWavelength, mJsonTree, "jWavelength_spice", 1 * nm, false);
-    ParseToVector(mSpice_be400inv, mJsonTree, "jbe400inv_spice", 1 * m, false);
-    ParseToVector(mSpice_a400inv, mJsonTree, "ja400inv_spice", 1 * m, false);
-    ParseToVector(mSpice_Depth, mJsonTree, "jDepth_spice", 1 * m, false);
+    mFileData->ParseKeyContentToVector(lRefractionIndexEnergy, mJsonTree, "jWavelength_spice", mHC_eVnm, true);
+    mFileData->ParseKeyContentToVector(lWavelength, mJsonTree, "jWavelength_spice", 1 * nm, false);
+    mFileData->ParseKeyContentToVector(mSpice_be400inv, mJsonTree, "jbe400inv_spice", 1 * m, false);
+    mFileData->ParseKeyContentToVector(mSpice_a400inv, mJsonTree, "ja400inv_spice", 1 * m, false);
+    mFileData->ParseKeyContentToVector(mSpice_Depth, mJsonTree, "jDepth_spice", 1 * m, false);
 
     for (int u = 0; u < static_cast<int>(lRefractionIndexEnergy.size()); u++)
     {
@@ -362,8 +337,8 @@ void ReflectiveSurface::ExtractInformation()
         G4String lKey = key.second.get_value<G4String>();
         std::vector<G4double> lPhotonEnergy;
         std::vector<G4double> lValues;
-        ParseToVector(lValues, mJsonTree, "jValues_" + lKey, 1., false);
-        ParseToVector(lPhotonEnergy, mJsonTree, "jWavelength_" + lKey, mHC_eVnm, true);
+        mFileData->ParseKeyContentToVector(lValues, mJsonTree, "jValues_" + lKey, 1., false);
+        mFileData->ParseKeyContentToVector(lPhotonEnergy, mJsonTree, "jWavelength_" + lKey, mHC_eVnm, true);
         sortVectorByReference(lPhotonEnergy, lValues);
         lMPT->AddProperty(lKey, &lPhotonEnergy[0], &lValues[0], static_cast<int>(lPhotonEnergy.size()));
     }

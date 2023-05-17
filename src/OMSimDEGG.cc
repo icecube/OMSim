@@ -61,39 +61,39 @@ void DEgg::Construction()
 {
    mComponents.clear();
    //Create pressure vessel and inner volume
-   G4VSolid* lOuterGlass = CreateEggSolid(mData->GetValue(mDataKey, "jOutSegments1"),
-      mData->GetValue(mDataKey, "jOutSphereRadiusMax"),
-      mData->GetValue(mDataKey, "jOutSphereDtheta"),
-      mData->GetValue(mDataKey, "jOutTransformZ"),
-      mData->GetValue(mDataKey, "jOutTorusRadius1"),
-      mData->GetValue(mDataKey, "jOutCenterOfTorusRadius1"),
-      mData->GetValue(mDataKey, "jOutSegments2"),
-      mData->GetValue(mDataKey, "jOutTorusRadius2"),
-      mData->GetValue(mDataKey, "jOutCenterOfTorusRadius2"),
-      mData->GetValue(mDataKey, "jOutCenterOfTorusZ2"),
-      mData->GetValue(mDataKey, "jOutTorusZmin2"),
-      mData->GetValue(mDataKey, "jOutTorusZmax2"),
-      mData->GetValue(mDataKey, "jOutTorusZ0"),
-      mData->GetValue(mDataKey, "jOutTorusTransformZ"));
+   G4VSolid* lOuterGlass = CreateEggSolid(mData->GetValueWithUnit(mDataKey, "jOutSegments1"),
+      mData->GetValueWithUnit(mDataKey, "jOutSphereRadiusMax"),
+      mData->GetValueWithUnit(mDataKey, "jOutSphereDtheta"),
+      mData->GetValueWithUnit(mDataKey, "jOutTransformZ"),
+      mData->GetValueWithUnit(mDataKey, "jOutTorusRadius1"),
+      mData->GetValueWithUnit(mDataKey, "jOutCenterOfTorusRadius1"),
+      mData->GetValueWithUnit(mDataKey, "jOutSegments2"),
+      mData->GetValueWithUnit(mDataKey, "jOutTorusRadius2"),
+      mData->GetValueWithUnit(mDataKey, "jOutCenterOfTorusRadius2"),
+      mData->GetValueWithUnit(mDataKey, "jOutCenterOfTorusZ2"),
+      mData->GetValueWithUnit(mDataKey, "jOutTorusZmin2"),
+      mData->GetValueWithUnit(mDataKey, "jOutTorusZmax2"),
+      mData->GetValueWithUnit(mDataKey, "jOutTorusZ0"),
+      mData->GetValueWithUnit(mDataKey, "jOutTorusTransformZ"));
 
-   G4VSolid* lInternalVolume = CreateEggSolid(mData->GetValue(mDataKey, "jInnSegments1"),
-      mData->GetValue(mDataKey, "jInnSphereRadiusMax"),
-      mData->GetValue(mDataKey, "jInnSphereDtheta"),
-      mData->GetValue(mDataKey, "jInnTransformZ"),
-      mData->GetValue(mDataKey, "jInnTorusRadius1"),
-      mData->GetValue(mDataKey, "jInnCenterOfTorusRadius1"),
-      mData->GetValue(mDataKey, "jInnSegments2"),
-      mData->GetValue(mDataKey, "jInnTorusRadius2"),
-      mData->GetValue(mDataKey, "jInnCenterOfTorusRadius2"),
-      mData->GetValue(mDataKey, "jInnCenterOfTorusZ2"),
-      mData->GetValue(mDataKey, "jInnTorusZmin2"),
-      mData->GetValue(mDataKey, "jInnTorusZmax2"),
-      mData->GetValue(mDataKey, "jInnTorusZ0"),
-      mData->GetValue(mDataKey, "jInnTorusTransformZ"));
+   G4VSolid* lInternalVolume = CreateEggSolid(mData->GetValueWithUnit(mDataKey, "jInnSegments1"),
+      mData->GetValueWithUnit(mDataKey, "jInnSphereRadiusMax"),
+      mData->GetValueWithUnit(mDataKey, "jInnSphereDtheta"),
+      mData->GetValueWithUnit(mDataKey, "jInnTransformZ"),
+      mData->GetValueWithUnit(mDataKey, "jInnTorusRadius1"),
+      mData->GetValueWithUnit(mDataKey, "jInnCenterOfTorusRadius1"),
+      mData->GetValueWithUnit(mDataKey, "jInnSegments2"),
+      mData->GetValueWithUnit(mDataKey, "jInnTorusRadius2"),
+      mData->GetValueWithUnit(mDataKey, "jInnCenterOfTorusRadius2"),
+      mData->GetValueWithUnit(mDataKey, "jInnCenterOfTorusZ2"),
+      mData->GetValueWithUnit(mDataKey, "jInnTorusZmin2"),
+      mData->GetValueWithUnit(mDataKey, "jInnTorusZmax2"),
+      mData->GetValueWithUnit(mDataKey, "jInnTorusZ0"),
+      mData->GetValueWithUnit(mDataKey, "jInnTorusTransformZ"));
 
    
    // Make box to substract empty space
-   G4double lGelHeight = mData->GetValue(mDataKey, "jGelHeight");
+   G4double lGelHeight = mData->GetValueWithUnit(mDataKey, "jGelHeight");
    G4Box* lSubstractionBox = new G4Box("SubstractionBox", 20*cm, 20*cm, lGelHeight);
    G4LogicalVolume* lLogicalDummy = new G4LogicalVolume(lSubstractionBox, mData->GetMaterial("Ri_Air"), "Temp");
 
@@ -141,7 +141,7 @@ void DEgg::Construction()
  *
  */
 void DEgg::AppendPMTs() {
-   G4double lPmtDistance = mData->GetValue(mDataKey, "jPmtDistance");
+   G4double lPmtDistance = mData->GetValueWithUnit(mDataKey, "jPmtDistance");
    G4RotationMatrix lRot = G4RotationMatrix();
    lRot.rotateY(180 * deg);
 
@@ -163,16 +163,16 @@ void DEgg::AppendPMTs() {
  */
 void DEgg::AppendInternalComponentsFromCAD()
 {
-   G4String lFilePath = mData->GetString(mDataKey, "jInternalCADFile");
-   G4double lCADScale = mData->GetValue(mDataKey, "jInternalCADScale");
+   G4String lFilePath = mData->GetValue<G4String>(mDataKey, "jInternalCADFile");
+   G4double lCADScale = mData->GetValueWithUnit(mDataKey, "jInternalCADScale");
    G4cout << "using the following CAD file for support structure: " << lFilePath << G4endl;
 
    //load mesh
    auto lMesh = CADMesh::TessellatedMesh::FromOBJ(lFilePath);
 
-   G4ThreeVector lCADoffset = G4ThreeVector(mData->GetValue(mDataKey, "jInternalCAD_x"), 
-                                            mData->GetValue(mDataKey, "jInternalCAD_y"), 
-                                            mData->GetValue(mDataKey, "jInternalCAD_z")); //measured from CAD file since origin =!= Module origin
+   G4ThreeVector lCADoffset = G4ThreeVector(mData->GetValueWithUnit(mDataKey, "jInternalCAD_x"), 
+                                            mData->GetValueWithUnit(mDataKey, "jInternalCAD_y"), 
+                                            mData->GetValueWithUnit(mDataKey, "jInternalCAD_z")); //measured from CAD file since origin =!= Module origin
    lMesh->SetScale(lCADScale);
    lMesh->SetOffset(lCADoffset*lCADScale);
    
@@ -192,8 +192,8 @@ void DEgg::AppendInternalComponentsFromCAD()
  */
 void DEgg::AppendPressureVesselFromCAD()
 {
-   G4String lFilePath = mData->GetString(mDataKey, "jPVCADFile");
-   G4double lCADScale = mData->GetValue(mDataKey, "jInternalCADScale");
+   G4String lFilePath = mData->GetValue<G4String>(mDataKey, "jPVCADFile");
+   G4double lCADScale = mData->GetValueWithUnit(mDataKey, "jInternalCADScale");
    G4cout << "using the following CAD file for pressure vessel: " << lFilePath << G4endl;
 
    //load mesh

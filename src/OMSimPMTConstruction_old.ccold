@@ -173,7 +173,7 @@ void OMSimPMTConstruction::PMT::BasicShape()
 {
     G4SubtractionSolid *lVacuumPhotocathodeSolid;
 
-    G4String lBulbBackShape = mData->GetString(mSelectedPMT,"jBulbBackShape");
+    G4String lBulbBackShape = mData->GetValue<G4String>(mSelectedPMT,"jBulbBackShape");
     if (lBulbBackShape == "Simple")
         mSimpleBulb = true;
 
@@ -372,7 +372,7 @@ void OMSimPMTConstruction::PMT::ReadParameters(G4String pSide)
     mSpherePos_y = mData->GetValue(mSelectedPMT, pSide + ".jSpherePos_y");
     mEllipsePos_y = mData->GetValue(mSelectedPMT, pSide + ".jEllipsePos_y");
 
-    G4String lFrontalShape = mData->GetString(mSelectedPMT, "jFrontalShape"); 
+    G4String lFrontalShape = mData->GetValue<G4String>(mSelectedPMT, "jFrontalShape"); 
 
     if (!mSimpleBulb)
     {
@@ -510,7 +510,7 @@ void OMSimPMTConstruction::SelectPMT(G4String pPMTtoSelect)
         G4String mssg = pPMTtoSelect + " selected.";
         notice(mssg);
 
-        const G4String lFrontalShape = mData->GetString(mSelectedPMT, "jFrontalShape");
+        const G4String lFrontalShape = mData->GetValue<G4String>(mSelectedPMT, "jFrontalShape");
 
         //Check what kind of fit was done on the PMT and assign class accordingly.
         if (lFrontalShape == "SphereEllipse")

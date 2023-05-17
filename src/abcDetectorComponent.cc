@@ -91,7 +91,8 @@ G4Transform3D abcDetectorComponent::GetNewPosition(G4ThreeVector pPosition, G4Ro
  * @param pNameExtension G4String name of the physical volume. You should not have two physicals with the same name
  */
 void abcDetectorComponent::PlaceIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume*& pMother, G4String pNameExtension)
-{
+{   
+    mPlacedTranslations.push_back(G4Transform3D(pRotation, pPosition));
     mPlacedPositions.push_back(pPosition);
     mPlacedOrientations.push_back(pRotation);
     G4Transform3D lTrans;
@@ -112,7 +113,7 @@ void abcDetectorComponent::PlaceIt(G4ThreeVector pPosition, G4RotationMatrix pRo
  * @param pNameExtension G4String name of the physical volume. You should not have two physicals with the same name
  */
 void abcDetectorComponent::PlaceIt(G4Transform3D pTrans, G4LogicalVolume*& pMother, G4String pNameExtension)
-{
+{   mPlacedTranslations.push_back(pTrans);
     mPlacedPositions.push_back(pTrans.getTranslation());
     mPlacedOrientations.push_back(pTrans.getRotation());
     G4Transform3D lTrans;
@@ -163,3 +164,19 @@ G4SubtractionSolid* abcDetectorComponent::SubstractToVolume(G4VSolid* pInputVolu
     return lSubstractedVolume;
 }
 
+G4SubtractionSolid* abcDetectorComponent::SubstractToVolume(G4VSolid* pInputVolume, G4Transform3D pTrans, G4String pNewVolumeName)
+{
+    G4SubtractionSolid* lSubstractedVolume;
+    G4int iCounter = 0;
+    for (auto const & [key, Component] : mComponents) {
+        G4String mssg = "Substracting "+key+" from "+pInputVolume->GetName()+".";
+        debug(mssg);
+        if (iCounter == 0) {
+            lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", pInputVolume, Component.VSolid, pTrans);
+        } else {
+            lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", lSubstractedVolume, Component.VSolid, pTrans);
+        }
+        iCounter++;
+    }
+    return lSubstractedVolume;
+}

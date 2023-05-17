@@ -1173,4 +1173,6 @@ CMakeFiles/OMSim.dir/src/OMSimDetectorConstruction.cc.o: \
  /data/geant4/geant4-v11.1.1/install/include/Geant4/G4Box.hh \
  /HDD/backuped/Geant4_Folders/2023_github_geant4/include/OMSimCommandArgsTable.hh \
  /usr/include/c++/9/variant \
- /data/geant4/geant4-v11.1.1/install/include/Geant4/globals.hh
+ /data/geant4/geant4-v11.1.1/install/include/Geant4/globals.hh \
+ /HDD/backuped/Geant4_Folders/2023_github_geant4/include/OMSimMDOMFlasher.hh \
+ /HDD/backuped/Geant4_Folders/2023_github_geant4/include/OMSimMDOM.hh

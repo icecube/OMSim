@@ -80,3 +80,4 @@
 /vis/viewer/set/lineSegmentsPerCircle 24
 /vis/viewer/refresh
 /run/beamOn 0
+/vis/scene/notifyHandlers scene-0

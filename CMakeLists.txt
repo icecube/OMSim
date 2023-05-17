@@ -2,6 +2,7 @@
 # http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide/html/ch03s02.html
 
 # check for cmake version, initialize project -> sets name and paths
+
 cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 project(OMSim_xyz)
 
@@ -18,7 +19,7 @@ endif()
 find_package(spdlog REQUIRED)
 
 # location of Geant4 libraries
-set (CMAKE_MODULE_PATH /data/geant4/geant4.10.7_ubuntu_20.04/install/lib/Geant4-10.7.1/Modules/)
+set (CMAKE_MODULE_PATH /data/geant4/geant4-v11.1.1/install/lib/Geant4-10.7.1/Modules/)
 
 
 set(OPENSSL_ROOT_DIR /usr/lib/x86_64-linux-gnu)

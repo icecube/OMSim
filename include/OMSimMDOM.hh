@@ -6,13 +6,11 @@
 #include "G4SystemOfUnits.hh"
 #include "G4UnionSolid.hh"
 #include "G4IntersectionSolid.hh"
-//#include "OMSimInputData.hh"
 #include "G4Cons.hh"
 #include "G4Tubs.hh"
 
-extern G4double gRefCone_angle;
-
 class mDOMHarness;
+class mDOMFlasher;
 
 class mDOM : public abcDetectorComponent
 {
@@ -29,6 +27,7 @@ public:
 
 private:
     OMSimPMTConstruction* mPMTManager;
+    mDOMFlasher* mFlashers;
     mDOMHarness* mHarness;
     void GetSharedData();
     G4SubtractionSolid* EquatorialReflector(G4VSolid* pSupportStructure, G4Cons* pReflCone, G4double pAngle, G4String pSuffix);
@@ -36,7 +35,7 @@ private:
     G4UnionSolid* PressureVessel(const G4double pOutRad, G4String pSuffix);
     G4SubtractionSolid* SubstractHarnessPlug(G4VSolid* pSolid);
     std::tuple<G4SubtractionSolid*, G4UnionSolid*> SupportStructure();
-    std::tuple<G4SubtractionSolid*, G4UnionSolid*, G4UnionSolid*, G4Tubs*>  LedFlashers(G4VSolid* lSupStructureSolid);
+    G4SubtractionSolid* SubstractFlashers(G4VSolid* lSupStructureSolid);
     void SetLEDPositions();
 
 

@@ -50,16 +50,16 @@ dEGGHarness::dEGGHarness(DEgg* pDEGG, OMSimInputData* pData) {
  */
 void dEGGHarness::GetSharedData() {
     
-    mrmin = mData->GetValue(mDataKey, "jrmin");      // this is the angle between the PMT rows, where the penetrator and the clamps are placed (according to Prof. Kappes) //TODO REDEFINED
-    mrmax = mData->GetValue(mDataKey, "jrmax");
-    msphi = mData->GetValue(mDataKey, "jsphi");
-    mdphi = mData->GetValue(mDataKey, "jdphi");
-    mstheta = mData->GetValue(mDataKey, "jstheta");
-    mdtheta = mData->GetValue(mDataKey, "jdtheta"); // this value is found by numerically solving the equation lBridgeROuter[2]+mRopeRMax/cos(mRopeRotationAngleX) = 2*mRopeDz*sin(mRopeRotationAngleX)- lBridgeZPlane[3]*tan(mRopeRotationAngleX) with wolframalpha.com LOL
+    mrmin = mData->GetValueWithUnit(mDataKey, "jrmin");      // this is the angle between the PMT rows, where the penetrator and the clamps are placed (according to Prof. Kappes) //TODO REDEFINED
+    mrmax = mData->GetValueWithUnit(mDataKey, "jrmax");
+    msphi = mData->GetValueWithUnit(mDataKey, "jsphi");
+    mdphi = mData->GetValueWithUnit(mDataKey, "jdphi");
+    mstheta = mData->GetValueWithUnit(mDataKey, "jstheta");
+    mdtheta = mData->GetValueWithUnit(mDataKey, "jdtheta"); // this value is found by numerically solving the equation lBridgeROuter[2]+mRopeRMax/cos(mRopeRotationAngleX) = 2*mRopeDz*sin(mRopeRotationAngleX)- lBridgeZPlane[3]*tan(mRopeRotationAngleX) with wolframalpha.com LOL
     
     
     //Datacable
-    mRopeRotationAngleX = mData->GetValue(mDataKey, "jRopeRotationAngleX"); // this value is found by numerically solving the equation lBridgeROuter[2]+mRopeRMax/cos(mRopeRotationAngleX) = 2*mRopeDz*sin(mRopeRotationAngleX)- lBridgeZPlane[3]*tan(mRopeRotationAngleX) with wolframalpha.com LOL
+    mRopeRotationAngleX = mData->GetValueWithUnit(mDataKey, "jRopeRotationAngleX"); // this value is found by numerically solving the equation lBridgeROuter[2]+mRopeRMax/cos(mRopeRotationAngleX) = 2*mRopeDz*sin(mRopeRotationAngleX)- lBridgeZPlane[3]*tan(mRopeRotationAngleX) with wolframalpha.com LOL
     mTotalWidth = 170*mm; // Measured from CAD. Thickness to outer radius of equator bridge clamp
     mRopeStartingPoint = mTotalWidth ; // this is the actual starting point of the rope, i.e. the distance to the z-axis, which has to be larger than lBridgeROuter[2] in order for the rope not to cut the bridge.
     }
@@ -168,8 +168,8 @@ void dEGGHarness::PlaceCADPenetrator()
  */
 void dEGGHarness::MainDataCable()
 {
-    const G4double lDataCableRadius = mData->GetValue(mDataKey, "jDataCableRadius"); // Radius of the main data cable (according to Prof. Kappes)
-    const G4double lDataCableLength = mData->GetValue(mDataKey, "jDataCableLength"); // Length of main data cable
+    const G4double lDataCableRadius = mData->GetValueWithUnit(mDataKey, "jDataCableRadius"); // Radius of the main data cable (according to Prof. Kappes)
+    const G4double lDataCableLength = mData->GetValueWithUnit(mDataKey, "jDataCableLength"); // Length of main data cable
 
     G4Tubs* lDataCableSolid = new G4Tubs("MainDataCable_solid", 0, lDataCableRadius, lDataCableLength / 2., 0, 2 * CLHEP::pi);
 

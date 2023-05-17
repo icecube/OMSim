@@ -32,6 +32,7 @@ public:
     
     std::vector<G4ThreeVector> mPlacedPositions; //store the positions each time the components are placed
     std::vector<G4RotationMatrix> mPlacedOrientations; //store the orientations each time the components are placed
+    std::vector<G4Transform3D> mPlacedTranslations;
     std::map<G4String, Component> mComponents;
     std::map<G4String, G4PVPlacement*> mLastPhysicals;
 
@@ -45,7 +46,7 @@ public:
     void PlaceIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume*& pMother, G4String pNameExtension = "");
     void PlaceIt(G4Transform3D pTrans, G4LogicalVolume*& pMother, G4String pNameExtension = "");
     G4SubtractionSolid* SubstractToVolume(G4VSolid* pInputVolume, G4ThreeVector pSubstractionPos, G4RotationMatrix pSubstractionRot, G4String pNewVolumeName);
-    
+    G4SubtractionSolid* SubstractToVolume(G4VSolid* pInputVolume, G4Transform3D pTrans, G4String pNewVolumeName);
 protected:
     
     const G4VisAttributes* mGlassVis = new G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.25));

@@ -70,44 +70,44 @@ void LOM18::GetSharedData() {
     //Module Parameters
 
     //Vessel specific
-    mGlassEquatorWidth = mData->GetValue(mDataKey, "jGlassEquatorWidth"); 
-    mGlassPoleLength = mData->GetValue(mDataKey, "jGlassPoleLength"); 
-    mGlassThickPole = mData->GetValue(mDataKey, "jGlassThickPole");
-    mGlassThickEquator = mData->GetValue(mDataKey, "jGlassThickEquator"); 
-    mCylinderAngle = mData->GetValue(mDataKey, "lCylinderAngle"); 
+    mGlassEquatorWidth = mData->GetValueWithUnit(mDataKey, "jGlassEquatorWidth"); 
+    mGlassPoleLength = mData->GetValueWithUnit(mDataKey, "jGlassPoleLength"); 
+    mGlassThickPole = mData->GetValueWithUnit(mDataKey, "jGlassThickPole");
+    mGlassThickEquator = mData->GetValueWithUnit(mDataKey, "jGlassThickEquator"); 
+    mCylinderAngle = mData->GetValueWithUnit(mDataKey, "lCylinderAngle"); 
     //add rest for points and radii
 
     //PMT specific
-    mThetaCenter = mData->GetValue(mDataKey, "jThetaCenter"); //theta angle polar pmts
-    mThetaEquatorial = mData->GetValue(mDataKey, "jThetaEquatorial"); //theta angle equatorial pmts
-    mEqPMTPhiPhase = mData->GetValue(mDataKey,"jEqPMTPhiPhase");
+    mThetaCenter = mData->GetValueWithUnit(mDataKey, "jThetaCenter"); //theta angle polar pmts
+    mThetaEquatorial = mData->GetValueWithUnit(mDataKey, "jThetaEquatorial"); //theta angle equatorial pmts
+    mEqPMTPhiPhase = mData->GetValueWithUnit(mDataKey,"jEqPMTPhiPhase");
 
-    mNrPolarPMTs = mData->GetValue(mDataKey,"jNrPolarPMTs");
-    mNrCenterPMTs = mData->GetValue(mDataKey,"jNrCenterPMTs");
-    mNrEquatorialPMTs = mData->GetValue(mDataKey,"jNrEquatorialPMTs");
+    mNrPolarPMTs = mData->GetValueWithUnit(mDataKey,"jNrPolarPMTs");
+    mNrCenterPMTs = mData->GetValueWithUnit(mDataKey,"jNrCenterPMTs");
+    mNrEquatorialPMTs = mData->GetValueWithUnit(mDataKey,"jNrEquatorialPMTs");
 
     mNrPMTsPerHalf = mNrPolarPMTs + mNrCenterPMTs + mNrEquatorialPMTs;
     mTotalNrPMTs = (mNrPolarPMTs + mNrCenterPMTs + mNrEquatorialPMTs) * 2;
 
     //gelpad specific
-    mPolarPadOpeningAngle = mData->GetValue(mDataKey,"jPolarPadOpeningAngle"); //tilt angle of gel pad axis in respect to PMT axis
-    mCenterPadOpeningAngle = mData->GetValue(mDataKey,"jCenterPadOpeningAngle"); //
-    mEqPadOpeningAngle = mData->GetValue(mDataKey,"jEqPadOpeningAngle"); //
+    mPolarPadOpeningAngle = mData->GetValueWithUnit(mDataKey,"jPolarPadOpeningAngle"); //tilt angle of gel pad axis in respect to PMT axis
+    mCenterPadOpeningAngle = mData->GetValueWithUnit(mDataKey,"jCenterPadOpeningAngle"); //
+    mEqPadOpeningAngle = mData->GetValueWithUnit(mDataKey,"jEqPadOpeningAngle"); //
 
-    mGelThicknessFrontPolarPMT = mData->GetValue(mDataKey,"jGelThicknessFrontPolarPMT"); //
-    mGelThicknessFrontCenterPMT = mData->GetValue(mDataKey,"jGelThicknessFrontCenterPMT"); //
-    mGelThicknessFrontEqPMT = mData->GetValue(mDataKey,"jGelThicknessFrontEqPMT"); //
+    mGelThicknessFrontPolarPMT = mData->GetValueWithUnit(mDataKey,"jGelThicknessFrontPolarPMT"); //
+    mGelThicknessFrontCenterPMT = mData->GetValueWithUnit(mDataKey,"jGelThicknessFrontCenterPMT"); //
+    mGelThicknessFrontEqPMT = mData->GetValueWithUnit(mDataKey,"jGelThicknessFrontEqPMT"); //
 
 
     //PMT parameters
     mPMToffset = mPMTManager->GetDistancePMTCenterToPMTtip();
     mMaxPMTRadius = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
 
-    mTotalLenght = mData->GetValue("pmt_Hamamatsu_4inch", "jOuterShape.jTotalLenght");
-    mOutRad = mData->GetValue("pmt_Hamamatsu_4inch", "jOuterShape.jOutRad");
-    mSpherePos_y = mData->GetValue("pmt_Hamamatsu_4inch", "jOuterShape.jSpherePos_y");
-    mEllipsePos_y = mData->GetValue("pmt_Hamamatsu_4inch", "jOuterShape.jEllipsePos_y");
-    mEllipseZaxis = mData->GetValue("pmt_Hamamatsu_4inch", "jOuterShape.jEllipseZaxis");
+    mTotalLenght = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jTotalLenght");
+    mOutRad = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jOutRad");
+    mSpherePos_y = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jSpherePos_y");
+    mEllipsePos_y = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jEllipsePos_y");
+    mEllipseZaxis = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jEllipseZaxis");
 
 }
 

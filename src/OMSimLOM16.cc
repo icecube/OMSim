@@ -69,11 +69,11 @@ LOM16::LOM16(OMSimInputData* pData, G4bool pPlaceHarness) {
 //Parameters from json files
 void LOM16::GetSharedData() {
     //Shared Module Parameters
-    mGlassOutRad = mData->GetValue(mDataKey, "jGlassOutRad"); // outer radius of galss cylinder (pressure vessel)
-    mNrPolarPMTs = mData->GetValue(mDataKey, "jNrPolarPMTs");
-    mNrEqPMTs = mData->GetValue(mDataKey, "jNrEqPMTs");
+    mGlassOutRad = mData->GetValueWithUnit(mDataKey, "jGlassOutRad"); // outer radius of galss cylinder (pressure vessel)
+    mNrPolarPMTs = mData->GetValueWithUnit(mDataKey, "jNrPolarPMTs");
+    mNrEqPMTs = mData->GetValueWithUnit(mDataKey, "jNrEqPMTs");
     mTotalNrPMTs = (mNrPolarPMTs + mNrEqPMTs) * 2;
-    mGelPadDZ = mData->GetValue(mDataKey, "jGelPadDZ");// semiaxis (along pmt axis) of gelpads ... simply needs to be larger then 5mm (+ some more for tilted pads)...could be 100
+    mGelPadDZ = mData->GetValueWithUnit(mDataKey, "jGelPadDZ");// semiaxis (along pmt axis) of gelpads ... simply needs to be larger then 5mm (+ some more for tilted pads)...could be 100
 }
 
 
@@ -82,7 +82,7 @@ void LOM16::Construction()
 {   mComponents.clear();
     //Create pressure vessel and inner volume
     
-    G4double lGlassThick = mData->GetValue(mDataKey, "jGlassThick");  // maximum Glass thickness
+    G4double lGlassThick = mData->GetValueWithUnit(mDataKey, "jGlassThick");  // maximum Glass thickness
     G4double lGlassInRad = mGlassOutRad - lGlassThick;
     G4VSolid* lGlassSolid = PressureVessel(mGlassOutRad, "Glass");
     G4VSolid* lAirSolid = PressureVessel(lGlassInRad, "Gel"); // Fill entire vessel with gel as logical volume (not placed) for intersectionsolids with gelpads
@@ -125,8 +125,8 @@ void LOM16::Construction()
 
 G4UnionSolid* LOM16::PressureVessel(const G4double pOutRad, G4String pSuffix)
 {
-    G4double lCylHigh = mData->GetValue(mDataKey, "jCylHigh");         // height of cylindrical part of glass half-vessel
-    G4double lCylinderAngle = mData->GetValue(mDataKey, "jCylinderAngle");  // Deviation angle of cylindrical part of the pressure vessel
+    G4double lCylHigh = mData->GetValueWithUnit(mDataKey, "jCylHigh");         // height of cylindrical part of glass half-vessel
+    G4double lCylinderAngle = mData->GetValueWithUnit(mDataKey, "jCylinderAngle");  // Deviation angle of cylindrical part of the pressure vessel
 
     G4Ellipsoid* lTopSolid = new G4Ellipsoid("SphereTop solid" + pSuffix, pOutRad, pOutRad, pOutRad, -5 * mm, pOutRad + 5 * mm);
     G4Ellipsoid* lBottomSolid = new G4Ellipsoid("SphereBottom solid" + pSuffix, pOutRad, pOutRad, pOutRad, -(pOutRad + 5 * mm), 5 * mm);
@@ -170,15 +170,15 @@ void LOM16::AppendEquatorBand()
 //Each component has its own label in visualizer -> just one ... another function for penetrator, dummy main boards, ...
 void LOM16::PlaceCADSupportStructure()
 {
-    G4String lFilePath = mData->GetString(mDataKey, "jInternalCADFile");
+    G4String lFilePath = mData->GetValue<G4String>(mDataKey, "jInternalCADFile");
     G4String mssg = "Using the following CAD file for LOM16 internal structure: " + lFilePath;
     info(mssg);
 
     //load mesh
     auto lMesh = CADMesh::TessellatedMesh::FromOBJ(lFilePath);
-    G4ThreeVector lCADoffset = G4ThreeVector(mData->GetValue(mDataKey, "jInternalCAD_x"),
-        mData->GetValue(mDataKey, "jInternalCAD_y"),
-        mData->GetValue(mDataKey, "jInternalCAD_z")); //measured from CAD file since origin =!= Module origin
+    G4ThreeVector lCADoffset = G4ThreeVector(mData->GetValueWithUnit(mDataKey, "jInternalCAD_x"),
+        mData->GetValueWithUnit(mDataKey, "jInternalCAD_y"),
+        mData->GetValueWithUnit(mDataKey, "jInternalCAD_z")); //measured from CAD file since origin =!= Module origin
     lMesh->SetOffset(lCADoffset);
     // lMesh->SetScale(10); //did a mistake...this LOM_Internal file needs cm -> mm -> x10
      // Place all of the meshes it can find in the file as solids individually.
@@ -195,13 +195,13 @@ void LOM16::PlaceCADSupportStructure()
 //sin(90 +- ...) -> cos(...)
 void LOM16::SetPMTAndGelpadPositions()
 {
-    G4double lTotalLenght = mData->GetValue("pmt_Hamamatsu_4inch", "jOuterShape.jTotalLenght");
-    G4double lOutRad = mData->GetValue("pmt_Hamamatsu_4inch", "jOuterShape.jOutRad");
-    G4double lSpherePos_y = mData->GetValue("pmt_Hamamatsu_4inch", "jOuterShape.jSpherePos_y");
-    G4double lEllipsePos_y = mData->GetValue("pmt_Hamamatsu_4inch", "jOuterShape.jEllipsePos_y");
-    G4double lThetaPolar = mData->GetValue(mDataKey, "jThetaPolar"); //theta angle polar pmts
-    G4double lThetaEquatorial = mData->GetValue(mDataKey, "jThetaEquatorial"); //theta angle equatorial pmts
-    G4double lPolEqPMTPhiPhase = mData->GetValue(mDataKey, "jPolEqPMTPhiPhase"); //rotation of equatorial PMTs in respect to polar PMTs
+    G4double lTotalLenght = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jTotalLenght");
+    G4double lOutRad = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jOutRad");
+    G4double lSpherePos_y = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jSpherePos_y");
+    G4double lEllipsePos_y = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jEllipsePos_y");
+    G4double lThetaPolar = mData->GetValueWithUnit(mDataKey, "jThetaPolar"); //theta angle polar pmts
+    G4double lThetaEquatorial = mData->GetValueWithUnit(mDataKey, "jThetaEquatorial"); //theta angle equatorial pmts
+    G4double lPolEqPMTPhiPhase = mData->GetValueWithUnit(mDataKey, "jPolEqPMTPhiPhase"); //rotation of equatorial PMTs in respect to polar PMTs
 
 
     G4double Z_center_module_tobottomPMT_polar = 70.9 * mm; //measured z-offset from vessel origin from CAD file
@@ -285,9 +285,9 @@ void LOM16::SetPMTAndGelpadPositions()
 //rename some stuff for clarity
 void LOM16::CreateGelpadLogicalVolumes(G4VSolid* lGelSolid)
 {
-    G4double lEqTiltAngle = mData->GetValue(mDataKey, "jEqTiltAngle"); //tilt angle of gel pad axis in respect to PMT axis
-    G4double lPolPadOpeningAngle = mData->GetValue(mDataKey, "jPolPadOpeningAngle");
-    G4double lEqPadOpeningAngle = mData->GetValue(mDataKey, "jEqPadOpeningAngle");
+    G4double lEqTiltAngle = mData->GetValueWithUnit(mDataKey, "jEqTiltAngle"); //tilt angle of gel pad axis in respect to PMT axis
+    G4double lPolPadOpeningAngle = mData->GetValueWithUnit(mDataKey, "jPolPadOpeningAngle");
+    G4double lEqPadOpeningAngle = mData->GetValueWithUnit(mDataKey, "jEqPadOpeningAngle");
     G4double lMaxPMTRadius = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
 
     //getting the PMT solid

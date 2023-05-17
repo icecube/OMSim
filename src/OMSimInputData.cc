@@ -44,7 +44,7 @@ OMSimInputData::OMSimInputData()
  * Appends information of json-file containing PMT/OM parameters to a vector of ptrees
  * @param pFileName Name of file containing json
  */
-void ParameterTable::AppendParameterTable(G4String pFileName)
+pt::ptree ParameterTable::AppendAndReturnTree(G4String pFileName)
 {
     pt::ptree lJsonTree;
     pt::read_json(pFileName, lJsonTree);
@@ -52,25 +52,7 @@ void ParameterTable::AppendParameterTable(G4String pFileName)
     mTable[lName] = lJsonTree;
     G4String mssg = lName + " added to dictionary...";
     debug(mssg);
-}
-
-/**
- * Changes the value of an existing parameter in json file. You have to think about what you are doing here.
- * @param pKey Name of json tree in file
- * @param pParameter Name of parameter in json tree
- * @param pValue Value to set
- */
-void ParameterTable::SetValue(G4String pKey, G4String pParameter, G4double pValue)
-{
-    try {
-        const G4double lValue = mTable.at(pKey).get<G4double>(pParameter + ".jValue");
-        mTable.at(pKey).put(pParameter + ".jValue", pValue);
-    }
-    catch (...)
-    {
-        const G4double lValue = mTable.at(pKey).get<G4double>(pParameter);
-        mTable.at(pKey).put(pParameter, pValue);
-    }
+    return lJsonTree;
 }
 
 /**
@@ -79,7 +61,7 @@ void ParameterTable::SetValue(G4String pKey, G4String pParameter, G4double pValu
  * @param pParameter Name of parameter in json tree
  * @return G4double of the value and its unit
  */
-G4double ParameterTable::GetValue(G4String pKey, G4String pParameter)
+G4double ParameterTable::GetValueWithUnit(G4String pKey, G4String pParameter)
 {
     
     try {
@@ -102,16 +84,18 @@ G4double ParameterTable::GetValue(G4String pKey, G4String pParameter)
 }
 
 /**
- * Get string value from a pTree
+ * Get values from a pTree with its unit, transforming it to a G4double
  * @param pKey Name of json tree in file
  * @param pParameter Name of parameter in json tree
  * @return G4double of the value and its unit
  */
-G4String ParameterTable::GetString(G4String pKey, G4String pParameter)
-{   
-    const G4String lValue = mTable.at(pKey).get<G4String>(pParameter);
-    return lValue;
+pt::ptree ParameterTable::GetJSONTree(G4String pKey)
+{
+    if (CheckIfKeyInTable(pKey)) return mTable.at(pKey);
+    else critical("Key not found in table");
 }
+
+
 
 /**
 * Check if key in table
@@ -265,9 +249,11 @@ void OMSimInputData::ScannDataDirectory()
                 mOpticalSurfaceMap[lDataFile->mObjectName] = lDataFile->mOpticalSurface;
             }
             else if ((fileName.substr(0, 4) == "pmt_"))
-                AppendParameterTable(mDataDirectory + "/" + fileName);
+                AppendAndReturnTree(mDataDirectory + "/" + fileName);
             else if ((fileName.substr(0, 3) == "om_"))
-                AppendParameterTable(mDataDirectory + "/" + fileName);
+                AppendAndReturnTree(mDataDirectory + "/" + fileName);
+            else if ((fileName.substr(0, 4) == "usr_"))
+                AppendAndReturnTree(mDataDirectory + "/" + fileName);
         }
     }
     closedir(lDirectory);

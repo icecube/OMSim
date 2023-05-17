@@ -48,15 +48,15 @@ mDOMHarness::mDOMHarness(mDOM* pMDOM, OMSimInputData* pData) {
  */
 void mDOMHarness::GetSharedData() {
     
-    mPlugAngle = mData->GetValue(mDataKey, "jPlugAngle");      // this is the angle between the PMT rows, where the penetrator and the clamps are placed (according to Prof. Kappes) //TODO REDEFINED
-    mPadThickness = mData->GetValue(mDataKey, "jPadThickness");
-    mTeraThickness = mData->GetValue(mDataKey, "jTeraThickness");
-    mRopeRMax = mData->GetValue(mDataKey, "jRopeRMax");
-    mBridgeAddedThickness = mData->GetValue(mDataKey, "jBridgeAddedThickness");
-    mRopeRotationAngleX = mData->GetValue(mDataKey, "jRopeRotationAngleX"); // this value is found by numerically solving the equation lBridgeROuter[2]+mRopeRMax/cos(mRopeRotationAngleX) = 2*mRopeDz*sin(mRopeRotationAngleX)- lBridgeZPlane[3]*tan(mRopeRotationAngleX) with wolframalpha.com LOL
-    mRopeDz = mData->GetValue(mDataKey, "jRopeDz");
+    mPlugAngle = mData->GetValueWithUnit(mDataKey, "jPlugAngle");      // this is the angle between the PMT rows, where the penetrator and the clamps are placed (according to Prof. Kappes) //TODO REDEFINED
+    mPadThickness = mData->GetValueWithUnit(mDataKey, "jPadThickness");
+    mTeraThickness = mData->GetValueWithUnit(mDataKey, "jTeraThickness");
+    mRopeRMax = mData->GetValueWithUnit(mDataKey, "jRopeRMax");
+    mBridgeAddedThickness = mData->GetValueWithUnit(mDataKey, "jBridgeAddedThickness");
+    mRopeRotationAngleX = mData->GetValueWithUnit(mDataKey, "jRopeRotationAngleX"); // this value is found by numerically solving the equation lBridgeROuter[2]+mRopeRMax/cos(mRopeRotationAngleX) = 2*mRopeDz*sin(mRopeRotationAngleX)- lBridgeZPlane[3]*tan(mRopeRotationAngleX) with wolframalpha.com LOL
+    mRopeDz = mData->GetValueWithUnit(mDataKey, "jRopeDz");
     mTotalWidth = mOM->mGlassOutRad + mTeraThickness + mPadThickness + mBridgeAddedThickness;
-    lBridgeCorrection =  mData->GetValue(mDataKey, "jBridgeZPlane_2") * tan(mRopeRotationAngleX);  //  
+    lBridgeCorrection =  mData->GetValueWithUnit(mDataKey, "jBridgeZPlane_2") * tan(mRopeRotationAngleX);  //  
     mRopeStartingPoint = mTotalWidth + lBridgeCorrection + mRopeRMax / cos(mRopeRotationAngleX); // this is the actual starting point of the rope, i.e. the distance to the z-axis, which has to be larger than lBridgeROuter[2] in order for the rope not to cut the bridge.
 }
 
@@ -80,11 +80,11 @@ void mDOMHarness::Construction() {
 void mDOMHarness::BandsAndClamps()
 {
     // vertical band dimensions
-    G4double lBandThickness = mData->GetValue(mDataKey, "jBandThickness"); //(taken from construction sketch of the Band w/o Penetrator provided by Anna Pollmann)
-    G4double lBandWidth = mData->GetValue(mDataKey, "jBandWidth");      //(taken from construction sketch of the Band w/o Penetrator provided by Anna Pollmann)
+    G4double lBandThickness = mData->GetValueWithUnit(mDataKey, "jBandThickness"); //(taken from construction sketch of the Band w/o Penetrator provided by Anna Pollmann)
+    G4double lBandWidth = mData->GetValueWithUnit(mDataKey, "jBandWidth");      //(taken from construction sketch of the Band w/o Penetrator provided by Anna Pollmann)
 
     // clamp dimensions
-    G4double lClampLength = mData->GetValue(mDataKey, "jClampLength");  //according to Fusion 360 model of the harness provided by Anna Pollmann
+    G4double lClampLength = mData->GetValueWithUnit(mDataKey, "jClampLength");  //according to Fusion 360 model of the harness provided by Anna Pollmann
 
     //First band
     G4Tubs* lBandASolid = new G4Tubs("lBandASolid", mOM->mGlassOutRad, mOM->mGlassOutRad + lBandThickness, lBandWidth / 2, 0, CLHEP::pi);
@@ -147,39 +147,39 @@ void mDOMHarness::BandsAndClamps()
  */
 void mDOMHarness::BridgeRopesSolid()
 {
-    const G4double lBridgePhiStart = mData->GetValue(mDataKey, "jBridgePhiStart");
-    const G4double lBridgeTotalPhi = mData->GetValue(mDataKey, "jBridgeTotalPhi");
+    const G4double lBridgePhiStart = mData->GetValueWithUnit(mDataKey, "jBridgePhiStart");
+    const G4double lBridgeTotalPhi = mData->GetValueWithUnit(mDataKey, "jBridgeTotalPhi");
 
     const G4double lBridgeRInner = mOM->mGlassOutRad + mTeraThickness + mPadThickness;
     const G4double lBridgeRInner_list[6] = { lBridgeRInner, lBridgeRInner, lBridgeRInner, lBridgeRInner, lBridgeRInner, lBridgeRInner };
 
-    const G4double lBridgeROuterTemp[6] = { (lBridgeRInner + mData->GetValue(mDataKey, "jBridgeROutTemp_0")), // BridgeROutTemp_0 = 2.2mm
-                                      (lBridgeRInner + mData->GetValue(mDataKey, "jBridgeROutTemp_1")), // BridgeROutTemp_1 = 2.2mm + 5.5 cos( 25.1 deg)
-                                      (lBridgeRInner + mData->GetValue(mDataKey, "jBridgeROutTemp_2")), // BridgeROutTemp_2 = 2.2mm + 5.5 cos( 25.1 deg) + 7.4 * cos(46.7 deg)
-                                      (lBridgeRInner + mData->GetValue(mDataKey, "jBridgeROutTemp_2")),
-                                      (lBridgeRInner + mData->GetValue(mDataKey, "jBridgeROutTemp_1")),
-                                      (lBridgeRInner + mData->GetValue(mDataKey, "jBridgeROutTemp_0")) };
+    const G4double lBridgeROuterTemp[6] = { (lBridgeRInner + mData->GetValueWithUnit(mDataKey, "jBridgeROutTemp_0")), // BridgeROutTemp_0 = 2.2mm
+                                      (lBridgeRInner + mData->GetValueWithUnit(mDataKey, "jBridgeROutTemp_1")), // BridgeROutTemp_1 = 2.2mm + 5.5 cos( 25.1 deg)
+                                      (lBridgeRInner + mData->GetValueWithUnit(mDataKey, "jBridgeROutTemp_2")), // BridgeROutTemp_2 = 2.2mm + 5.5 cos( 25.1 deg) + 7.4 * cos(46.7 deg)
+                                      (lBridgeRInner + mData->GetValueWithUnit(mDataKey, "jBridgeROutTemp_2")),
+                                      (lBridgeRInner + mData->GetValueWithUnit(mDataKey, "jBridgeROutTemp_1")),
+                                      (lBridgeRInner + mData->GetValueWithUnit(mDataKey, "jBridgeROutTemp_0")) };
 
     const G4double lBridgeROuter[6] = { lBridgeROuterTemp[0],
-                                      (lBridgeROuterTemp[0] + mData->GetValue(mDataKey, "jBridgeZPlaneTrig_1")), // BridgeZPlaneTrig_1 = sin(50.2 deg) * 14.1
+                                      (lBridgeROuterTemp[0] + mData->GetValueWithUnit(mDataKey, "jBridgeZPlaneTrig_1")), // BridgeZPlaneTrig_1 = sin(50.2 deg) * 14.1
                                       mTotalWidth,
                                       mTotalWidth,
-                                      (lBridgeROuterTemp[0] + mData->GetValue(mDataKey, "jBridgeZPlaneTrig_1")),
+                                      (lBridgeROuterTemp[0] + mData->GetValueWithUnit(mDataKey, "jBridgeZPlaneTrig_1")),
                                       lBridgeROuterTemp[0] };
 
-    const G4double lBridgeZPlane[6] = { -mData->GetValue(mDataKey, "jBridgeZPlane_0"), // BridgeZPlane_0 = 27mm
-                                      -mData->GetValue(mDataKey, "jBridgeZPlane_1"), // BridgeZPlane_1 = 27 - sin(50.2 deg) * 14.1
-                                      -mData->GetValue(mDataKey, "jBridgeZPlane_2"), // BridgeZPlane_2 = 7.85
-                                      mData->GetValue(mDataKey, "jBridgeZPlane_2"),
-                                      mData->GetValue(mDataKey, "jBridgeZPlane_1"),
-                                      mData->GetValue(mDataKey, "jBridgeZPlane_0") };
+    const G4double lBridgeZPlane[6] = { -mData->GetValueWithUnit(mDataKey, "jBridgeZPlane_0"), // BridgeZPlane_0 = 27mm
+                                      -mData->GetValueWithUnit(mDataKey, "jBridgeZPlane_1"), // BridgeZPlane_1 = 27 - sin(50.2 deg) * 14.1
+                                      -mData->GetValueWithUnit(mDataKey, "jBridgeZPlane_2"), // BridgeZPlane_2 = 7.85
+                                      mData->GetValueWithUnit(mDataKey, "jBridgeZPlane_2"),
+                                      mData->GetValueWithUnit(mDataKey, "jBridgeZPlane_1"),
+                                      mData->GetValueWithUnit(mDataKey, "jBridgeZPlane_0") };
 
-    const G4double lBridgeZTemp[6] = { -mData->GetValue(mDataKey, "jBridgeZTemp_0"), // BridgeZPlane_0 = 17 mm
-                                      -mData->GetValue(mDataKey, "jBridgeZTemp_1"), // BridgeZPlane_1 = 7.85 + sin(71.8 deg) * 7.4
-                                      -mData->GetValue(mDataKey, "jBridgeZTemp_2"), // BridgeZPlane_2 = 7.85
-                                      mData->GetValue(mDataKey, "jBridgeZTemp_2"),
-                                      mData->GetValue(mDataKey, "jBridgeZTemp_1"),
-                                      mData->GetValue(mDataKey, "jBridgeZTemp_0") };
+    const G4double lBridgeZTemp[6] = { -mData->GetValueWithUnit(mDataKey, "jBridgeZTemp_0"), // BridgeZPlane_0 = 17 mm
+                                      -mData->GetValueWithUnit(mDataKey, "jBridgeZTemp_1"), // BridgeZPlane_1 = 7.85 + sin(71.8 deg) * 7.4
+                                      -mData->GetValueWithUnit(mDataKey, "jBridgeZTemp_2"), // BridgeZPlane_2 = 7.85
+                                      mData->GetValueWithUnit(mDataKey, "jBridgeZTemp_2"),
+                                      mData->GetValueWithUnit(mDataKey, "jBridgeZTemp_1"),
+                                      mData->GetValueWithUnit(mDataKey, "jBridgeZTemp_0") };
 
 
 
@@ -187,7 +187,7 @@ void mDOMHarness::BridgeRopesSolid()
     G4Polycone* lBridgeTemp2Solid = new G4Polycone("lBridgeTemp2Solid", lBridgePhiStart - 1. * deg, 16. * deg, 6, lBridgeZTemp, lBridgeRInner_list, lBridgeROuterTemp);
     G4SubtractionSolid* lBridgeSolid = new G4SubtractionSolid("", lBridgeTemp1Solid, lBridgeTemp2Solid);
 
-    const G4double lRopeZShift = mData->GetValue(mDataKey, "jRopeZShift"); //dont know why.. without it the vis breaks
+    const G4double lRopeZShift = mData->GetValueWithUnit(mDataKey, "jRopeZShift"); //dont know why.. without it the vis breaks
 
     G4Tubs* lRopeSolid = new G4Tubs("lRopeSolid", 0, mRopeRMax, mRopeDz - lRopeZShift, 0, 360. * deg);
 
@@ -229,8 +229,8 @@ void mDOMHarness::BridgeRopesSolid()
  */
 void mDOMHarness::MainDataCable()
 {
-    const G4double lDataCableRadius = mData->GetValue(mDataKey, "jDataCableRadius"); // Radius of the main data cable (according to Prof. Kappes)
-    const G4double lDataCableLength = mData->GetValue(mDataKey, "jDataCableLength"); // Length of main data cable
+    const G4double lDataCableRadius = mData->GetValueWithUnit(mDataKey, "jDataCableRadius"); // Radius of the main data cable (according to Prof. Kappes)
+    const G4double lDataCableLength = mData->GetValueWithUnit(mDataKey, "jDataCableLength"); // Length of main data cable
 
     G4Tubs* lDataCableSolid = new G4Tubs("MainDataCable_solid", 0, lDataCableRadius, lDataCableLength / 2., 0, 2 * CLHEP::pi);
 
@@ -252,8 +252,8 @@ void mDOMHarness::MainDataCable()
 void mDOMHarness::Pads()
 
 {
-    const G4double lPadWidth = mData->GetValue(mDataKey, "jPadWidth");  // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
-    const G4double lPadAngle = mData->GetValue(mDataKey, "jPadAngle") / (2 * CLHEP::pi * mOM->mGlassOutRad) * 360. * deg; // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
+    const G4double lPadWidth = mData->GetValueWithUnit(mDataKey, "jPadWidth");  // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
+    const G4double lPadAngle = mData->GetValueWithUnit(mDataKey, "jPadAngle") / (2 * CLHEP::pi * mOM->mGlassOutRad) * 360. * deg; // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
     G4Tubs* lPadSolid = new G4Tubs("lPadSolid", mOM->mGlassOutRad + mTeraThickness, mOM->mGlassOutRad + mTeraThickness + mPadThickness, lPadWidth / 2, lPadAngle / 2, lPadAngle);
 
     G4RotationMatrix lRot = G4RotationMatrix();
@@ -283,10 +283,10 @@ void mDOMHarness::Pads()
 void mDOMHarness::PCA()
 {
     //Cylindrical metallic part
-    const G4double lMushRadiusUpper = mData->GetValue(mDataKey, "jMushRadiusUpper"); //Radius of the (black) conical part of the penetrator at the thicker end (measured by hand)
-    const G4double lMushRadiusLower = mData->GetValue(mDataKey, "jMushRadiusLower"); //Radius of the (black) conical part of the penetrator at the thinner end (according to construction sketch by Hydrogroup)
-    const G4double lMushHeight = mData->GetValue(mDataKey, "jMushHeight");           //Height of the penetrator part that is made up of a conical and a cylindrical part
-    const G4double lMushCylHeight = mData->GetValue(mDataKey, "jMushCylHeight");     //Height of cylindrical part (measured by hand)
+    const G4double lMushRadiusUpper = mData->GetValueWithUnit(mDataKey, "jMushRadiusUpper"); //Radius of the (black) conical part of the penetrator at the thicker end (measured by hand)
+    const G4double lMushRadiusLower = mData->GetValueWithUnit(mDataKey, "jMushRadiusLower"); //Radius of the (black) conical part of the penetrator at the thinner end (according to construction sketch by Hydrogroup)
+    const G4double lMushHeight = mData->GetValueWithUnit(mDataKey, "jMushHeight");           //Height of the penetrator part that is made up of a conical and a cylindrical part
+    const G4double lMushCylHeight = mData->GetValueWithUnit(mDataKey, "jMushCylHeight");     //Height of cylindrical part (measured by hand)
     const G4double lMushConeHeight = lMushHeight - lMushCylHeight;
 
     G4Tubs* lMushCylSolid = new G4Tubs("Mush solid", 0, lMushRadiusLower, lMushCylHeight / 2., 0, 2. * CLHEP::pi);
@@ -308,8 +308,8 @@ void mDOMHarness::PCA()
     G4Cons* lMushConeSolid = new G4Cons("mush_cone_solid", 0, lMushRadiusLower, 0, lMushRadiusUpper, lMushConeHeight / 2., 0, 2. * CLHEP::pi);
 
     //rigid part of the penetrator plastic, here it is called tube?
-    const G4double lTubeRadius = mData->GetValue(mDataKey, "jTubeRadius"); //Radius of the rigid part of the cable that exits the penetrator part (according to construction sketch by Hydrogroup)
-    const G4double lTubeLength = mData->GetValue(mDataKey, "jTubeLength"); //Length of the rigid part of the cable that exits the penetrator part (measured by hand)
+    const G4double lTubeRadius = mData->GetValueWithUnit(mDataKey, "jTubeRadius"); //Radius of the rigid part of the cable that exits the penetrator part (according to construction sketch by Hydrogroup)
+    const G4double lTubeLength = mData->GetValueWithUnit(mDataKey, "jTubeLength"); //Length of the rigid part of the cable that exits the penetrator part (measured by hand)
     G4Tubs* lTubeSolid = new G4Tubs("tube_solid", 0, lTubeRadius, lTubeLength / 2, 0, 2 * CLHEP::pi);
 
     G4RotationMatrix lRot;
@@ -320,8 +320,8 @@ void mDOMHarness::PCA()
 
     //Bulding PCA. This is gonna be build from outside to the inside, to do the unions easily
     //variables
-    const G4double lWireThickness = mData->GetValue(mDataKey, "jWireThickness"); // south bay cable width (0.54 inches) (according to construction sketch by South Bay Corporation)
-    const G4double lWireRadius = mData->GetValue(mDataKey, "jWireRadius");        // minimum bending diameter of the cable (14 inches)
+    const G4double lWireThickness = mData->GetValueWithUnit(mDataKey, "jWireThickness"); // south bay cable width (0.54 inches) (according to construction sketch by South Bay Corporation)
+    const G4double lWireRadius = mData->GetValueWithUnit(mDataKey, "jWireRadius");        // minimum bending diameter of the cable (14 inches)
     const G4double lDistTubeToRope = ((mRopeStartingPoint)+mRopeRMax * (1 - cos(mRopeRotationAngleX)) - ((mOM->mGlassOutRad + lMushHeight - lTubeRadius) * cos(mPlugAngle) + lTubeLength * sin(mPlugAngle) + mOM->mCylHigh) * tan(mRopeRotationAngleX) - (mOM->mGlassOutRad + lMushHeight - lTubeRadius) * sin(mPlugAngle) + lTubeLength * cos(mPlugAngle)) / cos(mRopeRotationAngleX) - (lWireThickness / 2 + mRopeRMax) - mRopeDz * (1 - cos(mRopeRotationAngleX)) * sin(mRopeRotationAngleX); // Modified distance between start of first torus and end of second torus
 
     const G4double lPCA2angle = acos((0.5) * (-lDistTubeToRope / lWireRadius + sin(mPlugAngle + mRopeRotationAngleX) + 1.));
@@ -368,8 +368,8 @@ void mDOMHarness::PCA()
  */
 void mDOMHarness::Plug()
 {
-    const G4double lPlugRadius = mData->GetValue(mDataKey, "jPlugRadius");    //radius of the screw part of the penetrator (according to construction sketch by Hydrogroup)
-    const G4double lPlugLength = mData->GetValue(mDataKey, "jPlugLength");    //length of the screw part of the penetrator (according to construction sketch by Hydrogroup)
+    const G4double lPlugRadius = mData->GetValueWithUnit(mDataKey, "jPlugRadius");    //radius of the screw part of the penetrator (according to construction sketch by Hydrogroup)
+    const G4double lPlugLength = mData->GetValueWithUnit(mDataKey, "jPlugLength");    //length of the screw part of the penetrator (according to construction sketch by Hydrogroup)
 
     G4Tubs* lPlugSolid = new G4Tubs("plug_solid_temp", 0, lPlugRadius, lPlugLength / 2, 0, 2 * CLHEP::pi);
 
@@ -394,7 +394,7 @@ void mDOMHarness::Plug()
  */
 void mDOMHarness::TeraBelt()
 {
-    const G4double lTeraWidth = mData->GetValue(mDataKey, "jTeraWidth") ;
+    const G4double lTeraWidth = mData->GetValueWithUnit(mDataKey, "jTeraWidth") ;
     G4double zCorners[] = {  lTeraWidth/ 2, 0, -lTeraWidth/ 2};
     G4double R = mOM->mGlassOutRad+0.8*mm; //add something so they do not touch
     G4double rCornersInn[] = {  R, R + (lTeraWidth / 2) * sin(mOM->mCylinderAngle), R };

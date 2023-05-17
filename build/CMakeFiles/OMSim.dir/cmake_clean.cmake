@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/OMSim.dir/src/OMSimLOM18.cc.o.d"
   "CMakeFiles/OMSim.dir/src/OMSimMDOM.cc.o"
   "CMakeFiles/OMSim.dir/src/OMSimMDOM.cc.o.d"
+  "CMakeFiles/OMSim.dir/src/OMSimMDOMFlasher.cc.o"
+  "CMakeFiles/OMSim.dir/src/OMSimMDOMFlasher.cc.o.d"
   "CMakeFiles/OMSim.dir/src/OMSimMDOMHarness.cc.o"
   "CMakeFiles/OMSim.dir/src/OMSimMDOMHarness.cc.o.d"
   "CMakeFiles/OMSim.dir/src/OMSimPDOM.cc.o"
