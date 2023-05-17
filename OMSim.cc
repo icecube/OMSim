@@ -18,7 +18,7 @@
 
 #include "G4UItcsh.hh"
 #include "G4VisExecutive.hh"
-#include "G4UIExecutive.hh"	//xxx
+#include "G4UIExecutive.hh" //xxx
 
 #include "argtable2.h"
 #include <ctime>
@@ -29,8 +29,8 @@
 #include <fstream>
 #include <string>
 
-#include <cmath>	// for abs() of doubles
-//since Geant4.10: include units manually
+#include <cmath> // for abs() of doubles
+// since Geant4.10: include units manually
 #include "G4SystemOfUnits.hh"
 
 #include <boost/property_tree/ptree.hpp>
@@ -41,78 +41,75 @@
 
 namespace po = boost::program_options;
 
-int OMSim() {
+int OMSim()
+{
 	struct timeval time_for_randy;
 	gettimeofday(&time_for_randy, NULL);
 
-	long randseed = time_for_randy.tv_sec+4294*time_for_randy.tv_usec;
-	CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(randseed,3));
-	
+	long randseed = time_for_randy.tv_sec + 4294 * time_for_randy.tv_usec;
+	CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(randseed, 3));
+
 	std::stringstream command;
 
-	G4RunManager* runManager = new G4RunManager;
+	G4RunManager *runManager = new G4RunManager;
 
-	OMSimDetectorConstruction* detector;
+	OMSimDetectorConstruction *detector;
 	detector = new OMSimDetectorConstruction();
 	runManager->SetUserInitialization(detector);
 
-
-	G4VUserPhysicsList* physics = new OMSimPhysicsList;
+	G4VUserPhysicsList *physics = new OMSimPhysicsList;
 	runManager->SetUserInitialization(physics);
 
+	auto visManager = new G4VisExecutive;
+	visManager->Initialize();
 
- 		auto visManager = new G4VisExecutive;
- 		visManager->Initialize();
- 		
-
-	G4VUserPrimaryGeneratorAction* gen_action = new OMSimPrimaryGeneratorAction();
+	G4VUserPrimaryGeneratorAction *gen_action = new OMSimPrimaryGeneratorAction();
 	runManager->SetUserAction(gen_action);
 
-	G4UserRunAction* run_action = new OMSimRunAction();
+	G4UserRunAction *run_action = new OMSimRunAction();
 	runManager->SetUserAction(run_action);
 
-	G4UserEventAction* event_action = new OMSimEventAction();
+	G4UserEventAction *event_action = new OMSimEventAction();
 	runManager->SetUserAction(event_action);
 
- 	G4UserTrackingAction* tracking_action = new OMSimTrackingAction();
- 	runManager->SetUserAction(tracking_action);
+	G4UserTrackingAction *tracking_action = new OMSimTrackingAction();
+	runManager->SetUserAction(tracking_action);
 
-	G4UserSteppingAction* stepping_action = new OMSimSteppingAction();
+	G4UserSteppingAction *stepping_action = new OMSimSteppingAction();
 	runManager->SetUserAction(stepping_action);
 
 	runManager->Initialize();
-    OMSimPMTResponse& lPhotocathodeResponse = OMSimPMTResponse::getInstance();
-	OMSimAnalysisManager& lAnalysisManager = OMSimAnalysisManager::getInstance();
+	OMSimPMTResponse &lPhotocathodeResponse = OMSimPMTResponse::getInstance();
+	OMSimAnalysisManager &lAnalysisManager = OMSimAnalysisManager::getInstance();
 
 	auto UI = G4UImanager::GetUIpointer();
-	
-    G4Navigator* navigator = new G4Navigator();
-    navigator->SetWorldVolume(detector->mWorldPhysical);
-    navigator->LocateGlobalPointAndSetup(G4ThreeVector(0., 0., 0.));
-    
-    G4TouchableHistory* history = navigator -> CreateTouchableHistory();
 
-	OMSimCommandArgsTable& lArgs = OMSimCommandArgsTable::getInstance();
+	G4Navigator *navigator = new G4Navigator();
+	navigator->SetWorldVolume(detector->mWorldPhysical);
+	navigator->LocateGlobalPointAndSetup(G4ThreeVector(0., 0., 0.));
+
+	G4TouchableHistory *history = navigator->CreateTouchableHistory();
+
+	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 	command.str("");
 	command << "/control/execute " << lArgs.get<bool>("visual");
 	UI->ApplyCommand(command.str());
 	double startingtime = clock() / CLOCKS_PER_SEC;
 
-
 	// starting run (analysis manager takes care of results)
-		if (lArgs.get<G4int>("numevents") > 0) {
-			command.str("");
-			command << "/run/beamOn " << lArgs.get<G4int>("numevents");
-			UI->ApplyCommand(command.str());
-			}		
-	
-	
+	if (lArgs.get<G4int>("numevents") > 0)
+	{
+		command.str("");
+		command << "/run/beamOn " << lArgs.get<G4int>("numevents");
+		UI->ApplyCommand(command.str());
+	}
 
-// opening user interface prompt and visualization after simulation was run
-	if (lArgs.get<bool>("visual")){
+	// opening user interface prompt and visualization after simulation was run
+	if (lArgs.get<bool>("visual"))
+	{
 		int argumc = 1;
-		char* argumv[] = {"all", NULL};
-		G4UIExecutive* UIEx = new G4UIExecutive(argumc, argumv);
+		char *argumv[] = {"all", NULL};
+		G4UIExecutive *UIEx = new G4UIExecutive(argumc, argumv);
 
 		UI->ApplyCommand("/control/execute ../aux/init_vis.mac");
 		command.str("");
@@ -122,18 +119,20 @@ int OMSim() {
 		UIEx->SessionStart();
 		delete UIEx;
 	}
-double finishtime=clock() / CLOCKS_PER_SEC;
-G4cout << "Computation time: " << finishtime-startingtime << " seconds." << G4endl;
+	double finishtime = clock() / CLOCKS_PER_SEC;
+	G4cout << "Computation time: " << finishtime - startingtime << " seconds." << G4endl;
 
 	delete visManager;
 	delete runManager;
 	return 0;
 }
 
-int main(int argc, char *argv[]) {
-    try {
-		//Do not use G4String as type here...
-        po::options_description desc("User arguments available");
+int main(int argc, char *argv[])
+{
+	try
+	{
+		// Do not use G4String as type here...
+		po::options_description desc("User arguments available");
 		desc.add_options()
 			("help,h", "produce this help message")
 			("world_radius,w", po::value<G4double>()->default_value(3.0), "radius of world sphere in m")
@@ -153,33 +152,39 @@ int main(int argc, char *argv[]) {
 			("output_file", po::value<std::string>()->default_value("mdom_testoutput.txt"), "filename for output")
 			("reflective_surface", po::value<G4int>()->default_value(0), "index to select reflective surface type [Refl_V95Gel = 0, Refl_V98Gel = 1, Refl_Aluminium = 2, Refl_Total98 = 3]") 
 			("visual,v", po::bool_switch(), "shows visualization of module after run");
-        po::variables_map lVariablesMap;
-        po::store(po::parse_command_line(argc, argv, desc), lVariablesMap);
-        po::notify(lVariablesMap);
+			
+		po::variables_map lVariablesMap;
+		po::store(po::parse_command_line(argc, argv, desc), lVariablesMap);
+		po::notify(lVariablesMap);
 
-        if (lVariablesMap.count("help")) {
-            std::cout << desc << "\n";
-            return 1;
-        }
+		if (lVariablesMap.count("help"))
+		{
+			std::cout << desc << "\n";
+			return 1;
+		}
 
-		OMSimCommandArgsTable& lArgs = OMSimCommandArgsTable::getInstance();
+		OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 
-        // Now store the parsed parameters in the OMSimCommandArgsTable instance
-        for (const auto& option : lVariablesMap) {
-            lArgs.setParameter(option.first, option.second.value());
-        }
+		// Now store the parsed parameters in the OMSimCommandArgsTable instance
+		for (const auto &option : lVariablesMap)
+		{
+			lArgs.setParameter(option.first, option.second.value());
+		}
 
-        // Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
-        lArgs.finalize();
+		// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
+		lArgs.finalize();
 
-        OMSim();
+		OMSim();
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "error: " << e.what() << "\n";
+		return 1;
+	}
+	catch (...)
+	{
+		std::cerr << "Exception of unknown type!\n";
+	}
 
-    } catch(std::exception& e) {
-        std::cerr << "error: " << e.what() << "\n";
-        return 1;
-    } catch(...) {
-        std::cerr << "Exception of unknown type!\n";
-    }
-
-    return 0;
+	return 0;
 }

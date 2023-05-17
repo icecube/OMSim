@@ -12,7 +12,7 @@
 #include <dirent.h>
 #include <cmath>
 #include <numeric>
-
+#include <G4OpBoundaryProcess.hh>
 namespace pt = boost::property_tree;
 /*
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,7 +24,8 @@ namespace pt = boost::property_tree;
  * @param pFileName
  */
 abcDataFile::abcDataFile(G4String pFileName)
-{   mFileData = new ParameterTable();
+{
+    mFileData = new ParameterTable();
     mFileName = pFileName;
 }
 
@@ -40,7 +41,7 @@ template <typename T>
 void abcDataFile::ParseToVector(std::vector<T> &pVector, pt::ptree pTree, std::basic_string<char> pKey, G4double pScaling, bool pInverse)
 {
     for (pt::ptree::value_type &ridx : pTree.get_child(pKey))
-    { //get array from element with key "pKey" of the json
+    { // get array from element with key "pKey" of the json
         if (pInverse)
         { // if we need 1/x
             pVector.push_back(pScaling / ridx.second.get_value<T>());
@@ -50,17 +51,15 @@ void abcDataFile::ParseToVector(std::vector<T> &pVector, pt::ptree pTree, std::b
             pVector.push_back(ridx.second.get_value<T>() * pScaling);
         }
     }
-    
 }
-
 
 /**
  * @brief Sorts two vectors (sortVector & referenceVector) based on the order of values in referenceVector.
  */
-void abcDataFile::sortVectorByReference(std::vector<G4double>& referenceVector, std::vector<G4double>& sortVector) 
+void abcDataFile::sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector)
 {
     // Check if the vectors have the same size
-    if(referenceVector.size() != sortVector.size())
+    if (referenceVector.size() != sortVector.size())
     {
         // Handle error
         throw std::invalid_argument("The two vectors must have the same size.");
@@ -71,15 +70,17 @@ void abcDataFile::sortVectorByReference(std::vector<G4double>& referenceVector, 
     std::iota(indices.begin(), indices.end(), 0);
 
     // Sort the indices based on the values in referenceVector
-    std::sort(indices.begin(), indices.end(), 
-       [&referenceVector](std::size_t i1, std::size_t i2) {return referenceVector[i1] < referenceVector[i2];});
+    std::sort(indices.begin(), indices.end(),
+              [&referenceVector](std::size_t i1, std::size_t i2)
+              { return referenceVector[i1] < referenceVector[i2]; });
 
     // Create temporary vectors to hold the sorted data
     std::vector<G4double> sortedSortVector(sortVector.size());
     std::vector<G4double> sortedReferenceVector(referenceVector.size());
 
     // Apply the sorted indices to the vectors
-    for(std::size_t i = 0; i < indices.size(); ++i) {
+    for (std::size_t i = 0; i < indices.size(); ++i)
+    {
         sortedSortVector[i] = sortVector[indices[i]];
         sortedReferenceVector[i] = referenceVector[indices[i]];
     }
@@ -89,15 +90,13 @@ void abcDataFile::sortVectorByReference(std::vector<G4double>& referenceVector, 
     referenceVector = std::move(sortedReferenceVector);
 }
 
-
-
 /**
- * Defines new material from data in json-file. 
+ * Defines new material from data in json-file.
  */
 void abcMaterialData::CreateMaterial()
 {
 
-    pt::read_json(mFileName, mJsonTree); //read json file into mJsonTree
+    pt::read_json(mFileName, mJsonTree); // read json file into mJsonTree
 
     mFileData->AppendParameterTable(mFileName);
     mMPT = new G4MaterialPropertiesTable();
@@ -111,10 +110,10 @@ void abcMaterialData::CreateMaterial()
     const G4String lState_str = mJsonTree.get<G4String>("jState");
     const G4State lState = GetState(lState_str);
 
-    //Defining the material with its density, number of components, state and name
+    // Defining the material with its density, number of components, state and name
     mMaterial = new G4Material(mObjectName, lDensity, mJsonTree.get_child("jComponents").size(), lState);
 
-    //Construct material with fractional components (isotopes or G4-Materials)
+    // Construct material with fractional components (isotopes or G4-Materials)
     for (pt::ptree::value_type &key : mJsonTree.get_child("jComponents"))
     {
         std::string componentName = key.first;
@@ -125,7 +124,7 @@ void abcMaterialData::CreateMaterial()
     debug(mssg);
 }
 /**
- * Extracts absorption length and adds it to the material property table 
+ * Extracts absorption length and adds it to the material property table
  */
 void abcMaterialData::ExtractAbsorptionLength()
 {
@@ -137,7 +136,7 @@ void abcMaterialData::ExtractAbsorptionLength()
     mMPT->AddProperty("ABSLENGTH", &lAbsLengthEnergy[0], &lAbsLength[0], static_cast<int>(lAbsLength.size()));
 }
 /**
- * Extracts refraction index and adds it to the material property table 
+ * Extracts refraction index and adds it to the material property table
  */
 void abcMaterialData::ExtractRefractionIndex()
 {
@@ -179,7 +178,7 @@ void RefractionAndAbsorption::ExtractInformation()
     CreateMaterial();
     ExtractAbsorptionLength();
     ExtractRefractionIndex();
-    
+
     mMaterial->SetMaterialPropertiesTable(mMPT);
 }
 /**
@@ -203,10 +202,10 @@ void NoOptics::ExtractInformation()
  */
 void IceCubeIce::ExtractInformation()
 {
-    CreateMaterial(); //creates IceCubeICE
+    CreateMaterial(); // creates IceCubeICE
 
-    G4Material *lIceMie = new G4Material("IceCubeICE_SPICE", mFileData->GetValue(mObjectName,"jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid); //create IceCubeICE_SPICE
-    G4Material *lBubleColumnMie = new G4Material("Mat_BubColumn", mFileData->GetValue(mObjectName,"jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid); //create IceCubeICE_SPICE
+    G4Material *lIceMie = new G4Material("IceCubeICE_SPICE", mFileData->GetValue(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid);      // create IceCubeICE_SPICE
+    G4Material *lBubleColumnMie = new G4Material("Mat_BubColumn", mFileData->GetValue(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid); // create IceCubeICE_SPICE
     std::vector<G4double> lMieScatteringLength;
     std::vector<G4double> lMieScatteringLength_BubleColumn;
     std::vector<G4double> lWavelength;
@@ -226,26 +225,26 @@ void IceCubeIce::ExtractInformation()
         lMieScatteringLength.push_back(Mie_Scattering(lWavelength.at(u)));
         lMieScatteringLength_BubleColumn.push_back(mInnercolumn_b_inv);
     }
-    //give refractive index to IceCubeICE. This is used also for IceCubeICE_SPICE
+    // give refractive index to IceCubeICE. This is used also for IceCubeICE_SPICE
     mMPT->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
     mMaterial->SetMaterialPropertiesTable(mMPT);
-    
-    //give properties to IceCubeICE_SPICE
-    G4MaterialPropertiesTable* lMPT_spice = new G4MaterialPropertiesTable();
+
+    // give properties to IceCubeICE_SPICE
+    G4MaterialPropertiesTable *lMPT_spice = new G4MaterialPropertiesTable();
     lMPT_spice->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
     lMPT_spice->AddProperty("ABSLENGTH", &lRefractionIndexEnergy[0], &lAbsLength[0], static_cast<int>(lAbsLength.size()));
-    lMPT_spice->AddProperty("MIEHG", &lRefractionIndexEnergy[0], &lMieScatteringLength[0], static_cast<int>(lRefractionIndex.size()));//->SetSpline(true);
+    lMPT_spice->AddProperty("MIEHG", &lRefractionIndexEnergy[0], &lMieScatteringLength[0], static_cast<int>(lRefractionIndex.size())); //->SetSpline(true);
     lMPT_spice->AddConstProperty("MIEHG_FORWARD", mMIE_spice_const[0]);
     lMPT_spice->AddConstProperty("MIEHG_BACKWARD", mMIE_spice_const[1]);
     lMPT_spice->AddConstProperty("MIEHG_FORWARD_RATIO", mMIE_spice_const[2]);
     lIceMie->SetMaterialPropertiesTable(lMPT_spice);
     G4String mssg = "Optical ice properties calculated for depth " + std::to_string(mSpice_Depth[mSpiceDepth_pos] / m) + " m.";
     info(mssg);
-    //now give the properties to the bubble column, which are basically the same ones but with the chosen scattering lenght
-    G4MaterialPropertiesTable* lMPT_holeice = new G4MaterialPropertiesTable();
+    // now give the properties to the bubble column, which are basically the same ones but with the chosen scattering lenght
+    G4MaterialPropertiesTable *lMPT_holeice = new G4MaterialPropertiesTable();
     lMPT_holeice->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
     lMPT_holeice->AddProperty("ABSLENGTH", &lRefractionIndexEnergy[0], &lAbsLength[0], static_cast<int>(lAbsLength.size()));
-    lMPT_holeice->AddProperty("MIEHG", &lRefractionIndexEnergy[0], &lMieScatteringLength_BubleColumn[0], static_cast<int>(lRefractionIndex.size()));//->SetSpline(true);
+    lMPT_holeice->AddProperty("MIEHG", &lRefractionIndexEnergy[0], &lMieScatteringLength_BubleColumn[0], static_cast<int>(lRefractionIndex.size())); //->SetSpline(true);
     lMPT_holeice->AddConstProperty("MIEHG_FORWARD", mMIE_spice_const[0]);
     lMPT_holeice->AddConstProperty("MIEHG_BACKWARD", mMIE_spice_const[1]);
     lMPT_holeice->AddConstProperty("MIEHG_FORWARD_RATIO", mMIE_spice_const[2]);
@@ -256,7 +255,7 @@ void IceCubeIce::ExtractInformation()
  */
 /**
  * This gives you temperature of ice depending on the depth.
- * Function needed for the calculation of scattering and absorption length of the ice. 
+ * Function needed for the calculation of scattering and absorption length of the ice.
  * @param pDepth Depth in m from where we need the temperature
  * @return Temperature
  */
@@ -313,12 +312,12 @@ G4double IceCubeIce::Mie_Scattering(G4double pLambd)
  * %%%%%%%%%%%%%%%% Functions of derived class ReflectiveSurface %%%%%%%%%%%%%%%%
  */
 /**
- * Defines new reflective surface from data in json-file. 
+ * Defines new reflective surface from data in json-file.
  */
 void ReflectiveSurface::ExtractInformation()
 {
 
-    pt::read_json(mFileName, mJsonTree); //read json file into mJsonTree
+    pt::read_json(mFileName, mJsonTree); // read json file into mJsonTree
 
     mObjectName = mJsonTree.get<G4String>("jName");
     G4String lModelStr = mJsonTree.get<G4String>("jModel");
@@ -340,6 +339,23 @@ void ReflectiveSurface::ExtractInformation()
     catch (...)
     {
     } // not very elegant, I know...
+
+    // try
+    // {
+    //     for (pt::ptree::value_type &key : mJsonTree.get_child("jConstProperties"))
+    //     {
+    //         G4String lKey = key.second.get_value<G4String>();
+    //         std::vector<G4double> lPhotonEnergy;
+    //         std::vector<G4double> lValues;
+    //         ParseToVector(lValues, mJsonTree, "jValues_" + lKey, 1., false);
+    //         ParseToVector(lPhotonEnergy, mJsonTree, "jWavelength_" + lKey, mHC_eVnm, true);
+    //         sortVectorByReference(lPhotonEnergy, lValues);
+    //         lMPT->AddProperty(lKey, &lPhotonEnergy[0], &lValues[0], static_cast<int>(lPhotonEnergy.size()));
+    //     }
+    // }
+    // catch (...) // Only few materials have jConstProperties defined
+    // {
+    // } // not very elegant, I know...
 
     for (pt::ptree::value_type &key : mJsonTree.get_child("jProperties"))
     {
@@ -462,6 +478,36 @@ G4SurfaceType ReflectiveSurface::GetSurfaceType(G4String pType)
         lType = firsov;
     else if (pType == "x_ray")
         lType = x_ray;
+    else if (pType == "coated")
+        lType = coated;
     return lType;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
