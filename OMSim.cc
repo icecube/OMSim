@@ -145,7 +145,8 @@ int main(int argc, char *argv[])
 		("cad", po::bool_switch(), "activates CAD import for supported modules (LOM16)")("harness", po::bool_switch(), "activates harness [OFF, ON]")
 		("environment", po::value<G4int>()->default_value(0), "medium in which the setup is emmersed [AIR = 0, ice = 1, spice = 2]")
 		("output_file", po::value<std::string>()->default_value("mdom_testoutput.txt"), "filename for output")
-		("reflective_surface", po::value<G4int>()->default_value(0), "index to select reflective surface type [Refl_V95Gel = 0, Refl_V98Gel = 1, Refl_Aluminium = 2, Refl_Total98 = 3]")("visual,v", po::bool_switch(), "shows visualization of module after run");
+		("reflective_surface", po::value<G4int>()->default_value(0), "index to select reflective surface type [Refl_V95Gel = 0, Refl_V98Gel = 1, Refl_Aluminium = 2, Refl_Total98 = 3]")
+		("visual,v", po::bool_switch(), "shows visualization of module after run");
 
 		po::variables_map lVariablesMap;
 		po::store(po::parse_command_line(argc, argv, desc), lVariablesMap);
