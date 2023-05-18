@@ -1,3 +1,0 @@
-/HDD/backuped/Geant4_Folders/2023_github_geant4/build/CMakeFiles/OMSim.dir
-/HDD/backuped/Geant4_Folders/2023_github_geant4/build/CMakeFiles/edit_cache.dir
-/HDD/backuped/Geant4_Folders/2023_github_geant4/build/CMakeFiles/rebuild_cache.dir

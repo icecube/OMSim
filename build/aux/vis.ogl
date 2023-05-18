@@ -1,8 +1,0 @@
-/vis/open gMocrenFile
-/vis/drawVolume
-/vis/scene/add/trajectories
-/vis/viewer/set/viewpointVector 1 0 0
-/vis/viewer/set/style s
-/vis/viewer/refresh
-
-
