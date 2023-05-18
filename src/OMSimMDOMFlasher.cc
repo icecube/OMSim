@@ -15,6 +15,15 @@
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimUIinterface.hh"
 
+/**
+ * @class mDOMFlasher
+ * @brief The mDOMFlasher class represents the 10 flashers in an mDOM optical module.
+ *
+ * @details
+ * This class is responsible for creating the flashers in the mDOM,
+ * which includes a LED, the air around it, and a glass window on top of it. This class also has methods for retrieving flasher solids,
+ * activating a specific flasher in a particular module, and configuring the GPS for flasher simulations.
+ */
 mDOMFlasher::mDOMFlasher(InputDataManager *pData)
 {
 	mData = pData;
@@ -85,6 +94,13 @@ void mDOMFlasher::readFlasherProfile()
 	// led_profile_y = readColumnDouble(glightprofile_file, 2);
 }
 
+/**
+ * @brief run/beamOn the specified flasher.
+ * @details This method triggers the flasher at the given index in the specified module.
+ * @param pMDOMInstance The mDOM instance to access to the placement OM positions and orientations.
+ * @param pModuleIndex The index of the module to be flashed (if only one mDOM placed, then 0, otherwise depending on placeIt() order)
+ * @param pLEDIndex The index of the flasher within the module.
+ */
 void mDOMFlasher::runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex)
 {
 	if (!mFlasherProfileAvailable)
@@ -99,9 +115,24 @@ void mDOMFlasher::runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4in
 	configureGPS(lFlasherInfo);
 }
 
+/**
+ * @brief Get the global position and orientation for a specific flasher in a specific module.
+ * @param pMDOMInstance The mDOM instance contains information about the placement of the modules.
+ * @param pModuleIndex The index of the module that is going to flash.
+ * @param pLEDIndex The index of the flasher within the module.
+ * @return Returns a FlasherPositionInfo struct containing the flasher's global position and orientation information.
+ */
 FlasherPositionInfo mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex)
 {
 	FlasherPositionInfo info;
+
+	if (pModuleIndex < 0 || pModuleIndex >= pMDOMInstance->mPlacedOrientations.size())
+	{
+		// throw an exception or return an error
+		log_critical("mDOM index provided not valid");
+		throw std::invalid_argument("mDOM index provided not valid");
+	}
+
 	info.orientation = pMDOMInstance->mPlacedOrientations.at(pModuleIndex);
 	std::vector<std::vector<G4double>> lLED_AngFromSphere = pMDOMInstance->mLED_AngFromSphere;
 	// check if the provided LED index is valid
@@ -141,10 +172,11 @@ G4ThreeVector mDOMFlasher::getFlasherGlobalThreeVector(mDOM *pMDOMInstance, G4in
 }
 
 void mDOMFlasher::configureGPS(FlasherPositionInfo flasherInfo)
-{	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+{
+	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
 
 	lUIinterface.applyCommand("/gps/pos/type Point");
-	lUIinterface.applyCommand("/gps/ang/type user");	  // biast = theta
+	lUIinterface.applyCommand("/gps/ang/type user");   // biast = theta
 	lUIinterface.applyCommand("/gps/hist/type theta"); // biast = theta
 
 	// for (unsigned int u = 0; u < led_profile_x.size(); u++)
@@ -191,5 +223,3 @@ G4ThreeVector mDOMFlasher::buildRotVector(G4double phi, G4double theta, G4Rotati
 	G4Transform3D rotTrans = getNewPosition(G4ThreeVector(), orientation, rotVector, G4RotationMatrix());
 	return rotTrans.getTranslation();
 }
-
-
