@@ -14,19 +14,19 @@ class ParameterTable
 {
 public:
     ParameterTable(){}; // This class provides handling of table with json Trees
-    G4bool CheckIfKeyInTable(G4String pKey);
-    G4double GetValueWithUnit(G4String pKey, G4String pParameter);
+    G4bool checkIfKeyInTable(G4String pKey);
+    G4double getValueWithUnit(G4String pKey, G4String pParameter);
     template <typename T>
-    T GetValue(G4String pKey, G4String pParameter)
+    T getValue(G4String pKey, G4String pParameter)
     {
         const T lValue = mTable.at(pKey).get<T>(pParameter);
         return lValue;
     }
-    pt::ptree AppendAndReturnTree(G4String pFileName);
-    pt::ptree GetJSONTree(G4String pKey);
+    pt::ptree appendAndReturnTree(G4String pFileName);
+    pt::ptree getJSONTree(G4String pKey);
 
     template <typename T>
-    void ParseKeyContentToVector(std::vector<T> &pVector, pt::ptree pTree, std::basic_string<char> pKey, G4double pScaling, bool pInverse)
+    void parseKeyContentToVector(std::vector<T> &pVector, pt::ptree pTree, std::basic_string<char> pKey, G4double pScaling, bool pInverse)
     {
         for (pt::ptree::value_type &ridx : pTree.get_child(pKey))
         { // get array from element with key "pKey" of the json
@@ -42,9 +42,9 @@ public:
     }
 
     template <typename T>
-    void ParseKeyContentToVector(std::vector<T> &pVector, std::basic_string<char> pMapKey, std::basic_string<char> pKey, G4double pScaling, bool pInverse)
+    void parseKeyContentToVector(std::vector<T> &pVector, std::basic_string<char> pMapKey, std::basic_string<char> pKey, G4double pScaling, bool pInverse)
     {
-        for (pt::ptree::value_type &ridx : GetJSONTree(pMapKey).get_child(pKey))
+        for (pt::ptree::value_type &ridx : getJSONTree(pMapKey).get_child(pKey))
         { // get array from element with key "pKey" of the json
             if (pInverse)
             { // if we need 1/x
@@ -61,17 +61,18 @@ private:
     std::map<G4String, boost::property_tree::ptree> mTable;
 };
 
-class OMSimInputData : public ParameterTable
+class InputDataManager : public ParameterTable
 {
 public:
-    OMSimInputData();
-    G4Material *GetMaterial(G4String name);
-    G4OpticalSurface *GetOpticalSurface(G4String pName);
-    void SearchFolders();
+    InputDataManager();
+    G4Material *getMaterial(G4String name);
+    G4OpticalSurface *getOpticalSurface(G4String pName);
+    void searchFolders();
     std::map<G4String, G4OpticalSurface *> mOpticalSurfaceMap;
 
 private:
-    void ScannDataDirectory();
+    void scannDataDirectory();
+    void processFile(const std::string& filePath, const std::string& fileName);
     G4String mDataDirectory;
 };
 

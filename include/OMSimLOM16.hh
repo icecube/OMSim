@@ -16,8 +16,8 @@ extern G4double gRefCone_angle;
 class LOM16 : public abcDetectorComponent
 {
 public:
-    LOM16(OMSimInputData* pData, G4bool pPlaceHarness = false);
-    void Construction();
+    LOM16(InputDataManager* pData, G4bool pPlaceHarness = false);
+    void construction();
     G4String mDataKey = "om_LOM16";
 
   
@@ -26,20 +26,20 @@ private:
     OMSimPMTConstruction* mPMTManager;
 
     //functions
-    void GetSharedData();
-    G4UnionSolid* PressureVessel(const G4double pOutRad, G4String pSuffix);
+    void getSharedData();
+    G4UnionSolid* pressureVessel(const G4double pOutRad, G4String pSuffix);
 
     //Lom specific functions
-    void PlaceCADSupportStructure();
+    void placeCADSupportStructure();
 
-    void AppendEquatorBand();
+    void appendEquatorBand();
     
     //for gelpad and PMT creation
-    void PlacePMTsAndGelpads(G4VSolid* lGelSolid,G4LogicalVolume* lGelLogical);
-    void SetPMTAndGelpadPositions();
-    void CreateGelpadLogicalVolumes(G4VSolid* lGelSolid);
-    void PlacePMTs(G4LogicalVolume* lInnerVolumeLogical);
-    void PlaceGelpads(G4LogicalVolume* lInnerVolumeLogical);
+    void placePMTsAndGelpads(G4VSolid* lGelSolid,G4LogicalVolume* lGelLogical);
+    void setPMTAndGelpadPositions();
+    void createGelpadLogicalVolumes(G4VSolid* lGelSolid);
+    void placePMTs(G4LogicalVolume* lInnerVolumeLogical);
+    void placeGelpads(G4LogicalVolume* lInnerVolumeLogical);
 
     //selection variables
     G4bool mPlaceHarness = true;

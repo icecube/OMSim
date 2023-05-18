@@ -13,23 +13,23 @@
 
 #include "OMSimLogger.hh"
 
-pDOM::pDOM(OMSimInputData* pData, G4bool pPlaceHarness) {
+pDOM::pDOM(InputDataManager* pData, G4bool pPlaceHarness) {
     mPlaceHarness = pPlaceHarness;
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
     mPMTManager->SelectPMT("pmt_Hamamatsu_R7081");
-    mPMTManager->Construction();
-    info("herep2");
-    Construction();
+    mPMTManager->construction();
+    log_info("herep2");
+    construction();
 }
 
 /**
  * Construction of the pDOM, as in the older code.
  */
-void pDOM::Construction()
-{   info("here");
+void pDOM::construction()
+{   log_info("here");
     mComponents.clear();
-    info("here");
+    log_info("here");
     G4VSolid*  lPMTsolid = mPMTManager->GetPMTSolid();
 
     G4double mGelThickness = 10 * mm;
@@ -54,26 +54,26 @@ void pDOM::Construction()
 
     //Logicals mData
     G4LogicalVolume* lGlassSphereLogical = new G4LogicalVolume(lGlassSphereSolid,
-        mData->GetMaterial("RiAbs_Glass_Benthos"),
+        mData->getMaterial("RiAbs_Glass_Benthos"),
         "PDOM_Glass logical");
     G4LogicalVolume* lHarnessLogical = new G4LogicalVolume(lHarnessSolid,
-        mData->GetMaterial("NoOptic_Stahl"),
+        mData->getMaterial("NoOptic_Stahl"),
         "PDOM_Harness logical");
 
     G4LogicalVolume* lGelLogical = new G4LogicalVolume(lGelSphereSolid,
-        mData->GetMaterial("RiAbs_Gel_QGel900"),
+        mData->getMaterial("RiAbs_Gel_QGel900"),
         "PDOM_Gel logical");
 
     G4LogicalVolume* lBoardLogical = new G4LogicalVolume(lBoardSolid,
-        mData->GetMaterial("NoOptic_Absorber"),
+        mData->getMaterial("NoOptic_Absorber"),
         "PDOM_Board logical");
 
     G4LogicalVolume* lBaseLogical = new G4LogicalVolume(lBaseSolid,
-        mData->GetMaterial("NoOptic_Absorber"),
+        mData->getMaterial("NoOptic_Absorber"),
         "PDOM_Base logical");
 
     G4LogicalVolume* lAirLogical = new G4LogicalVolume(lAirSolid,
-        mData->GetMaterial("Ri_Vacuum"),
+        mData->getMaterial("Ri_Vacuum"),
         "PDOM_Air logical");
 
     G4PVPlacement* lBoardPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, -40 * mm), lBoardLogical, "pDOMBoardPhys", lAirLogical, false, 0);
@@ -81,16 +81,16 @@ void pDOM::Construction()
 
     G4PVPlacement* lAirPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lAirLogical, "pDOMAirPhys ", lGelLogical, false, 0);
 
-    mPMTManager->PlaceIt(G4ThreeVector(0, 0, lPMTz), G4RotationMatrix(), lGelLogical);
+    mPMTManager->placeIt(G4ThreeVector(0, 0, lPMTz), G4RotationMatrix(), lGelLogical);
 
     G4PVPlacement* lGelPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lGelLogical, "pDOMGelPhys", lGlassSphereLogical, false, 0);
 
-    if (mPlaceHarness) AppendComponent(lHarnessSolid, lHarnessLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "pDOM_Harness");
+    if (mPlaceHarness) appendComponent(lHarnessSolid, lHarnessLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "pDOM_Harness");
     
-    AppendComponent(lGlassSphereSolid, lGlassSphereLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "pDOM");
+    appendComponent(lGlassSphereSolid, lGlassSphereLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "pDOM");
 
     // ------------------- optical border surfaces --------------------------------------------------------------------------------
-    new G4LogicalSkinSurface("PDOM_Harness_skin", lHarnessLogical, mData->GetOpticalSurface("Refl_StainlessSteelGround"));
+    new G4LogicalSkinSurface("PDOM_Harness_skin", lHarnessLogical, mData->getOpticalSurface("Refl_StainlessSteelGround"));
 
     lGlassSphereLogical->SetVisAttributes(mGlassVis);
     lHarnessLogical->SetVisAttributes(mSteelVis);

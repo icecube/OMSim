@@ -46,10 +46,10 @@ OMSimDetectorConstruction::~OMSimDetectorConstruction()
 /**
  * Construct the world volume
  */
-void OMSimDetectorConstruction::ConstructWorld()
+void OMSimDetectorConstruction::constructWorld()
 {
     mWorldSolid = new G4Orb("World", OMSimCommandArgsTable::getInstance().get<G4double>("world_radius") * m);
-    mWorldLogical = new G4LogicalVolume(mWorldSolid, mData->GetMaterial("argWorld"), "World_log", 0, 0, 0);
+    mWorldLogical = new G4LogicalVolume(mWorldSolid, mData->getMaterial("argWorld"), "World_log", 0, 0, 0);
     mWorldPhysical = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), mWorldLogical, "World_phys", 0, false, 0);
     G4VisAttributes* World_vis= new G4VisAttributes(G4Colour(0.45,0.5,0.35,0.));
     mWorldLogical->SetVisAttributes(World_vis);
@@ -63,10 +63,10 @@ void OMSimDetectorConstruction::ConstructWorld()
 G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
 {
 
-    mData = new OMSimInputData();
-    mData->SearchFolders();
+    mData = new InputDataManager();
+    mData->searchFolders();
 
-    ConstructWorld();
+    constructWorld();
 
     
     
@@ -75,9 +75,9 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
     G4Box* Vacuum = new G4Box("Vacuum", 20*cm, 20*cm, 1*cm);
 
     
-    G4LogicalVolume* PhotocathodeLog = new G4LogicalVolume(Photocathode, mData->GetMaterial("RiAbs_Photocathode"), "Photocathode");
-    G4LogicalVolume* GlassLog = new G4LogicalVolume(Glass, mData->GetMaterial("RiAbs_Glass_Tube"), "PMTGlass");
-    G4LogicalVolume* VacuumLog = new G4LogicalVolume(Vacuum, mData->GetMaterial("Ri_Vacuum"), "PMTvacuum");
+    G4LogicalVolume* PhotocathodeLog = new G4LogicalVolume(Photocathode, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
+    G4LogicalVolume* GlassLog = new G4LogicalVolume(Glass, mData->getMaterial("RiAbs_Glass_Tube"), "PMTGlass");
+    G4LogicalVolume* VacuumLog = new G4LogicalVolume(Vacuum, mData->getMaterial("Ri_Vacuum"), "PMTvacuum");
 
     
     //new G4PVPlacement(0, G4ThreeVector(0, 0, 0), GlassLog, "PMTGlass", mWorldLogical, false, 0, true);
@@ -85,19 +85,21 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
     //new G4PVPlacement(0, G4ThreeVector(0, 0, -(1*cm+1*mm)), VacuumLog, "PMTvacuum", mWorldLogical, false, 0, true);
 
     //mDOMFlasher *lFlashers = new mDOMFlasher(mData);
-    //lFlashers->PlaceIt(G4ThreeVector(1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "2");
-    mDOM *lOpticalModule = new mDOM(mData);
-    lOpticalModule->PlaceIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "1");
-    //lOpticalModule->PlaceIt(G4ThreeVector(1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "2");
+    //lFlashers->placeIt(G4ThreeVector(1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "2");
+    mMDOM = new mDOM(mData);
+    mMDOM->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "1");
+
+
+    //lOpticalModule->placeIt(G4ThreeVector(1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "2");
 
     /*    
     switch (OMSimCommandArgsTable::getInstance().get<G4int>("detector_type")) {
         case 0: {
-            critical("Custom detector not implemented yet!");
+            log_critical("Custom detector not implemented yet!");
             break;
         }
         case 1: {
-            info("Constructing single PMT");
+            log_info("Constructing single PMT");
             mPMTManager = new OMSimPMTConstruction(mData);
             if (gVisual) {
                 mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
@@ -106,38 +108,38 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
             }
             mPMTManager->SimulateHACoating();
             mPMTManager->SimulateInternalReflections();
-            mPMTManager->Construction();
-            mPMTManager->PlaceIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
+            mPMTManager->construction();
+            mPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
             break;
         }
         case 2: {
-            info("Constructing mDOM");
+            log_info("Constructing mDOM");
             mDOM *lOpticalModule = new mDOM(mData);
-            lOpticalModule->PlaceIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
+            lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
             break;
         }
         case 3: {
-            info("Constructing PDOM");
+            log_info("Constructing PDOM");
             pDOM *lOpticalModule = new pDOM(mData);
-            lOpticalModule->PlaceIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
+            lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
             break;
         }
         case 4: {
-            info("Constructing LOM16");
+            log_info("Constructing LOM16");
             LOM16 *lOpticalModule = new LOM16(mData);
-            lOpticalModule->PlaceIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
+            lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
             break;
         }
         case 5: {
-            info("Constructing LOM18");
+            log_info("Constructing LOM18");
             LOM18 *lOpticalModule = new LOM18(mData);
-            lOpticalModule->PlaceIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
+            lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
             break;
         }
         case 6: {
-            info("Constructing DEGG");
+            log_info("Constructing DEGG");
             DEgg *lOpticalModule = new DEgg(mData);
-            lOpticalModule->PlaceIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
+            lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
             break;
         }
     }

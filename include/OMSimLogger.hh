@@ -97,7 +97,7 @@ I Took this from a github... but I can't find it right now for giving the credit
 #define SILENT      6
 
 /* DEBUG LOG */
-#define debug(...) do {                                                             \
+#define log_debug(...) do {                                                             \
     if (LOG_LEVEL == DEBUG) {                                                       \
         emit_log(                                                                   \
             DEBUG_COLOUR, "[DEBUG]", __FILE__, __func__, __LINE__, __VA_ARGS__      \
@@ -106,7 +106,7 @@ I Took this from a github... but I can't find it right now for giving the credit
 } while (0)
 
 /* INFO LOG */
-#define info(...) do {                                                              \
+#define log_info(...) do {                                                              \
     if (LOG_LEVEL <= INFO) {                                                        \
         emit_log(                                                                   \
             INFO_COLOUR, "[INFO]", __FILE__, __func__, __LINE__, __VA_ARGS__        \
@@ -115,7 +115,7 @@ I Took this from a github... but I can't find it right now for giving the credit
 } while (0)
 
 /* NOTICE LOG */
-#define notice(...) do {                                                            \
+#define log_notice(...) do {                                                            \
     if (LOG_LEVEL <= NOTICE) {                                                      \
         emit_log(                                                                   \
             NOTICE_COLOUR, "[NOTICE]", __FILE__, __func__, __LINE__, __VA_ARGS__    \
@@ -124,7 +124,7 @@ I Took this from a github... but I can't find it right now for giving the credit
 } while (0)
 
 /* WARNING LOG */
-#define warning(...) do {                                                           \
+#define log_warning(...) do {                                                           \
     if (LOG_LEVEL <= WARNING) {                                                     \
         emit_log(                                                                   \
             WARNING_COLOUR, "[WARNING]", __FILE__, __func__, __LINE__, __VA_ARGS__  \
@@ -133,7 +133,7 @@ I Took this from a github... but I can't find it right now for giving the credit
 } while (0)
 
 /* ERROR LOG */
-#define error(...) do {                                                             \
+#define log_error(...) do {                                                             \
     if (LOG_LEVEL <= ERROR) {                                                       \
         emit_log(                                                                   \
             ERROR_COLOUR, "[ERROR]", __FILE__, __func__, __LINE__, __VA_ARGS__      \
@@ -142,7 +142,7 @@ I Took this from a github... but I can't find it right now for giving the credit
 } while (0)
 
 /* CRITICAL LOG */
-#define critical(...) do {                                                          \
+#define log_critical(...) do {                                                          \
     if (LOG_LEVEL <= CRITICAL) {                                                    \
         emit_log(                                                                   \
             CRITICAL_COLOUR, "[CRITICAL]", __FILE__, __func__, __LINE__, __VA_ARGS__\

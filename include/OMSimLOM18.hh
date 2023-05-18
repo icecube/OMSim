@@ -17,8 +17,8 @@ extern G4double gRefCone_angle;
 class LOM18 : public abcDetectorComponent
 {
 public:
-    LOM18(OMSimInputData* pData, G4bool pPlaceHarness = false);
-    void Construction();
+    LOM18(InputDataManager* pData, G4bool pPlaceHarness = false);
+    void construction();
     G4double mCylinderAngle;
     G4double mGlassOutRad;
     G4String mDataKey = "om_LOM18";
@@ -29,23 +29,23 @@ private:
     OMSimPMTConstruction* mPMTManager;
 
     //functions
-    void GetSharedData();
+    void getSharedData();
 
 
-    G4Polycone* CreateLOM18OuterSolid();
-    G4Polycone* CreateLOM18InnerSolid();
+    G4Polycone* createLOM18OuterSolid();
+    G4Polycone* createLOM18InnerSolid();
 
-    void AppendEquatorBand();
-    void PlaceCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical);
+    void appendEquatorBand();
+    void placeCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical);
     G4LogicalVolume* mSupportStructureLogical;
-    void PlaceCADPenetrator(G4LogicalVolume* lInnerVolumeLogical);
+    void placeCADPenetrator(G4LogicalVolume* lInnerVolumeLogical);
     
     
-    void SetPMTPositions();
-    void CreateGelpadLogicalVolumes(G4Polycone* lGelSolid);
+    void setPMTPositions();
+    void createGelpadLogicalVolumes(G4Polycone* lGelSolid);
 
-    void PlacePMTs(G4LogicalVolume* lInnerVolumeLogical);
-    void PlaceGelpads(G4LogicalVolume* lInnerVolumeLogical);
+    void placePMTs(G4LogicalVolume* lInnerVolumeLogical);
+    void placeGelpads(G4LogicalVolume* lInnerVolumeLogical);
 
     //selection variables
     G4bool mPlaceHarness = true;

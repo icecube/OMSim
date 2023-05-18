@@ -20,22 +20,22 @@
 class OMSimPMTConstruction : public abcDetectorComponent
 {
 public:
-    OMSimPMTConstruction(OMSimInputData* pData);
+    OMSimPMTConstruction(InputDataManager* pData);
 
-    void Construction();
+    void construction();
     G4double GetDistancePMTCenterToPMTtip();
     G4double GetMaxPMTMaxRadius();
     G4VSolid* GetPMTSolid();
     G4LogicalVolume* GetLogicalVolume();
-    void PlaceIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume*& pMother, G4String pNameExtension = "");
-    void PlaceIt(G4Transform3D pTrans, G4LogicalVolume*& pMother, G4String pNameExtension = "");
+    void placeIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume*& pMother, G4String pNameExtension = "");
+    void placeIt(G4Transform3D pTrans, G4LogicalVolume*& pMother, G4String pNameExtension = "");
     void SelectPMT(G4String pPMTtoSelect);
     void SimulateInternalReflections();
 
     void SimulateHACoating();
 
 private:
-    OMSimInputData* mData;
+    InputDataManager* mData;
     G4String mSelectedPMT;
     G4bool mDynodeSystem = false;
     G4bool mInternalReflections = false;

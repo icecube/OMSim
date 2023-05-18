@@ -13,17 +13,17 @@ class mDOM;
 class mDOMHarness : public abcDetectorComponent
 {
 public:
-    mDOMHarness(mDOM* pMDOM, OMSimInputData *pData);
-    void Construction();
+    mDOMHarness(mDOM* pMDOM, InputDataManager *pData);
+    void construction();
     G4String mDataKey = "mDOM_harness";
     
 private:
     mDOM* mOM;
     const G4double mHarnessRotAngle = 45*deg; //rotation of harness with respect to the module. Valid values are 45, 45+90, 45+180.. etc, otherwise the ropes would go over the PMTs
-    void GetSharedData();
+    void getSharedData();
     void BandsAndClamps();
     void BridgeRopesSolid();
-    void MainDataCable();
+    void mainDataCable();
     void Pads();
     void PCA();
     void Plug();

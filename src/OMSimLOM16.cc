@@ -48,68 +48,68 @@
 
 
 
-LOM16::LOM16(OMSimInputData* pData, G4bool pPlaceHarness) {
+LOM16::LOM16(InputDataManager* pData, G4bool pPlaceHarness) {
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
     mPMTManager->SimulateHACoating();
     mPMTManager->SelectPMT("pmt_Hamamatsu_4inch");
-    mPMTManager->Construction();
-    GetSharedData();
+    mPMTManager->construction();
+    getSharedData();
 
     mPlaceHarness = pPlaceHarness;
     if (mPlaceHarness) {
         //mHarness = new mDOMHarness(this, mData);
-        //IntegrateDetectorComponent(mHarness, G4ThreeVector(0,0,0), G4RotationMatrix(), "");
-        error("LOM16 harness not implemented yet");
+        //integrateDetectorComponent(mHarness, G4ThreeVector(0,0,0), G4RotationMatrix(), "");
+        log_error("LOM16 harness not implemented yet");
     }
 
-    Construction();
+    construction();
 }
 
 //Parameters from json files
-void LOM16::GetSharedData() {
+void LOM16::getSharedData() {
     //Shared Module Parameters
-    mGlassOutRad = mData->GetValueWithUnit(mDataKey, "jGlassOutRad"); // outer radius of galss cylinder (pressure vessel)
-    mNrPolarPMTs = mData->GetValueWithUnit(mDataKey, "jNrPolarPMTs");
-    mNrEqPMTs = mData->GetValueWithUnit(mDataKey, "jNrEqPMTs");
+    mGlassOutRad = mData->getValueWithUnit(mDataKey, "jGlassOutRad"); // outer radius of galss cylinder (pressure vessel)
+    mNrPolarPMTs = mData->getValueWithUnit(mDataKey, "jNrPolarPMTs");
+    mNrEqPMTs = mData->getValueWithUnit(mDataKey, "jNrEqPMTs");
     mTotalNrPMTs = (mNrPolarPMTs + mNrEqPMTs) * 2;
-    mGelPadDZ = mData->GetValueWithUnit(mDataKey, "jGelPadDZ");// semiaxis (along pmt axis) of gelpads ... simply needs to be larger then 5mm (+ some more for tilted pads)...could be 100
+    mGelPadDZ = mData->getValueWithUnit(mDataKey, "jGelPadDZ");// semiaxis (along pmt axis) of gelpads ... simply needs to be larger then 5mm (+ some more for tilted pads)...could be 100
 }
 
 
 //Placement function
-void LOM16::Construction()
+void LOM16::construction()
 {   mComponents.clear();
     //Create pressure vessel and inner volume
     
-    G4double lGlassThick = mData->GetValueWithUnit(mDataKey, "jGlassThick");  // maximum Glass thickness
+    G4double lGlassThick = mData->getValueWithUnit(mDataKey, "jGlassThick");  // maximum Glass thickness
     G4double lGlassInRad = mGlassOutRad - lGlassThick;
-    G4VSolid* lGlassSolid = PressureVessel(mGlassOutRad, "Glass");
-    G4VSolid* lAirSolid = PressureVessel(lGlassInRad, "Gel"); // Fill entire vessel with gel as logical volume (not placed) for intersectionsolids with gelpads
+    G4VSolid* lGlassSolid = pressureVessel(mGlassOutRad, "Glass");
+    G4VSolid* lAirSolid = pressureVessel(lGlassInRad, "Gel"); // Fill entire vessel with gel as logical volume (not placed) for intersectionsolids with gelpads
 
     //Set positions and rotations of PMTs and gelpads
-    SetPMTAndGelpadPositions();
+    setPMTAndGelpadPositions();
 
     //CAD internal components
     if (false) {
-        PlaceCADSupportStructure();
-        lGlassSolid = SubstractToVolume(lGlassSolid, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Glass");
-        lAirSolid = SubstractToVolume(lAirSolid, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Gel");
+        placeCADSupportStructure();
+        lGlassSolid = substractToVolume(lGlassSolid, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Glass");
+        lAirSolid = substractToVolume(lAirSolid, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Gel");
     }
     //Logicals
-    G4LogicalVolume* lGlassLogical = new G4LogicalVolume(lGlassSolid, mData->GetMaterial("RiAbs_Glass_Vitrovex"), " Glass_log"); //Vessel
-    G4LogicalVolume* lInnerVolumeLogical = new G4LogicalVolume(lAirSolid, mData->GetMaterial("Ri_Air"), "Inner volume logical"); //Inner volume of vessel (mothervolume of all internal components)  
-    CreateGelpadLogicalVolumes(lAirSolid); //logicalvolumes of all gelpads saved globally to be placed below
+    G4LogicalVolume* lGlassLogical = new G4LogicalVolume(lGlassSolid, mData->getMaterial("RiAbs_Glass_Vitrovex"), " Glass_log"); //Vessel
+    G4LogicalVolume* lInnerVolumeLogical = new G4LogicalVolume(lAirSolid, mData->getMaterial("Ri_Air"), "Inner volume logical"); //Inner volume of vessel (mothervolume of all internal components)  
+    createGelpadLogicalVolumes(lAirSolid); //logicalvolumes of all gelpads saved globally to be placed below
     
 
     //Placements 
     new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lInnerVolumeLogical, "Gel_physical", lGlassLogical, false, 0, mCheckOverlaps);
     
-    PlacePMTs(lInnerVolumeLogical);
-    PlaceGelpads(lInnerVolumeLogical);
+    placePMTs(lInnerVolumeLogical);
+    placeGelpads(lInnerVolumeLogical);
 
-    AppendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
-    AppendEquatorBand();
+    appendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
+    appendEquatorBand();
     
     // ---------------- visualisation attributes --------------------------------------------------------------------------------
     lGlassLogical->SetVisAttributes(mGlassVis);
@@ -123,10 +123,10 @@ void LOM16::Construction()
 
 // ---------------- Component functions --------------------------------------------------------------------------------
 
-G4UnionSolid* LOM16::PressureVessel(const G4double pOutRad, G4String pSuffix)
+G4UnionSolid* LOM16::pressureVessel(const G4double pOutRad, G4String pSuffix)
 {
-    G4double lCylHigh = mData->GetValueWithUnit(mDataKey, "jCylHigh");         // height of cylindrical part of glass half-vessel
-    G4double lCylinderAngle = mData->GetValueWithUnit(mDataKey, "jCylinderAngle");  // Deviation angle of cylindrical part of the pressure vessel
+    G4double lCylHigh = mData->getValueWithUnit(mDataKey, "jCylHigh");         // height of cylindrical part of glass half-vessel
+    G4double lCylinderAngle = mData->getValueWithUnit(mDataKey, "jCylinderAngle");  // Deviation angle of cylindrical part of the pressure vessel
 
     G4Ellipsoid* lTopSolid = new G4Ellipsoid("SphereTop solid" + pSuffix, pOutRad, pOutRad, pOutRad, -5 * mm, pOutRad + 5 * mm);
     G4Ellipsoid* lBottomSolid = new G4Ellipsoid("SphereBottom solid" + pSuffix, pOutRad, pOutRad, pOutRad, -(pOutRad + 5 * mm), 5 * mm);
@@ -141,21 +141,21 @@ G4UnionSolid* LOM16::PressureVessel(const G4double pOutRad, G4String pSuffix)
 }
 
 
-void LOM16::AppendEquatorBand()
+void LOM16::appendEquatorBand()
 {
     G4double lWidth = 45 * mm; //Total width (both halves)
     G4double lThickness = 1 * mm; //Thickness since its a 3D object
 
     G4Box* lCuttingBox = new G4Box("Cutter", mGlassOutRad + 10 * mm, mGlassOutRad + 10 * mm, lWidth / 2.);
-    G4UnionSolid* lOuter = PressureVessel(mGlassOutRad + lThickness, "BandOuter");
+    G4UnionSolid* lOuter = pressureVessel(mGlassOutRad + lThickness, "BandOuter");
 
     G4IntersectionSolid* lIntersectionSolid = new G4IntersectionSolid("BandThicknessBody", lCuttingBox, lOuter, 0, G4ThreeVector(0, 0, 0));
     G4SubtractionSolid* lEquatorBandSolid = new G4SubtractionSolid("Equatorband_solid", lIntersectionSolid,
                                                                    mComponents.at("PressureVessel").VSolid, 0, G4ThreeVector(0, 0, 0));
 
-    G4LogicalVolume* lEquatorbandLogical = new G4LogicalVolume(lEquatorBandSolid, mData->GetMaterial("NoOptic_Absorber"), "Equatorband_log");
+    G4LogicalVolume* lEquatorbandLogical = new G4LogicalVolume(lEquatorBandSolid, mData->getMaterial("NoOptic_Absorber"), "Equatorband_log");
     lEquatorbandLogical->SetVisAttributes(mAbsorberVis);
-    AppendComponent(lEquatorBandSolid, lEquatorbandLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "TeraTape");
+    appendComponent(lEquatorBandSolid, lEquatorbandLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "TeraTape");
     
 }
 
@@ -168,40 +168,40 @@ void LOM16::AppendEquatorBand()
 //To do: 
 //Recreate CAD obj files (no SetScale & more variety to choose from)
 //Each component has its own label in visualizer -> just one ... another function for penetrator, dummy main boards, ...
-void LOM16::PlaceCADSupportStructure()
+void LOM16::placeCADSupportStructure()
 {
-    G4String lFilePath = mData->GetValue<G4String>(mDataKey, "jInternalCADFile");
+    G4String lFilePath = mData->getValue<G4String>(mDataKey, "jInternalCADFile");
     G4String mssg = "Using the following CAD file for LOM16 internal structure: " + lFilePath;
-    info(mssg);
+    log_info(mssg);
 
     //load mesh
     auto lMesh = CADMesh::TessellatedMesh::FromOBJ(lFilePath);
-    G4ThreeVector lCADoffset = G4ThreeVector(mData->GetValueWithUnit(mDataKey, "jInternalCAD_x"),
-        mData->GetValueWithUnit(mDataKey, "jInternalCAD_y"),
-        mData->GetValueWithUnit(mDataKey, "jInternalCAD_z")); //measured from CAD file since origin =!= Module origin
+    G4ThreeVector lCADoffset = G4ThreeVector(mData->getValueWithUnit(mDataKey, "jInternalCAD_x"),
+        mData->getValueWithUnit(mDataKey, "jInternalCAD_y"),
+        mData->getValueWithUnit(mDataKey, "jInternalCAD_z")); //measured from CAD file since origin =!= Module origin
     lMesh->SetOffset(lCADoffset);
     // lMesh->SetScale(10); //did a mistake...this LOM_Internal file needs cm -> mm -> x10
      // Place all of the meshes it can find in the file as solids individually.
     for (auto iSolid : lMesh->GetSolids())
     {
-        G4LogicalVolume* lSupportStructureLogical = new G4LogicalVolume(iSolid, mData->GetMaterial("NoOptic_Absorber"), "SupportStructureCAD_Logical");
+        G4LogicalVolume* lSupportStructureLogical = new G4LogicalVolume(iSolid, mData->getMaterial("NoOptic_Absorber"), "SupportStructureCAD_Logical");
         lSupportStructureLogical->SetVisAttributes(mAluVis);
-        AppendComponent(iSolid, lSupportStructureLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SupportStructureCAD");
+        appendComponent(iSolid, lSupportStructureLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SupportStructureCAD");
     }
 }
 
 
 //ToDo:
 //sin(90 +- ...) -> cos(...)
-void LOM16::SetPMTAndGelpadPositions()
+void LOM16::setPMTAndGelpadPositions()
 {
-    G4double lTotalLenght = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jTotalLenght");
-    G4double lOutRad = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jOutRad");
-    G4double lSpherePos_y = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jSpherePos_y");
-    G4double lEllipsePos_y = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jEllipsePos_y");
-    G4double lThetaPolar = mData->GetValueWithUnit(mDataKey, "jThetaPolar"); //theta angle polar pmts
-    G4double lThetaEquatorial = mData->GetValueWithUnit(mDataKey, "jThetaEquatorial"); //theta angle equatorial pmts
-    G4double lPolEqPMTPhiPhase = mData->GetValueWithUnit(mDataKey, "jPolEqPMTPhiPhase"); //rotation of equatorial PMTs in respect to polar PMTs
+    G4double lTotalLenght = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jTotalLenght");
+    G4double lOutRad = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jOutRad");
+    G4double lSpherePos_y = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jSpherePos_y");
+    G4double lEllipsePos_y = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jEllipsePos_y");
+    G4double lThetaPolar = mData->getValueWithUnit(mDataKey, "jThetaPolar"); //theta angle polar pmts
+    G4double lThetaEquatorial = mData->getValueWithUnit(mDataKey, "jThetaEquatorial"); //theta angle equatorial pmts
+    G4double lPolEqPMTPhiPhase = mData->getValueWithUnit(mDataKey, "jPolEqPMTPhiPhase"); //rotation of equatorial PMTs in respect to polar PMTs
 
 
     G4double Z_center_module_tobottomPMT_polar = 70.9 * mm; //measured z-offset from vessel origin from CAD file
@@ -283,11 +283,11 @@ void LOM16::SetPMTAndGelpadPositions()
 //4*mGelPadDZ -> 2 2*mGelPadDZ -> 1 ...  not needed if mGelPadDZ is long enough
 //tra and transformers declaration uniformely.
 //rename some stuff for clarity
-void LOM16::CreateGelpadLogicalVolumes(G4VSolid* lGelSolid)
+void LOM16::createGelpadLogicalVolumes(G4VSolid* lGelSolid)
 {
-    G4double lEqTiltAngle = mData->GetValueWithUnit(mDataKey, "jEqTiltAngle"); //tilt angle of gel pad axis in respect to PMT axis
-    G4double lPolPadOpeningAngle = mData->GetValueWithUnit(mDataKey, "jPolPadOpeningAngle");
-    G4double lEqPadOpeningAngle = mData->GetValueWithUnit(mDataKey, "jEqPadOpeningAngle");
+    G4double lEqTiltAngle = mData->getValueWithUnit(mDataKey, "jEqTiltAngle"); //tilt angle of gel pad axis in respect to PMT axis
+    G4double lPolPadOpeningAngle = mData->getValueWithUnit(mDataKey, "jPolPadOpeningAngle");
+    G4double lEqPadOpeningAngle = mData->getValueWithUnit(mDataKey, "jEqPadOpeningAngle");
     G4double lMaxPMTRadius = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
 
     //getting the PMT solid
@@ -339,7 +339,7 @@ void LOM16::CreateGelpadLogicalVolumes(G4VSolid* lGelSolid)
             //creating volumes ... basic cone, subtract PMT, logical volume of gelpad
             Cut_cone = new G4IntersectionSolid(mConverter.str(), lGelSolid, lGelPadBasicSolid, *tra);
             Cut_cone_final = new G4SubtractionSolid(mConverter.str(), Cut_cone, lPMTsolid, transformers);
-            GelPad_logical = new G4LogicalVolume(Cut_cone_final, mData->GetMaterial("RiAbs_Gel_Shin-Etsu"), mConverter2.str());
+            GelPad_logical = new G4LogicalVolume(Cut_cone_final, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), mConverter2.str());
         };
 
         //upper equatorial
@@ -371,7 +371,7 @@ void LOM16::CreateGelpadLogicalVolumes(G4VSolid* lGelSolid)
             G4SubtractionSolid* Tilted_final = new G4SubtractionSolid("cut", Tilted_cone, Cut_tube, *tra);
             Cut_cone = new G4IntersectionSolid(mConverter.str(), lGelSolid, Tilted_final, transformers);
             Cut_cone_final = new G4SubtractionSolid(mConverter.str(), Cut_cone, lPMTsolid, transformers);
-            GelPad_logical = new G4LogicalVolume(Cut_cone_final, mData->GetMaterial("RiAbs_Gel_Shin-Etsu"), mConverter2.str());
+            GelPad_logical = new G4LogicalVolume(Cut_cone_final, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), mConverter2.str());
         };
 
         //lower equatorial
@@ -402,7 +402,7 @@ void LOM16::CreateGelpadLogicalVolumes(G4VSolid* lGelSolid)
             G4SubtractionSolid* Tilted_final = new G4SubtractionSolid("cut", Tilted_cone, Cut_tube, *tra);
             Cut_cone = new G4IntersectionSolid(mConverter.str(), lGelSolid, Tilted_final, transformers);
             Cut_cone_final = new G4SubtractionSolid(mConverter.str(), Cut_cone, lPMTsolid, transformers);
-            GelPad_logical = new G4LogicalVolume(Cut_cone_final, mData->GetMaterial("RiAbs_Gel_Shin-Etsu"), mConverter2.str());
+            GelPad_logical = new G4LogicalVolume(Cut_cone_final, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), mConverter2.str());
         };
 
         //save logicalvolume of gelpads in array
@@ -411,7 +411,7 @@ void LOM16::CreateGelpadLogicalVolumes(G4VSolid* lGelSolid)
 }
 
 
-void LOM16::PlacePMTs(G4LogicalVolume* lInnerVolumeLogical)
+void LOM16::placePMTs(G4LogicalVolume* lInnerVolumeLogical)
 {
     for (int k = 0; k <= mTotalNrPMTs - 1; k++) {
         mConverter.str("");
@@ -422,12 +422,12 @@ void LOM16::PlacePMTs(G4LogicalVolume* lInnerVolumeLogical)
         lRot->rotateZ(mPMT_phi[k]);
         G4Transform3D lTransformers = G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]));
 
-        mPMTManager->PlaceIt(lTransformers, lInnerVolumeLogical, mConverter.str());
+        mPMTManager->placeIt(lTransformers, lInnerVolumeLogical, mConverter.str());
     }
 
 }
 
-void LOM16::PlaceGelpads(G4LogicalVolume* lInnerVolumeLogical)
+void LOM16::placeGelpads(G4LogicalVolume* lInnerVolumeLogical)
 {
     for (int k = 0; k <= mTotalNrPMTs - 1; k++) {
         mConverter.str("");

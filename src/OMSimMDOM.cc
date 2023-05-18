@@ -36,7 +36,7 @@
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimMDOMFlasher.hh"
 
-mDOM::mDOM(OMSimInputData *pData, G4bool pPlaceHarness)
+mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
 {
     mPlaceHarness = false; // pPlaceHarness;
     mData = pData;
@@ -53,53 +53,53 @@ mDOM::mDOM(OMSimInputData *pData, G4bool pPlaceHarness)
         mPMTManager->SimulateInternalReflections();
     }
 
-    mPMTManager->Construction();
-    GetSharedData();
+    mPMTManager->construction();
+    getSharedData();
     if (mPlaceHarness)
     {
         mHarness = new mDOMHarness(this, mData);
-        IntegrateDetectorComponent(mHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
+        integrateDetectorComponent(mHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
     }
-    Construction();
+    construction();
 }
 
-void mDOM::GetSharedData()
+void mDOM::getSharedData()
 {
-    mGlassOutRad = mData->GetValueWithUnit(mDataKey, "jGlassOutRad");                     // outer radius of galss cylinder (pressure vessel)
-    mCylHigh = mData->GetValueWithUnit(mDataKey, "jCylHigh");                             // height of cylindrical part of glass half-vessel
-    mGlassThick = mData->GetValueWithUnit(mDataKey, "jGlassThick");                       // maximum Glass thickness
-    mGelThicknessFrontPMT = mData->GetValueWithUnit(mDataKey, "jGelThicknessFrontPMT");   // distance between inner glass surface and tip of PMTs
-    mGelThickness = mData->GetValueWithUnit(mDataKey, "jGelThickness");                   // distance between inner glass surface and holding structure, filled with gel
-    mEqPMTrOffset = mData->GetValueWithUnit(mDataKey, "jEqPMTrOffset");                   // middle PMT circles are slightly further out due to mEqPMTzOffset
-    mEqPMTzOffset = mData->GetValueWithUnit(mDataKey, "jEqPMTzOffset");                   // z-offset of middle PMT circles w.r.t. center of glass sphere
-    mRefConeHalfZ = mData->GetValueWithUnit(mDataKey, "jRefConeHalfZ");                   // half-height of reflector (before cutting to right form)
-    mRefConeSheetThickness = mData->GetValueWithUnit(mDataKey, "jRefConeSheetThickness"); // aluminum sheet thickness true for all reflective cones
-    mThetaPolar = mData->GetValueWithUnit(mDataKey, "jThetaPolar");
-    mThetaEquatorial = mData->GetValueWithUnit(mDataKey, "jThetaEquatorial");
-    mCylinderAngle = mData->GetValueWithUnit(mDataKey, "jCylinderAngle"); // Deviation angle of cylindrical part of the pressure vessel
-    mNrPolarPMTs = mData->GetValueWithUnit(mDataKey, "jNrPolarPMTs");
-    mNrEqPMTs = mData->GetValueWithUnit(mDataKey, "jNrEqPMTs");
+    mGlassOutRad = mData->getValueWithUnit(mDataKey, "jGlassOutRad");                     // outer radius of galss cylinder (pressure vessel)
+    mCylHigh = mData->getValueWithUnit(mDataKey, "jCylHigh");                             // height of cylindrical part of glass half-vessel
+    mGlassThick = mData->getValueWithUnit(mDataKey, "jGlassThick");                       // maximum Glass thickness
+    mGelThicknessFrontPMT = mData->getValueWithUnit(mDataKey, "jGelThicknessFrontPMT");   // distance between inner glass surface and tip of PMTs
+    mGelThickness = mData->getValueWithUnit(mDataKey, "jGelThickness");                   // distance between inner glass surface and holding structure, filled with gel
+    mEqPMTrOffset = mData->getValueWithUnit(mDataKey, "jEqPMTrOffset");                   // middle PMT circles are slightly further out due to mEqPMTzOffset
+    mEqPMTzOffset = mData->getValueWithUnit(mDataKey, "jEqPMTzOffset");                   // z-offset of middle PMT circles w.r.t. center of glass sphere
+    mRefConeHalfZ = mData->getValueWithUnit(mDataKey, "jRefConeHalfZ");                   // half-height of reflector (before cutting to right form)
+    mRefConeSheetThickness = mData->getValueWithUnit(mDataKey, "jRefConeSheetThickness"); // aluminum sheet thickness true for all reflective cones
+    mThetaPolar = mData->getValueWithUnit(mDataKey, "jThetaPolar");
+    mThetaEquatorial = mData->getValueWithUnit(mDataKey, "jThetaEquatorial");
+    mCylinderAngle = mData->getValueWithUnit(mDataKey, "jCylinderAngle"); // Deviation angle of cylindrical part of the pressure vessel
+    mNrPolarPMTs = mData->getValueWithUnit(mDataKey, "jNrPolarPMTs");
+    mNrEqPMTs = mData->getValueWithUnit(mDataKey, "jNrEqPMTs");
     mGlassInRad = mGlassOutRad - mGlassThick;
-    mRefConeAngle = mData->GetValueWithUnit(mDataKey, "jReflectorConeAngle");
+    mRefConeAngle = mData->getValueWithUnit(mDataKey, "jReflectorConeAngle");
     mTotalNrPMTs = (mNrPolarPMTs + mNrEqPMTs) * 2;
     mPMToffset = mPMTManager->GetDistancePMTCenterToPMTtip();
     mRefConeIdealInRad = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
     mSupStructureRad = mGlassOutRad - mGlassThick - mGelThickness;
 }
 
-void mDOM::Construction()
+void mDOM::construction()
 {
     mComponents.clear();
-    SetPMTPositions();
-    SetLEDPositions();
+    setPMTPositions();
+    setLEDPositions();
 
-    G4UnionSolid *lGlassSolid = PressureVessel(mGlassOutRad, "Glass");
-    G4UnionSolid *lGelSolid = PressureVessel(mGlassInRad, "Gel");
+    G4UnionSolid *lGlassSolid = pressureVessel(mGlassOutRad, "Glass");
+    G4UnionSolid *lGelSolid = pressureVessel(mGlassInRad, "Gel");
 
     G4SubtractionSolid *lSupStructureSolid;
     G4UnionSolid *lSupStructureFirstSolid;
 
-    std::tie(lSupStructureSolid, lSupStructureFirstSolid) = SupportStructure();
+    std::tie(lSupStructureSolid, lSupStructureFirstSolid) = supportStructure();
 
     // Reflector solid
     G4Cons *lRefConeBasicSolid = new G4Cons("RefConeBasic", mRefConeIdealInRad,
@@ -111,44 +111,44 @@ void mDOM::Construction()
     G4IntersectionSolid *lRefConePolarSolid = new G4IntersectionSolid("PolarRefCones", lRefConeBasicSolid, lSupStructureTopSolid, 0, G4ThreeVector(0, 0, -(mGlassInRad - mGelThicknessFrontPMT - mPMToffset + mRefConeHalfZ)));
 
     // Reflector cone for equatorial PMTs
-    G4SubtractionSolid *lRefConeEqUpCutSolid = EquatorialReflector(lSupStructureFirstSolid, lRefConeBasicSolid, mThetaEquatorial, "upper");
-    G4SubtractionSolid *lRefConeEqLoCutSolid = EquatorialReflector(lSupStructureFirstSolid, lRefConeBasicSolid, 180. * deg - mThetaEquatorial, "lower");
+    G4SubtractionSolid *lRefConeEqUpCutSolid = equatorialReflector(lSupStructureFirstSolid, lRefConeBasicSolid, mThetaEquatorial, "upper");
+    G4SubtractionSolid *lRefConeEqLoCutSolid = equatorialReflector(lSupStructureFirstSolid, lRefConeBasicSolid, 180. * deg - mThetaEquatorial, "lower");
 
     // LED flashers
-    lSupStructureSolid = SubstractFlashers(lSupStructureSolid);
+    lSupStructureSolid = substractFlashers(lSupStructureSolid);
 
     // Logicals
     G4LogicalVolume *lGelLogical = new G4LogicalVolume(lGelSolid,
-                                                       mData->GetMaterial("RiAbs_Gel_Shin-Etsu"),
+                                                       mData->getMaterial("RiAbs_Gel_Shin-Etsu"),
                                                        "Gelcorpus logical");
     G4LogicalVolume *lSupStructureLogical = new G4LogicalVolume(lSupStructureSolid,
-                                                                mData->GetMaterial("NoOptic_Absorber"),
+                                                                mData->getMaterial("NoOptic_Absorber"),
                                                                 "TubeHolder logical");
     G4LogicalVolume *lGlassLogical = new G4LogicalVolume(lGlassSolid,
-                                                         mData->GetMaterial("RiAbs_Glass_Vitrovex"),
+                                                         mData->getMaterial("RiAbs_Glass_Vitrovex"),
                                                          "Glass_log");
     if (mPlaceHarness)
     {
-        lGelLogical = new G4LogicalVolume(SubstractHarnessPlug(lGelSolid),
-                                          mData->GetMaterial("RiAbs_Gel_Shin-Etsu"),
+        lGelLogical = new G4LogicalVolume(substractHarnessPlug(lGelSolid),
+                                          mData->getMaterial("RiAbs_Gel_Shin-Etsu"),
                                           "Gelcorpus logical");
-        lSupStructureLogical = new G4LogicalVolume(SubstractHarnessPlug(lSupStructureSolid),
-                                                   mData->GetMaterial("NoOptic_Absorber"),
+        lSupStructureLogical = new G4LogicalVolume(substractHarnessPlug(lSupStructureSolid),
+                                                   mData->getMaterial("NoOptic_Absorber"),
                                                    "TubeHolder logical");
-        lGlassLogical = new G4LogicalVolume(SubstractHarnessPlug(lGlassSolid),
-                                            mData->GetMaterial("RiAbs_Glass_Vitrovex"),
+        lGlassLogical = new G4LogicalVolume(substractHarnessPlug(lGlassSolid),
+                                            mData->getMaterial("RiAbs_Glass_Vitrovex"),
                                             "Glass_log");
     }
     G4LogicalVolume *lRefConePolarLogical = new G4LogicalVolume(lRefConePolarSolid,
-                                                                mData->GetMaterial("NoOptic_Reflector"),
+                                                                mData->getMaterial("NoOptic_Reflector"),
                                                                 "RefConeType1 logical");
 
     G4LogicalVolume *lRefconeEqUpCutLogical = new G4LogicalVolume(lRefConeEqUpCutSolid,
-                                                                  mData->GetMaterial("NoOptic_Reflector"),
+                                                                  mData->getMaterial("NoOptic_Reflector"),
                                                                   "RefConeType2 ETEL logical");
 
     G4LogicalVolume *lRefconeEqLoCutLogical = new G4LogicalVolume(lRefConeEqLoCutSolid,
-                                                                  mData->GetMaterial("NoOptic_Reflector"),
+                                                                  mData->getMaterial("NoOptic_Reflector"),
                                                                   "RefConeType3 ETEL logical");
 
     // Placements
@@ -164,7 +164,7 @@ void mDOM::Construction()
         lConverter << "_" << k;
 
         lTransformers = G4Transform3D(mPMTRotations[k], mPMTPositions[k]);
-        // mPMTManager->PlaceIt(lTransformers, lGelLogical, lConverter.str());
+        // mPMTManager->placeIt(lTransformers, lGelLogical, lConverter.str());
 
         // Placing reflective cones:
         lConverter.str("");
@@ -191,19 +191,19 @@ void mDOM::Construction()
     {
         lConverter.str("");
         lConverter << "LEDhole_physical_" << k;
-        mFlashers->PlaceIt(mLEDTransformers[k], lGelLogical, lConverter.str());
+        mFlashers->placeIt(mLEDTransformers[k], lGelLogical, lConverter.str());
     }
 
     // ------------------ Add outer shape solid to MultiUnion in case you need substraction -------------------------------------------
 
-    AppendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
+    appendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
     // ------------------- optical border surfaces --------------------------------------------------------------------------------
     new G4LogicalSkinSurface("RefCone_skin", lRefConePolarLogical,
-                             mData->GetOpticalSurface("Refl_V95Gel"));
+                             mData->getOpticalSurface("Refl_V95Gel"));
     new G4LogicalSkinSurface("RefCone_skin", lRefconeEqUpCutLogical,
-                             mData->GetOpticalSurface("Refl_V95Gel"));
+                             mData->getOpticalSurface("Refl_V95Gel"));
     new G4LogicalSkinSurface("RefCone_skin", lRefconeEqLoCutLogical,
-                             mData->GetOpticalSurface("Refl_V95Gel"));
+                             mData->getOpticalSurface("Refl_V95Gel"));
 
     //     // ---------------- visualisation attributes --------------------------------------------------------------------------------
     lGlassLogical->SetVisAttributes(mGlassVis);
@@ -215,7 +215,7 @@ void mDOM::Construction()
     lRefconeEqLoCutLogical->SetVisAttributes(mAluVis);
 }
 
-G4UnionSolid *mDOM::PressureVessel(const G4double pOutRad, G4String pSuffix)
+G4UnionSolid *mDOM::pressureVessel(const G4double pOutRad, G4String pSuffix)
 {
     G4Ellipsoid *lTopSolid = new G4Ellipsoid("SphereTop solid" + pSuffix, pOutRad, pOutRad, pOutRad, -5 * mm, pOutRad + 5 * mm);
     G4Ellipsoid *lBottomSolid = new G4Ellipsoid("SphereBottom solid" + pSuffix, pOutRad, pOutRad, pOutRad, -(pOutRad + 5 * mm), 5 * mm);
@@ -229,9 +229,9 @@ G4UnionSolid *mDOM::PressureVessel(const G4double pOutRad, G4String pSuffix)
     return lUnionSolid;
 }
 
-std::tuple<G4SubtractionSolid *, G4UnionSolid *> mDOM::SupportStructure()
+std::tuple<G4SubtractionSolid *, G4UnionSolid *> mDOM::supportStructure()
 {
-    const G4double lRefConeToHolder = mData->GetValueWithUnit(mDataKey, "jRefConeToHolder"); // horizontal distance from K??rcher's construction
+    const G4double lRefConeToHolder = mData->getValueWithUnit(mDataKey, "jRefConeToHolder"); // horizontal distance from K??rcher's construction
     G4VSolid *lPMTsolid = mPMTManager->GetPMTSolid();
 
     //  PMT support structure primitives & cutting "nests" for PMTs later
@@ -262,7 +262,7 @@ std::tuple<G4SubtractionSolid *, G4UnionSolid *> mDOM::SupportStructure()
     return std::make_tuple(lSupStructureSolid, lSupStructureFirstSolid);
 }
 
-G4SubtractionSolid *mDOM::EquatorialReflector(G4VSolid *pSupportStructure, G4Cons *pReflCone, G4double pAngle, G4String pSuffix)
+G4SubtractionSolid *mDOM::equatorialReflector(G4VSolid *pSupportStructure, G4Cons *pReflCone, G4double pAngle, G4String pSuffix)
 {
     G4double lRefConeR = mGlassInRad - mGelThicknessFrontPMT - mPMToffset + mRefConeHalfZ + mEqPMTrOffset;
     G4double lRho = lRefConeR * sin(pAngle);
@@ -307,15 +307,15 @@ G4SubtractionSolid *mDOM::EquatorialReflector(G4VSolid *pSupportStructure, G4Con
     return lRefConeCut;
 }
 
-G4SubtractionSolid *mDOM::SubstractHarnessPlug(G4VSolid *pSolid)
+G4SubtractionSolid *mDOM::substractHarnessPlug(G4VSolid *pSolid)
 {
-    Component Plug = mHarness->GetComponent("Plug");
+    Component Plug = mHarness->getComponent("Plug");
     G4Transform3D lPlugTransform = G4Transform3D(Plug.Rotation, Plug.Position);
     G4SubtractionSolid *lSolidSubstracted = new G4SubtractionSolid(pSolid->GetName() + "_plugSubstracted", pSolid, Plug.VSolid, lPlugTransform);
     return lSolidSubstracted;
 }
 
-G4SubtractionSolid *mDOM::SubstractFlashers(G4VSolid *lSupStructureSolid)
+G4SubtractionSolid *mDOM::substractFlashers(G4VSolid *lSupStructureSolid)
 {
 
     G4SubtractionSolid *lSupStructureSolidSub;
@@ -342,7 +342,7 @@ G4SubtractionSolid *mDOM::SubstractFlashers(G4VSolid *lSupStructureSolid)
     return lSupStructureSolidSub;
 }
 
-void mDOM::SetPMTPositions()
+void mDOM::setPMTPositions()
 {
     G4double lPMTr;     // radius for PMT positioning
     G4double lRefConeR; // radius for RefCone positioning
@@ -394,7 +394,7 @@ void mDOM::SetPMTPositions()
     }
 }
 
-void mDOM::SetLEDPositions()
+void mDOM::setLEDPositions()
 {
     G4int lNrPolLED = 1;
     G4int lNrEqLED = 4;
@@ -409,7 +409,7 @@ void mDOM::SetLEDPositions()
 
     G4double lThetaEqLED = 61 * deg;   // 61 upper sphere, 180-61 lower sphere
     G4double lThetaPolLED = 8.2 * deg; // 8.2 upper sphere, 180-8.2 lower sphere
-    G4double lPolEqPMTPhiPhase = mData->GetValueWithUnit(mDataKey, "jPolEqPMTPhiPhase");
+    G4double lPolEqPMTPhiPhase = mData->getValueWithUnit(mDataKey, "jPolEqPMTPhiPhase");
 
     mLED_AngFromSphere.resize(mNrTotalLED);
 

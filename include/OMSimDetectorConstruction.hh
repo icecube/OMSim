@@ -6,6 +6,7 @@
 #include "G4VUserDetectorConstruction.hh"
 #include "OMSimInputData.hh"
 #include "OMSimPMTConstruction.hh"
+#include "OMSimMDOM.hh"
 
 class OMSimDetectorConstruction : public G4VUserDetectorConstruction
 {
@@ -14,13 +15,17 @@ public:
     ~OMSimDetectorConstruction();
     G4VPhysicalVolume *Construct();
     G4VPhysicalVolume *mWorldPhysical;
+    mDOM* mMDOM;
+
 private:
     G4Orb *mWorldSolid;
     G4LogicalVolume *mWorldLogical;
     
-    void ConstructWorld();
-    OMSimInputData *mData;
+    void constructWorld();
+    InputDataManager *mData;
     OMSimPMTConstruction* mPMTManager;
+
+
 };
 
 #endif

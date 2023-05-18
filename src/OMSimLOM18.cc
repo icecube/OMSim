@@ -45,69 +45,69 @@
 
 
 
-LOM18::LOM18(OMSimInputData* pData, G4bool pPlaceHarness) {
+LOM18::LOM18(InputDataManager* pData, G4bool pPlaceHarness) {
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
     mPMTManager->SimulateHACoating();
     mPMTManager->SelectPMT("pmt_Hamamatsu_4inch");
-    mPMTManager->Construction();
-    GetSharedData();
+    mPMTManager->construction();
+    getSharedData();
 
     mPlaceHarness = pPlaceHarness;
     if (mPlaceHarness){
         //mHarness = new mDOMHarness(this, mData);
-        //IntegrateDetectorComponent(mHarness, G4ThreeVector(0,0,0), G4RotationMatrix(), "");
-        error("LOM18 harness not implemented yet");
+        //integrateDetectorComponent(mHarness, G4ThreeVector(0,0,0), G4RotationMatrix(), "");
+        log_error("LOM18 harness not implemented yet");
     }
-    Construction();
+    construction();
 }
 
 
 /**
  * Reads parameters from json files in /data/ 
  */
-void LOM18::GetSharedData() {
+void LOM18::getSharedData() {
     //Module Parameters
 
     //Vessel specific
-    mGlassEquatorWidth = mData->GetValueWithUnit(mDataKey, "jGlassEquatorWidth"); 
-    mGlassPoleLength = mData->GetValueWithUnit(mDataKey, "jGlassPoleLength"); 
-    mGlassThickPole = mData->GetValueWithUnit(mDataKey, "jGlassThickPole");
-    mGlassThickEquator = mData->GetValueWithUnit(mDataKey, "jGlassThickEquator"); 
-    mCylinderAngle = mData->GetValueWithUnit(mDataKey, "lCylinderAngle"); 
+    mGlassEquatorWidth = mData->getValueWithUnit(mDataKey, "jGlassEquatorWidth"); 
+    mGlassPoleLength = mData->getValueWithUnit(mDataKey, "jGlassPoleLength"); 
+    mGlassThickPole = mData->getValueWithUnit(mDataKey, "jGlassThickPole");
+    mGlassThickEquator = mData->getValueWithUnit(mDataKey, "jGlassThickEquator"); 
+    mCylinderAngle = mData->getValueWithUnit(mDataKey, "lCylinderAngle"); 
     //add rest for points and radii
 
     //PMT specific
-    mThetaCenter = mData->GetValueWithUnit(mDataKey, "jThetaCenter"); //theta angle polar pmts
-    mThetaEquatorial = mData->GetValueWithUnit(mDataKey, "jThetaEquatorial"); //theta angle equatorial pmts
-    mEqPMTPhiPhase = mData->GetValueWithUnit(mDataKey,"jEqPMTPhiPhase");
+    mThetaCenter = mData->getValueWithUnit(mDataKey, "jThetaCenter"); //theta angle polar pmts
+    mThetaEquatorial = mData->getValueWithUnit(mDataKey, "jThetaEquatorial"); //theta angle equatorial pmts
+    mEqPMTPhiPhase = mData->getValueWithUnit(mDataKey,"jEqPMTPhiPhase");
 
-    mNrPolarPMTs = mData->GetValueWithUnit(mDataKey,"jNrPolarPMTs");
-    mNrCenterPMTs = mData->GetValueWithUnit(mDataKey,"jNrCenterPMTs");
-    mNrEquatorialPMTs = mData->GetValueWithUnit(mDataKey,"jNrEquatorialPMTs");
+    mNrPolarPMTs = mData->getValueWithUnit(mDataKey,"jNrPolarPMTs");
+    mNrCenterPMTs = mData->getValueWithUnit(mDataKey,"jNrCenterPMTs");
+    mNrEquatorialPMTs = mData->getValueWithUnit(mDataKey,"jNrEquatorialPMTs");
 
     mNrPMTsPerHalf = mNrPolarPMTs + mNrCenterPMTs + mNrEquatorialPMTs;
     mTotalNrPMTs = (mNrPolarPMTs + mNrCenterPMTs + mNrEquatorialPMTs) * 2;
 
     //gelpad specific
-    mPolarPadOpeningAngle = mData->GetValueWithUnit(mDataKey,"jPolarPadOpeningAngle"); //tilt angle of gel pad axis in respect to PMT axis
-    mCenterPadOpeningAngle = mData->GetValueWithUnit(mDataKey,"jCenterPadOpeningAngle"); //
-    mEqPadOpeningAngle = mData->GetValueWithUnit(mDataKey,"jEqPadOpeningAngle"); //
+    mPolarPadOpeningAngle = mData->getValueWithUnit(mDataKey,"jPolarPadOpeningAngle"); //tilt angle of gel pad axis in respect to PMT axis
+    mCenterPadOpeningAngle = mData->getValueWithUnit(mDataKey,"jCenterPadOpeningAngle"); //
+    mEqPadOpeningAngle = mData->getValueWithUnit(mDataKey,"jEqPadOpeningAngle"); //
 
-    mGelThicknessFrontPolarPMT = mData->GetValueWithUnit(mDataKey,"jGelThicknessFrontPolarPMT"); //
-    mGelThicknessFrontCenterPMT = mData->GetValueWithUnit(mDataKey,"jGelThicknessFrontCenterPMT"); //
-    mGelThicknessFrontEqPMT = mData->GetValueWithUnit(mDataKey,"jGelThicknessFrontEqPMT"); //
+    mGelThicknessFrontPolarPMT = mData->getValueWithUnit(mDataKey,"jGelThicknessFrontPolarPMT"); //
+    mGelThicknessFrontCenterPMT = mData->getValueWithUnit(mDataKey,"jGelThicknessFrontCenterPMT"); //
+    mGelThicknessFrontEqPMT = mData->getValueWithUnit(mDataKey,"jGelThicknessFrontEqPMT"); //
 
 
     //PMT parameters
     mPMToffset = mPMTManager->GetDistancePMTCenterToPMTtip();
     mMaxPMTRadius = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
 
-    mTotalLenght = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jTotalLenght");
-    mOutRad = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jOutRad");
-    mSpherePos_y = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jSpherePos_y");
-    mEllipsePos_y = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jEllipsePos_y");
-    mEllipseZaxis = mData->GetValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jEllipseZaxis");
+    mTotalLenght = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jTotalLenght");
+    mOutRad = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jOutRad");
+    mSpherePos_y = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jSpherePos_y");
+    mEllipsePos_y = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jEllipsePos_y");
+    mEllipseZaxis = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jEllipseZaxis");
 
 }
 
@@ -116,27 +116,27 @@ void LOM18::GetSharedData() {
 /**
  * Placement function which appends all components into an abcDetectorComponent to be constructed in DetectorConstruction
  */
-void LOM18::Construction()
+void LOM18::construction()
 {   mComponents.clear();
     //Create pressure vessel and inner volume
-    G4Polycone* lGlassSolid = CreateLOM18OuterSolid();
-    G4Polycone* lInnerVolumeSolid = CreateLOM18InnerSolid();
+    G4Polycone* lGlassSolid = createLOM18OuterSolid();
+    G4Polycone* lInnerVolumeSolid = createLOM18InnerSolid();
 
     //Set positions and rotations of PMTs and gelpads
-    SetPMTPositions();
+    setPMTPositions();
    
     //Logicals
-    G4LogicalVolume* lInnerVolumeLogical = new G4LogicalVolume(lInnerVolumeSolid, mData->GetMaterial("Ri_Air"), "Inner volume logical"); //Inner volume of vessel (mothervolume of all internal components)  
-    G4LogicalVolume* lGlassLogical = new G4LogicalVolume(lGlassSolid, mData->GetMaterial("RiAbs_Glass_Vitrovex")," Glass_log"); //Vessel
-    CreateGelpadLogicalVolumes(lInnerVolumeSolid);
+    G4LogicalVolume* lInnerVolumeLogical = new G4LogicalVolume(lInnerVolumeSolid, mData->getMaterial("Ri_Air"), "Inner volume logical"); //Inner volume of vessel (mothervolume of all internal components)  
+    G4LogicalVolume* lGlassLogical = new G4LogicalVolume(lGlassSolid, mData->getMaterial("RiAbs_Glass_Vitrovex")," Glass_log"); //Vessel
+    createGelpadLogicalVolumes(lInnerVolumeSolid);
 
 
     //Placements 
-    PlacePMTs(lInnerVolumeLogical);
-    PlaceGelpads(lInnerVolumeLogical);
+    placePMTs(lInnerVolumeLogical);
+    placeGelpads(lInnerVolumeLogical);
 
-    //if (true) PlaceCADSupportStructure(lInnerVolumeLogical);
-    //if (gCADImport) PlaceCADPenetrator(lInnerVolumeLogical);
+    //if (true) placeCADSupportStructure(lInnerVolumeLogical);
+    //if (gCADImport) placeCADPenetrator(lInnerVolumeLogical);
 
     //Place InnerVolume (Mother of every other component) into GlassVolume (Mother of all)
     new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lInnerVolumeLogical, "Gel_physical", lGlassLogical, false, 0, mCheckOverlaps); //Innervolume (mother volume for all components)   
@@ -144,8 +144,8 @@ void LOM18::Construction()
 
     // ------------------ Add outer shape solid to MultiUnion in case you need substraction -------------------------------------------
     //Each Component needs to be appended to be places in abcDetectorComponent. Everything is placed in the InnerVolume which is placed in the glass which is the mother volume. This is the reason why not everything is appended on its own
-    AppendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
-    AppendEquatorBand();
+    appendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
+    appendEquatorBand();
     // ---------------- visualisation attributes --------------------------------------------------------------------------------
     lGlassLogical->SetVisAttributes(mGlassVis);
     lInnerVolumeLogical->SetVisAttributes(mInvisibleVis); //Material defined as Ri_Air
@@ -166,7 +166,7 @@ void LOM18::Construction()
  * Creation of outer module volume based on pressure vessel technical drawing... stolen drom doumeki as of yet
  * @return SolidVolume of inner module volume
  */
-G4Polycone* LOM18::CreateLOM18OuterSolid()
+G4Polycone* LOM18::createLOM18OuterSolid()
 {
 	// parameters
 	G4double r1, centerR1, centerZ1, thetaDelta1,
@@ -239,7 +239,7 @@ G4Polycone* LOM18::CreateLOM18OuterSolid()
  * Creation of inner module volume based on pressure vessel technical drawing... stolen drom doumeki as of yet
  * @return SolidVolume of inner module volume
  */
-G4Polycone* LOM18::CreateLOM18InnerSolid()
+G4Polycone* LOM18::createLOM18InnerSolid()
 {
 	// parameters
 	G4double r1, centerR1, centerZ1, thetaDelta1,
@@ -309,7 +309,7 @@ G4Polycone* LOM18::CreateLOM18InnerSolid()
 }
 
 
-void LOM18::AppendEquatorBand()
+void LOM18::appendEquatorBand()
 {
     G4double tape_width = 45.0 * mm;
     G4double thicknessTape = 1.0*mm;
@@ -327,12 +327,12 @@ void LOM18::AppendEquatorBand()
     rOuter[2] = mGlassEquatorWidth + thicknessTape;
 
     G4Polycone* polycone = new  G4Polycone("blacktape", 0, 2*M_PI, nsegments, zPlane, rInner, rOuter);
-    G4VSolid* solidouter = CreateLOM18OuterSolid();
+    G4VSolid* solidouter = createLOM18OuterSolid();
     G4SubtractionSolid* lEquatorbandSolid = new G4SubtractionSolid("BlackTapeLOM18", polycone, solidouter, 0, G4ThreeVector(0,0,0));
-    G4LogicalVolume* lEquatorbandLogical = new G4LogicalVolume(lEquatorbandSolid, mData->GetMaterial("NoOptic_Absorber"),"Equatorband_log"); 
+    G4LogicalVolume* lEquatorbandLogical = new G4LogicalVolume(lEquatorbandSolid, mData->getMaterial("NoOptic_Absorber"),"Equatorband_log"); 
     lEquatorbandLogical->SetVisAttributes(mAbsorberVis);
     
-    AppendComponent(lEquatorbandSolid, lEquatorbandLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "TeraTape");
+    appendComponent(lEquatorbandSolid, lEquatorbandLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "TeraTape");
 }
 
 
@@ -340,7 +340,7 @@ void LOM18::AppendEquatorBand()
 /**
  * Imports inner components of module from CAD file and places them as an absorber (non optical compenents only since the tesselation is strong!)
  */
-void LOM18::PlaceCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical)
+void LOM18::placeCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical)
 {
     //select file
     std::stringstream CADfile;
@@ -365,7 +365,7 @@ void LOM18::PlaceCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical)
     // Place all of the meshes it can find in the file as solids individually.
     for (auto solid : mesh->GetSolids())
     { 
-        mSupportStructureLogical  = new G4LogicalVolume( solid , mData->GetMaterial("NoOptic_Absorber") , "logical" , 0, 0, 0); //should be Refl_AluminiumGround
+        mSupportStructureLogical  = new G4LogicalVolume( solid , mData->getMaterial("NoOptic_Absorber") , "logical" , 0, 0, 0); //should be Refl_AluminiumGround
         mSupportStructureLogical->SetVisAttributes(mAluVis);
         new G4PVPlacement( lRot , G4ThreeVector(0, 0, 0) , mSupportStructureLogical, "Support structure" , lInnerVolumeLogical, false, 0, mCheckOverlaps);
     }
@@ -374,7 +374,7 @@ void LOM18::PlaceCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical)
 /**
  * Imports inner Penetrator of module from CAD file and places them as an absorber (non optical compenents only since the tesselation is strong!)
  */
-void LOM18::PlaceCADPenetrator(G4LogicalVolume* lInnerVolumeLogical)
+void LOM18::placeCADPenetrator(G4LogicalVolume* lInnerVolumeLogical)
 {
     //select file
     std::stringstream CADfile;
@@ -399,7 +399,7 @@ void LOM18::PlaceCADPenetrator(G4LogicalVolume* lInnerVolumeLogical)
     // Place all of the meshes it can find in the file as solids individually.
     for (auto solid : mesh->GetSolids())
     { 
-        mSupportStructureLogical  = new G4LogicalVolume( solid , mData->GetMaterial("NoOptic_Absorber") , "logical" , 0, 0, 0);
+        mSupportStructureLogical  = new G4LogicalVolume( solid , mData->getMaterial("NoOptic_Absorber") , "logical" , 0, 0, 0);
         mSupportStructureLogical->SetVisAttributes(mAluVis);
         new G4PVPlacement( lRot , G4ThreeVector(0, 0, 0) , mSupportStructureLogical, "Penetrator" , lInnerVolumeLogical, false, 0, mCheckOverlaps);
     }
@@ -410,7 +410,7 @@ void LOM18::PlaceCADPenetrator(G4LogicalVolume* lInnerVolumeLogical)
 /**
  * Saves postition and angles of PMTs into arrays to be used in other functions.
  */
-void LOM18::SetPMTPositions()
+void LOM18::setPMTPositions()
 {
     //PMT offsets must be measured from CAD files
     G4double lZOffsetCenterPMTAxisOrigin = 180.64*mm; //measure the z-offset from the Equator to PMT tip
@@ -514,7 +514,7 @@ void LOM18::SetPMTPositions()
  * Creation of LogicalVolume of gel pads
  * @param lGelSolid Solid inner module volume. IntersectionSolid with PMT cones is filled with gel
  */
-void LOM18::CreateGelpadLogicalVolumes(G4Polycone* lGelSolid) 
+void LOM18::createGelpadLogicalVolumes(G4Polycone* lGelSolid) 
 {
     //getting the PMT solid
     G4VSolid* lPMTsolid = mPMTManager->GetPMTSolid();
@@ -555,7 +555,7 @@ void LOM18::CreateGelpadLogicalVolumes(G4Polycone* lGelSolid)
                 lPrelimaryGelpad = new G4IntersectionSolid(converter.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
                 lGelpad = new G4SubtractionSolid(converter.str(), lPrelimaryGelpad, lPMTsolid, transformers);
                 
-                lGelPad_logical = new G4LogicalVolume(lGelpad, mData->GetMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
+                lGelPad_logical = new G4LogicalVolume(lGelpad, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
             }
             // center gel pads
             else if( (mNrPolarPMTs<=k && k<=mNrPolarPMTs+mNrCenterPMTs-1) or (k>=mNrPMTsPerHalf+mNrPolarPMTs && k<= mNrPMTsPerHalf+mNrPolarPMTs+mNrCenterPMTs-1) ){ 
@@ -574,7 +574,7 @@ void LOM18::CreateGelpadLogicalVolumes(G4Polycone* lGelSolid)
                 //creating volumes ... basic cone, subtract PMT, logical volume of gelpad
                 lPrelimaryGelpad = new G4IntersectionSolid(converter.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
                 lGelpad = new G4SubtractionSolid(converter.str(), lPrelimaryGelpad, lPMTsolid, transformers);
-                lGelPad_logical = new G4LogicalVolume(lGelpad, mData->GetMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
+                lGelPad_logical = new G4LogicalVolume(lGelpad, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
             }
             // equatorial gel pads
             else if(k<=mNrPolarPMTs+mNrCenterPMTs+mNrEquatorialPMTs -1 or k>=mTotalNrPMTs-mNrEquatorialPMTs){ 
@@ -593,7 +593,7 @@ void LOM18::CreateGelpadLogicalVolumes(G4Polycone* lGelSolid)
                 //creating volumes ... basic cone, subtract PMT, logical volume of gelpad
                 lPrelimaryGelpad = new G4IntersectionSolid(converter.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
                 lGelpad = new G4SubtractionSolid(converter.str(), lPrelimaryGelpad, lPMTsolid, transformers);
-                lGelPad_logical = new G4LogicalVolume(lGelpad, mData->GetMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
+                lGelPad_logical = new G4LogicalVolume(lGelpad, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
             }
 
             
@@ -606,7 +606,7 @@ void LOM18::CreateGelpadLogicalVolumes(G4Polycone* lGelSolid)
  * Placement of PMTs
  * @param lInnerVolumeLogical LogicalVolume of inner module volume in which the PMTs are placed.
  */
-void LOM18::PlacePMTs(G4LogicalVolume* lInnerVolumeLogical)
+void LOM18::placePMTs(G4LogicalVolume* lInnerVolumeLogical)
 {
     for(int k=0 ; k<=mTotalNrPMTs-1 ; k++){
         converter.str("");
@@ -617,7 +617,7 @@ void LOM18::PlacePMTs(G4LogicalVolume* lInnerVolumeLogical)
         lRot->rotateZ(mPMT_phi[k]);
         lTransformers = G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]));
 
-        mPMTManager->PlaceIt(lTransformers, lInnerVolumeLogical, converter.str());
+        mPMTManager->placeIt(lTransformers, lInnerVolumeLogical, converter.str());
     }
 
 }
@@ -626,7 +626,7 @@ void LOM18::PlacePMTs(G4LogicalVolume* lInnerVolumeLogical)
  * Placement of gel pads
  * @param lInnerVolumeLogical LogicalVolume of inner module volume in which the gel pads are placed.
  */
-void LOM18::PlaceGelpads(G4LogicalVolume* lInnerVolumeLogical)
+void LOM18::placeGelpads(G4LogicalVolume* lInnerVolumeLogical)
 {
     for(int k=0 ; k<=mTotalNrPMTs-1 ; k++){
         converter.str("");

@@ -10,26 +10,26 @@
 #include "OMSimInputData.hh"
 #include "G4Cons.hh"
 #include "G4Tubs.hh"
-class dEGGHarness;
+class DEggHarness;
 
 class DEgg : public abcDetectorComponent
 {
 public:
     
-    DEgg(OMSimInputData* pData,G4bool pPlaceHarness=true);
-    void Construction();
+    DEgg(InputDataManager* pData,G4bool pPlaceHarness=true);
+    void construction();
 
 private:
     OMSimPMTConstruction *mPMTManager;
-    dEGGHarness* mHarness;
+    DEggHarness* mHarness;
 
     G4String mDataKey = "om_DEGG";
     
-    void AppendPMTs();
-    void AppendInternalComponentsFromCAD();
-    void AppendPressureVesselFromCAD();
+    void appendPMTs();
+    void appendInternalComponentsFromCAD();
+    void appendPressureVesselFromCAD();
     
-    G4VSolid* CreateEggSolid(G4int pSegments_1,
+    G4VSolid* createEggSolid(G4int pSegments_1,
                             G4double pSphereRmax,
                             G4double pSpheredTheta,
                             G4double pSphereTransformZ,

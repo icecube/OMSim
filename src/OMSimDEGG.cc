@@ -40,16 +40,16 @@
 
 
 
-DEgg::DEgg(OMSimInputData* pData, G4bool pPlaceHarness) {
+DEgg::DEgg(InputDataManager* pData, G4bool pPlaceHarness) {
    mData = pData;
    mPMTManager = new OMSimPMTConstruction(mData);
    mPMTManager->SelectPMT("pmt_Hamamatsu_R5912_20_100");
-   mPMTManager->Construction();
-   Construction(); // always before harness, otherwise harness will be deleted :(
+   mPMTManager->construction();
+   construction(); // always before harness, otherwise harness will be deleted :(
 /*
    if (pPlaceHarness) {
-      mHarness = new dEGGHarness(this, mData);
-      IntegrateDetectorComponent(mHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
+      mHarness = new DEggHarness(this, mData);
+      integrateDetectorComponent(mHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
    }*/
 }
 
@@ -57,67 +57,67 @@ DEgg::DEgg(OMSimInputData* pData, G4bool pPlaceHarness) {
  * @brief Construction of the whole DEGG. If you want to change any component, you have to change it at the specific function.
  *
  */
-void DEgg::Construction() 
+void DEgg::construction() 
 {
    mComponents.clear();
    //Create pressure vessel and inner volume
-   G4VSolid* lOuterGlass = CreateEggSolid(mData->GetValueWithUnit(mDataKey, "jOutSegments1"),
-      mData->GetValueWithUnit(mDataKey, "jOutSphereRadiusMax"),
-      mData->GetValueWithUnit(mDataKey, "jOutSphereDtheta"),
-      mData->GetValueWithUnit(mDataKey, "jOutTransformZ"),
-      mData->GetValueWithUnit(mDataKey, "jOutTorusRadius1"),
-      mData->GetValueWithUnit(mDataKey, "jOutCenterOfTorusRadius1"),
-      mData->GetValueWithUnit(mDataKey, "jOutSegments2"),
-      mData->GetValueWithUnit(mDataKey, "jOutTorusRadius2"),
-      mData->GetValueWithUnit(mDataKey, "jOutCenterOfTorusRadius2"),
-      mData->GetValueWithUnit(mDataKey, "jOutCenterOfTorusZ2"),
-      mData->GetValueWithUnit(mDataKey, "jOutTorusZmin2"),
-      mData->GetValueWithUnit(mDataKey, "jOutTorusZmax2"),
-      mData->GetValueWithUnit(mDataKey, "jOutTorusZ0"),
-      mData->GetValueWithUnit(mDataKey, "jOutTorusTransformZ"));
+   G4VSolid* lOuterGlass = createEggSolid(mData->getValueWithUnit(mDataKey, "jOutSegments1"),
+      mData->getValueWithUnit(mDataKey, "jOutSphereRadiusMax"),
+      mData->getValueWithUnit(mDataKey, "jOutSphereDtheta"),
+      mData->getValueWithUnit(mDataKey, "jOutTransformZ"),
+      mData->getValueWithUnit(mDataKey, "jOutTorusRadius1"),
+      mData->getValueWithUnit(mDataKey, "jOutCenterOfTorusRadius1"),
+      mData->getValueWithUnit(mDataKey, "jOutSegments2"),
+      mData->getValueWithUnit(mDataKey, "jOutTorusRadius2"),
+      mData->getValueWithUnit(mDataKey, "jOutCenterOfTorusRadius2"),
+      mData->getValueWithUnit(mDataKey, "jOutCenterOfTorusZ2"),
+      mData->getValueWithUnit(mDataKey, "jOutTorusZmin2"),
+      mData->getValueWithUnit(mDataKey, "jOutTorusZmax2"),
+      mData->getValueWithUnit(mDataKey, "jOutTorusZ0"),
+      mData->getValueWithUnit(mDataKey, "jOutTorusTransformZ"));
 
-   G4VSolid* lInternalVolume = CreateEggSolid(mData->GetValueWithUnit(mDataKey, "jInnSegments1"),
-      mData->GetValueWithUnit(mDataKey, "jInnSphereRadiusMax"),
-      mData->GetValueWithUnit(mDataKey, "jInnSphereDtheta"),
-      mData->GetValueWithUnit(mDataKey, "jInnTransformZ"),
-      mData->GetValueWithUnit(mDataKey, "jInnTorusRadius1"),
-      mData->GetValueWithUnit(mDataKey, "jInnCenterOfTorusRadius1"),
-      mData->GetValueWithUnit(mDataKey, "jInnSegments2"),
-      mData->GetValueWithUnit(mDataKey, "jInnTorusRadius2"),
-      mData->GetValueWithUnit(mDataKey, "jInnCenterOfTorusRadius2"),
-      mData->GetValueWithUnit(mDataKey, "jInnCenterOfTorusZ2"),
-      mData->GetValueWithUnit(mDataKey, "jInnTorusZmin2"),
-      mData->GetValueWithUnit(mDataKey, "jInnTorusZmax2"),
-      mData->GetValueWithUnit(mDataKey, "jInnTorusZ0"),
-      mData->GetValueWithUnit(mDataKey, "jInnTorusTransformZ"));
+   G4VSolid* lInternalVolume = createEggSolid(mData->getValueWithUnit(mDataKey, "jInnSegments1"),
+      mData->getValueWithUnit(mDataKey, "jInnSphereRadiusMax"),
+      mData->getValueWithUnit(mDataKey, "jInnSphereDtheta"),
+      mData->getValueWithUnit(mDataKey, "jInnTransformZ"),
+      mData->getValueWithUnit(mDataKey, "jInnTorusRadius1"),
+      mData->getValueWithUnit(mDataKey, "jInnCenterOfTorusRadius1"),
+      mData->getValueWithUnit(mDataKey, "jInnSegments2"),
+      mData->getValueWithUnit(mDataKey, "jInnTorusRadius2"),
+      mData->getValueWithUnit(mDataKey, "jInnCenterOfTorusRadius2"),
+      mData->getValueWithUnit(mDataKey, "jInnCenterOfTorusZ2"),
+      mData->getValueWithUnit(mDataKey, "jInnTorusZmin2"),
+      mData->getValueWithUnit(mDataKey, "jInnTorusZmax2"),
+      mData->getValueWithUnit(mDataKey, "jInnTorusZ0"),
+      mData->getValueWithUnit(mDataKey, "jInnTorusTransformZ"));
 
    
    // Make box to substract empty space
-   G4double lGelHeight = mData->GetValueWithUnit(mDataKey, "jGelHeight");
+   G4double lGelHeight = mData->getValueWithUnit(mDataKey, "jGelHeight");
    G4Box* lSubstractionBox = new G4Box("SubstractionBox", 20*cm, 20*cm, lGelHeight);
-   G4LogicalVolume* lLogicalDummy = new G4LogicalVolume(lSubstractionBox, mData->GetMaterial("Ri_Air"), "Temp");
+   G4LogicalVolume* lLogicalDummy = new G4LogicalVolume(lSubstractionBox, mData->getMaterial("Ri_Air"), "Temp");
 
    //Append all internal components
-   AppendComponent(lSubstractionBox, lLogicalDummy, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SubstractionBox");
-   AppendPMTs(); 
+   appendComponent(lSubstractionBox, lLogicalDummy, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SubstractionBox");
+   appendPMTs(); 
    
 
    //Substract all internal components to internal volume to obtain gel and append it
-   G4VSolid* lGelLayers = SubstractToVolume(lInternalVolume, G4ThreeVector(0, 0, 0),  G4RotationMatrix(), "DeggGelLayersSolid");
-   G4LogicalVolume* lGelLogical = new G4LogicalVolume(lGelLayers, mData->GetMaterial("RiAbs_Gel_Shin-Etsu"), "DeggGelLayersLogical");
-   AppendComponent(lGelLayers, lGelLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "DeggGelLayers");
+   G4VSolid* lGelLayers = substractToVolume(lInternalVolume, G4ThreeVector(0, 0, 0),  G4RotationMatrix(), "DeggGelLayersSolid");
+   G4LogicalVolume* lGelLogical = new G4LogicalVolume(lGelLayers, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), "DeggGelLayersLogical");
+   appendComponent(lGelLayers, lGelLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "DeggGelLayers");
 
    // Delete dummy box from internal components
-   DeleteComponent("SubstractionBox");
-   //AppendInternalComponentsFromCAD();
+   deleteComponent("SubstractionBox");
+   //appendInternalComponentsFromCAD();
 
    //Logicals
-   G4LogicalVolume* lDEggGlassLogical = new G4LogicalVolume(lOuterGlass, mData->GetMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "Glass_phys");
-   G4LogicalVolume* lInnerVolumeLogical = new G4LogicalVolume(lInternalVolume, mData->GetMaterial("Ri_Air"), "InnerVolume");
+   G4LogicalVolume* lDEggGlassLogical = new G4LogicalVolume(lOuterGlass, mData->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "Glass_phys");
+   G4LogicalVolume* lInnerVolumeLogical = new G4LogicalVolume(lInternalVolume, mData->getMaterial("Ri_Air"), "InnerVolume");
 
    //Placements
    //place all internal components in internal volume 
-   PlaceIt(G4ThreeVector(0,0,0),  G4RotationMatrix(), lInnerVolumeLogical, "");
+   placeIt(G4ThreeVector(0,0,0),  G4RotationMatrix(), lInnerVolumeLogical, "");
 
    //place internal volume in glass
    new G4PVPlacement(new G4RotationMatrix(), G4ThreeVector(0, 0, 0), lInnerVolumeLogical, "VacuumGlass", lDEggGlassLogical, false, 0, mCheckOverlaps);   
@@ -126,9 +126,9 @@ void DEgg::Construction()
    mComponents.clear(); 
 
    //Add glass volume to component map
-   //AppendComponent(lInternalVolume, lInnerVolumeLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Internal");
-   AppendComponent(lOuterGlass, lDEggGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
-   //AppendPressureVesselFromCAD(); 
+   //appendComponent(lInternalVolume, lInnerVolumeLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Internal");
+   appendComponent(lOuterGlass, lDEggGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
+   //appendPressureVesselFromCAD(); 
    
    // ---------------- visualisation attributes --------------------------------------------------------------------------------
    lDEggGlassLogical->SetVisAttributes(mGlassVis);
@@ -140,18 +140,18 @@ void DEgg::Construction()
  * @brief Construction the PMT of the DEGG. PMTs are placed in the logical of the Gel (see PlaceGel()).
  *
  */
-void DEgg::AppendPMTs() {
-   G4double lPmtDistance = mData->GetValueWithUnit(mDataKey, "jPmtDistance");
+void DEgg::appendPMTs() {
+   G4double lPmtDistance = mData->getValueWithUnit(mDataKey, "jPmtDistance");
    G4RotationMatrix lRot = G4RotationMatrix();
    lRot.rotateY(180 * deg);
 
-   AppendComponent(mPMTManager->GetPMTSolid(),
+   appendComponent(mPMTManager->GetPMTSolid(),
                    mPMTManager->GetLogicalVolume(),
                    G4ThreeVector(0, 0, lPmtDistance), 
                    G4RotationMatrix(), 
                    "PMT_1");
 
-   AppendComponent(mPMTManager->GetPMTSolid(),
+   appendComponent(mPMTManager->GetPMTSolid(),
                    mPMTManager->GetLogicalVolume(),
                    G4ThreeVector(0, 0, -lPmtDistance), 
                    lRot, 
@@ -161,27 +161,27 @@ void DEgg::AppendPMTs() {
  * @brief Placement of the SupportStructure (from CAD)
  *
  */
-void DEgg::AppendInternalComponentsFromCAD()
+void DEgg::appendInternalComponentsFromCAD()
 {
-   G4String lFilePath = mData->GetValue<G4String>(mDataKey, "jInternalCADFile");
-   G4double lCADScale = mData->GetValueWithUnit(mDataKey, "jInternalCADScale");
+   G4String lFilePath = mData->getValue<G4String>(mDataKey, "jInternalCADFile");
+   G4double lCADScale = mData->getValueWithUnit(mDataKey, "jInternalCADScale");
    G4cout << "using the following CAD file for support structure: " << lFilePath << G4endl;
 
    //load mesh
    auto lMesh = CADMesh::TessellatedMesh::FromOBJ(lFilePath);
 
-   G4ThreeVector lCADoffset = G4ThreeVector(mData->GetValueWithUnit(mDataKey, "jInternalCAD_x"), 
-                                            mData->GetValueWithUnit(mDataKey, "jInternalCAD_y"), 
-                                            mData->GetValueWithUnit(mDataKey, "jInternalCAD_z")); //measured from CAD file since origin =!= Module origin
+   G4ThreeVector lCADoffset = G4ThreeVector(mData->getValueWithUnit(mDataKey, "jInternalCAD_x"), 
+                                            mData->getValueWithUnit(mDataKey, "jInternalCAD_y"), 
+                                            mData->getValueWithUnit(mDataKey, "jInternalCAD_z")); //measured from CAD file since origin =!= Module origin
    lMesh->SetScale(lCADScale);
    lMesh->SetOffset(lCADoffset*lCADScale);
    
    // Place all of the meshes it can find in the file as solids individually.
    for (auto iSolid : lMesh->GetSolids())
    {
-      G4LogicalVolume* lSupportStructureLogical = new G4LogicalVolume(iSolid, mData->GetMaterial("NoOptic_Absorber"), "SupportStructureCAD_Logical");
+      G4LogicalVolume* lSupportStructureLogical = new G4LogicalVolume(iSolid, mData->getMaterial("NoOptic_Absorber"), "SupportStructureCAD_Logical");
       lSupportStructureLogical->SetVisAttributes(mAluVis);
-      AppendComponent(iSolid, lSupportStructureLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SupportStructureCAD");
+      appendComponent(iSolid, lSupportStructureLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SupportStructureCAD");
    }
 }
 
@@ -190,10 +190,10 @@ void DEgg::AppendInternalComponentsFromCAD()
  * @brief Placement of the SupportStructure (from CAD)
  *
  */
-void DEgg::AppendPressureVesselFromCAD()
+void DEgg::appendPressureVesselFromCAD()
 {
-   G4String lFilePath = mData->GetValue<G4String>(mDataKey, "jPVCADFile");
-   G4double lCADScale = mData->GetValueWithUnit(mDataKey, "jInternalCADScale");
+   G4String lFilePath = mData->getValue<G4String>(mDataKey, "jPVCADFile");
+   G4double lCADScale = mData->getValueWithUnit(mDataKey, "jInternalCADScale");
    G4cout << "using the following CAD file for pressure vessel: " << lFilePath << G4endl;
 
    //load mesh
@@ -210,14 +210,14 @@ void DEgg::AppendPressureVesselFromCAD()
    // Place all of the meshes it can find in the file as solids individually.
    G4UnionSolid* lPressureVessel = new G4UnionSolid("CADPV", lMesh->GetSolids().at(0), lMesh->GetSolids().at(0), lRot, G4ThreeVector(0, -2*111*mm, 0));
 
-    G4LogicalVolume* lSupportStructureLogical = new G4LogicalVolume(lPressureVessel, mData->GetMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "PressureVessel");
+    G4LogicalVolume* lSupportStructureLogical = new G4LogicalVolume(lPressureVessel, mData->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "PressureVessel");
     lSupportStructureLogical->SetVisAttributes(mAluVis);
 
    G4RotationMatrix lRotNP = G4RotationMatrix();
    lRotNP.rotateX(90*deg);
    lSupportStructureLogical->SetVisAttributes(mGlassVis);
    
-   AppendComponent(lPressureVessel, lSupportStructureLogical, G4ThreeVector(0, 0, 111*mm), lRotNP, "PressureVessel");
+   appendComponent(lPressureVessel, lSupportStructureLogical, G4ThreeVector(0, 0, 111*mm), lRotNP, "PressureVessel");
    
 }
 
@@ -240,7 +240,7 @@ void DEgg::AppendPressureVesselFromCAD()
  * @return return the outer or inner shape of the glass vessel
  *
  */
-G4VSolid* DEgg::CreateEggSolid(G4int pSegments_1,
+G4VSolid* DEgg::createEggSolid(G4int pSegments_1,
    G4double pSphereRmax,
    G4double pSpheredTheta,
    G4double pSphereTransformZ,

@@ -70,9 +70,9 @@ void abcDataFile::sortVectorByReference(std::vector<G4double> &referenceVector, 
 /**
  * Defines new material from data in json-file.
  */
-void abcMaterialData::CreateMaterial()
+void abcMaterialData::createMaterial()
 {
-    mJsonTree = mFileData->AppendAndReturnTree(mFileName);
+    mJsonTree = mFileData->appendAndReturnTree(mFileName);
     
     mMPT = new G4MaterialPropertiesTable();
     mMatDatBase = G4NistManager::Instance();
@@ -80,7 +80,7 @@ void abcMaterialData::CreateMaterial()
     mObjectName = mJsonTree.get<G4String>("jName");
     const G4String lDataType = mJsonTree.get<G4String>("jDataType");
 
-    const G4double lDensity = mFileData->GetValueWithUnit(mObjectName, "jDensity");
+    const G4double lDensity = mFileData->getValueWithUnit(mObjectName, "jDensity");
 
     const G4String lState_str = mJsonTree.get<G4String>("jState");
     const G4State lState = GetState(lState_str);
@@ -96,29 +96,29 @@ void abcMaterialData::CreateMaterial()
         mMaterial->AddMaterial(mMatDatBase->FindOrBuildMaterial(componentName), componentFraction);
     }
     G4String mssg = "New Material defined: " + mMaterial->GetName();
-    debug(mssg);
+    log_debug(mssg);
 }
 /**
  * Extracts absorption length and adds it to the material property table
  */
-void abcMaterialData::ExtractAbsorptionLength()
+void abcMaterialData::extractAbsorptionLength()
 {
     std::vector<G4double> lAbsLength;
     std::vector<G4double> lAbsLengthEnergy;
-    mFileData->ParseKeyContentToVector(lAbsLength, mJsonTree, "jAbsLength", 1 * mm, false);
-    mFileData->ParseKeyContentToVector(lAbsLengthEnergy, mJsonTree, "jAbsLengthWavelength", mHC_eVnm, true);
+    mFileData->parseKeyContentToVector(lAbsLength, mJsonTree, "jAbsLength", 1 * mm, false);
+    mFileData->parseKeyContentToVector(lAbsLengthEnergy, mJsonTree, "jAbsLengthWavelength", mHC_eVnm, true);
     sortVectorByReference(lAbsLengthEnergy, lAbsLength);
     mMPT->AddProperty("ABSLENGTH", &lAbsLengthEnergy[0], &lAbsLength[0], static_cast<int>(lAbsLength.size()));
 }
 /**
  * Extracts refraction index and adds it to the material property table
  */
-void abcMaterialData::ExtractRefractionIndex()
+void abcMaterialData::extractRefractionIndex()
 {
     std::vector<G4double> lRefractionIndex;
     std::vector<G4double> lRefractionIndexEnergy;
-    mFileData->ParseKeyContentToVector(lRefractionIndex, mJsonTree, "jRefractiveIdx", 1., false);
-    mFileData->ParseKeyContentToVector(lRefractionIndexEnergy, mJsonTree, "jRefractiveIdxWavelength", mHC_eVnm, true);
+    mFileData->parseKeyContentToVector(lRefractionIndex, mJsonTree, "jRefractiveIdx", 1., false);
+    mFileData->parseKeyContentToVector(lRefractionIndexEnergy, mJsonTree, "jRefractiveIdxWavelength", mHC_eVnm, true);
     sortVectorByReference(lRefractionIndexEnergy, lRefractionIndex);
     mMPT->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
 }
@@ -148,57 +148,57 @@ G4State abcMaterialData::GetState(G4String pState_str)
 /**
  * Extracts and creates material for material with refraction index and absorption length defined.
  */
-void RefractionAndAbsorption::ExtractInformation()
+void RefractionAndAbsorption::extractInformation()
 {
-    CreateMaterial();
-    ExtractAbsorptionLength();
-    ExtractRefractionIndex();
+    createMaterial();
+    extractAbsorptionLength();
+    extractRefractionIndex();
 
     mMaterial->SetMaterialPropertiesTable(mMPT);
 }
 /**
  * Extracts and creates material for material with refraction index defined.
  */
-void RefractionOnly::ExtractInformation()
+void RefractionOnly::extractInformation()
 {
-    CreateMaterial();
-    ExtractRefractionIndex();
+    createMaterial();
+    extractRefractionIndex();
     mMaterial->SetMaterialPropertiesTable(mMPT);
 }
 /**
  * Extracts and creates material without optical properties.
  */
-void NoOptics::ExtractInformation()
+void NoOptics::extractInformation()
 {
-    CreateMaterial();
+    createMaterial();
 }
 /**
  * Extracts and creates ice with optical properties from IceCube.
  */
-void IceCubeIce::ExtractInformation()
+void IceCubeIce::extractInformation()
 {
-    CreateMaterial(); // creates IceCubeICE
+    createMaterial(); // creates IceCubeICE
 
-    G4Material *lIceMie = new G4Material("IceCubeICE_SPICE", mFileData->GetValueWithUnit(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid);      // create IceCubeICE_SPICE
-    G4Material *lBubleColumnMie = new G4Material("Mat_BubColumn", mFileData->GetValueWithUnit(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid); // create IceCubeICE_SPICE
+    G4Material *lIceMie = new G4Material("IceCubeICE_SPICE", mFileData->getValueWithUnit(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid);      // create IceCubeICE_SPICE
+    G4Material *lBubleColumnMie = new G4Material("Mat_BubColumn", mFileData->getValueWithUnit(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid); // create IceCubeICE_SPICE
     std::vector<G4double> lMieScatteringLength;
     std::vector<G4double> lMieScatteringLength_BubleColumn;
     std::vector<G4double> lWavelength;
     std::vector<G4double> lRefractionIndex;
     std::vector<G4double> lRefractionIndexEnergy;
     std::vector<G4double> lAbsLength;
-    mFileData->ParseKeyContentToVector(lRefractionIndexEnergy, mJsonTree, "jWavelength_spice", mHC_eVnm, true);
-    mFileData->ParseKeyContentToVector(lWavelength, mJsonTree, "jWavelength_spice", 1 * nm, false);
-    mFileData->ParseKeyContentToVector(mSpice_be400inv, mJsonTree, "jbe400inv_spice", 1 * m, false);
-    mFileData->ParseKeyContentToVector(mSpice_a400inv, mJsonTree, "ja400inv_spice", 1 * m, false);
-    mFileData->ParseKeyContentToVector(mSpice_Depth, mJsonTree, "jDepth_spice", 1 * m, false);
+    mFileData->parseKeyContentToVector(lRefractionIndexEnergy, mJsonTree, "jWavelength_spice", mHC_eVnm, true);
+    mFileData->parseKeyContentToVector(lWavelength, mJsonTree, "jWavelength_spice", 1 * nm, false);
+    mFileData->parseKeyContentToVector(mSpice_be400inv, mJsonTree, "jbe400inv_spice", 1 * m, false);
+    mFileData->parseKeyContentToVector(mSpice_a400inv, mJsonTree, "ja400inv_spice", 1 * m, false);
+    mFileData->parseKeyContentToVector(mSpiceDepth, mJsonTree, "jDepth_spice", 1 * m, false);
 
     for (int u = 0; u < static_cast<int>(lRefractionIndexEnergy.size()); u++)
     {
-        lRefractionIndex.push_back(Spice_Refraction(lWavelength.at(u)));
-        lAbsLength.push_back(Spice_Absorption(lWavelength.at(u)));
-        lMieScatteringLength.push_back(Mie_Scattering(lWavelength.at(u)));
-        lMieScatteringLength_BubleColumn.push_back(mInnercolumn_b_inv);
+        lRefractionIndex.push_back(spiceRefraction(lWavelength.at(u)));
+        lAbsLength.push_back(spiceAbsorption(lWavelength.at(u)));
+        lMieScatteringLength.push_back(mieScattering(lWavelength.at(u)));
+        lMieScatteringLength_BubleColumn.push_back(mInnerColumn_b_inv);
     }
     // give refractive index to IceCubeICE. This is used also for IceCubeICE_SPICE
     mMPT->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
@@ -209,20 +209,20 @@ void IceCubeIce::ExtractInformation()
     lMPT_spice->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
     lMPT_spice->AddProperty("ABSLENGTH", &lRefractionIndexEnergy[0], &lAbsLength[0], static_cast<int>(lAbsLength.size()));
     lMPT_spice->AddProperty("MIEHG", &lRefractionIndexEnergy[0], &lMieScatteringLength[0], static_cast<int>(lRefractionIndex.size())); //->SetSpline(true);
-    lMPT_spice->AddConstProperty("MIEHG_FORWARD", mMIE_spice_const[0]);
-    lMPT_spice->AddConstProperty("MIEHG_BACKWARD", mMIE_spice_const[1]);
-    lMPT_spice->AddConstProperty("MIEHG_FORWARD_RATIO", mMIE_spice_const[2]);
+    lMPT_spice->AddConstProperty("MIEHG_FORWARD", mMieSpiceConst[0]);
+    lMPT_spice->AddConstProperty("MIEHG_BACKWARD", mMieSpiceConst[1]);
+    lMPT_spice->AddConstProperty("MIEHG_FORWARD_RATIO", mMieSpiceConst[2]);
     lIceMie->SetMaterialPropertiesTable(lMPT_spice);
-    G4String mssg = "Optical ice properties calculated for depth " + std::to_string(mSpice_Depth[mSpiceDepth_pos] / m) + " m.";
-    info(mssg);
+    G4String mssg = "Optical ice properties calculated for depth " + std::to_string(mSpiceDepth[mSpiceDepth_pos] / m) + " m.";
+    log_info(mssg);
     // now give the properties to the bubble column, which are basically the same ones but with the chosen scattering lenght
     G4MaterialPropertiesTable *lMPT_holeice = new G4MaterialPropertiesTable();
     lMPT_holeice->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
     lMPT_holeice->AddProperty("ABSLENGTH", &lRefractionIndexEnergy[0], &lAbsLength[0], static_cast<int>(lAbsLength.size()));
     lMPT_holeice->AddProperty("MIEHG", &lRefractionIndexEnergy[0], &lMieScatteringLength_BubleColumn[0], static_cast<int>(lRefractionIndex.size())); //->SetSpline(true);
-    lMPT_holeice->AddConstProperty("MIEHG_FORWARD", mMIE_spice_const[0]);
-    lMPT_holeice->AddConstProperty("MIEHG_BACKWARD", mMIE_spice_const[1]);
-    lMPT_holeice->AddConstProperty("MIEHG_FORWARD_RATIO", mMIE_spice_const[2]);
+    lMPT_holeice->AddConstProperty("MIEHG_FORWARD", mMieSpiceConst[0]);
+    lMPT_holeice->AddConstProperty("MIEHG_BACKWARD", mMieSpiceConst[1]);
+    lMPT_holeice->AddConstProperty("MIEHG_FORWARD_RATIO", mMieSpiceConst[2]);
     lBubleColumnMie->SetMaterialPropertiesTable(lMPT_holeice);
 }
 /*
@@ -234,7 +234,7 @@ void IceCubeIce::ExtractInformation()
  * @param pDepth Depth in m from where we need the temperature
  * @return Temperature
  */
-G4double IceCubeIce::Spice_Temperature(G4double pDepth)
+G4double IceCubeIce::spiceTemperature(G4double pDepth)
 {
     G4double spice_temp = 221.5 - 0.00045319 / m * pDepth + 5.822e-6 / m2 * pow(pDepth, 2.);
     return spice_temp;
@@ -245,13 +245,13 @@ G4double IceCubeIce::Spice_Temperature(G4double pDepth)
  * @param pLambd Wavelength
  * @return Absorption length
  */
-G4double IceCubeIce::Spice_Absorption(G4double pLambd)
+G4double IceCubeIce::spiceAbsorption(G4double pLambd)
 {
     G4double lKappa = 1.08;
     G4double lParamA = 6954. / m;
     G4double lParamB = 6618 * nm;
     G4double lAdust = 1. / (mSpice_a400inv[mSpiceDepth_pos]) * pow(pLambd / (400. * nm), -lKappa);
-    G4double lDeltaTau = Spice_Temperature(mSpice_Depth[mSpiceDepth_pos]) - Spice_Temperature(1730.);
+    G4double lDeltaTau = spiceTemperature(mSpiceDepth[mSpiceDepth_pos]) - spiceTemperature(1730.);
     G4double la_inv = 1. / (lAdust + lParamA * exp(-lParamB / pLambd) * (1. + 0.01 * lDeltaTau));
     return la_inv;
 }
@@ -261,7 +261,7 @@ G4double IceCubeIce::Spice_Absorption(G4double pLambd)
  * @param pLambd Wavelength
  * @return Refraction index
  */
-G4double IceCubeIce::Spice_Refraction(G4double pLambd)
+G4double IceCubeIce::spiceRefraction(G4double pLambd)
 {
     // unknown depth. Parametrization by Thomas Kittler.
     G4double lLambd3 = pLambd * 1e-3;
@@ -273,7 +273,7 @@ G4double IceCubeIce::Spice_Refraction(G4double pLambd)
  * @param pLambd Wavelength
  * @return Mie scattering length
  */
-G4double IceCubeIce::Mie_Scattering(G4double pLambd)
+G4double IceCubeIce::mieScattering(G4double pLambd)
 {
     // depth_pos is the coordinate for the chosen depth in Depth_spice. For example to choose
     // depth=2278.2 m, we use depth_pos = 88
@@ -289,7 +289,7 @@ G4double IceCubeIce::Mie_Scattering(G4double pLambd)
 /**
  * Defines new reflective surface from data in json-file.
  */
-void ReflectiveSurface::ExtractInformation()
+void ReflectiveSurface::extractInformation()
 {
 
     pt::read_json(mFileName, mJsonTree); // read json file into mJsonTree
@@ -299,9 +299,9 @@ void ReflectiveSurface::ExtractInformation()
     G4String lFinishStr = mJsonTree.get<G4String>("jFinish");
     G4String lTypeStr = mJsonTree.get<G4String>("jType");
 
-    G4OpticalSurfaceModel lModel = GetOpticalSurfaceModel(lModelStr);
-    G4OpticalSurfaceFinish lFinish = GetOpticalSurfaceFinish(lFinishStr);
-    G4SurfaceType lType = GetSurfaceType(lTypeStr);
+    G4OpticalSurfaceModel lModel = getOpticalSurfaceModel(lModelStr);
+    G4OpticalSurfaceFinish lFinish = getOpticalSurfaceFinish(lFinishStr);
+    G4SurfaceType lType = getSurfaceType(lTypeStr);
 
     mOpticalSurface = new G4OpticalSurface(mObjectName, lModel, lFinish, lType);
     G4MaterialPropertiesTable *lMPT = new G4MaterialPropertiesTable();
@@ -337,15 +337,15 @@ void ReflectiveSurface::ExtractInformation()
         G4String lKey = key.second.get_value<G4String>();
         std::vector<G4double> lPhotonEnergy;
         std::vector<G4double> lValues;
-        mFileData->ParseKeyContentToVector(lValues, mJsonTree, "jValues_" + lKey, 1., false);
-        mFileData->ParseKeyContentToVector(lPhotonEnergy, mJsonTree, "jWavelength_" + lKey, mHC_eVnm, true);
+        mFileData->parseKeyContentToVector(lValues, mJsonTree, "jValues_" + lKey, 1., false);
+        mFileData->parseKeyContentToVector(lPhotonEnergy, mJsonTree, "jWavelength_" + lKey, mHC_eVnm, true);
         sortVectorByReference(lPhotonEnergy, lValues);
         lMPT->AddProperty(lKey, &lPhotonEnergy[0], &lValues[0], static_cast<int>(lPhotonEnergy.size()));
     }
 
     mOpticalSurface->SetMaterialPropertiesTable(lMPT);
     G4String mssg = "New Optical Surface: " + mObjectName;
-    debug(mssg);
+    log_debug(mssg);
 }
 
 /**
@@ -353,7 +353,7 @@ void ReflectiveSurface::ExtractInformation()
  * @param  G4String
  * @return G4OpticalSurfaceFinish
  */
-G4OpticalSurfaceFinish ReflectiveSurface::GetOpticalSurfaceFinish(G4String pFinish)
+G4OpticalSurfaceFinish ReflectiveSurface::getOpticalSurfaceFinish(G4String pFinish)
 {
     G4OpticalSurfaceFinish lFinish;
     if (pFinish == "polished")
@@ -423,7 +423,7 @@ G4OpticalSurfaceFinish ReflectiveSurface::GetOpticalSurfaceFinish(G4String pFini
  * @param  G4String
  * @return G4OpticalSurfaceModel
  */
-G4OpticalSurfaceModel ReflectiveSurface::GetOpticalSurfaceModel(G4String pModel)
+G4OpticalSurfaceModel ReflectiveSurface::getOpticalSurfaceModel(G4String pModel)
 {
     G4OpticalSurfaceModel lModel;
     if (pModel == "glisur")
@@ -439,7 +439,7 @@ G4OpticalSurfaceModel ReflectiveSurface::GetOpticalSurfaceModel(G4String pModel)
  * @param  G4String
  * @return G4SurfaceType
  */
-G4SurfaceType ReflectiveSurface::GetSurfaceType(G4String pType)
+G4SurfaceType ReflectiveSurface::getSurfaceType(G4String pType)
 {
 
     G4SurfaceType lType;

@@ -13,30 +13,31 @@
 #include "G4VisAttributes.hh"
 #include "OMSimLogger.hh"
 #include "OMSimCommandArgsTable.hh"
+#include "OMSimUIinterface.hh"
 
-mDOMFlasher::mDOMFlasher(OMSimInputData *pData)
+mDOMFlasher::mDOMFlasher(InputDataManager *pData)
 {
 	mData = pData;
-	Construction();
+	construction();
 }
 
-void mDOMFlasher::Construction()
+void mDOMFlasher::construction()
 {
-	MakeSolids();
-	MakeLogicalVolumes();
+	makeSolids();
+	makeLogicalVolumes();
 
 	//  Placement LED itself
 	new G4PVPlacement(0, G4ThreeVector(0, 0, -1.7 * mm), mLEDLogical, "LED_physical", mFlasherHoleLogical, false, 0, mCheckOverlaps); // LED to glass 1mm: -1.7mm; LED to glass 0.6mm: -1.1mm
 	// Placement LED glass top between air (where LED is) and gel
 	new G4PVPlacement(0, G4ThreeVector(0, 0, 4.4 * mm + 0.875 * mm), mGlassWindowLogical, "LED_Glass top_physical", mFlasherHoleLogical, false, 0, mCheckOverlaps);
 
-	AppendComponent(mFlasherHoleSolid, mFlasherHoleLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Flasher hole");
+	appendComponent(mFlasherHoleSolid, mFlasherHoleLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Flasher hole");
 	mFlasherHoleLogical->SetVisAttributes(mInvisibleVis);
 	mLEDLogical->SetVisAttributes(mLEDvis);
 	mGlassWindowLogical->SetVisAttributes(mGlassVis);
 }
 
-void mDOMFlasher::MakeSolids()
+void mDOMFlasher::makeSolids()
 {
 
 	// NOTE: This should not be necessary (substraction with lAirSolid should be enough), but somehow a visual glitch is visible otherwise
@@ -58,25 +59,25 @@ void mDOMFlasher::MakeSolids()
 	mLEDSolid = new G4UnionSolid("temp", lLEDCylSolid, lLEDTopSolid, 0, G4ThreeVector(0, 0, 0.26 * cm));
 }
 
-void mDOMFlasher::MakeLogicalVolumes()
+void mDOMFlasher::makeLogicalVolumes()
 {
 	mFlasherHoleLogical = new G4LogicalVolume(mFlasherHoleSolid,
-											  mData->GetMaterial("Ri_Vacuum"),
+											  mData->getMaterial("Ri_Vacuum"),
 											  "LED hole");
 	mGlassWindowLogical = new G4LogicalVolume(mGlassWindowSolid,
-											  mData->GetMaterial("RiAbs_Glass_Vitrovex"),
+											  mData->getMaterial("RiAbs_Glass_Vitrovex"),
 											  "LED Glass top logical");
 	mLEDLogical = new G4LogicalVolume(mLEDSolid,
-									  mData->GetMaterial("Ri_Glass_LED"),
+									  mData->getMaterial("Ri_Glass_LED"),
 									  "LED logical");
 }
 
-std::tuple<G4UnionSolid *, G4UnionSolid *, G4Tubs *> mDOMFlasher::GetSolids()
+std::tuple<G4UnionSolid *, G4UnionSolid *, G4Tubs *> mDOMFlasher::getSolids()
 {
 	return std::make_tuple(mLEDSolid, mFlasherHoleSolid, mGlassWindowSolid);
 }
 
-void mDOMFlasher::ReadFlasherProfile()
+void mDOMFlasher::readFlasherProfile()
 {
 	std::vector<double> led_profile_x;
 	std::vector<double> led_profile_y;
@@ -88,7 +89,7 @@ void mDOMFlasher::runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4in
 {
 	if (!mFlasherProfileAvailable)
 	{
-		ReadFlasherProfile();
+		readFlasherProfile();
 	}
 
 	// Get Flasher and Rotation Info
@@ -107,7 +108,7 @@ FlasherPositionInfo mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4i
 	if (pLEDIndex < 0 || pLEDIndex >= lLED_AngFromSphere.size())
 	{
 		// throw an exception or return an error
-		critical("mDOM Flasher index provided not valid");
+		log_critical("mDOM Flasher index provided not valid");
 		throw std::invalid_argument("mDOM Flasher index provided not valid");
 	}
 
@@ -120,7 +121,7 @@ FlasherPositionInfo mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4i
 	G4RotationMatrix lFlashingModuleOrientation = pMDOMInstance->mPlacedOrientations.at(pModuleIndex);
 	G4ThreeVector lFlashingModulePos = pMDOMInstance->mPlacedPositions.at(pModuleIndex);
 	G4ThreeVector lFlasherLocalThreeVector = mPlacedPositions.at(pLEDIndex);
-	G4Transform3D lFlasherGlobalPosition = GetNewPosition(lFlashingModulePos, lFlashingModuleOrientation, lFlasherLocalThreeVector, G4RotationMatrix());
+	G4Transform3D lFlasherGlobalPosition = getNewPosition(lFlashingModulePos, lFlashingModuleOrientation, lFlasherLocalThreeVector, G4RotationMatrix());
 
 	// Store global position in info
 	info.globalPosition = lFlasherGlobalPosition.getTranslation();
@@ -134,37 +135,38 @@ G4ThreeVector mDOMFlasher::getFlasherGlobalThreeVector(mDOM *pMDOMInstance, G4in
 
 	// get the positions like: position of the LED + position of the module with the corresponding rotation matrix
 	G4ThreeVector lFlasherLocalThreeVector = mPlacedPositions.at(pLEDIndex);
-	G4Transform3D lFlasherGlobalPosition = GetNewPosition(lFlashingModulePos, orientation, lFlasherLocalThreeVector, G4RotationMatrix());
+	G4Transform3D lFlasherGlobalPosition = getNewPosition(lFlashingModulePos, orientation, lFlasherLocalThreeVector, G4RotationMatrix());
 
 	return lFlasherGlobalPosition.getTranslation();
 }
 
 void mDOMFlasher::configureGPS(FlasherPositionInfo flasherInfo)
-{
-	applyCommand("/gps/pos/type Point");
-	applyCommand("/gps/ang/type user");	  // biast = theta
-	applyCommand("/gps/hist/type theta"); // biast = theta
+{	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+
+	lUIinterface.applyCommand("/gps/pos/type Point");
+	lUIinterface.applyCommand("/gps/ang/type user");	  // biast = theta
+	lUIinterface.applyCommand("/gps/hist/type theta"); // biast = theta
 
 	// for (unsigned int u = 0; u < led_profile_x.size(); u++)
 	// {
-	// 	applyCommand("/gps/hist/point {} {}", led_profile_x.at(u), led_profile_y.at(u)); // biast = theta
+	// 	applyCommand("/gps/hist/point", led_profile_x.at(u), led_profile_y.at(u)); // biast = theta
 	// }
 
-	applyCommand("/gps/ang/surfnorm");
+	lUIinterface.applyCommand("/gps/ang/surfnorm");
 
 	// build angles rot1 and rot2
 	G4ThreeVector rot1Vector = buildRotVector(flasherInfo.phi, 0, flasherInfo.orientation);
-	applyCommand("/gps/pos/rot1 {} {} {}", rot1Vector.getX(), rot1Vector.getY(), rot1Vector.getZ());
-	applyCommand("/gps/ang/rot1 {} {} {}", rot1Vector.getX(), rot1Vector.getY(), rot1Vector.getZ());
+	lUIinterface.applyCommand("/gps/pos/rot1", rot1Vector.getX(), rot1Vector.getY(), rot1Vector.getZ());
+	lUIinterface.applyCommand("/gps/ang/rot1", rot1Vector.getX(), rot1Vector.getY(), rot1Vector.getZ());
 
 	G4ThreeVector rot2Vector = buildRotVector(flasherInfo.phi, flasherInfo.theta, flasherInfo.orientation);
-	applyCommand("/gps/pos/rot2 {} {} {}", rot2Vector.getX(), rot2Vector.getY(), rot2Vector.getZ());
-	applyCommand("/gps/ang/rot2 {} {} {}", rot2Vector.getX(), rot2Vector.getY(), rot2Vector.getZ());
-	applyCommand("/gps/ang/maxtheta 89 deg"); // when too close to 90, give photons that directly hit the structure and do not propagate... photons with theta=90 are anyway weighed very low
+	lUIinterface.applyCommand("/gps/pos/rot2", rot2Vector.getX(), rot2Vector.getY(), rot2Vector.getZ());
+	lUIinterface.applyCommand("/gps/ang/rot2", rot2Vector.getX(), rot2Vector.getY(), rot2Vector.getZ());
+	lUIinterface.applyCommand("/gps/ang/maxtheta 89 deg"); // when too close to 90, give photons that directly hit the structure and do not propagate... photons with theta=90 are anyway weighed very low
 
-	applyCommand("/gps/pos/centre {} {} {} mm", flasherInfo.globalPosition.getX(), flasherInfo.globalPosition.getY(), flasherInfo.globalPosition.getZ());
-	applyCommand("/gps/particle opticalphoton");
-	applyCommand("/gps/energy {} eV", 1239.84193 / OMSimCommandArgsTable::getInstance().get<bool>("wavelength"));
+	lUIinterface.applyCommand("/gps/pos/centre", flasherInfo.globalPosition.getX(), flasherInfo.globalPosition.getY(), flasherInfo.globalPosition.getZ(), "mm");
+	lUIinterface.applyCommand("/gps/particle opticalphoton");
+	lUIinterface.applyCommand("/gps/energy", 1239.84193 / OMSimCommandArgsTable::getInstance().get<G4double>("wavelength"), "eV");
 }
 
 G4ThreeVector mDOMFlasher::buildRotVector(G4double phi, G4double theta, G4RotationMatrix orientation)
@@ -186,7 +188,7 @@ G4ThreeVector mDOMFlasher::buildRotVector(G4double phi, G4double theta, G4Rotati
 
 	// Rotate this vector with the proper module rotation (no translation this time!)
 	G4ThreeVector rotVector = G4ThreeVector(xPrime, yPrime, zPrime);
-	G4Transform3D rotTrans = GetNewPosition(G4ThreeVector(), orientation, rotVector, G4RotationMatrix());
+	G4Transform3D rotTrans = getNewPosition(G4ThreeVector(), orientation, rotVector, G4RotationMatrix());
 	return rotTrans.getTranslation();
 }
 

@@ -17,7 +17,7 @@
 #include <TGraph.h>
 
 OMSimPMTResponse::OMSimPMTResponse() {
-    debug("Opening photocathode scans data...");
+    log_debug("Opening photocathode scans data...");
     std::string path = "../data/PMT_scans/";
 
     mRelativeDetectionEfficiencyInterp = new TGraph((path+"weightsVsR_vFit_220nm.txt").c_str());
@@ -34,7 +34,7 @@ OMSimPMTResponse::OMSimPMTResponse() {
         mTransitTimeSpreadG2Dmap[lKey] = new TGraph2D((path+"TransitTimeSpread_"+lWv+".dat").c_str());
         mTransitTimeSpreadG2Dmap[lKey]->SetName(("TransitTimeSpread_"+lWv).c_str());
     }
-    debug("Finished opening photocathode scans data...");
+    log_debug("Finished opening photocathode scans data...");
 }
 
 

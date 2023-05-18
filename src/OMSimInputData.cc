@@ -29,7 +29,7 @@
 
 namespace pt = boost::property_tree;
 
-OMSimInputData::OMSimInputData()
+InputDataManager::InputDataManager()
 {
 }
 
@@ -44,14 +44,14 @@ OMSimInputData::OMSimInputData()
  * Appends information of json-file containing PMT/OM parameters to a vector of ptrees
  * @param pFileName Name of file containing json
  */
-pt::ptree ParameterTable::AppendAndReturnTree(G4String pFileName)
+pt::ptree ParameterTable::appendAndReturnTree(G4String pFileName)
 {
     pt::ptree lJsonTree;
     pt::read_json(pFileName, lJsonTree);
     const G4String lName = lJsonTree.get<G4String>("jName");
     mTable[lName] = lJsonTree;
     G4String mssg = lName + " added to dictionary...";
-    debug(mssg);
+    log_debug(mssg);
     return lJsonTree;
 }
 
@@ -61,7 +61,7 @@ pt::ptree ParameterTable::AppendAndReturnTree(G4String pFileName)
  * @param pParameter Name of parameter in json tree
  * @return G4double of the value and its unit
  */
-G4double ParameterTable::GetValueWithUnit(G4String pKey, G4String pParameter)
+G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
 {
     
     try {
@@ -89,10 +89,10 @@ G4double ParameterTable::GetValueWithUnit(G4String pKey, G4String pParameter)
  * @param pParameter Name of parameter in json tree
  * @return G4double of the value and its unit
  */
-pt::ptree ParameterTable::GetJSONTree(G4String pKey)
+pt::ptree ParameterTable::getJSONTree(G4String pKey)
 {
-    if (CheckIfKeyInTable(pKey)) return mTable.at(pKey);
-    else critical("Key not found in table");
+    if (checkIfKeyInTable(pKey)) return mTable.at(pKey);
+    else log_critical("Key not found in table");
 }
 
 
@@ -100,7 +100,7 @@ pt::ptree ParameterTable::GetJSONTree(G4String pKey)
 /**
 * Check if key in table
 */
-G4bool ParameterTable::CheckIfKeyInTable(G4String pKey)
+G4bool ParameterTable::checkIfKeyInTable(G4String pKey)
 {
     const G4int lFound = mTable.count(pKey);
     if (lFound > 0) return true;
@@ -113,14 +113,14 @@ G4bool ParameterTable::CheckIfKeyInTable(G4String pKey)
 */
 
 /**
-* Get a G4Material. In order to get custom built materials, method SearchFolders() should have already been called.
+* Get a G4Material. In order to get custom built materials, method searchFolders() should have already been called.
 * Standard materials from Geant4 are also transfered directly (if found through FindOrBuildMaterial()).
 * Materials defined by arguments of the main should start with "arg" and then we get the material name from the
 * arrays depending on the global integers (gGel, gGlass, gEnvironment..) .
 * @param pName name of the (custom) material or "argVesselGlass", "argGel", "argWorld" for argument materials
 * @return G4Material
 */
-G4Material* OMSimInputData::GetMaterial(G4String pName)
+G4Material* InputDataManager::getMaterial(G4String pName)
 {
 
     //Check if requested material is an argument material
@@ -138,13 +138,13 @@ G4Material* OMSimInputData::GetMaterial(G4String pName)
         G4int lEnvironmentIndex = lArgs.get<G4int>("environment");
 
         if (pName == "argVesselGlass")
-            return GetMaterial(lGlass[lGlassIndex]);
+            return getMaterial(lGlass[lGlassIndex]);
 
         else if (pName == "argGel")
-            return GetMaterial(lGel[lGelIndex]);
+            return getMaterial(lGel[lGelIndex]);
 
         else if (pName == "argWorld")
-            return GetMaterial(lWorld[lEnvironmentIndex]);
+            return getMaterial(lWorld[lEnvironmentIndex]);
     }
 
     //If it is not an argument material, the material is looked up.
@@ -156,11 +156,11 @@ G4Material* OMSimInputData::GetMaterial(G4String pName)
 }
 
 /**
-* Get a G4OpticalSurface. In order to get custom built materials, method SearchFolders() should have already been called.
+* Get a G4OpticalSurface. In order to get custom built materials, method searchFolders() should have already been called.
 * @param pName name of the optical surface or argument reflectors "argReflector"
 * @return G4OpticalSurface
 */
-G4OpticalSurface* OMSimInputData::GetOpticalSurface(G4String pName)
+G4OpticalSurface* InputDataManager::getOpticalSurface(G4String pName)
 {
 
     //Check if requested material is an argument surface
@@ -168,7 +168,7 @@ G4OpticalSurface* OMSimInputData::GetOpticalSurface(G4String pName)
     {   
         G4String lRefCones[] = { "Refl_V95Gel", "Refl_V98Gel", "Refl_Aluminium", "Refl_Total98" };
         G4int lReflectiveIndex = OMSimCommandArgsTable::getInstance().get<G4int>("reflective_surface");
-        return GetOpticalSurface(lRefCones[lReflectiveIndex]);
+        return getOpticalSurface(lRefCones[lReflectiveIndex]);
     }
     //If not, we look in the dictionary
     else
@@ -180,81 +180,101 @@ G4OpticalSurface* OMSimInputData::GetOpticalSurface(G4String pName)
         }
         else
         {   G4String mssg = "Requested Optical Surface " + pName + " not found. This will cause a segmentation fault. Please check the name!!";
-            critical(mssg);
+            log_critical(mssg);
         }
     }
 }
 
 /**
-* Calls ScannDataDirectory in the defined folders.
-* @see ScannDataDirectory
+* Calls scannDataDirectory in the defined folders.
+* @see scannDataDirectory
 */
-void OMSimInputData::SearchFolders()
+void InputDataManager::searchFolders()
 {
-    mDataDirectory = "../data/Materials";
-    ScannDataDirectory();
-    mDataDirectory = "../data/PMTs";
-    ScannDataDirectory();
-    mDataDirectory = "../data/SegmentedModules";
-    ScannDataDirectory();
+    std::vector<std::string> directories = {
+        "../data/Materials",
+        "../data/PMTs",
+        "../data/SegmentedModules",
+        // ... you can add more directories here ...
+    };
+    
+    for (const auto& directory : directories) {
+        mDataDirectory = directory;
+        scannDataDirectory();
+    }
 }
 
+
 /**
-* Scann for data files inside mDataDirectory and creates materials.
+ * @brief Processes a data file based on its name prefix.
+ *
+ * The function identifies the type of data file (RefractionAndAbsorption, RefractionOnly, NoOptics, IceCubeIce, ReflectiveSurface or others)
+ * based on the prefix of the filename. It then constructs an object of the appropriate class and invokes its information extraction method.
+ * For 'Refl' prefixed files, it also updates the mOpticalSurfaceMap. For 'pmt_', 'om_', and 'usr_' prefixed files, it invokes directly appendAndReturnTree
+ * without any extra parsing into Geant4 objects.
+ *
+ * @param pFilePath Full path to the file.
+ * @param pFileName Name of the file (without the path).
+ */
+void InputDataManager::processFile(const std::string& pFilePath, const std::string& pFileName) {
+ if (pFileName.substr(0, 5) == "RiAbs")
+        {
+            RefractionAndAbsorption lDataFile(pFilePath);
+            lDataFile.extractInformation();
+        }
+        else if (pFileName.substr(0, 2) == "Ri")
+        {
+            RefractionOnly lDataFile(pFilePath);
+            lDataFile.extractInformation();
+        }
+        else if (pFileName.substr(0, 7) == "NoOptic")
+        {
+            NoOptics lDataFile(pFilePath);
+            lDataFile.extractInformation();
+        }
+        else if (pFileName.substr(0, 10) == "IceCubeICE")
+        {
+            IceCubeIce lDataFile(pFilePath);
+            lDataFile.extractInformation();
+        }
+        else if ((pFileName.substr(0, 4) == "Refl"))
+        {
+            ReflectiveSurface lDataFile(pFilePath);
+            lDataFile.extractInformation();
+            mOpticalSurfaceMap[lDataFile.mObjectName] = lDataFile.mOpticalSurface;
+        }
+        else if (pFileName.substr(0, 4) == "pmt_" || pFileName.substr(0, 3) == "om_" || pFileName.substr(0, 4) == "usr_")
+        {
+            appendAndReturnTree(pFilePath);
+        }
+}
+
+
+/**
+* Scann for data files inside mDataDirectory and process files.
 * @param pName name of the material
 */
-void OMSimInputData::ScannDataDirectory()
+void InputDataManager::scannDataDirectory()
 {
-
-    struct dirent* lFile = NULL;
-    DIR* lDirectory = NULL;
-
-    lDirectory = opendir(mDataDirectory.data());
+    DIR* lDirectory = opendir(mDataDirectory.data());
     if (lDirectory == NULL)
     {
         G4cerr << "Couldn't open directory" << mDataDirectory << G4endl;
         return;
     }
 
+    dirent* lFile;
     while ((lFile = readdir(lDirectory)))
     {
-        const std::string fileName = lFile->d_name;
-        
-        if (lFile->d_type == 8)
+        if (lFile->d_type != DT_REG) // ignore if not a regular file
         {
-            if (fileName.substr(0, 5) == "RiAbs")
-            {
-                RefractionAndAbsorption* lDataFile = new RefractionAndAbsorption(mDataDirectory + "/" + fileName);
-                lDataFile->ExtractInformation();
-            }
-            else if (fileName.substr(0, 2) == "Ri")
-            {
-                RefractionOnly* lDataFile = new RefractionOnly(mDataDirectory + "/" + fileName);
-                lDataFile->ExtractInformation();
-            }
-            else if (fileName.substr(0, 7) == "NoOptic")
-            {
-                NoOptics* lDataFile = new NoOptics(mDataDirectory + "/" + fileName);
-                lDataFile->ExtractInformation();
-            }
-            else if (fileName.substr(0, 10) == "IceCubeICE")
-            {
-                IceCubeIce* lDataFile = new IceCubeIce(mDataDirectory + "/" + fileName);
-                lDataFile->ExtractInformation();
-            }
-            else if ((fileName.substr(0, 4) == "Refl"))
-            {
-                ReflectiveSurface* lDataFile = new ReflectiveSurface(mDataDirectory + "/" + fileName);
-                lDataFile->ExtractInformation();
-                mOpticalSurfaceMap[lDataFile->mObjectName] = lDataFile->mOpticalSurface;
-            }
-            else if ((fileName.substr(0, 4) == "pmt_"))
-                AppendAndReturnTree(mDataDirectory + "/" + fileName);
-            else if ((fileName.substr(0, 3) == "om_"))
-                AppendAndReturnTree(mDataDirectory + "/" + fileName);
-            else if ((fileName.substr(0, 4) == "usr_"))
-                AppendAndReturnTree(mDataDirectory + "/" + fileName);
+            continue;
         }
+
+        const std::string pFileName = lFile->d_name;
+        std::string filePath = mDataDirectory + "/" + pFileName;
+
+        processFile(filePath, pFileName);
     }
     closedir(lDirectory);
 }

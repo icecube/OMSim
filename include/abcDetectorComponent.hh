@@ -16,9 +16,9 @@ class abcDetectorComponent
 {
 public:
     abcDetectorComponent(){};
-    virtual void Construction() = 0; // Abstract method you have to define in order to make a derived class from abcDetectorComponent
+    virtual void construction() = 0; // Abstract method you have to define in order to make a derived class from abcDetectorComponent
 
-    OMSimInputData* mData; // Instance of OMSimInputdata, which should be started only once.
+    InputDataManager* mData; // Instance of OMSimInputdata, which should be started only once.
     bool mCheckOverlaps = true;
     
     struct Component{     // Struct of variables of component of a DetectorComponent
@@ -37,16 +37,16 @@ public:
     std::map<G4String, G4PVPlacement*> mLastPhysicals;
 
     /**Methods in abcDetectorComponent.cc*/
-    void AppendComponent(G4VSolid* pSolid, G4LogicalVolume* pLogical, G4ThreeVector pVector, G4RotationMatrix pRotation, G4String pName);
-    G4bool CheckIfExists(G4String pName);
-    void DeleteComponent(G4String pName);
-    Component GetComponent(G4String pName);
-    G4Transform3D GetNewPosition(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4ThreeVector pObjectPosition, G4RotationMatrix pObjectRotation);
-    void IntegrateDetectorComponent(abcDetectorComponent* pToIntegrate, G4ThreeVector pPosition, G4RotationMatrix pRotation, G4String pNameExtension);
-    void PlaceIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume*& pMother, G4String pNameExtension = "");
-    void PlaceIt(G4Transform3D pTrans, G4LogicalVolume*& pMother, G4String pNameExtension = "");
-    G4SubtractionSolid* SubstractToVolume(G4VSolid* pInputVolume, G4ThreeVector pSubstractionPos, G4RotationMatrix pSubstractionRot, G4String pNewVolumeName);
-    G4SubtractionSolid* SubstractToVolume(G4VSolid* pInputVolume, G4Transform3D pTrans, G4String pNewVolumeName);
+    void appendComponent(G4VSolid* pSolid, G4LogicalVolume* pLogical, G4ThreeVector pVector, G4RotationMatrix pRotation, G4String pName);
+    G4bool checkIfExists(G4String pName);
+    void deleteComponent(G4String pName);
+    Component getComponent(G4String pName);
+    G4Transform3D getNewPosition(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4ThreeVector pObjectPosition, G4RotationMatrix pObjectRotation);
+    void integrateDetectorComponent(abcDetectorComponent* pToIntegrate, G4ThreeVector pPosition, G4RotationMatrix pRotation, G4String pNameExtension);
+    void placeIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume*& pMother, G4String pNameExtension = "");
+    void placeIt(G4Transform3D pTrans, G4LogicalVolume*& pMother, G4String pNameExtension = "");
+    G4SubtractionSolid* substractToVolume(G4VSolid* pInputVolume, G4ThreeVector pSubstractionPos, G4RotationMatrix pSubstractionRot, G4String pNewVolumeName);
+    G4SubtractionSolid* substractToVolume(G4VSolid* pInputVolume, G4Transform3D pTrans, G4String pNewVolumeName);
 protected:
     
     const G4VisAttributes* mGlassVis = new G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.25));

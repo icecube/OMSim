@@ -10,22 +10,22 @@
 #include "G4Tubs.hh"
 
 class DEgg;
-class dEGGHarness : public abcDetectorComponent
+class DEggHarness : public abcDetectorComponent
 {
 public:
-    //dEGGHarness(OMSimInputData *pData);
-    dEGGHarness(DEgg* pDEGG, OMSimInputData *pData);
-    void Construction();
+    //DEggHarness(InputDataManager *pData);
+    DEggHarness(DEgg* pDEGG, InputDataManager *pData);
+    void construction();
     G4String mDataKey = "om_DEGG_Harness";
 
 private:
     DEgg* mOM;
 
-    void PlaceCADHarness();
-    void PlaceCADPenetrator();
-    void MainDataCable();
-    G4VSolid*Build(G4double rmin,G4double rmax,G4double sphi,G4double dphi,G4double stheta,G4double dtheta);
-    void GetSharedData();
+    void placeCADHarness();
+    void placeCADPenetrator();
+    void mainDataCable();
+    G4VSolid*buildHarnessSolid(G4double rmin,G4double rmax,G4double sphi,G4double dphi,G4double stheta,G4double dtheta);
+    void getSharedData();
     
 
     
