@@ -41,6 +41,8 @@ OMSimDetectorConstruction::OMSimDetectorConstruction()
 
 OMSimDetectorConstruction::~OMSimDetectorConstruction()
 {
+    delete mData;
+    delete mMDOM;
 }
 
 /**
@@ -88,8 +90,12 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
     //lFlashers->placeIt(G4ThreeVector(1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "2");
     mMDOM = new mDOM(mData);
     mMDOM->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "1");
+    G4RotationMatrix rot;
+    rot.rotateY(34*deg);
+    mMDOM->placeIt(G4ThreeVector(-1*m, 0, 0), rot, mWorldLogical, "2");
 
 
+    mMDOM->placeIt(G4ThreeVector(+1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "3");
     //lOpticalModule->placeIt(G4ThreeVector(1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "2");
 
     /*    
