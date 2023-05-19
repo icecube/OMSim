@@ -17,6 +17,7 @@ class LOM16 : public abcDetectorComponent
 {
 public:
     LOM16(InputDataManager* pData, G4bool pPlaceHarness = false);
+    ~LOM16();
     void construction();
     G4String mDataKey = "om_LOM16";
 

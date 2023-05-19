@@ -37,7 +37,7 @@ public:
         stream << command;
         appendToStream(stream, args...);
         UI->ApplyCommand(stream.str());
-        log_debug(stream.str().c_str());
+        //log_debug(stream.str().c_str());
     }
     void setUI(G4UImanager *pUI)
     {

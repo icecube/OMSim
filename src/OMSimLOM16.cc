@@ -46,7 +46,11 @@
 #include "OMSimLogger.hh"
 
 
-
+LOM16::~LOM16()
+{
+    delete mPMTManager;
+    //delete mHarness;
+}
 
 LOM16::LOM16(InputDataManager* pData, G4bool pPlaceHarness) {
     mData = pData;

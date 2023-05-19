@@ -15,17 +15,14 @@ public:
     ~OMSimDetectorConstruction();
     G4VPhysicalVolume *Construct();
     G4VPhysicalVolume *mWorldPhysical;
-    mDOM* mMDOM;
+    mDOM *mMDOM;
 
 private:
     G4Orb *mWorldSolid;
     G4LogicalVolume *mWorldLogical;
-    
+
     void constructWorld();
     InputDataManager *mData;
-    OMSimPMTConstruction* mPMTManager;
-
-
 };
 
 #endif

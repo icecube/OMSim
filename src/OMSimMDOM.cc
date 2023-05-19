@@ -35,7 +35,17 @@
 #include "G4Torus.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimMDOMFlasher.hh"
+#include "OMSimLogger.hh"
 
+mDOM::~mDOM()
+{   
+    delete mPMTManager;
+    delete mFlashers;
+    if (mPlaceHarness)
+    {
+        delete mHarness;
+    }
+}
 mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
 {
     mPlaceHarness = false; // pPlaceHarness;
@@ -418,6 +428,7 @@ void mDOM::setLEDPositions()
     std::vector<int> lLEDCountList = {lNrPolLED, lNrEqLED, lNrEqLED, lNrPolLED};
     std::vector<G4double> lPhaseShiftList = {-0.25, 0., 0., 0.};
 
+    int lFlasherCounter = 0;
     for (int j = 0; j < 4; j++)
     {
         lLEDtheta = lLEDthetaList[j];
@@ -430,10 +441,10 @@ void mDOM::setLEDPositions()
             G4double lLEDrho = lLEDr * sin(lLEDtheta);
             lLEDPosition = G4ThreeVector(lLEDrho * cos(lLEDphi), lLEDrho * sin(lLEDphi), lLEDr * cos(lLEDtheta) + lLEDzOffset);
 
-            (mLED_AngFromSphere.at(i)).resize(3);
-            (mLED_AngFromSphere.at(i)).at(0) = lLEDrho;
-            (mLED_AngFromSphere.at(i)).at(1) = lLEDtheta;
-            (mLED_AngFromSphere.at(i)).at(2) = lLEDphi;
+            (mLED_AngFromSphere.at(lFlasherCounter)).resize(3);
+            (mLED_AngFromSphere.at(lFlasherCounter)).at(0) = lLEDrho;
+            (mLED_AngFromSphere.at(lFlasherCounter)).at(1) = lLEDtheta;
+            (mLED_AngFromSphere.at(lFlasherCounter)).at(2) = lLEDphi;
 
             lLEDRotation = new G4RotationMatrix();
             lLEDRotation->rotateY(lLEDtheta);
@@ -441,6 +452,7 @@ void mDOM::setLEDPositions()
 
             lTransformers = G4Transform3D(*lLEDRotation, lLEDPosition);
             mLEDTransformers.push_back(lTransformers);
+            lFlasherCounter++;
         }
     }
 }

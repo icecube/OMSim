@@ -13,13 +13,17 @@
 
 #include "OMSimLogger.hh"
 
+pDOM::~pDOM()
+{
+    delete mPMTManager;
+}
+
 pDOM::pDOM(InputDataManager* pData, G4bool pPlaceHarness) {
     mPlaceHarness = pPlaceHarness;
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
     mPMTManager->SelectPMT("pmt_Hamamatsu_R7081");
     mPMTManager->construction();
-    log_info("herep2");
     construction();
 }
 
@@ -27,9 +31,9 @@ pDOM::pDOM(InputDataManager* pData, G4bool pPlaceHarness) {
  * Construction of the pDOM, as in the older code.
  */
 void pDOM::construction()
-{   log_info("here");
+{  
     mComponents.clear();
-    log_info("here");
+
     G4VSolid*  lPMTsolid = mPMTManager->GetPMTSolid();
 
     G4double mGelThickness = 10 * mm;

@@ -22,7 +22,7 @@ void OMSimRunAction::BeginOfRunAction(const G4Run*)
 
 void OMSimRunAction::EndOfRunAction(const G4Run*)
 {
-G4String lFileName = OMSimCommandArgsTable::getInstance().get<G4String>("output_file");
+std::string lFileName = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
 
 OMSimAnalysisManager& lAnalysisManager = OMSimAnalysisManager::getInstance();
 lAnalysisManager.datafile.open(lFileName.c_str(), std::ios::out|std::ios::app);

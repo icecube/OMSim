@@ -39,7 +39,10 @@
 
 
 
-
+DEgg::~DEgg()
+{
+    delete mPMTManager;
+}
 DEgg::DEgg(InputDataManager* pData, G4bool pPlaceHarness) {
    mData = pData;
    mPMTManager = new OMSimPMTConstruction(mData);

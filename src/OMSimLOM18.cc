@@ -43,7 +43,11 @@
 #include "CADMesh.hh" 
 #include "OMSimLogger.hh"
 
-
+LOM18::~LOM18()
+{
+    delete mPMTManager;
+    //delete mHarness;
+}
 
 LOM18::LOM18(InputDataManager* pData, G4bool pPlaceHarness) {
     mData = pData;

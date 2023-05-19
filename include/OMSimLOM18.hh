@@ -18,6 +18,7 @@ class LOM18 : public abcDetectorComponent
 {
 public:
     LOM18(InputDataManager* pData, G4bool pPlaceHarness = false);
+    ~LOM18();
     void construction();
     G4double mCylinderAngle;
     G4double mGlassOutRad;

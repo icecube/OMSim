@@ -20,6 +20,7 @@ private:
 
 public:
     mDOM(InputDataManager *pData, G4bool pPlaceHarness = true);
+    ~mDOM();
     void construction();
     G4double mCylinderAngle;
     G4double mGlassOutRad;
@@ -36,7 +37,7 @@ public:
      * @param pLEDIndex The index of the flasher within the module.
      */
     void runBeamOnFlasher(G4int pModuleIndex, G4int pLEDIndex) { mFlashers->runBeamOnFlasher(this, pModuleIndex, pLEDIndex); }
-
+    void setNavigator(G4Navigator *pNavigator) { mFlashers->setNavigator(pNavigator); } // this is needed to get the rotation of the flasher
 private:
     OMSimPMTConstruction *mPMTManager;
     mDOMHarness *mHarness;

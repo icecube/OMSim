@@ -7,6 +7,7 @@ class pDOM : public abcDetectorComponent
     {
     public:
         pDOM(InputDataManager* pData, G4bool pPlaceHarness = true);
+        ~pDOM();
         void construction();
         G4bool mPlaceHarness;
 

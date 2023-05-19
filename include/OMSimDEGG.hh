@@ -17,6 +17,7 @@ class DEgg : public abcDetectorComponent
 public:
     
     DEgg(InputDataManager* pData,G4bool pPlaceHarness=true);
+    ~DEgg();
     void construction();
 
 private:
