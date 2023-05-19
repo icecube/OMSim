@@ -1,7 +1,7 @@
 /**
  * @file OMSimUIinterface.hh
  * @details The OMSimUIinterface class provides a singleton interface to Geant4's UI manager.
- *          It simplifies the application of commands to the UI manager by handling argument parsing 
+ *          It simplifies the application of commands to the UI manager by handling argument parsing
  *          and logging.
  */
 
@@ -12,12 +12,13 @@
 #include <string>
 #include <G4UImanager.hh>
 #include "OMSimLogger.hh"
+#include "OMSimCommandArgsTable.hh"
 
 class OMSimUIinterface
 {
 public:
     // Public static access for the singleton instance
-    static OMSimUIinterface& getInstance()
+    static OMSimUIinterface &getInstance()
     {
         static OMSimUIinterface instance;
         return instance;
@@ -38,15 +39,28 @@ public:
         UI->ApplyCommand(stream.str());
         log_debug(stream.str().c_str());
     }
-    void setUI(G4UImanager* pUI){
+    void setUI(G4UImanager *pUI)
+    {
         UI = pUI;
-        }
+    }
+
+    /**
+     * @brief Executes a run with a given number of events.
+     * @param pNumberOfEvents An optional parameter to specify the number of events to be run.
+     * If not provided or less than zero, the number of events is taken from the command arguments table.
+     */
+    void runBeamOn(G4int pNumberOfEvents = -1)
+    {
+        log_debug("Running beamOn command");
+        G4int lNumEvents = pNumberOfEvents >= 0 ? pNumberOfEvents : OMSimCommandArgsTable::getInstance().get<G4int>("numevents");
+        applyCommand("/run/beamOn ", lNumEvents);
+    }
 
 private:
     // Private constructor and assignment operator to prevent direct creation or assignment
-    OMSimUIinterface() {} 
-    OMSimUIinterface(const OMSimUIinterface&) = delete; // disable copying
-    OMSimUIinterface& operator=(const OMSimUIinterface&) = delete; // disable assignment
+    OMSimUIinterface() {}
+    OMSimUIinterface(const OMSimUIinterface &) = delete;            // disable copying
+    OMSimUIinterface &operator=(const OMSimUIinterface &) = delete; // disable assignment
 
     void appendToStream(std::stringstream &stream)
     {
@@ -65,9 +79,8 @@ private:
         stream << ' ' << val;
         appendToStream(stream, args...);
     }
-    G4UImanager* UI;
+    G4UImanager *UI;
 };
-
 
 #endif
 //

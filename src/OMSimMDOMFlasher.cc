@@ -15,6 +15,14 @@
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimUIinterface.hh"
 
+
+/*
+* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*                                Geometry methods
+* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+
 /**
  * @class mDOMFlasher
  * @brief The mDOMFlasher class represents the 10 flashers in an mDOM optical module.
@@ -86,13 +94,14 @@ std::tuple<G4UnionSolid *, G4UnionSolid *, G4Tubs *> mDOMFlasher::getSolids()
 	return std::make_tuple(mLEDSolid, mFlasherHoleSolid, mGlassWindowSolid);
 }
 
-void mDOMFlasher::readFlasherProfile()
-{
-	std::vector<double> led_profile_x;
-	std::vector<double> led_profile_y;
-	// led_profile_x = readColumnDouble(glightprofile_file, 1);
-	// led_profile_y = readColumnDouble(glightprofile_file, 2);
-}
+
+
+
+/*
+* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*                                GPS flashing methods
+* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
 
 /**
  * @brief run/beamOn the specified flasher.
@@ -113,7 +122,20 @@ void mDOMFlasher::runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4in
 
 	// Configure the GPS
 	configureGPS(lFlasherInfo);
+
+	// Flash the LED
+	OMSimUIinterface::getInstance().runBeamOn();
 }
+
+void mDOMFlasher::readFlasherProfile()
+{
+	std::vector<G4PV2DDataVector> lData = mData->loadtxt("../data/UserInputData/processedlightspectrum_9_level_2_ext3.cfg", true, 0, '\t');
+	mProfileX = lData.at(0);
+	mProfileY = lData.at(1);
+	mFlasherProfileAvailable = true;
+}
+
+
 
 /**
  * @brief Get the global position and orientation for a specific flasher in a specific module.
@@ -124,7 +146,7 @@ void mDOMFlasher::runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4in
  */
 FlasherPositionInfo mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex)
 {
-	FlasherPositionInfo info;
+	FlasherPositionInfo lFlasherPosition;
 
 	if (pModuleIndex < 0 || pModuleIndex >= pMDOMInstance->mPlacedOrientations.size())
 	{
@@ -133,7 +155,7 @@ FlasherPositionInfo mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4i
 		throw std::invalid_argument("mDOM index provided not valid");
 	}
 
-	info.orientation = pMDOMInstance->mPlacedOrientations.at(pModuleIndex);
+	lFlasherPosition.orientation = pMDOMInstance->mPlacedOrientations.at(pModuleIndex);
 	std::vector<std::vector<G4double>> lLED_AngFromSphere = pMDOMInstance->mLED_AngFromSphere;
 	// check if the provided LED index is valid
 	if (pLEDIndex < 0 || pLEDIndex >= lLED_AngFromSphere.size())
@@ -144,9 +166,9 @@ FlasherPositionInfo mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4i
 	}
 
 	// Access LED angles from sphere
-	info.phi = pMDOMInstance->mLED_AngFromSphere.at(pLEDIndex).at(2);
-	info.theta = pMDOMInstance->mLED_AngFromSphere.at(pLEDIndex).at(1);
-	info.rho = pMDOMInstance->mLED_AngFromSphere.at(pLEDIndex).at(0);
+	lFlasherPosition.phi = pMDOMInstance->mLED_AngFromSphere.at(pLEDIndex).at(2);
+	lFlasherPosition.theta = pMDOMInstance->mLED_AngFromSphere.at(pLEDIndex).at(1);
+	lFlasherPosition.rho = pMDOMInstance->mLED_AngFromSphere.at(pLEDIndex).at(0);
 
 	// Calculate global position
 	G4RotationMatrix lFlashingModuleOrientation = pMDOMInstance->mPlacedOrientations.at(pModuleIndex);
@@ -154,51 +176,10 @@ FlasherPositionInfo mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4i
 	G4ThreeVector lFlasherLocalThreeVector = mPlacedPositions.at(pLEDIndex);
 	G4Transform3D lFlasherGlobalPosition = getNewPosition(lFlashingModulePos, lFlashingModuleOrientation, lFlasherLocalThreeVector, G4RotationMatrix());
 
-	// Store global position in info
-	info.globalPosition = lFlasherGlobalPosition.getTranslation();
+	// Store global position in lFlasherPosition
+	lFlasherPosition.globalPosition = lFlasherGlobalPosition.getTranslation();
 
-	return info;
-}
-
-G4ThreeVector mDOMFlasher::getFlasherGlobalThreeVector(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex, G4RotationMatrix orientation)
-{
-	G4ThreeVector lFlashingModulePos = pMDOMInstance->mPlacedPositions.at(pModuleIndex);
-
-	// get the positions like: position of the LED + position of the module with the corresponding rotation matrix
-	G4ThreeVector lFlasherLocalThreeVector = mPlacedPositions.at(pLEDIndex);
-	G4Transform3D lFlasherGlobalPosition = getNewPosition(lFlashingModulePos, orientation, lFlasherLocalThreeVector, G4RotationMatrix());
-
-	return lFlasherGlobalPosition.getTranslation();
-}
-
-void mDOMFlasher::configureGPS(FlasherPositionInfo flasherInfo)
-{
-	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-
-	lUIinterface.applyCommand("/gps/pos/type Point");
-	lUIinterface.applyCommand("/gps/ang/type user");   // biast = theta
-	lUIinterface.applyCommand("/gps/hist/type theta"); // biast = theta
-
-	// for (unsigned int u = 0; u < led_profile_x.size(); u++)
-	// {
-	// 	applyCommand("/gps/hist/point", led_profile_x.at(u), led_profile_y.at(u)); // biast = theta
-	// }
-
-	lUIinterface.applyCommand("/gps/ang/surfnorm");
-
-	// build angles rot1 and rot2
-	G4ThreeVector rot1Vector = buildRotVector(flasherInfo.phi, 0, flasherInfo.orientation);
-	lUIinterface.applyCommand("/gps/pos/rot1", rot1Vector.getX(), rot1Vector.getY(), rot1Vector.getZ());
-	lUIinterface.applyCommand("/gps/ang/rot1", rot1Vector.getX(), rot1Vector.getY(), rot1Vector.getZ());
-
-	G4ThreeVector rot2Vector = buildRotVector(flasherInfo.phi, flasherInfo.theta, flasherInfo.orientation);
-	lUIinterface.applyCommand("/gps/pos/rot2", rot2Vector.getX(), rot2Vector.getY(), rot2Vector.getZ());
-	lUIinterface.applyCommand("/gps/ang/rot2", rot2Vector.getX(), rot2Vector.getY(), rot2Vector.getZ());
-	lUIinterface.applyCommand("/gps/ang/maxtheta 89 deg"); // when too close to 90, give photons that directly hit the structure and do not propagate... photons with theta=90 are anyway weighed very low
-
-	lUIinterface.applyCommand("/gps/pos/centre", flasherInfo.globalPosition.getX(), flasherInfo.globalPosition.getY(), flasherInfo.globalPosition.getZ(), "mm");
-	lUIinterface.applyCommand("/gps/particle opticalphoton");
-	lUIinterface.applyCommand("/gps/energy", 1239.84193 / OMSimCommandArgsTable::getInstance().get<G4double>("wavelength"), "eV");
+	return lFlasherPosition;
 }
 
 G4ThreeVector mDOMFlasher::buildRotVector(G4double phi, G4double theta, G4RotationMatrix orientation)
@@ -223,3 +204,36 @@ G4ThreeVector mDOMFlasher::buildRotVector(G4double phi, G4double theta, G4Rotati
 	G4Transform3D rotTrans = getNewPosition(G4ThreeVector(), orientation, rotVector, G4RotationMatrix());
 	return rotTrans.getTranslation();
 }
+
+void mDOMFlasher::configureGPS(FlasherPositionInfo flasherInfo)
+{
+	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+
+	lUIinterface.applyCommand("/gps/pos/type Point");
+	lUIinterface.applyCommand("/gps/ang/type user");   // biast = theta
+	lUIinterface.applyCommand("/gps/hist/type theta"); // biast = theta
+
+	G4cout << mProfileX.size() << G4endl;
+	for (unsigned int u = 0; u < mProfileX.size(); u++)
+	{
+		lUIinterface.applyCommand("/gps/hist/point", mProfileX.at(u), mProfileY.at(u)); // biast = theta
+	}
+
+	lUIinterface.applyCommand("/gps/ang/surfnorm");
+
+	// build angles rot1 and rot2
+	G4ThreeVector rot1Vector = buildRotVector(flasherInfo.phi, 0, flasherInfo.orientation);
+	lUIinterface.applyCommand("/gps/pos/rot1", rot1Vector.getX(), rot1Vector.getY(), rot1Vector.getZ());
+	lUIinterface.applyCommand("/gps/ang/rot1", rot1Vector.getX(), rot1Vector.getY(), rot1Vector.getZ());
+
+	G4ThreeVector rot2Vector = buildRotVector(flasherInfo.phi, flasherInfo.theta, flasherInfo.orientation);
+	lUIinterface.applyCommand("/gps/pos/rot2", rot2Vector.getX(), rot2Vector.getY(), rot2Vector.getZ());
+	lUIinterface.applyCommand("/gps/ang/rot2", rot2Vector.getX(), rot2Vector.getY(), rot2Vector.getZ());
+	lUIinterface.applyCommand("/gps/ang/maxtheta 89 deg"); // when too close to 90, give photons that directly hit the structure and do not propagate... photons with theta=90 are anyway weighed very low
+
+	lUIinterface.applyCommand("/gps/pos/centre", flasherInfo.globalPosition.getX(), flasherInfo.globalPosition.getY(), flasherInfo.globalPosition.getZ(), "mm");
+	lUIinterface.applyCommand("/gps/particle opticalphoton");
+	lUIinterface.applyCommand("/gps/energy", 1239.84193 / OMSimCommandArgsTable::getInstance().get<G4double>("wavelength"), "eV");
+}
+
+

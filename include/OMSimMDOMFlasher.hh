@@ -32,7 +32,6 @@ private:
     void readFlasherProfile();
 
     FlasherPositionInfo getFlasherPositionInfo(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex);
-    G4ThreeVector getFlasherGlobalThreeVector(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex, G4RotationMatrix orientation);
     void configureGPS(FlasherPositionInfo flasherInfo);
     G4ThreeVector buildRotVector(G4double phi, G4double theta, G4RotationMatrix orientation);
     G4UnionSolid *mLEDSolid;
@@ -43,6 +42,8 @@ private:
     G4LogicalVolume *mGlassWindowLogical;
     G4LogicalVolume *mLEDLogical;
     G4bool mFlasherProfileAvailable = false;
+	std::vector<double> mProfileX;
+	std::vector<double> mProfileY;
 };
 
 #endif // OMSimMDOMFlasher_H

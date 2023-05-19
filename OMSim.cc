@@ -94,17 +94,12 @@ int OMSim()
 	G4TouchableHistory *history = navigator->CreateTouchableHistory();
 
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-
 	lUIinterface.applyCommand("/control/execute ", lArgs.get<bool>("visual"));
+
 	double startingtime = clock() / CLOCKS_PER_SEC;
 
-	G4int lNumEvents = lArgs.get<G4int>("numevents");
 	detector->mMDOM->runBeamOnFlasher(0, 0);
-
-
-	// starting run (analysis manager takes care of results)
-	if ( lNumEvents > 0) lUIinterface.applyCommand("/run/beamOn ", lNumEvents);
-
+	//lUIinterface.runBeamOn();
 	// opening user interface prompt and visualization after simulation was run
 	if (lArgs.get<bool>("visual"))
 	{

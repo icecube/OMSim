@@ -67,6 +67,7 @@ public:
     InputDataManager();
     G4Material *getMaterial(G4String name);
     G4OpticalSurface *getOpticalSurface(G4String pName);
+    std::vector<std::vector<double>> loadtxt(const std::string &pFilePath, bool pUnpack = true, size_t pSkipRows = 0, char pDelimiter = ' ');
     void searchFolders();
     std::map<G4String, G4OpticalSurface *> mOpticalSurfaceMap;
 
