@@ -98,8 +98,8 @@ int OMSim()
 
 	double startingtime = clock() / CLOCKS_PER_SEC;
 
-	detector->mMDOM->setNavigator(navigator);
-	detector->mMDOM->runBeamOnFlasher(1, 9);
+	//detector->mMDOM->setNavigator(navigator);
+	//detector->mMDOM->runBeamOnFlasher(1, 9);
 
 	//lUIinterface.runBeamOn();
 	// opening user interface prompt and visualization after simulation was run

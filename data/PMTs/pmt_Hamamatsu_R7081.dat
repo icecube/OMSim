@@ -1,7 +1,15 @@
 {
    "jName": "pmt_Hamamatsu_R7081",
-   "jFrontalShape": "Sphere2Ellipses",
-   "jBulbBackShape" :"Simple",
+   "jFrontalShape": "TwoEllipses",
+   "jBulbBackShape": "FullFit",
+   "jDynodeCADOffset": {
+      "jValue": 240,
+      "jUnit": "mm"
+   },
+   "jDynodeCADscale": {
+      "jValue": 1.5,
+      "jUnit": "NULL"
+   },
    "jOuterShape": {
       "jTotalLenght": {
          "jValue": 245,
@@ -24,11 +32,11 @@
          "jUnit": "mm"
       },
       "jSphereEllipseTransition_r": {
-         "jValue": 20.764626909111044,
+         "jValue": 19.37386673980471,
          "jUnit": "mm"
       },
       "jSpherePos_y": {
-         "jValue": 45.172165093437705,
+         "jValue": 45.18954581791073,
          "jUnit": "mm"
       },
       "jEllipsePos_y": {
@@ -80,6 +88,44 @@
          "jUnit": "mm"
       }
    },
+   "jPhotocathodeInnerSide": {
+      "jOutRad": {
+         "jValue": 134.69997999999998,
+         "jUnit": "mm"
+      },
+      "jEllipseXYaxis": {
+         "jValue": 124.65430815147766,
+         "jUnit": "mm"
+      },
+      "jEllipseZaxis": {
+         "jValue": 70.562170108579,
+         "jUnit": "mm"
+      },
+      "jSphereEllipseTransition_r": {
+         "jValue": 25.69504701968474,
+         "jUnit": "mm"
+      },
+      "jSpherePos_y": {
+         "jValue": 45.07733050472109,
+         "jUnit": "mm"
+      },
+      "jEllipsePos_y": {
+         "jValue": 88.53162521532929,
+         "jUnit": "mm"
+      },
+      "jEllipseXYaxis_2": {
+         "jValue": 127.75821003544209,
+         "jUnit": "mm"
+      },
+      "jEllipseZaxis_2": {
+         "jValue": 130.68898357127853,
+         "jUnit": "mm"
+      },
+      "jEllipsePos_y_2": {
+         "jValue": 49.28542133858265,
+         "jUnit": "mm"
+      }
+   },
    "jInnerShape": {
       "jTotalLenght": {
          "jValue": 241.0,
@@ -102,11 +148,11 @@
          "jUnit": "mm"
       },
       "jSphereEllipseTransition_r": {
-         "jValue": 25.64498948240234,
+         "jValue": 25.695050588425033,
          "jUnit": "mm"
       },
       "jSpherePos_y": {
-         "jValue": 43.0413238114149,
+         "jValue": 45.07733034206341,
          "jUnit": "mm"
       },
       "jEllipsePos_y": {
@@ -154,7 +200,7 @@
          "jUnit": "mm"
       },
       "jEllipsePos_y_2": {
-         "jValue": 49.28542713618032,
+         "jValue": 49.285427136180324,
          "jUnit": "mm"
       }
    }

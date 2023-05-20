@@ -86,19 +86,9 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
     //new G4PVPlacement(0, G4ThreeVector(0, 0, -(1*mm+10*nm)), PhotocathodeLog, "Photocathode", mWorldLogical, false, 0, true);
     //new G4PVPlacement(0, G4ThreeVector(0, 0, -(1*cm+1*mm)), VacuumLog, "PMTvacuum", mWorldLogical, false, 0, true);
 
-    //mDOMFlasher *lFlashers = new mDOMFlasher(mData);
-    //lFlashers->placeIt(G4ThreeVector(1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "2");
-    mMDOM = new mDOM(mData);
-    mMDOM->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "1");
-    G4RotationMatrix rot;
-    rot.rotateY(34*deg);
-    mMDOM->placeIt(G4ThreeVector(-1*m, 0, 0), rot, mWorldLogical, "2");
+ 
 
-
-    mMDOM->placeIt(G4ThreeVector(+1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "3");
-    //lOpticalModule->placeIt(G4ThreeVector(1*m, 0, 0), G4RotationMatrix(), mWorldLogical, "2");
-
-    /*    
+       
     switch (OMSimCommandArgsTable::getInstance().get<G4int>("detector_type")) {
         case 0: {
             log_critical("Custom detector not implemented yet!");
@@ -106,16 +96,16 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
         }
         case 1: {
             log_info("Constructing single PMT");
-            mPMTManager = new OMSimPMTConstruction(mData);
-            if (gVisual) {
-                mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
+            OMSimPMTConstruction* lPMTManager = new OMSimPMTConstruction(mData);
+            if (OMSimCommandArgsTable::getInstance().get<bool>("visual")) {
+                lPMTManager->SelectPMT("pmt_Hamamatsu_4inch");
             } else {
-                mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
+                lPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
             }
-            mPMTManager->SimulateHACoating();
-            mPMTManager->SimulateInternalReflections();
-            mPMTManager->construction();
-            mPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
+            //lPMTManager->SimulateHACoating();
+            //lPMTManager->SimulateInternalReflections();
+            lPMTManager->construction();
+            lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
             break;
         }
         case 2: {
@@ -150,7 +140,7 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
         }
     }
     
-    */
+    
     
     return mWorldPhysical;
 }

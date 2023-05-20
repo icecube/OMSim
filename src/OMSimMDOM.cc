@@ -174,7 +174,7 @@ void mDOM::construction()
         lConverter << "_" << k;
 
         lTransformers = G4Transform3D(mPMTRotations[k], mPMTPositions[k]);
-        // mPMTManager->placeIt(lTransformers, lGelLogical, lConverter.str());
+        mPMTManager->placeIt(lTransformers, lGelLogical, lConverter.str());
 
         // Placing reflective cones:
         lConverter.str("");

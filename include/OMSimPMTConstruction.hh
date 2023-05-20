@@ -48,6 +48,8 @@ private:
     std::tuple<G4VSolid*, G4VSolid*> BulbConstructionFull(G4String pSide);
     G4UnionSolid* SphereEllipsePhotocathode();
     G4UnionSolid* SphereDoubleEllipsePhotocathode(G4String pSide);
+    G4UnionSolid* DoubleEllipsePhotocathode(G4String pSide);
+    G4UnionSolid* EllipsePhotocathode();
     void CathodeBackShield(G4LogicalVolume* pPMTIinner);
 
     void DynodeSystemConstructionCAD(G4LogicalVolume* pMother);

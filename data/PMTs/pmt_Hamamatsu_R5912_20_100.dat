@@ -1,7 +1,15 @@
 {
    "jName": "pmt_Hamamatsu_R5912_20_100",
-   "jFrontalShape": "SphereEllipse",
-   "jBulbBackShape" :"FullFit",
+   "jFrontalShape": "SingleEllipse",
+   "jBulbBackShape": "jFullFit",
+   "jDynodeCADOffset": {
+      "jValue": 220,
+      "jUnit": "mm"
+   },
+   "jDynodeCADscale": {
+      "jValue": 1.5,
+      "jUnit": "NULL"
+   },
    "jOuterShape": {
       "jTotalLenght": {
          "jValue": 220.0,
@@ -36,19 +44,19 @@
          "jUnit": "mm"
       },
       "jLineFitSlope": {
-         "jValue": 0.632214565884154,
+         "jValue": 0.5612119788339285,
          "jUnit": "mm"
       },
       "jEllipseConeTransition_x": {
-         "jValue": 81.55269919437305,
+         "jValue": 76.29940680896881,
          "jUnit": "mm"
       },
       "jEllipseConeTransition_y": {
-         "jValue": 59.69411427760384,
+         "jValue": 55.014066745801074,
          "jUnit": "mm"
       },
       "jConeTorusTransition_x": {
-         "jValue": 46.68068068068068,
+         "jValue": 49.33533533533534,
          "jUnit": "mm"
       },
       "jTorusCircleR": {
@@ -68,65 +76,91 @@
          "jUnit": "mm"
       }
    },
-   "jInnerShape": {
-      "jTotalLenght": {
-         "jValue": 217.0,
-         "jUnit": "mm"
-      },
-      "jTubeWidth": {
-         "jValue": 81.5,
-         "jUnit": "mm"
-      },
+   "jPhotocathodeInnerSide": {
       "jOutRad": {
-         "jValue": 129.5,
+         "jValue": 129.04998,
          "jUnit": "mm"
       },
       "jEllipseXYaxis": {
-         "jValue": 100.83082206263408,
+         "jValue": 100.38334947030255,
          "jUnit": "mm"
       },
       "jEllipseZaxis": {
-         "jValue": 74.34132281723485,
+         "jValue": 73.89682198437058,
          "jUnit": "mm"
       },
       "jSphereEllipseTransition_r": {
-         "jValue": 26.058394380373326,
+         "jValue": 26.582204066415937,
          "jUnit": "mm"
       },
       "jSpherePos_y": {
-         "jValue": 49.290374157462324,
+         "jValue": 49.29081214651022,
          "jUnit": "mm"
       },
       "jEllipsePos_y": {
-         "jValue": 104.32562422945628,
+         "jValue": 104.31452256983141,
+         "jUnit": "mm"
+      }
+   },
+   "jInnerShape": {
+      "jTotalLenght": {
+         "jValue": 216.1,
+         "jUnit": "mm"
+      },
+      "jTubeWidth": {
+         "jValue": 80.6,
+         "jUnit": "mm"
+      },
+      "jOutRad": {
+         "jValue": 129.05,
+         "jUnit": "mm"
+      },
+      "jEllipseXYaxis": {
+         "jValue": 100.38336933549385,
+         "jUnit": "mm"
+      },
+      "jEllipseZaxis": {
+         "jValue": 73.89684144255648,
+         "jUnit": "mm"
+      },
+      "jSphereEllipseTransition_r": {
+         "jValue": 26.58220932685316,
+         "jUnit": "mm"
+      },
+      "jSpherePos_y": {
+         "jValue": 49.290812127142146,
+         "jUnit": "mm"
+      },
+      "jEllipsePos_y": {
+         "jValue": 104.3145232560131,
          "jUnit": "mm"
       },
       "jLineFitSlope": {
-         "jValue": 0.632214565884154,
+         "jValue": 0.5612119788339285,
          "jUnit": "mm"
       },
       "jEllipseConeTransition_x": {
-         "jValue": 81.34871239425345,
+         "jValue": 77.06076151315169,
          "jUnit": "mm"
       },
       "jEllipseConeTransition_y": {
-         "jValue": 60.401332989161524,
+         "jValue": 56.95759969500052,
          "jUnit": "mm"
       },
       "jConeTorusTransition_x": {
-         "jValue": 45.925925925925924,
+         "jValue": 47.72272272272272,
          "jUnit": "mm"
       },
       "jTorusCircleR": {
-         "jValue": 16.470521133306637,
+         "jValue": 16.79186020549729,
          "jUnit": "mm"
       },
       "jTorusCirclePos_x": {
-         "jValue": 57.80955703217784,
+         "jValue": 57.692866421639806,
          "jUnit": "mm"
       },
       "jTorusCirclePos_y": {
-         "jValue": 27.14631687257599,
+         "jValue": 27.206181754687773,
          "jUnit": "mm"
       },
       "jTorusTubeTransition_y": {

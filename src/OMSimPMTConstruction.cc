@@ -66,16 +66,18 @@ void OMSimPMTConstruction::construction()
 
     G4LogicalVolume* lPhotocathode = new G4LogicalVolume(lVacuumPhotocathodeSolidNew, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
     G4LogicalVolume* lVacuumBackLogical = new G4LogicalVolume(lVacuumBack, mData->getMaterial("Ri_Vacuum"), "PMTvacuum");
+    
 
+    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lPhotocathode, "Photocathode", lTubeVacuum, false, 0, mCheckOverlaps);
+    mVacuumBackPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lVacuumBackLogical, "VacuumTubeBack", lTubeVacuum, false, 0, mCheckOverlaps);
+    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lTubeVacuum, "VacuumTube", lPMTlogical, false, 0, mCheckOverlaps);
+    
     appendComponent(lPMTSolid, lPMTlogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PMT");
+
     if (mHACoatingBool) AppendHACoating();
     //CathodeBackShield(lVacuumBackLogical);
     DynodeSystemConstructionCAD(lVacuumBackLogical);
-    //Placements
 
-    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lPhotocathode, "Photocathode", lTubeVacuum, false, 0, mCheckOverlaps);
-    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lTubeVacuum, "VacuumTube", lPMTlogical, false, 0, mCheckOverlaps);
-    mVacuumBackPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lVacuumBackLogical, "VacuumTubeBack", lTubeVacuum, false, 0, mCheckOverlaps);
 
     lPhotocathode->SetVisAttributes(mPhotocathodeVis);
     lPMTlogical->SetVisAttributes(mGlassVis);
@@ -137,16 +139,17 @@ std::tuple<G4VSolid*, G4VSolid*> OMSimPMTConstruction::GetBulbSolid(G4String pSi
 {
     G4SubtractionSolid* lVacuumPhotocathodeSolid;
     G4String lBulbBackShape = mData->getValue<G4String>(mSelectedPMT, "jBulbBackShape");
-    if (lBulbBackShape == "Simple") mSimpleBulb = true;
+    return BulbConstructionFull(pSide);
+    // if (lBulbBackShape == "Simple") mSimpleBulb = true;
 
-    if (mSimpleBulb || !mInternalReflections)
-    {
-        return BulbConstructionSimple(pSide);
-    }
-    else
-    {
-        return BulbConstructionFull(pSide);
-    }
+    // if (mSimpleBulb || !mInternalReflections)
+    // {
+    //     return BulbConstructionSimple(pSide);
+    // }
+    // else
+    // {
+    //     return BulbConstructionFull(pSide);
+    // }
 }
 
 /**
@@ -246,12 +249,16 @@ void OMSimPMTConstruction::DynodeSystemConstructionCAD(G4LogicalVolume* pMother)
     auto lFrontalPlateMesh = CADMesh::TessellatedMesh::FromOBJ("../data/CADmeshes/PMT/frontalPlateonly.obj");
     auto lDynodesMesh = CADMesh::TessellatedMesh::FromOBJ("../data/CADmeshes/PMT/dynodes.obj");
 
+    G4double lDynodeOffset = mData->getValueWithUnit(mSelectedPMT, "jDynodeCADOffset");
+    G4double lScale = mData->getValueWithUnit(mSelectedPMT, "jDynodeCADscale");
 
-    G4ThreeVector lCADoffset = G4ThreeVector(0, 0, -(97*mm+2*mm-GetDistancePMTCenterToPMTtip()));// -(54.2 + 19.5));
+    G4ThreeVector lCADoffset = G4ThreeVector(0, 0, -(lDynodeOffset-GetDistancePMTCenterToPMTtip()));// -(54.2 + 19.5));
     lSupportStructureMesh->SetOffset(lCADoffset);
     lFrontalPlateMesh->SetOffset(lCADoffset);
     lDynodesMesh->SetOffset(lCADoffset);
-
+    lSupportStructureMesh->SetScale(lScale);
+    lFrontalPlateMesh->SetScale(lScale);
+    lDynodesMesh->SetScale(lScale);
 
     G4RotationMatrix* lRot = new G4RotationMatrix();
     lRot->rotateZ(90 * deg);
@@ -311,6 +318,10 @@ G4VSolid* OMSimPMTConstruction::FrontalBulbConstruction(G4String pSide)
         return SphereEllipsePhotocathode();
     else if (lFrontalShape == "Sphere2Ellipses")
         return SphereDoubleEllipsePhotocathode(pSide);
+    else if (lFrontalShape == "TwoEllipses")
+        return DoubleEllipsePhotocathode(pSide);
+    else if (lFrontalShape == "SingleEllipse")
+        return EllipsePhotocathode();
 }
 
 
@@ -353,6 +364,16 @@ G4UnionSolid* OMSimPMTConstruction::SphereEllipsePhotocathode()
     return lBulbSolid;
 }
 
+G4UnionSolid* OMSimPMTConstruction::EllipsePhotocathode()
+{
+    G4double lSphereAngle = asin(mSphereEllipseTransition_r / mOutRad);
+    // PMT frontal glass envelope as union of sphere and ellipse
+    G4Ellipsoid* lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
+    G4Sphere* lBulbSphere = new G4Sphere("Solid Bulb Ellipsoid", 0.0, 0.1, 0, 2 * CLHEP::pi, 0, lSphereAngle);
+    G4UnionSolid* lBulbSolid = new G4UnionSolid("Solid Bulb", lBulbEllipsoid, lBulbSphere, 0, G4ThreeVector(0, 0, mSpherePos_y - mEllipsePos_y));
+    return lBulbSolid;
+}
+
 /**
  * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with SphereDoubleEllipsePhotocathode were fitted with a sphere and two ellipses.
  * @return G4UnionSolid lBulbSolid the frontal solid of the PMT
@@ -373,6 +394,28 @@ G4UnionSolid* OMSimPMTConstruction::SphereDoubleEllipsePhotocathode(G4String pSi
     G4Tubs* lSubtractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, lEllipseXYaxis_2 * 2, 0.5 * mTotalLenght, 0, 2 * CLHEP::pi);
     G4SubtractionSolid* lSubstractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", lBulbEllipsoid_2, lSubtractionTube, 0, G4ThreeVector(0, 0, lExcess - mTotalLenght * 0.5));
     lBulbSolid = new G4UnionSolid("Solid Bulb", lBulbSolid, lSubstractedLargeEllipsoid, 0, G4ThreeVector(0, 0, lEllipsePos_y_2 - mEllipsePos_y));
+    return lBulbSolid;
+}
+
+
+/**
+ * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with DoubleEllipsePhotocathode were fitted with two ellipses.
+ * @return G4UnionSolid lBulbSolid the frontal solid of the PMT
+ */
+G4UnionSolid* OMSimPMTConstruction::DoubleEllipsePhotocathode(G4String pSide)
+{
+    G4double lEllipseXYaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseXYaxis_2");
+    G4double lEllipseZaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis_2");
+    G4double lEllipsePos_y_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y_2");
+
+    G4double lSphereAngle = asin(mSphereEllipseTransition_r / mOutRad);
+    // PMT frontal glass envelope as union of sphere and ellipse
+    G4Ellipsoid* lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
+    G4Ellipsoid* lBulbEllipsoid_2 = new G4Ellipsoid("Solid Bulb Ellipsoid 2", lEllipseXYaxis_2, lEllipseXYaxis_2, lEllipseZaxis_2);
+    G4double lExcess = mEllipsePos_y - lEllipsePos_y_2;
+    G4Tubs* lSubtractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, lEllipseXYaxis_2 * 2, 0.5 * mTotalLenght, 0, 2 * CLHEP::pi);
+    G4SubtractionSolid* lSubstractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", lBulbEllipsoid_2, lSubtractionTube, 0, G4ThreeVector(0, 0, lExcess - mTotalLenght * 0.5));
+    G4UnionSolid* lBulbSolid = new G4UnionSolid("Solid Bulb", lBulbEllipsoid, lSubstractedLargeEllipsoid, 0, G4ThreeVector(0, 0, lEllipsePos_y_2 - mEllipsePos_y));
     return lBulbSolid;
 }
 
