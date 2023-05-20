@@ -34,7 +34,7 @@
 #include <G4UnitsTable.hh>
 #include "G4VisAttributes.hh"
 #include "G4Torus.hh"
-
+#include "OMSimCommandArgsTable.hh"
 
 mDOMHarness::mDOMHarness(mDOM* pMDOM, InputDataManager* pData) {
     mOM = pMDOM;
@@ -66,7 +66,7 @@ void mDOMHarness::getSharedData() {
 void mDOMHarness::construction() {
     
     BandsAndClamps();
-    BridgeRopesSolid();
+    //BridgeRopesSolid();
     mainDataCable();
     Pads();
     PCA();
@@ -237,9 +237,10 @@ void mDOMHarness::mainDataCable()
     G4LogicalVolume* lDataCableLogical = new G4LogicalVolume(lDataCableSolid, mData->getMaterial("NoOptic_Absorber"), "MainDataCable_logical");
     new G4LogicalSkinSurface("MainDataCable_skin", lDataCableLogical, mData->getOpticalSurface("Refl_BlackDuctTapePolished"));
     lDataCableLogical->SetVisAttributes(mAbsorberVis);
-
-    G4ThreeVector lDataCablePosition = G4ThreeVector((mRopeStartingPoint + lDataCableRadius + mRopeRMax + 0.5 * cm) * sin(mHarnessRotAngle),
-        (mRopeStartingPoint + lDataCableRadius + mRopeRMax + 0.5 * cm) * cos(mHarnessRotAngle),
+    G4double lMainCableAngle = OMSimCommandArgsTable::getInstance().get<G4double>("string_pos_angle")*deg;
+    G4double lMainCableRadius = (mRopeStartingPoint + lDataCableRadius + mRopeRMax + 0.2 * cm-mBridgeAddedThickness-0.75*cm);
+    G4ThreeVector lDataCablePosition = G4ThreeVector( lMainCableRadius* sin(lMainCableAngle),
+       lMainCableRadius * cos(lMainCableAngle),
         0);
 
     appendComponent(lDataCableSolid, lDataCableLogical, lDataCablePosition, G4RotationMatrix(), "mainDataCable");

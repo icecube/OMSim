@@ -22,14 +22,14 @@ void OMSimRunAction::BeginOfRunAction(const G4Run*)
 
 void OMSimRunAction::EndOfRunAction(const G4Run*)
 {
-std::string lFileName = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
+//std::string lFileName = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
 
-OMSimAnalysisManager& lAnalysisManager = OMSimAnalysisManager::getInstance();
-lAnalysisManager.datafile.open(lFileName.c_str(), std::ios::out|std::ios::app);
-lAnalysisManager.Write();
+//OMSimAnalysisManager& lAnalysisManager = OMSimAnalysisManager::getInstance();
+//lAnalysisManager.datafile.open(lFileName.c_str(), std::ios::out|std::ios::app);
+//lAnalysisManager.Write();
 // 	Close output data file
-lAnalysisManager.datafile.close();
-lAnalysisManager.Reset();
+//lAnalysisManager.datafile.close();
+//lAnalysisManager.Reset();
 //double finishtime=clock() / CLOCKS_PER_SEC;
 //G4cout << "Computation time: " << finishtime-startingtime << " seconds." << G4endl;
 }

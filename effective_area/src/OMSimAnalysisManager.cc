@@ -53,9 +53,9 @@ void OMSimAnalysisManager::WriteAccept()
 
 		pmthits[stats_PMT_hit.at(i)] += 1;//lPulses.at(i).DetectionProbability;
 	}
-	// wrinting collective hits
+	//wrinting collective hits
 	for (int j = 0; j < num_pmts; j++) {
-		datafile << "\t" << pmthits[j];
+		//datafile << "\t" << pmthits[j];
 		sum += pmthits[j];
 		pmthits[j] = 0;
 	}

@@ -48,7 +48,7 @@ mDOM::~mDOM()
 }
 mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
 {
-    mPlaceHarness = false; // pPlaceHarness;
+    mPlaceHarness = true; // pPlaceHarness;
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
     mFlashers = new mDOMFlasher(mData);
@@ -176,7 +176,7 @@ void mDOM::construction()
         lConverter << "_" << k;
 
         lTransformers = G4Transform3D(mPMTRotations[k], mPMTPositions[k]);
-        mPMTManager->placeIt(lTransformers, lGelLogical, lConverter.str());
+        //mPMTManager->placeIt(lTransformers, lGelLogical, lConverter.str());
 
         // Placing reflective cones:
         lConverter.str("");

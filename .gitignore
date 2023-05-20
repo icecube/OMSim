@@ -35,3 +35,4 @@
 build/
 build2/
 build*/
+doxygen_documentation/html

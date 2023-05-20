@@ -1,3 +1,35 @@
+/**
+ * @file OMSim_effective_area.cc
+ * @ingroup EffectiveArea
+ * @brief Main for the calculation of effective areas. 
+ * @details The effective area of a module is calculated simulating a plane wave from a certain direction. 
+ * The photon generation is made with the module @link AngularScan @endlink, running the method runSingleAngularScan(phi, theta) once for each direction to be investigated.
+ * Important command line arguments:
+ * 
+ * @par --input-file (-i)
+ * The input file to be processed. This should be a valid file path.
+ * 
+ * @par --output-file (-o)
+ * The output file to which the results should be written. This should be a valid file path.
+ * 
+ * @par --verbose (-v)
+ * Enables verbose mode, providing detailed logging information.
+ * 
+ * @par --threads (-t)
+ * Specifies the number of threads to use for processing. This should be an integer.
+ * 
+ * @par --phi (-p)
+ * The phi angle for the plane wave simulation. This should be a float.
+ * 
+ * @par --theta (-t)
+ * The theta angle for the plane wave simulation. This should be a float.
+ * 
+ * @par --seed (-s)
+ * The seed for the random number generator. This should be an integer.
+ * 
+ */
+ 
+
 #include "OMSimDetectorConstruction.hh"
 #include "OMSimPhysicsList.hh"
 #include "OMSimPrimaryGeneratorAction.hh"
@@ -99,8 +131,25 @@ int OMSim()
 	lUIinterface.applyCommand("/control/execute ", lArgs.get<bool>("visual"));
 
 	double startingtime = clock() / CLOCKS_PER_SEC;
-	AngularScan* scanner = new AngularScan(60, 400, 400);
-	scanner->runSingleAngularScan(0, 0);
+	AngularScan* scanner = new AngularScan(lArgs.get<G4double>("diam"), lArgs.get<G4double>("dist"), lArgs.get<G4double>("wavelength"));
+
+	std::vector<G4PV2DDataVector> data = InputDataManager::loadtxt("theta_phi.txt", false);
+	std::vector<G4double> lThetas = data.at(0);
+	std::vector<G4double> lPhis = data.at(1);
+
+	for(std::vector<int>::size_type i = 0; i != lThetas.size(); i++) { 
+		scanner->runSingleAngularScan(lPhis.at(i), lThetas.at(i));
+	std::string lFileName = lArgs.get<std::string>("output_file") + ".txt";
+	OMSimAnalysisManager& lAnalysisManager = OMSimAnalysisManager::getInstance();
+	lAnalysisManager.datafile.open(lFileName.c_str(), std::ios::out|std::ios::app);	
+	lAnalysisManager.datafile << std::fixed << std::setprecision(3) << lPhis.at(i) << "\t" << lThetas.at(i) << "\t" <<  lArgs.get<G4double>("diam") << "\t" << lArgs.get<G4double>("wavelength") << "\t" << OMSimCommandArgsTable::getInstance().get<G4int>("numevents") <<"\t" ;	
+	lAnalysisManager.WriteAccept();
+	// 	Close output data file
+	lAnalysisManager.datafile.close();
+	lAnalysisManager.Reset();
+
+	}
+
 
 	//detector->mMDOM->setNavigator(navigator);
 	//detector->mMDOM->runBeamOnFlasher(0, 9);
@@ -148,7 +197,8 @@ int main(int argc, char *argv[])
 		("output_file", po::value<std::string>()->default_value("mdom_testoutput.txt"), "filename for output")
 		("reflective_surface", po::value<G4int>()->default_value(0), "index to select reflective surface type [Refl_V95Gel = 0, Refl_V98Gel = 1, Refl_Aluminium = 2, Refl_Total98 = 3]")
 		("visual,v", po::bool_switch(), "shows visualization of module after run")
-		("pmt_model", po::value<G4int>()->default_value(0), "R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3");
+		("pmt_model", po::value<G4int>()->default_value(0), "R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3")
+		("string_pos_angle", po::value<G4double>()->default_value(45), "Polar angle of main data cable (viewed from above)");
 		po::variables_map lVariablesMap;
 		po::store(po::parse_command_line(argc, argv, desc), lVariablesMap);
 		po::notify(lVariablesMap);
