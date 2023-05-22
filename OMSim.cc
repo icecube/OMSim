@@ -143,8 +143,8 @@ int main(int argc, char *argv[])
 		("environment", po::value<G4int>()->default_value(0), "medium in which the setup is emmersed [AIR = 0, ice = 1, spice = 2]")
 		("output_file", po::value<std::string>()->default_value("mdom_testoutput.txt"), "filename for output")
 		("reflective_surface", po::value<G4int>()->default_value(0), "index to select reflective surface type [Refl_V95Gel = 0, Refl_V98Gel = 1, Refl_Aluminium = 2, Refl_Total98 = 3]")
-		("visual,v", po::bool_switch(), "shows visualization of module after run");
-
+		("visual,v", po::bool_switch(), "shows visualization of module after run")
+		("pmt_model", po::value<G4int>()->default_value(0), "R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3");
 		po::variables_map lVariablesMap;
 		po::store(po::parse_command_line(argc, argv, desc), lVariablesMap);
 		po::notify(lVariablesMap);

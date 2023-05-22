@@ -50,6 +50,7 @@ private:
     G4UnionSolid* SphereDoubleEllipsePhotocathode(G4String pSide);
     G4UnionSolid* DoubleEllipsePhotocathode(G4String pSide);
     G4UnionSolid* EllipsePhotocathode();
+    void checkPhotocathodeThickness();
     void CathodeBackShield(G4LogicalVolume* pPMTIinner);
 
     void DynodeSystemConstructionCAD(G4LogicalVolume* pMother);

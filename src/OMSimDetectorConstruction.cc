@@ -97,13 +97,8 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
         case 1: {
             log_info("Constructing single PMT");
             OMSimPMTConstruction* lPMTManager = new OMSimPMTConstruction(mData);
-            if (OMSimCommandArgsTable::getInstance().get<bool>("visual")) {
-                lPMTManager->SelectPMT("pmt_Hamamatsu_4inch");
-            } else {
-                lPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
-            }
-            //lPMTManager->SimulateHACoating();
-            //lPMTManager->SimulateInternalReflections();
+
+            lPMTManager->SelectPMT("argPMT");
             lPMTManager->construction();
             lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
             break;

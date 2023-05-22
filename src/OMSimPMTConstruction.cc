@@ -32,6 +32,7 @@
 #include "G4VisAttributes.hh"
 #include "OMSimLogger.hh"
 #include "CADMesh.hh" 
+#include "OMSimCommandArgsTable.hh"
 
 
 /**
@@ -331,6 +332,8 @@ G4VSolid* OMSimPMTConstruction::FrontalBulbConstruction(G4String pSide)
  */
 G4SubtractionSolid* OMSimPMTConstruction::PhotocathodeLayerConstruction()
 {
+    checkPhotocathodeThickness();
+
     G4VSolid* lInnerBoundarySolid = FrontalBulbConstruction("jPhotocathodeInnerSide");
     G4VSolid* lOutBoundarySolid = FrontalBulbConstruction("jInnerShape");
 
@@ -348,7 +351,22 @@ G4SubtractionSolid* OMSimPMTConstruction::PhotocathodeLayerConstruction()
 }
 
 
+void OMSimPMTConstruction::checkPhotocathodeThickness(){
+    G4String lSide = "jPhotocathodeInnerSide";
+    G4double lOutRad = mData->getValueWithUnit(mSelectedPMT, lSide + ".jOutRad");
+    G4double lEllipseXYaxis = mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipseXYaxis");
+    G4double lEllipseZaxis = mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipseZaxis");
+    G4double lSpherePos_y = mData->getValueWithUnit(mSelectedPMT, lSide + ".jSpherePos_y");
+    G4double lEllipsePos_y = mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipsePos_y");
 
+    lSide = "jInnerShape";
+    G4cout << "lOutRad " <<  (mData->getValueWithUnit(mSelectedPMT, lSide + ".jOutRad")-lOutRad)/nm << G4endl;
+    G4cout << "lEllipseXYaxis " << (mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipseXYaxis")-lEllipseXYaxis)/nm << G4endl;
+    G4cout << "lEllispesZaxis " << (mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipseZaxis")-lEllipseZaxis)/nm << G4endl;
+    G4cout << "lSpherePos_y " << (mData->getValueWithUnit(mSelectedPMT, lSide + ".jSpherePos_y")-lSpherePos_y)/nm << G4endl;
+    G4cout << "lEllipsePos_y " << (mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipsePos_y")-lEllipsePos_y)/nm << G4endl;
+
+}
 
 /**
  * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with SphereEllipsePhotocathode were fitted with a sphere and an ellipse.
@@ -466,11 +484,11 @@ G4LogicalVolume* OMSimPMTConstruction::GetLogicalVolume()
  */
 void OMSimPMTConstruction::SelectPMT(G4String pPMTtoSelect)
 {
-    // if (pPMTtoSelect.substr(0, 6) == "argPMT")
-    // {
-    //     const G4String lPMTTypes[] = { "pmt_Hamamatsu_R15458", "pmt_ETEL_9320KFL-KFB", "pmt_HZC_XP82B2F", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100" };
-    //     pPMTtoSelect = lPMTTypes[gPMT];
-    // }
+    if (pPMTtoSelect.substr(0, 6) == "argPMT")
+    {
+        const G4String lPMTTypes[] = { "pmt_Hamamatsu_R15458_20nm", "pmt_Hamamatsu_R7081", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100" };
+        pPMTtoSelect = lPMTTypes[OMSimCommandArgsTable::getInstance().get<G4int>("pmt_model")];
+    }
     mSelectedPMT = pPMTtoSelect;
 
     //Check if requested PMT is in the table of PMTs
