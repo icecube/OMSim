@@ -55,7 +55,7 @@ mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
 
     if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
     {
-        mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_1mm");
+        mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
     }
     else
     {
@@ -70,7 +70,9 @@ mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
         mHarness = new mDOMHarness(this, mData);
         integrateDetectorComponent(mHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
     }
+    log_debug("Constructing mDOM");
     construction();
+    log_debug("Finished constructing mDOM");
 }
 
 void mDOM::getSharedData()
@@ -99,7 +101,7 @@ void mDOM::getSharedData()
 
 void mDOM::construction()
 {
-    mComponents.clear();
+
     setPMTPositions();
     setLEDPositions();
 

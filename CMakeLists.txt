@@ -37,6 +37,9 @@ include(${Geant4_USE_FILE})
 find_package(ROOT)
 include(${ROOT_USE_FILE})
 
+# Add the ALGLIB source directory
+file(GLOB ALGLIB_SOURCES "/data/alglib/src/*.cpp")
+
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 # create list of all the files to compile
@@ -45,10 +48,10 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.h)
 
 
-#add_executable(OMSim_xyz OMSim_xyz.cc ${sources})# ${headers})
-add_executable(OMSim OMSim.cc ${sources})# ${headers})
-#target_link_libraries(OMSim_xyz ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0)
-target_link_libraries(OMSim ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0 Boost::program_options spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>)
+
+add_executable(OMSim OMSim.cc ${sources} ${ALGLIB_SOURCES})# ${headers})
+target_include_directories(OMSim PUBLIC "/data/alglib/src/")
+target_link_libraries(OMSim ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0 Boost::program_options spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32> )
 
 
 # which auxiliary files out of the source directory should be copied to the directory of the binary

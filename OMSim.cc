@@ -10,6 +10,7 @@
 #include "OMSimPMTResponse.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimUIinterface.hh"
+#include "OMSimSimpleGPSBeams.hh"
 
 #include "G4RunManager.hh"
 #include "G4UImanager.hh"
@@ -49,6 +50,7 @@ int OMSim()
 	gettimeofday(&time_for_randy, NULL);
 
 	long randseed = time_for_randy.tv_sec + 4294 * time_for_randy.tv_usec;
+	randseed = 12345;
 	CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(randseed, 3));
 
 	std::stringstream command;
@@ -97,9 +99,11 @@ int OMSim()
 	lUIinterface.applyCommand("/control/execute ", lArgs.get<bool>("visual"));
 
 	double startingtime = clock() / CLOCKS_PER_SEC;
+	AngularScan* scanner = new AngularScan(60, 400, 400);
+	scanner->runSingleAngularScan(0, 0);
 
 	//detector->mMDOM->setNavigator(navigator);
-	//detector->mMDOM->runBeamOnFlasher(1, 9);
+	//detector->mMDOM->runBeamOnFlasher(0, 9);
 
 	//lUIinterface.runBeamOn();
 	// opening user interface prompt and visualization after simulation was run

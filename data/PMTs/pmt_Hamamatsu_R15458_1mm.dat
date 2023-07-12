@@ -2,6 +2,14 @@
    "jName": "pmt_Hamamatsu_R15458_1mm",
    "jFrontalShape": "SphereEllipse",
    "jBulbBackShape": "FullFit",
+   "jDynodeCADOffset": {
+      "jValue": 99,
+      "jUnit": "mm"
+   },
+   "jDynodeCADscale": {
+      "jValue": 1,
+      "jUnit": "NULL"
+   },
    "jOuterShape": {
       "jTotalLenght": {
          "jValue": 91.0,

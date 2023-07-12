@@ -96,22 +96,26 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
         }
         case 1: {
             log_info("Constructing single PMT");
-            mPMTManager = new OMSimPMTConstruction(mData);
-            if (gVisual) {
-                mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
+            OMSimPMTConstruction* lPMTManager = new OMSimPMTConstruction(mData);
+
+            lPMTManager->SelectPMT("argPMT");
+
+            if (OMSimCommandArgsTable::getInstance().get<bool>("visual")) {
+                lPMTManager->SelectPMT("pmt_Hamamatsu_4inch");
             } else {
-                mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
+                lPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
             }
-            mPMTManager->SimulateHACoating();
-            mPMTManager->SimulateInternalReflections();
-            mPMTManager->construction();
-            mPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
+            //lPMTManager->SimulateHACoating();
+            //lPMTManager->SimulateInternalReflections();
+
+            lPMTManager->construction();
+            lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
             break;
         }
         case 2: {
             log_info("Constructing mDOM");
-            mDOM *lOpticalModule = new mDOM(mData);
-            lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
+            mMDOM = new mDOM(mData);
+            mMDOM->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
             break;
         }
         case 3: {

@@ -87,7 +87,7 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track* aTrack)
 
             G4ThreeVector lDeltaPos = aTrack->GetVertexPosition() - lGlobalPosition;
             lAnalysisManager.stats_photon_direction.push_back(aTrack->GetMomentumDirection());
-            lAnalysisManager.stats_photon_position.push_back(aTrack->GetPosition());
+            lAnalysisManager.stats_photon_position.push_back(lLocalPosition);//aTrack->GetPosition());
             lAnalysisManager.stats_event_id.push_back(lAnalysisManager.current_event_id);
             lAnalysisManager.stats_photon_flight_time.push_back(aTrack->GetLocalTime());
             lAnalysisManager.stats_photon_track_length.push_back(aTrack->GetTrackLength()/m);
