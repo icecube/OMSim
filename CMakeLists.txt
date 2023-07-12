@@ -1,69 +1,79 @@
-# Find the manual here:
-# http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide/html/ch03s02.html
-
-# check for cmake version, initialize project -> sets name and paths
-
+# Minimum version of CMake required
 cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
+
+# Project name
 project(OMSim_xyz)
 
-# choose option
+# Option to build example with Geant4 UI and Vis drivers
 option(WITH_GEANT4_UIVIS "Build example with Geant4 UI and Vis drivers" ON)
 
-# locate geant4 and set all required variables
+# Find Geant4 and set required variables
 if(WITH_GEANT4_UIVIS)
-	find_package(Geant4 REQUIRED ui_all vis_all)
+    find_package(Geant4 REQUIRED ui_all vis_all)
 else()
-	find_package(Geant4 REQUIRED)
+    find_package(Geant4 REQUIRED)
 endif()
 
+# Locate spdlog
 find_package(spdlog REQUIRED)
 
-# location of Geant4 libraries
+# Set path to Geant4 libraries
 set (CMAKE_MODULE_PATH /data/geant4/geant4-v11.1.1/install/lib/Geant4-10.7.1/Modules/)
 
-
+# Set paths for OpenSSL
 set(OPENSSL_ROOT_DIR /usr/lib/x86_64-linux-gnu)
 set(OPENSSL_LIBRARIES /usr/lib/x86_64-linux-gnu)
-
 find_package(OpenSSL REQUIRED)
+
+# Include OpenSSL's headers in the project
 include_directories(${OPENSSL_INCLUDE_DIR})
 
-# Find the Boost library
+# Find Boost library and specify which components to use
 find_package(Boost REQUIRED COMPONENTS program_options)
 
-# sets search paths for include
+# Include Geant4 headers in the project
 include(${Geant4_USE_FILE})
 
+# Find ROOT and include its headers in the project
 find_package(ROOT)
 include(${ROOT_USE_FILE})
 
-# Add the ALGLIB source directory
-file(GLOB ALGLIB_SOURCES "/data/alglib/src/*.cpp")
+# Create lists of source and header files for each executable
+file(GLOB COMMON_SOURCES "${PROJECT_SOURCE_DIR}/common/src/*.cc")
+file(GLOB COMMON_HEADERS "${PROJECT_SOURCE_DIR}/common/include/*.hh")
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
+# Add the executables
+file(GLOB EFFECTIVE_AREA_SOURCES "${PROJECT_SOURCE_DIR}/effective_area/src/*.cc")
+file(GLOB RADIOACTIVE_DECAYS_SOURCES "${PROJECT_SOURCE_DIR}/radioactive_decays/src/*.cc")
 
-# create list of all the files to compile
-file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.h)
+add_executable(OMSim_effective_area OMSim_effective_area.cc ${COMMON_SOURCES} ${EFFECTIVE_AREA_SOURCES})
+#add_executable(OMSim_radioactive_decays OMSim_radioactive_decays.cc ${COMMON_SOURCES} ${RADIOACTIVE_DECAYS_SOURCES})
 
+# Specify include directories for each executable
+target_include_directories(OMSim_effective_area PUBLIC 
+    ${PROJECT_SOURCE_DIR}/common/include
+    ${PROJECT_SOURCE_DIR}/effective_area/include
+)
 
+# target_include_directories(OMSim_radioactive_decays PUBLIC 
+#     ${PROJECT_SOURCE_DIR}/common/include
+#     ${PROJECT_SOURCE_DIR}/radioactive_decays/include
+# )
 
-add_executable(OMSim OMSim.cc ${sources} ${ALGLIB_SOURCES})# ${headers})
-target_include_directories(OMSim PUBLIC "/data/alglib/src/")
-target_link_libraries(OMSim ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0 Boost::program_options spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32> )
+# Link the libraries
+target_link_libraries(OMSim_effective_area ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0 Boost::program_options spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>)
+#target_link_libraries(OMSim_radioactive_decays ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0 Boost::program_options spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>)
 
-
-# which auxiliary files out of the source directory should be copied to the directory of the binary
+# Copy auxiliary files from source directory to binary directory
 set(mdom_aux
-	aux/vis.mac
-	aux/vis.ogl
+    aux/vis.mac
+    aux/vis.ogl
 )
 
 foreach(_script ${mdom_aux})
-	configure_file(
-		${PROJECT_SOURCE_DIR}/${_script}
-		${PROJECT_BINARY_DIR}/${_script}
-	COPYONLY
-	)
+    configure_file(
+        ${PROJECT_SOURCE_DIR}/${_script}
+        ${PROJECT_BINARY_DIR}/${_script}
+    COPYONLY
+    )
 endforeach()
