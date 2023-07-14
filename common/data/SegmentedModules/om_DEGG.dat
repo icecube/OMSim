@@ -1,8 +1,8 @@
 {
 "jName": "om_DEGG",
 "jOutSegments1": 30,
-"jInternalCADFile": "../data/CADmeshes/DEGG/Internal_Everything_NoMainboard.obj",
-"jPVCADFile": "../data/CADmeshes/DEGG/pressure_vessel_noPenetratorHole.obj",
+"jInternalCADFile": "../common/data/CADmeshes/DEGG/Internal_Everything_NoMainboard.obj",
+"jPVCADFile": "../common/data/CADmeshes/DEGG/pressure_vessel_noPenetratorHole.obj",
 "jInternalCAD_x": {
     "jValue": -427.6845,
     "jUnit": "mm"

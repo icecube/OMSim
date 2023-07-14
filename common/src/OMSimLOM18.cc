@@ -355,7 +355,7 @@ void LOM18::placeCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical)
     G4cout <<  "using the following CAD file for support structure: "  << CADfile.str()  << G4endl;
 
     //load mesh
-    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../data/CADmeshes/LOM18/" + CADfile.str() );
+    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/LOM18/" + CADfile.str() );
 
     //Offset
     G4ThreeVector CADoffset = G4ThreeVector(0, 0, 0); //measured from CAD file since origin =!= Module origin
@@ -389,7 +389,7 @@ void LOM18::placeCADPenetrator(G4LogicalVolume* lInnerVolumeLogical)
     G4cout <<  "using the following CAD file for penetrator: "  << CADfile.str()  << G4endl;
 
     //load mesh
-    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../data/CADmeshes/LOM18/" + CADfile.str() );
+    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/LOM18/" + CADfile.str() );
 
     //Offset
     G4ThreeVector CADoffset = G4ThreeVector(0, 0, 0); //measured from CAD file since origin =!= Module origin

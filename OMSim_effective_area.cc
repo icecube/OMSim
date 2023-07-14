@@ -5,7 +5,7 @@
 #include "OMSimEventAction.hh"
 #include "OMSimTrackingAction.hh"
 #include "OMSimSteppingAction.hh"
-#include "OMSimSteppingVerbose.hh"
+//#include "OMSimSteppingVerbose.hh"
 #include "OMSimAnalysisManager.hh"
 #include "OMSimPMTResponse.hh"
 #include "OMSimCommandArgsTable.hh"

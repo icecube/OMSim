@@ -102,7 +102,7 @@ void DEggHarness::placeCADHarness()
     G4cout << "using the following CAD file for Harness: " << CADfile.str() << G4endl;
 
     // load mesh
-    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../data/CADmeshes/DEGG/" + CADfile.str());
+    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/DEGG/" + CADfile.str());
     // G4ThreeVector CADoffset = G4ThreeVector(-427.6845*mm, 318.6396*mm, 152.89*mm); //measured from CAD file since origin =!= Module origin ... for no rotation
     G4ThreeVector CADoffset = G4ThreeVector(318.6396 * mm, 427.6845 * mm, 152.89 * mm); // measured from CAD file since origin =!= Module origin ... for -90° z rotation
 
@@ -127,7 +127,7 @@ void DEggHarness::placeCADPenetrator()
     G4cout << "using the following CAD file for Penetrator: " << CADfile.str() << G4endl;
 
     // load mesh
-    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../data/CADmeshes/DEGG/" + CADfile.str());
+    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/DEGG/" + CADfile.str());
     G4double xoffset = 110.211 * mm;
     // G4double zoffset = 34.39*mm;
     G4double zoffset = 77.817 * mm;

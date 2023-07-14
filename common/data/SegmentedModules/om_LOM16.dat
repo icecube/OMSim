@@ -1,6 +1,6 @@
 {
 "jName": "om_LOM16",
-"jInternalCADFile": "../data/CADmeshes/LOM16/LOM_Internal_WithPen_WithCali.obj",
+"jInternalCADFile": "../common/data/CADmeshes/LOM16/LOM_Internal_WithPen_WithCali.obj",
 "jInternalCAD_x": {
     "jValue": 68.248,
     "jUnit": "mm"
