@@ -82,7 +82,7 @@ void OMSimPMTConstruction::construction()
 
     lPhotocathode->SetVisAttributes(mPhotocathodeVis);
     lPMTlogical->SetVisAttributes(mGlassVis);
-    lTubeVacuum->SetVisAttributes(mInvisibleVis);
+    lTubeVacuum->SetVisAttributes(mAirVis);
     lVacuumBackLogical->SetVisAttributes(mAirVis);
     mConstructionFinished = true;
 }
@@ -217,7 +217,8 @@ std::tuple<G4VSolid*, G4VSolid*> OMSimPMTConstruction::BulbConstructionFull(G4St
 
     G4SubtractionSolid* lBulbBack = new G4SubtractionSolid("Solid back of PMT", lSubstractionTube, lCone, 0, G4ThreeVector(0, 0, lConeEllipse_y - lSTubeEllipse_y));
     lBulbBack = new G4SubtractionSolid("Solid back of PMT", lBulbBack, lTorusTubeEdge, 0, G4ThreeVector(0, 0, lTorusToEllipse - lSTubeEllipse_y));
-
+    
+    lBulbSolid = new G4UnionSolid("Bulb tube solid", lBulbSolidSubstractions, lBulbBack, 0, G4ThreeVector(0, 0, lSTubeEllipse_y));
     lBulbSolid = new G4UnionSolid("Bulb tube solid", lBulbSolid, lBulkSolid, 0, G4ThreeVector(0, 0, -mMissingTubeLength));
 
     return std::make_tuple(lBulbSolid, lPhotocathodeSide);
@@ -401,7 +402,7 @@ G4UnionSolid* OMSimPMTConstruction::SphereDoubleEllipsePhotocathode(G4String pSi
     G4double lEllipseXYaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseXYaxis_2");
     G4double lEllipseZaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis_2");
     G4double lEllipsePos_y_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y_2");
-
+    
     G4double lSphereAngle = asin(mSphereEllipseTransition_r / mOutRad);
     // PMT frontal glass envelope as union of sphere and ellipse
     G4Ellipsoid* lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
@@ -426,14 +427,16 @@ G4UnionSolid* OMSimPMTConstruction::DoubleEllipsePhotocathode(G4String pSide)
     G4double lEllipseZaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis_2");
     G4double lEllipsePos_y_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y_2");
 
-    G4double lSphereAngle = asin(mSphereEllipseTransition_r / mOutRad);
-    // PMT frontal glass envelope as union of sphere and ellipse
+    G4double lEllipseEllipseTransition_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseEllipseTransition_y");
+
     G4Ellipsoid* lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
     G4Ellipsoid* lBulbEllipsoid_2 = new G4Ellipsoid("Solid Bulb Ellipsoid 2", lEllipseXYaxis_2, lEllipseXYaxis_2, lEllipseZaxis_2);
-    G4double lExcess = mEllipsePos_y - lEllipsePos_y_2;
-    G4Tubs* lSubtractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, lEllipseXYaxis_2 * 2, 0.5 * mTotalLenght, 0, 2 * CLHEP::pi);
-    G4SubtractionSolid* lSubstractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", lBulbEllipsoid_2, lSubtractionTube, 0, G4ThreeVector(0, 0, lExcess - mTotalLenght * 0.5));
-    G4UnionSolid* lBulbSolid = new G4UnionSolid("Solid Bulb", lBulbEllipsoid, lSubstractedLargeEllipsoid, 0, G4ThreeVector(0, 0, lEllipsePos_y_2 - mEllipsePos_y));
+
+    G4double lExcess = lEllipseZaxis_2-(lEllipseEllipseTransition_y-lEllipsePos_y_2);
+    G4Tubs* lSubtractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, lEllipseXYaxis_2 * 2, lEllipseZaxis_2 , 0, 2 * CLHEP::pi);
+    G4SubtractionSolid* lSubstractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", lBulbEllipsoid_2, 
+    lSubtractionTube, 0, G4ThreeVector(0, 0, -lExcess));
+    G4UnionSolid* lBulbSolid = new G4UnionSolid("Solid Bulb", lBulbEllipsoid, lSubstractedLargeEllipsoid, 0, G4ThreeVector(0, 0, -mEllipsePos_y+lEllipsePos_y_2));
     return lBulbSolid;
 }
 

@@ -101,12 +101,12 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
             lPMTManager->SelectPMT("argPMT");
 
             if (OMSimCommandArgsTable::getInstance().get<bool>("visual")) {
-                lPMTManager->SelectPMT("pmt_Hamamatsu_4inch");
+                lPMTManager->SelectPMT("pmt_Hamamatsu_R15458_CAT");
             } else {
-                lPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
+                lPMTManager->SelectPMT("pmt_Hamamatsu_R15458_CAT");
             }
             //lPMTManager->SimulateHACoating();
-            //lPMTManager->SimulateInternalReflections();
+            lPMTManager->SimulateInternalReflections();
 
             lPMTManager->construction();
             lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
