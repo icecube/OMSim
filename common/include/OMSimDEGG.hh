@@ -12,12 +12,21 @@
 #include "G4Tubs.hh"
 class DEggHarness;
 
-class DEgg : public abcDetectorComponent
+/**
+ * @class DEGG
+ * @brief Construction of the DEGG detector geometry.
+ *
+ * The DEGG class is responsible for constructing the D-Egg detector geometry. It creates the pressure
+ * vessel, the inner volume, and places the PMTs inside the logical volume of the gel. The class is derived
+ * from the `abcDetectorComponent` base class.
+ * @ingroup common
+ */
+class DEGG : public abcDetectorComponent
 {
 public:
     
-    DEgg(InputDataManager* pData,G4bool pPlaceHarness=true);
-    ~DEgg();
+    DEGG(InputDataManager* pData,G4bool pPlaceHarness=true);
+    ~DEGG();
     void construction();
 
 private:

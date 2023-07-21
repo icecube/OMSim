@@ -36,7 +36,7 @@
 #include "G4Torus.hh"
 #include "CADMesh.hh"
 
-DEggHarness::DEggHarness(DEgg *pDEGG, InputDataManager *pData)
+DEggHarness::DEggHarness(DEGG *pDEGG, InputDataManager *pData)
 {
     mOM = pDEGG;
     mData = pData;

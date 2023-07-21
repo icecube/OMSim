@@ -1,5 +1,5 @@
 /**
- *  @defgroup common Common files
+ *  @defgroup common Common classes
  *  @brief  These files define the geometry and materials that are common for all studies.
  *  @details 
  * 

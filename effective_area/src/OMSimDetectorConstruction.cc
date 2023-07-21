@@ -138,7 +138,7 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
         }
         case 6: {
             log_info("Constructing DEGG");
-            DEgg *lOpticalModule = new DEgg(mData);
+            DEGG *lOpticalModule = new DEGG(mData);
             lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
             break;
         }

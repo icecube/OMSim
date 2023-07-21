@@ -9,17 +9,17 @@
 #include "G4Cons.hh"
 #include "G4Tubs.hh"
 
-class DEgg;
+class DEGG;
 class DEggHarness : public abcDetectorComponent
 {
 public:
     //DEggHarness(InputDataManager *pData);
-    DEggHarness(DEgg* pDEGG, InputDataManager *pData);
+    DEggHarness(DEGG* pDEGG, InputDataManager *pData);
     void construction();
     G4String mDataKey = "om_DEGG_Harness";
 
 private:
-    DEgg* mOM;
+    DEGG* mOM;
 
     void placeCADHarness();
     void placeCADPenetrator();

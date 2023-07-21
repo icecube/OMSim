@@ -10,16 +10,7 @@
 #include "G4PVPlacement.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4Transform3D.hh"
-/**
- *  @class abcDetectorComponent
- *  @brief Abstract base class used for constructing detector components.
- *
- *  @details This class serves as a base class for constructing and manipulating detector components in OMSim. It provides a set of helper functions for creating and arranging components within a detector, as well as methods for altering the geometry, such as subtracting one component from another. It utilizes Geant4's classes and datatypes to define and manipulate these components. The class maintains an internal list of components, allowing for operations to be performed on all components simultaneously.
- *  The `placeIt` methods allow for the placement of components within a specified logical volume, either via individual positioning and rotation parameters, or via a Geant4 transformation. Furthermore, components from one `abcDetectorComponent` instance can be integrated into another, with user-specified position, rotation, and name extension. This makes it possible to build complex geometrical structures in a modular fashion in cases where a single mother volume cannot be used.
- *
- *  @ingroup common
- *  @author Martin Unland
- */
+
 
 /**
  * @brief Append component to Components vector.
