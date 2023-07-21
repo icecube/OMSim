@@ -3,6 +3,16 @@
 
 #include "globals.hh"
 
+/**
+ * @class AngularScan
+ * @brief Class for defining and running simple GPS beam configurations with angular scans.
+ * 
+ * The AngularScan class provides functionalities to configure and run simple GPS beam configurations
+ * with angular scans. It allows setting the beam radius, beam distance, and wavelength of the photons
+ * to be generated. It also supports specifying the angle of incidence with respect to the target
+ * and performs the simulation for each angular configuration.
+ * @ingroup EffectiveArea
+ */
 class AngularScan
 {
 public:
