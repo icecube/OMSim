@@ -1,24 +1,22 @@
-name: Doxygen
-
+name: GitHub Pages
 on:
   push:
-    branches: [ main ]
+    branches:
+      - master  # Set a branch to deploy
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  deploy:
+    runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Install Doxygen
-      run: sudo apt-get install doxygen
+      - name: Generate Doxygen
+        run: |
+          sudo apt-get install doxygen
+          doxygen ./doxygen_documentation/Doxyfile
 
-    - name: Generate Docs
-      run: doxygen doxygen_documentation/Doxyfile  # Adjust this line to point to your Doxyfile
-
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@4.1.5
-      with:
-        branch: gh-pages
-        folder: doxygen_documentation/html  # Adjust this line to the output folder of your Doxyfile
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./doxygen_documentation/html
