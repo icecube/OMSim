@@ -13,8 +13,9 @@ jobs:
       - name: Generate Doxygen
         run: |
           sudo apt-get install doxygen
-          doxygen ./doxygen_documentation/Doxyfile
-
+          cd doxygen_documentation
+          doxygen Doxyfile
+          cd ..
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
