@@ -12,7 +12,7 @@
  * The metric to optimise the module's sensitivity is the effective area \f$A_{\mathrm{eff}}(\theta, \phi)\f$. This represents the area that is detected from a plane wave of incidence angle 
  * of \f$\theta\f$ (zenith) and \f$\phi\f$ (azimuth) with respect to the module. This parameter is calculated with OMSim by simulating a disk emitting mono-energetic photons 
  * perpendicular to its surface with a uniform density profile.
- * The photon generation is made with the module @link AngularScan @endlink, running the method @link runSingleAngularScan @endlink once for each direction to be investigated
+ * The photon generation is made with the module @link AngularScan @endlink, running the method @link AngularScan::runSingleAngularScan @endlink once for each direction to be investigated
  * <div style="width: 100%; text-align: center;">
  * <img src="mDOM_scan.png" width="400" height="400" />
  * <div style="width: 80%; margin: auto;">
