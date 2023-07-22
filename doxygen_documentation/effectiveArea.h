@@ -3,10 +3,8 @@
  *  @brief  All classes that are specific to the effective area studies of the optical modules.
  *
  * @details 
- * <div style="border:1px solid black; padding:10px; background-color: #eeeeee; width: 85%;">
- * <b>Note:</b> In the following a short introduction of an effective area study is made with the mDOM as an example. For further details see Chapter 10 of <a href="https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/doktorarbeiten/1702-phd_lclassen.pdf">Lew Classen's thesis</a> or
+ * @note In the following a short introduction of an effective area study is made with the mDOM as an example. For further details see Chapter 10 of <a href="https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/doktorarbeiten/1702-phd_lclassen.pdf">Lew Classen's thesis</a> or
  * Section 9.3.5 of <a href="https://zenodo.org/record/8121321">this thesis</a>.
- * </div>
  * 
  * During the design of a module its sensitivity is optimised by considering the optical properties of various materials and altering the geometry and positioning of the mechanical components in the Geant4 simulation. 
  * The metric to optimise the module's sensitivity is the effective area \f$A_{\mathrm{eff}}(\theta, \phi)\f$. This represents the area that is detected from a plane wave of incidence angle 
