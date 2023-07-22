@@ -37,3 +37,4 @@ build2/
 build*/
 doxygen_documentation/html
 doxygen_documentation/latex
+.vscode/
