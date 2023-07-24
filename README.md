@@ -10,7 +10,7 @@ Please check the different Modules in the [documentation](https://icecube.github
 
 #### Installing Geant4
 
-First you should install Geant4 following [the guide provided by cern](https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html). OMSim is currently optimised for Geant4-11.1.2. If you want to use the visualisation tools of Geant, you should include the following cmake options: 
+First you should install Geant4 following [the guide provided by cern](https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html). OMSim is currently optimised for Geant4-11.1.1. If you want to use the visualisation tools of Geant, you should include the following cmake options: 
 
 ```bash
 -DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_GDML=ON -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_QT=ON -DGEANT4_USE_RAYTRACER_X11=ON -DGEANT4_USE_XM=ON
