@@ -14,7 +14,7 @@
  *       - Investigate why the gel does not reach the photocathode edge. 
  *         (Should the photocathode edge end earlier? Gel, Vessel, and PMT shape are correct.)
  * 
- * @author Berit Schlüter
+ * @author Geometry from DOUMEKI parsed by Berit Schlüter
  * @date July 2022
  * @ingroup common
  */
