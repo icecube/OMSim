@@ -16,8 +16,10 @@ jobs:
           cd doxygen_documentation
           doxygen Doxyfile
           cd ..
+          
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./doxygen_documentation/html
+          keep_files: false  # Do not keep existing files
