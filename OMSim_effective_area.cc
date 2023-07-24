@@ -33,7 +33,7 @@
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh" //xxx
 
-#include "argtable2.h"
+
 #include <ctime>
 #include <sys/time.h>
 
@@ -185,6 +185,7 @@ int main(int argc, char *argv[])
 		("environment", po::value<G4int>()->default_value(0), "medium in which the setup is emmersed [AIR = 0, ice = 1, spice = 2]")
 		("visual,v", po::bool_switch(), "shows visualization of module after run")
 		("save_args", po::bool_switch()->default_value(true), "if true a json file with the args and seed is saved")
+		("seed", po::value<long>(), "seed for random engine. If none is given a seed from CPU time is used")
 		("string_pos_angle", po::value<G4double>()->default_value(45), "Polar angle of main data cable (viewed from above)")
 		("glass", po::value<G4int>()->default_value(0), "DEPRECATED. Index to select glass type [VITROVEX = 0, Chiba = 1, Kopp = 2, myVitroVex = 3, myChiba = 4, WOMQuartz = 5, fusedSilica = 6]")
 		("gel", po::value<G4int>()->default_value(1), "DEPRECATED. Index to select gel type [Wacker = 0, Chiba = 1, IceCube = 2, Wacker_company = 3]")
