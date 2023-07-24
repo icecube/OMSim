@@ -83,6 +83,11 @@
         "netfwd": "cpp",
         "span": "cpp",
         "ntuple": "cpp",
-        "bmf": "cpp"
+        "bmf": "cpp",
+        "free_seg": "cpp",
+        "visible_action": "cpp",
+        "file": "cpp",
+        "rcsv_ntuple": "cpp",
+        "codecvt": "cpp"
     }
 }

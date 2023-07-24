@@ -8,39 +8,45 @@
 #include <vector>
 #include <fstream>
 
+struct HitStats
+{
+    std::vector<G4long> event_id;
+    std::vector<G4double> hit_time;
+    std::vector<G4double> photon_flight_time;
+    std::vector<G4double> photon_track_length;
+    std::vector<G4double> photon_energy;
+    std::vector<G4int> PMT_hit;
+    std::vector<G4ThreeVector> photon_direction;
+    std::vector<G4ThreeVector> photon_local_position;
+	std::vector<G4ThreeVector> photon_global_position;
+    std::vector<G4double> event_distance;
+	std::vector<OMSimPMTResponse::PMTPulse> PMT_response;
+};
+
 class OMSimAnalysisManager
 {
 public:
-	static OMSimAnalysisManager &getInstance()
-	{
-		static OMSimAnalysisManager instance;
-		return instance;
-	}
+    static OMSimAnalysisManager &getInstance()
+    {
+        static OMSimAnalysisManager instance;
+        return instance;
+    }
 
-	void Reset();
-	void Write();
-	void WriteAccept();
+    std::vector<double> CountHits();
+    void Reset();
+	void WriteScan(G4double pPhi, G4double pTheta);
+	void WriteHeader();
 
-	// run quantities
-	G4String outputFilename;
-	std::fstream datafile;
-	G4long current_event_id;
-	std::vector<G4long> stats_event_id;
-	std::vector<G4double> stats_hit_time;
-	std::vector<G4double> stats_photon_flight_time;
-	std::vector<G4double> stats_photon_track_length;
-	std::vector<G4double> stats_photon_energy;
-	std::vector<G4int> stats_PMT_hit;
-	std::vector<G4ThreeVector> stats_photon_direction;
-	std::vector<G4ThreeVector> stats_photon_position;
-	std::vector<G4double> stats_event_distance;
-	std::vector<OMSimPMTResponse::PMTPulse> lPulses;
+    G4String mOutputFileName;
+    std::fstream mDatafile;
+    G4long mCurrentEventNumber;
+    HitStats mHits;
 
 private:
-	OMSimAnalysisManager() = default;
-	~OMSimAnalysisManager() = default;
-	OMSimAnalysisManager(const OMSimAnalysisManager &) = delete;
-	OMSimAnalysisManager &operator=(const OMSimAnalysisManager &) = delete;
+    OMSimAnalysisManager() = default;
+    ~OMSimAnalysisManager() = default;
+    OMSimAnalysisManager(const OMSimAnalysisManager &) = delete;
+    OMSimAnalysisManager &operator=(const OMSimAnalysisManager &) = delete;
 };
 
 #endif

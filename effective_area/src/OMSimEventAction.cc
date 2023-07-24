@@ -21,7 +21,7 @@ OMSimEventAction::~OMSimEventAction()
 
 void OMSimEventAction::BeginOfEventAction(const G4Event* evt)
 {
-	OMSimAnalysisManager::getInstance().current_event_id = evt->GetEventID();
+	OMSimAnalysisManager::getInstance().mCurrentEventNumber = evt->GetEventID();
 }
 
 void OMSimEventAction::EndOfEventAction(const G4Event* evt)

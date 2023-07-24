@@ -1,80 +1,83 @@
 #include "OMSimAnalysisManager.hh"
 #include "G4ios.hh"
-//since Geant4.10: include units manually
+// since Geant4.10: include units manually
 #include "G4SystemOfUnits.hh"
 #include "OMSimCommandArgsTable.hh"
 
+std::vector<double> OMSimAnalysisManager::CountHits()
+{
+	G4int lDOMIdx = OMSimCommandArgsTable::getInstance().get<G4int>("detector_type");
 
-void OMSimAnalysisManager::Write()
-{	
-	for (int i = 0; i < (int) stats_event_id.size(); i++) {
-		datafile << stats_event_id.at(i) << "\t";
-		//datafile << stats_hit_time.at(i) << "\t";
-		datafile << stats_photon_flight_time.at(i) << "\t";
-		//datafile << stats_photon_track_length.at(i) << "\t";
-		datafile << stats_photon_energy.at(i) << "\t";
-		//datafile << stats_PMT_hit.at(i) << "\t";
-		//datafile << stats_event_distance.at(i) << "\t";
-		datafile << lPulses.at(i).DetectionProbability << "\t";
-		datafile << lPulses.at(i).TransitTime << "\t";
-		datafile << lPulses.at(i).PE << "\t";
-		datafile << stats_photon_position.at(i).x()/m << "\t";
-		datafile << stats_photon_position.at(i).y()/m << "\t";
-		datafile << stats_photon_position.at(i).z()/m << "\t";
-		//datafile << stats_photon_direction.at(i).x() << "\t";
-		//datafile << stats_photon_direction.at(i).y() << "\t";
-		//datafile << stats_photon_direction.at(i).z() << "\t";
-		//datafile << stats_photon_position.at(i).mag() / m ;
-		datafile << G4endl;
+	int lNumPMTs;
+	if (lDOMIdx == 1)
+	{
+		lNumPMTs = 1;
+	} // single PMT
+	else if (lDOMIdx == 2)
+	{
+		lNumPMTs = 24;
+	} // mDOM
+	else if (lDOMIdx == 3)
+	{
+		lNumPMTs = 1;
+	} // PDOM
+	else if (lDOMIdx == 4)
+	{
+		lNumPMTs = 16;
+	} // LOM16
+	else if (lDOMIdx == 5)
+	{
+		lNumPMTs = 18;
+	} // LOM18
+	else if (lDOMIdx == 6)
+	{
+		lNumPMTs = 2;
+	} // DEGG
+	else
+	{
+		lNumPMTs = 99;
+	} // custom
+
+	std::vector<double> lHits(lNumPMTs + 2, 0.0);
+
+	for (int i = 0; i < (int)mHits.PMT_hit.size(); i++)
+	{
+		lHits[mHits.PMT_hit.at(i)] += 1; // mHits.PMT_response.at(i).DetectionProbability;
+		lHits[lNumPMTs + 1] += 1;
 	}
-	
-	
+
+	return lHits;
+}
+void OMSimAnalysisManager::WriteHeader()
+{
+	mDatafile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
+	mDatafile << "# Phi(deg)"
+			  << "\t"
+			  << "Theta(deg)"
+			  << "\t"
+			  << "Radius(mm)"
+			  << "\t"
+			  << "HitsPMTs"
+			  << "\t"
+			  << "Total"
+			  << "\t" << G4endl;
+	mDatafile.close();
 }
 
-void OMSimAnalysisManager::WriteAccept()
-{   G4int lDOMIdx = OMSimCommandArgsTable::getInstance().get<G4int>("detector_type");
-	int num_pmts;
-	if (lDOMIdx==1){num_pmts = 1;} //single PMT
-	else if (lDOMIdx==2){num_pmts = 24;} //mDOM
-	else if (lDOMIdx==3){num_pmts = 1;} //PDOM
-	else if (lDOMIdx==4){num_pmts = 16;} //LOM16
-	else if (lDOMIdx==5){num_pmts = 18;} //LOM18
-	else if (lDOMIdx==6){num_pmts = 2;} //DEGG
-    else{num_pmts = 99;} //custom
-
-	
-
-		
-	double	pmthits[num_pmts+1] = {0};
-	double sum = 0;
-	
-	// repacking hits:
-	for (int i = 0; i < (int) stats_PMT_hit.size(); i++) {
-
-		pmthits[stats_PMT_hit.at(i)] += 1;//lPulses.at(i).DetectionProbability;
+void OMSimAnalysisManager::WriteScan(G4double pPhi, G4double pTheta)
+{
+	std::vector<double> lHits = CountHits();
+	mDatafile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
+	mDatafile << pPhi << "\t" << pTheta << "\t";
+	for (const auto &hit : lHits)
+	{
+		mDatafile << hit << "\t";
 	}
-	//wrinting collective hits
-	for (int j = 0; j < num_pmts; j++) {
-		//datafile << "\t" << pmthits[j];
-		sum += pmthits[j];
-		pmthits[j] = 0;
-	}
-	datafile << "\t" << sum;
-	datafile << G4endl;	
+	mDatafile << G4endl;
+	mDatafile.close();
 }
-
 
 void OMSimAnalysisManager::Reset()
 {
-	stats_event_id.clear();
-	stats_photon_flight_time.clear();
-	stats_photon_track_length.clear();
-	stats_hit_time.clear();
-	stats_photon_energy.clear();
-	stats_PMT_hit.clear();
-	stats_photon_direction.clear();
-	stats_photon_position.clear();
-    stats_event_distance.clear();
-	lPulses.clear();
+	mHits = HitStats();
 }
-

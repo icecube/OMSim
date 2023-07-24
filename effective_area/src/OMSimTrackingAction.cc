@@ -56,15 +56,6 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track* aTrack)
     if ( aTrack->GetDefinition()->GetParticleName() == "opticalphoton" ) {
 
         if ((aTrack->GetVolume()->GetName()).substr(0,12) == "Photocathode"){
-
-        /*
-        size_t idx_rindex1        = 0;
-        const G4Material* aMaterial = aTrack->GetMaterial();
-        G4MaterialPropertiesTable* aMaterialPropertiesTable = aMaterial->GetMaterialPropertiesTable();
-
-        G4MaterialPropertyVector* RindexMPV = aMaterialPropertiesTable->GetProperty(kRINDEX);
-        G4cout << RindexMPV->Value( aTrack->GetDynamicParticle()->GetTotalMomentum(), idx_rindex1)<< G4endl;
-        */
         G4double lEkin = aTrack->GetKineticEnergy();
 
         G4double h = 4.135667696E-15*eV*s;
@@ -74,8 +65,6 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track* aTrack)
 
         OMSimPMTResponse& lPhotocathodeResponse = OMSimPMTResponse::getInstance();
 	    OMSimAnalysisManager& lAnalysisManager = OMSimAnalysisManager::getInstance();
-
-        lAnalysisManager.stats_PMT_hit.push_back(atoi(n.at(1)));	
         G4ThreeVector lGlobalPosition = aTrack->GetPosition();
         G4ThreeVector lLocalPosition = aTrack->GetStep()->GetPostStepPoint()->GetTouchableHandle()->GetHistory()->GetTopTransform().TransformPoint(lGlobalPosition);
 
@@ -83,17 +72,19 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track* aTrack)
         G4double y = lLocalPosition.y()/mm;
         G4double lR = std::sqrt(x*x+y*y);
 
-        lAnalysisManager.lPulses.push_back(lPhotocathodeResponse.ProcessPhotocathodeHit(x, y, h*c/lEkin));
+        G4ThreeVector lDeltaPos = aTrack->GetVertexPosition() - lGlobalPosition;
 
-            G4ThreeVector lDeltaPos = aTrack->GetVertexPosition() - lGlobalPosition;
-            lAnalysisManager.stats_photon_direction.push_back(aTrack->GetMomentumDirection());
-            lAnalysisManager.stats_photon_position.push_back(lLocalPosition);//aTrack->GetPosition());
-            lAnalysisManager.stats_event_id.push_back(lAnalysisManager.current_event_id);
-            lAnalysisManager.stats_photon_flight_time.push_back(aTrack->GetLocalTime());
-            lAnalysisManager.stats_photon_track_length.push_back(aTrack->GetTrackLength()/m);
-            lAnalysisManager.stats_hit_time.push_back(aTrack->GetGlobalTime());
-            lAnalysisManager.stats_photon_energy.push_back(lEkin/eV);
-            lAnalysisManager.stats_event_distance.push_back(lDeltaPos.mag()/m);
+        lAnalysisManager.mHits.event_id.push_back(lAnalysisManager.mCurrentEventNumber);
+        lAnalysisManager.mHits.hit_time.push_back(aTrack->GetGlobalTime());
+        lAnalysisManager.mHits.photon_flight_time.push_back(aTrack->GetLocalTime());
+        lAnalysisManager.mHits.photon_track_length.push_back(aTrack->GetTrackLength()/m);
+        lAnalysisManager.mHits.photon_energy.push_back(lEkin/eV);
+        lAnalysisManager.mHits.PMT_hit.push_back(atoi(n.at(1)));
+        lAnalysisManager.mHits.photon_direction.push_back(aTrack->GetMomentumDirection());
+        lAnalysisManager.mHits.photon_global_position.push_back(aTrack->GetPosition());
+        lAnalysisManager.mHits.photon_local_position.push_back(lLocalPosition);
+        lAnalysisManager.mHits.event_distance.push_back(lDeltaPos.mag()/m);
+        lAnalysisManager.mHits.PMT_response.push_back(lPhotocathodeResponse.ProcessPhotocathodeHit(x, y, h*c/lEkin));
     }
     }
 }
