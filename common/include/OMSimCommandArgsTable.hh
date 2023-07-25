@@ -25,7 +25,8 @@
 #include <stdexcept>
 #include "globals.hh"
 #include <boost/any.hpp>
-
+#include <sys/time.h>
+#include "OMSimLogger.hh"
 
 
 /**
@@ -77,17 +78,17 @@ public:
      */
     template <typename T>
     T get(const std::string &key)
-    {
+    { 
         try
         {
             return boost::any_cast<T>(mParameters.at(key));
         }
         catch (const boost::bad_any_cast &e)
-        {
+        {   log_error(("Failed to get parameter " + key + " as type " + typeid(T).name()).c_str());
             throw std::invalid_argument("Failed to get parameter " + key + " as type " + typeid(T).name());
         }
         catch (const std::out_of_range &e)
-        {
+        {   log_error(("Parameter " + key + " does not exist").c_str());
             throw std::invalid_argument("Parameter " + key + " does not exist");
         }
     }
@@ -135,10 +136,18 @@ public:
 
 
     /**
-     * @brief Finalizes the table, preventing any further modifications.
+     * @brief Finalizes the table, setting a random seed if none was provided. mFinalized is set to true preventing any further modifications.
      */
     void finalize()
-    {
+    {	
+        long lSeed;
+		if (!keyExists("seed"))
+		{
+			struct timeval time_for_randy;
+			gettimeofday(&time_for_randy, NULL);
+			lSeed = time_for_randy.tv_sec + 4294 * time_for_randy.tv_usec;
+			setParameter("seed", lSeed);
+		}
         mFinalized = true;
     }
 

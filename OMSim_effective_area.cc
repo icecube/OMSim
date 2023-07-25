@@ -8,7 +8,7 @@
  * @warning
  * There are a few material related arguments that are depracated as for example the glass and gel arguments. This were used to easily change materials during the OM development phase. Check @link InputDataManager::getMaterial @endlink and modify the respective OM class if you want to use these args.
  */
-
+#include "OMSim.h"
 #include "OMSimDetectorConstruction.hh"
 #include "OMSimPhysicsList.hh"
 #include "OMSimPrimaryGeneratorAction.hh"
@@ -33,7 +33,6 @@
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh" //xxx
 
-
 #include <ctime>
 #include <sys/time.h>
 
@@ -42,8 +41,7 @@
 #include <fstream>
 #include <string>
 
-#include <cmath> // for abs() of doubles
-// since Geant4.10: include units manually
+#include <cmath> 
 #include "G4SystemOfUnits.hh"
 
 #include <boost/property_tree/ptree.hpp>
@@ -55,81 +53,24 @@
 
 namespace po = boost::program_options;
 
-void ensure_output_directory_exists(const std::string& filepath) {
-    std::filesystem::path full_path(filepath);
-    std::filesystem::path dir = full_path.parent_path();
-    if (!dir.empty() && !std::filesystem::exists(dir)) {
-        std::filesystem::create_directories(dir);
-    }
-}
-
-int OMSim()
+void effective_area_simulation()
 {
-	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 	double startingtime = clock() / CLOCKS_PER_SEC;
-    ensure_output_directory_exists(lArgs.get<std::string>("output_file"));
 
-	std::string lFileName = lArgs.get<std::string>("output_file") + "_args.json";
-	if (lArgs.get<bool>("save_args")) lArgs.writeToJson(lFileName);
-
-	CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
-
-	G4RunManager *runManager = new G4RunManager;
-
-	OMSimDetectorConstruction *detector;
-	detector = new OMSimDetectorConstruction();
-	runManager->SetUserInitialization(detector);
-
-	G4VUserPhysicsList *physics = new OMSimPhysicsList;
-	runManager->SetUserInitialization(physics);
-
-	auto visManager = new G4VisExecutive;
-	visManager->Initialize();
-
-	G4VUserPrimaryGeneratorAction *gen_action = new OMSimPrimaryGeneratorAction();
-	runManager->SetUserAction(gen_action);
-
-	G4UserRunAction *run_action = new OMSimRunAction();
-	runManager->SetUserAction(run_action);
-
-	G4UserEventAction *event_action = new OMSimEventAction();
-	runManager->SetUserAction(event_action);
-
-	G4UserTrackingAction *tracking_action = new OMSimTrackingAction();
-	runManager->SetUserAction(tracking_action);
-
-	G4UserSteppingAction *stepping_action = new OMSimSteppingAction();
-	runManager->SetUserAction(stepping_action);
-
-	runManager->Initialize();
-
-	OMSimPMTResponse &lPhotocathodeResponse = OMSimPMTResponse::getInstance();
 	OMSimAnalysisManager &lAnalysisManager = OMSimAnalysisManager::getInstance();
-	
+	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 
-	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-	lUIinterface.setUI(G4UImanager::GetUIpointer());
-
-	G4Navigator *lNavigator = new G4Navigator();
-	lNavigator->SetWorldVolume(detector->mWorldPhysical);
-	lNavigator->LocateGlobalPointAndSetup(G4ThreeVector(0., 0., 0.));
-
-	G4TouchableHistory *history = lNavigator->CreateTouchableHistory();
-	lUIinterface.applyCommand("/control/execute ", lArgs.get<bool>("visual"));
-
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	AngularScan *lScanner = new AngularScan(lArgs.get<G4double>("radius"), lArgs.get<G4double>("distance"), lArgs.get<G4double>("wavelength"));
 
 	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
 	lAnalysisManager.WriteHeader();
-	
+
 	// If file with angle pairs is not provided, use arg theta & phi
 	if (!lArgs.keyExists("angles_file"))
 	{
 		// Use the angle pairs provided through command-line arguments
 		lScanner->runSingleAngularScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
 		lAnalysisManager.WriteScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
-
 	}
 	// File is provided, run over all angle pairs
 	else
@@ -144,60 +85,50 @@ int OMSim()
 			lAnalysisManager.WriteScan(lPhis.at(i), lThetas.at(i));
 		}
 	}
-
-	//  opening user interface prompt and visualization after simulation was run
-	if (lArgs.get<bool>("visual"))
-	{
-		char *argumv[] = {"all", NULL};
-		G4UIExecutive *UIEx = new G4UIExecutive(1, argumv);
-		lUIinterface.applyCommand("/control/execute ../aux/init_vis.mac");
-		UIEx->SessionStart();
-		delete UIEx;
-	}
-
 	double finishtime = clock() / CLOCKS_PER_SEC;
 	G4cout << "Computation time: " << finishtime - startingtime << " seconds." << G4endl;
-
-	delete lNavigator;
-	delete history;
-	delete visManager;
-	delete runManager;
-	return 0;
 }
 
 int main(int argc, char *argv[])
 {
 	try
 	{
+		OMSim lSimulation;
 		// Do not use G4String as type here...
-		po::options_description desc("User arguments available");
-		desc.add_options()("help,h", "produce this help message")
+		po::options_description lSpecific("Effective area specific arguments");
+
+		lSpecific.add_options()
 		("world_radius,w", po::value<G4double>()->default_value(3.0), "radius of world sphere in m")
 		("radius,r", po::value<G4double>()->default_value(300.0), "plane wave radius in mm")
 		("distance,d", po::value<G4double>()->default_value(2000), "plane wave distance from origin, in mm")
 		("theta,t", po::value<G4double>()->default_value(0.0), "theta (= zenith) in deg")
 		("phi,f", po::value<G4double>()->default_value(0.0), "phi (= azimuth) in deg")
 		("wavelength,l", po::value<G4double>()->default_value(400.0), "wavelength of incoming light in nm")
-		("numevents,n", po::value<G4int>()->default_value(0), "number of photons emitted per angle")
 		("angles_file,i", po::value<std::string>(), "The input angle pairs file to be scanned. The file should contain two columns, the first column with the theta (zenith) and the second with phi (azimuth) in degrees.")
-		("output_file,o", po::value<std::string>()->default_value("output"), "filename for output")
 		("detector_type", po::value<G4int>()->default_value(2), "module type [custom = 0, Single PMT = 1, mDOM = 2, pDDOM = 3, LOM16 = 4]")
-		("environment", po::value<G4int>()->default_value(0), "medium in which the setup is emmersed [AIR = 0, ice = 1, spice = 2]")
-		("visual,v", po::bool_switch(), "shows visualization of module after run")
-		("save_args", po::bool_switch()->default_value(true), "if true a json file with the args and seed is saved")
-		("seed", po::value<long>(), "seed for random engine. If none is given a seed from CPU time is used")
-		("string_pos_angle", po::value<G4double>()->default_value(45), "Polar angle of main data cable (viewed from above)")
-		("glass", po::value<G4int>()->default_value(0), "DEPRECATED. Index to select glass type [VITROVEX = 0, Chiba = 1, Kopp = 2, myVitroVex = 3, myChiba = 4, WOMQuartz = 5, fusedSilica = 6]")
-		("gel", po::value<G4int>()->default_value(1), "DEPRECATED. Index to select gel type [Wacker = 0, Chiba = 1, IceCube = 2, Wacker_company = 3]")
-		("reflective_surface", po::value<G4int>()->default_value(0), "DEPRECATED. Index to select reflective surface type [Refl_V95Gel = 0, Refl_V98Gel = 1, Refl_Aluminium = 2, Refl_Total98 = 3]")
-		("pmt_model", po::value<G4int>()->default_value(0), "DEPRECATED. R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3");
+		("string_pos_angle", po::value<G4double>()->default_value(45), "Polar angle of main data cable (viewed from above)");
+
+
+		po::options_description lAllargs("Allowed input arguments");
+		lAllargs.add(lSimulation.mGeneralArgs).add(lSpecific);
+
+
 		po::variables_map lVariablesMap;
-		po::store(po::parse_command_line(argc, argv, desc), lVariablesMap);
+		try {
+			po::store(po::parse_command_line(argc, argv, lAllargs), lVariablesMap);
+		} catch (std::invalid_argument& e) {
+			std::cerr << "Invalid argument: " << e.what() << std::endl;
+		} catch (std::exception& e) {
+			std::cerr << "An exception occurred: " << e.what() << std::endl;
+		} catch (...) {
+			std::cerr << "An unknown exception occurred." << std::endl;
+		}
+
 		po::notify(lVariablesMap);
 
 		if (lVariablesMap.count("help"))
 		{
-			std::cout << desc << "\n";
+			std::cout << lAllargs << "\n";
 			return 1;
 		}
 
@@ -209,19 +140,12 @@ int main(int argc, char *argv[])
 			lArgs.setParameter(option.first, option.second.value());
 		}
 
-		long lSeed;
-		if (!lVariablesMap.count("seed"))
-		{
-			struct timeval time_for_randy;
-			gettimeofday(&time_for_randy, NULL);
-			lSeed = time_for_randy.tv_sec + 4294 * time_for_randy.tv_usec;
-			lArgs.setParameter("seed", lSeed);
-		}
-
 		// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
 		lArgs.finalize();
+		lSimulation.initialiseSimulation();
 
-		OMSim();
+		effective_area_simulation();
+
 	}
 	catch (std::exception &e)
 	{

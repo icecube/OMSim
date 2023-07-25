@@ -88,6 +88,7 @@
         "visible_action": "cpp",
         "file": "cpp",
         "rcsv_ntuple": "cpp",
-        "codecvt": "cpp"
+        "codecvt": "cpp",
+        "search_action": "cpp"
     }
 }
