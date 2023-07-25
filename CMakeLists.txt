@@ -14,8 +14,6 @@ else()
     find_package(Geant4 REQUIRED)
 endif()
 
-# Locate spdlog
-find_package(spdlog REQUIRED)
 
 # Set path to Geant4 libraries
 set (CMAKE_MODULE_PATH /data/geant4/geant4-v11.1.1/install/lib/Geant4-10.7.1/Modules/)
@@ -61,8 +59,8 @@ target_include_directories(OMSim_effective_area PUBLIC
 # )
 
 # Link the libraries
-target_link_libraries(OMSim_effective_area ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0 Boost::program_options spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>)
-#target_link_libraries(OMSim_radioactive_decays ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0 Boost::program_options spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>)
+target_link_libraries(OMSim_effective_area ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0 Boost::program_options $<$<BOOL:${MINGW}>:ws2_32>)
+#target_link_libraries(OMSim_radioactive_decays ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libargtable2.so.0 Boost::program_options $<$<BOOL:${MINGW}>:ws2_32>)
 
 # Copy auxiliary files from source directory to binary directory
 set(mdom_aux

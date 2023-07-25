@@ -1,6 +1,6 @@
 /**
  *  @defgroup EffectiveArea Effective area
- *  @brief  All classes that are specific to the effective area studies of the optical modules.
+ *  @brief  All specific to the effective area studies of the optical modules.
  *
  * @details
  * @note In the following a short introduction of an effective area study is made with the mDOM as an example. For further details see Chapter 10 of <a href="https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/doktorarbeiten/1702-phd_lclassen.pdf">Lew Classen's thesis</a> or
