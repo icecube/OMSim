@@ -2,15 +2,12 @@
 #ifndef abcDetectorComponent_h
 #define abcDetectorComponent_h 1
 
-#include "G4LogicalVolume.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4Transform3D.hh"
-#include "G4VisAttributes.hh"
 #include "OMSimInputData.hh"
+
+#include <G4Transform3D.hh>
+#include <G4VisAttributes.hh>
 #include <G4SubtractionSolid.hh>
 #include <G4PVPlacement.hh>
-#include "G4MultiUnion.hh"
-#include <sstream>
 /**
  *  @class abcDetectorComponent
  *  @brief Abstract base class used for constructing detector components.

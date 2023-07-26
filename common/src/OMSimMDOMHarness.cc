@@ -10,31 +10,14 @@
 
 #include "OMSimMDOMHarness.hh"
 #include "OMSimMDOM.hh"
-#include "abcDetectorComponent.hh"
-#include <dirent.h>
-#include <stdexcept>
-#include <cstdlib>
-
-#include "G4Cons.hh"
-#include "G4Ellipsoid.hh"
-#include "G4EllipticalTube.hh"
-#include "G4Sphere.hh"
-#include "G4IntersectionSolid.hh"
-#include "G4LogicalBorderSurface.hh"
-#include "G4LogicalSkinSurface.hh"
-#include "G4LogicalVolume.hh"
-#include "G4Orb.hh"
-#include "G4Polycone.hh"
-#include "G4PVPlacement.hh"
-#include "G4SubtractionSolid.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4Transform3D.hh"
-#include "G4Tubs.hh"
-#include "G4UnionSolid.hh"
-#include <G4UnitsTable.hh>
-#include "G4VisAttributes.hh"
-#include "G4Torus.hh"
 #include "OMSimCommandArgsTable.hh"
+
+#include <G4EllipticalTube.hh>
+#include <G4Sphere.hh>
+#include <G4LogicalSkinSurface.hh>
+#include <G4Polycone.hh>
+#include <G4Torus.hh>
+
 
 mDOMHarness::mDOMHarness(mDOM* pMDOM, InputDataManager* pData) {
     mOM = pMDOM;
@@ -237,7 +220,7 @@ void mDOMHarness::mainDataCable()
     G4LogicalVolume* lDataCableLogical = new G4LogicalVolume(lDataCableSolid, mData->getMaterial("NoOptic_Absorber"), "MainDataCable_logical");
     new G4LogicalSkinSurface("MainDataCable_skin", lDataCableLogical, mData->getOpticalSurface("Refl_BlackDuctTapePolished"));
     lDataCableLogical->SetVisAttributes(mAbsorberVis);
-    G4double lMainCableAngle = OMSimCommandArgsTable::getInstance().get<G4double>("string_pos_angle")*deg;
+    G4double lMainCableAngle = 90*deg;
     G4double lMainCableRadius = (mRopeStartingPoint + lDataCableRadius + mRopeRMax + 0.2 * cm-mBridgeAddedThickness-0.75*cm);
     G4ThreeVector lDataCablePosition = G4ThreeVector( lMainCableRadius* sin(lMainCableAngle),
        lMainCableRadius * cos(lMainCableAngle),

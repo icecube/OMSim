@@ -1,15 +1,8 @@
 #ifndef OMSimMDOM_h
 #define OMSimMDOM_h 1
-#include "abcDetectorComponent.hh"
+
 #include "OMSimMDOMFlasher.hh"
 #include "OMSimPMTConstruction.hh"
-#include "G4LogicalVolume.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4UnionSolid.hh"
-#include "G4IntersectionSolid.hh"
-#include "G4Cons.hh"
-#include "G4Tubs.hh"
-
 
 class mDOMHarness;
 

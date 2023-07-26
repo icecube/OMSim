@@ -14,19 +14,20 @@
 #define OMSIMCOMMANDARGSTABLE_H
 #define WRITE_TO_JSON_IF_TYPE_MATCHES(VARIANT, TYPE)  \
     if (type == typeid(TYPE)) {                       \
-        outFile << "\t\"" << kv.first << "\": "       \
-        << boost::any_cast<TYPE>(VARIANT) << ",\n";   \
-        continue;                                     \
+        outFile << "\t\"" << kv.first << "\": ";      \
+        if(typeid(TYPE) == typeid(std::string)) {     \
+            outFile << "\"" << boost::any_cast<TYPE>(VARIANT) << "\""; \
+        } else {                                      \
+            outFile << boost::any_cast<TYPE>(VARIANT); \
+        }                                             \
     }
 
-#include <map>
-#include <variant>
-#include <string>
-#include <stdexcept>
-#include "globals.hh"
+#include "OMSimLogger.hh"
+
+#include <fstream>
 #include <boost/any.hpp>
 #include <sys/time.h>
-#include "OMSimLogger.hh"
+
 
 
 /**
@@ -101,38 +102,51 @@ public:
 
     /**
      * @brief Writes the parameters to a JSON-formatted file.
-     * @param lFileName The name of the JSON file.
+     * @param pFileName The name of the JSON file.
      * @throw std::runtime_error If the file fails to open.
      */
-    void writeToJson(std::string lFileName)
+    void writeToJson(std::string pFileName)
     {
-        std::ofstream outFile(lFileName);
+        std::ofstream outFile(pFileName);
 
         if (!outFile.is_open())
         {
-            throw std::runtime_error("Failed to open file " + lFileName);
+            throw std::runtime_error("Failed to open file " + pFileName);
         }
 
         outFile << "{\n";
+        size_t count = mParameters.size();
         for (const auto &kv : mParameters)
         {
+            --count; // Decrease count for each iteration
+
             if (kv.second.empty())
             {
-                outFile << "\t\"" << kv.first << "\": \"\",\n";
-                continue;
+                outFile << "\t\"" << kv.first << "\": \"\"";
+            }
+            else
+            {
+                const std::type_info &type = kv.second.type();
+
+                WRITE_TO_JSON_IF_TYPE_MATCHES(kv.second, int)
+                WRITE_TO_JSON_IF_TYPE_MATCHES(kv.second, double)
+                WRITE_TO_JSON_IF_TYPE_MATCHES(kv.second, long)
+                WRITE_TO_JSON_IF_TYPE_MATCHES(kv.second, bool)
+                WRITE_TO_JSON_IF_TYPE_MATCHES(kv.second, std::string)
             }
 
-            const std::type_info &type = kv.second.type();
+            // Append comma if it's not the last item
+            if (count != 0)
+            {
+                outFile << ",";
+            }
 
-            WRITE_TO_JSON_IF_TYPE_MATCHES(kv.second, int)
-            WRITE_TO_JSON_IF_TYPE_MATCHES(kv.second, double)
-            WRITE_TO_JSON_IF_TYPE_MATCHES(kv.second, long)
-            WRITE_TO_JSON_IF_TYPE_MATCHES(kv.second, bool)
-            WRITE_TO_JSON_IF_TYPE_MATCHES(kv.second, std::string)
+            outFile << "\n";
         }
         outFile << "}\n";
         outFile.close();
     }
+
 
 
     /**

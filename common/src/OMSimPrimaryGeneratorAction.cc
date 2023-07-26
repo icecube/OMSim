@@ -1,9 +1,7 @@
 #include "OMSimPrimaryGeneratorAction.hh"
 
-
-#include "G4Event.hh"
-#include "G4GeneralParticleSource.hh"
-#include "G4ParticleTypes.hh"
+#include <G4GeneralParticleSource.hh>
+#include <G4ParticleTypes.hh>
 
 
 

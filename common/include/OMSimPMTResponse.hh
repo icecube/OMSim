@@ -1,13 +1,10 @@
 #ifndef OMSimPMTResponse_h
 #define OMSimPMTResponse_h 1
 
-#include "G4SystemOfUnits.hh"
-#include "G4Types.hh"
-#include <functional>
+#include <G4SystemOfUnits.hh>
+#include <G4Types.hh>
 #include <map>
 #include <TGraph.h>
-#include <TGraph2D.h>
-
 #include <TH2D.h>
 
 class OMSimPMTResponse

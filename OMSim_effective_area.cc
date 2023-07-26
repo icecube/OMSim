@@ -8,48 +8,8 @@
  * @warning
  * There are a few material related arguments that are depracated as for example the glass and gel arguments. This were used to easily change materials during the OM development phase. Check @link InputDataManager::getMaterial @endlink and modify the respective OM class if you want to use these args.
  */
-#include "OMSim.h"
-#include "OMSimDetectorConstruction.hh"
-#include "OMSimPhysicsList.hh"
-#include "OMSimPrimaryGeneratorAction.hh"
-#include "OMSimRunAction.hh"
-#include "OMSimEventAction.hh"
-#include "OMSimTrackingAction.hh"
-#include "OMSimSteppingAction.hh"
-// #include "OMSimSteppingVerbose.hh"
-#include "OMSimAnalysisManager.hh"
-#include "OMSimPMTResponse.hh"
-#include "OMSimCommandArgsTable.hh"
-#include "OMSimUIinterface.hh"
+#include "OMSim.hh"
 #include "OMSimSimpleGPSBeams.hh"
-
-#include "G4RunManager.hh"
-#include "G4UImanager.hh"
-#include "G4UIterminal.hh"
-#include "G4ThreeVector.hh"
-#include "G4Navigator.hh"
-
-#include "G4UItcsh.hh"
-#include "G4VisExecutive.hh"
-#include "G4UIExecutive.hh" //xxx
-
-#include <ctime>
-#include <sys/time.h>
-
-#include <sstream>
-#include <iostream>
-#include <fstream>
-#include <string>
-
-#include <cmath> 
-#include "G4SystemOfUnits.hh"
-
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
-#include <TGraph.h>
-
-#include <boost/program_options.hpp>
-#include <filesystem>
 
 namespace po = boost::program_options;
 
@@ -63,7 +23,8 @@ void effective_area_simulation()
 	AngularScan *lScanner = new AngularScan(lArgs.get<G4double>("radius"), lArgs.get<G4double>("distance"), lArgs.get<G4double>("wavelength"));
 
 	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
-	lAnalysisManager.WriteHeader();
+
+	if (!lArgs.get<bool>("no_header")) lAnalysisManager.WriteHeader();
 
 	// If file with angle pairs is not provided, use arg theta & phi
 	if (!lArgs.keyExists("angles_file"))
@@ -106,7 +67,7 @@ int main(int argc, char *argv[])
 		("wavelength,l", po::value<G4double>()->default_value(400.0), "wavelength of incoming light in nm")
 		("angles_file,i", po::value<std::string>(), "The input angle pairs file to be scanned. The file should contain two columns, the first column with the theta (zenith) and the second with phi (azimuth) in degrees.")
 		("detector_type", po::value<G4int>()->default_value(2), "module type [custom = 0, Single PMT = 1, mDOM = 2, pDDOM = 3, LOM16 = 4]")
-		("string_pos_angle", po::value<G4double>()->default_value(45), "Polar angle of main data cable (viewed from above)");
+		("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
 
 
 		po::options_description lAllargs("Allowed input arguments");

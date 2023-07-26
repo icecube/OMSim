@@ -1,14 +1,10 @@
 #ifndef OMSimDataFileTypes_h
 #define OMSimDataFileTypes_h 1
 
-#include <boost/property_tree/ptree.hpp>
+#include <G4NistManager.hh>
+#include <G4OpBoundaryProcess.hh>
+#include <G4SystemOfUnits.hh>
 #include <boost/property_tree/json_parser.hpp>
-#include "G4Material.hh"
-#include "G4NistManager.hh"
-#include "G4OpBoundaryProcess.hh"
-#include "G4SystemOfUnits.hh"
-
-
 
 class ParameterTable;
 

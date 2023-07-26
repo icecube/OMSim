@@ -1,12 +1,10 @@
 #ifndef OMSimInputData_h
 #define OMSimInputData_h 1
 
-#include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
-#include "G4Material.hh"
-#include "G4NistManager.hh"
-#include "G4OpBoundaryProcess.hh"
-#include "G4SystemOfUnits.hh"
+#include <G4OpBoundaryProcess.hh>
+#include <G4SystemOfUnits.hh>
+
 namespace pt = boost::property_tree;
 
 // Helper class

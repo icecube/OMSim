@@ -10,11 +10,9 @@
 #ifndef OMSimUIinterface_h
 #define OMSimUIinterface_h 1
 
-#include <sstream>
-#include <string>
-#include <G4UImanager.hh>
-#include "OMSimLogger.hh"
 #include "OMSimCommandArgsTable.hh"
+#include <G4UImanager.hh>
+
 
 /**
  * @class OMSimUIinterface

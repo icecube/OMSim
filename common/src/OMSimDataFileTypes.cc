@@ -15,30 +15,17 @@
  * Each class has an `extractInformation()` method that is responsible for creating the material or surface and extracting the necessary optical properties.
  *
  * @ingroup common
+ * @author Martin Unland
  * @todo Check ReflectiveSurface::extractInformation(), code look suspicious.
  */
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
 
 #include "OMSimDataFileTypes.hh"
 #include "OMSimInputData.hh"
 #include "OMSimLogger.hh"
-#include "G4Material.hh"
-#include "G4NistManager.hh"
-#include "G4OpBoundaryProcess.hh"
-#include "G4SystemOfUnits.hh"
-#include <G4UnitsTable.hh>
-#include <dirent.h>
-#include <cmath>
+
 #include <numeric>
-#include <G4OpBoundaryProcess.hh>
 
-
-/** 
- *  @namespace pt 
- *  @brief Namespace alias for the boost::property_tree, a library for storing nested data.
- */
 namespace pt = boost::property_tree;
 
 /*

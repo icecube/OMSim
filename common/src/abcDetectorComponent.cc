@@ -6,11 +6,11 @@
 #include "abcDetectorComponent.hh"
 #include "OMSimPMTConstruction.hh"
 #include "OMSimLogger.hh"
-#include "G4LogicalVolume.hh"
-#include "G4PVPlacement.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4Transform3D.hh"
 
+#include <G4LogicalVolume.hh>
+#include <G4PVPlacement.hh>
+#include <G4SystemOfUnits.hh>
+#include <G4Transform3D.hh>
 
 /**
  * @brief Append component to Components vector.

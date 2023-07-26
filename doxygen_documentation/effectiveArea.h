@@ -36,39 +36,40 @@
  * @subsection exampleEA Example using healpy
  *
  * In the following a toy example of the usage of the effective area module is given. Although there are c++ healpix libraries, in my opinion the easiest way of getting the angle pair
- * coordinates is using Healpy in python. 
- * 
+ * coordinates is using Healpy in python.
+ *
  * In principle for short simulations you could run OMSim directly from python using the angles from healpy as input parameters:
  * ~~~~~~~~~~~~~{.py}
  * import healpy as hp
  * import numpy as np
  * from os import system
- * 
- * NSIDE=8 #only powers of 2 allowed, the larger, the more pixels are calculated
- * NPIX=hp.nside2npix(NSIDE)
- * thetas, phis = np.degrees(hp.pix2ang(nside=8,ipix=np.arange(NPIX)))
- * 
- * for theta, phi in zip(thetas, phis):
- *      system("./OMSim_effective_area -n 10000 -e 1 -d 460 -q -m 1 -c -t  "+str(g[0,i])+" -f "+str(g[1,i])+ " -o Data_mDOM_new.txt")
- * 
+ *
+ * NSIDE = 8 #only powers of 2 allowed, the larger, the more pixels are calculated
+ * NPIX = hp.nside2npix(NSIDE)
+ * thetas, phis = np.degrees(hp.pix2ang(nside=NSIDE, ipix=np.arange(NPIX)))
+ *
+ * for i, (theta, phi) in enumerate(zip(thetas, phis)):
+ *     if i==0:
+ *         system(f"./OMSim_effective_area -n 10000 --environment 1 -r 300 -t {theta} -f  {phi} --output_file output")
+ *     else:
+ *         system(f"./OMSim_effective_area -n 10000 --environment 1 -r 300 -t {theta} -f  {phi} --output_file output.txt --no_header")
  * ~~~~~~~~~~~~~
- * 
+ *
  * However, this is <b>very</b> inefficient. The best is to save the angle pairs into a file and pass it as argument. If you give a file as argument, the arg theta and phi are ignored.
- 
+ *
  * ~~~~~~~~~~~~~{.py}
  * import healpy as hp
  * import numpy as np
  * from os import system
- * 
- * NSIDE=8 #only powers of 2 allowed, the larger, the more pixels are calculated
- * NPIX=hp.nside2npix(NSIDE)
- * thetas, phis = np.degrees(hp.pix2ang(nside=8,ipix=np.arange(NPIX)))
- * 
- * for theta, phi in zip(thetas, phis):
- *      system("./OMSim_effective_area -n 10000 -e 1 -d 460 -q -m 1 -c -t  "+str(g[0,i])+" -f "+str(g[1,i])+ " -o Data_mDOM_new.txt")
- * 
+ *
+ * NSIDE = 8 #only powers of 2 allowed, the larger, the more pixels are calculated
+ * NPIX = hp.nside2npix(NSIDE)
+ * thetas, phis = np.degrees(hp.pix2ang(nside=NSIDE, ipix=np.arange(NPIX)))
+ * fname = "angle_pairs.txt"
+ * np.savetxt(fname, np.column_stack((thetas, phis)))
+ * system(f"./OMSim_effective_area -n 10000 --environment 1 -r 300 --angles_file {fname} --output_file output")
  * ~~~~~~~~~~~~~
- * 
- * 
- * 
+ *
+ * In my PC the first code block needs 51 seconds (tested with NSIDE=2) , the second block only 14 seconds (as simulation has to be initialised only once).
+ *
  */

@@ -4,38 +4,16 @@
  *  @author Lew Classen, Martin Unland
  *  @date November 2021
  *
- *  @version Geant4 10.7
  */
 
 #include "OMSimMDOM.hh"
 #include "OMSimMDOMHarness.hh"
-#include "abcDetectorComponent.hh"
-#include <dirent.h>
-#include <stdexcept>
-#include <cstdlib>
-
-#include "G4Cons.hh"
-#include "G4Ellipsoid.hh"
-#include "G4EllipticalTube.hh"
-#include "G4Sphere.hh"
-#include "G4IntersectionSolid.hh"
-#include "G4LogicalBorderSurface.hh"
-#include "G4LogicalSkinSurface.hh"
-#include "G4LogicalVolume.hh"
-#include "G4Orb.hh"
-#include "G4Polycone.hh"
-#include "G4PVPlacement.hh"
-#include "G4SubtractionSolid.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4Transform3D.hh"
-#include "G4Tubs.hh"
-#include "G4UnionSolid.hh"
-#include <G4UnitsTable.hh>
-#include "G4VisAttributes.hh"
-#include "G4Torus.hh"
 #include "OMSimCommandArgsTable.hh"
-#include "OMSimMDOMFlasher.hh"
-#include "OMSimLogger.hh"
+
+#include <G4Ellipsoid.hh>
+#include <G4LogicalSkinSurface.hh>
+#include <G4Polycone.hh>
+
 
 mDOM::~mDOM()
 {   

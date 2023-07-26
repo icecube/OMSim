@@ -1,20 +1,11 @@
 #ifndef OMSimPMTConstruction_h
 #define OMSimPMTConstruction_h 1
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
 
 #include "abcDetectorComponent.hh"
-#include "G4LogicalVolume.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4UnionSolid.hh"
-#include "G4VisAttributes.hh"
-#include "G4SubtractionSolid.hh"
-#include "G4PVPlacement.hh"
-#include "OMSimInputData.hh"
-#include "G4Tubs.hh"
-#include <tuple>
-#include <map>
+
+#include <G4UnionSolid.hh>
+#include <G4Tubs.hh>
 
 
 class OMSimPMTConstruction : public abcDetectorComponent

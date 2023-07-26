@@ -1,8 +1,7 @@
 #ifndef OMSimPrimaryGeneratorAction_h
 #define OMSimPrimaryGeneratorAction_h 1
  
-#include "G4VUserPrimaryGeneratorAction.hh"
-#include "globals.hh"
+#include <G4VUserPrimaryGeneratorAction.hh>
  
 class G4GeneralParticleSource;
 class G4Event;

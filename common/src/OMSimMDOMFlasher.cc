@@ -1,21 +1,10 @@
-#include "OMSimMDOMFlasher.hh"
 #include "OMSimMDOM.hh"
-#include "abcDetectorComponent.hh"
-
-#include "G4Cons.hh"
-#include "G4Ellipsoid.hh"
-#include "G4LogicalVolume.hh"
-#include "G4PVPlacement.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4Transform3D.hh"
-#include "G4Tubs.hh"
-#include "G4UnionSolid.hh"
-#include "G4VisAttributes.hh"
-#include "OMSimLogger.hh"
-#include "OMSimCommandArgsTable.hh"
 #include "OMSimUIinterface.hh"
 
-#include "G4TouchableHistoryHandle.hh"
+#include <G4Cons.hh>
+#include <G4Ellipsoid.hh>
+
+
 
 /*
 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

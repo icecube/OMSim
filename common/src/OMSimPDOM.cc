@@ -5,19 +5,11 @@
  * @ingroup common
  */
 #include "OMSimPDOM.hh"
-#include "OMSimPMTConstruction.hh"
 
-#include "G4Ellipsoid.hh"
-#include "G4LogicalSkinSurface.hh"
-#include "G4LogicalVolume.hh"
-#include "G4Orb.hh"
-#include "G4Polycone.hh"
-#include "G4PVPlacement.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4Transform3D.hh"
-#include "G4Tubs.hh"
-
-#include "OMSimLogger.hh"
+#include <G4Ellipsoid.hh>
+#include <G4LogicalSkinSurface.hh>
+#include <G4Orb.hh>
+#include <G4Polycone.hh>
 
 pDOM::~pDOM()
 {

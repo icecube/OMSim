@@ -1,17 +1,7 @@
 #ifndef OMSimLOM16_h
 #define OMSimLOM16_h 1
-#include "abcDetectorComponent.hh"
+
 #include "OMSimPMTConstruction.hh"
-#include "G4LogicalVolume.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4UnionSolid.hh"
-#include "G4IntersectionSolid.hh"
-#include "OMSimInputData.hh"
-#include "G4Cons.hh"
-#include "G4Tubs.hh"
-
-extern G4double gRefCone_angle;
-
 
 class LOM16 : public abcDetectorComponent
 {

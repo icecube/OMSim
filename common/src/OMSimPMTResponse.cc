@@ -9,15 +9,7 @@
 
 #include "OMSimPMTResponse.hh"
 #include "OMSimLogger.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4Types.hh"
-#include "Randomize.hh"
-#include <functional>
-#include <TGraph2D.h>
-#include <TGraph.h>
-
 #include "OMSimInputData.hh"
-#include <TH2D.h>
 
 TH2D* OMSimPMTResponse::createHistogramFromData(const std::string& pFilePath, const char* pTH2DName) {
     // Load the data

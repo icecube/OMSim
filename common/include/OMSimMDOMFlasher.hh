@@ -2,11 +2,8 @@
 #define OMSimMDOMFlasher_H
 
 #include "abcDetectorComponent.hh"
-#include "G4LogicalVolume.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4UnionSolid.hh"
-#include "G4Tubs.hh"
-#include "G4Navigator.hh"
+#include <G4UnionSolid.hh>
+#include <G4Navigator.hh>
 
 class mDOM;
 

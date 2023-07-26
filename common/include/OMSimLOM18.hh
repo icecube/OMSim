@@ -1,18 +1,10 @@
 #ifndef OMSimLOM18_h
 #define OMSimLOM18_h 1
-#include "abcDetectorComponent.hh"
+
 #include "OMSimPMTConstruction.hh"
-#include "G4LogicalVolume.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4UnionSolid.hh"
-#include "G4IntersectionSolid.hh"
-#include "OMSimInputData.hh"
-#include "G4Cons.hh"
-#include "G4Tubs.hh"
-#include "G4Polycone.hh"
 
-extern G4double gRefCone_angle;
-
+#include <G4LogicalVolume.hh>
+#include <G4Polycone.hh>
 
 class LOM18 : public abcDetectorComponent
 {

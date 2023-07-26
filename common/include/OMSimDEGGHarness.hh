@@ -1,13 +1,7 @@
 #ifndef OMSimDEGGHarness_h
 #define OMSimDEGGHarness_h 1
 #include "abcDetectorComponent.hh"
-#include "G4LogicalVolume.hh"
-#include "G4SystemOfUnits.hh"
-#include "G4UnionSolid.hh"
-#include "G4IntersectionSolid.hh"
-#include "OMSimInputData.hh"
-#include "G4Cons.hh"
-#include "G4Tubs.hh"
+
 
 class DEGG;
 class DEggHarness : public abcDetectorComponent

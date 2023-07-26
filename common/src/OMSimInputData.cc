@@ -7,25 +7,16 @@
  *
  *  @author Martin Unland, Cristian Lozano
  *  @date October 2021
- *
- *  @version Geant4 10.7
- *
  */
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
+
 
 #include "OMSimInputData.hh"
 #include "OMSimDataFileTypes.hh"
-#include "OMSimLogger.hh"
-#include "G4Material.hh"
-#include "G4NistManager.hh"
-#include "G4OpBoundaryProcess.hh"
-#include "G4SystemOfUnits.hh"
+#include "OMSimCommandArgsTable.hh"
+
 #include <G4UnitsTable.hh>
 #include <dirent.h>
-#include <cmath>
-#include "OMSimCommandArgsTable.hh"
 
 namespace pt = boost::property_tree;
 
