@@ -21,7 +21,6 @@ public:
     void placeIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume*& pMother, G4String pNameExtension = "");
     void placeIt(G4Transform3D pTrans, G4LogicalVolume*& pMother, G4String pNameExtension = "");
     void SelectPMT(G4String pPMTtoSelect);
-    void SimulateInternalReflections();
 
     void SimulateHACoating();
 

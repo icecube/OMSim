@@ -52,7 +52,7 @@
  *     if i==0:
  *         system(f"./OMSim_effective_area -n 10000 --environment 1 -r 300 -t {theta} -f  {phi} --output_file output")
  *     else:
- *         system(f"./OMSim_effective_area -n 10000 --environment 1 -r 300 -t {theta} -f  {phi} --output_file output.txt --no_header")
+ *         system(f"./OMSim_effective_area -n 10000 --environment 1 -r 300 -t {theta} -f  {phi} --output_file output --no_header")
  * ~~~~~~~~~~~~~
  *
  * However, this is <b>very</b> inefficient. The best is to save the angle pairs into a file and pass it as argument. If you give a file as argument, the arg theta and phi are ignored.

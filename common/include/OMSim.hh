@@ -48,10 +48,12 @@ public:
     ~OMSim();
 
     void ensure_output_directory_exists(const std::string &filepath);
-    void initialiseSimulation();
+    void initialise_simulation();
+    void start_visualisation();
     po::options_description mGeneralArgs;
-
+    
 private:
+    
     G4RunManager *mRunManager;
     G4VisExecutive *mVisManager;
     G4Navigator *mNavigator;

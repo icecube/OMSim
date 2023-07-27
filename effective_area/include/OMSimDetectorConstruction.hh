@@ -15,7 +15,6 @@ public:
     ~OMSimDetectorConstruction();
     G4VPhysicalVolume *Construct();
     G4VPhysicalVolume *mWorldPhysical;
-    mDOM *mMDOM;
 
 private:
     G4Orb *mWorldSolid;

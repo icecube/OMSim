@@ -36,27 +36,26 @@ OMSim::OMSim() : mGeneralArgs("General options")
 }
 
 
-/**
- * @brief Destroy the OMSim object.
- *
- * This destructor cleans up the Geant4 components initialized in the constructor.
- * If user asked for visualisation, the UIEx session is started before here before exiting the program.
- */
+
 OMSim::~OMSim()
-{   OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-    //  opening user interface prompt and visualization after simulation was run
-    if (lArgs.keyExists("visual")){
-	if (lArgs.get<bool>("visual"))
-	{	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-		char *argumv[] = {"all", NULL};
-		G4UIExecutive *UIEx = new G4UIExecutive(1, argumv);
-		lUIinterface.applyCommand("/control/execute ../aux/init_vis.mac");
-		UIEx->SessionStart();
-		delete UIEx;
-	}}
+{   
     delete mNavigator;
     delete mVisManager;
     delete mRunManager;
+}
+
+/**
+ * @brief UIEx session is started for visualisation.
+ */
+void OMSim::start_visualisation()
+{
+	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+    char *argumv[] = {"all", NULL};
+    G4UIExecutive *UIEx = new G4UIExecutive(1, argumv);
+    lUIinterface.applyCommand("/control/execute ../aux/init_vis.mac");
+    UIEx->SessionStart();
+    delete UIEx;
+
 }
 
 
@@ -83,7 +82,7 @@ void OMSim::ensure_output_directory_exists(const std::string &pFilePath)
  *
  * This function sets up the necessary Geant4 components.
  */
-void OMSim::initialiseSimulation()
+void OMSim::initialise_simulation()
 {
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
     ensure_output_directory_exists(lArgs.get<std::string>("output_file"));

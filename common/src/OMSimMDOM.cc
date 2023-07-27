@@ -26,31 +26,21 @@ mDOM::~mDOM()
 }
 mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
 {
-    mPlaceHarness = true; // pPlaceHarness;
+    mPlaceHarness = pPlaceHarness;
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
-    log_debug("Flasher construction");
     mFlashers = new mDOMFlasher(mData);
-    log_debug("vis");
-    
-    if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
-    {
-        mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
-    }
-    else
-    {
-        mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
-        mPMTManager->SimulateInternalReflections();
-    }
-    log_debug("PMT construction");
+
+    mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
     mPMTManager->construction();
+
     getSharedData();
     if (mPlaceHarness)
     {
         mHarness = new mDOMHarness(this, mData);
         integrateDetectorComponent(mHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
     }
-    log_debug("Constructing mDOM");
+
     construction();
     log_debug("Finished constructing mDOM");
 }
@@ -156,7 +146,7 @@ void mDOM::construction()
         lConverter << "_" << k;
 
         lTransformers = G4Transform3D(mPMTRotations[k], mPMTPositions[k]);
-        //mPMTManager->placeIt(lTransformers, lGelLogical, lConverter.str());
+        mPMTManager->placeIt(lTransformers, lGelLogical, lConverter.str());
 
         // Placing reflective cones:
         lConverter.str("");

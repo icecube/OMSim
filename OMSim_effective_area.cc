@@ -67,6 +67,7 @@ int main(int argc, char *argv[])
 		("wavelength,l", po::value<G4double>()->default_value(400.0), "wavelength of incoming light in nm")
 		("angles_file,i", po::value<std::string>(), "The input angle pairs file to be scanned. The file should contain two columns, the first column with the theta (zenith) and the second with phi (azimuth) in degrees.")
 		("detector_type", po::value<G4int>()->default_value(2), "module type [custom = 0, Single PMT = 1, mDOM = 2, pDDOM = 3, LOM16 = 4]")
+		("place_harness",po::bool_switch(),"place OM harness (if implemented)")
 		("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
 
 
@@ -103,10 +104,11 @@ int main(int argc, char *argv[])
 
 		// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
 		lArgs.finalize();
-		lSimulation.initialiseSimulation();
+		lSimulation.initialise_simulation();
 
 		effective_area_simulation();
-
+		if(lArgs.get<bool>("visual")) lSimulation.start_visualisation();
+	
 	}
 	catch (std::exception &e)
 	{
