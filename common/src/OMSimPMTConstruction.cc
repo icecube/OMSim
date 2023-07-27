@@ -47,38 +47,28 @@ void OMSimPMTConstruction::construction()
 
     G4LogicalVolume *lPMTlogical;
     G4LogicalVolume *lPhotocathode;
-    if (mInternalReflections)
-    {
-        lPMTlogical = new G4LogicalVolume(lPMTSolid, mData->getMaterial("RiAbs_Glass_Tube"), "PMT tube logical");
-        G4SubtractionSolid *lVacuumPhotocathodeSolidNew = PhotocathodeLayerConstruction();
-        lPhotocathode = new G4LogicalVolume(lVacuumPhotocathodeSolidNew, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
-    }
-    else
-    {
-        lPMTlogical = new G4LogicalVolume(lPMTSolid, mData->getMaterial("Ri_Glass_Tube"), "PMT tube logical");
-        lPhotocathode = new G4LogicalVolume(lVacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
-    }
+
+    // The ? are ternary operators of the following two lines replace if else statements
+    lPMTlogical = new G4LogicalVolume(lPMTSolid, mData->getMaterial(mInternalReflections ? "RiAbs_Glass_Tube" : "Ri_Glass_Tube"), "PMT tube logical");
+    lPhotocathode = new G4LogicalVolume(mInternalReflections ? PhotocathodeLayerConstruction() : lVacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
 
     G4LogicalVolume *lTubeVacuum = new G4LogicalVolume(lGlassInside, mData->getMaterial("Ri_Vacuum"), "PMTvacuum");
     G4LogicalVolume *lVacuumBackLogical = new G4LogicalVolume(lVacuumBack, mData->getMaterial("Ri_Vacuum"), "PMTvacuum");
 
     new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lPhotocathode, "Photocathode", lTubeVacuum, false, 0, mCheckOverlaps);
     if (mInternalReflections)
-        mVacuumBackPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lVacuumBackLogical, "VacuumTubeBack", lTubeVacuum, false, 0, mCheckOverlaps);
-    
-    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lTubeVacuum, "VacuumTube", lPMTlogical, false, 0, mCheckOverlaps);
-
-    if (mHACoatingBool)
-        AppendHACoating();
-
-    if (mInternalReflections)
     {
+        mVacuumBackPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lVacuumBackLogical, "VacuumTubeBack", lTubeVacuum, false, 0, mCheckOverlaps);
         DynodeSystemConstructionCAD(lVacuumBackLogical);
     }
     else
     {
         CathodeBackShield(lTubeVacuum);
     }
+    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lTubeVacuum, "VacuumTube", lPMTlogical, false, 0, mCheckOverlaps);
+
+    if (mHACoatingBool)
+        AppendHACoating();
 
     appendComponent(lPMTSolid, lPMTlogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PMT");
 
@@ -88,6 +78,7 @@ void OMSimPMTConstruction::construction()
     lVacuumBackLogical->SetVisAttributes(mAirVis);
     mConstructionFinished = true;
 }
+
 
 void OMSimPMTConstruction::AppendHACoating()
 {

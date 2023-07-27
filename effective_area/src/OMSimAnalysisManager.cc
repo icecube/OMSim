@@ -1,8 +1,10 @@
 #include "OMSimAnalysisManager.hh"
-#include "G4ios.hh"
-// since Geant4.10: include units manually
-#include "G4SystemOfUnits.hh"
 #include "OMSimCommandArgsTable.hh"
+
+/**
+ * @brief Counts the number of hits for each PMT
+ * @return A vector containing the counts of hits for each PMT.
+ */
 
 std::vector<double> OMSimAnalysisManager::CountHits()
 {
@@ -48,6 +50,10 @@ std::vector<double> OMSimAnalysisManager::CountHits()
 
 	return lHits;
 }
+
+/**
+ * @brief Writes a header to the output file.
+ */
 void OMSimAnalysisManager::WriteHeader()
 {
 	mDatafile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
@@ -64,6 +70,11 @@ void OMSimAnalysisManager::WriteHeader()
 	mDatafile.close();
 }
 
+/**
+ * @brief Writes a scan result to the output file.
+ * @param pPhi The phi angle used in the scan to be written to the output file.
+ * @param pTheta The phi angle used in the scan to be written to the output file.
+ */
 void OMSimAnalysisManager::WriteScan(G4double pPhi, G4double pTheta)
 {
 	std::vector<double> lHits = CountHits();
@@ -77,6 +88,9 @@ void OMSimAnalysisManager::WriteScan(G4double pPhi, G4double pTheta)
 	mDatafile.close();
 }
 
+/**
+ * @brief Empties the HitStats struct.
+ */
 void OMSimAnalysisManager::Reset()
 {
 	mHits = HitStats();

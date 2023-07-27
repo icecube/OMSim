@@ -9,7 +9,7 @@
  * There are a few material related arguments that are depracated as for example the glass and gel arguments. This were used to easily change materials during the OM development phase. Check @link InputDataManager::getMaterial @endlink and modify the respective OM class if you want to use these args.
  */
 #include "OMSim.hh"
-#include "OMSimSimpleGPSBeams.hh"
+#include "OMSimAngularScan.hh"
 
 namespace po = boost::program_options;
 

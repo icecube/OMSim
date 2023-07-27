@@ -1,8 +1,7 @@
 #ifndef OMSimPhysicsList_h
 #define OMSimPhysicsList_h 1
 
-#include "G4VUserPhysicsList.hh"
-#include "globals.hh"
+#include <G4VUserPhysicsList.hh>
 
 class G4VPhysicsConstructor;
 class G4ProductionCuts;

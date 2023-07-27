@@ -1,13 +1,17 @@
 #ifndef OMSimDetectorConstruction_h
 #define OMSimDetectorConstruction_h 1
-#include "G4LogicalVolume.hh"
-#include "G4Orb.hh"
-#include "G4VPhysicalVolume.hh"
-#include "G4VUserDetectorConstruction.hh"
-#include "OMSimInputData.hh"
-#include "OMSimPMTConstruction.hh"
+
 #include "OMSimMDOM.hh"
 
+#include <G4Orb.hh>
+#include <G4VUserDetectorConstruction.hh>
+
+
+/**
+ * @class OMSimDetectorConstruction
+ * @brief Class for detector construction in the effective area simulation.
+ * @ingroup EffectiveArea
+ */
 class OMSimDetectorConstruction : public G4VUserDetectorConstruction
 {
 public:

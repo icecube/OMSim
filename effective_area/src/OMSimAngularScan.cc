@@ -1,12 +1,6 @@
-/**
- * @file OMSimSimpleGPSBeams.cc
- * @brief Defines the AngularScan class for simple GPS beam configurations.
- * @ingroup EffectiveArea
- */
-
-#include "OMSimSimpleGPSBeams.hh"
+#include "OMSimAngularScan.hh"
 #include "OMSimUIinterface.hh"
-#include "G4SystemOfUnits.hh"
+#include <G4SystemOfUnits.hh>
 
 /**
  * @param pBeamRadius The radius of the beam.

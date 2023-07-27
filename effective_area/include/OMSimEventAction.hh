@@ -2,7 +2,6 @@
 #define OMSimEventAction_h 1
 
 #include "G4UserEventAction.hh"
-
 #include <string>
 
 class G4Event;

@@ -38,6 +38,9 @@ where "YOUR_G4_INSTALL" is the path to the install folder of Geant4 in your syst
 alias mycmake="cmake -D4Geant4_DIR=YOUR_G4_INSTALL/lib/Geant4-11.1.1/"
 ``` 
 
-
+-Source the Geant4 library (you could add this to your .bashrc)
+```bash
+source YOUR_G4_INSTALL/bin/geant4.sh
+``` 
 - Finally, just run ```make``` or ```make -j N``` where N is number of cores you want to use for the compilation.
 

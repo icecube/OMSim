@@ -1,8 +1,7 @@
-#ifndef OMSimSimpleGPSBeams_h
-#define OMSimSimpleGPSBeams_h 1
+#ifndef OMSimAngularScan_h
+#define OMSimAngularScan_h 1
 
 #include "globals.hh"
-
 /**
  * @class AngularScan
  * @brief Class for defining and running simple GPS beam configurations with angular scans.

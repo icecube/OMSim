@@ -1,13 +1,15 @@
 #ifndef OMSimAnalysisManager_h
 #define OMSimAnalysisManager_h 1
 
-#include "G4Types.hh"
-#include "G4String.hh"
-#include "G4ThreeVector.hh"
 #include "OMSimPMTResponse.hh"
-#include <vector>
+
+#include <G4ThreeVector.hh>
 #include <fstream>
 
+/** 
+ * @struct HitStats
+ * @brief A structure to store information of photon hits.
+ */
 struct HitStats
 {
     std::vector<G4long> event_id;
@@ -23,6 +25,11 @@ struct HitStats
 	std::vector<OMSimPMTResponse::PMTPulse> PMT_response;
 };
 
+/** 
+ * @class OMSimAnalysisManager
+ * @brief This class is responsible for managing info of detected photons and writing the results in the desired format.
+ * @ingroup EffectiveArea
+ */
 class OMSimAnalysisManager
 {
 public:
