@@ -47,9 +47,9 @@ public:
     OMSim();
     ~OMSim();
 
-    void ensure_output_directory_exists(const std::string &filepath);
-    void initialise_simulation();
-    void start_visualisation();
+    void ensureOutputDirectoryExists(const std::string &filepath);
+    void initialiseSimulation();
+    void startVisualisation();
     po::options_description mGeneralArgs;
     
 private:
@@ -66,6 +66,7 @@ private:
     G4UserTrackingAction *mTracking = nullptr;
     G4UserSteppingAction *mStepping = nullptr;
     G4TouchableHistory *mHistory = nullptr;
+    G4double mStartingTime;
 };
 
 #endif // OMSIM_H

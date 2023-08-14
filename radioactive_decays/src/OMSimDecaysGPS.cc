@@ -91,7 +91,7 @@ void IsotopeDecays::simulate_decays_in_time_window()
 
     if (lArgs.get<bool>("PV_decays"))
     {
-        G4double lMass = mOM->get_pressure_vessel_weight();
+        G4double lMass = mOM->getPressureVesselWeight();
         G4LogicalVolume *lPVVolume = mOM->getComponent("PressureVessel").VLogical;
         G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
         std::map<G4String, G4int> lNumberDecays = calculate_number_of_decays(lMPT, lTimeWindow, lMass);
@@ -107,11 +107,11 @@ void IsotopeDecays::simulate_decays_in_time_window()
 
     if (lArgs.get<bool>("PMT_decays"))
     {
-        G4double lMass = mOM->get_PMT_manager()->get_PMT_glass_weight();
-        G4LogicalVolume *lPVVolume = mOM->get_PMT_manager()->getComponent("PMT").VLogical;
+        G4double lMass = mOM->getPMTmanager()->getPMTGlassWeight();
+        G4LogicalVolume *lPVVolume = mOM->getPMTmanager()->getLogicalVolume();
         G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
 
-        for (int pmt = 0; pmt < (int)mOM->get_number_of_PMTs(); pmt++)
+        for (int pmt = 0; pmt < (int)mOM->getNumberOfPMTs(); pmt++)
         {
             std::map<G4String, G4int> lNumberDecays = calculate_number_of_decays(lMPT, lTimeWindow, lMass);
 

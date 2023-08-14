@@ -14,13 +14,13 @@ public:
     
 private:
     mDOM* mOM;
-    void BandsAndClamps();
-    void BridgeRopesSolid();
+    void bandsAndClamps();
+    void bridgeRopesSolid();
     void mainDataCable();
-    void Pads();
+    void pads();
     void PCA();
-    void Plug();
-    void TeraBelt();
+    void plug();
+    void teraBelt();
 
     const G4double mHarnessRotAngle = 45*deg; //rotation of harness with respect to the module. Valid values are 45, 45+90, 45+180.. etc, otherwise the ropes would go over the PMTs
     const G4double mPlugAngle = 49.0 * deg;

@@ -23,7 +23,7 @@ public:
     G4double DetectionProbability;
   };
 
-    PMTPulse ProcessPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength);
+    PMTPulse processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength);
 
 
 private:
@@ -41,16 +41,16 @@ private:
 
     TH2D* createHistogramFromData(const std::string& pFilePath, const char* pTH2DName);
 
-    G4double GetCharge(G4double pWavelengthKey);
-    G4double GetCharge(G4double pWavelengthKey1, G4double pWavelengthKey2);
+    G4double getCharge(G4double pWavelengthKey);
+    G4double getCharge(G4double pWavelengthKey1, G4double pWavelengthKey2);
 
-    G4double GetTransitTime(G4double pWavelengthKey);
-    G4double GetTransitTime(G4double pWavelengthKey1, G4double pWavelengthKey2);
+    G4double getTransitTime(G4double pWavelengthKey);
+    G4double getTransitTime(G4double pWavelengthKey1, G4double pWavelengthKey2);
 
-    PMTPulse GetPulseFromInterpolation(G4double pWavelengthKey1, G4double pWavelengthKey2);
-    PMTPulse GetPulseFromKey(G4double pWavelengthKey);
+    PMTPulse getPulseFromInterpolation(G4double pWavelengthKey1, G4double pWavelengthKey2);
+    PMTPulse getPulseFromKey(G4double pWavelengthKey);
 
-    G4double WavelengthInterpolatedValue(std::map<G4double, TH2D*> pMap, G4double pWavelengthKey1, G4double pWavelengthKey2);
+    G4double wavelengthInterpolatedValue(std::map<G4double, TH2D*> pMap, G4double pWavelengthKey1, G4double pWavelengthKey2);
 
     OMSimPMTResponse();
     ~OMSimPMTResponse() = default;

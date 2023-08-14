@@ -16,6 +16,7 @@ namespace po = boost::program_options;
  */
 OMSim::OMSim() : mGeneralArgs("General options")
 {
+    mStartingTime = clock() / CLOCKS_PER_SEC;
     mRunManager = new G4RunManager;
     mVisManager = new G4VisExecutive;
     mNavigator = new G4Navigator();
@@ -42,12 +43,14 @@ OMSim::~OMSim()
     delete mNavigator;
     delete mVisManager;
     delete mRunManager;
+    double lFinishtime = clock() / CLOCKS_PER_SEC;
+	G4cout << "Computation time: " << lFinishtime - mStartingTime << " seconds." << G4endl;
 }
 
 /**
  * @brief UIEx session is started for visualisation.
  */
-void OMSim::start_visualisation()
+void OMSim::startVisualisation()
 {
 	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     char *argumv[] = {"all", NULL};
@@ -66,7 +69,7 @@ void OMSim::start_visualisation()
  *
  * @param pFilePath The path to the output directory.
  */
-void OMSim::ensure_output_directory_exists(const std::string &pFilePath)
+void OMSim::ensureOutputDirectoryExists(const std::string &pFilePath)
 {
     std::filesystem::path full_path(pFilePath);
     std::filesystem::path dir = full_path.parent_path();
@@ -82,10 +85,10 @@ void OMSim::ensure_output_directory_exists(const std::string &pFilePath)
  *
  * This function sets up the necessary Geant4 components.
  */
-void OMSim::initialise_simulation()
+void OMSim::initialiseSimulation()
 {
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-    ensure_output_directory_exists(lArgs.get<std::string>("output_file"));
+    ensureOutputDirectoryExists(lArgs.get<std::string>("output_file"));
 
     std::string lFileName = lArgs.get<std::string>("output_file") + "_args.json";
     if (lArgs.get<bool>("save_args"))

@@ -28,11 +28,11 @@ LOM16::~LOM16()
 LOM16::LOM16(InputDataManager* pData, G4bool pPlaceHarness) {
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
-    mPMTManager->SimulateHACoating();
-    mPMTManager->SelectPMT(mPMTModel);
+    mPMTManager->includeHAcoating();
+    mPMTManager->selectPMT(mPMTModel);
     mPMTManager->construction();
-    mPMToffset = mPMTManager->GetDistancePMTCenterToPMTtip();
-    mMaxPMTRadius = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
+    mPMToffset = mPMTManager->getDistancePMTCenterToTip();
+    mMaxPMTRadius = mPMTManager->getMaxPMTRadius() + 2 * mm;
 
     mPlaceHarness = pPlaceHarness;
     if (mPlaceHarness) {
@@ -236,7 +236,7 @@ void LOM16::setPMTAndGelpadPositions()
 void LOM16::createGelpadLogicalVolumes(G4VSolid* lGelSolid)
 {
     //getting the PMT solid
-    G4VSolid* lPMTsolid = mPMTManager->GetPMTSolid();
+    G4VSolid* lPMTsolid = mPMTManager->getPMTSolid();
 
     //Definition of helper volumes
     G4Cons* lGelPadBasicSolid;

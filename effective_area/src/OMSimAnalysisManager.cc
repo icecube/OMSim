@@ -6,7 +6,7 @@
  * @return A vector containing the counts of hits for each PMT.
  */
 
-std::vector<double> OMSimAnalysisManager::CountHits()
+std::vector<double> OMSimAnalysisManager::countHits()
 {
 	G4int lDOMIdx = OMSimCommandArgsTable::getInstance().get<G4int>("detector_type");
 
@@ -54,7 +54,7 @@ std::vector<double> OMSimAnalysisManager::CountHits()
 /**
  * @brief Writes a header to the output file.
  */
-void OMSimAnalysisManager::WriteHeader()
+void OMSimAnalysisManager::writeHeader()
 {
 	mDatafile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
 	mDatafile << "# Phi(deg)"
@@ -75,9 +75,9 @@ void OMSimAnalysisManager::WriteHeader()
  * @param pPhi The phi angle used in the scan to be written to the output file.
  * @param pTheta The phi angle used in the scan to be written to the output file.
  */
-void OMSimAnalysisManager::WriteScan(G4double pPhi, G4double pTheta)
+void OMSimAnalysisManager::writeScan(G4double pPhi, G4double pTheta)
 {
-	std::vector<double> lHits = CountHits();
+	std::vector<double> lHits = countHits();
 	mDatafile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
 	mDatafile << pPhi << "\t" << pTheta << "\t";
 	for (const auto &hit : lHits)
@@ -91,7 +91,7 @@ void OMSimAnalysisManager::WriteScan(G4double pPhi, G4double pTheta)
 /**
  * @brief Empties the HitStats struct.
  */
-void OMSimAnalysisManager::Reset()
+void OMSimAnalysisManager::reset()
 {
 	mHits = HitStats();
 }

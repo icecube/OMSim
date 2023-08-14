@@ -108,7 +108,7 @@ void abcMaterialData::createMaterial()
     const G4double lDensity = mFileData->getValueWithUnit(mObjectName, "jDensity");
 
     const G4String lState_str = mJsonTree.get<G4String>("jState");
-    const G4State lState = GetState(lState_str);
+    const G4State lState = getState(lState_str);
 
     // Defining the material with its density, number of components, state and name
     mMaterial = new G4Material(mObjectName, lDensity, mJsonTree.get_child("jComponents").size(), lState);
@@ -158,7 +158,7 @@ void abcMaterialData::extractRefractionIndex()
  *  @param pState_str A string representing a state of matter. Should be one of "kStateSolid", "kStateLiquid", "kStateGas".
  *  @return A G4State representing the state of matter. Will be kStateUndefined if the input string does not match any known states.
  */
-G4State abcMaterialData::GetState(G4String pState_str)
+G4State abcMaterialData::getState(G4String pState_str)
 {
     G4State lState;
     if (pState_str == "kStateSolid")

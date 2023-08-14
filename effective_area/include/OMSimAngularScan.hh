@@ -21,8 +21,8 @@ public:
   void runSingleAngularScan(G4double pPhi, G4double pTheta);
 
 private:
-    void ConfigurePosCoordinates();
-    void ConfigureAngCoordinates();
+    void configurePosCoordinates();
+    void configureAngCoordinates();
     G4double mBeamRadius;
     G4double mBeamDistance;
     G4double mWavelength;

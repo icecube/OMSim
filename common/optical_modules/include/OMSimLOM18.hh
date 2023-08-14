@@ -13,8 +13,8 @@ public:
     LOM18(InputDataManager* pData, G4bool pPlaceHarness = false);
     ~LOM18();
     void construction();
-    double get_pressure_vessel_weight() {return 17.0;};
-    int get_number_of_PMTs() { return mTotalNrPMTs;};
+    double getPressureVesselWeight() {return 17.0;};
+    int getNumberOfPMTs() { return mTotalNrPMTs;};
     
 private:
 

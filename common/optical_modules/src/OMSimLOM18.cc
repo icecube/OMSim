@@ -29,11 +29,11 @@ LOM18::~LOM18()
 LOM18::LOM18(InputDataManager* pData, G4bool pPlaceHarness) {
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
-    mPMTManager->SimulateHACoating();
-    mPMTManager->SelectPMT("pmt_Hamamatsu_4inch");
+    mPMTManager->includeHAcoating();
+    mPMTManager->selectPMT("pmt_Hamamatsu_4inch");
     mPMTManager->construction();
-    mPMToffset = mPMTManager->GetDistancePMTCenterToPMTtip();
-    mMaxPMTRadius = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
+    mPMToffset = mPMTManager->getDistancePMTCenterToTip();
+    mMaxPMTRadius = mPMTManager->getMaxPMTRadius() + 2 * mm;
 
     mPlaceHarness = pPlaceHarness;
     if (mPlaceHarness){
@@ -449,7 +449,7 @@ void LOM18::setPMTPositions()
 void LOM18::createGelpadLogicalVolumes(G4Polycone* lGelSolid) 
 {
     //getting the PMT solid
-    G4VSolid* lPMTsolid = mPMTManager->GetPMTSolid();
+    G4VSolid* lPMTsolid = mPMTManager->getPMTSolid();
 
     //Definition of helper volumes
     G4Cons* lBasicConeSolid;

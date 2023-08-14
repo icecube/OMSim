@@ -13,10 +13,8 @@
 
 namespace po = boost::program_options;
 
-void effective_area_simulation()
+void effectiveAreaSimulation()
 {
-	double startingtime = clock() / CLOCKS_PER_SEC;
-
 	OMSimAnalysisManager &lAnalysisManager = OMSimAnalysisManager::getInstance();
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 
@@ -24,14 +22,14 @@ void effective_area_simulation()
 
 	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
 
-	if (!lArgs.get<bool>("no_header")) lAnalysisManager.WriteHeader();
+	if (!lArgs.get<bool>("no_header")) lAnalysisManager.writeHeader();
 
 	// If file with angle pairs is not provided, use arg theta & phi
 	if (!lArgs.keyExists("angles_file"))
 	{
 		// Use the angle pairs provided through command-line arguments
 		lScanner->runSingleAngularScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
-		lAnalysisManager.WriteScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
+		lAnalysisManager.writeScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
 	}
 	// File is provided, run over all angle pairs
 	else
@@ -43,11 +41,9 @@ void effective_area_simulation()
 		for (std::vector<int>::size_type i = 0; i != lThetas.size(); i++)
 		{
 			lScanner->runSingleAngularScan(lPhis.at(i), lThetas.at(i));
-			lAnalysisManager.WriteScan(lPhis.at(i), lThetas.at(i));
+			lAnalysisManager.writeScan(lPhis.at(i), lThetas.at(i));
 		}
 	}
-	double finishtime = clock() / CLOCKS_PER_SEC;
-	G4cout << "Computation time: " << finishtime - startingtime << " seconds." << G4endl;
 }
 
 int main(int argc, char *argv[])
@@ -104,10 +100,10 @@ int main(int argc, char *argv[])
 
 		// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
 		lArgs.finalize();
-		lSimulation.initialise_simulation();
+		lSimulation.initialiseSimulation();
 
-		effective_area_simulation();
-		if(lArgs.get<bool>("visual")) lSimulation.start_visualisation();
+		effectiveAreaSimulation();
+		if(lArgs.get<bool>("visual")) lSimulation.startVisualisation();
 	
 	}
 	catch (std::exception &e)

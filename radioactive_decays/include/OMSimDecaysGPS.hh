@@ -1,6 +1,6 @@
 #ifndef OMSimDecaysGPS_h
 #define OMSimDecaysGPS_h 1
-#include "abcDetectorComponent.hh"
+#include "OMSimOpticalModule.hh"
 #include <globals.hh>
 /**
  * @class IsotopeDecays

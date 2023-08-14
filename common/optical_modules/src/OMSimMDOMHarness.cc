@@ -31,19 +31,19 @@ mDOMHarness::mDOMHarness(mDOM* pMDOM, InputDataManager* pData) {
  */
 void mDOMHarness::construction() {
     
-    BandsAndClamps();
-    //BridgeRopesSolid();
+    bandsAndClamps();
+    //bridgeRopesSolid();
     mainDataCable();
-    Pads();
+    pads();
     PCA();
-    Plug();
-    TeraBelt();
+    plug();
+    teraBelt();
 }
 
 /**
  * build bands with clamps and append it to component vector
  */
-void mDOMHarness::BandsAndClamps()
+void mDOMHarness::bandsAndClamps()
 {
     // vertical band dimensions
     G4double lBandThickness = 0.5*mm; //(taken from construction sketch of the Band w/o Penetrator provided by Anna Pollmann)
@@ -111,7 +111,7 @@ void mDOMHarness::BandsAndClamps()
 /**
  * build bridges & ropes and append it to component vector
  */
-void mDOMHarness::BridgeRopesSolid()
+void mDOMHarness::bridgeRopesSolid()
 {
     const G4double lBridgePhiStart = 83.0 * deg;
     const G4double lBridgeTotalPhi = 14.0 * deg;
@@ -214,7 +214,7 @@ void mDOMHarness::mainDataCable()
 /**
  * build pads and append it to component vector
  */
-void mDOMHarness::Pads()
+void mDOMHarness::pads()
 {
     const G4double lPadWidth = 11.0 * mm; // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
     const G4double lPadAngle = 44.5 * deg; // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
@@ -238,7 +238,7 @@ void mDOMHarness::Pads()
 
     G4RotationMatrix lPadRot = G4RotationMatrix();
     lPadRot.rotateZ(mHarnessRotAngle - 14.5 * deg);
-    appendComponent(lPadsUnionSolid, lPadsUnionLogical, G4ThreeVector(0, 0, (22.0) * mm), lPadRot, "Pads");
+    appendComponent(lPadsUnionSolid, lPadsUnionLogical, G4ThreeVector(0, 0, (22.0) * mm), lPadRot, "pads");
 }
 
 
@@ -327,7 +327,7 @@ void mDOMHarness::PCA()
 /**
  * build PCA plug and append it to component vector
  */
-void mDOMHarness::Plug()
+void mDOMHarness::plug()
 {
     const G4double lPlugRadius = 8.0 * mm; // radius of the screw part of the penetrator (according to construction sketch by Hydrogroup)
     const G4double lPlugLength = 25.0 * mm; // length of the screw part of the penetrator (according to construction sketch by Hydrogroup)
@@ -351,7 +351,7 @@ void mDOMHarness::Plug()
 /**
  * build tera tape belt and append it to component vector
  */
-void mDOMHarness::TeraBelt()
+void mDOMHarness::teraBelt()
 {
     const G4double lTeraWidth = 40.0 * mm; // replace with the actual value
     G4double zCorners[] = {  lTeraWidth / 2, 0, -lTeraWidth / 2 };

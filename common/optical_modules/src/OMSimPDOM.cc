@@ -26,7 +26,7 @@ pDOM::pDOM(InputDataManager *pData, G4bool pPlaceHarness)
     mPlaceHarness = pPlaceHarness;
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
-    mPMTManager->SelectPMT("pmt_Hamamatsu_R7081");
+    mPMTManager->selectPMT("pmt_Hamamatsu_R7081");
     mPMTManager->construction();
     construction();
 }
@@ -38,11 +38,11 @@ void pDOM::construction()
 {
     mComponents.clear();
 
-    G4VSolid *lPMTsolid = mPMTManager->GetPMTSolid();
+    G4VSolid *lPMTsolid = mPMTManager->getPMTSolid();
 
     G4double mGelThickness = 10 * mm;
 
-    G4double lPMTz = 0.5 * 12 * 25.4 * mm - mPMTManager->GetDistancePMTCenterToPMTtip() - mGelThickness;
+    G4double lPMTz = 0.5 * 12 * 25.4 * mm - mPMTManager->getDistancePMTCenterToTip() - mGelThickness;
 
     G4Orb *lGlassSphereSolid = new G4Orb("PDOM_GlassSphere solid", 0.5 * 13 * 25.4 * mm);
     G4Orb *lGelSphereSolid = new G4Orb("PDOM_GelSphere solid", 0.5 * 12 * 25.4 * mm);

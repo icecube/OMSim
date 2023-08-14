@@ -20,8 +20,8 @@ public:
     DEGG(InputDataManager* pData,G4bool pPlaceHarness=true);
     ~DEGG();
     void construction();
-    double get_pressure_vessel_weight() {return 18.0;};
-    int get_number_of_PMTs() { return 2;};
+    double getPressureVesselWeight() {return 18.0;};
+    int getNumberOfPMTs() { return 2;};
     
 private:
 

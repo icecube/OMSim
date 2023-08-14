@@ -37,7 +37,7 @@ DEGG::DEGG(InputDataManager *pData, G4bool pPlaceHarness)
 {
    mData = pData;
    mPMTManager = new OMSimPMTConstruction(mData);
-   mPMTManager->SelectPMT("pmt_Hamamatsu_R5912_20_100");
+   mPMTManager->selectPMT("pmt_Hamamatsu_R5912_20_100");
    mPMTManager->construction();
    construction(); // always before harness, otherwise harness will be deleted :(
    /*
@@ -173,14 +173,14 @@ void DEGG::appendPMTs()
    G4RotationMatrix lRot = G4RotationMatrix();
    lRot.rotateY(180 * deg);
 
-   appendComponent(mPMTManager->GetPMTSolid(),
-                   mPMTManager->GetLogicalVolume(),
+   appendComponent(mPMTManager->getPMTSolid(),
+                   mPMTManager->getLogicalVolume(),
                    G4ThreeVector(0, 0, lPMTdistance),
                    G4RotationMatrix(),
                    "PMT_1");
 
-   appendComponent(mPMTManager->GetPMTSolid(),
-                   mPMTManager->GetLogicalVolume(),
+   appendComponent(mPMTManager->getPMTSolid(),
+                   mPMTManager->getLogicalVolume(),
                    G4ThreeVector(0, 0, -lPMTdistance),
                    lRot,
                    "PMT_2");

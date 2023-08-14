@@ -39,10 +39,10 @@ public:
         return instance;
     }
 
-    std::vector<double> CountHits();
-    void Reset();
-	void WriteScan(G4double pPhi, G4double pTheta);
-	void WriteHeader();
+    std::vector<double> countHits();
+    void reset();
+	void writeScan(G4double pPhi, G4double pTheta);
+	void writeHeader();
 
     G4String mOutputFileName;
     std::fstream mDatafile;

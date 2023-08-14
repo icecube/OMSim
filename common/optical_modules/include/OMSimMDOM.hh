@@ -16,8 +16,8 @@ public:
     mDOM(InputDataManager *pData, G4bool pPlaceHarness = true);
     ~mDOM();
     void construction();
-    double get_pressure_vessel_weight() {return 13.0;};
-    int get_number_of_PMTs() { return mTotalNrPMTs;};
+    double getPressureVesselWeight() {return 13.0;};
+    int getNumberOfPMTs() { return mTotalNrPMTs;};
     G4int mNrTotalLED;
     std::vector<G4Transform3D> mLEDTransformers;           // coordinates from center of the module
     std::vector<std::vector<G4double>> mLED_AngFromSphere; // stores rho (mm),theta (deg),phi (deg) of each LED from the center of its corresponding spherical part. Useful to run the particles.

@@ -62,7 +62,7 @@ public:
     void extractRefractionIndex();
 protected:
 
-    G4State GetState(G4String pState);
+    G4State getState(G4String pState);
     virtual void extractInformation() = 0; // abstract method
 };
 

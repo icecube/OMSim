@@ -10,8 +10,8 @@ public:
     LOM16(InputDataManager* pData, G4bool pPlaceHarness = false);
     ~LOM16();
     void construction();
-    double get_pressure_vessel_weight() {return 5.38+5.35;};
-    int get_number_of_PMTs() { return mTotalNrPMTs;};
+    double getPressureVesselWeight() {return 5.38+5.35;};
+    int getNumberOfPMTs() { return mTotalNrPMTs;};
     
 private:
     G4UnionSolid* pressureVessel(const G4double pOutRad, G4String pSuffix);

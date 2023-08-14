@@ -51,7 +51,7 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track* aTrack)
         lAnalysisManager.mHits.photon_global_position.push_back(aTrack->GetPosition());
         lAnalysisManager.mHits.photon_local_position.push_back(lLocalPosition);
         lAnalysisManager.mHits.event_distance.push_back(lDeltaPos.mag()/m);
-        lAnalysisManager.mHits.PMT_response.push_back(lPhotocathodeResponse.ProcessPhotocathodeHit(x, y, h*c/lEkin));
+        lAnalysisManager.mHits.PMT_response.push_back(lPhotocathodeResponse.processPhotocathodeHit(x, y, h*c/lEkin));
     }
     }
 }

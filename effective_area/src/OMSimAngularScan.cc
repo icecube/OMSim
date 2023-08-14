@@ -16,7 +16,7 @@ AngularScan::AngularScan(G4double pBeamRadius, G4double pBeamDistance, G4double 
 /**
  * @brief Configures the position coordinates of the beam based on the polar and azimuthal angles.
  */
-void AngularScan::ConfigurePosCoordinates()
+void AngularScan::configurePosCoordinates()
 {
     double lRho = mBeamDistance * sin(mTheta);
     double lPosX = lRho * cos(mPhi);
@@ -29,7 +29,7 @@ void AngularScan::ConfigurePosCoordinates()
 /**
  * @brief Configures the angular coordinates of the beam based on the polar and azimuthal angles.
  */
-void AngularScan::ConfigureAngCoordinates()
+void AngularScan::configureAngCoordinates()
 {
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     double x, y, z;
@@ -72,8 +72,8 @@ void AngularScan::configureScan()
     lUIinterface.applyCommand("/gps/ang/type beam2d");
     lUIinterface.applyCommand("/gps/ang/sigma_x 0");
     lUIinterface.applyCommand("/gps/ang/sigma_y 0");
-    ConfigurePosCoordinates();
-    ConfigureAngCoordinates();
+    configurePosCoordinates();
+    configureAngCoordinates();
 }
 
 /**

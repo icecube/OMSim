@@ -31,10 +31,10 @@ mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
     mPMTManager = new OMSimPMTConstruction(mData);
     mFlashers = new mDOMFlasher(mData);
 
-    mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
+    mPMTManager->selectPMT("pmt_Hamamatsu_R15458_20nm");
     mPMTManager->construction();
-    mRefConeIdealInRad = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
-    mPMToffset = mPMTManager->GetDistancePMTCenterToPMTtip();
+    mRefConeIdealInRad = mPMTManager->getMaxPMTRadius() + 2 * mm;
+    mPMToffset = mPMTManager->getDistancePMTCenterToTip();
 
     if (mPlaceHarness)
     {
@@ -193,7 +193,7 @@ G4UnionSolid *mDOM::pressureVessel(const G4double pOutRad, G4String pSuffix)
 
 std::tuple<G4SubtractionSolid *, G4UnionSolid *> mDOM::supportStructure()
 {
-    G4VSolid *lPMTsolid = mPMTManager->GetPMTSolid();
+    G4VSolid *lPMTsolid = mPMTManager->getPMTSolid();
 
     //  PMT support structure primitives & cutting "nests" for PMTs later
 

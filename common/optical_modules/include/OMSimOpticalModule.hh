@@ -15,10 +15,10 @@ class OpticalModule: public abcDetectorComponent
      /**
      *  @brief Returns weight of pressure vessel in kg.
      */
-        virtual double get_pressure_vessel_weight() = 0;
-        virtual int get_number_of_PMTs() = 0;
+        virtual double getPressureVesselWeight() = 0;
+        virtual int getNumberOfPMTs() = 0;
 
-        OMSimPMTConstruction* get_PMT_manager() {return mPMTManager;};
+        OMSimPMTConstruction* getPMTmanager() {return mPMTManager;};
         
     protected:
         OMSimPMTConstruction *mPMTManager;
