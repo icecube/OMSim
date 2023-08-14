@@ -30,9 +30,10 @@ private:
     const G4double mBridgeAddedThickness = 14.6 * mm;
     const G4double mRopeRotationAngleX = 11.245557 * deg;
     const G4double mRopeDz = 509.5 * mm;
-    const G4double mTotalWidth = mOM->mGlassOutRad + mTeraThickness + mPadThickness + mBridgeAddedThickness;
     const G4double lBridgeCorrection =  7.85*mm * tan(mRopeRotationAngleX);  //  
     const G4double mRopeStartingPoint = mTotalWidth + lBridgeCorrection + mRopeRMax / cos(mRopeRotationAngleX); // this is the actual starting point of the rope, i.e. the distance to the z-axis, which has to be larger than lBridgeROuter[2] in order for the rope not to cut the bridge.
+
+    G4double mTotalWidth;
 };
 
 #endif

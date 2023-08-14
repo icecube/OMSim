@@ -2,6 +2,7 @@
 #define OMSimLOM18_h 1
 
 #include "OMSimPMTConstruction.hh"
+#include "OMSimOpticalModule.hh"
 
 #include <G4LogicalVolume.hh>
 #include <G4Polycone.hh>

@@ -16,7 +16,6 @@ DEggHarness::DEggHarness(DEGG *pDEGG, InputDataManager *pData)
 {
     mOM = pDEGG;
     mData = pData;
-    getSharedData();
     construction();
 }
 

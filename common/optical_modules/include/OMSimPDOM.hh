@@ -1,8 +1,8 @@
 #ifndef OMSimPDOM_h
 #define OMSimPDOM_h 1
 
-#include "abcDetectorComponent.hh"
 #include "OMSimPMTConstruction.hh"
+#include "OMSimOpticalModule.hh"
 
 /**
  * @class pDOM

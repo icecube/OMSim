@@ -22,6 +22,7 @@
 mDOMHarness::mDOMHarness(mDOM* pMDOM, InputDataManager* pData) {
     mOM = pMDOM;
     mData = pData;
+    mTotalWidth = mOM->mGlassOutRad + mTeraThickness + mPadThickness + mBridgeAddedThickness;
     construction();
 };
 

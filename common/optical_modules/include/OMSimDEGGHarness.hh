@@ -19,7 +19,6 @@ private:
     void placeCADPenetrator();
     void mainDataCable();
     G4VSolid*buildHarnessSolid(G4double rmin,G4double rmax,G4double sphi,G4double dphi,G4double stheta,G4double dtheta);
-    void getSharedData();
 
     const G4double mRmin = 150.0 * mm;
     const G4double mRmax = 155.0 * mm;

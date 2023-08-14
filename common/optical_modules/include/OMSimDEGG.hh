@@ -1,7 +1,7 @@
 // #ifndef DEGG_Test_h
 // #define DEGG_Test_h 1
 #include "OMSimPMTConstruction.hh"
-
+#include "OMSimOpticalModule.hh"
 class DEggHarness;
 
 /**

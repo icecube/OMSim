@@ -156,7 +156,9 @@ void LOM16::placeCADSupportStructure()
 //sin(90 +- ...) -> cos(...)
 void LOM16::setPMTAndGelpadPositions()
 {
-    G4double lTotalLenght = mData->getValueWithUnit(mPMTModel, "jOuterShape.jTotalLenght");
+    const G4double lTotalLenght = mData->getValueWithUnit(mPMTModel, "jOuterShape.jTotalLenght");
+    const G4double lCenterModuleToBottomPMTPolar = 70.9 * mm;
+    const G4double lCenterModuleToBottomPMTEquatorial = 25.4 * mm; 
 
     const G4double lZ_centertobottomPMT = lTotalLenght - mPMToffset; //Distance from bottom base of PMT to center of the Geant4 solid
     G4double lPMT_theta, lPMT_phi, lPMT_x, lPMT_y, PMT_z, lGelPad_x, lGelPad_y, lGelPad_z, lPMT_rho, lGelPad_rho;
@@ -171,7 +173,7 @@ void LOM16::setPMTAndGelpadPositions()
             lPMT_rho = (147.7406 - 4.9) * mm;  // For Position of PMT to Vessel wall (147.7406). 4.9mm is distance from PMT photocathode to vessel inner surface
             lGelPad_rho = lPMT_rho + 2 * mGelPadDZ;
 
-            PMT_z = mCenterModuleToBottomPMTPolar + lZ_centertobottomPMT * sin(90 * deg - lPMT_theta);
+            PMT_z = lCenterModuleToBottomPMTPolar + lZ_centertobottomPMT * sin(90 * deg - lPMT_theta);
             lGelPad_z = PMT_z + 2 * mGelPadDZ * sin(90 * deg - lPMT_theta);
         }
 
@@ -183,7 +185,7 @@ void LOM16::setPMTAndGelpadPositions()
             lPMT_rho = (120.1640 - 5) * mm; // For Position of PMT to Vessel wall (147.7406). 4.9mm is distance from PMT photocathode to vessel inner surface
             lGelPad_rho = lPMT_rho + 2 * mGelPadDZ;
 
-            PMT_z = mCenterModuleToBottomPMTPolar + lZ_centertobottomPMT * sin(90 * deg - lPMT_theta);
+            PMT_z = lCenterModuleToBottomPMTEquatorial + lZ_centertobottomPMT * sin(90 * deg - lPMT_theta);
         }
 
         //lower equatorial
@@ -194,7 +196,7 @@ void LOM16::setPMTAndGelpadPositions()
             lPMT_rho = (120.1640 - 5) * mm; // For Position of PMT to Vessel wall (147.7406). 4.9mm is distance from PMT photocathode to vessel inner surface
             lGelPad_rho = lPMT_rho + 2 * mGelPadDZ;
 
-            PMT_z = (-mCenterModuleToBottomPMTPolar) - lZ_centertobottomPMT * sin(90 * deg - (180 * deg - lPMT_theta)); //rodo to cos ...
+            PMT_z = (-lCenterModuleToBottomPMTEquatorial) - lZ_centertobottomPMT * sin(90 * deg - (180 * deg - lPMT_theta)); //rodo to cos ...
         }
 
         //lower polar
@@ -205,7 +207,7 @@ void LOM16::setPMTAndGelpadPositions()
             lPMT_rho = (147.7406 - 4.9) * mm;  // For Position of PMT to Vessel wall (147.7406). 4.9mm is distance from PMT photocathode to vessel inner surface
             lGelPad_rho = lPMT_rho + 2 * mGelPadDZ;
 
-            PMT_z = (-mCenterModuleToBottomPMTPolar) - lZ_centertobottomPMT * sin(90 * deg - (180 * deg - lPMT_theta));
+            PMT_z = (-lCenterModuleToBottomPMTPolar) - lZ_centertobottomPMT * sin(90 * deg - (180 * deg - lPMT_theta));
             lGelPad_z = PMT_z - 2 * mGelPadDZ * sin(90 * deg - (180 * deg - lPMT_theta));
         }
 
