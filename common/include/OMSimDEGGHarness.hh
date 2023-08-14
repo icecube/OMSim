@@ -20,22 +20,16 @@ private:
     void mainDataCable();
     G4VSolid*buildHarnessSolid(G4double rmin,G4double rmax,G4double sphi,G4double dphi,G4double stheta,G4double dtheta);
     void getSharedData();
-    
 
-    
-    //Shared data from jSON file
-    G4double mrmin;
-    G4double mrmax;
-    G4double msphi;
-    G4double mdphi;
-    G4double mstheta;
-    G4double mdtheta;
-
-    const G4double mHarnessRotAngle = 30*deg; //stems from CAD file of DEGG
-    G4double mRopeRotationAngleX;
-    G4double mRopeDz;
-    G4double mTotalWidth;
-    G4double mRopeStartingPoint;
+    const G4double mRmin = 150.0 * mm;
+    const G4double mRmax = 155.0 * mm;
+    const G4double mSphi = 0.0 * deg;
+    const G4double mDphi = 6.283185307; // This is already in radians
+    const G4double mStheta = 1.383031327; // This is in radians
+    const G4double mDtheta = 0.37553; // This is in radians
+    const G4double mRopeRotationAngleX = 11.245557 * deg;
+    const G4double mHarnessRotAngle = 30*deg; 
+    const G4double mTotalWidth = 170 * mm; 
 };
 
 #endif

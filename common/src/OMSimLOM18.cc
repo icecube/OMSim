@@ -3,14 +3,13 @@
  *
  *  @author Javi Vara & Markus Dittmer
  *
- *  @version revision 1, Geant4 10.7
- *
  *  @todo  - 18/07/22 Solve collisions of CAD with PMTs
-           -
-
-    Changelog:
-        18 July 2022    Martin Unland
-
+ *         - Clean up needed variables
+ *         - Move "magic numbers" to header, add comment with their meaning
+ *         - Gel pads have to be tilted
+ *         - Add Harness
+ *         - Add realistic materials for internal components (100% absorber as of yet) 
+ * @ingroup common
  */
 
 #include "OMSimLOM18.hh"
@@ -33,7 +32,8 @@ LOM18::LOM18(InputDataManager* pData, G4bool pPlaceHarness) {
     mPMTManager->SimulateHACoating();
     mPMTManager->SelectPMT("pmt_Hamamatsu_4inch");
     mPMTManager->construction();
-    getSharedData();
+    mPMToffset = mPMTManager->GetDistancePMTCenterToPMTtip();
+    mMaxPMTRadius = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
 
     mPlaceHarness = pPlaceHarness;
     if (mPlaceHarness){
@@ -46,60 +46,10 @@ LOM18::LOM18(InputDataManager* pData, G4bool pPlaceHarness) {
 
 
 /**
- * Reads parameters from json files in /data/ 
- */
-void LOM18::getSharedData() {
-    //Module Parameters
-
-    //Vessel specific
-    mGlassEquatorWidth = mData->getValueWithUnit(mDataKey, "jGlassEquatorWidth"); 
-    mGlassPoleLength = mData->getValueWithUnit(mDataKey, "jGlassPoleLength"); 
-    mGlassThickPole = mData->getValueWithUnit(mDataKey, "jGlassThickPole");
-    mGlassThickEquator = mData->getValueWithUnit(mDataKey, "jGlassThickEquator"); 
-    mCylinderAngle = mData->getValueWithUnit(mDataKey, "lCylinderAngle"); 
-    //add rest for points and radii
-
-    //PMT specific
-    mThetaCenter = mData->getValueWithUnit(mDataKey, "jThetaCenter"); //theta angle polar pmts
-    mThetaEquatorial = mData->getValueWithUnit(mDataKey, "jThetaEquatorial"); //theta angle equatorial pmts
-    mEqPMTPhiPhase = mData->getValueWithUnit(mDataKey,"jEqPMTPhiPhase");
-
-    mNrPolarPMTs = mData->getValueWithUnit(mDataKey,"jNrPolarPMTs");
-    mNrCenterPMTs = mData->getValueWithUnit(mDataKey,"jNrCenterPMTs");
-    mNrEquatorialPMTs = mData->getValueWithUnit(mDataKey,"jNrEquatorialPMTs");
-
-    mNrPMTsPerHalf = mNrPolarPMTs + mNrCenterPMTs + mNrEquatorialPMTs;
-    mTotalNrPMTs = (mNrPolarPMTs + mNrCenterPMTs + mNrEquatorialPMTs) * 2;
-
-    //gelpad specific
-    mPolarPadOpeningAngle = mData->getValueWithUnit(mDataKey,"jPolarPadOpeningAngle"); //tilt angle of gel pad axis in respect to PMT axis
-    mCenterPadOpeningAngle = mData->getValueWithUnit(mDataKey,"jCenterPadOpeningAngle"); //
-    mEqPadOpeningAngle = mData->getValueWithUnit(mDataKey,"jEqPadOpeningAngle"); //
-
-    mGelThicknessFrontPolarPMT = mData->getValueWithUnit(mDataKey,"jGelThicknessFrontPolarPMT"); //
-    mGelThicknessFrontCenterPMT = mData->getValueWithUnit(mDataKey,"jGelThicknessFrontCenterPMT"); //
-    mGelThicknessFrontEqPMT = mData->getValueWithUnit(mDataKey,"jGelThicknessFrontEqPMT"); //
-
-
-    //PMT parameters
-    mPMToffset = mPMTManager->GetDistancePMTCenterToPMTtip();
-    mMaxPMTRadius = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
-
-    mTotalLenght = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jTotalLenght");
-    mOutRad = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jOutRad");
-    mSpherePos_y = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jSpherePos_y");
-    mEllipsePos_y = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jEllipsePos_y");
-    mEllipseZaxis = mData->getValueWithUnit("pmt_Hamamatsu_4inch", "jOuterShape.jEllipseZaxis");
-
-}
-
-
-
-/**
  * Placement function which appends all components into an abcDetectorComponent to be constructed in DetectorConstruction
  */
 void LOM18::construction()
-{   mComponents.clear();
+{   
     //Create pressure vessel and inner volume
     G4Polycone* lGlassSolid = createLOM18OuterSolid();
     G4Polycone* lInnerVolumeSolid = createLOM18InnerSolid();
@@ -514,9 +464,9 @@ void LOM18::createGelpadLogicalVolumes(G4Polycone* lGelSolid)
 
     //create logical volume for each gelpad    
     for(int k=0 ; k<=mTotalNrPMTs-1 ; k++){
-            converter.str("");
+            mConv.str("");
             converter2.str("");
-            converter << "GelPad_" << k << "_solid";
+            mConv << "GelPad_" << k << "_solid";
             converter2 << "Gelpad_final" << k << "_logical";
 
             // polar gel pads
@@ -534,8 +484,8 @@ void LOM18::createGelpadLogicalVolumes(G4Polycone* lGelSolid)
                 tra = new G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]+GelpadShift));
 
                 //creating volumes ... basic cone, subtract PMT, logical volume of gelpad
-                lPrelimaryGelpad = new G4IntersectionSolid(converter.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
-                lGelpad = new G4SubtractionSolid(converter.str(), lPrelimaryGelpad, lPMTsolid, transformers);
+                lPrelimaryGelpad = new G4IntersectionSolid(mConv.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
+                lGelpad = new G4SubtractionSolid(mConv.str(), lPrelimaryGelpad, lPMTsolid, transformers);
                 
                 lGelPad_logical = new G4LogicalVolume(lGelpad, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
             }
@@ -554,8 +504,8 @@ void LOM18::createGelpadLogicalVolumes(G4Polycone* lGelSolid)
                 tra = new G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]+GelpadShift));
 
                 //creating volumes ... basic cone, subtract PMT, logical volume of gelpad
-                lPrelimaryGelpad = new G4IntersectionSolid(converter.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
-                lGelpad = new G4SubtractionSolid(converter.str(), lPrelimaryGelpad, lPMTsolid, transformers);
+                lPrelimaryGelpad = new G4IntersectionSolid(mConv.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
+                lGelpad = new G4SubtractionSolid(mConv.str(), lPrelimaryGelpad, lPMTsolid, transformers);
                 lGelPad_logical = new G4LogicalVolume(lGelpad, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
             }
             // equatorial gel pads
@@ -573,8 +523,8 @@ void LOM18::createGelpadLogicalVolumes(G4Polycone* lGelSolid)
                 tra = new G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]+GelpadShift));
 
                 //creating volumes ... basic cone, subtract PMT, logical volume of gelpad
-                lPrelimaryGelpad = new G4IntersectionSolid(converter.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
-                lGelpad = new G4SubtractionSolid(converter.str(), lPrelimaryGelpad, lPMTsolid, transformers);
+                lPrelimaryGelpad = new G4IntersectionSolid(mConv.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
+                lGelpad = new G4SubtractionSolid(mConv.str(), lPrelimaryGelpad, lPMTsolid, transformers);
                 lGelPad_logical = new G4LogicalVolume(lGelpad, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
             }
 
@@ -591,15 +541,15 @@ void LOM18::createGelpadLogicalVolumes(G4Polycone* lGelSolid)
 void LOM18::placePMTs(G4LogicalVolume* lInnerVolumeLogical)
 {
     for(int k=0 ; k<=mTotalNrPMTs-1 ; k++){
-        converter.str("");
-        converter << "_"<< k;
+        mConv.str("");
+        mConv << "_"<< k;
 
         lRot = new G4RotationMatrix();
         lRot->rotateY(mPMT_theta[k]);
         lRot->rotateZ(mPMT_phi[k]);
         lTransformers = G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]));
 
-        mPMTManager->placeIt(lTransformers, lInnerVolumeLogical, converter.str());
+        mPMTManager->placeIt(lTransformers, lInnerVolumeLogical, mConv.str());
     }
 
 }
@@ -611,14 +561,14 @@ void LOM18::placePMTs(G4LogicalVolume* lInnerVolumeLogical)
 void LOM18::placeGelpads(G4LogicalVolume* lInnerVolumeLogical)
 {
     for(int k=0 ; k<=mTotalNrPMTs-1 ; k++){
-        converter.str("");
-        converter << "GelPad_" << k;
+        mConv.str("");
+        mConv << "GelPad_" << k;
 
         lRot = new G4RotationMatrix();
         lRot->rotateY(mPMT_theta[k]);
         lRot->rotateZ(mPMT_phi[k]);
         lTransformers = G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]));
 
-        new G4PVPlacement(0, G4ThreeVector(0,0,0), mGelPad_logical[k], converter.str(), lInnerVolumeLogical, false, 0, mCheckOverlaps);
+        new G4PVPlacement(0, G4ThreeVector(0,0,0), mGelPad_logical[k], mConv.str(), lInnerVolumeLogical, false, 0, mCheckOverlaps);
     }
 }

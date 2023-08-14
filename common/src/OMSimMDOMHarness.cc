@@ -22,26 +22,8 @@
 mDOMHarness::mDOMHarness(mDOM* pMDOM, InputDataManager* pData) {
     mOM = pMDOM;
     mData = pData;
-    getSharedData();
     construction();
 };
-
-/**
- * Set all data members used in several functions
- */
-void mDOMHarness::getSharedData() {
-    
-    mPlugAngle = mData->getValueWithUnit(mDataKey, "jPlugAngle");      // this is the angle between the PMT rows, where the penetrator and the clamps are placed (according to Prof. Kappes) //TODO REDEFINED
-    mPadThickness = mData->getValueWithUnit(mDataKey, "jPadThickness");
-    mTeraThickness = mData->getValueWithUnit(mDataKey, "jTeraThickness");
-    mRopeRMax = mData->getValueWithUnit(mDataKey, "jRopeRMax");
-    mBridgeAddedThickness = mData->getValueWithUnit(mDataKey, "jBridgeAddedThickness");
-    mRopeRotationAngleX = mData->getValueWithUnit(mDataKey, "jRopeRotationAngleX"); // this value is found by numerically solving the equation lBridgeROuter[2]+mRopeRMax/cos(mRopeRotationAngleX) = 2*mRopeDz*sin(mRopeRotationAngleX)- lBridgeZPlane[3]*tan(mRopeRotationAngleX) with wolframalpha.com LOL
-    mRopeDz = mData->getValueWithUnit(mDataKey, "jRopeDz");
-    mTotalWidth = mOM->mGlassOutRad + mTeraThickness + mPadThickness + mBridgeAddedThickness;
-    lBridgeCorrection =  mData->getValueWithUnit(mDataKey, "jBridgeZPlane_2") * tan(mRopeRotationAngleX);  //  
-    mRopeStartingPoint = mTotalWidth + lBridgeCorrection + mRopeRMax / cos(mRopeRotationAngleX); // this is the actual starting point of the rope, i.e. the distance to the z-axis, which has to be larger than lBridgeROuter[2] in order for the rope not to cut the bridge.
-}
 
 /**
  * The construction of each part is called
@@ -63,11 +45,11 @@ void mDOMHarness::construction() {
 void mDOMHarness::BandsAndClamps()
 {
     // vertical band dimensions
-    G4double lBandThickness = mData->getValueWithUnit(mDataKey, "jBandThickness"); //(taken from construction sketch of the Band w/o Penetrator provided by Anna Pollmann)
-    G4double lBandWidth = mData->getValueWithUnit(mDataKey, "jBandWidth");      //(taken from construction sketch of the Band w/o Penetrator provided by Anna Pollmann)
+    G4double lBandThickness = 0.5*mm; //(taken from construction sketch of the Band w/o Penetrator provided by Anna Pollmann)
+    G4double lBandWidth = 9.0*mm;      //(taken from construction sketch of the Band w/o Penetrator provided by Anna Pollmann)
 
     // clamp dimensions
-    G4double lClampLength = mData->getValueWithUnit(mDataKey, "jClampLength");  //according to Fusion 360 model of the harness provided by Anna Pollmann
+    G4double lClampLength = 10.0*mm;  //according to Fusion 360 model of the harness provided by Anna Pollmann
 
     //First band
     G4Tubs* lBandASolid = new G4Tubs("lBandASolid", mOM->mGlassOutRad, mOM->mGlassOutRad + lBandThickness, lBandWidth / 2, 0, CLHEP::pi);
@@ -130,50 +112,46 @@ void mDOMHarness::BandsAndClamps()
  */
 void mDOMHarness::BridgeRopesSolid()
 {
-    const G4double lBridgePhiStart = mData->getValueWithUnit(mDataKey, "jBridgePhiStart");
-    const G4double lBridgeTotalPhi = mData->getValueWithUnit(mDataKey, "jBridgeTotalPhi");
-
+    const G4double lBridgePhiStart = 83.0 * deg;
+    const G4double lBridgeTotalPhi = 14.0 * deg;
     const G4double lBridgeRInner = mOM->mGlassOutRad + mTeraThickness + mPadThickness;
     const G4double lBridgeRInner_list[6] = { lBridgeRInner, lBridgeRInner, lBridgeRInner, lBridgeRInner, lBridgeRInner, lBridgeRInner };
 
-    const G4double lBridgeROuterTemp[6] = { (lBridgeRInner + mData->getValueWithUnit(mDataKey, "jBridgeROutTemp_0")), // BridgeROutTemp_0 = 2.2mm
-                                      (lBridgeRInner + mData->getValueWithUnit(mDataKey, "jBridgeROutTemp_1")), // BridgeROutTemp_1 = 2.2mm + 5.5 cos( 25.1 deg)
-                                      (lBridgeRInner + mData->getValueWithUnit(mDataKey, "jBridgeROutTemp_2")), // BridgeROutTemp_2 = 2.2mm + 5.5 cos( 25.1 deg) + 7.4 * cos(46.7 deg)
-                                      (lBridgeRInner + mData->getValueWithUnit(mDataKey, "jBridgeROutTemp_2")),
-                                      (lBridgeRInner + mData->getValueWithUnit(mDataKey, "jBridgeROutTemp_1")),
-                                      (lBridgeRInner + mData->getValueWithUnit(mDataKey, "jBridgeROutTemp_0")) };
+    const G4double lBridgeROuterTemp[6] = { (lBridgeRInner + 2.2 * mm),
+                                      (lBridgeRInner + 7.180628394561269 * mm),
+                                      (lBridgeRInner + 12.255684206223851 * mm),
+                                      (lBridgeRInner + 12.255684206223851 * mm),
+                                      (lBridgeRInner + 7.180628394561269 * mm),
+                                      (lBridgeRInner + 2.2 * mm) };
 
     const G4double lBridgeROuter[6] = { lBridgeROuterTemp[0],
-                                      (lBridgeROuterTemp[0] + mData->getValueWithUnit(mDataKey, "jBridgeZPlaneTrig_1")), // BridgeZPlaneTrig_1 = sin(50.2 deg) * 14.1
+                                      (lBridgeROuterTemp[0] + 10.83279768266868 * mm),
                                       mTotalWidth,
                                       mTotalWidth,
-                                      (lBridgeROuterTemp[0] + mData->getValueWithUnit(mDataKey, "jBridgeZPlaneTrig_1")),
+                                      (lBridgeROuterTemp[0] + 10.83279768266868 * mm),
                                       lBridgeROuterTemp[0] };
 
-    const G4double lBridgeZPlane[6] = { -mData->getValueWithUnit(mDataKey, "jBridgeZPlane_0"), // BridgeZPlane_0 = 27mm
-                                      -mData->getValueWithUnit(mDataKey, "jBridgeZPlane_1"), // BridgeZPlane_1 = 27 - sin(50.2 deg) * 14.1
-                                      -mData->getValueWithUnit(mDataKey, "jBridgeZPlane_2"), // BridgeZPlane_2 = 7.85
-                                      mData->getValueWithUnit(mDataKey, "jBridgeZPlane_2"),
-                                      mData->getValueWithUnit(mDataKey, "jBridgeZPlane_1"),
-                                      mData->getValueWithUnit(mDataKey, "jBridgeZPlane_0") };
+    const G4double lBridgeZPlane[6] = { -27.0 * mm,
+                                      -16.16720231733132 * mm,
+                                      -7.85 * mm,
+                                      7.85 * mm,
+                                      16.16720231733132 * mm,
+                                      27.0 * mm };
 
-    const G4double lBridgeZTemp[6] = { -mData->getValueWithUnit(mDataKey, "jBridgeZTemp_0"), // BridgeZPlane_0 = 17 mm
-                                      -mData->getValueWithUnit(mDataKey, "jBridgeZTemp_1"), // BridgeZPlane_1 = 7.85 + sin(71.8 deg) * 7.4
-                                      -mData->getValueWithUnit(mDataKey, "jBridgeZTemp_2"), // BridgeZPlane_2 = 7.85
-                                      mData->getValueWithUnit(mDataKey, "jBridgeZTemp_2"),
-                                      mData->getValueWithUnit(mDataKey, "jBridgeZTemp_1"),
-                                      mData->getValueWithUnit(mDataKey, "jBridgeZTemp_0") };
-
-
+    const G4double lBridgeZTemp[6] = { -17.0 * mm,
+                                      -14.879793181282428 * mm,
+                                      -7.85 * mm,
+                                      7.85 * mm,
+                                      14.879793181282428 * mm,
+                                      17.0 * mm };
 
     G4Polycone* lBridgeTemp1Solid = new G4Polycone("BridgeSolid", lBridgePhiStart, lBridgeTotalPhi, 6, lBridgeZPlane, lBridgeRInner_list, lBridgeROuter);
-    G4Polycone* lBridgeTemp2Solid = new G4Polycone("lBridgeTemp2Solid", lBridgePhiStart - 1. * deg, 16. * deg, 6, lBridgeZTemp, lBridgeRInner_list, lBridgeROuterTemp);
+    G4Polycone* lBridgeTemp2Solid = new G4Polycone("lBridgeTemp2Solid", lBridgePhiStart - 1.0 * deg, 16.0 * deg, 6, lBridgeZTemp, lBridgeRInner_list, lBridgeROuterTemp);
     G4SubtractionSolid* lBridgeSolid = new G4SubtractionSolid("", lBridgeTemp1Solid, lBridgeTemp2Solid);
 
-    const G4double lRopeZShift = mData->getValueWithUnit(mDataKey, "jRopeZShift"); //dont know why.. without it the vis breaks
+    const G4double lRopeZShift = 2.0 * mm;
 
-    G4Tubs* lRopeSolid = new G4Tubs("lRopeSolid", 0, mRopeRMax, mRopeDz - lRopeZShift, 0, 360. * deg);
-
+    G4Tubs* lRopeSolid = new G4Tubs("lRopeSolid", 0.0, mRopeRMax, mRopeDz - lRopeZShift, 0.0, 360.0 * deg);
 
     //First union
     G4RotationMatrix lRot = G4RotationMatrix();
@@ -212,42 +190,44 @@ void mDOMHarness::BridgeRopesSolid()
  */
 void mDOMHarness::mainDataCable()
 {
-    const G4double lDataCableRadius = mData->getValueWithUnit(mDataKey, "jDataCableRadius"); // Radius of the main data cable (according to Prof. Kappes)
-    const G4double lDataCableLength = mData->getValueWithUnit(mDataKey, "jDataCableLength"); // Length of main data cable
+    const G4double lDataCableRadius = 26.0 * mm; // Radius of the main data cable (according to Prof. Kappes)
+    const G4double lDataCableLength = 4.0 * m; // Length of main data cable
 
-    G4Tubs* lDataCableSolid = new G4Tubs("MainDataCable_solid", 0, lDataCableRadius, lDataCableLength / 2., 0, 2 * CLHEP::pi);
+    G4Tubs* lDataCableSolid = new G4Tubs("MainDataCable_solid", 0, lDataCableRadius, lDataCableLength / 2.0, 0, 2 * CLHEP::pi);
 
     G4LogicalVolume* lDataCableLogical = new G4LogicalVolume(lDataCableSolid, mData->getMaterial("NoOptic_Absorber"), "MainDataCable_logical");
     new G4LogicalSkinSurface("MainDataCable_skin", lDataCableLogical, mData->getOpticalSurface("Refl_BlackDuctTapePolished"));
     lDataCableLogical->SetVisAttributes(mAbsorberVis);
-    G4double lMainCableAngle = 90*deg;
-    G4double lMainCableRadius = (mRopeStartingPoint + lDataCableRadius + mRopeRMax + 0.2 * cm-mBridgeAddedThickness-0.75*cm);
-    G4ThreeVector lDataCablePosition = G4ThreeVector( lMainCableRadius* sin(lMainCableAngle),
-       lMainCableRadius * cos(lMainCableAngle),
-        0);
+
+    G4double lMainCableAngle = 90.0 * deg;
+    G4double lMainCableRadius = (mRopeStartingPoint + lDataCableRadius + mRopeRMax + 0.2 * cm - mBridgeAddedThickness - 0.75 * cm);
+    G4ThreeVector lDataCablePosition = G4ThreeVector(lMainCableRadius * sin(lMainCableAngle),
+                                                     lMainCableRadius * cos(lMainCableAngle),
+                                                     0.0);
 
     appendComponent(lDataCableSolid, lDataCableLogical, lDataCablePosition, G4RotationMatrix(), "mainDataCable");
 }
+
 
 
 /**
  * build pads and append it to component vector
  */
 void mDOMHarness::Pads()
-
 {
-    const G4double lPadWidth = mData->getValueWithUnit(mDataKey, "jPadWidth");  // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
-    const G4double lPadAngle = mData->getValueWithUnit(mDataKey, "jPadAngle") / (2 * CLHEP::pi * mOM->mGlassOutRad) * 360. * deg; // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
-    G4Tubs* lPadSolid = new G4Tubs("lPadSolid", mOM->mGlassOutRad + mTeraThickness, mOM->mGlassOutRad + mTeraThickness + mPadThickness, lPadWidth / 2, lPadAngle / 2, lPadAngle);
+    const G4double lPadWidth = 11.0 * mm; // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
+    const G4double lPadAngle = 44.5 * deg; // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
+    
+    G4Tubs* lPadSolid = new G4Tubs("lPadSolid", mOM->mGlassOutRad + mTeraThickness, mOM->mGlassOutRad + mTeraThickness + mPadThickness, lPadWidth / 2.0, lPadAngle / 2.0, lPadAngle);
 
     G4RotationMatrix lRot = G4RotationMatrix();
 
-    G4UnionSolid* lTempPadUnion1 = new G4UnionSolid("temppad1", lPadSolid, lPadSolid, G4Transform3D(lRot, G4ThreeVector(0, 0, (-44.) * mm)));
-    lRot.rotateZ(90 * deg);
+    G4UnionSolid* lTempPadUnion1 = new G4UnionSolid("temppad1", lPadSolid, lPadSolid, G4Transform3D(lRot, G4ThreeVector(0, 0, (-44.0) * mm)));
+    lRot.rotateZ(90.0 * deg);
     G4UnionSolid* lTempPadUnion2 = new G4UnionSolid("temppad2", lTempPadUnion1, lTempPadUnion1, G4Transform3D(lRot, G4ThreeVector(0, 0, 0)));
-    lRot.rotateZ(90 * deg);
+    lRot.rotateZ(90.0 * deg);
     G4UnionSolid* lTempPadUnion3 = new G4UnionSolid("temppad3", lTempPadUnion2, lTempPadUnion1, G4Transform3D(lRot, G4ThreeVector(0, 0, 0)));
-    lRot.rotateZ(90 * deg);
+    lRot.rotateZ(90.0 * deg);
 
     G4UnionSolid* lPadsUnionSolid = new G4UnionSolid("lPadsUnionSolid", lTempPadUnion3, lTempPadUnion1, G4Transform3D(lRot, G4ThreeVector(0, 0, 0)));
     G4LogicalVolume* lPadsUnionLogical = new G4LogicalVolume(lPadsUnionSolid, mData->getMaterial("NoOptic_Absorber"), "");
@@ -257,9 +237,9 @@ void mDOMHarness::Pads()
 
     G4RotationMatrix lPadRot = G4RotationMatrix();
     lPadRot.rotateZ(mHarnessRotAngle - 14.5 * deg);
-    appendComponent(lPadsUnionSolid, lPadsUnionLogical, G4ThreeVector(0, 0, (22) * mm), lPadRot, "Pads");
-
+    appendComponent(lPadsUnionSolid, lPadsUnionLogical, G4ThreeVector(0, 0, (22.0) * mm), lPadRot, "Pads");
 }
+
 
 /**
  * build PCA cable and append it to component vector
@@ -267,10 +247,10 @@ void mDOMHarness::Pads()
 void mDOMHarness::PCA()
 {
     //Cylindrical metallic part
-    const G4double lMushRadiusUpper = mData->getValueWithUnit(mDataKey, "jMushRadiusUpper"); //Radius of the (black) conical part of the penetrator at the thicker end (measured by hand)
-    const G4double lMushRadiusLower = mData->getValueWithUnit(mDataKey, "jMushRadiusLower"); //Radius of the (black) conical part of the penetrator at the thinner end (according to construction sketch by Hydrogroup)
-    const G4double lMushHeight = mData->getValueWithUnit(mDataKey, "jMushHeight");           //Height of the penetrator part that is made up of a conical and a cylindrical part
-    const G4double lMushCylHeight = mData->getValueWithUnit(mDataKey, "jMushCylHeight");     //Height of cylindrical part (measured by hand)
+    const G4double lMushRadiusUpper = 10.965 * mm; // Radius of the (black) conical part of the penetrator at the thicker end (measured by hand)
+    const G4double lMushRadiusLower = 15.0 * mm; // Radius of the (black) conical part of the penetrator at the thinner end (according to construction sketch by Hydrogroup)
+    const G4double lMushHeight = 32.77 * mm; // Height of the penetrator part that is made up of a conical and a cylindrical part
+    const G4double lMushCylHeight = 6.35 * mm; // Height of cylindrical part (measured by hand)
     const G4double lMushConeHeight = lMushHeight - lMushCylHeight;
 
     G4Tubs* lMushCylSolid = new G4Tubs("Mush solid", 0, lMushRadiusLower, lMushCylHeight / 2., 0, 2. * CLHEP::pi);
@@ -278,22 +258,19 @@ void mDOMHarness::PCA()
     new G4LogicalSkinSurface("mush_cyl_skin", lMushCylLogical, mData->getOpticalSurface("Refl_AluminiumGround"));
     lMushCylLogical->SetVisAttributes(mSteelVis);
 
-
     G4RotationMatrix lMushRot = G4RotationMatrix();
     lMushRot.rotateX(-mPlugAngle);
     lMushRot.rotateZ(mHarnessRotAngle - 90 * deg);
     G4ThreeVector lMushPosition = G4ThreeVector((mOM->mGlassOutRad + lMushCylHeight / 2) * (cos(mHarnessRotAngle)) * sin(mPlugAngle), (mOM->mGlassOutRad + lMushCylHeight / 2) * sin(mHarnessRotAngle) * sin(mPlugAngle), (mOM->mGlassOutRad + lMushCylHeight / 2) * cos(mPlugAngle) + mOM->mCylHigh);
-
     appendComponent(lMushCylSolid, lMushCylLogical, lMushPosition, lMushRot, "Mush");
 
-
-    //Now bulding the hole penetrator cable as a single entity
+    //Now building the hole penetrator cable as a single entity
     //first the conical cap
     G4Cons* lMushConeSolid = new G4Cons("mush_cone_solid", 0, lMushRadiusLower, 0, lMushRadiusUpper, lMushConeHeight / 2., 0, 2. * CLHEP::pi);
 
     //rigid part of the penetrator plastic, here it is called tube?
-    const G4double lTubeRadius = mData->getValueWithUnit(mDataKey, "jTubeRadius"); //Radius of the rigid part of the cable that exits the penetrator part (according to construction sketch by Hydrogroup)
-    const G4double lTubeLength = mData->getValueWithUnit(mDataKey, "jTubeLength"); //Length of the rigid part of the cable that exits the penetrator part (measured by hand)
+    const G4double lTubeRadius = 10.67 * mm; // Radius of the rigid part of the cable that exits the penetrator part (according to construction sketch by Hydrogroup)
+    const G4double lTubeLength = 60.0 * mm; // Length of the rigid part of the cable that exits the penetrator part (measured by hand)
     G4Tubs* lTubeSolid = new G4Tubs("tube_solid", 0, lTubeRadius, lTubeLength / 2, 0, 2 * CLHEP::pi);
 
     G4RotationMatrix lRot;
@@ -302,15 +279,16 @@ void mDOMHarness::PCA()
 
     G4UnionSolid* lPenCableRigid_solid = new G4UnionSolid("Penetrator cable solid rigid part", lMushConeSolid, lTubeSolid, lUnionTransform);
 
-    //Bulding PCA. This is gonna be build from outside to the inside, to do the unions easily
+    //Building PCA. This is gonna be built from outside to the inside, to do the unions easily
     //variables
-    const G4double lWireThickness = mData->getValueWithUnit(mDataKey, "jWireThickness"); // south bay cable width (0.54 inches) (according to construction sketch by South Bay Corporation)
-    const G4double lWireRadius = mData->getValueWithUnit(mDataKey, "jWireRadius");        // minimum bending diameter of the cable (14 inches)
+    const G4double lWireThickness = 1.3716 * cm; // south bay cable width (0.54 inches) (according to construction sketch by South Bay Corporation)
+    const G4double lWireRadius = 17.78 * cm; // minimum bending diameter of the cable (14 inches)
     const G4double lDistTubeToRope = ((mRopeStartingPoint)+mRopeRMax * (1 - cos(mRopeRotationAngleX)) - ((mOM->mGlassOutRad + lMushHeight - lTubeRadius) * cos(mPlugAngle) + lTubeLength * sin(mPlugAngle) + mOM->mCylHigh) * tan(mRopeRotationAngleX) - (mOM->mGlassOutRad + lMushHeight - lTubeRadius) * sin(mPlugAngle) + lTubeLength * cos(mPlugAngle)) / cos(mRopeRotationAngleX) - (lWireThickness / 2 + mRopeRMax) - mRopeDz * (1 - cos(mRopeRotationAngleX)) * sin(mRopeRotationAngleX); // Modified distance between start of first torus and end of second torus
 
     const G4double lPCA2angle = acos((0.5) * (-lDistTubeToRope / lWireRadius + sin(mPlugAngle + mRopeRotationAngleX) + 1.));
     const G4double lPCA1angle = 90. * deg + lPCA2angle - (mPlugAngle + mRopeRotationAngleX);
     const G4double lExtnLength = 30. * 2.54 * cm - lWireRadius * (lPCA1angle + lPCA2angle) - lTubeLength;
+
     //PCA1
     G4Torus* lPCA1Solid = new G4Torus("lPCA1Solid", 0, lWireThickness / 2., lWireRadius, 0, lPCA1angle);
     //PCA2
@@ -326,7 +304,6 @@ void mDOMHarness::PCA()
     G4RotationMatrix lRot2 = G4RotationMatrix();
     lRot2.rotateZ(-lPCA2angle); //PCA2 ANGLE
     lRot2.rotateY(180 * deg);
-
     G4ThreeVector lPos2 = G4ThreeVector(2 * lWireRadius, 0, 0);
     G4UnionSolid* lCableTempUnion2 = new G4UnionSolid("temp2", lPCA1Solid, lCableTempUnion1, G4Transform3D(lRot2, lPos2));
 
@@ -341,7 +318,6 @@ void mDOMHarness::PCA()
     new G4LogicalSkinSurface("penetrator cable skin", lPCALogical, mData->getOpticalSurface("Refl_BlackDuctTapePolished"));
     lPCALogical->SetVisAttributes(mAbsorberVis);
 
-
     G4ThreeVector lPCAPosition = G4ThreeVector((mOM->mGlassOutRad + (2 * lMushCylHeight + lMushConeHeight) / 2.) * (cos(mHarnessRotAngle)) * sin(mPlugAngle), (mOM->mGlassOutRad + (2 * lMushCylHeight + lMushConeHeight) / 2) * sin(mHarnessRotAngle) * sin(mPlugAngle), (mOM->mGlassOutRad + (2 * lMushCylHeight + lMushConeHeight) / 2) * cos(mPlugAngle) + mOM->mCylHigh);
     appendComponent(lPCASolid, lPCALogical, lPCAPosition, lMushRot, "PCA");
 }
@@ -352,8 +328,8 @@ void mDOMHarness::PCA()
  */
 void mDOMHarness::Plug()
 {
-    const G4double lPlugRadius = mData->getValueWithUnit(mDataKey, "jPlugRadius");    //radius of the screw part of the penetrator (according to construction sketch by Hydrogroup)
-    const G4double lPlugLength = mData->getValueWithUnit(mDataKey, "jPlugLength");    //length of the screw part of the penetrator (according to construction sketch by Hydrogroup)
+    const G4double lPlugRadius = 8.0 * mm; // radius of the screw part of the penetrator (according to construction sketch by Hydrogroup)
+    const G4double lPlugLength = 25.0 * mm; // length of the screw part of the penetrator (according to construction sketch by Hydrogroup)
 
     G4Tubs* lPlugSolid = new G4Tubs("plug_solid_temp", 0, lPlugRadius, lPlugLength / 2, 0, 2 * CLHEP::pi);
 
@@ -369,32 +345,29 @@ void mDOMHarness::Plug()
     lPlugLogical->SetVisAttributes(mSteelVis);
 
     appendComponent(lPlugSolid, lPlugLogical, lPlugPosition, lPlugRotation, "Plug");
-
 }
-
 
 /**
  * build tera tape belt and append it to component vector
  */
 void mDOMHarness::TeraBelt()
 {
-    const G4double lTeraWidth = mData->getValueWithUnit(mDataKey, "jTeraWidth") ;
-    G4double zCorners[] = {  lTeraWidth/ 2, 0, -lTeraWidth/ 2};
-    G4double R = mOM->mGlassOutRad+0.8*mm; //add something so they do not touch
+    const G4double lTeraWidth = 40.0 * mm; // replace with the actual value
+    G4double zCorners[] = {  lTeraWidth / 2, 0, -lTeraWidth / 2 };
+    G4double R = mOM->mGlassOutRad + 0.8 * mm; // add something so they do not touch
     G4double rCornersInn[] = {  R, R + (lTeraWidth / 2) * sin(mOM->mCylinderAngle), R };
     R = mOM->mGlassOutRad + mTeraThickness;
-    G4double rCornersOut[] = {  R, R + (lTeraWidth / 2) * sin(mOM->mCylinderAngle), R};
+    G4double rCornersOut[] = {  R, R + (lTeraWidth / 2) * sin(mOM->mCylinderAngle), R };
 
     G4Polycone* lTeraSolidTemp1 = new G4Polycone("tera_solid_temp1", 0, 2 * CLHEP::pi, 3, rCornersInn, zCorners);
     G4Polycone* lTeraSolidTemp2 = new G4Polycone("tera_solid_temp2", 0, 2 * CLHEP::pi, 3, rCornersOut, zCorners);
-    G4SubtractionSolid* lTeraSolid = new G4SubtractionSolid("tera_solid", lTeraSolidTemp2, lTeraSolidTemp1, G4Transform3D(G4RotationMatrix(), G4ThreeVector(0,0,0)) );
-    
+    G4SubtractionSolid* lTeraSolid = new G4SubtractionSolid("tera_solid", lTeraSolidTemp2, lTeraSolidTemp1, G4Transform3D(G4RotationMatrix(), G4ThreeVector(0, 0, 0)));
+
     G4LogicalVolume* lTeraLogical = new G4LogicalVolume(lTeraSolid, mData->getMaterial("NoOptic_Absorber"), "tera_logical");
     new G4LogicalSkinSurface("tera_skin", lTeraLogical, mData->getOpticalSurface("Refl_BlackDuctTapePolished"));
     lTeraLogical->SetVisAttributes(mAbsorberVis);
 
     appendComponent(lTeraSolid, lTeraLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "TeraTapeBelt");
 }
-
 
 

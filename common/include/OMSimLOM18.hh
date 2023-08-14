@@ -6,24 +6,16 @@
 #include <G4LogicalVolume.hh>
 #include <G4Polycone.hh>
 
-class LOM18 : public abcDetectorComponent
+class LOM18 : public OpticalModule
 {
 public:
     LOM18(InputDataManager* pData, G4bool pPlaceHarness = false);
     ~LOM18();
     void construction();
-    G4double mCylinderAngle;
-    G4double mGlassOutRad;
-    G4String mDataKey = "om_LOM18";
-
-  
-
+    double get_pressure_vessel_weight() {return 17.0;};
+    int get_number_of_PMTs() { return mTotalNrPMTs;};
+    
 private:
-    OMSimPMTConstruction* mPMTManager;
-
-    //functions
-    void getSharedData();
-
 
     G4Polycone* createLOM18OuterSolid();
     G4Polycone* createLOM18InnerSolid();
@@ -51,31 +43,6 @@ private:
     std::vector<G4double> mPMT_phi;
 
 
-    //Shared data from jSON file
-    //Vessel specific
-    G4double mGlassThickPole;
-    G4double mGlassThickEquator;
-    G4double mGlassEquatorWidth;
-    G4double mGlassPoleLength;
-
-    //PMT specific
-    G4double mThetaCenter;
-    G4double mThetaEquatorial;
-    G4double mEqPMTPhiPhase;
-
-    G4int mNrPolarPMTs;
-    G4int mNrCenterPMTs;
-    G4int mNrEquatorialPMTs;
-    G4int mNrPMTsPerHalf;
-    G4int mTotalNrPMTs;
-
-    //gelpad specific
-    G4double mPolarPadOpeningAngle;
-    G4double mCenterPadOpeningAngle;
-    G4double mEqPadOpeningAngle;
-    G4double mGelThicknessFrontPolarPMT;
-    G4double mGelThicknessFrontCenterPMT;
-    G4double mGelThicknessFrontEqPMT;
 
 
     //from PMTConstruction class (not readable directly...needs to be changed)
@@ -85,19 +52,44 @@ private:
     G4double mEllipsePos_y; 
     G4double mEllipseZaxis;
 
-    //from PMT manager
-    G4double mPMToffset;
-    G4double mMaxPMTRadius;   
-
-    
     //helper variables
-    std::stringstream converter;
+    std::stringstream mConv;
     std::stringstream converter2;
     G4Transform3D lTransformers;
     G4RotationMatrix* lRot = new G4RotationMatrix();
 
     //logical of gelpads
     std::vector<G4LogicalVolume*> mGelPad_logical;
+
+    G4double mGlassEquatorWidth = 159*mm;
+    G4double mGlassPoleLength = 270*mm;
+    G4double mGlassThickPole = 12.5*mm;
+    G4double mGlassThickEquator = 16.5*mm;
+    
+    G4double mThetaCenter = 48.0*deg;
+    G4double mThetaEquatorial = 60.0*deg;
+    G4int mNrPolarPMTs = 1;
+    G4int mNrCenterPMTs = 4;
+    G4int mNrEquatorialPMTs = 4;
+    G4double mEqPMTPhiPhase = 45.0*deg;
+
+    //gelpad specific
+    G4double mPolarPadOpeningAngle = 30.0*deg;
+    G4double mCenterPadOpeningAngle = 10.0*deg;
+    G4double mEqPadOpeningAngle = 5.0*deg;
+    G4double mGelThicknessFrontPolarPMT = 3.5*mm;
+    G4double mGelThicknessFrontCenterPMT = 12.93*mm;
+    G4double mGelThicknessFrontEqPMT = 14.52*mm;
+
+    G4int mNrPMTsPerHalf = mNrPolarPMTs + mNrCenterPMTs + mNrEquatorialPMTs;
+    G4int mTotalNrPMTs = (mNrPolarPMTs + mNrCenterPMTs + mNrEquatorialPMTs) * 2;
+    //from PMT manager
+    G4double mPMToffset;
+    G4double mMaxPMTRadius;   
+
+    public:
+    G4double mCylinderAngle = 1.5*deg;
+    G4double mGlassOutRad;
 };
 
 #endif

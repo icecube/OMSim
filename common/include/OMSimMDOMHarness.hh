@@ -11,12 +11,9 @@ class mDOMHarness : public abcDetectorComponent
 public:
     mDOMHarness(mDOM* pMDOM, InputDataManager *pData);
     void construction();
-    G4String mDataKey = "mDOM_harness";
     
 private:
     mDOM* mOM;
-    const G4double mHarnessRotAngle = 45*deg; //rotation of harness with respect to the module. Valid values are 45, 45+90, 45+180.. etc, otherwise the ropes would go over the PMTs
-    void getSharedData();
     void BandsAndClamps();
     void BridgeRopesSolid();
     void mainDataCable();
@@ -24,18 +21,18 @@ private:
     void PCA();
     void Plug();
     void TeraBelt();
-    
-    //Shared data from jSON file
-    G4double mPlugAngle;
-    G4double mPadThickness;
-    G4double mTeraThickness;
-    G4double mRopeRMax;
-    G4double mBridgeAddedThickness;
-    G4double mRopeRotationAngleX;
-    G4double mRopeDz;
-    G4double mTotalWidth;
-    G4double lBridgeCorrection;
-    G4double mRopeStartingPoint;
+
+    const G4double mHarnessRotAngle = 45*deg; //rotation of harness with respect to the module. Valid values are 45, 45+90, 45+180.. etc, otherwise the ropes would go over the PMTs
+    const G4double mPlugAngle = 49.0 * deg;
+    const G4double mPadThickness = 2.0 * mm;
+    const G4double mTeraThickness = 1.0 * mm;
+    const G4double mRopeRMax = 3.0 * mm;
+    const G4double mBridgeAddedThickness = 14.6 * mm;
+    const G4double mRopeRotationAngleX = 11.245557 * deg;
+    const G4double mRopeDz = 509.5 * mm;
+    const G4double mTotalWidth = mOM->mGlassOutRad + mTeraThickness + mPadThickness + mBridgeAddedThickness;
+    const G4double lBridgeCorrection =  7.85*mm * tan(mRopeRotationAngleX);  //  
+    const G4double mRopeStartingPoint = mTotalWidth + lBridgeCorrection + mRopeRMax / cos(mRopeRotationAngleX); // this is the actual starting point of the rope, i.e. the distance to the z-axis, which has to be larger than lBridgeROuter[2] in order for the rope not to cut the bridge.
 };
 
 #endif

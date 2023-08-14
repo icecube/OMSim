@@ -13,19 +13,19 @@ class DEggHarness;
  * from the `abcDetectorComponent` base class.
  * @ingroup common
  */
-class DEGG : public abcDetectorComponent
+class DEGG : public OpticalModule
 {
 public:
     
     DEGG(InputDataManager* pData,G4bool pPlaceHarness=true);
     ~DEGG();
     void construction();
-
+    double get_pressure_vessel_weight() {return 18.0;};
+    int get_number_of_PMTs() { return 2;};
+    
 private:
-    OMSimPMTConstruction *mPMTManager;
-    DEggHarness* mHarness;
 
-    G4String mDataKey = "om_DEGG";
+    DEggHarness* mHarness;
     
     void appendPMTs();
     void appendInternalComponentsFromCAD();

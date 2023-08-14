@@ -2,7 +2,7 @@
  *  @brief Construction of mDOM.
  *
  *  @author Lew Classen, Martin Unland
- *  @date November 2021
+ * @ingroup common
  *
  */
 
@@ -33,8 +33,9 @@ mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
 
     mPMTManager->SelectPMT("pmt_Hamamatsu_R15458_20nm");
     mPMTManager->construction();
+    mRefConeIdealInRad = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
+    mPMToffset = mPMTManager->GetDistancePMTCenterToPMTtip();
 
-    getSharedData();
     if (mPlaceHarness)
     {
         mHarness = new mDOMHarness(this, mData);
@@ -45,29 +46,6 @@ mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
     log_debug("Finished constructing mDOM");
 }
 
-void mDOM::getSharedData()
-{
-    mGlassOutRad = mData->getValueWithUnit(mDataKey, "jGlassOutRad");                     // outer radius of galss cylinder (pressure vessel)
-    mCylHigh = mData->getValueWithUnit(mDataKey, "jCylHigh");                             // height of cylindrical part of glass half-vessel
-    mGlassThick = mData->getValueWithUnit(mDataKey, "jGlassThick");                       // maximum Glass thickness
-    mGelThicknessFrontPMT = mData->getValueWithUnit(mDataKey, "jGelThicknessFrontPMT");   // distance between inner glass surface and tip of PMTs
-    mGelThickness = mData->getValueWithUnit(mDataKey, "jGelThickness");                   // distance between inner glass surface and holding structure, filled with gel
-    mEqPMTrOffset = mData->getValueWithUnit(mDataKey, "jEqPMTrOffset");                   // middle PMT circles are slightly further out due to mEqPMTzOffset
-    mEqPMTzOffset = mData->getValueWithUnit(mDataKey, "jEqPMTzOffset");                   // z-offset of middle PMT circles w.r.t. center of glass sphere
-    mRefConeHalfZ = mData->getValueWithUnit(mDataKey, "jRefConeHalfZ");                   // half-height of reflector (before cutting to right form)
-    mRefConeSheetThickness = mData->getValueWithUnit(mDataKey, "jRefConeSheetThickness"); // aluminum sheet thickness true for all reflective cones
-    mThetaPolar = mData->getValueWithUnit(mDataKey, "jThetaPolar");
-    mThetaEquatorial = mData->getValueWithUnit(mDataKey, "jThetaEquatorial");
-    mCylinderAngle = mData->getValueWithUnit(mDataKey, "jCylinderAngle"); // Deviation angle of cylindrical part of the pressure vessel
-    mNrPolarPMTs = mData->getValueWithUnit(mDataKey, "jNrPolarPMTs");
-    mNrEqPMTs = mData->getValueWithUnit(mDataKey, "jNrEqPMTs");
-    mGlassInRad = mGlassOutRad - mGlassThick;
-    mRefConeAngle = mData->getValueWithUnit(mDataKey, "jReflectorConeAngle");
-    mTotalNrPMTs = (mNrPolarPMTs + mNrEqPMTs) * 2;
-    mPMToffset = mPMTManager->GetDistancePMTCenterToPMTtip();
-    mRefConeIdealInRad = mPMTManager->GetMaxPMTMaxRadius() + 2 * mm;
-    mSupStructureRad = mGlassOutRad - mGlassThick - mGelThickness;
-}
 
 void mDOM::construction()
 {
@@ -103,9 +81,11 @@ void mDOM::construction()
     G4LogicalVolume *lGelLogical = new G4LogicalVolume(lGelSolid,
                                                        mData->getMaterial("RiAbs_Gel_Shin-Etsu"),
                                                        "Gelcorpus logical");
+
     G4LogicalVolume *lSupStructureLogical = new G4LogicalVolume(lSupStructureSolid,
                                                                 mData->getMaterial("NoOptic_Absorber"),
                                                                 "TubeHolder logical");
+
     G4LogicalVolume *lGlassLogical = new G4LogicalVolume(lGlassSolid,
                                                          mData->getMaterial("RiAbs_Glass_Vitrovex"),
                                                          "Glass_log");
@@ -213,7 +193,6 @@ G4UnionSolid *mDOM::pressureVessel(const G4double pOutRad, G4String pSuffix)
 
 std::tuple<G4SubtractionSolid *, G4UnionSolid *> mDOM::supportStructure()
 {
-    const G4double lRefConeToHolder = mData->getValueWithUnit(mDataKey, "jRefConeToHolder"); // horizontal distance from K??rcher's construction
     G4VSolid *lPMTsolid = mPMTManager->GetPMTSolid();
 
     //  PMT support structure primitives & cutting "nests" for PMTs later
@@ -225,8 +204,8 @@ std::tuple<G4SubtractionSolid *, G4UnionSolid *> mDOM::supportStructure()
     G4UnionSolid *lSupStructureFirstSolid = new G4UnionSolid("Foam solid", lSupStructureTempUnion, lSupStructureBottomSolid, 0, G4ThreeVector(0, 0, -(mCylHigh)));
 
     // Reflectors nests for support structure substraction
-    G4double lRefConeOuterNegRad = mRefConeIdealInRad + lRefConeToHolder / cos(mRefConeAngle);
-    G4double lRefConeOuterPosRad = mRefConeIdealInRad + lRefConeToHolder / cos(mRefConeAngle) + 2 * 1.5 * mRefConeHalfZ * tan(mRefConeAngle);
+    G4double lRefConeOuterNegRad = mRefConeIdealInRad + mRefConeToHolder / cos(mRefConeAngle);
+    G4double lRefConeOuterPosRad = mRefConeIdealInRad + mRefConeToHolder / cos(mRefConeAngle) + 2 * 1.5 * mRefConeHalfZ * tan(mRefConeAngle);
     G4Cons *lRefConeNestConeSolid = new G4Cons("RefConeNestCone", 0, lRefConeOuterNegRad, 0, lRefConeOuterPosRad, 1.5 * mRefConeHalfZ, 0, 2 * CLHEP::pi);
     G4UnionSolid *lRefConeNestSolid = new G4UnionSolid("RefConeNest", lPMTsolid, lRefConeNestConeSolid, 0, G4ThreeVector(0, 0, 1.5 * mRefConeHalfZ));
 
@@ -389,13 +368,9 @@ void mDOM::setLEDPositions()
     G4RotationMatrix *lLEDRotation;
     G4Transform3D lTransformers;
 
-    G4double lThetaEqLED = 61 * deg;   // 61 upper sphere, 180-61 lower sphere
-    G4double lThetaPolLED = 8.2 * deg; // 8.2 upper sphere, 180-8.2 lower sphere
-    G4double lPolEqPMTPhiPhase = mData->getValueWithUnit(mDataKey, "jPolEqPMTPhiPhase");
-
     mLED_AngFromSphere.resize(mNrTotalLED);
 
-    std::vector<G4double> lLEDthetaList = {lThetaPolLED, lThetaEqLED, 180. * deg - lThetaEqLED, 180. * deg - lThetaPolLED};
+    std::vector<G4double> lLEDthetaList = {mThetaPolLED, mThetaEqLED, 180. * deg - mThetaEqLED, 180. * deg - mThetaPolLED};
     std::vector<G4double> lLEDzOffsetList = {mCylHigh, mCylHigh, -mCylHigh, -mCylHigh};
     std::vector<int> lLEDCountList = {lNrPolLED, lNrEqLED, lNrEqLED, lNrPolLED};
     std::vector<G4double> lPhaseShiftList = {-0.25, 0., 0., 0.};
@@ -408,7 +383,7 @@ void mDOM::setLEDPositions()
 
         for (int i = 0; i < lLEDCountList[j]; i++)
         {
-            lLEDphi = lPolEqPMTPhiPhase + (i + lPhaseShiftList[j]) * 360. * deg / lLEDCountList[j];
+            lLEDphi = mPolEqPMTPhiPhase + (i + lPhaseShiftList[j]) * 360. * deg / lLEDCountList[j];
 
             G4double lLEDrho = lLEDr * sin(lLEDtheta);
             lLEDPosition = G4ThreeVector(lLEDrho * cos(lLEDphi), lLEDrho * sin(lLEDphi), lLEDr * cos(lLEDtheta) + lLEDzOffset);

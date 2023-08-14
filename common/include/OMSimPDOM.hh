@@ -9,7 +9,7 @@
  * @brief pDOM class represents the construction of pDOM/Gen1 DOM.
  * @ingroup common
  */
-class pDOM : public abcDetectorComponent
+class pDOM : public OpticalModule
 {
 public:
     pDOM(InputDataManager *pData, G4bool pPlaceHarness = true);
@@ -17,8 +17,8 @@ public:
     void construction();
     G4bool mPlaceHarness;
 
-private:
-    OMSimPMTConstruction *mPMTManager;
+    double get_pressure_vessel_weight() {return 9.07;};
+    int get_number_of_PMTs() { return 1;};
 };
 
 #endif

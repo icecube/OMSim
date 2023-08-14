@@ -249,7 +249,6 @@ void InputDataManager::searchFolders()
     std::vector<std::string> directories = {
         "../common/data/Materials",
         "../common/data/PMTs",
-        "../common/data/SegmentedModules",
         // ... you can add more directories here ...
     };
 
@@ -299,7 +298,7 @@ void InputDataManager::processFile(const std::string &pFilePath, const std::stri
         lDataFile.extractInformation();
         mOpticalSurfaceMap[lDataFile.mObjectName] = lDataFile.mOpticalSurface;
     }
-    else if (pFileName.substr(0, 4) == "pmt_" || pFileName.substr(0, 3) == "om_" || pFileName.substr(0, 4) == "usr_")
+    else if (pFileName.substr(0, 4) == "pmt_" || pFileName.substr(0, 4) == "usr_")
     {
         appendAndReturnTree(pFilePath);
     }
