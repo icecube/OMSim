@@ -20,24 +20,6 @@ DEggHarness::DEggHarness(DEGG *pDEGG, InputDataManager *pData)
     construction();
 }
 
-/**
- * Set all data members used in several functions
- */
-void DEggHarness::getSharedData()
-{
-
-    mrmin = mData->getValueWithUnit(mDataKey, "jrmin"); // this is the angle between the PMT rows, where the penetrator and the clamps are placed (according to Prof. Kappes) //TODO REDEFINED
-    mrmax = mData->getValueWithUnit(mDataKey, "jrmax");
-    msphi = mData->getValueWithUnit(mDataKey, "jsphi");
-    mdphi = mData->getValueWithUnit(mDataKey, "jdphi");
-    mstheta = mData->getValueWithUnit(mDataKey, "jstheta");
-    mdtheta = mData->getValueWithUnit(mDataKey, "jdtheta"); // this value is found by numerically solving the equation lBridgeROuter[2]+mRopeRMax/cos(mRopeRotationAngleX) = 2*mRopeDz*sin(mRopeRotationAngleX)- lBridgeZPlane[3]*tan(mRopeRotationAngleX) with wolframalpha.com LOL
-
-    // Datacable
-    mRopeRotationAngleX = mData->getValueWithUnit(mDataKey, "jRopeRotationAngleX"); // this value is found by numerically solving the equation lBridgeROuter[2]+mRopeRMax/cos(mRopeRotationAngleX) = 2*mRopeDz*sin(mRopeRotationAngleX)- lBridgeZPlane[3]*tan(mRopeRotationAngleX) with wolframalpha.com LOL
-    mTotalWidth = 170 * mm;                                                         // Measured from CAD. Thickness to outer radius of equator bridge clamp
-    mRopeStartingPoint = mTotalWidth;                                               // this is the actual starting point of the rope, i.e. the distance to the z-axis, which has to be larger than lBridgeROuter[2] in order for the rope not to cut the bridge.
-}
 
 /**
  * The construction of each part is called
@@ -56,7 +38,7 @@ void DEggHarness::construction()
     {
         G4cout << "Penetrator not implemented for Geant4 native version, use -c if you need them" << G4endl;
         G4cout << "Ropes not implemented for Geant4 native version, use -c if you need them" << G4endl;
-        G4VSolid *EggHarness = buildHarnessSolid(mrmin, mrmax, msphi, mdphi, mstheta, mdtheta);
+        G4VSolid *EggHarness = buildHarnessSolid(mRmin, mRmax, mSphi, mDphi, mStheta, mDtheta);
         G4LogicalVolume *lEggHarness = new G4LogicalVolume(EggHarness, mData->getMaterial("NoOptic_Reflector"), "");
         appendComponent(EggHarness, lEggHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "dEGG_Harness");
     }
@@ -143,8 +125,8 @@ void DEggHarness::mainDataCable()
     new G4LogicalSkinSurface("MainDataCable_skin", lDataCableLogical, mData->getOpticalSurface("Refl_BlackDuctTapePolished"));
     lDataCableLogical->SetVisAttributes(mAbsorberVis);
 
-    G4ThreeVector lDataCablePosition = G4ThreeVector((mRopeStartingPoint + lDataCableRadius + 0.5 * cm) * sin(mHarnessRotAngle),
-                                                     (mRopeStartingPoint + lDataCableRadius + 0.5 * cm) * cos(mHarnessRotAngle), 0);
+    G4ThreeVector lDataCablePosition = G4ThreeVector((mTotalWidth + lDataCableRadius + 0.5 * cm) * sin(mHarnessRotAngle),
+                                                     (mTotalWidth + lDataCableRadius + 0.5 * cm) * cos(mHarnessRotAngle), 0);
 
     appendComponent(lDataCableSolid, lDataCableLogical, lDataCablePosition, G4RotationMatrix(), "mainDataCable");
 }
