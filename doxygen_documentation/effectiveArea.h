@@ -38,7 +38,7 @@
  * In the following a toy example of the usage of the effective area module is given. Although there are c++ healpix libraries, in my opinion the easiest way of getting the angle pair
  * coordinates is using Healpy in python.
  *
- * In principle for short simulations you could run OMSim directly from python using the angles from healpy as input parameters:
+ * In principle for short simulations you could run the program directly from python using the angles from healpy as input parameters:
  * ~~~~~~~~~~~~~{.py}
  * import healpy as hp
  * import numpy as np

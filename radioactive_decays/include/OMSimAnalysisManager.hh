@@ -43,6 +43,7 @@ public:
     void reset();
 	void writeScan(G4double pPhi, G4double pTheta);
 	void writeHeader();
+    void appendDecay(G4String pParticleName, G4double pTime,  G4ThreeVector pPositionVector){};
 
     G4String mOutputFileName;
     std::fstream mDatafile;

@@ -44,6 +44,8 @@ public:
 	void writeScan(G4double pPhi, G4double pTheta);
 	void writeHeader();
 
+
+
     G4String mOutputFileName;
     std::fstream mDatafile;
     G4long mCurrentEventNumber;

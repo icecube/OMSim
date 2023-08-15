@@ -5,7 +5,7 @@ file(GLOB DECAY_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc")
 add_executable(OMSim_radioactive_decays ${CMAKE_CURRENT_SOURCE_DIR}/OMSim_radioactive_decays.cc ${COMMON_SOURCES} ${DECAY_SOURCES})
 
 # Specify include directories for this executable
-target_include_directories(OMSim_effective_area PUBLIC
+target_include_directories(OMSim_radioactive_decays PUBLIC
     ${PROJECT_SOURCE_DIR}/common/framework/include
     ${PROJECT_SOURCE_DIR}/common/optical_modules/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include

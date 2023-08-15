@@ -17,10 +17,10 @@ void effectiveAreaSimulation()
 {
 	OMSimAnalysisManager &lAnalysisManager = OMSimAnalysisManager::getInstance();
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
 
 	IsotopeDecays *lDecays = new IsotopeDecays(280);
 
-	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
 }
 
 int main(int argc, char *argv[])
