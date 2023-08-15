@@ -1192,7 +1192,7 @@ void G4RadioactiveDecay::DecayAnalog(const G4Track& theTrack)
   }
 
 
-   OMSimAnalysisManager::getInstance().appendDecay(
+   OMSimHitManager::getInstance().appendDecay(
     theParticleDef->GetParticleName(),
     finalGlobalTime / s, theTrack.GetPosition()); 
 

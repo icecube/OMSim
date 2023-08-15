@@ -1,12 +1,12 @@
-#ifndef OMSimAnalysisManager_h
-#define OMSimAnalysisManager_h 1
+#ifndef OMSimHitManager_h
+#define OMSimHitManager_h 1
 
 #include "OMSimPMTResponse.hh"
 
 #include <G4ThreeVector.hh>
 #include <fstream>
 
-/** 
+/**
  * @struct HitStats
  * @brief A structure to store information of photon hits.
  */
@@ -20,42 +20,41 @@ struct HitStats
     std::vector<G4int> PMT_hit;
     std::vector<G4ThreeVector> photon_direction;
     std::vector<G4ThreeVector> photon_local_position;
-	std::vector<G4ThreeVector> photon_global_position;
+    std::vector<G4ThreeVector> photon_global_position;
     std::vector<G4double> event_distance;
-	std::vector<OMSimPMTResponse::PMTPulse> PMT_response;
+    std::vector<OMSimPMTResponse::PMTPulse> PMT_response;
 };
 
-/** 
- * @class OMSimAnalysisManager
+/**
+ * @class OMSimHitManager
  * @brief This class is responsible for managing info of detected photons and writing the results in the desired format.
- * @ingroup EffectiveArea
+ * @ingroup common
  */
-class OMSimAnalysisManager
+class OMSimHitManager
 {
+
 public:
-    static OMSimAnalysisManager &getInstance()
-    {
-        static OMSimAnalysisManager instance;
-        return instance;
-    }
-
-    std::vector<double> countHits();
+    void appendHitInfo(
+        G4double globalTime,
+        G4double localTime,
+        G4double trackLength,
+        G4double energy,
+        G4int PMTHitNumber,
+        G4ThreeVector momentumDirection,
+        G4ThreeVector globalPos,
+        G4ThreeVector localPos,
+        G4double distance,
+        OMSimPMTResponse::PMTPulse response);
     void reset();
-	void writeScan(G4double pPhi, G4double pTheta);
-	void writeHeader();
-
-
-
     G4String mOutputFileName;
+
+protected:
+    std::vector<double> countHits();
     std::fstream mDatafile;
-    G4long mCurrentEventNumber;
     HitStats mHits;
 
-private:
-    OMSimAnalysisManager() = default;
-    ~OMSimAnalysisManager() = default;
-    OMSimAnalysisManager(const OMSimAnalysisManager &) = delete;
-    OMSimAnalysisManager &operator=(const OMSimAnalysisManager &) = delete;
+    OMSimHitManager(){};
+    virtual ~OMSimHitManager(){};
 };
 
 #endif

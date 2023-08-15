@@ -16,7 +16,6 @@
 #include "OMSimEventAction.hh"
 #include "OMSimTrackingAction.hh"
 #include "OMSimSteppingAction.hh"
-#include "OMSimAnalysisManager.hh"
 #include "OMSimUIinterface.hh"
 
 #include <G4RunManager.hh>

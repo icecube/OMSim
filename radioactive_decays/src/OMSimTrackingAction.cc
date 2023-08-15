@@ -31,7 +31,7 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track* aTrack)
         std::vector<G4String> n = split_string_by_delimiter(aTrack->GetStep()->GetPreStepPoint()->GetTouchableHandle()->GetVolume(2)->GetName(),'_');
 
         OMSimPMTResponse& lPhotocathodeResponse = OMSimPMTResponse::getInstance();
-	    OMSimAnalysisManager& lAnalysisManager = OMSimAnalysisManager::getInstance();
+	    OMSimHitManager& lAnalysisManager = OMSimHitManager::getInstance();
         G4ThreeVector lGlobalPosition = aTrack->GetPosition();
         G4ThreeVector lLocalPosition = aTrack->GetStep()->GetPostStepPoint()->GetTouchableHandle()->GetHistory()->GetTopTransform().TransformPoint(lGlobalPosition);
 

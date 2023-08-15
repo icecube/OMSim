@@ -1,5 +1,5 @@
 #include "OMSimTrackingAction.hh"
-#include "OMSimAnalysisManager.hh"
+#include "OMSimEffectiveAreaAnalyisis.hh"
 #include <G4TrackingManager.hh>
 
 std::vector<G4String> split_string_by_delimiter(G4String const &s, char delim) {
@@ -31,7 +31,8 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track* aTrack)
         std::vector<G4String> n = split_string_by_delimiter(aTrack->GetStep()->GetPreStepPoint()->GetTouchableHandle()->GetVolume(2)->GetName(),'_');
 
         OMSimPMTResponse& lPhotocathodeResponse = OMSimPMTResponse::getInstance();
-	    OMSimAnalysisManager& lAnalysisManager = OMSimAnalysisManager::getInstance();
+	    OMSimEffectiveAreaAnalyisis& lAnalysisManager = OMSimEffectiveAreaAnalyisis::getInstance();
+
         G4ThreeVector lGlobalPosition = aTrack->GetPosition();
         G4ThreeVector lLocalPosition = aTrack->GetStep()->GetPostStepPoint()->GetTouchableHandle()->GetHistory()->GetTopTransform().TransformPoint(lGlobalPosition);
 
@@ -41,17 +42,18 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track* aTrack)
 
         G4ThreeVector lDeltaPos = aTrack->GetVertexPosition() - lGlobalPosition;
 
-        lAnalysisManager.mHits.event_id.push_back(lAnalysisManager.mCurrentEventNumber);
-        lAnalysisManager.mHits.hit_time.push_back(aTrack->GetGlobalTime());
-        lAnalysisManager.mHits.photon_flight_time.push_back(aTrack->GetLocalTime());
-        lAnalysisManager.mHits.photon_track_length.push_back(aTrack->GetTrackLength()/m);
-        lAnalysisManager.mHits.photon_energy.push_back(lEkin/eV);
-        lAnalysisManager.mHits.PMT_hit.push_back(atoi(n.at(1)));
-        lAnalysisManager.mHits.photon_direction.push_back(aTrack->GetMomentumDirection());
-        lAnalysisManager.mHits.photon_global_position.push_back(aTrack->GetPosition());
-        lAnalysisManager.mHits.photon_local_position.push_back(lLocalPosition);
-        lAnalysisManager.mHits.event_distance.push_back(lDeltaPos.mag()/m);
-        lAnalysisManager.mHits.PMT_response.push_back(lPhotocathodeResponse.processPhotocathodeHit(x, y, h*c/lEkin));
+        lAnalysisManager.appendHitInfo(
+            aTrack->GetGlobalTime(),
+            aTrack->GetLocalTime(),
+            aTrack->GetTrackLength()/m,
+            lEkin/eV,
+            atoi(n.at(1)),
+            aTrack->GetMomentumDirection(),
+            aTrack->GetPosition(),
+            lLocalPosition,
+            lDeltaPos.mag()/m,
+            lPhotocathodeResponse.processPhotocathodeHit(x, y, h*c/lEkin)
+        );
     }
     }
 }

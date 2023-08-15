@@ -10,7 +10,7 @@ OMSimEventAction::~OMSimEventAction()
 
 void OMSimEventAction::BeginOfEventAction(const G4Event* evt)
 {
-	OMSimAnalysisManager::getInstance().mCurrentEventNumber = evt->GetEventID();
+	OMSimHitManager::getInstance().mCurrentEventNumber = evt->GetEventID();
 }
 
 void OMSimEventAction::EndOfEventAction(const G4Event* evt)

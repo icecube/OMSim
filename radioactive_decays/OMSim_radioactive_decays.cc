@@ -15,7 +15,7 @@ namespace po = boost::program_options;
 
 void effectiveAreaSimulation()
 {
-	OMSimAnalysisManager &lAnalysisManager = OMSimAnalysisManager::getInstance();
+	OMSimHitManager &lAnalysisManager = OMSimHitManager::getInstance();
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
 

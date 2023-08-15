@@ -10,12 +10,13 @@
  */
 #include "OMSim.hh"
 #include "OMSimAngularScan.hh"
+#include "OMSimEffectiveAreaAnalyisis.hh"
 
 namespace po = boost::program_options;
 
 void effectiveAreaSimulation()
 {
-	OMSimAnalysisManager &lAnalysisManager = OMSimAnalysisManager::getInstance();
+	OMSimEffectiveAreaAnalyisis &lAnalysisManager = OMSimEffectiveAreaAnalyisis::getInstance();
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 
 	AngularScan *lScanner = new AngularScan(lArgs.get<G4double>("radius"), lArgs.get<G4double>("distance"), lArgs.get<G4double>("wavelength"));
