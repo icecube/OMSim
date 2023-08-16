@@ -2,20 +2,14 @@
 #include "OMSimUIinterface.hh"
 #include <G4SystemOfUnits.hh>
 
-/**
- * @param pBeamRadius The radius of the beam.
- * @param pBeamDistance The distance of the beam from the origin.
- * @param pWavelength The wavelength of the photons to be generated.
- */
+
 AngularScan::AngularScan(G4double pBeamRadius, G4double pBeamDistance, G4double pWavelength)
 {
     mBeamRadius = pBeamRadius;
     mBeamDistance = pBeamDistance;
     mWavelength = pWavelength;
 }
-/**
- * @brief Configures the position coordinates of the beam based on the polar and azimuthal angles.
- */
+
 void AngularScan::configurePosCoordinates()
 {
     double lRho = mBeamDistance * sin(mTheta);
@@ -26,9 +20,7 @@ void AngularScan::configurePosCoordinates()
     lUIinterface.applyCommand("/gps/pos/centre", lPosX, lPosY, lPosZ, "mm");
     lUIinterface.applyCommand("/gps/pos/radius", mBeamRadius, "mm");
 }
-/**
- * @brief Configures the angular coordinates of the beam based on the polar and azimuthal angles.
- */
+
 void AngularScan::configureAngCoordinates()
 {
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
@@ -47,9 +39,7 @@ void AngularScan::configureAngCoordinates()
     lUIinterface.applyCommand("/gps/ang/rot2", x, y, z);
 }
 
-/**
- * @brief Configure the GPS settings, such as the particle properties, beam position and direction.
- */
+
 void AngularScan::configureScan()
 {
     // Obtain an instance of OMSimUIinterface
@@ -76,11 +66,7 @@ void AngularScan::configureScan()
     configureAngCoordinates();
 }
 
-/**
- * @brief Run a single angular scan with the specified angles.
- * @param pPhi The azimuthal angle in degrees.
- * @param pTheta The polar angle in degrees.
- */
+
 void AngularScan::runSingleAngularScan(G4double pPhi, G4double pTheta)
 {
     mTheta = pTheta * deg;
