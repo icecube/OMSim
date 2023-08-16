@@ -19,24 +19,16 @@ struct effectiveAreaResult {
 class OMSimEffectiveAreaAnalyisis
 {
 public:
-
-    static OMSimEffectiveAreaAnalyisis &getInstance()
-    {
-        static OMSimEffectiveAreaAnalyisis instance;
-        return instance;
-    }
-
+    OMSimEffectiveAreaAnalyisis(){};
+    ~OMSimEffectiveAreaAnalyisis(){};
 	void writeScan(G4double pPhi, G4double pTheta);
 	void writeHeader();
     effectiveAreaResult calculateEffectiveArea(double pHits);
-    
+
     G4String mOutputFileName;
     std::fstream mDatafile;
 private:
-    OMSimEffectiveAreaAnalyisis() = default;
-    ~OMSimEffectiveAreaAnalyisis() = default;
-    OMSimEffectiveAreaAnalyisis(const OMSimEffectiveAreaAnalyisis &) = delete;
-    OMSimEffectiveAreaAnalyisis &operator=(const OMSimEffectiveAreaAnalyisis &) = delete;
+
 };
 
 #endif

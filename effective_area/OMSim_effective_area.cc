@@ -16,10 +16,9 @@ namespace po = boost::program_options;
 
 void effectiveAreaSimulation()
 {
-	OMSimEffectiveAreaAnalyisis &lAnalysisManager = OMSimEffectiveAreaAnalyisis::getInstance();
+	OMSimEffectiveAreaAnalyisis lAnalysisManager;
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
-
 	AngularScan *lScanner = new AngularScan(lArgs.get<G4double>("radius"), lArgs.get<G4double>("distance"), lArgs.get<G4double>("wavelength"));
 
 	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";

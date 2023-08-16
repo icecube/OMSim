@@ -21,11 +21,11 @@ private:
       {"Th232", "/gps/ion 90 232 0"},
       {"K40", "/gps/ion 19 40 0"}
   };
-  void common_GPS_commands(); 
-  void pressure_vessel_isotope_GPS(G4String pIsotope);
-  void PMT_isotope_GPS(G4String pIsotope, G4int pPMTNr);
-  void simulate_decays_in_time_window();
-  std::map<G4String, G4int> calculate_number_of_decays(G4MaterialPropertiesTable* pMPT, G4double pTimeWindow, G4double pMass);
+  void generalGPS(); 
+  void pressureVesselIsotopeGPS(G4String pIsotope);
+  void PMTisotopeGPS(G4String pIsotope, G4int pPMTNr);
+  void simulateDecaysInTimeWindow();
+  std::map<G4String, G4int> calculateNumberOfDecays(G4MaterialPropertiesTable* pMPT, G4double pTimeWindow, G4double pMass);
   OpticalModule* mOM;
   G4double mProductionRadius;
 };

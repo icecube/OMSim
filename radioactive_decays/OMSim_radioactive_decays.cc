@@ -10,13 +10,17 @@
  */
 #include "OMSim.hh"
 #include "OMSimDecaysGPS.hh"
+#include "OMSimHitManager.hh"
+#include "OMSimDecaysAnalysis.hh"
 
 namespace po = boost::program_options;
 
 void effectiveAreaSimulation()
 {
-	OMSimHitManager &lAnalysisManager = OMSimHitManager::getInstance();
+	OMSimDecaysAnalysis lAnalysisManager;
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
+
 	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
 
 	IsotopeDecays *lDecays = new IsotopeDecays(280);
@@ -34,12 +38,10 @@ int main(int argc, char *argv[])
 		lSpecific.add_options()
 		("world_radius,w", po::value<G4double>()->default_value(3.0), "radius of world sphere in m")
 		("radius,r", po::value<G4double>()->default_value(300.0), "plane wave radius in mm")
-		("distance,d", po::value<G4double>()->default_value(2000), "plane wave distance from origin, in mm")
-		("theta,t", po::value<G4double>()->default_value(0.0), "theta (= zenith) in deg")
-		("phi,f", po::value<G4double>()->default_value(0.0), "phi (= azimuth) in deg")
-		("wavelength,l", po::value<G4double>()->default_value(400.0), "wavelength of incoming light in nm")
-		("angles_file,i", po::value<std::string>(), "The input angle pairs file to be scanned. The file should contain two columns, the first column with the theta (zenith) and the second with phi (azimuth) in degrees.")
 		("detector_type", po::value<G4int>()->default_value(2), "module type [custom = 0, Single PMT = 1, mDOM = 2, pDDOM = 3, LOM16 = 4]")
+		("place_harness",po::bool_switch(),"place OM harness (if implemented)")
+		("no_PV_decays",po::bool_switch(),"skips the simulation of decays in pressure vessel")
+		("no_PMT_decays",po::bool_switch(),"skips the simulation of decays in PMT glass")
 		("place_harness",po::bool_switch(),"place OM harness (if implemented)")
 		("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
 

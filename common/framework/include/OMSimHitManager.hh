@@ -72,7 +72,9 @@ public:
     std::vector<double> countHits(int moduleIndex=0);
     void setNumberOfPMTs(int pNumberOfPMTs, int moduleIndex=0);
     HitStats getHitsOfModule(int moduleIndex=0);
-
+    void sortHitStatsByTime(HitStats& lHits);
+    std::vector<int> calculateMultiplicity(const G4double pTimeWindow, int moduleNumber=0);
+    
     private:
         std::map<G4int, G4int> mNumPMTs;
         std::map<G4int, HitStats> mModuleHits;

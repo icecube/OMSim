@@ -11,7 +11,7 @@ IsotopeDecays::IsotopeDecays(G4double pProductionRadius)
 /**
  * @brief Configures common GPS commands for the radioactive decays.
  */
-void IsotopeDecays::common_GPS_commands()
+void IsotopeDecays::generalGPS()
 {
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     lUIinterface.applyCommand("/control/verbose  0");
@@ -38,10 +38,10 @@ void IsotopeDecays::common_GPS_commands()
  *
  * @param Isotope The isotope which is going to be produced.
  */
-void IsotopeDecays::pressure_vessel_isotope_GPS(G4String Isotope)
+void IsotopeDecays::pressureVesselIsotopeGPS(G4String Isotope)
 {
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-    common_GPS_commands();
+    generalGPS();
 
     if (mIsotopeCommands.find(Isotope) != mIsotopeCommands.end())
     {
@@ -58,10 +58,10 @@ void IsotopeDecays::pressure_vessel_isotope_GPS(G4String Isotope)
  * @param Isotope The isotope which is going to be produced.
  * @param PMTNr Number of PMT where the decays are simulated
  */
-void IsotopeDecays::PMT_isotope_GPS(G4String Isotope, G4int PMTNr)
+void IsotopeDecays::PMTisotopeGPS(G4String Isotope, G4int PMTNr)
 {
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-    common_GPS_commands();
+    generalGPS();
 
     if (mIsotopeCommands.find(Isotope) != mIsotopeCommands.end())
     {
@@ -70,7 +70,7 @@ void IsotopeDecays::PMT_isotope_GPS(G4String Isotope, G4int PMTNr)
     lUIinterface.applyCommand("/gps/pos/confine PMT_", PMTNr);
 }
 
-std::map<G4String, G4int> IsotopeDecays::calculate_number_of_decays(G4MaterialPropertiesTable *pMPT, G4double pTimeWindow, G4double pMass)
+std::map<G4String, G4int> IsotopeDecays::calculateNumberOfDecays(G4MaterialPropertiesTable *pMPT, G4double pTimeWindow, G4double pMass)
 {
     std::map<G4String, G4int> mNumberDecays;
     for (auto &pair : mIsotopeCommands)
@@ -82,30 +82,30 @@ std::map<G4String, G4int> IsotopeDecays::calculate_number_of_decays(G4MaterialPr
     return mNumberDecays;
 }
 
-void IsotopeDecays::simulate_decays_in_time_window()
+void IsotopeDecays::simulateDecaysInTimeWindow()
 {
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
 
     G4double lTimeWindow = lArgs.get<G4double>("time_window");
 
-    if (lArgs.get<bool>("PV_decays"))
+    if (!lArgs.get<bool>("no_PV_decays"))
     {
         G4double lMass = mOM->getPressureVesselWeight();
         G4LogicalVolume *lPVVolume = mOM->getComponent("PressureVessel").VLogical;
         G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
-        std::map<G4String, G4int> lNumberDecays = calculate_number_of_decays(lMPT, lTimeWindow, lMass);
+        std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, lTimeWindow, lMass);
 
         for (auto &pair : lNumberDecays)
         {
             G4String lIsotope = pair.first;
             G4int lNrDecays = pair.second;
-            pressure_vessel_isotope_GPS(lIsotope);
+            pressureVesselIsotopeGPS(lIsotope);
             lUIinterface.runBeamOn(lNrDecays);
         }
     }
 
-    if (lArgs.get<bool>("PMT_decays"))
+    if (!lArgs.get<bool>("no_PMT_decays"))
     {
         G4double lMass = mOM->getPMTmanager()->getPMTGlassWeight();
         G4LogicalVolume *lPVVolume = mOM->getPMTmanager()->getLogicalVolume();
@@ -113,13 +113,13 @@ void IsotopeDecays::simulate_decays_in_time_window()
 
         for (int pmt = 0; pmt < (int)mOM->getNumberOfPMTs(); pmt++)
         {
-            std::map<G4String, G4int> lNumberDecays = calculate_number_of_decays(lMPT, lTimeWindow, lMass);
+            std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, lTimeWindow, lMass);
 
             for (auto &pair : lNumberDecays)
             {
                 G4String lIsotope = pair.first;
                 G4int lNrDecays = pair.second;
-                PMT_isotope_GPS(lIsotope, pmt);
+                PMTisotopeGPS(lIsotope, pmt);
                 lUIinterface.runBeamOn(lNrDecays);
             }
         }
