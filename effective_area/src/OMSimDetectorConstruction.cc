@@ -16,9 +16,6 @@ OMSimDetectorConstruction::~OMSimDetectorConstruction()
     delete mData;
 }
 
-/**
- * @brief Constructs the world volume (sphere).
- */
 void OMSimDetectorConstruction::constructWorld()
 {
     mWorldSolid = new G4Orb("World", OMSimCommandArgsTable::getInstance().get<G4double>("world_radius") * m);
@@ -28,10 +25,6 @@ void OMSimDetectorConstruction::constructWorld()
     mWorldLogical->SetVisAttributes(World_vis);
 }
 
-/**
- * @brief Constructs the selected detector from the command line argument and returns the physical world volume.
- * @return Pointer to the physical world volume
- */
 G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
 {
 

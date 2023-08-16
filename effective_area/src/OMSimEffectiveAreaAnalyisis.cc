@@ -1,9 +1,7 @@
 #include "OMSimEffectiveAreaAnalyisis.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimHitManager.hh"
-/**
- * @brief Writes a header to the output file.
- */
+
 void OMSimEffectiveAreaAnalyisis::writeHeader()
 {
 	mDatafile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
@@ -33,11 +31,7 @@ effectiveAreaResult OMSimEffectiveAreaAnalyisis::calculateEffectiveArea(double p
 	return { lEA, lEAError };
 }
 
-/**
- * @brief Writes a scan result to the output file.
- * @param pPhi The phi angle used in the scan to be written to the output file.
- * @param pTheta The phi angle used in the scan to be written to the output file.
- */
+
 void OMSimEffectiveAreaAnalyisis::writeScan(G4double pPhi, G4double pTheta)
 {
 	std::vector<double> lHits = OMSimHitManager::getInstance().countHits();

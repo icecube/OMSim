@@ -34,26 +34,7 @@ void applyPermutation(std::vector<T> &vec, const std::vector<std::size_t> &p)
 	}
 }
 
-/**
- * @brief Appends hit information for a detected photon to the corresponding module's hit data.
- *
- * This method appends hit information to the corresponding module's `HitStats` structure in the manager.
- * If the specified module number is not yet in the manager, a new `HitStats` structure is created for it.
- *
- * @param globalTime Time of detection.
- * @param localTime Photon flight time.
- * @param trackLength Length of the photon's path before hitting.
- * @param energy Energy of the detected photon.
- * @param PMTHitNumber ID of the PMT that detected the photon.
- * @param momentumDirection Momentum direction of the photon at the time of detection.
- * @param globalPos Global position of the detected photon.
- * @param localPos Local position of the detected photon within the PMT.
- * @param distance Distance between generation and detection of photon.
- * @param response PMT's response to the detected photon, encapsulated as a `PMTPulse`.
- * @param moduleNumber ID of the module in which the photon was detected.
- *
- * @note This method should be called every time a photon is detected in a PMT.
- */
+
 void OMSimHitManager::appendHitInfo(
 	G4double globalTime,
 	G4double localTime,
@@ -87,39 +68,25 @@ void OMSimHitManager::appendHitInfo(
 	mModuleHits[moduleNumber].PMT_response.push_back(response);
 }
 
-/**
- * @brief Saves the number of PMTs in a module
- * @param pNumberOfPMTs Nr of PMTs in OM
- * @param pModuleIndex Module index for which we are getting the information (default 0)
- */
+
 void OMSimHitManager::setNumberOfPMTs(int pNumberOfPMTs, int pModuleIndex)
 {
 	mNumPMTs[pModuleIndex] = pNumberOfPMTs;
 }
 
-/**
- * @brief Retrieves the hit statistics for a specified module.
- * @param moduleIndex Index of the module for which to retrieve hit statistics. Default is 0.
- * @return A HitStats structure containing hit information for the specified module.
- */
+
 HitStats OMSimHitManager::getHitsOfModule(int pModuleIndex)
 {
 	return mModuleHits[pModuleIndex];
 }
 
-/**
- * @brief Resets hit information for all modules.
- */
+
 void OMSimHitManager::reset()
 {
 	mModuleHits.clear();
 }
 
-/**
- * @brief Counts hits for a specified module.
- * @param moduleIndex Index of the module for which to count hits. Default is 0.
- * @return A vector containing the hit count for each PMT in the specified module.
- */
+
 std::vector<double> OMSimHitManager::countHits(int moduleNumber)
 {
 	HitStats lHitsOfModule = mModuleHits[moduleNumber];
@@ -135,10 +102,7 @@ std::vector<double> OMSimHitManager::countHits(int moduleNumber)
 	return lHits;
 }
 
-/**
- * @brief Sorts the hit statistics by the hit time.
- * @param lHits The hit statistics to be sorted.
- */
+
 void OMSimHitManager::sortHitStatsByTime(HitStats &lHits)
 {
 	// Create a vector of indices
@@ -166,23 +130,7 @@ void OMSimHitManager::sortHitStatsByTime(HitStats &lHits)
 	applyPermutation(lHits.PMT_response, indices);
 }
 
-/**
- * @brief Calculates the multiplicity of hits within a specified time window for a given module.
- * 
- * This method determines the multiplicity of hits for the specified optical module within a 
- * given time window. Multiplicity is defined as the number of PMTs detecting a hit within the 
- * time window. The result is a vector where each element represents the number of occurrences 
- * of a specific multiplicity.
- * 
- * For instance, if the resulting vector is [5, 3, 2], it means:
- * - 5 occurrences of 1 PMT detecting a hit within the time window.
- * - 3 occurrences of 2 PMTs detecting hits within the same window.
- * - 2 occurrences of 3 PMTs detecting hits within the window.
- * 
- * @param pTimeWindow The time window within which to calculate the multiplicity (in seconds).
- * @param moduleNumber The index of the module for which to calculate the multiplicity. Default is 0.
- * @return A vector containing the multiplicity data.
- */
+
 std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double pTimeWindow, int moduleNumber)
 {
 	HitStats lHitsOfModule = mModuleHits[moduleNumber];
