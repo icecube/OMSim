@@ -18,6 +18,7 @@ void effectiveAreaSimulation()
 {
 	OMSimEffectiveAreaAnalyisis &lAnalysisManager = OMSimEffectiveAreaAnalyisis::getInstance();
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
 	AngularScan *lScanner = new AngularScan(lArgs.get<G4double>("radius"), lArgs.get<G4double>("distance"), lArgs.get<G4double>("wavelength"));
 
@@ -31,11 +32,12 @@ void effectiveAreaSimulation()
 		// Use the angle pairs provided through command-line arguments
 		lScanner->runSingleAngularScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
 		lAnalysisManager.writeScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
+		lHitManager.reset();
 	}
 	// File is provided, run over all angle pairs
 	else
 	{
-		std::vector<G4PV2DDataVector> data = InputDataManager::loadtxt(lArgs.get<std::string>("angles_file"), true);
+		std::vector<G4PV2DDataVector> data = InputDataManager::loadtxt(lArgs.get<std::string>("angles_file"), false);
 		std::vector<G4double> lThetas = data.at(0);
 		std::vector<G4double> lPhis = data.at(1);
 
@@ -43,6 +45,7 @@ void effectiveAreaSimulation()
 		{
 			lScanner->runSingleAngularScan(lPhis.at(i), lThetas.at(i));
 			lAnalysisManager.writeScan(lPhis.at(i), lThetas.at(i));
+			lHitManager.reset();
 		}
 	}
 }

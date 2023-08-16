@@ -34,6 +34,13 @@ class OMSimHitManager
 {
 
 public:
+
+    static OMSimHitManager &getInstance()
+    {
+        static OMSimHitManager instance;
+        return instance;
+    }
+
     void appendHitInfo(
         G4double globalTime,
         G4double localTime,
@@ -46,15 +53,16 @@ public:
         G4double distance,
         OMSimPMTResponse::PMTPulse response);
     void reset();
-    G4String mOutputFileName;
-
-protected:
     std::vector<double> countHits();
-    std::fstream mDatafile;
     HitStats mHits;
 
-    OMSimHitManager(){};
-    virtual ~OMSimHitManager(){};
+
+
+    private:
+        OMSimHitManager() = default;
+        ~OMSimHitManager() = default;
+        OMSimHitManager(const OMSimHitManager &) = delete;
+        OMSimHitManager &operator=(const OMSimHitManager &) = delete;
 };
 
 #endif
