@@ -51,14 +51,17 @@ public:
         G4ThreeVector globalPos,
         G4ThreeVector localPos,
         G4double distance,
-        OMSimPMTResponse::PMTPulse response);
+        OMSimPMTResponse::PMTPulse response,
+        G4int moduleIndex=0);
+
     void reset();
-    std::vector<double> countHits();
-    HitStats mHits;
-
-
+    std::vector<double> countHits(int moduleIndex=0);
+    void setNumberOfPMTs(int pNumberOfPMTs);
+    HitStats getHitsOfModule(int moduleIndex=0);
 
     private:
+        int mNumPMTs;
+        std::unordered_map<G4int, HitStats> mModuleHits;
         OMSimHitManager() = default;
         ~OMSimHitManager() = default;
         OMSimHitManager(const OMSimHitManager &) = delete;

@@ -9,14 +9,14 @@
 #include "OMSimMDOM.hh"
 #include "OMSimMDOMHarness.hh"
 #include "OMSimCommandArgsTable.hh"
+#include "OMSimLogger.hh"
 
 #include <G4Ellipsoid.hh>
 #include <G4LogicalSkinSurface.hh>
 #include <G4Polycone.hh>
 
-
 mDOM::~mDOM()
-{   
+{
     delete mPMTManager;
     delete mFlashers;
     if (mPlaceHarness)
@@ -26,6 +26,7 @@ mDOM::~mDOM()
 }
 mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
 {
+    log_info("Constructing mDOM");
     mPlaceHarness = pPlaceHarness;
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
@@ -46,13 +47,12 @@ mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
     log_debug("Finished constructing mDOM");
 }
 
-
 void mDOM::construction()
 {
 
     setPMTPositions();
     setLEDPositions();
-    
+
     G4UnionSolid *lGlassSolid = pressureVessel(mGlassOutRad, "Glass");
     G4UnionSolid *lGelSolid = pressureVessel(mGlassInRad, "Gel");
 

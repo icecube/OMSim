@@ -5,6 +5,7 @@
  * @ingroup common
  */
 #include "OMSimPDOM.hh"
+#include "OMSimLogger.hh"
 
 #include <G4Ellipsoid.hh>
 #include <G4LogicalSkinSurface.hh>
@@ -23,6 +24,7 @@ pDOM::~pDOM()
  */
 pDOM::pDOM(InputDataManager *pData, G4bool pPlaceHarness)
 {
+    log_info("Constructing pDOM");
     mPlaceHarness = pPlaceHarness;
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);

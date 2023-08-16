@@ -27,6 +27,7 @@ LOM18::~LOM18()
 }
 
 LOM18::LOM18(InputDataManager* pData, G4bool pPlaceHarness) {
+    log_info("Constructing LOM18");
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
     mPMTManager->includeHAcoating();

@@ -6,19 +6,20 @@
  * the D-Egg detector geometry. The class is derived from the `abcDetectorComponent` base class.
  * It creates the pressure vessel, the inner volume, and places the PMTs inside the logical volume
  * of the gel.
- * 
- * @todo 
+ *
+ * @todo
  *       - I am not sure if the harness is correctly implemented!
  *       - Clean up the code.
  *       - Subtract CAD penetrator from the vessel.
- *       - Investigate why the gel does not reach the photocathode edge. 
+ *       - Investigate why the gel does not reach the photocathode edge.
  *         (Should the photocathode edge end earlier? Gel, Vessel, and PMT shape are correct.)
- * 
+ *
  * @author Geometry from DOUMEKI parsed by Berit Schlüter
  * @ingroup common
  */
 #include "OMSimDEGG.hh"
 #include "CADMesh.hh"
+#include "OMSimLogger.hh"
 
 #include <G4Sphere.hh>
 #include <G4Polycone.hh>
@@ -35,6 +36,7 @@ DEGG::~DEGG()
  */
 DEGG::DEGG(InputDataManager *pData, G4bool pPlaceHarness)
 {
+   log_info("Constructing DEGG");
    mData = pData;
    mPMTManager = new OMSimPMTConstruction(mData);
    mPMTManager->selectPMT("pmt_Hamamatsu_R5912_20_100");
@@ -53,40 +55,40 @@ DEGG::DEGG(InputDataManager *pData, G4bool pPlaceHarness)
  */
 void DEGG::construction()
 {
-    // Variables used for creating the outer glass
-    G4double lOutSegments1 = 30;
-    G4double lOutSphereRadiusMax = 156.0*mm;
-    G4double lOutSphereDtheta = 45.7191*deg;
-    G4double lOutTransformZ = 110.0*mm;
-    G4double lOutTorusRadius1 = 85.0*mm;
-    G4double lOutCenterOfTorusRadius1 = 50.8307*mm;
-    G4int lOutSegments2 = 40;
-    G4double lOutTorusRadius2 = 1000.0*mm;
-    G4double lOutCenterOfTorusRadius2 = -850.0*mm;
-    G4double lOutCenterOfTorusZ2 = 0.1676*mm;
-    G4double lOutTorusZmin2 = 24.9334*mm;
-    G4double lOutTorusZmax2 = 175.4714*mm;
-    G4double lOutTorusZ0 = 151.0*mm;
-    G4double lOutTorusTransformZ = 160.5706*mm;
+   // Variables used for creating the outer glass
+   G4double lOutSegments1 = 30;
+   G4double lOutSphereRadiusMax = 156.0 * mm;
+   G4double lOutSphereDtheta = 45.7191 * deg;
+   G4double lOutTransformZ = 110.0 * mm;
+   G4double lOutTorusRadius1 = 85.0 * mm;
+   G4double lOutCenterOfTorusRadius1 = 50.8307 * mm;
+   G4int lOutSegments2 = 40;
+   G4double lOutTorusRadius2 = 1000.0 * mm;
+   G4double lOutCenterOfTorusRadius2 = -850.0 * mm;
+   G4double lOutCenterOfTorusZ2 = 0.1676 * mm;
+   G4double lOutTorusZmin2 = 24.9334 * mm;
+   G4double lOutTorusZmax2 = 175.4714 * mm;
+   G4double lOutTorusZ0 = 151.0 * mm;
+   G4double lOutTorusTransformZ = 160.5706 * mm;
 
-    // Variables used for creating the internal volume
-    G4int lInnSegments1 = 300;
-    G4double lInnSphereRadiusMax = 136.0*mm;
-    G4double lInnSphereDtheta = 46.7281*deg;
-    G4double lInnTransformZ = 121.0*mm;
-    G4double lInnTorusRadius1 = 65.0*mm;
-    G4double lInnCenterOfTorusRadius1 = 51.3850*mm;
-    G4int lInnSegments2 = 200;
-    G4double lInnTorusRadius2 = 1150.0*mm;
-    G4double lInnCenterOfTorusRadius2 = -1019.9992*mm;
-    G4double lInnCenterOfTorusZ2 = -1.3972*mm;
-    G4double lInnTorusZmin2 = 6.00909*mm;
-    G4double lInnTorusZmax2 = 180.2726*mm;
-    G4double lInnTorusZ0 = 130.0*mm;
-    G4double lInnTorusTransformZ = 170.7198*mm;
+   // Variables used for creating the internal volume
+   G4int lInnSegments1 = 300;
+   G4double lInnSphereRadiusMax = 136.0 * mm;
+   G4double lInnSphereDtheta = 46.7281 * deg;
+   G4double lInnTransformZ = 121.0 * mm;
+   G4double lInnTorusRadius1 = 65.0 * mm;
+   G4double lInnCenterOfTorusRadius1 = 51.3850 * mm;
+   G4int lInnSegments2 = 200;
+   G4double lInnTorusRadius2 = 1150.0 * mm;
+   G4double lInnCenterOfTorusRadius2 = -1019.9992 * mm;
+   G4double lInnCenterOfTorusZ2 = -1.3972 * mm;
+   G4double lInnTorusZmin2 = 6.00909 * mm;
+   G4double lInnTorusZmax2 = 180.2726 * mm;
+   G4double lInnTorusZ0 = 130.0 * mm;
+   G4double lInnTorusTransformZ = 170.7198 * mm;
 
-    // Variable used for creating the subtraction box
-    G4double lGelHeight = 180.5*mm;
+   // Variable used for creating the subtraction box
+   G4double lGelHeight = 180.5 * mm;
 
    // Create pressure vessel and inner volume
    G4VSolid *lOuterGlass = createEggSolid(lOutSegments1,
@@ -119,9 +121,8 @@ void DEGG::construction()
                                               lInnTorusZ0,
                                               lInnTorusTransformZ);
 
-
    // Make box to substract empty space
-   
+
    G4Box *lSubstractionBox = new G4Box("SubstractionBox", 20 * cm, 20 * cm, lGelHeight);
    G4LogicalVolume *lLogicalDummy = new G4LogicalVolume(lSubstractionBox, mData->getMaterial("Ri_Air"), "Temp");
 
@@ -169,7 +170,7 @@ void DEGG::construction()
  */
 void DEGG::appendPMTs()
 {
-   G4double lPMTdistance = 176.7*mm;
+   G4double lPMTdistance = 176.7 * mm;
    G4RotationMatrix lRot = G4RotationMatrix();
    lRot.rotateY(180 * deg);
 
@@ -196,9 +197,9 @@ void DEGG::appendInternalComponentsFromCAD()
 {
    G4String lFilePath = "../common/data/CADmeshes/DEGG/Internal_Everything_NoMainboard.obj";
    G4double lCADScale = 1.0;
-   G4double lInternalCAD_x = -427.6845*mm;
-   G4double lInternalCAD_y = 318.6396*mm;
-   G4double lInternalCAD_z = 154*mm;
+   G4double lInternalCAD_x = -427.6845 * mm;
+   G4double lInternalCAD_y = 318.6396 * mm;
+   G4double lInternalCAD_z = 154 * mm;
    // load mesh
    auto lMesh = CADMesh::TessellatedMesh::FromOBJ(lFilePath);
 
