@@ -2,11 +2,11 @@
  * @file OMSimHitManager.hh
  * @brief Defines structures and classes related to optical module photon hit management.
  *
- * This file describes the `HitStats` structure which stores detailed photon hit parameters 
- * and the `OMSimHitManager` class which centralizes and manages photon hit data across 
- * different optical modules. The manager ensures unified access to photon hit information, 
+ * This file describes the `HitStats` structure which stores detailed photon hit parameters
+ * and the `OMSimHitManager` class which centralizes and manages photon hit data across
+ * different optical modules. The manager ensures unified access to photon hit information,
  * with functionalities to append, retrieve, and manipulate hit data.
- * 
+ *
  * @ingroup common
  */
 
@@ -28,17 +28,17 @@
  */
 struct HitStats
 {
-    std::vector<G4long> event_id;
-    std::vector<G4double> hit_time; //Time of detection.
-    std::vector<G4double> photon_flight_time; //Photon flight time.
-    std::vector<G4double> photon_track_length; //Length of the photon's path before hitting.
-    std::vector<G4double> photon_energy; //Energy of the detected photon.
-    std::vector<G4int> PMT_hit; //ID of the PMT that detected the photon.
-    std::vector<G4ThreeVector> photon_direction; //Momentum direction of the photon at the time of detection.
-    std::vector<G4ThreeVector> photon_local_position; //Local position of the detected photon within the PMT.
-    std::vector<G4ThreeVector> photon_global_position; //Global position of the detected photon.
-    std::vector<G4double> event_distance; //Distance between generation and detection of photon.
-    std::vector<OMSimPMTResponse::PMTPulse> PMT_response; // PMT's response to the detected photon, encapsulated as a `PMTPulse`.
+    std::vector<G4long> event_id;                         ///< ID of the event
+    std::vector<G4double> hit_time;                       ///< Time of detection.
+    std::vector<G4double> photon_flight_time;             ///< Photon flight time.
+    std::vector<G4double> photon_track_length;            ///< Length of the photon's path before hitting.
+    std::vector<G4double> photon_energy;                  ///< Energy of the detected photon.
+    std::vector<G4int> PMT_hit;                           ///< ID of the PMT that detected the photon.
+    std::vector<G4ThreeVector> photon_direction;          ///< Momentum direction of the photon at the time of detection.
+    std::vector<G4ThreeVector> photon_local_position;     ///< Local position of the detected photon within the PMT.
+    std::vector<G4ThreeVector> photon_global_position;    ///< Global position of the detected photon.
+    std::vector<G4double> event_distance;                 ///< Distance between generation and detection of photon.
+    std::vector<OMSimPMTResponse::PMTPulse> PMT_response; ///< PMT's response to the detected photon, encapsulated as a `PMTPulse`.
 };
 
 /**
