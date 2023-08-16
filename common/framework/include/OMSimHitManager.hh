@@ -8,7 +8,11 @@
 
 /**
  * @struct HitStats
- * @brief A structure to store information of photon hits.
+ * @brief A structure to store information about detected photon hits.
+ * 
+ * This structure holds a set of vectors that keep track of the various parameters 
+ * related to photon hits detected by the optical modules and PMTs.
+ * @ingroup common
  */
 struct HitStats
 {
@@ -27,7 +31,13 @@ struct HitStats
 
 /**
  * @class OMSimHitManager
- * @brief This class is responsible for managing info of detected photons and writing the results in the desired format.
+ * @brief Manages detected photon information.
+ *
+ * This class is responsible for storing, managing, and providing access to 
+ * the hit information related to detected photons across multiple optical modules.
+ * The manager can be accessed via a singleton pattern, ensuring a unified access
+ * point for photon hit data.
+ *
  * @ingroup common
  */
 class OMSimHitManager
@@ -35,6 +45,10 @@ class OMSimHitManager
 
 public:
 
+    /** 
+     * @brief Returns the singleton instance of the OMSimHitManager.
+     * @return A reference to the singleton instance.
+     */
     static OMSimHitManager &getInstance()
     {
         static OMSimHitManager instance;
@@ -56,12 +70,12 @@ public:
 
     void reset();
     std::vector<double> countHits(int moduleIndex=0);
-    void setNumberOfPMTs(int pNumberOfPMTs);
+    void setNumberOfPMTs(int pNumberOfPMTs, int moduleIndex=0);
     HitStats getHitsOfModule(int moduleIndex=0);
 
     private:
-        int mNumPMTs;
-        std::unordered_map<G4int, HitStats> mModuleHits;
+        std::map<G4int, G4int> mNumPMTs;
+        std::map<G4int, HitStats> mModuleHits;
         OMSimHitManager() = default;
         ~OMSimHitManager() = default;
         OMSimHitManager(const OMSimHitManager &) = delete;
