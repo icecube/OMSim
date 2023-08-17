@@ -1,3 +1,8 @@
+/** @file OMSimMDOM.hh
+ *  @brief Construction of mDOM.
+ *  @author Lew Classen, Martin Unland
+ *  @ingroup common
+ */
 #ifndef OMSimMDOM_h
 #define OMSimMDOM_h 1
 

@@ -13,15 +13,6 @@
 */
 
 
-/**
- * @class mDOMFlasher
- * @brief The mDOMFlasher class represents the 10 flashers in an mDOM optical module.
- *
- * @details
- * This class is responsible for creating the flashers in the mDOM,
- * which includes a LED, the air around it, and a glass window on top of it. This class also has methods for retrieving flasher solids,
- * activating a specific flasher in a particular module, and configuring the GPS for flasher simulations.
- */
 mDOMFlasher::mDOMFlasher(InputDataManager *pData)
 {
 	mData = pData;
@@ -93,13 +84,7 @@ std::tuple<G4UnionSolid *, G4UnionSolid *, G4Tubs *> mDOMFlasher::getSolids()
 * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
 
-/**
- * @brief run/beamOn the specified flasher.
- * @details This method triggers the flasher at the given index in the specified module.
- * @param pMDOMInstance The mDOM instance to access to the placement OM positions and orientations.
- * @param pModuleIndex The index of the module to be flashed (if only one mDOM placed, then 0, otherwise depending on placeIt() order)
- * @param pLEDIndex The index of the flasher within the module.
- */
+
 void mDOMFlasher::runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex)
 {
 	if (!mFlasherProfileAvailable)
@@ -127,13 +112,7 @@ void mDOMFlasher::readFlasherProfile()
 
 
 
-/**
- * @brief Get the global position and orientation for a specific flasher in a specific module.
- * @param pMDOMInstance The mDOM instance contains information about the placement of the modules.
- * @param pModuleIndex The index of the module that is going to flash.
- * @param pLEDIndex The index of the flasher within the module.
- * @return Returns a GlobalPosition struct containing the flasher's global position and orientation information.
- */
+
 GlobalPosition mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex)
 {
 	GlobalPosition lGlobalPos;

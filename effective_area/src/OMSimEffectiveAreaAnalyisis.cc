@@ -13,9 +13,9 @@ void OMSimEffectiveAreaAnalyisis::writeHeader()
 			  << "\t"
 			  << "total_hits"		
 			  << "\t"
-			  << "EA_Total"
+			  << "EA_Total(cm^2)"
 			  << "\t"
-			  << "EA_Total_error"
+			  << "EA_Total_error(cm^2)"
 			  << "\t" << G4endl;
 	mDatafile.close();
 }
@@ -43,7 +43,7 @@ void OMSimEffectiveAreaAnalyisis::writeScan(G4double pPhi, G4double pTheta)
 	for (const auto &hit : lHits)
 	{
 		mDatafile << hit << "\t";
-		lTotalHits = hit; //last element is total
+		lTotalHits = hit; //last element is total nr of hits
 	}
 
 	effectiveAreaResult lEffectiveArea = calculateEffectiveArea(lTotalHits);

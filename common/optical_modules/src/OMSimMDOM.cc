@@ -1,9 +1,5 @@
-/** @file OMSimMDOM.cc
- *  @brief Construction of mDOM.
- *
- *  @author Lew Classen, Martin Unland
- * @ingroup common
- *
+/**
+ *  @todo - Write documentation and parse current comments into Doxygen style
  */
 
 #include "OMSimMDOM.hh"
@@ -17,7 +13,6 @@
 
 mDOM::~mDOM()
 {
-    delete mPMTManager;
     delete mFlashers;
     if (mPlaceHarness)
     {

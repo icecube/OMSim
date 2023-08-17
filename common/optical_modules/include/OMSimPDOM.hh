@@ -1,3 +1,8 @@
+/**
+ * @file OMSimPDOM.hh
+ * @brief Implementation of the pDOM/Gen1 DOM class.
+ * @ingroup common
+ */
 #ifndef OMSimPDOM_h
 #define OMSimPDOM_h 1
 
@@ -13,7 +18,7 @@ class pDOM : public OpticalModule
 {
 public:
     pDOM(InputDataManager *pData, G4bool pPlaceHarness = true);
-    ~pDOM();
+    ~pDOM(){};
     void construction();
     G4bool mPlaceHarness;
 

@@ -1,9 +1,4 @@
-/**
- * @file OMSimPDOM.cc
- * @brief Implementation of the pDOM/Gen1 DOM class.
- * @author Lew Classen, Martin Unland
- * @ingroup common
- */
+
 #include "OMSimPDOM.hh"
 #include "OMSimLogger.hh"
 
@@ -12,16 +7,6 @@
 #include <G4Orb.hh>
 #include <G4Polycone.hh>
 
-pDOM::~pDOM()
-{
-    delete mPMTManager;
-}
-
-/**
- * @brief Constructor for pDOM class.
- * @param pData InputDataManager pointer for accessing the input data.
- * @param pPlaceHarness If true, places the harness during construction.
- */
 pDOM::pDOM(InputDataManager *pData, G4bool pPlaceHarness)
 {
     log_info("Constructing pDOM");
@@ -33,9 +18,7 @@ pDOM::pDOM(InputDataManager *pData, G4bool pPlaceHarness)
     construction();
 }
 
-/**
- * @brief Construction of the pDOM.
- */
+
 void pDOM::construction()
 {
     mComponents.clear();

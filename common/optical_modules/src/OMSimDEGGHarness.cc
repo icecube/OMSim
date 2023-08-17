@@ -1,9 +1,3 @@
-/** @file OMSimMDOMHarness.cc
- *  @brief Construction of mDOM harness.
- *
- *  @date November 2021
- */
-
 #include "OMSimDEGGHarness.hh"
 #include "CADMesh.hh"
 
@@ -20,9 +14,7 @@ DEggHarness::DEggHarness(DEGG *pDEGG, InputDataManager *pData)
 }
 
 
-/**
- * The construction of each part is called
- */
+
 void DEggHarness::construction()
 {
 
@@ -110,9 +102,7 @@ void DEggHarness::placeCADPenetrator()
     }
 }
 
-/**
- * build main data cable and append it to component vector
- */
+
 void DEggHarness::mainDataCable()
 {
     const G4double lDataCableRadius = mData->getValueWithUnit(mDataKey, "jDataCableRadius"); // Radius of the main data cable (according to Prof. Kappes)

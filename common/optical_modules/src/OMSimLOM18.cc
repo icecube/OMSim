@@ -1,17 +1,12 @@
 /** @file OMSimLOM18.cc
- *  @brief Construction of LOM18.
- *
- *  @author Javi Vara & Markus Dittmer
- *
  *  @todo  - 18/07/22 Solve collisions of CAD with PMTs
  *         - Clean up needed variables
  *         - Move "magic numbers" to header, add comment with their meaning
  *         - Gel pads have to be tilted
  *         - Add Harness
  *         - Add realistic materials for internal components (100% absorber as of yet) 
- * @ingroup common
+ *         - Write documentation and parse current comments into Doxygen style
  */
-
 #include "OMSimLOM18.hh"
 #include "CADMesh.hh" 
 #include "OMSimLogger.hh"
@@ -22,7 +17,6 @@
 
 LOM18::~LOM18()
 {
-    delete mPMTManager;
     //delete mHarness;
 }
 

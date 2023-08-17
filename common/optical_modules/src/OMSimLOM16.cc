@@ -1,14 +1,8 @@
-/** @file OMSimLOM16.cc
- *  @brief Construction of LOM16.
- *
- *  @author Javi Vara & Markus Dittmer
- *
- *  @todo  - 18/07/22 Solve collisions of CAD with PMTs
+/** 
+ *  @todo   - 18/07/22 Solve collisions of CAD with PMTs
  *          - Clean up magic number variables and comment their meaning
- *
- * @ingroup common
+ *          - Write documentation and parse current comments into Doxygen style
  */
-
 #include "OMSimLOM16.hh"
 #include "OMSimLogger.hh"
 #include "CADMesh.hh"
@@ -21,7 +15,6 @@
 
 LOM16::~LOM16()
 {
-    delete mPMTManager;
     // delete mHarness;
 }
 
@@ -47,7 +40,7 @@ LOM16::LOM16(InputDataManager *pData, G4bool pPlaceHarness)
     construction();
 }
 
-// Placement function
+
 void LOM16::construction()
 {
     G4VSolid *lGlassSolid = pressureVessel(mGlassOutRad, "Glass");

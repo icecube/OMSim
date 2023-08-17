@@ -1,3 +1,9 @@
+/** @file OMSimLOM18.hh
+ *  @brief Construction of LOM18.
+ *
+ *  @author Javi Vara & Markus Dittmer
+ *  @ingroup common
+ */
 #ifndef OMSimLOM18_h
 #define OMSimLOM18_h 1
 

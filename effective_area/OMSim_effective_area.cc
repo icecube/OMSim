@@ -3,10 +3,8 @@
  * @ingroup EffectiveArea
  * @brief Main for the calculation of effective areas.
  * @details The effective area of a module is calculated simulating a plane wave from a certain direction.
- * The photon generation is made with the module @link AngularScan @endlink, running the method runSingleAngularScan(phi, theta) once for each direction to be investigated.
+ * The photon generation is made with the module AngularScan, running the method runSingleAngularScan(phi, theta) once for each direction to be investigated.
  * Check command line arguments with --help.
- * @warning
- * There are a few material related arguments that are depracated as for example the glass and gel arguments. This were used to easily change materials during the OM development phase. Check @link InputDataManager::getMaterial @endlink and modify the respective OM class if you want to use these args.
  */
 #include "OMSim.hh"
 #include "OMSimAngularScan.hh"

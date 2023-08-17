@@ -1,3 +1,7 @@
+/** @file OMSimMDOMHarness.hh
+ *  @brief Construction of mDOM harness.
+ *  @ingroup common
+ */
 #ifndef OMSimMDOMHarness_h
 #define OMSimMDOMHarness_h 1
 

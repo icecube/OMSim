@@ -1,8 +1,9 @@
 /**
  * @file OMSim.hh
  * @brief Main simulation class for the Optical Module (OM) simulation.
- *
  * This file defines the OMSim class, which controls the entire simulation process in all studies and includes the general program options.
+ * @warning
+ * There are a few material related arguments that are depracated as for example the glass and gel arguments. This were used to easily change materials during the OM development phase. Check @link InputDataManager::getMaterial @endlink and modify the respective OM class if you want to use these args.
  * @ingroup common
  */
 
