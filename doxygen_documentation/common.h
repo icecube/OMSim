@@ -49,7 +49,7 @@
  * In the complex PMT model the photocathode has an absorption length that matches the measured quantum efficiency of the mDOM PMTs. For the other PMT models this matching has to be still be performed.
  * 
  * <div style="width: 100%; text-align: center;">
- * <img src="QE_meas_VS_simulation.png" width="350" height="450" />
+ * <img src="QE_meas_VS_simulation.png" width="450" height="385" />
  * <div style="width: 80%; margin: auto;">
  * <br/>
  * Figure 3: <i>QE of simulation with the absorption length currently used compared to measurements. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
@@ -59,7 +59,7 @@
  * @subsubsection response PMT response
  * @warning Detailed PMT response currently only for mDOM PMT
  * 
- * The class OMSImPMTResponse provides a realistic PMT response (charge and transit time) using the measured scans from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>. To turn on this feature, the bool-switch command line argument "pmt_response" has to be given.
+ * The class OMSimPMTResponse provides a realistic PMT response (charge and transit time) using the measured scans from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>. To turn on this feature, the bool-switch command line argument "pmt_response" has to be given.
  * For more information see Section 9.3.4 of the thesis.
  * 
  * <div style="width: 100%; text-align: center;">

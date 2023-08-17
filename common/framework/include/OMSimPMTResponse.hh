@@ -1,5 +1,6 @@
 /** @file OMSimPMTResponse.hh
  *  @brief PMT response simulator
+ *  @ingroup common
  */
 
 #ifndef OMSimPMTResponse_h
