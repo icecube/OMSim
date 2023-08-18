@@ -1,4 +1,7 @@
 
+/** 
+ *  @todo Add PMT data of all PMT types
+ */
 #include "OMSimPMTResponse.hh"
 #include "OMSimLogger.hh"
 #include "OMSimInputData.hh"

@@ -2,7 +2,7 @@
 
 **Under construction. If you want to use OMSim contact martin.u in IC-slack...**
 
-**OMSim** is a Geant4 framework for the simulation of optical modules of the IceCube Observatory. It has been mostly developed by the Münster IceCube Group during different master and PhD theses. The project is separated into different modules depending on the study (e.g. background investigations with radioactive decays, or sensitivity studies), each with its own main & executable. These modules share common files (in the "common" folder) which, for example, define geometries from modules and PMTs or also material properties.
+**OMSim** is a Geant4 framework for the simulation of optical modules of the IceCube Observatory. It has been mostly developed by the Münster IceCube Group during different master and PhD theses. The project is separated into different modules depending on the study (e.g. background investigations with radioactive decays, or sensitivity studies). These modules share common files (in the "common" folder) which, for example, define geometries from modules and PMTs or also material properties.
 
 Please check the different Modules in the [documentation](https://icecube.github.io/OMSim/) for further details and examples. 
 
@@ -44,3 +44,13 @@ source YOUR_G4_INSTALL/bin/geant4.sh
 ``` 
 - Finally, just run ```make``` or ```make -j N``` where N is number of cores you want to use for the compilation.
 
+## Available studies
+
+OMSim has been utilized in a range of studies, each simulating unique physics, thereby necessitating distinct Physicslist/analysis setups. In this repository, we have compiled a selection of these studies, each contained within its own folder and accompanied by its own main file. Currently available:
+
+- [Effective area](https://icecube.github.io/OMSim/group___effective_area.html): calculates the effective area of the optical modules/PMTs.
+- [Radioactive decays](https://icecube.github.io/OMSim/group__radioactive.html): simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.
+- [Supernova studies](https://icecube.github.io/OMSim/group__sngroup.html): used for the development of an improved SN trigger for IceCube using multi-PMT modules.
+- [Bubble column](https://icecube.github.io/OMSim/group__bubble.html): used for investigating the capability of the mDOM flashers in determining bubble column parameters.
+
+Most users will likely utilize just one of these studies, meaning there's no need to compile all of them. If you wish to exclude certain studies from compilation, you can comment out the undesired ones in the CMakeLists.txt between lines 41-43 (where the **add_subdirectory** commands are located).
