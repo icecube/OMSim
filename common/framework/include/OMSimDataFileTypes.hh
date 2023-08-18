@@ -24,6 +24,7 @@
 #include <G4OpBoundaryProcess.hh>
 #include <G4SystemOfUnits.hh>
 #include <boost/property_tree/json_parser.hpp>
+#include <OMSimCommandArgsTable.hh>
 
 class ParameterTable;
 
@@ -190,8 +191,7 @@ public:
     void extractInformation();
 
 private:
-    G4int mSpiceDepth_pos = 65; // 88 depth = 2278.2 m, very clean ice,
-
+    G4int mSpiceDepth_pos = OMSimCommandArgsTable::getInstance().get<G4double>("depth_pos");
     /**
      * @brief Calculate temperature of ice depending on the depth.
      *
