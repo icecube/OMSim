@@ -5,6 +5,7 @@
 #include "OMSimInputData.hh"
 #include "OMSimLogger.hh"
 
+#include <TGraph.h>
 #include <numeric>
 
 namespace pt = boost::property_tree;
@@ -15,13 +16,11 @@ namespace pt = boost::property_tree;
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
-
 abcDataFile::abcDataFile(G4String pFileName)
 {
     mFileData = new ParameterTable();
     mFileName = pFileName;
 }
-
 
 void abcDataFile::sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector)
 {
@@ -57,12 +56,10 @@ void abcDataFile::sortVectorByReference(std::vector<G4double> &referenceVector, 
     referenceVector = std::move(sortedReferenceVector);
 }
 
-
-
 void abcMaterialData::createMaterial()
 {
     mJsonTree = mFileData->appendAndReturnTree(mFileName);
-    
+
     mMPT = new G4MaterialPropertiesTable();
     mMatDatBase = G4NistManager::Instance();
 
@@ -88,8 +85,6 @@ void abcMaterialData::createMaterial()
     log_debug(mssg);
 }
 
-
-
 void abcMaterialData::extractAbsorptionLength()
 {
     std::vector<G4double> lAbsLength;
@@ -100,8 +95,6 @@ void abcMaterialData::extractAbsorptionLength()
     mMPT->AddProperty("ABSLENGTH", &lAbsLengthEnergy[0], &lAbsLength[0], static_cast<int>(lAbsLength.size()));
 }
 
-
-
 void abcMaterialData::extractRefractionIndex()
 {
     std::vector<G4double> lRefractionIndex;
@@ -111,8 +104,6 @@ void abcMaterialData::extractRefractionIndex()
     sortVectorByReference(lRefractionIndexEnergy, lRefractionIndex);
     mMPT->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
 }
-
-
 
 G4State abcMaterialData::getState(G4String pState_str)
 {
@@ -128,17 +119,11 @@ G4State abcMaterialData::getState(G4String pState_str)
     return lState;
 }
 
-
-
-
-
 /*
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  *                                     Derived Classes
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
-
-
 
 void RefractionAndAbsorption::extractInformation()
 {
@@ -149,7 +134,6 @@ void RefractionAndAbsorption::extractInformation()
     mMaterial->SetMaterialPropertiesTable(mMPT);
 }
 
-
 void RefractionOnly::extractInformation()
 {
     createMaterial();
@@ -157,15 +141,16 @@ void RefractionOnly::extractInformation()
     mMaterial->SetMaterialPropertiesTable(mMPT);
 }
 
-
 void NoOptics::extractInformation()
 {
     createMaterial();
 }
 
 
+
 void IceCubeIce::extractInformation()
 {
+    mSpiceDepth_pos = OMSimCommandArgsTable::getInstance().get<int>("depth_pos");
     createMaterial(); // creates IceCubeICE
 
     G4Material *lIceMie = new G4Material("IceCubeICE_SPICE", mFileData->getValueWithUnit(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid);      // create IceCubeICE_SPICE
@@ -218,13 +203,11 @@ void IceCubeIce::extractInformation()
  * %%%%%%%%%%%%%%%% Functions for icecube ice optical properties %%%%%%%%%%%%%%%%
  */
 
-
 G4double IceCubeIce::spiceTemperature(G4double pDepth)
 {
     G4double spice_temp = 221.5 - 0.00045319 / m * pDepth + 5.822e-6 / m2 * pow(pDepth, 2.);
     return spice_temp;
 }
-
 
 G4double IceCubeIce::spiceAbsorption(G4double pLambd)
 {
@@ -237,7 +220,6 @@ G4double IceCubeIce::spiceAbsorption(G4double pLambd)
     return la_inv;
 }
 
-
 G4double IceCubeIce::spiceRefraction(G4double pLambd)
 {
     // unknown depth. Parametrization by Thomas Kittler.
@@ -245,8 +227,6 @@ G4double IceCubeIce::spiceRefraction(G4double pLambd)
     G4double lNphase = 1.55749 - 1.57988 / nm * lLambd3 + 3.99993 / (nm * nm) * pow(lLambd3, 2) - 4.68271 / (nm * nm * nm) * pow(lLambd3, 3) + 2.09354 / (nm * nm * nm * nm) * pow(lLambd3, 4);
     return lNphase; // using this now after discussion with Timo
 }
-
-
 
 G4double IceCubeIce::mieScattering(G4double pLambd)
 {
@@ -258,7 +238,6 @@ G4double IceCubeIce::mieScattering(G4double pLambd)
     G4double lB_inv = lBe_inv * (1. - lAv_costheta);
     return lB_inv;
 }
-
 
 void ReflectiveSurface::extractInformation()
 {
@@ -319,6 +298,135 @@ void ReflectiveSurface::extractInformation()
     log_debug(mssg);
 }
 
+/*
+ * %%%%%%%%%%%%%%%% Functions for scintillation properties %%%%%%%%%%%%%%%%
+ */
+
+void ScintillationProperties::extractInformation()
+{
+    mJsonTree = mFileData->appendAndReturnTree(mFileName);
+
+    OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+    G4String lTemperature = "-20";
+    if (lArgs.keyExists("temperature"))
+        lTemperature = lArgs.get<G4String>("temperature");
+
+    findMPT();
+    extractSpectrum();
+    extractLifeTimes(lTemperature);
+    extractYield(lTemperature);
+    G4String mssg = "Added scintillation properties to: " + mJsonTree.get<G4String>("jName");
+    log_warning(mssg);
+}
+
+void ScintillationProperties::findMPT()
+{
+    mObjectName = mJsonTree.get<G4String>("jName");
+    G4Material *lMaterial = G4Material::GetMaterial(mObjectName);
+    if (!lMaterial)
+        log_error("Trying to modify material that does not exist...");
+    else
+        mMPT = lMaterial->GetMaterialPropertiesTable();
+}
+
+void ScintillationProperties::extractSpectrum()
+{
+    std::vector<G4double> lSpectrumIntensity;
+    std::vector<G4double> lEnergy;
+    mFileData->parseKeyContentToVector(lSpectrumIntensity, mJsonTree, "jSpectrumIntensity", 1, false);
+    mFileData->parseKeyContentToVector(lEnergy, mJsonTree, "jSpectrumWavelength", mHC_eVnm, true);
+    sortVectorByReference(lEnergy, lSpectrumIntensity);
+    mMPT->AddProperty("SCINTILLATIONSPECTRUM", &lEnergy[0], &lSpectrumIntensity[0], static_cast<int>(lSpectrumIntensity.size()), true);
+}
+
+double ScintillationProperties::getLifeTimeTemperatureRange(double& minTemp, double& maxTemp) {
+    const pt::ptree& lifetimeTree = mJsonTree.get_child("Lifetimes");
+    minTemp = std::numeric_limits<double>::max();
+    maxTemp = std::numeric_limits<double>::min();
+    
+    for (const auto& item : lifetimeTree) {
+        double T = std::stod(item.first);
+        minTemp = std::min(minTemp, T);
+        maxTemp = std::max(maxTemp, T);
+    }
+}
+
+std::pair<std::vector<G4double>, std::vector<G4double>> ScintillationProperties::extractLifeTimesForTemperature(G4String pTemperature) {
+    pt::ptree temperatureSubTree = mJsonTree.get_child("Lifetimes." + pTemperature);
+
+    std::vector<G4double> lTimes;
+    std::vector<G4double> lAmplitudes;
+
+    mFileData->parseKeyContentToVector(lTimes, temperatureSubTree, "jTimes", 1 * s, false);
+    mFileData->parseKeyContentToVector(lAmplitudes, temperatureSubTree, "jAmplitudes", 1, false);
+
+    return {lTimes, lAmplitudes};
+}
+
+void ScintillationProperties::weightLifeTimesAmplitudes(std::vector<G4double>& pAmp, double T1, double T2) {
+    double lWeight = 1.0 / std::abs(T1 - T2);
+    for (size_t i = 0; i < pAmp.size(); ++i) {
+        pAmp[i] *= lWeight;
+    }
+}
+
+void ScintillationProperties::extractLifeTimes(G4String pTemperature) {
+    std::vector<G4double> allLTimes;
+    std::vector<G4double> allLAmplitudes;
+    
+    double lT1 = std::stod(pTemperature);
+    double minTemp, maxTemp;
+    getLifeTimeTemperatureRange(minTemp, maxTemp);
+    
+    if (lT1 < minTemp || lT1 > maxTemp) {
+        log_error("Temperature is out of the range of measured temperatures!");
+        std::cerr << "Temperature is out of the range of measured temperatures!" << std::endl;
+        return;
+    }
+
+    // Check if the reference temperature matches a measured temperature directly
+    if (mJsonTree.get_child_optional("Lifetimes." + pTemperature)) {
+        auto [lTimes, lAmplitudes] = extractLifeTimesForTemperature(pTemperature);
+        allLTimes = lTimes;
+        allLAmplitudes = lAmplitudes;
+    } else {
+        // Loop through all measured temperatures and weight amplitudes based on distance to reference temperature
+        for (const auto& item : mJsonTree.get_child("Lifetimes")) {
+            G4String currentTemperature = item.first;
+            double lT2 = std::stod(currentTemperature);
+
+            auto [lTimes, lAmplitudes] = extractLifeTimesForTemperature(currentTemperature);
+            weightLifeTimesAmplitudes(lAmplitudes, lT1, lT2);
+
+            allLTimes.insert(allLTimes.end(), lTimes.begin(), lTimes.end());
+            allLAmplitudes.insert(allLAmplitudes.end(), lAmplitudes.begin(), lAmplitudes.end());
+        }
+    }
+
+    sortVectorByReference(allLAmplitudes, allLTimes);
+    mMPT->AddProperty("FRACTIONLIFETIMES", &allLAmplitudes[0], &allLTimes[0], static_cast<int>(allLTimes.size()), true);
+}
+
+
+void ScintillationProperties::extractYield(G4String pTemperature)
+{
+    OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+    if (lArgs.keyExists("scint_yield"))
+    {
+        log_warning("Given scintillation yield will override the yield for all scintillating materisl defined via ScintillationProperties class!");
+        mMPT->AddConstProperty("SCINTILLATIONYIELD", lArgs.get<G4double>("scint_yield") / MeV);
+    }
+    else
+    {
+
+        std::vector<G4double> lTemperatures;
+        std::vector<G4double> lYields;
+        mFileData->parseKeyContentToVector(lTemperatures, mJsonTree, "jYieldTemperature", 1, false);
+        mFileData->parseKeyContentToVector(lYields, mJsonTree, "jYield", 1, false);
+        TGraph *mYieldInterpolation = new TGraph(static_cast<int>(lTemperatures.size()), &lTemperatures[0], &lYields[0]);
+        mMPT->AddConstProperty("SCINTILLATIONYIELD", mYieldInterpolation->Eval(std::stod(pTemperature)) / MeV);
+    }
+}
 
 G4OpticalSurfaceFinish ReflectiveSurface::getOpticalSurfaceFinish(G4String pFinish)
 {
@@ -416,32 +524,3 @@ G4SurfaceType ReflectiveSurface::getSurfaceType(G4String pType)
         lType = coated;
     return lType;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

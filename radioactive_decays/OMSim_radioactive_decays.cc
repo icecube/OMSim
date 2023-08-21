@@ -17,7 +17,7 @@ namespace po = boost::program_options;
 
 void effectiveAreaSimulation()
 {
-	OMSimDecaysAnalysis lAnalysisManager;
+	OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
@@ -39,10 +39,9 @@ int main(int argc, char *argv[])
 		("world_radius,w", po::value<G4double>()->default_value(3.0), "radius of world sphere in m")
 		("radius,r", po::value<G4double>()->default_value(300.0), "plane wave radius in mm")
 		("detector_type", po::value<G4int>()->default_value(2), "module type [custom = 0, Single PMT = 1, mDOM = 2, pDDOM = 3, LOM16 = 4]")
-		("place_harness",po::bool_switch(),"place OM harness (if implemented)")
 		("no_PV_decays",po::bool_switch(),"skips the simulation of decays in pressure vessel")
 		("no_PMT_decays",po::bool_switch(),"skips the simulation of decays in PMT glass")
-		("place_harness",po::bool_switch(),"place OM harness (if implemented)")
+		("temperature",po::value<G4double>()->default_value(-20),"temperature in C° (scintillation is temperature dependent)")
 		("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
 
 

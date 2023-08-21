@@ -191,7 +191,7 @@ public:
     void extractInformation();
 
 private:
-    G4int mSpiceDepth_pos = OMSimCommandArgsTable::getInstance().get<G4double>("depth_pos");
+    int mSpiceDepth_pos;
     /**
      * @brief Calculate temperature of ice depending on the depth.
      *
@@ -273,6 +273,28 @@ public:
      * creates a new optical surface and sets the properties.
      */
     void extractInformation();
+};
+
+
+/**
+ * @class   ScintillationProperties
+ * @brief   This class is responsible for parsing scintillation properties to already defined materials 
+ * @ingroup common
+ */
+class ScintillationProperties : public abcDataFile
+{
+public:
+    ScintillationProperties(G4String pFilename) : abcDataFile(pFilename){};
+    void extractInformation();
+    void extractSpectrum();
+    void extractLifeTimes(G4String pTemperature);
+    double getLifeTimeTemperatureRange(double& pMinTemp, double& pMaxTemp);
+    std::pair<std::vector<G4double>, std::vector<G4double>> extractLifeTimesForTemperature(G4String pTemperature);
+    void weightLifeTimesAmplitudes(std::vector<G4double>& pAmplitudes, double pT1, double pT2);
+    void extractYield(G4String pTemperature);
+    void findMPT();
+private:
+    G4MaterialPropertiesTable *mMPT;
 };
 
 #endif

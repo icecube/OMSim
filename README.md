@@ -23,7 +23,7 @@ apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev qtbase
 ``` 
 If you needed to install more, add a comment it in the Git project, so we can complete the above command 😊
 
-Also you will need ROOT. Download the last binary (e.g. at time of writing latest version is 6.28/04 https://root.cern/releases/release-62804/), or compile the source distribution. For simplicity add the source in your .bashrc (or you will have to source it yourself manually every time you run or compile OMSim).
+Also you will need ROOT. Download the last binary (e.g. at time of writing latest version is 6.28/04 https://root.cern/releases/release-62804/), or compile the source distribution. For simplicity add the source in your .bashrc (or you will have to source it yourself manually every time you run or compile OMSim):
 ```bash
 export ROOTSYS= YOUR_ROOT_PATH
 source $ROOTSYS/bin/thisroot.sh

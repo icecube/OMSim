@@ -1,5 +1,4 @@
 #include "OMSimEventAction.hh"
-#include "OMSimEffectiveAreaAnalyisis.hh"
 #include <G4RunManager.hh>
 
 OMSimEventAction::OMSimEventAction()

@@ -195,7 +195,7 @@ G4OpticalSurface *InputDataManager::getOpticalSurface(G4String pName)
 void InputDataManager::searchFolders()
 {
     std::vector<std::string> directories = {
-        "../common/data/Materials", "../common/data/PMTs",
+        "../common/data/Materials", "../common/data/PMTs", "../common/data/scintillation",
         // ... you can add more directories here ...
     };
 
@@ -234,6 +234,11 @@ void InputDataManager::processFile(const std::string &pFilePath,
         ReflectiveSurface lDataFile(pFilePath);
         lDataFile.extractInformation();
         mOpticalSurfaceMap[lDataFile.mObjectName] = lDataFile.mOpticalSurface;
+    }
+    else if ((pFileName.substr(0, 5) == "Scint"))
+    {
+        ScintillationProperties lDataFile(pFilePath);
+        lDataFile.extractInformation();
     }
     else if (pFileName.substr(0, 4) == "pmt_" ||
              pFileName.substr(0, 4) == "usr_")

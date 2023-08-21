@@ -36,7 +36,7 @@
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "OMSimAnalysisManager.hh"
+#include "OMSimDecaysAnalysis.hh"
 #include "OMSimCommandArgsTable.hh"
 
 #include <OMSimG4RadioactiveDecay.hh>
@@ -1192,7 +1192,7 @@ void G4RadioactiveDecay::DecayAnalog(const G4Track& theTrack)
   }
 
 
-   OMSimHitManager::getInstance().appendDecay(
+   OMSimDecaysAnalysis::getInstance().appendDecay(
     theParticleDef->GetParticleName(),
     finalGlobalTime / s, theTrack.GetPosition()); 
 
