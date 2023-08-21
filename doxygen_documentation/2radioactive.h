@@ -5,7 +5,7 @@
  *  @warning
  *    This study has been tested only for Vitrovex glass (mDOM/LOM16) and the 80mm mDOM PMTs. Okamoto glass (D-Egg/LOM18) is currently under investigation.
  * 
- *  The simulation considers the measured scintillation parameters and the specific activity of the isotopes to provide insights into the behavior of OMs in both air and ice environments over a time window $t_{w}$. The primary output is a timestamped list of detected photons, which can be utilized to compute parameters such as the module's expected dark rate. The simulation steps can be summarized as:
+ *  The simulation considers the measured scintillation parameters and the specific activity of the isotopes to provide insights into the behavior of OMs in both air and ice environments over a time window \f$t_{w}\f$. The primary output is a timestamped list of detected photons, which can be utilized to compute parameters such as the module's expected dark rate. The simulation steps can be summarized as:
  *  - Determining the number of decays within \f$t_{w}\f$ based on measured data.
  *  - Initiating decay chains for each event by positioning an isotope randomly in the pressure vessel.
  *  - Assigning decay times from a uniform distribution within [0, \f$t_{w}\f$], in case the time difference between mother-daughter decay times surpasses \f$t_{w}\f$.
