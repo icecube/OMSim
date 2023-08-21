@@ -15,13 +15,19 @@ First you should install Geant4 following [the guide provided by cern](https://g
 ```bash
 -DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_GDML=ON -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_QT=ON -DGEANT4_USE_RAYTRACER_X11=ON -DGEANT4_USE_XM=ON
 ``` 
-
+#### Requirements
 There are a few dependencies. You can install them using the following command:
 
 ```bash
 apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev qtbase5-dev libmotif-dev libargtable2-0 libboost-all-dev libqt53dextras5
 ``` 
 If you needed to install more, add a comment it in the Git project, so we can complete the above command 😊
+
+Also you will need ROOT. Download the last binary (e.g. at time of writing latest version is 6.28/04 https://root.cern/releases/release-62804/), or compile the source distribution. For simplicity add the source in your .bashrc (or you will have to source it yourself manually every time you run or compile OMSim).
+```bash
+export ROOTSYS= YOUR_ROOT_PATH
+source $ROOTSYS/bin/thisroot.sh
+``` 
 
 #### Compiling OMSim
 - Clone this branch.
