@@ -59,6 +59,8 @@ int main(int argc, char *argv[])
 		po::options_description lSpecific("SN simulation specific arguments");
 
 		lSpecific.add_options()
+		("wheight,wh", po::value<G4double>()->default_value(20), "Height of cylindrical world volume, in m")
+		("wradius,wr", po::value<G4double>()->default_value(20), "Radius of cylindrical world volume, in m")
 		("SNtype", po::value<G4int>()->default_value(0), "0=27 solar mass type II (ls220), 1=9.6 solar mass type II (ls220)")
 		("SNgun", po::value<G4int>()->default_value(0), "Select interaction to simulate: 0=ENES, 1=IBD (no neutron capture included)")
 		("SNmeanE", po::value<G4double>()->default_value(10.0), "Instead of using SNmodel, use this mean energy to generate the neutrinos ")

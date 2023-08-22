@@ -1,6 +1,6 @@
 /**
- * @file mdomSNTools.hh
- * @brief Provides the definition for the `mdomSNTools` class, centralizing utility methods for Supernova (SN) neutrino interactions.
+ * @file OMSimSNTools.hh
+ * @brief Provides the definition for the `OMSimSNTools` class, centralizing utility methods for Supernova (SN) neutrino interactions.
  * 
  * This class serves as a central utility to house common methods needed in the generation 
  * of SN neutrino interactions.
@@ -10,15 +10,15 @@
  * @ingroup SN
  */
 
-#ifndef mdomSNTools_h
-#define mdomSNTools_h 1
+#ifndef OMSimSNTools_h
+#define OMSimSNTools_h 1
 
 #include "globals.hh"
 #include <vector>
 #include "G4ThreeVector.hh"
 
 /**
- * @class mdomSNTools
+ * @class OMSimSNTools
  * @brief Provides utility methods for generating ENES and IBD interactions.
  *
  * This class serves as a repository for common functionalities associated with the generation 
@@ -26,18 +26,18 @@
  * 
  * @ingroup SN
  */
-class mdomSNTools
+class OMSimSNTools
 {
 public:
 	/**
    	 * @brief Default constructor.
    	 */
-  	mdomSNTools();   
+  	OMSimSNTools();   
 
   	/**
    	 * @brief Default destructor.
    	 */ 
-  	~mdomSNTools();
+  	~OMSimSNTools();
 
 	/**
    	 * @brief Randomly determines a vertex position within the generation volume.
@@ -124,7 +124,7 @@ public:
 	 * @param y2 The y-value corresponding to x2.
 	 * @return The interpolated y-value for the given x based on the two provided data points.
 	 */
-	G4double mdomSNTools::linealinterpolation(G4double x, G4double x1, G4double x2, G4double y1, G4double y2);
+	G4double OMSimSNTools::linealinterpolation(G4double x, G4double x1, G4double x2, G4double y1, G4double y2);
 
 	/**
 	 * @brief Calculates pinching parameter of energy spectrum

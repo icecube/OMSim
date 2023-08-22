@@ -1,4 +1,4 @@
-#include "mdomSNTools.hh"
+#include "OMSimSNTools.hh"
 #include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 #include "Randomize.hh"
@@ -15,13 +15,13 @@ extern G4Navigator* aNavigator;
 extern G4double	gmdomseparation;
 extern G4int	gn_mDOMs;
 
-mdomSNTools::mdomSNTools(){
+OMSimSNTools::OMSimSNTools(){
 }
 
-mdomSNTools::~mdomSNTools(){
+OMSimSNTools::~OMSimSNTools(){
 }
 
-bool mdomSNTools::CheckVolumeFormDOMs(G4ThreeVector position){
+bool OMSimSNTools::CheckVolumeFormDOMs(G4ThreeVector position){
     aNavigator->LocateGlobalPointAndSetup(position);
     G4TouchableHistoryHandle aTouchable = aNavigator->CreateTouchableHistoryHandle();
     G4int HistoryDepth = aTouchable->GetHistoryDepth();
@@ -29,7 +29,7 @@ bool mdomSNTools::CheckVolumeFormDOMs(G4ThreeVector position){
     return false;
 }
 
-G4ThreeVector mdomSNTools::RandomPosition() {
+G4ThreeVector OMSimSNTools::RandomPosition() {
   //maximum lenght of generation cylinder "Rmax"
   //Note that this is the distance from the center of the cylinder to the corner of the circumscribed rectangle around the cylinder
   G4double Rmax = pow(3,1./2.)*gworldsize*m; 
@@ -63,14 +63,14 @@ G4ThreeVector mdomSNTools::RandomPosition() {
 }
 
 
-G4double mdomSNTools::linealinterpolation(G4double x, G4double x1, G4double x2, G4double y1, G4double y2) {
+G4double OMSimSNTools::linealinterpolation(G4double x, G4double x1, G4double x2, G4double y1, G4double y2) {
     G4double slope = (y2 - y1) / (x2 - x1);
     G4double result = (slope * (x - x1) + y1);
     return result;
 }
 
 
-G4double mdomSNTools::EnergyDistribution(G4double Emean, G4double Emean2, G4double& alpha)
+G4double OMSimSNTools::EnergyDistribution(G4double Emean, G4double Emean2, G4double& alpha)
 {   
   G4int nPoints1 = 500;
   if (gfixmeanenergy == false) {
@@ -83,13 +83,13 @@ G4double mdomSNTools::EnergyDistribution(G4double Emean, G4double Emean2, G4doub
 	return choosenenergy;
 }
 
-G4double mdomSNTools::GetAlpha(G4double Emean,G4double Emean2)
+G4double OMSimSNTools::GetAlpha(G4double Emean,G4double Emean2)
 {
 	G4double alpha = (2*pow(Emean,2)-Emean2)/(Emean2-pow(Emean,2));
 	return alpha;
 }
 
-G4double mdomSNTools::InverseCumul(std::vector<G4double>  xvals, std::vector<G4double>  yvals, G4int nPoints)
+G4double OMSimSNTools::InverseCumul(std::vector<G4double>  xvals, std::vector<G4double>  yvals, G4int nPoints)
 {
   std::vector<G4double>  x_g;
   std::vector<G4double>  f_g;           //f(x)
@@ -101,7 +101,7 @@ G4double mdomSNTools::InverseCumul(std::vector<G4double>  xvals, std::vector<G4d
 }
 
 
-G4int mdomSNTools::findtime(G4double time, std::vector<G4double> timearray)
+G4int OMSimSNTools::findtime(G4double time, std::vector<G4double> timearray)
 {
   for (unsigned int j=0; j<timearray.size(); j++) {
     if (time <= timearray.at(j)) {
@@ -112,7 +112,7 @@ G4int mdomSNTools::findtime(G4double time, std::vector<G4double> timearray)
  return 0;
 }
    
-G4double mdomSNTools::InverseCumulAlgorithm(std::vector<G4double>  x, std::vector<G4double>  f, std::vector<G4double>  a, std::vector<G4double>  Fc, G4int  nPoints)
+G4double OMSimSNTools::InverseCumulAlgorithm(std::vector<G4double>  x, std::vector<G4double>  f, std::vector<G4double>  a, std::vector<G4double>  Fc, G4int  nPoints)
 {
   //choose y randomly
   G4double y_rndm = G4UniformRand()*Fc[nPoints-1];
@@ -184,7 +184,7 @@ void MakeEnergyDistribution(G4double Emean, G4double alpha, G4int nPoints, std::
 }
 
 
-G4double mdomSNTools::WeighMe(G4double sigma, G4double NTargets) {
+G4double OMSimSNTools::WeighMe(G4double sigma, G4double NTargets) {
   double weigh = sigma*NTargets*(2*gHeight);
   return weigh;
 }
