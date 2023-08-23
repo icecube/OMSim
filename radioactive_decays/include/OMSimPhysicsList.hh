@@ -10,7 +10,7 @@ class OMSimPhysicsList: public G4VUserPhysicsList
 {
 	public:
 		OMSimPhysicsList();
-		~OMSimPhysicsList();
+		~OMSimPhysicsList(){};
 
 	protected:
 		void ConstructParticle();

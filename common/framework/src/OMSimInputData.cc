@@ -240,6 +240,11 @@ void InputDataManager::processFile(const std::string &pFilePath,
         ScintillationProperties lDataFile(pFilePath);
         lDataFile.extractInformation();
     }
+    else if ((pFileName.substr(0, 6) == "Custom"))
+    {
+        CustomProperties lDataFile(pFilePath);
+        lDataFile.extractInformation();
+    }
     else if (pFileName.substr(0, 4) == "pmt_" ||
              pFileName.substr(0, 4) == "usr_")
     {

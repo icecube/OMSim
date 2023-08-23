@@ -428,6 +428,72 @@ void ScintillationProperties::extractYield(G4String pTemperature)
     }
 }
 
+
+
+/*
+ * %%%%%%%%%%%%%%%% Functions for custom properties %%%%%%%%%%%%%%%%
+ */
+
+void CustomProperties::extractInformation()
+{
+    mJsonTree = mFileData->appendAndReturnTree(mFileName);
+    findMPT();
+    extractConstProperties();
+    extractProperties();
+}
+
+void CustomProperties::extractConstProperties()
+{
+    auto lOptProperties = mJsonTree.get_child_optional("Properties");
+    
+    if(!lOptProperties)
+        return;  // No "Properties" key found. Simply return.
+
+    const pt::ptree& lConstProperties = *lOptProperties;
+    
+    for (const auto& item : lConstProperties) {
+        G4String lKey = item.first;
+        G4double lValue = mFileData->getValueWithUnit(mFileName, "ConstProperties."+lKey);
+        mMPT->AddConstProperty(lKey, lValue, true);
+        G4String mssg = "Added "+ lKey +" constant property to " + mJsonTree.get<G4String>("jName");
+        log_debug(mssg);
+    }
+}
+
+void CustomProperties::extractProperties()
+{
+    auto lOptProperties = mJsonTree.get_child_optional("Properties");
+    
+    if(!lOptProperties)
+        return;  // No "Properties" key found. Simply return.
+
+    const pt::ptree& lProperties = *lOptProperties;
+    
+    for (const auto& item : lProperties) {
+        G4String lKey = item.first;
+        G4double lUnit = mFileData->getValueWithUnit(mFileName, "Properties." + lKey + ".Unit");
+        std::vector<G4double> lX;
+        std::vector<G4double> lY;
+        mFileData->parseKeyContentToVector(lX, mJsonTree, "Properties." + lKey + ".x", lUnit, false);
+        mFileData->parseKeyContentToVector(lY, mJsonTree, "Properties." + lKey + ".y", lUnit, false);
+
+        mMPT->AddProperty(lKey, &lX[0], &lY[0], static_cast<int>(lY.size()), true);
+        G4String mssg = "Added " + lKey + " array property to " + mJsonTree.get<G4String>("jName");
+        log_debug(mssg);
+    }
+}
+
+void CustomProperties::findMPT()
+{
+    mObjectName = mJsonTree.get<G4String>("jName");
+    G4Material *lMaterial = G4Material::GetMaterial(mObjectName);
+    if (!lMaterial)
+        log_error("Trying to modify material that does not exist...");
+    else
+        mMPT = lMaterial->GetMaterialPropertiesTable();
+}
+
+
 G4OpticalSurfaceFinish ReflectiveSurface::getOpticalSurfaceFinish(G4String pFinish)
 {
     G4OpticalSurfaceFinish lFinish;

@@ -13,10 +13,6 @@ OMSimPhysicsList::OMSimPhysicsList():  G4VUserPhysicsList()
 	SetVerboseLevel(0);
 }
 
-OMSimPhysicsList::~OMSimPhysicsList()
-{
-}
-
 void OMSimPhysicsList::ConstructParticle()
 {
 	G4OpticalPhoton::OpticalPhotonDefinition();

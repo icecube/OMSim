@@ -286,6 +286,7 @@ class ScintillationProperties : public abcDataFile
 public:
     ScintillationProperties(G4String pFilename) : abcDataFile(pFilename){};
     void extractInformation();
+private:
     void extractSpectrum();
     void extractLifeTimes(G4String pTemperature);
     double getLifeTimeTemperatureRange(double& pMinTemp, double& pMaxTemp);
@@ -293,9 +294,27 @@ public:
     void weightLifeTimesAmplitudes(std::vector<G4double>& pAmplitudes, double pT1, double pT2);
     void extractYield(G4String pTemperature);
     void findMPT();
-private:
     G4MaterialPropertiesTable *mMPT;
 };
+
+/**
+ * @class   CustomProperties
+ * @brief   This class adds user defined properties to already defined materials 
+ * @ingroup common
+ */
+class CustomProperties : public abcDataFile
+{
+public:
+    CustomProperties(G4String pFilename) : abcDataFile(pFilename){};
+    void extractInformation();
+private:
+    void extractConstProperties();
+    void extractProperties();
+    void findMPT();
+    G4MaterialPropertiesTable *mMPT;
+};
+
+
 
 #endif
 //
