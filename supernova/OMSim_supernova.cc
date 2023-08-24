@@ -7,14 +7,15 @@
  * Check command line arguments with --help.
  */
 #include "OMSim.hh"
-#include "OMSimAngularScan.hh"
-#include "OMSimEffectiveAreaAnalyisis.hh"
+#include "mdomAnalysisManager.hh"
+#include "OMSimPrimaryGeneratorAction.hh"
+#include "mdomPrimaryGeneratorAction.hh"
 
 namespace po = boost::program_options;
 
 void SupernovaNeutrinoSimulation()
 {
-	OMSimEffectiveAreaAnalyisis lAnalysisManager;
+	mdomAnalysisManager lAnalysisManager;
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 	AngularScan *lScanner = new AngularScan(lArgs.get<G4double>("radius"), lArgs.get<G4double>("distance"), lArgs.get<G4double>("wavelength"));
@@ -100,9 +101,20 @@ int main(int argc, char *argv[])
 
 		// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
 		lArgs.finalize();
+
 		lSimulation.initialiseSimulation();
 
+		//TODO: Check whether this is right, since runmanager and primarygenerators are being
+		//called also in OMSim.cc
+	    G4RunManager *mRunManager = new G4RunManager;
+		G4VUserPrimaryGeneratorAction* gen_action = new mdomPrimaryGeneratorAction();
+		mRunManager->SetUserAction(gen_action);
+
+		OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+		lUIinterface.applyCommand("/selectGun", lArgs.getInstance().get<G4double>("SNgun"));
+
 		SupernovaNeutrinoSimulation();
+
 		if(lArgs.get<bool>("visual")) lSimulation.startVisualisation();
 	
 	}
