@@ -146,8 +146,6 @@ void NoOptics::extractInformation()
     createMaterial();
 }
 
-
-
 void IceCubeIce::extractInformation()
 {
     mSpiceDepth_pos = OMSimCommandArgsTable::getInstance().get<int>("depth_pos");
@@ -308,20 +306,22 @@ void ScintillationProperties::extractInformation()
 
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
     G4String lTemperature = "-20";
-    if (lArgs.keyExists("temperature"))
-        lTemperature = lArgs.get<G4String>("temperature");
 
+    if (lArgs.keyExists("temperature"))
+    {   G4cout << lArgs.keyExists("temperature") << G4endl;
+        lTemperature = lArgs.get<G4String>("temperature");
+    }
     findMPT();
     extractSpectrum();
     extractLifeTimes(lTemperature);
     extractYield(lTemperature);
-    G4String mssg = "Added scintillation properties to: " + mJsonTree.get<G4String>("jName");
-    log_warning(mssg);
+    G4String mssg = "Added scintillation properties to: " + mJsonTree.get<G4String>("jMaterialName")+". It will only scintillate if scintillation process is in PhysicsList.";
+    log_info(mssg);
 }
 
 void ScintillationProperties::findMPT()
 {
-    mObjectName = mJsonTree.get<G4String>("jName");
+    mObjectName = mJsonTree.get<G4String>("jMaterialName");
     G4Material *lMaterial = G4Material::GetMaterial(mObjectName);
     if (!lMaterial)
         log_error("Trying to modify material that does not exist...");
@@ -339,19 +339,22 @@ void ScintillationProperties::extractSpectrum()
     mMPT->AddProperty("SCINTILLATIONSPECTRUM", &lEnergy[0], &lSpectrumIntensity[0], static_cast<int>(lSpectrumIntensity.size()), true);
 }
 
-double ScintillationProperties::getLifeTimeTemperatureRange(double& minTemp, double& maxTemp) {
-    const pt::ptree& lifetimeTree = mJsonTree.get_child("Lifetimes");
+double ScintillationProperties::getLifeTimeTemperatureRange(double &minTemp, double &maxTemp)
+{
+    const pt::ptree &lifetimeTree = mJsonTree.get_child("Lifetimes");
     minTemp = std::numeric_limits<double>::max();
     maxTemp = std::numeric_limits<double>::min();
-    
-    for (const auto& item : lifetimeTree) {
+
+    for (const auto &item : lifetimeTree)
+    {
         double T = std::stod(item.first);
         minTemp = std::min(minTemp, T);
         maxTemp = std::max(maxTemp, T);
     }
 }
 
-std::pair<std::vector<G4double>, std::vector<G4double>> ScintillationProperties::extractLifeTimesForTemperature(G4String pTemperature) {
+std::pair<std::vector<G4double>, std::vector<G4double>> ScintillationProperties::extractLifeTimesForTemperature(G4String pTemperature)
+{
     pt::ptree temperatureSubTree = mJsonTree.get_child("Lifetimes." + pTemperature);
 
     std::vector<G4double> lTimes;
@@ -363,35 +366,43 @@ std::pair<std::vector<G4double>, std::vector<G4double>> ScintillationProperties:
     return {lTimes, lAmplitudes};
 }
 
-void ScintillationProperties::weightLifeTimesAmplitudes(std::vector<G4double>& pAmp, double T1, double T2) {
+void ScintillationProperties::weightLifeTimesAmplitudes(std::vector<G4double> &pAmp, double T1, double T2)
+{
     double lWeight = 1.0 / std::abs(T1 - T2);
-    for (size_t i = 0; i < pAmp.size(); ++i) {
+    for (size_t i = 0; i < pAmp.size(); ++i)
+    {
         pAmp[i] *= lWeight;
     }
 }
 
-void ScintillationProperties::extractLifeTimes(G4String pTemperature) {
+void ScintillationProperties::extractLifeTimes(G4String pTemperature)
+{
     std::vector<G4double> allLTimes;
     std::vector<G4double> allLAmplitudes;
-    
+
     double lT1 = std::stod(pTemperature);
     double minTemp, maxTemp;
     getLifeTimeTemperatureRange(minTemp, maxTemp);
-    
-    if (lT1 < minTemp || lT1 > maxTemp) {
+
+    if (lT1 < minTemp || lT1 > maxTemp)
+    {
         log_error("Temperature is out of the range of measured temperatures!");
         std::cerr << "Temperature is out of the range of measured temperatures!" << std::endl;
         return;
     }
 
     // Check if the reference temperature matches a measured temperature directly
-    if (mJsonTree.get_child_optional("Lifetimes." + pTemperature)) {
+    if (mJsonTree.get_child_optional("Lifetimes." + pTemperature))
+    {
         auto [lTimes, lAmplitudes] = extractLifeTimesForTemperature(pTemperature);
         allLTimes = lTimes;
         allLAmplitudes = lAmplitudes;
-    } else {
+    }
+    else
+    {
         // Loop through all measured temperatures and weight amplitudes based on distance to reference temperature
-        for (const auto& item : mJsonTree.get_child("Lifetimes")) {
+        for (const auto &item : mJsonTree.get_child("Lifetimes"))
+        {
             G4String currentTemperature = item.first;
             double lT2 = std::stod(currentTemperature);
 
@@ -406,7 +417,6 @@ void ScintillationProperties::extractLifeTimes(G4String pTemperature) {
     sortVectorByReference(allLAmplitudes, allLTimes);
     mMPT->AddProperty("FRACTIONLIFETIMES", &allLAmplitudes[0], &allLTimes[0], static_cast<int>(allLTimes.size()), true);
 }
-
 
 void ScintillationProperties::extractYield(G4String pTemperature)
 {
@@ -428,8 +438,6 @@ void ScintillationProperties::extractYield(G4String pTemperature)
     }
 }
 
-
-
 /*
  * %%%%%%%%%%%%%%%% Functions for custom properties %%%%%%%%%%%%%%%%
  */
@@ -444,18 +452,21 @@ void CustomProperties::extractInformation()
 
 void CustomProperties::extractConstProperties()
 {
-    auto lOptProperties = mJsonTree.get_child_optional("Properties");
-    
-    if(!lOptProperties)
-        return;  // No "Properties" key found. Simply return.
+    auto lOptProperties = mJsonTree.get_child_optional("ConstProperties");
 
-    const pt::ptree& lConstProperties = *lOptProperties;
-    
-    for (const auto& item : lConstProperties) {
+    if (!lOptProperties)
+        return; // No "Properties" key found. Simply return.
+
+    const pt::ptree &lConstProperties = *lOptProperties;
+
+    for (const auto &item : lConstProperties)
+    {
         G4String lKey = item.first;
-        G4double lValue = mFileData->getValueWithUnit(mFileName, "ConstProperties."+lKey);
+        G4cout << lKey << " " << "ConstProperties." + lKey << G4endl;
+        G4cout << mFileName << G4endl;
+        G4double lValue = mFileData->getValueWithUnit(mJsonTree.get<G4String>("jName"), "ConstProperties." + lKey);
         mMPT->AddConstProperty(lKey, lValue, true);
-        G4String mssg = "Added "+ lKey +" constant property to " + mJsonTree.get<G4String>("jName");
+        G4String mssg = "Added " + lKey + " constant property to " + mJsonTree.get<G4String>("jMaterialName");
         log_debug(mssg);
     }
 }
@@ -463,13 +474,14 @@ void CustomProperties::extractConstProperties()
 void CustomProperties::extractProperties()
 {
     auto lOptProperties = mJsonTree.get_child_optional("Properties");
-    
-    if(!lOptProperties)
-        return;  // No "Properties" key found. Simply return.
 
-    const pt::ptree& lProperties = *lOptProperties;
-    
-    for (const auto& item : lProperties) {
+    if (!lOptProperties)
+        return; // No "Properties" key found. Simply return.
+
+    const pt::ptree &lProperties = *lOptProperties;
+
+    for (const auto &item : lProperties)
+    {
         G4String lKey = item.first;
         G4double lUnit = mFileData->getValueWithUnit(mFileName, "Properties." + lKey + ".Unit");
         std::vector<G4double> lX;
@@ -485,14 +497,13 @@ void CustomProperties::extractProperties()
 
 void CustomProperties::findMPT()
 {
-    mObjectName = mJsonTree.get<G4String>("jName");
+    mObjectName = mJsonTree.get<G4String>("jMaterialName");
     G4Material *lMaterial = G4Material::GetMaterial(mObjectName);
     if (!lMaterial)
         log_error("Trying to modify material that does not exist...");
     else
         mMPT = lMaterial->GetMaterialPropertiesTable();
 }
-
 
 G4OpticalSurfaceFinish ReflectiveSurface::getOpticalSurfaceFinish(G4String pFinish)
 {

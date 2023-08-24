@@ -25,7 +25,7 @@ public:
      *  @brief Virtual method to get the weight of the pressure vessel.
      *  @details This method should be overridden in derived classes to provide the weight of the pressure vessel for the
      *           specific optical module.
-     *  @return Weight of the pressure vessel in kilograms.
+     *  @return Weight of the pressure vessel.
      */
     virtual double getPressureVesselWeight() = 0;
 

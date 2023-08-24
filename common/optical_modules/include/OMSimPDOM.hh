@@ -22,7 +22,7 @@ public:
     void construction();
     G4bool mPlaceHarness;
 
-    double getPressureVesselWeight() {return 9.07;};
+    double getPressureVesselWeight() {return 9.07*kg;};
     int getNumberOfPMTs() { return 1;};
 };
 

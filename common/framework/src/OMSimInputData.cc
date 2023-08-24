@@ -28,27 +28,35 @@ pt::ptree ParameterTable::appendAndReturnTree(G4String pFileName)
 
 G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
 {
+    // Get the sub-tree for the provided key
+    const auto& lSubTree = mTable.at(pKey);
 
+    // Try getting the value with unit first
     try
     {
-        const G4String lUnit = mTable.at(pKey).get<G4String>(pParameter + ".jUnit");
-        const G4double lValue =
-            mTable.at(pKey).get<G4double>(pParameter + ".jValue");
+        const G4String lUnit = lSubTree.get<G4String>(pParameter + ".jUnit");
+        const G4double lValue = lSubTree.get<G4double>(pParameter + ".jValue");
+
         if (lUnit == "NULL")
         {
             return lValue;
         }
-        else
-        {
-            return lValue * G4UnitDefinition::GetValueOf(lUnit);
-        }
+
+        // Check if the unit should be inverted
+        bool invertUnit = lSubTree.get_child_optional(pParameter + ".jInvertUnit").has_value();
+
+        // Return the value with or without inverted unit, ternary operators in c++: "variable = (condition) ? expressionTrue : expressionFalse;"
+        return invertUnit 
+               ? lValue / G4UnitDefinition::GetValueOf(lUnit) 
+               : lValue * G4UnitDefinition::GetValueOf(lUnit);
     }
     catch (...)
     {
-        const G4double lValue = mTable.at(pKey).get<G4double>(pParameter);
-        return lValue;
+        // Fallback to getting just the value if any of the above fails
+        return lSubTree.get<G4double>(pParameter);
     }
 }
+
 
 pt::ptree ParameterTable::getJSONTree(G4String pKey)
 {

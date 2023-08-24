@@ -1,5 +1,6 @@
 {
-   "jName": "RiAbs_Glass_Vitrovex",
+   "jName": "Scintillation_Vitrovex",
+   "jMaterialName": "RiAbs_Glass_Vitrovex",
    "Lifetimes": {
       "-50": {
          "jTimes": [

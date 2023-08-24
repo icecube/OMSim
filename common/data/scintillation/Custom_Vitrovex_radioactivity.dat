@@ -1,0 +1,27 @@
+{
+   "jName": "Radioactivity_Vitrovex",
+   "jMaterialName": "RiAbs_Glass_Vitrovex",
+   "ConstProperties": {
+      "K40_ACTIVITY": {
+         "jValue": 61,
+         "jUnit": "kg",
+         "jInvertUnit" : ""
+      },
+      "U238_ACTIVITY": {
+         "jValue": 4.61,
+         "jUnit": "kg",
+         "jInvertUnit" : ""
+      },
+      "U235_ACTIVITY": {
+         "jValue": 0.59,
+         "jUnit": "kg",
+         "jInvertUnit" : ""
+      },
+      "Th232_ACTIVITY": {
+         "jValue": 1.28,
+         "jUnit": "kg",
+         "jInvertUnit" : ""
+      }
+    }
+}
+

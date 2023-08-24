@@ -17,7 +17,7 @@ public:
     LOM16(InputDataManager* pData, G4bool pPlaceHarness = false);
     ~LOM16();
     void construction();
-    double getPressureVesselWeight() {return 5.38+5.35;};
+    double getPressureVesselWeight() {return (5.38+5.35)*kg;};
     int getNumberOfPMTs() { return mTotalNrPMTs;};
     
 private:

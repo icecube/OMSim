@@ -21,7 +21,7 @@ public:
     mDOM(InputDataManager *pData, G4bool pPlaceHarness = true);
     ~mDOM();
     void construction();
-    double getPressureVesselWeight() {return 13.0;};
+    double getPressureVesselWeight() {return 13.0*kg;};
     int getNumberOfPMTs() { return mTotalNrPMTs;};
     G4int mNrTotalLED;
     std::vector<G4Transform3D> mLEDTransformers;           // coordinates from center of the module

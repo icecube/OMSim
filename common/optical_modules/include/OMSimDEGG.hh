@@ -32,7 +32,7 @@ public:
      */
     void construction();
 
-    double getPressureVesselWeight() { return 18.0; };
+    double getPressureVesselWeight() { return 18.0*kg; };
 
     int getNumberOfPMTs() { return 2; };
 

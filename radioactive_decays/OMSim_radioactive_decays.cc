@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 		("detector_type", po::value<G4int>()->default_value(2), "module type [custom = 0, Single PMT = 1, mDOM = 2, pDDOM = 3, LOM16 = 4]")
 		("no_PV_decays",po::bool_switch(),"skips the simulation of decays in pressure vessel")
 		("no_PMT_decays",po::bool_switch(),"skips the simulation of decays in PMT glass")
-		("temperature",po::value<G4double>()->default_value(-20),"temperature in C° (scintillation is temperature dependent)")
+		("temperature",po::value<std::string>(),"temperature in C° (scintillation is temperature dependent)")
 		("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
 
 
