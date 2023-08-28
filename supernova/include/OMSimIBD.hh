@@ -140,9 +140,9 @@ private:
      */
     G4double TotalCrossSection(G4double energy);
 
-    G4double fixenergy;
-    G4double fixenergy2;
-    G4double alpha;
+    G4double mFixedenergy;
+    G4double mFixedenergy2;
+    G4double mAlpha;
 };
 
 #endif
