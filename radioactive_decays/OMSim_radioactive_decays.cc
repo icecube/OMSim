@@ -15,16 +15,23 @@
 
 namespace po = boost::program_options;
 
-void effectiveAreaSimulation()
+void decaySimulation(OMSimDetectorConstruction* pDetector)
 {
 	OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
-	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
+	lAnalysisManager.setOutputFileName(lArgs.get<std::string>("output_file"));
 
 	IsotopeDecays *lDecays = new IsotopeDecays(280);
 
+	lDecays->setOpticalModule(pDetector->mOpticalModule);
+	lDecays->simulateDecaysInOpticalModule(lArgs.get<G4double>("time_window"));
+	
+
+	lAnalysisManager.writeHitInformation();
+	lAnalysisManager.writeDecayInformation();
+	lAnalysisManager.writeMultiplicity();
 }
 
 int main(int argc, char *argv[])
@@ -42,6 +49,7 @@ int main(int argc, char *argv[])
 		("no_PV_decays",po::bool_switch(),"skips the simulation of decays in pressure vessel")
 		("no_PMT_decays",po::bool_switch(),"skips the simulation of decays in PMT glass")
 		("temperature",po::value<std::string>(),"temperature in C° (scintillation is temperature dependent)")
+		("time_window",po::value<G4double>()->default_value(60.0),"time length in which the decays are simulated.")
 		("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
 
 
@@ -80,7 +88,9 @@ int main(int argc, char *argv[])
 		lArgs.finalize();
 		lSimulation.initialiseSimulation();
 
-		effectiveAreaSimulation();
+		decaySimulation(lSimulation.getDetectorConstruction());
+
+
 		if(lArgs.get<bool>("visual")) lSimulation.startVisualisation();
 	
 	}

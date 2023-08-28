@@ -57,6 +57,11 @@ void OMSim::ensureOutputDirectoryExists(const std::string &pFilePath)
     }
 }
 
+OMSimDetectorConstruction* OMSim::getDetectorConstruction()
+{
+    return mDetector;
+}
+
 void OMSim::initialiseSimulation()
 {
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();

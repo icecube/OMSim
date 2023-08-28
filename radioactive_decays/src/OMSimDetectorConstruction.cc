@@ -99,6 +99,7 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
     {
         lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
         lHitManager.setNumberOfPMTs(lOpticalModule->getNumberOfPMTs());
+        mOpticalModule = lOpticalModule;
     }
 
     return mWorldPhysical;

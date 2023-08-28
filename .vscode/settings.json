@@ -89,6 +89,7 @@
         "file": "cpp",
         "rcsv_ntuple": "cpp",
         "codecvt": "cpp",
-        "search_action": "cpp"
+        "search_action": "cpp",
+        "senum": "cpp"
     }
 }

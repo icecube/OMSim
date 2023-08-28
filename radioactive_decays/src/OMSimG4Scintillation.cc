@@ -216,7 +216,7 @@ void OMSimG4Scintillation::BuildPhysicsTable(const G4ParticleDefinition &)
     if (MPT)
     {
       G4MaterialPropertyVector *MPV =
-          MPT->GetProperty(kSCINTILLATIONCOMPONENT1);
+          MPT->GetProperty("FIRSTCOMPONENT");
       if (MPV)
       {
         // Retrieve the first intensity point in vector
@@ -376,11 +376,12 @@ G4VParticleChange *OMSimG4Scintillation::PostStepDoIt(const G4Track &aTrack,
   if (lScintSpectrum)
     nscnt = lScintComponents->GetVectorLength();
 
-  G4double ResolutionScale = MPT->GetConstProperty(kRESOLUTIONSCALE);
+  G4double ResolutionScale = MPT->GetConstProperty("RESOLUTIONSCALE");
 
   G4double ScintillationYield = MPT->GetConstProperty("SCINTILLATIONYIELD");
 
   G4ParticleDefinition *pDef = aParticle->GetDefinition();
+  
   if (pDef == G4Electron::ElectronDefinition() || pDef == G4Gamma::GammaDefinition())
   {
     ScintillationYield = MPT->GetConstProperty("SCINTILLATIONYIELDELECTRONS");

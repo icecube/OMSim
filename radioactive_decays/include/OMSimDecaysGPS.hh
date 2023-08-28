@@ -12,6 +12,8 @@ class IsotopeDecays
 public:
   IsotopeDecays(G4double pProductionRadius);
   ~IsotopeDecays();
+  void simulateDecaysInOpticalModule(G4double pTimeWindow);
+  void setOpticalModule(OpticalModule* pOpticalModule){mOM = pOpticalModule;};
 
 private:
   // Define a map that maps isotopes to their commands
@@ -22,9 +24,7 @@ private:
       {"K40", "/gps/ion 19 40 0"}
   };
   void generalGPS(); 
-  void pressureVesselIsotopeGPS(G4String pIsotope);
-  void PMTisotopeGPS(G4String pIsotope, G4int pPMTNr);
-  void simulateDecaysInTimeWindow();
+  void configureIsotopeGPS(G4String Isotope, G4String location, G4int optParam = -999);
   std::map<G4String, G4int> calculateNumberOfDecays(G4MaterialPropertiesTable* pMPT, G4double pTimeWindow, G4double pMass);
   OpticalModule* mOM;
   G4double mProductionRadius;

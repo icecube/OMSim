@@ -337,6 +337,7 @@ void ScintillationProperties::extractSpectrum()
     mFileData->parseKeyContentToVector(lEnergy, mJsonTree, "jSpectrumWavelength", mHC_eVnm, true);
     sortVectorByReference(lEnergy, lSpectrumIntensity);
     mMPT->AddProperty("SCINTILLATIONSPECTRUM", &lEnergy[0], &lSpectrumIntensity[0], static_cast<int>(lSpectrumIntensity.size()), true);
+    mMPT->AddProperty("FIRSTCOMPONENT", &lEnergy[0], &lSpectrumIntensity[0], static_cast<int>(lSpectrumIntensity.size()), true);
 }
 
 double ScintillationProperties::getLifeTimeTemperatureRange(double &minTemp, double &maxTemp)
@@ -435,6 +436,7 @@ void ScintillationProperties::extractYield(G4String pTemperature)
         mFileData->parseKeyContentToVector(lYields, mJsonTree, "jYield", 1, false);
         TGraph *mYieldInterpolation = new TGraph(static_cast<int>(lTemperatures.size()), &lTemperatures[0], &lYields[0]);
         mMPT->AddConstProperty("SCINTILLATIONYIELD", mYieldInterpolation->Eval(std::stod(pTemperature)) / MeV);
+        mMPT->AddConstProperty("RESOLUTIONSCALE", 1.0);
     }
 }
 

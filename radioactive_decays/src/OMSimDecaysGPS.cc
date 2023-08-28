@@ -32,13 +32,15 @@ void IsotopeDecays::generalGPS()
 }
 
 /**
- * @brief Configures GPS for the production and decay of an isotope within the pressure vessel of an OM.
+ * @brief Configures GPS for the production and decay of an isotope within a specified location.
  *
  * If the daughter of the configured isotope is unstable, it will also decay in the same position as its mother
  *
  * @param Isotope The isotope which is going to be produced.
+ * @param pVolumeName The volume name where the isotope decays.
+ * @param optParam An optional parameter related to the location. For "PMT", it could be the PMT number.
  */
-void IsotopeDecays::pressureVesselIsotopeGPS(G4String Isotope)
+void IsotopeDecays::configureIsotopeGPS(G4String Isotope, G4String pVolumeName, G4int optParam)
 {
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     generalGPS();
@@ -47,28 +49,18 @@ void IsotopeDecays::pressureVesselIsotopeGPS(G4String Isotope)
     {
         lUIinterface.applyCommand(mIsotopeCommands[Isotope]);
     }
-    lUIinterface.applyCommand("/gps/pos/confine PressureVessel");
-}
-
-/**
- * @brief Configures GPS for isotope decays in PMT glass of an specific PMT.
- *
- * If the daughter of the configured isotope is unstable, it will also decay in the same position as its mother
- *
- * @param Isotope The isotope which is going to be produced.
- * @param PMTNr Number of PMT where the decays are simulated
- */
-void IsotopeDecays::PMTisotopeGPS(G4String Isotope, G4int PMTNr)
-{
-    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-    generalGPS();
-
-    if (mIsotopeCommands.find(Isotope) != mIsotopeCommands.end())
+    
+    if(optParam != -999)
     {
-        lUIinterface.applyCommand(mIsotopeCommands[Isotope]);
+        lUIinterface.applyCommand("/gps/pos/confine " + pVolumeName, optParam);
     }
-    lUIinterface.applyCommand("/gps/pos/confine PMT_", PMTNr);
+    else
+    {
+        lUIinterface.applyCommand("/gps/pos/confine " + pVolumeName);
+    }
 }
+
+
 
 std::map<G4String, G4int> IsotopeDecays::calculateNumberOfDecays(G4MaterialPropertiesTable *pMPT, G4double pTimeWindow, G4double pMass)
 {
@@ -82,29 +74,27 @@ std::map<G4String, G4int> IsotopeDecays::calculateNumberOfDecays(G4MaterialPrope
     return mNumberDecays;
 }
 
-void IsotopeDecays::simulateDecaysInTimeWindow()
+void IsotopeDecays::simulateDecaysInOpticalModule(G4double pTimeWindow)
 {
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-
-    G4double lTimeWindow = lArgs.get<G4double>("time_window");
 
     if (!lArgs.get<bool>("no_PV_decays"))
     {
         G4double lMass = mOM->getPressureVesselWeight();
         G4LogicalVolume *lPVVolume = mOM->getComponent("PressureVessel").VLogical;
         G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
-        std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, lTimeWindow, lMass);
+        std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, pTimeWindow, lMass);
 
         for (auto &pair : lNumberDecays)
         {
             G4String lIsotope = pair.first;
             G4int lNrDecays = pair.second;
-            pressureVesselIsotopeGPS(lIsotope);
+            configureIsotopeGPS(lIsotope, "PressureVessel");
             lUIinterface.runBeamOn(lNrDecays);
         }
     }
-
+/*
     if (!lArgs.get<bool>("no_PMT_decays"))
     {
         G4double lMass = mOM->getPMTmanager()->getPMTGlassWeight();
@@ -113,16 +103,17 @@ void IsotopeDecays::simulateDecaysInTimeWindow()
 
         for (int pmt = 0; pmt < (int)mOM->getNumberOfPMTs(); pmt++)
         {
-            std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, lTimeWindow, lMass);
+            std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, pTimeWindow, lMass);
 
             for (auto &pair : lNumberDecays)
             {
                 G4String lIsotope = pair.first;
                 G4int lNrDecays = pair.second;
-                PMTisotopeGPS(lIsotope, pmt);
+                configureIsotopeGPS(lIsotope, "PMT", pmt);
                 lUIinterface.runBeamOn(lNrDecays);
             }
         }
     }
+*/
 }
 
