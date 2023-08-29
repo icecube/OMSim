@@ -22,7 +22,7 @@ OMSim::OMSim() : mGeneralArgs("General options")
 
     mGeneralArgs.add_options()("help", "produce help message")
     ("output_file,o", po::value<std::string>()->default_value("output"), "filename for output")
-    ("numevents,n", po::value<G4int>()->default_value(0), "number of photons emitted per angle")
+    ("numevents,n", po::value<G4int>()->default_value(0), "number of events")
     ("visual,v", po::bool_switch()->default_value(false), "shows visualization of module after run")
     ("save_args", po::bool_switch()->default_value(true), "if true a json file with the args and seed is saved")
     ("seed", po::value<long>(), "seed for random engine. If none is given a seed from CPU time is used")

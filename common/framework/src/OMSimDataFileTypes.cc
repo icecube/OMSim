@@ -436,6 +436,7 @@ void ScintillationProperties::extractYield(G4String pTemperature)
         mFileData->parseKeyContentToVector(lYields, mJsonTree, "jYield", 1, false);
         TGraph *mYieldInterpolation = new TGraph(static_cast<int>(lTemperatures.size()), &lTemperatures[0], &lYields[0]);
         mMPT->AddConstProperty("SCINTILLATIONYIELD", mYieldInterpolation->Eval(std::stod(pTemperature)) / MeV);
+        mMPT->AddConstProperty("SCINTILLATIONYIELDELECTRONS", mYieldInterpolation->Eval(std::stod(pTemperature)) / MeV, true);
         mMPT->AddConstProperty("RESOLUTIONSCALE", 1.0);
     }
 }

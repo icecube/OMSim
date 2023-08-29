@@ -90,6 +90,20 @@
         "rcsv_ntuple": "cpp",
         "codecvt": "cpp",
         "search_action": "cpp",
-        "senum": "cpp"
+        "senum": "cpp",
+        "aida_ntuple": "cpp",
+        "columns": "cpp",
+        "c1d": "cpp",
+        "c2d": "cpp",
+        "c3d": "cpp",
+        "dps": "cpp",
+        "img": "cpp",
+        "mapmanip": "cpp",
+        "group": "cpp",
+        "vertices": "cpp",
+        "vmanip": "cpp",
+        "tree": "cpp",
+        "polygon": "cpp",
+        "loader": "cpp"
     }
 }

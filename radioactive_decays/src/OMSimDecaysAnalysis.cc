@@ -42,14 +42,15 @@ void OMSimDecaysAnalysis::writeDecayInformation()
 	for (int i = 0; i < (int)mDecaysStats.event_id.size(); i++)
 	{
 		mDatafile << mDecaysStats.event_id.at(i) << "\t";
-		mDatafile << mDecaysStats.decay_time.at(i) << "\t";
+		mDatafile << std::setprecision(13);
+		mDatafile <<  mDecaysStats.decay_time.at(i) << "\t";
+		mDatafile << std::setprecision(4);
 		mDatafile << mDecaysStats.isotope_name.at(i) << "\t";
 		mDatafile << mDecaysStats.decay_position.at(i).x() << "\t";
 		mDatafile << mDecaysStats.decay_position.at(i).y() << "\t";
 		mDatafile << mDecaysStats.decay_position.at(i).z() << "\t";
+		mDatafile << G4endl;
 	}
-	mDatafile << G4endl;
-
 	mDatafile.close();
 }
 
@@ -62,7 +63,9 @@ void OMSimDecaysAnalysis::writeHitInformation()
 	for (int i = 0; i < (int)lHits.event_id.size(); i++)
 	{
 		mDatafile << lHits.event_id.at(i) << "\t";
-		mDatafile << lHits.hit_time.at(i) << "\t";
+		mDatafile << std::setprecision(13);
+		mDatafile << lHits.hit_time.at(i)/s << "\t";
+		mDatafile << std::setprecision(4);
 		mDatafile << lHits.PMT_hit.at(i) << "\t";
 		mDatafile << lHits.photon_energy.at(i) << "\t";
 		mDatafile << lHits.photon_global_position.at(i).x() << "\t";
@@ -71,8 +74,14 @@ void OMSimDecaysAnalysis::writeHitInformation()
 		mDatafile << lHits.PMT_response.at(i).PE << "\t";
 		mDatafile << lHits.PMT_response.at(i).TransitTime << "\t";
 		mDatafile << lHits.PMT_response.at(i).DetectionProbability << "\t";
-
+		mDatafile << G4endl;
 	}
-	mDatafile << G4endl;
+	
 	mDatafile.close();
+}
+
+
+void OMSimDecaysAnalysis::reset()
+{
+	mDecaysStats = {};
 }

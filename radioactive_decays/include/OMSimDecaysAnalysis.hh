@@ -34,6 +34,7 @@ public:
     void writeDecayInformation();
     void writeHitInformation();
 
+    void reset();
     
 
 private:

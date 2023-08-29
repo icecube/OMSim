@@ -14,6 +14,8 @@ IsotopeDecays::IsotopeDecays(G4double pProductionRadius)
 void IsotopeDecays::generalGPS()
 {
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+    OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+
     lUIinterface.applyCommand("/control/verbose  0");
     lUIinterface.applyCommand("/run/verbose 0");
     lUIinterface.applyCommand("/event/verbose 0");
@@ -29,6 +31,9 @@ void IsotopeDecays::generalGPS()
     lUIinterface.applyCommand("/gps/pos/shape Sphere");
     lUIinterface.applyCommand("/gps/pos/radius ", mProductionRadius, " mm");
     lUIinterface.applyCommand("/gps/ang/type iso");
+
+    if(lArgs.get<bool>("scint_off")) lUIinterface.applyCommand("/process/inactivate Scintillation");
+    if(lArgs.get<bool>("cherenkov_off")) lUIinterface.applyCommand("/process/inactivate Cerenkov");
 }
 
 /**
