@@ -4,13 +4,11 @@
 
 #include "G4ProcessManager.hh"
 #include "G4ParticleTypes.hh"
-#include "G4StepLimiter.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4ComptonScattering.hh"
 #include "G4GammaConversion.hh"
 #include "G4PhotoElectricEffect.hh"
 
-#include "G4DecayPhysics.hh"
 #include "G4Cerenkov.hh"
 #include "G4OpRayleigh.hh"
 #include "G4OpMieHG.hh"
@@ -24,9 +22,6 @@
 #include "G4eIonisation.hh"
 #include "G4eBremsstrahlung.hh"
 
-#include "G4MuMultipleScattering.hh"
-#include "G4MuIonisation.hh"
-#include "G4MuBremsstrahlung.hh"
 
 #include "G4OpAbsorption.hh"
 #include "G4OpBoundaryProcess.hh"
@@ -67,29 +62,35 @@ void OMSimPhysicsList::ConstructProcess()
 	theCerenkovProcess->SetTrackSecondariesFirst(false);
 	theCerenkovProcess->SetMaxBetaChangePerStep(10.0);
 	theCerenkovProcess->SetMaxNumPhotonsPerStep(10000);
+	theCerenkovProcess->SetVerboseLevel(0);
 
 	G4eIonisation *theIonizationModel = new G4eIonisation();
 	theIonizationModel->SetEmModel(new G4LivermoreIonisationModel());
+	theIonizationModel->SetVerboseLevel(0);
 
 	G4PhotoElectricEffect *thePhotoElectricEffectModel = new G4PhotoElectricEffect();
 	thePhotoElectricEffectModel->SetEmModel(new G4LivermorePhotoElectricModel());
 
 	G4GammaConversion *theGammaConversionModel = new G4GammaConversion();
 	theGammaConversionModel->SetEmModel(new G4LivermoreGammaConversionModel());
-
+	theGammaConversionModel->SetVerboseLevel(0);
 	//	Scintillation Process
 	OMSimG4Scintillation *theScintProcess = new OMSimG4Scintillation("Scintillation");
 	theScintProcess->SetTrackSecondariesFirst(false);
+	theScintProcess->SetVerboseLevel(0);
 
 	G4RadioactiveDecay *theRadioactiveDecay = new G4RadioactiveDecay();
-
-	//theRadioactiveDecay->SetICM(true); // Internal Conversion
+	theRadioactiveDecay->SetVerboseLevel(0);
+	// theRadioactiveDecay->SetICM(true); // Internal Conversion
 	theRadioactiveDecay->SetARM(true); // Atomic Rearangement
 
 	G4ionIonisation *theBragg = new G4ionIonisation();
-	G4hMultipleScattering *multiple = new G4hMultipleScattering();
+	theBragg->SetVerboseLevel(0);
 
+	G4hMultipleScattering *multiple = new G4hMultipleScattering();
+	multiple->SetVerboseLevel(0);
 	G4PhysicsListHelper *ph = G4PhysicsListHelper::GetPhysicsListHelper();
+	ph->SetVerboseLevel(0);
 
 	ph->RegisterProcess(theRadioactiveDecay, G4GenericIon::GenericIon());
 
