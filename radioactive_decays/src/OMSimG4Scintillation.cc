@@ -216,9 +216,10 @@ void OMSimG4Scintillation::BuildPhysicsTable(const G4ParticleDefinition &)
     if (MPT)
     {
       G4MaterialPropertyVector *MPV =
-          MPT->GetProperty("FIRSTCOMPONENT");
+          MPT->GetProperty(kSCINTILLATIONCOMPONENT1);
       if (MPV)
       {
+
         // Retrieve the first intensity point in vector
         // of (photon energy, intensity) pairs
         G4double currentIN = (*MPV)[0];
@@ -365,7 +366,7 @@ G4VParticleChange *OMSimG4Scintillation::PostStepDoIt(const G4Track &aTrack,
   if (!MPT)
     return G4VRestDiscreteProcess::PostStepDoIt(aTrack, aStep);
 
-  G4MaterialPropertyVector *lScintSpectrum = MPT->GetProperty("SCINTILLATIONSPECTRUM");
+  G4MaterialPropertyVector *lScintSpectrum = MPT->GetProperty(kSCINTILLATIONCOMPONENT1);
 
   G4MaterialPropertyVector *lScintComponents = MPT->GetProperty("FRACTIONLIFETIMES");
 
@@ -381,14 +382,14 @@ G4VParticleChange *OMSimG4Scintillation::PostStepDoIt(const G4Track &aTrack,
   G4double ScintillationYield = MPT->GetConstProperty("SCINTILLATIONYIELD");
 
   G4ParticleDefinition *pDef = aParticle->GetDefinition();
-  
-  if (pDef == G4Electron::ElectronDefinition() || pDef == G4Gamma::GammaDefinition())
+
+  if (pDef == G4Electron::ElectronDefinition() || pDef == G4Positron::PositronDefinition() || pDef == G4Gamma::GammaDefinition())
   {
     ScintillationYield = MPT->GetConstProperty("SCINTILLATIONYIELDELECTRONS");
   }
 
   G4double MeanNumberOfPhotons = ScintillationYield * TotalEnergyDeposit;
-
+  
   G4int NumPhotons;
   if (MeanNumberOfPhotons > 10.)
   {
@@ -399,7 +400,7 @@ G4VParticleChange *OMSimG4Scintillation::PostStepDoIt(const G4Track &aTrack,
   {
     NumPhotons = G4int(G4Poisson(MeanNumberOfPhotons));
   }
-
+ 
   if (NumPhotons <= 0 || !fStackingFlag)
   {
     // return unchanged particle and no secondaries
@@ -430,58 +431,63 @@ G4VParticleChange *OMSimG4Scintillation::PostStepDoIt(const G4Track &aTrack,
     lFractions.push_back(lCurrentFraction);
   }
 
-  std::vector<G4int> Nums;
-  G4int lTotalNr = 0;
-  for (G4int scnt = 0; scnt < nscnt; scnt++)
-  {
+  
+std::vector<G4int> Nums(nscnt, 0);
+G4int lTotalNr = 0;
+
+for (G4int scnt = 0; scnt < nscnt; scnt++)
+{
     lFractions[scnt] /= lFractionNormalization;
-    Nums.push_back(G4int(round(lFractions[scnt] * NumPhotons)));
+    Nums[scnt] = G4int(lFractions[scnt] * NumPhotons);
     lTotalNr += Nums[scnt];
-  }
+}
 
-  if (lTotalNr != NumPhotons)
-  {
+G4double difference = lTotalNr - NumPhotons;
 
-    if (NumPhotons == 1)
+if (difference != 0)
+{
+    // Prepare a list of the fractional parts
+    std::vector<std::pair<G4double, G4int>> photonFractions;
+    G4double totalFractionalSum = 0.0;
+    for (G4int scnt = 0; scnt < nscnt; scnt++) 
     {
-      G4double random_nr = G4UniformRand();
-      G4double lTempSum = 0;
-      for (G4int scnt = 0; scnt < nscnt; scnt++)
-      {
-        lTempSum += lFractions[scnt];
-        if (random_nr < lTempSum)
+        G4double fractionalPart = lFractions[scnt] * NumPhotons - Nums[scnt];
+        photonFractions.push_back(std::make_pair(fractionalPart, scnt));
+        totalFractionalSum += fractionalPart;
+    }
+
+    // Distribute the leftover photons
+    for (G4int i = 0; i < abs(difference); i++) 
+    {
+        G4double randValue = G4UniformRand() * totalFractionalSum;
+        G4double cumulativeSum = 0;
+
+        for (auto& p : photonFractions)
         {
-          Nums[scnt] = 1;
-          break;
+            cumulativeSum += p.first;
+            if (randValue < cumulativeSum)
+            {
+                if (difference < 0)
+                    Nums[p.second]++;
+                else
+                    Nums[p.second]--;
+                totalFractionalSum -= p.first;
+                p.first = 0; // Ensure this bin is not selected again
+                break;
+            }
         }
-      }
     }
+}
 
-    else
-    {
-      G4double difference = lTotalNr - NumPhotons;
-      std::vector<G4double> diff;
-      for (G4int scnt = 0; scnt < nscnt; scnt++)
-      {
-        diff.push_back(Nums[scnt] - lFractions[scnt] * NumPhotons);
-      }
-      for (G4int i = 1; i <= abs(difference); i++)
-      {
-        if (difference < 0)
-        { // if i have rounded less photons than needed
-          G4int myindex = G4int(find(diff.begin(), diff.end(), *std::min_element(diff.begin(), diff.end())) - diff.begin());
-          Nums[myindex] += 1;
-          diff[myindex] = 0;
-        }
-        else if (difference > 0)
-        { // if i have rounded more photons than needed
-          G4int myindex = G4int(find(diff.begin(), diff.end(), *std::max_element(diff.begin(), diff.end())) - diff.begin());
-          Nums[myindex] -= 1;
-          diff[myindex] = 0;
-        }
-      }
-    }
-  }
+lTotalNr =0;
+for (G4int scnt = 0; scnt < nscnt; scnt++)
+{
+
+    lTotalNr += Nums[scnt];
+}
+if (lTotalNr != NumPhotons){
+  G4cout << lTotalNr << " " << NumPhotons << G4endl;
+}
 
   for (G4int scnt = 1; scnt <= nscnt; scnt++)
   {

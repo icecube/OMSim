@@ -5,6 +5,7 @@
 #include "OMSimInputData.hh"
 #include "OMSimLogger.hh"
 
+#include <G4MaterialPropertiesIndex.hh>
 #include <TGraph.h>
 #include <numeric>
 
@@ -310,7 +311,7 @@ void ScintillationProperties::extractInformation()
     if (lArgs.keyExists("temperature"))
     {
         G4cout << lArgs.keyExists("temperature") << G4endl;
-        lTemperature = lArgs.get<G4String>("temperature");
+        lTemperature = lArgs.get<std::string>("temperature");
     }
     findMPT();
     extractSpectrum();
@@ -348,8 +349,7 @@ void ScintillationProperties::extractSpectrum()
     mFileData->parseKeyContentToVector(lSpectrumIntensity, mJsonTree, "jSpectrumIntensity", 1, false);
     mFileData->parseKeyContentToVector(lEnergy, mJsonTree, "jSpectrumWavelength", mHC_eVnm, true);
     sortVectorByReference(lEnergy, lSpectrumIntensity);
-    mMPT->AddProperty("SCINTILLATIONSPECTRUM", &lEnergy[0], &lSpectrumIntensity[0], static_cast<int>(lSpectrumIntensity.size()), true);
-    mMPT->AddProperty("FIRSTCOMPONENT", &lEnergy[0], &lSpectrumIntensity[0], static_cast<int>(lSpectrumIntensity.size()), true);
+    mMPT->AddProperty("SCINTILLATIONCOMPONENT1", &lEnergy[0], &lSpectrumIntensity[0], static_cast<int>(lSpectrumIntensity.size()));
 }
 
 /**
@@ -470,7 +470,7 @@ void ScintillationProperties::extractYield(G4String pTemperature, G4String pYiel
     if (lArgs.keyExists(pArgKey))
     {
         log_warning("Given scintillation yield will override the yield for ALL scintillating materials defined via ScintillationProperties class!");
-        mMPT->AddConstProperty(pYieldPropertyName, lArgs.get<G4double>(pArgKey) / MeV);
+        mMPT->AddConstProperty(pYieldPropertyName, lArgs.get<G4double>(pArgKey) / MeV, true);
     }
     else
     {
@@ -489,7 +489,7 @@ void ScintillationProperties::extractYield(G4String pTemperature, G4String pYiel
         }
 
         TGraph *mYieldInterpolation = new TGraph(static_cast<int>(lTemperatures.size()), &lTemperatures[0], &lYields[0]);
-        mMPT->AddConstProperty(pYieldPropertyName, mYieldInterpolation->Eval(std::stod(pTemperature)) / MeV);
+        mMPT->AddConstProperty(pYieldPropertyName, mYieldInterpolation->Eval(std::stod(pTemperature)) / MeV, true);
     }
 }
 
@@ -542,9 +542,6 @@ void CustomProperties::extractConstProperties()
     for (const auto &item : lConstProperties)
     {
         G4String lKey = item.first;
-        G4cout << lKey << " "
-               << "ConstProperties." + lKey << G4endl;
-        G4cout << mFileName << G4endl;
         G4double lValue = mFileData->getValueWithUnit(mJsonTree.get<G4String>("jName"), "ConstProperties." + lKey);
         mMPT->AddConstProperty(lKey, lValue, true);
         G4String mssg = "Added " + lKey + " constant property to " + mJsonTree.get<G4String>("jMaterialName");
