@@ -5,6 +5,7 @@
 #include "OMSimInputData.hh"
 #include "OMSimLogger.hh"
 
+#include <G4MaterialPropertiesIndex.hh>
 #include <TGraph.h>
 #include <numeric>
 
@@ -308,17 +309,24 @@ void ScintillationProperties::extractInformation()
     G4String lTemperature = "-20";
 
     if (lArgs.keyExists("temperature"))
-    {   G4cout << lArgs.keyExists("temperature") << G4endl;
-        lTemperature = lArgs.get<G4String>("temperature");
+    {
+        G4cout << lArgs.keyExists("temperature") << G4endl;
+        lTemperature = lArgs.get<std::string>("temperature");
     }
     findMPT();
     extractSpectrum();
     extractLifeTimes(lTemperature);
-    extractYield(lTemperature);
-    G4String mssg = "Added scintillation properties to: " + mJsonTree.get<G4String>("jMaterialName")+". It will only scintillate if scintillation process is in PhysicsList.";
+    extractYieldAlpha(lTemperature);
+    extractYieldElectron(lTemperature);
+    mMPT->AddConstProperty("RESOLUTIONSCALE", 1.0);
+
+    G4String mssg = "Added scintillation properties to: " + mJsonTree.get<G4String>("jMaterialName") + ". It will only scintillate if scintillation process is in PhysicsList.";
     log_info(mssg);
 }
 
+/**
+ * @brief Finds and stores the Geant4 Material Properties Table for the material with name given by the key jMaterialName. If material does not exist it will crash!
+ */
 void ScintillationProperties::findMPT()
 {
     mObjectName = mJsonTree.get<G4String>("jMaterialName");
@@ -329,6 +337,11 @@ void ScintillationProperties::findMPT()
         mMPT = lMaterial->GetMaterialPropertiesTable();
 }
 
+/**
+ * @brief Extracts the scintillation spectrum from the data file and adds it to the material properties table.
+ *
+ * Currently no measurements of the temperature dependence of the scintillation spectrum were done. Spectrum data always at room temperature.
+ */
 void ScintillationProperties::extractSpectrum()
 {
     std::vector<G4double> lSpectrumIntensity;
@@ -336,10 +349,16 @@ void ScintillationProperties::extractSpectrum()
     mFileData->parseKeyContentToVector(lSpectrumIntensity, mJsonTree, "jSpectrumIntensity", 1, false);
     mFileData->parseKeyContentToVector(lEnergy, mJsonTree, "jSpectrumWavelength", mHC_eVnm, true);
     sortVectorByReference(lEnergy, lSpectrumIntensity);
-    mMPT->AddProperty("SCINTILLATIONSPECTRUM", &lEnergy[0], &lSpectrumIntensity[0], static_cast<int>(lSpectrumIntensity.size()), true);
+    mMPT->AddProperty("SCINTILLATIONCOMPONENT1", &lEnergy[0], &lSpectrumIntensity[0], static_cast<int>(lSpectrumIntensity.size()));
 }
 
-double ScintillationProperties::getLifeTimeTemperatureRange(double &minTemp, double &maxTemp)
+/**
+ * @brief Retrieves the range of temperatures available for scintillation lifetimes.
+ *
+ * @param pMinTemp Reference variable to receive the minimum temperature value.
+ * @param pMaxTemp Reference variable to receive the maximum temperature value.
+ */
+void ScintillationProperties::getLifeTimeTemperatureRange(double &minTemp, double &maxTemp)
 {
     const pt::ptree &lifetimeTree = mJsonTree.get_child("Lifetimes");
     minTemp = std::numeric_limits<double>::max();
@@ -353,6 +372,11 @@ double ScintillationProperties::getLifeTimeTemperatureRange(double &minTemp, dou
     }
 }
 
+/**
+ * @brief Extracts lifetimes and amplitudes for a given temperature from the data.
+ *
+ * @return Pair of vectors containing lifetimes and their corresponding amplitudes.
+ */
 std::pair<std::vector<G4double>, std::vector<G4double>> ScintillationProperties::extractLifeTimesForTemperature(G4String pTemperature)
 {
     pt::ptree temperatureSubTree = mJsonTree.get_child("Lifetimes." + pTemperature);
@@ -366,6 +390,13 @@ std::pair<std::vector<G4double>, std::vector<G4double>> ScintillationProperties:
     return {lTimes, lAmplitudes};
 }
 
+/**
+ * @brief Adjusts amplitudes of lifetimes based on distance to investigated temperature.
+ *
+ * @param pAmplitudes Reference to the vector of amplitudes to be adjusted.
+ * @param pT1 Investigated temperature.
+ * @param pT2 Actual temperature from the data.
+ */
 void ScintillationProperties::weightLifeTimesAmplitudes(std::vector<G4double> &pAmp, double T1, double T2)
 {
     double lWeight = 1.0 / std::abs(T1 - T2);
@@ -375,6 +406,10 @@ void ScintillationProperties::weightLifeTimesAmplitudes(std::vector<G4double> &p
     }
 }
 
+/**
+ * @brief Extracts the scintillation lifetimes from the file and weights them for a specific temperature.
+ * @param pTemperature Temperature for which lifetimes are to be weighted.
+ */
 void ScintillationProperties::extractLifeTimes(G4String pTemperature)
 {
     std::vector<G4double> allLTimes;
@@ -418,23 +453,68 @@ void ScintillationProperties::extractLifeTimes(G4String pTemperature)
     mMPT->AddProperty("FRACTIONLIFETIMES", &allLAmplitudes[0], &allLTimes[0], static_cast<int>(allLTimes.size()), true);
 }
 
-void ScintillationProperties::extractYield(G4String pTemperature)
+/**
+ * @brief Extract the yield from json tree.
+ *
+ * The data is the yield at different temperatures and is interpolated with a TGraph to the investigated temperature. If a user argument with a yield, it will overwrite the extracted data.
+ *
+ * @param pTemperature Temperature for which the yield is interpolated.
+ * @param pYieldPropertyName Name of the yield property (Geant4 internal).
+ * @param pArgKey Command arguments key.
+ * @param pTreeKeyTemperature Key to access temperature array in the tree.
+ * @param pTreeKeyYield Key to access yield array in the tree.
+ */
+void ScintillationProperties::extractYield(G4String pTemperature, G4String pYieldPropertyName, G4String pArgKey, G4String pTreeKeyTemperature, G4String pTreeKeyYield)
 {
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-    if (lArgs.keyExists("scint_yield"))
+    if (lArgs.keyExists(pArgKey))
     {
-        log_warning("Given scintillation yield will override the yield for all scintillating materisl defined via ScintillationProperties class!");
-        mMPT->AddConstProperty("SCINTILLATIONYIELD", lArgs.get<G4double>("scint_yield") / MeV);
+        log_warning("Given scintillation yield will override the yield for ALL scintillating materials defined via ScintillationProperties class!");
+        mMPT->AddConstProperty(pYieldPropertyName, lArgs.get<G4double>(pArgKey) / MeV, true);
     }
     else
     {
+        std::vector<G4double> lTemperatures, lYields;
 
-        std::vector<G4double> lTemperatures;
-        std::vector<G4double> lYields;
-        mFileData->parseKeyContentToVector(lTemperatures, mJsonTree, "jYieldTemperature", 1, false);
-        mFileData->parseKeyContentToVector(lYields, mJsonTree, "jYield", 1, false);
+        // Safely attempt to parse the JSON
+        try
+        {
+            mFileData->parseKeyContentToVector(lTemperatures, mJsonTree, pTreeKeyTemperature, 1, false);
+            mFileData->parseKeyContentToVector(lYields, mJsonTree, pTreeKeyYield, 1, false);
+        }
+        catch (...)
+        {
+            log_error(("Error parsing the JSON for key: " + pTreeKeyYield).c_str());
+            throw std::invalid_argument(("Error parsing the JSON for key: " + pTreeKeyYield).c_str());
+        }
+
         TGraph *mYieldInterpolation = new TGraph(static_cast<int>(lTemperatures.size()), &lTemperatures[0], &lYields[0]);
-        mMPT->AddConstProperty("SCINTILLATIONYIELD", mYieldInterpolation->Eval(std::stod(pTemperature)) / MeV);
+        mMPT->AddConstProperty(pYieldPropertyName, mYieldInterpolation->Eval(std::stod(pTemperature)) / MeV, true);
+    }
+}
+
+/**
+ * @brief Extracts and interpolates the alpha particle scintillation yield for a given temperature.
+ */
+void ScintillationProperties::extractYieldAlpha(G4String pTemperature)
+{
+    extractYield(pTemperature, "SCINTILLATIONYIELD", "yield_alphas", "jYieldAlphaTemperature", "jYieldAlpha");
+}
+
+/**
+ * @brief Extracts and interpolates the electron scintillation yield for a given temperature.
+ * Uses the alpha yield as fallback if electron yield is not given.
+ */
+void ScintillationProperties::extractYieldElectron(G4String pTemperature)
+{
+    try
+    {
+        extractYield(pTemperature, "SCINTILLATIONYIELDELECTRONS", "yield_electrons", "jYieldElectronTemperature", "jYieldElectron");
+    }
+    catch (...)
+    {
+        log_warning("Electron yield not found, using alpha yield.");
+        extractYield(pTemperature, "SCINTILLATIONYIELDELECTRONS", "yield_alphas", "jYieldAlphaTemperature", "jYieldAlpha");
     }
 }
 
@@ -462,8 +542,6 @@ void CustomProperties::extractConstProperties()
     for (const auto &item : lConstProperties)
     {
         G4String lKey = item.first;
-        G4cout << lKey << " " << "ConstProperties." + lKey << G4endl;
-        G4cout << mFileName << G4endl;
         G4double lValue = mFileData->getValueWithUnit(mJsonTree.get<G4String>("jName"), "ConstProperties." + lKey);
         mMPT->AddConstProperty(lKey, lValue, true);
         G4String mssg = "Added " + lKey + " constant property to " + mJsonTree.get<G4String>("jMaterialName");

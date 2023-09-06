@@ -276,9 +276,14 @@ public:
 };
 
 
+
 /**
- * @class   ScintillationProperties
- * @brief   This class is responsible for parsing scintillation properties to already defined materials 
+ * @class ScintillationProperties
+ * @brief Class to extract and apply scintillation properties to existing materials.
+ * 
+ * This class is responsible for extracting scintillation properties from a data file
+ * and applying them to a Geant4 material's properties table.
+ * 
  * @ingroup common
  */
 class ScintillationProperties : public abcDataFile
@@ -289,10 +294,12 @@ public:
 private:
     void extractSpectrum();
     void extractLifeTimes(G4String pTemperature);
-    double getLifeTimeTemperatureRange(double& pMinTemp, double& pMaxTemp);
+    void getLifeTimeTemperatureRange(double& pMinTemp, double& pMaxTemp);
     std::pair<std::vector<G4double>, std::vector<G4double>> extractLifeTimesForTemperature(G4String pTemperature);
     void weightLifeTimesAmplitudes(std::vector<G4double>& pAmplitudes, double pT1, double pT2);
-    void extractYield(G4String pTemperature);
+    void extractYieldAlpha(G4String pTemperature);
+    void extractYieldElectron(G4String pTemperature);
+    void extractYield(G4String pTemperature, G4String pYieldPropertyName, G4String pArgKey, G4String pTreeKeyTemperature, G4String pTreeKeyYield);
     void findMPT();
     G4MaterialPropertiesTable *mMPT;
 };

@@ -73,6 +73,7 @@ public:
      * @brief UIEx session is started for visualisation.
      */
     void startVisualisation();
+    OMSimDetectorConstruction* getDetectorConstruction();
     po::options_description mGeneralArgs;
 
 private:

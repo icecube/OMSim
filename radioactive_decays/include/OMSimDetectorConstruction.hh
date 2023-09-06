@@ -2,6 +2,7 @@
 #define OMSimDetectorConstruction_h 1
 
 #include "OMSimMDOM.hh"
+#include "abcDetectorComponent.hh"
 
 #include <G4Orb.hh>
 #include <G4VUserDetectorConstruction.hh>
@@ -19,11 +20,11 @@ public:
     ~OMSimDetectorConstruction();
     G4VPhysicalVolume *Construct();
     G4VPhysicalVolume *mWorldPhysical;
+    OpticalModule* mOpticalModule;
 
 private:
     G4Orb *mWorldSolid;
     G4LogicalVolume *mWorldLogical;
-
     void constructWorld();
     InputDataManager *mData;
 };

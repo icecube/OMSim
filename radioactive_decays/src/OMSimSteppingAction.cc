@@ -1,11 +1,6 @@
 #include "OMSimSteppingAction.hh"
 
-#include "G4VProcess.hh"
-#include "G4RunManager.hh"
-#include "G4SteppingManager.hh"
 #include "G4Step.hh"
-#include "G4ThreeVector.hh"
-//since Geant4.10: include units manually
 #include <G4SystemOfUnits.hh>
 
 void OMSimSteppingAction::UserSteppingAction(const G4Step* aStep)
