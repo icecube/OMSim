@@ -9,7 +9,7 @@
 
 
 #ifndef OMSimIBD
-#define OMSimIBD 1
+#define OMSimIBD_1
  
 #include "G4VUserPrimaryGeneratorAction.hh"
 

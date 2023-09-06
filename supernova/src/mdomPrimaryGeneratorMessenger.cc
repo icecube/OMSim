@@ -7,13 +7,13 @@
  */
 
 #include "mdomPrimaryGeneratorMessenger.hh"
-#include "mdomPrimaryGeneratorAction.hh"
+#include "OMSimPrimaryGeneratorAction.hh"
 #include "G4UIdirectory.hh"
 #include "G4UIcmdWithAnInteger.hh"
 
 
 mdomPrimaryGeneratorMessenger::mdomPrimaryGeneratorMessenger
-                                                  (mdomPrimaryGeneratorAction* Gun)
+                                                  (OMSimPrimaryGeneratorAction* Gun)
 :G4UImessenger(),
  Action(Gun),
  fDir(0), 

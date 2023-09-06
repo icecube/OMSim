@@ -1,4 +1,4 @@
-/** @file mdomPrimaryGeneratorAction.cc
+/** @file OMSimPrimaryGeneratorAction.cc
  *  @brief Main primary generator. Chooses between generators 0 (gps), 1 (SN enes), 2 (SN ibd), 3 (solar neutrinos)
  * 
  *  @author Cristian Jesus Lozano Mariscal (c.lozano@wwu.de)
@@ -6,7 +6,7 @@
  *  @version Geant4 10.7
  */
 
-#include "mdomPrimaryGeneratorAction.hh"
+#include "OMSimPrimaryGeneratorAction.hh"
 #include "OMSimIBD.hh"
 #include "mdomPrimaryGeneratorMessenger.hh"
 
@@ -19,7 +19,7 @@
 #include "Randomize.hh"
 
 
-mdomPrimaryGeneratorAction::mdomPrimaryGeneratorAction()
+OMSimPrimaryGeneratorAction::OMSimPrimaryGeneratorAction()
  : G4VUserPrimaryGeneratorAction(),
    fParticleGun(0),
    fAction0(0),
@@ -35,16 +35,16 @@ mdomPrimaryGeneratorAction::mdomPrimaryGeneratorAction()
 
   
   fAction0 = new OMSimIBD(fParticleGun);
-  //fAction1 = new mdomPrimaryGeneratorAction1(fParticleGun);
-  //fAction2 = new mdomPrimaryGeneratorAction2(fParticleGun);
-  //fAction3 = new mdomPrimaryGeneratorAction3(fParticleGun);
+  //fAction1 = new OMSimPrimaryGeneratorAction1(fParticleGun);
+  //fAction2 = new OMSimPrimaryGeneratorAction2(fParticleGun);
+  //fAction3 = new OMSimPrimaryGeneratorAction3(fParticleGun);
   fGunMessenger = new mdomPrimaryGeneratorMessenger(this);    
   
 }
 
 
 
-mdomPrimaryGeneratorAction::~mdomPrimaryGeneratorAction()
+OMSimPrimaryGeneratorAction::~OMSimPrimaryGeneratorAction()
 {
   delete fAction0;
   /*
@@ -58,7 +58,7 @@ mdomPrimaryGeneratorAction::~mdomPrimaryGeneratorAction()
 
 
 
-void mdomPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
+void OMSimPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
   switch(fSelectedAction)
   {

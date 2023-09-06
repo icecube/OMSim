@@ -124,7 +124,7 @@ public:
 	 * @param y2 The y-value corresponding to x2.
 	 * @return The interpolated y-value for the given x based on the two provided data points.
 	 */
-	G4double OMSimSNTools::linealinterpolation(G4double x, G4double x1, G4double x2, G4double y1, G4double y2);
+	G4double linealinterpolation(G4double x, G4double x1, G4double x2, G4double y1, G4double y2);
 
 	/**
 	 * @brief Calculates pinching parameter of energy spectrum

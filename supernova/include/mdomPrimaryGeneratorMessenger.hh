@@ -4,7 +4,7 @@
 #include "G4UImessenger.hh"
 #include "globals.hh"
 
-class mdomPrimaryGeneratorAction;
+class OMSimPrimaryGeneratorAction;
 class G4UIdirectory;
 class G4UIcmdWithAnInteger;
 
@@ -12,13 +12,13 @@ class G4UIcmdWithAnInteger;
 class mdomPrimaryGeneratorMessenger: public G4UImessenger
 {
   public:
-    mdomPrimaryGeneratorMessenger(mdomPrimaryGeneratorAction*);
+    mdomPrimaryGeneratorMessenger(OMSimPrimaryGeneratorAction*);
    ~mdomPrimaryGeneratorMessenger();
     
     virtual void SetNewValue(G4UIcommand*, G4String);
     
   private:
-    mdomPrimaryGeneratorAction* Action;
+    OMSimPrimaryGeneratorAction* Action;
     
     G4UIdirectory*        fDir;       
     G4UIcmdWithAnInteger* fSelectActionCmd;

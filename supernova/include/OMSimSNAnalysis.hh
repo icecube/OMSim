@@ -1,5 +1,5 @@
-#ifndef mdomAnalysisManager_h
-#define mdomAnalysisManager_h 1
+#ifndef OMSimSNAnalysis_h
+#define OMSimSNAnalysis_h 1
 
 #include "G4Types.hh"
 #include "G4String.hh"
@@ -34,11 +34,11 @@ struct EvtStat {
 
 
 
-class MdomAnalysisManager
+class OMSimSNAnalysis
 {
 	public:
-		MdomAnalysisManager();
-		~MdomAnalysisManager();
+		OMSimSNAnalysis();
+		~OMSimSNAnalysis();
 		void ResetEvent();
 		void AnalyzeEvent();
         void Helper_AnalyzeEvent(EvtStat& this_evtStat);
@@ -77,6 +77,17 @@ class MdomAnalysisManager
 		G4double realdistance;
         
         EvtStat evtStat0; 
+
+		/**
+		 * @brief Returns the singleton instance of the OMSimSNAnalysis.
+		 * @return A reference to the singleton instance.
+		 */
+		static OMSimSNAnalysis &getInstance()
+		{
+			static OMSimSNAnalysis instance;
+			return instance;
+		}
+
 	private:
 	 //there is no privacy here
 };

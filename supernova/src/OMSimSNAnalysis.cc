@@ -1,4 +1,4 @@
-/** @file mdomAnalysisManager.cc
+/** @file OMSimSNAnalysis.cc
  *  @brief Analyze data and write output files
  * 
  *  @author Lew Classen (lclassen@wwu.de), Cristian Jesus Lozano Mariscal (c.lozano@wwu.de)
@@ -6,7 +6,7 @@
  *  @version Geant4 10.7
  */
 
-#include "mdomAnalysisManager.hh"
+#include "OMSimSNAnalysis.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4ios.hh"
 
@@ -29,13 +29,13 @@ extern G4int	gn_mDOMs;
 extern G4bool		gfixmeanenergy;
 
 
-MdomAnalysisManager::MdomAnalysisManager(){
+OMSimSNAnalysis::OMSimSNAnalysis(){
   }
 
-MdomAnalysisManager::~MdomAnalysisManager(){
+OMSimSNAnalysis::~OMSimSNAnalysis(){
 }
 
-void MdomAnalysisManager::ResetEvent()
+void OMSimSNAnalysis::ResetEvent()
 {
 	foundPhoton = false;
 	photonTheta = -99.;
@@ -45,7 +45,7 @@ void MdomAnalysisManager::ResetEvent()
     Helper_ResetEvent(evtStat0);
 }
 
-void MdomAnalysisManager::Helper_ResetEvent(EvtStat& this_evtStat)
+void OMSimSNAnalysis::Helper_ResetEvent(EvtStat& this_evtStat)
 {
     this_evtStat.nrHitPMTs = 0;
     this_evtStat.nrHitTot = 0;
@@ -55,7 +55,7 @@ void MdomAnalysisManager::Helper_ResetEvent(EvtStat& this_evtStat)
 
 
 
-void MdomAnalysisManager::AnalyzeEvent() {
+void OMSimSNAnalysis::AnalyzeEvent() {
     //G4cout << (G4int)hitStats.size() << G4endl;
     /*
     G4int counter = 0;
@@ -78,7 +78,7 @@ void MdomAnalysisManager::AnalyzeEvent() {
 }
 
 
-void MdomAnalysisManager::Helper_AnalyzeEvent(EvtStat& this_evtStat)
+void OMSimSNAnalysis::Helper_AnalyzeEvent(EvtStat& this_evtStat)
 {
     std::vector<G4int> modulescounter;
     modulescounter.resize(gn_mDOMs);
@@ -108,7 +108,7 @@ void MdomAnalysisManager::Helper_AnalyzeEvent(EvtStat& this_evtStat)
     }
 }
 
-void MdomAnalysisManager::WriteHeader()
+void OMSimSNAnalysis::WriteHeader()
 {
     G4String part;
     G4String nu;
@@ -166,7 +166,7 @@ void MdomAnalysisManager::WriteHeader()
     }
 }
 
-void MdomAnalysisManager::HelpTheHeader(std::fstream& thisfile)
+void OMSimSNAnalysis::HelpTheHeader(std::fstream& thisfile)
 {
     thisfile << "# Total hits | Modules hit | PMTs hit |";
     if (gQEweigh) {
@@ -185,7 +185,7 @@ void MdomAnalysisManager::HelpTheHeader(std::fstream& thisfile)
 }
 
 
-void MdomAnalysisManager::Writer_InfoFile() {
+void OMSimSNAnalysis::Writer_InfoFile() {
       if (gfixmeanenergy == false) {
 
       if (gSNGun == 1 || gSNGun == 2 || gSNGun == 3)  {
@@ -209,7 +209,7 @@ void MdomAnalysisManager::Writer_InfoFile() {
       }
 }
 
-void MdomAnalysisManager::Writer_data(std::fstream& thisfile, EvtStat& this_evtStat)
+void OMSimSNAnalysis::Writer_data(std::fstream& thisfile, EvtStat& this_evtStat)
 {
       if (gfixmeanenergy == false) {
 

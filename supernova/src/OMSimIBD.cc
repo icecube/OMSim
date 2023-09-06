@@ -1,7 +1,6 @@
-#include "mdomPrimaryGeneratorAction.hh"
 #include "OMSimIBD.hh"
-#include "mdomAnalysisManager.hh"
-
+#include "OMSimSNAnalysis.hh"
+#include "OMSimCommandArgsTable.hh"
 
 #include "G4Event.hh"
 #include "G4GeneralParticleSource.hh"
@@ -21,7 +20,6 @@ extern std::vector<double> readColumnDouble (G4String fn, int col);
 //extern MdomAnalysisManager gAnalysisManager;
 
 extern G4double	gSNmeanEnergy;
-extern G4bool		gfixmeanenergy;
 extern G4double 	gfixalpha;
 
 OMSimIBD::OMSimIBD(G4ParticleGun* gun)
@@ -29,7 +27,7 @@ OMSimIBD::OMSimIBD(G4ParticleGun* gun)
 {        
   // building energy distribution of electronic antineutrinos...
   //
-  if (gfixmeanenergy == false) {
+  if ((OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy")) == false) {
     nubar_time = readColumnDouble(gnubarfluxname, 1);
     nubar_luminosity = readColumnDouble(gnubarfluxname, 2);
     nubar_meanenergy = readColumnDouble(gnubarfluxname, 3);
@@ -81,8 +79,7 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
   
   OMSimSNTools SNToolBox;
 
-  G4ThreeVector Position;
-  SNToolBox.RandomPosition(Position);
+  G4ThreeVector Position = SNToolBox.RandomPosition();
   ParticleGun->SetParticlePosition(Position);
   //G4cout << Position << G4endl;
   beggining:
@@ -93,8 +90,9 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
   G4double timeofspectrum;
   G4double Emean;
   G4double Emean2;
+  G4double alpha;
   G4double nubar_energy;
-  if (gfixmeanenergy == false) {
+  if ((OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy")) == false) {
     timeofspectrum = SNToolBox.InverseCumulAlgorithm(x_lum, f_lum, a_lum, Fc_lum,nPoints_lum);
     
     G4int timepos = SNToolBox.findtime(timeofspectrum, nubar_time);
@@ -146,12 +144,13 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
   G4double Weigh = SNToolBox.WeighMe(sigma, NTargets);
   
   //sending stuff to analysismanager
-  gAnalysisManager.nuTime = timeofspectrum;
-  gAnalysisManager.nuMeanEnergy = Emean;
-  gAnalysisManager.nuEnergy = nubar_energy;
-  gAnalysisManager.cosTheta = costheta;
-  gAnalysisManager.primaryEnergy = p_energy; 
-  gAnalysisManager.weigh = Weigh;
+  OMSimSNAnalysis &lAnalysisManager = OMSimSNAnalysis::getInstance();
+  lAnalysisManager.nuTime = timeofspectrum;
+  lAnalysisManager.nuMeanEnergy = Emean;
+  lAnalysisManager.nuEnergy = nubar_energy;
+  lAnalysisManager.cosTheta = costheta;
+  lAnalysisManager.primaryEnergy = p_energy; 
+  lAnalysisManager.weigh = Weigh;
 
   
   // G4cout << timeofspectrum<< "      " << nubar_energy/MeV << "        " << p_energy/MeV << "        " << costheta << G4endl;

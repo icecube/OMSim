@@ -1,22 +1,21 @@
-#ifndef mdomPrimaryGeneratorAction_h
-#define mdomPrimaryGeneratorAction_h 1
+#ifndef OMSimPrimaryGeneratorAction_h
+#define OMSimPrimaryGeneratorAction_h 1
 
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "globals.hh"
 
 
 class OMSimIBD;
-
 class G4ParticleGun;
 class G4Event;
 class mdomPrimaryGeneratorMessenger;
 
 
-class mdomPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
+class OMSimPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {
   public:
-    mdomPrimaryGeneratorAction();    
-   ~mdomPrimaryGeneratorAction();
+    OMSimPrimaryGeneratorAction();    
+   ~OMSimPrimaryGeneratorAction();
 
   public:
     virtual void GeneratePrimaries(G4Event*);
@@ -29,9 +28,9 @@ class mdomPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 
     OMSimIBD*  GetAction0() { return fAction0; };
     /*
-    mdomPrimaryGeneratorAction1*  GetAction1() { return fAction1; };
-    mdomPrimaryGeneratorAction2*  GetAction2() { return fAction2; };
-    mdomPrimaryGeneratorAction3*  GetAction3() { return fAction3; };*/
+    OMSimPrimaryGeneratorAction1*  GetAction1() { return fAction1; };
+    OMSimPrimaryGeneratorAction2*  GetAction2() { return fAction2; };
+    OMSimPrimaryGeneratorAction3*  GetAction3() { return fAction3; };*/
       
     
   private:
@@ -39,9 +38,9 @@ class mdomPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 
 
     OMSimIBD* fAction0;
-    /*mdomPrimaryGeneratorAction1* fAction1;
-    mdomPrimaryGeneratorAction2* fAction2;
-    mdomPrimaryGeneratorAction3* fAction3;*/
+    /*OMSimPrimaryGeneratorAction1* fAction1;
+    OMSimPrimaryGeneratorAction2* fAction2;
+    OMSimPrimaryGeneratorAction3* fAction3;*/
     G4int                    fSelectedAction;
     mdomPrimaryGeneratorMessenger* fGunMessenger;     
        

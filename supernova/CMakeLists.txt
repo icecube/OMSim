@@ -1,8 +1,8 @@
 # Create lists of source files
-file(GLOB EFFECTIVE_AREA_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc")
+file(GLOB SN_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc")
 
 ## Create an executable
-add_executable(OMSim_supernova ${CMAKE_CURRENT_SOURCE_DIR}/OMSim_supernova.cc ${COMMON_SOURCES} ${DECAY_SOURCES})
+add_executable(OMSim_supernova ${CMAKE_CURRENT_SOURCE_DIR}/OMSim_supernova.cc ${COMMON_SOURCES} ${SN_SOURCES})
 #
 ## Specify include directories for this executable
 target_include_directories(OMSim_supernova PUBLIC
