@@ -49,6 +49,21 @@ public:
    	 */
 	G4ThreeVector RandomPosition();
 
+
+	/**
+	 * @brief Retrieves file names for neutrino and antineutrino fluxes based on a specified supernova model.
+	 *
+	 * This function provides the corresponding file names for neutrino and antineutrino fluxes
+	 * depending on the supernova model identified by the input value.
+	 * Files are located in "supernova/models"
+	 * 
+	 * @param value The integer identifier representing a specific supernova model.
+	 * @todo Handle error cases more robustly than just console output.
+	 * @return A pair containing the neutrino and antineutrino flux file names.
+	 */
+	std::pair<std::string, std::string> getFileNames(int value);
+
+
 	/**
 	 * @brief Samples a value from a given distribution using the Inverse CDF method.
 	 *

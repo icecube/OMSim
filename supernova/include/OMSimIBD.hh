@@ -16,6 +16,7 @@
 #include "globals.hh"
 #include <vector>
 #include "G4ThreeVector.hh"
+#include "OMSimSNTools.hh"
 
 class G4ParticleGun;
 class G4Event;
@@ -89,10 +90,11 @@ public:
     G4double Gf;
     G4double consg;
     
-	std::vector<double> nubar_time;
-	std::vector<double> nubar_luminosity;
-	std::vector<double> nubar_meanenergy;
-	std::vector<double> nubar_meanenergysquare;
+    //here model data will be stored
+	std::vector<G4double> mNuBar_time;
+	std::vector<G4double> mNuBar_luminosity;
+	std::vector<G4double> mNuBar_meanenergy;
+	std::vector<G4double> mNuBar_meanenergysquare;
 
 private:     
     G4ParticleGun* ParticleGun;
@@ -140,6 +142,7 @@ private:
      */
     G4double TotalCrossSection(G4double energy);
 
+    OMSimSNTools mSNToolBox;
     G4double mFixedenergy;
     G4double mFixedenergy2;
     G4double mAlpha;

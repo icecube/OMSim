@@ -6,19 +6,36 @@
 #include <stdlib.h>
 #include "G4Navigator.hh"
 #include "G4TouchableHistoryHandle.hh"
+#include "OMSimCommandArgsTable.hh"
 
-extern double gworldsize;
-extern  G4double gRadius;
-extern  G4double gHeight;
-extern G4bool gfixmeanenergy;
+
 extern G4Navigator* aNavigator;
-extern G4double	gmdomseparation;
-extern G4int	gn_mDOMs;
 
 OMSimSNTools::OMSimSNTools(){
 }
 
 OMSimSNTools::~OMSimSNTools(){
+}
+
+std::pair<std::string, std::string> OMSimSNTools::getFileNames(int value) {
+    //TODO: make this more robust?
+    std::string basePath = "../supernova/models/";
+    switch(value) {
+        case 0:
+            return {basePath + "Flux_Nu_Heavy_ls220.cfg", basePath + "Flux_Nubar_Heavy_ls220.cfg"}; //27 solar masses type II model
+        case 1:
+            return {basePath + "Flux_Nu_light_ls220.cfg", basePath + "Flux_Nubar_light_ls220.cfg"}; //9.6 solar masses type II model
+        case 2:
+            return {basePath + "nu_DDT.cfg", basePath + "nubar_DDT.cfg"}; //type 1 SN
+        case 3:
+            return {basePath + "nu_GCD.cfg", basePath + "nubar_GCD.cfg"}; //type 1 SN
+        case 4:
+            return {basePath + "Flux_Nu_tailSN.cfg", basePath + "Flux_Nubar_tailSN.cfg"}; //long tailed type II
+        default:
+            //TODO handle error properly
+            G4cout << "ERROR!! Choose a valid SN model" << G4endl;
+            return {"", ""};
+    }
 }
 
 bool OMSimSNTools::CheckVolumeFormDOMs(G4ThreeVector position){
@@ -30,6 +47,11 @@ bool OMSimSNTools::CheckVolumeFormDOMs(G4ThreeVector position){
 }
 
 G4ThreeVector OMSimSNTools::RandomPosition() {
+  //now we assume that the world is a cylinder!
+  double gHeight = OMSimCommandArgsTable::getInstance().get<G4double>("rheight");
+  double gworldsize = OMSimCommandArgsTable::getInstance().get<G4double>("rworld");
+  double gRadius = gworldsize; //worldsize is actually the radius. Left here for clarity 
+
   //maximum lenght of generation cylinder "Rmax"
   //Note that this is the distance from the center of the cylinder to the corner of the circumscribed rectangle around the cylinder
   G4double Rmax = pow(3,1./2.)*gworldsize*m; 
@@ -73,7 +95,7 @@ G4double OMSimSNTools::linealinterpolation(G4double x, G4double x1, G4double x2,
 G4double OMSimSNTools::EnergyDistribution(G4double Emean, G4double Emean2, G4double& alpha)
 {   
   G4int nPoints1 = 500;
-  if (gfixmeanenergy == false) {
+  if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
 	  alpha = GetAlpha(Emean, Emean2);
   } 
   std::vector<G4double> x1;
@@ -185,7 +207,8 @@ void MakeEnergyDistribution(G4double Emean, G4double alpha, G4int nPoints, std::
 
 
 G4double OMSimSNTools::WeighMe(G4double sigma, G4double NTargets) {
-  double weigh = sigma*NTargets*(2*gHeight);
+  //Assuming a cylinder!
+  double weigh = sigma*NTargets*(2*OMSimCommandArgsTable::getInstance().get<G4double>("rheight"));
   return weigh;
 }
 

@@ -10,6 +10,12 @@
 #include "OMSimSNAnalysis.hh"
 #include "OMSimPrimaryGeneratorAction.hh"
 #include "OMSimHitManager.hh"
+#include "G4Navigator.hh"
+
+
+// TODO: change this global. getInstance?
+G4Navigator* aNavigator = new G4Navigator();
+
 
 namespace po = boost::program_options;
 
@@ -50,7 +56,7 @@ int main(int argc, char *argv[])
 		lSpecific.add_options()
 		("wheight,wh", po::value<G4double>()->default_value(20), "Height of cylindrical world volume, in m")
 		("wradius,wr", po::value<G4double>()->default_value(20), "Radius of cylindrical world volume, in m")
-		("SNtype", po::value<G4int>()->default_value(0), "0=27 solar mass type II (ls220), 1=9.6 solar mass type II (ls220)")
+		("SNtype", po::value<G4int>()->default_value(0), "0=27 solar mass type II (ls220), 1=9.6 solar mass type II (ls220). Models 2,3,4 correspond to old tests with other models.")
 		("SNgun", po::value<G4int>()->default_value(0), "Select interaction to simulate: 0=ENES, 1=IBD (no neutron capture included)")
 		("SNfixEnergy", po::bool_switch(), "Instead of using the energy distribution of the model, it generates all neutrinos from an energy distribution with fixed mean energy and alpha")
 		("SNmeanE", po::value<G4double>()->default_value(10.0), "If --SNfixEnergy, use this mean energy to generate the neutrinos ")

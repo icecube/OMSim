@@ -37,6 +37,9 @@ struct EvtStat {
 class OMSimSNAnalysis
 {
 	public:
+		//TODO change this when QE is properly implemented!!!!
+	    bool gQEweigh = false; //old thing for weighing hits with QE
+		
 		OMSimSNAnalysis();
 		~OMSimSNAnalysis();
 		void ResetEvent();

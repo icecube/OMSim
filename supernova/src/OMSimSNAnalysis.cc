@@ -9,24 +9,7 @@
 #include "OMSimSNAnalysis.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4ios.hh"
-
-extern G4double gposX;
-extern G4double gposY;
-extern G4double gposZ;
-extern G4double gtheta;
-extern G4double gphi;
-extern G4double 	gtMin, 	gfMin;
-extern G4double gRadius;
-extern G4double gHeight;
-extern G4bool gQE;
-extern G4bool gQEweigh;
-extern G4int 	gSNGun;
-extern G4double	gDistance;
-
-extern G4int	gn_mDOMs;
-
-
-extern G4bool		gfixmeanenergy;
+#include "OMSimCommandArgsTable.hh"
 
 
 OMSimSNAnalysis::OMSimSNAnalysis(){
@@ -80,6 +63,7 @@ void OMSimSNAnalysis::AnalyzeEvent() {
 
 void OMSimSNAnalysis::Helper_AnalyzeEvent(EvtStat& this_evtStat)
 {
+    int gn_mDOMs = 1; //TODO makes this general! 
     std::vector<G4int> modulescounter;
     modulescounter.resize(gn_mDOMs);
     for (int k=0; k<gn_mDOMs; k++) {
@@ -110,60 +94,8 @@ void OMSimSNAnalysis::Helper_AnalyzeEvent(EvtStat& this_evtStat)
 
 void OMSimSNAnalysis::WriteHeader()
 {
-    G4String part;
-    G4String nu;
-    //datafile << "#Generated in a cylinder of r = " << gRadius/m<< "m and total height of "<< 2*gHeight/m << " m"<< G4endl;
-    if (gfixmeanenergy == false) {
-
-    if (gSNGun == 1){
-        maininfofile<< "# World with "<< gn_mDOMs << " mDOMs" << G4endl;
-            maininfofile << "# Neutrino electron elastic scattering from SN at 10kpc" << G4endl;
-            part = "e-";
-            nu = "nu";
-    } else if (gSNGun == 2){
-        maininfofile<< "# World with "<< gn_mDOMs << " mDOMs" << G4endl;
-            maininfofile << "# Inverse beta decay from SN at 10kpc" << G4endl;
-            part = "e+";
-            nu = "nubar";
-    } else if (gSNGun == 3){
-        maininfofile<< "# World with "<< gn_mDOMs << " mDOMs" << G4endl;
-            maininfofile << "# Solar neutrinos! Weigh take into account the total cross section but not the flux!" << G4endl;
-            part = "e-";
-            nu = "nu";
-    }
-    }
-    if (gSNGun == 0) {
-        realdistance = gDistance*m;// - ((0.5 * 356.0)/1000.0)*m;
-        datafile << "# World with "<< gn_mDOMs << " mDOMs" << G4endl;
-        datafile << "# Gammas at "<< realdistance/m << " meters" <<G4endl;
-        datafile << "# RealDistance [m] | Vertex Position (X, Y, Z) [m] | Primary direction (Px,Py,Pz)  |Total hits | ModulesHit | PMTsHit |";
-        if (gQEweigh) {
-            datafile << " Total QE prob |";
-            }
-            datafile <<"...for PMT hit...| Module number | PMT number | Hits in that PMT |";
-            datafile << "...for Hit...";
-            if (gQEweigh) {
-                    datafile << " QE prob |";
-            }
-            datafile << " hit time |";
-            if (gQEweigh) {
-                datafile << "...end of hit loop...| Total QE prob in PMT |" << G4endl;
-            }
-            datafile << "#"<< G4endl;
-            datafile << "#"<< G4endl;
-        }
-    else if (gSNGun == 1 || gSNGun == 2  || gSNGun == 3) {
-          if (gfixmeanenergy == false) {
-
-        maininfofile << "#"<< G4endl;
-        maininfofile << "# Time of Flux [s] | Mean energy of "<<nu<<" | "<<nu<<" energy | costheta of "<<part<<" from z dir | "<<part<<" energy | event weigh | Vertex Position (X, Y, Z) [m] | Primary direction (Px,Py,Pz)" << G4endl;
-        maininfofile << "#" << G4endl;
-        
-        HelpTheHeader(datafile);
-          }
-    } else {
-        datafile << "# PMTs hit | weight | nu_energy";
-    }
+    maininfofile << "test info" << G4endl;
+    datafile << "test data" << G4endl;
 }
 
 void OMSimSNAnalysis::HelpTheHeader(std::fstream& thisfile)
@@ -186,9 +118,7 @@ void OMSimSNAnalysis::HelpTheHeader(std::fstream& thisfile)
 
 
 void OMSimSNAnalysis::Writer_InfoFile() {
-      if (gfixmeanenergy == false) {
-
-      if (gSNGun == 1 || gSNGun == 2 || gSNGun == 3)  {
+      if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
         maininfofile << nuTime/s << "\t";
         maininfofile << nuMeanEnergy/MeV<< "\t";
         maininfofile << nuEnergy/MeV<< "\t";
@@ -196,22 +126,11 @@ void OMSimSNAnalysis::Writer_InfoFile() {
         maininfofile << primaryEnergy/MeV << "\t";
         maininfofile << weigh << "\t\t";
       }
-     if (gSNGun == 0)  {
-        maininfofile << realdistance/m << "\t";
-      }
-        maininfofile << primaryX/m <<"\t";
-        maininfofile << primaryY/m << "\t";
-        maininfofile << primaryZ/m << "\t\t";
-        maininfofile << primaryDirX <<"\t";
-        maininfofile << primaryDirY << "\t";
-        maininfofile << primaryDirZ << "\t\t";
-    maininfofile << G4endl;
-      }
 }
 
 void OMSimSNAnalysis::Writer_data(std::fstream& thisfile, EvtStat& this_evtStat)
 {
-      if (gfixmeanenergy == false) {
+      if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
 
         thisfile << this_evtStat.nrHitTot << "\t";
         thisfile << this_evtStat.nrHitMod << "\t";
