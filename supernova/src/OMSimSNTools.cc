@@ -48,13 +48,13 @@ bool OMSimSNTools::CheckVolumeFormDOMs(G4ThreeVector position){
 
 G4ThreeVector OMSimSNTools::RandomPosition() {
   //now we assume that the world is a cylinder!
-  double gHeight = OMSimCommandArgsTable::getInstance().get<G4double>("wheight");
-  double gRadius = OMSimCommandArgsTable::getInstance().get<G4double>("wradius");
+  double gHeight = OMSimCommandArgsTable::getInstance().get<G4double>("wheight")*m;
+  double gRadius = OMSimCommandArgsTable::getInstance().get<G4double>("wradius")*m;
 
   //maximum lenght of generation cylinder "Rmax"
   //Note that this is the distance from the center of the cylinder to the corner of the circumscribed rectangle around the cylinder
-  G4double Rmax = pow(3,1./2.)*gRadius*m; 
-  G4double Rmax2 = gRadius*m; //radius of generation cylinder
+  G4double Rmax = pow(3,1./2.)*gRadius; 
+  G4double Rmax2 = gRadius; //radius of generation cylinder
   
   G4double posz;
   G4double posx;
@@ -207,7 +207,7 @@ void MakeEnergyDistribution(G4double Emean, G4double alpha, G4int nPoints, std::
 
 G4double OMSimSNTools::WeighMe(G4double sigma, G4double NTargets) {
   //Assuming a cylinder!
-  double weigh = sigma*NTargets*(2*OMSimCommandArgsTable::getInstance().get<G4double>("rheight"));
+  double weigh = sigma*NTargets*(2*OMSimCommandArgsTable::getInstance().get<G4double>("wheight")*m);
   return weigh;
 }
 

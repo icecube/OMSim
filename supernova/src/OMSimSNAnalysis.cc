@@ -118,14 +118,14 @@ void OMSimSNAnalysis::HelpTheHeader(std::fstream& thisfile)
 
 
 void OMSimSNAnalysis::Writer_InfoFile() {
-      if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
+    if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
         maininfofile << nuTime/s << "\t";
         maininfofile << nuMeanEnergy/MeV<< "\t";
         maininfofile << nuEnergy/MeV<< "\t";
         maininfofile << cosTheta<< "\t";
         maininfofile << primaryEnergy/MeV << "\t";
-        maininfofile << weigh << "\t\t";
-      }
+        maininfofile << weigh << "\n";
+    }
 }
 
 void OMSimSNAnalysis::Writer_data(std::fstream& thisfile, EvtStat& this_evtStat)

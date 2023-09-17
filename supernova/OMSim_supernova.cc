@@ -19,6 +19,18 @@ G4Navigator* aNavigator = new G4Navigator();
 
 namespace po = boost::program_options;
 
+void PrepareAnalysis() {
+	OMSimSNAnalysis &lAnalysisManager = OMSimSNAnalysis::getInstance();
+	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+	G4String ldataoutputname = lArgs.get<std::string>("output_file") + ".dat";
+    G4String linfooutputname = lArgs.get<std::string>("output_file") + "_info.dat";
+    if (!lArgs.get<bool>("SNfixEnergy")) {
+    	lAnalysisManager.maininfofile.open(linfooutputname, std::ios::out| std::ios::trunc); 
+    }
+    lAnalysisManager.datafile.open(ldataoutputname, std::ios::out| std::ios::trunc); 
+    lAnalysisManager.WriteHeader();
+}
+
 void SupernovaNeutrinoSimulation()
 {
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
@@ -29,16 +41,9 @@ void SupernovaNeutrinoSimulation()
 	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
 	lUIinterface.applyCommand("/selectGun", lArgs.getInstance().get<G4int>("SNgun"));
 
+	PrepareAnalysis();
 
-	OMSimSNAnalysis lAnalysisManager;
-
-	G4String ldataoutputname = lArgs.get<std::string>("output_file") + ".dat";
-    G4String linfooutputname = lArgs.get<std::string>("output_file") + "_info.dat";
-    if (!lArgs.get<bool>("SNfixEnergy")) {
-    	lAnalysisManager.maininfofile.open(linfooutputname, std::ios::out| std::ios::trunc); 
-      }
-    lAnalysisManager.datafile.open(ldataoutputname, std::ios::out| std::ios::trunc); 
-    lAnalysisManager.WriteHeader();
+    lUIinterface.runBeamOn();
 
 }
 
@@ -55,7 +60,7 @@ int main(int argc, char *argv[])
 		("wheight,wh", po::value<G4double>()->default_value(20), "Height of cylindrical world volume, in m")
 		("wradius,wr", po::value<G4double>()->default_value(20), "Radius of cylindrical world volume, in m")
 		("SNtype", po::value<G4int>()->default_value(0), "0=27 solar mass type II (ls220), 1=9.6 solar mass type II (ls220). Models 2,3,4 correspond to old tests with other models.")
-		("SNgun", po::value<G4int>()->default_value(0), "Select interaction to simulate: 0=ENES, 1=IBD (no neutron capture included)")
+		("SNgun", po::value<G4int>()->default_value(0), "Select interaction to simulate: 0=IBD (no neutron capture included), 1=ENES")
 		("SNfixEnergy", po::bool_switch(), "Instead of using the energy distribution of the model, it generates all neutrinos from an energy distribution with fixed mean energy and alpha")
 		("SNmeanE", po::value<G4double>()->default_value(10.0), "If --SNfixEnergy, use this mean energy to generate the neutrinos ")
 		("SNalpha", po::value<G4double>()->default_value(2.5), "If --SNfixEnergy, pinching (alpha) parameter of nu/nubar energy spectrum");

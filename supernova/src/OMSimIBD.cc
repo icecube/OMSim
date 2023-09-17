@@ -76,13 +76,13 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
 
   // Particle and position
   G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindParticle("e+");
+
   ParticleGun->SetParticleDefinition(particle);
-  
+
   G4ThreeVector Position = mSNToolBox.RandomPosition();
   ParticleGun->SetParticlePosition(Position);
   //G4cout << Position << G4endl;
   beggining:
-
 
   //set energy from a tabulated distribution
   //
