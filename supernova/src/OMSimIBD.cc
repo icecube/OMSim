@@ -17,11 +17,10 @@
 
 OMSimIBD::OMSimIBD(G4ParticleGun* gun)
 : ParticleGun(gun)
-{        
+{       
   // building energy distribution of electronic antineutrinos...
   //
   if ((OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy")) == false) {
-
     std::pair<std::string, std::string> lFluxNames = mSNToolBox.getFileNames(OMSimCommandArgsTable::getInstance().get<G4int>("SNtype"));
     std::string lnubarFluxName = lFluxNames.first;
     //load model data
@@ -30,11 +29,17 @@ OMSimIBD::OMSimIBD(G4ParticleGun* gun)
     //the total flux must be accounted for by the user and the events properly weigh
     mNuBar_luminosity = lData[1]; //second column is luminosity
     //for the rest, we need to specify the units. Make sure if you use a new models that the units are the same
+    mNuBar_time.resize(lData[0].size());
+    mNuBar_luminosity.resize(lData[1].size());
+    mNuBar_meanenergy.resize(lData[2].size());
+    mNuBar_meanenergysquare.resize(lData[3].size());
+
     for (unsigned int u = 0; u <lData[0].size(); u++) {
       mNuBar_time[u] = lData[0].at(u)*s; //first column corresponds to time
       mNuBar_meanenergy[u] = lData[2].at(u)*MeV; //3rd column corresponds to meanE
       mNuBar_meanenergysquare[u] = lData[3].at(u)*MeV*MeV; //4th column corresponds to squaredmeanE
       }
+
     // Since the luminosity spectrum is not gonna change, it is worthy to compute already the slopes and store them
     nPoints_lum =  mNuBar_time.size();
     GetSlopes(mNuBar_time,  mNuBar_luminosity, nPoints_lum, x_lum, f_lum, a_lum, Fc_lum);
@@ -49,7 +54,7 @@ OMSimIBD::OMSimIBD(G4ParticleGun* gun)
     MakeEnergyDistribution(mFixedenergy, mAlpha, fixE_nPoints, x1, f1);
     GetSlopes(x1, f1, fixE_nPoints, fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc);
   }
-      
+
   //defining constans that are used later for the cross section
   Gf = 1.166e-5*1e-6/(MeV*MeV);
   me = electron_mass_c2;

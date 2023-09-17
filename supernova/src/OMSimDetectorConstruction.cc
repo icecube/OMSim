@@ -3,7 +3,6 @@
 #include "OMSimLOM16.hh"
 #include "OMSimLOM18.hh"
 #include "OMSimDEGG.hh"
-#include "OMSimCommandArgsTable.hh"
 #include "OMSimHitManager.hh"
 #include "G4Navigator.hh"
 #include "OMSimCommandArgsTable.hh"
@@ -34,8 +33,8 @@ OMSimDetectorConstruction::~OMSimDetectorConstruction()
 void OMSimDetectorConstruction::constructWorld(){
     mWorldSolid = new G4Tubs("World",
                  0.*cm, 
-                 OMSimCommandArgsTable::getInstance().get<G4double>("rworld") * m,
-                 OMSimCommandArgsTable::getInstance().get<G4double>("rheight") * m,
+                 OMSimCommandArgsTable::getInstance().get<G4double>("wradius") * m,
+                 OMSimCommandArgsTable::getInstance().get<G4double>("wheight") * m,
                  0.*deg, 
                  360.*deg); 
   

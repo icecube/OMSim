@@ -130,7 +130,7 @@ void OMSimSNAnalysis::Writer_InfoFile() {
 
 void OMSimSNAnalysis::Writer_data(std::fstream& thisfile, EvtStat& this_evtStat)
 {
-      if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
+    if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
 
         thisfile << this_evtStat.nrHitTot << "\t";
         thisfile << this_evtStat.nrHitMod << "\t";
@@ -164,7 +164,7 @@ void OMSimSNAnalysis::Writer_data(std::fstream& thisfile, EvtStat& this_evtStat)
             }
         }
         thisfile << G4endl;
-      } else {
+    } else {
         thisfile << this_evtStat.nrHitPMTs << "\t";
         thisfile  << weigh << "\t";
         thisfile << nuEnergy/MeV<< "\t";

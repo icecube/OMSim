@@ -48,14 +48,13 @@ bool OMSimSNTools::CheckVolumeFormDOMs(G4ThreeVector position){
 
 G4ThreeVector OMSimSNTools::RandomPosition() {
   //now we assume that the world is a cylinder!
-  double gHeight = OMSimCommandArgsTable::getInstance().get<G4double>("rheight");
-  double gworldsize = OMSimCommandArgsTable::getInstance().get<G4double>("rworld");
-  double gRadius = gworldsize; //worldsize is actually the radius. Left here for clarity 
+  double gHeight = OMSimCommandArgsTable::getInstance().get<G4double>("wheight");
+  double gRadius = OMSimCommandArgsTable::getInstance().get<G4double>("wradius");
 
   //maximum lenght of generation cylinder "Rmax"
   //Note that this is the distance from the center of the cylinder to the corner of the circumscribed rectangle around the cylinder
-  G4double Rmax = pow(3,1./2.)*gworldsize*m; 
-  G4double Rmax2 = gworldsize*m; //radius of generation cylinder
+  G4double Rmax = pow(3,1./2.)*gRadius*m; 
+  G4double Rmax2 = gRadius*m; //radius of generation cylinder
   
   G4double posz;
   G4double posx;

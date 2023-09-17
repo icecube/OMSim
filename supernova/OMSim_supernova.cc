@@ -27,20 +27,18 @@ void SupernovaNeutrinoSimulation()
 	//TODO: Check whether this is right, since runmanager and primarygenerators are being
 	//called also in OMSim.cc
 	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-	lUIinterface.applyCommand("/selectGun", lArgs.getInstance().get<G4double>("SNgun"));
+	lUIinterface.applyCommand("/selectGun", lArgs.getInstance().get<G4int>("SNgun"));
 
 
 	OMSimSNAnalysis lAnalysisManager;
 
-	// #TODO 
 	G4String ldataoutputname = lArgs.get<std::string>("output_file") + ".dat";
     G4String linfooutputname = lArgs.get<std::string>("output_file") + "_info.dat";
-    if (lArgs.get<bool>("SNfixEnergy")) {
+    if (!lArgs.get<bool>("SNfixEnergy")) {
     	lAnalysisManager.maininfofile.open(linfooutputname, std::ios::out| std::ios::trunc); 
       }
     lAnalysisManager.datafile.open(ldataoutputname, std::ios::out| std::ios::trunc); 
     lAnalysisManager.WriteHeader();
-	// #TODO
 
 }
 
