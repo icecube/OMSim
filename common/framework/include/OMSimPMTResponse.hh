@@ -53,6 +53,8 @@ public:
      */
     PMTPulse processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength);
 
+    bool passQE(G4double pWavelength);
+
 private:
     std::vector<G4double> mScannedWavelengths{460 * nm, 480 * nm, 500 * nm, 520 * nm, 540 * nm, 560 * nm, 580 * nm, 600 * nm, 620 * nm, 640 * nm};
 
@@ -61,10 +63,13 @@ private:
     G4double mWavelength;
 
     TGraph *mRelativeDetectionEfficiencyInterp;
+    TGraph *mQEInterp;
     std::map<G4double, TH2D *> mGainG2Dmap;
     std::map<G4double, TH2D *> mGainResolutionG2Dmap;
     std::map<G4double, TH2D *> mTransitTimeG2Dmap;
     std::map<G4double, TH2D *> mTransitTimeSpreadG2Dmap;
+
+    void configureQEinterpolator();
 
     /**
      * @brief Create a histogram from provided data.

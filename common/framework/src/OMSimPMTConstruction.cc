@@ -28,7 +28,7 @@ void OMSimPMTConstruction::construction()
     G4LogicalVolume *lPMTlogical;
     G4LogicalVolume *lPhotocathode;
 
-    // The ? are ternary operators of the following two lines replace if else statements
+    // The ? of the following two lines are ternary operators that replace if-else-statements
     lPMTlogical = new G4LogicalVolume(lPMTSolid, mData->getMaterial(mInternalReflections ? "RiAbs_Glass_Tube" : "Ri_Glass_Tube"), "PMT tube logical");
     lPhotocathode = new G4LogicalVolume(mInternalReflections ? constructPhotocathodeLayer() : lVacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
 

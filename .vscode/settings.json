@@ -104,6 +104,7 @@
         "vmanip": "cpp",
         "tree": "cpp",
         "polygon": "cpp",
-        "loader": "cpp"
+        "loader": "cpp",
+        "box3": "cpp"
     }
 }

@@ -3,6 +3,7 @@
  *  @todo Add PMT data of all PMT types
  */
 #include "OMSimPMTResponse.hh"
+#include "OMSimCommandArgsTable.hh"
 #include "OMSimLogger.hh"
 #include "OMSimInputData.hh"
 
@@ -55,6 +56,8 @@ OMSimPMTResponse::OMSimPMTResponse()
 
     mRelativeDetectionEfficiencyInterp = new TGraph((path + "weightsVsR_vFit_220nm.txt").c_str());
     mRelativeDetectionEfficiencyInterp->SetName("RelativeDetectionEfficiencyWeight");
+
+    if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut")) configureQEinterpolator();
 
     for (const auto &lKey : mScannedWavelengths)
     {
@@ -148,6 +151,37 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::getPulseFromInterpolation(G4double 
     lPulse.TransitTime = getTransitTime(pWavelengthKey1, pWavelengthKey2);
     return lPulse;
 }
+
+/**
+ * @brief Initializes the QE interpolator from a data file.
+ * 
+ * Sets up the quantum efficiency (QE) interpolator using data from a predefined path.
+ *
+ * @warning Ensure the data file is present at the specified path.
+ *
+ * @sa passQE
+ */
+void OMSimPMTResponse::configureQEinterpolator(){
+    std::string lPath = "../common/data/PMT_scans/";
+    mQEInterp = new TGraph((lPath + "QuantumEfficiency.dat").c_str());
+    mQEInterp->SetName("QEInterpolator");
+}
+
+/**
+ * @brief Checks if photon with given wavelength passes QE check.
+ * @param pWavelength Photon wavelength to be checked in nm.
+ * @return True if the photon passes the QE check, false otherwise.
+ *
+ * @sa configureQEinterpolator
+ */
+bool OMSimPMTResponse::passQE(G4double pWavelength)
+{ 
+    double lQE = mQEInterp->Eval(pWavelength/nm)/100.;
+    // Check against random value
+    G4double rand = G4UniformRand();
+    return rand < lQE;
+}
+
 
 OMSimPMTResponse::PMTPulse OMSimPMTResponse::processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength)
 {

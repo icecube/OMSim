@@ -1,5 +1,7 @@
 #include "OMSimTrackingAction.hh"
 #include "OMSimHitManager.hh"
+#include "OMSimCommandArgsTable.hh"
+
 #include <G4TrackingManager.hh>
 
 std::vector<G4String> splitStringByDelimiter(G4String const &s, char delim)
@@ -43,8 +45,11 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track *aTrack)
             G4double x = lLocalPosition.x() / mm;
             G4double y = lLocalPosition.y() / mm;
             G4double lR = std::sqrt(x * x + y * y);
-
+            G4double lWavelength = h * c / lEkin;
             G4ThreeVector lDeltaPos = aTrack->GetVertexPosition() - lGlobalPosition;
+
+            //if the QE cut is enabled and the photon doesn't pass the QE check, the function will exit early without further processing.
+            if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut") && !lPhotocathodeResponse.passQE(lWavelength)) return;
 
             lHitManager.appendHitInfo(
                 aTrack->GetGlobalTime(),
@@ -56,7 +61,7 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track *aTrack)
                 aTrack->GetPosition(),
                 lLocalPosition,
                 lDeltaPos.mag() / m,
-                lPhotocathodeResponse.processPhotocathodeHit(x, y, h * c / lEkin));
+                lPhotocathodeResponse.processPhotocathodeHit(x, y, lWavelength));
         }
     }
 }
