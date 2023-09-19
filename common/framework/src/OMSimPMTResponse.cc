@@ -84,8 +84,7 @@ OMSimPMTResponse::OMSimPMTResponse()
 OMSimPMTResponse::~OMSimPMTResponse()
 {
     delete mRelativeDetectionEfficiencyInterp;
-    if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut"))
-        delete mQEInterp;
+    delete mQEInterp;
     for (const auto &lKey : mScannedWavelengths)
     {
         std::string lWv = std::to_string((int)(lKey / nm));
