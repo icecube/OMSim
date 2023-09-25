@@ -51,19 +51,19 @@ public:
     /**
      * @brief Generates primary events for the simulation.
      * 
-     * This function sets the initial properties of the electronic antineutrinos such as particle type, position,
+     * This function sets the initial properties of the electronic antineutrinos such as position,
      * and energy for the primary event based on given input parameters or data files. The energy is determined from a tabulated 
      * distribution or from a fixed mean energy, and the antineutrino's incoming direction is assumed to be (0,0,-1). The function also 
-     * computes the angle distribution and the positron's energy derived from the antineutrino energy and its angle. Finally,
+     * computes the angle distribution and the positron's energy derived from the antineutrino energy and its direction. Finally,
      * the function computes the total cross-section and sets weights accordingly, passing the information to the analysis manager.
      *
      * @param anEvent Pointer to the G4Event object where primaries will be generated.
      * @todo Consider breaking down this function into smaller, more specialized sub-functions for clarity and modularity.
      * @todo Ensure that any new parameters or member variables used are appropriately documented.
+     * @todo merge IBD and ENES into sharing a base class, to avoid repeating code
      */
 	void GeneratePrimaries(G4Event* anEvent);
 
-    G4double InverseCumul(int ControlParameter);  // ?
     G4int                  nPoints0;     //tabulated function
     G4int                  nPoints_lum;     //tabulated function
     std::vector<G4double>  x_lum;

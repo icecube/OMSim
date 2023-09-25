@@ -69,8 +69,6 @@ OMSimIBD::OMSimIBD(G4ParticleGun* gun)
 OMSimIBD::~OMSimIBD()
 { }
 
-
-
 void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
 {
 
@@ -81,45 +79,53 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
 
   G4ThreeVector Position = mSNToolBox.RandomPosition();
   ParticleGun->SetParticlePosition(Position);
-  //G4cout << Position << G4endl;
-  beggining:
 
-  //set energy from a tabulated distribution
-  //
   G4double timeofspectrum;
   G4double Emean;
   G4double Emean2;
   G4double alpha;
   G4double nubar_energy;
-  if ((OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy")) == false) {
-    timeofspectrum = mSNToolBox.InverseCumulAlgorithm(x_lum, f_lum, a_lum, Fc_lum,nPoints_lum);
-    
-    G4int timepos = mSNToolBox.findtime(timeofspectrum, mNuBar_time);
-    Emean = mSNToolBox.linealinterpolation(timeofspectrum,mNuBar_time.at(timepos-1), mNuBar_time.at(timepos), mNuBar_meanenergy.at(timepos-1),mNuBar_meanenergy.at(timepos));
-    Emean2 = mSNToolBox.linealinterpolation(timeofspectrum,mNuBar_time.at(timepos-1), mNuBar_time.at(timepos), mNuBar_meanenergysquare.at(timepos-1),mNuBar_meanenergysquare.at(timepos));
+  
+  bool retry = true;
+  while (retry) {
+    retry = false; // Assume that we won't need to retry until proven otherwise.
+    //set energy from a tabulated distribution
+    //
+    timeofspectrum = -99.;
+    Emean = -99.;
+    Emean2 = -99.;
+    alpha = -99.;
+    nubar_energy = -99.;
+    if ((OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy")) == false) {
+      timeofspectrum = mSNToolBox.InverseCumulAlgorithm(x_lum, f_lum, a_lum, Fc_lum,nPoints_lum);
+      G4int timepos = mSNToolBox.findtime(timeofspectrum, mNuBar_time);
+      Emean = mSNToolBox.linealinterpolation(timeofspectrum,mNuBar_time.at(timepos-1), mNuBar_time.at(timepos), mNuBar_meanenergy.at(timepos-1),mNuBar_meanenergy.at(timepos));
+      Emean2 = mSNToolBox.linealinterpolation(timeofspectrum,mNuBar_time.at(timepos-1), mNuBar_time.at(timepos), mNuBar_meanenergysquare.at(timepos-1),mNuBar_meanenergysquare.at(timepos));
 
-    ThresholdEnergy = neutron_mass_c2 + electron_mass_c2 - proton_mass_c2+0.1*MeV; //+0.1MeV because angularcrosssection fails if the energy is too close to the threshold.
-    nubar_energy = 0;
+      ThresholdEnergy = neutron_mass_c2 + electron_mass_c2 - proton_mass_c2+0.1*MeV; //+0.1MeV because angularcrosssection fails if the energy is too close to the threshold.
+      nubar_energy = 0;
 
-    G4int count = 0;
-    while (nubar_energy <= ThresholdEnergy) {
-      nubar_energy = mSNToolBox.EnergyDistribution(Emean, Emean2, alpha);
-      count += 1;
-      if (count > 10) {
-        goto beggining;
-        // To avoid entering in an almost infinity bucle if energy of the chosen time is very unlikely to be higher than 
-        // the threshold, go to the beggining and choose a different time of the burst
+      G4int count = 0;
+      while (nubar_energy <= ThresholdEnergy) {
+        nubar_energy = mSNToolBox.EnergyDistribution(Emean, Emean2, alpha);
+        count += 1;
+        if (count > 10) {
+          retry  = true;
+          break;
+          // To avoid entering in an almost infinite bucle if energy of the chosen time is very unlikely to be higher than 
+          // the threshold, go to the beggining and choose a different time of the burst
+        }
+      }
+    } else {
+      timeofspectrum = 0.0;
+      Emean = mFixedenergy;
+      Emean2 = mFixedenergy2;
+      nubar_energy =  mSNToolBox.InverseCumulAlgorithm(fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc, fixE_nPoints);
+      while (nubar_energy <= ThresholdEnergy) {
+        //note that, if fixE is very low, we might get stuck here a while for each particle
+        nubar_energy =  mSNToolBox.InverseCumulAlgorithm(fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc, fixE_nPoints);
       }
     }
-  } else {
-    timeofspectrum = 0.0;
-    Emean = mFixedenergy;
-    Emean2 = mFixedenergy2;
-    nubar_energy =  mSNToolBox.InverseCumulAlgorithm(fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc, fixE_nPoints);
-          while (nubar_energy <= ThresholdEnergy) {
-              //notice that, if fixE is very low, we might get stuck here a while for each particle
-              nubar_energy =  mSNToolBox.InverseCumulAlgorithm(fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc, fixE_nPoints);
-          }
   }
 
   // angle distribution. We suppose the incident antineutrino would come with momentum direction (0,0,-1)
@@ -133,7 +139,7 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
   G4double xdir = -sintheta*std::cos(phi);
   G4double ydir = -sintheta*std::sin(phi);
   
-  // from nu_energy and costheta, we get e- energy
+  // from nubar_energy and costheta, we get e+ energy
   G4double p_energy = PositronEnergy(nubar_energy, costheta);
   
   ParticleGun->SetParticleEnergy(p_energy); 
@@ -151,12 +157,11 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
   lAnalysisManager.primaryEnergy = p_energy; 
   lAnalysisManager.weigh = Weigh;
 
-  
-  // G4cout << timeofspectrum<< "      " << nubar_energy/MeV << "        " << p_energy/MeV << "        " << costheta << G4endl;
   //create vertex
   //   
   ParticleGun->GeneratePrimaryVertex(anEvent);
 }
+
 
 void OMSimIBD::DistFunction(G4double Enubar)
 {
@@ -165,7 +170,7 @@ void OMSimIBD::DistFunction(G4double Enubar)
   // P. Vogel, J. F. Beacom. (1999). The angular distribution of the reaction nubar_e + p -> e+ + n. Phys.Rev., D60, 053003 
   // Eq. 14
   //
-  angdist_nPoints = 300;
+  angdist_nPoints = 300; //probably more than enough
  
   G4double costhetac = 0.974;
   G4double consf = 1.;

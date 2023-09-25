@@ -1,5 +1,5 @@
 /** @file OMSimPrimaryGeneratorAction.cc
- *  @brief Main primary generator. Chooses between generators 0 (gps), 1 (SN enes), 2 (SN ibd), 3 (solar neutrinos)
+ *  @brief Main primary generator. Chooses between generators 0 (IBD), 1 (ENES), 2 (SN ibd)
  * 
  *  @author Cristian Jesus Lozano Mariscal (c.lozano@wwu.de)
  * 
@@ -8,6 +8,7 @@
 
 #include "OMSimPrimaryGeneratorAction.hh"
 #include "OMSimIBD.hh"
+#include "OMSimENES.hh"
 #include "mdomPrimaryGeneratorMessenger.hh"
 
 #include "G4Event.hh"
@@ -23,23 +24,16 @@ OMSimPrimaryGeneratorAction::OMSimPrimaryGeneratorAction()
  : G4VUserPrimaryGeneratorAction(),
    fParticleGun(0),
    fAction0(0),
-   //fAction2(0),
-   //fAction3(0),
+   fAction1(0),
    fSelectedAction(0), //defaul primary generator
    fGunMessenger(0)
 {
-  // default particle kinematic
-  //
   G4int n_particle = 1;
   fParticleGun  = new G4ParticleGun(n_particle);
 
-  
   fAction0 = new OMSimIBD(fParticleGun);
-  //fAction1 = new OMSimPrimaryGeneratorAction1(fParticleGun);
-  //fAction2 = new OMSimPrimaryGeneratorAction2(fParticleGun);
-  //fAction3 = new OMSimPrimaryGeneratorAction3(fParticleGun);
+  fAction1 = new OMSimENES(fParticleGun);
   fGunMessenger = new mdomPrimaryGeneratorMessenger(this);    
-  
 }
 
 
@@ -47,11 +41,7 @@ OMSimPrimaryGeneratorAction::OMSimPrimaryGeneratorAction()
 OMSimPrimaryGeneratorAction::~OMSimPrimaryGeneratorAction()
 {
   delete fAction0;
-  /*
   delete fAction1;
-  delete fAction2;
-  delete fAction3;
-  */
   delete fParticleGun;    
   delete fGunMessenger;      
 }
@@ -62,22 +52,14 @@ void OMSimPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
   switch(fSelectedAction)
   {
-   case 0:
-    fAction0->GeneratePrimaries(anEvent);
-    break;
-    /*
-   case 1:
-    fAction1->GeneratePrimaries(anEvent);
-    break; 
-   case 2:
-    fAction2->GeneratePrimaries(anEvent);
-    break;
-   case 3:
-    fAction3->GeneratePrimaries(anEvent);
-    break;
-    */
-   default:
-    G4cerr << "Invalid generator fAction" << G4endl;
+    case 0:
+      fAction0->GeneratePrimaries(anEvent);
+      break;
+    case 1:
+      fAction1->GeneratePrimaries(anEvent);
+      break; 
+    default:
+      G4cerr << "Invalid generator fAction" << G4endl;
   }
 }
 

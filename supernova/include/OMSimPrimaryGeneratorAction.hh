@@ -6,6 +6,7 @@
 
 
 class OMSimIBD;
+class OMSimENES;
 class G4ParticleGun;
 class G4Event;
 class mdomPrimaryGeneratorMessenger;
@@ -27,10 +28,7 @@ class OMSimPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     G4int GetSelectedAction()  { return fSelectedAction; };
 
     OMSimIBD*  GetAction0() { return fAction0; };
-    /*
-    OMSimPrimaryGeneratorAction1*  GetAction1() { return fAction1; };
-    OMSimPrimaryGeneratorAction2*  GetAction2() { return fAction2; };
-    OMSimPrimaryGeneratorAction3*  GetAction3() { return fAction3; };*/
+    OMSimENES*  GetAction1() { return fAction1; };
       
     
   private:
@@ -38,9 +36,7 @@ class OMSimPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 
 
     OMSimIBD* fAction0;
-    /*OMSimPrimaryGeneratorAction1* fAction1;
-    OMSimPrimaryGeneratorAction2* fAction2;
-    OMSimPrimaryGeneratorAction3* fAction3;*/
+    OMSimENES* fAction1;
     G4int                    fSelectedAction;
     mdomPrimaryGeneratorMessenger* fGunMessenger;     
        
