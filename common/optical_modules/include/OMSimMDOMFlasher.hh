@@ -50,14 +50,6 @@ public:
     mDOMFlasher(InputDataManager *pData);
     void construction();
     std::tuple<G4UnionSolid *, G4UnionSolid *, G4Tubs *> getSolids();
-
-    /**
-     * @brief run/beamOn the specified flasher.
-     * @details This method triggers the flasher at the given index in the specified module.
-     * @param pMDOMInstance The mDOM instance to access to the placement OM positions and orientations.
-     * @param pModuleIndex The index of the module to be flashed (if only one mDOM placed, then 0, otherwise depending on placeIt() order)
-     * @param pLEDIndex The index of the flasher within the module.
-     */
     void runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex);
 
     /**
@@ -68,25 +60,8 @@ public:
 private:
     void makeSolids();
     void makeLogicalVolumes();
-
-    /**
-     * @brief Loads profile of mDOM flasher measured in the lab. See Section 7.3 of C. Lozanos PhD Thesis: <https://doi.org/10.5281/zenodo.8107177> or Anna-Sophia's Bachelor thesis (german) <https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/bachelorarbeiten/ba_tenbruck.pdf>.
-     */
     void readFlasherProfile();
-
-    /**
-     * @brief Retrieves the global position and orientation of a specific flasher in an mDOM module.
-     * @param pMDOMInstance Reference to the mDOM instance, which contains the placement details of the module.
-     * @param pModuleIndex Index of the module.
-     * @param pLEDIndex Index of the flasher within the module.
-     * @return The global position and orientation of the flasher, represented by a GlobalPosition struct.
-     */
     GlobalPosition getFlasherPositionInfo(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex);
-
-    /**
-     * @brief Configures the GPS for the flasher simulation.
-     * @param flasherInfo The position and orientation information of the flasher.
-     */
     void configureGPS(GlobalPosition flasherInfo);
 
     G4UnionSolid *mLEDSolid;

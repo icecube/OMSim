@@ -12,13 +12,17 @@
 #include <G4ThreeVector.hh>
 #include <fstream>
 
+/**
+ * @brief Struct to hold results of effective area calculations.
+ */
 struct effectiveAreaResult {
-    double EA;
-    double EAError;
+    double EA; ///< Effective area.
+    double EAError; ///< Uncertainty of effective area.
 };
 
 /** 
  * @class OMSimEffectiveAreaAnalyisis
+ * @brief Responsible for calculating the effective area of optical hits and saving the results.
  * @ingroup EffectiveArea
  */
 class OMSimEffectiveAreaAnalyisis
@@ -27,11 +31,6 @@ public:
     OMSimEffectiveAreaAnalyisis(){};
     ~OMSimEffectiveAreaAnalyisis(){};
 
-/**
- * @brief Writes a scan result to the output file.
- * @param pPhi The phi angle used in the scan to be written to the output file.
- * @param pTheta The phi angle used in the scan to be written to the output file.
- */
 	void writeScan(G4double pPhi, G4double pTheta);
 	void writeHeader();
     effectiveAreaResult calculateEffectiveArea(double pHits);

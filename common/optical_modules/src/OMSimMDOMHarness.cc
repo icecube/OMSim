@@ -16,6 +16,7 @@ mDOMHarness::mDOMHarness(mDOM *pMDOM, InputDataManager *pData)
     mOM = pMDOM;
     mData = pData;
     mTotalWidth = mOM->mGlassOutRad + mTeraThickness + mPadThickness + mBridgeAddedThickness;
+    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
     construction();
 };
 

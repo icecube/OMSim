@@ -19,7 +19,6 @@ void decaySimulation(OMSimDetectorConstruction *pDetector)
 {
 	OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
 	lAnalysisManager.setOutputFileName(lArgs.get<std::string>("output_file"));
 
@@ -35,7 +34,6 @@ void decaySimulation(OMSimDetectorConstruction *pDetector)
 		if (lArgs.get<bool>("multiplicity_study"))
 		{
 			lAnalysisManager.writeMultiplicity();
-			lHitManager.reset();
 			lAnalysisManager.reset();
 		}
 	}

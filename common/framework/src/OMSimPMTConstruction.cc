@@ -13,8 +13,12 @@ OMSimPMTConstruction::OMSimPMTConstruction(InputDataManager *pData)
 {
     mData = pData;
     mInternalReflections = OMSimCommandArgsTable::getInstance().get<bool>("detail_pmt");
+    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
 }
 
+/**
+ * @brief Constructs the PMT solid with all its components.
+ */
 void OMSimPMTConstruction::construction()
 {
     mComponents.clear();
@@ -71,6 +75,13 @@ void OMSimPMTConstruction::constructHAcoating()
     appendComponent(lHACoatingCut, lHACoatingLogical, G4ThreeVector(0, 0, -mMissingTubeLength), G4RotationMatrix(), "HACoating");
 }
 
+/**
+ * Placement of the PMT and definition of LogicalBorderSurfaces in case internal reflections are needed.
+ * @param pPosition G4ThreeVector with position of the module (as in G4PVPlacement())
+ * @param pRotation G4RotationMatrix with rotation of the module (as in G4PVPlacement())
+ * @param pMother G4LogicalVolume where the module is going to be placed (as in G4PVPlacement())
+ * @param pNameExtension G4String name of the physical volume. You should not have two physicals with the same name
+ */
 void OMSimPMTConstruction::placeIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume *&pMother, G4String pNameExtension)
 {
     abcDetectorComponent::placeIt(pPosition, pRotation, pMother, pNameExtension);
@@ -82,6 +93,10 @@ void OMSimPMTConstruction::placeIt(G4ThreeVector pPosition, G4RotationMatrix pRo
     }
 }
 
+/**
+ * @see PMT::placeIt
+ * @param pTransform G4Transform3D with position & rotation of PMT
+ */
 void OMSimPMTConstruction::placeIt(G4Transform3D pTransform, G4LogicalVolume *&pMother, G4String pNameExtension)
 {
     abcDetectorComponent::placeIt(pTransform, pMother, pNameExtension);
@@ -93,6 +108,11 @@ void OMSimPMTConstruction::placeIt(G4Transform3D pTransform, G4LogicalVolume *&p
     }
 }
 
+/**
+ * The basic shape of the PMT is constructed twice, once for the external solid and once for the internal. A subtraction of these two shapes would yield the glass envelope of the PMT. The function calls either simpleBulbConstruction or fullBulbConstruction, depending on the data provided and simulation type. In case only the frontal curvate of the photocathode has to be well constructed, it calls simpleBulbConstruction. fullBulbConstruction constructs the neck of the PMT precisely, but it needs to have the fit data of the PMT type and is only needed if internal reflections are simulated.
+ * @see simpleBulbConstruction
+ * @see fullBulbConstruction
+ */
 std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::getBulbSolid(G4String pSide)
 {
     G4SubtractionSolid *lVacuumPhotocathodeSolid;
@@ -111,6 +131,10 @@ std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::getBulbSolid(G4String p
     }
 }
 
+/**
+ * Construction of the basic shape of the PMT.
+ * @return tuple of G4UnionSolid (the outer shape) and G4SubtractionSolid (the photocathode volume part)
+ */
 std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::simpleBulbConstruction(G4String pSide)
 {
     G4VSolid *lBulbSolid = frontalBulbConstruction(pSide);
@@ -123,6 +147,10 @@ std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::simpleBulbConstruction(
     return std::make_tuple(lBulbSolid, lPhotocathodeSide);
 }
 
+/**
+ * Construction of the basic shape of the PMT for a full paramterised PMT. This is needed if internal reflections are simulated.
+ * @return tuple of G4UnionSolid (the outer shape) and G4SubtractionSolid (the photocathode volume part)
+ */
 std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::fullBulbConstruction(G4String pSide)
 {
     G4double lLineFitSlope = mData->getValueWithUnit(mSelectedPMT, pSide + ".jLineFitSlope");
@@ -174,6 +202,9 @@ std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::fullBulbConstruction(G4
     return std::make_tuple(lBulbSolid, lPhotocathodeSide);
 }
 
+/**
+ * Creates and positions a thin disk behind the photocathode volume in order to shield photons coming from behind the PMT. Only used when internal reflections are turned off.
+ */
 void OMSimPMTConstruction::constructCathodeBackshield(G4LogicalVolume *pPMTinner)
 {
     readGlobalParameters("jInnerShape");
@@ -187,6 +218,11 @@ void OMSimPMTConstruction::constructCathodeBackshield(G4LogicalVolume *pPMTinner
     lShieldLogical->SetVisAttributes(mBlackVis);
 }
 
+
+/**
+ * Construction & placement of the dynode system entrance for internal reflections. Currently only geometry for Hamamatsu R15458.
+ * @param pMother LogicalVolume of the mother, where the dynode system entrance is placed (vacuum volume)
+ */
 void OMSimPMTConstruction::constructCADdynodeSystem(G4LogicalVolume *pMother)
 {
 
@@ -234,6 +270,9 @@ void OMSimPMTConstruction::constructCADdynodeSystem(G4LogicalVolume *pMother)
     new G4PVPlacement(lRot, G4ThreeVector(0, 0, -0.6 * 2 * mMissingTubeLength), lShieldLogical, "BackShield", pMother, false, 0, mCheckOverlaps);
 }
 
+/**
+ * @brief Reads the parameter table and assigns the value and dimension of member variables.
+ */
 void OMSimPMTConstruction::readGlobalParameters(G4String pSide)
 {
     mOutRad = mData->getValueWithUnit(mSelectedPMT, pSide + ".jOutRad");
@@ -265,6 +304,10 @@ G4VSolid *OMSimPMTConstruction::frontalBulbConstruction(G4String pSide)
         return ellipsePhotocathode();
 }
 
+/**
+ * Construction of the photocathode layer.
+ * @return G4SubtractionSolid
+ */
 G4SubtractionSolid *OMSimPMTConstruction::constructPhotocathodeLayer()
 {
     checkPhotocathodeThickness();
@@ -302,6 +345,10 @@ void OMSimPMTConstruction::checkPhotocathodeThickness()
     G4cout << "lEllipsePos_y " << (mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipsePos_y") - lEllipsePos_y) / nm << G4endl;
 }
 
+/**
+ * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphereEllipsePhotocathode were fitted with a sphere and an ellipse.
+ * @return G4UnionSolid lBulbSolid the frontal solid of the PMT
+ */
 G4UnionSolid *OMSimPMTConstruction::sphereEllipsePhotocathode()
 {
     G4double lSphereAngle = asin(mSphereEllipseTransition_r / mOutRad);
@@ -322,6 +369,10 @@ G4UnionSolid *OMSimPMTConstruction::ellipsePhotocathode()
     return lBulbSolid;
 }
 
+/**
+ * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphereDoubleEllipsePhotocathode were fitted with a sphere and two ellipses.
+ * @return G4UnionSolid lBulbSolid the frontal solid of the PMT
+ */
 G4UnionSolid *OMSimPMTConstruction::sphereDoubleEllipsePhotocathode(G4String pSide)
 {
     G4double lEllipseXYaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseXYaxis_2");
@@ -341,6 +392,10 @@ G4UnionSolid *OMSimPMTConstruction::sphereDoubleEllipsePhotocathode(G4String pSi
     return lBulbSolid;
 }
 
+/**
+ * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with doubleEllipsePhotocathode were fitted with two ellipses.
+ * @return G4UnionSolid lBulbSolid the frontal solid of the PMT
+ */
 G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String pSide)
 {
     G4double lEllipseXYaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseXYaxis_2");
@@ -366,28 +421,44 @@ G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String pSide)
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
+/**
+ * @return G4double the distance between the 0.0 position of the PMT solid volume and the plane normal to the PMT frontal tip.
+ */
 G4double OMSimPMTConstruction::getDistancePMTCenterToTip()
 {
     readGlobalParameters("jOuterShape");
     return mOutRad + mSpherePos_y - mEllipsePos_y;
 }
 
+/**
+ * @return G4double the maximal radius of the frontal part of the PMT.
+ */
 G4double OMSimPMTConstruction::getMaxPMTRadius()
 {
     readGlobalParameters("jOuterShape");
     return mEllipseXYaxis;
 }
 
+/**
+ * @returns the solid of the constructed PMT.
+ */
 G4VSolid *OMSimPMTConstruction::getPMTSolid()
 {
     return mComponents.at("PMT").VSolid;
 }
 
+/**
+ * @return the bulb glass logical volume (PMT mother).
+ */
 G4LogicalVolume *OMSimPMTConstruction::getLogicalVolume()
 {
     return mComponents.at("PMT").VLogical;
 }
 
+/**
+ * Select PMT model to use and assigns mPMT class.
+ * @param G4String pPMTtoSelect string with the name of the PMT model
+ */
 void OMSimPMTConstruction::selectPMT(G4String pPMTtoSelect)
 {
     if (pPMTtoSelect.substr(0, 6) == "argPMT")
@@ -419,14 +490,15 @@ void OMSimPMTConstruction::includeHAcoating()
     }
 }
 
-double OMSimPMTConstruction::getPMTGlassWeight()
+G4double OMSimPMTConstruction::getPMTGlassWeight()
 {
     try
     {
-        return mData->getValue<double>(mSelectedPMT, "jBulbWeightInKg");
+        return mData->getValue<double>(mSelectedPMT, "jBulbWeight");
     }
     catch (const std::exception &e)
     {
-        throw std::runtime_error("PMT table has no bulb weight defined (key jBulbWeightInKg does not exist)...");
+        log_warning("PMT table has no bulb weight defined (key jBulbWeight does not exist). Simulation of PMT scintillation cannot be performed!");
+        return 0*kg;
     }
 }

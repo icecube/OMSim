@@ -1,5 +1,6 @@
 #include "OMSimDEGGHarness.hh"
 #include "CADMesh.hh"
+#include "OMSimCommandArgsTable.hh"
 
 #include <G4Sphere.hh>
 #include <G4LogicalSkinSurface.hh>
@@ -10,6 +11,7 @@ DEggHarness::DEggHarness(DEGG *pDEGG, InputDataManager *pData)
 {
     mOM = pDEGG;
     mData = pData;
+    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
     construction();
 }
 

@@ -23,19 +23,13 @@ public:
     OMSimDetectorConstruction();
     ~OMSimDetectorConstruction();
 
-    /**
-     * @brief Constructs the selected detector from the command line argument and returns the physical world volume.
-     * @return Pointer to the physical world volume
-     */
     G4VPhysicalVolume *Construct();
     G4VPhysicalVolume *mWorldPhysical;
 
 private:
     G4Orb *mWorldSolid;
     G4LogicalVolume *mWorldLogical;
-    /**
-     * @brief Constructs the world volume (sphere).
-     */
+
     void constructWorld();
     InputDataManager *mData;
 };

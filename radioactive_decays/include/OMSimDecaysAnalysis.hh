@@ -6,7 +6,6 @@
 
 
 /**
- * @struct DecayStats
  * @brief A structure to store information about decays.
  * @ingroup radioactive
  */
@@ -19,10 +18,16 @@ struct DecayStats
 };
 
 
-
+/**
+ * @ingroup radioactive
+ * @brief Singleton class responsible for managing, analysing, and saving decay-related data.
+ */
 class OMSimDecaysAnalysis
 {
 public:
+    /**
+     * @brief Returns the instance of OMSimDecaysAnalysis (Singleton pattern).
+     */
     static OMSimDecaysAnalysis &getInstance()
     {
         static OMSimDecaysAnalysis instance;

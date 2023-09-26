@@ -21,18 +21,11 @@ void effectiveAreaSimulation()
 
 	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
 
-	if (!lArgs.get<bool>("no_header")) lAnalysisManager.writeHeader();
+	bool lWriteHeader = !lArgs.get<bool>("no_header");
+	if (lWriteHeader) lAnalysisManager.writeHeader();
 
-	// If file with angle pairs is not provided, use arg theta & phi
-	if (!lArgs.keyExists("angles_file"))
-	{
-		// Use the angle pairs provided through command-line arguments
-		lScanner->runSingleAngularScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
-		lAnalysisManager.writeScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
-		lHitManager.reset();
-	}
-	// File is provided, run over all angle pairs
-	else
+	// If angle file is provided, run over all angle pairs in file
+	if (lArgs.keyExists("angles_file"))
 	{
 		std::vector<G4PV2DDataVector> data = InputDataManager::loadtxt(lArgs.get<std::string>("angles_file"), false);
 		std::vector<G4double> lThetas = data.at(0);
@@ -44,6 +37,13 @@ void effectiveAreaSimulation()
 			lAnalysisManager.writeScan(lPhis.at(i), lThetas.at(i));
 			lHitManager.reset();
 		}
+	}
+	// If file with angle pairs was not provided, use the angle pairs provided through command-line arguments
+	else
+	{
+		lScanner->runSingleAngularScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
+		lAnalysisManager.writeScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
+		lHitManager.reset();
 	}
 }
 

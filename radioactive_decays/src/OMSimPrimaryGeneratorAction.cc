@@ -7,16 +7,16 @@
 
 OMSimPrimaryGeneratorAction::OMSimPrimaryGeneratorAction()
 {
-	particleSource = new G4GeneralParticleSource ();
-	particleSource->SetParticleDefinition(G4GenericIon::GenericIonDefinition());
+	lParticleSource = new G4GeneralParticleSource ();
+	lParticleSource->SetParticleDefinition(G4GenericIon::GenericIonDefinition());
 }
 
 OMSimPrimaryGeneratorAction::~OMSimPrimaryGeneratorAction()
 {
-	delete particleSource;
+	delete lParticleSource;
 }
 
 void OMSimPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
-	particleSource->GeneratePrimaryVertex(anEvent);
+	lParticleSource->GeneratePrimaryVertex(anEvent);
 }

@@ -4,7 +4,12 @@
 #include "OMSimHitManager.hh"
 #include <numeric>
 
-
+/**
+ * @brief Append decay information to internal data structures.
+ * @param pParticleName Name of the particle.
+ * @param pDecayTime Time of the decay.
+ * @param pDecayPosition Global position of the decay.
+ */
 void OMSimDecaysAnalysis::appendDecay(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition)
 {
 	G4int lEventID = EventInfoManager::getInstance().getCurrentEventID();
@@ -14,6 +19,10 @@ void OMSimDecaysAnalysis::appendDecay(G4String pParticleName, G4double pDecayTim
 	mDecaysStats.decay_position.push_back(pDecayPosition);
 }
 
+/**
+ * @brief Set the base filename for output files.
+ * @param pName Base filename.
+ */
 void OMSimDecaysAnalysis::setOutputFileName(G4String pName)
 {
 	mMultiplicityFileName = pName+"_multiplicity.dat";
@@ -21,6 +30,9 @@ void OMSimDecaysAnalysis::setOutputFileName(G4String pName)
 	mDecaysFileName = pName+"_decays.dat";
 }
 
+/**
+ * @brief Calls calculateMultiplicity and writes the results to the output file.
+ */
 void OMSimDecaysAnalysis::writeMultiplicity()
 { 
 	std::vector<int>  lMultiplicity = OMSimHitManager::getInstance().calculateMultiplicity(20*ns);
@@ -34,7 +46,9 @@ void OMSimDecaysAnalysis::writeMultiplicity()
 }
 
 
-
+/**
+ * @brief Write isotoped related data to the output file.
+ */
 void OMSimDecaysAnalysis::writeDecayInformation()
 {
 	mDatafile.open(mDecaysFileName.c_str(), std::ios::out | std::ios::app);
@@ -54,6 +68,9 @@ void OMSimDecaysAnalysis::writeDecayInformation()
 	mDatafile.close();
 }
 
+/**
+ * @brief Write data of the hits to the output file.
+ */
 void OMSimDecaysAnalysis::writeHitInformation()
 {
 	HitStats lHits = OMSimHitManager::getInstance().getHitsOfModule();
@@ -80,8 +97,11 @@ void OMSimDecaysAnalysis::writeHitInformation()
 	mDatafile.close();
 }
 
-
+/**
+ * @brief Resets (deletes) decay and hits data.
+ */
 void OMSimDecaysAnalysis::reset()
 {
 	mDecaysStats = {};
+	OMSimHitManager::getInstance().reset();
 }

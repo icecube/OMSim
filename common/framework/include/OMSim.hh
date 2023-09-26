@@ -43,35 +43,12 @@ namespace po = boost::program_options;
 class OMSim
 {
 public:
-    /**
-     * @brief Construct a new OMSim object.
-     *
-     * This constructor initializes the Geant4 run manager, visualization manager,
-     * and navigator. It also sets up the command line arguments for the simulation.
-     */
-    OMSim();
 
+    OMSim();
     ~OMSim();
 
-    /**
-     * @brief Ensure that the output directory for the simulation results exists.
-     *
-     * If the output directory does not exist, this function will create it.
-     *
-     * @param pFilePath The path to the output directory.
-     */
     void ensureOutputDirectoryExists(const std::string &filepath);
-
-    /**
-     * @brief Initialize the simulation.
-     *
-     * This function sets up the necessary Geant4 components.
-     */
     void initialiseSimulation();
-
-    /**
-     * @brief UIEx session is started for visualisation.
-     */
     void startVisualisation();
     OMSimDetectorConstruction* getDetectorConstruction();
     po::options_description mGeneralArgs;

@@ -13,9 +13,15 @@ public:
   IsotopeDecays(G4double pProductionRadius);
   ~IsotopeDecays();
   void simulateDecaysInOpticalModule(G4double pTimeWindow);
+
+  /**
+   * @brief Set the optical module to be used.
+   * @param pOpticalModule Pointer to the optical module.
+   */
   void setOpticalModule(OpticalModule* pOpticalModule){mOM = pOpticalModule;};
 
 private:
+
   // Define a map that maps isotopes to their commands
   std::map<G4String, G4String> mIsotopeCommands = {
       {"U238", "/gps/ion 92 238 0"},

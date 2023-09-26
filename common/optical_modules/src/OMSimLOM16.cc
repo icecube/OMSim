@@ -6,6 +6,7 @@
 #include "OMSimLOM16.hh"
 #include "OMSimLogger.hh"
 #include "CADMesh.hh"
+#include "OMSimCommandArgsTable.hh"
 
 #include <G4Cons.hh>
 #include <G4Ellipsoid.hh>
@@ -21,6 +22,7 @@ LOM16::~LOM16()
 LOM16::LOM16(InputDataManager *pData, G4bool pPlaceHarness)
 {
     log_info("Constructing LOM16");
+    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
     mPMTManager->includeHAcoating();

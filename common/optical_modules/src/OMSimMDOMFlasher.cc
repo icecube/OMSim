@@ -1,21 +1,20 @@
 #include "OMSimMDOM.hh"
 #include "OMSimUIinterface.hh"
+#include "OMSimCommandArgsTable.hh"
 
 #include <G4Cons.hh>
 #include <G4Ellipsoid.hh>
 
-
-
 /*
-* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-*                                Geometry methods
-* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-*/
-
+ * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ *                                Geometry methods
+ * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ */
 
 mDOMFlasher::mDOMFlasher(InputDataManager *pData)
 {
 	mData = pData;
+	mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
 	construction();
 }
 
@@ -75,16 +74,19 @@ std::tuple<G4UnionSolid *, G4UnionSolid *, G4Tubs *> mDOMFlasher::getSolids()
 	return std::make_tuple(mLEDSolid, mFlasherHoleSolid, mGlassWindowSolid);
 }
 
-
-
-
 /*
-* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-*                                GPS flashing methods
-* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-*/
+ * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ *                                GPS flashing methods
+ * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ */
 
-
+/**
+ * @brief run/beamOn the specified flasher.
+ * @details This method triggers the flasher at the given index in the specified module.
+ * @param pMDOMInstance The mDOM instance to access to the placement OM positions and orientations.
+ * @param pModuleIndex The index of the module to be flashed (if only one mDOM placed, then 0, otherwise depending on placeIt() order)
+ * @param pLEDIndex The index of the flasher within the module.
+ */
 void mDOMFlasher::runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex)
 {
 	if (!mFlasherProfileAvailable)
@@ -102,6 +104,9 @@ void mDOMFlasher::runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4in
 	OMSimUIinterface::getInstance().runBeamOn();
 }
 
+/**
+ * @brief Loads profile of mDOM flasher measured in the lab. See Section 7.3 of C. Lozanos PhD Thesis: <https://doi.org/10.5281/zenodo.8107177> or Anna-Sophia's Bachelor thesis (german) <https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/bachelorarbeiten/ba_tenbruck.pdf>.
+ */
 void mDOMFlasher::readFlasherProfile()
 {
 	std::vector<G4PV2DDataVector> lData = mData->loadtxt("../common/data/UserInputData/processedlightspectrum_9_level_2_ext3.cfg", true, 0, '\t');
@@ -110,9 +115,13 @@ void mDOMFlasher::readFlasherProfile()
 	mFlasherProfileAvailable = true;
 }
 
-
-
-
+/**
+ * @brief Retrieves the global position and orientation of a specific flasher in an mDOM module.
+ * @param pMDOMInstance Reference to the mDOM instance, which contains the placement details of the module.
+ * @param pModuleIndex Index of the module.
+ * @param pLEDIndex Index of the flasher within the module.
+ * @return The global position and orientation of the flasher, represented by a GlobalPosition struct.
+ */
 GlobalPosition mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex)
 {
 	GlobalPosition lGlobalPos;
@@ -132,7 +141,6 @@ GlobalPosition mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4int pM
 		throw std::invalid_argument("mDOM Flasher index provided not valid");
 	}
 
-
 	// Calculate global position
 	G4RotationMatrix lFlashingModuleOrientation = pMDOMInstance->mPlacedOrientations.at(pModuleIndex);
 	G4ThreeVector lFlashingModulePos = pMDOMInstance->mPlacedPositions.at(pModuleIndex);
@@ -144,7 +152,7 @@ GlobalPosition mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4int pM
 
 	// Get rotation of the flasher
 	G4TouchableHistoryHandle lTouchable;
-	
+
 	mNavigator->LocateGlobalPointAndSetup(G4ThreeVector(lGlobalPos.x, lGlobalPos.y, lGlobalPos.z));
 	lTouchable = mNavigator->CreateTouchableHistoryHandle();
 	lGlobalPos.rotation = lTouchable->GetRotation()->inverse();
@@ -152,7 +160,10 @@ GlobalPosition mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4int pM
 	return lGlobalPos;
 }
 
-
+/**
+ * @brief Configures the GPS for the flasher simulation.
+ * @param flasherInfo The position and orientation information of the flasher.
+ */
 void mDOMFlasher::configureGPS(GlobalPosition pGlobalPos)
 {
 	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
@@ -179,5 +190,3 @@ void mDOMFlasher::configureGPS(GlobalPosition pGlobalPos)
 	lUIinterface.applyCommand("/gps/particle opticalphoton");
 	lUIinterface.applyCommand("/gps/energy", 1239.84193 / OMSimCommandArgsTable::getInstance().get<G4double>("wavelength"), "eV");
 }
-
-

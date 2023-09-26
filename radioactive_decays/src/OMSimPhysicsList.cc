@@ -161,6 +161,9 @@ void OMSimPhysicsList::ConstructProcess()
 	}
 }
 
+/**
+ * @brief Sets the production cuts with default values.
+ */
 void OMSimPhysicsList::SetCuts()
 {
 	SetCutsWithDefault();

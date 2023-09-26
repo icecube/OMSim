@@ -10,6 +10,7 @@
 #include "OMSimLOM18.hh"
 #include "CADMesh.hh" 
 #include "OMSimLogger.hh"
+#include "OMSimCommandArgsTable.hh"
 
 #include <G4Cons.hh>
 #include <G4IntersectionSolid.hh>
@@ -22,6 +23,8 @@ LOM18::~LOM18()
 
 LOM18::LOM18(InputDataManager* pData, G4bool pPlaceHarness) {
     log_info("Constructing LOM18");
+        
+    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
     mPMTManager->includeHAcoating();

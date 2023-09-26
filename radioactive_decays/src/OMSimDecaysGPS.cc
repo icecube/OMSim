@@ -43,7 +43,7 @@ void IsotopeDecays::generalGPS()
  *
  * @param Isotope The isotope which is going to be produced.
  * @param pVolumeName The volume name where the isotope decays.
- * @param optParam An optional parameter related to the location. For "PMT", it could be the PMT number.
+ * @param optParam An optional parameter related to the location. For "PMT", use e.g. the PMT number.
  */
 void IsotopeDecays::configureIsotopeGPS(G4String Isotope, G4String pVolumeName, G4int optParam)
 {
@@ -66,7 +66,13 @@ void IsotopeDecays::configureIsotopeGPS(G4String Isotope, G4String pVolumeName, 
 }
 
 
-
+/**
+ * @brief Calculates the number of decays for isotopes.
+ * @param pMPT Pointer to the material properties table.
+ * @param pTimeWindow Time window for decays.
+ * @param pMass Mass of the volume in which decays occur.
+ * @return Map of isotopes and their respective number of decays.
+ */
 std::map<G4String, G4int> IsotopeDecays::calculateNumberOfDecays(G4MaterialPropertiesTable *pMPT, G4double pTimeWindow, G4double pMass)
 {
     std::map<G4String, G4int> mNumberDecays;
@@ -79,6 +85,10 @@ std::map<G4String, G4int> IsotopeDecays::calculateNumberOfDecays(G4MaterialPrope
     return mNumberDecays;
 }
 
+/**
+ * @brief Simulates the decays in the optical module.
+ * @param pTimeWindow The livetime that should be simulated.
+ */
 void IsotopeDecays::simulateDecaysInOpticalModule(G4double pTimeWindow)
 {
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
@@ -99,7 +109,7 @@ void IsotopeDecays::simulateDecaysInOpticalModule(G4double pTimeWindow)
             lUIinterface.runBeamOn(lNrDecays);
         }
     }
-/*
+
     if (!lArgs.get<bool>("no_PMT_decays"))
     {
         G4double lMass = mOM->getPMTmanager()->getPMTGlassWeight();
@@ -119,6 +129,6 @@ void IsotopeDecays::simulateDecaysInOpticalModule(G4double pTimeWindow)
             }
         }
     }
-*/
+
 }
 

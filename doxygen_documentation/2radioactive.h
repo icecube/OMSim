@@ -15,7 +15,7 @@
  *  Important customizations in the simulation involve the extension of Geant4's original scintillation class, facilitating the simulation of more complex decay processes (8 lifetimes), and the modification the G4RadioactiveDecay class which amends default decay time of isotopes. 
  *  The scintillation properties of the mDOM glass were measured in the scope of several theses. For a summary check section 11.2 of <a href="https://zenodo.org/record/8121321">this thesis</a>.
  *  
- *  At the time there are two analysis modes:
- *  - with --multiplicity_study argument: after each \f$t_{w}\f$ time window the multiplicity is calculated and saved to a file. The raw data is not saved, as multiplicity studies generally involve long simulation times (i.e. large number of photons)
- *  - without --multiplicity_study argument: the data of photons and decayed isotopes are saved into files.
+ *  Currently, there are two analysis modes:
+ *  - With the '--multiplicity_study' argument: After each \f$t_{w}\f$ time window, the multiplicity is calculated and saved to a file. Raw data isn't stored, as multiplicity studies generally involve extended simulation durations, leading to large volumes of photon data.
+ *  - Without the '--multiplicity_study' argument: Data pertaining to photons and decayed isotopes is saved to files.
  */

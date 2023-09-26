@@ -2,6 +2,10 @@
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimHitManager.hh"
 
+
+/**
+ * @brief Writes the header line to the output file.
+ */
 void OMSimEffectiveAreaAnalyisis::writeHeader()
 {
 	mDatafile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
@@ -20,6 +24,12 @@ void OMSimEffectiveAreaAnalyisis::writeHeader()
 	mDatafile.close();
 }
 
+
+/**
+ * @brief Calculates the effective area based on the number of hits and beam properties.
+ * @param pHits The number of hits.
+ * @return Returns a structure with the effective area and its uncertainty.
+ */
 effectiveAreaResult OMSimEffectiveAreaAnalyisis::calculateEffectiveArea(double pHits)
 {
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
@@ -31,7 +41,11 @@ effectiveAreaResult OMSimEffectiveAreaAnalyisis::calculateEffectiveArea(double p
 	return { lEA, lEAError };
 }
 
-
+/**
+ * @brief Writes a scan result to the output file.
+ * @param pPhi The phi angle used in the scan to be written to the output file.
+ * @param pTheta The phi angle used in the scan to be written to the output file.
+ */
 void OMSimEffectiveAreaAnalyisis::writeScan(G4double pPhi, G4double pTheta)
 {
 	std::vector<double> lHits = OMSimHitManager::getInstance().countHits();

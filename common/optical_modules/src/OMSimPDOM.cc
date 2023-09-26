@@ -1,7 +1,7 @@
 
 #include "OMSimPDOM.hh"
 #include "OMSimLogger.hh"
-
+#include "OMSimCommandArgsTable.hh"
 #include <G4Ellipsoid.hh>
 #include <G4LogicalSkinSurface.hh>
 #include <G4Orb.hh>
@@ -10,6 +10,8 @@
 pDOM::pDOM(InputDataManager *pData, G4bool pPlaceHarness)
 {
     log_info("Constructing pDOM");
+    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
+
     mPlaceHarness = pPlaceHarness;
     mData = pData;
     mPMTManager = new OMSimPMTConstruction(mData);
@@ -69,14 +71,14 @@ void pDOM::construction()
                                                        mData->getMaterial("Ri_Vacuum"),
                                                        "PDOM_Air logical");
 
-    G4PVPlacement *lBoardPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, -40 * mm), lBoardLogical, "pDOMBoardPhys", lAirLogical, false, 0);
-    G4PVPlacement *lBasePhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, -105 * mm), lBaseLogical, "pDOMBasePhys", lAirLogical, false, 0);
+    G4PVPlacement *lBoardPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, -40 * mm), lBoardLogical, "pDOMBoardPhys", lAirLogical, false, 0, mCheckOverlaps);
+    G4PVPlacement *lBasePhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, -105 * mm), lBaseLogical, "pDOMBasePhys", lAirLogical, false, 0, mCheckOverlaps);
 
-    G4PVPlacement *lAirPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lAirLogical, "pDOMAirPhys ", lGelLogical, false, 0);
+    G4PVPlacement *lAirPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lAirLogical, "pDOMAirPhys ", lGelLogical, false, 0, mCheckOverlaps);
 
     mPMTManager->placeIt(G4ThreeVector(0, 0, lPMTz), G4RotationMatrix(), lGelLogical);
 
-    G4PVPlacement *lGelPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lGelLogical, "pDOMGelPhys", lGlassSphereLogical, false, 0);
+    G4PVPlacement *lGelPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lGelLogical, "pDOMGelPhys", lGlassSphereLogical, false, 0, mCheckOverlaps);
 
     if (mPlaceHarness)
         appendComponent(lHarnessSolid, lHarnessLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "pDOM_Harness");

@@ -3,6 +3,13 @@
 #include "G4Step.hh"
 #include <G4SystemOfUnits.hh>
 
+
+/**
+* @brief Custom actions during a tracking step.
+* This function checks for particles that seem to be stuck (e.g., in a loop in the pressure vessel)
+* and kills them if they exceed a specified number of tracking steps.
+* @param aStep Pointer to the current tracking step.
+*/
 void OMSimSteppingAction::UserSteppingAction(const G4Step* aStep)
 {    G4Track* aTrack = aStep->GetTrack();
     

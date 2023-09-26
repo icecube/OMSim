@@ -9,14 +9,15 @@
 #include "OMSimDEGG.hh"
 #include "CADMesh.hh"
 #include "OMSimLogger.hh"
+#include "OMSimCommandArgsTable.hh"
 
 #include <G4Sphere.hh>
 #include <G4Polycone.hh>
 
-
 DEGG::DEGG(InputDataManager *pData, G4bool pPlaceHarness)
 {
    log_info("Constructing DEGG");
+   mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
    mData = pData;
    mPMTManager = new OMSimPMTConstruction(mData);
    mPMTManager->selectPMT("pmt_Hamamatsu_R5912_20_100");

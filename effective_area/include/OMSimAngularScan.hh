@@ -21,35 +21,17 @@
 class AngularScan
 {
 public:
-  /**
-   * @param pBeamRadius The radius of the beam.
-   * @param pBeamDistance The distance of the beam from the origin.
-   * @param pWavelength The wavelength of the photons to be generated.
-   */
+
   AngularScan(G4double pBeamRadius, G4double pBeamDistance, G4double pWavelength);
   ~AngularScan();
 
-  /**
-   * @brief Configure the GPS settings, such as the particle properties, beam position and direction.
-   */
-  void configureScan();
 
-  /**
-   * @brief Run a single angular scan with the specified angles.
-   * @param pPhi The azimuthal angle in degrees.
-   * @param pTheta The polar angle in degrees.
-   */
+  void configureScan();
   void runSingleAngularScan(G4double pPhi, G4double pTheta);
 
 private:
-  /**
-   * @brief Configures the position coordinates of the beam based on the polar and azimuthal angles.
-   */
-  void configurePosCoordinates();
 
-  /**
-   * @brief Configures the angular coordinates of the beam based on the polar and azimuthal angles.
-   */
+  void configurePosCoordinates();
   void configureAngCoordinates();
   G4double mBeamRadius;
   G4double mBeamDistance;
