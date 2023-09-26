@@ -119,6 +119,12 @@ void OMSimSNAnalysis::HelpTheHeader(std::fstream& thisfile)
 
 void OMSimSNAnalysis::Writer_InfoFile() {
     if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
+        maininfofile << primaryX/m << "\t";
+        maininfofile << primaryY/m << "\t";
+        maininfofile << primaryZ/m << "\t";
+        maininfofile << primaryDirX << "\t";
+        maininfofile << primaryDirY << "\t";
+        maininfofile << primaryDirZ << "\t";
         maininfofile << nuTime/s << "\t";
         maininfofile << nuMeanEnergy/MeV<< "\t";
         maininfofile << nuEnergy/MeV<< "\t";
