@@ -45,8 +45,9 @@ class OMSimSNAnalysis
 		void ResetEvent();
 		void AnalyzeEvent();
         void Helper_AnalyzeEvent(EvtStat& this_evtStat);
-		void WriteHeader();
-        void HelpTheHeader(std::fstream& thisfile);
+		void WriteHeaders();
+		void InfoHeader();
+        void DataHeader();
         void Writer_InfoFile();
         void Writer_data(std::fstream& thisfile, EvtStat& this_evtStat);
         void Helper_ResetEvent(EvtStat& this_evtStat);

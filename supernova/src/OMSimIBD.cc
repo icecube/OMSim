@@ -22,7 +22,7 @@ OMSimIBD::OMSimIBD(G4ParticleGun* gun)
   //
   if ((OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy")) == false) {
     std::pair<std::string, std::string> lFluxNames = mSNToolBox.getFileNames(OMSimCommandArgsTable::getInstance().get<G4int>("SNtype"));
-    std::string lnubarFluxName = lFluxNames.first;
+    std::string lnubarFluxName = lFluxNames.second;
     //load model data
     std::vector<std::vector<double>> lData = InputDataManager::loadtxt(lnubarFluxName, true, 0, '\t');
     //for luminosity, only the curve is needed and not the units.

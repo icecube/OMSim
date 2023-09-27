@@ -9,7 +9,7 @@
 #include "OMSimPrimaryGeneratorAction.hh"
 #include "OMSimIBD.hh"
 #include "OMSimENES.hh"
-#include "mdomPrimaryGeneratorMessenger.hh"
+#include "OMSimPrimaryGeneratorMessenger.hh"
 
 #include "G4Event.hh"
 #include "G4ParticleGun.hh"
@@ -33,7 +33,7 @@ OMSimPrimaryGeneratorAction::OMSimPrimaryGeneratorAction()
 
   fAction0 = new OMSimIBD(fParticleGun);
   fAction1 = new OMSimENES(fParticleGun);
-  fGunMessenger = new mdomPrimaryGeneratorMessenger(this);    
+  fGunMessenger = new OMSimPrimaryGeneratorMessenger(this);    
 }
 
 

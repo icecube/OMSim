@@ -1,4 +1,4 @@
-/** @file mdomPrimaryGeneratorMessenger.cc
+/** @file OMSimPrimaryGeneratorMessenger.cc
  *  @brief Primary generator messenger to choose the corresponding primary generator.
  * 
  *  @author Cristian Jesus Lozano Mariscal (c.lozano@wwu.de)
@@ -6,13 +6,13 @@
  *  @version Geant4 10.7
  */
 
-#include "mdomPrimaryGeneratorMessenger.hh"
+#include "OMSimPrimaryGeneratorMessenger.hh"
 #include "OMSimPrimaryGeneratorAction.hh"
 #include "G4UIdirectory.hh"
 #include "G4UIcmdWithAnInteger.hh"
 
 
-mdomPrimaryGeneratorMessenger::mdomPrimaryGeneratorMessenger
+OMSimPrimaryGeneratorMessenger::OMSimPrimaryGeneratorMessenger
                                                   (OMSimPrimaryGeneratorAction* Gun)
 :G4UImessenger(),
  Action(Gun),
@@ -30,13 +30,13 @@ fSelectActionCmd = new G4UIcmdWithAnInteger("/selectGun",this);
 }
 
 
-mdomPrimaryGeneratorMessenger::~mdomPrimaryGeneratorMessenger()
+OMSimPrimaryGeneratorMessenger::~OMSimPrimaryGeneratorMessenger()
 {
   delete fSelectActionCmd;
   delete fDir;
 }
 
-void mdomPrimaryGeneratorMessenger::SetNewValue(G4UIcommand* command,
+void OMSimPrimaryGeneratorMessenger::SetNewValue(G4UIcommand* command,
                                                G4String newValue)
 { 
   if (command == fSelectActionCmd)

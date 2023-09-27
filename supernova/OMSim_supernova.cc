@@ -28,7 +28,7 @@ void PrepareAnalysis() {
     	lAnalysisManager.maininfofile.open(linfooutputname, std::ios::out| std::ios::trunc); 
     }
     lAnalysisManager.datafile.open(ldataoutputname, std::ios::out| std::ios::trunc); 
-    lAnalysisManager.WriteHeader();
+    lAnalysisManager.WriteHeaders();
 }
 
 void SupernovaNeutrinoSimulation()

@@ -10,6 +10,7 @@
 #include "G4SystemOfUnits.hh"
 #include "G4ios.hh"
 #include "OMSimCommandArgsTable.hh"
+#include "OMSimHitManager.hh"
 
 
 OMSimSNAnalysis::OMSimSNAnalysis(){
@@ -36,23 +37,37 @@ void OMSimSNAnalysis::Helper_ResetEvent(EvtStat& this_evtStat)
     this_evtStat.hitsPMTs.clear();
 }
 
+void OMSimSNAnalysis::WriteHeaders() {
+    InfoHeader();
+    DataHeader();
+}
 
+void OMSimSNAnalysis::InfoHeader()
+{
+    if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
+        maininfofile << "#"<< G4endl;
+        maininfofile << "# Time of Flux [s] | Mean energy of nu/nubar | nu energy | costheta of e-/e+ from z dir | e-/e+ energy | event weight" << G4endl;
+        /*test
+        maininfofile << "| Vertex Position (X, Y, Z) [m] | Primary direction (Px,Py,Pz)" << G4endl;
+        */
+        maininfofile << "#" << G4endl;
+    }
+}
+
+void OMSimSNAnalysis::DataHeader()
+{
+    if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
+        datafile << "# Total hits | Modules hit | PMTs hit |";
+        datafile <<"...for PMT hit...| Module number | PMT number | Hits in that PMT |";
+        datafile << "...for Hit...";
+        datafile << " hit time |";
+        datafile << "#"<< G4endl;
+    }
+}
 
 void OMSimSNAnalysis::AnalyzeEvent() {
-    //G4cout << (G4int)hitStats.size() << G4endl;
-    /*
-    G4int counter = 0;
-    for (int i=0; i<(G4int)AllFamilyTracks.size(); i++ ) {
-        counter = counter + 1;
-        FamilyTrack thisfamilytrack = AllFamilyTracks.at(i);
-        G4cout << "** Family track number "<< counter << G4endl;
-        G4cout << "Mother Particle -> " << thisfamilytrack.motherparticle << " with size " << thisfamilytrack.tracks.size() <<G4endl;
-        /*
-        for (int j=0; j<(G4int)thisfamilytrack.tracks.size(); j++ ) {
-            G4cout << "track check -- " <<thisfamilytrack.tracks.at(j) << G4endl; 
-        } 
-    } */
-    
+    std::vector<double> lHits = OMSimHitManager::getInstance().countHits();
+    //G4cout << lHits << G4endl;
     if ((G4int)hitStats.size() > 0) {
         Writer_InfoFile();
         Helper_AnalyzeEvent(evtStat0);
@@ -63,7 +78,7 @@ void OMSimSNAnalysis::AnalyzeEvent() {
 
 void OMSimSNAnalysis::Helper_AnalyzeEvent(EvtStat& this_evtStat)
 {
-    int gn_mDOMs = 1; //TODO makes this general! 
+    int gn_mDOMs = 1; //TODO make this general! 
     std::vector<G4int> modulescounter;
     modulescounter.resize(gn_mDOMs);
     for (int k=0; k<gn_mDOMs; k++) {
@@ -92,63 +107,32 @@ void OMSimSNAnalysis::Helper_AnalyzeEvent(EvtStat& this_evtStat)
     }
 }
 
-void OMSimSNAnalysis::WriteHeader()
-{
-    maininfofile << "test info" << G4endl;
-    datafile << "test data" << G4endl;
-}
-
-void OMSimSNAnalysis::HelpTheHeader(std::fstream& thisfile)
-{
-    thisfile << "# Total hits | Modules hit | PMTs hit |";
-    if (gQEweigh) {
-        thisfile << " Total QE prob |";
-    }
-    thisfile <<"...for PMT hit...| Module number | PMT number | Hits in that PMT |";
-    thisfile << "...for Hit...";
-    if (gQEweigh) {
-        thisfile << " QE prob |";
-    }
-    thisfile << " hit time |";
-    if (gQEweigh) {
-        thisfile << "...end of hit loop...| Total QE prob in PMT |" << G4endl;
-    }
-    thisfile << "#"<< G4endl;
-}
-
 
 void OMSimSNAnalysis::Writer_InfoFile() {
     if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
-        maininfofile << primaryX/m << "\t";
-        maininfofile << primaryY/m << "\t";
-        maininfofile << primaryZ/m << "\t";
-        maininfofile << primaryDirX << "\t";
-        maininfofile << primaryDirY << "\t";
-        maininfofile << primaryDirZ << "\t";
         maininfofile << nuTime/s << "\t";
         maininfofile << nuMeanEnergy/MeV<< "\t";
         maininfofile << nuEnergy/MeV<< "\t";
         maininfofile << cosTheta<< "\t";
         maininfofile << primaryEnergy/MeV << "\t";
         maininfofile << weigh << "\n";
+        /* //Tests
+        maininfofile << primaryX/m << "\t";
+        maininfofile << primaryY/m << "\t";
+        maininfofile << primaryZ/m << "\t";
+        maininfofile << primaryDirX << "\t";
+        maininfofile << primaryDirY << "\t";
+        maininfofile << primaryDirZ << "\t";
+        */
     }
 }
 
 void OMSimSNAnalysis::Writer_data(std::fstream& thisfile, EvtStat& this_evtStat)
 {
     if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false) {
-
         thisfile << this_evtStat.nrHitTot << "\t";
         thisfile << this_evtStat.nrHitMod << "\t";
         thisfile << this_evtStat.nrHitPMTs << "\t";
-        if (gQEweigh) {
-            G4double sum = 0;
-            for (unsigned int i = 0 ; i<hitStats.size(); i++) {
-                sum = sum + hitStats[i].QEprob;
-            }
-            thisfile << sum << "\t";
-            
-        }
         thisfile << "\t";
         for ( int j=0; j<(G4int)this_evtStat.hitsPMTs.size(); j++ ) {
             thisfile << std::get<0>(this_evtStat.hitsPMTs[j]) << "\t";
@@ -157,22 +141,14 @@ void OMSimSNAnalysis::Writer_data(std::fstream& thisfile, EvtStat& this_evtStat)
             G4double PMTprob= 0;
             for (int i=0; i<(G4int)hitStats.size(); i++) {
                 if ( (std::get<0>(this_evtStat.hitsPMTs[j]) == hitStats[i].moduleNr) && (std::get<1>(this_evtStat.hitsPMTs[j]) == hitStats[i].pmtNr) ) {
-                    //thisfile << hitStats[i].wavelen/nm << "\t";
-                    if (gQEweigh) {
-                        PMTprob = PMTprob + hitStats[i].QEprob;
-                        thisfile << hitStats[i].QEprob << "\t";
-                        }
                     thisfile << hitStats[i].hit_time/ns << "\t";
-                    }
-            if (gQEweigh) {
-                thisfile << PMTprob << "\t\t";
                 }
             }
         }
         thisfile << G4endl;
     } else {
         thisfile << this_evtStat.nrHitPMTs << "\t";
-        thisfile  << weigh << "\t";
+        thisfile << weigh << "\t";
         thisfile << nuEnergy/MeV<< "\t";
         thisfile << G4endl;
     }

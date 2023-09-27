@@ -1,5 +1,5 @@
-#ifndef mdomPrimaryGeneratorMessenger_h
-#define mdomPrimaryGeneratorMessenger_h 1
+#ifndef OMSimPrimaryGeneratorMessenger_h
+#define OMSimPrimaryGeneratorMessenger_h 1
 
 #include "G4UImessenger.hh"
 #include "globals.hh"
@@ -9,11 +9,11 @@ class G4UIdirectory;
 class G4UIcmdWithAnInteger;
 
 
-class mdomPrimaryGeneratorMessenger: public G4UImessenger
+class OMSimPrimaryGeneratorMessenger: public G4UImessenger
 {
   public:
-    mdomPrimaryGeneratorMessenger(OMSimPrimaryGeneratorAction*);
-   ~mdomPrimaryGeneratorMessenger();
+    OMSimPrimaryGeneratorMessenger(OMSimPrimaryGeneratorAction*);
+   ~OMSimPrimaryGeneratorMessenger();
     
     virtual void SetNewValue(G4UIcommand*, G4String);
     
