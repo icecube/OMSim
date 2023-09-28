@@ -23,6 +23,14 @@ abcDataFile::abcDataFile(G4String pFileName)
     mFileName = pFileName;
 }
 
+/**
+ *  @brief This method sorts two vectors (sortVector & referenceVector) based on the order of values in referenceVector.
+ *
+ *  @param referenceVector The vector of reference values. The ordering of these values will determine the final order of both vectors.
+ *  @param sortVector The vector to be sorted according to the referenceVector.
+ *
+ *  @throws std::invalid_argument if the vectors do not have the same size.
+ */
 void abcDataFile::sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector)
 {
     // Check if the vectors have the same size
@@ -57,6 +65,12 @@ void abcDataFile::sortVectorByReference(std::vector<G4double> &referenceVector, 
     referenceVector = std::move(sortedReferenceVector);
 }
 
+/**
+ *  @brief Defines a new material from data in a json-file.
+ *
+ *  @details This method reads a JSON file containing material data, parses the data into a material properties table,
+ *           and creates a new material in the G4NistManager.
+ */
 void abcMaterialData::createMaterial()
 {
     mJsonTree = mFileData->appendAndReturnTree(mFileName);
@@ -85,7 +99,9 @@ void abcMaterialData::createMaterial()
     G4String mssg = "New Material defined: " + mMaterial->GetName();
     log_debug(mssg);
 }
-
+/**
+ *  @brief Extracts absorption length data from a json-file and adds it to the material property table.
+ */
 void abcMaterialData::extractAbsorptionLength()
 {
     std::vector<G4double> lAbsLength;
@@ -96,6 +112,9 @@ void abcMaterialData::extractAbsorptionLength()
     mMPT->AddProperty("ABSLENGTH", &lAbsLengthEnergy[0], &lAbsLength[0], static_cast<int>(lAbsLength.size()));
 }
 
+/**
+ *  @brief Extracts refraction index data from a json-file and adds it to the material property table.
+ */
 void abcMaterialData::extractRefractionIndex()
 {
     std::vector<G4double> lRefractionIndex;
@@ -106,6 +125,11 @@ void abcMaterialData::extractRefractionIndex()
     mMPT->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
 }
 
+/**
+ *  @brief Converts a string representing a state of matter to a G4State.
+ *  @param pState_str A string representing a state of matter. Should be one of "kStateSolid", "kStateLiquid", "kStateGas".
+ *  @return A G4State representing the state of matter. Will be kStateUndefined if the input string does not match any known states.
+ */
 G4State abcMaterialData::getState(G4String pState_str)
 {
     G4State lState;
@@ -126,6 +150,9 @@ G4State abcMaterialData::getState(G4String pState_str)
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
+/**
+ * @brief Extracts information and creates a material with refraction index and absorption length defined.
+ */
 void RefractionAndAbsorption::extractInformation()
 {
     createMaterial();
@@ -135,6 +162,12 @@ void RefractionAndAbsorption::extractInformation()
     mMaterial->SetMaterialPropertiesTable(mMPT);
 }
 
+/**
+ * @brief Extracts information and creates a material with refraction index defined.
+ *
+ * This method is responsible for creating a material and extracting the refraction index,
+ * which is then set to the material's properties table.
+ */
 void RefractionOnly::extractInformation()
 {
     createMaterial();
@@ -142,11 +175,24 @@ void RefractionOnly::extractInformation()
     mMaterial->SetMaterialPropertiesTable(mMPT);
 }
 
+/**
+ * @brief Extracts information and creates a material without optical properties.
+ *
+ * This method is responsible for creating a material without any specific optical properties.
+ */
 void NoOptics::extractInformation()
 {
     createMaterial();
 }
 
+/**
+ * @brief Extracts information and creates ice with optical properties from IceCube.
+ *
+ * This method is responsible for creating a material based on the properties of IceCube's ice.
+ * It creates two additional materials "IceCubeICE_SPICE" and "Mat_BubColumn", sets their properties,
+ * and also handles the calculations and assignments for the material's properties such as
+ * refractive index, absorption length, and mie scattering length.
+ */
 void IceCubeIce::extractInformation()
 {
     mSpiceDepth_pos = OMSimCommandArgsTable::getInstance().get<int>("depth_pos");
@@ -202,12 +248,26 @@ void IceCubeIce::extractInformation()
  * %%%%%%%%%%%%%%%% Functions for icecube ice optical properties %%%%%%%%%%%%%%%%
  */
 
+/**
+ * @brief Calculate temperature of ice depending on the depth.
+ *
+ * This function is needed for the calculation of scattering and absorption length of the ice.
+ *
+ * @param pDepth Depth in m from where we need the temperature.
+ * @return Temperature in Kelvin.
+ */
 G4double IceCubeIce::spiceTemperature(G4double pDepth)
 {
     G4double spice_temp = 221.5 - 0.00045319 / m * pDepth + 5.822e-6 / m2 * pow(pDepth, 2.);
     return spice_temp;
 }
 
+/**
+ * @brief Calculate absorption length of IceCube's ice for a specific wavelength.
+ *
+ * @param pLambd Wavelength in nm.
+ * @return Absorption length in m.
+ */
 G4double IceCubeIce::spiceAbsorption(G4double pLambd)
 {
     G4double lKappa = 1.08;
@@ -219,6 +279,12 @@ G4double IceCubeIce::spiceAbsorption(G4double pLambd)
     return la_inv;
 }
 
+/**
+ * @brief Calculate refraction index of IceCube's ice for a specific wavelength.
+ *
+ * @param pLambd Wavelength in nm.
+ * @return Refraction index.
+ */
 G4double IceCubeIce::spiceRefraction(G4double pLambd)
 {
     // unknown depth. Parametrization by Thomas Kittler.
@@ -227,6 +293,12 @@ G4double IceCubeIce::spiceRefraction(G4double pLambd)
     return lNphase; // using this now after discussion with Timo
 }
 
+/**
+ * @brief Calculate mie scattering length of IceCube's ice for a specific wavelength.
+ *
+ * @param pLambd Wavelength in nm.
+ * @return Mie scattering length in m.
+ */
 G4double IceCubeIce::mieScattering(G4double pLambd)
 {
     // depth_pos is the coordinate for the chosen depth in Depth_spice. For example to choose
@@ -238,6 +310,12 @@ G4double IceCubeIce::mieScattering(G4double pLambd)
     return lB_inv;
 }
 
+/**
+ * @brief Define a new reflective surface from data in a json-file.
+ *
+ * This method reads a json file, extracts information about an optical surface's properties,
+ * creates a new optical surface and sets the properties.
+ */
 void ReflectiveSurface::extractInformation()
 {
 
@@ -522,6 +600,9 @@ void ScintillationProperties::extractYieldElectron(G4String pTemperature)
  * %%%%%%%%%%%%%%%% Functions for custom properties %%%%%%%%%%%%%%%%
  */
 
+/**
+ * @brief Extracts the custom properties from the file and updates the MPT of the material.
+ */
 void CustomProperties::extractInformation()
 {
     mJsonTree = mFileData->appendAndReturnTree(mFileName);
@@ -530,6 +611,9 @@ void CustomProperties::extractInformation()
     extractProperties();
 }
 
+/**
+ * @brief Extracts so-called "constant properties" (i.e. single numbers) for the material from the file.
+ */
 void CustomProperties::extractConstProperties()
 {
     auto lOptProperties = mJsonTree.get_child_optional("ConstProperties");
@@ -549,6 +633,9 @@ void CustomProperties::extractConstProperties()
     }
 }
 
+/**
+ * @brief Extracts vector-like 2D properties for the material from the file.
+ */
 void CustomProperties::extractProperties()
 {
     auto lOptProperties = mJsonTree.get_child_optional("Properties");
@@ -573,6 +660,9 @@ void CustomProperties::extractProperties()
     }
 }
 
+/**
+ * @brief Finds the Material Properties Table (MPT) for the specific material. The MPT is updated with the custom properties from the file.
+ */
 void CustomProperties::findMPT()
 {
     mObjectName = mJsonTree.get<G4String>("jMaterialName");
@@ -583,6 +673,17 @@ void CustomProperties::findMPT()
         mMPT = lMaterial->GetMaterialPropertiesTable();
 }
 
+
+/*
+ * %%%%%%%%%%%%%%%% Functions for ReflectiveSurface %%%%%%%%%%%%%%%%
+ */
+
+/**
+ * @brief Convert a string to a G4OpticalSurfaceFinish.
+ *
+ * @param  pFinish Finish in G4String format.
+ * @return Finish in G4OpticalSurfaceFinish format.
+ */
 G4OpticalSurfaceFinish ReflectiveSurface::getOpticalSurfaceFinish(G4String pFinish)
 {
     G4OpticalSurfaceFinish lFinish;
@@ -649,6 +750,11 @@ G4OpticalSurfaceFinish ReflectiveSurface::getOpticalSurfaceFinish(G4String pFini
     return lFinish;
 }
 
+/**
+ * OpticalSurfaceModel in string to G4OpticalSurfaceModel
+ * @param  G4String
+ * @return G4OpticalSurfaceModel
+ */
 G4OpticalSurfaceModel ReflectiveSurface::getOpticalSurfaceModel(G4String pModel)
 {
     G4OpticalSurfaceModel lModel;
@@ -661,6 +767,11 @@ G4OpticalSurfaceModel ReflectiveSurface::getOpticalSurfaceModel(G4String pModel)
     return lModel;
 }
 
+/**
+ * SurfaceType in string to G4SurfaceType
+ * @param  G4String
+ * @return G4SurfaceType
+ */
 G4SurfaceType ReflectiveSurface::getSurfaceType(G4String pType)
 {
 

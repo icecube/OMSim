@@ -14,7 +14,11 @@ InputDataManager::InputDataManager() {}
  *                                          Helper Class
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
-
+/**
+ * Appends information of json-file containing PMT/OM parameters to a vector
+ * of ptrees
+ * @param pFileName Name of file containing json
+ */
 pt::ptree ParameterTable::appendAndReturnTree(G4String pFileName)
 {
     pt::ptree lJsonTree;
@@ -26,10 +30,32 @@ pt::ptree ParameterTable::appendAndReturnTree(G4String pFileName)
     return lJsonTree;
 }
 
+/**
+ * @brief Fetches a value from the table based on a key and parameter.
+ *
+ * @tparam T The type of the value to fetch.
+ * @param pKey The main key.
+ * @param pParameter The parameter within the main key's tree.
+ * @return The value associated with the key and parameter.
+ */
+template <typename T>
+T ParameterTable::getValue(G4String pKey, G4String pParameter)
+{
+    const T lValue = mTable.at(pKey).get<T>(pParameter);
+    return lValue;
+}
+
+/**
+ * @brief Fetches the value associated with a given key and parameter.
+ *
+ * @param pKey The main key.
+ * @param pParameter The parameter within the main key's tree.
+ * @return The value associated with the key and parameter, with units converted to Geant4-compatible units.
+ */
 G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
 {
     // Get the sub-tree for the provided key
-    const auto& lSubTree = mTable.at(pKey);
+    const auto &lSubTree = mTable.at(pKey);
 
     // Try getting the value with unit first
     try
@@ -46,9 +72,9 @@ G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
         bool invertUnit = lSubTree.get_child_optional(pParameter + ".jInvertUnit").has_value();
 
         // Return the value with or without inverted unit, ternary operators in c++: "variable = (condition) ? expressionTrue : expressionFalse;"
-        return invertUnit 
-               ? lValue / G4UnitDefinition::GetValueOf(lUnit) 
-               : lValue * G4UnitDefinition::GetValueOf(lUnit);
+        return invertUnit
+                   ? lValue / G4UnitDefinition::GetValueOf(lUnit)
+                   : lValue * G4UnitDefinition::GetValueOf(lUnit);
     }
     catch (...)
     {
@@ -57,7 +83,12 @@ G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
     }
 }
 
-
+/**
+ * Get values from a pTree with its unit, transforming it to a G4double
+ * @param pKey Name of json tree in file
+ * @param pParameter Name of parameter in json tree
+ * @return G4double of the value and its unit
+ */
 pt::ptree ParameterTable::getJSONTree(G4String pKey)
 {
     if (checkIfKeyInTable(pKey))
@@ -66,6 +97,12 @@ pt::ptree ParameterTable::getJSONTree(G4String pKey)
         log_critical("Key not found in table");
 }
 
+/**
+ * @brief Checks if a key exists within the table.
+ *
+ * @param pKey The key to check.
+ * @return true if the key exists, false otherwise.
+ */
 G4bool ParameterTable::checkIfKeyInTable(G4String pKey)
 {
     const G4int lFound = mTable.count(pKey);
@@ -74,12 +111,93 @@ G4bool ParameterTable::checkIfKeyInTable(G4String pKey)
     else
         return false;
 }
+
+/**
+ * @brief Parses the content of a JSON subtree into a vector, scaling values if necessary.
+ *
+ * @param pVector Vector where the values will be stored.
+ * @param pTree JSON subtree to extract values from.
+ * @param pKey JSON key whose associated array values are to be extracted.
+ * @param pScaling Scaling factor applied to each value.
+ * @param pInverse If true, the value is divided by the scaling factor, if false it's multiplied.
+ *
+ * @tparam T Type of the values to be extracted from the JSON tree.
+ */
+template <typename T>
+void ParameterTable::parseKeyContentToVector(std::vector<T> &pVector, pt::ptree pTree,
+                                             std::basic_string<char> pKey, G4double pScaling,
+                                             bool pInverse)
+{
+    for (pt::ptree::value_type &ridx : pTree.get_child(
+             pKey))
+    { // get array from element with key "pKey" of the json
+        if (pInverse)
+        { // if we need 1/x
+            pVector.push_back(pScaling / ridx.second.get_value<T>());
+        }
+        else
+        { // otherwise we only by scaling factor
+            pVector.push_back(ridx.second.get_value<T>() * pScaling);
+        }
+    }
+}
+
+/**
+ * @brief Parses the content of a JSON subtree into a vector, scaling values if necessary.
+ *
+ * This overloaded method additionally requires a map key to first retrieve the JSON subtree.
+ *
+ * @param pVector Vector where the values will be stored.
+ * @param pMapKey Key of the JSON map to retrieve the desired subtree.
+ * @param pKey JSON key within the subtree whose associated array values are to be extracted.
+ * @param pScaling Scaling factor applied to each value.
+ * @param pInverse If true, the value is divided by the scaling factor, if false it's multiplied.
+ *
+ * @tparam T Type of the values to be extracted from the JSON tree.
+ */
+template <typename T>
+void parseKeyContentToVector(std::vector<T> &pVector,
+                             std::basic_string<char> pMapKey,
+                             std::basic_string<char> pKey, G4double pScaling,
+                             bool pInverse)
+{
+    for (pt::ptree::value_type &ridx : getJSONTree(pMapKey).get_child(
+             pKey))
+    { // get array from element with key "pKey" of the json
+        if (pInverse)
+        { // if we need 1/x
+            pVector.push_back(pScaling / ridx.second.get_value<T>());
+        }
+        else
+        { // otherwise we only by scaling factor
+            pVector.push_back(ridx.second.get_value<T>() * pScaling);
+        }
+    }
+}
+
+
+
 /*
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  *                                Main class methods
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
-
+/**
+ * @brief Reads numerical data from a file and returns it as a 2D vector.
+ * Similar to numpy.loadtxt.
+ *
+ * @param pFilePath The path to the input file.
+ * @param pUnpack Optional. If true, the returned data is transposed, i.e.,
+ * unpacked into columns. Default is true.
+ * @param pSkipRows Optional. The number of lines to skip at the beginning of
+ * the file. Default is 0.
+ * @param pDelimiter The character used to separate values in each line of the
+ * input file.
+ * @return A 2D vector of doubles. The outer vector groups all columns (or
+ * rows if 'unpack' is false), and each inner vector represents one of the
+ * columns (or one of the rows if 'unpack' is false) of data file.
+ * @throws std::runtime_error if the file cannot be opened.
+ */
 std::vector<std::vector<double>>
 InputDataManager::loadtxt(const std::string &pFilePath, bool pUnpack,
                           size_t pSkipRows, char pDelimiter)
@@ -130,7 +248,17 @@ InputDataManager::loadtxt(const std::string &pFilePath, bool pUnpack,
         return lData;
     }
 }
-
+/**
+ * Get a G4Material. In order to get custom built materials, method
+ * searchFolders() should have already been called. Standard materials from
+ * Geant4 are also transfered directly (if found through
+ * FindOrBuildMaterial()). Materials defined by arguments of the main should
+ * start with "arg" and then we get the material name from the arrays
+ * depending on the global integers (gGel, gGlass, gEnvironment..) .
+ * @param pName name of the (custom) material or "argVesselGlass", "argGel",
+ * "argWorld" for argument materials
+ * @return G4Material
+ */
 G4Material *InputDataManager::getMaterial(G4String pName)
 {
 
@@ -170,6 +298,13 @@ G4Material *InputDataManager::getMaterial(G4String pName)
     return lReturn;
 }
 
+/**
+ * Get a G4OpticalSurface. In order to get custom built materials, method
+ * searchFolders() should have already been called.
+ * @param pName name of the optical surface or argument reflectors
+ * "argReflector"
+ * @return G4OpticalSurface
+ */
 G4OpticalSurface *InputDataManager::getOpticalSurface(G4String pName)
 {
 
@@ -200,6 +335,9 @@ G4OpticalSurface *InputDataManager::getOpticalSurface(G4String pName)
     }
 }
 
+/**
+ * @brief Searches through predefined folders for input data files.
+ */
 void InputDataManager::searchFolders()
 {
     std::vector<std::string> directories = {
@@ -214,6 +352,20 @@ void InputDataManager::searchFolders()
     }
 }
 
+/**
+ * @brief Processes a data file based on its name prefix.
+ *
+ * The function identifies the type of data file (RefractionAndAbsorption,
+ * RefractionOnly, NoOptics, IceCubeIce, ReflectiveSurface or others) based on
+ * the prefix of the filename. It then constructs an object of the appropriate
+ * class and invokes its information extraction method. For 'Refl' prefixed
+ * files, it also updates the mOpticalSurfaceMap. For 'pmt_', 'om_', and
+ * 'usr_' prefixed files, it invokes directly appendAndReturnTree without any
+ * extra parsing into Geant4 objects.
+ *
+ * @param pFilePath Full path to the file.
+ * @param pFileName Name of the file (without the path).
+ */
 void InputDataManager::processFile(const std::string &pFilePath,
                                    const std::string &pFileName)
 {
@@ -259,7 +411,10 @@ void InputDataManager::processFile(const std::string &pFilePath,
         appendAndReturnTree(pFilePath);
     }
 }
-
+/**
+ * Scann for data files inside mDataDirectory and process files.
+ * @param pName name of the material
+ */
 void InputDataManager::scannDataDirectory()
 {
     DIR *lDirectory = opendir(mDataDirectory.data());

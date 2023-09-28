@@ -49,9 +49,9 @@ public:
 
     std::vector<G4ThreeVector> mPlacedPositions;       ///<  store the positions each time the components are placed
     std::vector<G4RotationMatrix> mPlacedOrientations; ///<  store the orientations each time the components are placed
-    std::vector<G4Transform3D> mPlacedTranslations;
-    std::map<G4String, Component> mComponents;
-    std::map<G4String, G4PVPlacement *> mLastPhysicals;
+    std::vector<G4Transform3D> mPlacedTranslations; ///<  store the translation each time the components are placed
+    std::map<G4String, Component> mComponents;  ///<  dictionary with each component
+    std::map<G4String, G4PVPlacement *> mLastPhysicals; ///<  dictionary with the (last) G4PVPlacement of each component mComponents produced after calling placeIt
 
     void appendComponent(G4VSolid *pSolid, G4LogicalVolume *pLogical, G4ThreeVector pVector, G4RotationMatrix pRotation, G4String pName);
     G4bool checkIfExists(G4String pName);

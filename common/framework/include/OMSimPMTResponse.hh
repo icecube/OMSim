@@ -59,23 +59,13 @@ private:
     std::map<G4double, TH2D *> mTransitTimeSpreadG2Dmap;
 
     void configureQEinterpolator();
-
-
     TH2D *createHistogramFromData(const std::string &pFilePath, const char *pTH2DName);
-
-
     G4double getCharge(G4double pWavelengthKey);
-
     G4double getCharge(G4double pWavelengthKey1, G4double pWavelengthKey2);
-
     G4double getTransitTime(G4double pWavelengthKey);
-
     G4double getTransitTime(G4double pWavelengthKey1, G4double pWavelengthKey2);
-
     PMTPulse getPulseFromInterpolation(G4double pWavelengthKey1, G4double pWavelengthKey2);
-
     PMTPulse getPulseFromKey(G4double pWavelengthKey);
-
     G4double wavelengthInterpolatedValue(std::map<G4double, TH2D *> pMap, G4double pWavelengthKey1, G4double pWavelengthKey2);
 
     OMSimPMTResponse();

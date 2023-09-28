@@ -48,14 +48,6 @@ public:
     G4String mObjectName;
 
 protected:
-    /**
-     *  @brief This method sorts two vectors (sortVector & referenceVector) based on the order of values in referenceVector.
-     *
-     *  @param referenceVector The vector of reference values. The ordering of these values will determine the final order of both vectors.
-     *  @param sortVector The vector to be sorted according to the referenceVector.
-     *
-     *  @throws std::invalid_argument if the vectors do not have the same size.
-     */
     void sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector);
 
     virtual void extractInformation() = 0;     // abstract method you have to define for a derived class
@@ -86,30 +78,11 @@ public:
     G4MaterialPropertiesTable *mMPT;
     G4NistManager *mMatDatBase;
 
-    /**
-     *  @brief Defines a new material from data in a json-file.
-     *
-     *  @details This method reads a JSON file containing material data, parses the data into a material properties table,
-     *           and creates a new material in the G4NistManager.
-     */
     void createMaterial();
-
-    /**
-     *  @brief Extracts absorption length data from a json-file and adds it to the material property table.
-     */
     void extractAbsorptionLength();
-
-    /**
-     *  @brief Extracts refraction index data from a json-file and adds it to the material property table.
-     */
     void extractRefractionIndex();
 
 protected:
-    /**
-     *  @brief Converts a string representing a state of matter to a G4State.
-     *  @param pState_str A string representing a state of matter. Should be one of "kStateSolid", "kStateLiquid", "kStateGas".
-     *  @return A G4State representing the state of matter. Will be kStateUndefined if the input string does not match any known states.
-     */
     G4State getState(G4String pState);
     virtual void extractInformation() = 0; // abstract method
 };
@@ -126,9 +99,6 @@ class RefractionAndAbsorption : public abcMaterialData
 {
 public:
     RefractionAndAbsorption(G4String pFilename) : abcMaterialData(pFilename){};
-    /**
-     * @brief Extracts information and creates a material with refraction index and absorption length defined.
-     */
     void extractInformation();
 };
 
@@ -142,12 +112,6 @@ class RefractionOnly : public abcMaterialData
 {
 public:
     RefractionOnly(G4String pFilename) : abcMaterialData(pFilename){};
-    /**
-     * @brief Extracts information and creates a material with refraction index defined.
-     *
-     * This method is responsible for creating a material and extracting the refraction index,
-     * which is then set to the material's properties table.
-     */
     void extractInformation();
 };
 
@@ -161,11 +125,6 @@ class NoOptics : public abcMaterialData
 {
 public:
     NoOptics(G4String pFilename) : abcMaterialData(pFilename){};
-    /**
-     * @brief Extracts information and creates a material without optical properties.
-     *
-     * This method is responsible for creating a material without any specific optical properties.
-     */
     void extractInformation();
 };
 
@@ -180,51 +139,16 @@ class IceCubeIce : public abcMaterialData
 public:
     IceCubeIce(G4String pFilename) : abcMaterialData(pFilename){};
 
-    /**
-     * @brief Extracts information and creates ice with optical properties from IceCube.
-     *
-     * This method is responsible for creating a material based on the properties of IceCube's ice.
-     * It creates two additional materials "IceCubeICE_SPICE" and "Mat_BubColumn", sets their properties,
-     * and also handles the calculations and assignments for the material's properties such as
-     * refractive index, absorption length, and mie scattering length.
-     */
     void extractInformation();
 
 private:
     int mSpiceDepth_pos;
-    /**
-     * @brief Calculate temperature of ice depending on the depth.
-     *
-     * This function is needed for the calculation of scattering and absorption length of the ice.
-     *
-     * @param pDepth Depth in m from where we need the temperature.
-     * @return Temperature in Kelvin.
-     */
+
     G4double spiceTemperature(G4double depth);
-
-    /**
-     * @brief Calculate absorption length of IceCube's ice for a specific wavelength.
-     *
-     * @param pLambd Wavelength in nm.
-     * @return Absorption length in m.
-     */
     G4double spiceAbsorption(G4double pLambd);
-
-    /**
-     * @brief Calculate refraction index of IceCube's ice for a specific wavelength.
-     *
-     * @param pLambd Wavelength in nm.
-     * @return Refraction index.
-     */
     G4double spiceRefraction(G4double pLambd);
-
-    /**
-     * @brief Calculate mie scattering length of IceCube's ice for a specific wavelength.
-     *
-     * @param pLambd Wavelength in nm.
-     * @return Mie scattering length in m.
-     */
     G4double mieScattering(G4double pLambd);
+
     std::vector<G4double> mSpice_be400inv;
     std::vector<G4double> mSpice_a400inv;
     std::vector<G4double> mSpiceDepth;
@@ -244,46 +168,19 @@ public:
     ReflectiveSurface(G4String pFilename) : abcDataFile(pFilename){};
     G4OpticalSurface *mOpticalSurface;
 
-    /**
-     * @brief Convert a string to a G4OpticalSurfaceFinish.
-     *
-     * @param  pFinish Finish in G4String format.
-     * @return Finish in G4OpticalSurfaceFinish format.
-     */
     G4OpticalSurfaceFinish getOpticalSurfaceFinish(G4String pFinish);
-
-    /**
-     * OpticalSurfaceModel in string to G4OpticalSurfaceModel
-     * @param  G4String
-     * @return G4OpticalSurfaceModel
-     */
     G4OpticalSurfaceModel getOpticalSurfaceModel(G4String pModel);
-
-    /**
-     * SurfaceType in string to G4SurfaceType
-     * @param  G4String
-     * @return G4SurfaceType
-     */
     G4SurfaceType getSurfaceType(G4String pType);
-
-    /**
-     * @brief Define a new reflective surface from data in a json-file.
-     *
-     * This method reads a json file, extracts information about an optical surface's properties,
-     * creates a new optical surface and sets the properties.
-     */
     void extractInformation();
 };
-
-
 
 /**
  * @class ScintillationProperties
  * @brief Class to extract and apply scintillation properties to existing materials.
- * 
+ *
  * This class is responsible for extracting scintillation properties from a data file
  * and applying them to a Geant4 material's properties table.
- * 
+ *
  * @ingroup common
  */
 class ScintillationProperties : public abcDataFile
@@ -291,12 +188,13 @@ class ScintillationProperties : public abcDataFile
 public:
     ScintillationProperties(G4String pFilename) : abcDataFile(pFilename){};
     void extractInformation();
+
 private:
     void extractSpectrum();
     void extractLifeTimes(G4String pTemperature);
-    void getLifeTimeTemperatureRange(double& pMinTemp, double& pMaxTemp);
+    void getLifeTimeTemperatureRange(double &pMinTemp, double &pMaxTemp);
     std::pair<std::vector<G4double>, std::vector<G4double>> extractLifeTimesForTemperature(G4String pTemperature);
-    void weightLifeTimesAmplitudes(std::vector<G4double>& pAmplitudes, double pT1, double pT2);
+    void weightLifeTimesAmplitudes(std::vector<G4double> &pAmplitudes, double pT1, double pT2);
     void extractYieldAlpha(G4String pTemperature);
     void extractYieldElectron(G4String pTemperature);
     void extractYield(G4String pTemperature, G4String pYieldPropertyName, G4String pArgKey, G4String pTreeKeyTemperature, G4String pTreeKeyYield);
@@ -306,7 +204,7 @@ private:
 
 /**
  * @class   CustomProperties
- * @brief   This class adds user defined properties to already defined materials 
+ * @brief   This class adds user defined properties to already defined materials
  * @ingroup common
  */
 class CustomProperties : public abcDataFile
@@ -314,14 +212,13 @@ class CustomProperties : public abcDataFile
 public:
     CustomProperties(G4String pFilename) : abcDataFile(pFilename){};
     void extractInformation();
+
 private:
     void extractConstProperties();
     void extractProperties();
     void findMPT();
     G4MaterialPropertiesTable *mMPT;
 };
-
-
 
 #endif
 //
