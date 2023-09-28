@@ -65,7 +65,7 @@ public:
         static OMSimHitManager instance;
         return instance;
     }
-    
+
     void appendHitInfo(
         G4double globalTime,
         G4double localTime,
@@ -86,8 +86,8 @@ public:
     std::vector<int> calculateMultiplicity(const G4double pTimeWindow, int moduleNumber = 0);
 
 private:
-    std::map<G4int, G4int> mNumPMTs;
-    std::map<G4int, HitStats> mModuleHits;
+    std::map<G4int, G4int> mNumPMTs; ///< Map of number of PMTs in the used optical modules
+    std::map<G4int, HitStats> mModuleHits; ///< Map of a HitStats containing hit information for each simulated optical module
     OMSimHitManager() = default;
     ~OMSimHitManager() = default;
     OMSimHitManager(const OMSimHitManager &) = delete;

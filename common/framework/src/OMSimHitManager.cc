@@ -86,7 +86,7 @@ void OMSimHitManager::appendHitInfo(
 }
 
 /**
- * @brief Saves the number of PMTs in a module
+ * @brief Stores the number of PMTs in a module for correct data handling
  * @param pNumberOfPMTs Nr of PMTs in OM
  * @param pModuleIndex Module index for which we are getting the information (default 0)
  */
@@ -96,9 +96,9 @@ void OMSimHitManager::setNumberOfPMTs(int pNumberOfPMTs, int pModuleIndex)
 }
 
 /**
- * @brief Retrieves the hit statistics for a specified module.
+ * @brief Retrieves the HitStats structure for the specified module.
  * @param moduleIndex Index of the module for which to retrieve hit statistics. Default is 0.
- * @return A HitStats structure containing hit information for the specified module.
+ * @return A HitStats structure containing hit information of specified module.
  */
 HitStats OMSimHitManager::getHitsOfModule(int pModuleIndex)
 {

@@ -31,7 +31,7 @@
  *  Each PMT model's construction is quite similar. However, the frontal window shape varies among models, leading to diverse combinations of ellipsoids and spheres.
  * 
  * <div style="width: 100%; text-align: center;">
- * <img src="simulation_vs_sketch_old.png" width="350" height="400" />
+ * <img src="simulation_vs_sketch_old.png" width="280" height="320" />
  * <div style="width: 80%; margin: auto;">
  * <br/>
  * Figure 1: <i>Cross section of simple mDOM PMT model. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
@@ -39,7 +39,7 @@
  * </div>
  * 
  * <div style="width: 100%; text-align: center;">
- * <img src="simulation_dynodes_screenshot.png" width="500" height="410" />
+ * <img src="simulation_dynodes_screenshot.png" width="400" height="328" />
  * <div style="width: 80%; margin: auto;">
  * <br/>
  * Figure 1: <i>Side view of complex mDOM PMT model. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
@@ -49,7 +49,7 @@
  * In the complex PMT model the photocathode has an absorption length that matches the measured quantum efficiency of the mDOM PMTs. For the other PMT models this matching has to be still be performed.
  * 
  * <div style="width: 100%; text-align: center;">
- * <img src="QE_meas_VS_simulation.png" width="450" height="385" />
+ * <img src="QE_meas_VS_simulation.png" width="360" height="308" />
  * <div style="width: 80%; margin: auto;">
  * <br/>
  * Figure 3: <i>QE of simulation with the absorption length currently used compared to measurements. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
@@ -63,7 +63,7 @@
  * For more information see Section 9.3.4 of the thesis.
  * 
  * <div style="width: 100%; text-align: center;">
- * <img src="PW_beam_geant4_TT.png" width="320" height="550" />
+ * <img src="PW_beam_geant4_TT.png" width="256" height="440" />
  * <div style="width: 80%; margin: auto;">
  * <br/>
  * Figure 4: <i>PMT response compared to measurement for different light sources. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
