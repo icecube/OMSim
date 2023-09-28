@@ -9,7 +9,7 @@ class OMSimIBD;
 class OMSimENES;
 class G4ParticleGun;
 class G4Event;
-class mdomPrimaryGeneratorMessenger;
+class OMSimPrimaryGeneratorMessenger;
 
 
 class OMSimPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
@@ -38,7 +38,7 @@ class OMSimPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     OMSimIBD* fAction0;
     OMSimENES* fAction1;
     G4int                    fSelectedAction;
-    mdomPrimaryGeneratorMessenger* fGunMessenger;     
+    OMSimPrimaryGeneratorMessenger* fGunMessenger;     
        
 };
 
