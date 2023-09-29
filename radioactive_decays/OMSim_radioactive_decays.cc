@@ -1,5 +1,5 @@
 /**
- * @file OMSim_effective_area.cc
+ * @file 
  * @ingroup EffectiveArea
  * @brief Main for the calculation of effective areas.
  * @details The effective area of a module is calculated simulating a plane wave from a certain direction.
