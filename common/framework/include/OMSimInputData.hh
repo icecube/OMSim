@@ -24,30 +24,94 @@ namespace pt = boost::property_tree;
 class ParameterTable
 {
 public:
-    ParameterTable(){}; 
+    ParameterTable(){};
 
+    /**
+     * @brief Fetches a value from the table based on a key and parameter.
+     *
+     * @tparam T The type of the value to fetch.
+     * @param pKey The main key.
+     * @param pParameter The parameter within the main key's tree.
+     * @return The value associated with the key and parameter.
+     */
     template <typename T>
-    T getValue(G4String pKey, G4String pParameter);
+    T getValue(G4String pKey, G4String pParameter)
+    {
+        const T lValue = mTable.at(pKey).get<T>(pParameter);
+        return lValue;
+    }
+
     G4bool checkIfKeyInTable(G4String pKey);
     G4double getValueWithUnit(G4String pKey, G4String pParameter);
     pt::ptree appendAndReturnTree(G4String pFileName);
     pt::ptree getJSONTree(G4String pKey);
 
+    /**
+     * @brief Parses the content of a JSON subtree into a vector, scaling values if necessary.
+     *
+     * @param pVector Vector where the values will be stored.
+     * @param pTree JSON subtree to extract values from.
+     * @param pKey JSON key whose associated array values are to be extracted.
+     * @param pScaling Scaling factor applied to each value.
+     * @param pInverse If true, the value is divided by the scaling factor, if false it's multiplied.
+     *
+     * @tparam T Type of the values to be extracted from the JSON tree.
+     */
     template <typename T>
     void parseKeyContentToVector(std::vector<T> &pVector, pt::ptree pTree,
                                  std::basic_string<char> pKey, G4double pScaling,
-                                 bool pInverse);
+                                 bool pInverse)
+    {
+        for (pt::ptree::value_type &ridx : pTree.get_child(
+                 pKey))
+        { // get array from element with key "pKey" of the json
+            if (pInverse)
+            { // if we need 1/x
+                pVector.push_back(pScaling / ridx.second.get_value<T>());
+            }
+            else
+            { // otherwise we only by scaling factor
+                pVector.push_back(ridx.second.get_value<T>() * pScaling);
+            }
+        }
+    };
 
+    /**
+     * @brief Parses the content of a JSON subtree into a vector, scaling values if necessary.
+     *
+     * This overloaded method additionally requires a map key to first retrieve the JSON subtree.
+     *
+     * @param pVector Vector where the values will be stored.
+     * @param pMapKey Key of the JSON map to retrieve the desired subtree.
+     * @param pKey JSON key within the subtree whose associated array values are to be extracted.
+     * @param pScaling Scaling factor applied to each value.
+     * @param pInverse If true, the value is divided by the scaling factor, if false it's multiplied.
+     *
+     * @tparam T Type of the values to be extracted from the JSON tree.
+     */
     template <typename T>
     void parseKeyContentToVector(std::vector<T> &pVector,
                                  std::basic_string<char> pMapKey,
                                  std::basic_string<char> pKey, G4double pScaling,
-                                 bool pInverse);
+                                 bool pInverse)
+    {
+        for (pt::ptree::value_type &ridx : getJSONTree(pMapKey).get_child(
+                 pKey))
+        { // get array from element with key "pKey" of the json
+            if (pInverse)
+            { // if we need 1/x
+                pVector.push_back(pScaling / ridx.second.get_value<T>());
+            }
+            else
+            { // otherwise we only by scaling factor
+                pVector.push_back(ridx.second.get_value<T>() * pScaling);
+            }
+        }
+    };
+
 private:
     std::map<G4String, boost::property_tree::ptree> mTable; ///< A table mapping keys to property trees.
 };
-
-
 
 /**
  * @class InputDataManager
@@ -68,7 +132,6 @@ public:
     std::map<G4String, G4OpticalSurface *> mOpticalSurfaceMap; ///< Map that links names with optical surfaces.
 
 private:
-
     void scannDataDirectory();
     void processFile(const std::string &filePath, const std::string &fileName);
     G4String mDataDirectory; ///< The current directory being scanned for data.
