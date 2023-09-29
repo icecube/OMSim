@@ -1,10 +1,8 @@
 /**
- * @file OMSim_effective_area.cc
+ * @file 
  * @ingroup EffectiveArea
  * @brief Main for the calculation of effective areas.
  * @details The effective area of a module is calculated simulating a plane wave from a certain direction.
- * The photon generation is made with the module AngularScan, running the method runSingleAngularScan(phi, theta) once for each direction to be investigated.
- * Check command line arguments with --help.
  */
 #include "OMSim.hh"
 #include "OMSimAngularScan.hh"
