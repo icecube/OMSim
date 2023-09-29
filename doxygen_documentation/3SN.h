@@ -13,7 +13,7 @@
  *  Although CCSN models incorporate neutrino oscillations, the default simulation does not include any oscillation scenario in the weight calculations.
  * 
  * * <div style="width: 100%; text-align: center;">
- * <img src="SNsimDiagram.png" width="600" height="200" />
+ * <img src="SNsimDiagram.png" width="750" height="250" />
  * <div style="width: 80%; margin: auto;">
  * <br/>
  * Figure 1: <i>Diagram of the steps involved to generate the events for the simulation of CCSN neutrinos. The scheme is valid for both IBD and ENES, except for the threshold check. Here, stands for both electron from ENES or positron from IBD, and ν (este simbolo se vera bien?) for both electronic neutrino from ENES or electronic antineutrino from IBD.. Image from <a href="https://zenodo.org/record/8107177">this thesis</a>.</i>
@@ -25,7 +25,7 @@
  *  Below is a summary extracted from this source, outlining the steps taken to generate the events:
  *
  *      1. Utilizing the models, the expected flux per area is calculated from the luminosity 
- *      \f$L(t)\f$ and the mean energy \f$\bar{E}(t)\f$ according to
+ *      \f[L(t)\f] and the mean energy \f$\bar{E}(t)\f$ according to
  *      \begin{equation}
  *          \label{eq:fluxes}
  *          \Phi (t) = \frac{1}{4\pi d^2} \cdot \frac{L(t)}{\bar{E}(t)}.
@@ -60,7 +60,7 @@
  *
  *  A typical command to run the simulation is:
  *
- *  "./OMSim_supernova -n 100 --wheight 20 --wradius 20 --depth_pos 75 -o outputfilename --SNgun 0 --SNtype 0"
+ *  `./OMSim_supernova -n 100 --wheight 20 --wradius 20 --depth_pos 75 -o outputfilename --SNgun 0 --SNtype 0`
  *
  *  @subsection General Parameters
  *    -n: Number of particles to be generated.
@@ -77,7 +77,7 @@
  *
  *  This section allows users to manually set the mean energy of generated events by providing specific input parameters. For instance:
  *
- *  "--SNfixEnergy --SNmeanE 10.0 --SNalpha 3.0"
+ *  `--SNfixEnergy --SNmeanE 10.0 --SNalpha 3.0`
  *
  *    --SNfixEnergy: Acts as a flag parameter. When invoked, the simulation disregards the actual mean energy of neutrinos corresponding to the burst time. Instead, it adopts the mean energy and the pinching parameter specified by the subsequent two parameters.
  *    --SNmeanE: Specifies the mean energy of the neutrinos.
