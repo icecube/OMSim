@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Defines the OMSimDetectorConstruction class for the radioactive decays simulation.
+ * @ingroup radioactive
+ */
 #ifndef OMSimDetectorConstruction_h
 #define OMSimDetectorConstruction_h 1
 
@@ -10,8 +15,8 @@
 
 /**
  * @class OMSimDetectorConstruction
- * @brief Class for detector construction in the effective area simulation.
- * @ingroup EffectiveArea
+ * @brief Detector construction of radioactive decays simulation.
+ * @ingroup radioactive
  */
 class OMSimDetectorConstruction : public G4VUserDetectorConstruction
 {

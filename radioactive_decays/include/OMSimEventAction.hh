@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Defines the OMSimEventAction and EventInfoManager classes for the radioactive decays simulation.
+ * @ingroup radioactive
+ */
 #ifndef OMSimEventAction_h
 #define OMSimEventAction_h 1
 
