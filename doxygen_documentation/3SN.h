@@ -12,8 +12,8 @@
  *
  *  Although CCSN models incorporate neutrino oscillations, the default simulation does not include any oscillation scenario in the weight calculations.
  * 
- * * <div style="width: 100%; text-align: center;">
- * <img src="SNsimDiagram.png" width="750" height="250" />
+ * <div style="width: 100%; text-align: center;">
+ * <img src="SNsimDiagram.png" width="810" height="270" />
  * <div style="width: 80%; margin: auto;">
  * <br/>
  * Figure 1: <i>Diagram of the steps involved to generate the events for the simulation of CCSN neutrinos. The scheme is valid for both IBD and ENES, except for the threshold check. Here, stands for both electron from ENES or positron from IBD, and ν (este simbolo se vera bien?) for both electronic neutrino from ENES or electronic antineutrino from IBD.. Image from <a href="https://zenodo.org/record/8107177">this thesis</a>.</i>
@@ -63,15 +63,15 @@
  *  `./OMSim_supernova -n 100 --wheight 20 --wradius 20 --depth_pos 75 -o outputfilename --SNgun 0 --SNtype 0`
  *
  *  @subsection General Parameters
- *    -n: Number of particles to be generated.
- *    --depth_pos: Index of the vector determining the depth of the simulated modules. Notable values include DustLayer=65, MeanICUProperties(approx)=75, and CleanestIce=88. The data is located in "common/data/Materials/IceCubeICE.dat". The "jDepth_spice" vector provides the depth, with depth_pos serving as the index. This selection affects the effective scattering and absorption lengths of the ice at the specified depth.
- *    -o: Output file name. By default, two output files are created: one containing the simulated event information, and another with detection data.
+ *    `-n`: Number of particles to be generated.
+ *    `--depth_pos`: Index of the vector determining the depth of the simulated modules. Notable values include DustLayer=65, MeanICUProperties(approx)=75, and CleanestIce=88. The data is located in "common/data/Materials/IceCubeICE.dat". The "jDepth_spice" vector provides the depth, with depth_pos serving as the index. This selection affects the effective scattering and absorption lengths of the ice at the specified depth.
+ *    `-o`: Output file name. By default, two output files are created: one containing the simulated event information, and another with detection data.
  *
  *  @subsection SN Framework Parameters
- *    --wheight: Height of the ice's simulated world cylinder.
- *    --wradius: Radius of the ice's simulated world cylinder.
- *    --SNgun: Chooses the interaction type (0 for IBD, 1 for ENES).
- *    --SNtype: Selects the CCSN model. Two models are currently available, provided by the Garching group. These models represent the expected fluxes from two CCSNs resulting in neutron stars, with different progenitor masses (27 and 9.6 solar masses). Simulations yielding this data can be found at https://arxiv.org/abs/1510.04643
+ *    `--wheight`: Height of the ice's simulated world cylinder.
+ *    `--wradius`: Radius of the ice's simulated world cylinder.
+ *    `--SNgun`: Chooses the interaction type (0 for IBD, 1 for ENES).
+ *    `--SNtype`: Selects the CCSN model. Two models are currently available, provided by the Garching group. These models represent the expected fluxes from two CCSNs resulting in neutron stars, with different progenitor masses (27 and 9.6 solar masses). Simulations yielding this data can be found at https://arxiv.org/abs/1510.04643
  *
  *  @subsection Fixed Energy Studies
  *
@@ -79,9 +79,9 @@
  *
  *  `--SNfixEnergy --SNmeanE 10.0 --SNalpha 3.0`
  *
- *    --SNfixEnergy: Acts as a flag parameter. When invoked, the simulation disregards the actual mean energy of neutrinos corresponding to the burst time. Instead, it adopts the mean energy and the pinching parameter specified by the subsequent two parameters.
- *    --SNmeanE: Specifies the mean energy of the neutrinos.
- *    --SNalpha: Defines the pinching parameter of the energy distribution (see <a href="https://arxiv.org/pdf/1211.3920.pdf">this paper</a>).
+ *    `--SNfixEnergy`: Acts as a flag parameter. When invoked, the simulation disregards the actual mean energy of neutrinos corresponding to the burst time. Instead, it adopts the mean energy and the pinching parameter specified by the subsequent two parameters.
+ *    `--SNmeanE`: Specifies the mean energy of the neutrinos.
+ *    `--SNalpha`: Defines the pinching parameter of the energy distribution (see <a href="https://arxiv.org/pdf/1211.3920.pdf">this paper</a>).
  *
  *  Consequently, the neutrinos' energy is sampled from the distribution, derived from these two parameters and the previously mentioned model.
  * 
@@ -179,7 +179,7 @@
  *  \verbatim
  *  | multiplicity |     b (slope, m^2)         |      c (m^3)     |
  *  |--------------|----------------------------|------------------|
- *  |      1       |          15.1843           |   0.000 (imposed)|
+ *  |      1       |          15.1843           |       0.000      |
  *  |      2       |           0.1352           |      47.005      |
  *  |      3       |           0.0306           |      16.170      |
  *  |      4       |           0.0095           |       8.680      |
