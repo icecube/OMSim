@@ -1,3 +1,9 @@
+/**
+ * @file
+ * @brief Defines the OMSimDecaysAnalysis class  and DecayStats struct for the radioactive decays simulation.
+ * @ingroup radioactive
+ */
+
 #ifndef OMSimDecaysAnalysis_h
 #define OMSimDecaysAnalysis_h 1
 

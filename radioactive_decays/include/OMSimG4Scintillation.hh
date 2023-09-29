@@ -1,3 +1,9 @@
+/**
+ * @file
+ * @brief Original Geant4 scintillation class modified to accept unlimited number of lifetimes.
+ * @ingroup radioactive
+ */
+
 //
 // ********************************************************************
 // * License and Disclaimer                                           *

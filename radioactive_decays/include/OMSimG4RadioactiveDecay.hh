@@ -1,4 +1,21 @@
-//
+/**
+ * @file
+ * @brief Modified version of the original Geant4 RadioactiveDecay class to define custom decay time.
+ * 
+ * By default, the decay time is derived from the isotope's lifetime, leading to prolonged float values when aiming for nanosecond precision. 
+ * In the context of assuming secular equilibrium, OMSim adjusts the decay time based on the simulated time window when the decay time surpasses 100ms.
+ * 
+ * The choice of a 100ms threshold ensures the capture of correlations between consecutive decays when the intervals are brief.
+ * Given that the average time gap for the random component of the dark rate in the mDOM PMT is approximately 10ms (for low DR PMTs, and even shorter for those 
+ * with higher radioactivity), correlations longer than 100ms cannot be distinguished. 
+ * 
+ * You can expand this threshold in line 1240 of OMSimG4RadioactiveDecay.cc if you want to simulation low-background Optical Modules (OMs), however,
+ * it's anticipated that the results would exhibit marginal differences (if any). 
+ * @ingroup radioactive
+ */
+
+
+
 // ********************************************************************
 // * License and Disclaimer                                           *
 // *                                                                  *

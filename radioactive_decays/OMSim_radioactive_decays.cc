@@ -5,7 +5,6 @@
  * @details @see radioactive
  * @warning
  *    This study has been tested only for Vitrovex glass (mDOM/LOM16) and the 80mm mDOM PMTs. Okamoto glass (D-Egg/LOM18) is currently under investigation.
- * 
  */
 #include "OMSim.hh"
 #include "OMSimDecaysGPS.hh"

@@ -1,3 +1,9 @@
+/**
+ * @file
+ * @brief Defines the IsotopeDecays class for the radioactive decays simulation.
+ * @ingroup radioactive
+ */
+
 #ifndef OMSimDecaysGPS_h
 #define OMSimDecaysGPS_h 1
 #include "OMSimOpticalModule.hh"
