@@ -69,7 +69,7 @@ void LOM16::construction()
     placePMTs(lInnerVolumeLogical);
     placeGelpads(lInnerVolumeLogical);
 
-    appendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
+    appendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(mIndex));
     appendEquatorBand();
 
     // ---------------- visualisation attributes --------------------------------------------------------------------------------
@@ -105,7 +105,7 @@ void LOM16::appendEquatorBand()
 
     G4IntersectionSolid *lIntersectionSolid = new G4IntersectionSolid("BandThicknessBody", lCuttingBox, lOuter, 0, G4ThreeVector(0, 0, 0));
     G4SubtractionSolid *lEquatorBandSolid = new G4SubtractionSolid("Equatorband_solid", lIntersectionSolid,
-                                                                   mComponents.at("PressureVessel").VSolid, 0, G4ThreeVector(0, 0, 0));
+                                                                   mComponents.at("PressureVessel_" + std::to_string(mIndex)).VSolid, 0, G4ThreeVector(0, 0, 0));
 
     G4LogicalVolume *lEquatorbandLogical = new G4LogicalVolume(lEquatorBandSolid, mData->getMaterial("NoOptic_Absorber"), "Equatorband_log");
     lEquatorbandLogical->SetVisAttributes(mAbsorberVis);

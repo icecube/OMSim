@@ -210,7 +210,7 @@ void DEGG::appendPressureVesselFromCAD()
    lRotNP.rotateX(90 * deg);
    lSupportStructureLogical->SetVisAttributes(mGlassVis);
 
-   appendComponent(lPressureVessel, lSupportStructureLogical, G4ThreeVector(0, 0, 111 * mm), lRotNP, "PressureVessel");
+   appendComponent(lPressureVessel, lSupportStructureLogical, G4ThreeVector(0, 0, 111 * mm), lRotNP, "PressureVessel_" + std::to_string(mIndex));
 }
 
 

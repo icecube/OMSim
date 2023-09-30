@@ -19,13 +19,14 @@ mDOM::~mDOM()
         delete mHarness;
     }
 }
-mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
+mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness, G4int pIndex)
 {
     log_info("Constructing mDOM");
 
     mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
     mPlaceHarness = pPlaceHarness;
     mData = pData;
+    mIndex = pIndex;
     mPMTManager = new OMSimPMTConstruction(mData);
     mFlashers = new mDOMFlasher(mData);
 
@@ -155,7 +156,7 @@ void mDOM::construction()
 
     // ------------------ Add outer shape solid to MultiUnion in case you need substraction -------------------------------------------
 
-    appendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
+    appendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(mIndex));
     // ------------------- optical border surfaces --------------------------------------------------------------------------------
     new G4LogicalSkinSurface("RefCone_skin", lRefConePolarLogical,
                              mData->getOpticalSurface("Refl_V95Gel"));

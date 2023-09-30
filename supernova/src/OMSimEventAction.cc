@@ -11,6 +11,7 @@ OMSimEventAction::~OMSimEventAction()
 void OMSimEventAction::BeginOfEventAction(const G4Event* evt)
 {
 	EventInfoManager::getInstance().setCurrentEventID(evt->GetEventID());
+	OMSimSNAnalysis::getInstance().ResetEvent();
 }
 
 void OMSimEventAction::EndOfEventAction(const G4Event* evt)

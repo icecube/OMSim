@@ -83,7 +83,7 @@ void pDOM::construction()
     if (mPlaceHarness)
         appendComponent(lHarnessSolid, lHarnessLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "pDOM_Harness");
 
-    appendComponent(lGlassSphereSolid, lGlassSphereLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "pDOM");
+    appendComponent(lGlassSphereSolid, lGlassSphereLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "pDOM_" + std::to_string(mIndex));
 
     // ------------------- optical border surfaces --------------------------------------------------------------------------------
     new G4LogicalSkinSurface("PDOM_Harness_skin", lHarnessLogical, mData->getOpticalSurface("Refl_StainlessSteelGround"));

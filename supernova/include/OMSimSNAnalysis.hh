@@ -5,6 +5,8 @@
 #include "G4String.hh"
 #include "G4ThreeVector.hh"
 
+#include "OMSimHitManager.hh"
+
 #include <vector>
 #include <fstream>
 #include <tuple>
@@ -44,12 +46,12 @@ class OMSimSNAnalysis
 		~OMSimSNAnalysis();
 		void ResetEvent();
 		void AnalyzeEvent();
-        void Helper_AnalyzeEvent(EvtStat& this_evtStat);
+        void Helper_AnalyzeEvent(EvtStat& this_evtStat, std::map<G4int, HitStats> pModuleHits);
 		void WriteHeaders();
 		void InfoHeader();
         void DataHeader();
         void Writer_InfoFile();
-        void Writer_data(std::fstream& thisfile, EvtStat& this_evtStat);
+        void Writer_data(EvtStat& this_evtStat, std::map<G4int, HitStats> pModuleHits);
         void Helper_ResetEvent(EvtStat& this_evtStat);
 
 		G4double nuTime;

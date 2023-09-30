@@ -47,6 +47,8 @@ public:
             mPMTManager = nullptr;
         }
     }
+    
+    G4int mIndex;
 
 protected:
     OMSimPMTConstruction *mPMTManager;

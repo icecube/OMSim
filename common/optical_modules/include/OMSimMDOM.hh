@@ -18,7 +18,7 @@ private:
     mDOMFlasher *mFlashers;
 
 public:
-    mDOM(InputDataManager *pData, G4bool pPlaceHarness = true);
+    mDOM(InputDataManager *pData, G4bool pPlaceHarness = true, G4int pIndex = 0);
     ~mDOM();
     void construction();
     double getPressureVesselWeight() {return 13.0*kg;};
