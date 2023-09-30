@@ -25,7 +25,7 @@
  *  Below is a summary extracted from this source, outlining the steps taken to generate the events:
  *
  *  1. Utilizing the models, the expected flux per area is calculated from the luminosity 
- *  \f[L(t)\f] and the mean energy \f$<E(t)>\f$ according to
+ *  \f$L(t)\f$ and the mean energy \f$<E(t)>\f$ according to
  *  \begin{equation}
  *      \label{eq:fluxes}
  *      \Phi (t) = \frac{1}{4\pi d^2} \cdot \frac{L(t)}{<E(t)>}.
@@ -45,7 +45,7 @@
  *
  *  5. From \f$E_\nu\f$, the angular cross section is devised. This informs the sampling 
  *  of the angle \f$\theta\f$ between the incoming neutrino and the resulting \f$e^-/e^+\f$. 
- *  The \(\phi\) direction is randomly generated within the range of \f$0\f$ to \f$2\pi\f$.
+ *  The \f$\phi\f$ direction is randomly generated within the range of \f$0\f$ to \f$2\pi\f$.
  *
  *  6. The energy of \f$e^-/e^+\f$ is deduced from \f$\theta\f$ and \f$E_\nu\f$. The interaction 
  *  probability for such an event is ascertained using the total cross section, 
@@ -94,28 +94,28 @@
  *
  *  This file encapsulates data concerning each generated neutrino event. Each entry contains:
  *
- *  * Time of the neutrino burst.
- *  * Corresponding mean energy derived from the model.
- *  * Sampled neutrino energy \f$E_\nu\f$.
- *  * \f$\cos(\theta)\f$, where \f$\theta\f$ is the angle between the incoming neutrino and the outgoing particle (e- or e+).
- *  * Energy of the outgoing particle (e- or e+).
- *  * Interaction weight, calculated using the formula:
- *    \[
- *    W_{\mathrm{int}}(E_\nu) = \sigma(E) \cdot n_{\mathrm{target}} \cdot l,
- *    \]
- *    where:
- *    ** \(\sigma(E)\) is the total cross section for the interaction,
- *    ** \(n_{\mathrm{target}}\) is the number of targets available for the interaction in the ice,
- *    ** \(l\) is the length of the simulated cylindrical world.
+ ** Time of the neutrino burst.
+ ** Corresponding mean energy derived from the model.
+ ** Sampled neutrino energy \f$E_\nu\f$.
+ ** \f$\cos(\theta)\f$, where \f$\theta\f$ is the angle between the incoming neutrino and the outgoing particle (e- or e+).
+ ** Energy of the outgoing particle (e- or e+).
+ ** Interaction weight, calculated using the formula:
+ *  \f[
+ *  W_{\mathrm{int}}(E_\nu) = \sigma(E) \cdot n_{\mathrm{target}} \cdot l,
+ *  \f]
+ *  where:
+ *  ** \f$\sigma(E)\f$ is the total cross section for the interaction,
+ *  ** \f$n_{\mathrm{target}}\f$ is the number of targets available for the interaction in the ice,
+ *  ** \f$l\f$ is the length of the simulated cylindrical world.
  *
  *  @subsubsection X_data.dat
  *
  *  This file contains the detection information. Its structure is designed to facilitate various trigger studies, allowing the examination of different time windows. Users might evaluate its structure for convenience, particularly if the trigger check is integrated within the simulation (requiring a predefined time window).
  *
  *  The default content structure is as follows:
- *  \[
+ *  \f[
  *  \text{Total hits | Modules hit | PMTs hit | ...for each PMT hit...| Module number | PMT number | Hits in that PMT | "...for each Hit..." << " hit time |"}
- *  \]
+ *  \f]
  *
  *  Note that the number of columns varies per line, contingent on the number of photons detected for the simulated neutrinos.
  * 
@@ -161,7 +161,7 @@
  ** Effective Weight:
  *  \begin{equation}
  *      \label{eq:sn_weight_eff}
- *      W_{\mathrm{eff}} = N_{\mathrm{modules}} \cdot \frac{<V>_{\mathrm{eff}}(m)}{V_{\mathrm{eff}}(m,z_{\mathrm{sim}})},
+ *      W_{\mathrm{eff}} = N_{\mathrm{modules}} \cdot \frac{<V_{\mathrm{eff}}>(m)}{V_{\mathrm{eff}}(m,z_{\mathrm{sim}})},
  *  \end{equation}
  *  where \(N_{\mathrm{modules}}\) is the total modules in the simulated detector, \(V_{\mathrm{eff}}(m, 
  *  z_{\mathrm{sim}})\) is the effective volume at the simulation depth, and \(<V>_{\mathrm{eff}}(m)\) is 
