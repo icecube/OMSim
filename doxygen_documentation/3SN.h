@@ -54,7 +54,7 @@
  *  7. The \f$e^-/e^+\f$ is manifested at a random position within the ice volume.
  * 
  * 
- *  @section Input Parameters
+ *  @section InputParameters Input Parameters
  *
  *  Execute `./OMSim_supernova --help` to display all possible input parameters.
  *
@@ -62,18 +62,18 @@
  *
  *  `./OMSim_supernova -n 100 --wheight 20 --wradius 20 --depth_pos 75 -o outputfilename --SNgun 0 --SNtype 0`
  *
- *  @subsection General Parameters
+ *  @subsection GenParam General Parameters
  *    `-n`: Number of particles to be generated.
  *    `--depth_pos`: Index of the vector determining the depth of the simulated modules. Notable values include DustLayer=65, MeanICUProperties(approx)=75, and CleanestIce=88. The data is located in "common/data/Materials/IceCubeICE.dat". The "jDepth_spice" vector provides the depth, with depth_pos serving as the index. This selection affects the effective scattering and absorption lengths of the ice at the specified depth.
  *    `-o`: Output file name. By default, two output files are created: one containing the simulated event information, and another with detection data.
  *
- *  @subsection SN Framework Parameters
+ *  @subsection SNParam SN Framework Parameters
  *    `--wheight`: Height of the ice's simulated world cylinder.
  *    `--wradius`: Radius of the ice's simulated world cylinder.
  *    `--SNgun`: Chooses the interaction type (0 for IBD, 1 for ENES).
  *    `--SNtype`: Selects the CCSN model. Two models are currently available, provided by the Garching group. These models represent the expected fluxes from two CCSNs resulting in neutron stars, with different progenitor masses (27 and 9.6 solar masses). Simulations yielding this data can be found at https://arxiv.org/abs/1510.04643
  *
- *  @subsection Fixed Energy Studies
+ *  @subsection SNParamFixE Fixed Energy Studies
  *
  *  This section allows users to manually set the mean energy of generated events by providing specific input parameters. For instance:
  *
@@ -85,12 +85,12 @@
  *
  *  Consequently, the neutrinos' energy is sampled from the distribution, derived from these two parameters and the previously mentioned model.
  * 
- *  @section Output Files
+ *  @section OutputFiles Output Files
  *
  *  Information regarding the files that contain data outputs and insights derived 
  *  from the simulated neutrino events.
  *
- *  @subsection X_info.dat
+ *  @subsection InfoOutfile X_info.dat
  *
  *  This file encapsulates data concerning each generated neutrino event. Each entry contains:
  *
@@ -108,7 +108,7 @@
  *  ** \f$n_{\mathrm{target}}\f$ is the number of targets available for the interaction in the ice,
  *  ** \f$l\f$ is the length of the simulated cylindrical world.
  *
- *  @subsubsection X_data.dat
+ *  @subsubsection DataOutfile X_data.dat
  *
  *  This file contains the detection information. Its structure is designed to facilitate various trigger studies, allowing the examination of different time windows. Users might evaluate its structure for convenience, particularly if the trigger check is integrated within the simulation (requiring a predefined time window).
  *
@@ -119,7 +119,7 @@
  *
  *  Note that the number of columns varies per line, contingent on the number of photons detected for the simulated neutrinos.
  * 
-*  \section Weights
+*  \section Weights Weights
  *
  *  The output files contain the interaction weight. However, users should also consider a weight factor depending on the 
  *  total flux and the number of simulated events. In the most general case of simulating a single depth and then 
@@ -141,7 +141,7 @@
  *
  *  Each component is explained as follows:
  *
- ** Interaction Probability Weight:
+ *  @subsection IntWeight Interaction Probability Weight:
  *  \begin{equation}
  *      \label{eq:sn_weight_int}
  *      W_{\mathrm{int}}(E_\nu) = \sigma(E) \cdot n_{\mathrm{target}} \cdot l,
@@ -150,7 +150,7 @@
  *  number of targets per unit of volume for such interaction, and \(l=40\,m\) is the length of the generation 
  *  volume along the neutrino direction axis. This is the length of the cylinder facing the CCSN.
  *  
- ** Flux Weight:
+ *  @subsection FluxWeight Flux Weight:
  *  \begin{equation}
  *      \label{eq:sn_weight_flux}
  *      W_{\mathrm{flux}} =  \frac{1}{N_{\mathrm{gen}}} \cdot \frac{r^2}{d^2} \cdot \int \frac{L(t)}{<E(t)>} dt,
@@ -158,7 +158,7 @@
  *  where \(r=20\,m\) is the cylindrical generation volume’s radius, \(d\) is the distance from Earth where the 
  *  CCSN is assumed to occur, and \(N_{\mathrm{gen}}\) is the number of generated events.
  *  
- ** Effective Weight:
+ * @subsection EffWeight Effective Weight:
  *  \begin{equation}
  *      \label{eq:sn_weight_eff}
  *      W_{\mathrm{eff}} = N_{\mathrm{modules}} \cdot \frac{<V_{\mathrm{eff}}>(m)}{V_{\mathrm{eff}}(m,z_{\mathrm{sim}})},
