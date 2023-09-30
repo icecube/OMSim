@@ -25,10 +25,10 @@
  *  Below is a summary extracted from this source, outlining the steps taken to generate the events:
  *
  *  1. Utilizing the models, the expected flux per area is calculated from the luminosity 
- *  \f[L(t)\f] and the mean energy \f$\bar{E}(t)\f$ according to
+ *  \f[L(t)\f] and the mean energy \f$<E(t)>\f$ according to
  *  \begin{equation}
  *      \label{eq:fluxes}
- *      \Phi (t) = \frac{1}{4\pi d^2} \cdot \frac{L(t)}{\bar{E}(t)}.
+ *      \Phi (t) = \frac{1}{4\pi d^2} \cdot \frac{L(t)}{<E(t)>}.
  *  \end{equation}
  *
  *  2. The distribution of \f$\Phi (t)\f$ is used to sample a time \f$t\f$ of the burst via 
@@ -141,32 +141,32 @@
  *
  *  Each component is explained as follows:
  *
- *  * Interaction Probability Weight:
- *      \begin{equation}
- *          \label{eq:sn_weight_int}
- *          W_{\mathrm{int}}(E_\nu) = \sigma(E) \cdot n_{\mathrm{target}} \cdot l,
- *      \end{equation}
- *      where \(\sigma(E_\nu)\) is the total cross section for the interaction, \(n_{\mathrm{target}}\) is the 
- *      number of targets per unit of volume for such interaction, and \(l=40\,m\) is the length of the generation 
- *      volume along the neutrino direction axis. This is the length of the cylinder facing the CCSN.
+ ** Interaction Probability Weight:
+ *  \begin{equation}
+ *      \label{eq:sn_weight_int}
+ *      W_{\mathrm{int}}(E_\nu) = \sigma(E) \cdot n_{\mathrm{target}} \cdot l,
+ *  \end{equation}
+ *  where \(\sigma(E_\nu)\) is the total cross section for the interaction, \(n_{\mathrm{target}}\) is the 
+ *  number of targets per unit of volume for such interaction, and \(l=40\,m\) is the length of the generation 
+ *  volume along the neutrino direction axis. This is the length of the cylinder facing the CCSN.
  *  
- *  * Flux Weight:
- *      \begin{equation}
- *          \label{eq:sn_weight_flux}
- *          W_{\mathrm{flux}} =  \frac{1}{N_{\mathrm{gen}}} \cdot \frac{r^2}{d^2} \cdot \int \frac{L(t)}{\bar{E}(t)} dt,
- *      \end{equation}
- *      where \(r=20\,m\) is the cylindrical generation volume’s radius, \(d\) is the distance from Earth where the 
- *      CCSN is assumed to occur, and \(N_{\mathrm{gen}}\) is the number of generated events.
+ ** Flux Weight:
+ *  \begin{equation}
+ *      \label{eq:sn_weight_flux}
+ *      W_{\mathrm{flux}} =  \frac{1}{N_{\mathrm{gen}}} \cdot \frac{r^2}{d^2} \cdot \int \frac{L(t)}{<E(t)>} dt,
+ *  \end{equation}
+ *  where \(r=20\,m\) is the cylindrical generation volume’s radius, \(d\) is the distance from Earth where the 
+ *  CCSN is assumed to occur, and \(N_{\mathrm{gen}}\) is the number of generated events.
  *  
- *  * Effective Weight:
- *      \begin{equation}
- *          \label{eq:sn_weight_eff}
- *          W_{\mathrm{eff}} = N_{\mathrm{modules}} \cdot \frac{\bar{V}_{\mathrm{eff}}(m)}{V_{\mathrm{eff}}(m,z_{\mathrm{sim}})},
- *      \end{equation}
- *      where \(N_{\mathrm{modules}}\) is the total modules in the simulated detector, \(V_{\mathrm{eff}}(m, 
- *      z_{\mathrm{sim}})\) is the effective volume at the simulation depth, and \(\bar{V}_{\mathrm{eff}}(m)\) is 
- *      the mean effective volume for all modules in the detector. The term \(m\) represents multiplicity, defined 
- *      as the count of different PMTs within a single module that detected the event within a specific time window.
+ ** Effective Weight:
+ *  \begin{equation}
+ *      \label{eq:sn_weight_eff}
+ *      W_{\mathrm{eff}} = N_{\mathrm{modules}} \cdot \frac{<V>_{\mathrm{eff}}(m)}{V_{\mathrm{eff}}(m,z_{\mathrm{sim}})},
+ *  \end{equation}
+ *  where \(N_{\mathrm{modules}}\) is the total modules in the simulated detector, \(V_{\mathrm{eff}}(m, 
+ *  z_{\mathrm{sim}})\) is the effective volume at the simulation depth, and \(<V>_{\mathrm{eff}}(m)\) is 
+ *  the mean effective volume for all modules in the detector. The term \(m\) represents multiplicity, defined 
+ *  as the count of different PMTs within a single module that detected the event within a specific time window.
  *
  *  The effective volume can be calculated in different ways. Old simulations of the mDOM, described in 
  *  <a href="https://zenodo.org/record/8107177">this thesis, section 6.3</a>, were used in past studies. A linear 
