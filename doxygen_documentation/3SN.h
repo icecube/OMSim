@@ -153,19 +153,19 @@
  *  @subsection FluxWeight Flux Weight:
  *  \begin{equation}
  *      \label{eq:sn_weight_flux}
- *      W_{\mathrm{flux}} =  \frac{1}{N_{\mathrm{gen}}} \cdot \frac{r^2}{d^2} \cdot \int \frac{L(t)}{<E(t)>} dt,
+ *      W_{\mathrm{flux}}(d) =  \frac{1}{N_{\mathrm{gen}}} \cdot \frac{r^2}{d^2} \cdot \int \frac{L(t)}{<E(t)>} dt,
  *  \end{equation}
- *  where \(r=20\,m\) is the cylindrical generation volume’s radius, \(d\) is the distance from Earth where the 
- *  CCSN is assumed to occur, and \(N_{\mathrm{gen}}\) is the number of generated events.
+ *  where \f$r is the cylindrical generation volume’s radius, \f$d\f$ is the distance from Earth where the 
+ *  CCSN is assumed to occur, and \f$N_{\mathrm{gen}}\f$ is the number of generated events.
  *  
  * @subsection EffWeight Effective Weight:
  *  \begin{equation}
  *      \label{eq:sn_weight_eff}
  *      W_{\mathrm{eff}} = N_{\mathrm{modules}} \cdot \frac{<V_{\mathrm{eff}}>(m)}{V_{\mathrm{eff}}(m,z_{\mathrm{sim}})},
  *  \end{equation}
- *  where \(N_{\mathrm{modules}}\) is the total modules in the simulated detector, \(V_{\mathrm{eff}}(m, 
- *  z_{\mathrm{sim}})\) is the effective volume at the simulation depth, and \(<V>_{\mathrm{eff}}(m)\) is 
- *  the mean effective volume for all modules in the detector. The term \(m\) represents multiplicity, defined 
+ *  where \f$N_{\mathrm{modules}}\f$ is the total modules in the simulated detector, \f$V_{\mathrm{eff}}(m, 
+ *  z_{\mathrm{sim}})\f$ is the effective volume at the simulation depth, and \f$<V>_{\mathrm{eff}}(m)\f$ is 
+ *  the mean effective volume for all modules in the detector. The term \f$m\f$ represents multiplicity, defined 
  *  as the count of different PMTs within a single module that detected the event within a specific time window.
  *
  *  The effective volume can be calculated in different ways. Old simulations of the mDOM, described in 
