@@ -161,11 +161,11 @@
  * @subsection EffWeight Effective Weight:
  *  \begin{equation}
  *      \label{eq:sn_weight_eff}
- *      W_{\mathrm{eff}} = N_{\mathrm{modules}} \cdot \frac{<V_{\mathrm{eff}}>(m)}{V_{\mathrm{eff}}(m,z_{\mathrm{sim}})},
+ *      W_{\mathrm{eff}} = N_{\mathrm{modules}} \cdot \frac{<V_{\mathrm{eff}}(m)>}{V_{\mathrm{eff}}(m,z_{\mathrm{sim}})},
  *  \end{equation}
  *  where \f$N_{\mathrm{modules}}\f$ is the total modules in the simulated detector, \f$V_{\mathrm{eff}}(m, 
- *  z_{\mathrm{sim}})\f$ is the effective volume at the simulation depth, and \f$<V>_{\mathrm{eff}}(m)\f$ is 
- *  the mean effective volume for all modules in the detector. The term \f$m\f$ represents multiplicity, defined 
+ *  z_{\mathrm{sim}})\f$ is the effective volume at the simulation depth, and \f$<V_{\mathrm{eff}}(m)>\f$ is 
+ *  the mean effective volume for all modules in simulated detector. The term \f$m\f$ represents multiplicity, defined 
  *  as the count of different PMTs within a single module that detected the event within a specific time window.
  *
  *  The effective volume can be calculated in different ways. Old simulations of the mDOM, described in 
