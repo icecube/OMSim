@@ -114,7 +114,7 @@
  *
  *  The default content structure is as follows:
  *  \f[
- *  \text{Total hits | Modules hit | PMTs hit | ...for each PMT hit...| Module number | PMT number | Hits in that PMT | "...for each Hit..." << " hit time |"}
+ *  \text{Total hits | Modules hit | PMTs hit | "...for each PMT hit..." | Module number | PMT number | Hits in that PMT | "...for each Hit..." | hit time |}
  *  \f]
  *
  *  Note that the number of columns varies per line, contingent on the number of photons detected for the simulated neutrinos.
