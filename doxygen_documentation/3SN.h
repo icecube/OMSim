@@ -146,8 +146,8 @@
  *      \label{eq:sn_weight_int}
  *      W_{\mathrm{int}}(E_\nu) = \sigma(E) \cdot n_{\mathrm{target}} \cdot l,
  *  \end{equation}
- *  where \(\sigma(E_\nu)\) is the total cross section for the interaction, \(n_{\mathrm{target}}\) is the 
- *  number of targets per unit of volume for such interaction, and \(l=40\,m\) is the length of the generation 
+ *  where \f$\sigma(E_\nu)\f$ is the total cross section for the interaction, \f$n_{\mathrm{target}}\f$ is the 
+ *  number of targets per unit of volume for such interaction, and \f$l=40\,m\f$ is the length of the generation 
  *  volume along the neutrino direction axis. This is the length of the cylinder facing the CCSN.
  *  
  *  @subsection FluxWeight Flux Weight:
@@ -155,7 +155,7 @@
  *      \label{eq:sn_weight_flux}
  *      W_{\mathrm{flux}}(d) =  \frac{1}{N_{\mathrm{gen}}} \cdot \frac{r^2}{d^2} \cdot \int \frac{L(t)}{<E(t)>} dt,
  *  \end{equation}
- *  where \f$r is the cylindrical generation volume’s radius, \f$d\f$ is the distance from Earth where the 
+ *  where \f$r\f$ is the cylindrical generation volume’s radius, \f$d\f$ is the distance from Earth where the 
  *  CCSN is assumed to occur, and \f$N_{\mathrm{gen}}\f$ is the number of generated events.
  *  
  * @subsection EffWeight Effective Weight:
