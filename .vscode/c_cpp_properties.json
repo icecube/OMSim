@@ -4,8 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/data/geant4/geant4-v11.1.2/install/include/Geant4",
-                "/data/root/include"
+                "/data/root/include",
+                "/data/geant4/geant4-v11.1.1/install/include/Geant4"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

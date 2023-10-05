@@ -9,7 +9,7 @@
 /**
  * @class OMSimDetectorConstruction
  * @brief Class for detector construction in the SN neutrino simulation
- * @ingroup SN
+ * @ingroup sngroup
  */
 class OMSimDetectorConstruction : public G4VUserDetectorConstruction
 {

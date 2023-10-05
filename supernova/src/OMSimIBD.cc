@@ -15,6 +15,10 @@
 #include "OMSimSNTools.hh"
 #include "OMSimInputData.hh"
 
+    /**
+     * @brief Constructor of OMSimIBD class
+     * @param gun Pointer to the particle gun object used for simulation.
+     */
 OMSimIBD::OMSimIBD(G4ParticleGun* gun)
 : ParticleGun(gun)
 {       
@@ -64,11 +68,20 @@ OMSimIBD::OMSimIBD(G4ParticleGun* gun)
   NTargets = NumberOfTargets(2); //2 protons (hydrogen) per molecule
 }
 
-
-
-OMSimIBD::~OMSimIBD()
-{ }
-
+    /**
+     * @brief Generates primary events for the simulation.
+     * 
+     * This function sets the initial properties of the electronic antineutrinos such as position,
+     * and energy for the primary event based on given input parameters or data files. The energy is determined from a tabulated 
+     * distribution or from a fixed mean energy, and the antineutrino's incoming direction is assumed to be (0,0,-1). The function also 
+     * computes the angle distribution and the positron's energy derived from the antineutrino energy and its direction. Finally,
+     * the function computes the total cross-section and sets weights accordingly, passing the information to the analysis manager.
+     *
+     * @param anEvent Pointer to the G4Event object where primaries will be generated.
+     * @todo Consider breaking down this function into smaller, more specialized sub-functions for clarity and modularity.
+     * @todo Ensure that any new parameters or member variables used are appropriately documented.
+     * @todo merge IBD and ENES into sharing a base class, to avoid repeating code
+     */
 void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
 {
 
@@ -129,7 +142,7 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
   }
 
   // angle distribution. We suppose the incident antineutrino would come with momentum direction (0,0,-1)
-  DistFunction(nubar_energy);
+  AngularDistribution(nubar_energy);
   
   G4double costheta = mSNToolBox.InverseCumul(angdist_x, angdist_y, angdist_nPoints);
   G4double sintheta = std::sqrt(1. - costheta*costheta);
@@ -162,8 +175,17 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
   ParticleGun->GeneratePrimaryVertex(anEvent);
 }
 
-
-void OMSimIBD::DistFunction(G4double Enubar)
+    /**
+     * @brief Computes the angular distribution of the reaction \( \bar{\nu}_e + p \rightarrow e^+ + n \).
+     * 
+     * This function evaluates the angular distribution of the positron based on the energy of the incident electronic antineutrino.
+     * The calculation follows the theoretical approach outlined in "The angular distribution of the reaction \( \bar{\nu}_e + p \rightarrow e^+ + n \)"
+     * by P. Vogel and J. F. Beacom (1999), specifically referencing Eq. 14. 
+     * 
+     * @param Enubar Energy of the incoming electronic antineutrino.
+     * @note This function populates the angdist_x and angdist_y vectors, which later can be used in other parts of the simulation.
+     */
+void OMSimIBD::AngularDistribution(G4double Enubar)
 {
   // Angular distribution
   //
@@ -207,7 +229,19 @@ void OMSimIBD::DistFunction(G4double Enubar)
   }
 }
 
-
+    /**
+     * @brief Computes the energy of a positron resulting from the inverse beta decay.
+     * 
+     * Given the energy of the incident electronic antineutrino and the scatter angle, this function calculates the 
+     * energy of the emitted positron following inverse beta decay. The theoretical basis for this calculation is 
+     * given in "The angular distribution of the reaction \( \nu_e + p \rightarrow e^+ + n \)" by P. Vogel and J. F. Beacom (1999), specifically referencing Eq. 13.
+     * 
+     * @param Enubar Energy of the incoming electronic antineutrino.
+     * @param costheta Cosine of the scatter angle between the direction of the antineutrino's momentum and the positron's momentum.
+     * 
+     * @return Energy of the emitted positron as a result of the inverse beta decay process.
+     * @reference P. Vogel, J. F. Beacom. (1999). The angular distribution of the reaction \( \nu_e + p \rightarrow e^+ + n \). Phys.Rev., D60, 053003
+     */
 G4double OMSimIBD::PositronEnergy(G4double Enubar, G4double costheta)
 {
   // Get positron energy from inverse beta decay as a function of incident antineutrino energy and scatter angle
@@ -223,7 +257,20 @@ G4double OMSimIBD::PositronEnergy(G4double Enubar, G4double costheta)
 }
 
 
-
+    /**
+     * @brief Calculates the total cross-section of the inverse beta decay reaction for a given energy.
+     * 
+     * This function estimates the total cross-section of the inverse beta decay, which can be used 
+     * to weigh each event. The theoretical basis for this calculation is presented in "Future detection 
+     * of supernova neutrino burst and explosion mechanism" 
+     * by T. Totani, K. Sato, H. E. Dalhed, and J. R. Wilson (1998), specifically referencing Equation 9.
+     * 
+     * @param energy Energy of the incoming electronic antineutrino.
+     * 
+     * @return Total cross-section for the given energy.
+     * @reference T. Totani, K. Sato, H. E. Dalhed, J. R. Wilson, "Future detection of supernova neutrino burst 
+     * and explosion mechanism", Astrophys. J. 496, 1998, 216–225, Preprint astro-ph/9710203, 1998.
+     */
 G4double OMSimIBD::TotalCrossSection(G4double energy) {
   // Returns value of the TotalCrossSection for certain energy to use it in WeighMe
   //

@@ -1,9 +1,7 @@
 /** @file OMSimSNAnalysis.cc
  *  @brief Analyze data and write output files
  * 
- *  @author Lew Classen (lclassen@wwu.de), Cristian Jesus Lozano Mariscal (c.lozano@wwu.de)
- * 
- *  @version Geant4 10.7
+ *  @author Cristian Jesus Lozano Mariscal
  */
 
 #include "OMSimSNAnalysis.hh"

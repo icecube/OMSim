@@ -1,8 +1,8 @@
 /**
  * @file 
- * @ingroup sn
+ * @ingroup sngroup
  * @brief Main of the supernova study.
- * @details @see sn
+ * @details @see sngroup
  */
 #include "OMSim.hh"
 #include "OMSimSNAnalysis.hh"

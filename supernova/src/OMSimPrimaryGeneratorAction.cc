@@ -1,9 +1,7 @@
 /** @file OMSimPrimaryGeneratorAction.cc
  *  @brief Main primary generator. Chooses between generators 0 (IBD), 1 (ENES), 2 (SN ibd)
  * 
- *  @author Cristian Jesus Lozano Mariscal (c.lozano@wwu.de)
- * 
- *  @version Geant4 10.7
+ *  @author Cristian Jesus Lozano Mariscal
  */
 
 #include "OMSimPrimaryGeneratorAction.hh"

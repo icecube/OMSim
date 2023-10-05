@@ -1,5 +1,6 @@
 {
     "cmake.configureOnOpen": true,
+    "cmake.configureArgs": ["-DGeant4_DIR=/data/geant4/geant4-v11.1.1/install/lib/Geant4-11.1.1/"],
     "files.associations": {
         "stdexcept": "cpp",
         "allocator": "cpp",
@@ -105,6 +106,7 @@
         "tree": "cpp",
         "polygon": "cpp",
         "loader": "cpp",
-        "box3": "cpp"
+        "box3": "cpp",
+        "mathd": "cpp"
     }
 }

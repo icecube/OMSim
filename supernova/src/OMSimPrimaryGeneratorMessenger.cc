@@ -1,9 +1,7 @@
 /** @file OMSimPrimaryGeneratorMessenger.cc
  *  @brief Primary generator messenger to choose the corresponding primary generator.
  * 
- *  @author Cristian Jesus Lozano Mariscal (c.lozano@wwu.de)
- * 
- *  @version Geant4 10.7
+ *  @author Cristian Jesus Lozano Mariscal
  */
 
 #include "OMSimPrimaryGeneratorMessenger.hh"
