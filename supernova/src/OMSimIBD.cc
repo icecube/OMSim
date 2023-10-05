@@ -46,7 +46,7 @@ OMSimIBD::OMSimIBD(G4ParticleGun* gun)
 
     // Since the luminosity spectrum is not gonna change, it is worthy to compute already the slopes and store them
     nPoints_lum =  mNuBar_time.size();
-    GetSlopes(mNuBar_time,  mNuBar_luminosity, nPoints_lum, x_lum, f_lum, a_lum, Fc_lum);
+    getSlopes(mNuBar_time,  mNuBar_luminosity, nPoints_lum, x_lum, f_lum, a_lum, Fc_lum);
 
   } else {
     mFixedenergy = OMSimCommandArgsTable::getInstance().get<G4double>("SNmeanE") * MeV;
@@ -55,8 +55,8 @@ OMSimIBD::OMSimIBD(G4ParticleGun* gun)
     std::vector<G4double> x1;
     std::vector<G4double> f1;	
     fixE_nPoints = 500;
-    MakeEnergyDistribution(mFixedenergy, mAlpha, fixE_nPoints, x1, f1);
-    GetSlopes(x1, f1, fixE_nPoints, fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc);
+    energyDistributionVector(mFixedenergy, mAlpha, fixE_nPoints, x1, f1);
+    getSlopes(x1, f1, fixE_nPoints, fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc);
   }
 
   //defining constans that are used later for the cross section
@@ -65,7 +65,7 @@ OMSimIBD::OMSimIBD(G4ParticleGun* gun)
   mp = proton_mass_c2;
   mn = neutron_mass_c2;
   consg = 1.26;
-  NTargets = NumberOfTargets(2); //2 protons (hydrogen) per molecule
+  NTargets = numberOfTargets(2); //2 protons (hydrogen) per molecule
 }
 
     /**
@@ -90,7 +90,7 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
 
   ParticleGun->SetParticleDefinition(particle);
 
-  G4ThreeVector Position = mSNToolBox.RandomPosition();
+  G4ThreeVector Position = mSNToolBox.randomPosition();
   ParticleGun->SetParticlePosition(Position);
 
   G4double timeofspectrum;
@@ -110,17 +110,17 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
     alpha = -99.;
     nubar_energy = -99.;
     if ((OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy")) == false) {
-      timeofspectrum = mSNToolBox.InverseCumulAlgorithm(x_lum, f_lum, a_lum, Fc_lum,nPoints_lum);
-      G4int timepos = mSNToolBox.findtime(timeofspectrum, mNuBar_time);
-      Emean = mSNToolBox.linealinterpolation(timeofspectrum,mNuBar_time.at(timepos-1), mNuBar_time.at(timepos), mNuBar_meanenergy.at(timepos-1),mNuBar_meanenergy.at(timepos));
-      Emean2 = mSNToolBox.linealinterpolation(timeofspectrum,mNuBar_time.at(timepos-1), mNuBar_time.at(timepos), mNuBar_meanenergysquare.at(timepos-1),mNuBar_meanenergysquare.at(timepos));
+      timeofspectrum = mSNToolBox.inverseCDFmethod(x_lum, f_lum, a_lum, Fc_lum,nPoints_lum);
+      G4int timepos = mSNToolBox.findTime(timeofspectrum, mNuBar_time);
+      Emean = mSNToolBox.linearInterpolation(timeofspectrum,mNuBar_time.at(timepos-1), mNuBar_time.at(timepos), mNuBar_meanenergy.at(timepos-1),mNuBar_meanenergy.at(timepos));
+      Emean2 = mSNToolBox.linearInterpolation(timeofspectrum,mNuBar_time.at(timepos-1), mNuBar_time.at(timepos), mNuBar_meanenergysquare.at(timepos-1),mNuBar_meanenergysquare.at(timepos));
 
       ThresholdEnergy = neutron_mass_c2 + electron_mass_c2 - proton_mass_c2+0.1*MeV; //+0.1MeV because angularcrosssection fails if the energy is too close to the threshold.
       nubar_energy = 0;
 
       G4int count = 0;
       while (nubar_energy <= ThresholdEnergy) {
-        nubar_energy = mSNToolBox.EnergyDistribution(Emean, Emean2, alpha);
+        nubar_energy = mSNToolBox.sampleEnergy(Emean, Emean2, alpha);
         count += 1;
         if (count > 10) {
           retry  = true;
@@ -133,10 +133,10 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
       timeofspectrum = 0.0;
       Emean = mFixedenergy;
       Emean2 = mFixedenergy2;
-      nubar_energy =  mSNToolBox.InverseCumulAlgorithm(fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc, fixE_nPoints);
+      nubar_energy =  mSNToolBox.inverseCDFmethod(fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc, fixE_nPoints);
       while (nubar_energy <= ThresholdEnergy) {
         //note that, if fixE is very low, we might get stuck here a while for each particle
-        nubar_energy =  mSNToolBox.InverseCumulAlgorithm(fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc, fixE_nPoints);
+        nubar_energy =  mSNToolBox.inverseCDFmethod(fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc, fixE_nPoints);
       }
     }
   }
@@ -144,7 +144,7 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
   // angle distribution. We suppose the incident antineutrino would come with momentum direction (0,0,-1)
   AngularDistribution(nubar_energy);
   
-  G4double costheta = mSNToolBox.InverseCumul(angdist_x, angdist_y, angdist_nPoints);
+  G4double costheta = mSNToolBox.sampleValueFromDistribution(angdist_x, angdist_y, angdist_nPoints);
   G4double sintheta = std::sqrt(1. - costheta*costheta);
   G4double phi = twopi*G4UniformRand();
     
@@ -159,7 +159,7 @@ void OMSimIBD::GeneratePrimaries(G4Event* anEvent)
   ParticleGun->SetParticleMomentumDirection(G4ThreeVector(xdir,ydir,zdir));
   
   G4double sigma = TotalCrossSection(nubar_energy);
-  G4double Weigh = mSNToolBox.WeighMe(sigma, NTargets);
+  G4double Weigh = mSNToolBox.weight(sigma, NTargets);
   
   //sending stuff to analysismanager
   OMSimSNAnalysis &lAnalysisManager = OMSimSNAnalysis::getInstance();
@@ -272,7 +272,7 @@ G4double OMSimIBD::PositronEnergy(G4double Enubar, G4double costheta)
      * and explosion mechanism", Astrophys. J. 496, 1998, 216–225, Preprint astro-ph/9710203, 1998.
      */
 G4double OMSimIBD::TotalCrossSection(G4double energy) {
-  // Returns value of the TotalCrossSection for certain energy to use it in WeighMe
+  // Returns value of the TotalCrossSection for certain energy to use it in weight
   //
   // T. Totani, K. Sato, H. E. Dalhed, J. R. Wilson,Future detection of supernova neutrino burst and explosion mechanism, Astrophys. J. 496 ,1998 216???225, Preprint astro-ph/9710203, 1998, Equation 9
   G4double hbar = 6.58211899e-16*1e-6*MeV*s;

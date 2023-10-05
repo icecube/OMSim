@@ -48,7 +48,7 @@ OMSimENES::OMSimENES(G4ParticleGun *gun)
 
     // Since the luminosity spectrum is not gonna change, it is worthy to compute already the slopes and store them
     nPoints_lum = mNu_time.size();
-    GetSlopes(mNu_time, mNu_luminosity, nPoints_lum, x_lum, f_lum, a_lum, Fc_lum);
+    getSlopes(mNu_time, mNu_luminosity, nPoints_lum, x_lum, f_lum, a_lum, Fc_lum);
   }
   else
   { // save all slopes and stuff since it always gonna be the same
@@ -58,11 +58,11 @@ OMSimENES::OMSimENES(G4ParticleGun *gun)
     std::vector<G4double> x1;
     std::vector<G4double> f1;
     fixE_nPoints = 500;
-    MakeEnergyDistribution(mFixedenergy, mAlpha, fixE_nPoints, x1, f1);
-    GetSlopes(x1, f1, fixE_nPoints, fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc);
+    energyDistributionVector(mFixedenergy, mAlpha, fixE_nPoints, x1, f1);
+    getSlopes(x1, f1, fixE_nPoints, fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc);
   }
 
-  NTargets = NumberOfTargets(10); // 10 electrons per molecule
+  NTargets = numberOfTargets(10); // 10 electrons per molecule
 }
 
 
@@ -84,7 +84,7 @@ void OMSimENES::GeneratePrimaries(G4Event *anEvent)
   // Particle and position
   G4ParticleDefinition *particle = G4ParticleTable::GetParticleTable()->FindParticle("e-");
   ParticleGun->SetParticleDefinition(particle);
-  G4ThreeVector Position = mSNToolBox.RandomPosition();
+  G4ThreeVector Position = mSNToolBox.randomPosition();
   ParticleGun->SetParticlePosition(Position);
 
   G4double timeofspectrum;
@@ -107,17 +107,17 @@ void OMSimENES::GeneratePrimaries(G4Event *anEvent)
 
     if ((OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy")) == false)
     {
-      timeofspectrum = mSNToolBox.InverseCumulAlgorithm(x_lum, f_lum, a_lum, Fc_lum, nPoints_lum);
+      timeofspectrum = mSNToolBox.inverseCDFmethod(x_lum, f_lum, a_lum, Fc_lum, nPoints_lum);
 
-      G4int timepos = mSNToolBox.findtime(timeofspectrum, mNu_time);
-      Emean = mSNToolBox.linealinterpolation(timeofspectrum, mNu_time.at(timepos - 1), mNu_time.at(timepos), mNu_meanenergy.at(timepos - 1), mNu_meanenergy.at(timepos));
-      Emean2 = mSNToolBox.linealinterpolation(timeofspectrum, mNu_time.at(timepos - 1), mNu_time.at(timepos), mNu_meanenergysquare.at(timepos - 1), mNu_meanenergysquare.at(timepos));
+      G4int timepos = mSNToolBox.findTime(timeofspectrum, mNu_time);
+      Emean = mSNToolBox.linearInterpolation(timeofspectrum, mNu_time.at(timepos - 1), mNu_time.at(timepos), mNu_meanenergy.at(timepos - 1), mNu_meanenergy.at(timepos));
+      Emean2 = mSNToolBox.linearInterpolation(timeofspectrum, mNu_time.at(timepos - 1), mNu_time.at(timepos), mNu_meanenergysquare.at(timepos - 1), mNu_meanenergysquare.at(timepos));
 
       nu_energy = 0;
       G4int count = 0;
       while (nu_energy <= 0.1 * MeV)
       {
-        nu_energy = mSNToolBox.EnergyDistribution(Emean, Emean2, alpha);
+        nu_energy = mSNToolBox.sampleEnergy(Emean, Emean2, alpha);
         count += 1;
         if (count > 10)
         {
@@ -133,13 +133,13 @@ void OMSimENES::GeneratePrimaries(G4Event *anEvent)
       timeofspectrum = 0.0;
       Emean = mFixedenergy;
       Emean2 = mFixedenergy2;
-      nu_energy = mSNToolBox.InverseCumulAlgorithm(fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc, fixE_nPoints);
+      nu_energy = mSNToolBox.inverseCDFmethod(fixFe_X, fixFe_Y, fixFe_a, fixFe_Fc, fixE_nPoints);
     }
   }
 
   AngulasDistribution(nu_energy);
 
-  G4double costheta = mSNToolBox.InverseCumul(angdist_x, angdist_y, angdist_nPoints);
+  G4double costheta = mSNToolBox.sampleValueFromDistribution(angdist_x, angdist_y, angdist_nPoints);
   G4double sintheta = std::sqrt(1. - costheta * costheta);
   G4double phi = twopi * G4UniformRand();
 
@@ -155,7 +155,7 @@ void OMSimENES::GeneratePrimaries(G4Event *anEvent)
 
   // now calculate the weight
   G4double sigma = TotalCrossSection(nu_energy);
-  G4double Weigh = mSNToolBox.WeighMe(sigma, NTargets);
+  G4double Weigh = mSNToolBox.weight(sigma, NTargets);
 
   // sending stuff to analysismanager
   OMSimSNAnalysis &lAnalysisManager = OMSimSNAnalysis::getInstance();
