@@ -1,19 +1,15 @@
 #ifndef OMSimPrimaryGeneratorAction_h
 #define OMSimPrimaryGeneratorAction_h 1
 
+#include "G4VUserPrimaryGeneratorAction.hh"
+#include "globals.hh"
 
-#include "OMSimSNParticleGenerators.hh"
-#include "OMSimPrimaryGeneratorMessenger.hh"
-#include "OMSimSNTools.hh"
 
-#include <globals.hh>
-#include <vector>
-#include <G4PhysicalConstants.hh>
-#include <G4SystemOfUnits.hh>
-#include <G4VUserPrimaryGeneratorAction.hh>
-
+class OMSimIBD;
+class OMSimENES;
 class G4ParticleGun;
 class G4Event;
+class OMSimPrimaryGeneratorMessenger;
 
 
 class OMSimPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
@@ -46,6 +42,6 @@ class OMSimPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
        
 };
 
+
+
 #endif
-
-

@@ -7,7 +7,7 @@
 #include "G4Navigator.hh"
 #include "G4TouchableHistoryHandle.hh"
 #include "OMSimCommandArgsTable.hh"
-
+#include <TGraph.h>
 extern G4Navigator *aNavigator;
 
 /**
@@ -39,7 +39,7 @@ std::pair<std::string, std::string> OMSimSNTools::getFileNames(int value)
     return {basePath + "Flux_Nu_tailSN.cfg", basePath + "Flux_Nubar_tailSN.cfg"}; // long tailed type II
   default:
     // TODO handle error properly
-    G4cout << "ERROR!! Choose a valid SN model" << G4endl;
+    log_error("ERROR!! Choose a valid SN model");
     return {"", ""};
   }
 }
@@ -78,67 +78,46 @@ bool OMSimSNTools::checkVolumeForOMs(G4ThreeVector pPosition)
  */
 G4ThreeVector OMSimSNTools::randomPosition()
 {
-    // Assume that the world is a cylinder
-    double lHeight = OMSimCommandArgsTable::getInstance().get<G4double>("wheight") * m;
-    double lRadius = OMSimCommandArgsTable::getInstance().get<G4double>("wradius") * m;
+  // Assume that the world is a cylinder
+  double lHeight = OMSimCommandArgsTable::getInstance().get<G4double>("wheight") * m;
+  double lRadius = OMSimCommandArgsTable::getInstance().get<G4double>("wradius") * m;
 
-    // Maximum length of generation cylinder "lMaxR"
-    G4double lMaxR = lRadius * sqrt(3);  // Using sqrt() here
+  // Maximum length of generation cylinder "lMaxR"
+  G4double lMaxR = lRadius * sqrt(3); // Using sqrt() here
 
-    G4double lPos_x, lPos_y, lPos_z;
-    G4ThreeVector lPosition;
-    G4double lDistanceToCentre;
-    G4double lVerticalDistance;
-    bool lPositionInOM = true;
+  G4double lPos_x, lPos_y, lPos_z;
+  G4ThreeVector lPosition;
+  G4double lDistanceToCentre;
+  G4double lVerticalDistance;
+  bool lPositionInOM = true;
 
-    while (lPositionInOM || lDistanceToCentre >= lMaxR || lVerticalDistance >= lRadius)
-    {
-        // Condense random sign generation
-        G4double lSign_x = (G4UniformRand() < 0.5) ? -1 : 1;
-        G4double lSign_y = (G4UniformRand() < 0.5) ? -1 : 1;
-        G4double lSign_z = (G4UniformRand() < 0.5) ? -1 : 1;
+  while (lPositionInOM || lDistanceToCentre >= lMaxR || lVerticalDistance >= lRadius)
+  {
+    // Condense random sign generation
+    G4double lSign_x = (G4UniformRand() < 0.5) ? -1 : 1;
+    G4double lSign_y = (G4UniformRand() < 0.5) ? -1 : 1;
+    G4double lSign_z = (G4UniformRand() < 0.5) ? -1 : 1;
 
-        lPos_z = lSign_z * (G4UniformRand() * lHeight);
-        lPos_x = lSign_x * (G4UniformRand() * lRadius);
-        lPos_y = lSign_y * (G4UniformRand() * lRadius);
-        
-        lPosition.set(lPos_x, lPos_y, lPos_z);
-        
-        lVerticalDistance = sqrt(lPos_x * lPos_x + lPos_y * lPos_y);
-        lDistanceToCentre = sqrt(lPos_x * lPos_x + lPos_y * lPos_y + lPos_z * lPos_z);
+    lPos_z = lSign_z * (G4UniformRand() * lHeight);
+    lPos_x = lSign_x * (G4UniformRand() * lRadius);
+    lPos_y = lSign_y * (G4UniformRand() * lRadius);
 
-        lPositionInOM = checkVolumeForOMs(lPosition);
-    }
+    lPosition.set(lPos_x, lPos_y, lPos_z);
 
-    return lPosition;
-}
+    lVerticalDistance = sqrt(lPos_x * lPos_x + lPos_y * lPos_y);
+    lDistanceToCentre = sqrt(lPos_x * lPos_x + lPos_y * lPos_y + lPos_z * lPos_z);
 
+    lPositionInOM = checkVolumeForOMs(lPosition);
+  }
 
-/**
- * @brief Performs linear interpolation between two points.
- *
- * This method calculates the y-value for a given x-value based on linear interpolation
- * between two known data points (x1, y1) and (x2, y2).
- *
- * @param x The x-value for which the y-value is desired.
- * @param x1 The x-value of the first data point.
- * @param x2 The x-value of the second data point.
- * @param y1 The y-value corresponding to x1.
- * @param y2 The y-value corresponding to x2.
- * @return The interpolated y-value for the given pX based on the two provided data points.
- */
-G4double OMSimSNTools::linearInterpolation(G4double x, G4double x1, G4double x2, G4double y1, G4double y2)
-{
-  G4double lSlope = (y2 - y1) / (x2 - x1);
-  return (lSlope * (x - x1) + y1);
+  return lPosition;
 }
 
 /**
- * @brief Determines the energy value using the inverse cumulative algorithm based on a given distribution.
+ * @brief Randomly samle the energy depending on the properties of the energy spectrum.
  *
  * Build the energy distribution Fe(E) given the input parameters, and uses the inverse CDF
- * algorithm to sample a value for the neutrino energy from Fe(E). The method prepares the
- * data to use 'energyDistributionVector'
+ * algorithm to sample a value for the neutrino energy from Fe(E).
  *
  * @param pMeanEnergy The primary mean energy value from the supernova model.
  * @param pMeanESquared The primary squared mean energy value from the supernova model.
@@ -147,15 +126,31 @@ G4double OMSimSNTools::linearInterpolation(G4double x, G4double x1, G4double x2,
  */
 G4double OMSimSNTools::sampleEnergy(G4double pMeanEnergy, G4double pMeanESquared, G4double &pAlpha)
 {
-  G4int lNrPoints = 500;
-  if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false)
-  {
-    pAlpha = getAlpha(pMeanEnergy, pMeanESquared);
-  }
-  std::vector<G4double> lX;
-  std::vector<G4double> lY;
-  energyDistributionVector(pMeanEnergy, pAlpha, lNrPoints, lX, lY);
-  return sampleValueFromDistribution(lX, lY, lNrPoints);
+    G4int lNrPoints = 500;
+    
+    if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false)
+    {
+        pAlpha = getAlpha(pMeanEnergy, pMeanESquared);
+    }
+
+    const G4double lMin = 0.;
+    const G4double lMax = 80.;
+    const G4double delta = (lMax - lMin) / G4double(lNrPoints - 1);
+
+    std::vector<G4double> lX(lNrPoints);
+    std::vector<G4double> lY(lNrPoints);
+
+    for (G4int i = 0; i < lNrPoints; i++)
+    {
+        lX[i] = (lMin + i * delta);                                             // Energy
+        lY[i] = pow(lX[i], pAlpha) * exp(-(pAlpha + 1.) * lX[i] / pMeanEnergy); // F(e), energy dist. function
+    }
+    
+    DistributionSampler lEnergyDistributionSampler;
+    lEnergyDistributionSampler.setData(lX, lY, "EnergyDistributionSampler");
+    lEnergyDistributionSampler.setUnits(1 * MeV, 1.);
+
+    return lEnergyDistributionSampler.sampleFromDistribution();
 }
 /**
  * @brief Calculates pinching parameter of energy spectrum
@@ -174,139 +169,6 @@ G4double OMSimSNTools::getAlpha(G4double pMeanEnergy, G4double pMeanESquared)
   return (2 * pow(pMeanEnergy, 2) - pMeanESquared) / (pMeanESquared - pow(pMeanEnergy, 2));
 }
 
-/**
- * @brief Samples a value from a given distribution using the Inverse CDF method.
- *
- * This method preprocesses the provided data and leverages the inverse cumulative
- * distribution function (Inverse CDF) to obtain samples from a specified distribution.
- * It facilitates the generation of random values that adhere to the characteristics
- * of the given distribution.
- *
- * @param pXvals The pX values representing the domain of the distribution.
- * @param pYvals The corresponding y values representing the distribution's actual values.
- * @param pNrPoints The number of data points in the distribution.
- * @todo Reconsider the requirement for the 'pNrPoints' parameter.
- * @return A randomly chosen x-value that's sampled based on the distribution's profile.
- */
-G4double OMSimSNTools::sampleValueFromDistribution(std::vector<G4double> pXvals, std::vector<G4double> pYvals, G4int pNrPoints)
-{
-  std::vector<G4double> lX;
-  std::vector<G4double> lY;  // pY(pX)
-  std::vector<G4double> lSlopes;  // slopes
-  std::vector<G4double> lCDF; // cumulative of pY
-  getSlopes(pXvals, pYvals, pNrPoints, lX, lY, lSlopes, lCDF);
-  return inverseCDFmethod(lX, lY, lSlopes, lCDF);
-}
-
-/**
- * @brief Finds the nearest (or next largest) value in an array to a specified input.
- *
- * This method is utilized to identify neutrino parameters corresponding to a
- * randomly sampled time. These identified parameters are subsequently interpolated
- * to ensure that the model doesn't rely solely on fixed tabulated values from the input neutrino model.
- *
- * @param pTime The reference value for which a close match is sought in the array.
- * @param pTimeArray The array in which to search for the closest match.
- * @todo Consider renaming 'time' to a more generic term.
- * @return The index in the array that holds the value closest (or next largest) to the specified input.
- */
-G4int OMSimSNTools::findTime(G4double pTime, std::vector<G4double> pTimeArray)
-{
-  for (unsigned int j = 0; j < pTimeArray.size(); j++)
-  {
-    if (pTime <= pTimeArray.at(j))
-    {
-      return j;
-    };
-  };
-  G4cerr << "FATAL ERROR -> Not posible to find time of spectrum!!!" << G4endl;
-  return 0;
-}
-
-/**
- * @brief Samples values from a given distribution using the Inverse CDF algorithm.
- *
- * This method employs the inverse cumulative distribution function (Inverse CDF) technique
- * to derive samples from a specified distribution. It's useful for generating random
- * values in accordance with the underlying distribution shape.
- *
- * @param pX The pX values representing the distribution's domain.
- * @param pY The corresponding y values, or f(pX), representing the distribution's values.
- * @param pSlopes The slopes of the f(pX) curve, usually derived from the getSlopes method.
- * @param pCDF The cumulative values of f(pX), usually derived from the getSlopes method.
- * @return A randomly selected pX-value sampled in line with the provided distribution.
- */
-G4double OMSimSNTools::inverseCDFmethod(const std::vector<G4double>& pX, const std::vector<G4double>& pY, const std::vector<G4double>& pSlopes, const std::vector<G4double>& pCDF)
-{
-    // Total number of points
-    G4int pNrPoints = static_cast<G4int>(pX.size());
-
-    // Randomly choose a y-value from the CDF's range
-    G4double lYrndm = G4UniformRand() * pCDF[pNrPoints - 1];
-
-    // Find the bin corresponding to the y-value
-    G4int j = pNrPoints - 2;
-    while (pCDF[j] > lYrndm && j > 0)
-        j--;
-
-    // Convert random y-value to a random x-value
-    // The conversion is based on the fact that the CDF is represented as a second-order polynomial
-    G4double lXrndm = pX[j];
-    G4double lSlope = pSlopes[j];
-    
-    if (lSlope != 0.)
-    {
-        G4double b = pY[j] / lSlope;
-        G4double c = 2 * (lYrndm - pCDF[j]) / lSlope;
-        G4double lDelta = b * b + c;
-        G4int lSign = (lSlope < 0.) ? -1 : 1;
-        lXrndm += lSign * std::sqrt(lDelta) - b;
-    }
-    else if (pY[j] > 0.)
-    {
-        lXrndm += (lYrndm - pCDF[j]) / pY[j];
-    }
-
-    return lXrndm;
-}
-
-
-/**
- * @brief Prepares data for the inverse cumulative algorithm.
- *
- * This helper function calculates the slopes and cumulative function of a given dataset, facilitating
- * its use in the inverse cumulative algorithm. The function also creates a copy of the input arrays
- * to avoid overwriting the original data.
- *
- * @param pXvals   Input pX-values of the dataset.
- * @param pYvals   Input y-values of the dataset.
- * @param pNrPoints Number of data points in the dataset.
- * @param pX       Output vector to store the copied pX-values.
- * @param pY       Output vector to store the copied y-values.
- * @param pSlopes       Output vector to store the computed slopes.
- * @param pCDF      Output vector to store the computed cumulative function.
- * @todo check whether the copy can just be eliminated
- */
-void getSlopes(std::vector<G4double> pXvals, std::vector<G4double> pYvals, G4int pNrPoints, std::vector<G4double> &pX, std::vector<G4double> &pY, std::vector<G4double> &pSlopes, std::vector<G4double> &pCDF)
-{
-    pX = pXvals;
-    pY = pYvals;
-
-    pSlopes.resize(pNrPoints, 0.0);  // Initialize with zeros
-    pCDF.resize(pNrPoints, 0.0);     // Initialize with zeros
-
-    for (G4int j = 0; j < pNrPoints - 1; j++)
-    {
-        // Compute slopes
-        pSlopes[j] = (pY[j + 1] - pY[j]) / (pX[j + 1] - pX[j]);
-
-        // Compute cumulative function
-        if (j > 0)
-        {
-            pCDF[j] = pCDF[j - 1] + 0.5 * (pY[j] + pY[j - 1]) * (pX[j] - pX[j - 1]);
-        }
-    }
-}
 
 /**
  * @brief Calculates the number of target particles in ice per cubic meter.
@@ -317,7 +179,7 @@ void getSlopes(std::vector<G4double> pXvals, std::vector<G4double> pYvals, G4int
  * @param pNrTargetPerMolecule Number of target particles per H2O molecule.
  * @return Total number of target particles per cubic meter in ice.
  */
-G4double numberOfTargets(G4int pNrTargetPerMolecule)
+G4double OMSimSNTools::numberOfTargets(G4int pNrTargetPerMolecule)
 {
   G4double lDensity = 921.6 * kg / m3;    // Density of ice at -50 celsius degrees
   G4double lMolarMass = 18.01528e-3 * kg; // kg per mol
@@ -327,38 +189,7 @@ G4double numberOfTargets(G4int pNrTargetPerMolecule)
   return lNrTargets;
 }
 
-/**
- * @brief Generates an energy distribution array based on a predefined formula.
- *
- * The energy distribution is determined by the formula: \( F(e) = e^{\alpha} \times exp(-(\alpha+1) \times e/pMeanEnergy) \).
- * The method generates energy values (`pX`) within a set range [0, 80] MeV, divided into `pNrPoints` intervals.
- * The corresponding function values (`f`) are then computed using the provided energy distribution formula.
- *
- * The underlying formulas for Fe(E) is inspired by:
- * Irene Tamborra et al., "High-resolution supernova neutrino spectra represented by a simple fit," PHYSICAL REVIEW D 86, 125031 (2012).
- * https://arxiv.org/abs/1211.3920
- *
- * @param pMeanEnergy Mean energy value used in the distribution function.
- * @param pAlpha Exponent value used in the distribution function.
- * @param pNrPoints Total number of points for the distribution.
- * @param[out] pX Vector to store the computed energy values.
- * @param[out] pY Vector to store the computed function values based on the energy distribution.
- */
-void energyDistributionVector(G4double pMeanEnergy, G4double pAlpha, G4int pNrPoints, std::vector<G4double> &pX, std::vector<G4double> &pY)
-{
-    const G4double min = 0.;
-    const G4double max = 80.;
-    const G4double delta = (max - min) / G4double(pNrPoints - 1);
-    
-    pX.resize(pNrPoints);
-    pY.resize(pNrPoints);
 
-    for (G4int i = 0; i < pNrPoints; i++)
-    {
-        pX[i] = (min + i * delta) * MeV; // Energy
-        pY[i] = pow(pX[i], pAlpha) * exp(-(pAlpha + 1.) * pX[i] / pMeanEnergy); // F(e), energy dist. function
-    }
-}
 
 /**
  * @brief Calculates the interaction weight based on the cross section and number of targets.
@@ -377,7 +208,146 @@ void energyDistributionVector(G4double pMeanEnergy, G4double pAlpha, G4int pNrPo
  * a different approach or adjustments might be required.
  * @return The computed interaction weight for the neutrinos based on the provided parameters.
  */
-G4double OMSimSNTools::weight(G4double pSigma, G4double pNrTargets)
+G4double OMSimSNTools::calculateWeight(G4double pSigma, G4double pNrTargets)
 {
   return pSigma * pNrTargets * (2 * OMSimCommandArgsTable::getInstance().get<G4double>("wheight") * m);
 }
+
+
+
+/**
+ * @brief Samples values from a given distribution using the Inverse CDF algorithm.
+ *
+ * This method employs the inverse cumulative distribution function (Inverse CDF) technique
+ * to derive samples from a specified distribution. It's useful for generating random
+ * values in accordance with the underlying distribution shape.
+ *
+ * @return A randomly selected x-value sampled in line with the provided distribution.
+ */
+G4double DistributionSampler::sampleFromDistribution()
+{
+  // Total number of points
+  G4int pNrPoints = static_cast<G4int>(mX.size());
+
+  // Randomly choose a y-value from the CDF's range
+  G4double lYrndm = G4UniformRand() * mCDF[pNrPoints - 1];
+  // Find the bin corresponding to the y-value
+  G4int j = pNrPoints - 2;
+  while (mCDF[j] > lYrndm && j > 0)
+    j--;
+
+  // Convert random y-value to a random x-value
+  // The conversion is based on the fact that the CDF is represented as a second-order polynomial
+  G4double lXrndm = mX[j];
+  G4double lSlope = mSlopes[j];
+
+  if (lSlope != 0.)
+  {
+    G4double b = mY[j] / lSlope;
+    G4double c = 2 * (lYrndm - mCDF[j]) / lSlope;
+    G4double lDelta = b * b + c;
+    G4int lSign = (lSlope < 0.) ? -1 : 1;
+    lXrndm += lSign * std::sqrt(lDelta) - b;
+  }
+  else if (mY[j] > 0.)
+  {
+    lXrndm += (lYrndm - mCDF[j]) / mY[j];
+  }
+
+  return lXrndm*mXUnit;
+}
+
+/**
+ * @brief Sets data for the distribution.
+ * 
+ * This method sets the x and y data points for the distribution and assigns a name to it for the TGraph (if used).
+ * 
+ * @param pX Vector containing x-values of the data.
+ * @param pY Vector containing y-values of the data.
+ * @param pName Name for the distribution, used for debugging and TGraph name assignment.
+ */
+void DistributionSampler::setData(const std::vector<G4double> &pX, const std::vector<G4double> &pY, G4String pName)
+{
+  mX = pX;
+  mY = pY;
+  mDistName = pName; // TGraph needs unique name, also good for debugging
+  calculateSlopesAndCDF();
+}
+
+
+/**
+ * @brief Initializes the interpolator using TGraph.
+ * 
+ * This method creates a new TGraph instance with the stored data points 
+ * and sets its name to the name of the distribution.
+ */
+void DistributionSampler::makeInterpolator()
+{
+  mInterpolator = new TGraph(static_cast<int>(mX.size()), mX.data(), mY.data());
+  mInterpolator->SetName(mDistName);
+}
+
+
+/**
+ * @brief Calculates the slopes and cumulative function of a dataset for the inverse cumulative algorithm.
+ *
+ * This function computes the slopes and cumulative function values for the given dataset.
+ * These results are often used in the inverse cumulative algorithm.
+ */
+void DistributionSampler::calculateSlopesAndCDF()
+{
+  G4int lNrPoints = static_cast<G4int>(mX.size());
+  mSlopes.resize(lNrPoints, 0.0); // Initialize with zeros
+  mCDF.resize(lNrPoints, 0.0);    // Initialize with zeros
+  for (G4int j = 0; j < lNrPoints; j++)
+  {
+    // Compute slopes for all except the last point
+    if (j < lNrPoints - 1)
+    {
+      mSlopes[j] = (mY[j + 1] - mY[j]) / (mX[j + 1] - mX[j]);
+    }
+
+    // Compute cumulative function
+    if (j > 0)
+    {
+      mCDF[j] = mCDF[j - 1] + 0.5 * (mY[j] + mY[j - 1]) * (mX[j] - mX[j - 1]);
+    }
+  }
+}
+
+/**
+ * @brief Interpolates distribution using TGraph (ROOT)
+ * @param x-value
+ * @return The interpolated y-value for the given x.
+ */
+G4double DistributionSampler::interpolate(G4double pX)
+{
+  if (!mInterpolator)
+  {
+    log_error("Error: mInterpolator not initialized!, make sure running makeInterpolator() before interpolate()");
+    throw("Error: mInterpolator not initialized!");
+    return 0.0;
+  }
+  mInterpolator->Eval(pX/mXUnit) * mYUnit;
+}
+
+
+/**
+ * @brief Sets units for the x and y data points of the distribution.
+ * @param pX Unit for x-values.
+ * @param pY Unit for y-values.
+ */
+void DistributionSampler::setUnits(G4double pX, G4double pY)
+{
+  mYUnit = pY;
+  mXUnit = pX;
+}
+
+DistributionSampler::~DistributionSampler()
+{
+  if (mInterpolator)
+  {
+    delete mInterpolator;
+    mInterpolator = nullptr;
+  }
+};

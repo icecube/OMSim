@@ -20,3 +20,8 @@ void OMSimPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
 	lParticleSource->GeneratePrimaryVertex(anEvent);
 }
+
+
+
+
+

@@ -107,6 +107,11 @@
         "polygon": "cpp",
         "loader": "cpp",
         "box3": "cpp",
-        "mathd": "cpp"
+        "mathd": "cpp",
+        "glprims": "cpp",
+        "mat4": "cpp",
+        "pick_action": "cpp",
+        "plane": "cpp",
+        "value": "cpp"
     }
 }

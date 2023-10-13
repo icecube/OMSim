@@ -55,16 +55,14 @@ public:
     std::vector<G4double>  angdist_x;
     std::vector<G4double>  angdist_y;           
     
-    G4double ThresholdEnergy;
-    G4double Delta;
-    G4double y2;
-    G4double NTargets;
-    G4double me;
-    G4double mp;
-    G4double mn;
-    G4double Gf;
-    G4double consg;
     
+    G4double mYval2;
+
+    G4double mNrTargets;
+    const G4double mGf = 1.166e-5 * 1e-6 / (MeV * MeV);
+    const G4double mConsg = 1.26;
+    const G4double mDeltaMass = neutron_mass_c2 - proton_mass_c2;
+
     //here model data will be stored
 	std::vector<G4double> mNuBar_time;
 	std::vector<G4double> mNuBar_luminosity;
@@ -76,7 +74,7 @@ private:
 
 	void AngularDistribution(G4double Enubar);
     G4double PositronEnergy(G4double Enubar, G4double costheta);
-    G4double TotalCrossSection(G4double energy);
+    G4double totalCrossSection(G4double energy);
 
     OMSimSNTools mSNToolBox;
     G4double mFixedenergy;
