@@ -143,7 +143,7 @@ private:
 };
 
 /**
- * @class 
+ * @class InputDataManager
  * @brief Manages the input data, including parsing and storing material properties.
  * 
  * @details
