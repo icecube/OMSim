@@ -1,4 +1,4 @@
-/** @file OMSimInputData.hh
+/** @file 
  *  @brief Input data from external files are read and saved to memory.
  *
  *  All materials for the modules, pmts and environment, as well as the shape
@@ -18,8 +18,41 @@ namespace pt = boost::property_tree;
 
 /**
  * @class ParameterTable
- * @brief A helper class that provides functionalities for handling JSON-based data tables.
+ * @brief A utility class for managing JSON-based data tables.
+ * 
+ * The ParameterTable class provides an interface for handling and querying JSON data
+ * represented in the form of a property tree of the boost library. It facilitates the extraction of specific
+ * parameters from loaded JSON files while also supporting units and scales. The class is 
+ * capable of loading multiple JSON datasets, each uniquely identified by a key, 
+ * and can perform actions such as fetching a value, checking the presence of a key, 
+ * and more.
+ *
+ * Internally, this class leverages the `boost::property_tree::ptree` to represent and 
+ * manage the JSON data structure, which makes it easy to traverse and fetch desired 
+ * parameters.
+ * 
+ * Its main use is as base class of InputDataManager, but you may use it as needed (see @ref ExampleUsage).
+ * 
  * @ingroup common
+ * 
+ * @section ExampleUsage Example usage
+ * @code
+ * // Create an instance of the table
+ * ParameterTable lTable;
+ * 
+ * // Load a JSON file into the table
+ * lTable.appendAndReturnTree("path/to/file.json");
+ * 
+ * // Fetch a specific value using its key and parameter name
+ * G4double lValue = lTable.getValue<G4double>("SomeKey", "SomeParameter");
+ * @endcode
+ * 
+ * @warning It's essential to ensure that the provided JSON files are formatted correctly 
+ * and that the keys and parameters being queried exist within the loaded datasets 
+ * to avoid runtime errors or unexpected behavior.
+ * 
+ * @note While the class provides type templating for fetching values, care must be taken 
+ * to ensure the correctness of the types.
  */
 class ParameterTable
 {
