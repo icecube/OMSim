@@ -1,9 +1,5 @@
 /** @file 
- *  @brief Input data from external files are read and saved to memory.
- *
- *  All materials for the modules, pmts and environment, as well as the shape
- * parameters of the PMTs and Modules are in the ../common/data folder. This
- * class read all files and parse them to tables.
+ *  @brief Definition of ParameterTable and InputDataManager.
  * @ingroup common
  */
 
@@ -31,20 +27,20 @@ namespace pt = boost::property_tree;
  * manage the JSON data structure, which makes it easy to traverse and fetch desired 
  * parameters.
  * 
- * Its main use is as base class of InputDataManager, but you may use it as needed (see @ref ExampleUsage).
+ * Its main use is as base class of InputDataManager, but you may use it as needed (see @ref ExampleUsageParameterTable).
  * 
  * @ingroup common
  * 
- * @section ExampleUsage Example usage
+ * @subsection ExampleUsageParameterTable Minimal example
  * @code
- * // Create an instance of the table
- * ParameterTable lTable;
+ * ParameterTable lTable; // Create an instance of the table
+ * lTable.appendAndReturnTree("path/to/file.json"); // Load a JSON file into the table. The key of this file (in the following "SomeKey") is contained within the file under the variable "jName"
+ * G4double lValue = lTable.getValue<G4double>("SomeKey", "SomeParameter"); // Fetch a specific value using its key and parameter name
  * 
- * // Load a JSON file into the table
- * lTable.appendAndReturnTree("path/to/file.json");
- * 
- * // Fetch a specific value using its key and parameter name
- * G4double lValue = lTable.getValue<G4double>("SomeKey", "SomeParameter");
+ * // Parsing array content from a JSON subtree into a vector using parseKeyContentToVector
+ * std::vector<G4double> lVector;
+ * pt::ptree lSubtree = lTable.getJSONTree("SomeKey"); // Retrieving the subtree of the file
+ * lTable.parseKeyContentToVector(lVector, lSubtree, "keyOfArray", 1.0, false); // parsing array into vector
  * @endcode
  * 
  * @warning It's essential to ensure that the provided JSON files are formatted correctly 
@@ -147,8 +143,31 @@ private:
 };
 
 /**
- * @class InputDataManager
+ * @class 
  * @brief Manages the input data, including parsing and storing material properties.
+ * 
+ * @details
+ * The `InputDataManager` class extends the functionalities provided by the `ParameterTable` class.
+ * It's dedicated to the specific needs of managing input data related to materials and optical properties
+ * for the Geant4-based simulation.
+ * 
+ * You probably should have a single instance of this class (no need of loading everything twice...probably it also would break things...).
+ * Normally it is loaded in the main DetectorConstruction and passed to the other construction classes.
+ *  
+ * 
+ * Example usage (see also @ref ExampleUsageParameterTable):
+ * 
+ * @code
+ * InputDataManager lManager;
+ * lManager.searchFolders(); // Search for all recognized data files in the predefined directories
+ * G4Material* lWater = manager.getMaterial("CustomWater"); // Retrieve a Geant4 material by name
+ * G4OpticalSurface* lSurface = manager.getOpticalSurface("SomeSurfaceName"); // Retrieve an optical surface by name
+ * 
+ * auto lData = manager.loadtxt("path/to/data.txt"); // Load data from a text file into a 2D vector
+ * @endcode
+ * 
+ * This class assumes certain conventions in naming and structuring the input files, which aids in automatically identifying and processing them. For example, files with names starting with "RiAbs" are treated as describing refractive and absorption properties.
+ * 
  * @ingroup common
  */
 class InputDataManager : public ParameterTable
