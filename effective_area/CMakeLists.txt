@@ -7,7 +7,7 @@ add_executable(OMSim_effective_area ${CMAKE_CURRENT_SOURCE_DIR}/OMSim_effective_
 # Specify include directories for this executable
 target_include_directories(OMSim_effective_area PUBLIC
     ${PROJECT_SOURCE_DIR}/common/framework/include
-    ${PROJECT_SOURCE_DIR}/common/optical_modules/include
+    ${PROJECT_SOURCE_DIR}/common/geometry_construction/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
