@@ -65,7 +65,7 @@
  * @subsubsection response PMT response and saving hits
  * @note  It's important to note that the present methodology stems from historical design decisions. In the future, it would be probably advisable to align this mechanism with the standard Geant4 methodology, utilizing tools such as G4SDManager, G4VHit, and similar constructs.
  * 
- * To detect photons in both simple and complex geometries, the photons must be absorbed within the photocathode volume. This absorption check is performed at the end of each track in the OMSimTrackingAction::PostUserTrackingAction method. The relevant code snippet is as follows:
+ * To detect photons in both simple and complex geometries, the photons must be absorbed within the photocathode volume. This absorption check is performed at the end of each track in the 'OMSimTrackingAction::PostUserTrackingAction' method. The relevant code snippet is as follows:
  *
  * ~~~~~~~~~~~~~{.cc}
  *  if (aTrack->GetDefinition()->GetParticleName() == "opticalphoton")

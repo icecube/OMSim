@@ -20,10 +20,7 @@
 
 /**
  * @struct HitStats
- * @brief A structure to store information about detected photon hits.
- *
- * This structure holds a set of vectors that keep track of the various parameters
- * related to photon hits detected by the optical modules and PMTs.
+ * @brief A structure of vectors to store information about detected photons.
  * @ingroup common
  */
 struct HitStats
@@ -49,6 +46,10 @@ struct HitStats
  * the hit information related to detected photons across multiple optical modules.
  * The manager can be accessed via a singleton pattern, ensuring a unified access
  * point for photon hit data.
+ *
+ * The hits are stored using 'OMSimHitManager::appendHitInfo' in 'OMSimTrackingAction::PostUserTrackingAction'.
+ * The analysis manager of each study is in charge of writing the stored information into a file (see for example 'OMSimEffectiveAreaAnalyisis::writeScan' or 'OMSimDecaysAnalysis::writeHitInformation').
+ * Once the data is written, do not forget calling 'OMSimHitManager::reset'!.
  *
  * @ingroup common
  */

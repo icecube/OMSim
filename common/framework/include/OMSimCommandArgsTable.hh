@@ -2,9 +2,7 @@
  * @file OMSimCommandArgsTable.hh
  * @brief Definition of the OMSimCommandArgsTable singleton class, which controls user args.
  * @ingroup common
- * @author Martin Unland, 
  */
-
 
 /**
  * @brief Writes a key-value pair to a JSON file if the value type matches TYPE.
@@ -12,14 +10,18 @@
  */
 #ifndef OMSIMCOMMANDARGSTABLE_H
 #define OMSIMCOMMANDARGSTABLE_H
-#define WRITE_TO_JSON_IF_TYPE_MATCHES(VARIANT, TYPE)  \
-    if (type == typeid(TYPE)) {                       \
-        outFile << "\t\"" << kv.first << "\": ";      \
-        if(typeid(TYPE) == typeid(std::string)) {     \
+#define WRITE_TO_JSON_IF_TYPE_MATCHES(VARIANT, TYPE)                   \
+    if (type == typeid(TYPE))                                          \
+    {                                                                  \
+        outFile << "\t\"" << kv.first << "\": ";                       \
+        if (typeid(TYPE) == typeid(std::string))                       \
+        {                                                              \
             outFile << "\"" << boost::any_cast<TYPE>(VARIANT) << "\""; \
-        } else {                                      \
-            outFile << boost::any_cast<TYPE>(VARIANT); \
-        }                                             \
+        }                                                              \
+        else                                                           \
+        {                                                              \
+            outFile << boost::any_cast<TYPE>(VARIANT);                 \
+        }                                                              \
     }
 
 #include "OMSimLogger.hh"
@@ -28,13 +30,11 @@
 #include <boost/any.hpp>
 #include <sys/time.h>
 
-
-
 /**
  * @class OMSimCommandArgsTable
  * @brief A singleton class used to hold and manipulate OMSim command arguments.
  *
- * This class uses a map to hold key-value pairs of simulation command arguments. In principle it is just a wrapper around the map created by the boost library to avoid users changing the arg values after initialisation. 
+ * This class uses a map to hold key-value pairs of simulation command arguments. In principle it is just a wrapper around the map created by the boost library to avoid users changing the arg values after initialisation.
  * The class also provides a method to write the parameters to a JSON file.
  * @ingroup common
  */
@@ -43,7 +43,6 @@ class OMSimCommandArgsTable
 public:
     using Key = std::string;
     using Value = boost::any; //  Using boost::any to hold any type
-
 
     /**
      * @brief Retrieves the instance of the singleton.
@@ -54,7 +53,6 @@ public:
         static OMSimCommandArgsTable instance;
         return instance;
     }
-
 
     /**
      * @brief Sets a parameter in the arg table.
@@ -79,17 +77,19 @@ public:
      */
     template <typename T>
     T get(const std::string &key)
-    { 
+    {
         try
         {
             return boost::any_cast<T>(mParameters.at(key));
         }
         catch (const boost::bad_any_cast &e)
-        {   log_error(("Failed to get parameter " + key + " as type " + typeid(T).name()).c_str());
+        {
+            log_error(("Failed to get parameter " + key + " as type " + typeid(T).name()).c_str());
             throw std::invalid_argument("Failed to get parameter " + key + " as type " + typeid(T).name());
         }
         catch (const std::out_of_range &e)
-        {   log_error(("Parameter " + key + " does not exist").c_str());
+        {
+            log_error(("Parameter " + key + " does not exist").c_str());
             throw std::invalid_argument("Parameter " + key + " does not exist");
         }
     }
@@ -98,7 +98,6 @@ public:
     {
         return mParameters.find(key) != mParameters.end();
     }
-
 
     /**
      * @brief Writes the parameters to a JSON-formatted file.
@@ -147,21 +146,19 @@ public:
         outFile.close();
     }
 
-
-
     /**
      * @brief Finalizes the table, setting a random seed if none was provided. mFinalized is set to true preventing any further modifications.
      */
     void finalize()
-    {	
+    {
         long lSeed;
-		if (!keyExists("seed"))
-		{
-			struct timeval time_for_randy;
-			gettimeofday(&time_for_randy, NULL);
-			lSeed = time_for_randy.tv_sec + 4294 * time_for_randy.tv_usec;
-			setParameter("seed", lSeed);
-		}
+        if (!keyExists("seed"))
+        {
+            struct timeval time_for_randy;
+            gettimeofday(&time_for_randy, NULL);
+            lSeed = time_for_randy.tv_sec + 4294 * time_for_randy.tv_usec;
+            setParameter("seed", lSeed);
+        }
         mFinalized = true;
     }
 

@@ -14,8 +14,9 @@ InputDataManager::InputDataManager() {}
  *                                          Helper Class
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
+
 /**
- * Appends information of json-file containing PMT/OM parameters to a vector
+ * Appends information of json-file containing PMT/OM parameters to a dictionary
  * of ptrees
  * @param pFileName Name of file containing json
  */
@@ -29,7 +30,6 @@ pt::ptree ParameterTable::appendAndReturnTree(G4String pFileName)
     log_debug(mssg);
     return lJsonTree;
 }
-
 
 /**
  * @brief Fetches the value associated with a given key and parameter.
@@ -70,10 +70,9 @@ G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
 }
 
 /**
- * Get values from a pTree with its unit, transforming it to a G4double
- * @param pKey Name of json tree in file
- * @param pParameter Name of parameter in json tree
- * @return G4double of the value and its unit
+ * Get tree object saved in table
+ * @param pKey Key of tree ("jName" in corresponding json file)
+ * @return pt::ptree
  */
 pt::ptree ParameterTable::getJSONTree(G4String pKey)
 {
@@ -97,10 +96,6 @@ G4bool ParameterTable::checkIfKeyInTable(G4String pKey)
     else
         return false;
 }
-
-
-
-
 
 /*
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
