@@ -21,7 +21,12 @@ public:
     ~pDOM(){};
     void construction();
     G4bool mPlaceHarness;
-
+    G4String getName()
+    {
+        std::stringstream ss;
+        ss << "/pDOM/" << mIndex;
+        return ss.str();
+    }
     double getPressureVesselWeight() {return 9.07*kg;};
     int getNumberOfPMTs() { return 1;};
 };

@@ -11,7 +11,10 @@
 #ifndef OpticalModule_h
 #define OpticalModule_h 1
 #include "abcDetectorComponent.hh"
+//#include "OMSimDetectorConstruction.hh"
 #include "OMSimPMTConstruction.hh"
+class OMSimDetectorConstruction;
+
 
 /**
  *  @class OpticalModule
@@ -37,6 +40,10 @@ public:
      */
     virtual int getNumberOfPMTs() = 0;
 
+    void configureSensitiveVolume(OMSimDetectorConstruction *pDetConst){mPMTManager->configureSensitiveVolume(pDetConst, getName());};
+
+    virtual G4String getName() = 0;
+
     OMSimPMTConstruction *getPMTmanager() { return mPMTManager; };
 
     virtual ~OpticalModule()
@@ -47,7 +54,7 @@ public:
             mPMTManager = nullptr;
         }
     }
-    
+
     G4int mIndex;
 
 protected:

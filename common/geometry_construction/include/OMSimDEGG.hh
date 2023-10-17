@@ -35,6 +35,7 @@ public:
     double getPressureVesselWeight() { return 18.0*kg; };
 
     int getNumberOfPMTs() { return 2; };
+    G4String mBaseName = "DEGG";
 
 private:
     DEggHarness *mHarness;

@@ -7,6 +7,7 @@
 #include "OMSim.hh"
 #include "OMSimAngularScan.hh"
 #include "OMSimEffectiveAreaAnalyisis.hh"
+#include "OMSimEffectiveAreaDetector.hh"
 
 namespace po = boost::program_options;
 
@@ -97,7 +98,9 @@ int main(int argc, char *argv[])
 
 		// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
 		lArgs.finalize();
-		lSimulation.initialiseSimulation();
+
+		OMSimEffectiveAreaDetector* lDetectorConstruction = new OMSimEffectiveAreaDetector();
+		lSimulation.initialiseSimulation(lDetectorConstruction);
 
 		effectiveAreaSimulation();
 		if(lArgs.get<bool>("visual")) lSimulation.startVisualisation();

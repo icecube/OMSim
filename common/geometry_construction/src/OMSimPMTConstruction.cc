@@ -1,5 +1,7 @@
 #include "OMSimPMTConstruction.hh"
 #include "OMSimCommandArgsTable.hh"
+#include "OMSimDetectorConstruction.hh"
+#include "OMSimSensitiveDetector.hh"
 #include "CADMesh.hh"
 
 #include <G4Cons.hh>
@@ -30,16 +32,15 @@ void OMSimPMTConstruction::construction()
     G4SubtractionSolid *lVacuumBack = new G4SubtractionSolid("Vacuum Tube solid", lGlassInside, lVacuumPhotocathodeSolid, 0, G4ThreeVector(0, 0, 0));
 
     G4LogicalVolume *lPMTlogical;
-    G4LogicalVolume *lPhotocathode;
 
     // The ? of the following two lines are ternary operators that replace if-else-statements
     lPMTlogical = new G4LogicalVolume(lPMTSolid, mData->getMaterial(mInternalReflections ? "RiAbs_Glass_Tube" : "Ri_Glass_Tube"), "PMT tube logical");
-    lPhotocathode = new G4LogicalVolume(mInternalReflections ? constructPhotocathodeLayer() : lVacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
+    mPhotocathodeLV = new G4LogicalVolume(mInternalReflections ? constructPhotocathodeLayer() : lVacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
 
     G4LogicalVolume *lTubeVacuum = new G4LogicalVolume(lGlassInside, mData->getMaterial("Ri_Vacuum"), "PMTvacuum");
     G4LogicalVolume *lVacuumBackLogical = new G4LogicalVolume(lVacuumBack, mData->getMaterial("Ri_Vacuum"), "PMTvacuum");
 
-    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lPhotocathode, "Photocathode", lTubeVacuum, false, 0, mCheckOverlaps);
+    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), mPhotocathodeLV, "Photocathode", lTubeVacuum, false, 0, mCheckOverlaps);
     if (mInternalReflections)
     {
         mVacuumBackPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lVacuumBackLogical, "VacuumTubeBack", lTubeVacuum, false, 0, mCheckOverlaps);
@@ -56,11 +57,40 @@ void OMSimPMTConstruction::construction()
 
     appendComponent(lPMTSolid, lPMTlogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PMT");
 
-    lPhotocathode->SetVisAttributes(mPhotocathodeVis);
+    mPhotocathodeLV->SetVisAttributes(mPhotocathodeVis);
     lPMTlogical->SetVisAttributes(mGlassVis);
     lTubeVacuum->SetVisAttributes(mAirVis);
     lVacuumBackLogical->SetVisAttributes(mAirVis);
     mConstructionFinished = true;
+}
+
+OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
+{
+    G4String jResponseData = mData->getValue<G4String>(mSelectedPMT, "jResponseData");
+
+    if (jResponseData == "R15458")
+    {
+        return &mDOMPMTResponse::getInstance();
+    }
+    else if (jResponseData == "R7081")
+    {
+        return &Gen1PMTResponse::getInstance();
+    }
+    else if (jResponseData == "R5912")
+    {
+        return &DEGGPMTResponse::getInstance();
+    }
+    else if (jResponseData == "LOMHama")
+    {
+        return &LOMHamamatsuResponse::getInstance();
+    }
+}
+
+void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *pDetConst, G4String pName)
+{
+    auto lSensitiveDetector = new OMSimSensitiveDetector(pName);
+    lSensitiveDetector->setPMTResponse(getPMTResponseInstance());
+    pDetConst->setSensitiveDetector(mPhotocathodeLV, lSensitiveDetector);
 }
 
 void OMSimPMTConstruction::constructHAcoating()
@@ -217,7 +247,6 @@ void OMSimPMTConstruction::constructCathodeBackshield(G4LogicalVolume *pPMTinner
     new G4PVPlacement(0, G4ThreeVector(0, 0, -lShieldWidth / 2), lShieldLogical, "Shield physical", pPMTinner, false, 0, mCheckOverlaps);
     lShieldLogical->SetVisAttributes(mBlackVis);
 }
-
 
 /**
  * Construction & placement of the dynode system entrance for internal reflections. Currently only geometry for Hamamatsu R15458.
@@ -499,6 +528,6 @@ G4double OMSimPMTConstruction::getPMTGlassWeight()
     catch (const std::exception &e)
     {
         log_warning("PMT table has no bulb weight defined (key jBulbWeight does not exist). Simulation of PMT scintillation cannot be performed!");
-        return 0*kg;
+        return 0 * kg;
     }
 }

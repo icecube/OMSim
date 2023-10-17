@@ -21,7 +21,12 @@ public:
     void construction();
     double getPressureVesselWeight() {return 17.0*kg;};
     int getNumberOfPMTs() { return mTotalNrPMTs;};
-    
+    G4String getName()
+    {
+        std::stringstream ss;
+        ss << "LOM18/" << mIndex;
+        return ss.str();
+    }
 private:
 
     G4Polycone* createLOM18OuterSolid();

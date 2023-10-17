@@ -23,12 +23,6 @@
 class OMSimPMTResponse
 {
 public:
-    static OMSimPMTResponse &getInstance()
-    { // Meyers singleton
-        static OMSimPMTResponse instance;
-        return instance;
-    }
-
     /**
      *  @struct PMTPulse
      *  @brief Represents the output pulse for a detected photon.
@@ -44,11 +38,11 @@ public:
 
     bool passQE(G4double pWavelength);
 
-private:
-    std::vector<G4double> mScannedWavelengths{460 * nm, 480 * nm, 500 * nm, 520 * nm, 540 * nm, 560 * nm, 580 * nm, 600 * nm, 620 * nm, 640 * nm};
-
+protected:
+    
     double mX;
     double mY;
+
     G4double mWavelength;
 
     TGraph *mRelativeDetectionEfficiencyInterp;
@@ -58,7 +52,7 @@ private:
     std::map<G4double, TH2D *> mTransitTimeG2Dmap;
     std::map<G4double, TH2D *> mTransitTimeSpreadG2Dmap;
 
-    void configureQEinterpolator();
+    void configureQEinterpolator(const char* pFileName);
     TH2D *createHistogramFromData(const std::string &pFilePath, const char *pTH2DName);
     G4double getCharge(G4double pWavelengthKey);
     G4double getCharge(G4double pWavelengthKey1, G4double pWavelengthKey2);
@@ -68,10 +62,93 @@ private:
     PMTPulse getPulseFromKey(G4double pWavelengthKey);
     G4double wavelengthInterpolatedValue(std::map<G4double, TH2D *> pMap, G4double pWavelengthKey1, G4double pWavelengthKey2);
 
-    OMSimPMTResponse();
-    ~OMSimPMTResponse();
-    OMSimPMTResponse(const OMSimPMTResponse &) = delete;
-    OMSimPMTResponse &operator=(const OMSimPMTResponse &) = delete;
+    virtual std::vector<G4double> getScannedWavelengths() = 0;
+    virtual bool scansAvailable() = 0;
+    OMSimPMTResponse(){};
+    virtual ~OMSimPMTResponse(){};
+    // OMSimPMTResponse(const OMSimPMTResponse &) = delete;
+    // OMSimPMTResponse &operator=(const OMSimPMTResponse &) = delete;
+};
+
+class mDOMPMTResponse : public OMSimPMTResponse
+{
+public:
+    static mDOMPMTResponse &getInstance()
+    { // Meyers singleton
+        static mDOMPMTResponse instance;
+        return instance;
+    }
+    std::vector<G4double> getScannedWavelengths();
+    bool scansAvailable(){return true;};
+    mDOMPMTResponse();
+    ~mDOMPMTResponse();
+    mDOMPMTResponse(const mDOMPMTResponse &) = delete;
+    mDOMPMTResponse &operator=(const mDOMPMTResponse &) = delete;
+};
+
+class Gen1PMTResponse : public OMSimPMTResponse
+{
+public:
+    static Gen1PMTResponse &getInstance()
+    { // Meyers singleton
+        static Gen1PMTResponse instance;
+        return instance;
+    }
+    std::vector<G4double> getScannedWavelengths();
+    bool scansAvailable(){return false;};
+    Gen1PMTResponse();
+    ~Gen1PMTResponse();
+    Gen1PMTResponse(const Gen1PMTResponse &) = delete;
+    Gen1PMTResponse &operator=(const Gen1PMTResponse &) = delete;
+};
+
+class DEGGPMTResponse : public OMSimPMTResponse
+{
+public:
+    static DEGGPMTResponse &getInstance()
+    { // Meyers singleton
+        static DEGGPMTResponse instance;
+        return instance;
+    }
+    std::vector<G4double> getScannedWavelengths();
+    bool scansAvailable(){return false;};
+    DEGGPMTResponse();
+    ~DEGGPMTResponse();
+    DEGGPMTResponse(const DEGGPMTResponse &) = delete;
+    DEGGPMTResponse &operator=(const DEGGPMTResponse &) = delete;
+};
+
+class LOMHamamatsuResponse : public OMSimPMTResponse
+{
+public:
+    static LOMHamamatsuResponse &getInstance()
+    { // Meyers singleton
+        static LOMHamamatsuResponse instance;
+        return instance;
+    }
+    std::vector<G4double> getScannedWavelengths();
+    bool scansAvailable(){return false;};
+    LOMHamamatsuResponse();
+    ~LOMHamamatsuResponse();
+    LOMHamamatsuResponse(const LOMHamamatsuResponse &) = delete;
+    LOMHamamatsuResponse &operator=(const LOMHamamatsuResponse &) = delete;
+};
+
+
+class LOMNNVTResponse : public OMSimPMTResponse
+{
+public:
+    static LOMNNVTResponse &getInstance()
+    { // Meyers singleton
+        static LOMNNVTResponse instance;
+        return instance;
+    }
+    std::vector<G4double> getScannedWavelengths();
+    bool scansAvailable(){return false;};
+    LOMNNVTResponse();
+    ~LOMNNVTResponse();
+    LOMNNVTResponse(const LOMNNVTResponse &) = delete;
+    LOMNNVTResponse &operator=(const LOMNNVTResponse &) = delete;
 };
 
 #endif

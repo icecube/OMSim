@@ -1,7 +1,7 @@
 /**
  *  @todo - Write documentation and parse current comments into Doxygen style
  */
-
+#include "OMSimSensitiveDetector.hh"
 #include "OMSimMDOM.hh"
 #include "OMSimMDOMHarness.hh"
 #include "OMSimCommandArgsTable.hh"

@@ -5,6 +5,8 @@
 #include "OMSimDEGG.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimHitManager.hh"
+#include "G4SDManager.hh"
+#include "OMSimSensitiveDetector.hh"
 
 OMSimDetectorConstruction::OMSimDetectorConstruction()
     : mWorldSolid(0), mWorldLogical(0), mWorldPhysical(0)
@@ -100,7 +102,17 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
         lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
         lHitManager.setNumberOfPMTs(lOpticalModule->getNumberOfPMTs());
         mOpticalModule = lOpticalModule;
+        ConstructSDandField();
     }
-
+    
     return mWorldPhysical;
+}
+
+
+
+void OMSimDetectorConstruction::ConstructSDandField()
+{
+    auto sdman = G4SDManager::GetSDMpointer();
+    auto mySD = new LXePMTSD("/SD1");
+    SetSensitiveDetector(mOpticalModule->getPMTmanager()->getPhotocathodeLV(), mySD);
 }

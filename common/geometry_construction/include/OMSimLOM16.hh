@@ -20,6 +20,12 @@ public:
     double getPressureVesselWeight() {return (5.38+5.35)*kg;};
     int getNumberOfPMTs() { return mTotalNrPMTs;};
     
+    G4String getName()
+    {
+        std::stringstream ss;
+        ss << "LOM16/" << mIndex;
+        return ss.str();
+    }
 private:
     G4UnionSolid* pressureVessel(const G4double pOutRad, G4String pSuffix);
 

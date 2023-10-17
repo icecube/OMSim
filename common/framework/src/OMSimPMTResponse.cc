@@ -7,6 +7,12 @@
 #include "OMSimLogger.hh"
 #include "OMSimInputData.hh"
 
+/*
+ * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ *                                  Base Abstract Classes
+ * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ */
+
 /**
  * @brief Create a histogram from provided data.
  *
@@ -56,43 +62,6 @@ TH2D *OMSimPMTResponse::createHistogramFromData(const std::string &pFilePath, co
     }
 
     return h;
-}
-
-OMSimPMTResponse::OMSimPMTResponse()
-{
-    log_debug("Opening photocathode scans data...");
-    std::string path = "../common/data/PMT_scans/";
-
-    mRelativeDetectionEfficiencyInterp = new TGraph((path + "weightsVsR_vFit_220nm.txt").c_str());
-    mRelativeDetectionEfficiencyInterp->SetName("RelativeDetectionEfficiencyWeight");
-
-    if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut"))
-        configureQEinterpolator();
-
-    for (const auto &lKey : mScannedWavelengths)
-    {
-        std::string lWv = std::to_string((int)(lKey / nm));
-        mGainG2Dmap[lKey] = createHistogramFromData(path + "Gain_PE_" + lWv + ".dat", ("Gain_PE_" + lWv).c_str());
-        mGainResolutionG2Dmap[lKey] = createHistogramFromData(path + "SPEresolution_" + lWv + ".dat", ("SPEresolution_" + lWv).c_str());
-        mTransitTimeSpreadG2Dmap[lKey] = createHistogramFromData(path + "TransitTimeSpread_" + lWv + ".dat", ("TransitTimeSpread_" + lWv).c_str());
-        mTransitTimeG2Dmap[lKey] = createHistogramFromData(path + "TransitTime_" + lWv + ".dat", ("TransitTime_" + lWv).c_str());
-    }
-
-    log_debug("Finished opening photocathode scans data...");
-}
-
-OMSimPMTResponse::~OMSimPMTResponse()
-{
-    delete mRelativeDetectionEfficiencyInterp;
-    delete mQEInterp;
-    for (const auto &lKey : mScannedWavelengths)
-    {
-        std::string lWv = std::to_string((int)(lKey / nm));
-        delete mGainG2Dmap[lKey];
-        delete mGainResolutionG2Dmap[lKey];
-        delete mTransitTimeSpreadG2Dmap[lKey];
-        delete mTransitTimeG2Dmap[lKey];
-    }
 }
 
 /**
@@ -244,11 +213,10 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::getPulseFromInterpolation(G4double 
  *
  * @sa passQE
  */
-void OMSimPMTResponse::configureQEinterpolator()
+void OMSimPMTResponse::configureQEinterpolator(const char *pFileName)
 {
-    std::string lPath = "../common/data/PMT_scans/";
-    mQEInterp = new TGraph((lPath + "QuantumEfficiency.dat").c_str());
-    mQEInterp->SetName("QEInterpolator");
+    mQEInterp = new TGraph(pFileName);
+    mQEInterp->SetName(pFileName);
 }
 
 /**
@@ -279,41 +247,182 @@ bool OMSimPMTResponse::passQE(G4double pWavelength)
  */
 OMSimPMTResponse::PMTPulse OMSimPMTResponse::processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength)
 {
+    OMSimPMTResponse::PMTPulse lPulse;
+    lPulse.DetectionProbability = -1;
+    lPulse.PE = -1;
+    lPulse.TransitTime = -1;
+
+    if (!scansAvailable())
+        return lPulse;
 
     mX = pX / mm;
     mY = pY / mm;
     G4double lR = std::sqrt(mX * mX + mY * mY);
     mWavelength = pWavelength;
 
-    OMSimPMTResponse::PMTPulse lPulse;
-
     lPulse.DetectionProbability = mRelativeDetectionEfficiencyInterp->Eval(lR);
 
+    std::vector<G4double> lScannedWavelengths = getScannedWavelengths();
+
     // If wavelength matches with one of the measured ones
-    if (std::find(mScannedWavelengths.begin(), mScannedWavelengths.end(), pWavelength) != mScannedWavelengths.end())
+    if (std::find(lScannedWavelengths.begin(), lScannedWavelengths.end(), pWavelength) != lScannedWavelengths.end())
     {
         lPulse = getPulseFromKey(pWavelength);
     }
     // If wavelength smaller than scanned, return for first measured wavelength
-    else if (pWavelength < mScannedWavelengths.at(0))
+    else if (pWavelength < lScannedWavelengths.at(0))
     {
-        lPulse = getPulseFromKey(mScannedWavelengths.at(0));
+        lPulse = getPulseFromKey(lScannedWavelengths.at(0));
     }
     // If wavelength larger than scanned, return for last measured wavelength
-    else if (pWavelength > mScannedWavelengths.back())
+    else if (pWavelength > lScannedWavelengths.back())
     {
-        lPulse = getPulseFromKey(mScannedWavelengths.back());
+        lPulse = getPulseFromKey(lScannedWavelengths.back());
     }
     // If wavelength in range of scanned, return interpolated values
     else
     {
         // get first index of first element larger than seeked wavelength
-        auto const lLowerBoundIndex = std::lower_bound(mScannedWavelengths.begin(), mScannedWavelengths.end(), pWavelength) - mScannedWavelengths.begin();
+        auto const lLowerBoundIndex = std::lower_bound(lScannedWavelengths.begin(), lScannedWavelengths.end(), pWavelength) - lScannedWavelengths.begin();
 
-        G4double lW1 = mScannedWavelengths.at(lLowerBoundIndex - 1);
-        G4double lW2 = mScannedWavelengths.at(lLowerBoundIndex);
+        G4double lW1 = lScannedWavelengths.at(lLowerBoundIndex - 1);
+        G4double lW2 = lScannedWavelengths.at(lLowerBoundIndex);
 
         lPulse = getPulseFromInterpolation(lW1, lW2);
     }
+
     return lPulse;
+}
+
+/*
+ * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ *                                 Derived Classes
+ * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ */
+
+/*
+ * %%%%%%%%%%%%%%%% mDOM %%%%%%%%%%%%%%%%
+ */
+mDOMPMTResponse::mDOMPMTResponse()
+{
+    log_info("Using mDOM PMT response");
+    log_debug("Opening mDOM photocathode scans data...");
+    std::string path = "../common/data/PMT_scans/";
+
+    mRelativeDetectionEfficiencyInterp = new TGraph((path + "weightsVsR_vFit_220nm.txt").c_str());
+    mRelativeDetectionEfficiencyInterp->SetName("RelativeDetectionEfficiencyWeight");
+
+    if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut"))
+        configureQEinterpolator("../common/data/PMT_scans/QuantumEfficiency.dat");
+
+    for (const auto &lKey : getScannedWavelengths())
+    {
+        G4cout << lKey << G4endl;
+        std::string lWv = std::to_string((int)(lKey / nm));
+        mGainG2Dmap[lKey] = createHistogramFromData(path + "Gain_PE_" + lWv + ".dat", ("Gain_PE_" + lWv).c_str());
+        mGainResolutionG2Dmap[lKey] = createHistogramFromData(path + "SPEresolution_" + lWv + ".dat", ("SPEresolution_" + lWv).c_str());
+        mTransitTimeSpreadG2Dmap[lKey] = createHistogramFromData(path + "TransitTimeSpread_" + lWv + ".dat", ("TransitTimeSpread_" + lWv).c_str());
+        mTransitTimeG2Dmap[lKey] = createHistogramFromData(path + "TransitTime_" + lWv + ".dat", ("TransitTime_" + lWv).c_str());
+    }
+
+    log_debug("Finished opening photocathode scans data...");
+}
+
+std::vector<G4double> mDOMPMTResponse::getScannedWavelengths()
+{
+    return {460 * nm, 480 * nm, 500 * nm, 520 * nm, 540 * nm, 560 * nm, 580 * nm, 600 * nm, 620 * nm, 640 * nm};
+}
+
+mDOMPMTResponse::~mDOMPMTResponse()
+{
+    delete mRelativeDetectionEfficiencyInterp;
+    delete mQEInterp;
+    for (const auto &lKey : getScannedWavelengths())
+    {
+        std::string lWv = std::to_string((int)(lKey / nm));
+        delete mGainG2Dmap[lKey];
+        delete mGainResolutionG2Dmap[lKey];
+        delete mTransitTimeSpreadG2Dmap[lKey];
+        delete mTransitTimeG2Dmap[lKey];
+    }
+}
+
+/*
+ * %%%%%%%%%%%%%%%% Gen1 DOM %%%%%%%%%%%%%%%%
+ */
+Gen1PMTResponse::Gen1PMTResponse()
+{
+    log_info("Using Gen1 DOM PMT response");
+    if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut"))
+        configureQEinterpolator("../common/data/PMT_scans/QuantumEfficiency.dat");
+}
+
+std::vector<G4double> Gen1PMTResponse::getScannedWavelengths()
+{
+    return {};
+}
+
+Gen1PMTResponse::~Gen1PMTResponse()
+{
+    delete mQEInterp;
+}
+
+/*
+ * %%%%%%%%%%%%%%%% DEGG %%%%%%%%%%%%%%%%
+ */
+DEGGPMTResponse::DEGGPMTResponse()
+{
+    log_info("Using DEGG PMT response");
+    if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut"))
+        configureQEinterpolator("../common/data/PMT_scans/QuantumEfficiency.dat");
+}
+
+std::vector<G4double> DEGGPMTResponse::getScannedWavelengths()
+{
+    return {};
+}
+
+DEGGPMTResponse::~DEGGPMTResponse()
+{
+    delete mQEInterp;
+}
+
+/*
+ * %%%%%%%%%%%%%%%% LOM Hamamatsu %%%%%%%%%%%%%%%%
+ */
+LOMHamamatsuResponse::LOMHamamatsuResponse()
+{
+    log_info("Using Hamamatsu LOM PMT response");
+    if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut"))
+        configureQEinterpolator("../common/data/PMT_scans/QuantumEfficiency.dat");
+}
+
+std::vector<G4double> LOMHamamatsuResponse::getScannedWavelengths()
+{
+    return {};
+}
+
+LOMHamamatsuResponse::~LOMHamamatsuResponse()
+{
+    delete mQEInterp;
+}
+
+/*
+ * %%%%%%%%%%%%%%%% LOM NNVT %%%%%%%%%%%%%%%%
+ */
+LOMNNVTResponse::LOMNNVTResponse()
+{
+    log_info("Using NNVT LOM PMT response");
+    if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut"))
+        configureQEinterpolator("../common/data/PMT_scans/QuantumEfficiency.dat");
+}
+
+std::vector<G4double> LOMNNVTResponse::getScannedWavelengths()
+{
+    return {};
+}
+
+LOMNNVTResponse::~LOMNNVTResponse()
+{
+    delete mQEInterp;
 }
