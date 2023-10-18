@@ -34,9 +34,8 @@ public:
         G4double DetectionProbability; ///< Probability of photon being detected.
     };
 
-    PMTPulse processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength);
-
-    bool passQE(G4double pWavelength);
+    virtual PMTPulse processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength);
+    virtual bool passQE(G4double pWavelength);
 
 protected:
     
@@ -149,6 +148,30 @@ public:
     ~LOMNNVTResponse();
     LOMNNVTResponse(const LOMNNVTResponse &) = delete;
     LOMNNVTResponse &operator=(const LOMNNVTResponse &) = delete;
+};
+
+
+
+class NoPMTResponse : public OMSimPMTResponse
+{
+public:
+    NoPMTResponse();
+    ~NoPMTResponse();
+    NoPMTResponse(const NoPMTResponse &) = delete;
+    NoPMTResponse &operator=(const NoPMTResponse &) = delete;
+
+    static NoPMTResponse &getInstance()
+    { // Meyers singleton
+        static NoPMTResponse instance;
+        return instance;
+    }
+    PMTPulse processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength) override;
+    bool passQE(G4double pWavelength) override;
+
+private:
+    std::vector<G4double> getScannedWavelengths();
+    bool scansAvailable(){return false;};
+
 };
 
 #endif

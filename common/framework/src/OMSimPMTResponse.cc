@@ -426,3 +426,37 @@ LOMNNVTResponse::~LOMNNVTResponse()
 {
     delete mQEInterp;
 }
+
+
+/*
+ * %%%%%%%%%%%%%%%% No response %%%%%%%%%%%%%%%%
+ */
+NoPMTResponse::NoPMTResponse()
+{
+    log_info("No PMT response will be simulated...");
+    if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut"))
+        configureQEinterpolator("../common/data/PMT_scans/QuantumEfficiency.dat");
+}
+
+std::vector<G4double> NoPMTResponse::getScannedWavelengths()
+{
+    return {};
+}
+
+NoPMTResponse::~NoPMTResponse()
+{
+    delete mQEInterp;
+}
+
+OMSimPMTResponse::PMTPulse NoPMTResponse::processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength)
+{
+    OMSimPMTResponse::PMTPulse lPulse;
+    lPulse.DetectionProbability = -1;
+    lPulse.PE = -1;
+    lPulse.TransitTime = -1;
+    return lPulse;
+}
+
+bool NoPMTResponse::passQE(G4double pWavelength){
+    return true;
+}
