@@ -62,25 +62,21 @@
  * </div>
  * </div>
  * 
- * @subsubsection response PMT response and saving hits
- * @note  It's important to note that the present methodology stems from historical design decisions. In the future, it would be probably advisable to align this mechanism with the standard Geant4 methodology, utilizing tools such as G4SDManager, G4VHit, and similar constructs.
  * 
- * To detect photons in both simple and complex geometries, the photons must be absorbed within the photocathode volume. This absorption check is performed at the end of each track in the 'OMSimTrackingAction::PostUserTrackingAction' method. The relevant code snippet is as follows:
- *
- * ~~~~~~~~~~~~~{.cc}
- *  if (aTrack->GetDefinition()->GetParticleName() == "opticalphoton")
- *  {   
- *      if ((aTrack->GetVolume()->GetName()).substr(0, 12) == "Photocathode")
- *      {...
- * ~~~~~~~~~~~~~
- * This means, currently, for a volume to be photo-sensitive, it must be named "Photocathode". All information regarding absorbed photons is stored in the 'OMSimHitManager' singleton. In this step also 'OMSimPMTResponse' is called to simulate the PMT response.
+ * @subsubsection response PMT Response and Saving Hits
  * 
- * @warning Detailed PMT response currently only for mDOM PMT
+ * @warning Only the mDOM PMT currently supports a detailed PMT response.
  * 
- * The class OMSimPMTResponse provides a realistic PMT response (charge and transit time) using the measured scans from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>. To turn on this feature, the bool-switch command line argument "pmt_response" has to be given.
- * For more information see Section 9.3.4 of the thesis.
+ * For photon detection in both simple and complex geometries, the photons must be absorbed within the photocathode volume. The PMTs' photocathodes are made sensitive through the OMSimSensitiveDetector class, following Geant4's G4VSensitiveDetector pattern. This configuration is achieved by invoking 'OpticalModule::configureSensitiveVolume' (or 'OMSimPMTConstruction::configureSensitiveVolume' when simulating a single PMT). 
+ * It is essential to invoke this method in the detector construction, as it needs the instance of 'OMSimDetectorConstruction' to call 'G4VUserDetectorConstruction::SetSensitiveDetector' for successful operation in Geant4 (refer to 'OMSimDetectorConstruction::setSensitiveDetector').
  * 
- * <div style="width: 100%; text-align: center;">
+ * Every particle passage through the photocathode triggers the 'OMSimSensitiveDetector::ProcessHits' method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4's philosophy concerning G4VSensitiveDetector, consult the <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector#g4vsensitivedetector">Geant4 guide for application developers</a>.
+ * 
+ * In 'OMSimPMTConstruction::configureSensitiveVolume', PMTs are associated with an instance of OMSimPMTResponse, contingent on the PMT under simulation. This class offers a precise PMT simulation by sampling from real measurements, obtaining the relative transit time, charge (in PE), and detection probability (using the measured scans from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>). For detailed insights, refer to Section 9.3.4 of the linked thesis.
+ * 
+ * The data of absorbed photons is managed by the 'OMSimHitManager' singleton. To analyse and export this data, consult example methods like 'OMSimEffectiveAreaAnalyisis::writeScan' and 'OMSimDecaysAnalysis::writeHitInformation' for direction.
+ * 
+ *  <div style="width: 100%; text-align: center;">
  * <img src="PW_beam_geant4_TT.png" width="256" height="440" />
  * <div style="width: 80%; margin: auto;">
  * <br/>
@@ -88,5 +84,22 @@
  * </div>
  * </div>
  * 
- * To analyse and write the output from the data stored in 'OMSimHitManager', refer to the following example methods for guidance 'OMSimEffectiveAreaAnalyisis::writeScan' or 'OMSimDecaysAnalysis::writeHitInformation'.
+ * An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in 'OMSimHitManager'. To enable this feature, provide the "QE_cut" argument via the command line.
+ * 
+ * @note In most scenarios, it's not recommended to use --QE_cut since it reduces your statistics. Its presence in OMSim is primarily for testing purposes. It's generally better to perform post-analysis using the saved OMSimPMTResponse::PMTPulse::DetectionProbability for each absorbed photon.
+ * 
+ * @subsubsection dummyresponse Making other volumes sensitive to photons
+ * 
+ * In some scenarios, it might be necessary to make a volume sensitive to photons without associating it with any specific PMT response. For these situations, the existing framework can be leveraged by utilizing the "dummy" PMT response class, 'NoResponse'.
+ * Below is an example illustrating how this can be incorporated within the detector construction:
+ * 
+ * ~~~~~~~~~~~~~{.cc}
+ *  //... Assume the logical volume of your detector has been defined and is referred to as "lDetectorLV"
+ *  OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector("myDetector");
+ *  lSensitiveDetector->setPMTResponse(&NoResponse::getInstance());
+ *  setSensitiveDetector(lDetectorLV, lSensitiveDetector);
+ * ~~~~~~~~~~~~~
+ * In this case 'OMSimSensitiveDetector::ProcessHits' will store all absorbed photons. How many photons are absorbed, will depend on the absorption length you defined for the detector volume. 
+ * If the need arises to make a volume sensitive to particles other than photons, a new class derived from G4VSensitiveDetector must be created. Refer to the 'OMSimSensitiveDetector' class to understand the implementation approach and for guidance. 
+ * You may also track these particles in OMSimTrackingAction or OMSimSteppingAction, but using a class derived from G4VSensitiveDetector is the 'philosopy' of Geant4 ;). 
  */

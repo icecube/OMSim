@@ -152,17 +152,17 @@ public:
 
 
 
-class NoPMTResponse : public OMSimPMTResponse
+class NoResponse : public OMSimPMTResponse
 {
 public:
-    NoPMTResponse();
-    ~NoPMTResponse();
-    NoPMTResponse(const NoPMTResponse &) = delete;
-    NoPMTResponse &operator=(const NoPMTResponse &) = delete;
+    NoResponse();
+    ~NoResponse(){};
+    NoResponse(const NoResponse &) = delete;
+    NoResponse &operator=(const NoResponse &) = delete;
 
-    static NoPMTResponse &getInstance()
+    static NoResponse &getInstance()
     { // Meyers singleton
-        static NoPMTResponse instance;
+        static NoResponse instance;
         return instance;
     }
     PMTPulse processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength) override;

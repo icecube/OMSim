@@ -66,7 +66,17 @@ void OMSimPMTConstruction::construction()
 
 OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 {
-    G4String jResponseData = mData->getValue<G4String>(mSelectedPMT, "jResponseData");
+    G4String jResponseData;
+    try
+    {
+        jResponseData = mData->getValue<G4String>(mSelectedPMT, "jResponseData");
+    }
+    catch (const boost::property_tree::ptree_bad_path &e)
+    {
+        G4String mssg = "Selected PMT " + mSelectedPMT + " has no 'jResponseData' key in json-file. No PMT response will be simulated...";
+        log_warning(mssg);
+        return &NoResponse::getInstance();
+    }
 
     if (jResponseData == "R15458")
     {
@@ -83,6 +93,12 @@ OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
     else if (jResponseData == "LOMHama")
     {
         return &LOMHamamatsuResponse::getInstance();
+    }
+    else
+    {
+        G4String mssg = "Selected jResponseData '" + jResponseData + "' in PMT json-file '" + mSelectedPMT + "' has no response class associated. No PMT response will be simulated...";
+        log_warning(mssg);
+        return &NoResponse::getInstance();
     }
 }
 

@@ -1,7 +1,7 @@
 /*
 I Took this from a github... but I can't find it right now for giving the credits :(
 */
-#define LOG_LEVEL DEBUG
+#define LOG_LEVEL INFO
 
 #ifndef OMSimLogger_h
 #define OMSimLogger_h 1
