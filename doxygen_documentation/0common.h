@@ -24,8 +24,8 @@
  *
  *  @subsubsection geometry Geometry construction
  * 
- *  Each optical module and harness is defined in its respective class, located in the '/common/geometry_construction/' folder. These inherit from the virtual base class 'OpticalModule'. 
- *  This inheritance ensures the definition of functions to retrieve the pressure vessel's weight (necessary for radioactive decay studies) and the count of PMTs inside the module. The 'OpticalModule' interface inherits from 'abcDetectorComponent', a general helper class simplifying construction. Most OMSim geometries inherit from this class, as illustrated in the dependency diagram below:
+ *  Each optical module and harness is defined in its respective class, located in the '/common/geometry_construction/' folder. These inherit from the virtual base class 'OMSimOpticalModule'. 
+ *  This inheritance ensures the definition of functions to retrieve the pressure vessel's weight (necessary for radioactive decay studies) and the count of PMTs inside the module. The 'OMSimOpticalModule' interface inherits from 'abcDetectorComponent', a general helper class simplifying construction. Most OMSim geometries inherit from this class, as illustrated in the dependency diagram below:
  *  \htmlonly
  *  <div class="center">
  *      <img src="classabc_detector_component__inherit__graph.svg" 
@@ -67,10 +67,10 @@
  * 
  * @warning Only the mDOM PMT currently supports a detailed PMT response.
  * 
- * For photon detection in both simple and complex geometries, the photons must be absorbed within the photocathode volume. The PMTs' photocathodes are made sensitive through the OMSimSensitiveDetector class, following Geant4's G4VSensitiveDetector pattern. This configuration is achieved by invoking 'OpticalModule::configureSensitiveVolume' (or 'OMSimPMTConstruction::configureSensitiveVolume' when simulating a single PMT). 
+ * For photon detection in both simple and complex geometries, the photons must be absorbed within the photocathode volume. The PMTs' photocathodes are made sensitive through the OMSimPhotonSD class, following Geant4's G4VSensitiveDetector pattern. This configuration is achieved by invoking 'OMSimOpticalModule::configureSensitiveVolume' (or 'OMSimPMTConstruction::configureSensitiveVolume' when simulating a single PMT). 
  * It is essential to invoke this method in the detector construction, as it needs the instance of 'OMSimDetectorConstruction' to call 'G4VUserDetectorConstruction::SetSensitiveDetector' for successful operation in Geant4 (refer to 'OMSimDetectorConstruction::setSensitiveDetector').
  * 
- * Every particle passage through the photocathode triggers the 'OMSimSensitiveDetector::ProcessHits' method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4's philosophy concerning G4VSensitiveDetector, consult the <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector#g4vsensitivedetector">Geant4 guide for application developers</a>.
+ * Every particle passage through the photocathode triggers the 'OMSimPhotonSD::ProcessHits' method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4's philosophy concerning G4VSensitiveDetector, consult the <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector#g4vsensitivedetector">Geant4 guide for application developers</a>.
  * 
  * In 'OMSimPMTConstruction::configureSensitiveVolume', PMTs are associated with an instance of OMSimPMTResponse, contingent on the PMT under simulation. This class offers a precise PMT simulation by sampling from real measurements, obtaining the relative transit time, charge (in PE), and detection probability (using the measured scans from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>). For detailed insights, refer to Section 9.3.4 of the linked thesis.
  * 
@@ -95,11 +95,11 @@
  * 
  * ~~~~~~~~~~~~~{.cc}
  *  //... Assume the logical volume of your detector has been defined and is referred to as "lDetectorLV"
- *  OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector("myDetector");
+ *  OMSimPhotonSD* lSensitiveDetector = new OMSimPhotonSD("myDetector");
  *  lSensitiveDetector->setPMTResponse(&NoResponse::getInstance());
  *  setSensitiveDetector(lDetectorLV, lSensitiveDetector);
  * ~~~~~~~~~~~~~
- * In this case 'OMSimSensitiveDetector::ProcessHits' will store all absorbed photons. How many photons are absorbed, will depend on the absorption length you defined for the detector volume. 
- * If the need arises to make a volume sensitive to particles other than photons, a new class derived from G4VSensitiveDetector must be created. Refer to the 'OMSimSensitiveDetector' class to understand the implementation approach and for guidance. 
- * You may also track these particles in OMSimTrackingAction or OMSimSteppingAction, but using a class derived from G4VSensitiveDetector is the 'philosopy' of Geant4 ;). 
+ * In this case 'OMSimPhotonSD::ProcessHits' will store all absorbed photons. How many photons are absorbed, will depend on the absorption length you defined for the detector volume. 
+ * If the need arises to make a volume sensitive to particles other than photons, a new class derived from G4VSensitiveDetector must be created. Refer to the 'OMSimPhotonSD' class to understand the implementation approach and for guidance. 
+ * You may also track these particles in OMSimTrackingAction or OMSimSteppingAction, but using a class derived from G4VSensitiveDetector is the "philosopy" of Geant4 ;). 
  */

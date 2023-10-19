@@ -123,12 +123,12 @@ std::vector<double> OMSimHitManager::countHits(int moduleNumber)
 {
 	HitStats lHitsOfModule = mModuleHits[moduleNumber];
 	G4int lNumberPMTs = mNumPMTs[moduleNumber];
-
-	std::vector<double> lHits(lNumberPMTs + 2, 0.0);
+	
+	std::vector<double> lHits(lNumberPMTs + 1, 0.0);
 	for (int i = 0; i < (int)lHitsOfModule.PMT_hit.size(); i++)
 	{
 		lHits[lHitsOfModule.PMT_hit.at(i)] += 1; // lHitsOfModule.PMT_response.at(i).DetectionProbability;
-		lHits[lNumberPMTs + 1] += 1;
+		lHits[lNumberPMTs] += 1;
 	}
 
 	return lHits;

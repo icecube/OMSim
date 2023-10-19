@@ -1,7 +1,7 @@
 /**
  *  @todo - Write documentation and parse current comments into Doxygen style
  */
-#include "OMSimSensitiveDetector.hh"
+
 #include "OMSimMDOM.hh"
 #include "OMSimMDOMHarness.hh"
 #include "OMSimCommandArgsTable.hh"
@@ -19,14 +19,13 @@ mDOM::~mDOM()
         delete mHarness;
     }
 }
-mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness, G4int pIndex)
+mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
 {
     log_info("Constructing mDOM");
 
     mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
     mPlaceHarness = pPlaceHarness;
     mData = pData;
-    mIndex = pIndex;
     mPMTManager = new OMSimPMTConstruction(mData);
     mFlashers = new mDOMFlasher(mData);
 

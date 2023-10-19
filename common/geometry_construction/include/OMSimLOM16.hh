@@ -11,7 +11,7 @@
 #include "OMSimPMTConstruction.hh"
 #include "OMSimOpticalModule.hh"
 
-class LOM16 : public OpticalModule
+class LOM16 : public OMSimOpticalModule
 {
 public:
     LOM16(InputDataManager* pData, G4bool pPlaceHarness = false);

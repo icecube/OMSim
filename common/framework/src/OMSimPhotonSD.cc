@@ -1,4 +1,4 @@
-#include "OMSimSensitiveDetector.hh"
+#include "OMSimPhotonSD.hh"
 #include "G4ios.hh"
 #include "G4LogicalVolume.hh"
 #include "G4ParticleDefinition.hh"
@@ -33,17 +33,17 @@ std::vector<G4String> splitStringByDelimiter(char *cs, char d)
   return splitStringByDelimiter(G4String(cs), d);
 }
 
-OMSimSensitiveDetector::OMSimSensitiveDetector(G4String name)
+OMSimPhotonSD::OMSimPhotonSD(G4String name)
     : G4VSensitiveDetector(name)
 {
 }
 
-void OMSimSensitiveDetector::setPMTResponse(OMSimPMTResponse *pResponse)
+void OMSimPhotonSD::setPMTResponse(OMSimPMTResponse *pResponse)
 {
   mPMTResponse = pResponse;
 }
 
-G4bool OMSimSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *)
+G4bool OMSimPhotonSD::ProcessHits(G4Step *aStep, G4TouchableHistory *)
 {
   G4Track *aTrack = aStep->GetTrack();
   if (aTrack->GetDefinition() == G4OpticalPhoton::Definition())
@@ -51,6 +51,7 @@ G4bool OMSimSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *)
     if (!aStep->IsLastStepInVolume() && aTrack->GetTrackStatus() == fStopAndKill)
     {
 
+      G4cout << "In SD" << G4endl;
       aStep->SetLastStepFlag();
 
       G4double lEkin = aTrack->GetKineticEnergy();
@@ -74,18 +75,18 @@ G4bool OMSimSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *)
         
 
       OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
-      lHitManager.appendHitInfo(
-          aTrack->GetGlobalTime(),
-          aTrack->GetLocalTime(),
-          aTrack->GetTrackLength() / m,
-          lEkin / eV,
-          atoi(lPMTnrinfo.at(1)),
-          aTrack->GetMomentumDirection(),
-          aTrack->GetPosition(),
-          lLocalPosition,
-          lDeltaPos.mag() / m,
-          mPMTResponse->processPhotocathodeHit(x, y, lWavelength),
-          atoi(SensitiveDetectorName));
+      // lHitManager.appendHitInfo(
+      //     aTrack->GetGlobalTime(),
+      //     aTrack->GetLocalTime(),
+      //     aTrack->GetTrackLength() / m,
+      //     lEkin / eV,
+      //     atoi(lPMTnrinfo.at(1)),
+      //     aTrack->GetMomentumDirection(),
+      //     aTrack->GetPosition(),
+      //     lLocalPosition,
+      //     lDeltaPos.mag() / m,
+      //     mPMTResponse->processPhotocathodeHit(x, y, lWavelength),
+      //     atoi(SensitiveDetectorName));
 
       return true;
     }

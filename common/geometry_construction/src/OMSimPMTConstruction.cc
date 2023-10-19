@@ -1,7 +1,8 @@
 #include "OMSimPMTConstruction.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimDetectorConstruction.hh"
-#include "OMSimSensitiveDetector.hh"
+#include "OMSimPhotonSD.hh"
+
 #include "CADMesh.hh"
 
 #include <G4Cons.hh>
@@ -104,7 +105,7 @@ OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 
 void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *pDetConst, G4String pName)
 {
-    auto lSensitiveDetector = new OMSimSensitiveDetector(pName);
+    auto lSensitiveDetector = new OMSimPhotonSD(pName);
     lSensitiveDetector->setPMTResponse(getPMTResponseInstance());
     pDetConst->setSensitiveDetector(mPhotocathodeLV, lSensitiveDetector);
 }

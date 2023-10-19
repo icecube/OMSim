@@ -21,7 +21,7 @@ class DEggHarness;
  * from the `abcDetectorComponent` base class.
  * @ingroup common
  */
-class DEGG : public OpticalModule
+class DEGG : public OMSimOpticalModule
 {
 public:
     DEGG(InputDataManager *pData, G4bool pPlaceHarness = true);
@@ -32,10 +32,15 @@ public:
      */
     void construction();
 
-    double getPressureVesselWeight() { return 18.0*kg; };
+    double getPressureVesselWeight() { return 18.0 * kg; };
 
     int getNumberOfPMTs() { return 2; };
-    G4String mBaseName = "DEGG";
+    G4String getName()
+    {
+        std::stringstream ss;
+        ss << "/DEGG/" << mIndex;
+        return ss.str();
+    }
 
 private:
     DEggHarness *mHarness;
@@ -88,6 +93,5 @@ private:
                              G4double pTorus2_Z0,
                              G4double pTorus1TransformZ);
 };
-
 
 #endif

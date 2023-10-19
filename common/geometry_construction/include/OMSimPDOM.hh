@@ -14,7 +14,7 @@
  * @brief pDOM class represents the construction of pDOM/Gen1 DOM.
  * @ingroup common
  */
-class pDOM : public OpticalModule
+class pDOM : public OMSimOpticalModule
 {
 public:
     pDOM(InputDataManager *pData, G4bool pPlaceHarness = true);

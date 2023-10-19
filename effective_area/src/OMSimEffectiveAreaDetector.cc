@@ -28,18 +28,66 @@ void OMSimEffectiveAreaDetector::constructWorld()
  */
 void OMSimEffectiveAreaDetector::constructDetector()
 {
+
     OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
     bool lPlaceHarness = OMSimCommandArgsTable::getInstance().get<bool>("place_harness");
-    mDOM* mOpticalModule = new mDOM(mData, lPlaceHarness);
-    mOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
-    mOpticalModule->configureSensitiveVolume(this);
 
-    lHitManager.setNumberOfPMTs(mOpticalModule->getNumberOfPMTs(), mOpticalModule->mIndex);
+    OMSimOpticalModule *lOpticalModule;
 
-    mDOM* mOpticalModule2 = new mDOM(mData, lPlaceHarness, 1);
-    mOpticalModule2->placeIt(G4ThreeVector(0, 0, -1.5*m), G4RotationMatrix(), mWorldLogical, "");
-    mOpticalModule2->configureSensitiveVolume(this);
-    lHitManager.setNumberOfPMTs(mOpticalModule2->getNumberOfPMTs(), mOpticalModule2->mIndex);
+    switch (OMSimCommandArgsTable::getInstance().get<G4int>("detector_type"))
+    {
 
+    case 0:
+    {
+        log_critical("No custom detector implemented!");
+        break;
+    }
+    case 1:
+    {
+        log_info("Constructing single PMT");
+        OMSimPMTConstruction *lPMTManager = new OMSimPMTConstruction(mData);
+        lPMTManager->selectPMT("argPMT");
+        lPMTManager->construction();
+        lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
+        lHitManager.setNumberOfPMTs(1, 0);
+        lPMTManager->configureSensitiveVolume(this, "/PMT/0");
+        break;
+    }
+    case 2:
+    {
+
+        lOpticalModule = new mDOM(mData, lPlaceHarness);
+        break;
+    }
+    case 3:
+    {
+
+        lOpticalModule = new pDOM(mData, lPlaceHarness);
+        break;
+    }
+    case 4:
+    {
+
+        lOpticalModule = new LOM16(mData, lPlaceHarness);
+        break;
+    }
+    case 5:
+    {
+
+        lOpticalModule = new LOM18(mData, lPlaceHarness);
+        break;
+    }
+    case 6:
+    {
+        lOpticalModule = new DEGG(mData, lPlaceHarness);
+        break;
+    }
+    }
+
+    if (lOpticalModule)
+    {
+        lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
+        lOpticalModule->configureSensitiveVolume(this);
+    }
 }

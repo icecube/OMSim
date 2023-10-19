@@ -13,7 +13,7 @@
 #include <G4LogicalVolume.hh>
 #include <G4Polycone.hh>
 
-class LOM18 : public OpticalModule
+class LOM18 : public OMSimOpticalModule
 {
 public:
     LOM18(InputDataManager* pData, G4bool pPlaceHarness = false);

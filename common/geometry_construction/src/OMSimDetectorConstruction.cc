@@ -33,9 +33,9 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
     return mWorldPhysical;
 }
 
-void OMSimDetectorConstruction::setSensitiveDetector(G4LogicalVolume *logVol, G4VSensitiveDetector *aSD)
+void OMSimDetectorConstruction::setSensitiveDetector(G4LogicalVolume *pLogVol, G4VSensitiveDetector *pSD)
 {
-    auto sdman = G4SDManager::GetSDMpointer();
-    sdman->AddNewDetector(aSD);
-    SetSensitiveDetector(logVol, aSD);
+    auto lSDManager = G4SDManager::GetSDMpointer();
+    lSDManager->AddNewDetector(pSD);
+    SetSensitiveDetector(pLogVol, pSD);
 }

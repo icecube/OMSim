@@ -10,10 +10,11 @@
 #include "OMSimDecaysGPS.hh"
 #include "OMSimHitManager.hh"
 #include "OMSimDecaysAnalysis.hh"
+#include "OMSimRadDecaysDetector.hh"
 
 namespace po = boost::program_options;
 
-void decaySimulation(OMSimDetectorConstruction *pDetector)
+void decaySimulation(OMSimRadDecaysDetector *pDetector)
 {
 	OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
@@ -99,9 +100,10 @@ int main(int argc, char *argv[])
 
 		// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
 		lArgs.finalize();
-		lSimulation.initialiseSimulation();
 
-		decaySimulation(lSimulation.getDetectorConstruction());
+		OMSimRadDecaysDetector* lDetectorConstruction = new OMSimRadDecaysDetector();
+		lSimulation.initialiseSimulation(lDetectorConstruction);
+		decaySimulation(lDetectorConstruction);
 
 		if (lArgs.get<bool>("visual"))
 			lSimulation.startVisualisation();
