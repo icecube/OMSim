@@ -117,8 +117,9 @@ var NAVTREEINDEX0 =
 "_o_m_sim__radioactive__decays_8cc.html#a9caf04df32ea7aa9b858039a8f5fa971":[4,0,11,0],
 "_o_m_sim__supernova_8cc.html":[4,0,12],
 "_o_m_sim__supernova_8cc.html#a0ddf1224851353fc92bfbff6f499fa97":[4,0,12,0],
-"_o_m_sim__supernova_8cc.html#a2ed660d3245a0d96041b77dfc92ba000":[4,0,12,2],
-"_o_m_sim__supernova_8cc.html#ad63db5c25cc238ef5ccd9e8f866656ac":[4,0,12,3],
+"_o_m_sim__supernova_8cc.html#a2ed660d3245a0d96041b77dfc92ba000":[4,0,12,3],
+"_o_m_sim__supernova_8cc.html#a7d64cc41ff17de4be32310927bb91f12":[4,0,12,4],
+"_o_m_sim__supernova_8cc.html#ac0c30e68ee55a6a591c46b6111931b13":[4,0,12,2],
 "_o_m_sim__supernova_8cc.html#adebda6208839243c12347f6540f682b2":[4,0,12,1],
 "_o_m_sim_angular_scan_8cc.html":[4,0,13],
 "_o_m_sim_angular_scan_8hh.html":[4,0,14],
@@ -244,10 +245,9 @@ var NAVTREEINDEX0 =
 "_o_m_sim_s_n_particle_generators_8hh.html":[4,0,89],
 "_o_m_sim_s_n_particle_generators_8hh_source.html":[4,0,89],
 "_o_m_sim_s_n_tools_8cc.html":[4,0,90],
-"_o_m_sim_s_n_tools_8cc.html#ad63db5c25cc238ef5ccd9e8f866656ac":[4,0,90,0],
+"_o_m_sim_s_n_tools_8cc.html#a7d64cc41ff17de4be32310927bb91f12":[4,0,90,0],
 "_o_m_sim_s_n_tools_8hh.html":[4,0,91],
 "_o_m_sim_s_n_tools_8hh_source.html":[4,0,91],
 "_o_m_sim_s_ndetector_8cc.html":[4,0,86],
-"_o_m_sim_s_ndetector_8hh.html":[4,0,87],
-"_o_m_sim_s_ndetector_8hh_source.html":[4,0,87]
+"_o_m_sim_s_ndetector_8hh.html":[4,0,87]
 };

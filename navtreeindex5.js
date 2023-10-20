@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"class_s_n_base_particle_generator.html#ade13b26883a1e0349895057fce012729":[5,0,65,3],
+"class_s_n_base_particle_generator.html#aeb8aaa4cc569b24142f1253d2de4fa40":[5,0,65,13],
 "class_s_n_base_particle_generator.html#af978419fed92461baf6895aaa7b2f70a":[5,0,65,6],
 "class_scintillation_properties.html":[3,0,30],
 "class_scintillation_properties.html#a03dca72bd4861b8500283dc15c0864e0":[3,0,30,0],
@@ -190,8 +192,8 @@ var NAVTREEINDEX5 =
 "effective__area_2src_2_o_m_sim_physics_list_8cc.html":[4,0,61],
 "effective__area_2src_2_o_m_sim_primary_generator_action_8cc.html":[4,0,71],
 "files.html":[4,0],
-"functions.html":[5,3,0,0],
 "functions.html":[5,3,0],
+"functions.html":[5,3,0,0],
 "functions_b.html":[5,3,0,1],
 "functions_c.html":[5,3,0,2],
 "functions_d.html":[5,3,0,3],
@@ -235,8 +237,8 @@ var NAVTREEINDEX5 =
 "functions_type.html":[5,3,3],
 "functions_u.html":[5,3,0,19],
 "functions_v.html":[5,3,0,20],
-"functions_vars.html":[5,3,2,0],
 "functions_vars.html":[5,3,2],
+"functions_vars.html":[5,3,2,0],
 "functions_vars_c.html":[5,3,2,1],
 "functions_vars_d.html":[5,3,2,2],
 "functions_vars_e.html":[5,3,2,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "functions_vars_k.html":[5,3,2,8],
 "functions_vars_l.html":[5,3,2,9],
 "functions_vars_m.html":[5,3,2,10],
-"functions_vars_n.html":[5,3,2,11],
-"functions_vars_o.html":[5,3,2,12],
-"functions_vars_p.html":[5,3,2,13]
+"functions_vars_n.html":[5,3,2,11]
 };
