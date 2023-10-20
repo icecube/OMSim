@@ -78,7 +78,6 @@ void OMSimHitManager::appendHitInfo(
 	mModuleHits[moduleNumber].photon_track_length.push_back(trackLength);
 	mModuleHits[moduleNumber].photon_energy.push_back(energy);
 	mModuleHits[moduleNumber].PMT_hit.push_back(PMTHitNumber);
-	mModuleHits[moduleNumber].PMT_hit.push_back(PMTHitNumber);
 	mModuleHits[moduleNumber].photon_direction.push_back(momentumDirection);
 	mModuleHits[moduleNumber].photon_global_position.push_back(globalPos);
 	mModuleHits[moduleNumber].photon_local_position.push_back(localPos);
