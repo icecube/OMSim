@@ -90,9 +90,11 @@
  * 
  * @subsubsection dummyresponse Making other volumes sensitive to photons
  * 
- * In some scenarios, it might be necessary to make a volume sensitive to photons without associating it with any specific PMT response. 
- * For these situations, the existing framework can be leveraged by utilizing the "dummy" PMT response class, `NoResponse`. Passing `DetectorType::GeneralPhotonDetector` as the detector type to the `OMSimSensitiveDetector` constructor will automatically handle this.
- * Nevertheless, you still need to inform the `HitManager` that the detector "has only one PMT" so it can correctly set the internal vector sizes. Below is an example illustrating how this can be incorporated within the detector construction:
+ * For some studies you might want a volume to detect photons, without this being necessarely a PMT.
+ * For such cases, the framework has a provision in place: use the `OMSimSensitiveDetector` and pass `DetectorType::GeneralPhotonDetector` as its constructor argument.
+ * In this case the `OMSimSensitiveDetector::ProcessHits` will use an instance `NoResponse` as PMT response, which is just a dummy placeholder.  
+ * Remember to inform the `HitManager` that this detector is equivalent to "a single PMT", ensuring internal vector sizes adjust accordingly.
+ * This approach ensures a smooth integration of the photosensitive volume within the current system. Below is an example illustrating how this can be incorporated within the detector construction:
  * 
  * ~~~~~~~~~~~~~{.cc}
  *  #include "OMSimSensitiveDetector.hh"
@@ -102,9 +104,8 @@
  *  lHitManager.setNumberOfPMTs(1, lHitManager.getNextDetectorIndex());
  *  setSensitiveDetector(lDetectorLV, lSensitiveDetector);
  * ~~~~~~~~~~~~~
- * In this case, `OMSimSensitiveDetector::ProcessHits` will store all absorbed photons. The number of photons absorbed will depend on the absorption length you defined for the detector volume. 
- * If there's a need to make a volume sensitive to particles other than photons, add a new entry to the `DetectorType` enum and incorporate a new method that handles this scenario in `OMSimSensitiveDetector::ProcessHits`. 
+ * In this case, `OMSimSensitiveDetector::ProcessHits` will store all absorbed photons. The number of photons absorbed will depend on the absorption length of the material connected to the logical volume. 
+ * If there's a need to make a volume sensitive to particles other than photons, add a new entry to the `DetectorType` enum (in `OMSimSensitiveDetector.hh`) and incorporate a new method that handles this scenario in `OMSimSensitiveDetector::ProcessHits`. 
  * You might also track these particles in `OMSimTrackingAction` or `OMSimSteppingAction`, but using a class derived from `G4VSensitiveDetector` aligns with the philosophy of Geant4.
  */
-
 
