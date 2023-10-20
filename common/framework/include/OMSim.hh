@@ -52,13 +52,13 @@ public:
     void startVisualisation();
     //OMSimDetectorConstruction* getDetectorConstruction();
     po::options_description mGeneralArgs;
-
+    
+    G4Navigator* getNavigator(){return mNavigator;};
 private:
     G4RunManager *mRunManager;
     G4VisExecutive *mVisManager;
     G4Navigator *mNavigator;
 
-    
     G4VUserPhysicsList *mPhysics = nullptr;
     G4VUserPrimaryGeneratorAction *mGenAction = nullptr;
     G4UserRunAction *mRunAction = nullptr;

@@ -8,7 +8,7 @@
 #include "G4TouchableHistoryHandle.hh"
 #include "OMSimCommandArgsTable.hh"
 #include <TGraph.h>
-extern G4Navigator *aNavigator;
+extern G4Navigator *gNavigator;
 
 /**
  * @brief Retrieves file names for neutrino and antineutrino fluxes based on a specified supernova model.
@@ -58,8 +58,8 @@ std::pair<std::string, std::string> OMSimSNTools::getFileNames(int value)
  */
 bool OMSimSNTools::checkVolumeForOMs(G4ThreeVector pPosition)
 {
-  aNavigator->LocateGlobalPointAndSetup(pPosition);
-  G4TouchableHistoryHandle aTouchable = aNavigator->CreateTouchableHistoryHandle();
+  gNavigator->LocateGlobalPointAndSetup(pPosition);
+  G4TouchableHistoryHandle aTouchable = gNavigator->CreateTouchableHistoryHandle();
   G4int HistoryDepth = aTouchable->GetHistoryDepth();
   if (HistoryDepth > 0)
   {
