@@ -70,21 +70,20 @@
  * For photon detection in both simple and complex geometries, the photons must be absorbed within the photocathode volume. The PMTs' photocathodes are made sensitive through the OMSimSensitiveDetector class, following Geant4's G4VSensitiveDetector pattern. This configuration is achieved by invoking `OMSimOpticalModule::configureSensitiveVolume` (or `OMSimPMTConstruction::configureSensitiveVolume` when simulating a single PMT). 
  * It is essential to invoke this method in the detector construction, as it needs the instance of `OMSimDetectorConstruction` to call `G4VUserDetectorConstruction::SetSensitiveDetector` for successful operation in Geant4 (refer to `OMSimDetectorConstruction::setSensitiveDetector`).
  * 
- * Every particle passage through the photocathode triggers the `OMSimSensitiveDetector::ProcessHits` method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4's philosophy concerning G4VSensitiveDetector, consult the <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector#g4vsensitivedetector">Geant4 guide for application developers</a>.
+ * Every step of a particle through the photocathode triggers the `OMSimSensitiveDetector::ProcessHits` method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4's philosophy concerning G4VSensitiveDetector, consult the <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector#g4vsensitivedetector">Geant4 guide for application developers</a>.
  * 
- * In `OMSimPMTConstruction::configureSensitiveVolume`, PMTs are associated with an instance of OMSimPMTResponse, contingent on the PMT under simulation. This class offers a precise PMT simulation by sampling from real measurements, obtaining the relative transit time, charge (in PE), and detection probability (using the measured scans from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>). For detailed insights, refer to Section 9.3.4 of the linked thesis.
- * 
- * The data of absorbed photons is managed by the `OMSimHitManager` singleton. To analyse and export this data, consult example methods like `OMSimEffectiveAreaAnalyisis::writeScan` and `OMSimDecaysAnalysis::writeHitInformation` for direction.
- * 
- *  <div style="width: 100%; text-align: center;">
+ * In `OMSimPMTConstruction::configureSensitiveVolume`, PMTs are associated with an instance of `OMSimPMTResponse`, contingent on the PMT under simulation. This class offers a precise PMT simulation by sampling from real measurements, obtaining the relative transit time, charge (in PE), and detection probability (using the measured scans from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>). For detailes, refer to Section 9.3.4 of the linked thesis.
+ * This sampling is performed for every absorbed photon in `OMSimSensitiveDetector::ProcessHits` invoking `OMSimPMTResponse::processPhotocathodeHit`.
+ * <div style="width: 100%; text-align: center;">
  * <img src="PW_beam_geant4_TT.png" width="256" height="440" />
  * <div style="width: 80%; margin: auto;">
  * <br/>
  * Figure 4: <i>PMT response compared to measurement for different light sources. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
  * </div>
  * </div>
+ * The data of absorbed photons is managed by the `OMSimHitManager` singleton. To analyse and export this data, consult example methods like `OMSimEffectiveAreaAnalyisis::writeScan` and `OMSimDecaysAnalysis::writeHitInformation` for direction.
  * 
- * An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in `OMSimHitManager`. To enable this feature, provide the "QE_cut" argument via the command line.
+ * An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in `OMSimHitManager`. To enable this feature, provide the "QE_cut" argument via the command line. In this case `OMSimSensitiveDetector::ProcessHits` will call `OMSimPMTResponse::passQE` and break early if it returns false, without storing the photon information.
  * 
  * @note In most scenarios, it's not recommended to use --QE_cut since it reduces your statistics. Its presence in OMSim is primarily for testing purposes. It's generally better to perform post-analysis using the saved `OMSimPMTResponse::PMTPulse::DetectionProbability` for each absorbed photon.
  * 
@@ -93,7 +92,7 @@
  * For some studies you might want a volume to detect photons, without this being necessarely a PMT.
  * For such cases, the framework has a provision in place: use the `OMSimSensitiveDetector` and pass `DetectorType::GeneralPhotonDetector` as its constructor argument.
  * In this case the `OMSimSensitiveDetector::ProcessHits` will use an instance `NoResponse` as PMT response, which is just a dummy placeholder.  
- * Remember to inform the `HitManager` that this detector is equivalent to "a single PMT", ensuring internal vector sizes adjust accordingly.
+ * Remember to inform the `OMSimHitManager` that this detector is equivalent to "a single PMT", ensuring internal vector sizes adjust accordingly.
  * This approach ensures a smooth integration of the photosensitive volume within the current system. Below is an example illustrating how this can be incorporated within the detector construction:
  * 
  * ~~~~~~~~~~~~~{.cc}
