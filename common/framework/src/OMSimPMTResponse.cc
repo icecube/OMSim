@@ -432,7 +432,7 @@ LOMNNVTResponse::~LOMNNVTResponse()
  */
 NoResponse::NoResponse()
 {
-    log_info("Sensitive volume without PMT response was defined");
+    log_debug("OMSimResponse NoResponse initiated");
 }
 
 std::vector<G4double> NoResponse::getScannedWavelengths()

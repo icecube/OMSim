@@ -30,7 +30,7 @@ void OMSimRadDecaysDetector::constructDetector()
     OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
     bool lPlaceHarness = OMSimCommandArgsTable::getInstance().get<bool>("place_harness");
 
-    OMSimOpticalModule* lOpticalModule;
+    OMSimOpticalModule *lOpticalModule = nullptr;
 
     switch (OMSimCommandArgsTable::getInstance().get<G4int>("detector_type"))
     {

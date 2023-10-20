@@ -8,7 +8,9 @@
 #include "OMSimHitManager.hh"
 #include "G4SDManager.hh"
 #include <G4Orb.hh>
-
+#include "OMSimSensitiveDetector.hh"
+#include "G4LogicalVolume.hh"
+#include "G4Box.hh"
 
 /**
  * @brief Constructs the world volume (sphere).
@@ -33,7 +35,7 @@ void OMSimEffectiveAreaDetector::constructDetector()
 
     bool lPlaceHarness = OMSimCommandArgsTable::getInstance().get<bool>("place_harness");
 
-    OMSimOpticalModule *lOpticalModule;
+    OMSimOpticalModule *lOpticalModule = nullptr;
 
     switch (OMSimCommandArgsTable::getInstance().get<G4int>("detector_type"))
     {
@@ -87,6 +89,7 @@ void OMSimEffectiveAreaDetector::constructDetector()
 
     if (lOpticalModule)
     {
+        log_critical("Here");
         lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
         lOpticalModule->configureSensitiveVolume(this);
     }
