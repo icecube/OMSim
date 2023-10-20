@@ -1,7 +1,20 @@
 var group___effective_area =
 [
     [ "OMSimAngularScan.hh", "_o_m_sim_angular_scan_8hh.html", null ],
+    [ "OMSimEffectiveAreaDetector.hh", "_o_m_sim_effective_area_detector_8hh.html", null ],
     [ "OMSim_effective_area.cc", "_o_m_sim__effective__area_8cc.html", null ],
+    [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html", [
+      [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#aa74ddd6acfc0db023185dcc92820215f", null ],
+      [ "~OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#a7068d06e9367d657b52b6a1ddeac621d", null ],
+      [ "Construct", "class_o_m_sim_detector_construction.html#a9e16ad5da3921b502473b303609caad0", null ],
+      [ "constructDetector", "class_o_m_sim_detector_construction.html#acf70d9779d2a0d7556c314ae53c41546", null ],
+      [ "constructWorld", "class_o_m_sim_detector_construction.html#a0bab6798cb1c5dab85ecf8dbec6b2fb3", null ],
+      [ "setSensitiveDetector", "class_o_m_sim_detector_construction.html#ab084de58ec3e7ec98569c5db62fb6ecb", null ],
+      [ "mData", "class_o_m_sim_detector_construction.html#a6ac97195a35b28817fcc5e38ca872ed8", null ],
+      [ "mWorldLogical", "class_o_m_sim_detector_construction.html#ad38baf42d9d13f7be6dc579fc6521917", null ],
+      [ "mWorldPhysical", "class_o_m_sim_detector_construction.html#a722f99cef9e9bb4bef2307521bb00b9a", null ],
+      [ "mWorldSolid", "class_o_m_sim_detector_construction.html#a8143cb9595c67863d498bd4787cc6448", null ]
+    ] ],
     [ "AngularScan", "class_angular_scan.html", [
       [ "AngularScan", "class_angular_scan.html#af7d054657e56a97db60274f30ff737e6", null ],
       [ "~AngularScan", "class_angular_scan.html#a050c9c2066f662a1d7868b4dac0e5795", null ],
@@ -15,26 +28,6 @@ var group___effective_area =
       [ "mTheta", "class_angular_scan.html#a2f0af1e0e1e50be36a520236cdcb9f33", null ],
       [ "mWavelength", "class_angular_scan.html#abeae73a1f4a2473af636291c458d272f", null ]
     ] ],
-    [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html", [
-      [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#aa74ddd6acfc0db023185dcc92820215f", null ],
-      [ "~OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#a7068d06e9367d657b52b6a1ddeac621d", null ],
-      [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#aa74ddd6acfc0db023185dcc92820215f", null ],
-      [ "~OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#a7068d06e9367d657b52b6a1ddeac621d", null ],
-      [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#aa74ddd6acfc0db023185dcc92820215f", null ],
-      [ "~OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#a7068d06e9367d657b52b6a1ddeac621d", null ],
-      [ "Construct", "class_o_m_sim_detector_construction.html#a9e16ad5da3921b502473b303609caad0", null ],
-      [ "Construct", "class_o_m_sim_detector_construction.html#a10c21dfcdf4af75481fea2229287d143", null ],
-      [ "Construct", "class_o_m_sim_detector_construction.html#a10c21dfcdf4af75481fea2229287d143", null ],
-      [ "constructWorld", "class_o_m_sim_detector_construction.html#a53a692e5caa084d308b181c6cd90e485", null ],
-      [ "constructWorld", "class_o_m_sim_detector_construction.html#a53a692e5caa084d308b181c6cd90e485", null ],
-      [ "constructWorld", "class_o_m_sim_detector_construction.html#a53a692e5caa084d308b181c6cd90e485", null ],
-      [ "mData", "class_o_m_sim_detector_construction.html#a1d09add5e6b9a1d25821ccd128d926fe", null ],
-      [ "mOpticalModule", "class_o_m_sim_detector_construction.html#a5afb06a52559f0e0f2fe06820ae9e04e", null ],
-      [ "mWorldLogical", "class_o_m_sim_detector_construction.html#a7e7ef263bcf8e4d4efb22af8ed2ef808", null ],
-      [ "mWorldPhysical", "class_o_m_sim_detector_construction.html#a699963cdf8af1e2f82a61227b9f08c20", null ],
-      [ "mWorldSolid", "class_o_m_sim_detector_construction.html#a13797b1657281b0907d005921ca5e10c", null ],
-      [ "mWorldSolid", "class_o_m_sim_detector_construction.html#afb436e7efa69e67631d6f7d2519c8995", null ]
-    ] ],
     [ "OMSimEffectiveAreaAnalyisis", "class_o_m_sim_effective_area_analyisis.html", [
       [ "OMSimEffectiveAreaAnalyisis", "class_o_m_sim_effective_area_analyisis.html#abed7b6d51b06cc75d4110db740734776", null ],
       [ "~OMSimEffectiveAreaAnalyisis", "class_o_m_sim_effective_area_analyisis.html#a64b63b8e79e9d2100d951a4e231c2f75", null ],
@@ -43,6 +36,12 @@ var group___effective_area =
       [ "writeScan", "class_o_m_sim_effective_area_analyisis.html#ad9b76bc60e5f3629a9c693c2a30f539d", null ],
       [ "mDatafile", "class_o_m_sim_effective_area_analyisis.html#ac392f952bcc7e92c303e8e371b00c594", null ],
       [ "mOutputFileName", "class_o_m_sim_effective_area_analyisis.html#a93a35ab4f557df790de84ec0ab5e9fab", null ]
+    ] ],
+    [ "OMSimEffectiveAreaDetector", "class_o_m_sim_effective_area_detector.html", [
+      [ "OMSimEffectiveAreaDetector", "class_o_m_sim_effective_area_detector.html#a0815c9ef76c667bce3de02748d5ef691", null ],
+      [ "~OMSimEffectiveAreaDetector", "class_o_m_sim_effective_area_detector.html#afe84320e7e3f18501a78c7b3c6675d22", null ],
+      [ "constructDetector", "class_o_m_sim_effective_area_detector.html#a9bf2d906954805cea5fb5008af710d13", null ],
+      [ "constructWorld", "class_o_m_sim_effective_area_detector.html#a6c4ccbdfac66c2820f9480d518614fa3", null ]
     ] ],
     [ "OMSimEventAction", "class_o_m_sim_event_action.html", [
       [ "OMSimEventAction", "class_o_m_sim_event_action.html#ab8aaaeecc185bbaef63665f673356506", null ],

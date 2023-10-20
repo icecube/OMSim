@@ -1,9 +1,10 @@
 var classm_d_o_m =
 [
-    [ "mDOM", "classm_d_o_m.html#a852c309b7b661ff898726f0ade5d2fe6", null ],
+    [ "mDOM", "classm_d_o_m.html#a6e27d4aa01dca9855cc6add940fe10c8", null ],
     [ "~mDOM", "classm_d_o_m.html#afd95205edb92f86b5c8d4e5642a58e3c", null ],
     [ "construction", "classm_d_o_m.html#a115f5e689062ac82b8f55a18f7f96376", null ],
     [ "equatorialReflector", "classm_d_o_m.html#a3b2aaa5321719dfb3b800a3c1f8b9f25", null ],
+    [ "getName", "classm_d_o_m.html#a6ad860a00a1fd6d2a41d14d8e3d834ad", null ],
     [ "getNumberOfPMTs", "classm_d_o_m.html#ad7e07f1380a50158f7cede9aa84721be", null ],
     [ "getPressureVesselWeight", "classm_d_o_m.html#a1fd32bb6eeff5f49f9ebbd09825b2e91", null ],
     [ "pressureVessel", "classm_d_o_m.html#a95cb59294f27f0e119d27d4b7e4f2cfe", null ],

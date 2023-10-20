@@ -27,6 +27,8 @@ Collaboration diagram for OMSim\+PMTConstruction\+:
 \item 
 void \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a5ab3a93d9e44fb38004cfd9d30c6d6aa}{construction}} ()
 \begin{DoxyCompactList}\small\item\em Constructs the PMT solid with all its components. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a7e93cf3d4db824a1bef18505fad6cb66}{configure\+Sensitive\+Volume}} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$p\+Det\+Const, G4\+String p\+Name)
+\item 
 G4double \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a9c780686ad7ab5cb712c494b7e1b20a5}{get\+Distance\+PMTCenter\+To\+Tip}} ()
 \item 
 G4double \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_adcf95adc7d522883934e592e3c551617}{get\+Max\+PMTRadius}} ()
@@ -34,6 +36,8 @@ G4double \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_adcf95adc7d522883934e
 G4\+VSolid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a869ff1b5f34736e14784d1a3fc4d94a1}{get\+PMTSolid}} ()
 \item 
 G4\+Logical\+Volume $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_af3b6282d6a0c3caa3f13244cdf2ed65a}{get\+Logical\+Volume}} ()
+\item 
+G4\+Logical\+Volume $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a495e71b5d3f086cb6ebdf1900b9c1f0e}{get\+Photocathode\+LV}} ()
 \item 
 double \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a078d6902dcd7df535b577758898b2cc5}{get\+PMTGlass\+Weight}} ()
 \item 
@@ -75,9 +79,13 @@ void \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a07f99802d73ddd8d9a9f8387
 void \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a961bf82e229e26d5ae6ae835e58acf24}{construct\+CADdynode\+System}} (G4\+Logical\+Volume $\ast$p\+Mother)
 \item 
 G4\+Subtraction\+Solid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a0e08b1af0e16f19f16569af2a7cfa8fc}{construct\+Photocathode\+Layer}} ()
+\item 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a4b59217e8d9ffcae6ffa95ffab8af10f}{get\+PMTResponse\+Instance}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
+\item 
+G4\+Logical\+Volume $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a1c24732fa1209d7371fcbaa53708d156}{m\+Photocathode\+LV}}
 \item 
 \mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}} $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a352a0447cb3025f24340fa5cecb0b0c4}{m\+Data}}
 \item 
@@ -133,6 +141,12 @@ G4double \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a1b423922ceb61e5a5042
 \index{checkPhotocathodeThickness@{checkPhotocathodeThickness}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{checkPhotocathodeThickness()}{checkPhotocathodeThickness()}}
 {\footnotesize\ttfamily void OMSim\+PMTConstruction\+::check\+Photocathode\+Thickness (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a7e93cf3d4db824a1bef18505fad6cb66}\label{class_o_m_sim_p_m_t_construction_a7e93cf3d4db824a1bef18505fad6cb66}} 
+\index{OMSimPMTConstruction@{OMSimPMTConstruction}!configureSensitiveVolume@{configureSensitiveVolume}}
+\index{configureSensitiveVolume@{configureSensitiveVolume}!OMSimPMTConstruction@{OMSimPMTConstruction}}
+\doxysubsubsection{\texorpdfstring{configureSensitiveVolume()}{configureSensitiveVolume()}}
+{\footnotesize\ttfamily void OMSim\+PMTConstruction\+::configure\+Sensitive\+Volume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$}]{p\+Det\+Const,  }\item[{G4\+String}]{p\+Name }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a961bf82e229e26d5ae6ae835e58acf24}\label{class_o_m_sim_p_m_t_construction_a961bf82e229e26d5ae6ae835e58acf24}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!constructCADdynodeSystem@{constructCADdynodeSystem}}
@@ -244,11 +258,23 @@ the bulb glass logical volume (PMT mother).
 \begin{DoxyReturn}{Returns}
 G4double the maximal radius of the frontal part of the PMT. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a495e71b5d3f086cb6ebdf1900b9c1f0e}\label{class_o_m_sim_p_m_t_construction_a495e71b5d3f086cb6ebdf1900b9c1f0e}} 
+\index{OMSimPMTConstruction@{OMSimPMTConstruction}!getPhotocathodeLV@{getPhotocathodeLV}}
+\index{getPhotocathodeLV@{getPhotocathodeLV}!OMSimPMTConstruction@{OMSimPMTConstruction}}
+\doxysubsubsection{\texorpdfstring{getPhotocathodeLV()}{getPhotocathodeLV()}}
+{\footnotesize\ttfamily G4\+Logical\+Volume$\ast$ OMSim\+PMTConstruction\+::get\+Photocathode\+LV (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a078d6902dcd7df535b577758898b2cc5}\label{class_o_m_sim_p_m_t_construction_a078d6902dcd7df535b577758898b2cc5}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!getPMTGlassWeight@{getPMTGlassWeight}}
 \index{getPMTGlassWeight@{getPMTGlassWeight}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{getPMTGlassWeight()}{getPMTGlassWeight()}}
 {\footnotesize\ttfamily G4double OMSim\+PMTConstruction\+::get\+PMTGlass\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a4b59217e8d9ffcae6ffa95ffab8af10f}\label{class_o_m_sim_p_m_t_construction_a4b59217e8d9ffcae6ffa95ffab8af10f}} 
+\index{OMSimPMTConstruction@{OMSimPMTConstruction}!getPMTResponseInstance@{getPMTResponseInstance}}
+\index{getPMTResponseInstance@{getPMTResponseInstance}!OMSimPMTConstruction@{OMSimPMTConstruction}}
+\doxysubsubsection{\texorpdfstring{getPMTResponseInstance()}{getPMTResponseInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} $\ast$ OMSim\+PMTConstruction\+::get\+PMTResponse\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a869ff1b5f34736e14784d1a3fc4d94a1}\label{class_o_m_sim_p_m_t_construction_a869ff1b5f34736e14784d1a3fc4d94a1}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!getPMTSolid@{getPMTSolid}}
@@ -408,6 +434,12 @@ G4\+Union\+Solid l\+Bulb\+Solid the frontal solid of the PMT
 \index{mOutRad@{mOutRad}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{mOutRad}{mOutRad}}
 {\footnotesize\ttfamily G4double OMSim\+PMTConstruction\+::m\+Out\+Rad\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a1c24732fa1209d7371fcbaa53708d156}\label{class_o_m_sim_p_m_t_construction_a1c24732fa1209d7371fcbaa53708d156}} 
+\index{OMSimPMTConstruction@{OMSimPMTConstruction}!mPhotocathodeLV@{mPhotocathodeLV}}
+\index{mPhotocathodeLV@{mPhotocathodeLV}!OMSimPMTConstruction@{OMSimPMTConstruction}}
+\doxysubsubsection{\texorpdfstring{mPhotocathodeLV}{mPhotocathodeLV}}
+{\footnotesize\ttfamily G4\+Logical\+Volume$\ast$ OMSim\+PMTConstruction\+::m\+Photocathode\+LV\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a495272aadd5226ffcaf2584827c686af}\label{class_o_m_sim_p_m_t_construction_a495272aadd5226ffcaf2584827c686af}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!mSelectedPMT@{mSelectedPMT}}

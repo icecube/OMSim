@@ -5,6 +5,7 @@ var class_l_o_m16 =
     [ "appendEquatorBand", "class_l_o_m16.html#a95892bef682cd9694232bf0ef1faae6c", null ],
     [ "construction", "class_l_o_m16.html#ab837d810e22d601fc1a298ba0dfddd48", null ],
     [ "createGelpadLogicalVolumes", "class_l_o_m16.html#a414aa068ef79f982e3f5a66911990c92", null ],
+    [ "getName", "class_l_o_m16.html#affe936616d3d9f54332cc680d4effe98", null ],
     [ "getNumberOfPMTs", "class_l_o_m16.html#ab6c3906a5b9bb9f05ff72d7d089cf967", null ],
     [ "getPressureVesselWeight", "class_l_o_m16.html#aa91c920187061c71df5560864845c8a8", null ],
     [ "placeCADSupportStructure", "class_l_o_m16.html#af5fcdb9e252d6a72b939673d5f67d419", null ],

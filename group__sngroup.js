@@ -3,25 +3,11 @@ var group__sngroup =
     [ "OMSimSNParticleGenerators.hh", "_o_m_sim_s_n_particle_generators_8hh.html", null ],
     [ "OMSimSNTools.hh", "_o_m_sim_s_n_tools_8hh.html", null ],
     [ "OMSim_supernova.cc", "_o_m_sim__supernova_8cc.html", null ],
-    [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html", [
-      [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#aa74ddd6acfc0db023185dcc92820215f", null ],
-      [ "~OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#a7068d06e9367d657b52b6a1ddeac621d", null ],
-      [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#aa74ddd6acfc0db023185dcc92820215f", null ],
-      [ "~OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#a7068d06e9367d657b52b6a1ddeac621d", null ],
-      [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#aa74ddd6acfc0db023185dcc92820215f", null ],
-      [ "~OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#a7068d06e9367d657b52b6a1ddeac621d", null ],
-      [ "Construct", "class_o_m_sim_detector_construction.html#a9e16ad5da3921b502473b303609caad0", null ],
-      [ "Construct", "class_o_m_sim_detector_construction.html#a10c21dfcdf4af75481fea2229287d143", null ],
-      [ "Construct", "class_o_m_sim_detector_construction.html#a10c21dfcdf4af75481fea2229287d143", null ],
-      [ "constructWorld", "class_o_m_sim_detector_construction.html#a53a692e5caa084d308b181c6cd90e485", null ],
-      [ "constructWorld", "class_o_m_sim_detector_construction.html#a53a692e5caa084d308b181c6cd90e485", null ],
-      [ "constructWorld", "class_o_m_sim_detector_construction.html#a53a692e5caa084d308b181c6cd90e485", null ],
-      [ "mData", "class_o_m_sim_detector_construction.html#a1d09add5e6b9a1d25821ccd128d926fe", null ],
-      [ "mOpticalModule", "class_o_m_sim_detector_construction.html#a5afb06a52559f0e0f2fe06820ae9e04e", null ],
-      [ "mWorldLogical", "class_o_m_sim_detector_construction.html#a7e7ef263bcf8e4d4efb22af8ed2ef808", null ],
-      [ "mWorldPhysical", "class_o_m_sim_detector_construction.html#a699963cdf8af1e2f82a61227b9f08c20", null ],
-      [ "mWorldSolid", "class_o_m_sim_detector_construction.html#a13797b1657281b0907d005921ca5e10c", null ],
-      [ "mWorldSolid", "class_o_m_sim_detector_construction.html#afb436e7efa69e67631d6f7d2519c8995", null ]
+    [ "OMSimSNdetector", "class_o_m_sim_s_ndetector.html", [
+      [ "OMSimSNdetector", "class_o_m_sim_s_ndetector.html#a7808e0e579678e40fab0114f27224346", null ],
+      [ "~OMSimSNdetector", "class_o_m_sim_s_ndetector.html#ac47ceb33243087b5c5f726c097c8ef20", null ],
+      [ "constructDetector", "class_o_m_sim_s_ndetector.html#aff89e8572059ee731fa4c778ee3f3b0c", null ],
+      [ "constructWorld", "class_o_m_sim_s_ndetector.html#aa331476cc1f56d3bee80c954f7a2d793", null ]
     ] ],
     [ "OMSimENES", "class_o_m_sim_e_n_e_s.html", [
       [ "OMSimENES", "class_o_m_sim_e_n_e_s.html#a3fdc804dd8a106680b902c792512ceb5", null ],

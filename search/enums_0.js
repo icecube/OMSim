@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['type_2046',['Type',['../namespace_c_a_d_mesh_1_1_file.html#af3e6984a5299332307e93abd7553bfce',1,'CADMesh::File']]]
+  ['detectortype_2154',['DetectorType',['../_o_m_sim_sensitive_detector_8hh.html#aba5019e335fb2939e79e0e5b62202729',1,'OMSimSensitiveDetector.hh']]]
 ];

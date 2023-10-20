@@ -2,20 +2,12 @@ var class_o_m_sim_detector_construction =
 [
     [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#aa74ddd6acfc0db023185dcc92820215f", null ],
     [ "~OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#a7068d06e9367d657b52b6a1ddeac621d", null ],
-    [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#aa74ddd6acfc0db023185dcc92820215f", null ],
-    [ "~OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#a7068d06e9367d657b52b6a1ddeac621d", null ],
-    [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#aa74ddd6acfc0db023185dcc92820215f", null ],
-    [ "~OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html#a7068d06e9367d657b52b6a1ddeac621d", null ],
     [ "Construct", "class_o_m_sim_detector_construction.html#a9e16ad5da3921b502473b303609caad0", null ],
-    [ "Construct", "class_o_m_sim_detector_construction.html#a10c21dfcdf4af75481fea2229287d143", null ],
-    [ "Construct", "class_o_m_sim_detector_construction.html#a10c21dfcdf4af75481fea2229287d143", null ],
-    [ "constructWorld", "class_o_m_sim_detector_construction.html#a53a692e5caa084d308b181c6cd90e485", null ],
-    [ "constructWorld", "class_o_m_sim_detector_construction.html#a53a692e5caa084d308b181c6cd90e485", null ],
-    [ "constructWorld", "class_o_m_sim_detector_construction.html#a53a692e5caa084d308b181c6cd90e485", null ],
-    [ "mData", "class_o_m_sim_detector_construction.html#a1d09add5e6b9a1d25821ccd128d926fe", null ],
-    [ "mOpticalModule", "class_o_m_sim_detector_construction.html#a5afb06a52559f0e0f2fe06820ae9e04e", null ],
-    [ "mWorldLogical", "class_o_m_sim_detector_construction.html#a7e7ef263bcf8e4d4efb22af8ed2ef808", null ],
-    [ "mWorldPhysical", "class_o_m_sim_detector_construction.html#a699963cdf8af1e2f82a61227b9f08c20", null ],
-    [ "mWorldSolid", "class_o_m_sim_detector_construction.html#a13797b1657281b0907d005921ca5e10c", null ],
-    [ "mWorldSolid", "class_o_m_sim_detector_construction.html#afb436e7efa69e67631d6f7d2519c8995", null ]
+    [ "constructDetector", "class_o_m_sim_detector_construction.html#acf70d9779d2a0d7556c314ae53c41546", null ],
+    [ "constructWorld", "class_o_m_sim_detector_construction.html#a0bab6798cb1c5dab85ecf8dbec6b2fb3", null ],
+    [ "setSensitiveDetector", "class_o_m_sim_detector_construction.html#ab084de58ec3e7ec98569c5db62fb6ecb", null ],
+    [ "mData", "class_o_m_sim_detector_construction.html#a6ac97195a35b28817fcc5e38ca872ed8", null ],
+    [ "mWorldLogical", "class_o_m_sim_detector_construction.html#ad38baf42d9d13f7be6dc579fc6521917", null ],
+    [ "mWorldPhysical", "class_o_m_sim_detector_construction.html#a722f99cef9e9bb4bef2307521bb00b9a", null ],
+    [ "mWorldSolid", "class_o_m_sim_detector_construction.html#a8143cb9595c67863d498bd4787cc6448", null ]
 ];

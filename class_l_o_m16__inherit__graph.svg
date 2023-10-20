@@ -21,9 +21,9 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="class_optical_module.html" target="_top" xlink:title="Base class for OMs works as interface.">
-<polygon fill="white" stroke="black" points="22.5,-56.5 22.5,-75.5 109.5,-75.5 109.5,-56.5 22.5,-56.5"/>
-<text text-anchor="middle" x="66" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OpticalModule</text>
+<g id="a_node2"><a xlink:href="class_o_m_sim_optical_module.html" target="_top" xlink:title="Base class for OMs works as interface.">
+<polygon fill="white" stroke="black" points="5,-56.5 5,-75.5 127,-75.5 127,-56.5 5,-56.5"/>
+<text text-anchor="middle" x="66" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimOpticalModule</text>
 </a>
 </g>
 </g>

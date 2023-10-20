@@ -24,7 +24,7 @@ Collaboration diagram for Isotope\+Decays\+:
 \item 
 void \mbox{\hyperlink{class_isotope_decays_a24e0cf04f0185935ab7035e89190405e}{simulate\+Decays\+In\+Optical\+Module}} (G4double p\+Time\+Window)
 \begin{DoxyCompactList}\small\item\em Simulates the decays in the optical module. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_isotope_decays_a864ca83f9126152936b99ef0e15a10a1}{set\+Optical\+Module}} (\mbox{\hyperlink{class_optical_module}{Optical\+Module}} $\ast$p\+Optical\+Module)
+void \mbox{\hyperlink{class_isotope_decays_af740bd8256667433f10f84f5cd7e2723}{set\+Optical\+Module}} (\mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}} $\ast$p\+Optical\+Module)
 \begin{DoxyCompactList}\small\item\em Set the optical module to be used. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
@@ -40,7 +40,7 @@ std\+::map$<$ G4\+String, G4int $>$ \mbox{\hyperlink{class_isotope_decays_a83b37
 \item 
 std\+::map$<$ G4\+String, G4\+String $>$ \mbox{\hyperlink{class_isotope_decays_a60f8eca9a5950c197463b8c54ae4ad91}{m\+Isotope\+Commands}}
 \item 
-\mbox{\hyperlink{class_optical_module}{Optical\+Module}} $\ast$ \mbox{\hyperlink{class_isotope_decays_a365ed822e8b8b563226636a7f7930819}{m\+OM}}
+\mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}} $\ast$ \mbox{\hyperlink{class_isotope_decays_a363a3cad619befd4e50c599b44bb3552}{m\+OM}}
 \item 
 G4double \mbox{\hyperlink{class_isotope_decays_acd6830b0720976474f7be3c65d764090}{m\+Production\+Radius}}
 \end{DoxyCompactItemize}
@@ -103,11 +103,11 @@ If the daughter of the configured isotope is unstable, it will also decay in the
 \doxysubsubsection{\texorpdfstring{generalGPS()}{generalGPS()}}
 {\footnotesize\ttfamily void Isotope\+Decays\+::general\+GPS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_isotope_decays_a864ca83f9126152936b99ef0e15a10a1}\label{class_isotope_decays_a864ca83f9126152936b99ef0e15a10a1}} 
+\mbox{\Hypertarget{class_isotope_decays_af740bd8256667433f10f84f5cd7e2723}\label{class_isotope_decays_af740bd8256667433f10f84f5cd7e2723}} 
 \index{IsotopeDecays@{IsotopeDecays}!setOpticalModule@{setOpticalModule}}
 \index{setOpticalModule@{setOpticalModule}!IsotopeDecays@{IsotopeDecays}}
 \doxysubsubsection{\texorpdfstring{setOpticalModule()}{setOpticalModule()}}
-{\footnotesize\ttfamily void Isotope\+Decays\+::set\+Optical\+Module (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_optical_module}{Optical\+Module}} $\ast$}]{p\+Optical\+Module }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Isotope\+Decays\+::set\+Optical\+Module (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}} $\ast$}]{p\+Optical\+Module }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -144,11 +144,11 @@ If the daughter of the configured isotope is unstable, it will also decay in the
 \DoxyCodeLine{  \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{class_isotope_decays_a365ed822e8b8b563226636a7f7930819}\label{class_isotope_decays_a365ed822e8b8b563226636a7f7930819}} 
+\mbox{\Hypertarget{class_isotope_decays_a363a3cad619befd4e50c599b44bb3552}\label{class_isotope_decays_a363a3cad619befd4e50c599b44bb3552}} 
 \index{IsotopeDecays@{IsotopeDecays}!mOM@{mOM}}
 \index{mOM@{mOM}!IsotopeDecays@{IsotopeDecays}}
 \doxysubsubsection{\texorpdfstring{mOM}{mOM}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_optical_module}{Optical\+Module}}$\ast$ Isotope\+Decays\+::m\+OM\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}$\ast$ Isotope\+Decays\+::m\+OM\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_isotope_decays_acd6830b0720976474f7be3c65d764090}\label{class_isotope_decays_acd6830b0720976474f7be3c65d764090}} 
 \index{IsotopeDecays@{IsotopeDecays}!mProductionRadius@{mProductionRadius}}

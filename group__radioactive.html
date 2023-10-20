@@ -126,7 +126,7 @@ $(document).ready(function(){initNavTree('group__radioactive.html',''); initResi
 <div class="dynheader">
 Collaboration diagram for Radioactive decays:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__radioactive.svg" width="536" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__radioactive.svg" width="446" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -151,9 +151,6 @@ Files</h2></td></tr>
 <tr class="memitem:_o_m_sim_decays_g_p_s_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_decays_g_p_s_8hh.html">OMSimDecaysGPS.hh</a></td></tr>
 <tr class="memdesc:_o_m_sim_decays_g_p_s_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the <a class="el" href="class_isotope_decays.html" title="A class for simulating isotope decays inside the pressure vessel and PMT glass.">IsotopeDecays</a> class for the radioactive decays simulation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:radioactive__decays_2include_2_o_m_sim_detector_construction_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="radioactive__decays_2include_2_o_m_sim_detector_construction_8hh.html">radioactive_decays/include/OMSimDetectorConstruction.hh</a></td></tr>
-<tr class="memdesc:radioactive__decays_2include_2_o_m_sim_detector_construction_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the <a class="el" href="class_o_m_sim_detector_construction.html" title="Class for detector construction in the effective area simulation.">OMSimDetectorConstruction</a> class for the radioactive decays simulation. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:radioactive__decays_2include_2_o_m_sim_event_action_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="radioactive__decays_2include_2_o_m_sim_event_action_8hh.html">radioactive_decays/include/OMSimEventAction.hh</a></td></tr>
 <tr class="memdesc:radioactive__decays_2include_2_o_m_sim_event_action_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the <a class="el" href="class_o_m_sim_event_action.html" title="Handles custom actions at the beginning and end of each event.">OMSimEventAction</a> and <a class="el" href="class_event_info_manager.html" title="Singleton class for managing event-specific information.">EventInfoManager</a> classes for the radioactive decays simulation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,6 +165,9 @@ Files</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh.html">radioactive_decays/include/OMSimPrimaryGeneratorAction.hh</a></td></tr>
 <tr class="memdesc:radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a simple <a class="el" href="class_o_m_sim_primary_generator_action.html">OMSimPrimaryGeneratorAction</a> class for the radioactive decays simulation using GPS. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:_o_m_sim_rad_decays_detector_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_rad_decays_detector_8hh.html">OMSimRadDecaysDetector.hh</a></td></tr>
+<tr class="memdesc:_o_m_sim_rad_decays_detector_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the <a class="el" href="class_o_m_sim_rad_decays_detector.html" title="Detector construction of radioactive decays simulation.">OMSimRadDecaysDetector</a> class for the radioactive decays simulation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:_o_m_sim__radioactive__decays_8cc"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim__radioactive__decays_8cc.html">OMSim_radioactive_decays.cc</a></td></tr>
 <tr class="memdesc:_o_m_sim__radioactive__decays_8cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main of the radioactive decay study. <br /></td></tr>
@@ -184,14 +184,14 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_isotope_decays.html">IsotopeDecays</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class for simulating isotope decays inside the pressure vessel and PMT glass.  <a href="class_isotope_decays.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_detector_construction.html">OMSimDetectorConstruction</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for detector construction in the effective area simulation.  <a href="class_o_m_sim_detector_construction.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_event_action.html">OMSimEventAction</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles custom actions at the beginning and end of each event.  <a href="class_o_m_sim_event_action.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_info_manager.html">EventInfoManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton class for managing event-specific information.  <a href="class_event_info_manager.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_rad_decays_detector.html">OMSimRadDecaysDetector</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detector construction of radioactive decays simulation.  <a href="class_o_m_sim_rad_decays_detector.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -199,7 +199,7 @@ Classes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Oct 20 2023 09:16:01 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Oct 20 2023 12:31:48 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

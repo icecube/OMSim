@@ -1,7 +1,7 @@
 <map id="mDOM" name="mDOM">
 <area shape="rect" id="node1" title=" " alt="" coords="223,424,289,451"/>
 <area shape="rect" id="node7" href="$classm_d_o_m_harness.html" title=" " alt="" coords="241,513,361,540"/>
-<area shape="rect" id="node2" href="$class_optical_module.html" title="Base class for OMs works as interface." alt="" coords="117,348,233,375"/>
+<area shape="rect" id="node2" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="71,348,233,375"/>
 <area shape="rect" id="node3" href="$classabc_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="168,171,344,197"/>
 <area shape="rect" id="node6" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="5,247,184,273"/>
 <area shape="rect" id="node8" href="$classm_d_o_m_flasher.html" title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module." alt="" coords="241,297,356,324"/>

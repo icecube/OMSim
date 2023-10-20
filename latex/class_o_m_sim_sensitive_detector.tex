@@ -1,0 +1,191 @@
+\hypertarget{class_o_m_sim_sensitive_detector}{}\doxysection{OMSim\+Sensitive\+Detector Class Reference}
+\label{class_o_m_sim_sensitive_detector}\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+
+
+Represents a sensitive detector.  
+
+
+
+
+Inheritance diagram for OMSim\+Sensitive\+Detector\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{class_o_m_sim_sensitive_detector__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for OMSim\+Sensitive\+Detector\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_o_m_sim_sensitive_detector__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_o_m_sim_sensitive_detector_ae367ba4eb34c6d4727457ac822f3497b}{OMSim\+Sensitive\+Detector}} (G4\+String name, \mbox{\hyperlink{_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729}{Detector\+Type}} p\+Detector\+Type)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_o_m_sim_sensitive_detector_ab75c704bb88a18c9450f74040b3a4ce1}{$\sim$\+OMSim\+Sensitive\+Detector}} ()
+\item 
+G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{Process\+Hits}} (G4\+Step $\ast$p\+Step, G4\+Touchable\+History $\ast$p\+Touchable\+History) override
+\begin{DoxyCompactList}\small\item\em Processes particles that go through detector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a345025c68ea4ff0d4a0f7ad017f06778}{set\+PMTResponse}} (\mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} $\ast$p\+Response)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a26b096a2244ab6bfc4ef4cf53ed02029}{check\+Absorbed\+Photons}} (G4\+Step $\ast$p\+Step)
+\begin{DoxyCompactList}\small\item\em Checks if the photon in the given step is absorbed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_photon_info}{Photon\+Info}} \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a4312e760ce38246d09e2933aa37b8725}{get\+Photon\+Info}} (G4\+Step $\ast$p\+Step)
+\item 
+G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a0e8d0c59cdefec63a33c443ff903d2cf}{handle\+PMT}} (G4\+Step $\ast$p\+Step, G4\+Touchable\+History $\ast$p\+Touchable\+History)
+\begin{DoxyCompactList}\small\item\em Handles hits for PMTs. \end{DoxyCompactList}\item 
+G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a4b3d72f7aa132ea975541843a30a2f22}{handle\+General\+Photon\+Detector}} (G4\+Step $\ast$p\+Step, G4\+Touchable\+History $\ast$p\+Touchable\+History)
+\begin{DoxyCompactList}\small\item\em Handles hits for general photon detectors. This is the same as handle\+PMT, but sets PMT number to 0, as otherwise the retrieval of the PMT number from the volume name would results in an error. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_sensitive_detector_abb738b723025509f13103566558b156c}{store\+Photon\+Hit}} (\mbox{\hyperlink{struct_photon_info}{Photon\+Info}} \&info)
+\begin{DoxyCompactList}\small\item\em Stores photon hit information into the Hit\+Manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} $\ast$ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a9352dc2cb5522d037044f99fce178b70}{m\+PMTResponse}}
+\item 
+\mbox{\hyperlink{_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729}{Detector\+Type}} \mbox{\hyperlink{class_o_m_sim_sensitive_detector_ab14f76ffaa75e268fc49cdec4103a034}{m\+Detector\+Type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_ae367ba4eb34c6d4727457ac822f3497b}\label{class_o_m_sim_sensitive_detector_ae367ba4eb34c6d4727457ac822f3497b}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{OMSimSensitiveDetector()}{OMSimSensitiveDetector()}}
+{\footnotesize\ttfamily OMSim\+Sensitive\+Detector\+::\+OMSim\+Sensitive\+Detector (\begin{DoxyParamCaption}\item[{G4\+String}]{name,  }\item[{\mbox{\hyperlink{_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729}{Detector\+Type}}}]{p\+Detector\+Type }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the sensitive detector. \\
+\hline
+{\em p\+Detector\+Type} & Type of the detector (e.\+g., PMT, General\+Photon\+Detector). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_ab75c704bb88a18c9450f74040b3a4ce1}\label{class_o_m_sim_sensitive_detector_ab75c704bb88a18c9450f74040b3a4ce1}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!````~OMSimSensitiveDetector@{$\sim$OMSimSensitiveDetector}}
+\index{````~OMSimSensitiveDetector@{$\sim$OMSimSensitiveDetector}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{$\sim$OMSimSensitiveDetector()}{~OMSimSensitiveDetector()}}
+{\footnotesize\ttfamily virtual OMSim\+Sensitive\+Detector\+::$\sim$\+OMSim\+Sensitive\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a26b096a2244ab6bfc4ef4cf53ed02029}\label{class_o_m_sim_sensitive_detector_a26b096a2244ab6bfc4ef4cf53ed02029}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!checkAbsorbedPhotons@{checkAbsorbedPhotons}}
+\index{checkAbsorbedPhotons@{checkAbsorbedPhotons}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{checkAbsorbedPhotons()}{checkAbsorbedPhotons()}}
+{\footnotesize\ttfamily G4bool OMSim\+Sensitive\+Detector\+::check\+Absorbed\+Photons (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{a\+Step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+This function checks if the particle in the given step is an optical photon and if it\textquotesingle{}s either the last step in the volume or if the post step process was absorption. If either of these conditions is met, the photon is considered absorbed and the function returns true.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+Step} & The step in which the particle is being checked. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the photon is absorbed, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a4312e760ce38246d09e2933aa37b8725}\label{class_o_m_sim_sensitive_detector_a4312e760ce38246d09e2933aa37b8725}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!getPhotonInfo@{getPhotonInfo}}
+\index{getPhotonInfo@{getPhotonInfo}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{getPhotonInfo()}{getPhotonInfo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_photon_info}{Photon\+Info}} OMSim\+Sensitive\+Detector\+::get\+Photon\+Info (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{p\+Step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a4b3d72f7aa132ea975541843a30a2f22}\label{class_o_m_sim_sensitive_detector_a4b3d72f7aa132ea975541843a30a2f22}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!handleGeneralPhotonDetector@{handleGeneralPhotonDetector}}
+\index{handleGeneralPhotonDetector@{handleGeneralPhotonDetector}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{handleGeneralPhotonDetector()}{handleGeneralPhotonDetector()}}
+{\footnotesize\ttfamily G4bool OMSim\+Sensitive\+Detector\+::handle\+General\+Photon\+Detector (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{a\+Step,  }\item[{G4\+Touchable\+History $\ast$}]{p\+Touchable\+History }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Step} & The current step information. \\
+\hline
+{\em p\+Touchable\+History} & The history of touchable objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the hit was stored (always) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a0e8d0c59cdefec63a33c443ff903d2cf}\label{class_o_m_sim_sensitive_detector_a0e8d0c59cdefec63a33c443ff903d2cf}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!handlePMT@{handlePMT}}
+\index{handlePMT@{handlePMT}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{handlePMT()}{handlePMT()}}
+{\footnotesize\ttfamily G4bool OMSim\+Sensitive\+Detector\+::handle\+PMT (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{a\+Step,  }\item[{G4\+Touchable\+History $\ast$}]{p\+Touchable\+History }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Step} & The current step information. \\
+\hline
+{\em p\+Touchable\+History} & The history of touchable objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the hit was stored 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}\label{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!ProcessHits@{ProcessHits}}
+\index{ProcessHits@{ProcessHits}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{ProcessHits()}{ProcessHits()}}
+{\footnotesize\ttfamily G4bool OMSim\+Sensitive\+Detector\+::\+Process\+Hits (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{p\+Step,  }\item[{G4\+Touchable\+History $\ast$}]{p\+Touchable\+History }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Step} & The current step information. \\
+\hline
+{\em p\+Touchable\+History} & The history of touchable objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the particle was stored as hit, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a345025c68ea4ff0d4a0f7ad017f06778}\label{class_o_m_sim_sensitive_detector_a345025c68ea4ff0d4a0f7ad017f06778}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!setPMTResponse@{setPMTResponse}}
+\index{setPMTResponse@{setPMTResponse}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{setPMTResponse()}{setPMTResponse()}}
+{\footnotesize\ttfamily void OMSim\+Sensitive\+Detector\+::set\+PMTResponse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} $\ast$}]{p\+Response }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_abb738b723025509f13103566558b156c}\label{class_o_m_sim_sensitive_detector_abb738b723025509f13103566558b156c}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!storePhotonHit@{storePhotonHit}}
+\index{storePhotonHit@{storePhotonHit}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{storePhotonHit()}{storePhotonHit()}}
+{\footnotesize\ttfamily void OMSim\+Sensitive\+Detector\+::store\+Photon\+Hit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_photon_info}{Photon\+Info}} \&}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & The photon hit information. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_ab14f76ffaa75e268fc49cdec4103a034}\label{class_o_m_sim_sensitive_detector_ab14f76ffaa75e268fc49cdec4103a034}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!mDetectorType@{mDetectorType}}
+\index{mDetectorType@{mDetectorType}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{mDetectorType}{mDetectorType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729}{Detector\+Type}} OMSim\+Sensitive\+Detector\+::m\+Detector\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a9352dc2cb5522d037044f99fce178b70}\label{class_o_m_sim_sensitive_detector_a9352dc2cb5522d037044f99fce178b70}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!mPMTResponse@{mPMTResponse}}
+\index{mPMTResponse@{mPMTResponse}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{mPMTResponse}{mPMTResponse}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}}$\ast$ OMSim\+Sensitive\+Detector\+::m\+PMTResponse\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_sensitive_detector_8hh}{OMSim\+Sensitive\+Detector.\+hh}}\item 
+\mbox{\hyperlink{_o_m_sim_sensitive_detector_8cc}{OMSim\+Sensitive\+Detector.\+cc}}\end{DoxyCompactItemize}

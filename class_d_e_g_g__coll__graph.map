@@ -1,7 +1,7 @@
 <map id="DEGG" name="DEGG">
-<area shape="rect" id="node1" title="Construction of the DEGG detector geometry." alt="" coords="138,412,198,439"/>
+<area shape="rect" id="node1" title="Construction of the DEGG detector geometry." alt="" coords="150,412,210,439"/>
 <area shape="rect" id="node7" href="$class_d_egg_harness.html" title=" " alt="" coords="37,501,147,528"/>
-<area shape="rect" id="node2" href="$class_optical_module.html" title="Base class for OMs works as interface." alt="" coords="110,336,226,363"/>
+<area shape="rect" id="node2" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="99,336,261,363"/>
 <area shape="rect" id="node3" href="$classabc_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="5,171,181,197"/>
 <area shape="rect" id="node6" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="136,247,315,273"/>
 <area shape="rect" id="node4" href="$class_input_data_manager.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="90,81,233,108"/>

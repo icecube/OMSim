@@ -1,9 +1,10 @@
 <map id="OMSimMDOM.hh" name="OMSimMDOM.hh">
-<area shape="rect" id="node1" title="Construction of mDOM." alt="" coords="503,5,636,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_m_d_o_m_8cc.html" title=" " alt="" coords="5,80,136,107"/>
-<area shape="rect" id="node3" href="$_o_m_sim_m_d_o_m_flasher_8cc.html" title=" " alt="" coords="160,80,339,107"/>
-<area shape="rect" id="node4" href="$_o_m_sim_m_d_o_m_harness_8cc.html" title=" " alt="" coords="363,80,547,107"/>
-<area shape="rect" id="node5" href="$effective__area_2include_2_o_m_sim_detector_construction_8hh.html" title=" " alt="" coords="571,80,797,107"/>
-<area shape="rect" id="node6" href="$radioactive__decays_2include_2_o_m_sim_detector_construction_8hh.html" title="Defines the OMSimDetectorConstruction class for the radioactive decays simulation." alt="" coords="821,80,1048,107"/>
-<area shape="rect" id="node7" href="$supernova_2include_2_o_m_sim_detector_construction_8hh.html" title=" " alt="" coords="1072,80,1299,107"/>
+<area shape="rect" id="node1" title="Construction of mDOM." alt="" coords="637,5,770,32"/>
+<area shape="rect" id="node2" href="$_o_m_sim_detector_construction_8cc.html" title=" " alt="" coords="5,80,231,107"/>
+<area shape="rect" id="node3" href="$_o_m_sim_m_d_o_m_8cc.html" title=" " alt="" coords="254,80,385,107"/>
+<area shape="rect" id="node4" href="$_o_m_sim_m_d_o_m_flasher_8cc.html" title=" " alt="" coords="409,80,587,107"/>
+<area shape="rect" id="node5" href="$_o_m_sim_m_d_o_m_harness_8cc.html" title=" " alt="" coords="611,80,795,107"/>
+<area shape="rect" id="node6" href="$_o_m_sim_effective_area_detector_8cc.html" title=" " alt="" coords="819,80,1049,107"/>
+<area shape="rect" id="node7" href="$_o_m_sim_rad_decays_detector_8cc.html" title=" " alt="" coords="1073,80,1288,107"/>
+<area shape="rect" id="node8" href="$_o_m_sim_s_ndetector_8cc.html" title=" " alt="" coords="1312,80,1471,107"/>
 </map>

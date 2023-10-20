@@ -26,7 +26,9 @@ void \mbox{\hyperlink{class_o_m_sim_hit_manager_aeabbd61eeb69b719cbb2adc85e6e0d6
 void \mbox{\hyperlink{class_o_m_sim_hit_manager_a853b6fb70a189840b7ffa42c74af5b09}{sort\+Hit\+Stats\+By\+Time}} (\mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} \&l\+Hits)
 \begin{DoxyCompactList}\small\item\em Sorts the hit statistics by the hit time. \end{DoxyCompactList}\item 
 std\+::vector$<$ int $>$ \mbox{\hyperlink{class_o_m_sim_hit_manager_ae6b66371cdfbd30ba932e30fd769cbc4}{calculate\+Multiplicity}} (const G4double p\+Time\+Window, int module\+Number=0)
-\begin{DoxyCompactList}\small\item\em Calculates the multiplicity of hits within a specified time window for a given module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Calculates the multiplicity of hits within a specified time window for a given module. \end{DoxyCompactList}\item 
+G4int \mbox{\hyperlink{class_o_m_sim_hit_manager_abcdc764e8a8b756e6a1eb745403da57b}{get\+Next\+Detector\+Index}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -52,7 +54,9 @@ std\+::map$<$ G4int, \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} $>$ \mbox{\
 \begin{DoxyCompactItemize}
 \item 
 std\+::map$<$ G4int, G4int $>$ \mbox{\hyperlink{class_o_m_sim_hit_manager_a68b3614293ca71096ff48c4fc5943de2}{m\+Num\+PMTs}}
-\begin{DoxyCompactList}\small\item\em Map of number of PMTs in the used optical modules. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Map of number of PMTs in the used optical modules. \end{DoxyCompactList}\item 
+G4int \mbox{\hyperlink{class_o_m_sim_hit_manager_a0fa16a90854630de2ddf703f8649cd24}{m\+Current\+Index}} = -\/1
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -172,6 +176,12 @@ A \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure containing hit infor
 \begin{DoxyReturn}{Returns}
 A reference to the singleton instance. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_abcdc764e8a8b756e6a1eb745403da57b}\label{class_o_m_sim_hit_manager_abcdc764e8a8b756e6a1eb745403da57b}} 
+\index{OMSimHitManager@{OMSimHitManager}!getNextDetectorIndex@{getNextDetectorIndex}}
+\index{getNextDetectorIndex@{getNextDetectorIndex}!OMSimHitManager@{OMSimHitManager}}
+\doxysubsubsection{\texorpdfstring{getNextDetectorIndex()}{getNextDetectorIndex()}}
+{\footnotesize\ttfamily G4int OMSim\+Hit\+Manager\+::get\+Next\+Detector\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_a6baf2795e91dc2ff99c3eda3e5143bc3}\label{class_o_m_sim_hit_manager_a6baf2795e91dc2ff99c3eda3e5143bc3}} 
 \index{OMSimHitManager@{OMSimHitManager}!operator=@{operator=}}
 \index{operator=@{operator=}!OMSimHitManager@{OMSimHitManager}}
@@ -211,6 +221,12 @@ A reference to the singleton instance.
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_a0fa16a90854630de2ddf703f8649cd24}\label{class_o_m_sim_hit_manager_a0fa16a90854630de2ddf703f8649cd24}} 
+\index{OMSimHitManager@{OMSimHitManager}!mCurrentIndex@{mCurrentIndex}}
+\index{mCurrentIndex@{mCurrentIndex}!OMSimHitManager@{OMSimHitManager}}
+\doxysubsubsection{\texorpdfstring{mCurrentIndex}{mCurrentIndex}}
+{\footnotesize\ttfamily G4int OMSim\+Hit\+Manager\+::m\+Current\+Index = -\/1\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_a5b5170bb63b04190829aeb79183a5d3f}\label{class_o_m_sim_hit_manager_a5b5170bb63b04190829aeb79183a5d3f}} 
 \index{OMSimHitManager@{OMSimHitManager}!mModuleHits@{mModuleHits}}
 \index{mModuleHits@{mModuleHits}!OMSimHitManager@{OMSimHitManager}}

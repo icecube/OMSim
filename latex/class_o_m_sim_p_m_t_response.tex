@@ -7,6 +7,16 @@ Singleton class to simulate PMT response.
 
 
 
+Inheritance diagram for OMSim\+PMTResponse\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_o_m_sim_p_m_t_response__inherit__graph}
+\end{center}
+\end{figure}
+
+
 \doxysubsection{Detailed Description}
 Provides methods to process hits on a photocathode and get resulting pulses based on various measurements and scans. \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
@@ -16,19 +26,14 @@ struct \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}} \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}{process\+Photocathode\+Hit}} (G4double pX, G4double pY, G4double p\+Wavelength)
+virtual \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}} \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}{process\+Photocathode\+Hit}} (G4double pX, G4double pY, G4double p\+Wavelength)
 \begin{DoxyCompactList}\small\item\em Process a hit on the photocathode into a PMT pulse. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2447b2f9eb62a1e99f410bfeda917d5c}{pass\+QE}} (G4double p\+Wavelength)
+virtual bool \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2447b2f9eb62a1e99f410bfeda917d5c}{pass\+QE}} (G4double p\+Wavelength)
 \begin{DoxyCompactList}\small\item\em Checks if photon with given wavelength passes QE check. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Static Public Member Functions}
+\doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} \& \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a6dd27707e5154fc35e238ead2dd726a0}{get\+Instance}} ()
-\end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-void \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a947d422c7f7a006f714773df900bd722}{configure\+QEinterpolator}} ()
+void \mbox{\hyperlink{class_o_m_sim_p_m_t_response_aa6618c49b1742336f7b0b79d6f2c4de6}{configure\+QEinterpolator}} (const char $\ast$p\+File\+Name)
 \begin{DoxyCompactList}\small\item\em Initializes the QE interpolator from a data file. \end{DoxyCompactList}\item 
 TH2D $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a0dd544847ff216a24aa8c528e76c9aed}{create\+Histogram\+From\+Data}} (const std\+::string \&p\+File\+Path, const char $\ast$p\+TH2\+DName)
 \begin{DoxyCompactList}\small\item\em Create a histogram from provided data. \end{DoxyCompactList}\item 
@@ -46,18 +51,16 @@ G4double \mbox{\hyperlink{class_o_m_sim_p_m_t_response_ab468af69c57589f123efc7fb
 \item 
 G4double \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a39d958aa616a6bdd0c8a73211d834503}{wavelength\+Interpolated\+Value}} (std\+::map$<$ G4double, TH2D $\ast$ $>$ p\+Map, G4double p\+Wavelength\+Key1, G4double p\+Wavelength\+Key2)
 \item 
+virtual std\+::vector$<$ G4double $>$ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2e0f0ab6b76976909e12fcc50729ae49}{get\+Scanned\+Wavelengths}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{class_o_m_sim_p_m_t_response_ad008c81ae36f0db6e6588c9beab3cd81}{scans\+Available}} ()=0
+\item 
 \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a80b379bc78ca06d23011703aae3341d7}{OMSim\+PMTResponse}} ()
 \item 
-\mbox{\hyperlink{class_o_m_sim_p_m_t_response_aca0bba84fbd6a5c121467e44b1b758f9}{$\sim$\+OMSim\+PMTResponse}} ()
-\item 
-\mbox{\hyperlink{class_o_m_sim_p_m_t_response_a204531485b4a631d1a60b53057658ca8}{OMSim\+PMTResponse}} (const \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} \&)=delete
-\item 
-\mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} \& \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a5bfb5cb02d12f7d8a17e389707d4a8a1}{operator=}} (const \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} \&)=delete
+virtual \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2cae62f2ea6fda5296c438eec41ea308}{$\sim$\+OMSim\+PMTResponse}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
-\item 
-std\+::vector$<$ G4double $>$ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a43b83e33b8e7d75d7277e3091f0f0a42}{m\+Scanned\+Wavelengths}} \{460 $\ast$ nm, 480 $\ast$ nm, 500 $\ast$ nm, 520 $\ast$ nm, 540 $\ast$ nm, 560 $\ast$ nm, 580 $\ast$ nm, 600 $\ast$ nm, 620 $\ast$ nm, 640 $\ast$ nm\}
 \item 
 double \mbox{\hyperlink{class_o_m_sim_p_m_t_response_ae6443cbdd673e2be376d7d3b4eeeec3a}{mX}}
 \item 
@@ -83,29 +86,23 @@ std\+::map$<$ G4double, TH2D $\ast$ $>$ \mbox{\hyperlink{class_o_m_sim_p_m_t_res
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a80b379bc78ca06d23011703aae3341d7}\label{class_o_m_sim_p_m_t_response_a80b379bc78ca06d23011703aae3341d7}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!OMSimPMTResponse@{OMSimPMTResponse}}
 \index{OMSimPMTResponse@{OMSimPMTResponse}!OMSimPMTResponse@{OMSimPMTResponse}}
-\doxysubsubsection{\texorpdfstring{OMSimPMTResponse()}{OMSimPMTResponse()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily OMSim\+PMTResponse\+::\+OMSim\+PMTResponse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\doxysubsubsection{\texorpdfstring{OMSimPMTResponse()}{OMSimPMTResponse()}}
+{\footnotesize\ttfamily OMSim\+PMTResponse\+::\+OMSim\+PMTResponse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_aca0bba84fbd6a5c121467e44b1b758f9}\label{class_o_m_sim_p_m_t_response_aca0bba84fbd6a5c121467e44b1b758f9}} 
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a2cae62f2ea6fda5296c438eec41ea308}\label{class_o_m_sim_p_m_t_response_a2cae62f2ea6fda5296c438eec41ea308}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!````~OMSimPMTResponse@{$\sim$OMSimPMTResponse}}
 \index{````~OMSimPMTResponse@{$\sim$OMSimPMTResponse}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{$\sim$OMSimPMTResponse()}{~OMSimPMTResponse()}}
-{\footnotesize\ttfamily OMSim\+PMTResponse\+::$\sim$\+OMSim\+PMTResponse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a204531485b4a631d1a60b53057658ca8}\label{class_o_m_sim_p_m_t_response_a204531485b4a631d1a60b53057658ca8}} 
-\index{OMSimPMTResponse@{OMSimPMTResponse}!OMSimPMTResponse@{OMSimPMTResponse}}
-\index{OMSimPMTResponse@{OMSimPMTResponse}!OMSimPMTResponse@{OMSimPMTResponse}}
-\doxysubsubsection{\texorpdfstring{OMSimPMTResponse()}{OMSimPMTResponse()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily OMSim\+PMTResponse\+::\+OMSim\+PMTResponse (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+{\footnotesize\ttfamily virtual OMSim\+PMTResponse\+::$\sim$\+OMSim\+PMTResponse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a947d422c7f7a006f714773df900bd722}\label{class_o_m_sim_p_m_t_response_a947d422c7f7a006f714773df900bd722}} 
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_aa6618c49b1742336f7b0b79d6f2c4de6}\label{class_o_m_sim_p_m_t_response_aa6618c49b1742336f7b0b79d6f2c4de6}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!configureQEinterpolator@{configureQEinterpolator}}
 \index{configureQEinterpolator@{configureQEinterpolator}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{configureQEinterpolator()}{configureQEinterpolator()}}
-{\footnotesize\ttfamily void OMSim\+PMTResponse\+::configure\+QEinterpolator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void OMSim\+PMTResponse\+::configure\+QEinterpolator (\begin{DoxyParamCaption}\item[{const char $\ast$}]{p\+File\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 Sets up the quantum efficiency (QE) interpolator using data from a predefined path.
 
@@ -119,7 +116,7 @@ Ensure the data file is present at the specified path.
 \index{OMSimPMTResponse@{OMSimPMTResponse}!createHistogramFromData@{createHistogramFromData}}
 \index{createHistogramFromData@{createHistogramFromData}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{createHistogramFromData()}{createHistogramFromData()}}
-{\footnotesize\ttfamily TH2D $\ast$ OMSim\+PMTResponse\+::create\+Histogram\+From\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+File\+Path,  }\item[{const char $\ast$}]{p\+TH2\+DName }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily TH2D $\ast$ OMSim\+PMTResponse\+::create\+Histogram\+From\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+File\+Path,  }\item[{const char $\ast$}]{p\+TH2\+DName }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 \begin{DoxyRefDesc}{Todo}
 \item[\mbox{\hyperlink{todo__todo000002}{Todo}}]Add PMT data of all PMT types \end{DoxyRefDesc}
@@ -141,7 +138,7 @@ Pointer to the created histogram.
 \index{OMSimPMTResponse@{OMSimPMTResponse}!getCharge@{getCharge}}
 \index{getCharge@{getCharge}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{getCharge()}{getCharge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::get\+Charge (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::get\+Charge (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 This method returns the charge sampled from a Gaussian distribution with the mean and standard deviation of the single photon electron (SPE) resolution for the provided wavelength key.
 
@@ -157,7 +154,7 @@ G4double The charge in PE.
 \index{OMSimPMTResponse@{OMSimPMTResponse}!getCharge@{getCharge}}
 \index{getCharge@{getCharge}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{getCharge()}{getCharge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::get\+Charge (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength1,  }\item[{G4double}]{p\+Wavelength2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::get\+Charge (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength1,  }\item[{G4double}]{p\+Wavelength2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 This method interpolates the charge between the two provided wavelengths and then returns the charge sampled from a Gaussian distribution with the mean interpolated charge and interpolated single photon electron (SPE) resolution.
 
@@ -171,17 +168,11 @@ This method interpolates the charge between the two provided wavelengths and the
 \begin{DoxyReturn}{Returns}
 G4double The interpolated charge in PE. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a6dd27707e5154fc35e238ead2dd726a0}\label{class_o_m_sim_p_m_t_response_a6dd27707e5154fc35e238ead2dd726a0}} 
-\index{OMSimPMTResponse@{OMSimPMTResponse}!getInstance@{getInstance}}
-\index{getInstance@{getInstance}!OMSimPMTResponse@{OMSimPMTResponse}}
-\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
-{\footnotesize\ttfamily static \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}}\& OMSim\+PMTResponse\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
-
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a5caca255c3562545a16de341005926cd}\label{class_o_m_sim_p_m_t_response_a5caca255c3562545a16de341005926cd}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!getPulseFromInterpolation@{getPulseFromInterpolation}}
 \index{getPulseFromInterpolation@{getPulseFromInterpolation}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{getPulseFromInterpolation()}{getPulseFromInterpolation()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} OMSim\+PMTResponse\+::get\+Pulse\+From\+Interpolation (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength\+Key1,  }\item[{G4double}]{p\+Wavelength\+Key2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} OMSim\+PMTResponse\+::get\+Pulse\+From\+Interpolation (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength\+Key1,  }\item[{G4double}]{p\+Wavelength\+Key2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 Get a finished Pulse interpolating scan results between measured wavelengths (simulated photons has a wavelength between these two) 
 \begin{DoxyParams}{Parameters}
@@ -197,7 +188,7 @@ Get a finished Pulse interpolating scan results between measured wavelengths (si
 \index{OMSimPMTResponse@{OMSimPMTResponse}!getPulseFromKey@{getPulseFromKey}}
 \index{getPulseFromKey@{getPulseFromKey}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{getPulseFromKey()}{getPulseFromKey()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} OMSim\+PMTResponse\+::get\+Pulse\+From\+Key (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} OMSim\+PMTResponse\+::get\+Pulse\+From\+Key (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 Get a finished Pulse using a key for the maps directly 
 \begin{DoxyParams}{Parameters}
@@ -207,11 +198,21 @@ Get a finished Pulse using a key for the maps directly
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}} Struct with transit time, charge and detection probability 
 \end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a2e0f0ab6b76976909e12fcc50729ae49}\label{class_o_m_sim_p_m_t_response_a2e0f0ab6b76976909e12fcc50729ae49}} 
+\index{OMSimPMTResponse@{OMSimPMTResponse}!getScannedWavelengths@{getScannedWavelengths}}
+\index{getScannedWavelengths@{getScannedWavelengths}!OMSimPMTResponse@{OMSimPMTResponse}}
+\doxysubsubsection{\texorpdfstring{getScannedWavelengths()}{getScannedWavelengths()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$G4double$>$ OMSim\+PMTResponse\+::get\+Scanned\+Wavelengths (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_no_response_ae56766ceaa0520afcaa02ae8faff6b7a}{No\+Response}}, \mbox{\hyperlink{class_l_o_m_n_n_v_t_response_adf70a46500c0fcbe4432e9ac831a822b}{LOMNNVTResponse}}, \mbox{\hyperlink{class_l_o_m_hamamatsu_response_af09d437c88b9911485db7fb86299f63f}{LOMHamamatsu\+Response}}, \mbox{\hyperlink{class_d_e_g_g_p_m_t_response_aeb3825b544178248db645e7730574b54}{DEGGPMTResponse}}, \mbox{\hyperlink{class_gen1_p_m_t_response_a74204bf1d49fdb079b60a82d92b8898e}{Gen1\+PMTResponse}}, and \mbox{\hyperlink{classm_d_o_m_p_m_t_response_a296cb747a9eb15cb4a347f902dd479c1}{m\+DOMPMTResponse}}.
+
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a7851c7a21806760d269dca32166e8741}\label{class_o_m_sim_p_m_t_response_a7851c7a21806760d269dca32166e8741}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!getTransitTime@{getTransitTime}}
 \index{getTransitTime@{getTransitTime}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{getTransitTime()}{getTransitTime()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::get\+Transit\+Time (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::get\+Transit\+Time (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 This method returns the transit time sampled from a Gaussian distribution with the mean transit time and transit time spread for the provided wavelength key.
 
@@ -227,7 +228,7 @@ G4double The transit time in ns.
 \index{OMSimPMTResponse@{OMSimPMTResponse}!getTransitTime@{getTransitTime}}
 \index{getTransitTime@{getTransitTime}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{getTransitTime()}{getTransitTime()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::get\+Transit\+Time (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength1,  }\item[{G4double}]{p\+Wavelength2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::get\+Transit\+Time (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength1,  }\item[{G4double}]{p\+Wavelength2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 This method interpolates the transit time between the two provided wavelengths and then returns the time sampled from a Gaussian distribution with the mean interpolated transit time and interpolated transit time spread.
 
@@ -241,17 +242,11 @@ This method interpolates the transit time between the two provided wavelengths a
 \begin{DoxyReturn}{Returns}
 G4double The interpolated transit time in ns. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a5bfb5cb02d12f7d8a17e389707d4a8a1}\label{class_o_m_sim_p_m_t_response_a5bfb5cb02d12f7d8a17e389707d4a8a1}} 
-\index{OMSimPMTResponse@{OMSimPMTResponse}!operator=@{operator=}}
-\index{operator=@{operator=}!OMSimPMTResponse@{OMSimPMTResponse}}
-\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}}\& OMSim\+PMTResponse\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
-
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a2447b2f9eb62a1e99f410bfeda917d5c}\label{class_o_m_sim_p_m_t_response_a2447b2f9eb62a1e99f410bfeda917d5c}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!passQE@{passQE}}
 \index{passQE@{passQE}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{passQE()}{passQE()}}
-{\footnotesize\ttfamily bool OMSim\+PMTResponse\+::pass\+QE (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool OMSim\+PMTResponse\+::pass\+QE (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -262,13 +257,17 @@ G4double The interpolated transit time in ns.
 True if the photon passes the QE check, false otherwise.
 \end{DoxyReturn}
 \begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{class_o_m_sim_p_m_t_response_a947d422c7f7a006f714773df900bd722}{configure\+QEinterpolator}} 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_response_aa6618c49b1742336f7b0b79d6f2c4de6}{configure\+QEinterpolator}} 
 \end{DoxySeeAlso}
+
+
+Reimplemented in \mbox{\hyperlink{class_no_response_a87d46b2cf6fcf1e32e3aa4c62b614c7b}{No\+Response}}.
+
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}\label{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!processPhotocathodeHit@{processPhotocathodeHit}}
 \index{processPhotocathodeHit@{processPhotocathodeHit}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{processPhotocathodeHit()}{processPhotocathodeHit()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} OMSim\+PMTResponse\+::process\+Photocathode\+Hit (\begin{DoxyParamCaption}\item[{G4double}]{pX,  }\item[{G4double}]{pY,  }\item[{G4double}]{p\+Wavelength }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} OMSim\+PMTResponse\+::process\+Photocathode\+Hit (\begin{DoxyParamCaption}\item[{G4double}]{pX,  }\item[{G4double}]{pY,  }\item[{G4double}]{p\+Wavelength }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Transform a hit based on its location and photon wavelength to a PMT pulse, considering the transit time, charge, and detection probability.
 
@@ -284,11 +283,25 @@ Transform a hit based on its location and photon wavelength to a PMT pulse, cons
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}} representing the processed hit. 
 \end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_no_response_aa904db4023917812120742e949d1fd88}{No\+Response}}.
+
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_ad008c81ae36f0db6e6588c9beab3cd81}\label{class_o_m_sim_p_m_t_response_ad008c81ae36f0db6e6588c9beab3cd81}} 
+\index{OMSimPMTResponse@{OMSimPMTResponse}!scansAvailable@{scansAvailable}}
+\index{scansAvailable@{scansAvailable}!OMSimPMTResponse@{OMSimPMTResponse}}
+\doxysubsubsection{\texorpdfstring{scansAvailable()}{scansAvailable()}}
+{\footnotesize\ttfamily virtual bool OMSim\+PMTResponse\+::scans\+Available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_no_response_a9f4fcf94da848ac8565a7ca7b02f0644}{No\+Response}}, \mbox{\hyperlink{class_l_o_m_n_n_v_t_response_ae40ded37bacc426fff97ff922de12a49}{LOMNNVTResponse}}, \mbox{\hyperlink{class_l_o_m_hamamatsu_response_afbb196120c354bb70fc674ea716d557f}{LOMHamamatsu\+Response}}, \mbox{\hyperlink{class_d_e_g_g_p_m_t_response_a8ec9494e387a0f1bb4c49d6128b46786}{DEGGPMTResponse}}, \mbox{\hyperlink{class_gen1_p_m_t_response_aa060d55df994b6464b2e530a431875cb}{Gen1\+PMTResponse}}, and \mbox{\hyperlink{classm_d_o_m_p_m_t_response_a9d9912b37e81639c5d270b5c2d327a05}{m\+DOMPMTResponse}}.
+
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a39d958aa616a6bdd0c8a73211d834503}\label{class_o_m_sim_p_m_t_response_a39d958aa616a6bdd0c8a73211d834503}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!wavelengthInterpolatedValue@{wavelengthInterpolatedValue}}
 \index{wavelengthInterpolatedValue@{wavelengthInterpolatedValue}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{wavelengthInterpolatedValue()}{wavelengthInterpolatedValue()}}
-{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::wavelength\+Interpolated\+Value (\begin{DoxyParamCaption}\item[{std\+::map$<$ G4double, TH2D $\ast$ $>$}]{p\+Map,  }\item[{G4double}]{p\+Wavelength1,  }\item[{G4double}]{p\+Wavelength2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::wavelength\+Interpolated\+Value (\begin{DoxyParamCaption}\item[{std\+::map$<$ G4double, TH2D $\ast$ $>$}]{p\+Map,  }\item[{G4double}]{p\+Wavelength1,  }\item[{G4double}]{p\+Wavelength2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 Get interpolated value between two scans of different wavelenths 
 \begin{DoxyParams}{Parameters}
@@ -309,61 +322,55 @@ G4double interpolated value
 \index{OMSimPMTResponse@{OMSimPMTResponse}!mGainG2Dmap@{mGainG2Dmap}}
 \index{mGainG2Dmap@{mGainG2Dmap}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{mGainG2Dmap}{mGainG2Dmap}}
-{\footnotesize\ttfamily std\+::map$<$G4double, TH2D $\ast$$>$ OMSim\+PMTResponse\+::m\+Gain\+G2\+Dmap\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::map$<$G4double, TH2D $\ast$$>$ OMSim\+PMTResponse\+::m\+Gain\+G2\+Dmap\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a6103659c1dbb9db7dea07e672f6aedb0}\label{class_o_m_sim_p_m_t_response_a6103659c1dbb9db7dea07e672f6aedb0}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!mGainResolutionG2Dmap@{mGainResolutionG2Dmap}}
 \index{mGainResolutionG2Dmap@{mGainResolutionG2Dmap}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{mGainResolutionG2Dmap}{mGainResolutionG2Dmap}}
-{\footnotesize\ttfamily std\+::map$<$G4double, TH2D $\ast$$>$ OMSim\+PMTResponse\+::m\+Gain\+Resolution\+G2\+Dmap\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::map$<$G4double, TH2D $\ast$$>$ OMSim\+PMTResponse\+::m\+Gain\+Resolution\+G2\+Dmap\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a062558aeb49f7e6f0767fdf9434ad4a5}\label{class_o_m_sim_p_m_t_response_a062558aeb49f7e6f0767fdf9434ad4a5}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!mQEInterp@{mQEInterp}}
 \index{mQEInterp@{mQEInterp}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{mQEInterp}{mQEInterp}}
-{\footnotesize\ttfamily TGraph$\ast$ OMSim\+PMTResponse\+::m\+QEInterp\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily TGraph$\ast$ OMSim\+PMTResponse\+::m\+QEInterp\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a58cc7b865fa91c7c2bd1e57dbb4251e8}\label{class_o_m_sim_p_m_t_response_a58cc7b865fa91c7c2bd1e57dbb4251e8}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!mRelativeDetectionEfficiencyInterp@{mRelativeDetectionEfficiencyInterp}}
 \index{mRelativeDetectionEfficiencyInterp@{mRelativeDetectionEfficiencyInterp}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{mRelativeDetectionEfficiencyInterp}{mRelativeDetectionEfficiencyInterp}}
-{\footnotesize\ttfamily TGraph$\ast$ OMSim\+PMTResponse\+::m\+Relative\+Detection\+Efficiency\+Interp\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a43b83e33b8e7d75d7277e3091f0f0a42}\label{class_o_m_sim_p_m_t_response_a43b83e33b8e7d75d7277e3091f0f0a42}} 
-\index{OMSimPMTResponse@{OMSimPMTResponse}!mScannedWavelengths@{mScannedWavelengths}}
-\index{mScannedWavelengths@{mScannedWavelengths}!OMSimPMTResponse@{OMSimPMTResponse}}
-\doxysubsubsection{\texorpdfstring{mScannedWavelengths}{mScannedWavelengths}}
-{\footnotesize\ttfamily std\+::vector$<$G4double$>$ OMSim\+PMTResponse\+::m\+Scanned\+Wavelengths \{460 $\ast$ nm, 480 $\ast$ nm, 500 $\ast$ nm, 520 $\ast$ nm, 540 $\ast$ nm, 560 $\ast$ nm, 580 $\ast$ nm, 600 $\ast$ nm, 620 $\ast$ nm, 640 $\ast$ nm\}\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily TGraph$\ast$ OMSim\+PMTResponse\+::m\+Relative\+Detection\+Efficiency\+Interp\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_af7fb5fd2ef69e7d6f248fb153e7d813c}\label{class_o_m_sim_p_m_t_response_af7fb5fd2ef69e7d6f248fb153e7d813c}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!mTransitTimeG2Dmap@{mTransitTimeG2Dmap}}
 \index{mTransitTimeG2Dmap@{mTransitTimeG2Dmap}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{mTransitTimeG2Dmap}{mTransitTimeG2Dmap}}
-{\footnotesize\ttfamily std\+::map$<$G4double, TH2D $\ast$$>$ OMSim\+PMTResponse\+::m\+Transit\+Time\+G2\+Dmap\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::map$<$G4double, TH2D $\ast$$>$ OMSim\+PMTResponse\+::m\+Transit\+Time\+G2\+Dmap\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a628cc8b287a978f2a25e4e3000a00057}\label{class_o_m_sim_p_m_t_response_a628cc8b287a978f2a25e4e3000a00057}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!mTransitTimeSpreadG2Dmap@{mTransitTimeSpreadG2Dmap}}
 \index{mTransitTimeSpreadG2Dmap@{mTransitTimeSpreadG2Dmap}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{mTransitTimeSpreadG2Dmap}{mTransitTimeSpreadG2Dmap}}
-{\footnotesize\ttfamily std\+::map$<$G4double, TH2D $\ast$$>$ OMSim\+PMTResponse\+::m\+Transit\+Time\+Spread\+G2\+Dmap\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::map$<$G4double, TH2D $\ast$$>$ OMSim\+PMTResponse\+::m\+Transit\+Time\+Spread\+G2\+Dmap\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a8e0c8cc231f7c07c4f17132f645bfd91}\label{class_o_m_sim_p_m_t_response_a8e0c8cc231f7c07c4f17132f645bfd91}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!mWavelength@{mWavelength}}
 \index{mWavelength@{mWavelength}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{mWavelength}{mWavelength}}
-{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::m\+Wavelength\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::m\+Wavelength\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_ae6443cbdd673e2be376d7d3b4eeeec3a}\label{class_o_m_sim_p_m_t_response_ae6443cbdd673e2be376d7d3b4eeeec3a}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!mX@{mX}}
 \index{mX@{mX}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{mX}{mX}}
-{\footnotesize\ttfamily double OMSim\+PMTResponse\+::mX\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily double OMSim\+PMTResponse\+::mX\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a86f72bebc40749900ecf581ba85558e3}\label{class_o_m_sim_p_m_t_response_a86f72bebc40749900ecf581ba85558e3}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!mY@{mY}}
 \index{mY@{mY}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{mY}{mY}}
-{\footnotesize\ttfamily double OMSim\+PMTResponse\+::mY\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily double OMSim\+PMTResponse\+::mY\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

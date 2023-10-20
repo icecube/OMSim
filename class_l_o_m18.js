@@ -7,6 +7,7 @@ var class_l_o_m18 =
     [ "createGelpadLogicalVolumes", "class_l_o_m18.html#ab5292cecae375e7f04caf7b995ccc8ae", null ],
     [ "createLOM18InnerSolid", "class_l_o_m18.html#a45b2c68239eac03aaf1b76225dc377f1", null ],
     [ "createLOM18OuterSolid", "class_l_o_m18.html#a0c6423e526bb3c38904cde7ef6673ec2", null ],
+    [ "getName", "class_l_o_m18.html#a1dfd8b1711eacfaedcd447fc2c5a3b94", null ],
     [ "getNumberOfPMTs", "class_l_o_m18.html#ac61b9f417138d26d168abbf48f0c0379", null ],
     [ "getPressureVesselWeight", "class_l_o_m18.html#a6e42615d2a84e6b94ec28a32ede7ec25", null ],
     [ "placeCADPenetrator", "class_l_o_m18.html#a6f6f50683c9c78ded2c92ca1b9177446", null ],

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['obj_2048',['OBJ',['../namespace_c_a_d_mesh_1_1_file.html#af3e6984a5299332307e93abd7553bfceab2e77fed5c6658e5e08093f36c7026b9',1,'CADMesh::File']]],
-  ['off_2049',['OFF',['../namespace_c_a_d_mesh_1_1_file.html#af3e6984a5299332307e93abd7553bfcea66f62de43d2647cd704f89aa88bbaf29',1,'CADMesh::File']]]
+  ['generalphotondetector_2157',['GeneralPhotonDetector',['../_o_m_sim_sensitive_detector_8hh.html#aba5019e335fb2939e79e0e5b62202729aa9cc6585d4b897f793680a0927c6f69f',1,'OMSimSensitiveDetector.hh']]]
 ];

@@ -116,17 +116,22 @@ $(document).ready(function(){initNavTree('class_o_m_sim_p_m_t_response.html','')
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_o_m_sim_p_m_t_response-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">OMSimPMTResponse Class Reference</div>  </div>
+<div class="title">OMSimPMTResponse Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Singleton class to simulate PMT response.  
  <a href="class_o_m_sim_p_m_t_response.html#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for OMSimPMTResponse:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_o_m_sim_p_m_t_response__inherit__graph.svg" width="414" height="291"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides methods to process hits on a photocathode and get resulting pulses based on various measurements and scans. </p>
 </div><table class="memberdecls">
@@ -138,23 +143,18 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a55aabd8f8fd9be58eca3ba0753974d08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html">PMTPulse</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08">processPhotocathodeHit</a> (G4double pX, G4double pY, G4double pWavelength)</td></tr>
+<tr class="memitem:a55aabd8f8fd9be58eca3ba0753974d08"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html">PMTPulse</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08">processPhotocathodeHit</a> (G4double pX, G4double pY, G4double pWavelength)</td></tr>
 <tr class="memdesc:a55aabd8f8fd9be58eca3ba0753974d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a hit on the photocathode into a PMT pulse.  <a href="class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08">More...</a><br /></td></tr>
 <tr class="separator:a55aabd8f8fd9be58eca3ba0753974d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2447b2f9eb62a1e99f410bfeda917d5c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a2447b2f9eb62a1e99f410bfeda917d5c">passQE</a> (G4double pWavelength)</td></tr>
+<tr class="memitem:a2447b2f9eb62a1e99f410bfeda917d5c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a2447b2f9eb62a1e99f410bfeda917d5c">passQE</a> (G4double pWavelength)</td></tr>
 <tr class="memdesc:a2447b2f9eb62a1e99f410bfeda917d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if photon with given wavelength passes QE check.  <a href="class_o_m_sim_p_m_t_response.html#a2447b2f9eb62a1e99f410bfeda917d5c">More...</a><br /></td></tr>
 <tr class="separator:a2447b2f9eb62a1e99f410bfeda917d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6dd27707e5154fc35e238ead2dd726a0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a6dd27707e5154fc35e238ead2dd726a0">getInstance</a> ()</td></tr>
-<tr class="separator:a6dd27707e5154fc35e238ead2dd726a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a947d422c7f7a006f714773df900bd722"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a947d422c7f7a006f714773df900bd722">configureQEinterpolator</a> ()</td></tr>
-<tr class="memdesc:a947d422c7f7a006f714773df900bd722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the QE interpolator from a data file.  <a href="class_o_m_sim_p_m_t_response.html#a947d422c7f7a006f714773df900bd722">More...</a><br /></td></tr>
-<tr class="separator:a947d422c7f7a006f714773df900bd722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:aa6618c49b1742336f7b0b79d6f2c4de6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#aa6618c49b1742336f7b0b79d6f2c4de6">configureQEinterpolator</a> (const char *pFileName)</td></tr>
+<tr class="memdesc:aa6618c49b1742336f7b0b79d6f2c4de6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the QE interpolator from a data file.  <a href="class_o_m_sim_p_m_t_response.html#aa6618c49b1742336f7b0b79d6f2c4de6">More...</a><br /></td></tr>
+<tr class="separator:aa6618c49b1742336f7b0b79d6f2c4de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dd544847ff216a24aa8c528e76c9aed"><td class="memItemLeft" align="right" valign="top">TH2D *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a0dd544847ff216a24aa8c528e76c9aed">createHistogramFromData</a> (const std::string &amp;pFilePath, const char *pTH2DName)</td></tr>
 <tr class="memdesc:a0dd544847ff216a24aa8c528e76c9aed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a histogram from provided data.  <a href="class_o_m_sim_p_m_t_response.html#a0dd544847ff216a24aa8c528e76c9aed">More...</a><br /></td></tr>
 <tr class="separator:a0dd544847ff216a24aa8c528e76c9aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,19 +176,17 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:ae479429319a502e3b100682326e0d0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39d958aa616a6bdd0c8a73211d834503"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a39d958aa616a6bdd0c8a73211d834503">wavelengthInterpolatedValue</a> (std::map&lt; G4double, TH2D * &gt; pMap, G4double pWavelengthKey1, G4double pWavelengthKey2)</td></tr>
 <tr class="separator:a39d958aa616a6bdd0c8a73211d834503"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e0f0ab6b76976909e12fcc50729ae49"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a2e0f0ab6b76976909e12fcc50729ae49">getScannedWavelengths</a> ()=0</td></tr>
+<tr class="separator:a2e0f0ab6b76976909e12fcc50729ae49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad008c81ae36f0db6e6588c9beab3cd81"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#ad008c81ae36f0db6e6588c9beab3cd81">scansAvailable</a> ()=0</td></tr>
+<tr class="separator:ad008c81ae36f0db6e6588c9beab3cd81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80b379bc78ca06d23011703aae3341d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a80b379bc78ca06d23011703aae3341d7">OMSimPMTResponse</a> ()</td></tr>
 <tr class="separator:a80b379bc78ca06d23011703aae3341d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca0bba84fbd6a5c121467e44b1b758f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#aca0bba84fbd6a5c121467e44b1b758f9">~OMSimPMTResponse</a> ()</td></tr>
-<tr class="separator:aca0bba84fbd6a5c121467e44b1b758f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a204531485b4a631d1a60b53057658ca8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a204531485b4a631d1a60b53057658ca8">OMSimPMTResponse</a> (const <a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> &amp;)=delete</td></tr>
-<tr class="separator:a204531485b4a631d1a60b53057658ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bfb5cb02d12f7d8a17e389707d4a8a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a5bfb5cb02d12f7d8a17e389707d4a8a1">operator=</a> (const <a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> &amp;)=delete</td></tr>
-<tr class="separator:a5bfb5cb02d12f7d8a17e389707d4a8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cae62f2ea6fda5296c438eec41ea308"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a2cae62f2ea6fda5296c438eec41ea308">~OMSimPMTResponse</a> ()</td></tr>
+<tr class="separator:a2cae62f2ea6fda5296c438eec41ea308"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a43b83e33b8e7d75d7277e3091f0f0a42"><td class="memItemLeft" align="right" valign="top">std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a43b83e33b8e7d75d7277e3091f0f0a42">mScannedWavelengths</a> {460 * nm, 480 * nm, 500 * nm, 520 * nm, 540 * nm, 560 * nm, 580 * nm, 600 * nm, 620 * nm, 640 * nm}</td></tr>
-<tr class="separator:a43b83e33b8e7d75d7277e3091f0f0a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:ae6443cbdd673e2be376d7d3b4eeeec3a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#ae6443cbdd673e2be376d7d3b4eeeec3a">mX</a></td></tr>
 <tr class="separator:ae6443cbdd673e2be376d7d3b4eeeec3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86f72bebc40749900ecf581ba85558e3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a86f72bebc40749900ecf581ba85558e3">mY</a></td></tr>
@@ -210,7 +208,7 @@ Private Attributes</h2></td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a80b379bc78ca06d23011703aae3341d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80b379bc78ca06d23011703aae3341d7">&#9670;&nbsp;</a></span>OMSimPMTResponse() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a80b379bc78ca06d23011703aae3341d7">&#9670;&nbsp;</a></span>OMSimPMTResponse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -227,15 +225,15 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="aca0bba84fbd6a5c121467e44b1b758f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca0bba84fbd6a5c121467e44b1b758f9">&#9670;&nbsp;</a></span>~OMSimPMTResponse()</h2>
+<a id="a2cae62f2ea6fda5296c438eec41ea308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cae62f2ea6fda5296c438eec41ea308">&#9670;&nbsp;</a></span>~OMSimPMTResponse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -244,7 +242,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">OMSimPMTResponse::~OMSimPMTResponse </td>
+          <td class="memname">virtual OMSimPMTResponse::~OMSimPMTResponse </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -252,33 +250,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a204531485b4a631d1a60b53057658ca8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a204531485b4a631d1a60b53057658ca8">&#9670;&nbsp;</a></span>OMSimPMTResponse() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">OMSimPMTResponse::OMSimPMTResponse </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">delete</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -286,8 +258,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a947d422c7f7a006f714773df900bd722"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a947d422c7f7a006f714773df900bd722">&#9670;&nbsp;</a></span>configureQEinterpolator()</h2>
+<a id="aa6618c49b1742336f7b0b79d6f2c4de6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6618c49b1742336f7b0b79d6f2c4de6">&#9670;&nbsp;</a></span>configureQEinterpolator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -298,13 +270,14 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void OMSimPMTResponse::configureQEinterpolator </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pFileName</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -343,7 +316,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -379,7 +352,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -423,7 +396,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -436,31 +409,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>G4double The interpolated charge in PE. </dd></dl>
-
-</div>
-</div>
-<a id="a6dd27707e5154fc35e238ead2dd726a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6dd27707e5154fc35e238ead2dd726a0">&#9670;&nbsp;</a></span>getInstance()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a>&amp; OMSimPMTResponse::getInstance </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -493,7 +441,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -527,7 +475,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -538,6 +486,33 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html" title="Represents the output pulse for a detected photon.">PMTPulse</a> Struct with transit time, charge and detection probability </dd></dl>
+
+</div>
+</div>
+<a id="a2e0f0ab6b76976909e12fcc50729ae49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e0f0ab6b76976909e12fcc50729ae49">&#9670;&nbsp;</a></span>getScannedWavelengths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::vector&lt;G4double&gt; OMSimPMTResponse::getScannedWavelengths </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_no_response.html#ae56766ceaa0520afcaa02ae8faff6b7a">NoResponse</a>, <a class="el" href="class_l_o_m_n_n_v_t_response.html#adf70a46500c0fcbe4432e9ac831a822b">LOMNNVTResponse</a>, <a class="el" href="class_l_o_m_hamamatsu_response.html#af09d437c88b9911485db7fb86299f63f">LOMHamamatsuResponse</a>, <a class="el" href="class_d_e_g_g_p_m_t_response.html#aeb3825b544178248db645e7730574b54">DEGGPMTResponse</a>, <a class="el" href="class_gen1_p_m_t_response.html#a74204bf1d49fdb079b60a82d92b8898e">Gen1PMTResponse</a>, and <a class="el" href="classm_d_o_m_p_m_t_response.html#a296cb747a9eb15cb4a347f902dd479c1">mDOMPMTResponse</a>.</p>
 
 </div>
 </div>
@@ -560,7 +535,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -604,7 +579,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -620,37 +595,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5bfb5cb02d12f7d8a17e389707d4a8a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bfb5cb02d12f7d8a17e389707d4a8a1">&#9670;&nbsp;</a></span>operator=()</h2>
+<a id="a2447b2f9eb62a1e99f410bfeda917d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2447b2f9eb62a1e99f410bfeda917d5c">&#9670;&nbsp;</a></span>passQE()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a>&amp; OMSimPMTResponse::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">delete</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2447b2f9eb62a1e99f410bfeda917d5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2447b2f9eb62a1e99f410bfeda917d5c">&#9670;&nbsp;</a></span>passQE()</h2>
-
-<div class="memitem">
-<div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">bool OMSimPMTResponse::passQE </td>
@@ -660,6 +612,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -668,7 +625,9 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the photon passes the QE check, false otherwise.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_o_m_sim_p_m_t_response.html#a947d422c7f7a006f714773df900bd722" title="Initializes the QE interpolator from a data file.">configureQEinterpolator</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_o_m_sim_p_m_t_response.html#aa6618c49b1742336f7b0b79d6f2c4de6" title="Initializes the QE interpolator from a data file.">configureQEinterpolator</a> </dd></dl>
+
+<p>Reimplemented in <a class="el" href="class_no_response.html#a87d46b2cf6fcf1e32e3aa4c62b614c7b">NoResponse</a>.</p>
 
 </div>
 </div>
@@ -677,6 +636,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html">OMSimPMTResponse::PMTPulse</a> OMSimPMTResponse::processPhotocathodeHit </td>
@@ -702,6 +664,11 @@ Private Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Transform a hit based on its location and photon wavelength to a PMT pulse, considering the transit time, charge, and detection probability.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -713,6 +680,35 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html" title="Represents the output pulse for a detected photon.">PMTPulse</a> representing the processed hit. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="class_no_response.html#aa904db4023917812120742e949d1fd88">NoResponse</a>.</p>
+
+</div>
+</div>
+<a id="ad008c81ae36f0db6e6588c9beab3cd81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad008c81ae36f0db6e6588c9beab3cd81">&#9670;&nbsp;</a></span>scansAvailable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool OMSimPMTResponse::scansAvailable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_no_response.html#a9f4fcf94da848ac8565a7ca7b02f0644">NoResponse</a>, <a class="el" href="class_l_o_m_n_n_v_t_response.html#ae40ded37bacc426fff97ff922de12a49">LOMNNVTResponse</a>, <a class="el" href="class_l_o_m_hamamatsu_response.html#afbb196120c354bb70fc674ea716d557f">LOMHamamatsuResponse</a>, <a class="el" href="class_d_e_g_g_p_m_t_response.html#a8ec9494e387a0f1bb4c49d6128b46786">DEGGPMTResponse</a>, <a class="el" href="class_gen1_p_m_t_response.html#aa060d55df994b6464b2e530a431875cb">Gen1PMTResponse</a>, and <a class="el" href="classm_d_o_m_p_m_t_response.html#a9d9912b37e81639c5d270b5c2d327a05">mDOMPMTResponse</a>.</p>
 
 </div>
 </div>
@@ -751,7 +747,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -783,7 +779,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -805,7 +801,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -827,7 +823,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -849,29 +845,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a43b83e33b8e7d75d7277e3091f0f0a42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43b83e33b8e7d75d7277e3091f0f0a42">&#9670;&nbsp;</a></span>mScannedWavelengths</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;G4double&gt; OMSimPMTResponse::mScannedWavelengths {460 * nm, 480 * nm, 500 * nm, 520 * nm, 540 * nm, 560 * nm, 580 * nm, 600 * nm, 620 * nm, 640 * nm}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -893,7 +867,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -915,7 +889,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -937,7 +911,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -959,7 +933,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -981,7 +955,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -998,7 +972,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a></li>
-    <li class="footer">Generated on Fri Oct 20 2023 09:16:01 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Oct 20 2023 12:31:48 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

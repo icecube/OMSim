@@ -18,14 +18,14 @@ var hierarchy =
     ] ],
     [ "abcDetectorComponent", "classabc_detector_component.html", [
       [ "DEggHarness", "class_d_egg_harness.html", null ],
-      [ "OMSimPMTConstruction", "class_o_m_sim_p_m_t_construction.html", null ],
-      [ "OpticalModule", "class_optical_module.html", [
+      [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html", [
         [ "DEGG", "class_d_e_g_g.html", null ],
         [ "LOM16", "class_l_o_m16.html", null ],
         [ "LOM18", "class_l_o_m18.html", null ],
         [ "mDOM", "classm_d_o_m.html", null ],
         [ "pDOM", "classp_d_o_m.html", null ]
       ] ],
+      [ "OMSimPMTConstruction", "class_o_m_sim_p_m_t_construction.html", null ],
       [ "mDOMFlasher", "classm_d_o_m_flasher.html", null ],
       [ "mDOMHarness", "classm_d_o_m_harness.html", null ]
     ] ],
@@ -61,10 +61,15 @@ var hierarchy =
       [ "G4RadioactiveDecay", "class_g4_radioactive_decay.html", null ],
       [ "OMSimG4Scintillation", "class_o_m_sim_g4_scintillation.html", null ]
     ] ],
+    [ "G4VSensitiveDetector", null, [
+      [ "OMSimSensitiveDetector", "class_o_m_sim_sensitive_detector.html", null ]
+    ] ],
     [ "G4VUserDetectorConstruction", null, [
-      [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html", null ],
-      [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html", null ],
-      [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html", null ]
+      [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html", [
+        [ "OMSimEffectiveAreaDetector", "class_o_m_sim_effective_area_detector.html", null ],
+        [ "OMSimRadDecaysDetector", "class_o_m_sim_rad_decays_detector.html", null ],
+        [ "OMSimSNdetector", "class_o_m_sim_s_ndetector.html", null ]
+      ] ]
     ] ],
     [ "G4VUserPhysicsList", null, [
       [ "OMSimPhysicsList", "class_o_m_sim_physics_list.html", null ],
@@ -92,13 +97,21 @@ var hierarchy =
     [ "OMSimDecaysAnalysis", "class_o_m_sim_decays_analysis.html", null ],
     [ "OMSimEffectiveAreaAnalyisis", "class_o_m_sim_effective_area_analyisis.html", null ],
     [ "OMSimHitManager", "class_o_m_sim_hit_manager.html", null ],
-    [ "OMSimPMTResponse", "class_o_m_sim_p_m_t_response.html", null ],
+    [ "OMSimPMTResponse", "class_o_m_sim_p_m_t_response.html", [
+      [ "DEGGPMTResponse", "class_d_e_g_g_p_m_t_response.html", null ],
+      [ "Gen1PMTResponse", "class_gen1_p_m_t_response.html", null ],
+      [ "LOMHamamatsuResponse", "class_l_o_m_hamamatsu_response.html", null ],
+      [ "LOMNNVTResponse", "class_l_o_m_n_n_v_t_response.html", null ],
+      [ "NoResponse", "class_no_response.html", null ],
+      [ "mDOMPMTResponse", "classm_d_o_m_p_m_t_response.html", null ]
+    ] ],
     [ "OMSimSNAnalysis", "class_o_m_sim_s_n_analysis.html", null ],
     [ "OMSimSNTools", "class_o_m_sim_s_n_tools.html", null ],
     [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html", null ],
     [ "ParameterTable", "class_parameter_table.html", [
       [ "InputDataManager", "class_input_data_manager.html", null ]
     ] ],
+    [ "PhotonInfo", "struct_photon_info.html", null ],
     [ "OMSimPMTResponse::PMTPulse", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html", null ],
     [ "CADMesh::File::Reader", "class_c_a_d_mesh_1_1_file_1_1_reader.html", [
       [ "CADMesh::File::BuiltInReader", "class_c_a_d_mesh_1_1_file_1_1_built_in_reader.html", null ],

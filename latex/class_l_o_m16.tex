@@ -32,7 +32,9 @@ void \mbox{\hyperlink{class_l_o_m16_ab837d810e22d601fc1a298ba0dfddd48}{construct
 double \mbox{\hyperlink{class_l_o_m16_aa91c920187061c71df5560864845c8a8}{get\+Pressure\+Vessel\+Weight}} ()
 \begin{DoxyCompactList}\small\item\em Virtual method to get the weight of the pressure vessel. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_l_o_m16_ab6c3906a5b9bb9f05ff72d7d089cf967}{get\+Number\+Of\+PMTs}} ()
-\begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\item 
+G4\+String \mbox{\hyperlink{class_l_o_m16_affe936616d3d9f54332cc680d4effe98}{get\+Name}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -183,6 +185,16 @@ Implements \mbox{\hyperlink{classabc_detector_component_a8e7f01c218d5f093e80e46b
 \doxysubsubsection{\texorpdfstring{createGelpadLogicalVolumes()}{createGelpadLogicalVolumes()}}
 {\footnotesize\ttfamily void LOM16\+::create\+Gelpad\+Logical\+Volumes (\begin{DoxyParamCaption}\item[{G4\+VSolid $\ast$}]{l\+Gel\+Solid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+\mbox{\Hypertarget{class_l_o_m16_affe936616d3d9f54332cc680d4effe98}\label{class_l_o_m16_affe936616d3d9f54332cc680d4effe98}} 
+\index{LOM16@{LOM16}!getName@{getName}}
+\index{getName@{getName}!LOM16@{LOM16}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily G4\+String LOM16\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a039a483d855aa87a6baa94800d8280f5}{OMSim\+Optical\+Module}}.
+
 \mbox{\Hypertarget{class_l_o_m16_ab6c3906a5b9bb9f05ff72d7d089cf967}\label{class_l_o_m16_ab6c3906a5b9bb9f05ff72d7d089cf967}} 
 \index{LOM16@{LOM16}!getNumberOfPMTs@{getNumberOfPMTs}}
 \index{getNumberOfPMTs@{getNumberOfPMTs}!LOM16@{LOM16}}
@@ -194,7 +206,7 @@ Number of PMTs in the optical module.
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_optical_module_a851f73098f123c00dbe5a783e2b650ff}{Optical\+Module}}.
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}{OMSim\+Optical\+Module}}.
 
 \mbox{\Hypertarget{class_l_o_m16_aa91c920187061c71df5560864845c8a8}\label{class_l_o_m16_aa91c920187061c71df5560864845c8a8}} 
 \index{LOM16@{LOM16}!getPressureVesselWeight@{getPressureVesselWeight}}
@@ -207,7 +219,7 @@ Weight of the pressure vessel.
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_optical_module_ab559dfa88537ceba930183a4c0eafbfd}{Optical\+Module}}.
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}{OMSim\+Optical\+Module}}.
 
 \mbox{\Hypertarget{class_l_o_m16_af5fcdb9e252d6a72b939673d5f67d419}\label{class_l_o_m16_af5fcdb9e252d6a72b939673d5f67d419}} 
 \index{LOM16@{LOM16}!placeCADSupportStructure@{placeCADSupportStructure}}

@@ -154,6 +154,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae6b66371cdfbd30ba932e30fd769cbc4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#ae6b66371cdfbd30ba932e30fd769cbc4">calculateMultiplicity</a> (const G4double pTimeWindow, int moduleNumber=0)</td></tr>
 <tr class="memdesc:ae6b66371cdfbd30ba932e30fd769cbc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the multiplicity of hits within a specified time window for a given module.  <a href="class_o_m_sim_hit_manager.html#ae6b66371cdfbd30ba932e30fd769cbc4">More...</a><br /></td></tr>
 <tr class="separator:ae6b66371cdfbd30ba932e30fd769cbc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcdc764e8a8b756e6a1eb745403da57b"><td class="memItemLeft" align="right" valign="top">G4int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#abcdc764e8a8b756e6a1eb745403da57b">getNextDetectorIndex</a> ()</td></tr>
+<tr class="separator:abcdc764e8a8b756e6a1eb745403da57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -183,6 +185,8 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a68b3614293ca71096ff48c4fc5943de2"><td class="memItemLeft" align="right" valign="top">std::map&lt; G4int, G4int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a68b3614293ca71096ff48c4fc5943de2">mNumPMTs</a></td></tr>
 <tr class="memdesc:a68b3614293ca71096ff48c4fc5943de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of number of PMTs in the used optical modules.  <a href="class_o_m_sim_hit_manager.html#a68b3614293ca71096ff48c4fc5943de2">More...</a><br /></td></tr>
 <tr class="separator:a68b3614293ca71096ff48c4fc5943de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fa16a90854630de2ddf703f8649cd24"><td class="memItemLeft" align="right" valign="top">G4int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a0fa16a90854630de2ddf703f8649cd24">mCurrentIndex</a> = -1</td></tr>
+<tr class="separator:a0fa16a90854630de2ddf703f8649cd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7590a8dd5b3b9df30c7ca92bdecf7277"></a>
@@ -479,6 +483,31 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="abcdc764e8a8b756e6a1eb745403da57b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcdc764e8a8b756e6a1eb745403da57b">&#9670;&nbsp;</a></span>getNextDetectorIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">G4int OMSimHitManager::getNextDetectorIndex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6baf2795e91dc2ff99c3eda3e5143bc3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6baf2795e91dc2ff99c3eda3e5143bc3">&#9670;&nbsp;</a></span>operator=()</h2>
 
@@ -582,6 +611,28 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0fa16a90854630de2ddf703f8649cd24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fa16a90854630de2ddf703f8649cd24">&#9670;&nbsp;</a></span>mCurrentIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">G4int OMSimHitManager::mCurrentIndex = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5b5170bb63b04190829aeb79183a5d3f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b5170bb63b04190829aeb79183a5d3f">&#9670;&nbsp;</a></span>mModuleHits</h2>
 
@@ -628,7 +679,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></li>
-    <li class="footer">Generated on Fri Oct 20 2023 09:16:01 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Oct 20 2023 12:31:48 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -1,7 +1,8 @@
 <map id="OMSimLOM16.hh" name="OMSimLOM16.hh">
-<area shape="rect" id="node1" title="Construction of LOM16." alt="" coords="331,5,465,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_l_o_m16_8cc.html" title=" " alt="" coords="5,80,137,107"/>
-<area shape="rect" id="node3" href="$effective__area_2src_2_o_m_sim_detector_construction_8cc.html" title=" " alt="" coords="161,80,387,107"/>
-<area shape="rect" id="node4" href="$radioactive__decays_2src_2_o_m_sim_detector_construction_8cc.html" title=" " alt="" coords="411,80,636,107"/>
-<area shape="rect" id="node5" href="$supernova_2src_2_o_m_sim_detector_construction_8cc.html" title=" " alt="" coords="660,80,885,107"/>
+<area shape="rect" id="node1" title="Construction of LOM16." alt="" coords="459,5,593,32"/>
+<area shape="rect" id="node2" href="$_o_m_sim_detector_construction_8cc.html" title=" " alt="" coords="5,80,231,107"/>
+<area shape="rect" id="node3" href="$_o_m_sim_l_o_m16_8cc.html" title=" " alt="" coords="255,80,387,107"/>
+<area shape="rect" id="node4" href="$_o_m_sim_effective_area_detector_8cc.html" title=" " alt="" coords="411,80,641,107"/>
+<area shape="rect" id="node5" href="$_o_m_sim_rad_decays_detector_8cc.html" title=" " alt="" coords="665,80,880,107"/>
+<area shape="rect" id="node6" href="$_o_m_sim_s_ndetector_8cc.html" title=" " alt="" coords="904,80,1063,107"/>
 </map>

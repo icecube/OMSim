@@ -7,16 +7,6 @@ Controls the main simulation process.
 
 
 
-Collaboration diagram for OMSim\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{class_o_m_sim__coll__graph}
-\end{center}
-\end{figure}
-
-
 \doxysubsection{Detailed Description}
 The \mbox{\hyperlink{class_o_m_sim}{OMSim}} class is the top-\/level controller for the simulation. It sets up and manages the individual components of the Geant4 simulation, such as the run manager, the visualization manager, and the navigator. It also enables user interaction with the simulation through a command line interface and visualisation tools. This class is used in the main function of all studies as provides the basic flow of control of any Geant4 simulation. \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -27,12 +17,10 @@ The \mbox{\hyperlink{class_o_m_sim}{OMSim}} class is the top-\/level controller 
 \item 
 void \mbox{\hyperlink{class_o_m_sim_a5fdec07501bb76199f652ac95bd1e961}{ensure\+Output\+Directory\+Exists}} (const std\+::string \&filepath)
 \begin{DoxyCompactList}\small\item\em Ensure that the output directory for the simulation results exists. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_a215ae29aab195daa3ef15868e70ab2c1}{initialise\+Simulation}} ()
+void \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{initialise\+Simulation}} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$p\+Detector\+Construction)
 \begin{DoxyCompactList}\small\item\em Initialize the simulation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_a42d86958aba31a17fb0c8a39fbc9c9b5}{start\+Visualisation}} ()
-\begin{DoxyCompactList}\small\item\em UIEx session is started for visualisation. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$ \mbox{\hyperlink{class_o_m_sim_ac38029b4fb94cb40495fbf6208f06f79}{get\+Detector\+Construction}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em UIEx session is started for visualisation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,8 +34,6 @@ G4\+Run\+Manager $\ast$ \mbox{\hyperlink{class_o_m_sim_a63d81cbf53a7eb4d42f5c693
 G4\+Vis\+Executive $\ast$ \mbox{\hyperlink{class_o_m_sim_a8bded781b54a28ea07c04923eb98b23e}{m\+Vis\+Manager}}
 \item 
 G4\+Navigator $\ast$ \mbox{\hyperlink{class_o_m_sim_aae423f68ad8ea948dc4a2bcc6ed8c6bf}{m\+Navigator}}
-\item 
-\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$ \mbox{\hyperlink{class_o_m_sim_a4f3301dff52231e9b45291cfbb66b637}{m\+Detector}} = nullptr
 \item 
 G4\+VUser\+Physics\+List $\ast$ \mbox{\hyperlink{class_o_m_sim_a73b7ac711ab9d9c1bc4ad38d6c985b94}{m\+Physics}} = nullptr
 \item 
@@ -96,17 +82,11 @@ If the output directory does not exist, this function will create it.
 {\em p\+File\+Path} & The path to the output directory. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_ac38029b4fb94cb40495fbf6208f06f79}\label{class_o_m_sim_ac38029b4fb94cb40495fbf6208f06f79}} 
-\index{OMSim@{OMSim}!getDetectorConstruction@{getDetectorConstruction}}
-\index{getDetectorConstruction@{getDetectorConstruction}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{getDetectorConstruction()}{getDetectorConstruction()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$ OMSim\+::get\+Detector\+Construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_o_m_sim_a215ae29aab195daa3ef15868e70ab2c1}\label{class_o_m_sim_a215ae29aab195daa3ef15868e70ab2c1}} 
+\mbox{\Hypertarget{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}\label{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}} 
 \index{OMSim@{OMSim}!initialiseSimulation@{initialiseSimulation}}
 \index{initialiseSimulation@{initialiseSimulation}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{initialiseSimulation()}{initialiseSimulation()}}
-{\footnotesize\ttfamily void OMSim\+::initialise\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+::initialise\+Simulation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$}]{p\+Detector\+Construction }\end{DoxyParamCaption})}
 
 This function sets up the necessary Geant4 components. \mbox{\Hypertarget{class_o_m_sim_a42d86958aba31a17fb0c8a39fbc9c9b5}\label{class_o_m_sim_a42d86958aba31a17fb0c8a39fbc9c9b5}} 
 \index{OMSim@{OMSim}!startVisualisation@{startVisualisation}}
@@ -117,12 +97,6 @@ This function sets up the necessary Geant4 components. \mbox{\Hypertarget{class_
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_o_m_sim_a4f3301dff52231e9b45291cfbb66b637}\label{class_o_m_sim_a4f3301dff52231e9b45291cfbb66b637}} 
-\index{OMSim@{OMSim}!mDetector@{mDetector}}
-\index{mDetector@{mDetector}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mDetector}{mDetector}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}$\ast$ OMSim\+::m\+Detector = nullptr\hspace{0.3cm}{\ttfamily [private]}}
-
 \mbox{\Hypertarget{class_o_m_sim_ab5b7adf0ed2750115e09d70772d220ae}\label{class_o_m_sim_ab5b7adf0ed2750115e09d70772d220ae}} 
 \index{OMSim@{OMSim}!mEventAction@{mEventAction}}
 \index{mEventAction@{mEventAction}!OMSim@{OMSim}}

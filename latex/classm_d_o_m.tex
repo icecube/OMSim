@@ -23,7 +23,7 @@ Collaboration diagram for m\+DOM\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classm_d_o_m_a852c309b7b661ff898726f0ade5d2fe6}{m\+DOM}} (\mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}} $\ast$p\+Data, G4bool p\+Place\+Harness=true, G4int p\+Index=0)
+\mbox{\hyperlink{classm_d_o_m_a6e27d4aa01dca9855cc6add940fe10c8}{m\+DOM}} (\mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}} $\ast$p\+Data, G4bool p\+Place\+Harness=true)
 \item 
 \mbox{\hyperlink{classm_d_o_m_afd95205edb92f86b5c8d4e5642a58e3c}{$\sim$m\+DOM}} ()
 \item 
@@ -33,6 +33,8 @@ double \mbox{\hyperlink{classm_d_o_m_a1fd32bb6eeff5f49f9ebbd09825b2e91}{get\+Pre
 \begin{DoxyCompactList}\small\item\em Virtual method to get the weight of the pressure vessel. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classm_d_o_m_ad7e07f1380a50158f7cede9aa84721be}{get\+Number\+Of\+PMTs}} ()
 \begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\item 
+G4\+String \mbox{\hyperlink{classm_d_o_m_a6ad860a00a1fd6d2a41d14d8e3d834ad}{get\+Name}} ()
+\item 
 void \mbox{\hyperlink{classm_d_o_m_adf748d77a8bae2516db1ba79b805841b}{run\+Beam\+On\+Flasher}} (G4int p\+Module\+Index, G4int p\+LEDIndex)
 \begin{DoxyCompactList}\small\item\em run/beam\+On the specified flasher. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classm_d_o_m_a48e3f7091cebec1b23d96c33580ec3e5}{set\+Navigator}} (G4\+Navigator $\ast$p\+Navigator)
@@ -46,11 +48,11 @@ std\+::vector$<$ G4\+Transform3D $>$ \mbox{\hyperlink{classm_d_o_m_a0ea5b69f3884
 \item 
 std\+::vector$<$ std\+::vector$<$ G4double $>$ $>$ \mbox{\hyperlink{classm_d_o_m_a33d632b787f897dfb6320e246690e62d}{m\+LED\+\_\+\+Ang\+From\+Sphere}}
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_ae28cf6f87440b664735f77854076219a}{m\+Cylinder\+Angle}} = 2.\+8$\ast$deg
+const G4double \mbox{\hyperlink{classm_d_o_m_ae28cf6f87440b664735f77854076219a}{m\+Cylinder\+Angle}} = 2.\+8 $\ast$ deg
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_a0a150a538f8bbaa720cc3876fcc74c54}{m\+Glass\+Out\+Rad}} = 176.\+5$\ast$mm
+const G4double \mbox{\hyperlink{classm_d_o_m_a0a150a538f8bbaa720cc3876fcc74c54}{m\+Glass\+Out\+Rad}} = 176.\+5 $\ast$ mm
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_a84365c931fe3226e18f78638b10b637d}{m\+Cyl\+High}} = 27.\+5$\ast$mm
+const G4double \mbox{\hyperlink{classm_d_o_m_a84365c931fe3226e18f78638b10b637d}{m\+Cyl\+High}} = 27.\+5 $\ast$ mm
 \item 
 const G4double \mbox{\hyperlink{classm_d_o_m_aedf09daf267a3c3b2dd9602c05f07636}{m\+Glass\+In\+Rad}} = \mbox{\hyperlink{classm_d_o_m_a0a150a538f8bbaa720cc3876fcc74c54}{m\+Glass\+Out\+Rad}} -\/ \mbox{\hyperlink{classm_d_o_m_a08b12af4d0dbd5f1872fc6157a859f7f}{m\+Glass\+Thick}}
 \end{DoxyCompactItemize}
@@ -94,25 +96,25 @@ G4double \mbox{\hyperlink{classm_d_o_m_aada079255c04717226e78ddc040c21bb}{m\+PMT
 \item 
 G4double \mbox{\hyperlink{classm_d_o_m_a23191a5e912d1fdd142c8a33b4dbb0c8}{m\+Ref\+Cone\+Ideal\+In\+Rad}}
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_a08b12af4d0dbd5f1872fc6157a859f7f}{m\+Glass\+Thick}} = 13.\+5$\ast$mm
+const G4double \mbox{\hyperlink{classm_d_o_m_a08b12af4d0dbd5f1872fc6157a859f7f}{m\+Glass\+Thick}} = 13.\+5 $\ast$ mm
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_abdad58a2d3b927d0d05c04cc0d23095a}{m\+Gel\+Thickness\+Front\+PMT}} = 3.\+6$\ast$mm
+const G4double \mbox{\hyperlink{classm_d_o_m_abdad58a2d3b927d0d05c04cc0d23095a}{m\+Gel\+Thickness\+Front\+PMT}} = 3.\+6 $\ast$ mm
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_a4f1a6e0c401ef0b464f74a226ebc48e2}{m\+Gel\+Thickness}} = 4.\+5$\ast$mm
+const G4double \mbox{\hyperlink{classm_d_o_m_a4f1a6e0c401ef0b464f74a226ebc48e2}{m\+Gel\+Thickness}} = 4.\+5 $\ast$ mm
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_a2054cea24a6f7bd00d684bd60e375a57}{m\+Eq\+PMTr\+Offset}} = 2.\+6$\ast$mm
+const G4double \mbox{\hyperlink{classm_d_o_m_a2054cea24a6f7bd00d684bd60e375a57}{m\+Eq\+PMTr\+Offset}} = 2.\+6 $\ast$ mm
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_a0c1757c5fbd9f90d0b4a4468eb70ce42}{m\+Eq\+PMTz\+Offset}} = 10.\+0$\ast$mm
+const G4double \mbox{\hyperlink{classm_d_o_m_a0c1757c5fbd9f90d0b4a4468eb70ce42}{m\+Eq\+PMTz\+Offset}} = 10.\+0 $\ast$ mm
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_a87182287102be81c43a516e8d7d5a25c}{m\+Ref\+Cone\+HalfZ}} = 15$\ast$mm
+const G4double \mbox{\hyperlink{classm_d_o_m_a87182287102be81c43a516e8d7d5a25c}{m\+Ref\+Cone\+HalfZ}} = 15 $\ast$ mm
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_ad4698d5b6cc2b233a4501a9ec1b34ff6}{m\+Ref\+Cone\+Sheet\+Thickness}} = 0.\+5$\ast$mm
+const G4double \mbox{\hyperlink{classm_d_o_m_ad4698d5b6cc2b233a4501a9ec1b34ff6}{m\+Ref\+Cone\+Sheet\+Thickness}} = 0.\+5 $\ast$ mm
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_a663f0885611e2697d7571465999568ec}{m\+Ref\+Cone\+To\+Holder}} = 1.\+55$\ast$mm
+const G4double \mbox{\hyperlink{classm_d_o_m_a663f0885611e2697d7571465999568ec}{m\+Ref\+Cone\+To\+Holder}} = 1.\+55 $\ast$ mm
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_a31abbeec998978802e32bd4f542c3485}{m\+Theta\+Polar}} = 33.\+0$\ast$deg
+const G4double \mbox{\hyperlink{classm_d_o_m_a31abbeec998978802e32bd4f542c3485}{m\+Theta\+Polar}} = 33.\+0 $\ast$ deg
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_a2b0d0e612536d2e72c11c85cef1f6f2b}{m\+Theta\+Equatorial}} = 72.\+0$\ast$deg
+const G4double \mbox{\hyperlink{classm_d_o_m_a2b0d0e612536d2e72c11c85cef1f6f2b}{m\+Theta\+Equatorial}} = 72.\+0 $\ast$ deg
 \item 
 const G4int \mbox{\hyperlink{classm_d_o_m_a3e8e95e43ee32d0db400be6495f45681}{m\+Nr\+Polar\+PMTs}} = 4
 \item 
@@ -120,7 +122,7 @@ const G4int \mbox{\hyperlink{classm_d_o_m_ae57fd1dd20ce6878a4903a2837e4d27f}{m\+
 \item 
 const G4int \mbox{\hyperlink{classm_d_o_m_a9a9ed5076d3b0d679b1dd26e2fb2e292}{m\+Ref\+Cone\+Angle}} = 51
 \item 
-const G4double \mbox{\hyperlink{classm_d_o_m_a151e155b3a557263ae2b7d73739dc358}{m\+Pol\+Eq\+PMTPhi\+Phase}} = 0$\ast$deg
+const G4double \mbox{\hyperlink{classm_d_o_m_a151e155b3a557263ae2b7d73739dc358}{m\+Pol\+Eq\+PMTPhi\+Phase}} = 0 $\ast$ deg
 \item 
 const G4int \mbox{\hyperlink{classm_d_o_m_a31d5588f276092ffcb9284f843b3bbb6}{m\+Total\+Nr\+PMTs}} = (\mbox{\hyperlink{classm_d_o_m_a3e8e95e43ee32d0db400be6495f45681}{m\+Nr\+Polar\+PMTs}} + \mbox{\hyperlink{classm_d_o_m_ae57fd1dd20ce6878a4903a2837e4d27f}{m\+Nr\+Eq\+PMTs}}) $\ast$ 2
 \item 
@@ -134,11 +136,11 @@ const G4double \mbox{\hyperlink{classm_d_o_m_a98dbce10427bd4cabd671b2626307a1b}{
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classm_d_o_m_a852c309b7b661ff898726f0ade5d2fe6}\label{classm_d_o_m_a852c309b7b661ff898726f0ade5d2fe6}} 
+\mbox{\Hypertarget{classm_d_o_m_a6e27d4aa01dca9855cc6add940fe10c8}\label{classm_d_o_m_a6e27d4aa01dca9855cc6add940fe10c8}} 
 \index{mDOM@{mDOM}!mDOM@{mDOM}}
 \index{mDOM@{mDOM}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mDOM()}{mDOM()}}
-{\footnotesize\ttfamily m\+DOM\+::m\+DOM (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}} $\ast$}]{p\+Data,  }\item[{G4bool}]{p\+Place\+Harness = {\ttfamily true},  }\item[{G4int}]{p\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily m\+DOM\+::m\+DOM (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}} $\ast$}]{p\+Data,  }\item[{G4bool}]{p\+Place\+Harness = {\ttfamily true} }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classm_d_o_m_afd95205edb92f86b5c8d4e5642a58e3c}\label{classm_d_o_m_afd95205edb92f86b5c8d4e5642a58e3c}} 
 \index{mDOM@{mDOM}!````~mDOM@{$\sim$mDOM}}
@@ -170,6 +172,16 @@ Implements \mbox{\hyperlink{classabc_detector_component_a8e7f01c218d5f093e80e46b
 \doxysubsubsection{\texorpdfstring{equatorialReflector()}{equatorialReflector()}}
 {\footnotesize\ttfamily G4\+Subtraction\+Solid $\ast$ m\+DOM\+::equatorial\+Reflector (\begin{DoxyParamCaption}\item[{G4\+VSolid $\ast$}]{p\+Support\+Structure,  }\item[{G4\+Cons $\ast$}]{p\+Refl\+Cone,  }\item[{G4double}]{p\+Angle,  }\item[{G4\+String}]{p\+Suffix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+\mbox{\Hypertarget{classm_d_o_m_a6ad860a00a1fd6d2a41d14d8e3d834ad}\label{classm_d_o_m_a6ad860a00a1fd6d2a41d14d8e3d834ad}} 
+\index{mDOM@{mDOM}!getName@{getName}}
+\index{getName@{getName}!mDOM@{mDOM}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily G4\+String m\+DOM\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a039a483d855aa87a6baa94800d8280f5}{OMSim\+Optical\+Module}}.
+
 \mbox{\Hypertarget{classm_d_o_m_ad7e07f1380a50158f7cede9aa84721be}\label{classm_d_o_m_ad7e07f1380a50158f7cede9aa84721be}} 
 \index{mDOM@{mDOM}!getNumberOfPMTs@{getNumberOfPMTs}}
 \index{getNumberOfPMTs@{getNumberOfPMTs}!mDOM@{mDOM}}
@@ -181,7 +193,7 @@ Number of PMTs in the optical module.
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_optical_module_a851f73098f123c00dbe5a783e2b650ff}{Optical\+Module}}.
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}{OMSim\+Optical\+Module}}.
 
 \mbox{\Hypertarget{classm_d_o_m_a1fd32bb6eeff5f49f9ebbd09825b2e91}\label{classm_d_o_m_a1fd32bb6eeff5f49f9ebbd09825b2e91}} 
 \index{mDOM@{mDOM}!getPressureVesselWeight@{getPressureVesselWeight}}
@@ -194,7 +206,7 @@ Weight of the pressure vessel.
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_optical_module_ab559dfa88537ceba930183a4c0eafbfd}{Optical\+Module}}.
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}{OMSim\+Optical\+Module}}.
 
 \mbox{\Hypertarget{classm_d_o_m_a95cb59294f27f0e119d27d4b7e4f2cfe}\label{classm_d_o_m_a95cb59294f27f0e119d27d4b7e4f2cfe}} 
 \index{mDOM@{mDOM}!pressureVessel@{pressureVessel}}
@@ -258,25 +270,25 @@ This method triggers the flasher at the given index in the specified module.
 \index{mDOM@{mDOM}!mCylHigh@{mCylHigh}}
 \index{mCylHigh@{mCylHigh}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mCylHigh}{mCylHigh}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Cyl\+High = 27.\+5$\ast$mm}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Cyl\+High = 27.\+5 $\ast$ mm}
 
 \mbox{\Hypertarget{classm_d_o_m_ae28cf6f87440b664735f77854076219a}\label{classm_d_o_m_ae28cf6f87440b664735f77854076219a}} 
 \index{mDOM@{mDOM}!mCylinderAngle@{mCylinderAngle}}
 \index{mCylinderAngle@{mCylinderAngle}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mCylinderAngle}{mCylinderAngle}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Cylinder\+Angle = 2.\+8$\ast$deg}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Cylinder\+Angle = 2.\+8 $\ast$ deg}
 
 \mbox{\Hypertarget{classm_d_o_m_a2054cea24a6f7bd00d684bd60e375a57}\label{classm_d_o_m_a2054cea24a6f7bd00d684bd60e375a57}} 
 \index{mDOM@{mDOM}!mEqPMTrOffset@{mEqPMTrOffset}}
 \index{mEqPMTrOffset@{mEqPMTrOffset}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mEqPMTrOffset}{mEqPMTrOffset}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Eq\+PMTr\+Offset = 2.\+6$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Eq\+PMTr\+Offset = 2.\+6 $\ast$ mm\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classm_d_o_m_a0c1757c5fbd9f90d0b4a4468eb70ce42}\label{classm_d_o_m_a0c1757c5fbd9f90d0b4a4468eb70ce42}} 
 \index{mDOM@{mDOM}!mEqPMTzOffset@{mEqPMTzOffset}}
 \index{mEqPMTzOffset@{mEqPMTzOffset}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mEqPMTzOffset}{mEqPMTzOffset}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Eq\+PMTz\+Offset = 10.\+0$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Eq\+PMTz\+Offset = 10.\+0 $\ast$ mm\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classm_d_o_m_a16328146960e2feccdae1ef07d6a815b}\label{classm_d_o_m_a16328146960e2feccdae1ef07d6a815b}} 
 \index{mDOM@{mDOM}!mFlashers@{mFlashers}}
@@ -288,13 +300,13 @@ This method triggers the flasher at the given index in the specified module.
 \index{mDOM@{mDOM}!mGelThickness@{mGelThickness}}
 \index{mGelThickness@{mGelThickness}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mGelThickness}{mGelThickness}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Gel\+Thickness = 4.\+5$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Gel\+Thickness = 4.\+5 $\ast$ mm\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classm_d_o_m_abdad58a2d3b927d0d05c04cc0d23095a}\label{classm_d_o_m_abdad58a2d3b927d0d05c04cc0d23095a}} 
 \index{mDOM@{mDOM}!mGelThicknessFrontPMT@{mGelThicknessFrontPMT}}
 \index{mGelThicknessFrontPMT@{mGelThicknessFrontPMT}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mGelThicknessFrontPMT}{mGelThicknessFrontPMT}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Gel\+Thickness\+Front\+PMT = 3.\+6$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Gel\+Thickness\+Front\+PMT = 3.\+6 $\ast$ mm\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classm_d_o_m_aedf09daf267a3c3b2dd9602c05f07636}\label{classm_d_o_m_aedf09daf267a3c3b2dd9602c05f07636}} 
 \index{mDOM@{mDOM}!mGlassInRad@{mGlassInRad}}
@@ -306,13 +318,13 @@ This method triggers the flasher at the given index in the specified module.
 \index{mDOM@{mDOM}!mGlassOutRad@{mGlassOutRad}}
 \index{mGlassOutRad@{mGlassOutRad}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mGlassOutRad}{mGlassOutRad}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Glass\+Out\+Rad = 176.\+5$\ast$mm}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Glass\+Out\+Rad = 176.\+5 $\ast$ mm}
 
 \mbox{\Hypertarget{classm_d_o_m_a08b12af4d0dbd5f1872fc6157a859f7f}\label{classm_d_o_m_a08b12af4d0dbd5f1872fc6157a859f7f}} 
 \index{mDOM@{mDOM}!mGlassThick@{mGlassThick}}
 \index{mGlassThick@{mGlassThick}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mGlassThick}{mGlassThick}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Glass\+Thick = 13.\+5$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Glass\+Thick = 13.\+5 $\ast$ mm\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classm_d_o_m_a61d4eb42abbc6512691d7e466f039b25}\label{classm_d_o_m_a61d4eb42abbc6512691d7e466f039b25}} 
 \index{mDOM@{mDOM}!mHarness@{mHarness}}
@@ -390,7 +402,7 @@ This method triggers the flasher at the given index in the specified module.
 \index{mDOM@{mDOM}!mPolEqPMTPhiPhase@{mPolEqPMTPhiPhase}}
 \index{mPolEqPMTPhiPhase@{mPolEqPMTPhiPhase}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mPolEqPMTPhiPhase}{mPolEqPMTPhiPhase}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Pol\+Eq\+PMTPhi\+Phase = 0$\ast$deg\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Pol\+Eq\+PMTPhi\+Phase = 0 $\ast$ deg\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classm_d_o_m_a9a9ed5076d3b0d679b1dd26e2fb2e292}\label{classm_d_o_m_a9a9ed5076d3b0d679b1dd26e2fb2e292}} 
 \index{mDOM@{mDOM}!mRefConeAngle@{mRefConeAngle}}
@@ -402,7 +414,7 @@ This method triggers the flasher at the given index in the specified module.
 \index{mDOM@{mDOM}!mRefConeHalfZ@{mRefConeHalfZ}}
 \index{mRefConeHalfZ@{mRefConeHalfZ}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mRefConeHalfZ}{mRefConeHalfZ}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Ref\+Cone\+HalfZ = 15$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Ref\+Cone\+HalfZ = 15 $\ast$ mm\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classm_d_o_m_a23191a5e912d1fdd142c8a33b4dbb0c8}\label{classm_d_o_m_a23191a5e912d1fdd142c8a33b4dbb0c8}} 
 \index{mDOM@{mDOM}!mRefConeIdealInRad@{mRefConeIdealInRad}}
@@ -414,13 +426,13 @@ This method triggers the flasher at the given index in the specified module.
 \index{mDOM@{mDOM}!mRefConeSheetThickness@{mRefConeSheetThickness}}
 \index{mRefConeSheetThickness@{mRefConeSheetThickness}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mRefConeSheetThickness}{mRefConeSheetThickness}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Ref\+Cone\+Sheet\+Thickness = 0.\+5$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Ref\+Cone\+Sheet\+Thickness = 0.\+5 $\ast$ mm\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classm_d_o_m_a663f0885611e2697d7571465999568ec}\label{classm_d_o_m_a663f0885611e2697d7571465999568ec}} 
 \index{mDOM@{mDOM}!mRefConeToHolder@{mRefConeToHolder}}
 \index{mRefConeToHolder@{mRefConeToHolder}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mRefConeToHolder}{mRefConeToHolder}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Ref\+Cone\+To\+Holder = 1.\+55$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Ref\+Cone\+To\+Holder = 1.\+55 $\ast$ mm\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classm_d_o_m_a389836b7c99d6a7e7445b986c588f113}\label{classm_d_o_m_a389836b7c99d6a7e7445b986c588f113}} 
 \index{mDOM@{mDOM}!mReflectorPositions@{mReflectorPositions}}
@@ -444,13 +456,13 @@ This method triggers the flasher at the given index in the specified module.
 \index{mDOM@{mDOM}!mThetaEquatorial@{mThetaEquatorial}}
 \index{mThetaEquatorial@{mThetaEquatorial}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mThetaEquatorial}{mThetaEquatorial}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Theta\+Equatorial = 72.\+0$\ast$deg\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Theta\+Equatorial = 72.\+0 $\ast$ deg\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classm_d_o_m_a31abbeec998978802e32bd4f542c3485}\label{classm_d_o_m_a31abbeec998978802e32bd4f542c3485}} 
 \index{mDOM@{mDOM}!mThetaPolar@{mThetaPolar}}
 \index{mThetaPolar@{mThetaPolar}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{mThetaPolar}{mThetaPolar}}
-{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Theta\+Polar = 33.\+0$\ast$deg\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const G4double m\+DOM\+::m\+Theta\+Polar = 33.\+0 $\ast$ deg\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classm_d_o_m_a98dbce10427bd4cabd671b2626307a1b}\label{classm_d_o_m_a98dbce10427bd4cabd671b2626307a1b}} 
 \index{mDOM@{mDOM}!mThetaPolLED@{mThetaPolLED}}

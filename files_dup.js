@@ -30,16 +30,14 @@ var files_dup =
     [ "OMSimDEGGHarness.hh", "_o_m_sim_d_e_g_g_harness_8hh.html", [
       [ "DEggHarness", "class_d_egg_harness.html", "class_d_egg_harness" ]
     ] ],
-    [ "effective_area/src/OMSimDetectorConstruction.cc", "effective__area_2src_2_o_m_sim_detector_construction_8cc.html", null ],
-    [ "radioactive_decays/src/OMSimDetectorConstruction.cc", "radioactive__decays_2src_2_o_m_sim_detector_construction_8cc.html", null ],
-    [ "supernova/src/OMSimDetectorConstruction.cc", "supernova_2src_2_o_m_sim_detector_construction_8cc.html", "supernova_2src_2_o_m_sim_detector_construction_8cc" ],
-    [ "effective_area/include/OMSimDetectorConstruction.hh", "effective__area_2include_2_o_m_sim_detector_construction_8hh.html", null ],
-    [ "radioactive_decays/include/OMSimDetectorConstruction.hh", "radioactive__decays_2include_2_o_m_sim_detector_construction_8hh.html", null ],
-    [ "supernova/include/OMSimDetectorConstruction.hh", "supernova_2include_2_o_m_sim_detector_construction_8hh.html", null ],
+    [ "OMSimDetectorConstruction.cc", "_o_m_sim_detector_construction_8cc.html", null ],
+    [ "OMSimDetectorConstruction.hh", "_o_m_sim_detector_construction_8hh.html", null ],
     [ "OMSimEffectiveAreaAnalyisis.cc", "_o_m_sim_effective_area_analyisis_8cc.html", null ],
     [ "OMSimEffectiveAreaAnalyisis.hh", "_o_m_sim_effective_area_analyisis_8hh.html", [
       [ "effectiveAreaResult", "structeffective_area_result.html", "structeffective_area_result" ]
     ] ],
+    [ "OMSimEffectiveAreaDetector.cc", "_o_m_sim_effective_area_detector_8cc.html", null ],
+    [ "OMSimEffectiveAreaDetector.hh", "_o_m_sim_effective_area_detector_8hh.html", null ],
     [ "effective_area/src/OMSimEventAction.cc", "effective__area_2src_2_o_m_sim_event_action_8cc.html", null ],
     [ "radioactive_decays/src/OMSimEventAction.cc", "radioactive__decays_2src_2_o_m_sim_event_action_8cc.html", null ],
     [ "supernova/src/OMSimEventAction.cc", "supernova_2src_2_o_m_sim_event_action_8cc.html", null ],
@@ -77,6 +75,7 @@ var files_dup =
     [ "OMSimMDOMHarness.hh", "_o_m_sim_m_d_o_m_harness_8hh.html", [
       [ "mDOMHarness", "classm_d_o_m_harness.html", "classm_d_o_m_harness" ]
     ] ],
+    [ "OMSimOpticalModule.cc", "_o_m_sim_optical_module_8cc.html", null ],
     [ "OMSimOpticalModule.hh", "_o_m_sim_optical_module_8hh.html", null ],
     [ "OMSimPDOM.cc", "_o_m_sim_p_d_o_m_8cc.html", null ],
     [ "OMSimPDOM.hh", "_o_m_sim_p_d_o_m_8hh.html", null ],
@@ -93,7 +92,13 @@ var files_dup =
     [ "OMSimPMTResponse.cc", "_o_m_sim_p_m_t_response_8cc.html", null ],
     [ "OMSimPMTResponse.hh", "_o_m_sim_p_m_t_response_8hh.html", [
       [ "OMSimPMTResponse", "class_o_m_sim_p_m_t_response.html", "class_o_m_sim_p_m_t_response" ],
-      [ "PMTPulse", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse" ]
+      [ "PMTPulse", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse" ],
+      [ "mDOMPMTResponse", "classm_d_o_m_p_m_t_response.html", "classm_d_o_m_p_m_t_response" ],
+      [ "Gen1PMTResponse", "class_gen1_p_m_t_response.html", "class_gen1_p_m_t_response" ],
+      [ "DEGGPMTResponse", "class_d_e_g_g_p_m_t_response.html", "class_d_e_g_g_p_m_t_response" ],
+      [ "LOMHamamatsuResponse", "class_l_o_m_hamamatsu_response.html", "class_l_o_m_hamamatsu_response" ],
+      [ "LOMNNVTResponse", "class_l_o_m_n_n_v_t_response.html", "class_l_o_m_n_n_v_t_response" ],
+      [ "NoResponse", "class_no_response.html", "class_no_response" ]
     ] ],
     [ "effective_area/src/OMSimPrimaryGeneratorAction.cc", "effective__area_2src_2_o_m_sim_primary_generator_action_8cc.html", null ],
     [ "radioactive_decays/src/OMSimPrimaryGeneratorAction.cc", "radioactive__decays_2src_2_o_m_sim_primary_generator_action_8cc.html", null ],
@@ -111,15 +116,21 @@ var files_dup =
     [ "OMSimPrimaryGeneratorMessenger.hh", "_o_m_sim_primary_generator_messenger_8hh.html", [
       [ "OMSimPrimaryGeneratorMessenger", "class_o_m_sim_primary_generator_messenger.html", "class_o_m_sim_primary_generator_messenger" ]
     ] ],
+    [ "OMSimRadDecaysDetector.cc", "_o_m_sim_rad_decays_detector_8cc.html", null ],
+    [ "OMSimRadDecaysDetector.hh", "_o_m_sim_rad_decays_detector_8hh.html", null ],
     [ "OMSimRunAction.hh", "_o_m_sim_run_action_8hh.html", [
       [ "OMSimRunAction", "class_o_m_sim_run_action.html", "class_o_m_sim_run_action" ]
     ] ],
+    [ "OMSimSensitiveDetector.cc", "_o_m_sim_sensitive_detector_8cc.html", "_o_m_sim_sensitive_detector_8cc" ],
+    [ "OMSimSensitiveDetector.hh", "_o_m_sim_sensitive_detector_8hh.html", "_o_m_sim_sensitive_detector_8hh" ],
     [ "OMSimSNAnalysis.cc", "_o_m_sim_s_n_analysis_8cc.html", null ],
     [ "OMSimSNAnalysis.hh", "_o_m_sim_s_n_analysis_8hh.html", [
       [ "HitStat", "struct_hit_stat.html", "struct_hit_stat" ],
       [ "EvtStat", "struct_evt_stat.html", "struct_evt_stat" ],
       [ "OMSimSNAnalysis", "class_o_m_sim_s_n_analysis.html", "class_o_m_sim_s_n_analysis" ]
     ] ],
+    [ "OMSimSNdetector.cc", "_o_m_sim_s_ndetector_8cc.html", null ],
+    [ "OMSimSNdetector.hh", "_o_m_sim_s_ndetector_8hh.html", null ],
     [ "OMSimSNParticleGenerators.cc", "_o_m_sim_s_n_particle_generators_8cc.html", "_o_m_sim_s_n_particle_generators_8cc" ],
     [ "OMSimSNParticleGenerators.hh", "_o_m_sim_s_n_particle_generators_8hh.html", [
       [ "SNBaseParticleGenerator", "class_s_n_base_particle_generator.html", "class_s_n_base_particle_generator" ]
@@ -130,7 +141,6 @@ var files_dup =
     [ "OMSimSteppingAction.hh", "_o_m_sim_stepping_action_8hh.html", [
       [ "OMSimSteppingAction", "class_o_m_sim_stepping_action.html", "class_o_m_sim_stepping_action" ]
     ] ],
-    [ "OMSimTrackingAction.cc", "_o_m_sim_tracking_action_8cc.html", "_o_m_sim_tracking_action_8cc" ],
     [ "OMSimTrackingAction.hh", "_o_m_sim_tracking_action_8hh.html", [
       [ "OMSimTrackingAction", "class_o_m_sim_tracking_action.html", "class_o_m_sim_tracking_action" ]
     ] ],
