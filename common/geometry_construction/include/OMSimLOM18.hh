@@ -13,7 +13,7 @@
 #include <G4LogicalVolume.hh>
 #include <G4Polycone.hh>
 
-class LOM18 : public OpticalModule
+class LOM18 : public OMSimOpticalModule
 {
 public:
     LOM18(InputDataManager* pData, G4bool pPlaceHarness = false);
@@ -21,7 +21,12 @@ public:
     void construction();
     double getPressureVesselWeight() {return 17.0*kg;};
     int getNumberOfPMTs() { return mTotalNrPMTs;};
-    
+    G4String getName()
+    {
+        std::stringstream ss;
+        ss << "LOM18/" << mIndex;
+        return ss.str();
+    }
 private:
 
     G4Polycone* createLOM18OuterSolid();

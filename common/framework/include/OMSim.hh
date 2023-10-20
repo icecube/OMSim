@@ -48,9 +48,9 @@ public:
     ~OMSim();
 
     void ensureOutputDirectoryExists(const std::string &filepath);
-    void initialiseSimulation();
+    void initialiseSimulation(OMSimDetectorConstruction* pDetectorConstruction);
     void startVisualisation();
-    OMSimDetectorConstruction* getDetectorConstruction();
+    //OMSimDetectorConstruction* getDetectorConstruction();
     po::options_description mGeneralArgs;
 
 private:
@@ -58,7 +58,7 @@ private:
     G4VisExecutive *mVisManager;
     G4Navigator *mNavigator;
 
-    OMSimDetectorConstruction *mDetector = nullptr;
+    
     G4VUserPhysicsList *mPhysics = nullptr;
     G4VUserPrimaryGeneratorAction *mGenAction = nullptr;
     G4UserRunAction *mRunAction = nullptr;

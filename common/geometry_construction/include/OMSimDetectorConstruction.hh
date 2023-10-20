@@ -7,7 +7,7 @@
 #ifndef OMSimDetectorConstruction_h
 #define OMSimDetectorConstruction_h 1
 
-#include "OMSimMDOM.hh"
+#include "OMSimOpticalModule.hh"
 
 #include <G4Orb.hh>
 #include <G4VUserDetectorConstruction.hh>
@@ -24,13 +24,14 @@ public:
     ~OMSimDetectorConstruction();
 
     G4VPhysicalVolume *Construct();
+    void setSensitiveDetector(G4LogicalVolume* logVol, G4VSensitiveDetector* aSD);
     G4VPhysicalVolume *mWorldPhysical;
 
-private:
-    G4Orb *mWorldSolid;
+protected:
+    G4VSolid *mWorldSolid;
     G4LogicalVolume *mWorldLogical;
-
-    void constructWorld();
+    virtual void constructWorld() = 0;
+    virtual void constructDetector() = 0;
     InputDataManager *mData;
 };
 

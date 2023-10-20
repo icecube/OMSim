@@ -74,17 +74,19 @@ void OMSim::ensureOutputDirectoryExists(const std::string &pFilePath)
     }
 }
 
+/*
 OMSimDetectorConstruction* OMSim::getDetectorConstruction()
 {
     return mDetector;
 }
+*/
 
     /**
      * @brief Initialize the simulation.
      *
      * This function sets up the necessary Geant4 components.
      */
-void OMSim::initialiseSimulation()
+void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstruction)
 {
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
     ensureOutputDirectoryExists(lArgs.get<std::string>("output_file"));
@@ -95,9 +97,7 @@ void OMSim::initialiseSimulation()
 
     CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
 
-    mDetector = new OMSimDetectorConstruction();
-
-    mRunManager->SetUserInitialization(mDetector);
+    mRunManager->SetUserInitialization(pDetectorConstruction);
 
     mPhysics = new OMSimPhysicsList;
     mRunManager->SetUserInitialization(mPhysics);
@@ -124,7 +124,7 @@ void OMSim::initialiseSimulation()
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     lUIinterface.setUI(G4UImanager::GetUIpointer());
 
-    mNavigator->SetWorldVolume(mDetector->mWorldPhysical);
+    mNavigator->SetWorldVolume(pDetectorConstruction->mWorldPhysical);
     mNavigator->LocateGlobalPointAndSetup(G4ThreeVector(0., 0., 0.));
 
     mHistory = mNavigator->CreateTouchableHistory();

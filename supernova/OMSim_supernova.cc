@@ -9,7 +9,7 @@
 #include "OMSimPrimaryGeneratorAction.hh"
 #include "OMSimHitManager.hh"
 #include "G4Navigator.hh"
-
+#include "OMSimSNdetector.hh"
 
 // TODO: change this global. getInstance?
 G4Navigator* aNavigator = new G4Navigator();
@@ -97,7 +97,9 @@ int main(int argc, char *argv[])
 
 		// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
 		lArgs.finalize();
-		lSimulation.initialiseSimulation();
+
+		OMSimSNdetector* lDetectorConstruction = new OMSimSNdetector();
+		lSimulation.initialiseSimulation(lDetectorConstruction);
 
 		SupernovaNeutrinoSimulation();
 

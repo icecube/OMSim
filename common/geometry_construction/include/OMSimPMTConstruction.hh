@@ -7,21 +7,29 @@
 #ifndef OMSimPMTConstruction_h
 #define OMSimPMTConstruction_h 1
 #include "abcDetectorComponent.hh"
+#include "OMSimPMTConstruction.hh"
+#include "OMSimPMTResponse.hh"
+//#include "OMSimDetectorConstruction.hh"
 
 #include <G4UnionSolid.hh>
 #include <G4Tubs.hh>
+class OMSimDetectorConstruction;
+
 
 class OMSimPMTConstruction : public abcDetectorComponent
 {
+
 public:
     OMSimPMTConstruction(InputDataManager *pData);
 
     void construction();
+    void configureSensitiveVolume(OMSimDetectorConstruction* pDetConst, G4String pName);
 
     G4double getDistancePMTCenterToTip();
     G4double getMaxPMTRadius();
     G4VSolid *getPMTSolid();
     G4LogicalVolume *getLogicalVolume();
+    G4LogicalVolume* getPhotocathodeLV(){return mPhotocathodeLV;};
     double getPMTGlassWeight();
 
     void placeIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume *&pMother, G4String pNameExtension = "");
@@ -30,6 +38,7 @@ public:
     void includeHAcoating();
 
 private:
+    G4LogicalVolume* mPhotocathodeLV;
     InputDataManager *mData;
     G4String mSelectedPMT;
     G4bool mDynodeSystem = false;
@@ -56,6 +65,8 @@ private:
     void constructCADdynodeSystem(G4LogicalVolume *pMother);
     G4SubtractionSolid *constructPhotocathodeLayer();
     
+    OMSimPMTResponse* getPMTResponseInstance();
+
     G4bool mSimpleBulb = false;
     G4double mMissingTubeLength;
     G4PVPlacement *mVacuumBackPhysical;

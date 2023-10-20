@@ -1,25 +1,21 @@
-#include "OMSimDetectorConstruction.hh"
+#include "OMSimEffectiveAreaDetector.hh"
 #include "OMSimPDOM.hh"
 #include "OMSimLOM16.hh"
 #include "OMSimLOM18.hh"
 #include "OMSimDEGG.hh"
+#include "OMSimMDOM.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimHitManager.hh"
-
-OMSimDetectorConstruction::OMSimDetectorConstruction()
-    : mWorldSolid(0), mWorldLogical(0), mWorldPhysical(0)
-{
-}
-
-OMSimDetectorConstruction::~OMSimDetectorConstruction()
-{
-    delete mData;
-}
+#include "G4SDManager.hh"
+#include <G4Orb.hh>
+#include "OMSimSensitiveDetector.hh"
+#include "G4LogicalVolume.hh"
+#include "G4Box.hh"
 
 /**
  * @brief Constructs the world volume (sphere).
  */
-void OMSimDetectorConstruction::constructWorld()
+void OMSimEffectiveAreaDetector::constructWorld()
 {
     mWorldSolid = new G4Orb("World", OMSimCommandArgsTable::getInstance().get<G4double>("world_radius") * m);
     mWorldLogical = new G4LogicalVolume(mWorldSolid, mData->getMaterial("argWorld"), "World_log", 0, 0, 0);
@@ -32,19 +28,14 @@ void OMSimDetectorConstruction::constructWorld()
  * @brief Constructs the selected detector from the command line argument and returns the physical world volume.
  * @return Pointer to the physical world volume
  */
-G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
+void OMSimEffectiveAreaDetector::constructDetector()
 {
-
-    mData = new InputDataManager();
-    mData->searchFolders();
-
-    constructWorld();
 
     OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
     bool lPlaceHarness = OMSimCommandArgsTable::getInstance().get<bool>("place_harness");
 
-    OpticalModule *lOpticalModule;
+    OMSimOpticalModule *lOpticalModule = nullptr;
 
     switch (OMSimCommandArgsTable::getInstance().get<G4int>("detector_type"))
     {
@@ -61,7 +52,8 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
         lPMTManager->selectPMT("argPMT");
         lPMTManager->construction();
         lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
-        lHitManager.setNumberOfPMTs(1);
+        lHitManager.setNumberOfPMTs(1, 0);
+        lPMTManager->configureSensitiveVolume(this, "/PMT/0");
         break;
     }
     case 2:
@@ -97,10 +89,8 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
 
     if (lOpticalModule)
     {
+        log_critical("Here");
         lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
-        lHitManager.setNumberOfPMTs(lOpticalModule->getNumberOfPMTs());
-        mOpticalModule = lOpticalModule;
+        lOpticalModule->configureSensitiveVolume(this);
     }
-
-    return mWorldPhysical;
 }

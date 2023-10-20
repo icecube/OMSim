@@ -1,6 +1,7 @@
 {
    "jName": "pmt_Hamamatsu_R15458_20nm",
    "jFrontalShape": "SphereEllipse",
+   "jResponseData" : "R15458",
    "jBulbBackShape": "FullFit",
    "jDynodeCADOffset": {
       "jValue": 99,
