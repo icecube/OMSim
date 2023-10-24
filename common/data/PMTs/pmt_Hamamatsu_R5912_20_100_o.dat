@@ -1,6 +1,7 @@
 {
    "jName": "pmt_Hamamatsu_R5912_20_100o",
    "jFrontalShape": "SphereEllipse",
+   "jResponseData" : "R5912",
    "jBulbBackShape" :"FullFit",
    "jOuterShape": {
       "jTotalLenght": {

@@ -24,7 +24,7 @@ public:
    * @brief Set the optical module to be used.
    * @param pOpticalModule Pointer to the optical module.
    */
-  void setOpticalModule(OpticalModule* pOpticalModule){mOM = pOpticalModule;};
+  void setOpticalModule(OMSimOpticalModule* pOpticalModule){mOM = pOpticalModule;};
 
 private:
 
@@ -38,7 +38,7 @@ private:
   void generalGPS(); 
   void configureIsotopeGPS(G4String Isotope, G4String location, G4int optParam = -999);
   std::map<G4String, G4int> calculateNumberOfDecays(G4MaterialPropertiesTable* pMPT, G4double pTimeWindow, G4double pMass);
-  OpticalModule* mOM;
+  OMSimOpticalModule* mOM;
   G4double mProductionRadius;
 };
 #endif

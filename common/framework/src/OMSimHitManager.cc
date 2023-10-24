@@ -78,7 +78,6 @@ void OMSimHitManager::appendHitInfo(
 	mModuleHits[moduleNumber].photon_track_length.push_back(trackLength);
 	mModuleHits[moduleNumber].photon_energy.push_back(energy);
 	mModuleHits[moduleNumber].PMT_hit.push_back(PMTHitNumber);
-	mModuleHits[moduleNumber].PMT_hit.push_back(PMTHitNumber);
 	mModuleHits[moduleNumber].photon_direction.push_back(momentumDirection);
 	mModuleHits[moduleNumber].photon_global_position.push_back(globalPos);
 	mModuleHits[moduleNumber].photon_local_position.push_back(localPos);
@@ -123,12 +122,12 @@ std::vector<double> OMSimHitManager::countHits(int moduleNumber)
 {
 	HitStats lHitsOfModule = mModuleHits[moduleNumber];
 	G4int lNumberPMTs = mNumPMTs[moduleNumber];
-
-	std::vector<double> lHits(lNumberPMTs + 2, 0.0);
+	
+	std::vector<double> lHits(lNumberPMTs + 1, 0.0);
 	for (int i = 0; i < (int)lHitsOfModule.PMT_hit.size(); i++)
 	{
 		lHits[lHitsOfModule.PMT_hit.at(i)] += 1; // lHitsOfModule.PMT_response.at(i).DetectionProbability;
-		lHits[lNumberPMTs + 1] += 1;
+		lHits[lNumberPMTs] += 1;
 	}
 
 	return lHits;

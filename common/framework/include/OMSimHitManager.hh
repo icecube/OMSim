@@ -87,8 +87,10 @@ public:
     std::vector<int> calculateMultiplicity(const G4double pTimeWindow, int moduleNumber = 0);
     std::map<G4int, HitStats> mModuleHits; ///< Map of a HitStats containing hit information for each simulated optical module
 
+    G4int getNextDetectorIndex() {return ++mCurrentIndex; }
 private:
     std::map<G4int, G4int> mNumPMTs; ///< Map of number of PMTs in the used optical modules
+    G4int mCurrentIndex = -1;
     OMSimHitManager() = default;
     ~OMSimHitManager() = default;
     OMSimHitManager(const OMSimHitManager &) = delete;

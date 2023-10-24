@@ -10,7 +10,7 @@ class OMSimTrackingAction : public G4UserTrackingAction
 		~OMSimTrackingAction(){};
 	
 		void PreUserTrackingAction(const G4Track*){};
-		void PostUserTrackingAction(const G4Track*);
+		void PostUserTrackingAction(const G4Track*){};
 		
 	private:
 };

@@ -1,6 +1,7 @@
 {
    "jName": "pmt_Hamamatsu_4inch",
    "jFrontalShape": "SphereEllipse",
+   "jResponseData" : "LOMHama",
    "jBulbBackShape": "jFullFit",
    "jDynodeCADOffset": {
       "jValue": 108,

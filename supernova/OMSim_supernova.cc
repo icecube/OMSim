@@ -9,11 +9,11 @@
 #include "OMSimPrimaryGeneratorAction.hh"
 #include "OMSimHitManager.hh"
 #include "G4Navigator.hh"
-
+#include "OMSimSNdetector.hh"
 
 // TODO: change this global. getInstance?
-G4Navigator* aNavigator = new G4Navigator();
-
+G4Navigator* gNavigator =nullptr;
+void setGlobalNavigator(G4Navigator* pNavigator){gNavigator = pNavigator;}
 
 namespace po = boost::program_options;
 
@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
 	try
 	{
 		OMSim lSimulation;
+		setGlobalNavigator(lSimulation.getNavigator());
 		// Do not use G4String as type here...
 		po::options_description lSpecific("SN simulation specific arguments");
 
@@ -97,7 +98,9 @@ int main(int argc, char *argv[])
 
 		// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
 		lArgs.finalize();
-		lSimulation.initialiseSimulation();
+
+		OMSimSNdetector* lDetectorConstruction = new OMSimSNdetector();
+		lSimulation.initialiseSimulation(lDetectorConstruction);
 
 		SupernovaNeutrinoSimulation();
 
