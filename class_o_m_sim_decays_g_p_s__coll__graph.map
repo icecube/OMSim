@@ -1,5 +1,5 @@
-<map id="IsotopeDecays" name="IsotopeDecays">
-<area shape="rect" id="node1" title="A class for simulating isotope decays inside the pressure vessel and PMT glass." alt="" coords="55,425,174,452"/>
+<map id="OMSimDecaysGPS" name="OMSimDecaysGPS">
+<area shape="rect" id="node1" title="A class for simulating isotope decays inside the pressure vessel and PMT glass." alt="" coords="43,425,186,452"/>
 <area shape="rect" id="node2" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="33,336,196,363"/>
 <area shape="rect" id="node3" href="$classabc_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="5,171,181,197"/>
 <area shape="rect" id="node6" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="131,247,309,273"/>

@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title="Main of the radioactive decay study." alt="" coords="1181,5,1401,32"/>
 <area shape="rect" id="node2" href="$_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="2339,80,2428,107"/>
 <area shape="rect" id="node14" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="1064,304,1228,331"/>
-<area shape="rect" id="node47" href="$_o_m_sim_decays_g_p_s_8hh.html" title="Defines the IsotopeDecays class for the radioactive decays simulation." alt="" coords="533,80,695,107"/>
+<area shape="rect" id="node47" href="$_o_m_sim_decays_g_p_s_8hh.html" title="Defines the OMSimDecaysGPS class for the radioactive decays simulation." alt="" coords="533,80,695,107"/>
 <area shape="rect" id="node49" href="$_o_m_sim_decays_analysis_8hh.html" title="Defines the OMSimDecaysAnalysis class and DecayStats struct for the radioactive decays simulation." alt="" coords="1253,304,1445,331"/>
 <area shape="rect" id="node50" href="$_o_m_sim_rad_decays_detector_8hh.html" title="Defines the OMSimRadDecaysDetector class for the radioactive decays simulation." alt="" coords="816,80,1033,107"/>
 <area shape="rect" id="node3" href="$_o_m_sim_detector_construction_8hh.html" title=" " alt="" coords="962,155,1189,181"/>

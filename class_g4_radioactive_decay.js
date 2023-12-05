@@ -38,6 +38,7 @@ var class_g4_radioactive_decay =
     [ "SetThresholdForVeryLongDecayTime", "class_g4_radioactive_decay.html#ac628f95a5eea7a8c446b5a69e336514f", null ],
     [ "SetVerboseLevel", "class_g4_radioactive_decay.html#a146841b253bc28c691b7023d151b19fd", null ],
     [ "StreamInfo", "class_g4_radioactive_decay.html#a1ec560e7f26a5e7f951b141ef2f0b0fd", null ],
+    [ "TerminateDecay", "class_g4_radioactive_decay.html#a1b4603308481a14604ee75cb96dfe5e5", null ],
     [ "applyARM", "class_g4_radioactive_decay.html#aed109fef1bc4bec284610743f40bb589", null ],
     [ "dirPath", "class_g4_radioactive_decay.html#acc82499e6f2713a39451c04b19d45322", null ],
     [ "dkmap", "class_g4_radioactive_decay.html#a97a581522bde92d2d2edd037ff3d9261", null ],

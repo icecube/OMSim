@@ -1,5 +1,5 @@
 <map id="OMSimDecaysGPS.hh" name="OMSimDecaysGPS.hh">
-<area shape="rect" id="node1" title="Defines the IsotopeDecays class for the radioactive decays simulation." alt="" coords="693,5,855,32"/>
+<area shape="rect" id="node1" title="Defines the OMSimDecaysGPS class for the radioactive decays simulation." alt="" coords="693,5,855,32"/>
 <area shape="rect" id="node2" href="$_o_m_sim_optical_module_8hh.html" title=" " alt="" coords="603,80,785,107"/>
 <area shape="rect" id="node23" title=" " alt="" coords="809,80,899,107"/>
 <area shape="rect" id="node3" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="664,229,860,256"/>

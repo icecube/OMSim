@@ -33,17 +33,23 @@ var group__radioactive =
       [ "mHitsFileName", "class_o_m_sim_decays_analysis.html#ab1bab5a939f8e056ccd156b4b9ffb612", null ],
       [ "mMultiplicityFileName", "class_o_m_sim_decays_analysis.html#a8fe45181c11565e0fbee8d1ce40b2c02", null ]
     ] ],
-    [ "IsotopeDecays", "class_isotope_decays.html", [
-      [ "IsotopeDecays", "class_isotope_decays.html#a73a736b434677c48db553c691407210f", null ],
-      [ "~IsotopeDecays", "class_isotope_decays.html#a2c725f29ba7fbed8106022a3eb355a8e", null ],
-      [ "calculateNumberOfDecays", "class_isotope_decays.html#a83b37c7574ecd99faa8d5ffb09add113", null ],
-      [ "configureIsotopeGPS", "class_isotope_decays.html#a301e3bc7d977dfc78fd16fc7334a53d2", null ],
-      [ "generalGPS", "class_isotope_decays.html#ac66380997ebbf87d2a4430be28c48642", null ],
-      [ "setOpticalModule", "class_isotope_decays.html#af740bd8256667433f10f84f5cd7e2723", null ],
-      [ "simulateDecaysInOpticalModule", "class_isotope_decays.html#a24e0cf04f0185935ab7035e89190405e", null ],
-      [ "mIsotopeCommands", "class_isotope_decays.html#a60f8eca9a5950c197463b8c54ae4ad91", null ],
-      [ "mOM", "class_isotope_decays.html#a363a3cad619befd4e50c599b44bb3552", null ],
-      [ "mProductionRadius", "class_isotope_decays.html#acd6830b0720976474f7be3c65d764090", null ]
+    [ "OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html", [
+      [ "OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html#a4556f2be9ad6593f835bd17c075480cf", null ],
+      [ "~OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html#a4bb83b8b117be2d728a6d64d12d1ea0c", null ],
+      [ "OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html#ac2a04f1f16ab33ec542053b50c0b47ea", null ],
+      [ "calculateNumberOfDecays", "class_o_m_sim_decays_g_p_s.html#a61c910b065587f27f3e08b2e1e897cb2", null ],
+      [ "configureIsotopeGPS", "class_o_m_sim_decays_g_p_s.html#a35ff4f02d5110609b3abd21e703b842d", null ],
+      [ "generalGPS", "class_o_m_sim_decays_g_p_s.html#abc1684c40b022ef35aa1c4eea6a7e557", null ],
+      [ "getDecayTerminationNuclide", "class_o_m_sim_decays_g_p_s.html#a1e3f12bd7b3d1d92e9ce080bcb5b52be", null ],
+      [ "getInstance", "class_o_m_sim_decays_g_p_s.html#aa0f3b3dcf8f49e13b4319a31b5025a9e", null ],
+      [ "operator=", "class_o_m_sim_decays_g_p_s.html#a7f8cd22b4d5bd7f08ba126014fafe788", null ],
+      [ "setOpticalModule", "class_o_m_sim_decays_g_p_s.html#ac4abdcbf291642b9b0d8e4dfe3aaab64", null ],
+      [ "setProductionRadius", "class_o_m_sim_decays_g_p_s.html#a0fd01732515dd1175fe5434a9cb3d0c5", null ],
+      [ "simulateDecaysInOpticalModule", "class_o_m_sim_decays_g_p_s.html#aa998025ffc6af36c01c0fe0c58b6ad39", null ],
+      [ "mIsotopeCommands", "class_o_m_sim_decays_g_p_s.html#af4f9a615b6d1e9fa7d3b2104af3c2f3e", null ],
+      [ "mNuclideStopName", "class_o_m_sim_decays_g_p_s.html#adcbc2275cda8196cfdbd5b1c3477f7ad", null ],
+      [ "mOM", "class_o_m_sim_decays_g_p_s.html#a90b43354885ed69034c48df4f89326b3", null ],
+      [ "mProductionRadius", "class_o_m_sim_decays_g_p_s.html#a70c8a1985e53392c67247e6334eaaa17", null ]
     ] ],
     [ "OMSimEventAction", "class_o_m_sim_event_action.html", [
       [ "OMSimEventAction", "class_o_m_sim_event_action.html#ab8aaaeecc185bbaef63665f673356506", null ],
