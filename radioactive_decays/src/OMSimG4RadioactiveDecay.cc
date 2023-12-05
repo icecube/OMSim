@@ -38,6 +38,7 @@
 
 #include "OMSimDecaysAnalysis.hh"
 #include "OMSimCommandArgsTable.hh"
+#include "OMSimDecaysGPS.hh"
 
 #include <OMSimG4RadioactiveDecay.hh>
 #include <G4RadioactiveDecayMessenger.hh>
@@ -1017,6 +1018,19 @@ void G4RadioactiveDecay::AddUserDecayDataFile(G4int Z, G4int A, G4String filenam
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
+// Method to terminate the decay process without producing secondaries
+G4VParticleChange *G4RadioactiveDecay::TerminateDecay()
+{
+  fParticleChangeForRadDecay.SetNumberOfSecondaries(0);
+
+  // Kill the parent particle.
+  fParticleChangeForRadDecay.ProposeTrackStatus(fStopAndKill);
+  fParticleChangeForRadDecay.ProposeLocalEnergyDeposit(0.0);
+  ClearNumberOfInteractionLengthLeft();
+
+  return &fParticleChangeForRadDecay;
+}
+
 G4VParticleChange *
 G4RadioactiveDecay::DecayIt(const G4Track &theTrack, const G4Step &)
 {
@@ -1044,13 +1058,8 @@ G4RadioactiveDecay::DecayIt(const G4Track &theTrack, const G4Step &)
           G4cout << ValidVolumes[i] << G4endl;
       }
 #endif
-      fParticleChangeForRadDecay.SetNumberOfSecondaries(0);
 
-      // Kill the parent particle.
-      fParticleChangeForRadDecay.ProposeTrackStatus(fStopAndKill);
-      fParticleChangeForRadDecay.ProposeLocalEnergyDeposit(0.0);
-      ClearNumberOfInteractionLengthLeft();
-      return &fParticleChangeForRadDecay;
+      return TerminateDecay();
     }
   }
 
@@ -1068,13 +1077,13 @@ G4RadioactiveDecay::DecayIt(const G4Track &theTrack, const G4Step &)
              << G4endl;
     }
 #endif
-    fParticleChangeForRadDecay.SetNumberOfSecondaries(0);
+    return TerminateDecay();
+  }
 
-    // Kill the parent particle
-    fParticleChangeForRadDecay.ProposeTrackStatus(fStopAndKill);
-    fParticleChangeForRadDecay.ProposeLocalEnergyDeposit(0.0);
-    ClearNumberOfInteractionLengthLeft();
-    return &fParticleChangeForRadDecay;
+  // Check if the current nucleus is the target stop nucleus
+  if (theParticleDef->GetParticleName() == OMSimDecaysGPS::getInstance().getDecayTerminationNuclide())
+  {
+    return TerminateDecay();
   }
 
   G4DecayTable *theDecayTable = GetDecayTable(theParticleDef);
@@ -1093,13 +1102,7 @@ G4RadioactiveDecay::DecayIt(const G4Track &theTrack, const G4Step &)
              << G4endl;
     }
 #endif
-    fParticleChangeForRadDecay.SetNumberOfSecondaries(0);
-
-    // Kill the parent particle.
-    fParticleChangeForRadDecay.ProposeTrackStatus(fStopAndKill);
-    fParticleChangeForRadDecay.ProposeLocalEnergyDeposit(0.0);
-    ClearNumberOfInteractionLengthLeft();
-    return &fParticleChangeForRadDecay;
+    return TerminateDecay();
   }
   else
   {
@@ -1239,7 +1242,7 @@ void G4RadioactiveDecay::DecayAnalog(const G4Track &theTrack)
     //////////////////////////////////////////////////////////////////////////////////////////////////
     if (temptime > 10e-1 * s)
     {
-      G4double lSimulatedTime = OMSimCommandArgsTable::getInstance().get<G4double>("time_window")*s;
+      G4double lSimulatedTime = OMSimCommandArgsTable::getInstance().get<G4double>("time_window") * s;
       temptime = G4UniformRand() * lSimulatedTime;
       finalGlobalTime = temptime;
       finalLocalTime = temptime;
@@ -1265,7 +1268,6 @@ void G4RadioactiveDecay::DecayAnalog(const G4Track &theTrack)
     // W183, W180 and Pb204).
     // Note that the cut is not on the average, mean lifetime, but on the actual
     // sampled global decay time.
-
 
     if (finalGlobalTime > fThresholdForVeryLongDecayTime)
     {

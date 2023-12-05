@@ -178,6 +178,8 @@ class G4RadioactiveDecay : public G4VRestDiscreteProcess
 
     void DecayAnalog(const G4Track& theTrack);
 
+    G4VParticleChange* TerminateDecay();
+
     G4DecayProducts* DoDecay(const G4ParticleDefinition& theParticleDef);
 
     // Apply directional bias for "visible" daughters (e+-, gamma, n, p, alpha)

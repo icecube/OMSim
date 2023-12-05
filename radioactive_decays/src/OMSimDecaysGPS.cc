@@ -3,15 +3,19 @@
 #include <G4SystemOfUnits.hh>
 #include <G4Poisson.hh>
 
-IsotopeDecays::IsotopeDecays(G4double pProductionRadius)
+void OMSimDecaysGPS::setProductionRadius(G4double pProductionRadius)
 {
     mProductionRadius = pProductionRadius;
 }
 
+G4String OMSimDecaysGPS::getDecayTerminationNuclide()
+{
+    return mNuclideStopName;
+}
 /**
  * @brief Configures common GPS commands for the radioactive decays.
  */
-void IsotopeDecays::generalGPS()
+void OMSimDecaysGPS::generalGPS()
 {
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
@@ -45,7 +49,7 @@ void IsotopeDecays::generalGPS()
  * @param pVolumeName The volume name where the isotope decays.
  * @param optParam An optional parameter related to the location. For "PMT", use e.g. the PMT number.
  */
-void IsotopeDecays::configureIsotopeGPS(G4String Isotope, G4String pVolumeName, G4int optParam)
+void OMSimDecaysGPS::configureIsotopeGPS(G4String Isotope, G4String pVolumeName, G4int optParam)
 {
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     generalGPS();
@@ -73,7 +77,7 @@ void IsotopeDecays::configureIsotopeGPS(G4String Isotope, G4String pVolumeName, 
  * @param pMass Mass of the volume in which decays occur.
  * @return Map of isotopes and their respective number of decays.
  */
-std::map<G4String, G4int> IsotopeDecays::calculateNumberOfDecays(G4MaterialPropertiesTable *pMPT, G4double pTimeWindow, G4double pMass)
+std::map<G4String, G4int> OMSimDecaysGPS::calculateNumberOfDecays(G4MaterialPropertiesTable *pMPT, G4double pTimeWindow, G4double pMass)
 {
     std::map<G4String, G4int> mNumberDecays;
     for (auto &pair : mIsotopeCommands)
@@ -89,7 +93,7 @@ std::map<G4String, G4int> IsotopeDecays::calculateNumberOfDecays(G4MaterialPrope
  * @brief Simulates the decays in the optical module.
  * @param pTimeWindow The livetime that should be simulated.
  */
-void IsotopeDecays::simulateDecaysInOpticalModule(G4double pTimeWindow)
+void OMSimDecaysGPS::simulateDecaysInOpticalModule(G4double pTimeWindow)
 {
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();

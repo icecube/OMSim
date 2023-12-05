@@ -21,14 +21,14 @@ void decaySimulation(OMSimRadDecaysDetector *pDetector)
 
 	lAnalysisManager.setOutputFileName(lArgs.get<std::string>("output_file"));
 
-	IsotopeDecays *lDecays = new IsotopeDecays(280);
+	OMSimDecaysGPS &lDecays = OMSimDecaysGPS::getInstance();
 
-	lDecays->setOpticalModule(pDetector->mOpticalModule);
+	lDecays.setOpticalModule(pDetector->mOpticalModule);
 
 	for (int i = 0; i < (int)lArgs.get<G4int>("numevents"); i++)
 	{
 
-		lDecays->simulateDecaysInOpticalModule(lArgs.get<G4double>("time_window"));
+		lDecays.simulateDecaysInOpticalModule(lArgs.get<G4double>("time_window"));
 
 		if (lArgs.get<bool>("multiplicity_study"))
 		{
