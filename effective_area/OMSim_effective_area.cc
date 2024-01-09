@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
 		if (lVariablesMap.count("help"))
 		{
 			std::cout << lAllargs << "\n";
-			return 1;
+			return 0;
 		}
 
 		OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();

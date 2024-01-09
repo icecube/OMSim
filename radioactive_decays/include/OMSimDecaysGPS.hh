@@ -22,7 +22,9 @@ public:
     static OMSimDecaysGPS instance;
     return instance;
   }
-  void simulateDecaysInOpticalModule(G4double pTimeWindow);
+
+  void simulateDecaysInPMTs(G4double pTimeWindow);
+  void simulateDecaysInPressureVessel(G4double pTimeWindow);
 
   /**
    * @brief Set the optical module to be used.

@@ -89,50 +89,53 @@ std::map<G4String, G4int> OMSimDecaysGPS::calculateNumberOfDecays(G4MaterialProp
     return mNumberDecays;
 }
 
+
+
 /**
- * @brief Simulates the decays in the optical module.
+ * @brief Simulates the decays in the pressure vessel of the optical module.
  * @param pTimeWindow The livetime that should be simulated.
  */
-void OMSimDecaysGPS::simulateDecaysInOpticalModule(G4double pTimeWindow)
+void OMSimDecaysGPS::simulateDecaysInPressureVessel(G4double pTimeWindow)
 {
-    OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
 
-    if (!lArgs.get<bool>("no_PV_decays"))
+    G4double lMass = mOM->getPressureVesselWeight();
+    G4LogicalVolume *lPVVolume = mOM->getComponent("PressureVessel").VLogical;
+    G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
+    std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, pTimeWindow, lMass);
+
+    for (auto &pair : lNumberDecays)
     {
-        G4double lMass = mOM->getPressureVesselWeight();
-        G4LogicalVolume *lPVVolume = mOM->getComponent("PressureVessel").VLogical;
-        G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
+        G4String lIsotope = pair.first;
+        G4int lNrDecays = pair.second;
+        configureIsotopeGPS(lIsotope, "PressureVessel");
+        lUIinterface.runBeamOn(lNrDecays);
+    }
+}
+
+/**
+ * @brief Simulates the decays in the PMTs of the optical module.
+ * @param pTimeWindow The livetime that should be simulated.
+ */
+void OMSimDecaysGPS::simulateDecaysInPMTs(G4double pTimeWindow)
+{
+    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+
+    G4double lMass = mOM->getPMTmanager()->getPMTGlassWeight();
+    G4LogicalVolume *lPVVolume = mOM->getPMTmanager()->getLogicalVolume();
+    G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
+
+    for (int pmt = 0; pmt < (int)mOM->getNumberOfPMTs(); pmt++)
+    {
         std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, pTimeWindow, lMass);
 
         for (auto &pair : lNumberDecays)
         {
             G4String lIsotope = pair.first;
             G4int lNrDecays = pair.second;
-            configureIsotopeGPS(lIsotope, "PressureVessel");
+            configureIsotopeGPS(lIsotope, "PMT", pmt);
             lUIinterface.runBeamOn(lNrDecays);
         }
     }
 
-    if (!lArgs.get<bool>("no_PMT_decays"))
-    {
-        G4double lMass = mOM->getPMTmanager()->getPMTGlassWeight();
-        G4LogicalVolume *lPVVolume = mOM->getPMTmanager()->getLogicalVolume();
-        G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
-
-        for (int pmt = 0; pmt < (int)mOM->getNumberOfPMTs(); pmt++)
-        {
-            std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, pTimeWindow, lMass);
-
-            for (auto &pair : lNumberDecays)
-            {
-                G4String lIsotope = pair.first;
-                G4int lNrDecays = pair.second;
-                configureIsotopeGPS(lIsotope, "PMT", pmt);
-                lUIinterface.runBeamOn(lNrDecays);
-            }
-        }
-    }
-
 }
-
