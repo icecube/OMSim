@@ -11,7 +11,7 @@ var searchData=
   ['decay_5ftime_118',['decay_time',['../struct_decay_stats.html#a0d8b961cbbf2f5944a703593356736c8',1,'DecayStats']]],
   ['decayanalog_119',['DecayAnalog',['../class_g4_radioactive_decay.html#a16fd24f0dead06c05d1040a41dbb5234',1,'G4RadioactiveDecay']]],
   ['decayit_120',['DecayIt',['../class_g4_radioactive_decay.html#a99665f00c3be293c00a1e94108faf7fb',1,'G4RadioactiveDecay']]],
-  ['decaysimulation_121',['decaySimulation',['../_o_m_sim__radioactive__decays_8cc.html#a9caf04df32ea7aa9b858039a8f5fa971',1,'OMSim_radioactive_decays.cc']]],
+  ['decaysinom_121',['decaysInOM',['../_o_m_sim__radioactive__decays_8cc.html#a2975f45cfcab2318f2f5d93cf55a3ae0',1,'OMSim_radioactive_decays.cc']]],
   ['decaystats_122',['DecayStats',['../struct_decay_stats.html',1,'']]],
   ['decaytablemap_123',['DecayTableMap',['../_o_m_sim_g4_radioactive_decay_8hh.html#a8d3a69544d741312b4836c149a7bbb06',1,'OMSimG4RadioactiveDecay.hh']]],
   ['degg_124',['DEGG',['../class_d_e_g_g.html',1,'DEGG'],['../class_d_e_g_g.html#a93dc17fd3d8523e54ad70a42925ff4f1',1,'DEGG::DEGG()']]],

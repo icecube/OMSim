@@ -18,8 +18,10 @@ Collaboration diagram for OMSim\+Decays\+GPS\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_aa998025ffc6af36c01c0fe0c58b6ad39}{simulate\+Decays\+In\+Optical\+Module}} (G4double p\+Time\+Window)
-\begin{DoxyCompactList}\small\item\em Simulates the decays in the optical module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_a2bba4e779b0200d277e01053c521587b}{simulate\+Decays\+In\+PMTs}} (G4double p\+Time\+Window)
+\begin{DoxyCompactList}\small\item\em Simulates the decays in the PMTs of the optical module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_ae43dceede1c8f2c332964fb43242cc76}{simulate\+Decays\+In\+Pressure\+Vessel}} (G4double p\+Time\+Window)
+\begin{DoxyCompactList}\small\item\em Simulates the decays in the pressure vessel of the optical module. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_ac4abdcbf291642b9b0d8e4dfe3aaab64}{set\+Optical\+Module}} (\mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}} $\ast$p\+Optical\+Module)
 \begin{DoxyCompactList}\small\item\em Set the optical module to be used. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_a0fd01732515dd1175fe5434a9cb3d0c5}{set\+Production\+Radius}} (G4double p\+Production\+Radius)
@@ -159,11 +161,22 @@ If the daughter of the configured isotope is unstable, it will also decay in the
 \doxysubsubsection{\texorpdfstring{setProductionRadius()}{setProductionRadius()}}
 {\footnotesize\ttfamily void OMSim\+Decays\+GPS\+::set\+Production\+Radius (\begin{DoxyParamCaption}\item[{G4double}]{p\+Production\+Radius }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_aa998025ffc6af36c01c0fe0c58b6ad39}\label{class_o_m_sim_decays_g_p_s_aa998025ffc6af36c01c0fe0c58b6ad39}} 
-\index{OMSimDecaysGPS@{OMSimDecaysGPS}!simulateDecaysInOpticalModule@{simulateDecaysInOpticalModule}}
-\index{simulateDecaysInOpticalModule@{simulateDecaysInOpticalModule}!OMSimDecaysGPS@{OMSimDecaysGPS}}
-\doxysubsubsection{\texorpdfstring{simulateDecaysInOpticalModule()}{simulateDecaysInOpticalModule()}}
-{\footnotesize\ttfamily void OMSim\+Decays\+GPS\+::simulate\+Decays\+In\+Optical\+Module (\begin{DoxyParamCaption}\item[{G4double}]{p\+Time\+Window }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_a2bba4e779b0200d277e01053c521587b}\label{class_o_m_sim_decays_g_p_s_a2bba4e779b0200d277e01053c521587b}} 
+\index{OMSimDecaysGPS@{OMSimDecaysGPS}!simulateDecaysInPMTs@{simulateDecaysInPMTs}}
+\index{simulateDecaysInPMTs@{simulateDecaysInPMTs}!OMSimDecaysGPS@{OMSimDecaysGPS}}
+\doxysubsubsection{\texorpdfstring{simulateDecaysInPMTs()}{simulateDecaysInPMTs()}}
+{\footnotesize\ttfamily void OMSim\+Decays\+GPS\+::simulate\+Decays\+In\+PMTs (\begin{DoxyParamCaption}\item[{G4double}]{p\+Time\+Window }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Time\+Window} & The livetime that should be simulated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_ae43dceede1c8f2c332964fb43242cc76}\label{class_o_m_sim_decays_g_p_s_ae43dceede1c8f2c332964fb43242cc76}} 
+\index{OMSimDecaysGPS@{OMSimDecaysGPS}!simulateDecaysInPressureVessel@{simulateDecaysInPressureVessel}}
+\index{simulateDecaysInPressureVessel@{simulateDecaysInPressureVessel}!OMSimDecaysGPS@{OMSimDecaysGPS}}
+\doxysubsubsection{\texorpdfstring{simulateDecaysInPressureVessel()}{simulateDecaysInPressureVessel()}}
+{\footnotesize\ttfamily void OMSim\+Decays\+GPS\+::simulate\+Decays\+In\+Pressure\+Vessel (\begin{DoxyParamCaption}\item[{G4double}]{p\+Time\+Window }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}

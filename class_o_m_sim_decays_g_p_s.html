@@ -135,9 +135,12 @@ Collaboration diagram for OMSimDecaysGPS:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa998025ffc6af36c01c0fe0c58b6ad39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#aa998025ffc6af36c01c0fe0c58b6ad39">simulateDecaysInOpticalModule</a> (G4double pTimeWindow)</td></tr>
-<tr class="memdesc:aa998025ffc6af36c01c0fe0c58b6ad39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates the decays in the optical module.  <a href="class_o_m_sim_decays_g_p_s.html#aa998025ffc6af36c01c0fe0c58b6ad39">More...</a><br /></td></tr>
-<tr class="separator:aa998025ffc6af36c01c0fe0c58b6ad39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bba4e779b0200d277e01053c521587b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#a2bba4e779b0200d277e01053c521587b">simulateDecaysInPMTs</a> (G4double pTimeWindow)</td></tr>
+<tr class="memdesc:a2bba4e779b0200d277e01053c521587b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates the decays in the PMTs of the optical module.  <a href="class_o_m_sim_decays_g_p_s.html#a2bba4e779b0200d277e01053c521587b">More...</a><br /></td></tr>
+<tr class="separator:a2bba4e779b0200d277e01053c521587b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae43dceede1c8f2c332964fb43242cc76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#ae43dceede1c8f2c332964fb43242cc76">simulateDecaysInPressureVessel</a> (G4double pTimeWindow)</td></tr>
+<tr class="memdesc:ae43dceede1c8f2c332964fb43242cc76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates the decays in the pressure vessel of the optical module.  <a href="class_o_m_sim_decays_g_p_s.html#ae43dceede1c8f2c332964fb43242cc76">More...</a><br /></td></tr>
+<tr class="separator:ae43dceede1c8f2c332964fb43242cc76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4abdcbf291642b9b0d8e4dfe3aaab64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#ac4abdcbf291642b9b0d8e4dfe3aaab64">setOpticalModule</a> (<a class="el" href="class_o_m_sim_optical_module.html">OMSimOpticalModule</a> *pOpticalModule)</td></tr>
 <tr class="memdesc:ac4abdcbf291642b9b0d8e4dfe3aaab64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the optical module to be used.  <a href="class_o_m_sim_decays_g_p_s.html#ac4abdcbf291642b9b0d8e4dfe3aaab64">More...</a><br /></td></tr>
 <tr class="separator:ac4abdcbf291642b9b0d8e4dfe3aaab64"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -505,14 +508,38 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa998025ffc6af36c01c0fe0c58b6ad39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa998025ffc6af36c01c0fe0c58b6ad39">&#9670;&nbsp;</a></span>simulateDecaysInOpticalModule()</h2>
+<a id="a2bba4e779b0200d277e01053c521587b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bba4e779b0200d277e01053c521587b">&#9670;&nbsp;</a></span>simulateDecaysInPMTs()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void OMSimDecaysGPS::simulateDecaysInOpticalModule </td>
+          <td class="memname">void OMSimDecaysGPS::simulateDecaysInPMTs </td>
+          <td>(</td>
+          <td class="paramtype">G4double&#160;</td>
+          <td class="paramname"><em>pTimeWindow</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pTimeWindow</td><td>The livetime that should be simulated. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae43dceede1c8f2c332964fb43242cc76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae43dceede1c8f2c332964fb43242cc76">&#9670;&nbsp;</a></span>simulateDecaysInPressureVessel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimDecaysGPS::simulateDecaysInPressureVessel </td>
           <td>(</td>
           <td class="paramtype">G4double&#160;</td>
           <td class="paramname"><em>pTimeWindow</em></td><td>)</td>
@@ -633,7 +660,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_decays_g_p_s.html">OMSimDecaysGPS</a></li>
-    <li class="footer">Generated on Tue Dec 5 2023 15:14:40 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jan 9 2024 11:04:24 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
