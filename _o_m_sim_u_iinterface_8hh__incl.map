@@ -1,11 +1,13 @@
 <map id="OMSimUIinterface.hh" name="OMSimUIinterface.hh">
-<area shape="rect" id="node1" title="The OMSimUIinterface class provides a singleton interface to Geant4&#39;s UI manager." alt="" coords="286,5,447,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_command_args_table_8hh.html" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="159,80,377,107"/>
-<area shape="rect" id="node9" title=" " alt="" coords="401,80,532,107"/>
-<area shape="rect" id="node3" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="17,155,149,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="173,155,246,181"/>
-<area shape="rect" id="node7" title=" " alt="" coords="271,155,383,181"/>
-<area shape="rect" id="node8" title=" " alt="" coords="407,155,497,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,229,72,256"/>
-<area shape="rect" id="node5" title=" " alt="" coords="96,229,160,256"/>
+<area shape="rect" id="node1" title="The OMSimUIinterface class provides a singleton interface to Geant4&#39;s UI manager." alt="" coords="499,5,660,32"/>
+<area shape="rect" id="node2" href="$_o_m_sim_command_args_table_8hh.html" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="371,80,590,107"/>
+<area shape="rect" id="node11" title=" " alt="" coords="614,80,745,107"/>
+<area shape="rect" id="node3" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="229,155,361,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="385,155,459,181"/>
+<area shape="rect" id="node9" title=" " alt="" coords="483,155,595,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="619,155,710,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,237,129,263"/>
+<area shape="rect" id="node5" title=" " alt="" coords="153,229,301,271"/>
+<area shape="rect" id="node6" title=" " alt="" coords="326,237,403,263"/>
+<area shape="rect" id="node7" title=" " alt="" coords="427,237,558,263"/>
 </map>

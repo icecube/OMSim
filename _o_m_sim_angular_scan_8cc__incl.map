@@ -1,15 +1,17 @@
 <map id="OMSimAngularScan.cc" name="OMSimAngularScan.cc">
-<area shape="rect" id="node1" title=" " alt="" coords="197,5,365,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_angular_scan_8hh.html" title="Defines the AngularScan class for configuring and running GPS beam with angular scans." alt="" coords="5,80,176,107"/>
-<area shape="rect" id="node4" href="$_o_m_sim_u_iinterface_8hh.html" title="The OMSimUIinterface class provides a singleton interface to Geant4&#39;s UI manager." alt="" coords="201,80,362,107"/>
-<area shape="rect" id="node13" title=" " alt="" coords="386,80,545,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="46,155,135,181"/>
-<area shape="rect" id="node5" href="$_o_m_sim_command_args_table_8hh.html" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="165,155,384,181"/>
-<area shape="rect" id="node12" title=" " alt="" coords="408,155,539,181"/>
-<area shape="rect" id="node6" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="23,229,155,256"/>
-<area shape="rect" id="node9" title=" " alt="" coords="179,229,253,256"/>
-<area shape="rect" id="node10" title=" " alt="" coords="277,229,389,256"/>
-<area shape="rect" id="node11" title=" " alt="" coords="413,229,504,256"/>
-<area shape="rect" id="node7" title=" " alt="" coords="12,304,79,331"/>
-<area shape="rect" id="node8" title=" " alt="" coords="103,304,167,331"/>
+<area shape="rect" id="node1" title=" " alt="" coords="403,5,571,32"/>
+<area shape="rect" id="node2" href="$_o_m_sim_angular_scan_8hh.html" title="Defines the AngularScan class for configuring and running GPS beam with angular scans." alt="" coords="211,80,382,107"/>
+<area shape="rect" id="node4" href="$_o_m_sim_u_iinterface_8hh.html" title="The OMSimUIinterface class provides a singleton interface to Geant4&#39;s UI manager." alt="" coords="407,80,568,107"/>
+<area shape="rect" id="node15" title=" " alt="" coords="592,80,751,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="252,155,341,181"/>
+<area shape="rect" id="node5" href="$_o_m_sim_command_args_table_8hh.html" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="371,155,590,181"/>
+<area shape="rect" id="node14" title=" " alt="" coords="614,155,745,181"/>
+<area shape="rect" id="node6" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="229,229,361,256"/>
+<area shape="rect" id="node11" title=" " alt="" coords="385,229,459,256"/>
+<area shape="rect" id="node12" title=" " alt="" coords="483,229,595,256"/>
+<area shape="rect" id="node13" title=" " alt="" coords="619,229,710,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,311,129,338"/>
+<area shape="rect" id="node8" title=" " alt="" coords="153,304,301,345"/>
+<area shape="rect" id="node9" title=" " alt="" coords="326,311,403,338"/>
+<area shape="rect" id="node10" title=" " alt="" coords="427,311,558,338"/>
 </map>

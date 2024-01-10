@@ -159,9 +159,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:abc1684c40b022ef35aa1c4eea6a7e557"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#abc1684c40b022ef35aa1c4eea6a7e557">generalGPS</a> ()</td></tr>
 <tr class="memdesc:abc1684c40b022ef35aa1c4eea6a7e557"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures common GPS commands for the radioactive decays.  <a href="class_o_m_sim_decays_g_p_s.html#abc1684c40b022ef35aa1c4eea6a7e557">More...</a><br /></td></tr>
 <tr class="separator:abc1684c40b022ef35aa1c4eea6a7e557"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35ff4f02d5110609b3abd21e703b842d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#a35ff4f02d5110609b3abd21e703b842d">configureIsotopeGPS</a> (G4String Isotope, G4String location, G4int optParam=-999)</td></tr>
-<tr class="memdesc:a35ff4f02d5110609b3abd21e703b842d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures GPS for the production and decay of an isotope within a specified location.  <a href="class_o_m_sim_decays_g_p_s.html#a35ff4f02d5110609b3abd21e703b842d">More...</a><br /></td></tr>
-<tr class="separator:a35ff4f02d5110609b3abd21e703b842d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6ba3293a0826c4da9b9a7a06c777fe5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#ac6ba3293a0826c4da9b9a7a06c777fe5">configureIsotopeGPS</a> (G4String Isotope, G4String location)</td></tr>
+<tr class="memdesc:ac6ba3293a0826c4da9b9a7a06c777fe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures GPS for the production and decay of an isotope within a specified location.  <a href="class_o_m_sim_decays_g_p_s.html#ac6ba3293a0826c4da9b9a7a06c777fe5">More...</a><br /></td></tr>
+<tr class="separator:ac6ba3293a0826c4da9b9a7a06c777fe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61c910b065587f27f3e08b2e1e897cb2"><td class="memItemLeft" align="right" valign="top">std::map&lt; G4String, G4int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#a61c910b065587f27f3e08b2e1e897cb2">calculateNumberOfDecays</a> (G4MaterialPropertiesTable *pMPT, G4double pTimeWindow, G4double pMass)</td></tr>
 <tr class="memdesc:a61c910b065587f27f3e08b2e1e897cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of decays for isotopes.  <a href="class_o_m_sim_decays_g_p_s.html#a61c910b065587f27f3e08b2e1e897cb2">More...</a><br /></td></tr>
 <tr class="separator:a61c910b065587f27f3e08b2e1e897cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,6 +178,8 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:af4f9a615b6d1e9fa7d3b2104af3c2f3e"><td class="memItemLeft" align="right" valign="top">std::map&lt; G4String, G4String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#af4f9a615b6d1e9fa7d3b2104af3c2f3e">mIsotopeCommands</a></td></tr>
 <tr class="separator:af4f9a615b6d1e9fa7d3b2104af3c2f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a363ea9066f59222ba1d3e3cd5f4a42d1"><td class="memItemLeft" align="right" valign="top">std::map&lt; G4String, G4String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#a363ea9066f59222ba1d3e3cd5f4a42d1">mTerminationIsotopes</a></td></tr>
+<tr class="separator:a363ea9066f59222ba1d3e3cd5f4a42d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90b43354885ed69034c48df4f89326b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_o_m_sim_optical_module.html">OMSimOpticalModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#a90b43354885ed69034c48df4f89326b3">mOM</a></td></tr>
 <tr class="separator:a90b43354885ed69034c48df4f89326b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70c8a1985e53392c67247e6334eaaa17"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_g_p_s.html#a70c8a1985e53392c67247e6334eaaa17">mProductionRadius</a></td></tr>
@@ -314,8 +316,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a35ff4f02d5110609b3abd21e703b842d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35ff4f02d5110609b3abd21e703b842d">&#9670;&nbsp;</a></span>configureIsotopeGPS()</h2>
+<a id="ac6ba3293a0826c4da9b9a7a06c777fe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6ba3293a0826c4da9b9a7a06c777fe5">&#9670;&nbsp;</a></span>configureIsotopeGPS()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -333,13 +335,7 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pVolumeName</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">G4int&#160;</td>
-          <td class="paramname"><em>optParam</em> = <code>-999</code>&#160;</td>
+          <td class="paramname"><em>pVolumeName</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -358,7 +354,6 @@ Private Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">Isotope</td><td>The isotope which is going to be produced. </td></tr>
     <tr><td class="paramname">pVolumeName</td><td>The volume name where the isotope decays. </td></tr>
-    <tr><td class="paramname">optParam</td><td>An optional parameter related to the location. For "PMT", use e.g. the PMT number. </td></tr>
   </table>
   </dd>
 </dl>
@@ -579,6 +574,8 @@ Private Attributes</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">      {<span class="stringliteral">&quot;U238&quot;</span>, <span class="stringliteral">&quot;/gps/ion 92 238 0&quot;</span>},</div>
 <div class="line">      {<span class="stringliteral">&quot;U235&quot;</span>, <span class="stringliteral">&quot;/gps/ion 92 235 0&quot;</span>},</div>
+<div class="line">      {<span class="stringliteral">&quot;Ra226&quot;</span>, <span class="stringliteral">&quot;/gps/ion 88 226 0&quot;</span>},</div>
+<div class="line">      {<span class="stringliteral">&quot;Ra224&quot;</span>, <span class="stringliteral">&quot;/gps/ion 88 224 0&quot;</span>},</div>
 <div class="line">      {<span class="stringliteral">&quot;Th232&quot;</span>, <span class="stringliteral">&quot;/gps/ion 90 232 0&quot;</span>},</div>
 <div class="line">      {<span class="stringliteral">&quot;K40&quot;</span>, <span class="stringliteral">&quot;/gps/ion 19 40 0&quot;</span>}}</div>
 </div><!-- fragment -->
@@ -650,6 +647,35 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a363ea9066f59222ba1d3e3cd5f4a42d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a363ea9066f59222ba1d3e3cd5f4a42d1">&#9670;&nbsp;</a></span>mTerminationIsotopes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;G4String, G4String&gt; OMSimDecaysGPS::mTerminationIsotopes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">      {<span class="stringliteral">&quot;U238&quot;</span>, <span class="stringliteral">&quot;Ra226&quot;</span>},</div>
+<div class="line">      {<span class="stringliteral">&quot;Th232&quot;</span>, <span class="stringliteral">&quot;Ra224&quot;</span>},</div>
+<div class="line">      {<span class="stringliteral">&quot;Ra226&quot;</span>, <span class="stringliteral">&quot;none&quot;</span>},</div>
+<div class="line">      {<span class="stringliteral">&quot;Ra224&quot;</span>, <span class="stringliteral">&quot;none&quot;</span>},</div>
+<div class="line">      {<span class="stringliteral">&quot;U235&quot;</span>, <span class="stringliteral">&quot;none&quot;</span>},</div>
+<div class="line">      {<span class="stringliteral">&quot;K40&quot;</span>, <span class="stringliteral">&quot;none&quot;</span>}}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_o_m_sim_decays_g_p_s_8hh_source.html">OMSimDecaysGPS.hh</a></li>
 <li><a class="el" href="_o_m_sim_decays_g_p_s_8cc.html">OMSimDecaysGPS.cc</a></li>
@@ -660,7 +686,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_decays_g_p_s.html">OMSimDecaysGPS</a></li>
-    <li class="footer">Generated on Tue Jan 9 2024 11:27:05 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Jan 10 2024 11:47:14 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

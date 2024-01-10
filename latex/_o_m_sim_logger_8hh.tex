@@ -5,7 +5,7 @@ Include dependency graph for OMSim\+Logger.\+hh\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=196pt]{_o_m_sim_logger_8hh__incl}
+\includegraphics[width=350pt]{_o_m_sim_logger_8hh__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -19,352 +19,90 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a0b87e0d3bf5853bcbb0b66a7c48fdc05}{LOG\+\_\+\+LEVEL}}~\mbox{\hyperlink{_o_m_sim_logger_8hh_ae1103fea1e1b3c41ca3322d5389f7162}{INFO}}
+\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_af89cb876e6e1d43cfeacdd58a7c9b78c}{log\+\_\+trace}}(...)~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::trace, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))
 \item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a38a00a82883c888dd7d6bb15015d2725}{DEBUG\+\_\+\+COLOUR}}~\char`\"{}\char`\"{}
+\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_aa77e596ef13d2f0f75d0ac9540ed358d}{log\+\_\+debug}}(...)~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::debug, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))
 \item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1}{INFO\+\_\+\+COLOUR}}~\char`\"{}\textbackslash{}x1B\mbox{[}36m\char`\"{}
+\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_aa1cfe5444875c8eca0ea6f6993977d6d}{log\+\_\+info}}(...)~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::info, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))
 \item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_af475693d24134633420bde3ac0184a27}{NOTICE\+\_\+\+COLOUR}}~\char`\"{}\textbackslash{}x1B\mbox{[}32;1m\char`\"{}
+\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a725275c5ac170bb8f873d63cad37b61f}{log\+\_\+notice}}(...)~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::info, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))
 \item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_aacffe5f468c8f8b0af384c6445dedde9}{WARNING\+\_\+\+COLOUR}}~\char`\"{}\textbackslash{}x1B\mbox{[}33m\char`\"{}
+\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a5f2c72e6f2dc833f040b39ee7597d944}{log\+\_\+warning}}(...)~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::warn, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))
 \item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_af333bc50c3cd4e8a23d094aca4354e06}{ERROR\+\_\+\+COLOUR}}~\char`\"{}\textbackslash{}x1B\mbox{[}31m\char`\"{}
+\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a6ae72553ea9805dd87a463d6f710364d}{log\+\_\+error}}(...)~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::err, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))
 \item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_ae090dfefb34eb7a753d2bd5d39af3d27}{CRITICAL\+\_\+\+COLOUR}}~\char`\"{}\textbackslash{}x1B\mbox{[}41;1m\char`\"{}
+\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_acd453c0af726853da9a48d643189ccf1}{log\+\_\+critical}}(...)~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::critical, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a6f03deddd3f39aa363fb06a347835998}{RESET\+\_\+\+COLOUR}}~\char`\"{}\textbackslash{}x1B\mbox{[}0m\char`\"{}
+void \mbox{\hyperlink{_o_m_sim_logger_8hh_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}} (spdlog\+::level\+::level\+\_\+enum log\+\_\+level, const char $\ast$file, int line, const char $\ast$func, const std\+::string \&message)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a56860a86b6fe2de2d514bb9923310a6e}{MSG\+\_\+\+ENDING}}~\char`\"{}\textbackslash{}n\char`\"{}
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_af54a2d4a37ffb240c80d6bd1202a1104}{TIME\+\_\+\+FORMAT}}~\char`\"{}\%T\char`\"{}
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a6d0652ae6ea6a5c4fef68baf139fd085}{BORDER}}~\char`\"{}-\/\char`\"{}
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_af88a44e50fa5d84f09d4cb860f6f900f}{DISPLAY\+\_\+\+COLOUR}}~1
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_aede0ca492b0728b0fc9b1c7903280e78}{DISPLAY\+\_\+\+TIME}}~1
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a05ec4e147f9f2b727ad002946ed2820b}{DISPLAY\+\_\+\+LEVEL}}~1
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a4e41b0d936c765090643626f36d68599}{DISPLAY\+\_\+\+FUNC}}~1
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a9da93ae8287d4f064d5c713588e1e174}{DISPLAY\+\_\+\+FILE}}~1
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a49c8c0c65b0b5380fcd002c1650f18a3}{DISPLAY\+\_\+\+LINE}}~1
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_af993c4cce32465e2549d0e901e80ef88}{DISPLAY\+\_\+\+BORDER}}~1
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_af6812b33eabd16ea4051bf309dea3bd1}{DISPLAY\+\_\+\+MESSAGE}}~1
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_abd1def7551572fb5d68cf25369e0bab0}{DISPLAY\+\_\+\+ENDING}}~1
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_af05d11ed910232f71b9c3c05ffd98618}{DISPLAY\+\_\+\+RESET}}~1
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_ad59147a3a6584be2166a2c7f64e4e32c}{emit\+\_\+log}}(colour,  level,  file,  func,  line, ...)
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_ad72dbcf6d0153db1b8d8a58001feed83}{DEBUG}}~0
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_ae1103fea1e1b3c41ca3322d5389f7162}{INFO}}~1
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_ac928dfd31c92720cd32a0124aec032f8}{NOTICE}}~2
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a5cb439d9f933fde4cf23caa370c030e7}{WARNING}}~3
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a8fe83ac76edc595f6b98cd4a4127aed5}{ERROR}}~4
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_ae0233515480e60d29bcc731469976e02}{CRITICAL}}~5
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a404d5107b2cc06d2e236b7320df1fa7d}{SILENT}}~6
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_aa77e596ef13d2f0f75d0ac9540ed358d}{log\+\_\+debug}}(...)
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_aa1cfe5444875c8eca0ea6f6993977d6d}{log\+\_\+info}}(...)
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a725275c5ac170bb8f873d63cad37b61f}{log\+\_\+notice}}(...)
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a5f2c72e6f2dc833f040b39ee7597d944}{log\+\_\+warning}}(...)
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_a6ae72553ea9805dd87a463d6f710364d}{log\+\_\+error}}(...)
-\item 
-\#define \mbox{\hyperlink{_o_m_sim_logger_8hh_acd453c0af726853da9a48d643189ccf1}{log\+\_\+critical}}(...)
+std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ \mbox{\hyperlink{_o_m_sim_logger_8hh_aaf1ac4fd8beaebc4649a68a9cf7b3b87}{global\+\_\+logger}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a6d0652ae6ea6a5c4fef68baf139fd085}\label{_o_m_sim_logger_8hh_a6d0652ae6ea6a5c4fef68baf139fd085}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!BORDER@{BORDER}}
-\index{BORDER@{BORDER}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{BORDER}{BORDER}}
-{\footnotesize\ttfamily \#define BORDER~\char`\"{}-\/\char`\"{}}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_ae0233515480e60d29bcc731469976e02}\label{_o_m_sim_logger_8hh_ae0233515480e60d29bcc731469976e02}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!CRITICAL@{CRITICAL}}
-\index{CRITICAL@{CRITICAL}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{CRITICAL}{CRITICAL}}
-{\footnotesize\ttfamily \#define CRITICAL~5}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_ae090dfefb34eb7a753d2bd5d39af3d27}\label{_o_m_sim_logger_8hh_ae090dfefb34eb7a753d2bd5d39af3d27}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!CRITICAL\_COLOUR@{CRITICAL\_COLOUR}}
-\index{CRITICAL\_COLOUR@{CRITICAL\_COLOUR}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{CRITICAL\_COLOUR}{CRITICAL\_COLOUR}}
-{\footnotesize\ttfamily \#define CRITICAL\+\_\+\+COLOUR~\char`\"{}\textbackslash{}x1B\mbox{[}41;1m\char`\"{}}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_ad72dbcf6d0153db1b8d8a58001feed83}\label{_o_m_sim_logger_8hh_ad72dbcf6d0153db1b8d8a58001feed83}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DEBUG@{DEBUG}}
-\index{DEBUG@{DEBUG}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DEBUG}{DEBUG}}
-{\footnotesize\ttfamily \#define DEBUG~0}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a38a00a82883c888dd7d6bb15015d2725}\label{_o_m_sim_logger_8hh_a38a00a82883c888dd7d6bb15015d2725}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DEBUG\_COLOUR@{DEBUG\_COLOUR}}
-\index{DEBUG\_COLOUR@{DEBUG\_COLOUR}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DEBUG\_COLOUR}{DEBUG\_COLOUR}}
-{\footnotesize\ttfamily \#define DEBUG\+\_\+\+COLOUR~\char`\"{}\char`\"{}}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_af993c4cce32465e2549d0e901e80ef88}\label{_o_m_sim_logger_8hh_af993c4cce32465e2549d0e901e80ef88}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DISPLAY\_BORDER@{DISPLAY\_BORDER}}
-\index{DISPLAY\_BORDER@{DISPLAY\_BORDER}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DISPLAY\_BORDER}{DISPLAY\_BORDER}}
-{\footnotesize\ttfamily \#define DISPLAY\+\_\+\+BORDER~1}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_af88a44e50fa5d84f09d4cb860f6f900f}\label{_o_m_sim_logger_8hh_af88a44e50fa5d84f09d4cb860f6f900f}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DISPLAY\_COLOUR@{DISPLAY\_COLOUR}}
-\index{DISPLAY\_COLOUR@{DISPLAY\_COLOUR}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DISPLAY\_COLOUR}{DISPLAY\_COLOUR}}
-{\footnotesize\ttfamily \#define DISPLAY\+\_\+\+COLOUR~1}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_abd1def7551572fb5d68cf25369e0bab0}\label{_o_m_sim_logger_8hh_abd1def7551572fb5d68cf25369e0bab0}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DISPLAY\_ENDING@{DISPLAY\_ENDING}}
-\index{DISPLAY\_ENDING@{DISPLAY\_ENDING}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DISPLAY\_ENDING}{DISPLAY\_ENDING}}
-{\footnotesize\ttfamily \#define DISPLAY\+\_\+\+ENDING~1}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a9da93ae8287d4f064d5c713588e1e174}\label{_o_m_sim_logger_8hh_a9da93ae8287d4f064d5c713588e1e174}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DISPLAY\_FILE@{DISPLAY\_FILE}}
-\index{DISPLAY\_FILE@{DISPLAY\_FILE}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DISPLAY\_FILE}{DISPLAY\_FILE}}
-{\footnotesize\ttfamily \#define DISPLAY\+\_\+\+FILE~1}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a4e41b0d936c765090643626f36d68599}\label{_o_m_sim_logger_8hh_a4e41b0d936c765090643626f36d68599}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DISPLAY\_FUNC@{DISPLAY\_FUNC}}
-\index{DISPLAY\_FUNC@{DISPLAY\_FUNC}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DISPLAY\_FUNC}{DISPLAY\_FUNC}}
-{\footnotesize\ttfamily \#define DISPLAY\+\_\+\+FUNC~1}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a05ec4e147f9f2b727ad002946ed2820b}\label{_o_m_sim_logger_8hh_a05ec4e147f9f2b727ad002946ed2820b}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DISPLAY\_LEVEL@{DISPLAY\_LEVEL}}
-\index{DISPLAY\_LEVEL@{DISPLAY\_LEVEL}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DISPLAY\_LEVEL}{DISPLAY\_LEVEL}}
-{\footnotesize\ttfamily \#define DISPLAY\+\_\+\+LEVEL~1}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a49c8c0c65b0b5380fcd002c1650f18a3}\label{_o_m_sim_logger_8hh_a49c8c0c65b0b5380fcd002c1650f18a3}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DISPLAY\_LINE@{DISPLAY\_LINE}}
-\index{DISPLAY\_LINE@{DISPLAY\_LINE}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DISPLAY\_LINE}{DISPLAY\_LINE}}
-{\footnotesize\ttfamily \#define DISPLAY\+\_\+\+LINE~1}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_af6812b33eabd16ea4051bf309dea3bd1}\label{_o_m_sim_logger_8hh_af6812b33eabd16ea4051bf309dea3bd1}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DISPLAY\_MESSAGE@{DISPLAY\_MESSAGE}}
-\index{DISPLAY\_MESSAGE@{DISPLAY\_MESSAGE}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DISPLAY\_MESSAGE}{DISPLAY\_MESSAGE}}
-{\footnotesize\ttfamily \#define DISPLAY\+\_\+\+MESSAGE~1}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_af05d11ed910232f71b9c3c05ffd98618}\label{_o_m_sim_logger_8hh_af05d11ed910232f71b9c3c05ffd98618}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DISPLAY\_RESET@{DISPLAY\_RESET}}
-\index{DISPLAY\_RESET@{DISPLAY\_RESET}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DISPLAY\_RESET}{DISPLAY\_RESET}}
-{\footnotesize\ttfamily \#define DISPLAY\+\_\+\+RESET~1}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_aede0ca492b0728b0fc9b1c7903280e78}\label{_o_m_sim_logger_8hh_aede0ca492b0728b0fc9b1c7903280e78}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!DISPLAY\_TIME@{DISPLAY\_TIME}}
-\index{DISPLAY\_TIME@{DISPLAY\_TIME}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{DISPLAY\_TIME}{DISPLAY\_TIME}}
-{\footnotesize\ttfamily \#define DISPLAY\+\_\+\+TIME~1}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_ad59147a3a6584be2166a2c7f64e4e32c}\label{_o_m_sim_logger_8hh_ad59147a3a6584be2166a2c7f64e4e32c}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!emit\_log@{emit\_log}}
-\index{emit\_log@{emit\_log}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{emit\_log}{emit\_log}}
-{\footnotesize\ttfamily \#define emit\+\_\+log(\begin{DoxyParamCaption}\item[{}]{colour,  }\item[{}]{level,  }\item[{}]{file,  }\item[{}]{func,  }\item[{}]{line,  }\item[{}]{... }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a8fe83ac76edc595f6b98cd4a4127aed5}\label{_o_m_sim_logger_8hh_a8fe83ac76edc595f6b98cd4a4127aed5}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!ERROR@{ERROR}}
-\index{ERROR@{ERROR}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{ERROR}{ERROR}}
-{\footnotesize\ttfamily \#define ERROR~4}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_af333bc50c3cd4e8a23d094aca4354e06}\label{_o_m_sim_logger_8hh_af333bc50c3cd4e8a23d094aca4354e06}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!ERROR\_COLOUR@{ERROR\_COLOUR}}
-\index{ERROR\_COLOUR@{ERROR\_COLOUR}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{ERROR\_COLOUR}{ERROR\_COLOUR}}
-{\footnotesize\ttfamily \#define ERROR\+\_\+\+COLOUR~\char`\"{}\textbackslash{}x1B\mbox{[}31m\char`\"{}}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_ae1103fea1e1b3c41ca3322d5389f7162}\label{_o_m_sim_logger_8hh_ae1103fea1e1b3c41ca3322d5389f7162}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!INFO@{INFO}}
-\index{INFO@{INFO}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{INFO}{INFO}}
-{\footnotesize\ttfamily \#define INFO~1}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1}\label{_o_m_sim_logger_8hh_ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!INFO\_COLOUR@{INFO\_COLOUR}}
-\index{INFO\_COLOUR@{INFO\_COLOUR}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{INFO\_COLOUR}{INFO\_COLOUR}}
-{\footnotesize\ttfamily \#define INFO\+\_\+\+COLOUR~\char`\"{}\textbackslash{}x1B\mbox{[}36m\char`\"{}}
-
 \mbox{\Hypertarget{_o_m_sim_logger_8hh_acd453c0af726853da9a48d643189ccf1}\label{_o_m_sim_logger_8hh_acd453c0af726853da9a48d643189ccf1}} 
 \index{OMSimLogger.hh@{OMSimLogger.hh}!log\_critical@{log\_critical}}
 \index{log\_critical@{log\_critical}!OMSimLogger.hh@{OMSimLogger.hh}}
 \doxysubsubsection{\texorpdfstring{log\_critical}{log\_critical}}
-{\footnotesize\ttfamily \#define log\+\_\+critical(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define log\+\_\+critical(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::critical, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))}
 
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{    \textcolor{keywordflow}{do} \{                                                          \(\backslash\)}
-\DoxyCodeLine{    if (\mbox{\hyperlink{_o_m_sim_logger_8hh_a0b87e0d3bf5853bcbb0b66a7c48fdc05}{LOG\_LEVEL}} <= \mbox{\hyperlink{_o_m_sim_logger_8hh_ae0233515480e60d29bcc731469976e02}{CRITICAL}}) \{                                                    \(\backslash\)}
-\DoxyCodeLine{        emit\_log(                                                                   \(\backslash\)}
-\DoxyCodeLine{            \mbox{\hyperlink{_o_m_sim_logger_8hh_ae090dfefb34eb7a753d2bd5d39af3d27}{CRITICAL\_COLOUR}}, \textcolor{stringliteral}{"{}[CRITICAL]"{}}, \_\_FILE\_\_, \_\_func\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_\(\backslash\)}
-\DoxyCodeLine{        );                                                                          \(\backslash\)}
-\DoxyCodeLine{    \}                                                                               \(\backslash\)}
-\DoxyCodeLine{\} \textcolor{keywordflow}{while} (0)}
-
-\end{DoxyCode}
 \mbox{\Hypertarget{_o_m_sim_logger_8hh_aa77e596ef13d2f0f75d0ac9540ed358d}\label{_o_m_sim_logger_8hh_aa77e596ef13d2f0f75d0ac9540ed358d}} 
 \index{OMSimLogger.hh@{OMSimLogger.hh}!log\_debug@{log\_debug}}
 \index{log\_debug@{log\_debug}!OMSimLogger.hh@{OMSimLogger.hh}}
 \doxysubsubsection{\texorpdfstring{log\_debug}{log\_debug}}
-{\footnotesize\ttfamily \#define log\+\_\+debug(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define log\+\_\+debug(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::debug, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))}
 
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{    \textcolor{keywordflow}{do} \{                                                             \(\backslash\)}
-\DoxyCodeLine{    if (\mbox{\hyperlink{_o_m_sim_logger_8hh_a0b87e0d3bf5853bcbb0b66a7c48fdc05}{LOG\_LEVEL}} == \mbox{\hyperlink{_o_m_sim_logger_8hh_ad72dbcf6d0153db1b8d8a58001feed83}{DEBUG}}) \{                                                       \(\backslash\)}
-\DoxyCodeLine{        emit\_log(                                                                   \(\backslash\)}
-\DoxyCodeLine{            \mbox{\hyperlink{_o_m_sim_logger_8hh_a38a00a82883c888dd7d6bb15015d2725}{DEBUG\_COLOUR}}, \textcolor{stringliteral}{"{}[DEBUG]"{}}, \_\_FILE\_\_, \_\_func\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_      \(\backslash\)}
-\DoxyCodeLine{        );                                                                          \(\backslash\)}
-\DoxyCodeLine{    \}                                                                               \(\backslash\)}
-\DoxyCodeLine{\} \textcolor{keywordflow}{while} (0)}
-
-\end{DoxyCode}
 \mbox{\Hypertarget{_o_m_sim_logger_8hh_a6ae72553ea9805dd87a463d6f710364d}\label{_o_m_sim_logger_8hh_a6ae72553ea9805dd87a463d6f710364d}} 
 \index{OMSimLogger.hh@{OMSimLogger.hh}!log\_error@{log\_error}}
 \index{log\_error@{log\_error}!OMSimLogger.hh@{OMSimLogger.hh}}
 \doxysubsubsection{\texorpdfstring{log\_error}{log\_error}}
-{\footnotesize\ttfamily \#define log\+\_\+error(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define log\+\_\+error(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::err, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))}
 
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{    \textcolor{keywordflow}{do} \{                                                             \(\backslash\)}
-\DoxyCodeLine{    if (\mbox{\hyperlink{_o_m_sim_logger_8hh_a0b87e0d3bf5853bcbb0b66a7c48fdc05}{LOG\_LEVEL}} <= \mbox{\hyperlink{_o_m_sim_logger_8hh_a8fe83ac76edc595f6b98cd4a4127aed5}{ERROR}}) \{                                                       \(\backslash\)}
-\DoxyCodeLine{        emit\_log(                                                                   \(\backslash\)}
-\DoxyCodeLine{            \mbox{\hyperlink{_o_m_sim_logger_8hh_af333bc50c3cd4e8a23d094aca4354e06}{ERROR\_COLOUR}}, \textcolor{stringliteral}{"{}[ERROR]"{}}, \_\_FILE\_\_, \_\_func\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_      \(\backslash\)}
-\DoxyCodeLine{        );                                                                          \(\backslash\)}
-\DoxyCodeLine{    \}                                                                               \(\backslash\)}
-\DoxyCodeLine{\} \textcolor{keywordflow}{while} (0)}
-
-\end{DoxyCode}
 \mbox{\Hypertarget{_o_m_sim_logger_8hh_aa1cfe5444875c8eca0ea6f6993977d6d}\label{_o_m_sim_logger_8hh_aa1cfe5444875c8eca0ea6f6993977d6d}} 
 \index{OMSimLogger.hh@{OMSimLogger.hh}!log\_info@{log\_info}}
 \index{log\_info@{log\_info}!OMSimLogger.hh@{OMSimLogger.hh}}
 \doxysubsubsection{\texorpdfstring{log\_info}{log\_info}}
-{\footnotesize\ttfamily \#define log\+\_\+info(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})}
-
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{    \textcolor{keywordflow}{do} \{                                                              \(\backslash\)}
-\DoxyCodeLine{    if (\mbox{\hyperlink{_o_m_sim_logger_8hh_a0b87e0d3bf5853bcbb0b66a7c48fdc05}{LOG\_LEVEL}} <= \mbox{\hyperlink{_o_m_sim_logger_8hh_ae1103fea1e1b3c41ca3322d5389f7162}{INFO}}) \{                                                        \(\backslash\)}
-\DoxyCodeLine{        emit\_log(                                                                   \(\backslash\)}
-\DoxyCodeLine{            \mbox{\hyperlink{_o_m_sim_logger_8hh_ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1}{INFO\_COLOUR}}, \textcolor{stringliteral}{"{}[INFO]"{}}, \_\_FILE\_\_, \_\_func\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_        \(\backslash\)}
-\DoxyCodeLine{        );                                                                          \(\backslash\)}
-\DoxyCodeLine{    \}                                                                               \(\backslash\)}
-\DoxyCodeLine{\} \textcolor{keywordflow}{while} (0)}
-
-\end{DoxyCode}
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a0b87e0d3bf5853bcbb0b66a7c48fdc05}\label{_o_m_sim_logger_8hh_a0b87e0d3bf5853bcbb0b66a7c48fdc05}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!LOG\_LEVEL@{LOG\_LEVEL}}
-\index{LOG\_LEVEL@{LOG\_LEVEL}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{LOG\_LEVEL}{LOG\_LEVEL}}
-{\footnotesize\ttfamily \#define LOG\+\_\+\+LEVEL~\mbox{\hyperlink{_o_m_sim_logger_8hh_ae1103fea1e1b3c41ca3322d5389f7162}{INFO}}}
+{\footnotesize\ttfamily \#define log\+\_\+info(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::info, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))}
 
 \mbox{\Hypertarget{_o_m_sim_logger_8hh_a725275c5ac170bb8f873d63cad37b61f}\label{_o_m_sim_logger_8hh_a725275c5ac170bb8f873d63cad37b61f}} 
 \index{OMSimLogger.hh@{OMSimLogger.hh}!log\_notice@{log\_notice}}
 \index{log\_notice@{log\_notice}!OMSimLogger.hh@{OMSimLogger.hh}}
 \doxysubsubsection{\texorpdfstring{log\_notice}{log\_notice}}
-{\footnotesize\ttfamily \#define log\+\_\+notice(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define log\+\_\+notice(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::info, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))}
 
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{    \textcolor{keywordflow}{do} \{                                                            \(\backslash\)}
-\DoxyCodeLine{    if (\mbox{\hyperlink{_o_m_sim_logger_8hh_a0b87e0d3bf5853bcbb0b66a7c48fdc05}{LOG\_LEVEL}} <= \mbox{\hyperlink{_o_m_sim_logger_8hh_ac928dfd31c92720cd32a0124aec032f8}{NOTICE}}) \{                                                      \(\backslash\)}
-\DoxyCodeLine{        emit\_log(                                                                   \(\backslash\)}
-\DoxyCodeLine{            \mbox{\hyperlink{_o_m_sim_logger_8hh_af475693d24134633420bde3ac0184a27}{NOTICE\_COLOUR}}, \textcolor{stringliteral}{"{}[NOTICE]"{}}, \_\_FILE\_\_, \_\_func\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_    \(\backslash\)}
-\DoxyCodeLine{        );                                                                          \(\backslash\)}
-\DoxyCodeLine{    \}                                                                               \(\backslash\)}
-\DoxyCodeLine{\} \textcolor{keywordflow}{while} (0)}
+\mbox{\Hypertarget{_o_m_sim_logger_8hh_af89cb876e6e1d43cfeacdd58a7c9b78c}\label{_o_m_sim_logger_8hh_af89cb876e6e1d43cfeacdd58a7c9b78c}} 
+\index{OMSimLogger.hh@{OMSimLogger.hh}!log\_trace@{log\_trace}}
+\index{log\_trace@{log\_trace}!OMSimLogger.hh@{OMSimLogger.hh}}
+\doxysubsubsection{\texorpdfstring{log\_trace}{log\_trace}}
+{\footnotesize\ttfamily \#define log\+\_\+trace(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::trace, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))}
 
-\end{DoxyCode}
 \mbox{\Hypertarget{_o_m_sim_logger_8hh_a5f2c72e6f2dc833f040b39ee7597d944}\label{_o_m_sim_logger_8hh_a5f2c72e6f2dc833f040b39ee7597d944}} 
 \index{OMSimLogger.hh@{OMSimLogger.hh}!log\_warning@{log\_warning}}
 \index{log\_warning@{log\_warning}!OMSimLogger.hh@{OMSimLogger.hh}}
 \doxysubsubsection{\texorpdfstring{log\_warning}{log\_warning}}
-{\footnotesize\ttfamily \#define log\+\_\+warning(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define log\+\_\+warning(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{_o_m_sim_logger_8cc_a0b2bcf82e554d6b2ec917b9493c7846e}{custom\+Log}}(spdlog\+::level\+::warn, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, fmt\+::format(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))}
 
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{    \textcolor{keywordflow}{do} \{                                                           \(\backslash\)}
-\DoxyCodeLine{    if (\mbox{\hyperlink{_o_m_sim_logger_8hh_a0b87e0d3bf5853bcbb0b66a7c48fdc05}{LOG\_LEVEL}} <= \mbox{\hyperlink{_o_m_sim_logger_8hh_a5cb439d9f933fde4cf23caa370c030e7}{WARNING}}) \{                                                     \(\backslash\)}
-\DoxyCodeLine{        emit\_log(                                                                   \(\backslash\)}
-\DoxyCodeLine{            \mbox{\hyperlink{_o_m_sim_logger_8hh_aacffe5f468c8f8b0af384c6445dedde9}{WARNING\_COLOUR}}, \textcolor{stringliteral}{"{}[WARNING]"{}}, \_\_FILE\_\_, \_\_func\_\_, \_\_LINE\_\_, \_\_VA\_ARGS\_\_  \(\backslash\)}
-\DoxyCodeLine{        );                                                                          \(\backslash\)}
-\DoxyCodeLine{    \}                                                                               \(\backslash\)}
-\DoxyCodeLine{\} \textcolor{keywordflow}{while} (0)}
 
-\end{DoxyCode}
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a56860a86b6fe2de2d514bb9923310a6e}\label{_o_m_sim_logger_8hh_a56860a86b6fe2de2d514bb9923310a6e}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!MSG\_ENDING@{MSG\_ENDING}}
-\index{MSG\_ENDING@{MSG\_ENDING}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{MSG\_ENDING}{MSG\_ENDING}}
-{\footnotesize\ttfamily \#define MSG\+\_\+\+ENDING~\char`\"{}\textbackslash{}n\char`\"{}}
 
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_ac928dfd31c92720cd32a0124aec032f8}\label{_o_m_sim_logger_8hh_ac928dfd31c92720cd32a0124aec032f8}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!NOTICE@{NOTICE}}
-\index{NOTICE@{NOTICE}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{NOTICE}{NOTICE}}
-{\footnotesize\ttfamily \#define NOTICE~2}
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_o_m_sim_logger_8hh_a0b2bcf82e554d6b2ec917b9493c7846e}\label{_o_m_sim_logger_8hh_a0b2bcf82e554d6b2ec917b9493c7846e}} 
+\index{OMSimLogger.hh@{OMSimLogger.hh}!customLog@{customLog}}
+\index{customLog@{customLog}!OMSimLogger.hh@{OMSimLogger.hh}}
+\doxysubsubsection{\texorpdfstring{customLog()}{customLog()}}
+{\footnotesize\ttfamily void custom\+Log (\begin{DoxyParamCaption}\item[{spdlog\+::level\+::level\+\_\+enum}]{log\+\_\+level,  }\item[{const char $\ast$}]{file,  }\item[{int}]{line,  }\item[{const char $\ast$}]{func,  }\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_af475693d24134633420bde3ac0184a27}\label{_o_m_sim_logger_8hh_af475693d24134633420bde3ac0184a27}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!NOTICE\_COLOUR@{NOTICE\_COLOUR}}
-\index{NOTICE\_COLOUR@{NOTICE\_COLOUR}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{NOTICE\_COLOUR}{NOTICE\_COLOUR}}
-{\footnotesize\ttfamily \#define NOTICE\+\_\+\+COLOUR~\char`\"{}\textbackslash{}x1B\mbox{[}32;1m\char`\"{}}
 
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a6f03deddd3f39aa363fb06a347835998}\label{_o_m_sim_logger_8hh_a6f03deddd3f39aa363fb06a347835998}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!RESET\_COLOUR@{RESET\_COLOUR}}
-\index{RESET\_COLOUR@{RESET\_COLOUR}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{RESET\_COLOUR}{RESET\_COLOUR}}
-{\footnotesize\ttfamily \#define RESET\+\_\+\+COLOUR~\char`\"{}\textbackslash{}x1B\mbox{[}0m\char`\"{}}
 
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a404d5107b2cc06d2e236b7320df1fa7d}\label{_o_m_sim_logger_8hh_a404d5107b2cc06d2e236b7320df1fa7d}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!SILENT@{SILENT}}
-\index{SILENT@{SILENT}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{SILENT}{SILENT}}
-{\footnotesize\ttfamily \#define SILENT~6}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_af54a2d4a37ffb240c80d6bd1202a1104}\label{_o_m_sim_logger_8hh_af54a2d4a37ffb240c80d6bd1202a1104}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!TIME\_FORMAT@{TIME\_FORMAT}}
-\index{TIME\_FORMAT@{TIME\_FORMAT}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{TIME\_FORMAT}{TIME\_FORMAT}}
-{\footnotesize\ttfamily \#define TIME\+\_\+\+FORMAT~\char`\"{}\%T\char`\"{}}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_a5cb439d9f933fde4cf23caa370c030e7}\label{_o_m_sim_logger_8hh_a5cb439d9f933fde4cf23caa370c030e7}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!WARNING@{WARNING}}
-\index{WARNING@{WARNING}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{WARNING}{WARNING}}
-{\footnotesize\ttfamily \#define WARNING~3}
-
-\mbox{\Hypertarget{_o_m_sim_logger_8hh_aacffe5f468c8f8b0af384c6445dedde9}\label{_o_m_sim_logger_8hh_aacffe5f468c8f8b0af384c6445dedde9}} 
-\index{OMSimLogger.hh@{OMSimLogger.hh}!WARNING\_COLOUR@{WARNING\_COLOUR}}
-\index{WARNING\_COLOUR@{WARNING\_COLOUR}!OMSimLogger.hh@{OMSimLogger.hh}}
-\doxysubsubsection{\texorpdfstring{WARNING\_COLOUR}{WARNING\_COLOUR}}
-{\footnotesize\ttfamily \#define WARNING\+\_\+\+COLOUR~\char`\"{}\textbackslash{}x1B\mbox{[}33m\char`\"{}}
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_o_m_sim_logger_8hh_aaf1ac4fd8beaebc4649a68a9cf7b3b87}\label{_o_m_sim_logger_8hh_aaf1ac4fd8beaebc4649a68a9cf7b3b87}} 
+\index{OMSimLogger.hh@{OMSimLogger.hh}!global\_logger@{global\_logger}}
+\index{global\_logger@{global\_logger}!OMSimLogger.hh@{OMSimLogger.hh}}
+\doxysubsubsection{\texorpdfstring{global\_logger}{global\_logger}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$spdlog\+::logger$>$ global\+\_\+logger\hspace{0.3cm}{\ttfamily [extern]}}
 

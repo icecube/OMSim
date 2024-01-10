@@ -38,7 +38,7 @@ var group__radioactive =
       [ "~OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html#a4bb83b8b117be2d728a6d64d12d1ea0c", null ],
       [ "OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html#ac2a04f1f16ab33ec542053b50c0b47ea", null ],
       [ "calculateNumberOfDecays", "class_o_m_sim_decays_g_p_s.html#a61c910b065587f27f3e08b2e1e897cb2", null ],
-      [ "configureIsotopeGPS", "class_o_m_sim_decays_g_p_s.html#a35ff4f02d5110609b3abd21e703b842d", null ],
+      [ "configureIsotopeGPS", "class_o_m_sim_decays_g_p_s.html#ac6ba3293a0826c4da9b9a7a06c777fe5", null ],
       [ "generalGPS", "class_o_m_sim_decays_g_p_s.html#abc1684c40b022ef35aa1c4eea6a7e557", null ],
       [ "getDecayTerminationNuclide", "class_o_m_sim_decays_g_p_s.html#a1e3f12bd7b3d1d92e9ce080bcb5b52be", null ],
       [ "getInstance", "class_o_m_sim_decays_g_p_s.html#aa0f3b3dcf8f49e13b4319a31b5025a9e", null ],
@@ -50,7 +50,8 @@ var group__radioactive =
       [ "mIsotopeCommands", "class_o_m_sim_decays_g_p_s.html#af4f9a615b6d1e9fa7d3b2104af3c2f3e", null ],
       [ "mNuclideStopName", "class_o_m_sim_decays_g_p_s.html#adcbc2275cda8196cfdbd5b1c3477f7ad", null ],
       [ "mOM", "class_o_m_sim_decays_g_p_s.html#a90b43354885ed69034c48df4f89326b3", null ],
-      [ "mProductionRadius", "class_o_m_sim_decays_g_p_s.html#a70c8a1985e53392c67247e6334eaaa17", null ]
+      [ "mProductionRadius", "class_o_m_sim_decays_g_p_s.html#a70c8a1985e53392c67247e6334eaaa17", null ],
+      [ "mTerminationIsotopes", "class_o_m_sim_decays_g_p_s.html#a363ea9066f59222ba1d3e3cd5f4a42d1", null ]
     ] ],
     [ "OMSimEventAction", "class_o_m_sim_event_action.html", [
       [ "OMSimEventAction", "class_o_m_sim_event_action.html#ab8aaaeecc185bbaef63665f673356506", null ],

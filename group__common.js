@@ -24,6 +24,7 @@ var group__common =
     [ "OMSim", "class_o_m_sim.html", [
       [ "OMSim", "class_o_m_sim.html#afc01df8f57a1303823b79ffd79088a89", null ],
       [ "~OMSim", "class_o_m_sim.html#a61d63cc8b99c7ac89ecce97720fbb41a", null ],
+      [ "configureLogger", "class_o_m_sim.html#a3e43df3d28f3e5e7cbec8a6e3ef1dcf5", null ],
       [ "ensureOutputDirectoryExists", "class_o_m_sim.html#a5fdec07501bb76199f652ac95bd1e961", null ],
       [ "getNavigator", "class_o_m_sim.html#acae00a5a9eef0b872175474315e7a657", null ],
       [ "initialiseSimulation", "class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2", null ],

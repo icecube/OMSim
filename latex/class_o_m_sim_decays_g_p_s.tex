@@ -38,7 +38,7 @@ static \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSim\+Decays\+GPS}} \& \mbo
 \item 
 void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_abc1684c40b022ef35aa1c4eea6a7e557}{general\+GPS}} ()
 \begin{DoxyCompactList}\small\item\em Configures common GPS commands for the radioactive decays. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_a35ff4f02d5110609b3abd21e703b842d}{configure\+Isotope\+GPS}} (G4\+String Isotope, G4\+String location, G4int opt\+Param=-\/999)
+void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_ac6ba3293a0826c4da9b9a7a06c777fe5}{configure\+Isotope\+GPS}} (G4\+String Isotope, G4\+String location)
 \begin{DoxyCompactList}\small\item\em Configures GPS for the production and decay of an isotope within a specified location. \end{DoxyCompactList}\item 
 std\+::map$<$ G4\+String, G4int $>$ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_a61c910b065587f27f3e08b2e1e897cb2}{calculate\+Number\+Of\+Decays}} (G4\+Material\+Properties\+Table $\ast$p\+MPT, G4double p\+Time\+Window, G4double p\+Mass)
 \begin{DoxyCompactList}\small\item\em Calculates the number of decays for isotopes. \end{DoxyCompactList}\item 
@@ -54,6 +54,8 @@ std\+::map$<$ G4\+String, G4int $>$ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_
 \begin{DoxyCompactItemize}
 \item 
 std\+::map$<$ G4\+String, G4\+String $>$ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_af4f9a615b6d1e9fa7d3b2104af3c2f3e}{m\+Isotope\+Commands}}
+\item 
+std\+::map$<$ G4\+String, G4\+String $>$ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_a363ea9066f59222ba1d3e3cd5f4a42d1}{m\+Termination\+Isotopes}}
 \item 
 \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}} $\ast$ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_a90b43354885ed69034c48df4f89326b3}{m\+OM}}
 \item 
@@ -103,11 +105,11 @@ G4\+String \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_adcbc2275cda8196cfdbd5b1c
 \begin{DoxyReturn}{Returns}
 Map of isotopes and their respective number of decays. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_a35ff4f02d5110609b3abd21e703b842d}\label{class_o_m_sim_decays_g_p_s_a35ff4f02d5110609b3abd21e703b842d}} 
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_ac6ba3293a0826c4da9b9a7a06c777fe5}\label{class_o_m_sim_decays_g_p_s_ac6ba3293a0826c4da9b9a7a06c777fe5}} 
 \index{OMSimDecaysGPS@{OMSimDecaysGPS}!configureIsotopeGPS@{configureIsotopeGPS}}
 \index{configureIsotopeGPS@{configureIsotopeGPS}!OMSimDecaysGPS@{OMSimDecaysGPS}}
 \doxysubsubsection{\texorpdfstring{configureIsotopeGPS()}{configureIsotopeGPS()}}
-{\footnotesize\ttfamily void OMSim\+Decays\+GPS\+::configure\+Isotope\+GPS (\begin{DoxyParamCaption}\item[{G4\+String}]{Isotope,  }\item[{G4\+String}]{p\+Volume\+Name,  }\item[{G4int}]{opt\+Param = {\ttfamily -\/999} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void OMSim\+Decays\+GPS\+::configure\+Isotope\+GPS (\begin{DoxyParamCaption}\item[{G4\+String}]{Isotope,  }\item[{G4\+String}]{p\+Volume\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 If the daughter of the configured isotope is unstable, it will also decay in the same position as its mother
 
@@ -116,8 +118,6 @@ If the daughter of the configured isotope is unstable, it will also decay in the
 {\em Isotope} & The isotope which is going to be produced. \\
 \hline
 {\em p\+Volume\+Name} & The volume name where the isotope decays. \\
-\hline
-{\em opt\+Param} & An optional parameter related to the location. For \char`\"{}\+PMT\char`\"{}, use e.\+g. the PMT number. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_abc1684c40b022ef35aa1c4eea6a7e557}\label{class_o_m_sim_decays_g_p_s_abc1684c40b022ef35aa1c4eea6a7e557}} 
@@ -197,6 +197,8 @@ If the daughter of the configured isotope is unstable, it will also decay in the
 \DoxyCodeLine{= \{}
 \DoxyCodeLine{      \{\textcolor{stringliteral}{"{}U238"{}}, \textcolor{stringliteral}{"{}/gps/ion 92 238 0"{}}\},}
 \DoxyCodeLine{      \{\textcolor{stringliteral}{"{}U235"{}}, \textcolor{stringliteral}{"{}/gps/ion 92 235 0"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Ra226"{}}, \textcolor{stringliteral}{"{}/gps/ion 88 226 0"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Ra224"{}}, \textcolor{stringliteral}{"{}/gps/ion 88 224 0"{}}\},}
 \DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Th232"{}}, \textcolor{stringliteral}{"{}/gps/ion 90 232 0"{}}\},}
 \DoxyCodeLine{      \{\textcolor{stringliteral}{"{}K40"{}}, \textcolor{stringliteral}{"{}/gps/ion 19 40 0"{}}\}\}}
 
@@ -219,6 +221,23 @@ If the daughter of the configured isotope is unstable, it will also decay in the
 \doxysubsubsection{\texorpdfstring{mProductionRadius}{mProductionRadius}}
 {\footnotesize\ttfamily G4double OMSim\+Decays\+GPS\+::m\+Production\+Radius\hspace{0.3cm}{\ttfamily [private]}}
 
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_a363ea9066f59222ba1d3e3cd5f4a42d1}\label{class_o_m_sim_decays_g_p_s_a363ea9066f59222ba1d3e3cd5f4a42d1}} 
+\index{OMSimDecaysGPS@{OMSimDecaysGPS}!mTerminationIsotopes@{mTerminationIsotopes}}
+\index{mTerminationIsotopes@{mTerminationIsotopes}!OMSimDecaysGPS@{OMSimDecaysGPS}}
+\doxysubsubsection{\texorpdfstring{mTerminationIsotopes}{mTerminationIsotopes}}
+{\footnotesize\ttfamily std\+::map$<$G4\+String, G4\+String$>$ OMSim\+Decays\+GPS\+::m\+Termination\+Isotopes\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}U238"{}}, \textcolor{stringliteral}{"{}Ra226"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Th232"{}}, \textcolor{stringliteral}{"{}Ra224"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Ra226"{}}, \textcolor{stringliteral}{"{}none"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Ra224"{}}, \textcolor{stringliteral}{"{}none"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}U235"{}}, \textcolor{stringliteral}{"{}none"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}K40"{}}, \textcolor{stringliteral}{"{}none"{}}\}\}}
+
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -114,7 +114,9 @@ $(document).ready(function(){initNavTree('_o_m_sim_logger_8hh.html',''); initRes
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">OMSimLogger.hh File Reference</div>  </div>
 </div><!--header-->
@@ -122,13 +124,13 @@ $(document).ready(function(){initNavTree('_o_m_sim_logger_8hh.html',''); initRes
 <div class="textblock"><div class="dynheader">
 Include dependency graph for OMSimLogger.hh:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_o_m_sim_logger_8hh__incl.svg" width="166" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_o_m_sim_logger_8hh__incl.svg" width="564" height="127"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_o_m_sim_logger_8hh__dep__incl.svg" width="5215" height="336"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_o_m_sim_logger_8hh__dep__incl.svg" width="4548" height="560"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -136,396 +138,32 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a0b87e0d3bf5853bcbb0b66a7c48fdc05"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a0b87e0d3bf5853bcbb0b66a7c48fdc05">LOG_LEVEL</a>&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8hh.html#ae1103fea1e1b3c41ca3322d5389f7162">INFO</a></td></tr>
-<tr class="separator:a0b87e0d3bf5853bcbb0b66a7c48fdc05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38a00a82883c888dd7d6bb15015d2725"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a38a00a82883c888dd7d6bb15015d2725">DEBUG_COLOUR</a>&#160;&#160;&#160;&quot;&quot;</td></tr>
-<tr class="separator:a38a00a82883c888dd7d6bb15015d2725"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1">INFO_COLOUR</a>&#160;&#160;&#160;&quot;\x1B[36m&quot;</td></tr>
-<tr class="separator:ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af475693d24134633420bde3ac0184a27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#af475693d24134633420bde3ac0184a27">NOTICE_COLOUR</a>&#160;&#160;&#160;&quot;\x1B[32;1m&quot;</td></tr>
-<tr class="separator:af475693d24134633420bde3ac0184a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacffe5f468c8f8b0af384c6445dedde9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#aacffe5f468c8f8b0af384c6445dedde9">WARNING_COLOUR</a>&#160;&#160;&#160;&quot;\x1B[33m&quot;</td></tr>
-<tr class="separator:aacffe5f468c8f8b0af384c6445dedde9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af333bc50c3cd4e8a23d094aca4354e06"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#af333bc50c3cd4e8a23d094aca4354e06">ERROR_COLOUR</a>&#160;&#160;&#160;&quot;\x1B[31m&quot;</td></tr>
-<tr class="separator:af333bc50c3cd4e8a23d094aca4354e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae090dfefb34eb7a753d2bd5d39af3d27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#ae090dfefb34eb7a753d2bd5d39af3d27">CRITICAL_COLOUR</a>&#160;&#160;&#160;&quot;\x1B[41;1m&quot;</td></tr>
-<tr class="separator:ae090dfefb34eb7a753d2bd5d39af3d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f03deddd3f39aa363fb06a347835998"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a6f03deddd3f39aa363fb06a347835998">RESET_COLOUR</a>&#160;&#160;&#160;&quot;\x1B[0m&quot;</td></tr>
-<tr class="separator:a6f03deddd3f39aa363fb06a347835998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56860a86b6fe2de2d514bb9923310a6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a56860a86b6fe2de2d514bb9923310a6e">MSG_ENDING</a>&#160;&#160;&#160;&quot;\n&quot;</td></tr>
-<tr class="separator:a56860a86b6fe2de2d514bb9923310a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af54a2d4a37ffb240c80d6bd1202a1104"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#af54a2d4a37ffb240c80d6bd1202a1104">TIME_FORMAT</a>&#160;&#160;&#160;&quot;%T&quot;</td></tr>
-<tr class="separator:af54a2d4a37ffb240c80d6bd1202a1104"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d0652ae6ea6a5c4fef68baf139fd085"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a6d0652ae6ea6a5c4fef68baf139fd085">BORDER</a>&#160;&#160;&#160;&quot;-&quot;</td></tr>
-<tr class="separator:a6d0652ae6ea6a5c4fef68baf139fd085"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af88a44e50fa5d84f09d4cb860f6f900f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#af88a44e50fa5d84f09d4cb860f6f900f">DISPLAY_COLOUR</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:af88a44e50fa5d84f09d4cb860f6f900f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aede0ca492b0728b0fc9b1c7903280e78"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#aede0ca492b0728b0fc9b1c7903280e78">DISPLAY_TIME</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:aede0ca492b0728b0fc9b1c7903280e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05ec4e147f9f2b727ad002946ed2820b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a05ec4e147f9f2b727ad002946ed2820b">DISPLAY_LEVEL</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a05ec4e147f9f2b727ad002946ed2820b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e41b0d936c765090643626f36d68599"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a4e41b0d936c765090643626f36d68599">DISPLAY_FUNC</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a4e41b0d936c765090643626f36d68599"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9da93ae8287d4f064d5c713588e1e174"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a9da93ae8287d4f064d5c713588e1e174">DISPLAY_FILE</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a9da93ae8287d4f064d5c713588e1e174"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49c8c0c65b0b5380fcd002c1650f18a3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a49c8c0c65b0b5380fcd002c1650f18a3">DISPLAY_LINE</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a49c8c0c65b0b5380fcd002c1650f18a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af993c4cce32465e2549d0e901e80ef88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#af993c4cce32465e2549d0e901e80ef88">DISPLAY_BORDER</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:af993c4cce32465e2549d0e901e80ef88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6812b33eabd16ea4051bf309dea3bd1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#af6812b33eabd16ea4051bf309dea3bd1">DISPLAY_MESSAGE</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:af6812b33eabd16ea4051bf309dea3bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd1def7551572fb5d68cf25369e0bab0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#abd1def7551572fb5d68cf25369e0bab0">DISPLAY_ENDING</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:abd1def7551572fb5d68cf25369e0bab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af05d11ed910232f71b9c3c05ffd98618"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#af05d11ed910232f71b9c3c05ffd98618">DISPLAY_RESET</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:af05d11ed910232f71b9c3c05ffd98618"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad59147a3a6584be2166a2c7f64e4e32c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#ad59147a3a6584be2166a2c7f64e4e32c">emit_log</a>(colour,  level,  file,  func,  line, ...)</td></tr>
-<tr class="separator:ad59147a3a6584be2166a2c7f64e4e32c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad72dbcf6d0153db1b8d8a58001feed83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#ad72dbcf6d0153db1b8d8a58001feed83">DEBUG</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:ad72dbcf6d0153db1b8d8a58001feed83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1103fea1e1b3c41ca3322d5389f7162"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#ae1103fea1e1b3c41ca3322d5389f7162">INFO</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:ae1103fea1e1b3c41ca3322d5389f7162"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac928dfd31c92720cd32a0124aec032f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#ac928dfd31c92720cd32a0124aec032f8">NOTICE</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:ac928dfd31c92720cd32a0124aec032f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cb439d9f933fde4cf23caa370c030e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a5cb439d9f933fde4cf23caa370c030e7">WARNING</a>&#160;&#160;&#160;3</td></tr>
-<tr class="separator:a5cb439d9f933fde4cf23caa370c030e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fe83ac76edc595f6b98cd4a4127aed5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a8fe83ac76edc595f6b98cd4a4127aed5">ERROR</a>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:a8fe83ac76edc595f6b98cd4a4127aed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0233515480e60d29bcc731469976e02"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#ae0233515480e60d29bcc731469976e02">CRITICAL</a>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:ae0233515480e60d29bcc731469976e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a404d5107b2cc06d2e236b7320df1fa7d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a404d5107b2cc06d2e236b7320df1fa7d">SILENT</a>&#160;&#160;&#160;6</td></tr>
-<tr class="separator:a404d5107b2cc06d2e236b7320df1fa7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa77e596ef13d2f0f75d0ac9540ed358d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#aa77e596ef13d2f0f75d0ac9540ed358d">log_debug</a>(...)</td></tr>
+<tr class="memitem:af89cb876e6e1d43cfeacdd58a7c9b78c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#af89cb876e6e1d43cfeacdd58a7c9b78c">log_trace</a>(...)&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::trace, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td></tr>
+<tr class="separator:af89cb876e6e1d43cfeacdd58a7c9b78c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa77e596ef13d2f0f75d0ac9540ed358d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#aa77e596ef13d2f0f75d0ac9540ed358d">log_debug</a>(...)&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::debug, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td></tr>
 <tr class="separator:aa77e596ef13d2f0f75d0ac9540ed358d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1cfe5444875c8eca0ea6f6993977d6d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#aa1cfe5444875c8eca0ea6f6993977d6d">log_info</a>(...)</td></tr>
+<tr class="memitem:aa1cfe5444875c8eca0ea6f6993977d6d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#aa1cfe5444875c8eca0ea6f6993977d6d">log_info</a>(...)&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::info, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td></tr>
 <tr class="separator:aa1cfe5444875c8eca0ea6f6993977d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a725275c5ac170bb8f873d63cad37b61f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a725275c5ac170bb8f873d63cad37b61f">log_notice</a>(...)</td></tr>
+<tr class="memitem:a725275c5ac170bb8f873d63cad37b61f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a725275c5ac170bb8f873d63cad37b61f">log_notice</a>(...)&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::info, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td></tr>
 <tr class="separator:a725275c5ac170bb8f873d63cad37b61f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f2c72e6f2dc833f040b39ee7597d944"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a5f2c72e6f2dc833f040b39ee7597d944">log_warning</a>(...)</td></tr>
+<tr class="memitem:a5f2c72e6f2dc833f040b39ee7597d944"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a5f2c72e6f2dc833f040b39ee7597d944">log_warning</a>(...)&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::warn, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td></tr>
 <tr class="separator:a5f2c72e6f2dc833f040b39ee7597d944"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ae72553ea9805dd87a463d6f710364d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a6ae72553ea9805dd87a463d6f710364d">log_error</a>(...)</td></tr>
+<tr class="memitem:a6ae72553ea9805dd87a463d6f710364d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a6ae72553ea9805dd87a463d6f710364d">log_error</a>(...)&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::err, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td></tr>
 <tr class="separator:a6ae72553ea9805dd87a463d6f710364d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd453c0af726853da9a48d643189ccf1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#acd453c0af726853da9a48d643189ccf1">log_critical</a>(...)</td></tr>
+<tr class="memitem:acd453c0af726853da9a48d643189ccf1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#acd453c0af726853da9a48d643189ccf1">log_critical</a>(...)&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::critical, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td></tr>
 <tr class="separator:acd453c0af726853da9a48d643189ccf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a0b2bcf82e554d6b2ec917b9493c7846e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a> (spdlog::level::level_enum log_level, const char *file, int line, const char *func, const std::string &amp;message)</td></tr>
+<tr class="separator:a0b2bcf82e554d6b2ec917b9493c7846e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aaf1ac4fd8beaebc4649a68a9cf7b3b87"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_logger_8hh.html#aaf1ac4fd8beaebc4649a68a9cf7b3b87">global_logger</a></td></tr>
+<tr class="separator:aaf1ac4fd8beaebc4649a68a9cf7b3b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a6d0652ae6ea6a5c4fef68baf139fd085"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d0652ae6ea6a5c4fef68baf139fd085">&#9670;&nbsp;</a></span>BORDER</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define BORDER&#160;&#160;&#160;&quot;-&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae0233515480e60d29bcc731469976e02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0233515480e60d29bcc731469976e02">&#9670;&nbsp;</a></span>CRITICAL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRITICAL&#160;&#160;&#160;5</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae090dfefb34eb7a753d2bd5d39af3d27"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae090dfefb34eb7a753d2bd5d39af3d27">&#9670;&nbsp;</a></span>CRITICAL_COLOUR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CRITICAL_COLOUR&#160;&#160;&#160;&quot;\x1B[41;1m&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad72dbcf6d0153db1b8d8a58001feed83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad72dbcf6d0153db1b8d8a58001feed83">&#9670;&nbsp;</a></span>DEBUG</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DEBUG&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a38a00a82883c888dd7d6bb15015d2725"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38a00a82883c888dd7d6bb15015d2725">&#9670;&nbsp;</a></span>DEBUG_COLOUR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DEBUG_COLOUR&#160;&#160;&#160;&quot;&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af993c4cce32465e2549d0e901e80ef88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af993c4cce32465e2549d0e901e80ef88">&#9670;&nbsp;</a></span>DISPLAY_BORDER</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DISPLAY_BORDER&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af88a44e50fa5d84f09d4cb860f6f900f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af88a44e50fa5d84f09d4cb860f6f900f">&#9670;&nbsp;</a></span>DISPLAY_COLOUR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DISPLAY_COLOUR&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="abd1def7551572fb5d68cf25369e0bab0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd1def7551572fb5d68cf25369e0bab0">&#9670;&nbsp;</a></span>DISPLAY_ENDING</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DISPLAY_ENDING&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9da93ae8287d4f064d5c713588e1e174"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9da93ae8287d4f064d5c713588e1e174">&#9670;&nbsp;</a></span>DISPLAY_FILE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DISPLAY_FILE&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4e41b0d936c765090643626f36d68599"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e41b0d936c765090643626f36d68599">&#9670;&nbsp;</a></span>DISPLAY_FUNC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DISPLAY_FUNC&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a05ec4e147f9f2b727ad002946ed2820b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05ec4e147f9f2b727ad002946ed2820b">&#9670;&nbsp;</a></span>DISPLAY_LEVEL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DISPLAY_LEVEL&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a49c8c0c65b0b5380fcd002c1650f18a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49c8c0c65b0b5380fcd002c1650f18a3">&#9670;&nbsp;</a></span>DISPLAY_LINE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DISPLAY_LINE&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af6812b33eabd16ea4051bf309dea3bd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6812b33eabd16ea4051bf309dea3bd1">&#9670;&nbsp;</a></span>DISPLAY_MESSAGE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DISPLAY_MESSAGE&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af05d11ed910232f71b9c3c05ffd98618"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af05d11ed910232f71b9c3c05ffd98618">&#9670;&nbsp;</a></span>DISPLAY_RESET</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DISPLAY_RESET&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aede0ca492b0728b0fc9b1c7903280e78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aede0ca492b0728b0fc9b1c7903280e78">&#9670;&nbsp;</a></span>DISPLAY_TIME</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DISPLAY_TIME&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad59147a3a6584be2166a2c7f64e4e32c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad59147a3a6584be2166a2c7f64e4e32c">&#9670;&nbsp;</a></span>emit_log</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define emit_log</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">colour, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">level, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">file, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">func, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">line, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8fe83ac76edc595f6b98cd4a4127aed5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fe83ac76edc595f6b98cd4a4127aed5">&#9670;&nbsp;</a></span>ERROR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ERROR&#160;&#160;&#160;4</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af333bc50c3cd4e8a23d094aca4354e06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af333bc50c3cd4e8a23d094aca4354e06">&#9670;&nbsp;</a></span>ERROR_COLOUR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ERROR_COLOUR&#160;&#160;&#160;&quot;\x1B[31m&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae1103fea1e1b3c41ca3322d5389f7162"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1103fea1e1b3c41ca3322d5389f7162">&#9670;&nbsp;</a></span>INFO</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define INFO&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1">&#9670;&nbsp;</a></span>INFO_COLOUR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define INFO_COLOUR&#160;&#160;&#160;&quot;\x1B[36m&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="acd453c0af726853da9a48d643189ccf1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acd453c0af726853da9a48d643189ccf1">&#9670;&nbsp;</a></span>log_critical</h2>
 
@@ -537,21 +175,11 @@ Macros</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td></td>
+          <td>&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::critical, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                          \</div>
-<div class="line">    if (<a class="code" href="_o_m_sim_logger_8hh.html#a0b87e0d3bf5853bcbb0b66a7c48fdc05">LOG_LEVEL</a> &lt;= <a class="code" href="_o_m_sim_logger_8hh.html#ae0233515480e60d29bcc731469976e02">CRITICAL</a>) {                                                    \</div>
-<div class="line">        emit_log(                                                                   \</div>
-<div class="line">            <a class="code" href="_o_m_sim_logger_8hh.html#ae090dfefb34eb7a753d2bd5d39af3d27">CRITICAL_COLOUR</a>, <span class="stringliteral">&quot;[CRITICAL]&quot;</span>, __FILE__, __func__, __LINE__, __VA_ARGS__\</div>
-<div class="line">        );                                                                          \</div>
-<div class="line">    }                                                                               \</div>
-<div class="line">} <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_a0b87e0d3bf5853bcbb0b66a7c48fdc05"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#a0b87e0d3bf5853bcbb0b66a7c48fdc05">LOG_LEVEL</a></div><div class="ttdeci">#define LOG_LEVEL</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:4</div></div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_ae0233515480e60d29bcc731469976e02"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#ae0233515480e60d29bcc731469976e02">CRITICAL</a></div><div class="ttdeci">#define CRITICAL</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:96</div></div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_ae090dfefb34eb7a753d2bd5d39af3d27"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#ae090dfefb34eb7a753d2bd5d39af3d27">CRITICAL_COLOUR</a></div><div class="ttdeci">#define CRITICAL_COLOUR</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:23</div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="aa77e596ef13d2f0f75d0ac9540ed358d"></a>
@@ -565,20 +193,11 @@ Macros</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td></td>
+          <td>&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::debug, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                             \</div>
-<div class="line">    if (<a class="code" href="_o_m_sim_logger_8hh.html#a0b87e0d3bf5853bcbb0b66a7c48fdc05">LOG_LEVEL</a> == <a class="code" href="_o_m_sim_logger_8hh.html#ad72dbcf6d0153db1b8d8a58001feed83">DEBUG</a>) {                                                       \</div>
-<div class="line">        emit_log(                                                                   \</div>
-<div class="line">            <a class="code" href="_o_m_sim_logger_8hh.html#a38a00a82883c888dd7d6bb15015d2725">DEBUG_COLOUR</a>, <span class="stringliteral">&quot;[DEBUG]&quot;</span>, __FILE__, __func__, __LINE__, __VA_ARGS__      \</div>
-<div class="line">        );                                                                          \</div>
-<div class="line">    }                                                                               \</div>
-<div class="line">} <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_a38a00a82883c888dd7d6bb15015d2725"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#a38a00a82883c888dd7d6bb15015d2725">DEBUG_COLOUR</a></div><div class="ttdeci">#define DEBUG_COLOUR</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:18</div></div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_ad72dbcf6d0153db1b8d8a58001feed83"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#ad72dbcf6d0153db1b8d8a58001feed83">DEBUG</a></div><div class="ttdeci">#define DEBUG</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:91</div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a6ae72553ea9805dd87a463d6f710364d"></a>
@@ -592,20 +211,11 @@ Macros</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td></td>
+          <td>&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::err, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                             \</div>
-<div class="line">    if (<a class="code" href="_o_m_sim_logger_8hh.html#a0b87e0d3bf5853bcbb0b66a7c48fdc05">LOG_LEVEL</a> &lt;= <a class="code" href="_o_m_sim_logger_8hh.html#a8fe83ac76edc595f6b98cd4a4127aed5">ERROR</a>) {                                                       \</div>
-<div class="line">        emit_log(                                                                   \</div>
-<div class="line">            <a class="code" href="_o_m_sim_logger_8hh.html#af333bc50c3cd4e8a23d094aca4354e06">ERROR_COLOUR</a>, <span class="stringliteral">&quot;[ERROR]&quot;</span>, __FILE__, __func__, __LINE__, __VA_ARGS__      \</div>
-<div class="line">        );                                                                          \</div>
-<div class="line">    }                                                                               \</div>
-<div class="line">} <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_a8fe83ac76edc595f6b98cd4a4127aed5"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#a8fe83ac76edc595f6b98cd4a4127aed5">ERROR</a></div><div class="ttdeci">#define ERROR</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:95</div></div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_af333bc50c3cd4e8a23d094aca4354e06"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#af333bc50c3cd4e8a23d094aca4354e06">ERROR_COLOUR</a></div><div class="ttdeci">#define ERROR_COLOUR</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:22</div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="aa1cfe5444875c8eca0ea6f6993977d6d"></a>
@@ -619,30 +229,7 @@ Macros</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                              \</div>
-<div class="line">    if (<a class="code" href="_o_m_sim_logger_8hh.html#a0b87e0d3bf5853bcbb0b66a7c48fdc05">LOG_LEVEL</a> &lt;= <a class="code" href="_o_m_sim_logger_8hh.html#ae1103fea1e1b3c41ca3322d5389f7162">INFO</a>) {                                                        \</div>
-<div class="line">        emit_log(                                                                   \</div>
-<div class="line">            <a class="code" href="_o_m_sim_logger_8hh.html#ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1">INFO_COLOUR</a>, <span class="stringliteral">&quot;[INFO]&quot;</span>, __FILE__, __func__, __LINE__, __VA_ARGS__        \</div>
-<div class="line">        );                                                                          \</div>
-<div class="line">    }                                                                               \</div>
-<div class="line">} <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_ae1103fea1e1b3c41ca3322d5389f7162"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#ae1103fea1e1b3c41ca3322d5389f7162">INFO</a></div><div class="ttdeci">#define INFO</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:92</div></div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#ae7cb6ecb7ec2ed4c20cdb2c8ebbabfe1">INFO_COLOUR</a></div><div class="ttdeci">#define INFO_COLOUR</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:19</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a0b87e0d3bf5853bcbb0b66a7c48fdc05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b87e0d3bf5853bcbb0b66a7c48fdc05">&#9670;&nbsp;</a></span>LOG_LEVEL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LOG_LEVEL&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8hh.html#ae1103fea1e1b3c41ca3322d5389f7162">INFO</a></td>
+          <td>&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::info, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -660,20 +247,29 @@ Macros</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
-          <td></td>
+          <td>&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::info, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                            \</div>
-<div class="line">    if (<a class="code" href="_o_m_sim_logger_8hh.html#a0b87e0d3bf5853bcbb0b66a7c48fdc05">LOG_LEVEL</a> &lt;= <a class="code" href="_o_m_sim_logger_8hh.html#ac928dfd31c92720cd32a0124aec032f8">NOTICE</a>) {                                                      \</div>
-<div class="line">        emit_log(                                                                   \</div>
-<div class="line">            <a class="code" href="_o_m_sim_logger_8hh.html#af475693d24134633420bde3ac0184a27">NOTICE_COLOUR</a>, <span class="stringliteral">&quot;[NOTICE]&quot;</span>, __FILE__, __func__, __LINE__, __VA_ARGS__    \</div>
-<div class="line">        );                                                                          \</div>
-<div class="line">    }                                                                               \</div>
-<div class="line">} <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_ac928dfd31c92720cd32a0124aec032f8"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#ac928dfd31c92720cd32a0124aec032f8">NOTICE</a></div><div class="ttdeci">#define NOTICE</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:93</div></div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_af475693d24134633420bde3ac0184a27"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#af475693d24134633420bde3ac0184a27">NOTICE_COLOUR</a></div><div class="ttdeci">#define NOTICE_COLOUR</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:20</div></div>
-</div><!-- fragment -->
+
+</div>
+</div>
+<a id="af89cb876e6e1d43cfeacdd58a7c9b78c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af89cb876e6e1d43cfeacdd58a7c9b78c">&#9670;&nbsp;</a></span>log_trace</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define log_trace</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::trace, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="a5f2c72e6f2dc833f040b39ee7597d944"></a>
@@ -687,130 +283,79 @@ Macros</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="_o_m_sim_logger_8cc.html#a0b2bcf82e554d6b2ec917b9493c7846e">customLog</a>(spdlog::level::warn, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a0b2bcf82e554d6b2ec917b9493c7846e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b2bcf82e554d6b2ec917b9493c7846e">&#9670;&nbsp;</a></span>customLog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void customLog </td>
+          <td>(</td>
+          <td class="paramtype">spdlog::level::level_enum&#160;</td>
+          <td class="paramname"><em>log_level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> {                                                           \</div>
-<div class="line">    if (<a class="code" href="_o_m_sim_logger_8hh.html#a0b87e0d3bf5853bcbb0b66a7c48fdc05">LOG_LEVEL</a> &lt;= <a class="code" href="_o_m_sim_logger_8hh.html#a5cb439d9f933fde4cf23caa370c030e7">WARNING</a>) {                                                     \</div>
-<div class="line">        emit_log(                                                                   \</div>
-<div class="line">            <a class="code" href="_o_m_sim_logger_8hh.html#aacffe5f468c8f8b0af384c6445dedde9">WARNING_COLOUR</a>, <span class="stringliteral">&quot;[WARNING]&quot;</span>, __FILE__, __func__, __LINE__, __VA_ARGS__  \</div>
-<div class="line">        );                                                                          \</div>
-<div class="line">    }                                                                               \</div>
-<div class="line">} <span class="keywordflow">while</span> (0)</div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_a5cb439d9f933fde4cf23caa370c030e7"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#a5cb439d9f933fde4cf23caa370c030e7">WARNING</a></div><div class="ttdeci">#define WARNING</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:94</div></div>
-<div class="ttc" id="a_o_m_sim_logger_8hh_html_aacffe5f468c8f8b0af384c6445dedde9"><div class="ttname"><a href="_o_m_sim_logger_8hh.html#aacffe5f468c8f8b0af384c6445dedde9">WARNING_COLOUR</a></div><div class="ttdeci">#define WARNING_COLOUR</div><div class="ttdef"><b>Definition:</b> OMSimLogger.hh:21</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a56860a86b6fe2de2d514bb9923310a6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56860a86b6fe2de2d514bb9923310a6e">&#9670;&nbsp;</a></span>MSG_ENDING</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">#define MSG_ENDING&#160;&#160;&#160;&quot;\n&quot;</td>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac928dfd31c92720cd32a0124aec032f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac928dfd31c92720cd32a0124aec032f8">&#9670;&nbsp;</a></span>NOTICE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">#define NOTICE&#160;&#160;&#160;2</td>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="af475693d24134633420bde3ac0184a27"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af475693d24134633420bde3ac0184a27">&#9670;&nbsp;</a></span>NOTICE_COLOUR</h2>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="aaf1ac4fd8beaebc4649a68a9cf7b3b87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf1ac4fd8beaebc4649a68a9cf7b3b87">&#9670;&nbsp;</a></span>global_logger</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define NOTICE_COLOUR&#160;&#160;&#160;&quot;\x1B[32;1m&quot;</td>
+          <td class="memname">std::shared_ptr&lt;spdlog::logger&gt; global_logger</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6f03deddd3f39aa363fb06a347835998"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f03deddd3f39aa363fb06a347835998">&#9670;&nbsp;</a></span>RESET_COLOUR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RESET_COLOUR&#160;&#160;&#160;&quot;\x1B[0m&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a404d5107b2cc06d2e236b7320df1fa7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a404d5107b2cc06d2e236b7320df1fa7d">&#9670;&nbsp;</a></span>SILENT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SILENT&#160;&#160;&#160;6</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af54a2d4a37ffb240c80d6bd1202a1104"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af54a2d4a37ffb240c80d6bd1202a1104">&#9670;&nbsp;</a></span>TIME_FORMAT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TIME_FORMAT&#160;&#160;&#160;&quot;%T&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5cb439d9f933fde4cf23caa370c030e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5cb439d9f933fde4cf23caa370c030e7">&#9670;&nbsp;</a></span>WARNING</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define WARNING&#160;&#160;&#160;3</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aacffe5f468c8f8b0af384c6445dedde9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aacffe5f468c8f8b0af384c6445dedde9">&#9670;&nbsp;</a></span>WARNING_COLOUR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define WARNING_COLOUR&#160;&#160;&#160;&quot;\x1B[33m&quot;</td>
-        </tr>
-      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -821,7 +366,7 @@ Macros</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_864f292c5cbb4a74180810cb2e80dd5b.html">framework</a></li><li class="navelem"><a class="el" href="dir_1bc21981797ed08ef994409d474646cd.html">include</a></li><li class="navelem"><a class="el" href="_o_m_sim_logger_8hh.html">OMSimLogger.hh</a></li>
-    <li class="footer">Generated on Tue Jan 9 2024 11:27:05 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Jan 10 2024 11:47:14 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

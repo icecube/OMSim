@@ -1,6 +1,11 @@
 <map id="OMSimInputData.hh" name="OMSimInputData.hh">
-<area shape="rect" id="node1" title="Definition of ParameterTable and InputDataManager." alt="" coords="223,5,376,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,87,196,114"/>
-<area shape="rect" id="node3" title=" " alt="" coords="220,87,379,114"/>
-<area shape="rect" id="node4" title=" " alt="" coords="403,80,553,121"/>
+<area shape="rect" id="node1" title="Definition of ParameterTable and InputDataManager." alt="" coords="503,5,656,32"/>
+<area shape="rect" id="node2" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="229,87,361,114"/>
+<area shape="rect" id="node7" title=" " alt="" coords="385,87,576,114"/>
+<area shape="rect" id="node8" title=" " alt="" coords="600,87,759,114"/>
+<area shape="rect" id="node9" title=" " alt="" coords="783,80,933,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,177,129,203"/>
+<area shape="rect" id="node4" title=" " alt="" coords="153,169,301,211"/>
+<area shape="rect" id="node5" title=" " alt="" coords="326,177,403,203"/>
+<area shape="rect" id="node6" title=" " alt="" coords="427,177,558,203"/>
 </map>

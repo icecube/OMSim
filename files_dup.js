@@ -10,7 +10,7 @@ var files_dup =
       [ "Component", "structabc_detector_component_1_1_component.html", "structabc_detector_component_1_1_component" ]
     ] ],
     [ "CADMesh.hh", "_c_a_d_mesh_8hh.html", "_c_a_d_mesh_8hh" ],
-    [ "OMSim.cc", "_o_m_sim_8cc.html", null ],
+    [ "OMSim.cc", "_o_m_sim_8cc.html", "_o_m_sim_8cc" ],
     [ "OMSim.hh", "_o_m_sim_8hh.html", null ],
     [ "OMSim_effective_area.cc", "_o_m_sim__effective__area_8cc.html", "_o_m_sim__effective__area_8cc" ],
     [ "OMSim_radioactive_decays.cc", "_o_m_sim__radioactive__decays_8cc.html", "_o_m_sim__radioactive__decays_8cc" ],
@@ -54,6 +54,7 @@ var files_dup =
     [ "OMSimHitManager.hh", "_o_m_sim_hit_manager_8hh.html", null ],
     [ "OMSimInputData.cc", "_o_m_sim_input_data_8cc.html", null ],
     [ "OMSimInputData.hh", "_o_m_sim_input_data_8hh.html", null ],
+    [ "OMSimLogger.cc", "_o_m_sim_logger_8cc.html", "_o_m_sim_logger_8cc" ],
     [ "OMSimLogger.hh", "_o_m_sim_logger_8hh.html", "_o_m_sim_logger_8hh" ],
     [ "OMSimLOM16.cc", "_o_m_sim_l_o_m16_8cc.html", null ],
     [ "OMSimLOM16.hh", "_o_m_sim_l_o_m16_8hh.html", [
