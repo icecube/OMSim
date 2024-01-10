@@ -628,6 +628,7 @@ void CustomProperties::extractConstProperties()
         G4String lKey = item.first;
         G4double lValue = mFileData->getValueWithUnit(mJsonTree.get<G4String>("jName"), "ConstProperties." + lKey);
         mMPT->AddConstProperty(lKey, lValue, true);
+        
         G4String mssg = "Added " + lKey + " constant property to " + mJsonTree.get<G4String>("jMaterialName");
         log_debug(mssg);
     }

@@ -45,7 +45,7 @@ public:
         std::stringstream stream;
         stream << command;
         appendToStream(stream, args...);
-        log_debug(stream.str().c_str());
+        log_trace(stream.str().c_str());
         UI->ApplyCommand(stream.str());
     }
 

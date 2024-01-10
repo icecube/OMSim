@@ -23,6 +23,11 @@ set(OPENSSL_ROOT_DIR /usr/lib/x86_64-linux-gnu)
 set(OPENSSL_LIBRARIES /usr/lib/x86_64-linux-gnu)
 find_package(OpenSSL REQUIRED)
 
+# For logging with spdlog
+find_package(spdlog REQUIRED)
+find_package(fmt REQUIRED) # Find fmt library
+
+
 # Include OpenSSL's headers in the project
 include_directories(${OPENSSL_INCLUDE_DIR})
 

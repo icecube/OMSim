@@ -37,6 +37,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #include "OMSimDecaysAnalysis.hh"
+#include "OMSimLogger.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimDecaysGPS.hh"
 
@@ -1079,10 +1080,10 @@ G4RadioactiveDecay::DecayIt(const G4Track &theTrack, const G4Step &)
 #endif
     return TerminateDecay();
   }
-
   // Check if the current nucleus is the target stop nucleus
   if (theParticleDef->GetParticleName() == OMSimDecaysGPS::getInstance().getDecayTerminationNuclide())
   {
+    log_trace("Stoping decay chain, as current isotope {} is the set termination isotope", theParticleDef->GetParticleName());
     return TerminateDecay();
   }
 

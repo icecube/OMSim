@@ -21,6 +21,16 @@
          "jValue": 1.28,
          "jUnit": "kg",
          "jInvertUnit" : ""
+      },
+      "Ra226_ACTIVITY": {
+         "jValue": 4.61,
+         "jUnit": "kg",
+         "jInvertUnit" : ""
+      },
+      "Ra224_ACTIVITY": {
+         "jValue": 1.28,
+         "jUnit": "kg",
+         "jInvertUnit" : ""
       }
     }
 }

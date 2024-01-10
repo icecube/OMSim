@@ -8,16 +8,18 @@ OMSimOpticalModule::OMSimOpticalModule()
 }
 
 OMSimOpticalModule::~OMSimOpticalModule()
-{
+{   
     if (mPMTManager != nullptr)
     {
         delete mPMTManager;
         mPMTManager = nullptr;
     }
+    
 }
 
 OMSimPMTConstruction *OMSimOpticalModule::getPMTmanager()
-{
+{   
+    log_trace("Getting PMT instance used in optical module instance");
     return mPMTManager;
 }
 

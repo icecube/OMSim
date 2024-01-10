@@ -9,9 +9,11 @@
  */
 
 #include "OMSim.hh"
+#include "OMSimLogger.hh"
 #include <boost/program_options.hpp>
 
 namespace po = boost::program_options;
+extern std::shared_ptr<spdlog::logger> global_logger;
 
 /**
  * This constructor initializes the Geant4 run manager, visualization manager,
@@ -25,6 +27,7 @@ OMSim::OMSim() : mGeneralArgs("General options")
     mNavigator = new G4Navigator();
 
     mGeneralArgs.add_options()("help", "produce help message")
+    ("log_level", po::value<std::string>()->default_value("info"), "Granularity of logger, defaults to info [trace, debug, info, warn, error, critical, off]")
     ("output_file,o", po::value<std::string>()->default_value("output"), "filename for output")
     ("numevents,n", po::value<G4int>()->default_value(0), "number of events")
     ("visual,v", po::bool_switch()->default_value(false), "shows visualization of module after run")
@@ -44,10 +47,40 @@ OMSim::OMSim() : mGeneralArgs("General options")
     ("pmt_model", po::value<G4int>()->default_value(0), "DEPRECATED. R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3");
 }
 
+spdlog::level::level_enum getLogLevelFromString(const std::string &pLevelString)
+{
+    static const std::unordered_map<std::string, spdlog::level::level_enum> lLevelMap = {
+        {"trace", spdlog::level::trace},
+        {"debug", spdlog::level::debug},
+        {"info", spdlog::level::info},
+        {"warn", spdlog::level::warn},
+        {"error", spdlog::level::err},
+        {"critical", spdlog::level::critical},
+        {"off", spdlog::level::off}};
+    auto it = lLevelMap.find(pLevelString);
+    if (it != lLevelMap.end())
+    {
+        return it->second;
+    }
+    // Default log level if string is not recognized
+    return spdlog::level::info;
+}
 
-    /**
-     * @brief UIEx session is started for visualisation.
-     */
+void OMSim::configureLogger()
+{
+    G4cout << ":::::::::::::::::::" << G4endl;
+    global_logger = spdlog::stdout_color_mt("console");
+    std::string lLogLevel = OMSimCommandArgsTable::getInstance().get<std::string>("log_level");
+    global_logger->set_level(getLogLevelFromString(lLogLevel)); // Set the desired log level
+    global_logger->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e][%l][%s:%#]%$ %v");
+    spdlog::set_default_logger(global_logger);  
+    log_trace("Logger configured to level {}", lLogLevel);
+}
+
+
+/**
+ * @brief UIEx session is started for visualisation.
+ */
 void OMSim::startVisualisation()
 {
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
@@ -57,13 +90,13 @@ void OMSim::startVisualisation()
     UIEx->SessionStart();
     delete UIEx;
 }
-    /**
-     * @brief Ensure that the output directory for the simulation results exists.
-     *
-     * If the output directory does not exist, this function will create it.
-     *
-     * @param pFilePath The path to the output directory.
-     */
+/**
+ * @brief Ensure that the output directory for the simulation results exists.
+ *
+ * If the output directory does not exist, this function will create it.
+ *
+ * @param pFilePath The path to the output directory.
+ */
 void OMSim::ensureOutputDirectoryExists(const std::string &pFilePath)
 {
     std::filesystem::path full_path(pFilePath);
@@ -88,6 +121,8 @@ OMSimDetectorConstruction* OMSim::getDetectorConstruction()
      */
 void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstruction)
 {
+    configureLogger();
+
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
     ensureOutputDirectoryExists(lArgs.get<std::string>("output_file"));
 

@@ -537,7 +537,7 @@ void OMSimPMTConstruction::includeHAcoating()
 }
 
 G4double OMSimPMTConstruction::getPMTGlassWeight()
-{
+{   log_trace("Getting PMT bulb weight");
     try
     {
         return mData->getValue<double>(mSelectedPMT, "jBulbWeight");

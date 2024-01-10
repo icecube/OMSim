@@ -50,6 +50,7 @@ public:
     void ensureOutputDirectoryExists(const std::string &filepath);
     void initialiseSimulation(OMSimDetectorConstruction* pDetectorConstruction);
     void startVisualisation();
+    void configureLogger();
     //OMSimDetectorConstruction* getDetectorConstruction();
     po::options_description mGeneralArgs;
     

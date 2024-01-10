@@ -317,7 +317,6 @@ mDOMPMTResponse::mDOMPMTResponse()
 
     for (const auto &lKey : getScannedWavelengths())
     {
-        G4cout << lKey << G4endl;
         std::string lWv = std::to_string((int)(lKey / nm));
         mGainG2Dmap[lKey] = createHistogramFromData(path + "Gain_PE_" + lWv + ".dat", ("Gain_PE_" + lWv).c_str());
         mGainResolutionG2Dmap[lKey] = createHistogramFromData(path + "SPEresolution_" + lWv + ".dat", ("SPEresolution_" + lWv).c_str());

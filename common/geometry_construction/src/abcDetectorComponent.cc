@@ -23,8 +23,7 @@ void abcDetectorComponent::appendComponent(G4VSolid *pSolid, G4LogicalVolume *pL
 {
     if (checkIfExists(pName))
     {
-        G4String mssg = pName + " already exists in the Components map. I will expand with a suffix, but this is bad!";
-        log_critical(mssg);
+        log_critical("{} already exists in the Components map. I will expand with a suffix, but this is bad!", pName);
         pName = pName + "_" + std::to_string(mComponents.size());
     }
     mComponents[pName] = {
@@ -45,6 +44,7 @@ G4bool abcDetectorComponent::checkIfExists(G4String pName)
 {
     if (mComponents.find(pName) == mComponents.end())
     {
+        log_trace("Component {} is not in component dictionary", pName);
         return false;
     }
     return true;
@@ -55,14 +55,14 @@ G4bool abcDetectorComponent::checkIfExists(G4String pName)
  */
 void abcDetectorComponent::deleteComponent(G4String pName)
 {
+    log_trace("Deleting component {} from component dictionary", pName);
     if (checkIfExists(pName))
     {
         mComponents.erase(pName);
     }
     else
     {
-        G4String mssg = "You are trying to delete " + pName + " from a Components dictionary, but it does not exist.";
-        log_critical(mssg);
+        log_critical("You are trying to delete {} from a Components dictionary, but it does not exist.", pName);
     }
 }
 /**
@@ -72,8 +72,16 @@ void abcDetectorComponent::deleteComponent(G4String pName)
  */
 abcDetectorComponent::Component abcDetectorComponent::getComponent(G4String pName)
 {
-    checkIfExists(pName);
-    return mComponents.at(pName); // It will always try to get the component, even if it does not exist, since we want to stop the program if it happens.
+    log_trace("Getting component {} from component dictionary", pName);
+    if (checkIfExists(pName))
+    {
+        return mComponents.at(pName);
+    }
+    else
+    {
+        log_error("Getting component {} failed!, not found in component dictionary!", pName);
+        return mComponents.at(pName); // It will always try to get the component, even if it does not exist, since we want to stop the program if it happens.
+    }
 }
 
 /**
@@ -124,8 +132,7 @@ void abcDetectorComponent::placeIt(G4Transform3D pTrans, G4LogicalVolume *&pMoth
     G4Transform3D lTrans;
     for (auto const &[key, Component] : mComponents)
     {
-        G4String mssg = "Placing " + key + " in " + pMother->GetName() + ".";
-        log_debug(mssg);
+        log_debug("Placing {} in {}.", key, pMother->GetName());
         lTrans = getNewPosition(pTrans.getTranslation(), pTrans.getRotation(), Component.Position, Component.Rotation);
         mLastPhysicals[key] = new G4PVPlacement(lTrans, Component.VLogical, Component.Name + pNameExtension, pMother, false, 0, mCheckOverlaps);
     }

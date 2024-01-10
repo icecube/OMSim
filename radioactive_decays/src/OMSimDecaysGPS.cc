@@ -1,4 +1,5 @@
 #include "OMSimDecaysGPS.hh"
+#include "OMSimLogger.hh"
 #include "OMSimUIinterface.hh"
 #include <G4SystemOfUnits.hh>
 #include <G4Poisson.hh>
@@ -17,6 +18,7 @@ G4String OMSimDecaysGPS::getDecayTerminationNuclide()
  */
 void OMSimDecaysGPS::generalGPS()
 {
+    log_debug("Configuring general GPS");
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 
@@ -36,8 +38,17 @@ void OMSimDecaysGPS::generalGPS()
     lUIinterface.applyCommand("/gps/pos/radius ", mProductionRadius, " mm");
     lUIinterface.applyCommand("/gps/ang/type iso");
 
-    if(lArgs.get<bool>("scint_off")) lUIinterface.applyCommand("/process/inactivate Scintillation");
-    if(lArgs.get<bool>("cherenkov_off")) lUIinterface.applyCommand("/process/inactivate Cerenkov");
+    if (lArgs.get<bool>("scint_off"))
+    {
+        log_debug("Inactivating scintillation process");
+        lUIinterface.applyCommand("/process/inactivate Scintillation");
+    }
+
+    if (lArgs.get<bool>("cherenkov_off"))
+    {
+        log_debug("Inactivating Cerenkov process");
+        lUIinterface.applyCommand("/process/inactivate Cerenkov");
+    }
 }
 
 /**
@@ -47,28 +58,20 @@ void OMSimDecaysGPS::generalGPS()
  *
  * @param Isotope The isotope which is going to be produced.
  * @param pVolumeName The volume name where the isotope decays.
- * @param optParam An optional parameter related to the location. For "PMT", use e.g. the PMT number.
  */
-void OMSimDecaysGPS::configureIsotopeGPS(G4String Isotope, G4String pVolumeName, G4int optParam)
+void OMSimDecaysGPS::configureIsotopeGPS(G4String Isotope, G4String pVolumeName)
 {
+    log_debug("Configuring GPS for isotope {} in volume {}", Isotope, pVolumeName);
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+
     generalGPS();
 
     if (mIsotopeCommands.find(Isotope) != mIsotopeCommands.end())
     {
         lUIinterface.applyCommand(mIsotopeCommands[Isotope]);
     }
-    
-    if(optParam != -999)
-    {
-        lUIinterface.applyCommand("/gps/pos/confine " + pVolumeName, optParam);
-    }
-    else
-    {
-        lUIinterface.applyCommand("/gps/pos/confine " + pVolumeName);
-    }
+    lUIinterface.applyCommand("/gps/pos/confine " + pVolumeName);
 }
-
 
 /**
  * @brief Calculates the number of decays for isotopes.
@@ -80,16 +83,17 @@ void OMSimDecaysGPS::configureIsotopeGPS(G4String Isotope, G4String pVolumeName,
 std::map<G4String, G4int> OMSimDecaysGPS::calculateNumberOfDecays(G4MaterialPropertiesTable *pMPT, G4double pTimeWindow, G4double pMass)
 {
     std::map<G4String, G4int> mNumberDecays;
+    log_debug("Calculating number of decays from material isotope activity...");
     for (auto &pair : mIsotopeCommands)
     {
         G4String lIsotope = pair.first;
         G4double lActivity = pMPT->GetConstProperty(lIsotope + "_ACTIVITY");
         mNumberDecays[pair.first] = G4int(G4Poisson(lActivity * pTimeWindow * pMass));
+        G4String lLog = "Number of decays for Isotope " + lIsotope + " is " + std::to_string(mNumberDecays[pair.first]);
+        log_trace("Number of calculated decays for Isotope {} is {}", lIsotope, mNumberDecays[pair.first]);
     }
     return mNumberDecays;
 }
-
-
 
 /**
  * @brief Simulates the decays in the pressure vessel of the optical module.
@@ -97,18 +101,26 @@ std::map<G4String, G4int> OMSimDecaysGPS::calculateNumberOfDecays(G4MaterialProp
  */
 void OMSimDecaysGPS::simulateDecaysInPressureVessel(G4double pTimeWindow)
 {
+    log_debug("Simulating radioactive decays in pressure vessel in a time window of {} seconds", pTimeWindow);
+
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
 
     G4double lMass = mOM->getPressureVesselWeight();
-    G4LogicalVolume *lPVVolume = mOM->getComponent("PressureVessel").VLogical;
+    G4String lPressureVesselName = "PressureVessel_" + std::to_string(mOM->mIndex);
+
+    G4LogicalVolume *lPVVolume = mOM->getComponent(lPressureVesselName).VLogical;
     G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
+
     std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, pTimeWindow, lMass);
 
     for (auto &pair : lNumberDecays)
     {
         G4String lIsotope = pair.first;
         G4int lNrDecays = pair.second;
-        configureIsotopeGPS(lIsotope, "PressureVessel");
+        mNuclideStopName = mTerminationIsotopes[pair.first];
+        configureIsotopeGPS(lIsotope, lPressureVesselName);
+
+        log_debug("Simulating {} decays of {} in pressure vessel", lNrDecays, lIsotope);
         lUIinterface.runBeamOn(lNrDecays);
     }
 }
@@ -119,8 +131,8 @@ void OMSimDecaysGPS::simulateDecaysInPressureVessel(G4double pTimeWindow)
  */
 void OMSimDecaysGPS::simulateDecaysInPMTs(G4double pTimeWindow)
 {
+    log_debug("Simulating radioactive decays in glass of PMTs in a time window of {} seconds", pTimeWindow);
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-
     G4double lMass = mOM->getPMTmanager()->getPMTGlassWeight();
     G4LogicalVolume *lPVVolume = mOM->getPMTmanager()->getLogicalVolume();
     G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
@@ -133,9 +145,12 @@ void OMSimDecaysGPS::simulateDecaysInPMTs(G4double pTimeWindow)
         {
             G4String lIsotope = pair.first;
             G4int lNrDecays = pair.second;
-            configureIsotopeGPS(lIsotope, "PMT", pmt);
+            mNuclideStopName = mTerminationIsotopes[pair.first];
+
+            configureIsotopeGPS(lIsotope, "PMT"+std::to_string(pmt));
+
+            log_debug("Simulating {} decays of {} in PMT {}", lNrDecays, lIsotope, pmt);
             lUIinterface.runBeamOn(lNrDecays);
         }
     }
-
 }

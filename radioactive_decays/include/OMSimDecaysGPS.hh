@@ -35,14 +35,27 @@ public:
   G4String getDecayTerminationNuclide();
 
 private:
-  // Define a map that maps isotopes to their commands
+  // Define a map that maps isotopes to their GPS commands
   std::map<G4String, G4String> mIsotopeCommands = {
       {"U238", "/gps/ion 92 238 0"},
       {"U235", "/gps/ion 92 235 0"},
+      {"Ra226", "/gps/ion 88 226 0"},
+      {"Ra224", "/gps/ion 88 224 0"},
       {"Th232", "/gps/ion 90 232 0"},
       {"K40", "/gps/ion 19 40 0"}};
+
+  // Define a map that maps isotopes to their termination isotope (Ra is gas state and chains are often not in secular equilibrium)
+  // Ra224 with a lifetime of ~4d breaks equilibrium far less than Ra226, with half life ~1600y, so activity of Th232 and Ra224 will probably be very similar
+  std::map<G4String, G4String> mTerminationIsotopes = {
+      {"U238", "Ra226"},
+      {"Th232", "Ra224"},
+      {"Ra226", "none"},
+      {"Ra224", "none"},
+      {"U235", "none"},
+      {"K40", "none"}};
+
   void generalGPS();
-  void configureIsotopeGPS(G4String Isotope, G4String location, G4int optParam = -999);
+  void configureIsotopeGPS(G4String Isotope, G4String location);
   std::map<G4String, G4int> calculateNumberOfDecays(G4MaterialPropertiesTable *pMPT, G4double pTimeWindow, G4double pMass);
   OMSimOpticalModule *mOM;
   G4double mProductionRadius;

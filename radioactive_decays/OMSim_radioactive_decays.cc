@@ -12,6 +12,8 @@
 #include "OMSimDecaysAnalysis.hh"
 #include "OMSimRadDecaysDetector.hh"
 
+std::shared_ptr<spdlog::logger> global_logger;
+
 namespace po = boost::program_options;
 
 /**
