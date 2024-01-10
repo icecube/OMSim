@@ -31,7 +31,7 @@ void decaysInOM(OMSimRadDecaysDetector *pDetector)
 
 	OMSimDecaysGPS &lDecays = OMSimDecaysGPS::getInstance();
 	lDecays.setOpticalModule(pDetector->mOpticalModule);
-
+	lDecays.setProductionRadius(200*mm);
 	const bool lSimulateVesselDecays = !lArgs.get<bool>("no_PV_decays");
 	const bool lSimulatePMTDecays = !lArgs.get<bool>("no_PMT_decays");
 

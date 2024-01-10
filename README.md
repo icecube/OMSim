@@ -19,7 +19,7 @@ First you should install Geant4 following [the guide provided by cern](https://g
 There are a few dependencies. You can install them using the following command:
 
 ```bash
-apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev qtbase5-dev libmotif-dev libargtable2-0 libboost-all-dev libqt53dextras5
+apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev qtbase5-dev libmotif-dev libargtable2-0 libboost-all-dev libqt53dextras5 libspdlog-dev libfmt-dev
 ``` 
 If you needed to install more, add a comment it in the Git project, so we can complete the above command 😊
 
