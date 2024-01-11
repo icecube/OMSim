@@ -11,6 +11,8 @@
 #include "G4Navigator.hh"
 #include "OMSimSNdetector.hh"
 
+std::shared_ptr<spdlog::logger> global_logger;
+
 // TODO: change this global. getInstance?
 G4Navigator* gNavigator =nullptr;
 void setGlobalNavigator(G4Navigator* pNavigator){gNavigator = pNavigator;}

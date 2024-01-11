@@ -89,7 +89,6 @@ std::map<G4String, G4int> OMSimDecaysGPS::calculateNumberOfDecays(G4MaterialProp
         G4String lIsotope = pair.first;
         G4double lActivity = pMPT->GetConstProperty(lIsotope + "_ACTIVITY");
         mNumberDecays[pair.first] = G4int(G4Poisson(lActivity * pTimeWindow * pMass));
-        G4String lLog = "Number of decays for Isotope " + lIsotope + " is " + std::to_string(mNumberDecays[pair.first]);
         log_trace("Number of calculated decays for Isotope {} is {}", lIsotope, mNumberDecays[pair.first]);
     }
     return mNumberDecays;

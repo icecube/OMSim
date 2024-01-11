@@ -63,6 +63,7 @@
 ////////////////////////////////////////////////////////////////////////
 
 #include "OMSimG4Scintillation.hh"
+#include "OMSimLogger.hh"
 
 #include "globals.hh"
 #include "G4DynamicParticle.hh"
