@@ -13,7 +13,7 @@
 #include <G4Torus.hh>
 
 OMSimPMTConstruction::OMSimPMTConstruction(InputDataManager *pData)
-{
+{   
     mData = pData;
     mInternalReflections = OMSimCommandArgsTable::getInstance().get<bool>("detail_pmt");
     mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
@@ -23,7 +23,7 @@ OMSimPMTConstruction::OMSimPMTConstruction(InputDataManager *pData)
  * @brief Constructs the PMT solid with all its components.
  */
 void OMSimPMTConstruction::construction()
-{
+{   log_trace("Starting construction of PMT");
     mComponents.clear();
     G4VSolid *lPMTSolid;
     G4VSolid *lVacuumPhotocathodeSolid;
@@ -63,6 +63,7 @@ void OMSimPMTConstruction::construction()
     lTubeVacuum->SetVisAttributes(mAirVis);
     lVacuumBackLogical->SetVisAttributes(mAirVis);
     mConstructionFinished = true;
+    log_trace("Construction of PMT finished");
 }
 
 OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
@@ -74,8 +75,7 @@ OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
     }
     catch (const boost::property_tree::ptree_bad_path &e)
     {
-        G4String mssg = "Selected PMT " + mSelectedPMT + " has no 'jResponseData' key in json-file. No PMT response will be simulated...";
-        log_warning(mssg);
+        log_warning("Selected PMT {} has no 'jResponseData' key in json-file. No PMT response will be simulated...", mSelectedPMT);
         return &NoResponse::getInstance();
     }
 
@@ -97,8 +97,7 @@ OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
     }
     else
     {
-        G4String mssg = "Selected jResponseData '" + jResponseData + "' in PMT json-file '" + mSelectedPMT + "' has no response class associated. No PMT response will be simulated...";
-        log_warning(mssg);
+        log_warning( "Selected jResponseData '{}' in PMT json-file '{}' has no response class associated. No PMT response will be simulated...", jResponseData, mSelectedPMT);
         return &NoResponse::getInstance();
     }
 }
@@ -112,6 +111,7 @@ void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *p
 
 void OMSimPMTConstruction::constructHAcoating()
 {
+    log_trace("Constructing HA coating");
     readGlobalParameters("jOuterShape");
     // G4double lVisualCorr = 0.0*mm;
     // if (gVisual) lVisualCorr = 0.01*mm;
@@ -184,6 +184,8 @@ std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::getBulbSolid(G4String p
  */
 std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::simpleBulbConstruction(G4String pSide)
 {
+    log_trace("Constructing simple PMT bulb geometry");
+
     G4VSolid *lBulbSolid = frontalBulbConstruction(pSide);
     // Defining volume with boundaries of photocathode volume
     G4Tubs *lLargeTube = new G4Tubs("LargeTube", 0, mEllipseXYaxis, 50 * cm, 0, 2 * CLHEP::pi);
@@ -200,6 +202,8 @@ std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::simpleBulbConstruction(
  */
 std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::fullBulbConstruction(G4String pSide)
 {
+    log_trace("Constructing full PMT bulb geometry");
+
     G4double lLineFitSlope = mData->getValueWithUnit(mSelectedPMT, pSide + ".jLineFitSlope");
     G4double lEllipseConeTransition_x = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseConeTransition_x");
     G4double lEllipseConeTransition_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseConeTransition_y");
@@ -254,6 +258,7 @@ std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::fullBulbConstruction(G4
  */
 void OMSimPMTConstruction::constructCathodeBackshield(G4LogicalVolume *pPMTinner)
 {
+    log_trace("Constructing cathode back shield");
     readGlobalParameters("jInnerShape");
     G4double lShieldWidth = 0.5 * mm;
     G4double lShieldZPos = lShieldWidth / 2;
@@ -271,7 +276,7 @@ void OMSimPMTConstruction::constructCathodeBackshield(G4LogicalVolume *pPMTinner
  */
 void OMSimPMTConstruction::constructCADdynodeSystem(G4LogicalVolume *pMother)
 {
-
+    log_trace("Constructing CAD dynode system");
     auto lSupportStructureMesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/PMT/streifen.obj");
     auto lFrontalPlateMesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/PMT/frontalPlateonly.obj");
     auto lDynodesMesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/PMT/dynodes.obj");
@@ -356,6 +361,7 @@ G4VSolid *OMSimPMTConstruction::frontalBulbConstruction(G4String pSide)
  */
 G4SubtractionSolid *OMSimPMTConstruction::constructPhotocathodeLayer()
 {
+    log_trace("Constructing photocathode layer");
     checkPhotocathodeThickness();
 
     G4VSolid *lInnerBoundarySolid = frontalBulbConstruction("jPhotocathodeInnerSide");
@@ -397,6 +403,7 @@ void OMSimPMTConstruction::checkPhotocathodeThickness()
  */
 G4UnionSolid *OMSimPMTConstruction::sphereEllipsePhotocathode()
 {
+    log_trace("Constructing photocathode with one ellipsoid and a sphere");
     G4double lSphereAngle = asin(mSphereEllipseTransition_r / mOutRad);
     // PMT frontal glass envelope as union of sphere and ellipse
     G4Ellipsoid *lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
@@ -407,6 +414,7 @@ G4UnionSolid *OMSimPMTConstruction::sphereEllipsePhotocathode()
 
 G4UnionSolid *OMSimPMTConstruction::ellipsePhotocathode()
 {
+    log_trace("Constructing photocathode with one ellipsoid");
     G4double lSphereAngle = asin(mSphereEllipseTransition_r / mOutRad);
     // PMT frontal glass envelope as union of sphere and ellipse
     G4Ellipsoid *lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
@@ -421,6 +429,7 @@ G4UnionSolid *OMSimPMTConstruction::ellipsePhotocathode()
  */
 G4UnionSolid *OMSimPMTConstruction::sphereDoubleEllipsePhotocathode(G4String pSide)
 {
+    log_trace("Constructing photocathode with two ellipses and a sphere");
     G4double lEllipseXYaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseXYaxis_2");
     G4double lEllipseZaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis_2");
     G4double lEllipsePos_y_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y_2");
@@ -444,6 +453,7 @@ G4UnionSolid *OMSimPMTConstruction::sphereDoubleEllipsePhotocathode(G4String pSi
  */
 G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String pSide)
 {
+    log_trace("Constructing photocathode with two ellipses");
     G4double lEllipseXYaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseXYaxis_2");
     G4double lEllipseZaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis_2");
     G4double lEllipsePos_y_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y_2");
@@ -512,17 +522,17 @@ void OMSimPMTConstruction::selectPMT(G4String pPMTtoSelect)
         const G4String lPMTTypes[] = {"pmt_Hamamatsu_R15458_20nm", "pmt_Hamamatsu_R7081", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100"};
         pPMTtoSelect = lPMTTypes[OMSimCommandArgsTable::getInstance().get<G4int>("pmt_model")];
     }
+
     mSelectedPMT = pPMTtoSelect;
 
     // Check if requested PMT is in the table of PMTs
     if (mData->checkIfKeyInTable(pPMTtoSelect))
     { // if found
-        G4String mssg = pPMTtoSelect + " selected.";
-        log_notice(mssg);
+        log_info("PMT type {} selected", pPMTtoSelect);
     }
     else
     {
-        log_critical("Selected PMT not in PMT tree, please check that requested PMT exists in data folder.");
+        log_critical("Selected PMT type not in PMT dictionary, please check that requested PMT exists in data folder.");
     }
 }
 

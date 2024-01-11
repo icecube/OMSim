@@ -1,4 +1,5 @@
 #include "OMSimSteppingAction.hh"
+#include "OMSimLogger.hh"
 
 #include "G4VProcess.hh"
 #include "G4RunManager.hh"
@@ -21,7 +22,7 @@ void OMSimSteppingAction::UserSteppingAction(const G4Step* aStep)
     
     //kill particles that are stuck... e.g. doing a loop in the pressure vessel
     if ( aTrack-> GetCurrentStepNumber() > 100000) {
-        G4cout << "Particle stuck   " <<  aTrack->GetDefinition()->GetParticleName()  << " " << 1239.84193/(aTrack->GetKineticEnergy()/eV)<< G4endl;
+        log_info("Particle {} with energy {} eV stuck, will be killed!", aTrack->GetDefinition()->GetParticleName(), 1239.84193/(aTrack->GetKineticEnergy()/eV));
         if ( aTrack->GetTrackStatus() != fStopAndKill ) {
             aTrack->SetTrackStatus(fStopAndKill);
         }

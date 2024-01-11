@@ -32,7 +32,7 @@ abcDataFile::abcDataFile(G4String pFileName)
  *  @throws std::invalid_argument if the vectors do not have the same size.
  */
 void abcDataFile::sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector)
-{
+{   log_trace("Sorting vector");
     // Check if the vectors have the same size
     if (referenceVector.size() != sortVector.size())
     {
@@ -72,13 +72,14 @@ void abcDataFile::sortVectorByReference(std::vector<G4double> &referenceVector, 
  *           and creates a new material in the G4NistManager.
  */
 void abcMaterialData::createMaterial()
-{
+{   
     mJsonTree = mFileData->appendAndReturnTree(mFileName);
-
     mMPT = new G4MaterialPropertiesTable();
     mMatDatBase = G4NistManager::Instance();
-
     mObjectName = mJsonTree.get<G4String>("jName");
+
+    log_trace("Creating new material from file {} with name {}", mFileName, mObjectName);
+
     const G4String lDataType = mJsonTree.get<G4String>("jDataType");
 
     const G4double lDensity = mFileData->getValueWithUnit(mObjectName, "jDensity");
@@ -104,6 +105,7 @@ void abcMaterialData::createMaterial()
  */
 void abcMaterialData::extractAbsorptionLength()
 {
+    log_trace("Extracting absorption length for material {} from file {}", mMaterial->GetName(), mFileName);
     std::vector<G4double> lAbsLength;
     std::vector<G4double> lAbsLengthEnergy;
     mFileData->parseKeyContentToVector(lAbsLength, mJsonTree, "jAbsLength", 1 * mm, false);
@@ -117,6 +119,7 @@ void abcMaterialData::extractAbsorptionLength()
  */
 void abcMaterialData::extractRefractionIndex()
 {
+    log_trace("Extracting refractive index for material {} from file {}", mMaterial->GetName(), mFileName);
     std::vector<G4double> lRefractionIndex;
     std::vector<G4double> lRefractionIndexEnergy;
     mFileData->parseKeyContentToVector(lRefractionIndex, mJsonTree, "jRefractiveIdx", 1., false);
@@ -154,7 +157,7 @@ G4State abcMaterialData::getState(G4String pState_str)
  * @brief Extracts information and creates a material with refraction index and absorption length defined.
  */
 void RefractionAndAbsorption::extractInformation()
-{
+{  
     createMaterial();
     extractAbsorptionLength();
     extractRefractionIndex();
@@ -195,7 +198,9 @@ void NoOptics::extractInformation()
  */
 void IceCubeIce::extractInformation()
 {
+    log_trace("Extracting ice properties from file {}", mFileName);
     mSpiceDepth_pos = OMSimCommandArgsTable::getInstance().get<int>("depth_pos");
+    
     createMaterial(); // creates IceCubeICE
 
     G4Material *lIceMie = new G4Material("IceCubeICE_SPICE", mFileData->getValueWithUnit(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid);      // create IceCubeICE_SPICE
@@ -232,8 +237,9 @@ void IceCubeIce::extractInformation()
     lMPT_spice->AddConstProperty("MIEHG_BACKWARD", mMieSpiceConst[1]);
     lMPT_spice->AddConstProperty("MIEHG_FORWARD_RATIO", mMieSpiceConst[2]);
     lIceMie->SetMaterialPropertiesTable(lMPT_spice);
-    G4String mssg = "Optical ice properties calculated for depth " + std::to_string(mSpiceDepth[mSpiceDepth_pos] / m) + " m.";
-    log_info(mssg);
+
+    log_info("Optical ice properties calculated for depth {} m.", mSpiceDepth[mSpiceDepth_pos] / m);
+
     // now give the properties to the bubble column, which are basically the same ones but with the chosen scattering lenght
     G4MaterialPropertiesTable *lMPT_holeice = new G4MaterialPropertiesTable();
     lMPT_holeice->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
@@ -318,7 +324,7 @@ G4double IceCubeIce::mieScattering(G4double pLambd)
  */
 void ReflectiveSurface::extractInformation()
 {
-
+    log_trace("Extracting file {} as a reflactive surface.", mFileName);
     pt::read_json(mFileName, mJsonTree); // read json file into mJsonTree
 
     mObjectName = mJsonTree.get<G4String>("jName");
@@ -381,6 +387,8 @@ void ReflectiveSurface::extractInformation()
 
 void ScintillationProperties::extractInformation()
 {
+    log_trace("Extracting scintillation properties from file {}", mFileName);
+
     mJsonTree = mFileData->appendAndReturnTree(mFileName);
 
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
@@ -605,6 +613,7 @@ void ScintillationProperties::extractYieldElectron(G4String pTemperature)
  */
 void CustomProperties::extractInformation()
 {
+    log_trace("Extracting custom properties from file {}", mFileName);
     mJsonTree = mFileData->appendAndReturnTree(mFileName);
     findMPT();
     extractConstProperties();

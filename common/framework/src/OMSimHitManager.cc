@@ -1,6 +1,7 @@
 #include "OMSimHitManager.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimEventAction.hh"
+#include "OMSimLogger.hh"
 
 #include <numeric>
 
@@ -92,6 +93,7 @@ void OMSimHitManager::appendHitInfo(
  */
 void OMSimHitManager::setNumberOfPMTs(int pNumberOfPMTs, int pModuleIndex)
 {
+	log_trace("Setting number of PMTs to {} in module with index {}", pNumberOfPMTs, pModuleIndex);
 	mNumPMTs[pModuleIndex] = pNumberOfPMTs;
 }
 
@@ -115,14 +117,15 @@ void OMSimHitManager::reset()
 
 /**
  * @brief Counts hits for a specified module.
- * @param moduleIndex Index of the module for which to count hits. Default is 0.
+ * @param pModuleIndex Index of the module for which to count hits. Default is 0.
  * @return A vector containing the hit count for each PMT in the specified module.
  */
-std::vector<double> OMSimHitManager::countHits(int moduleNumber)
+std::vector<double> OMSimHitManager::countHits(int pModuleIndex)
 {
-	HitStats lHitsOfModule = mModuleHits[moduleNumber];
-	G4int lNumberPMTs = mNumPMTs[moduleNumber];
-	
+	log_debug("Counting number of detected photons in module with index {}", pModuleIndex);
+	HitStats lHitsOfModule = mModuleHits[pModuleIndex];
+	G4int lNumberPMTs = mNumPMTs[pModuleIndex];
+
 	std::vector<double> lHits(lNumberPMTs + 1, 0.0);
 	for (int i = 0; i < (int)lHitsOfModule.PMT_hit.size(); i++)
 	{
@@ -178,13 +181,14 @@ void OMSimHitManager::sortHitStatsByTime(HitStats &lHits)
  * - 2 occurrences of 3 PMTs detecting hits within the window.
  *
  * @param pTimeWindow The time window within which to calculate the multiplicity (in seconds).
- * @param moduleNumber The index of the module for which to calculate the multiplicity. Default is 0.
+ * @param pModuleIndex The index of the module for which to calculate the multiplicity. Default is 0.
  * @return A vector containing the multiplicity data.
  */
-std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double pTimeWindow, int moduleNumber)
+std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double pTimeWindow, int pModuleIndex)
 {
-	HitStats lHitsOfModule = mModuleHits[moduleNumber];
-	G4int lNumberPMTs = mNumPMTs[moduleNumber];
+	log_debug("Calculating multiplicity in time window {} for module with index", pTimeWindow, pModuleIndex);
+	HitStats lHitsOfModule = mModuleHits[pModuleIndex];
+	G4int lNumberPMTs = mNumPMTs[pModuleIndex];
 
 	sortHitStatsByTime(lHitsOfModule);
 
