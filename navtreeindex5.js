@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"class_scintillation_properties.html#a2f5e62b56857772f598738907d3ed210":[3,0,30,4],
+"class_scintillation_properties.html#a37ebebbb7e81f92499faf54aabd89c6c":[3,0,30,6],
 "class_scintillation_properties.html#a3c9fea78ae17e8a52784e4a5fbd09342":[3,0,30,2],
 "class_scintillation_properties.html#a5e7da3437242c6c025edff017adf2c1b":[3,0,30,10],
 "class_scintillation_properties.html#a63544a170f82e5862fd96180f49551f1":[3,0,30,11],
@@ -185,15 +187,15 @@ var NAVTREEINDEX5 =
 "effective__area_2src_2_o_m_sim_physics_list_8cc.html":[4,0,62],
 "effective__area_2src_2_o_m_sim_primary_generator_action_8cc.html":[4,0,72],
 "files.html":[4,0],
-"functions.html":[5,3,0],
 "functions.html":[5,3,0,0],
+"functions.html":[5,3,0],
 "functions_b.html":[5,3,0,1],
 "functions_c.html":[5,3,0,2],
 "functions_d.html":[5,3,0,3],
 "functions_e.html":[5,3,0,4],
 "functions_f.html":[5,3,0,5],
-"functions_func.html":[5,3,1],
 "functions_func.html":[5,3,1,0],
+"functions_func.html":[5,3,1],
 "functions_func_b.html":[5,3,1,1],
 "functions_func_c.html":[5,3,1,2],
 "functions_func_d.html":[5,3,1,3],
@@ -230,8 +232,8 @@ var NAVTREEINDEX5 =
 "functions_type.html":[5,3,3],
 "functions_u.html":[5,3,0,19],
 "functions_v.html":[5,3,0,20],
-"functions_vars.html":[5,3,2,0],
 "functions_vars.html":[5,3,2],
+"functions_vars.html":[5,3,2,0],
 "functions_vars_c.html":[5,3,2,1],
 "functions_vars_d.html":[5,3,2,2],
 "functions_vars_e.html":[5,3,2,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "functions_vars_p.html":[5,3,2,13],
 "functions_vars_q.html":[5,3,2,14],
 "functions_vars_r.html":[5,3,2,15],
-"functions_vars_s.html":[5,3,2,16],
-"functions_vars_t.html":[5,3,2,17],
-"functions_vars_u.html":[5,3,2,18]
+"functions_vars_s.html":[5,3,2,16]
 };

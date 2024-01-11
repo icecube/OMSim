@@ -114,6 +114,7 @@ var NAVTREEINDEX0 =
 "_o_m_sim__effective__area_8cc.html":[4,0,10],
 "_o_m_sim__effective__area_8cc.html#a0ddf1224851353fc92bfbff6f499fa97":[4,0,10,1],
 "_o_m_sim__effective__area_8cc.html#a239de85d44d0a9929b6dfec86f1926f1":[4,0,10,0],
+"_o_m_sim__effective__area_8cc.html#aaf1ac4fd8beaebc4649a68a9cf7b3b87":[4,0,10,2],
 "_o_m_sim__radioactive__decays_8cc.html":[4,0,11],
 "_o_m_sim__radioactive__decays_8cc.html#a0ddf1224851353fc92bfbff6f499fa97":[4,0,11,1],
 "_o_m_sim__radioactive__decays_8cc.html#a2975f45cfcab2318f2f5d93cf55a3ae0":[4,0,11,0],
@@ -121,7 +122,8 @@ var NAVTREEINDEX0 =
 "_o_m_sim__supernova_8cc.html":[4,0,12],
 "_o_m_sim__supernova_8cc.html#a0ddf1224851353fc92bfbff6f499fa97":[4,0,12,0],
 "_o_m_sim__supernova_8cc.html#a2ed660d3245a0d96041b77dfc92ba000":[4,0,12,3],
-"_o_m_sim__supernova_8cc.html#a7d64cc41ff17de4be32310927bb91f12":[4,0,12,4],
+"_o_m_sim__supernova_8cc.html#a7d64cc41ff17de4be32310927bb91f12":[4,0,12,5],
+"_o_m_sim__supernova_8cc.html#aaf1ac4fd8beaebc4649a68a9cf7b3b87":[4,0,12,4],
 "_o_m_sim__supernova_8cc.html#ac0c30e68ee55a6a591c46b6111931b13":[4,0,12,2],
 "_o_m_sim__supernova_8cc.html#adebda6208839243c12347f6540f682b2":[4,0,12,1],
 "_o_m_sim_angular_scan_8cc.html":[4,0,13],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "_o_m_sim_u_iinterface_8hh.html":[4,0,96],
 "_o_m_sim_u_iinterface_8hh_source.html":[4,0,96],
 "abc_detector_component_8cc.html":[4,0,5],
-"abc_detector_component_8hh.html":[4,0,6],
-"abc_detector_component_8hh_source.html":[4,0,6],
-"annotated.html":[5,0]
+"abc_detector_component_8hh.html":[4,0,6]
 };

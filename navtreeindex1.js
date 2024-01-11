@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"abc_detector_component_8hh_source.html":[4,0,6],
+"annotated.html":[5,0],
 "class_angular_scan.html":[3,1,4],
 "class_angular_scan.html#a050c9c2066f662a1d7868b4dac0e5795":[3,1,4,1],
 "class_angular_scan.html#a0603ef7f2b297de98ad466145ff122e4":[3,1,4,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "class_d_egg_harness.html#afa139bcf866bd9c5fabc42d3d431af16":[5,0,8,5],
 "class_distribution_sampler.html":[3,3,6],
 "class_distribution_sampler.html#a0116490aae983d5e4a594f1724aba3b2":[3,3,6,0],
-"class_distribution_sampler.html#a0e5a3b5d614d0d0c8599ea0f2e470a33":[3,3,6,11],
-"class_distribution_sampler.html#a11d6ba97005fca66c123f6bf21fa342e":[3,3,6,9],
-"class_distribution_sampler.html#a236177102b7383642247b5f04355179a":[3,3,6,10]
+"class_distribution_sampler.html#a0e5a3b5d614d0d0c8599ea0f2e470a33":[3,3,6,11]
 };
