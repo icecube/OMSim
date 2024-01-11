@@ -145,8 +145,8 @@ Minimal example</h2>
 <div class="line">pt::ptree lSubtree = lTable.<a class="code" href="class_parameter_table.html#a042ee0eca2c9daa755d7a472608e6d66">getJSONTree</a>(<span class="stringliteral">&quot;SomeKey&quot;</span>); <span class="comment">// Retrieving the subtree of the file</span></div>
 <div class="line">lTable.<a class="code" href="class_parameter_table.html#a3c2a94b50a41341c104b5b1585d15efc">parseKeyContentToVector</a>(lVector, lSubtree, <span class="stringliteral">&quot;keyOfArray&quot;</span>, 1.0, <span class="keyword">false</span>); <span class="comment">// parsing array into vector</span></div>
 <div class="ttc" id="aclass_parameter_table_html"><div class="ttname"><a href="class_parameter_table.html">ParameterTable</a></div><div class="ttdoc">A utility class for managing JSON-based data tables.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.hh:55</div></div>
-<div class="ttc" id="aclass_parameter_table_html_a042ee0eca2c9daa755d7a472608e6d66"><div class="ttname"><a href="class_parameter_table.html#a042ee0eca2c9daa755d7a472608e6d66">ParameterTable::getJSONTree</a></div><div class="ttdeci">pt::ptree getJSONTree(G4String pKey)</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:77</div></div>
-<div class="ttc" id="aclass_parameter_table_html_a131ddfbbf38d27b59f454a4ec96b2b9e"><div class="ttname"><a href="class_parameter_table.html#a131ddfbbf38d27b59f454a4ec96b2b9e">ParameterTable::appendAndReturnTree</a></div><div class="ttdeci">pt::ptree appendAndReturnTree(G4String pFileName)</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:23</div></div>
+<div class="ttc" id="aclass_parameter_table_html_a042ee0eca2c9daa755d7a472608e6d66"><div class="ttname"><a href="class_parameter_table.html#a042ee0eca2c9daa755d7a472608e6d66">ParameterTable::getJSONTree</a></div><div class="ttdeci">pt::ptree getJSONTree(G4String pKey)</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:94</div></div>
+<div class="ttc" id="aclass_parameter_table_html_a131ddfbbf38d27b59f454a4ec96b2b9e"><div class="ttname"><a href="class_parameter_table.html#a131ddfbbf38d27b59f454a4ec96b2b9e">ParameterTable::appendAndReturnTree</a></div><div class="ttdeci">pt::ptree appendAndReturnTree(G4String pFileName)</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:26</div></div>
 <div class="ttc" id="aclass_parameter_table_html_a3c2a94b50a41341c104b5b1585d15efc"><div class="ttname"><a href="class_parameter_table.html#a3c2a94b50a41341c104b5b1585d15efc">ParameterTable::parseKeyContentToVector</a></div><div class="ttdeci">void parseKeyContentToVector(std::vector&lt; T &gt; &amp;pVector, pt::ptree pTree, std::basic_string&lt; char &gt; pKey, G4double pScaling, bool pInverse)</div><div class="ttdoc">Parses the content of a JSON subtree into a vector, scaling values if necessary.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.hh:99</div></div>
 <div class="ttc" id="aclass_parameter_table_html_adb1234ccb47c9e44ecd7f8c5cb9e0407"><div class="ttname"><a href="class_parameter_table.html#adb1234ccb47c9e44ecd7f8c5cb9e0407">ParameterTable::getValue</a></div><div class="ttdeci">T getValue(G4String pKey, G4String pParameter)</div><div class="ttdoc">Fetches a value from the table based on a key and parameter.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.hh:68</div></div>
 </div><!-- fragment --><dl class="section warning"><dt>Warning</dt><dd>It's essential to ensure that the provided JSON files are formatted correctly and that the keys and parameters being queried exist within the loaded datasets to avoid runtime errors or unexpected behavior.</dd></dl>
@@ -184,6 +184,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a749bc840cf2aea18fb5b63da8b68c23c"><td class="memItemLeft" align="right" valign="top">std::map&lt; G4String, boost::property_tree::ptree &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#a749bc840cf2aea18fb5b63da8b68c23c">mTable</a></td></tr>
 <tr class="memdesc:a749bc840cf2aea18fb5b63da8b68c23c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A table mapping keys to property trees.  <a href="class_parameter_table.html#a749bc840cf2aea18fb5b63da8b68c23c">More...</a><br /></td></tr>
 <tr class="separator:a749bc840cf2aea18fb5b63da8b68c23c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedee4e855aba079f6d22432f8b41e134"><td class="memItemLeft" align="right" valign="top">std::map&lt; G4String, G4String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#aedee4e855aba079f6d22432f8b41e134">mKeyFileOrigin</a></td></tr>
+<tr class="memdesc:aedee4e855aba079f6d22432f8b41e134"><td class="mdescLeft">&#160;</td><td class="mdescRight">A table mapping keys to original file name.  <a href="class_parameter_table.html#aedee4e855aba079f6d22432f8b41e134">More...</a><br /></td></tr>
+<tr class="separator:aedee4e855aba079f6d22432f8b41e134"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6acdd356fb3153bcc463f29e495c211d"></a>
@@ -520,6 +523,28 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="aedee4e855aba079f6d22432f8b41e134"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedee4e855aba079f6d22432f8b41e134">&#9670;&nbsp;</a></span>mKeyFileOrigin</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;G4String, G4String&gt; ParameterTable::mKeyFileOrigin</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a749bc840cf2aea18fb5b63da8b68c23c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a749bc840cf2aea18fb5b63da8b68c23c">&#9670;&nbsp;</a></span>mTable</h2>
 
@@ -552,7 +577,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_parameter_table.html">ParameterTable</a></li>
-    <li class="footer">Generated on Thu Jan 11 2024 12:04:39 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jan 11 2024 15:20:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
