@@ -14,7 +14,7 @@
 #define OMSimHitManager_h 1
 
 #include "OMSimPMTResponse.hh"
-
+#include "OMSimSensitiveDetector.hh"
 #include <G4ThreeVector.hh>
 #include <fstream>
 

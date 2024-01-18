@@ -1,0 +1,28 @@
+{
+   "jName": "RiAbs_NicoGlass_",
+   "jComponents": {
+      "G4_Pyrex_Glass": 1.0
+   },
+   "jDataType": "RiAbs",
+   "jDensity": {
+      "jValue": 2.23,
+      "jUnit": "g/cm3"
+   },
+   "jState": "kStateSolid",
+   "jRefractiveIdx": [
+      1.525,
+      1.525
+   ],
+   "jRefractiveIdxWavelength": [
+      150.0,
+      730.0
+   ],
+   "jAbsLength": [
+      100,
+      100
+   ],
+   "jAbsLengthWavelength": [
+      200.0,
+      700.0
+   ]
+}

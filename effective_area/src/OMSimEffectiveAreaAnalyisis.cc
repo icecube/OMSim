@@ -48,21 +48,21 @@ effectiveAreaResult OMSimEffectiveAreaAnalyisis::calculateEffectiveArea(double p
  */
 void OMSimEffectiveAreaAnalyisis::writeScan(G4double pPhi, G4double pTheta)
 {
-	std::vector<double> lHits = OMSimHitManager::getInstance().countHits();
+
+	std::vector<double> lHits_0 = OMSimHitManager::getInstance().countHits(0);
+	std::vector<double> lHits_1 = OMSimHitManager::getInstance().countHits(1);
+	std::vector<double> lHits_2 = OMSimHitManager::getInstance().countHits(2);
 
 	mDatafile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
 	mDatafile << pPhi << "\t" << pTheta << "\t";
-	G4double lTotalHits = 0;
 
-	for (const auto &hit : lHits)
-	{
-		mDatafile << hit << "\t";
-		lTotalHits = hit; //last element is total nr of hits
-	}
+	mDatafile << lHits_0.at(1) << "\t";
+	mDatafile << lHits_1.at(1) << "\t";
+	mDatafile << lHits_2.at(1) << "\t";
 
-	effectiveAreaResult lEffectiveArea = calculateEffectiveArea(lTotalHits);
 
-	mDatafile << lEffectiveArea.EA << "\t" << lEffectiveArea.EAError << "\t";
+	//effectiveAreaResult lEffectiveArea = calculateEffectiveArea(lTotalHits);
+	//mDatafile << lEffectiveArea.EA << "\t" << lEffectiveArea.EAError << "\t";
 	mDatafile << G4endl;
 	mDatafile.close();
 }
