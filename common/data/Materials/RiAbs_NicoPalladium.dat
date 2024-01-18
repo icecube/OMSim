@@ -1,0 +1,36 @@
+{
+   "jName": "RiAbs_NicoPalladium_",
+   "jDataType": "RiAbs",
+   "jComponentName": [
+      "G4_Sb",
+      "G4_K",
+      "G4_Cs"
+   ],
+   "jComponents": {
+      "G4_Sb": 0.5,
+      "G4_O": 0.35,
+      "G4_Cs": 0.15
+   },
+   "jDensity": {
+      "jValue": 2.0,
+      "jUnit": "g/cm3"
+   },
+   "jState": "kStateSolid",
+   "jRefractiveIdx": [
+      1.61,
+      1.61
+   ],
+   "jRefractiveIdxWavelength": [
+      150,
+      730
+   ],
+   "jAbsLength": [
+      10.4937e+6,
+      10.4937e+6
+   ],
+   "jAbsLengthWavelength": [
+      350,
+      730
+   ]
+}
+
