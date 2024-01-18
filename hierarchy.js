@@ -57,6 +57,9 @@ var hierarchy =
     [ "G4UserTrackingAction", null, [
       [ "OMSimTrackingAction", "class_o_m_sim_tracking_action.html", null ]
     ] ],
+    [ "G4VDiscreteProcess", null, [
+      [ "G4OpBoundaryProcess", "class_g4_op_boundary_process.html", null ]
+    ] ],
     [ "G4VRestDiscreteProcess", null, [
       [ "G4RadioactiveDecay", "class_g4_radioactive_decay.html", null ],
       [ "OMSimG4Scintillation", "class_o_m_sim_g4_scintillation.html", null ]
@@ -108,6 +111,7 @@ var hierarchy =
     [ "OMSimSNAnalysis", "class_o_m_sim_s_n_analysis.html", null ],
     [ "OMSimSNTools", "class_o_m_sim_s_n_tools.html", null ],
     [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html", null ],
+    [ "OpticalLayerResult", "struct_optical_layer_result.html", null ],
     [ "ParameterTable", "class_parameter_table.html", [
       [ "InputDataManager", "class_input_data_manager.html", null ]
     ] ],

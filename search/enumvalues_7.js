@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['volumephotondetector_2176',['VolumePhotonDetector',['../_o_m_sim_sensitive_detector_8hh.html#aba5019e335fb2939e79e0e5b62202729a1a9b1c585275651eaa5ddc9d48560162',1,'OMSimSensitiveDetector.hh']]]
+  ['lambertianreflection_2412',['LambertianReflection',['../_o_m_sim_op_boundary_process_8hh.html#a7de0253ea792b226670caec2347def08af39a167a7f572d96ae8b43d417c9a295',1,'OMSimOpBoundaryProcess.hh']]],
+  ['lobereflection_2413',['LobeReflection',['../_o_m_sim_op_boundary_process_8hh.html#a7de0253ea792b226670caec2347def08a4b9a87a2938ac28844d63b9fcfdf46fc',1,'OMSimOpBoundaryProcess.hh']]]
 ];
