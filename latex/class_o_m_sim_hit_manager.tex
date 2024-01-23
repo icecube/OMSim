@@ -118,7 +118,7 @@ This method appends hit information to the corresponding module\textquotesingle{
 \index{OMSimHitManager@{OMSimHitManager}!calculateMultiplicity@{calculateMultiplicity}}
 \index{calculateMultiplicity@{calculateMultiplicity}!OMSimHitManager@{OMSimHitManager}}
 \doxysubsubsection{\texorpdfstring{calculateMultiplicity()}{calculateMultiplicity()}}
-{\footnotesize\ttfamily std\+::vector$<$ int $>$ OMSim\+Hit\+Manager\+::calculate\+Multiplicity (\begin{DoxyParamCaption}\item[{const G4double}]{p\+Time\+Window,  }\item[{int}]{module\+Number = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ OMSim\+Hit\+Manager\+::calculate\+Multiplicity (\begin{DoxyParamCaption}\item[{const G4double}]{p\+Time\+Window,  }\item[{int}]{p\+Module\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 This method determines the multiplicity of hits for the specified optical module within a given time window. Multiplicity is defined as the number of PMTs detecting a hit within the time window. The result is a vector where each element represents the number of occurrences of a specific multiplicity.
 
@@ -133,7 +133,7 @@ For instance, if the resulting vector is \mbox{[}5, 3, 2\mbox{]}, it means\+:
 \begin{DoxyParams}{Parameters}
 {\em p\+Time\+Window} & The time window within which to calculate the multiplicity (in seconds). \\
 \hline
-{\em module\+Number} & The index of the module for which to calculate the multiplicity. Default is 0. \\
+{\em p\+Module\+Index} & The index of the module for which to calculate the multiplicity. Default is 0. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -143,11 +143,11 @@ A vector containing the multiplicity data.
 \index{OMSimHitManager@{OMSimHitManager}!countHits@{countHits}}
 \index{countHits@{countHits}!OMSimHitManager@{OMSimHitManager}}
 \doxysubsubsection{\texorpdfstring{countHits()}{countHits()}}
-{\footnotesize\ttfamily std\+::vector$<$ double $>$ OMSim\+Hit\+Manager\+::count\+Hits (\begin{DoxyParamCaption}\item[{int}]{module\+Number = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ OMSim\+Hit\+Manager\+::count\+Hits (\begin{DoxyParamCaption}\item[{int}]{p\+Module\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em module\+Index} & Index of the module for which to count hits. Default is 0. \\
+{\em p\+Module\+Index} & Index of the module for which to count hits. Default is 0. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

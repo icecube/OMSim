@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"class_scintillation_properties.html#a5e7da3437242c6c025edff017adf2c1b":[3,0,30,10],
 "class_scintillation_properties.html#a63544a170f82e5862fd96180f49551f1":[3,0,30,11],
 "class_scintillation_properties.html#a6c16439c71032b0df72dfff7aa776e69":[3,0,30,1],
 "class_scintillation_properties.html#a8b08735d53c1990715c1dc4e84c47c34":[3,0,30,9],
@@ -190,8 +191,8 @@ var NAVTREEINDEX5 =
 "functions_d.html":[5,3,0,3],
 "functions_e.html":[5,3,0,4],
 "functions_f.html":[5,3,0,5],
-"functions_func.html":[5,3,1,0],
 "functions_func.html":[5,3,1],
+"functions_func.html":[5,3,1,0],
 "functions_func_b.html":[5,3,1,1],
 "functions_func_c.html":[5,3,1,2],
 "functions_func_d.html":[5,3,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "functions_vars_s.html":[5,3,2,16],
 "functions_vars_t.html":[5,3,2,17],
 "functions_vars_u.html":[5,3,2,18],
-"functions_vars_v.html":[5,3,2,19],
-"functions_vars_w.html":[5,3,2,20]
+"functions_vars_v.html":[5,3,2,19]
 };
