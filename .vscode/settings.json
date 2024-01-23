@@ -1,6 +1,6 @@
 {
     "cmake.configureOnOpen": true,
-    "cmake.configureArgs": ["-DGeant4_DIR=/data/n_kryb02/geant4-v11.1.2/install/lib/Geant4-v11.1.2/"],
+    "cmake.configureArgs": ["-DGeant4_DIR=/data/geant4/geant4-v11.1.1/install/lib/Geant4-11.1.1/"],
     "files.associations": {
         "stdexcept": "cpp",
         "allocator": "cpp",

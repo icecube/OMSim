@@ -4,7 +4,7 @@
 #include "G4VSensitiveDetector.hh"
 #include "G4ThreeVector.hh"
 #include "OMSimPMTResponse.hh"
-#include "G4OpBoundaryProcess.hh"
+
 #include <vector>
 
 class G4Step;
@@ -18,8 +18,7 @@ class G4TouchableHistory;
  */
 enum class DetectorType {
     PMT,                           ///< Photomultiplier tube detector.
-    VolumePhotonDetector,          ///< Photon detector based on absorption in volume.
-    BoundaryPhotonDetector         ///< Photon detector based on absorption in boundary.
+    GeneralPhotonDetector          ///< General photon detector.
 };
 
 /**
@@ -59,15 +58,11 @@ public:
 private:
     OMSimPMTResponse *mPMTResponse;
     DetectorType mDetectorType;
-    G4OpBoundaryProcess* mBoundaryProcess = nullptr;
-
-    G4bool checkVolumeAbsorption(G4Step *pStep);
-    G4bool checkBoundaryAbsorption(G4Step *pStep);
+    G4bool checkAbsorbedPhotons(G4Step *pStep);
     PhotonInfo getPhotonInfo(G4Step *pStep);
     G4bool handlePMT(G4Step *pStep, G4TouchableHistory *pTouchableHistory);
     G4bool handleGeneralPhotonDetector(G4Step *pStep, G4TouchableHistory *pTouchableHistory);
     void storePhotonHit(PhotonInfo &info);
-    void fetchBoundaryProcess();
 };
 
 #endif

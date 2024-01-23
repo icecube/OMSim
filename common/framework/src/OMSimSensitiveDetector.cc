@@ -1,5 +1,6 @@
 #include "OMSimSensitiveDetector.hh"
 
+
 #include "G4ios.hh"
 #include "G4LogicalVolume.hh"
 #include "G4ParticleDefinition.hh"
@@ -16,8 +17,7 @@
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimHitManager.hh"
 #include "G4VProcess.hh"
-#include "G4ProcessVector.hh"
-#include "G4ProcessManager.hh"
+
 std::vector<G4String> splitStringByDelimiter(G4String const &s, char delim)
 {
   std::vector<G4String> result;
@@ -39,30 +39,11 @@ std::vector<G4String> splitStringByDelimiter(char *cs, char d)
 /**
  * @brief Constructor.
  * @param name Name of the sensitive detector.
- * @param pDetectorType Type of the detector (e.g., PMT, VolumePhotonDetector).
+ * @param pDetectorType Type of the detector (e.g., PMT, GeneralPhotonDetector).
  */
 OMSimSensitiveDetector::OMSimSensitiveDetector(G4String name, DetectorType pDetectorType)
     : G4VSensitiveDetector(name), mDetectorType(pDetectorType), mPMTResponse(&NoResponse::getInstance())
-{
-}
-
-void OMSimSensitiveDetector::fetchBoundaryProcess()
-{
-  G4ProcessManager *lProcessManager = G4OpticalPhoton::OpticalPhoton()->GetProcessManager();
-  G4ProcessVector *lProcessVector = lProcessManager->GetProcessList();
-  for (int i = 0; i < lProcessVector->length(); i++)
-  {
-    if (dynamic_cast<G4OpBoundaryProcess *>((*lProcessVector)[i]))
-    {
-      mBoundaryProcess = (G4OpBoundaryProcess *)(*lProcessVector)[i];
-      break;
-    }
-  }
-  if (!mBoundaryProcess)
-  {
-    G4cerr << "Error: G4OpBoundaryProcess not found!" << G4endl;
-  }
-}
+{}
 
 void OMSimSensitiveDetector::setPMTResponse(OMSimPMTResponse *pResponse)
 {
@@ -77,30 +58,18 @@ void OMSimSensitiveDetector::setPMTResponse(OMSimPMTResponse *pResponse)
  */
 G4bool OMSimSensitiveDetector::ProcessHits(G4Step *pStep, G4TouchableHistory *pTouchableHistory)
 {
-  if (pStep->GetTrack()->GetDefinition() == G4OpticalPhoton::Definition()) // check if particle is a photon
-  {
-    if (checkVolumeAbsorption(pStep))
+  if (checkAbsorbedPhotons(pStep))
+    switch (mDetectorType)
     {
-      switch (mDetectorType)
-      {
-      case DetectorType::PMT:
-        return handlePMT(pStep, pTouchableHistory);
-      case DetectorType::VolumePhotonDetector:
-        return handleGeneralPhotonDetector(pStep, pTouchableHistory);
-      }
+    case DetectorType::PMT:
+      return handlePMT(pStep, pTouchableHistory);
+    case DetectorType::GeneralPhotonDetector:
+      return handleGeneralPhotonDetector(pStep, pTouchableHistory);
     }
-    else if (checkBoundaryAbsorption(pStep))
-    {
-      switch (mDetectorType)
-      {
-      case DetectorType::BoundaryPhotonDetector:
-        return handleGeneralPhotonDetector(pStep, pTouchableHistory);
-      }
-    }
-  }
 
   return false;
 }
+
 
 PhotonInfo OMSimSensitiveDetector::getPhotonInfo(G4Step *aStep)
 {
@@ -125,15 +94,21 @@ PhotonInfo OMSimSensitiveDetector::getPhotonInfo(G4Step *aStep)
   return info;
 }
 
-
-G4bool OMSimSensitiveDetector::checkVolumeAbsorption(G4Step *aStep)
+/**
+ * @brief Checks if the photon in the given step is absorbed.
+ * 
+ * This function checks if the particle in the given step is an optical photon 
+ * and if it's either the last step in the volume or if the post step process 
+ * was absorption. If either of these conditions is met, the photon is considered 
+ * absorbed and the function returns true.
+ *
+ * @param aStep The step in which the particle is being checked.
+ * @return True if the photon is absorbed, false otherwise.
+ */
+G4bool OMSimSensitiveDetector::checkAbsorbedPhotons(G4Step *aStep)
 {
-  return aStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "OpAbsorption";
-}
-
-G4bool OMSimSensitiveDetector::checkBoundaryAbsorption(G4Step *aStep)
-{
-  if (mBoundaryProcess == nullptr)
+  G4Track *aTrack = aStep->GetTrack();
+  if (aTrack->GetDefinition() != G4OpticalPhoton::Definition())
   {
     fetchBoundaryProcess();
   };
@@ -153,7 +128,7 @@ G4bool OMSimSensitiveDetector::checkBoundaryAbsorption(G4Step *aStep)
   return false;
 }
 
-/**
+    /**
  * @brief Handles hits for PMTs.
  * @param pStep The current step information.
  * @param pTouchableHistory The history of touchable objects.
@@ -187,6 +162,7 @@ G4bool OMSimSensitiveDetector::handleGeneralPhotonDetector(G4Step *aStep, G4Touc
   storePhotonHit(info);
   return true;
 }
+
 
 /**
  * @brief Stores photon hit information into the HitManager
