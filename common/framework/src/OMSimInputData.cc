@@ -7,10 +7,7 @@
 
 namespace pt = boost::property_tree;
 
-InputDataManager::InputDataManager()
-{
-    log_debug("Starting InputDataManager");
-}
+InputDataManager::InputDataManager() {}
 
 /*
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,8 +26,8 @@ pt::ptree ParameterTable::appendAndReturnTree(G4String pFileName)
     pt::read_json(pFileName, lJsonTree);
     const G4String lName = lJsonTree.get<G4String>("jName");
     mTable[lName] = lJsonTree;
-    mKeyFileOrigin[lName] = pFileName;
-    log_trace("Key {} added to dictionary from file {}.", lName, pFileName);
+    G4String mssg = lName + " added to dictionary...";
+    log_debug(mssg);
     return lJsonTree;
 }
 
@@ -43,26 +40,12 @@ pt::ptree ParameterTable::appendAndReturnTree(G4String pFileName)
  */
 G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
 {
-    if (!checkIfKeyInTable(pKey))
-    {
-        log_error("Key {} not found in parameter table!", pKey);
-        throw std::runtime_error("Key not found in parameter table!");
-    }
-
     // Get the sub-tree for the provided key
     const auto &lSubTree = mTable.at(pKey);
-
-    if (!lSubTree.get_child_optional(pParameter))
-    {
-        G4String lErrorLog = "Table in key '" + pKey + "' has no parameter '" + pParameter + "'. Check file '" + mKeyFileOrigin.at(pKey) + "'";
-        log_error(lErrorLog);
-        throw std::runtime_error(lErrorLog);
-    }
 
     // Try getting the value with unit first
     try
     {
-
         const G4String lUnit = lSubTree.get<G4String>(pParameter + ".jUnit");
         const G4double lValue = lSubTree.get<G4double>(pParameter + ".jValue");
 
@@ -144,7 +127,7 @@ InputDataManager::loadtxt(const std::string &pFilePath, bool pUnpack,
 
     if (!lInFile.is_open())
     {
-        log_error("Could not open file {}",pFilePath);
+        log_error("Could not open file...");
         throw std::runtime_error("Could not open file " + pFilePath);
     }
 
@@ -277,7 +260,6 @@ G4OpticalSurface *InputDataManager::getOpticalSurface(G4String pName)
  */
 void InputDataManager::searchFolders()
 {
-    log_debug("Searching folders for data json files...");
     std::vector<std::string> directories = {
         "../common/data/Materials", "../common/data/PMTs", "../common/data/scintillation",
         // ... you can add more directories here ...
@@ -307,8 +289,6 @@ void InputDataManager::searchFolders()
 void InputDataManager::processFile(const std::string &pFilePath,
                                    const std::string &pFileName)
 {
-    log_trace("Processing file {}", pFileName);
-
     if (pFileName.substr(0, 5) == "RiAbs")
     {
         RefractionAndAbsorption lDataFile(pFilePath);
@@ -357,7 +337,6 @@ void InputDataManager::processFile(const std::string &pFilePath,
  */
 void InputDataManager::scannDataDirectory()
 {
-    log_trace("Loading files in {}", mDataDirectory);
     DIR *lDirectory = opendir(mDataDirectory.data());
     if (lDirectory == NULL)
     {

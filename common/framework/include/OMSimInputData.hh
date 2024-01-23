@@ -150,7 +150,6 @@ public:
 
 private:
     std::map<G4String, boost::property_tree::ptree> mTable; ///< A table mapping keys to property trees.
-    std::map<G4String, G4String> mKeyFileOrigin; ///< A table mapping keys to original file name.
 };
 
 /**
