@@ -1,52 +1,52 @@
 <map id="OMSim_radioactive_decays.cc" name="OMSim_radioactive_decays.cc">
-<area shape="rect" id="node1" title="Main of the radioactive decay study." alt="" coords="1071,5,1291,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="1965,80,2054,107"/>
-<area shape="rect" id="node14" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="1091,304,1255,331"/>
-<area shape="rect" id="node47" href="$_o_m_sim_decays_g_p_s_8hh.html" title="Defines the OMSimDecaysGPS class for the radioactive decays simulation." alt="" coords="423,80,585,107"/>
-<area shape="rect" id="node49" href="$_o_m_sim_decays_analysis_8hh.html" title="Defines the OMSimDecaysAnalysis class and DecayStats struct for the radioactive decays simulation." alt="" coords="1287,304,1479,331"/>
-<area shape="rect" id="node50" href="$_o_m_sim_rad_decays_detector_8hh.html" title="Defines the OMSimRadDecaysDetector class for the radioactive decays simulation." alt="" coords="706,80,923,107"/>
-<area shape="rect" id="node3" href="$_o_m_sim_detector_construction_8hh.html" title=" " alt="" coords="852,155,1079,181"/>
-<area shape="rect" id="node28" title=" " alt="" coords="1989,155,2150,181"/>
-<area shape="rect" id="node29" title=" " alt="" coords="2174,155,2421,181"/>
-<area shape="rect" id="node30" href="$_o_m_sim_run_action_8hh.html" title=" " alt="" coords="2444,155,2599,181"/>
-<area shape="rect" id="node32" title=" " alt="" coords="2623,155,2790,181"/>
-<area shape="rect" id="node33" href="$_o_m_sim_tracking_action_8hh.html" title=" " alt="" coords="2815,155,2999,181"/>
-<area shape="rect" id="node35" href="$_o_m_sim_stepping_action_8hh.html" title="Defines OMSimSteppingAction.Currently it only checks for trapped photons." alt="" coords="3023,155,3209,181"/>
-<area shape="rect" id="node37" href="$_o_m_sim_u_iinterface_8hh.html" title="The OMSimUIinterface class provides a singleton interface to Geant4&#39;s UI manager." alt="" coords="1829,229,1990,256"/>
-<area shape="rect" id="node42" title=" " alt="" coords="3233,155,3375,181"/>
-<area shape="rect" id="node43" title=" " alt="" coords="1270,155,1413,181"/>
-<area shape="rect" id="node44" title=" " alt="" coords="1437,155,1574,181"/>
-<area shape="rect" id="node45" title=" " alt="" coords="1599,155,1689,181"/>
-<area shape="rect" id="node46" title=" " alt="" coords="1713,155,1913,181"/>
-<area shape="rect" id="node4" href="$_o_m_sim_optical_module_8hh.html" title=" " alt="" coords="593,229,775,256"/>
-<area shape="rect" id="node26" title=" " alt="" coords="800,229,883,256"/>
-<area shape="rect" id="node27" title=" " alt="" coords="907,229,1144,256"/>
-<area shape="rect" id="node5" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="481,379,677,405"/>
-<area shape="rect" id="node25" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="642,304,841,331"/>
-<area shape="rect" id="node6" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and InputDataManager." alt="" coords="907,453,1061,480"/>
-<area shape="rect" id="node10" title=" " alt="" coords="177,453,319,480"/>
-<area shape="rect" id="node11" title=" " alt="" coords="344,453,488,480"/>
-<area shape="rect" id="node12" title=" " alt="" coords="513,453,679,480"/>
-<area shape="rect" id="node13" title=" " alt="" coords="5,453,152,480"/>
-<area shape="rect" id="node7" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="1497,528,1629,555"/>
-<area shape="rect" id="node8" title=" " alt="" coords="1063,528,1254,555"/>
-<area shape="rect" id="node9" title=" " alt="" coords="881,528,1039,555"/>
-<area shape="rect" id="node15" href="$_o_m_sim_p_m_t_response_8hh.html" title="Provides simulation for PMT response. This class is responsible for transforming hits on photocathode..." alt="" coords="703,453,883,480"/>
-<area shape="rect" id="node20" href="$_o_m_sim_sensitive_detector_8hh.html" title=" " alt="" coords="1066,379,1270,405"/>
-<area shape="rect" id="node22" title=" " alt="" coords="1433,453,1570,480"/>
-<area shape="rect" id="node24" title=" " alt="" coords="1346,379,1419,405"/>
-<area shape="rect" id="node16" title=" " alt="" coords="654,528,751,555"/>
-<area shape="rect" id="node17" title=" " alt="" coords="484,528,535,555"/>
-<area shape="rect" id="node18" title=" " alt="" coords="775,528,857,555"/>
-<area shape="rect" id="node19" title=" " alt="" coords="559,528,630,555"/>
-<area shape="rect" id="node21" title=" " alt="" coords="1224,453,1408,480"/>
-<area shape="rect" id="node23" title=" " alt="" coords="1137,453,1199,480"/>
-<area shape="rect" id="node31" title=" " alt="" coords="2443,229,2599,256"/>
-<area shape="rect" id="node34" title=" " alt="" coords="2813,229,2998,256"/>
-<area shape="rect" id="node36" title=" " alt="" coords="3022,229,3210,256"/>
-<area shape="rect" id="node38" href="$_o_m_sim_command_args_table_8hh.html" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="1567,304,1785,331"/>
-<area shape="rect" id="node41" title=" " alt="" coords="1844,304,1975,331"/>
-<area shape="rect" id="node39" title=" " alt="" coords="1495,379,1607,405"/>
-<area shape="rect" id="node40" title=" " alt="" coords="1631,379,1721,405"/>
-<area shape="rect" id="node48" title=" " alt="" coords="377,155,466,181"/>
+<area shape="rect" id="node1" title="Main of the radioactive decay study." alt="" coords="2089,5,2309,32"/>
+<area shape="rect" id="node2" href="$_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="1378,80,1467,107"/>
+<area shape="rect" id="node15" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="2117,304,2281,331"/>
+<area shape="rect" id="node47" href="$_o_m_sim_decays_g_p_s_8hh.html" title="Defines the OMSimDecaysGPS class for the radioactive decays simulation." alt="" coords="2236,80,2399,107"/>
+<area shape="rect" id="node49" href="$_o_m_sim_decays_analysis_8hh.html" title="Defines the OMSimDecaysAnalysis class and DecayStats struct for the radioactive decays simulation." alt="" coords="1900,304,2092,331"/>
+<area shape="rect" id="node50" href="$_o_m_sim_rad_decays_detector_8hh.html" title="Defines the OMSimRadDecaysDetector class for the radioactive decays simulation." alt="" coords="2457,80,2674,107"/>
+<area shape="rect" id="node3" href="$_o_m_sim_detector_construction_8hh.html" title=" " alt="" coords="2452,155,2679,181"/>
+<area shape="rect" id="node28" title=" " alt="" coords="499,155,661,181"/>
+<area shape="rect" id="node29" title=" " alt="" coords="229,155,475,181"/>
+<area shape="rect" id="node30" href="$_o_m_sim_run_action_8hh.html" title=" " alt="" coords="685,155,840,181"/>
+<area shape="rect" id="node32" title=" " alt="" coords="865,155,1031,181"/>
+<area shape="rect" id="node33" href="$_o_m_sim_tracking_action_8hh.html" title=" " alt="" coords="1056,155,1240,181"/>
+<area shape="rect" id="node35" href="$_o_m_sim_stepping_action_8hh.html" title="Defines OMSimSteppingAction.Currently it only checks for trapped photons." alt="" coords="1264,155,1451,181"/>
+<area shape="rect" id="node37" href="$_o_m_sim_u_iinterface_8hh.html" title="The OMSimUIinterface class provides a singleton interface to Geant4&#39;s UI manager." alt="" coords="1531,229,1693,256"/>
+<area shape="rect" id="node42" title=" " alt="" coords="1525,155,1667,181"/>
+<area shape="rect" id="node43" title=" " alt="" coords="1691,155,1834,181"/>
+<area shape="rect" id="node44" title=" " alt="" coords="1858,155,1995,181"/>
+<area shape="rect" id="node45" title=" " alt="" coords="2020,155,2111,181"/>
+<area shape="rect" id="node46" title=" " alt="" coords="5,155,205,181"/>
+<area shape="rect" id="node4" href="$_o_m_sim_optical_module_8hh.html" title=" " alt="" coords="2239,229,2422,256"/>
+<area shape="rect" id="node26" title=" " alt="" coords="2708,229,2791,256"/>
+<area shape="rect" id="node27" title=" " alt="" coords="2447,229,2684,256"/>
+<area shape="rect" id="node5" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="2642,379,2838,405"/>
+<area shape="rect" id="node23" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="2305,304,2503,331"/>
+<area shape="rect" id="node6" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and InputDataManager." alt="" coords="2710,453,2863,480"/>
+<area shape="rect" id="node11" title=" " alt="" coords="2887,453,3030,480"/>
+<area shape="rect" id="node12" title=" " alt="" coords="3055,453,3199,480"/>
+<area shape="rect" id="node13" title=" " alt="" coords="2347,453,2514,480"/>
+<area shape="rect" id="node14" title=" " alt="" coords="2539,453,2685,480"/>
+<area shape="rect" id="node7" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="1875,535,2007,562"/>
+<area shape="rect" id="node8" title=" " alt="" coords="2594,535,2785,562"/>
+<area shape="rect" id="node9" title=" " alt="" coords="2222,535,2381,562"/>
+<area shape="rect" id="node10" title=" " alt="" coords="2809,528,2959,569"/>
+<area shape="rect" id="node16" href="$_o_m_sim_p_m_t_response_8hh.html" title="Provides simulation for PMT response. This class is responsible for transforming hits on photocathode..." alt="" coords="2109,379,2289,405"/>
+<area shape="rect" id="node21" title=" " alt="" coords="1947,379,2085,405"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1850,379,1923,405"/>
+<area shape="rect" id="node17" title=" " alt="" coords="2150,453,2247,480"/>
+<area shape="rect" id="node18" title=" " alt="" coords="2272,453,2323,480"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1898,453,1979,480"/>
+<area shape="rect" id="node20" title=" " alt="" coords="2003,453,2074,480"/>
+<area shape="rect" id="node24" title=" " alt="" coords="2325,379,2456,405"/>
+<area shape="rect" id="node25" title=" " alt="" coords="2481,379,2570,405"/>
+<area shape="rect" id="node31" title=" " alt="" coords="685,229,841,256"/>
+<area shape="rect" id="node34" title=" " alt="" coords="1054,229,1239,256"/>
+<area shape="rect" id="node36" title=" " alt="" coords="1263,229,1451,256"/>
+<area shape="rect" id="node38" href="$_o_m_sim_command_args_table_8hh.html" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="1503,304,1721,331"/>
+<area shape="rect" id="node41" title=" " alt="" coords="1745,304,1876,331"/>
+<area shape="rect" id="node39" title=" " alt="" coords="1577,379,1689,405"/>
+<area shape="rect" id="node40" title=" " alt="" coords="1713,379,1804,405"/>
+<area shape="rect" id="node48" title=" " alt="" coords="2237,155,2326,181"/>
 </map>

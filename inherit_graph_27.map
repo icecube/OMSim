@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_o_m_sim_effective_area_analyisis.html" title="Responsible for calculating the effective area of optical hits and saving the results." alt="" coords="5,5,220,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,153,32"/>
+<area shape="rect" id="node2" href="$class_o_m_sim_event_action.html" title="Handles custom actions at the beginning and end of each event." alt="" coords="201,5,348,32"/>
 </map>

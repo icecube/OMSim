@@ -1,15 +1,11 @@
 <map id="OMSimHitManager.hh" name="OMSimHitManager.hh">
-<area shape="rect" id="node1" title="Defines structures and classes related to optical module photon hit management." alt="" coords="741,5,905,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_p_m_t_response_8hh.html" title="Provides simulation for PMT response. This class is responsible for transforming hits on photocathode..." alt="" coords="245,155,425,181"/>
-<area shape="rect" id="node8" href="$_o_m_sim_sensitive_detector_8hh.html" title=" " alt="" coords="652,80,856,107"/>
-<area shape="rect" id="node10" title=" " alt="" coords="960,155,1097,181"/>
-<area shape="rect" id="node13" title=" " alt="" coords="932,80,1005,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,229,164,256"/>
-<area shape="rect" id="node4" title=" " alt="" coords="188,229,285,256"/>
-<area shape="rect" id="node5" title=" " alt="" coords="310,229,361,256"/>
-<area shape="rect" id="node6" title=" " alt="" coords="385,229,467,256"/>
-<area shape="rect" id="node7" title=" " alt="" coords="491,229,561,256"/>
-<area shape="rect" id="node9" title=" " alt="" coords="450,155,634,181"/>
-<area shape="rect" id="node11" title=" " alt="" coords="659,155,849,181"/>
-<area shape="rect" id="node12" title=" " alt="" coords="873,155,936,181"/>
+<area shape="rect" id="node1" title="Defines structures and classes related to optical module photon hit management." alt="" coords="436,5,600,32"/>
+<area shape="rect" id="node2" href="$_o_m_sim_p_m_t_response_8hh.html" title="Provides simulation for PMT response. This class is responsible for transforming hits on photocathode..." alt="" coords="245,80,425,107"/>
+<area shape="rect" id="node8" title=" " alt="" coords="449,80,587,107"/>
+<area shape="rect" id="node9" title=" " alt="" coords="611,80,684,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,155,164,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="188,155,285,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="310,155,361,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="385,155,467,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="491,155,561,181"/>
 </map>

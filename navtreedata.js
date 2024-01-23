@@ -37,7 +37,6 @@ var NAVTREE =
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ],
@@ -58,13 +57,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "0common_8h.html",
-"_o_m_sim_p_d_o_m_8hh_source.html",
-"class_custom_properties.html#a171bc08ac6a90472c91399b6f26830f2",
-"class_ice_cube_ice.html#a435568d41c037359ed3425ad4d964312",
-"class_o_m_sim_effective_area_analyisis.html#aa9380b8148a1a0846b2f026d7dfa0046",
-"class_o_m_sim_s_n_analysis.html#a1c7f920c0b660adbf3bcc029d7d83176",
-"classm_d_o_m.html#ae28cf6f87440b664735f77854076219a",
-"struct_photon_info.html#a3c68773a51a00e88867661737627172e"
+"annotated.html",
+"class_distribution_sampler.html#a236177102b7383642247b5f04355179a",
+"class_l_o_m_n_n_v_t_response.html#ab8676e8320c536ddae1121254598384f",
+"class_o_m_sim_p_m_t_construction.html#a495272aadd5226ffcaf2584827c686af",
+"class_scintillation_properties.html#a63544a170f82e5862fd96180f49551f1",
+"functions_vars_x.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
