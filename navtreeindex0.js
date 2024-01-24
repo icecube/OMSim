@@ -237,8 +237,9 @@ var NAVTREEINDEX0 =
 "_o_m_sim_sensitive_detector_8cc.html#a98bca333230c874207e654a1c0988692":[4,0,83,1],
 "_o_m_sim_sensitive_detector_8hh.html":[4,0,84],
 "_o_m_sim_sensitive_detector_8hh.html#aba5019e335fb2939e79e0e5b62202729":[4,0,84,2],
+"_o_m_sim_sensitive_detector_8hh.html#aba5019e335fb2939e79e0e5b62202729a1a9b1c585275651eaa5ddc9d48560162":[4,0,84,2,1],
 "_o_m_sim_sensitive_detector_8hh.html#aba5019e335fb2939e79e0e5b62202729a412b54f662be36d98a3c518fc71e4568":[4,0,84,2,0],
-"_o_m_sim_sensitive_detector_8hh.html#aba5019e335fb2939e79e0e5b62202729aa9cc6585d4b897f793680a0927c6f69f":[4,0,84,2,1],
+"_o_m_sim_sensitive_detector_8hh.html#aba5019e335fb2939e79e0e5b62202729a6d615a8de3479e15a0b21956527ecde2":[4,0,84,2,2],
 "_o_m_sim_sensitive_detector_8hh_source.html":[4,0,84],
 "_o_m_sim_stepping_action_8cc.html":[4,0,93],
 "_o_m_sim_stepping_action_8hh.html":[4,0,94],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "_o_m_sim_u_iinterface_8hh.html":[4,0,96],
 "_o_m_sim_u_iinterface_8hh_source.html":[4,0,96],
 "abc_detector_component_8cc.html":[4,0,5],
-"abc_detector_component_8hh.html":[4,0,6],
-"abc_detector_component_8hh_source.html":[4,0,6]
+"abc_detector_component_8hh.html":[4,0,6]
 };

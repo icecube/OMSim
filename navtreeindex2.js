@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"class_distribution_sampler.html#a11d6ba97005fca66c123f6bf21fa342e":[3,3,6,9],
 "class_distribution_sampler.html#a236177102b7383642247b5f04355179a":[3,3,6,10],
 "class_distribution_sampler.html#a2e254930c735ca208b6d1b6c330cf64e":[3,3,6,3],
 "class_distribution_sampler.html#a352d00d44df3e54ec112dcba95e392ca":[3,3,6,13],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "class_l_o_m_hamamatsu_response.html#ad04746112c82705965136dcf1f1fa1d8":[5,0,23,5],
 "class_l_o_m_hamamatsu_response.html#af09d437c88b9911485db7fb86299f63f":[5,0,23,4],
 "class_l_o_m_hamamatsu_response.html#afbb196120c354bb70fc674ea716d557f":[5,0,23,6],
-"class_l_o_m_n_n_v_t_response.html":[5,0,24],
-"class_l_o_m_n_n_v_t_response.html#a9bdfcac090d48531abd594559cdcd372":[5,0,24,3]
+"class_l_o_m_n_n_v_t_response.html":[5,0,24]
 };

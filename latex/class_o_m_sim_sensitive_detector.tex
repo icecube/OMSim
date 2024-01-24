@@ -39,8 +39,10 @@ void \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a345025c68ea4ff0d4a0f7ad0
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a26b096a2244ab6bfc4ef4cf53ed02029}{check\+Absorbed\+Photons}} (G4\+Step $\ast$p\+Step)
-\begin{DoxyCompactList}\small\item\em Checks if the photon in the given step is absorbed. \end{DoxyCompactList}\item 
+G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a9d70226340ca6ca44a09efebd7acb1e0}{check\+Volume\+Absorption}} (G4\+Step $\ast$p\+Step)
+\item 
+G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_aee2e914dd514bf5c949d45e12def5447}{check\+Boundary\+Absorption}} (G4\+Step $\ast$p\+Step)
+\item 
 \mbox{\hyperlink{struct_photon_info}{Photon\+Info}} \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a4312e760ce38246d09e2933aa37b8725}{get\+Photon\+Info}} (G4\+Step $\ast$p\+Step)
 \item 
 G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a0e8d0c59cdefec63a33c443ff903d2cf}{handle\+PMT}} (G4\+Step $\ast$p\+Step, G4\+Touchable\+History $\ast$p\+Touchable\+History)
@@ -48,13 +50,17 @@ G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a0e8d0c59cdefec63a33c44
 G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a4b3d72f7aa132ea975541843a30a2f22}{handle\+General\+Photon\+Detector}} (G4\+Step $\ast$p\+Step, G4\+Touchable\+History $\ast$p\+Touchable\+History)
 \begin{DoxyCompactList}\small\item\em Handles hits for general photon detectors. This is the same as handle\+PMT, but sets PMT number to 0, as otherwise the retrieval of the PMT number from the volume name would results in an error. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_sensitive_detector_abb738b723025509f13103566558b156c}{store\+Photon\+Hit}} (\mbox{\hyperlink{struct_photon_info}{Photon\+Info}} \&info)
-\begin{DoxyCompactList}\small\item\em Stores photon hit information into the Hit\+Manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Stores photon hit information into the Hit\+Manager. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a9086dbe47568c71cba08feef8b665146}{fetch\+Boundary\+Process}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} $\ast$ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a9352dc2cb5522d037044f99fce178b70}{m\+PMTResponse}}
 \item 
 \mbox{\hyperlink{_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729}{Detector\+Type}} \mbox{\hyperlink{class_o_m_sim_sensitive_detector_ab14f76ffaa75e268fc49cdec4103a034}{m\+Detector\+Type}}
+\item 
+G4\+Op\+Boundary\+Process $\ast$ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_aaccd68cf580a6c9beee6e597385147bb}{m\+Boundary\+Process}} = nullptr
 \end{DoxyCompactItemize}
 
 
@@ -69,7 +75,7 @@ void \mbox{\hyperlink{class_o_m_sim_sensitive_detector_abb738b723025509f13103566
 \begin{DoxyParams}{Parameters}
 {\em name} & Name of the sensitive detector. \\
 \hline
-{\em p\+Detector\+Type} & Type of the detector (e.\+g., PMT, General\+Photon\+Detector). \\
+{\em p\+Detector\+Type} & Type of the detector (e.\+g., PMT, Volume\+Photon\+Detector). \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_o_m_sim_sensitive_detector_ab75c704bb88a18c9450f74040b3a4ce1}\label{class_o_m_sim_sensitive_detector_ab75c704bb88a18c9450f74040b3a4ce1}} 
@@ -81,22 +87,24 @@ void \mbox{\hyperlink{class_o_m_sim_sensitive_detector_abb738b723025509f13103566
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a26b096a2244ab6bfc4ef4cf53ed02029}\label{class_o_m_sim_sensitive_detector_a26b096a2244ab6bfc4ef4cf53ed02029}} 
-\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!checkAbsorbedPhotons@{checkAbsorbedPhotons}}
-\index{checkAbsorbedPhotons@{checkAbsorbedPhotons}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
-\doxysubsubsection{\texorpdfstring{checkAbsorbedPhotons()}{checkAbsorbedPhotons()}}
-{\footnotesize\ttfamily G4bool OMSim\+Sensitive\+Detector\+::check\+Absorbed\+Photons (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{a\+Step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_aee2e914dd514bf5c949d45e12def5447}\label{class_o_m_sim_sensitive_detector_aee2e914dd514bf5c949d45e12def5447}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!checkBoundaryAbsorption@{checkBoundaryAbsorption}}
+\index{checkBoundaryAbsorption@{checkBoundaryAbsorption}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{checkBoundaryAbsorption()}{checkBoundaryAbsorption()}}
+{\footnotesize\ttfamily G4bool OMSim\+Sensitive\+Detector\+::check\+Boundary\+Absorption (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{p\+Step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-This function checks if the particle in the given step is an optical photon and if it\textquotesingle{}s either the last step in the volume or if the post step process was absorption. If either of these conditions is met, the photon is considered absorbed and the function returns true.
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a9d70226340ca6ca44a09efebd7acb1e0}\label{class_o_m_sim_sensitive_detector_a9d70226340ca6ca44a09efebd7acb1e0}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!checkVolumeAbsorption@{checkVolumeAbsorption}}
+\index{checkVolumeAbsorption@{checkVolumeAbsorption}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{checkVolumeAbsorption()}{checkVolumeAbsorption()}}
+{\footnotesize\ttfamily G4bool OMSim\+Sensitive\+Detector\+::check\+Volume\+Absorption (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{p\+Step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a9086dbe47568c71cba08feef8b665146}\label{class_o_m_sim_sensitive_detector_a9086dbe47568c71cba08feef8b665146}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!fetchBoundaryProcess@{fetchBoundaryProcess}}
+\index{fetchBoundaryProcess@{fetchBoundaryProcess}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{fetchBoundaryProcess()}{fetchBoundaryProcess()}}
+{\footnotesize\ttfamily void OMSim\+Sensitive\+Detector\+::fetch\+Boundary\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-\begin{DoxyParams}{Parameters}
-{\em a\+Step} & The step in which the particle is being checked. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True if the photon is absorbed, false otherwise. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a4312e760ce38246d09e2933aa37b8725}\label{class_o_m_sim_sensitive_detector_a4312e760ce38246d09e2933aa37b8725}} 
 \index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!getPhotonInfo@{getPhotonInfo}}
 \index{getPhotonInfo@{getPhotonInfo}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
@@ -171,6 +179,12 @@ True if the particle was stored as hit, false otherwise.
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_aaccd68cf580a6c9beee6e597385147bb}\label{class_o_m_sim_sensitive_detector_aaccd68cf580a6c9beee6e597385147bb}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!mBoundaryProcess@{mBoundaryProcess}}
+\index{mBoundaryProcess@{mBoundaryProcess}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{mBoundaryProcess}{mBoundaryProcess}}
+{\footnotesize\ttfamily G4\+Op\+Boundary\+Process$\ast$ OMSim\+Sensitive\+Detector\+::m\+Boundary\+Process = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{class_o_m_sim_sensitive_detector_ab14f76ffaa75e268fc49cdec4103a034}\label{class_o_m_sim_sensitive_detector_ab14f76ffaa75e268fc49cdec4103a034}} 
 \index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!mDetectorType@{mDetectorType}}
 \index{mDetectorType@{mDetectorType}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}

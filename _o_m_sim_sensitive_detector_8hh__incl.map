@@ -1,9 +1,10 @@
 <map id="OMSimSensitiveDetector.hh" name="OMSimSensitiveDetector.hh">
-<area shape="rect" id="node1" title=" " alt="" coords="271,5,475,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="363,5,567,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,80,189,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="214,80,351,107"/>
 <area shape="rect" id="node4" href="$_o_m_sim_p_m_t_response_8hh.html" title="Provides simulation for PMT response. This class is responsible for transforming hits on photocathode..." alt="" coords="375,80,555,107"/>
-<area shape="rect" id="node10" title=" " alt="" coords="579,80,642,107"/>
+<area shape="rect" id="node10" title=" " alt="" coords="579,80,770,107"/>
+<area shape="rect" id="node11" title=" " alt="" coords="794,80,857,107"/>
 <area shape="rect" id="node5" title=" " alt="" coords="135,155,294,181"/>
 <area shape="rect" id="node6" title=" " alt="" coords="318,155,415,181"/>
 <area shape="rect" id="node7" title=" " alt="" coords="440,155,491,181"/>

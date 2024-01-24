@@ -1,5 +1,9 @@
 var NAVTREEINDEX5 =
 {
+"class_scintillation_properties.html#a03dca72bd4861b8500283dc15c0864e0":[3,0,30,0],
+"class_scintillation_properties.html#a2f5e62b56857772f598738907d3ed210":[3,0,30,4],
+"class_scintillation_properties.html#a37ebebbb7e81f92499faf54aabd89c6c":[3,0,30,6],
+"class_scintillation_properties.html#a3c9fea78ae17e8a52784e4a5fbd09342":[3,0,30,2],
 "class_scintillation_properties.html#a5e7da3437242c6c025edff017adf2c1b":[3,0,30,10],
 "class_scintillation_properties.html#a63544a170f82e5862fd96180f49551f1":[3,0,30,11],
 "class_scintillation_properties.html#a6c16439c71032b0df72dfff7aa776e69":[3,0,30,1],
@@ -184,8 +188,8 @@ var NAVTREEINDEX5 =
 "effective__area_2src_2_o_m_sim_physics_list_8cc.html":[4,0,62],
 "effective__area_2src_2_o_m_sim_primary_generator_action_8cc.html":[4,0,72],
 "files.html":[4,0],
-"functions.html":[5,3,0],
 "functions.html":[5,3,0,0],
+"functions.html":[5,3,0],
 "functions_b.html":[5,3,0,1],
 "functions_c.html":[5,3,0,2],
 "functions_d.html":[5,3,0,3],
@@ -245,9 +249,5 @@ var NAVTREEINDEX5 =
 "functions_vars_o.html":[5,3,2,12],
 "functions_vars_p.html":[5,3,2,13],
 "functions_vars_q.html":[5,3,2,14],
-"functions_vars_r.html":[5,3,2,15],
-"functions_vars_s.html":[5,3,2,16],
-"functions_vars_t.html":[5,3,2,17],
-"functions_vars_u.html":[5,3,2,18],
-"functions_vars_v.html":[5,3,2,19]
+"functions_vars_r.html":[5,3,2,15]
 };
