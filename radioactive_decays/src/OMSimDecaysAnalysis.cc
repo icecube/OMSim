@@ -25,17 +25,17 @@ void OMSimDecaysAnalysis::appendDecay(G4String pParticleName, G4double pDecayTim
  */
 void OMSimDecaysAnalysis::setOutputFileName(G4String pName)
 {
-	mMultiplicityFileName = pName+"_multiplicity.dat";
-	mHitsFileName = pName+"_hits.dat";
-	mDecaysFileName = pName+"_decays.dat";
+	mMultiplicityFileName = pName + "_multiplicity.dat";
+	mHitsFileName = pName + "_hits.dat";
+	mDecaysFileName = pName + "_decays.dat";
 }
 
 /**
  * @brief Calls calculateMultiplicity and writes the results to the output file.
  */
 void OMSimDecaysAnalysis::writeMultiplicity()
-{ 
-	std::vector<int>  lMultiplicity = OMSimHitManager::getInstance().calculateMultiplicity(20*ns);
+{
+	std::vector<int> lMultiplicity = OMSimHitManager::getInstance().calculateMultiplicity(20 * ns);
 	mDatafile.open(mMultiplicityFileName.c_str(), std::ios::out | std::ios::app);
 	for (const auto &value : lMultiplicity)
 	{
@@ -45,25 +45,26 @@ void OMSimDecaysAnalysis::writeMultiplicity()
 	mDatafile.close();
 }
 
-
 /**
  * @brief Write isotoped related data to the output file.
  */
 void OMSimDecaysAnalysis::writeDecayInformation()
 {
 	mDatafile.open(mDecaysFileName.c_str(), std::ios::out | std::ios::app);
-
-	for (int i = 0; i < (int)mDecaysStats.event_id.size(); i++)
+	if (mDecaysStats.event_id.size() > 0)
 	{
-		mDatafile << mDecaysStats.event_id.at(i) << "\t";
-		mDatafile << std::setprecision(13);
-		mDatafile <<  mDecaysStats.decay_time.at(i) << "\t";
-		mDatafile << std::setprecision(4);
-		mDatafile << mDecaysStats.isotope_name.at(i) << "\t";
-		mDatafile << mDecaysStats.decay_position.at(i).x() << "\t";
-		mDatafile << mDecaysStats.decay_position.at(i).y() << "\t";
-		mDatafile << mDecaysStats.decay_position.at(i).z() << "\t";
-		mDatafile << G4endl;
+		for (int i = 0; i < (int)mDecaysStats.event_id.size(); i++)
+		{
+			mDatafile << mDecaysStats.event_id.at(i) << "\t";
+			mDatafile << std::setprecision(13);
+			mDatafile << mDecaysStats.decay_time.at(i) << "\t";
+			mDatafile << std::setprecision(4);
+			mDatafile << mDecaysStats.isotope_name.at(i) << "\t";
+			mDatafile << mDecaysStats.decay_position.at(i).x() << "\t";
+			mDatafile << mDecaysStats.decay_position.at(i).y() << "\t";
+			mDatafile << mDecaysStats.decay_position.at(i).z() << "\t";
+			mDatafile << G4endl;
+		}
 	}
 	mDatafile.close();
 }
@@ -76,24 +77,25 @@ void OMSimDecaysAnalysis::writeHitInformation()
 	HitStats lHits = OMSimHitManager::getInstance().getHitsOfModule();
 
 	mDatafile.open(mHitsFileName.c_str(), std::ios::out | std::ios::app);
-
-	for (int i = 0; i < (int)lHits.event_id.size(); i++)
+	if (lHits.event_id.size() > 0)
 	{
-		mDatafile << lHits.event_id.at(i) << "\t";
-		mDatafile << std::setprecision(13);
-		mDatafile << lHits.hit_time.at(i)/s << "\t";
-		mDatafile << std::setprecision(4);
-		mDatafile << lHits.PMT_hit.at(i) << "\t";
-		mDatafile << lHits.photon_energy.at(i) << "\t";
-		mDatafile << lHits.photon_global_position.at(i).x() << "\t";
-		mDatafile << lHits.photon_global_position.at(i).y() << "\t";
-		mDatafile << lHits.photon_global_position.at(i).z() << "\t";
-		mDatafile << lHits.PMT_response.at(i).PE << "\t";
-		mDatafile << lHits.PMT_response.at(i).TransitTime << "\t";
-		mDatafile << lHits.PMT_response.at(i).DetectionProbability << "\t";
-		mDatafile << G4endl;
+		for (int i = 0; i < (int)lHits.event_id.size(); i++)
+		{
+			mDatafile << lHits.event_id.at(i) << "\t";
+			mDatafile << std::setprecision(13);
+			mDatafile << lHits.hit_time.at(i) / s << "\t";
+			mDatafile << std::setprecision(4);
+			mDatafile << lHits.PMT_hit.at(i) << "\t";
+			mDatafile << lHits.photon_energy.at(i) << "\t";
+			mDatafile << lHits.photon_global_position.at(i).x() << "\t";
+			mDatafile << lHits.photon_global_position.at(i).y() << "\t";
+			mDatafile << lHits.photon_global_position.at(i).z() << "\t";
+			mDatafile << lHits.PMT_response.at(i).PE << "\t";
+			mDatafile << lHits.PMT_response.at(i).TransitTime << "\t";
+			mDatafile << lHits.PMT_response.at(i).DetectionProbability << "\t";
+			mDatafile << G4endl;
+		}
 	}
-	
 	mDatafile.close();
 }
 
