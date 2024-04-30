@@ -53,10 +53,10 @@ void OMSimPMTConstruction::construction()
     }
     new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lTubeVacuum, "VacuumTube", lPMTlogical, false, 0, mCheckOverlaps);
 
+    appendComponent(lPMTSolid, lPMTlogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PMT");
     if (mHACoatingBool)
         constructHAcoating();
 
-    appendComponent(lPMTSolid, lPMTlogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PMT");
 
     mPhotocathodeLV->SetVisAttributes(mPhotocathodeVis);
     lPMTlogical->SetVisAttributes(mGlassVis);
