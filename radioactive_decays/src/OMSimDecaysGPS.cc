@@ -31,7 +31,8 @@ void OMSimDecaysGPS::generalGPS()
     lUIinterface.applyCommand("/process/em/auger true");
     lUIinterface.applyCommand("/process/em/pixe true");
     lUIinterface.applyCommand("/gps/particle ion");
-    lUIinterface.applyCommand("/gps/pos/centre 0 0 0 m");
+    G4ThreeVector lPosition = mOM->mPlacedPositions.at(0);
+    lUIinterface.applyCommand("/gps/pos/centre ", lPosition.x()/m, " ", lPosition.y()/m, " ", lPosition.z()/m, " m");
     lUIinterface.applyCommand("/gps/ene/mono 0 eV");
     lUIinterface.applyCommand("/gps/pos/type Volume");
     lUIinterface.applyCommand("/gps/pos/shape Sphere");

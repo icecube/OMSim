@@ -134,7 +134,7 @@ void LOM16::placeCADSupportStructure()
     for (auto iSolid : lMesh->GetSolids())
     {
         G4LogicalVolume *lSupportStructureLogical = new G4LogicalVolume(iSolid, mData->getMaterial("NoOptic_Absorber"), "SupportStructureCAD_Logical");
-        lSupportStructureLogical->SetVisAttributes(mAluVis);
+        lSupportStructureLogical->SetVisAttributes(mAbsorberVis);
         appendComponent(iSolid, lSupportStructureLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SupportStructureCAD");
     }
 }
