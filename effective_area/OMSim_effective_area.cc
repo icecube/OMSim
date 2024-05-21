@@ -23,7 +23,7 @@ void effectiveAreaSimulation()
 	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
 
 	bool lWriteHeader = !lArgs.get<bool>("no_header");
-	if (lWriteHeader) lAnalysisManager.writeHeader();
+	if (lWriteHeader) lAnalysisManager.writeHeader("Phi", "Theta", "Wavelength");
 
 	// If angle file is provided, run over all angle pairs in file
 	if (lArgs.keyExists("angles_file"))
@@ -35,7 +35,7 @@ void effectiveAreaSimulation()
 		for (std::vector<int>::size_type i = 0; i != lThetas.size(); i++)
 		{
 			lScanner->runSingleAngularScan(lPhis.at(i), lThetas.at(i));
-			lAnalysisManager.writeScan(lPhis.at(i), lThetas.at(i));
+			lAnalysisManager.writeScan(lPhis.at(i), lThetas.at(i),  lArgs.get<G4double>("wavelength"));
 			lHitManager.reset();
 		}
 	}
@@ -43,7 +43,7 @@ void effectiveAreaSimulation()
 	else
 	{
 		lScanner->runSingleAngularScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
-		lAnalysisManager.writeScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
+		lAnalysisManager.writeScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"),  lArgs.get<G4double>("wavelength"));
 		lHitManager.reset();
 	}
 }

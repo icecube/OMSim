@@ -31,8 +31,11 @@ public:
     OMSimEffectiveAreaAnalyisis(){};
     ~OMSimEffectiveAreaAnalyisis(){};
 
-	void writeScan(G4double pPhi, G4double pTheta);
-	void writeHeader();
+    template<typename... Args>
+	void writeScan(Args... args);
+    template<typename... Args>
+	void writeHeader(Args... args);
+
     effectiveAreaResult calculateEffectiveArea(double pHits);
 
     G4String mOutputFileName;
@@ -40,5 +43,52 @@ public:
 private:
 
 };
+
+/**
+ * @brief Writes a scan result to the output file.
+ * @param args The values to be written to the output file.
+ */
+template<typename... Args>
+void OMSimEffectiveAreaAnalyisis::writeScan(Args... args) {
+    std::vector<double> lHits = OMSimHitManager::getInstance().countHits();
+    mDatafile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
+
+    // Write all arguments to the file
+   ((mDatafile << args << "\t"), ...);
+
+
+    G4double lTotalHits = 0;
+    for (const auto &hit : lHits) {
+        mDatafile << hit << "\t";
+        lTotalHits = hit; // last element is total nr of hits
+    }
+
+    effectiveAreaResult lEffectiveArea = calculateEffectiveArea(lTotalHits);
+    mDatafile << lEffectiveArea.EA << "\t" << lEffectiveArea.EAError << "\t";
+    mDatafile << G4endl;
+    mDatafile.close();
+}
+
+
+/**
+ * @brief Writes the header line to the output file.
+ */
+template<typename... Args>
+void OMSimEffectiveAreaAnalyisis::writeHeader(Args... args)
+{
+	mDatafile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
+	mDatafile << "# ";
+     ((mDatafile << args << "\t"), ...);
+    mDatafile << "hits[1perPMT]"
+			  << "\t"
+			  << "total_hits"		
+			  << "\t"
+			  << "EA_Total(cm^2)"
+			  << "\t"
+			  << "EA_Total_error(cm^2)"
+			  << "\t" << G4endl;
+	mDatafile.close();
+}
+
 
 #endif

@@ -25,7 +25,7 @@ find_package(OpenSSL REQUIRED)
 
 # For logging with spdlog
 find_package(spdlog REQUIRED)
-find_package(fmt REQUIRED) # Find fmt library
+#find_package(fmt REQUIRED) # Find fmt library
 
 
 # Include OpenSSL's headers in the project
