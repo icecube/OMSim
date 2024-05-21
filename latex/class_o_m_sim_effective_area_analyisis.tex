@@ -12,9 +12,9 @@ Responsible for calculating the effective area of optical hits and saving the re
 \item 
 \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a64b63b8e79e9d2100d951a4e231c2f75}{$\sim$\+OMSim\+Effective\+Area\+Analyisis}} ()
 \item 
-void \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_ad9b76bc60e5f3629a9c693c2a30f539d}{write\+Scan}} (G4double p\+Phi, G4double p\+Theta)
+{\footnotesize template$<$typename... Args$>$ }\\void \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_af2f7ac6a789bb50ec7d0d8a81487ec20}{write\+Scan}} (Args... args)
 \begin{DoxyCompactList}\small\item\em Writes a scan result to the output file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a8d49aa6cccb6e98ebb9a084284ce47b9}{write\+Header}} ()
+{\footnotesize template$<$typename... Args$>$ }\\void \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a400b1a20fbf322894cd7c2564a7dbb35}{write\+Header}} (Args... args)
 \begin{DoxyCompactList}\small\item\em Writes the header line to the output file. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structeffective_area_result}{effective\+Area\+Result}} \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_aa9380b8148a1a0846b2f026d7dfa0046}{calculate\+Effective\+Area}} (double p\+Hits)
 \begin{DoxyCompactList}\small\item\em Calculates the effective area based on the number of hits and beam properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -57,23 +57,23 @@ std\+::fstream \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_ac392f952
 \begin{DoxyReturn}{Returns}
 Returns a structure with the effective area and its uncertainty. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_effective_area_analyisis_a8d49aa6cccb6e98ebb9a084284ce47b9}\label{class_o_m_sim_effective_area_analyisis_a8d49aa6cccb6e98ebb9a084284ce47b9}} 
+\mbox{\Hypertarget{class_o_m_sim_effective_area_analyisis_a400b1a20fbf322894cd7c2564a7dbb35}\label{class_o_m_sim_effective_area_analyisis_a400b1a20fbf322894cd7c2564a7dbb35}} 
 \index{OMSimEffectiveAreaAnalyisis@{OMSimEffectiveAreaAnalyisis}!writeHeader@{writeHeader}}
 \index{writeHeader@{writeHeader}!OMSimEffectiveAreaAnalyisis@{OMSimEffectiveAreaAnalyisis}}
 \doxysubsubsection{\texorpdfstring{writeHeader()}{writeHeader()}}
-{\footnotesize\ttfamily void OMSim\+Effective\+Area\+Analyisis\+::write\+Header (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily template$<$typename... Args$>$ \\
+void OMSim\+Effective\+Area\+Analyisis\+::write\+Header (\begin{DoxyParamCaption}\item[{Args...}]{args }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_o_m_sim_effective_area_analyisis_ad9b76bc60e5f3629a9c693c2a30f539d}\label{class_o_m_sim_effective_area_analyisis_ad9b76bc60e5f3629a9c693c2a30f539d}} 
+\mbox{\Hypertarget{class_o_m_sim_effective_area_analyisis_af2f7ac6a789bb50ec7d0d8a81487ec20}\label{class_o_m_sim_effective_area_analyisis_af2f7ac6a789bb50ec7d0d8a81487ec20}} 
 \index{OMSimEffectiveAreaAnalyisis@{OMSimEffectiveAreaAnalyisis}!writeScan@{writeScan}}
 \index{writeScan@{writeScan}!OMSimEffectiveAreaAnalyisis@{OMSimEffectiveAreaAnalyisis}}
 \doxysubsubsection{\texorpdfstring{writeScan()}{writeScan()}}
-{\footnotesize\ttfamily void OMSim\+Effective\+Area\+Analyisis\+::write\+Scan (\begin{DoxyParamCaption}\item[{G4double}]{p\+Phi,  }\item[{G4double}]{p\+Theta }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily template$<$typename... Args$>$ \\
+void OMSim\+Effective\+Area\+Analyisis\+::write\+Scan (\begin{DoxyParamCaption}\item[{Args...}]{args }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Phi} & The phi angle used in the scan to be written to the output file. \\
-\hline
-{\em p\+Theta} & The phi angle used in the scan to be written to the output file. \\
+{\em args} & The values to be written to the output file. \\
 \hline
 \end{DoxyParams}
 
