@@ -9,11 +9,11 @@
 #include "OMSimEffectiveAreaAnalyisis.hh"
 #include "OMSimEffectiveAreaDetector.hh"
 
-std::shared_ptr<spdlog::logger> global_logger;
+std::shared_ptr<spdlog::logger> globalLogger;
 
 namespace po = boost::program_options;
 
-void effectiveAreaSimulation()
+void runEffectiveAreaSimulation()
 {
 	OMSimEffectiveAreaAnalyisis lAnalysisManager;
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
@@ -48,75 +48,41 @@ void effectiveAreaSimulation()
 	}
 }
 
-int main(int argc, char *argv[])
+/**
+ * @brief Add options for the user input arguments for the effective area module
+ */
+void addModuleOptions(OMSim* pSimulation)
 {
-	try
-	{
-		OMSim lSimulation;
-		// Do not use G4String as type here...
-		po::options_description lSpecific("Effective area specific arguments");
+	po::options_description lSpecific("Effective area specific arguments");
 
-		lSpecific.add_options()
-		("world_radius,w", po::value<G4double>()->default_value(3.0), "radius of world sphere in m")
-		("radius,r", po::value<G4double>()->default_value(300.0), "plane wave radius in mm")
-		("distance,d", po::value<G4double>()->default_value(2000), "plane wave distance from origin, in mm")
-		("theta,t", po::value<G4double>()->default_value(0.0), "theta (= zenith) in deg")
-		("phi,f", po::value<G4double>()->default_value(0.0), "phi (= azimuth) in deg")
-		("wavelength,l", po::value<G4double>()->default_value(400.0), "wavelength of incoming light in nm")
-		("angles_file,i", po::value<std::string>(), "The input angle pairs file to be scanned. The file should contain two columns, the first column with the theta (zenith) and the second with phi (azimuth) in degrees.")
-		("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
+	// Do not use G4String as type here...
+	lSpecific.add_options()
+	("world_radius,w", po::value<G4double>()->default_value(3.0), "radius of world sphere in m")
+	("radius,r", po::value<G4double>()->default_value(300.0), "plane wave radius in mm")
+	("distance,d", po::value<G4double>()->default_value(2000), "plane wave distance from origin, in mm")
+	("theta,t", po::value<G4double>()->default_value(0.0), "theta (= zenith) in deg")
+	("phi,f", po::value<G4double>()->default_value(0.0), "phi (= azimuth) in deg")
+	("wavelength,l", po::value<G4double>()->default_value(400.0), "wavelength of incoming light in nm")
+	("angles_file,i", po::value<std::string>(), "The input angle pairs file to be scanned. The file should contain two columns, the first column with the theta (zenith) and the second with phi (azimuth) in degrees.")
+	("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
 
-
-		po::options_description lAllargs("Allowed input arguments");
-		lAllargs.add(lSimulation.mGeneralArgs).add(lSpecific);
+	pSimulation->extendOptions(lSpecific);
+}
 
 
-		po::variables_map lVariablesMap;
-		try {
-			po::store(po::parse_command_line(argc, argv, lAllargs), lVariablesMap);
-		} catch (std::invalid_argument& e) {
-			std::cerr << "Invalid argument: " << e.what() << std::endl;
-		} catch (std::exception& e) {
-			std::cerr << "An exception occurred: " << e.what() << std::endl;
-		} catch (...) {
-			std::cerr << "An unknown exception occurred." << std::endl;
-		}
+int main(int pArgumentCount, char *pArgumentVector[])
+{
 
-		po::notify(lVariablesMap);
+	OMSim lSimulation;
+	addModuleOptions(&lSimulation);
+	bool lContinue = lSimulation.handleArguments(pArgumentCount, pArgumentVector);
+	if (!lContinue) return 0;
 
-		if (lVariablesMap.count("help"))
-		{
-			std::cout << lAllargs << "\n";
-			return 0;
-		}
+	OMSimEffectiveAreaDetector* lDetectorConstruction = new OMSimEffectiveAreaDetector();
+	lSimulation.initialiseSimulation(lDetectorConstruction);
 
-		OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+	runEffectiveAreaSimulation();
 
-		// Now store the parsed parameters in the OMSimCommandArgsTable instance
-		for (const auto &option : lVariablesMap)
-		{
-			lArgs.setParameter(option.first, option.second.value());
-		}
-
-		// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
-		lArgs.finalize();
-
-		OMSimEffectiveAreaDetector* lDetectorConstruction = new OMSimEffectiveAreaDetector();
-		lSimulation.initialiseSimulation(lDetectorConstruction);
-
-		effectiveAreaSimulation();
-		if(lArgs.get<bool>("visual")) lSimulation.startVisualisation();
-	
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "error: " << e.what() << "\n";
-		return 1;
-	}
-	catch (...)
-	{
-		std::cerr << "Exception of unknown type!\n";
-	}
-
+	lSimulation.startVisualisationIfRequested();
 	return 0;
 }

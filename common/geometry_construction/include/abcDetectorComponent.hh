@@ -26,11 +26,11 @@
 class abcDetectorComponent
 {
 public:
-    abcDetectorComponent(){};
+    abcDetectorComponent();
     virtual void construction() = 0; ///<  Abstract method you have to define in order to make a derived class from abcDetectorComponent
 
     InputDataManager *mData; ///<  Instance of OMSimInputdata, which should be started only once.
-    bool mCheckOverlaps = true;
+    bool mCheckOverlaps = false;
 
     /**
      *  @struct abcDetectorComponent::Component

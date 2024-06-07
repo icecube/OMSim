@@ -14,7 +14,6 @@
 mDOMFlasher::mDOMFlasher(InputDataManager *pData)
 {
 	mData = pData;
-	mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
 	construction();
 }
 

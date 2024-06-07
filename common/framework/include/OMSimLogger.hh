@@ -7,7 +7,7 @@
 #include "spdlog/fmt/fmt.h" 
 
 // Global logger instance
-extern std::shared_ptr<spdlog::logger> global_logger;
+extern std::shared_ptr<spdlog::logger> globalLogger;
 
 // Custom logging function
 void customLog(spdlog::level::level_enum log_level, const char* file, int line, const char* func, const std::string& message);

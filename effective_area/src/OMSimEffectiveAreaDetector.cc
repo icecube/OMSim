@@ -89,7 +89,6 @@ void OMSimEffectiveAreaDetector::constructDetector()
 
     if (lOpticalModule)
     {
-        log_critical("Here");
         lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
         lOpticalModule->configureSensitiveVolume(this);
     }

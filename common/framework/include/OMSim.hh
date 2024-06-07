@@ -49,17 +49,22 @@ public:
 
     void ensureOutputDirectoryExists(const std::string &filepath);
     void initialiseSimulation(OMSimDetectorConstruction* pDetectorConstruction);
-    void startVisualisation();
     void configureLogger();
+    bool handleArguments(int pArgumentCount, char *pArgumentVector[]);
+    void startVisualisationIfRequested();
     //OMSimDetectorConstruction* getDetectorConstruction();
-    po::options_description mGeneralArgs;
+    
     
     G4Navigator* getNavigator(){return mNavigator;};
+    void extendOptions(po::options_description pNewOptions);
+    po::options_description mGeneralOptions;
 private:
-    G4RunManager *mRunManager;
-    G4VisExecutive *mVisManager;
-    G4Navigator *mNavigator;
+    po::variables_map parseArguments(int pArgumentCount, char *pArgumentVector[]);
+    void setUserArgumentsToArgTable(po::variables_map pVariablesMap);
 
+    G4RunManager *mRunManager = nullptr;
+    G4VisExecutive *mVisManager = nullptr;
+    G4Navigator *mNavigator = nullptr;
     G4VUserPhysicsList *mPhysics = nullptr;
     G4VUserPrimaryGeneratorAction *mGenAction = nullptr;
     G4UserRunAction *mRunAction = nullptr;
@@ -67,7 +72,10 @@ private:
     G4UserTrackingAction *mTracking = nullptr;
     G4UserSteppingAction *mStepping = nullptr;
     G4TouchableHistory *mHistory = nullptr;
-    G4double mStartingTime;
+
+    
+
+    G4double mStartingTime=0;
 };
 
 #endif // OMSIM_H

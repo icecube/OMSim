@@ -1,11 +1,20 @@
 #include "abcDetectorComponent.hh"
 #include "OMSimPMTConstruction.hh"
 #include "OMSimLogger.hh"
+#include "OMSimCommandArgsTable.hh"
 
 #include <G4LogicalVolume.hh>
 #include <G4PVPlacement.hh>
 #include <G4SystemOfUnits.hh>
 #include <G4Transform3D.hh>
+
+
+
+abcDetectorComponent::abcDetectorComponent()
+{
+    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
+}
+
 
 /**
  * @brief Append component to Components vector.

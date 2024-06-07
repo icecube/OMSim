@@ -13,20 +13,20 @@
 #include <boost/program_options.hpp>
 
 namespace po = boost::program_options;
-extern std::shared_ptr<spdlog::logger> global_logger;
+extern std::shared_ptr<spdlog::logger> globalLogger;
 
 /**
  * This constructor initializes the Geant4 run manager, visualization manager,
  * and navigator. It also sets up the command line arguments for the simulation.
  */
-OMSim::OMSim() : mGeneralArgs("General options")
+OMSim::OMSim() : mGeneralOptions("General options")
 {
     mStartingTime = clock() / CLOCKS_PER_SEC;
-    mRunManager = new G4RunManager;
-    mVisManager = new G4VisExecutive;
+    mRunManager = new G4RunManager();
+    mVisManager = new G4VisExecutive();
     mNavigator = new G4Navigator();
 
-    mGeneralArgs.add_options()("help", "produce help message")
+    mGeneralOptions.add_options()("help", "produce help message")
     ("log_level", po::value<std::string>()->default_value("info"), "Granularity of logger, defaults to info [trace, debug, info, warn, error, critical, off]")
     ("output_file,o", po::value<std::string>()->default_value("output"), "filename for output")
     ("numevents,n", po::value<G4int>()->default_value(0), "number of events")
@@ -40,11 +40,18 @@ OMSim::OMSim() : mGeneralArgs("General options")
     ("pmt_response", po::bool_switch(), "if given, simulates PMT response using scan data (currently only for mDOM PMT)")
     ("place_harness",po::bool_switch(),"place OM harness (if implemented)")
 	("detector_type", po::value<G4int>()->default_value(2), "module type [custom = 0, Single PMT = 1, mDOM = 2, pDDOM = 3, LOM16 = 4]")
-    ("check_overlaps", po::bool_switch()->default_value(true), "check overlaps between volumes during construction")
+    ("check_overlaps", po::bool_switch()->default_value(false), "check overlaps between volumes during construction")
     ("glass", po::value<G4int>()->default_value(0), "DEPRECATED. Index to select glass type [VITROVEX = 0, Chiba = 1, Kopp = 2, myVitroVex = 3, myChiba = 4, WOMQuartz = 5, fusedSilica = 6]")
     ("gel", po::value<G4int>()->default_value(1), "DEPRECATED. Index to select gel type [Wacker = 0, Chiba = 1, IceCube = 2, Wacker_company = 3]")
     ("reflective_surface", po::value<G4int>()->default_value(0), "DEPRECATED. Index to select reflective surface type [Refl_V95Gel = 0, Refl_V98Gel = 1, Refl_Aluminium = 2, Refl_Total98 = 3]")
     ("pmt_model", po::value<G4int>()->default_value(0), "DEPRECATED. R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3");
+
+
+    globalLogger = spdlog::stdout_color_mt("console");
+    globalLogger->set_level(spdlog::level::info); // Set the desired log level
+    globalLogger->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e][%l][%s:%#]%$ %v");
+    spdlog::set_default_logger(globalLogger);  
+
 }
 
 spdlog::level::level_enum getLogLevelFromString(const std::string &pLevelString)
@@ -68,27 +75,26 @@ spdlog::level::level_enum getLogLevelFromString(const std::string &pLevelString)
 
 void OMSim::configureLogger()
 {
-    G4cout << ":::::::::::::::::::" << G4endl;
-    global_logger = spdlog::stdout_color_mt("console");
     std::string lLogLevel = OMSimCommandArgsTable::getInstance().get<std::string>("log_level");
-    global_logger->set_level(getLogLevelFromString(lLogLevel)); // Set the desired log level
-    global_logger->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e][%l][%s:%#]%$ %v");
-    spdlog::set_default_logger(global_logger);  
+    globalLogger->set_level(getLogLevelFromString(lLogLevel)); // Set the desired log level
+    spdlog::set_default_logger(globalLogger);  
     log_trace("Logger configured to level {}", lLogLevel);
 }
-
 
 /**
  * @brief UIEx session is started for visualisation.
  */
-void OMSim::startVisualisation()
+void OMSim::startVisualisationIfRequested()
 {
-    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-    char *argumv[] = {"all", NULL};
-    G4UIExecutive *UIEx = new G4UIExecutive(1, argumv);
-    lUIinterface.applyCommand("/control/execute ../aux/init_vis.mac");
-    UIEx->SessionStart();
-    delete UIEx;
+    if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
+    {
+        OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+        char *argumv[] = {"all", NULL};
+        G4UIExecutive *UIEx = new G4UIExecutive(1, argumv);
+        lUIinterface.applyCommand("/control/execute ../aux/init_vis.mac");
+        UIEx->SessionStart();
+        delete UIEx;
+    }
 }
 /**
  * @brief Ensure that the output directory for the simulation results exists.
@@ -167,11 +173,81 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstructio
     lUIinterface.applyCommand("/control/execute ", lArgs.get<bool>("visual"));
 }
 
+void OMSim::extendOptions(po::options_description pNewOptions)
+{
+	mGeneralOptions.add(pNewOptions);
+}
+
+
+po::variables_map OMSim::parseArguments(int pArgumentCount, char *pArgumentVector[])
+{   
+	po::variables_map lVariablesMap;
+	try {
+		po::store(po::parse_command_line(pArgumentCount, pArgumentVector, mGeneralOptions), lVariablesMap);
+	} catch (std::invalid_argument& e) {
+		std::cerr << "Invalid argument: " << e.what() << std::endl;
+	} catch (std::exception& e) {
+		std::cerr << "An exception occurred: " << e.what() << std::endl;
+	} catch (...) {
+		std::cerr << "An unknown exception occurred." << std::endl;
+	}
+	po::notify(lVariablesMap);
+
+	return lVariablesMap;
+}
+
+void OMSim::setUserArgumentsToArgTable(po::variables_map pVariablesMap)
+{
+	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+	// Now store the parsed parameters in the OMSimCommandArgsTable instance
+	for (const auto &option : pVariablesMap)
+	{
+		lArgs.setParameter(option.first, option.second.value());
+	}
+	// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
+	lArgs.finalize();
+}
+
+bool OMSim::handleArguments(int pArgumentCount, char *pArgumentVector[])
+{
+	
+	po::variables_map lVariablesMap = parseArguments(pArgumentCount, pArgumentVector);
+
+	//check if user needs help
+	if (lVariablesMap.count("help"))
+	{
+		std::cout << mGeneralOptions << "\n";
+		return false;
+	}
+
+	//If no help needed continue and set arguments to arg table
+	setUserArgumentsToArgTable(lVariablesMap);
+	return true;
+}
+
+
+
+
 OMSim::~OMSim()
 {
-    delete mNavigator;
-    delete mVisManager;
-    delete mRunManager;
+    log_trace("OMSim destructor");
+    if (mRunManager) {
+        log_trace("Deleting RunManager");
+        delete mRunManager;
+        mRunManager = nullptr;
+    }
+
+    if (mVisManager) {
+        log_trace("Deleting VisManager");
+        delete mVisManager;
+        mVisManager = nullptr;
+    }
+
+    if (mNavigator) {
+        log_trace("Deleting Navigator");
+        delete mNavigator;
+        mNavigator = nullptr;
+    }
     double lFinishtime = clock() / CLOCKS_PER_SEC;
-    G4cout << "Computation time: " << lFinishtime - mStartingTime << " seconds." << G4endl;
+    log_info("Computation time: {} {}", lFinishtime - mStartingTime, " seconds.");
 }
