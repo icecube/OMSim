@@ -19,25 +19,36 @@ void \mbox{\hyperlink{class_o_m_sim_a5fdec07501bb76199f652ac95bd1e961}{ensure\+O
 \begin{DoxyCompactList}\small\item\em Ensure that the output directory for the simulation results exists. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{initialise\+Simulation}} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$p\+Detector\+Construction)
 \begin{DoxyCompactList}\small\item\em Initialize the simulation. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_a42d86958aba31a17fb0c8a39fbc9c9b5}{start\+Visualisation}} ()
-\begin{DoxyCompactList}\small\item\em UIEx session is started for visualisation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_a3e43df3d28f3e5e7cbec8a6e3ef1dcf5}{configure\+Logger}} ()
 \item 
+bool \mbox{\hyperlink{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}{handle\+Arguments}} (int p\+Argument\+Count, char $\ast$p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{class_o_m_sim_adfafdeb214a66be94c423076b8c13bbb}{start\+Visualisation\+If\+Requested}} ()
+\begin{DoxyCompactList}\small\item\em UIEx session is started for visualisation. \end{DoxyCompactList}\item 
 G4\+Navigator $\ast$ \mbox{\hyperlink{class_o_m_sim_acae00a5a9eef0b872175474315e7a657}{get\+Navigator}} ()
+\item 
+void \mbox{\hyperlink{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}{extend\+Options}} (po\+::options\+\_\+description p\+New\+Options)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-po\+::options\+\_\+description \mbox{\hyperlink{class_o_m_sim_a8eb0d1638af500069fc4e6a2f998b356}{m\+General\+Args}}
+po\+::options\+\_\+description \mbox{\hyperlink{class_o_m_sim_adc89f2fa01d3958389e86c36e8064805}{m\+General\+Options}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+po\+::variables\+\_\+map \mbox{\hyperlink{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}{parse\+Arguments}} (int p\+Argument\+Count, char $\ast$p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}{set\+User\+Arguments\+To\+Arg\+Table}} (po\+::variables\+\_\+map p\+Variables\+Map)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-G4\+Run\+Manager $\ast$ \mbox{\hyperlink{class_o_m_sim_a63d81cbf53a7eb4d42f5c69397eb14eb}{m\+Run\+Manager}}
+G4\+Run\+Manager $\ast$ \mbox{\hyperlink{class_o_m_sim_a63d81cbf53a7eb4d42f5c69397eb14eb}{m\+Run\+Manager}} = nullptr
 \item 
-G4\+Vis\+Executive $\ast$ \mbox{\hyperlink{class_o_m_sim_a8bded781b54a28ea07c04923eb98b23e}{m\+Vis\+Manager}}
+G4\+Vis\+Executive $\ast$ \mbox{\hyperlink{class_o_m_sim_a8bded781b54a28ea07c04923eb98b23e}{m\+Vis\+Manager}} = nullptr
 \item 
-G4\+Navigator $\ast$ \mbox{\hyperlink{class_o_m_sim_aae423f68ad8ea948dc4a2bcc6ed8c6bf}{m\+Navigator}}
+G4\+Navigator $\ast$ \mbox{\hyperlink{class_o_m_sim_aae423f68ad8ea948dc4a2bcc6ed8c6bf}{m\+Navigator}} = nullptr
 \item 
 G4\+VUser\+Physics\+List $\ast$ \mbox{\hyperlink{class_o_m_sim_a73b7ac711ab9d9c1bc4ad38d6c985b94}{m\+Physics}} = nullptr
 \item 
@@ -53,7 +64,7 @@ G4\+User\+Stepping\+Action $\ast$ \mbox{\hyperlink{class_o_m_sim_a610d64ca0157bc
 \item 
 G4\+Touchable\+History $\ast$ \mbox{\hyperlink{class_o_m_sim_a04ad05f6b01a547002f3c36fe116c35f}{m\+History}} = nullptr
 \item 
-G4double \mbox{\hyperlink{class_o_m_sim_afdddb6d2392b131b35aae4f20a551a7c}{m\+Starting\+Time}}
+G4double \mbox{\hyperlink{class_o_m_sim_afdddb6d2392b131b35aae4f20a551a7c}{m\+Starting\+Time}} =0
 \end{DoxyCompactItemize}
 
 
@@ -92,11 +103,23 @@ If the output directory does not exist, this function will create it.
 {\em p\+File\+Path} & The path to the output directory. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}\label{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}} 
+\index{OMSim@{OMSim}!extendOptions@{extendOptions}}
+\index{extendOptions@{extendOptions}!OMSim@{OMSim}}
+\doxysubsubsection{\texorpdfstring{extendOptions()}{extendOptions()}}
+{\footnotesize\ttfamily void OMSim\+::extend\+Options (\begin{DoxyParamCaption}\item[{po\+::options\+\_\+description}]{p\+New\+Options }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{class_o_m_sim_acae00a5a9eef0b872175474315e7a657}\label{class_o_m_sim_acae00a5a9eef0b872175474315e7a657}} 
 \index{OMSim@{OMSim}!getNavigator@{getNavigator}}
 \index{getNavigator@{getNavigator}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{getNavigator()}{getNavigator()}}
 {\footnotesize\ttfamily G4\+Navigator$\ast$ OMSim\+::get\+Navigator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}\label{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}} 
+\index{OMSim@{OMSim}!handleArguments@{handleArguments}}
+\index{handleArguments@{handleArguments}!OMSim@{OMSim}}
+\doxysubsubsection{\texorpdfstring{handleArguments()}{handleArguments()}}
+{\footnotesize\ttfamily bool OMSim\+::handle\+Arguments (\begin{DoxyParamCaption}\item[{int}]{p\+Argument\+Count,  }\item[{char $\ast$}]{p\+Argument\+Vector\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}\label{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}} 
 \index{OMSim@{OMSim}!initialiseSimulation@{initialiseSimulation}}
@@ -104,11 +127,23 @@ If the output directory does not exist, this function will create it.
 \doxysubsubsection{\texorpdfstring{initialiseSimulation()}{initialiseSimulation()}}
 {\footnotesize\ttfamily void OMSim\+::initialise\+Simulation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$}]{p\+Detector\+Construction }\end{DoxyParamCaption})}
 
-This function sets up the necessary Geant4 components. \mbox{\Hypertarget{class_o_m_sim_a42d86958aba31a17fb0c8a39fbc9c9b5}\label{class_o_m_sim_a42d86958aba31a17fb0c8a39fbc9c9b5}} 
-\index{OMSim@{OMSim}!startVisualisation@{startVisualisation}}
-\index{startVisualisation@{startVisualisation}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{startVisualisation()}{startVisualisation()}}
-{\footnotesize\ttfamily void OMSim\+::start\+Visualisation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+This function sets up the necessary Geant4 components. \mbox{\Hypertarget{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}\label{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}} 
+\index{OMSim@{OMSim}!parseArguments@{parseArguments}}
+\index{parseArguments@{parseArguments}!OMSim@{OMSim}}
+\doxysubsubsection{\texorpdfstring{parseArguments()}{parseArguments()}}
+{\footnotesize\ttfamily po\+::variables\+\_\+map OMSim\+::parse\+Arguments (\begin{DoxyParamCaption}\item[{int}]{p\+Argument\+Count,  }\item[{char $\ast$}]{p\+Argument\+Vector\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}\label{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}} 
+\index{OMSim@{OMSim}!setUserArgumentsToArgTable@{setUserArgumentsToArgTable}}
+\index{setUserArgumentsToArgTable@{setUserArgumentsToArgTable}!OMSim@{OMSim}}
+\doxysubsubsection{\texorpdfstring{setUserArgumentsToArgTable()}{setUserArgumentsToArgTable()}}
+{\footnotesize\ttfamily void OMSim\+::set\+User\+Arguments\+To\+Arg\+Table (\begin{DoxyParamCaption}\item[{po\+::variables\+\_\+map}]{p\+Variables\+Map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_o_m_sim_adfafdeb214a66be94c423076b8c13bbb}\label{class_o_m_sim_adfafdeb214a66be94c423076b8c13bbb}} 
+\index{OMSim@{OMSim}!startVisualisationIfRequested@{startVisualisationIfRequested}}
+\index{startVisualisationIfRequested@{startVisualisationIfRequested}!OMSim@{OMSim}}
+\doxysubsubsection{\texorpdfstring{startVisualisationIfRequested()}{startVisualisationIfRequested()}}
+{\footnotesize\ttfamily void OMSim\+::start\+Visualisation\+If\+Requested (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -125,11 +160,11 @@ This function sets up the necessary Geant4 components. \mbox{\Hypertarget{class_
 \doxysubsubsection{\texorpdfstring{mGenAction}{mGenAction}}
 {\footnotesize\ttfamily G4\+VUser\+Primary\+Generator\+Action$\ast$ OMSim\+::m\+Gen\+Action = nullptr\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_o_m_sim_a8eb0d1638af500069fc4e6a2f998b356}\label{class_o_m_sim_a8eb0d1638af500069fc4e6a2f998b356}} 
-\index{OMSim@{OMSim}!mGeneralArgs@{mGeneralArgs}}
-\index{mGeneralArgs@{mGeneralArgs}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mGeneralArgs}{mGeneralArgs}}
-{\footnotesize\ttfamily po\+::options\+\_\+description OMSim\+::m\+General\+Args}
+\mbox{\Hypertarget{class_o_m_sim_adc89f2fa01d3958389e86c36e8064805}\label{class_o_m_sim_adc89f2fa01d3958389e86c36e8064805}} 
+\index{OMSim@{OMSim}!mGeneralOptions@{mGeneralOptions}}
+\index{mGeneralOptions@{mGeneralOptions}!OMSim@{OMSim}}
+\doxysubsubsection{\texorpdfstring{mGeneralOptions}{mGeneralOptions}}
+{\footnotesize\ttfamily po\+::options\+\_\+description OMSim\+::m\+General\+Options}
 
 \mbox{\Hypertarget{class_o_m_sim_a04ad05f6b01a547002f3c36fe116c35f}\label{class_o_m_sim_a04ad05f6b01a547002f3c36fe116c35f}} 
 \index{OMSim@{OMSim}!mHistory@{mHistory}}
@@ -141,7 +176,7 @@ This function sets up the necessary Geant4 components. \mbox{\Hypertarget{class_
 \index{OMSim@{OMSim}!mNavigator@{mNavigator}}
 \index{mNavigator@{mNavigator}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mNavigator}{mNavigator}}
-{\footnotesize\ttfamily G4\+Navigator$\ast$ OMSim\+::m\+Navigator\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4\+Navigator$\ast$ OMSim\+::m\+Navigator = nullptr\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_o_m_sim_a73b7ac711ab9d9c1bc4ad38d6c985b94}\label{class_o_m_sim_a73b7ac711ab9d9c1bc4ad38d6c985b94}} 
 \index{OMSim@{OMSim}!mPhysics@{mPhysics}}
@@ -159,13 +194,13 @@ This function sets up the necessary Geant4 components. \mbox{\Hypertarget{class_
 \index{OMSim@{OMSim}!mRunManager@{mRunManager}}
 \index{mRunManager@{mRunManager}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mRunManager}{mRunManager}}
-{\footnotesize\ttfamily G4\+Run\+Manager$\ast$ OMSim\+::m\+Run\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4\+Run\+Manager$\ast$ OMSim\+::m\+Run\+Manager = nullptr\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_o_m_sim_afdddb6d2392b131b35aae4f20a551a7c}\label{class_o_m_sim_afdddb6d2392b131b35aae4f20a551a7c}} 
 \index{OMSim@{OMSim}!mStartingTime@{mStartingTime}}
 \index{mStartingTime@{mStartingTime}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mStartingTime}{mStartingTime}}
-{\footnotesize\ttfamily G4double OMSim\+::m\+Starting\+Time\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4double OMSim\+::m\+Starting\+Time =0\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_o_m_sim_a610d64ca0157bc3795cf83a1a09a6d0c}\label{class_o_m_sim_a610d64ca0157bc3795cf83a1a09a6d0c}} 
 \index{OMSim@{OMSim}!mStepping@{mStepping}}
@@ -183,7 +218,7 @@ This function sets up the necessary Geant4 components. \mbox{\Hypertarget{class_
 \index{OMSim@{OMSim}!mVisManager@{mVisManager}}
 \index{mVisManager@{mVisManager}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mVisManager}{mVisManager}}
-{\footnotesize\ttfamily G4\+Vis\+Executive$\ast$ OMSim\+::m\+Vis\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4\+Vis\+Executive$\ast$ OMSim\+::m\+Vis\+Manager = nullptr\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

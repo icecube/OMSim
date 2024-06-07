@@ -116,6 +116,7 @@ $(document).ready(function(){initNavTree('class_o_m_sim.html',''); initResizable
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_o_m_sim-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -140,26 +141,37 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a48127177a39ead290b915dcbc1c759a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2">initialiseSimulation</a> (<a class="el" href="class_o_m_sim_detector_construction.html">OMSimDetectorConstruction</a> *pDetectorConstruction)</td></tr>
 <tr class="memdesc:a48127177a39ead290b915dcbc1c759a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the simulation.  <a href="class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2">More...</a><br /></td></tr>
 <tr class="separator:a48127177a39ead290b915dcbc1c759a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42d86958aba31a17fb0c8a39fbc9c9b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a42d86958aba31a17fb0c8a39fbc9c9b5">startVisualisation</a> ()</td></tr>
-<tr class="memdesc:a42d86958aba31a17fb0c8a39fbc9c9b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">UIEx session is started for visualisation.  <a href="class_o_m_sim.html#a42d86958aba31a17fb0c8a39fbc9c9b5">More...</a><br /></td></tr>
-<tr class="separator:a42d86958aba31a17fb0c8a39fbc9c9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e43df3d28f3e5e7cbec8a6e3ef1dcf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a3e43df3d28f3e5e7cbec8a6e3ef1dcf5">configureLogger</a> ()</td></tr>
 <tr class="separator:a3e43df3d28f3e5e7cbec8a6e3ef1dcf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07759a6885ca398dd1e7c3a9954ceded"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a07759a6885ca398dd1e7c3a9954ceded">handleArguments</a> (int pArgumentCount, char *pArgumentVector[])</td></tr>
+<tr class="separator:a07759a6885ca398dd1e7c3a9954ceded"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfafdeb214a66be94c423076b8c13bbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#adfafdeb214a66be94c423076b8c13bbb">startVisualisationIfRequested</a> ()</td></tr>
+<tr class="memdesc:adfafdeb214a66be94c423076b8c13bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">UIEx session is started for visualisation.  <a href="class_o_m_sim.html#adfafdeb214a66be94c423076b8c13bbb">More...</a><br /></td></tr>
+<tr class="separator:adfafdeb214a66be94c423076b8c13bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acae00a5a9eef0b872175474315e7a657"><td class="memItemLeft" align="right" valign="top">G4Navigator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#acae00a5a9eef0b872175474315e7a657">getNavigator</a> ()</td></tr>
 <tr class="separator:acae00a5a9eef0b872175474315e7a657"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c86b790eaf609fd69919432d170d853"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a4c86b790eaf609fd69919432d170d853">extendOptions</a> (po::options_description pNewOptions)</td></tr>
+<tr class="separator:a4c86b790eaf609fd69919432d170d853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a8eb0d1638af500069fc4e6a2f998b356"><td class="memItemLeft" align="right" valign="top">po::options_description&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a8eb0d1638af500069fc4e6a2f998b356">mGeneralArgs</a></td></tr>
-<tr class="separator:a8eb0d1638af500069fc4e6a2f998b356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc89f2fa01d3958389e86c36e8064805"><td class="memItemLeft" align="right" valign="top">po::options_description&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#adc89f2fa01d3958389e86c36e8064805">mGeneralOptions</a></td></tr>
+<tr class="separator:adc89f2fa01d3958389e86c36e8064805"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a22f2335b943429a2697c0c8b3747e658"><td class="memItemLeft" align="right" valign="top">po::variables_map&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a22f2335b943429a2697c0c8b3747e658">parseArguments</a> (int pArgumentCount, char *pArgumentVector[])</td></tr>
+<tr class="separator:a22f2335b943429a2697c0c8b3747e658"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1428504bbe25b1baeb0976e897a98bcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a1428504bbe25b1baeb0976e897a98bcb">setUserArgumentsToArgTable</a> (po::variables_map pVariablesMap)</td></tr>
+<tr class="separator:a1428504bbe25b1baeb0976e897a98bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a63d81cbf53a7eb4d42f5c69397eb14eb"><td class="memItemLeft" align="right" valign="top">G4RunManager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a63d81cbf53a7eb4d42f5c69397eb14eb">mRunManager</a></td></tr>
+<tr class="memitem:a63d81cbf53a7eb4d42f5c69397eb14eb"><td class="memItemLeft" align="right" valign="top">G4RunManager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a63d81cbf53a7eb4d42f5c69397eb14eb">mRunManager</a> = nullptr</td></tr>
 <tr class="separator:a63d81cbf53a7eb4d42f5c69397eb14eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bded781b54a28ea07c04923eb98b23e"><td class="memItemLeft" align="right" valign="top">G4VisExecutive *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a8bded781b54a28ea07c04923eb98b23e">mVisManager</a></td></tr>
+<tr class="memitem:a8bded781b54a28ea07c04923eb98b23e"><td class="memItemLeft" align="right" valign="top">G4VisExecutive *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a8bded781b54a28ea07c04923eb98b23e">mVisManager</a> = nullptr</td></tr>
 <tr class="separator:a8bded781b54a28ea07c04923eb98b23e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae423f68ad8ea948dc4a2bcc6ed8c6bf"><td class="memItemLeft" align="right" valign="top">G4Navigator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#aae423f68ad8ea948dc4a2bcc6ed8c6bf">mNavigator</a></td></tr>
+<tr class="memitem:aae423f68ad8ea948dc4a2bcc6ed8c6bf"><td class="memItemLeft" align="right" valign="top">G4Navigator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#aae423f68ad8ea948dc4a2bcc6ed8c6bf">mNavigator</a> = nullptr</td></tr>
 <tr class="separator:aae423f68ad8ea948dc4a2bcc6ed8c6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73b7ac711ab9d9c1bc4ad38d6c985b94"><td class="memItemLeft" align="right" valign="top">G4VUserPhysicsList *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a73b7ac711ab9d9c1bc4ad38d6c985b94">mPhysics</a> = nullptr</td></tr>
 <tr class="separator:a73b7ac711ab9d9c1bc4ad38d6c985b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,7 +187,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a610d64ca0157bc3795cf83a1a09a6d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04ad05f6b01a547002f3c36fe116c35f"><td class="memItemLeft" align="right" valign="top">G4TouchableHistory *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a04ad05f6b01a547002f3c36fe116c35f">mHistory</a> = nullptr</td></tr>
 <tr class="separator:a04ad05f6b01a547002f3c36fe116c35f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdddb6d2392b131b35aae4f20a551a7c"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#afdddb6d2392b131b35aae4f20a551a7c">mStartingTime</a></td></tr>
+<tr class="memitem:afdddb6d2392b131b35aae4f20a551a7c"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#afdddb6d2392b131b35aae4f20a551a7c">mStartingTime</a> =0</td></tr>
 <tr class="separator:afdddb6d2392b131b35aae4f20a551a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -257,6 +269,24 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a4c86b790eaf609fd69919432d170d853"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c86b790eaf609fd69919432d170d853">&#9670;&nbsp;</a></span>extendOptions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSim::extendOptions </td>
+          <td>(</td>
+          <td class="paramtype">po::options_description&#160;</td>
+          <td class="paramname"><em>pNewOptions</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="acae00a5a9eef0b872175474315e7a657"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acae00a5a9eef0b872175474315e7a657">&#9670;&nbsp;</a></span>getNavigator()</h2>
 
@@ -282,6 +312,34 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a07759a6885ca398dd1e7c3a9954ceded"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07759a6885ca398dd1e7c3a9954ceded">&#9670;&nbsp;</a></span>handleArguments()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool OMSim::handleArguments </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pArgumentCount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pArgumentVector</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a48127177a39ead290b915dcbc1c759a2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a48127177a39ead290b915dcbc1c759a2">&#9670;&nbsp;</a></span>initialiseSimulation()</h2>
 
@@ -301,14 +359,76 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a42d86958aba31a17fb0c8a39fbc9c9b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42d86958aba31a17fb0c8a39fbc9c9b5">&#9670;&nbsp;</a></span>startVisualisation()</h2>
+<a id="a22f2335b943429a2697c0c8b3747e658"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22f2335b943429a2697c0c8b3747e658">&#9670;&nbsp;</a></span>parseArguments()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">po::variables_map OMSim::parseArguments </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pArgumentCount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pArgumentVector</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1428504bbe25b1baeb0976e897a98bcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1428504bbe25b1baeb0976e897a98bcb">&#9670;&nbsp;</a></span>setUserArgumentsToArgTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSim::setUserArgumentsToArgTable </td>
+          <td>(</td>
+          <td class="paramtype">po::variables_map&#160;</td>
+          <td class="paramname"><em>pVariablesMap</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adfafdeb214a66be94c423076b8c13bbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfafdeb214a66be94c423076b8c13bbb">&#9670;&nbsp;</a></span>startVisualisationIfRequested()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void OMSim::startVisualisation </td>
+          <td class="memname">void OMSim::startVisualisationIfRequested </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -363,14 +483,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8eb0d1638af500069fc4e6a2f998b356"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8eb0d1638af500069fc4e6a2f998b356">&#9670;&nbsp;</a></span>mGeneralArgs</h2>
+<a id="adc89f2fa01d3958389e86c36e8064805"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc89f2fa01d3958389e86c36e8064805">&#9670;&nbsp;</a></span>mGeneralOptions</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">po::options_description OMSim::mGeneralArgs</td>
+          <td class="memname">po::options_description OMSim::mGeneralOptions</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -409,7 +529,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4Navigator* OMSim::mNavigator</td>
+          <td class="memname">G4Navigator* OMSim::mNavigator = nullptr</td>
         </tr>
       </table>
   </td>
@@ -475,7 +595,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4RunManager* OMSim::mRunManager</td>
+          <td class="memname">G4RunManager* OMSim::mRunManager = nullptr</td>
         </tr>
       </table>
   </td>
@@ -497,7 +617,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4double OMSim::mStartingTime</td>
+          <td class="memname">G4double OMSim::mStartingTime =0</td>
         </tr>
       </table>
   </td>
@@ -563,7 +683,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4VisExecutive* OMSim::mVisManager</td>
+          <td class="memname">G4VisExecutive* OMSim::mVisManager = nullptr</td>
         </tr>
       </table>
   </td>
@@ -585,7 +705,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim.html">OMSim</a></li>
-    <li class="footer">Generated on Tue May 21 2024 15:47:36 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Jun 7 2024 14:37:31 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

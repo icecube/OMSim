@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"_o_m_sim_u_iinterface_8hh_source.html":[4,0,96],
+"abc_detector_component_8cc.html":[4,0,5],
+"abc_detector_component_8hh.html":[4,0,6],
 "abc_detector_component_8hh_source.html":[4,0,6],
 "annotated.html":[5,0],
 "class_angular_scan.html":[3,1,4],
@@ -246,8 +249,5 @@ var NAVTREEINDEX1 =
 "class_d_egg_harness.html#ac58521c32fb88070a406e5cb09721e04":[5,0,8,12],
 "class_d_egg_harness.html#ad333af59c4fdc85979f3e6d3def16a34":[5,0,8,10],
 "class_d_egg_harness.html#af7958ee15bf185a40a7d1e0cf1c6c550":[5,0,8,9],
-"class_d_egg_harness.html#afa139bcf866bd9c5fabc42d3d431af16":[5,0,8,5],
-"class_distribution_sampler.html":[3,3,6],
-"class_distribution_sampler.html#a0116490aae983d5e4a594f1724aba3b2":[3,3,6,0],
-"class_distribution_sampler.html#a0e5a3b5d614d0d0c8599ea0f2e470a33":[3,3,6,11]
+"class_d_egg_harness.html#afa139bcf866bd9c5fabc42d3d431af16":[5,0,8,5]
 };

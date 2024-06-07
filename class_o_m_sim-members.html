@@ -122,11 +122,13 @@ $(document).ready(function(){initNavTree('class_o_m_sim.html',''); initResizable
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#a3e43df3d28f3e5e7cbec8a6e3ef1dcf5">configureLogger</a>()</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_o_m_sim.html#a5fdec07501bb76199f652ac95bd1e961">ensureOutputDirectoryExists</a>(const std::string &amp;filepath)</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#acae00a5a9eef0b872175474315e7a657">getNavigator</a>()</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#a4c86b790eaf609fd69919432d170d853">extendOptions</a>(po::options_description pNewOptions)</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_o_m_sim.html#acae00a5a9eef0b872175474315e7a657">getNavigator</a>()</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#a07759a6885ca398dd1e7c3a9954ceded">handleArguments</a>(int pArgumentCount, char *pArgumentVector[])</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2">initialiseSimulation</a>(OMSimDetectorConstruction *pDetectorConstruction)</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#ab5b7adf0ed2750115e09d70772d220ae">mEventAction</a></td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_o_m_sim.html#a0920dcd6fa769919824d4c9c1ea97fed">mGenAction</a></td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#a8eb0d1638af500069fc4e6a2f998b356">mGeneralArgs</a></td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#adc89f2fa01d3958389e86c36e8064805">mGeneralOptions</a></td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_o_m_sim.html#a04ad05f6b01a547002f3c36fe116c35f">mHistory</a></td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#aae423f68ad8ea948dc4a2bcc6ed8c6bf">mNavigator</a></td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_o_m_sim.html#a73b7ac711ab9d9c1bc4ad38d6c985b94">mPhysics</a></td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
@@ -137,14 +139,16 @@ $(document).ready(function(){initNavTree('class_o_m_sim.html',''); initResizable
   <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#af873226fae0ebc465ab6716c9e2d9cb9">mTracking</a></td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_o_m_sim.html#a8bded781b54a28ea07c04923eb98b23e">mVisManager</a></td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#afc01df8f57a1303823b79ffd79088a89">OMSim</a>()</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_o_m_sim.html#a42d86958aba31a17fb0c8a39fbc9c9b5">startVisualisation</a>()</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_o_m_sim.html#a22f2335b943429a2697c0c8b3747e658">parseArguments</a>(int pArgumentCount, char *pArgumentVector[])</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#a1428504bbe25b1baeb0976e897a98bcb">setUserArgumentsToArgTable</a>(po::variables_map pVariablesMap)</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_o_m_sim.html#adfafdeb214a66be94c423076b8c13bbb">startVisualisationIfRequested</a>()</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_o_m_sim.html#a61d63cc8b99c7ac89ecce97720fbb41a">~OMSim</a>()</td><td class="entry"><a class="el" href="class_o_m_sim.html">OMSim</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue May 21 2024 15:47:36 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Jun 7 2024 14:37:31 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

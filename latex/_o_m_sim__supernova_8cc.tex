@@ -24,33 +24,47 @@ Include dependency graph for OMSim\+\_\+supernova.\+cc\+:
 \item 
 void \mbox{\hyperlink{_o_m_sim__supernova_8cc_ac0c30e68ee55a6a591c46b6111931b13}{set\+Global\+Navigator}} (G4\+Navigator $\ast$p\+Navigator)
 \item 
-void \mbox{\hyperlink{_o_m_sim__supernova_8cc_adebda6208839243c12347f6540f682b2}{Prepare\+Analysis}} ()
+void \mbox{\hyperlink{_o_m_sim__supernova_8cc_abfeec9e9dd637b32a94b4ae3d313541b}{prepare\+Analysis}} ()
 \item 
-void \mbox{\hyperlink{_o_m_sim__supernova_8cc_a2ed660d3245a0d96041b77dfc92ba000}{Supernova\+Neutrino\+Simulation}} ()
+void \mbox{\hyperlink{_o_m_sim__supernova_8cc_a42103bed46bb4457d5b2f0024046a3f8}{run\+Supernova\+Neutrino\+Simulation}} ()
 \item 
-int \mbox{\hyperlink{_o_m_sim__supernova_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+void \mbox{\hyperlink{_o_m_sim__supernova_8cc_ae548ed843bde184e37c74bafc447131f}{add\+Module\+Options}} (\mbox{\hyperlink{class_o_m_sim}{OMSim}} $\ast$p\+Simulation)
+\begin{DoxyCompactList}\small\item\em Add options for the user input arguments for the SN module. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_o_m_sim__supernova_8cc_ac2560fc51fc41867e42a4654fd574664}{main}} (int p\+Argument\+Count, char $\ast$p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ \mbox{\hyperlink{_o_m_sim__supernova_8cc_aaf1ac4fd8beaebc4649a68a9cf7b3b87}{global\+\_\+logger}}
+std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ \mbox{\hyperlink{_o_m_sim__supernova_8cc_a858b530d4b4534bb389fcc6c197d1278}{global\+Logger}}
 \item 
 G4\+Navigator $\ast$ \mbox{\hyperlink{_o_m_sim__supernova_8cc_a7d64cc41ff17de4be32310927bb91f12}{g\+Navigator}} =nullptr
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{_o_m_sim__supernova_8cc_a0ddf1224851353fc92bfbff6f499fa97}\label{_o_m_sim__supernova_8cc_a0ddf1224851353fc92bfbff6f499fa97}} 
+\mbox{\Hypertarget{_o_m_sim__supernova_8cc_ae548ed843bde184e37c74bafc447131f}\label{_o_m_sim__supernova_8cc_ae548ed843bde184e37c74bafc447131f}} 
+\index{OMSim\_supernova.cc@{OMSim\_supernova.cc}!addModuleOptions@{addModuleOptions}}
+\index{addModuleOptions@{addModuleOptions}!OMSim\_supernova.cc@{OMSim\_supernova.cc}}
+\doxysubsubsection{\texorpdfstring{addModuleOptions()}{addModuleOptions()}}
+{\footnotesize\ttfamily void add\+Module\+Options (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim}{OMSim}} $\ast$}]{p\+Simulation }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_o_m_sim__supernova_8cc_ac2560fc51fc41867e42a4654fd574664}\label{_o_m_sim__supernova_8cc_ac2560fc51fc41867e42a4654fd574664}} 
 \index{OMSim\_supernova.cc@{OMSim\_supernova.cc}!main@{main}}
 \index{main@{main}!OMSim\_supernova.cc@{OMSim\_supernova.cc}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
-{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{p\+Argument\+Count,  }\item[{char $\ast$}]{p\+Argument\+Vector\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{_o_m_sim__supernova_8cc_adebda6208839243c12347f6540f682b2}\label{_o_m_sim__supernova_8cc_adebda6208839243c12347f6540f682b2}} 
-\index{OMSim\_supernova.cc@{OMSim\_supernova.cc}!PrepareAnalysis@{PrepareAnalysis}}
-\index{PrepareAnalysis@{PrepareAnalysis}!OMSim\_supernova.cc@{OMSim\_supernova.cc}}
-\doxysubsubsection{\texorpdfstring{PrepareAnalysis()}{PrepareAnalysis()}}
-{\footnotesize\ttfamily void Prepare\+Analysis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{_o_m_sim__supernova_8cc_abfeec9e9dd637b32a94b4ae3d313541b}\label{_o_m_sim__supernova_8cc_abfeec9e9dd637b32a94b4ae3d313541b}} 
+\index{OMSim\_supernova.cc@{OMSim\_supernova.cc}!prepareAnalysis@{prepareAnalysis}}
+\index{prepareAnalysis@{prepareAnalysis}!OMSim\_supernova.cc@{OMSim\_supernova.cc}}
+\doxysubsubsection{\texorpdfstring{prepareAnalysis()}{prepareAnalysis()}}
+{\footnotesize\ttfamily void prepare\+Analysis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_o_m_sim__supernova_8cc_a42103bed46bb4457d5b2f0024046a3f8}\label{_o_m_sim__supernova_8cc_a42103bed46bb4457d5b2f0024046a3f8}} 
+\index{OMSim\_supernova.cc@{OMSim\_supernova.cc}!runSupernovaNeutrinoSimulation@{runSupernovaNeutrinoSimulation}}
+\index{runSupernovaNeutrinoSimulation@{runSupernovaNeutrinoSimulation}!OMSim\_supernova.cc@{OMSim\_supernova.cc}}
+\doxysubsubsection{\texorpdfstring{runSupernovaNeutrinoSimulation()}{runSupernovaNeutrinoSimulation()}}
+{\footnotesize\ttfamily void run\+Supernova\+Neutrino\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{_o_m_sim__supernova_8cc_ac0c30e68ee55a6a591c46b6111931b13}\label{_o_m_sim__supernova_8cc_ac0c30e68ee55a6a591c46b6111931b13}} 
 \index{OMSim\_supernova.cc@{OMSim\_supernova.cc}!setGlobalNavigator@{setGlobalNavigator}}
@@ -58,20 +72,14 @@ G4\+Navigator $\ast$ \mbox{\hyperlink{_o_m_sim__supernova_8cc_a7d64cc41ff17de4be
 \doxysubsubsection{\texorpdfstring{setGlobalNavigator()}{setGlobalNavigator()}}
 {\footnotesize\ttfamily void set\+Global\+Navigator (\begin{DoxyParamCaption}\item[{G4\+Navigator $\ast$}]{p\+Navigator }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{_o_m_sim__supernova_8cc_a2ed660d3245a0d96041b77dfc92ba000}\label{_o_m_sim__supernova_8cc_a2ed660d3245a0d96041b77dfc92ba000}} 
-\index{OMSim\_supernova.cc@{OMSim\_supernova.cc}!SupernovaNeutrinoSimulation@{SupernovaNeutrinoSimulation}}
-\index{SupernovaNeutrinoSimulation@{SupernovaNeutrinoSimulation}!OMSim\_supernova.cc@{OMSim\_supernova.cc}}
-\doxysubsubsection{\texorpdfstring{SupernovaNeutrinoSimulation()}{SupernovaNeutrinoSimulation()}}
-{\footnotesize\ttfamily void Supernova\+Neutrino\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 
 
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{_o_m_sim__supernova_8cc_aaf1ac4fd8beaebc4649a68a9cf7b3b87}\label{_o_m_sim__supernova_8cc_aaf1ac4fd8beaebc4649a68a9cf7b3b87}} 
-\index{OMSim\_supernova.cc@{OMSim\_supernova.cc}!global\_logger@{global\_logger}}
-\index{global\_logger@{global\_logger}!OMSim\_supernova.cc@{OMSim\_supernova.cc}}
-\doxysubsubsection{\texorpdfstring{global\_logger}{global\_logger}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$spdlog\+::logger$>$ global\+\_\+logger}
+\mbox{\Hypertarget{_o_m_sim__supernova_8cc_a858b530d4b4534bb389fcc6c197d1278}\label{_o_m_sim__supernova_8cc_a858b530d4b4534bb389fcc6c197d1278}} 
+\index{OMSim\_supernova.cc@{OMSim\_supernova.cc}!globalLogger@{globalLogger}}
+\index{globalLogger@{globalLogger}!OMSim\_supernova.cc@{OMSim\_supernova.cc}}
+\doxysubsubsection{\texorpdfstring{globalLogger}{globalLogger}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$spdlog\+::logger$>$ global\+Logger}
 
 \mbox{\Hypertarget{_o_m_sim__supernova_8cc_a7d64cc41ff17de4be32310927bb91f12}\label{_o_m_sim__supernova_8cc_a7d64cc41ff17de4be32310927bb91f12}} 
 \index{OMSim\_supernova.cc@{OMSim\_supernova.cc}!gNavigator@{gNavigator}}
