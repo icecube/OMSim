@@ -22,13 +22,13 @@ void \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{initialis
 void \mbox{\hyperlink{class_o_m_sim_a3e43df3d28f3e5e7cbec8a6e3ef1dcf5}{configure\+Logger}} ()
 \item 
 bool \mbox{\hyperlink{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}{handle\+Arguments}} (int p\+Argument\+Count, char $\ast$p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
-\item 
+\begin{DoxyCompactList}\small\item\em Parses the user arguments into variables that can be accessed in the simulation via \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_adfafdeb214a66be94c423076b8c13bbb}{start\+Visualisation\+If\+Requested}} ()
 \begin{DoxyCompactList}\small\item\em UIEx session is started for visualisation. \end{DoxyCompactList}\item 
 G4\+Navigator $\ast$ \mbox{\hyperlink{class_o_m_sim_acae00a5a9eef0b872175474315e7a657}{get\+Navigator}} ()
 \item 
 void \mbox{\hyperlink{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}{extend\+Options}} (po\+::options\+\_\+description p\+New\+Options)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Adds options from the different simulation modules to the option description list (what is printed in --help). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,9 +38,9 @@ po\+::options\+\_\+description \mbox{\hyperlink{class_o_m_sim_adc89f2fa01d395838
 \begin{DoxyCompactItemize}
 \item 
 po\+::variables\+\_\+map \mbox{\hyperlink{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}{parse\+Arguments}} (int p\+Argument\+Count, char $\ast$p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
-\item 
+\begin{DoxyCompactList}\small\item\em Parses user arguments to a variables map. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}{set\+User\+Arguments\+To\+Arg\+Table}} (po\+::variables\+\_\+map p\+Variables\+Map)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sets variables from a variables map to the instance of \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -121,6 +121,9 @@ If the output directory does not exist, this function will create it.
 \doxysubsubsection{\texorpdfstring{handleArguments()}{handleArguments()}}
 {\footnotesize\ttfamily bool OMSim\+::handle\+Arguments (\begin{DoxyParamCaption}\item[{int}]{p\+Argument\+Count,  }\item[{char $\ast$}]{p\+Argument\+Vector\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
+\begin{DoxyReturn}{Returns}
+true if simulation should continue, if --help is called it will return false and stop the program 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}\label{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}} 
 \index{OMSim@{OMSim}!initialiseSimulation@{initialiseSimulation}}
 \index{initialiseSimulation@{initialiseSimulation}!OMSim@{OMSim}}

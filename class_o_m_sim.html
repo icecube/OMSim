@@ -144,6 +144,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3e43df3d28f3e5e7cbec8a6e3ef1dcf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a3e43df3d28f3e5e7cbec8a6e3ef1dcf5">configureLogger</a> ()</td></tr>
 <tr class="separator:a3e43df3d28f3e5e7cbec8a6e3ef1dcf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07759a6885ca398dd1e7c3a9954ceded"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a07759a6885ca398dd1e7c3a9954ceded">handleArguments</a> (int pArgumentCount, char *pArgumentVector[])</td></tr>
+<tr class="memdesc:a07759a6885ca398dd1e7c3a9954ceded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the user arguments into variables that can be accessed in the simulation via <a class="el" href="class_o_m_sim_command_args_table.html" title="A singleton class used to hold and manipulate OMSim command arguments.">OMSimCommandArgsTable</a>.  <a href="class_o_m_sim.html#a07759a6885ca398dd1e7c3a9954ceded">More...</a><br /></td></tr>
 <tr class="separator:a07759a6885ca398dd1e7c3a9954ceded"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfafdeb214a66be94c423076b8c13bbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#adfafdeb214a66be94c423076b8c13bbb">startVisualisationIfRequested</a> ()</td></tr>
 <tr class="memdesc:adfafdeb214a66be94c423076b8c13bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">UIEx session is started for visualisation.  <a href="class_o_m_sim.html#adfafdeb214a66be94c423076b8c13bbb">More...</a><br /></td></tr>
@@ -151,6 +152,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acae00a5a9eef0b872175474315e7a657"><td class="memItemLeft" align="right" valign="top">G4Navigator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#acae00a5a9eef0b872175474315e7a657">getNavigator</a> ()</td></tr>
 <tr class="separator:acae00a5a9eef0b872175474315e7a657"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c86b790eaf609fd69919432d170d853"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a4c86b790eaf609fd69919432d170d853">extendOptions</a> (po::options_description pNewOptions)</td></tr>
+<tr class="memdesc:a4c86b790eaf609fd69919432d170d853"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds options from the different simulation modules to the option description list (what is printed in &ndash;help).  <a href="class_o_m_sim.html#a4c86b790eaf609fd69919432d170d853">More...</a><br /></td></tr>
 <tr class="separator:a4c86b790eaf609fd69919432d170d853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -161,8 +163,10 @@ Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a22f2335b943429a2697c0c8b3747e658"><td class="memItemLeft" align="right" valign="top">po::variables_map&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a22f2335b943429a2697c0c8b3747e658">parseArguments</a> (int pArgumentCount, char *pArgumentVector[])</td></tr>
+<tr class="memdesc:a22f2335b943429a2697c0c8b3747e658"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses user arguments to a variables map.  <a href="class_o_m_sim.html#a22f2335b943429a2697c0c8b3747e658">More...</a><br /></td></tr>
 <tr class="separator:a22f2335b943429a2697c0c8b3747e658"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1428504bbe25b1baeb0976e897a98bcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a1428504bbe25b1baeb0976e897a98bcb">setUserArgumentsToArgTable</a> (po::variables_map pVariablesMap)</td></tr>
+<tr class="memdesc:a1428504bbe25b1baeb0976e897a98bcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets variables from a variables map to the instance of <a class="el" href="class_o_m_sim_command_args_table.html" title="A singleton class used to hold and manipulate OMSim command arguments.">OMSimCommandArgsTable</a>.  <a href="class_o_m_sim.html#a1428504bbe25b1baeb0976e897a98bcb">More...</a><br /></td></tr>
 <tr class="separator:a1428504bbe25b1baeb0976e897a98bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -337,6 +341,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>true if simulation should continue, if &ndash;help is called it will return false and stop the program </dd></dl>
 
 </div>
 </div>
@@ -705,7 +710,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim.html">OMSim</a></li>
-    <li class="footer">Generated on Fri Jun 7 2024 14:37:31 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Jun 8 2024 06:47:30 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
