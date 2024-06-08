@@ -66,7 +66,8 @@ public:
      */
     template <typename T>
     T getValue(G4String pKey, G4String pParameter)
-    {   log_trace("Fetching parameter {} in key {}", pParameter, pKey);
+    {
+        log_trace("Fetching parameter {} in key {}", pParameter, pKey);
         try
         {
             const T lValue = mTable.at(pKey).get<T>(pParameter);
@@ -76,6 +77,7 @@ public:
         catch (const std::exception &e)
         {
             log_error("Fetching parameter {} in key {} from table failed!", pParameter, pKey);
+            throw std::runtime_error("Fetching parameter failed");
         }
     }
 
@@ -99,7 +101,8 @@ public:
     void parseKeyContentToVector(std::vector<T> &pVector, pt::ptree pTree,
                                  std::basic_string<char> pKey, G4double pScaling,
                                  bool pInverse)
-    {   log_trace("Parsing content in key {} to a vector", pKey);
+    {
+        log_trace("Parsing content in key {} to a vector", pKey);
         for (pt::ptree::value_type &ridx : pTree.get_child(
                  pKey))
         { // get array from element with key "pKey" of the json
@@ -134,15 +137,38 @@ public:
                                  bool pInverse)
     {
         log_trace("Parsing content in key {} to a vector", pKey);
-        for (pt::ptree::value_type &ridx : getJSONTree(pMapKey).get_child(
-                 pKey))
-        { // get array from element with key "pKey" of the json
+
+        // Get the JSON tree
+        boost::property_tree::ptree lTree = getJSONTree(pMapKey);
+
+        // Check if the tree is empty
+        if (lTree.empty())
+        {
+            log_warning("JSON tree is empty for key {}", pMapKey);
+            return;
+        }
+
+        // Access the child node with the key "pKey"
+        auto lChildNode = lTree.get_child_optional(pKey);
+
+        // Check if the child node exists
+        if (!lChildNode)
+        {
+            log_warning("Child node with key {} not found in JSON tree", pKey);
+            return;
+        }
+
+        // Iterate over the child nodes and parse the content
+        for (const auto &ridx : *lChildNode)
+        {
             if (pInverse)
-            { // if we need 1/x
+            {
+                // if we need 1/x
                 pVector.push_back(pScaling / ridx.second.get_value<T>());
             }
             else
-            { // otherwise we only by scaling factor
+            {
+                // otherwise we only multiply by scaling factor
                 pVector.push_back(ridx.second.get_value<T>() * pScaling);
             }
         }
@@ -150,7 +176,7 @@ public:
 
 private:
     std::map<G4String, boost::property_tree::ptree> mTable; ///< A table mapping keys to property trees.
-    std::map<G4String, G4String> mKeyFileOrigin; ///< A table mapping keys to original file name.
+    std::map<G4String, G4String> mKeyFileOrigin;            ///< A table mapping keys to original file name.
 };
 
 /**

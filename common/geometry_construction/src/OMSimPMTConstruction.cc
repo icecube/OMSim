@@ -11,6 +11,7 @@
 #include <G4LogicalSkinSurface.hh>
 #include <G4Sphere.hh>
 #include <G4Torus.hh>
+#include <OMSimLogger.hh>
 
 OMSimPMTConstruction::OMSimPMTConstruction(InputDataManager *pData)
 {   
@@ -353,6 +354,11 @@ G4VSolid *OMSimPMTConstruction::frontalBulbConstruction(G4String pSide)
         return doubleEllipsePhotocathode(pSide);
     else if (lFrontalShape == "SingleEllipse")
         return ellipsePhotocathode();
+    else
+    {   
+        log_critical("Type of PMT frontal shape {} type not known!", lFrontalShape);
+        throw std::runtime_error("Type of PMT frontal shape type not known!");
+    }
 }
 
 /**

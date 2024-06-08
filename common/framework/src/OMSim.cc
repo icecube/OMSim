@@ -89,7 +89,8 @@ void OMSim::startVisualisationIfRequested()
     if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
     {
         OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-        char *argumv[] = {"all", NULL};
+        char argumv0[] = "all";
+        char *argumv[] = {argumv0, NULL};
         G4UIExecutive *UIEx = new G4UIExecutive(1, argumv);
         lUIinterface.applyCommand("/control/execute ../aux/init_vis.mac");
         UIEx->SessionStart();
@@ -120,11 +121,11 @@ OMSimDetectorConstruction* OMSim::getDetectorConstruction()
 }
 */
 
-    /**
-     * @brief Initialize the simulation.
-     *
-     * This function sets up the necessary Geant4 components.
-     */
+/**
+ * @brief Initialize the simulation.
+ *
+ * This function sets up the necessary Geant4 components.
+ */
 void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstruction)
 {
     configureLogger();
@@ -173,12 +174,18 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstructio
     lUIinterface.applyCommand("/control/execute ", lArgs.get<bool>("visual"));
 }
 
+/**
+ * @brief Adds options from the different simulation modules to the option description list (what is printed in --help).
+ */
 void OMSim::extendOptions(po::options_description pNewOptions)
 {
 	mGeneralOptions.add(pNewOptions);
 }
 
 
+/**
+ * @brief Parses user arguments to a variables map 
+ */
 po::variables_map OMSim::parseArguments(int pArgumentCount, char *pArgumentVector[])
 {   
 	po::variables_map lVariablesMap;
@@ -196,10 +203,12 @@ po::variables_map OMSim::parseArguments(int pArgumentCount, char *pArgumentVecto
 	return lVariablesMap;
 }
 
+/**
+ * @brief Sets variables from a variables map to the instance of OMSimCommandArgsTable
+ */
 void OMSim::setUserArgumentsToArgTable(po::variables_map pVariablesMap)
 {
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-	// Now store the parsed parameters in the OMSimCommandArgsTable instance
 	for (const auto &option : pVariablesMap)
 	{
 		lArgs.setParameter(option.first, option.second.value());
@@ -208,6 +217,10 @@ void OMSim::setUserArgumentsToArgTable(po::variables_map pVariablesMap)
 	lArgs.finalize();
 }
 
+/**
+ * @brief Parses the user arguments into variables that can be accessed in the simulation via OMSimCommandArgsTable. 
+ * @return true if simulation should continue, if --help is called it will return false and stop the program
+ */
 bool OMSim::handleArguments(int pArgumentCount, char *pArgumentVector[])
 {
 	

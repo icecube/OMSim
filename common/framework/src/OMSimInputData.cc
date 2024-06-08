@@ -97,6 +97,7 @@ pt::ptree ParameterTable::getJSONTree(G4String pKey)
         return mTable.at(pKey);
     else
         log_critical("Key not found in table");
+        return boost::property_tree::ptree(); // Return an empty ptree
 }
 
 /**
@@ -268,6 +269,7 @@ G4OpticalSurface *InputDataManager::getOpticalSurface(G4String pName)
                             " not found. This will cause a segmentation fault. "
                             "Please check the name!!";
             log_critical(mssg);
+            throw std::runtime_error("Requested Optical Surface not found: " + pName);
         }
     }
 }

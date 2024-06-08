@@ -328,7 +328,7 @@ G4double DistributionSampler::interpolate(G4double pX)
     throw("Error: mInterpolator not initialized!");
     return 0.0;
   }
-  mInterpolator->Eval(pX/mXUnit) * mYUnit;
+  return mInterpolator->Eval(pX/mXUnit) * mYUnit;
 }
 
 
