@@ -5,16 +5,13 @@
 Singleton interface to Geant4\textquotesingle{}s UI manager.  
 
 
-
-
-\doxysubsection{Detailed Description}
-The \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface}} class provides a singleton interface to Geant4\textquotesingle{}s UI manager. It simplifies the application of commands to the UI manager by handling argument parsing and logging. \doxysubsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename... Args$>$ }\\void \mbox{\hyperlink{class_o_m_sim_u_iinterface_ab38089a4fb48f97b36b2f1278cfd76d3}{apply\+Command}} (const std\+::string \&command, const Args \&...args)
-\begin{DoxyCompactList}\small\item\em Apply a command to Geant4\textquotesingle{}s UI manager and log it. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\void \mbox{\hyperlink{class_o_m_sim_u_iinterface_aa08ab9820d0591b64d0dd8c5599ddd14}{apply\+Command}} (const std\+::string \&p\+Command, const Args \&...p\+Args)
+\begin{DoxyCompactList}\small\item\em Apply a command to Geant4\textquotesingle{}s UI manager and log it. It accept any number of arguments that are then appended; e.\+g. apply\+Command(\char`\"{}cmd\char`\"{}, 1, 2, 3) will apply a UI command \char`\"{}cmd 1 2 3\char`\"{}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_u_iinterface_ae66ce7c3befd8cc22460a1a6939eb5e1}{set\+UI}} (G4\+UImanager $\ast$p\+UI)
-\begin{DoxyCompactList}\small\item\em Set the UI manager for the \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface}} class. This is done in the main. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Set the UI manager for the \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface}} class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_u_iinterface_a671add7257f9229071a509b8677789d2}{run\+Beam\+On}} (G4int p\+Number\+Of\+Events=-\/1)
 \begin{DoxyCompactList}\small\item\em Executes a run with a given number of events. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
@@ -33,14 +30,14 @@ static \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface}} \& \mbo
 \item 
 void \mbox{\hyperlink{class_o_m_sim_u_iinterface_a43fc02eb1f517d6c98fc5b90131114b8}{append\+To\+Stream}} (std\+::stringstream \&stream)
 \item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_o_m_sim_u_iinterface_a9735bddc1bb08cc2dd54eed77b4f2d47}{append\+To\+Stream}} (std\+::stringstream \&stream, const T \&val)
-\begin{DoxyCompactList}\small\item\em Helper function to append arguments to the command string stream. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T , typename... Args$>$ }\\void \mbox{\hyperlink{class_o_m_sim_u_iinterface_a75fb02ab6ed635a0c48b453e29844b15}{append\+To\+Stream}} (std\+::stringstream \&stream, const T \&val, const Args \&...args)
-\begin{DoxyCompactList}\small\item\em Variadic template function to append multiple arguments to the command string stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_o_m_sim_u_iinterface_a7ba77890bae2eeeb33d40600d85d0589}{append\+To\+Stream}} (std\+::stringstream \&p\+Stream, const T \&p\+Val)
+\begin{DoxyCompactList}\small\item\em Append arguments to the command string stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , typename... Args$>$ }\\void \mbox{\hyperlink{class_o_m_sim_u_iinterface_aa1632617642ce1430d81fe93186ed26e}{append\+To\+Stream}} (std\+::stringstream \&p\+Stream, const T \&p\+Val, const Args \&...p\+Args)
+\begin{DoxyCompactList}\small\item\em Append multiple arguments to the command string stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-G4\+UImanager $\ast$ \mbox{\hyperlink{class_o_m_sim_u_iinterface_a0f6afe4bd786cef5246120ce2085dfa6}{UI}}
+G4\+UImanager $\ast$ \mbox{\hyperlink{class_o_m_sim_u_iinterface_aed675b9fef80c0ffbbfd39794b287b5c}{m\+UImanager}}
 \end{DoxyCompactItemize}
 
 
@@ -60,22 +57,16 @@ G4\+UImanager $\ast$ \mbox{\hyperlink{class_o_m_sim_u_iinterface_a0f6afe4bd786ce
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a43fc02eb1f517d6c98fc5b90131114b8}\label{class_o_m_sim_u_iinterface_a43fc02eb1f517d6c98fc5b90131114b8}} 
+\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a7ba77890bae2eeeb33d40600d85d0589}\label{class_o_m_sim_u_iinterface_a7ba77890bae2eeeb33d40600d85d0589}} 
 \index{OMSimUIinterface@{OMSimUIinterface}!appendToStream@{appendToStream}}
 \index{appendToStream@{appendToStream}!OMSimUIinterface@{OMSimUIinterface}}
 \doxysubsubsection{\texorpdfstring{appendToStream()}{appendToStream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily void OMSim\+UIinterface\+::append\+To\+Stream (\begin{DoxyParamCaption}\item[{std\+::stringstream \&}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a9735bddc1bb08cc2dd54eed77b4f2d47}\label{class_o_m_sim_u_iinterface_a9735bddc1bb08cc2dd54eed77b4f2d47}} 
-\index{OMSimUIinterface@{OMSimUIinterface}!appendToStream@{appendToStream}}
-\index{appendToStream@{appendToStream}!OMSimUIinterface@{OMSimUIinterface}}
-\doxysubsubsection{\texorpdfstring{appendToStream()}{appendToStream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-void OMSim\+UIinterface\+::append\+To\+Stream (\begin{DoxyParamCaption}\item[{std\+::stringstream \&}]{stream,  }\item[{const T \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+void OMSim\+UIinterface\+::append\+To\+Stream (\begin{DoxyParamCaption}\item[{std\+::stringstream \&}]{p\+Stream,  }\item[{const T \&}]{p\+Val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em stream} & The command string stream. \\
+{\em p\+Stream} & The command string stream. \\
 \hline
 \end{DoxyParams}
 
@@ -85,19 +76,19 @@ void OMSim\+UIinterface\+::append\+To\+Stream (\begin{DoxyParamCaption}\item[{st
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em val} & The value of the argument to append. \\
+{\em p\+Val} & The value of the argument to append. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a75fb02ab6ed635a0c48b453e29844b15}\label{class_o_m_sim_u_iinterface_a75fb02ab6ed635a0c48b453e29844b15}} 
+\mbox{\Hypertarget{class_o_m_sim_u_iinterface_aa1632617642ce1430d81fe93186ed26e}\label{class_o_m_sim_u_iinterface_aa1632617642ce1430d81fe93186ed26e}} 
 \index{OMSimUIinterface@{OMSimUIinterface}!appendToStream@{appendToStream}}
 \index{appendToStream@{appendToStream}!OMSimUIinterface@{OMSimUIinterface}}
-\doxysubsubsection{\texorpdfstring{appendToStream()}{appendToStream()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\doxysubsubsection{\texorpdfstring{appendToStream()}{appendToStream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$typename T , typename... Args$>$ \\
-void OMSim\+UIinterface\+::append\+To\+Stream (\begin{DoxyParamCaption}\item[{std\+::stringstream \&}]{stream,  }\item[{const T \&}]{val,  }\item[{const Args \&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+void OMSim\+UIinterface\+::append\+To\+Stream (\begin{DoxyParamCaption}\item[{std\+::stringstream \&}]{p\+Stream,  }\item[{const T \&}]{p\+Val,  }\item[{const Args \&...}]{p\+Args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em stream} & The command string stream. \\
+{\em p\+Stream} & The command string stream. \\
 \hline
 \end{DoxyParams}
 
@@ -109,23 +100,29 @@ void OMSim\+UIinterface\+::append\+To\+Stream (\begin{DoxyParamCaption}\item[{st
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em val} & The value of the first argument to append. \\
+{\em p\+Val} & The value of the first argument to append. \\
 \hline
-{\em args} & The values of the additional arguments to append. \\
+{\em p\+Args} & The values of the additional arguments to append. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_ab38089a4fb48f97b36b2f1278cfd76d3}\label{class_o_m_sim_u_iinterface_ab38089a4fb48f97b36b2f1278cfd76d3}} 
+\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a43fc02eb1f517d6c98fc5b90131114b8}\label{class_o_m_sim_u_iinterface_a43fc02eb1f517d6c98fc5b90131114b8}} 
+\index{OMSimUIinterface@{OMSimUIinterface}!appendToStream@{appendToStream}}
+\index{appendToStream@{appendToStream}!OMSimUIinterface@{OMSimUIinterface}}
+\doxysubsubsection{\texorpdfstring{appendToStream()}{appendToStream()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void OMSim\+UIinterface\+::append\+To\+Stream (\begin{DoxyParamCaption}\item[{std\+::stringstream \&}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_o_m_sim_u_iinterface_aa08ab9820d0591b64d0dd8c5599ddd14}\label{class_o_m_sim_u_iinterface_aa08ab9820d0591b64d0dd8c5599ddd14}} 
 \index{OMSimUIinterface@{OMSimUIinterface}!applyCommand@{applyCommand}}
 \index{applyCommand@{applyCommand}!OMSimUIinterface@{OMSimUIinterface}}
 \doxysubsubsection{\texorpdfstring{applyCommand()}{applyCommand()}}
 {\footnotesize\ttfamily template$<$typename... Args$>$ \\
-void OMSim\+UIinterface\+::apply\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{command,  }\item[{const Args \&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void OMSim\+UIinterface\+::apply\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+Command,  }\item[{const Args \&...}]{p\+Args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-It accept any number of arguments that are then appended; e.\+g. apply\+Command(\char`\"{}cmd\char`\"{}, 1, 2, 3) will apply a UI command \char`\"{}cmd 1 2 3\char`\"{} 
+
 \begin{DoxyParams}{Parameters}
-{\em command} & The command string to execute. \\
+{\em p\+Command} & The command string to execute. \\
 \hline
-{\em args} & (Optional) additional arguments that will be appended to the command, one after the other. \\
+{\em p\+Args} & (Optional) additional arguments that will be appended to the command, one after the other. \\
 \hline
 \end{DoxyParams}
 
@@ -170,11 +167,11 @@ It accept any number of arguments that are then appended; e.\+g. apply\+Command(
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a0f6afe4bd786cef5246120ce2085dfa6}\label{class_o_m_sim_u_iinterface_a0f6afe4bd786cef5246120ce2085dfa6}} 
-\index{OMSimUIinterface@{OMSimUIinterface}!UI@{UI}}
-\index{UI@{UI}!OMSimUIinterface@{OMSimUIinterface}}
-\doxysubsubsection{\texorpdfstring{UI}{UI}}
-{\footnotesize\ttfamily G4\+UImanager$\ast$ OMSim\+UIinterface\+::\+UI\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_o_m_sim_u_iinterface_aed675b9fef80c0ffbbfd39794b287b5c}\label{class_o_m_sim_u_iinterface_aed675b9fef80c0ffbbfd39794b287b5c}} 
+\index{OMSimUIinterface@{OMSimUIinterface}!mUImanager@{mUImanager}}
+\index{mUImanager@{mUImanager}!OMSimUIinterface@{OMSimUIinterface}}
+\doxysubsubsection{\texorpdfstring{mUImanager}{mUImanager}}
+{\footnotesize\ttfamily G4\+UImanager$\ast$ OMSim\+UIinterface\+::m\+UImanager\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

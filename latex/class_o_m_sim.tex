@@ -18,7 +18,7 @@ The \mbox{\hyperlink{class_o_m_sim}{OMSim}} class is the top-\/level controller 
 void \mbox{\hyperlink{class_o_m_sim_a5fdec07501bb76199f652ac95bd1e961}{ensure\+Output\+Directory\+Exists}} (const std\+::string \&filepath)
 \begin{DoxyCompactList}\small\item\em Ensure that the output directory for the simulation results exists. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{initialise\+Simulation}} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$p\+Detector\+Construction)
-\begin{DoxyCompactList}\small\item\em Initialize the simulation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Initialize the simulation constructing all Geant instances. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_a3e43df3d28f3e5e7cbec8a6e3ef1dcf5}{configure\+Logger}} ()
 \item 
 bool \mbox{\hyperlink{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}{handle\+Arguments}} (int p\+Argument\+Count, char $\ast$p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
@@ -37,10 +37,14 @@ po\+::options\+\_\+description \mbox{\hyperlink{class_o_m_sim_adc89f2fa01d395838
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{class_o_m_sim_a8718ff8784bfd2f381114d092e072b1c}{initial\+Logger\+Configuration}} ()
+\item 
 po\+::variables\+\_\+map \mbox{\hyperlink{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}{parse\+Arguments}} (int p\+Argument\+Count, char $\ast$p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
-\begin{DoxyCompactList}\small\item\em Parses user arguments to a variables map. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Parses user terminal arguments to a variables map. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}{set\+User\+Arguments\+To\+Arg\+Table}} (po\+::variables\+\_\+map p\+Variables\+Map)
-\begin{DoxyCompactList}\small\item\em Sets variables from a variables map to the instance of \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sets variables from a variables map to the instance of \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347}{set\+General\+Options}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -64,7 +68,7 @@ G4\+User\+Stepping\+Action $\ast$ \mbox{\hyperlink{class_o_m_sim_a610d64ca0157bc
 \item 
 G4\+Touchable\+History $\ast$ \mbox{\hyperlink{class_o_m_sim_a04ad05f6b01a547002f3c36fe116c35f}{m\+History}} = nullptr
 \item 
-G4double \mbox{\hyperlink{class_o_m_sim_afdddb6d2392b131b35aae4f20a551a7c}{m\+Starting\+Time}} =0
+G4double \mbox{\hyperlink{class_o_m_sim_afdddb6d2392b131b35aae4f20a551a7c}{m\+Starting\+Time}} = 0
 \end{DoxyCompactItemize}
 
 
@@ -75,7 +79,7 @@ G4double \mbox{\hyperlink{class_o_m_sim_afdddb6d2392b131b35aae4f20a551a7c}{m\+St
 \doxysubsubsection{\texorpdfstring{OMSim()}{OMSim()}}
 {\footnotesize\ttfamily OMSim\+::\+OMSim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-This constructor initializes the Geant4 run manager, visualization manager, and navigator. It also sets up the command line arguments for the simulation. \mbox{\Hypertarget{class_o_m_sim_a61d63cc8b99c7ac89ecce97720fbb41a}\label{class_o_m_sim_a61d63cc8b99c7ac89ecce97720fbb41a}} 
+\mbox{\Hypertarget{class_o_m_sim_a61d63cc8b99c7ac89ecce97720fbb41a}\label{class_o_m_sim_a61d63cc8b99c7ac89ecce97720fbb41a}} 
 \index{OMSim@{OMSim}!````~OMSim@{$\sim$OMSim}}
 \index{````~OMSim@{$\sim$OMSim}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{$\sim$OMSim()}{~OMSim()}}
@@ -95,8 +99,6 @@ This constructor initializes the Geant4 run manager, visualization manager, and 
 \index{ensureOutputDirectoryExists@{ensureOutputDirectoryExists}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{ensureOutputDirectoryExists()}{ensureOutputDirectoryExists()}}
 {\footnotesize\ttfamily void OMSim\+::ensure\+Output\+Directory\+Exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+File\+Path }\end{DoxyParamCaption})}
-
-If the output directory does not exist, this function will create it.
 
 
 \begin{DoxyParams}{Parameters}
@@ -130,11 +132,23 @@ true if simulation should continue, if --help is called it will return false and
 \doxysubsubsection{\texorpdfstring{initialiseSimulation()}{initialiseSimulation()}}
 {\footnotesize\ttfamily void OMSim\+::initialise\+Simulation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$}]{p\+Detector\+Construction }\end{DoxyParamCaption})}
 
-This function sets up the necessary Geant4 components. \mbox{\Hypertarget{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}\label{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}} 
+\mbox{\Hypertarget{class_o_m_sim_a8718ff8784bfd2f381114d092e072b1c}\label{class_o_m_sim_a8718ff8784bfd2f381114d092e072b1c}} 
+\index{OMSim@{OMSim}!initialLoggerConfiguration@{initialLoggerConfiguration}}
+\index{initialLoggerConfiguration@{initialLoggerConfiguration}!OMSim@{OMSim}}
+\doxysubsubsection{\texorpdfstring{initialLoggerConfiguration()}{initialLoggerConfiguration()}}
+{\footnotesize\ttfamily void OMSim\+::initial\+Logger\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}\label{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}} 
 \index{OMSim@{OMSim}!parseArguments@{parseArguments}}
 \index{parseArguments@{parseArguments}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{parseArguments()}{parseArguments()}}
 {\footnotesize\ttfamily po\+::variables\+\_\+map OMSim\+::parse\+Arguments (\begin{DoxyParamCaption}\item[{int}]{p\+Argument\+Count,  }\item[{char $\ast$}]{p\+Argument\+Vector\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347}\label{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347}} 
+\index{OMSim@{OMSim}!setGeneralOptions@{setGeneralOptions}}
+\index{setGeneralOptions@{setGeneralOptions}!OMSim@{OMSim}}
+\doxysubsubsection{\texorpdfstring{setGeneralOptions()}{setGeneralOptions()}}
+{\footnotesize\ttfamily void OMSim\+::set\+General\+Options (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}\label{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}} 
 \index{OMSim@{OMSim}!setUserArgumentsToArgTable@{setUserArgumentsToArgTable}}
@@ -203,7 +217,7 @@ This function sets up the necessary Geant4 components. \mbox{\Hypertarget{class_
 \index{OMSim@{OMSim}!mStartingTime@{mStartingTime}}
 \index{mStartingTime@{mStartingTime}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mStartingTime}{mStartingTime}}
-{\footnotesize\ttfamily G4double OMSim\+::m\+Starting\+Time =0\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4double OMSim\+::m\+Starting\+Time = 0\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_o_m_sim_a610d64ca0157bc3795cf83a1a09a6d0c}\label{class_o_m_sim_a610d64ca0157bc3795cf83a1a09a6d0c}} 
 \index{OMSim@{OMSim}!mStepping@{mStepping}}

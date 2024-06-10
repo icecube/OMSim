@@ -135,13 +135,13 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 </div>
 </div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file includes the class definitions for the abstract base classes (<a class="el" href="classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation.">abcDataFile</a> and <a class="el" href="classabc_material_data.html" title="Abstract base class for material data extraction from a json file.">abcMaterialData</a>) and derived classes related to material properties. The derived classes and functions are designed to handle different categories of materials and reflective surfaces with varying optical properties.</p>
+<div class="textblock"><p>This file includes the class definitions for the abstract base classes (<a class="el" href="classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation.">abcDataFile</a> and <a class="el" href="classabc_material_data.html" title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f...">abcMaterialData</a>) and derived classes related to material properties. The derived classes and functions are designed to handle different categories of materials and reflective surfaces with varying optical properties.</p>
 <p>Derived Classes:</p><ul>
-<li><a class="el" href="class_refraction_and_absorption.html" title="This class is responsible for handling materials with both a defined refractive index and absorption ...">RefractionAndAbsorption</a>: Handles materials with refraction index and absorption length defined.</li>
-<li><a class="el" href="class_refraction_only.html" title="This class is responsible for handling materials with only defined refractive index.">RefractionOnly</a>: Handles materials with only refraction index defined.</li>
-<li><a class="el" href="class_no_optics.html" title="This class is responsible for handling materials without defined optical properties.">NoOptics</a>: Handles materials without optical properties.</li>
-<li><a class="el" href="class_ice_cube_ice.html" title="This class is responsible for the creation and property extraction of IceCube&#39;s ice.">IceCubeIce</a>: Handles creation and property extraction of IceCube's ice.</li>
-<li><a class="el" href="class_reflective_surface.html" title="This class is responsible for defining new reflective surfaces using data parsed from a JSON file.">ReflectiveSurface</a>: Defines a new reflective surface.</li>
+<li><a class="el" href="class_refraction_and_absorption.html" title="Materials with defined refractive index and absorption length.">RefractionAndAbsorption</a>: Handles materials with refraction index and absorption length defined.</li>
+<li><a class="el" href="class_refraction_only.html" title="Materials only with refractive index defined.">RefractionOnly</a>: Handles materials with only refraction index defined.</li>
+<li><a class="el" href="class_no_optics.html" title="Materials without optical properties defined.">NoOptics</a>: Handles materials without optical properties.</li>
+<li><a class="el" href="class_ice_cube_ice.html" title="Creation and extraction of IceCube&#39;s ice optical properties.">IceCubeIce</a>: Handles creation and property extraction of IceCube's ice.</li>
+<li><a class="el" href="class_reflective_surface.html" title="Reflective surfaces parsed from a JSON file.">ReflectiveSurface</a>: Defines a new reflective surface.</li>
 </ul>
 <p>Each class has an <code>extractInformation()</code> method that is responsible for creating the material or surface and extracting the necessary optical properties. </p>
 </div>
@@ -153,28 +153,28 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an abstract base class that provides an interface for handling data files in the simulation.  <a href="classabc_data_file.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_material_data.html">abcMaterialData</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class for material data extraction from a json file.  <a href="classabc_material_data.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class for material data extraction from a json file. <a class="el" href="classabc_material_data.html" title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f...">abcMaterialData</a> class is derived from <a class="el" href="classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation.">abcDataFile</a> class. It is designed to manage the material data, such as refractive index and absorption length.  <a href="classabc_material_data.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_refraction_and_absorption.html">RefractionAndAbsorption</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is responsible for handling materials with both a defined refractive index and absorption length.  <a href="class_refraction_and_absorption.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Materials with defined refractive index and absorption length.  <a href="class_refraction_and_absorption.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_refraction_only.html">RefractionOnly</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is responsible for handling materials with only defined refractive index.  <a href="class_refraction_only.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Materials only with refractive index defined.  <a href="class_refraction_only.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_no_optics.html">NoOptics</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is responsible for handling materials without defined optical properties.  <a href="class_no_optics.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Materials without optical properties defined.  <a href="class_no_optics.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ice_cube_ice.html">IceCubeIce</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is responsible for the creation and property extraction of IceCube's ice.  <a href="class_ice_cube_ice.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creation and extraction of IceCube's ice optical properties.  <a href="class_ice_cube_ice.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_reflective_surface.html">ReflectiveSurface</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is responsible for defining new reflective surfaces using data parsed from a JSON file.  <a href="class_reflective_surface.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reflective surfaces parsed from a JSON file.  <a href="class_reflective_surface.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scintillation_properties.html">ScintillationProperties</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to extract and apply scintillation properties to existing materials.  <a href="class_scintillation_properties.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scintillation properties extraction for existing materials.  <a href="class_scintillation_properties.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_custom_properties.html">CustomProperties</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class adds user defined properties to already defined materials.  <a href="class_custom_properties.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds user defined properties to already defined materials.  <a href="class_custom_properties.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -183,7 +183,7 @@ Classes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_864f292c5cbb4a74180810cb2e80dd5b.html">framework</a></li><li class="navelem"><a class="el" href="dir_1bc21981797ed08ef994409d474646cd.html">include</a></li><li class="navelem"><a class="el" href="_o_m_sim_data_file_types_8hh.html">OMSimDataFileTypes.hh</a></li>
-    <li class="footer">Generated on Sat Jun 8 2024 06:47:30 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 10 2024 12:28:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

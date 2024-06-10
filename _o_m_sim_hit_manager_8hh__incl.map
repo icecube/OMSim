@@ -1,6 +1,6 @@
 <map id="OMSimHitManager.hh" name="OMSimHitManager.hh">
 <area shape="rect" id="node1" title="Defines structures and classes related to optical module photon hit management." alt="" coords="436,5,600,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_p_m_t_response_8hh.html" title="Provides simulation for PMT response. This class is responsible for transforming hits on photocathode..." alt="" coords="245,80,425,107"/>
+<area shape="rect" id="node2" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="245,80,425,107"/>
 <area shape="rect" id="node8" title=" " alt="" coords="449,80,587,107"/>
 <area shape="rect" id="node9" title=" " alt="" coords="611,80,684,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,155,164,181"/>

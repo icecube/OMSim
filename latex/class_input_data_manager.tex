@@ -28,9 +28,9 @@ Collaboration diagram for Input\+Data\+Manager\+:
 
 
 \doxysubsection{Detailed Description}
-The {\ttfamily \mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}}} class extends the functionalities provided by the {\ttfamily \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}}} class. It\textquotesingle{}s dedicated to the specific needs of managing input data related to materials and optical properties for the Geant4-\/based simulation.
+Extends the functionalities provided by the {\ttfamily \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}}} class. It\textquotesingle{}s dedicated to the specific needs of managing input data related to materials and optical properties.
 
-You probably should have a single instance of this class (no need of loading everything twice...probably it also would break things...). Normally it is loaded in the main Detector\+Construction and passed to the other construction classes.
+You should have a single instance of this class. Normally it is loaded in the main Detector\+Construction and passed to the other construction classes.
 
 Example usage (see also \mbox{\hyperlink{class_parameter_table_ExampleUsageParameterTable}{Minimal example}})\+:
 
@@ -51,7 +51,9 @@ This class assumes certain conventions in naming and structuring the input files
 \item 
 \mbox{\hyperlink{class_input_data_manager_a425e28ed0c8675fc0deb04779171a9d6}{Input\+Data\+Manager}} ()
 \item 
-G4\+Material $\ast$ \mbox{\hyperlink{class_input_data_manager_a05b5637e4b31dbaaede67d40a139528e}{get\+Material}} (G4\+String name)
+\mbox{\hyperlink{class_input_data_manager_ae67f19e11a39c0bcacf7847133a72837}{$\sim$\+Input\+Data\+Manager}} ()
+\item 
+G4\+Material $\ast$ \mbox{\hyperlink{class_input_data_manager_a970eddaab6756e6288504390454a38f4}{get\+Material}} (G4\+String p\+Name)
 \item 
 G4\+Optical\+Surface $\ast$ \mbox{\hyperlink{class_input_data_manager_ae6ae987535a442a42ad47d53394ade56}{get\+Optical\+Surface}} (G4\+String p\+Name)
 \item 
@@ -86,12 +88,18 @@ G4\+String \mbox{\hyperlink{class_input_data_manager_ae31826093d7c8092d0251ca296
 \index{InputDataManager@{InputDataManager}!InputDataManager@{InputDataManager}}
 \index{InputDataManager@{InputDataManager}!InputDataManager@{InputDataManager}}
 \doxysubsubsection{\texorpdfstring{InputDataManager()}{InputDataManager()}}
-{\footnotesize\ttfamily Input\+Data\+Manager\+::\+Input\+Data\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Input\+Data\+Manager\+::\+Input\+Data\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_input_data_manager_ae67f19e11a39c0bcacf7847133a72837}\label{class_input_data_manager_ae67f19e11a39c0bcacf7847133a72837}} 
+\index{InputDataManager@{InputDataManager}!````~InputDataManager@{$\sim$InputDataManager}}
+\index{````~InputDataManager@{$\sim$InputDataManager}!InputDataManager@{InputDataManager}}
+\doxysubsubsection{\texorpdfstring{$\sim$InputDataManager()}{~InputDataManager()}}
+{\footnotesize\ttfamily Input\+Data\+Manager\+::$\sim$\+Input\+Data\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_input_data_manager_a05b5637e4b31dbaaede67d40a139528e}\label{class_input_data_manager_a05b5637e4b31dbaaede67d40a139528e}} 
+\mbox{\Hypertarget{class_input_data_manager_a970eddaab6756e6288504390454a38f4}\label{class_input_data_manager_a970eddaab6756e6288504390454a38f4}} 
 \index{InputDataManager@{InputDataManager}!getMaterial@{getMaterial}}
 \index{getMaterial@{getMaterial}!InputDataManager@{InputDataManager}}
 \doxysubsubsection{\texorpdfstring{getMaterial()}{getMaterial()}}

@@ -2,7 +2,7 @@
 \label{class_scintillation_properties}\index{ScintillationProperties@{ScintillationProperties}}
 
 
-Class to extract and apply scintillation properties to existing materials.  
+Scintillation properties extraction for existing materials.  
 
 
 
@@ -25,16 +25,13 @@ Collaboration diagram for Scintillation\+Properties\+:
 \includegraphics[width=204pt]{class_scintillation_properties__coll__graph}
 \end{center}
 \end{figure}
-
-
-\doxysubsection{Detailed Description}
-This class is responsible for extracting scintillation properties from a data file and applying them to a Geant4 material\textquotesingle{}s properties table. \doxysubsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_scintillation_properties_a03dca72bd4861b8500283dc15c0864e0}{Scintillation\+Properties}} (G4\+String p\+Filename)
 \item 
 void \mbox{\hyperlink{class_scintillation_properties_a6c16439c71032b0df72dfff7aa776e69}{extract\+Information}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Extract sctintillation properties from json-\/file and adds them to existing material table. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -55,7 +52,7 @@ void \mbox{\hyperlink{class_scintillation_properties_afd81afebbf2a8addf8f2f4c775
 void \mbox{\hyperlink{class_scintillation_properties_ac8ab70819d1cdb35cc6ce2155f990379}{extract\+Yield}} (G4\+String p\+Temperature, G4\+String p\+Yield\+Property\+Name, G4\+String p\+Arg\+Key, G4\+String p\+Tree\+Key\+Temperature, G4\+String p\+Tree\+Key\+Yield)
 \begin{DoxyCompactList}\small\item\em Extract the yield from json tree. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_scintillation_properties_af525e651ef632ab272850c743ea9c76f}{find\+MPT}} ()
-\begin{DoxyCompactList}\small\item\em Finds and stores the Geant4 Material Properties Table for the material with name given by the key j\+Material\+Name. If material does not exist it will crash! \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Finds and stores the Geant4 Material Properties Table for the material with name given by the key j\+Material\+Name. If material does not exist it will throw an exception! \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -110,7 +107,7 @@ Pair of vectors containing lifetimes and their corresponding amplitudes.
 \doxysubsubsection{\texorpdfstring{extractSpectrum()}{extractSpectrum()}}
 {\footnotesize\ttfamily void Scintillation\+Properties\+::extract\+Spectrum (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Currently no measurements of the temperature dependence of the scintillation spectrum were done. Spectrum data always at room temperature. \mbox{\Hypertarget{class_scintillation_properties_ac8ab70819d1cdb35cc6ce2155f990379}\label{class_scintillation_properties_ac8ab70819d1cdb35cc6ce2155f990379}} 
+\mbox{\Hypertarget{class_scintillation_properties_ac8ab70819d1cdb35cc6ce2155f990379}\label{class_scintillation_properties_ac8ab70819d1cdb35cc6ce2155f990379}} 
 \index{ScintillationProperties@{ScintillationProperties}!extractYield@{extractYield}}
 \index{extractYield@{extractYield}!ScintillationProperties@{ScintillationProperties}}
 \doxysubsubsection{\texorpdfstring{extractYield()}{extractYield()}}
@@ -153,7 +150,7 @@ The data is the yield at different temperatures and is interpolated with a TGrap
 \index{ScintillationProperties@{ScintillationProperties}!getLifeTimeTemperatureRange@{getLifeTimeTemperatureRange}}
 \index{getLifeTimeTemperatureRange@{getLifeTimeTemperatureRange}!ScintillationProperties@{ScintillationProperties}}
 \doxysubsubsection{\texorpdfstring{getLifeTimeTemperatureRange()}{getLifeTimeTemperatureRange()}}
-{\footnotesize\ttfamily void Scintillation\+Properties\+::get\+Life\+Time\+Temperature\+Range (\begin{DoxyParamCaption}\item[{double \&}]{min\+Temp,  }\item[{double \&}]{max\+Temp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Scintillation\+Properties\+::get\+Life\+Time\+Temperature\+Range (\begin{DoxyParamCaption}\item[{double \&}]{p\+Min\+Temp,  }\item[{double \&}]{p\+Max\+Temp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -166,7 +163,7 @@ The data is the yield at different temperatures and is interpolated with a TGrap
 \index{ScintillationProperties@{ScintillationProperties}!weightLifeTimesAmplitudes@{weightLifeTimesAmplitudes}}
 \index{weightLifeTimesAmplitudes@{weightLifeTimesAmplitudes}!ScintillationProperties@{ScintillationProperties}}
 \doxysubsubsection{\texorpdfstring{weightLifeTimesAmplitudes()}{weightLifeTimesAmplitudes()}}
-{\footnotesize\ttfamily void Scintillation\+Properties\+::weight\+Life\+Times\+Amplitudes (\begin{DoxyParamCaption}\item[{std\+::vector$<$ G4double $>$ \&}]{p\+Amp,  }\item[{double}]{T1,  }\item[{double}]{T2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Scintillation\+Properties\+::weight\+Life\+Times\+Amplitudes (\begin{DoxyParamCaption}\item[{std\+::vector$<$ G4double $>$ \&}]{p\+Amp,  }\item[{double}]{p\+T1,  }\item[{double}]{p\+T2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 \begin{DoxyParams}{Parameters}

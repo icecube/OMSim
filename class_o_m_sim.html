@@ -139,12 +139,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5fdec07501bb76199f652ac95bd1e961"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure that the output directory for the simulation results exists.  <a href="class_o_m_sim.html#a5fdec07501bb76199f652ac95bd1e961">More...</a><br /></td></tr>
 <tr class="separator:a5fdec07501bb76199f652ac95bd1e961"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48127177a39ead290b915dcbc1c759a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2">initialiseSimulation</a> (<a class="el" href="class_o_m_sim_detector_construction.html">OMSimDetectorConstruction</a> *pDetectorConstruction)</td></tr>
-<tr class="memdesc:a48127177a39ead290b915dcbc1c759a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the simulation.  <a href="class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2">More...</a><br /></td></tr>
+<tr class="memdesc:a48127177a39ead290b915dcbc1c759a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the simulation constructing all Geant instances.  <a href="class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2">More...</a><br /></td></tr>
 <tr class="separator:a48127177a39ead290b915dcbc1c759a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e43df3d28f3e5e7cbec8a6e3ef1dcf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a3e43df3d28f3e5e7cbec8a6e3ef1dcf5">configureLogger</a> ()</td></tr>
 <tr class="separator:a3e43df3d28f3e5e7cbec8a6e3ef1dcf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07759a6885ca398dd1e7c3a9954ceded"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a07759a6885ca398dd1e7c3a9954ceded">handleArguments</a> (int pArgumentCount, char *pArgumentVector[])</td></tr>
-<tr class="memdesc:a07759a6885ca398dd1e7c3a9954ceded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the user arguments into variables that can be accessed in the simulation via <a class="el" href="class_o_m_sim_command_args_table.html" title="A singleton class used to hold and manipulate OMSim command arguments.">OMSimCommandArgsTable</a>.  <a href="class_o_m_sim.html#a07759a6885ca398dd1e7c3a9954ceded">More...</a><br /></td></tr>
+<tr class="memdesc:a07759a6885ca398dd1e7c3a9954ceded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the user arguments into variables that can be accessed in the simulation via <a class="el" href="class_o_m_sim_command_args_table.html" title="A singleton class used to hold OMSim command arguments.">OMSimCommandArgsTable</a>.  <a href="class_o_m_sim.html#a07759a6885ca398dd1e7c3a9954ceded">More...</a><br /></td></tr>
 <tr class="separator:a07759a6885ca398dd1e7c3a9954ceded"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfafdeb214a66be94c423076b8c13bbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#adfafdeb214a66be94c423076b8c13bbb">startVisualisationIfRequested</a> ()</td></tr>
 <tr class="memdesc:adfafdeb214a66be94c423076b8c13bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">UIEx session is started for visualisation.  <a href="class_o_m_sim.html#adfafdeb214a66be94c423076b8c13bbb">More...</a><br /></td></tr>
@@ -162,12 +162,16 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a8718ff8784bfd2f381114d092e072b1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a8718ff8784bfd2f381114d092e072b1c">initialLoggerConfiguration</a> ()</td></tr>
+<tr class="separator:a8718ff8784bfd2f381114d092e072b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22f2335b943429a2697c0c8b3747e658"><td class="memItemLeft" align="right" valign="top">po::variables_map&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a22f2335b943429a2697c0c8b3747e658">parseArguments</a> (int pArgumentCount, char *pArgumentVector[])</td></tr>
-<tr class="memdesc:a22f2335b943429a2697c0c8b3747e658"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses user arguments to a variables map.  <a href="class_o_m_sim.html#a22f2335b943429a2697c0c8b3747e658">More...</a><br /></td></tr>
+<tr class="memdesc:a22f2335b943429a2697c0c8b3747e658"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses user terminal arguments to a variables map.  <a href="class_o_m_sim.html#a22f2335b943429a2697c0c8b3747e658">More...</a><br /></td></tr>
 <tr class="separator:a22f2335b943429a2697c0c8b3747e658"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1428504bbe25b1baeb0976e897a98bcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a1428504bbe25b1baeb0976e897a98bcb">setUserArgumentsToArgTable</a> (po::variables_map pVariablesMap)</td></tr>
-<tr class="memdesc:a1428504bbe25b1baeb0976e897a98bcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets variables from a variables map to the instance of <a class="el" href="class_o_m_sim_command_args_table.html" title="A singleton class used to hold and manipulate OMSim command arguments.">OMSimCommandArgsTable</a>.  <a href="class_o_m_sim.html#a1428504bbe25b1baeb0976e897a98bcb">More...</a><br /></td></tr>
+<tr class="memdesc:a1428504bbe25b1baeb0976e897a98bcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets variables from a variables map to the instance of <a class="el" href="class_o_m_sim_command_args_table.html" title="A singleton class used to hold OMSim command arguments.">OMSimCommandArgsTable</a>.  <a href="class_o_m_sim.html#a1428504bbe25b1baeb0976e897a98bcb">More...</a><br /></td></tr>
 <tr class="separator:a1428504bbe25b1baeb0976e897a98bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44734b9c775a2e3f44b3f734f62db347"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a44734b9c775a2e3f44b3f734f62db347">setGeneralOptions</a> ()</td></tr>
+<tr class="separator:a44734b9c775a2e3f44b3f734f62db347"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -191,7 +195,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a610d64ca0157bc3795cf83a1a09a6d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04ad05f6b01a547002f3c36fe116c35f"><td class="memItemLeft" align="right" valign="top">G4TouchableHistory *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a04ad05f6b01a547002f3c36fe116c35f">mHistory</a> = nullptr</td></tr>
 <tr class="separator:a04ad05f6b01a547002f3c36fe116c35f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdddb6d2392b131b35aae4f20a551a7c"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#afdddb6d2392b131b35aae4f20a551a7c">mStartingTime</a> =0</td></tr>
+<tr class="memitem:afdddb6d2392b131b35aae4f20a551a7c"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#afdddb6d2392b131b35aae4f20a551a7c">mStartingTime</a> = 0</td></tr>
 <tr class="separator:afdddb6d2392b131b35aae4f20a551a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -209,7 +213,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This constructor initializes the Geant4 run manager, visualization manager, and navigator. It also sets up the command line arguments for the simulation. </p>
 
 </div>
 </div>
@@ -263,7 +266,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>If the output directory does not exist, this function will create it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pFilePath</td><td>The path to the output directory. </td></tr>
@@ -360,7 +362,31 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This function sets up the necessary Geant4 components. </p>
+
+</div>
+</div>
+<a id="a8718ff8784bfd2f381114d092e072b1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8718ff8784bfd2f381114d092e072b1c">&#9670;&nbsp;</a></span>initialLoggerConfiguration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSim::initialLoggerConfiguration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -389,6 +415,31 @@ Private Attributes</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44734b9c775a2e3f44b3f734f62db347"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44734b9c775a2e3f44b3f734f62db347">&#9670;&nbsp;</a></span>setGeneralOptions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSim::setGeneralOptions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -622,7 +673,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4double OMSim::mStartingTime =0</td>
+          <td class="memname">G4double OMSim::mStartingTime = 0</td>
         </tr>
       </table>
   </td>
@@ -710,7 +761,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim.html">OMSim</a></li>
-    <li class="footer">Generated on Sat Jun 8 2024 06:47:30 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 10 2024 12:28:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

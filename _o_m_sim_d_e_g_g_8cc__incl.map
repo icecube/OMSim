@@ -9,7 +9,7 @@
 <area shape="rect" id="node3" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="532,229,731,256"/>
 <area shape="rect" id="node25" href="$_o_m_sim_optical_module_8hh.html" title=" " alt="" coords="700,155,883,181"/>
 <area shape="rect" id="node4" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="533,304,729,331"/>
-<area shape="rect" id="node18" href="$_o_m_sim_p_m_t_response_8hh.html" title="Provides simulation for PMT response. This class is responsible for transforming hits on photocathode..." alt="" coords="805,304,985,331"/>
+<area shape="rect" id="node18" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="805,304,985,331"/>
 <area shape="rect" id="node23" title=" " alt="" coords="265,304,395,331"/>
 <area shape="rect" id="node24" title=" " alt="" coords="420,304,509,331"/>
 <area shape="rect" id="node5" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and InputDataManager." alt="" coords="704,379,857,405"/>

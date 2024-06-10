@@ -1,5 +1,5 @@
 <map id="ReflectiveSurface" name="ReflectiveSurface">
-<area shape="rect" id="node1" title="This class is responsible for defining new reflective surfaces using data parsed from a JSON file." alt="" coords="5,171,141,197"/>
+<area shape="rect" id="node1" title="Reflective surfaces parsed from a JSON file." alt="" coords="5,171,141,197"/>
 <area shape="rect" id="node2" href="$classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation." alt="" coords="24,95,123,121"/>
 <area shape="rect" id="node3" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="12,5,135,32"/>
 </map>

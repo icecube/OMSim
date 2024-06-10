@@ -133,7 +133,7 @@ Inheritance diagram for OMSimPMTResponse:</div>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Provides methods to process hits on a photocathode and get resulting pulses based on various measurements and scans. </p>
+<div class="textblock"><p>Process hits on a photocathode and get resulting pulse properties based on lab. measurement data. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -152,6 +152,10 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:a80b379bc78ca06d23011703aae3341d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a80b379bc78ca06d23011703aae3341d7">OMSimPMTResponse</a> ()</td></tr>
+<tr class="separator:a80b379bc78ca06d23011703aae3341d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cae62f2ea6fda5296c438eec41ea308"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a2cae62f2ea6fda5296c438eec41ea308">~OMSimPMTResponse</a> ()</td></tr>
+<tr class="separator:a2cae62f2ea6fda5296c438eec41ea308"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6618c49b1742336f7b0b79d6f2c4de6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#aa6618c49b1742336f7b0b79d6f2c4de6">configureQEinterpolator</a> (const char *pFileName)</td></tr>
 <tr class="memdesc:aa6618c49b1742336f7b0b79d6f2c4de6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the QE interpolator from a data file.  <a href="class_o_m_sim_p_m_t_response.html#aa6618c49b1742336f7b0b79d6f2c4de6">More...</a><br /></td></tr>
 <tr class="separator:aa6618c49b1742336f7b0b79d6f2c4de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,10 +184,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a2e0f0ab6b76976909e12fcc50729ae49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad008c81ae36f0db6e6588c9beab3cd81"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#ad008c81ae36f0db6e6588c9beab3cd81">scansAvailable</a> ()=0</td></tr>
 <tr class="separator:ad008c81ae36f0db6e6588c9beab3cd81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80b379bc78ca06d23011703aae3341d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a80b379bc78ca06d23011703aae3341d7">OMSimPMTResponse</a> ()</td></tr>
-<tr class="separator:a80b379bc78ca06d23011703aae3341d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cae62f2ea6fda5296c438eec41ea308"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a2cae62f2ea6fda5296c438eec41ea308">~OMSimPMTResponse</a> ()</td></tr>
-<tr class="separator:a2cae62f2ea6fda5296c438eec41ea308"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -356,7 +356,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This method returns the charge sampled from a Gaussian distribution with the mean and standard deviation of the single photon electron (SPE) resolution for the provided wavelength key.</p>
+<p>Charge sampled from a Gaussian distribution with the mean and standard deviation of the single photon electron (SPE) resolution for the provided wavelength key.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pWavelengthKey</td><td>The key for selecting a scan from the available measurements. </td></tr>
@@ -972,7 +972,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a></li>
-    <li class="footer">Generated on Sat Jun 8 2024 06:47:30 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 10 2024 12:28:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

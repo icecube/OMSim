@@ -207,7 +207,7 @@
 <!-- Node41 -->
 <g id="node35" class="node">
 <title>Node41</title>
-<g id="a_node35"><a xlink:href="_o_m_sim_u_iinterface_8hh.html" target="_top" xlink:title="The OMSimUIinterface class provides a singleton interface to Geant4&#39;s UI manager.">
+<g id="a_node35"><a xlink:href="_o_m_sim_u_iinterface_8hh.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="991,-224.5 991,-243.5 1112,-243.5 1112,-224.5 991,-224.5"/>
 <text text-anchor="middle" x="1051.5" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimUIinterface.hh</text>
 </a>
@@ -483,7 +483,7 @@
 <!-- Node20 -->
 <g id="node14" class="node">
 <title>Node20</title>
-<g id="a_node14"><a xlink:href="_o_m_sim_p_m_t_response_8hh.html" target="_top" xlink:title="Provides simulation for PMT response. This class is responsible for transforming hits on photocathode...">
+<g id="a_node14"><a xlink:href="_o_m_sim_p_m_t_response_8hh.html" target="_top" xlink:title="Simulation of PMT response.">
 <polygon fill="white" stroke="black" points="1593,-112.5 1593,-131.5 1728,-131.5 1728,-112.5 1593,-112.5"/>
 <text text-anchor="middle" x="1660.5" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPMTResponse.hh</text>
 </a>

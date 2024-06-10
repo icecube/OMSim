@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="This class is responsible for handling materials with only defined refractive index.">
+<g id="a_node1"><a xlink:title="Materials only with refractive index defined.">
 <polygon fill="#bfbfbf" stroke="black" points="4.5,-0.5 4.5,-19.5 93.5,-19.5 93.5,-0.5 4.5,-0.5"/>
 <text text-anchor="middle" x="49" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">RefractionOnly</text>
 </a>
@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="classabc_material_data.html" target="_top" xlink:title="Abstract base class for material data extraction from a json file.">
+<g id="a_node2"><a xlink:href="classabc_material_data.html" target="_top" xlink:title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f...">
 <polygon fill="white" stroke="black" points="0,-56.5 0,-75.5 98,-75.5 98,-56.5 0,-56.5"/>
 <text text-anchor="middle" x="49" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcMaterialData</text>
 </a>

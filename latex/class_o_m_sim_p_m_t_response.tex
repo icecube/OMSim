@@ -18,7 +18,7 @@ Inheritance diagram for OMSim\+PMTResponse\+:
 
 
 \doxysubsection{Detailed Description}
-Provides methods to process hits on a photocathode and get resulting pulses based on various measurements and scans. \doxysubsection*{Classes}
+Process hits on a photocathode and get resulting pulse properties based on lab. measurement data. \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}}
@@ -32,6 +32,10 @@ virtual bool \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2447b2f9eb62a1e99f41
 \begin{DoxyCompactList}\small\item\em Checks if photon with given wavelength passes QE check. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_response_a80b379bc78ca06d23011703aae3341d7}{OMSim\+PMTResponse}} ()
+\item 
+virtual \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2cae62f2ea6fda5296c438eec41ea308}{$\sim$\+OMSim\+PMTResponse}} ()
 \item 
 void \mbox{\hyperlink{class_o_m_sim_p_m_t_response_aa6618c49b1742336f7b0b79d6f2c4de6}{configure\+QEinterpolator}} (const char $\ast$p\+File\+Name)
 \begin{DoxyCompactList}\small\item\em Initializes the QE interpolator from a data file. \end{DoxyCompactList}\item 
@@ -54,10 +58,6 @@ G4double \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a39d958aa616a6bdd0c8a7321
 virtual std\+::vector$<$ G4double $>$ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2e0f0ab6b76976909e12fcc50729ae49}{get\+Scanned\+Wavelengths}} ()=0
 \item 
 virtual bool \mbox{\hyperlink{class_o_m_sim_p_m_t_response_ad008c81ae36f0db6e6588c9beab3cd81}{scans\+Available}} ()=0
-\item 
-\mbox{\hyperlink{class_o_m_sim_p_m_t_response_a80b379bc78ca06d23011703aae3341d7}{OMSim\+PMTResponse}} ()
-\item 
-virtual \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2cae62f2ea6fda5296c438eec41ea308}{$\sim$\+OMSim\+PMTResponse}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -140,7 +140,7 @@ Pointer to the created histogram.
 \doxysubsubsection{\texorpdfstring{getCharge()}{getCharge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily G4double OMSim\+PMTResponse\+::get\+Charge (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
-This method returns the charge sampled from a Gaussian distribution with the mean and standard deviation of the single photon electron (SPE) resolution for the provided wavelength key.
+Charge sampled from a Gaussian distribution with the mean and standard deviation of the single photon electron (SPE) resolution for the provided wavelength key.
 
 
 \begin{DoxyParams}{Parameters}

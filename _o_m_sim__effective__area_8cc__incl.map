@@ -11,7 +11,7 @@
 <area shape="rect" id="node32" title=" " alt="" coords="928,155,1095,181"/>
 <area shape="rect" id="node33" href="$_o_m_sim_tracking_action_8hh.html" title=" " alt="" coords="1119,155,1303,181"/>
 <area shape="rect" id="node35" href="$_o_m_sim_stepping_action_8hh.html" title="Defines OMSimSteppingAction.Currently it only checks for trapped photons." alt="" coords="1327,155,1514,181"/>
-<area shape="rect" id="node37" href="$_o_m_sim_u_iinterface_8hh.html" title="The OMSimUIinterface class provides a singleton interface to Geant4&#39;s UI manager." alt="" coords="2353,229,2515,256"/>
+<area shape="rect" id="node37" href="$_o_m_sim_u_iinterface_8hh.html" title=" " alt="" coords="2353,229,2515,256"/>
 <area shape="rect" id="node42" title=" " alt="" coords="1538,155,1679,181"/>
 <area shape="rect" id="node43" title=" " alt="" coords="1704,155,1847,181"/>
 <area shape="rect" id="node44" title=" " alt="" coords="1871,155,2008,181"/>
@@ -32,7 +32,7 @@
 <area shape="rect" id="node10" title=" " alt="" coords="759,528,917,555"/>
 <area shape="rect" id="node8" title=" " alt="" coords="1181,610,1305,637"/>
 <area shape="rect" id="node9" title=" " alt="" coords="1329,603,1477,644"/>
-<area shape="rect" id="node16" href="$_o_m_sim_p_m_t_response_8hh.html" title="Provides simulation for PMT response. This class is responsible for transforming hits on photocathode..." alt="" coords="892,379,1072,405"/>
+<area shape="rect" id="node16" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="892,379,1072,405"/>
 <area shape="rect" id="node21" title=" " alt="" coords="1096,379,1233,405"/>
 <area shape="rect" id="node22" title=" " alt="" coords="1257,379,1331,405"/>
 <area shape="rect" id="node17" title=" " alt="" coords="933,453,1031,480"/>

@@ -8,96 +8,96 @@ A structure of vectors to store information about detected photons.
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ G4long $>$ \mbox{\hyperlink{struct_hit_stats_a083785d39bbb36d3b96c013d72871bfb}{event\+\_\+id}}
+std\+::vector$<$ G4long $>$ \mbox{\hyperlink{struct_hit_stats_a5b5b61f1096a1e02d495d7bab1fff259}{event\+Id}}
 \begin{DoxyCompactList}\small\item\em ID of the event. \end{DoxyCompactList}\item 
-std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_aa98810da31bcafce33d1150f9040b179}{hit\+\_\+time}}
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_ae0c5192a6db7a2fc8dec37e62a6a1e76}{hit\+Time}}
 \begin{DoxyCompactList}\small\item\em Time of detection. \end{DoxyCompactList}\item 
-std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_aed7c609a2bba96df75f0e202d609b283}{photon\+\_\+flight\+\_\+time}}
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_a254bd94585df0605a6e2e863e3e00851}{flight\+Time}}
 \begin{DoxyCompactList}\small\item\em Photon flight time. \end{DoxyCompactList}\item 
-std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_a3cc8289263dedf3bee11a8bf3d6055b4}{photon\+\_\+track\+\_\+length}}
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_ae7c3d380f7f961927f73fef4ee20fe4d}{path\+Lenght}}
 \begin{DoxyCompactList}\small\item\em Length of the photon\textquotesingle{}s path before hitting. \end{DoxyCompactList}\item 
-std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_a43c2be1edf587134e143b989ed027a45}{photon\+\_\+energy}}
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_a542a1e55040646afe6966f281194117b}{energy}}
 \begin{DoxyCompactList}\small\item\em Energy of the detected photon. \end{DoxyCompactList}\item 
-std\+::vector$<$ G4int $>$ \mbox{\hyperlink{struct_hit_stats_a82366d3fe8420fc7ce3d8a235c28823a}{PMT\+\_\+hit}}
+std\+::vector$<$ G4int $>$ \mbox{\hyperlink{struct_hit_stats_af603afdc7e643ea0246cb0b642ae8bb5}{PMTnr}}
 \begin{DoxyCompactList}\small\item\em ID of the PMT that detected the photon. \end{DoxyCompactList}\item 
-std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_aad96ef4ac7b91e41f8e51ed9436c10d3}{photon\+\_\+direction}}
+std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_a383cfeda6e6e515b56aee0a369ec5085}{direction}}
 \begin{DoxyCompactList}\small\item\em Momentum direction of the photon at the time of detection. \end{DoxyCompactList}\item 
-std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_a83f200ce2f28b1ccba57172a5be54c19}{photon\+\_\+local\+\_\+position}}
+std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_a82333e4544d85c231e0aab2660f99cda}{local\+Position}}
 \begin{DoxyCompactList}\small\item\em Local position of the detected photon within the PMT. \end{DoxyCompactList}\item 
-std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_a1655bb023dccf89fc34621487f845626}{photon\+\_\+global\+\_\+position}}
+std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_a6a80e0ae23f39c939f1e46737cc80dd4}{global\+Position}}
 \begin{DoxyCompactList}\small\item\em Global position of the detected photon. \end{DoxyCompactList}\item 
-std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_a239bb18751a36e1056f408438bef3626}{event\+\_\+distance}}
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_ae73c03f4d9024845eb1bfd5de71eb653}{generation\+Detection\+Distance}}
 \begin{DoxyCompactList}\small\item\em Distance between generation and detection of photon. \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} $>$ \mbox{\hyperlink{struct_hit_stats_a59e4bb359b5434d19aafdb3d963f08b2}{PMT\+\_\+response}}
+std\+::vector$<$ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} $>$ \mbox{\hyperlink{struct_hit_stats_a3c8b0736ba6927c644ee1b9e62e02e64}{PMTresponse}}
 \begin{DoxyCompactList}\small\item\em PMT\textquotesingle{}s response to the detected photon, encapsulated as a {\ttfamily PMTPulse}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{struct_hit_stats_a239bb18751a36e1056f408438bef3626}\label{struct_hit_stats_a239bb18751a36e1056f408438bef3626}} 
-\index{HitStats@{HitStats}!event\_distance@{event\_distance}}
-\index{event\_distance@{event\_distance}!HitStats@{HitStats}}
-\doxysubsubsection{\texorpdfstring{event\_distance}{event\_distance}}
-{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Hit\+Stats\+::event\+\_\+distance}
+\mbox{\Hypertarget{struct_hit_stats_a383cfeda6e6e515b56aee0a369ec5085}\label{struct_hit_stats_a383cfeda6e6e515b56aee0a369ec5085}} 
+\index{HitStats@{HitStats}!direction@{direction}}
+\index{direction@{direction}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily std\+::vector$<$G4\+Three\+Vector$>$ Hit\+Stats\+::direction}
 
-\mbox{\Hypertarget{struct_hit_stats_a083785d39bbb36d3b96c013d72871bfb}\label{struct_hit_stats_a083785d39bbb36d3b96c013d72871bfb}} 
-\index{HitStats@{HitStats}!event\_id@{event\_id}}
-\index{event\_id@{event\_id}!HitStats@{HitStats}}
-\doxysubsubsection{\texorpdfstring{event\_id}{event\_id}}
-{\footnotesize\ttfamily std\+::vector$<$G4long$>$ Hit\+Stats\+::event\+\_\+id}
+\mbox{\Hypertarget{struct_hit_stats_a542a1e55040646afe6966f281194117b}\label{struct_hit_stats_a542a1e55040646afe6966f281194117b}} 
+\index{HitStats@{HitStats}!energy@{energy}}
+\index{energy@{energy}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{energy}{energy}}
+{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Hit\+Stats\+::energy}
 
-\mbox{\Hypertarget{struct_hit_stats_aa98810da31bcafce33d1150f9040b179}\label{struct_hit_stats_aa98810da31bcafce33d1150f9040b179}} 
-\index{HitStats@{HitStats}!hit\_time@{hit\_time}}
-\index{hit\_time@{hit\_time}!HitStats@{HitStats}}
-\doxysubsubsection{\texorpdfstring{hit\_time}{hit\_time}}
-{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Hit\+Stats\+::hit\+\_\+time}
+\mbox{\Hypertarget{struct_hit_stats_a5b5b61f1096a1e02d495d7bab1fff259}\label{struct_hit_stats_a5b5b61f1096a1e02d495d7bab1fff259}} 
+\index{HitStats@{HitStats}!eventId@{eventId}}
+\index{eventId@{eventId}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{eventId}{eventId}}
+{\footnotesize\ttfamily std\+::vector$<$G4long$>$ Hit\+Stats\+::event\+Id}
 
-\mbox{\Hypertarget{struct_hit_stats_aad96ef4ac7b91e41f8e51ed9436c10d3}\label{struct_hit_stats_aad96ef4ac7b91e41f8e51ed9436c10d3}} 
-\index{HitStats@{HitStats}!photon\_direction@{photon\_direction}}
-\index{photon\_direction@{photon\_direction}!HitStats@{HitStats}}
-\doxysubsubsection{\texorpdfstring{photon\_direction}{photon\_direction}}
-{\footnotesize\ttfamily std\+::vector$<$G4\+Three\+Vector$>$ Hit\+Stats\+::photon\+\_\+direction}
+\mbox{\Hypertarget{struct_hit_stats_a254bd94585df0605a6e2e863e3e00851}\label{struct_hit_stats_a254bd94585df0605a6e2e863e3e00851}} 
+\index{HitStats@{HitStats}!flightTime@{flightTime}}
+\index{flightTime@{flightTime}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{flightTime}{flightTime}}
+{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Hit\+Stats\+::flight\+Time}
 
-\mbox{\Hypertarget{struct_hit_stats_a43c2be1edf587134e143b989ed027a45}\label{struct_hit_stats_a43c2be1edf587134e143b989ed027a45}} 
-\index{HitStats@{HitStats}!photon\_energy@{photon\_energy}}
-\index{photon\_energy@{photon\_energy}!HitStats@{HitStats}}
-\doxysubsubsection{\texorpdfstring{photon\_energy}{photon\_energy}}
-{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Hit\+Stats\+::photon\+\_\+energy}
+\mbox{\Hypertarget{struct_hit_stats_ae73c03f4d9024845eb1bfd5de71eb653}\label{struct_hit_stats_ae73c03f4d9024845eb1bfd5de71eb653}} 
+\index{HitStats@{HitStats}!generationDetectionDistance@{generationDetectionDistance}}
+\index{generationDetectionDistance@{generationDetectionDistance}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{generationDetectionDistance}{generationDetectionDistance}}
+{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Hit\+Stats\+::generation\+Detection\+Distance}
 
-\mbox{\Hypertarget{struct_hit_stats_aed7c609a2bba96df75f0e202d609b283}\label{struct_hit_stats_aed7c609a2bba96df75f0e202d609b283}} 
-\index{HitStats@{HitStats}!photon\_flight\_time@{photon\_flight\_time}}
-\index{photon\_flight\_time@{photon\_flight\_time}!HitStats@{HitStats}}
-\doxysubsubsection{\texorpdfstring{photon\_flight\_time}{photon\_flight\_time}}
-{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Hit\+Stats\+::photon\+\_\+flight\+\_\+time}
+\mbox{\Hypertarget{struct_hit_stats_a6a80e0ae23f39c939f1e46737cc80dd4}\label{struct_hit_stats_a6a80e0ae23f39c939f1e46737cc80dd4}} 
+\index{HitStats@{HitStats}!globalPosition@{globalPosition}}
+\index{globalPosition@{globalPosition}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{globalPosition}{globalPosition}}
+{\footnotesize\ttfamily std\+::vector$<$G4\+Three\+Vector$>$ Hit\+Stats\+::global\+Position}
 
-\mbox{\Hypertarget{struct_hit_stats_a1655bb023dccf89fc34621487f845626}\label{struct_hit_stats_a1655bb023dccf89fc34621487f845626}} 
-\index{HitStats@{HitStats}!photon\_global\_position@{photon\_global\_position}}
-\index{photon\_global\_position@{photon\_global\_position}!HitStats@{HitStats}}
-\doxysubsubsection{\texorpdfstring{photon\_global\_position}{photon\_global\_position}}
-{\footnotesize\ttfamily std\+::vector$<$G4\+Three\+Vector$>$ Hit\+Stats\+::photon\+\_\+global\+\_\+position}
+\mbox{\Hypertarget{struct_hit_stats_ae0c5192a6db7a2fc8dec37e62a6a1e76}\label{struct_hit_stats_ae0c5192a6db7a2fc8dec37e62a6a1e76}} 
+\index{HitStats@{HitStats}!hitTime@{hitTime}}
+\index{hitTime@{hitTime}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{hitTime}{hitTime}}
+{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Hit\+Stats\+::hit\+Time}
 
-\mbox{\Hypertarget{struct_hit_stats_a83f200ce2f28b1ccba57172a5be54c19}\label{struct_hit_stats_a83f200ce2f28b1ccba57172a5be54c19}} 
-\index{HitStats@{HitStats}!photon\_local\_position@{photon\_local\_position}}
-\index{photon\_local\_position@{photon\_local\_position}!HitStats@{HitStats}}
-\doxysubsubsection{\texorpdfstring{photon\_local\_position}{photon\_local\_position}}
-{\footnotesize\ttfamily std\+::vector$<$G4\+Three\+Vector$>$ Hit\+Stats\+::photon\+\_\+local\+\_\+position}
+\mbox{\Hypertarget{struct_hit_stats_a82333e4544d85c231e0aab2660f99cda}\label{struct_hit_stats_a82333e4544d85c231e0aab2660f99cda}} 
+\index{HitStats@{HitStats}!localPosition@{localPosition}}
+\index{localPosition@{localPosition}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{localPosition}{localPosition}}
+{\footnotesize\ttfamily std\+::vector$<$G4\+Three\+Vector$>$ Hit\+Stats\+::local\+Position}
 
-\mbox{\Hypertarget{struct_hit_stats_a3cc8289263dedf3bee11a8bf3d6055b4}\label{struct_hit_stats_a3cc8289263dedf3bee11a8bf3d6055b4}} 
-\index{HitStats@{HitStats}!photon\_track\_length@{photon\_track\_length}}
-\index{photon\_track\_length@{photon\_track\_length}!HitStats@{HitStats}}
-\doxysubsubsection{\texorpdfstring{photon\_track\_length}{photon\_track\_length}}
-{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Hit\+Stats\+::photon\+\_\+track\+\_\+length}
+\mbox{\Hypertarget{struct_hit_stats_ae7c3d380f7f961927f73fef4ee20fe4d}\label{struct_hit_stats_ae7c3d380f7f961927f73fef4ee20fe4d}} 
+\index{HitStats@{HitStats}!pathLenght@{pathLenght}}
+\index{pathLenght@{pathLenght}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{pathLenght}{pathLenght}}
+{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Hit\+Stats\+::path\+Lenght}
 
-\mbox{\Hypertarget{struct_hit_stats_a82366d3fe8420fc7ce3d8a235c28823a}\label{struct_hit_stats_a82366d3fe8420fc7ce3d8a235c28823a}} 
-\index{HitStats@{HitStats}!PMT\_hit@{PMT\_hit}}
-\index{PMT\_hit@{PMT\_hit}!HitStats@{HitStats}}
-\doxysubsubsection{\texorpdfstring{PMT\_hit}{PMT\_hit}}
-{\footnotesize\ttfamily std\+::vector$<$G4int$>$ Hit\+Stats\+::\+PMT\+\_\+hit}
+\mbox{\Hypertarget{struct_hit_stats_af603afdc7e643ea0246cb0b642ae8bb5}\label{struct_hit_stats_af603afdc7e643ea0246cb0b642ae8bb5}} 
+\index{HitStats@{HitStats}!PMTnr@{PMTnr}}
+\index{PMTnr@{PMTnr}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{PMTnr}{PMTnr}}
+{\footnotesize\ttfamily std\+::vector$<$G4int$>$ Hit\+Stats\+::\+PMTnr}
 
-\mbox{\Hypertarget{struct_hit_stats_a59e4bb359b5434d19aafdb3d963f08b2}\label{struct_hit_stats_a59e4bb359b5434d19aafdb3d963f08b2}} 
-\index{HitStats@{HitStats}!PMT\_response@{PMT\_response}}
-\index{PMT\_response@{PMT\_response}!HitStats@{HitStats}}
-\doxysubsubsection{\texorpdfstring{PMT\_response}{PMT\_response}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}}$>$ Hit\+Stats\+::\+PMT\+\_\+response}
+\mbox{\Hypertarget{struct_hit_stats_a3c8b0736ba6927c644ee1b9e62e02e64}\label{struct_hit_stats_a3c8b0736ba6927c644ee1b9e62e02e64}} 
+\index{HitStats@{HitStats}!PMTresponse@{PMTresponse}}
+\index{PMTresponse@{PMTresponse}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{PMTresponse}{PMTresponse}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}}$>$ Hit\+Stats\+::\+PMTresponse}
 
 
 

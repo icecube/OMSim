@@ -206,14 +206,19 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a106b05be669675201404fb8954642048"><td class="memItemLeft" align="right" valign="top">G4int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a106b05be669675201404fb8954642048">mNrTotalLED</a></td></tr>
 <tr class="separator:a106b05be669675201404fb8954642048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ea5b69f38842184f0ec6f0c65c328ed"><td class="memItemLeft" align="right" valign="top">std::vector&lt; G4Transform3D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a0ea5b69f38842184f0ec6f0c65c328ed">mLEDTransformers</a></td></tr>
+<tr class="memdesc:a0ea5b69f38842184f0ec6f0c65c328ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">coordinates from center of the module  <a href="classm_d_o_m.html#a0ea5b69f38842184f0ec6f0c65c328ed">More...</a><br /></td></tr>
 <tr class="separator:a0ea5b69f38842184f0ec6f0c65c328ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33d632b787f897dfb6320e246690e62d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; G4double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a33d632b787f897dfb6320e246690e62d">mLED_AngFromSphere</a></td></tr>
+<tr class="memdesc:a33d632b787f897dfb6320e246690e62d"><td class="mdescLeft">&#160;</td><td class="mdescRight">stores rho (mm),theta (deg),phi (deg) of each LED from the center of its corresponding spherical part. Useful to run the particles.  <a href="classm_d_o_m.html#a33d632b787f897dfb6320e246690e62d">More...</a><br /></td></tr>
 <tr class="separator:a33d632b787f897dfb6320e246690e62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae28cf6f87440b664735f77854076219a"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#ae28cf6f87440b664735f77854076219a">mCylinderAngle</a> = 2.8 * deg</td></tr>
+<tr class="memdesc:ae28cf6f87440b664735f77854076219a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deviation angle of cylindrical part of the pressure vessel.  <a href="classm_d_o_m.html#ae28cf6f87440b664735f77854076219a">More...</a><br /></td></tr>
 <tr class="separator:ae28cf6f87440b664735f77854076219a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a150a538f8bbaa720cc3876fcc74c54"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a0a150a538f8bbaa720cc3876fcc74c54">mGlassOutRad</a> = 176.5 * mm</td></tr>
+<tr class="memdesc:a0a150a538f8bbaa720cc3876fcc74c54"><td class="mdescLeft">&#160;</td><td class="mdescRight">outer radius of galss cylinder (pressure vessel)  <a href="classm_d_o_m.html#a0a150a538f8bbaa720cc3876fcc74c54">More...</a><br /></td></tr>
 <tr class="separator:a0a150a538f8bbaa720cc3876fcc74c54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84365c931fe3226e18f78638b10b637d"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a84365c931fe3226e18f78638b10b637d">mCylHigh</a> = 27.5 * mm</td></tr>
+<tr class="memdesc:a84365c931fe3226e18f78638b10b637d"><td class="mdescLeft">&#160;</td><td class="mdescRight">height of cylindrical part of glass half-vessel  <a href="classm_d_o_m.html#a84365c931fe3226e18f78638b10b637d">More...</a><br /></td></tr>
 <tr class="separator:a84365c931fe3226e18f78638b10b637d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedf09daf267a3c3b2dd9602c05f07636"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#aedf09daf267a3c3b2dd9602c05f07636">mGlassInRad</a> = <a class="el" href="classm_d_o_m.html#a0a150a538f8bbaa720cc3876fcc74c54">mGlassOutRad</a> - <a class="el" href="classm_d_o_m.html#a08b12af4d0dbd5f1872fc6157a859f7f">mGlassThick</a></td></tr>
 <tr class="separator:aedf09daf267a3c3b2dd9602c05f07636"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -282,20 +287,28 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a23191a5e912d1fdd142c8a33b4dbb0c8"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a23191a5e912d1fdd142c8a33b4dbb0c8">mRefConeIdealInRad</a></td></tr>
 <tr class="separator:a23191a5e912d1fdd142c8a33b4dbb0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08b12af4d0dbd5f1872fc6157a859f7f"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a08b12af4d0dbd5f1872fc6157a859f7f">mGlassThick</a> = 13.5 * mm</td></tr>
+<tr class="memdesc:a08b12af4d0dbd5f1872fc6157a859f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum Glass thickness  <a href="classm_d_o_m.html#a08b12af4d0dbd5f1872fc6157a859f7f">More...</a><br /></td></tr>
 <tr class="separator:a08b12af4d0dbd5f1872fc6157a859f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdad58a2d3b927d0d05c04cc0d23095a"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#abdad58a2d3b927d0d05c04cc0d23095a">mGelThicknessFrontPMT</a> = 3.6 * mm</td></tr>
+<tr class="memdesc:abdad58a2d3b927d0d05c04cc0d23095a"><td class="mdescLeft">&#160;</td><td class="mdescRight">distance between inner glass surface and tip of PMTs  <a href="classm_d_o_m.html#abdad58a2d3b927d0d05c04cc0d23095a">More...</a><br /></td></tr>
 <tr class="separator:abdad58a2d3b927d0d05c04cc0d23095a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f1a6e0c401ef0b464f74a226ebc48e2"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a4f1a6e0c401ef0b464f74a226ebc48e2">mGelThickness</a> = 4.5 * mm</td></tr>
+<tr class="memdesc:a4f1a6e0c401ef0b464f74a226ebc48e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">distance between inner glass surface and holding structure, filled with gel  <a href="classm_d_o_m.html#a4f1a6e0c401ef0b464f74a226ebc48e2">More...</a><br /></td></tr>
 <tr class="separator:a4f1a6e0c401ef0b464f74a226ebc48e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2054cea24a6f7bd00d684bd60e375a57"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a2054cea24a6f7bd00d684bd60e375a57">mEqPMTrOffset</a> = 2.6 * mm</td></tr>
+<tr class="memdesc:a2054cea24a6f7bd00d684bd60e375a57"><td class="mdescLeft">&#160;</td><td class="mdescRight">middle PMT circles are slightly further out due to mEqPMTzOffset  <a href="classm_d_o_m.html#a2054cea24a6f7bd00d684bd60e375a57">More...</a><br /></td></tr>
 <tr class="separator:a2054cea24a6f7bd00d684bd60e375a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c1757c5fbd9f90d0b4a4468eb70ce42"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a0c1757c5fbd9f90d0b4a4468eb70ce42">mEqPMTzOffset</a> = 10.0 * mm</td></tr>
+<tr class="memdesc:a0c1757c5fbd9f90d0b4a4468eb70ce42"><td class="mdescLeft">&#160;</td><td class="mdescRight">z-offset of middle PMT circles w.r.t. center of glass sphere  <a href="classm_d_o_m.html#a0c1757c5fbd9f90d0b4a4468eb70ce42">More...</a><br /></td></tr>
 <tr class="separator:a0c1757c5fbd9f90d0b4a4468eb70ce42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87182287102be81c43a516e8d7d5a25c"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a87182287102be81c43a516e8d7d5a25c">mRefConeHalfZ</a> = 15 * mm</td></tr>
+<tr class="memdesc:a87182287102be81c43a516e8d7d5a25c"><td class="mdescLeft">&#160;</td><td class="mdescRight">half-height of reflector (before cutting to right form)  <a href="classm_d_o_m.html#a87182287102be81c43a516e8d7d5a25c">More...</a><br /></td></tr>
 <tr class="separator:a87182287102be81c43a516e8d7d5a25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4698d5b6cc2b233a4501a9ec1b34ff6"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#ad4698d5b6cc2b233a4501a9ec1b34ff6">mRefConeSheetThickness</a> = 0.5 * mm</td></tr>
+<tr class="memdesc:ad4698d5b6cc2b233a4501a9ec1b34ff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">aluminum sheet thickness true for all reflective cones  <a href="classm_d_o_m.html#ad4698d5b6cc2b233a4501a9ec1b34ff6">More...</a><br /></td></tr>
 <tr class="separator:ad4698d5b6cc2b233a4501a9ec1b34ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a663f0885611e2697d7571465999568ec"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a663f0885611e2697d7571465999568ec">mRefConeToHolder</a> = 1.55 * mm</td></tr>
+<tr class="memdesc:a663f0885611e2697d7571465999568ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">horizontal distance from K??rcher's construction  <a href="classm_d_o_m.html#a663f0885611e2697d7571465999568ec">More...</a><br /></td></tr>
 <tr class="separator:a663f0885611e2697d7571465999568ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31abbeec998978802e32bd4f542c3485"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classm_d_o_m.html#a31abbeec998978802e32bd4f542c3485">mThetaPolar</a> = 33.0 * deg</td></tr>
 <tr class="separator:a31abbeec998978802e32bd4f542c3485"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1523,7 +1536,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classm_d_o_m.html">mDOM</a></li>
-    <li class="footer">Generated on Sat Jun 8 2024 06:47:30 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 10 2024 12:28:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

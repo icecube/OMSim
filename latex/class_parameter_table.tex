@@ -18,9 +18,7 @@ Inheritance diagram for Parameter\+Table\+:
 
 
 \doxysubsection{Detailed Description}
-The \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} class provides an interface for handling and querying JSON data represented in the form of a property tree of the boost library. It facilitates the extraction of specific parameters from loaded JSON files while also supporting units and scales. The class is capable of loading multiple JSON datasets, each uniquely identified by a key, and can perform actions such as fetching a value, checking the presence of a key, and more.
-
-Internally, this class leverages the {\ttfamily boost\+::property\+\_\+tree\+::ptree} to represent and manage the JSON data structure, which makes it easy to traverse and fetch desired parameters.
+Interface for handling and querying data in the form of a property tree of the boost library. It facilitates the extraction of specific parameters from loaded JSON files while also supporting units and scales.
 
 Its main use is as base class of \mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}}, but you may use it as needed (see \mbox{\hyperlink{class_parameter_table_ExampleUsageParameterTable}{Minimal example}}).\hypertarget{class_parameter_table_ExampleUsageParameterTable}{}\doxysubsubsection{Minimal example}\label{class_parameter_table_ExampleUsageParameterTable}
 
@@ -35,15 +33,7 @@ Its main use is as base class of \mbox{\hyperlink{class_input_data_manager}{Inpu
 \DoxyCodeLine{lTable.\mbox{\hyperlink{class_parameter_table_a3c2a94b50a41341c104b5b1585d15efc}{parseKeyContentToVector}}(lVector, lSubtree, \textcolor{stringliteral}{"{}keyOfArray"{}}, 1.0, \textcolor{keyword}{false}); \textcolor{comment}{// parsing array into vector}}
 
 \end{DoxyCode}
-
-
-\begin{DoxyWarning}{Warning}
-It\textquotesingle{}s essential to ensure that the provided JSON files are formatted correctly and that the keys and parameters being queried exist within the loaded datasets to avoid runtime errors or unexpected behavior.
-\end{DoxyWarning}
-\begin{DoxyNote}{Note}
-While the class provides type templating for fetching values, care must be taken to ensure the correctness of the types. 
-\end{DoxyNote}
-\doxysubsection*{Public Member Functions}
+ \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_parameter_table_a6acdd356fb3153bcc463f29e495c211d}{Parameter\+Table}} ()

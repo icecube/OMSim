@@ -1,14 +1,14 @@
 var struct_hit_stats =
 [
-    [ "event_distance", "struct_hit_stats.html#a239bb18751a36e1056f408438bef3626", null ],
-    [ "event_id", "struct_hit_stats.html#a083785d39bbb36d3b96c013d72871bfb", null ],
-    [ "hit_time", "struct_hit_stats.html#aa98810da31bcafce33d1150f9040b179", null ],
-    [ "photon_direction", "struct_hit_stats.html#aad96ef4ac7b91e41f8e51ed9436c10d3", null ],
-    [ "photon_energy", "struct_hit_stats.html#a43c2be1edf587134e143b989ed027a45", null ],
-    [ "photon_flight_time", "struct_hit_stats.html#aed7c609a2bba96df75f0e202d609b283", null ],
-    [ "photon_global_position", "struct_hit_stats.html#a1655bb023dccf89fc34621487f845626", null ],
-    [ "photon_local_position", "struct_hit_stats.html#a83f200ce2f28b1ccba57172a5be54c19", null ],
-    [ "photon_track_length", "struct_hit_stats.html#a3cc8289263dedf3bee11a8bf3d6055b4", null ],
-    [ "PMT_hit", "struct_hit_stats.html#a82366d3fe8420fc7ce3d8a235c28823a", null ],
-    [ "PMT_response", "struct_hit_stats.html#a59e4bb359b5434d19aafdb3d963f08b2", null ]
+    [ "direction", "struct_hit_stats.html#a383cfeda6e6e515b56aee0a369ec5085", null ],
+    [ "energy", "struct_hit_stats.html#a542a1e55040646afe6966f281194117b", null ],
+    [ "eventId", "struct_hit_stats.html#a5b5b61f1096a1e02d495d7bab1fff259", null ],
+    [ "flightTime", "struct_hit_stats.html#a254bd94585df0605a6e2e863e3e00851", null ],
+    [ "generationDetectionDistance", "struct_hit_stats.html#ae73c03f4d9024845eb1bfd5de71eb653", null ],
+    [ "globalPosition", "struct_hit_stats.html#a6a80e0ae23f39c939f1e46737cc80dd4", null ],
+    [ "hitTime", "struct_hit_stats.html#ae0c5192a6db7a2fc8dec37e62a6a1e76", null ],
+    [ "localPosition", "struct_hit_stats.html#a82333e4544d85c231e0aab2660f99cda", null ],
+    [ "pathLenght", "struct_hit_stats.html#ae7c3d380f7f961927f73fef4ee20fe4d", null ],
+    [ "PMTnr", "struct_hit_stats.html#af603afdc7e643ea0246cb0b642ae8bb5", null ],
+    [ "PMTresponse", "struct_hit_stats.html#a3c8b0736ba6927c644ee1b9e62e02e64", null ]
 ];

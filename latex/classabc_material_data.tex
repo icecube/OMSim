@@ -2,7 +2,7 @@
 \label{classabc_material_data}\index{abcMaterialData@{abcMaterialData}}
 
 
-Abstract base class for material data extraction from a json file.  
+Abstract base class for material data extraction from a json file. \mbox{\hyperlink{classabc_material_data}{abc\+Material\+Data}} class is derived from \mbox{\hyperlink{classabc_data_file}{abc\+Data\+File}} class. It is designed to manage the material data, such as refractive index and absorption length.  
 
 
 
@@ -25,15 +25,7 @@ Collaboration diagram for abc\+Material\+Data\+:
 \includegraphics[width=183pt]{classabc_material_data__coll__graph}
 \end{center}
 \end{figure}
-
-
-\doxysubsection{Detailed Description}
-\mbox{\hyperlink{classabc_material_data}{abc\+Material\+Data}} class is derived from \mbox{\hyperlink{classabc_data_file}{abc\+Data\+File}} class. It is designed to manage the material data, such as refractive index and absorption length.
-
-\begin{DoxyNote}{Note}
-This class is abstract and cannot be instantiated directly. Instead, use one of the derived classes\+: \mbox{\hyperlink{class_refraction_and_absorption}{Refraction\+And\+Absorption}}, \mbox{\hyperlink{class_refraction_only}{Refraction\+Only}}, \mbox{\hyperlink{class_no_optics}{No\+Optics}}, or \mbox{\hyperlink{class_ice_cube_ice}{Ice\+Cube\+Ice}}.
-\end{DoxyNote}
-The method extract\+Information is a pure virtual function that should be implemented by the derived classes. It is intended for the specific extraction of data required by each derived class. \doxysubsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classabc_material_data_ae30f0dc56953e39e0f5cb711c645d5a5}{abc\+Material\+Data}} (G4\+String p\+File\+Name)
@@ -59,7 +51,7 @@ G4\+Nist\+Manager $\ast$ \mbox{\hyperlink{classabc_material_data_ae6950e6c075109
 G4\+State \mbox{\hyperlink{classabc_material_data_a8fee96bfd62337bcaefd70ba42b35aa6}{get\+State}} (G4\+String p\+State)
 \begin{DoxyCompactList}\small\item\em Converts a string representing a state of matter to a G4\+State. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classabc_material_data_acca9fc268907f29e89960699cadb0b53}{extract\+Information}} ()=0
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em abstract method that has to be defined in derived classes \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
@@ -79,7 +71,7 @@ virtual void \mbox{\hyperlink{classabc_material_data_acca9fc268907f29e89960699ca
 \doxysubsubsection{\texorpdfstring{createMaterial()}{createMaterial()}}
 {\footnotesize\ttfamily void abc\+Material\+Data\+::create\+Material (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-This method reads a JSON file containing material data, parses the data into a material properties table, and creates a new material in the G4\+Nist\+Manager. \mbox{\Hypertarget{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}\label{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}} 
+Reads a JSON file containing material data, parses the data into a material properties table, and creates a new material in the G4\+Nist\+Manager. \mbox{\Hypertarget{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}\label{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}} 
 \index{abcMaterialData@{abcMaterialData}!extractAbsorptionLength@{extractAbsorptionLength}}
 \index{extractAbsorptionLength@{extractAbsorptionLength}!abcMaterialData@{abcMaterialData}}
 \doxysubsubsection{\texorpdfstring{extractAbsorptionLength()}{extractAbsorptionLength()}}

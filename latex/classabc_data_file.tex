@@ -28,12 +28,7 @@ Collaboration diagram for abc\+Data\+File\+:
 
 
 \doxysubsection{Detailed Description}
-Derived classes should implement specific functionality for reading and writing different types of data files. This class contains a pointer to a \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}}, used for storing file data, and a string for the file name.
-
-\begin{DoxyNote}{Note}
-This class is not meant to be instantiated directly, but should be subclassed. Methods in this class are to be overridden in the subclass for specific behavior. 
-\end{DoxyNote}
-\doxysubsection*{Public Member Functions}
+Derived classes should implement specific functionality for reading and writing different types of data files. This class contains a pointer to a \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}}, used for storing file data, and a string for the file name. \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classabc_data_file_afa294a5fd58c6c3911d1a57683f7688a}{abc\+Data\+File}} (G4\+String p\+File\+Name)
@@ -49,14 +44,14 @@ G4\+String \mbox{\hyperlink{classabc_data_file_a50d1fc61db3d6d907c0dcbd541b10e36
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classabc_data_file_a3c104cd7ecc9722cfd4b29360018b7ee}{sort\+Vector\+By\+Reference}} (std\+::vector$<$ G4double $>$ \&reference\+Vector, std\+::vector$<$ G4double $>$ \&sort\+Vector)
-\begin{DoxyCompactList}\small\item\em This method sorts two vectors (sort\+Vector \& reference\+Vector) based on the order of values in reference\+Vector. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sorts two vectors (p\+Sort\+Vector \& p\+Reference\+Vector) based on the order of values in p\+Reference\+Vector. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classabc_data_file_afc01d4904129c5b170f0299f96ec7f8a}{extract\+Information}} ()=0
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em abstract method you have to define for a derived class \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 const G4double \mbox{\hyperlink{classabc_data_file_ac936f1db15895afb06fc9a40e2a77677}{m\+HC\+\_\+e\+Vnm}} = 1239.\+84193 $\ast$ eV
-\item 
+\begin{DoxyCompactList}\small\item\em h$\ast$c in eV $\ast$ nm \end{DoxyCompactList}\item 
 boost\+::property\+\_\+tree\+::ptree \mbox{\hyperlink{classabc_data_file_acfb2cc94ea37a200d617125538e2271f}{m\+Json\+Tree}}
 \item 
 \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$ \mbox{\hyperlink{classabc_data_file_a794403b1f022f0376e4a38e0ac28c281}{m\+File\+Data}}
@@ -89,13 +84,13 @@ Implemented in \mbox{\hyperlink{classabc_material_data_acca9fc268907f29e89960699
 \index{abcDataFile@{abcDataFile}!sortVectorByReference@{sortVectorByReference}}
 \index{sortVectorByReference@{sortVectorByReference}!abcDataFile@{abcDataFile}}
 \doxysubsubsection{\texorpdfstring{sortVectorByReference()}{sortVectorByReference()}}
-{\footnotesize\ttfamily void abc\+Data\+File\+::sort\+Vector\+By\+Reference (\begin{DoxyParamCaption}\item[{std\+::vector$<$ G4double $>$ \&}]{reference\+Vector,  }\item[{std\+::vector$<$ G4double $>$ \&}]{sort\+Vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily void abc\+Data\+File\+::sort\+Vector\+By\+Reference (\begin{DoxyParamCaption}\item[{std\+::vector$<$ G4double $>$ \&}]{p\+Reference\+Vector,  }\item[{std\+::vector$<$ G4double $>$ \&}]{p\+Sort\+Vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em reference\+Vector} & The vector of reference values. The ordering of these values will determine the final order of both vectors. \\
+{\em p\+Reference\+Vector} & The ordering of these values will determine the final order of both vectors. \\
 \hline
-{\em sort\+Vector} & The vector to be sorted according to the reference\+Vector.\\
+{\em p\+Sort\+Vector} & The vector to be sorted according to the p\+Reference\+Vector.\\
 \hline
 \end{DoxyParams}
 

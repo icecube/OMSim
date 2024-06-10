@@ -123,8 +123,8 @@ $(document).ready(function(){initNavTree('classabc_material_data.html',''); init
 </div><!--header-->
 <div class="contents">
 
-<p>Abstract base class for material data extraction from a json file.  
- <a href="classabc_material_data.html#details">More...</a></p>
+<p>Abstract base class for material data extraction from a json file. <a class="el" href="classabc_material_data.html" title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f...">abcMaterialData</a> class is derived from <a class="el" href="classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation.">abcDataFile</a> class. It is designed to manage the material data, such as refractive index and absorption length.  
+</p>
 <div class="dynheader">
 Inheritance diagram for abcMaterialData:</div>
 <div class="dyncontent">
@@ -137,11 +137,7 @@ Collaboration diagram for abcMaterialData:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="classabc_material_data__coll__graph.svg" width="148" height="203"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classabc_material_data.html" title="Abstract base class for material data extraction from a json file.">abcMaterialData</a> class is derived from <a class="el" href="classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation.">abcDataFile</a> class. It is designed to manage the material data, such as refractive index and absorption length.</p>
-<dl class="section note"><dt>Note</dt><dd>This class is abstract and cannot be instantiated directly. Instead, use one of the derived classes: <a class="el" href="class_refraction_and_absorption.html" title="This class is responsible for handling materials with both a defined refractive index and absorption ...">RefractionAndAbsorption</a>, <a class="el" href="class_refraction_only.html" title="This class is responsible for handling materials with only defined refractive index.">RefractionOnly</a>, <a class="el" href="class_no_optics.html" title="This class is responsible for handling materials without defined optical properties.">NoOptics</a>, or <a class="el" href="class_ice_cube_ice.html" title="This class is responsible for the creation and property extraction of IceCube&#39;s ice.">IceCubeIce</a>.</dd></dl>
-<p>The method extractInformation is a pure virtual function that should be implemented by the derived classes. It is intended for the specific extraction of data required by each derived class. </p>
-</div><table class="memberdecls">
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae30f0dc56953e39e0f5cb711c645d5a5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_material_data.html#ae30f0dc56953e39e0f5cb711c645d5a5">abcMaterialData</a> (G4String pFileName)</td></tr>
@@ -179,16 +175,18 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:a8fee96bfd62337bcaefd70ba42b35aa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string representing a state of matter to a G4State.  <a href="classabc_material_data.html#a8fee96bfd62337bcaefd70ba42b35aa6">More...</a><br /></td></tr>
 <tr class="separator:a8fee96bfd62337bcaefd70ba42b35aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acca9fc268907f29e89960699cadb0b53"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_material_data.html#acca9fc268907f29e89960699cadb0b53">extractInformation</a> ()=0</td></tr>
+<tr class="memdesc:acca9fc268907f29e89960699cadb0b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">abstract method that has to be defined in derived classes  <a href="classabc_material_data.html#acca9fc268907f29e89960699cadb0b53">More...</a><br /></td></tr>
 <tr class="separator:acca9fc268907f29e89960699cadb0b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classabc_data_file"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classabc_data_file')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classabc_data_file.html">abcDataFile</a></td></tr>
 <tr class="memitem:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee">sortVectorByReference</a> (std::vector&lt; G4double &gt; &amp;referenceVector, std::vector&lt; G4double &gt; &amp;sortVector)</td></tr>
-<tr class="memdesc:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sorts two vectors (sortVector &amp; referenceVector) based on the order of values in referenceVector.  <a href="classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee">More...</a><br /></td></tr>
+<tr class="memdesc:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts two vectors (pSortVector &amp; pReferenceVector) based on the order of values in pReferenceVector.  <a href="classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee">More...</a><br /></td></tr>
 <tr class="separator:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classabc_data_file"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classabc_data_file')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classabc_data_file.html">abcDataFile</a></td></tr>
 <tr class="memitem:ac936f1db15895afb06fc9a40e2a77677 inherit pro_attribs_classabc_data_file"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#ac936f1db15895afb06fc9a40e2a77677">mHC_eVnm</a> = 1239.84193 * eV</td></tr>
+<tr class="memdesc:ac936f1db15895afb06fc9a40e2a77677 inherit pro_attribs_classabc_data_file"><td class="mdescLeft">&#160;</td><td class="mdescRight">h*c in eV * nm  <a href="classabc_data_file.html#ac936f1db15895afb06fc9a40e2a77677">More...</a><br /></td></tr>
 <tr class="separator:ac936f1db15895afb06fc9a40e2a77677 inherit pro_attribs_classabc_data_file"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfb2cc94ea37a200d617125538e2271f inherit pro_attribs_classabc_data_file"><td class="memItemLeft" align="right" valign="top">boost::property_tree::ptree&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#acfb2cc94ea37a200d617125538e2271f">mJsonTree</a></td></tr>
 <tr class="separator:acfb2cc94ea37a200d617125538e2271f inherit pro_attribs_classabc_data_file"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -237,7 +235,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This method reads a JSON file containing material data, parses the data into a material properties table, and creates a new material in the G4NistManager. </p>
+<p>Reads a JSON file containing material data, parses the data into a material properties table, and creates a new material in the G4NistManager. </p>
 
 </div>
 </div>
@@ -390,7 +388,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classabc_material_data.html">abcMaterialData</a></li>
-    <li class="footer">Generated on Sat Jun 8 2024 06:47:30 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 10 2024 12:28:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

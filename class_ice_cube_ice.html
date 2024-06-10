@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('class_ice_cube_ice.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
-<p>This class is responsible for the creation and property extraction of IceCube's ice.  
+<p>Creation and extraction of IceCube's ice optical properties.  
 </p>
 <div class="dynheader">
 Inheritance diagram for IceCubeIce:</div>
@@ -163,9 +163,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a4805bf39415046a76b607bd66664b24f"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ice_cube_ice.html#a4805bf39415046a76b607bd66664b24f">spiceTemperature</a> (G4double depth)</td></tr>
-<tr class="memdesc:a4805bf39415046a76b607bd66664b24f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate temperature of ice depending on the depth.  <a href="class_ice_cube_ice.html#a4805bf39415046a76b607bd66664b24f">More...</a><br /></td></tr>
-<tr class="separator:a4805bf39415046a76b607bd66664b24f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa11719c4167b5abb115c9ecc9aed08d7"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ice_cube_ice.html#aa11719c4167b5abb115c9ecc9aed08d7">spiceTemperature</a> (G4double pDepth)</td></tr>
+<tr class="memdesc:aa11719c4167b5abb115c9ecc9aed08d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate temperature of ice depending on the depth.  <a href="class_ice_cube_ice.html#aa11719c4167b5abb115c9ecc9aed08d7">More...</a><br /></td></tr>
+<tr class="separator:aa11719c4167b5abb115c9ecc9aed08d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a435568d41c037359ed3425ad4d964312"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ice_cube_ice.html#a435568d41c037359ed3425ad4d964312">spiceAbsorption</a> (G4double pLambd)</td></tr>
 <tr class="memdesc:a435568d41c037359ed3425ad4d964312"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate absorption length of IceCube's ice for a specific wavelength.  <a href="class_ice_cube_ice.html#a435568d41c037359ed3425ad4d964312">More...</a><br /></td></tr>
 <tr class="separator:a435568d41c037359ed3425ad4d964312"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,6 +189,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ad4b33ebde2fda92e90a5e178c3a01b1f"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ice_cube_ice.html#ad4b33ebde2fda92e90a5e178c3a01b1f">mMieSpiceConst</a> [3] = {0.972, 0.0000001, 1}</td></tr>
 <tr class="separator:ad4b33ebde2fda92e90a5e178c3a01b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70ac529445cd531daf9f77754f543288"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ice_cube_ice.html#a70ac529445cd531daf9f77754f543288">mInnerColumn_b_inv</a> = 3 * cm</td></tr>
+<tr class="memdesc:a70ac529445cd531daf9f77754f543288"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eff. scattering lenght of bubble column (if placed)  <a href="class_ice_cube_ice.html#a70ac529445cd531daf9f77754f543288">More...</a><br /></td></tr>
 <tr class="separator:a70ac529445cd531daf9f77754f543288"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -211,10 +212,11 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a8fee96bfd62337bcaefd70ba42b35aa6 inherit pro_methods_classabc_material_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classabc_data_file"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classabc_data_file')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classabc_data_file.html">abcDataFile</a></td></tr>
 <tr class="memitem:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee">sortVectorByReference</a> (std::vector&lt; G4double &gt; &amp;referenceVector, std::vector&lt; G4double &gt; &amp;sortVector)</td></tr>
-<tr class="memdesc:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sorts two vectors (sortVector &amp; referenceVector) based on the order of values in referenceVector.  <a href="classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee">More...</a><br /></td></tr>
+<tr class="memdesc:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts two vectors (pSortVector &amp; pReferenceVector) based on the order of values in pReferenceVector.  <a href="classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee">More...</a><br /></td></tr>
 <tr class="separator:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classabc_data_file"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classabc_data_file')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classabc_data_file.html">abcDataFile</a></td></tr>
 <tr class="memitem:ac936f1db15895afb06fc9a40e2a77677 inherit pro_attribs_classabc_data_file"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#ac936f1db15895afb06fc9a40e2a77677">mHC_eVnm</a> = 1239.84193 * eV</td></tr>
+<tr class="memdesc:ac936f1db15895afb06fc9a40e2a77677 inherit pro_attribs_classabc_data_file"><td class="mdescLeft">&#160;</td><td class="mdescRight">h*c in eV * nm  <a href="classabc_data_file.html#ac936f1db15895afb06fc9a40e2a77677">More...</a><br /></td></tr>
 <tr class="separator:ac936f1db15895afb06fc9a40e2a77677 inherit pro_attribs_classabc_data_file"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfb2cc94ea37a200d617125538e2271f inherit pro_attribs_classabc_data_file"><td class="memItemLeft" align="right" valign="top">boost::property_tree::ptree&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#acfb2cc94ea37a200d617125538e2271f">mJsonTree</a></td></tr>
 <tr class="separator:acfb2cc94ea37a200d617125538e2271f inherit pro_attribs_classabc_data_file"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -376,8 +378,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a4805bf39415046a76b607bd66664b24f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4805bf39415046a76b607bd66664b24f">&#9670;&nbsp;</a></span>spiceTemperature()</h2>
+<a id="aa11719c4167b5abb115c9ecc9aed08d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa11719c4167b5abb115c9ecc9aed08d7">&#9670;&nbsp;</a></span>spiceTemperature()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -553,7 +555,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_ice_cube_ice.html">IceCubeIce</a></li>
-    <li class="footer">Generated on Sat Jun 8 2024 06:47:30 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 10 2024 12:28:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

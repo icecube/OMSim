@@ -2,7 +2,7 @@
 \label{class_ice_cube_ice}\index{IceCubeIce@{IceCubeIce}}
 
 
-This class is responsible for the creation and property extraction of Ice\+Cube\textquotesingle{}s ice.  
+Creation and extraction of Ice\+Cube\textquotesingle{}s ice optical properties.  
 
 
 
@@ -35,7 +35,7 @@ void \mbox{\hyperlink{class_ice_cube_ice_ac9d7a61c33f41d0025d128d7268d077f}{extr
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-G4double \mbox{\hyperlink{class_ice_cube_ice_a4805bf39415046a76b607bd66664b24f}{spice\+Temperature}} (G4double depth)
+G4double \mbox{\hyperlink{class_ice_cube_ice_aa11719c4167b5abb115c9ecc9aed08d7}{spice\+Temperature}} (G4double p\+Depth)
 \begin{DoxyCompactList}\small\item\em Calculate temperature of ice depending on the depth. \end{DoxyCompactList}\item 
 G4double \mbox{\hyperlink{class_ice_cube_ice_a435568d41c037359ed3425ad4d964312}{spice\+Absorption}} (G4double p\+Lambd)
 \begin{DoxyCompactList}\small\item\em Calculate absorption length of Ice\+Cube\textquotesingle{}s ice for a specific wavelength. \end{DoxyCompactList}\item 
@@ -57,7 +57,7 @@ std\+::vector$<$ G4double $>$ \mbox{\hyperlink{class_ice_cube_ice_ab4bb3c52de20e
 const G4double \mbox{\hyperlink{class_ice_cube_ice_ad4b33ebde2fda92e90a5e178c3a01b1f}{m\+Mie\+Spice\+Const}} \mbox{[}3\mbox{]} = \{0.\+972, 0.\+0000001, 1\}
 \item 
 G4double \mbox{\hyperlink{class_ice_cube_ice_a70ac529445cd531daf9f77754f543288}{m\+Inner\+Column\+\_\+b\+\_\+inv}} = 3 $\ast$ cm
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Eff. scattering lenght of bubble column (if placed) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
@@ -123,7 +123,7 @@ Absorption length in m.
 \begin{DoxyReturn}{Returns}
 Refraction index. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_ice_cube_ice_a4805bf39415046a76b607bd66664b24f}\label{class_ice_cube_ice_a4805bf39415046a76b607bd66664b24f}} 
+\mbox{\Hypertarget{class_ice_cube_ice_aa11719c4167b5abb115c9ecc9aed08d7}\label{class_ice_cube_ice_aa11719c4167b5abb115c9ecc9aed08d7}} 
 \index{IceCubeIce@{IceCubeIce}!spiceTemperature@{spiceTemperature}}
 \index{spiceTemperature@{spiceTemperature}!IceCubeIce@{IceCubeIce}}
 \doxysubsubsection{\texorpdfstring{spiceTemperature()}{spiceTemperature()}}

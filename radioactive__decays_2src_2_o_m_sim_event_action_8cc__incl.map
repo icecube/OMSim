@@ -14,7 +14,7 @@
 <area shape="rect" id="node9" title=" " alt="" coords="888,229,1036,271"/>
 <area shape="rect" id="node10" title=" " alt="" coords="1061,237,1138,263"/>
 <area shape="rect" id="node11" title=" " alt="" coords="585,237,715,263"/>
-<area shape="rect" id="node15" href="$_o_m_sim_p_m_t_response_8hh.html" title="Provides simulation for PMT response. This class is responsible for transforming hits on photocathode..." alt="" coords="232,155,412,181"/>
+<area shape="rect" id="node15" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="232,155,412,181"/>
 <area shape="rect" id="node16" title=" " alt="" coords="205,237,364,263"/>
 <area shape="rect" id="node17" title=" " alt="" coords="388,237,485,263"/>
 <area shape="rect" id="node18" title=" " alt="" coords="510,237,561,263"/>

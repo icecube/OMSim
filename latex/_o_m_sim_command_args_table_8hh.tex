@@ -25,7 +25,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}
-\begin{DoxyCompactList}\small\item\em A singleton class used to hold and manipulate \mbox{\hyperlink{class_o_m_sim}{OMSim}} command arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A singleton class used to hold \mbox{\hyperlink{class_o_m_sim}{OMSim}} command arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -44,14 +44,14 @@ class \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+T
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    \textcolor{keywordflow}{if} (type == \textcolor{keyword}{typeid}(TYPE))                                          \(\backslash\)}
 \DoxyCodeLine{    \{                                                                  \(\backslash\)}
-\DoxyCodeLine{        outFile << \textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)"{}"{}} << kv.first << \textcolor{stringliteral}{"{}\(\backslash\)"{}: "{}};                       \(\backslash\)}
+\DoxyCodeLine{        lOutputFile << \textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)"{}"{}} << kv.first << \textcolor{stringliteral}{"{}\(\backslash\)"{}: "{}};                       \(\backslash\)}
 \DoxyCodeLine{        if (\textcolor{keyword}{typeid}(TYPE) == \textcolor{keyword}{typeid}(std::string))                       \(\backslash\)}
 \DoxyCodeLine{        \{                                                              \(\backslash\)}
-\DoxyCodeLine{            outFile << \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}} << boost::any\_cast<TYPE>(VARIANT) << \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}; \(\backslash\)}
+\DoxyCodeLine{            lOutputFile << \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}} << boost::any\_cast<TYPE>(VARIANT) << \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}; \(\backslash\)}
 \DoxyCodeLine{        \}                                                              \(\backslash\)}
 \DoxyCodeLine{        else                                                           \(\backslash\)}
 \DoxyCodeLine{        \{                                                              \(\backslash\)}
-\DoxyCodeLine{            outFile << boost::any\_cast<TYPE>(VARIANT);                 \(\backslash\)}
+\DoxyCodeLine{            lOutputFile << boost::any\_cast<TYPE>(VARIANT);                 \(\backslash\)}
 \DoxyCodeLine{        \}                                                              \(\backslash\)}
 \DoxyCodeLine{    \}}
 

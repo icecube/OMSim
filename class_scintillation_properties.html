@@ -123,8 +123,8 @@ $(document).ready(function(){initNavTree('class_scintillation_properties.html','
 </div><!--header-->
 <div class="contents">
 
-<p>Class to extract and apply scintillation properties to existing materials.  
- <a href="class_scintillation_properties.html#details">More...</a></p>
+<p>Scintillation properties extraction for existing materials.  
+</p>
 <div class="dynheader">
 Inheritance diagram for ScintillationProperties:</div>
 <div class="dyncontent">
@@ -137,14 +137,13 @@ Collaboration diagram for ScintillationProperties:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="class_scintillation_properties__coll__graph.svg" width="176" height="203"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class is responsible for extracting scintillation properties from a data file and applying them to a Geant4 material's properties table. </p>
-</div><table class="memberdecls">
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a03dca72bd4861b8500283dc15c0864e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scintillation_properties.html#a03dca72bd4861b8500283dc15c0864e0">ScintillationProperties</a> (G4String pFilename)</td></tr>
 <tr class="separator:a03dca72bd4861b8500283dc15c0864e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c16439c71032b0df72dfff7aa776e69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scintillation_properties.html#a6c16439c71032b0df72dfff7aa776e69">extractInformation</a> ()</td></tr>
+<tr class="memdesc:a6c16439c71032b0df72dfff7aa776e69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract sctintillation properties from json-file and adds them to existing material table.  <a href="class_scintillation_properties.html#a6c16439c71032b0df72dfff7aa776e69">More...</a><br /></td></tr>
 <tr class="separator:a6c16439c71032b0df72dfff7aa776e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classabc_data_file"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classabc_data_file')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classabc_data_file.html">abcDataFile</a></td></tr>
 <tr class="memitem:afa294a5fd58c6c3911d1a57683f7688a inherit pub_methods_classabc_data_file"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#afa294a5fd58c6c3911d1a57683f7688a">abcDataFile</a> (G4String pFileName)</td></tr>
@@ -177,7 +176,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:ac8ab70819d1cdb35cc6ce2155f990379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract the yield from json tree.  <a href="class_scintillation_properties.html#ac8ab70819d1cdb35cc6ce2155f990379">More...</a><br /></td></tr>
 <tr class="separator:ac8ab70819d1cdb35cc6ce2155f990379"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af525e651ef632ab272850c743ea9c76f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scintillation_properties.html#af525e651ef632ab272850c743ea9c76f">findMPT</a> ()</td></tr>
-<tr class="memdesc:af525e651ef632ab272850c743ea9c76f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds and stores the Geant4 Material Properties Table for the material with name given by the key jMaterialName. If material does not exist it will crash!  <a href="class_scintillation_properties.html#af525e651ef632ab272850c743ea9c76f">More...</a><br /></td></tr>
+<tr class="memdesc:af525e651ef632ab272850c743ea9c76f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds and stores the Geant4 Material Properties Table for the material with name given by the key jMaterialName. If material does not exist it will throw an exception!  <a href="class_scintillation_properties.html#af525e651ef632ab272850c743ea9c76f">More...</a><br /></td></tr>
 <tr class="separator:af525e651ef632ab272850c743ea9c76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -194,10 +193,11 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a50d1fc61db3d6d907c0dcbd541b10e36 inherit pub_attribs_classabc_data_file"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classabc_data_file"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classabc_data_file')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classabc_data_file.html">abcDataFile</a></td></tr>
 <tr class="memitem:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee">sortVectorByReference</a> (std::vector&lt; G4double &gt; &amp;referenceVector, std::vector&lt; G4double &gt; &amp;sortVector)</td></tr>
-<tr class="memdesc:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sorts two vectors (sortVector &amp; referenceVector) based on the order of values in referenceVector.  <a href="classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee">More...</a><br /></td></tr>
+<tr class="memdesc:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts two vectors (pSortVector &amp; pReferenceVector) based on the order of values in pReferenceVector.  <a href="classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee">More...</a><br /></td></tr>
 <tr class="separator:a3c104cd7ecc9722cfd4b29360018b7ee inherit pro_methods_classabc_data_file"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classabc_data_file"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classabc_data_file')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classabc_data_file.html">abcDataFile</a></td></tr>
 <tr class="memitem:ac936f1db15895afb06fc9a40e2a77677 inherit pro_attribs_classabc_data_file"><td class="memItemLeft" align="right" valign="top">const G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#ac936f1db15895afb06fc9a40e2a77677">mHC_eVnm</a> = 1239.84193 * eV</td></tr>
+<tr class="memdesc:ac936f1db15895afb06fc9a40e2a77677 inherit pro_attribs_classabc_data_file"><td class="mdescLeft">&#160;</td><td class="mdescRight">h*c in eV * nm  <a href="classabc_data_file.html#ac936f1db15895afb06fc9a40e2a77677">More...</a><br /></td></tr>
 <tr class="separator:ac936f1db15895afb06fc9a40e2a77677 inherit pro_attribs_classabc_data_file"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfb2cc94ea37a200d617125538e2271f inherit pro_attribs_classabc_data_file"><td class="memItemLeft" align="right" valign="top">boost::property_tree::ptree&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#acfb2cc94ea37a200d617125538e2271f">mJsonTree</a></td></tr>
 <tr class="separator:acfb2cc94ea37a200d617125538e2271f inherit pro_attribs_classabc_data_file"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -340,7 +340,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Currently no measurements of the temperature dependence of the scintillation spectrum were done. Spectrum data always at room temperature. </p>
 
 </div>
 </div>
@@ -499,13 +498,13 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">void ScintillationProperties::getLifeTimeTemperatureRange </td>
           <td>(</td>
           <td class="paramtype">double &amp;&#160;</td>
-          <td class="paramname"><em>minTemp</em>, </td>
+          <td class="paramname"><em>pMinTemp</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double &amp;&#160;</td>
-          <td class="paramname"><em>maxTemp</em>&#160;</td>
+          <td class="paramname"><em>pMaxTemp</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -548,13 +547,13 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>T1</em>, </td>
+          <td class="paramname"><em>pT1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>T2</em>&#160;</td>
+          <td class="paramname"><em>pT2</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -612,7 +611,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_scintillation_properties.html">ScintillationProperties</a></li>
-    <li class="footer">Generated on Sat Jun 8 2024 06:47:30 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 10 2024 12:28:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

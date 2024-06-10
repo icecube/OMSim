@@ -336,7 +336,7 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="_o_m_sim_u_iinterface_8hh.html" target="_top" xlink:title="The OMSimUIinterface class provides a singleton interface to Geant4&#39;s UI manager.">
+<g id="a_node6"><a xlink:href="_o_m_sim_u_iinterface_8hh.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="364.5,-224.5 364.5,-243.5 485.5,-243.5 485.5,-224.5 364.5,-224.5"/>
 <text text-anchor="middle" x="425" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimUIinterface.hh</text>
 </a>

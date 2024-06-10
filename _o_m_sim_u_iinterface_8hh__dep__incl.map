@@ -1,5 +1,5 @@
 <map id="OMSimUIinterface.hh" name="OMSimUIinterface.hh">
-<area shape="rect" id="node1" title="The OMSimUIinterface class provides a singleton interface to Geant4&#39;s UI manager." alt="" coords="500,5,661,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="500,5,661,32"/>
 <area shape="rect" id="node2" href="$_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="279,80,368,107"/>
 <area shape="rect" id="node7" href="$_o_m_sim_m_d_o_m_flasher_8cc.html" title=" " alt="" coords="393,80,571,107"/>
 <area shape="rect" id="node8" href="$_o_m_sim_angular_scan_8cc.html" title=" " alt="" coords="595,80,763,107"/>

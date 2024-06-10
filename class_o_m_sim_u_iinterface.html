@@ -125,18 +125,16 @@ $(document).ready(function(){initNavTree('class_o_m_sim_u_iinterface.html',''); 
 <div class="contents">
 
 <p>Singleton interface to Geant4's UI manager.  
- <a href="class_o_m_sim_u_iinterface.html#details">More...</a></p>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="class_o_m_sim_u_iinterface.html" title="Singleton interface to Geant4&#39;s UI manager.">OMSimUIinterface</a> class provides a singleton interface to Geant4's UI manager. It simplifies the application of commands to the UI manager by handling argument parsing and logging. </p>
-</div><table class="memberdecls">
+</p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab38089a4fb48f97b36b2f1278cfd76d3"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:ab38089a4fb48f97b36b2f1278cfd76d3"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html#ab38089a4fb48f97b36b2f1278cfd76d3">applyCommand</a> (const std::string &amp;command, const Args &amp;...args)</td></tr>
-<tr class="memdesc:ab38089a4fb48f97b36b2f1278cfd76d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a command to Geant4's UI manager and log it.  <a href="class_o_m_sim_u_iinterface.html#ab38089a4fb48f97b36b2f1278cfd76d3">More...</a><br /></td></tr>
-<tr class="separator:ab38089a4fb48f97b36b2f1278cfd76d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa08ab9820d0591b64d0dd8c5599ddd14"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:aa08ab9820d0591b64d0dd8c5599ddd14"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html#aa08ab9820d0591b64d0dd8c5599ddd14">applyCommand</a> (const std::string &amp;pCommand, const Args &amp;...pArgs)</td></tr>
+<tr class="memdesc:aa08ab9820d0591b64d0dd8c5599ddd14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a command to Geant4's UI manager and log it. It accept any number of arguments that are then appended; e.g. applyCommand("cmd", 1, 2, 3) will apply a UI command "cmd 1 2 3".  <a href="class_o_m_sim_u_iinterface.html#aa08ab9820d0591b64d0dd8c5599ddd14">More...</a><br /></td></tr>
+<tr class="separator:aa08ab9820d0591b64d0dd8c5599ddd14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66ce7c3befd8cc22460a1a6939eb5e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html#ae66ce7c3befd8cc22460a1a6939eb5e1">setUI</a> (G4UImanager *pUI)</td></tr>
-<tr class="memdesc:ae66ce7c3befd8cc22460a1a6939eb5e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the UI manager for the <a class="el" href="class_o_m_sim_u_iinterface.html" title="Singleton interface to Geant4&#39;s UI manager.">OMSimUIinterface</a> class. This is done in the main.  <a href="class_o_m_sim_u_iinterface.html#ae66ce7c3befd8cc22460a1a6939eb5e1">More...</a><br /></td></tr>
+<tr class="memdesc:ae66ce7c3befd8cc22460a1a6939eb5e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the UI manager for the <a class="el" href="class_o_m_sim_u_iinterface.html" title="Singleton interface to Geant4&#39;s UI manager.">OMSimUIinterface</a> class.  <a href="class_o_m_sim_u_iinterface.html#ae66ce7c3befd8cc22460a1a6939eb5e1">More...</a><br /></td></tr>
 <tr class="separator:ae66ce7c3befd8cc22460a1a6939eb5e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a671add7257f9229071a509b8677789d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html#a671add7257f9229071a509b8677789d2">runBeamOn</a> (G4int pNumberOfEvents=-1)</td></tr>
 <tr class="memdesc:a671add7257f9229071a509b8677789d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a run with a given number of events.  <a href="class_o_m_sim_u_iinterface.html#a671add7257f9229071a509b8677789d2">More...</a><br /></td></tr>
@@ -157,19 +155,19 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a64c42abc8252d14cbfa36e3b4a8c6818"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43fc02eb1f517d6c98fc5b90131114b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html#a43fc02eb1f517d6c98fc5b90131114b8">appendToStream</a> (std::stringstream &amp;stream)</td></tr>
 <tr class="separator:a43fc02eb1f517d6c98fc5b90131114b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9735bddc1bb08cc2dd54eed77b4f2d47"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a9735bddc1bb08cc2dd54eed77b4f2d47"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html#a9735bddc1bb08cc2dd54eed77b4f2d47">appendToStream</a> (std::stringstream &amp;stream, const T &amp;val)</td></tr>
-<tr class="memdesc:a9735bddc1bb08cc2dd54eed77b4f2d47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to append arguments to the command string stream.  <a href="class_o_m_sim_u_iinterface.html#a9735bddc1bb08cc2dd54eed77b4f2d47">More...</a><br /></td></tr>
-<tr class="separator:a9735bddc1bb08cc2dd54eed77b4f2d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75fb02ab6ed635a0c48b453e29844b15"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
-<tr class="memitem:a75fb02ab6ed635a0c48b453e29844b15"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html#a75fb02ab6ed635a0c48b453e29844b15">appendToStream</a> (std::stringstream &amp;stream, const T &amp;val, const Args &amp;...args)</td></tr>
-<tr class="memdesc:a75fb02ab6ed635a0c48b453e29844b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variadic template function to append multiple arguments to the command string stream.  <a href="class_o_m_sim_u_iinterface.html#a75fb02ab6ed635a0c48b453e29844b15">More...</a><br /></td></tr>
-<tr class="separator:a75fb02ab6ed635a0c48b453e29844b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ba77890bae2eeeb33d40600d85d0589"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a7ba77890bae2eeeb33d40600d85d0589"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html#a7ba77890bae2eeeb33d40600d85d0589">appendToStream</a> (std::stringstream &amp;pStream, const T &amp;pVal)</td></tr>
+<tr class="memdesc:a7ba77890bae2eeeb33d40600d85d0589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append arguments to the command string stream.  <a href="class_o_m_sim_u_iinterface.html#a7ba77890bae2eeeb33d40600d85d0589">More...</a><br /></td></tr>
+<tr class="separator:a7ba77890bae2eeeb33d40600d85d0589"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1632617642ce1430d81fe93186ed26e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
+<tr class="memitem:aa1632617642ce1430d81fe93186ed26e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html#aa1632617642ce1430d81fe93186ed26e">appendToStream</a> (std::stringstream &amp;pStream, const T &amp;pVal, const Args &amp;...pArgs)</td></tr>
+<tr class="memdesc:aa1632617642ce1430d81fe93186ed26e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append multiple arguments to the command string stream.  <a href="class_o_m_sim_u_iinterface.html#aa1632617642ce1430d81fe93186ed26e">More...</a><br /></td></tr>
+<tr class="separator:aa1632617642ce1430d81fe93186ed26e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a0f6afe4bd786cef5246120ce2085dfa6"><td class="memItemLeft" align="right" valign="top">G4UImanager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html#a0f6afe4bd786cef5246120ce2085dfa6">UI</a></td></tr>
-<tr class="separator:a0f6afe4bd786cef5246120ce2085dfa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed675b9fef80c0ffbbfd39794b287b5c"><td class="memItemLeft" align="right" valign="top">G4UImanager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html#aed675b9fef80c0ffbbfd39794b287b5c">mUImanager</a></td></tr>
+<tr class="separator:aed675b9fef80c0ffbbfd39794b287b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a71034bda00b1648e8368f78431c4e0e9"></a>
@@ -224,8 +222,128 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7ba77890bae2eeeb33d40600d85d0589"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ba77890bae2eeeb33d40600d85d0589">&#9670;&nbsp;</a></span>appendToStream() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimUIinterface::appendToStream </td>
+          <td>(</td>
+          <td class="paramtype">std::stringstream &amp;&#160;</td>
+          <td class="paramname"><em>pStream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>pVal</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pStream</td><td>The command string stream. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type of the argument to append. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pVal</td><td>The value of the argument to append. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa1632617642ce1430d81fe93186ed26e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1632617642ce1430d81fe93186ed26e">&#9670;&nbsp;</a></span>appendToStream() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimUIinterface::appendToStream </td>
+          <td>(</td>
+          <td class="paramtype">std::stringstream &amp;&#160;</td>
+          <td class="paramname"><em>pStream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>pVal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Args &amp;...&#160;</td>
+          <td class="paramname"><em>pArgs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pStream</td><td>The command string stream. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type of the first argument to append. </td></tr>
+    <tr><td class="paramname">Args</td><td>Variadic template for accepting multiple arguments. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pVal</td><td>The value of the first argument to append. </td></tr>
+    <tr><td class="paramname">pArgs</td><td>The values of the additional arguments to append. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a43fc02eb1f517d6c98fc5b90131114b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43fc02eb1f517d6c98fc5b90131114b8">&#9670;&nbsp;</a></span>appendToStream() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a43fc02eb1f517d6c98fc5b90131114b8">&#9670;&nbsp;</a></span>appendToStream() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -250,128 +368,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a9735bddc1bb08cc2dd54eed77b4f2d47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9735bddc1bb08cc2dd54eed77b4f2d47">&#9670;&nbsp;</a></span>appendToStream() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void OMSimUIinterface::appendToStream </td>
-          <td>(</td>
-          <td class="paramtype">std::stringstream &amp;&#160;</td>
-          <td class="paramname"><em>stream</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"><em>val</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stream</td><td>The command string stream. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">T</td><td>Type of the argument to append. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">val</td><td>The value of the argument to append. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a75fb02ab6ed635a0c48b453e29844b15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75fb02ab6ed635a0c48b453e29844b15">&#9670;&nbsp;</a></span>appendToStream() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename... Args&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void OMSimUIinterface::appendToStream </td>
-          <td>(</td>
-          <td class="paramtype">std::stringstream &amp;&#160;</td>
-          <td class="paramname"><em>stream</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"><em>val</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Args &amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stream</td><td>The command string stream. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">T</td><td>Type of the first argument to append. </td></tr>
-    <tr><td class="paramname">Args</td><td>Variadic template for accepting multiple arguments. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">val</td><td>The value of the first argument to append. </td></tr>
-    <tr><td class="paramname">args</td><td>The values of the additional arguments to append. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab38089a4fb48f97b36b2f1278cfd76d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab38089a4fb48f97b36b2f1278cfd76d3">&#9670;&nbsp;</a></span>applyCommand()</h2>
+<a id="aa08ab9820d0591b64d0dd8c5599ddd14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa08ab9820d0591b64d0dd8c5599ddd14">&#9670;&nbsp;</a></span>applyCommand()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -385,13 +383,13 @@ template&lt;typename... Args&gt; </div>
           <td class="memname">void OMSimUIinterface::applyCommand </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>command</em>, </td>
+          <td class="paramname"><em>pCommand</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const Args &amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
+          <td class="paramname"><em>pArgs</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -405,10 +403,10 @@ template&lt;typename... Args&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>It accept any number of arguments that are then appended; e.g. applyCommand("cmd", 1, 2, 3) will apply a UI command "cmd 1 2 3" </p><dl class="params"><dt>Parameters</dt><dd>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">command</td><td>The command string to execute. </td></tr>
-    <tr><td class="paramname">args</td><td>(Optional) additional arguments that will be appended to the command, one after the other. </td></tr>
+    <tr><td class="paramname">pCommand</td><td>The command string to execute. </td></tr>
+    <tr><td class="paramname">pArgs</td><td>(Optional) additional arguments that will be appended to the command, one after the other. </td></tr>
   </table>
   </dd>
 </dl>
@@ -537,8 +535,8 @@ template&lt;typename... Args&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a0f6afe4bd786cef5246120ce2085dfa6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f6afe4bd786cef5246120ce2085dfa6">&#9670;&nbsp;</a></span>UI</h2>
+<a id="aed675b9fef80c0ffbbfd39794b287b5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed675b9fef80c0ffbbfd39794b287b5c">&#9670;&nbsp;</a></span>mUImanager</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -547,7 +545,7 @@ template&lt;typename... Args&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4UImanager* OMSimUIinterface::UI</td>
+          <td class="memname">G4UImanager* OMSimUIinterface::mUImanager</td>
         </tr>
       </table>
   </td>
@@ -568,7 +566,7 @@ template&lt;typename... Args&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a></li>
-    <li class="footer">Generated on Sat Jun 8 2024 06:47:30 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 10 2024 12:28:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

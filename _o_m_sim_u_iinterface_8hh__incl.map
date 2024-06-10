@@ -1,5 +1,5 @@
 <map id="OMSimUIinterface.hh" name="OMSimUIinterface.hh">
-<area shape="rect" id="node1" title="The OMSimUIinterface class provides a singleton interface to Geant4&#39;s UI manager." alt="" coords="499,5,660,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="499,5,660,32"/>
 <area shape="rect" id="node2" href="$_o_m_sim_command_args_table_8hh.html" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="371,80,590,107"/>
 <area shape="rect" id="node11" title=" " alt="" coords="614,80,745,107"/>
 <area shape="rect" id="node3" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="229,155,361,181"/>

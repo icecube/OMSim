@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="Provides simulation for PMT response. This class is responsible for transforming hits on photocathode...">
+<g id="a_node1"><a xlink:title="Simulation of PMT response.">
 <polygon fill="#bfbfbf" stroke="black" points="1275.5,-280.5 1275.5,-299.5 1410.5,-299.5 1410.5,-280.5 1275.5,-280.5"/>
 <text text-anchor="middle" x="1343" y="-287.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPMTResponse.hh</text>
 </a>
