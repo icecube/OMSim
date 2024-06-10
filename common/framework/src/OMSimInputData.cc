@@ -7,11 +7,6 @@
 
 namespace pt = boost::property_tree;
 
-InputDataManager::InputDataManager()
-{
-    log_debug("Starting InputDataManager");
-}
-
 /*
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  *                                          Helper Class
@@ -60,9 +55,8 @@ G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
     }
 
     // Try getting the value with unit first
-    try
+    if (lSubTree.get_optional<G4String>(pParameter + ".jUnit") && lSubTree.get_optional<G4String>(pParameter + ".jValue"))
     {
-
         const G4String lUnit = lSubTree.get<G4String>(pParameter + ".jUnit");
         const G4double lValue = lSubTree.get<G4double>(pParameter + ".jValue");
 
@@ -79,9 +73,8 @@ G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
                    ? lValue / G4UnitDefinition::GetValueOf(lUnit)
                    : lValue * G4UnitDefinition::GetValueOf(lUnit);
     }
-    catch (...)
+    else
     {
-        // Fallback to getting just the value if any of the above fails
         return lSubTree.get<G4double>(pParameter);
     }
 }
@@ -265,10 +258,7 @@ G4OpticalSurface *InputDataManager::getOpticalSurface(G4String pName)
         }
         else
         {
-            G4String mssg = "Requested Optical Surface " + pName +
-                            " not found. This will cause a segmentation fault. "
-                            "Please check the name!!";
-            log_critical(mssg);
+            log_critical("Requested Optical Surface {} not found. Please check the name for typos!!", pName);
             throw std::runtime_error("Requested Optical Surface not found: " + pName);
         }
     }

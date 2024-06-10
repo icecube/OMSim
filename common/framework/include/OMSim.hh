@@ -43,24 +43,25 @@ namespace po = boost::program_options;
 class OMSim
 {
 public:
-
     OMSim();
     ~OMSim();
 
     void ensureOutputDirectoryExists(const std::string &filepath);
-    void initialiseSimulation(OMSimDetectorConstruction* pDetectorConstruction);
+    void initialiseSimulation(OMSimDetectorConstruction *pDetectorConstruction);
     void configureLogger();
     bool handleArguments(int pArgumentCount, char *pArgumentVector[]);
     void startVisualisationIfRequested();
-    //OMSimDetectorConstruction* getDetectorConstruction();
-    
-    
-    G4Navigator* getNavigator(){return mNavigator;};
+    // OMSimDetectorConstruction* getDetectorConstruction();
+
+    G4Navigator *getNavigator() { return mNavigator; };
     void extendOptions(po::options_description pNewOptions);
     po::options_description mGeneralOptions;
+
 private:
+    void initialLoggerConfiguration();
     po::variables_map parseArguments(int pArgumentCount, char *pArgumentVector[]);
     void setUserArgumentsToArgTable(po::variables_map pVariablesMap);
+    void setGeneralOptions();
 
     G4RunManager *mRunManager = nullptr;
     G4VisExecutive *mVisManager = nullptr;
@@ -73,9 +74,7 @@ private:
     G4UserSteppingAction *mStepping = nullptr;
     G4TouchableHistory *mHistory = nullptr;
 
-    
-
-    G4double mStartingTime=0;
+    G4double mStartingTime = 0;
 };
 
 #endif // OMSIM_H

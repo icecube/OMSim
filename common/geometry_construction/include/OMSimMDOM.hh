@@ -1,6 +1,5 @@
 /** @file OMSimMDOM.hh
  *  @brief Construction of mDOM.
- *  @author Lew Classen, Martin Unland
  *  @ingroup common
  */
 #ifndef OMSimMDOM_h
@@ -31,8 +30,8 @@ public:
     }
 
     G4int mNrTotalLED;
-    std::vector<G4Transform3D> mLEDTransformers;           // coordinates from center of the module
-    std::vector<std::vector<G4double>> mLED_AngFromSphere; // stores rho (mm),theta (deg),phi (deg) of each LED from the center of its corresponding spherical part. Useful to run the particles.
+    std::vector<G4Transform3D> mLEDTransformers;           ///< coordinates from center of the module
+    std::vector<std::vector<G4double>> mLED_AngFromSphere; ///< stores rho (mm),theta (deg),phi (deg) of each LED from the center of its corresponding spherical part. Useful to run the particles.
 
     /**
      * @brief run/beamOn the specified flasher.
@@ -62,22 +61,22 @@ private:
 
     G4double mPMToffset;
     G4double mRefConeIdealInRad;
-    const G4double mGlassThick = 13.5 * mm; // maximum Glass thickness
+    const G4double mGlassThick = 13.5 * mm; ///< maximum Glass thickness
 
 public:
-    const G4double mCylinderAngle = 2.8 * deg; // Deviation angle of cylindrical part of the pressure vessel
-    const G4double mGlassOutRad = 176.5 * mm;  // outer radius of galss cylinder (pressure vessel)
-    const G4double mCylHigh = 27.5 * mm;       // height of cylindrical part of glass half-vessel
+    const G4double mCylinderAngle = 2.8 * deg; ///< Deviation angle of cylindrical part of the pressure vessel
+    const G4double mGlassOutRad = 176.5 * mm;  ///< outer radius of galss cylinder (pressure vessel)
+    const G4double mCylHigh = 27.5 * mm;       ///< height of cylindrical part of glass half-vessel
     const G4double mGlassInRad = mGlassOutRad - mGlassThick;
 
 private:
-    const G4double mGelThicknessFrontPMT = 3.6 * mm;  // distance between inner glass surface and tip of PMTs
-    const G4double mGelThickness = 4.5 * mm;          // distance between inner glass surface and holding structure, filled with gel
-    const G4double mEqPMTrOffset = 2.6 * mm;          // middle PMT circles are slightly further out due to mEqPMTzOffset
-    const G4double mEqPMTzOffset = 10.0 * mm;         // z-offset of middle PMT circles w.r.t. center of glass sphere
-    const G4double mRefConeHalfZ = 15 * mm;           // half-height of reflector (before cutting to right form)
-    const G4double mRefConeSheetThickness = 0.5 * mm; // aluminum sheet thickness true for all reflective cones
-    const G4double mRefConeToHolder = 1.55 * mm;      // horizontal distance from K??rcher's construction
+    const G4double mGelThicknessFrontPMT = 3.6 * mm;  ///< distance between inner glass surface and tip of PMTs
+    const G4double mGelThickness = 4.5 * mm;          ///< distance between inner glass surface and holding structure, filled with gel
+    const G4double mEqPMTrOffset = 2.6 * mm;          ///< middle PMT circles are slightly further out due to mEqPMTzOffset
+    const G4double mEqPMTzOffset = 10.0 * mm;         ///< z-offset of middle PMT circles w.r.t. center of glass sphere
+    const G4double mRefConeHalfZ = 15 * mm;           ///< half-height of reflector (before cutting to right form)
+    const G4double mRefConeSheetThickness = 0.5 * mm; ///< aluminum sheet thickness true for all reflective cones
+    const G4double mRefConeToHolder = 1.55 * mm;      ///< horizontal distance from K??rcher's construction
     const G4double mThetaPolar = 33.0 * deg;
     const G4double mThetaEquatorial = 72.0 * deg;
     const G4int mNrPolarPMTs = 4;

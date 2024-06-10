@@ -2,8 +2,8 @@
 
 
 // Definition of the customLog function
-void customLog(spdlog::level::level_enum log_level, const char* file, int line, const char* func, const std::string& message) {
-    if (globalLogger && globalLogger->should_log(log_level)) {
-        globalLogger->log(spdlog::source_loc{file, line, func}, log_level, message);
+void customLog(spdlog::level::level_enum pLoglevel, const char* pFile, int pLine, const char* pFunc, const std::string& pMessage) {
+    if (globalLogger && globalLogger->should_log(pLoglevel)) {
+        globalLogger->log(spdlog::source_loc{pFile, pLine, pFunc}, pLoglevel, pMessage);
     }
 }

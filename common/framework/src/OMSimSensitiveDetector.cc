@@ -18,12 +18,12 @@
 #include "G4VProcess.hh"
 #include "G4ProcessVector.hh"
 #include "G4ProcessManager.hh"
-std::vector<G4String> splitStringByDelimiter(G4String const &s, char delim)
+std::vector<G4String> splitStringByDelimiter(G4String const &pString, char pDelim)
 {
   std::vector<G4String> result;
-  std::istringstream iss(s);
+  std::istringstream iss(pString);
 
-  for (G4String token; std::getline(iss, token, delim);)
+  for (G4String token; std::getline(iss, token, pDelim);)
   {
     result.push_back(std::move(token));
   }
@@ -31,18 +31,18 @@ std::vector<G4String> splitStringByDelimiter(G4String const &s, char delim)
   return result;
 }
 
-std::vector<G4String> splitStringByDelimiter(char *cs, char d)
+std::vector<G4String> splitStringByDelimiter(char *pChar, char pDelim)
 {
-  return splitStringByDelimiter(G4String(cs), d);
+  return splitStringByDelimiter(G4String(pChar), pDelim);
 }
 
 /**
  * @brief Constructor.
- * @param name Name of the sensitive detector.
+ * @param pName Name of the sensitive detector.
  * @param pDetectorType Type of the detector (e.g., PMT, VolumePhotonDetector).
  */
-OMSimSensitiveDetector::OMSimSensitiveDetector(G4String name, DetectorType pDetectorType)
-    : G4VSensitiveDetector(name), mDetectorType(pDetectorType), mPMTResponse(&NoResponse::getInstance())
+OMSimSensitiveDetector::OMSimSensitiveDetector(G4String pName, DetectorType pDetectorType)
+    : G4VSensitiveDetector(pName), mDetectorType(pDetectorType), mPMTResponse(&NoResponse::getInstance())
 {
 }
 
@@ -102,43 +102,43 @@ G4bool OMSimSensitiveDetector::ProcessHits(G4Step *pStep, G4TouchableHistory *pT
   return false;
 }
 
-PhotonInfo OMSimSensitiveDetector::getPhotonInfo(G4Step *aStep)
+PhotonInfo OMSimSensitiveDetector::getPhotonInfo(G4Step *pStep)
 {
   PhotonInfo info;
-  G4Track *aTrack = aStep->GetTrack();
+  G4Track *lTrack = pStep->GetTrack();
 
   G4double h = 4.135667696E-15 * eV * s;
   G4double c = 2.99792458E17 * nm / s;
-  G4double lEkin = aTrack->GetKineticEnergy();
+  G4double lEkin = lTrack->GetKineticEnergy();
 
-  info.globalTime = aTrack->GetGlobalTime();
-  info.localTime = aTrack->GetLocalTime();
-  info.trackLength = aTrack->GetTrackLength() / m;
+  info.globalTime = lTrack->GetGlobalTime();
+  info.localTime = lTrack->GetLocalTime();
+  info.trackLength = lTrack->GetTrackLength() / m;
   info.kineticEnergy = lEkin;
   info.wavelength = h * c / lEkin;
-  info.globalPosition = aTrack->GetPosition();
-  info.localPosition = aStep->GetPostStepPoint()->GetTouchableHandle()->GetHistory()->GetTopTransform().TransformPoint(info.globalPosition);
-  info.momentumDirection = aTrack->GetMomentumDirection();
-  info.deltaPosition = aTrack->GetVertexPosition() - info.globalPosition;
+  info.globalPosition = lTrack->GetPosition();
+  info.localPosition = pStep->GetPostStepPoint()->GetTouchableHandle()->GetHistory()->GetTopTransform().TransformPoint(info.globalPosition);
+  info.momentumDirection = lTrack->GetMomentumDirection();
+  info.deltaPosition = lTrack->GetVertexPosition() - info.globalPosition;
   info.detectorID = atoi(SensitiveDetectorName);
   info.PMTResponse = mPMTResponse->processPhotocathodeHit(info.localPosition.x() / mm, info.localPosition.y() / mm, info.wavelength);
   return info;
 }
 
 
-G4bool OMSimSensitiveDetector::checkVolumeAbsorption(G4Step *aStep)
+G4bool OMSimSensitiveDetector::checkVolumeAbsorption(G4Step *pStep)
 {
-  return aStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "OpAbsorption";
+  return pStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "OpAbsorption";
 }
 
-G4bool OMSimSensitiveDetector::checkBoundaryAbsorption(G4Step *aStep)
+G4bool OMSimSensitiveDetector::checkBoundaryAbsorption(G4Step *pStep)
 {
   if (mBoundaryProcess == nullptr)
   {
     fetchBoundaryProcess();
   };
 
-  if (aStep->GetPostStepPoint()->GetStepStatus() == fGeomBoundary)
+  if (pStep->GetPostStepPoint()->GetStepStatus() == fGeomBoundary)
   {
     if (mBoundaryProcess)
     {
@@ -158,17 +158,17 @@ G4bool OMSimSensitiveDetector::checkBoundaryAbsorption(G4Step *aStep)
  * @param pTouchableHistory The history of touchable objects.
  * @return True if the hit was stored
  */
-G4bool OMSimSensitiveDetector::handlePMT(G4Step *aStep, G4TouchableHistory *pTouchableHistory)
+G4bool OMSimSensitiveDetector::handlePMT(G4Step *pStep, G4TouchableHistory *pTouchableHistory)
 {
-  PhotonInfo info = getPhotonInfo(aStep);
+  PhotonInfo lInfo = getPhotonInfo(pStep);
 
-  if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut") && !mPMTResponse->passQE(info.wavelength))
+  if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut") && !mPMTResponse->passQE(lInfo.wavelength))
     return false;
 
-  std::vector<G4String> lPMTNameNR = splitStringByDelimiter(aStep->GetPreStepPoint()->GetTouchableHandle()->GetVolume(2)->GetName(), '_');
-  info.pmtNumber = atoi(lPMTNameNR.at(1));
+  std::vector<G4String> lPMTNameNR = splitStringByDelimiter(pStep->GetPreStepPoint()->GetTouchableHandle()->GetVolume(2)->GetName(), '_');
+  lInfo.pmtNumber = atoi(lPMTNameNR.at(1));
 
-  storePhotonHit(info);
+  storePhotonHit(lInfo);
   return true;
 }
 
@@ -179,11 +179,11 @@ G4bool OMSimSensitiveDetector::handlePMT(G4Step *aStep, G4TouchableHistory *pTou
  * @param pTouchableHistory The history of touchable objects.
  * @return True if the hit was stored (always)
  */
-G4bool OMSimSensitiveDetector::handleGeneralPhotonDetector(G4Step *aStep, G4TouchableHistory *pTouchableHistory)
+G4bool OMSimSensitiveDetector::handleGeneralPhotonDetector(G4Step *pStep, G4TouchableHistory *pTouchableHistory)
 {
-  PhotonInfo info = getPhotonInfo(aStep);
-  info.pmtNumber = 0; // placeholder
-  storePhotonHit(info);
+  PhotonInfo lInfo = getPhotonInfo(pStep);
+  lInfo.pmtNumber = 0; // placeholder
+  storePhotonHit(lInfo);
   return true;
 }
 
@@ -191,19 +191,19 @@ G4bool OMSimSensitiveDetector::handleGeneralPhotonDetector(G4Step *aStep, G4Touc
  * @brief Stores photon hit information into the HitManager
  * @param info The photon hit information.
  */
-void OMSimSensitiveDetector::storePhotonHit(PhotonInfo &info)
+void OMSimSensitiveDetector::storePhotonHit(PhotonInfo &pInfo)
 {
   OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
   lHitManager.appendHitInfo(
-      info.globalTime,
-      info.localTime,
-      info.trackLength,
-      info.kineticEnergy / eV,
-      info.pmtNumber,
-      info.momentumDirection,
-      info.globalPosition,
-      info.localPosition,
-      info.deltaPosition.mag() / m,
-      info.PMTResponse,
-      info.detectorID);
+      pInfo.globalTime,
+      pInfo.localTime,
+      pInfo.trackLength,
+      pInfo.kineticEnergy / eV,
+      pInfo.pmtNumber,
+      pInfo.momentumDirection,
+      pInfo.globalPosition,
+      pInfo.localPosition,
+      pInfo.deltaPosition.mag() / m,
+      pInfo.PMTResponse,
+      pInfo.detectorID);
 }

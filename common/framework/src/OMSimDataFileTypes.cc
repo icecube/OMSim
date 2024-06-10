@@ -17,62 +17,60 @@ namespace pt = boost::property_tree;
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
-abcDataFile::abcDataFile(G4String pFileName)
+abcDataFile::abcDataFile(G4String pFileName) : mFileData(new ParameterTable()), mFileName(pFileName)
 {
-    mFileData = new ParameterTable();
-    mFileName = pFileName;
 }
 
 /**
- *  @brief This method sorts two vectors (sortVector & referenceVector) based on the order of values in referenceVector.
+ *  @brief Sorts two vectors (pSortVector & pReferenceVector) based on the order of values in pReferenceVector.
  *
- *  @param referenceVector The vector of reference values. The ordering of these values will determine the final order of both vectors.
- *  @param sortVector The vector to be sorted according to the referenceVector.
+ *  @param pReferenceVector The ordering of these values will determine the final order of both vectors.
+ *  @param pSortVector The vector to be sorted according to the pReferenceVector.
  *
  *  @throws std::invalid_argument if the vectors do not have the same size.
  */
-void abcDataFile::sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector)
-{   log_trace("Sorting vector");
+void abcDataFile::sortVectorByReference(std::vector<G4double> &pReferenceVector, std::vector<G4double> &pSortVector)
+{
+    log_trace("Sorting vector");
     // Check if the vectors have the same size
-    if (referenceVector.size() != sortVector.size())
+    if (pReferenceVector.size() != pSortVector.size())
     {
         // Handle error
         throw std::invalid_argument("The two vectors must have the same size.");
     }
 
     // Create a vector of indices
-    std::vector<std::size_t> indices(referenceVector.size());
-    std::iota(indices.begin(), indices.end(), 0);
+    std::vector<std::size_t> lIndices(pReferenceVector.size());
+    std::iota(lIndices.begin(), lIndices.end(), 0);
 
-    // Sort the indices based on the values in referenceVector
-    std::sort(indices.begin(), indices.end(),
-              [&referenceVector](std::size_t i1, std::size_t i2)
-              { return referenceVector[i1] < referenceVector[i2]; });
+    // Sort the indices based on the values in pReferenceVector
+    std::sort(lIndices.begin(), lIndices.end(),
+              [&pReferenceVector](std::size_t i1, std::size_t i2)
+              { return pReferenceVector[i1] < pReferenceVector[i2]; });
 
     // Create temporary vectors to hold the sorted data
-    std::vector<G4double> sortedSortVector(sortVector.size());
-    std::vector<G4double> sortedReferenceVector(referenceVector.size());
+    std::vector<G4double> lSortedSortVector(pSortVector.size());
+    std::vector<G4double> lSortedReferenceVector(pReferenceVector.size());
 
     // Apply the sorted indices to the vectors
-    for (std::size_t i = 0; i < indices.size(); ++i)
+    for (std::size_t i = 0; i < lIndices.size(); ++i)
     {
-        sortedSortVector[i] = sortVector[indices[i]];
-        sortedReferenceVector[i] = referenceVector[indices[i]];
+        lSortedSortVector[i] = pSortVector[lIndices[i]];
+        lSortedReferenceVector[i] = pReferenceVector[lIndices[i]];
     }
 
     // Replace the original vectors with the sorted ones
-    sortVector = std::move(sortedSortVector);
-    referenceVector = std::move(sortedReferenceVector);
+    pSortVector = std::move(lSortedSortVector);
+    pReferenceVector = std::move(lSortedReferenceVector);
 }
 
 /**
  *  @brief Defines a new material from data in a json-file.
  *
- *  @details This method reads a JSON file containing material data, parses the data into a material properties table,
- *           and creates a new material in the G4NistManager.
+ * Reads a JSON file containing material data, parses the data into a material properties table, and creates a new material in the G4NistManager.
  */
 void abcMaterialData::createMaterial()
-{   
+{
     mJsonTree = mFileData->appendAndReturnTree(mFileName);
     mMPT = new G4MaterialPropertiesTable();
     mMatDatBase = G4NistManager::Instance();
@@ -97,8 +95,8 @@ void abcMaterialData::createMaterial()
         double componentFraction = key.second.get_value<double>();
         mMaterial->AddMaterial(mMatDatBase->FindOrBuildMaterial(componentName), componentFraction);
     }
-    G4String mssg = "New Material defined: " + mMaterial->GetName();
-    log_debug(mssg);
+
+    log_debug("New Material defined: {}", mMaterial->GetName());
 }
 /**
  *  @brief Extracts absorption length data from a json-file and adds it to the material property table.
@@ -157,7 +155,7 @@ G4State abcMaterialData::getState(G4String pState_str)
  * @brief Extracts information and creates a material with refraction index and absorption length defined.
  */
 void RefractionAndAbsorption::extractInformation()
-{  
+{
     createMaterial();
     extractAbsorptionLength();
     extractRefractionIndex();
@@ -167,9 +165,6 @@ void RefractionAndAbsorption::extractInformation()
 
 /**
  * @brief Extracts information and creates a material with refraction index defined.
- *
- * This method is responsible for creating a material and extracting the refraction index,
- * which is then set to the material's properties table.
  */
 void RefractionOnly::extractInformation()
 {
@@ -180,8 +175,6 @@ void RefractionOnly::extractInformation()
 
 /**
  * @brief Extracts information and creates a material without optical properties.
- *
- * This method is responsible for creating a material without any specific optical properties.
  */
 void NoOptics::extractInformation()
 {
@@ -200,7 +193,7 @@ void IceCubeIce::extractInformation()
 {
     log_trace("Extracting ice properties from file {}", mFileName);
     mSpiceDepth_pos = OMSimCommandArgsTable::getInstance().get<int>("depth_pos");
-    
+
     createMaterial(); // creates IceCubeICE
 
     G4Material *lIceMie = new G4Material("IceCubeICE_SPICE", mFileData->getValueWithUnit(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid);      // create IceCubeICE_SPICE
@@ -264,8 +257,8 @@ void IceCubeIce::extractInformation()
  */
 G4double IceCubeIce::spiceTemperature(G4double pDepth)
 {
-    G4double spice_temp = 221.5 - 0.00045319 / m * pDepth + 5.822e-6 / m2 * pow(pDepth, 2.);
-    return spice_temp;
+    G4double lSpiceTemperature = 221.5 - 0.00045319 / m * pDepth + 5.822e-6 / m2 * pow(pDepth, 2.);
+    return lSpiceTemperature;
 }
 
 /**
@@ -281,8 +274,8 @@ G4double IceCubeIce::spiceAbsorption(G4double pLambd)
     G4double lParamB = 6618 * nm;
     G4double lAdust = 1. / (mSpice_a400inv[mSpiceDepth_pos]) * pow(pLambd / (400. * nm), -lKappa);
     G4double lDeltaTau = spiceTemperature(mSpiceDepth[mSpiceDepth_pos]) - spiceTemperature(1730.);
-    G4double la_inv = 1. / (lAdust + lParamA * exp(-lParamB / pLambd) * (1. + 0.01 * lDeltaTau));
-    return la_inv;
+    G4double lAinv = 1. / (lAdust + lParamA * exp(-lParamB / pLambd) * (1. + 0.01 * lDeltaTau));
+    return lAinv;
 }
 
 /**
@@ -319,8 +312,6 @@ G4double IceCubeIce::mieScattering(G4double pLambd)
 /**
  * @brief Define a new reflective surface from data in a json-file.
  *
- * This method reads a json file, extracts information about an optical surface's properties,
- * creates a new optical surface and sets the properties.
  */
 void ReflectiveSurface::extractInformation()
 {
@@ -339,31 +330,11 @@ void ReflectiveSurface::extractInformation()
     mOpticalSurface = new G4OpticalSurface(mObjectName, lModel, lFinish, lType);
     G4MaterialPropertiesTable *lMPT = new G4MaterialPropertiesTable();
 
-    try // Only few materials have jSigmaAlpha defined
-    {
+    if (mJsonTree.get_optional<G4double>("jSigmaAlpha"))
+    { // if key exists
         G4double lSigmaAlpha = mJsonTree.get<G4double>("jSigmaAlpha");
         mOpticalSurface->SetSigmaAlpha(lSigmaAlpha);
     }
-    catch (...)
-    {
-    } // not very elegant, I know...
-
-    // try
-    // {
-    //     for (pt::ptree::value_type &key : mJsonTree.get_child("jConstProperties"))
-    //     {
-    //         G4String lKey = key.second.get_value<G4String>();
-    //         std::vector<G4double> lPhotonEnergy;
-    //         std::vector<G4double> lValues;
-    //         ParseToVector(lValues, mJsonTree, "jValues_" + lKey, 1., false);
-    //         ParseToVector(lPhotonEnergy, mJsonTree, "jWavelength_" + lKey, mHC_eVnm, true);
-    //         sortVectorByReference(lPhotonEnergy, lValues);
-    //         lMPT->AddProperty(lKey, &lPhotonEnergy[0], &lValues[0], static_cast<int>(lPhotonEnergy.size()));
-    //     }
-    // }
-    // catch (...) // Only few materials have jConstProperties defined
-    // {
-    // } // not very elegant, I know...
 
     for (pt::ptree::value_type &key : mJsonTree.get_child("jProperties"))
     {
@@ -377,14 +348,16 @@ void ReflectiveSurface::extractInformation()
     }
 
     mOpticalSurface->SetMaterialPropertiesTable(lMPT);
-    G4String mssg = "New Optical Surface: " + mObjectName;
-    log_debug(mssg);
+    log_debug("New Optical Surface: {}", mObjectName);
 }
 
 /*
  * %%%%%%%%%%%%%%%% Functions for scintillation properties %%%%%%%%%%%%%%%%
  */
 
+/**
+ * @brief Extract sctintillation properties from json-file and adds them to existing material table
+ */
 void ScintillationProperties::extractInformation()
 {
     log_trace("Extracting scintillation properties from file {}", mFileName);
@@ -399,34 +372,35 @@ void ScintillationProperties::extractInformation()
         G4cout << lArgs.keyExists("temperature") << G4endl;
         lTemperature = lArgs.get<std::string>("temperature");
     }
+
     findMPT();
     extractSpectrum();
     extractLifeTimes(lTemperature);
     extractYieldAlpha(lTemperature);
     extractYieldElectron(lTemperature);
     mMPT->AddConstProperty("RESOLUTIONSCALE", 1.0);
-
-    G4String mssg = "Added scintillation properties to: " + mJsonTree.get<G4String>("jMaterialName") + ". It will only scintillate if scintillation process is in PhysicsList.";
-    log_info(mssg);
+    log_info("Added scintillation properties to: {}. It will only scintillate if scintillation process is in PhysicsList.", mJsonTree.get<G4String>("jMaterialName"));
 }
 
 /**
- * @brief Finds and stores the Geant4 Material Properties Table for the material with name given by the key jMaterialName. If material does not exist it will crash!
+ * @brief Finds and stores the Geant4 Material Properties Table for the material with name given by the key jMaterialName. If material does not exist it will throw an exception!
  */
 void ScintillationProperties::findMPT()
 {
     mObjectName = mJsonTree.get<G4String>("jMaterialName");
     G4Material *lMaterial = G4Material::GetMaterial(mObjectName);
     if (!lMaterial)
+    {
         log_error("Trying to modify material that does not exist...");
+        throw std::runtime_error("Material property table requested for adding scintillation properties was not found");
+    }
+
     else
         mMPT = lMaterial->GetMaterialPropertiesTable();
 }
 
 /**
  * @brief Extracts the scintillation spectrum from the data file and adds it to the material properties table.
- *
- * Currently no measurements of the temperature dependence of the scintillation spectrum were done. Spectrum data always at room temperature.
  */
 void ScintillationProperties::extractSpectrum()
 {
@@ -444,17 +418,17 @@ void ScintillationProperties::extractSpectrum()
  * @param pMinTemp Reference variable to receive the minimum temperature value.
  * @param pMaxTemp Reference variable to receive the maximum temperature value.
  */
-void ScintillationProperties::getLifeTimeTemperatureRange(double &minTemp, double &maxTemp)
+void ScintillationProperties::getLifeTimeTemperatureRange(double &pMinTemp, double &pMaxTemp)
 {
-    const pt::ptree &lifetimeTree = mJsonTree.get_child("Lifetimes");
-    minTemp = std::numeric_limits<double>::max();
-    maxTemp = std::numeric_limits<double>::min();
+    const pt::ptree &lLifeTimeTree = mJsonTree.get_child("Lifetimes");
+    pMinTemp = std::numeric_limits<double>::max();
+    pMaxTemp = std::numeric_limits<double>::min();
 
-    for (const auto &item : lifetimeTree)
+    for (const auto &item : lLifeTimeTree)
     {
         double T = std::stod(item.first);
-        minTemp = std::min(minTemp, T);
-        maxTemp = std::max(maxTemp, T);
+        pMinTemp = std::min(pMinTemp, T);
+        pMaxTemp = std::max(pMaxTemp, T);
     }
 }
 
@@ -483,9 +457,9 @@ std::pair<std::vector<G4double>, std::vector<G4double>> ScintillationProperties:
  * @param pT1 Investigated temperature.
  * @param pT2 Actual temperature from the data.
  */
-void ScintillationProperties::weightLifeTimesAmplitudes(std::vector<G4double> &pAmp, double T1, double T2)
+void ScintillationProperties::weightLifeTimesAmplitudes(std::vector<G4double> &pAmp, double pT1, double pT2)
 {
-    double lWeight = 1.0 / std::abs(T1 - T2);
+    double lWeight = 1.0 / std::abs(pT1 - pT2);
     for (size_t i = 0; i < pAmp.size(); ++i)
     {
         pAmp[i] *= lWeight;
@@ -498,14 +472,15 @@ void ScintillationProperties::weightLifeTimesAmplitudes(std::vector<G4double> &p
  */
 void ScintillationProperties::extractLifeTimes(G4String pTemperature)
 {
-    std::vector<G4double> allLTimes;
-    std::vector<G4double> allLAmplitudes;
+    log_trace("Extracting lifetimes at temperature {}.", pTemperature);
+    std::vector<G4double> lAllLTimes;
+    std::vector<G4double> lAllLAmplitudes;
 
     double lT1 = std::stod(pTemperature);
-    double minTemp, maxTemp;
-    getLifeTimeTemperatureRange(minTemp, maxTemp);
+    double lMinTemp, lMaxTemp;
+    getLifeTimeTemperatureRange(lMinTemp, lMaxTemp);
 
-    if (lT1 < minTemp || lT1 > maxTemp)
+    if (lT1 < lMinTemp || lT1 > lMaxTemp)
     {
         log_error("Temperature is out of the range of measured temperatures!");
         std::cerr << "Temperature is out of the range of measured temperatures!" << std::endl;
@@ -516,8 +491,8 @@ void ScintillationProperties::extractLifeTimes(G4String pTemperature)
     if (mJsonTree.get_child_optional("Lifetimes." + pTemperature))
     {
         auto [lTimes, lAmplitudes] = extractLifeTimesForTemperature(pTemperature);
-        allLTimes = lTimes;
-        allLAmplitudes = lAmplitudes;
+        lAllLTimes = lTimes;
+        lAllLAmplitudes = lAmplitudes;
     }
     else
     {
@@ -530,13 +505,13 @@ void ScintillationProperties::extractLifeTimes(G4String pTemperature)
             auto [lTimes, lAmplitudes] = extractLifeTimesForTemperature(currentTemperature);
             weightLifeTimesAmplitudes(lAmplitudes, lT1, lT2);
 
-            allLTimes.insert(allLTimes.end(), lTimes.begin(), lTimes.end());
-            allLAmplitudes.insert(allLAmplitudes.end(), lAmplitudes.begin(), lAmplitudes.end());
+            lAllLTimes.insert(lAllLTimes.end(), lTimes.begin(), lTimes.end());
+            lAllLAmplitudes.insert(lAllLAmplitudes.end(), lAmplitudes.begin(), lAmplitudes.end());
         }
     }
 
-    sortVectorByReference(allLAmplitudes, allLTimes);
-    mMPT->AddProperty("FRACTIONLIFETIMES", &allLAmplitudes[0], &allLTimes[0], static_cast<int>(allLTimes.size()), true);
+    sortVectorByReference(lAllLAmplitudes, lAllLTimes);
+    mMPT->AddProperty("FRACTIONLIFETIMES", &lAllLAmplitudes[0], &lAllLTimes[0], static_cast<int>(lAllLTimes.size()), true);
 }
 
 /**
@@ -552,6 +527,7 @@ void ScintillationProperties::extractLifeTimes(G4String pTemperature)
  */
 void ScintillationProperties::extractYield(G4String pTemperature, G4String pYieldPropertyName, G4String pArgKey, G4String pTreeKeyTemperature, G4String pTreeKeyYield)
 {
+    log_trace("Calculating yield for temperature {}.", pTemperature);
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
     if (lArgs.keyExists(pArgKey))
     {
@@ -570,11 +546,12 @@ void ScintillationProperties::extractYield(G4String pTemperature, G4String pYiel
         }
         catch (...)
         {
-            log_error(("Error parsing the JSON for key: " + pTreeKeyYield).c_str());
+            log_error("Error parsing the JSON for key: {}", pTreeKeyYield);
             throw std::invalid_argument(("Error parsing the JSON for key: " + pTreeKeyYield).c_str());
         }
 
         TGraph *mYieldInterpolation = new TGraph(static_cast<int>(lTemperatures.size()), &lTemperatures[0], &lYields[0]);
+
         mMPT->AddConstProperty(pYieldPropertyName, mYieldInterpolation->Eval(std::stod(pTemperature)) / MeV, true);
     }
 }
@@ -637,9 +614,7 @@ void CustomProperties::extractConstProperties()
         G4String lKey = item.first;
         G4double lValue = mFileData->getValueWithUnit(mJsonTree.get<G4String>("jName"), "ConstProperties." + lKey);
         mMPT->AddConstProperty(lKey, lValue, true);
-        
-        G4String mssg = "Added " + lKey + " constant property to " + mJsonTree.get<G4String>("jMaterialName");
-        log_debug(mssg);
+        log_debug("Added {} constant property to {}.", lKey, mJsonTree.get<G4String>("jMaterialName"));
     }
 }
 
@@ -682,7 +657,6 @@ void CustomProperties::findMPT()
     else
         mMPT = lMaterial->GetMaterialPropertiesTable();
 }
-
 
 /*
  * %%%%%%%%%%%%%%%% Functions for ReflectiveSurface %%%%%%%%%%%%%%%%

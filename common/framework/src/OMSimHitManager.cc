@@ -10,27 +10,27 @@
  *
  * This function rearranges the elements of a vector according to a given permutation.
  * It achieves this using cycles to minimize the number of moves. The function assumes that
- * `p` holds a permutation of indices into `vec`.
- * @param vec The vector to which the permutation will be applied.
- * @param p A permutation represented as a vector of indices.
+ * `pPermutation` holds a permutation of indices into `pVec`.
+ * @param pVec The vector to which the permutation will be applied.
+ * @param pPermutation A permutation represented as a vector of indices.
  */
 template <typename T>
-void applyPermutation(std::vector<T> &vec, const std::vector<std::size_t> &p)
+void applyPermutation(std::vector<T> &pVec, const std::vector<std::size_t> &pPermutation)
 {
-	std::vector<bool> done(vec.size()); // Vector to keep track of which positions have been fixed.
-	for (std::size_t i = 0; i < vec.size(); ++i)
+	std::vector<bool> lDone(pVec.size()); // Vector to keep track of which positions have been fixed.
+	for (std::size_t i = 0; i < pVec.size(); ++i)
 	{
-		if (done[i])
+		if (lDone[i])
 			continue;	// Skip the item if it's already in place.
-		done[i] = true; // Mark the item as placed.
+		lDone[i] = true; // Mark the item as placed.
 		std::size_t prev_j = i;
-		std::size_t j = p[i];
+		std::size_t j = pPermutation[i];
 		while (i != j)
 		{ // Continue moving items in the cycle until the entire cycle is complete.
-			std::swap(vec[prev_j], vec[j]);
-			done[j] = true;
+			std::swap(pVec[prev_j], pVec[j]);
+			lDone[j] = true;
 			prev_j = j;
-			j = p[j];
+			j = pPermutation[j];
 		}
 	}
 }
@@ -41,49 +41,49 @@ void applyPermutation(std::vector<T> &vec, const std::vector<std::size_t> &p)
  * This method appends hit information to the corresponding module's `HitStats` structure in the manager.
  * If the specified module number is not yet in the manager, a new `HitStats` structure is created for it.
  *
- * @param globalTime Time of detection.
- * @param localTime Photon flight time.
- * @param trackLength Length of the photon's path before hitting.
- * @param energy Energy of the detected photon.
- * @param PMTHitNumber ID of the PMT that detected the photon.
- * @param momentumDirection Momentum direction of the photon at the time of detection.
- * @param globalPos Global position of the detected photon.
- * @param localPos Local position of the detected photon within the PMT.
- * @param distance Distance between generation and detection of photon.
- * @param response PMT's response to the detected photon, encapsulated as a `PMTPulse`.
- * @param moduleNumber ID of the module in which the photon was detected.
+ * @param pGlobalTime Time of detection.
+ * @param pLocalTime Photon flight time.
+ * @param pTrackLength Length of the photon's path before hitting.
+ * @param pEnergy Energy of the detected photon.
+ * @param pPMTHitNumber ID of the PMT that detected the photon.
+ * @param pMomentumDirection Momentum direction of the photon at the time of detection.
+ * @param pGlobalPos Global position of the detected photon.
+ * @param pLocalPos Local position of the detected photon within the PMT.
+ * @param pDistance Distance between generation and detection of photon.
+ * @param pResponse PMT's pResponse to the detected photon, encapsulated as a `PMTPulse`.
+ * @param pModuleNumber ID of the module in which the photon was detected.
  */
 void OMSimHitManager::appendHitInfo(
-	G4double globalTime,
-	G4double localTime,
-	G4double trackLength,
-	G4double energy,
-	G4int PMTHitNumber,
-	G4ThreeVector momentumDirection,
-	G4ThreeVector globalPos,
-	G4ThreeVector localPos,
-	G4double distance,
-	OMSimPMTResponse::PMTPulse response,
-	G4int moduleNumber)
+	G4double pGlobalTime,
+	G4double pLocalTime,
+	G4double pTrackLength,
+	G4double pEnergy,
+	G4int pPMTHitNumber,
+	G4ThreeVector pMomentumDirection,
+	G4ThreeVector pGlobalPos,
+	G4ThreeVector pLocalPos,
+	G4double pDistance,
+	OMSimPMTResponse::PMTPulse pResponse,
+	G4int pModuleNumber)
 {
 	// Check if the module exists in the map
-	if (mModuleHits.find(moduleNumber) == mModuleHits.end())
+	if (mModuleHits.find(pModuleNumber) == mModuleHits.end())
 	{
 		// Create a new HitStats for this module
-		mModuleHits[moduleNumber] = HitStats();
+		mModuleHits[pModuleNumber] = HitStats();
 	}
 	G4int lEventID = EventInfoManager::getInstance().getCurrentEventID();
-	mModuleHits[moduleNumber].event_id.push_back(lEventID);
-	mModuleHits[moduleNumber].hit_time.push_back(globalTime);
-	mModuleHits[moduleNumber].photon_flight_time.push_back(localTime);
-	mModuleHits[moduleNumber].photon_track_length.push_back(trackLength);
-	mModuleHits[moduleNumber].photon_energy.push_back(energy);
-	mModuleHits[moduleNumber].PMT_hit.push_back(PMTHitNumber);
-	mModuleHits[moduleNumber].photon_direction.push_back(momentumDirection);
-	mModuleHits[moduleNumber].photon_global_position.push_back(globalPos);
-	mModuleHits[moduleNumber].photon_local_position.push_back(localPos);
-	mModuleHits[moduleNumber].event_distance.push_back(distance);
-	mModuleHits[moduleNumber].PMT_response.push_back(response);
+	mModuleHits[pModuleNumber].eventId.push_back(lEventID);
+	mModuleHits[pModuleNumber].hitTime.push_back(pGlobalTime);
+	mModuleHits[pModuleNumber].flightTime.push_back(pLocalTime);
+	mModuleHits[pModuleNumber].pathLenght.push_back(pTrackLength);
+	mModuleHits[pModuleNumber].energy.push_back(pEnergy);
+	mModuleHits[pModuleNumber].PMTnr.push_back(pPMTHitNumber);
+	mModuleHits[pModuleNumber].direction.push_back(pMomentumDirection);
+	mModuleHits[pModuleNumber].globalPosition.push_back(pGlobalPos);
+	mModuleHits[pModuleNumber].localPosition.push_back(pLocalPos);
+	mModuleHits[pModuleNumber].generationDetectionDistance.push_back(pDistance);
+	mModuleHits[pModuleNumber].PMTresponse.push_back(pResponse);
 }
 
 /**
@@ -127,9 +127,9 @@ std::vector<double> OMSimHitManager::countHits(int pModuleIndex)
 	G4int lNumberPMTs = mNumPMTs[pModuleIndex];
 
 	std::vector<double> lHits(lNumberPMTs + 1, 0.0);
-	for (int i = 0; i < (int)lHitsOfModule.PMT_hit.size(); i++)
+	for (int i = 0; i < (int)lHitsOfModule.PMTnr.size(); i++)
 	{
-		lHits[lHitsOfModule.PMT_hit.at(i)] += 1; // lHitsOfModule.PMT_response.at(i).DetectionProbability;
+		lHits[lHitsOfModule.PMTnr.at(i)] += 1; // lHitsOfModule.PMTresponse.at(i).detectionProbability;
 		lHits[lNumberPMTs] += 1;
 	}
 
@@ -143,28 +143,28 @@ std::vector<double> OMSimHitManager::countHits(int pModuleIndex)
 void OMSimHitManager::sortHitStatsByTime(HitStats &lHits)
 {
 	// Create a vector of indices
-	std::vector<std::size_t> indices(lHits.hit_time.size());
+	std::vector<std::size_t> indices(lHits.hitTime.size());
 	std::iota(indices.begin(), indices.end(), 0); // Fill it with 0, 1, ... N-1
 
-	// Sort the indices vector according to hit_time
+	// Sort the indices vector according to hitTime
 	std::sort(indices.begin(), indices.end(),
 			  [&lHits](std::size_t a, std::size_t b)
 			  {
-				  return lHits.hit_time[a] < lHits.hit_time[b];
+				  return lHits.hitTime[a] < lHits.hitTime[b];
 			  });
 
 	// Now, apply the permutation function to every vector in the struct
-	applyPermutation(lHits.event_id, indices);
-	applyPermutation(lHits.hit_time, indices);
-	applyPermutation(lHits.photon_flight_time, indices);
-	applyPermutation(lHits.photon_track_length, indices);
-	applyPermutation(lHits.photon_energy, indices);
-	applyPermutation(lHits.PMT_hit, indices);
-	applyPermutation(lHits.photon_direction, indices);
-	applyPermutation(lHits.photon_local_position, indices);
-	applyPermutation(lHits.photon_global_position, indices);
-	applyPermutation(lHits.event_distance, indices);
-	applyPermutation(lHits.PMT_response, indices);
+	applyPermutation(lHits.eventId, indices);
+	applyPermutation(lHits.hitTime, indices);
+	applyPermutation(lHits.flightTime, indices);
+	applyPermutation(lHits.pathLenght, indices);
+	applyPermutation(lHits.energy, indices);
+	applyPermutation(lHits.PMTnr, indices);
+	applyPermutation(lHits.direction, indices);
+	applyPermutation(lHits.localPosition, indices);
+	applyPermutation(lHits.globalPosition, indices);
+	applyPermutation(lHits.generationDetectionDistance, indices);
+	applyPermutation(lHits.PMTresponse, indices);
 }
 
 /**
@@ -195,7 +195,7 @@ std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double pTimeWind
 	std::vector<int> lMultiplicity(lNumberPMTs, 0); // Initialize with zeros and size pPMTCount
 
 	std::size_t lSkiptUntil = 0; // Index up to which we should skip in outer loop
-	int lVectorSize = lHitsOfModule.hit_time.size();
+	int lVectorSize = lHitsOfModule.hitTime.size();
 
 	for (std::size_t i = 0; i < lVectorSize - 1; ++i)
 	{
@@ -205,29 +205,29 @@ std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double pTimeWind
 		}
 
 		int lPMTHits[lNumberPMTs] = {0};
-		lPMTHits[lHitsOfModule.PMT_hit.at(i)] = 1;
-		int lcurrentSum = 0;
+		lPMTHits[lHitsOfModule.PMTnr.at(i)] = 1;
+		int lCurrentSum = 0;
 
 		// Loop through the next hits to see if they're within the time window
 		for (std::size_t j = i + 1; j < lVectorSize; ++j)
 		{
-			if ((lHitsOfModule.hit_time.at(j) - lHitsOfModule.hit_time.at(i)) > pTimeWindow)
+			if ((lHitsOfModule.hitTime.at(j) - lHitsOfModule.hitTime.at(i)) > pTimeWindow)
 			{
 				lSkiptUntil = j;
 				break;
 			}
 			else
 			{
-				lPMTHits[lHitsOfModule.PMT_hit.at(j)] = 1;
+				lPMTHits[lHitsOfModule.PMTnr.at(j)] = 1;
 			}
 		}
 
 		// Calculate the multiplicity
 		for (std::size_t k = 0; k < lNumberPMTs; ++k)
 		{
-			lcurrentSum += lPMTHits[k];
+			lCurrentSum += lPMTHits[k];
 		}
-		lMultiplicity[lcurrentSum - 1] += 1;
+		lMultiplicity[lCurrentSum - 1] += 1;
 	}
 	return lMultiplicity;
 }

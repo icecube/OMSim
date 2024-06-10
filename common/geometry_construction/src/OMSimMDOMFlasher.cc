@@ -11,7 +11,7 @@
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
-mDOMFlasher::mDOMFlasher(InputDataManager *pData)
+mDOMFlasher::mDOMFlasher(InputDataManager *pData) 
 {
 	mData = pData;
 	construction();

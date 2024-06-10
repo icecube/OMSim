@@ -17,7 +17,7 @@
  */
 struct DecayStats
 {
-    std::vector<G4long> event_id;                 ///< ID of the event
+    std::vector<G4long> eventId;                 ///< ID of the event
     std::vector<G4String> isotope_name;           ///< Isotope name and energy level
     std::vector<G4double> decay_time;             ///< Time of the decay after (possibly) randomising inside simulation time window
     std::vector<G4ThreeVector> decay_position;    ///< Global position of the decay.

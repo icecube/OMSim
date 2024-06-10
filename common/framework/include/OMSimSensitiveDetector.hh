@@ -13,7 +13,7 @@ class G4TouchableHistory;
 
 /**
  * @enum DetectorType
- * @brief Enumerates the types of detectors supported by OMSimSensitiveDetector.
+ * @brief Enum of types of detectors supported by OMSimSensitiveDetector.
  *  Additional types can be added as needed.
  */
 enum class DetectorType {
@@ -50,24 +50,25 @@ struct PhotonInfo {
 class OMSimSensitiveDetector : public G4VSensitiveDetector
 {
 public:
-    OMSimSensitiveDetector(G4String name, DetectorType pDetectorType);
+    OMSimSensitiveDetector(G4String pName, DetectorType pDetectorType);
     virtual ~OMSimSensitiveDetector() {};
 
     G4bool ProcessHits(G4Step *pStep, G4TouchableHistory *pTouchableHistory) override;
     void setPMTResponse(OMSimPMTResponse *pResponse);
 
 private:
-    OMSimPMTResponse *mPMTResponse;
-    DetectorType mDetectorType;
-    G4OpBoundaryProcess* mBoundaryProcess = nullptr;
 
     G4bool checkVolumeAbsorption(G4Step *pStep);
     G4bool checkBoundaryAbsorption(G4Step *pStep);
     PhotonInfo getPhotonInfo(G4Step *pStep);
     G4bool handlePMT(G4Step *pStep, G4TouchableHistory *pTouchableHistory);
     G4bool handleGeneralPhotonDetector(G4Step *pStep, G4TouchableHistory *pTouchableHistory);
-    void storePhotonHit(PhotonInfo &info);
+    void storePhotonHit(PhotonInfo &pInfo);
     void fetchBoundaryProcess();
+
+    OMSimPMTResponse *mPMTResponse;
+    DetectorType mDetectorType;
+    G4OpBoundaryProcess* mBoundaryProcess = nullptr;
 };
 
 #endif

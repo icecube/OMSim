@@ -35,9 +35,6 @@ class ParameterTable;
  *
  *  @details Derived classes should implement specific functionality for reading and writing different types of data files.
  *           This class contains a pointer to a ParameterTable, used for storing file data, and a string for the file name.
- *
- *  @note This class is not meant to be instantiated directly, but should be subclassed. Methods in this class are to be
- *        overridden in the subclass for specific behavior.
  *  @ingroup common
  */
 class abcDataFile
@@ -50,8 +47,8 @@ public:
 protected:
     void sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector);
 
-    virtual void extractInformation() = 0;     // abstract method you have to define for a derived class
-    const G4double mHC_eVnm = 1239.84193 * eV; // h*c in eV * nm
+    virtual void extractInformation() = 0;     ///< abstract method you have to define for a derived class
+    const G4double mHC_eVnm = 1239.84193 * eV; ///< h*c in eV * nm
     boost::property_tree::ptree mJsonTree;
     ParameterTable *mFileData;
 };
@@ -59,15 +56,8 @@ protected:
 /**
  * @class abcMaterialData
  * @brief Abstract base class for material data extraction from a json file.
- *
  * abcMaterialData class is derived from abcDataFile class. It is designed to manage
  * the material data, such as refractive index and absorption length.
- *
- * @note This class is abstract and cannot be instantiated directly. Instead, use one
- * of the derived classes: RefractionAndAbsorption, RefractionOnly, NoOptics, or IceCubeIce.
- *
- * The method extractInformation is a pure virtual function that should be implemented by the derived classes.
- * It is intended for the specific extraction of data required by each derived class.
  * @ingroup common
  */
 class abcMaterialData : public abcDataFile
@@ -84,14 +74,14 @@ public:
 
 protected:
     G4State getState(G4String pState);
-    virtual void extractInformation() = 0; // abstract method
+    virtual void extractInformation() = 0; ///< abstract method that has to be defined in derived classes
 };
 
 // Derived Classes
 
 /**
  * @class   RefractionAndAbsorption
- * @brief   This class is responsible for handling materials with both a defined refractive index and absorption length.
+ * @brief   Materials with defined refractive index and absorption length.
  * @inherit abcMaterialData
  * @ingroup common
  */
@@ -104,7 +94,7 @@ public:
 
 /**
  * @class   RefractionOnly
- * @brief   This class is responsible for handling materials with only defined refractive index.
+ * @brief   Materials only with refractive index defined.
  * @inherit abcMaterialData
  * @ingroup common
  */
@@ -117,7 +107,7 @@ public:
 
 /**
  * @class   NoOptics
- * @brief   This class is responsible for handling materials without defined optical properties.
+ * @brief   Materials without optical properties defined.
  * @inherit abcMaterialData
  * @ingroup common
  */
@@ -130,7 +120,7 @@ public:
 
 /**
  * @class   IceCubeIce
- * @brief   This class is responsible for the creation and property extraction of IceCube's ice.
+ * @brief   Creation and extraction of IceCube's ice optical properties.
  * @inherit abcMaterialData
  * @ingroup common
  */
@@ -144,7 +134,7 @@ public:
 private:
     int mSpiceDepth_pos;
 
-    G4double spiceTemperature(G4double depth);
+    G4double spiceTemperature(G4double pDepth);
     G4double spiceAbsorption(G4double pLambd);
     G4double spiceRefraction(G4double pLambd);
     G4double mieScattering(G4double pLambd);
@@ -153,12 +143,12 @@ private:
     std::vector<G4double> mSpice_a400inv;
     std::vector<G4double> mSpiceDepth;
     const G4double mMieSpiceConst[3] = {0.972, 0.0000001, 1};
-    G4double mInnerColumn_b_inv = 3 * cm; // Eff. scattering lenght of bubble column (if placed)
+    G4double mInnerColumn_b_inv = 3 * cm; ///< Eff. scattering lenght of bubble column (if placed)
 };
 
 /**
  * @class   ReflectiveSurface
- * @brief   This class is responsible for defining new reflective surfaces using data parsed from a JSON file.
+ * @brief   Reflective surfaces parsed from a JSON file.
  * @inherit abcDataFile
  * @ingroup common
  */
@@ -176,11 +166,7 @@ public:
 
 /**
  * @class ScintillationProperties
- * @brief Class to extract and apply scintillation properties to existing materials.
- *
- * This class is responsible for extracting scintillation properties from a data file
- * and applying them to a Geant4 material's properties table.
- *
+ * @brief Scintillation properties extraction for existing materials.
  * @ingroup common
  */
 class ScintillationProperties : public abcDataFile
@@ -204,7 +190,7 @@ private:
 
 /**
  * @class   CustomProperties
- * @brief   This class adds user defined properties to already defined materials
+ * @brief   Adds user defined properties to already defined materials
  * @ingroup common
  */
 class CustomProperties : public abcDataFile

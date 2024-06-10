@@ -17,17 +17,9 @@ namespace pt = boost::property_tree;
  * @class ParameterTable
  * @brief A utility class for managing JSON-based data tables.
  *
- * The ParameterTable class provides an interface for handling and querying JSON data
- * represented in the form of a property tree of the boost library. It facilitates the extraction of specific
- * parameters from loaded JSON files while also supporting units and scales. The class is
- * capable of loading multiple JSON datasets, each uniquely identified by a key,
- * and can perform actions such as fetching a value, checking the presence of a key,
- * and more.
- *
- * Internally, this class leverages the `boost::property_tree::ptree` to represent and
- * manage the JSON data structure, which makes it easy to traverse and fetch desired
- * parameters.
- *
+ * Interface for handling and querying data in the form of a property tree of the boost library. It facilitates the extraction of specific
+ * parameters from loaded JSON files while also supporting units and scales.
+ * 
  * Its main use is as base class of InputDataManager, but you may use it as needed (see @ref ExampleUsageParameterTable).
  *
  * @ingroup common
@@ -43,13 +35,6 @@ namespace pt = boost::property_tree;
  * pt::ptree lSubtree = lTable.getJSONTree("SomeKey"); // Retrieving the subtree of the file
  * lTable.parseKeyContentToVector(lVector, lSubtree, "keyOfArray", 1.0, false); // parsing array into vector
  * @endcode
- *
- * @warning It's essential to ensure that the provided JSON files are formatted correctly
- * and that the keys and parameters being queried exist within the loaded datasets
- * to avoid runtime errors or unexpected behavior.
- *
- * @note While the class provides type templating for fetching values, care must be taken
- * to ensure the correctness of the types.
  */
 class ParameterTable
 {
@@ -184,13 +169,11 @@ private:
  * @brief Manages the input data, including parsing and storing material properties.
  *
  * @details
- * The `InputDataManager` class extends the functionalities provided by the `ParameterTable` class.
- * It's dedicated to the specific needs of managing input data related to materials and optical properties
- * for the Geant4-based simulation.
+ * Extends the functionalities provided by the `ParameterTable` class.
+ * It's dedicated to the specific needs of managing input data related to materials and optical properties.
  *
- * You probably should have a single instance of this class (no need of loading everything twice...probably it also would break things...).
+ * You should have a single instance of this class.
  * Normally it is loaded in the main DetectorConstruction and passed to the other construction classes.
- *
  *
  * Example usage (see also @ref ExampleUsageParameterTable):
  *
@@ -210,8 +193,9 @@ private:
 class InputDataManager : public ParameterTable
 {
 public:
-    InputDataManager();
-    G4Material *getMaterial(G4String name);
+    InputDataManager(){};
+    ~InputDataManager(){};
+    G4Material *getMaterial(G4String pName);
     G4OpticalSurface *getOpticalSurface(G4String pName);
     static std::vector<std::vector<double>> loadtxt(const std::string &pFilePath,
                                                     bool pUnpack = true,

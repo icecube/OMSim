@@ -28,12 +28,12 @@ TH2D *OMSimPMTResponse::createHistogramFromData(const std::string &pFilePath, co
     std::vector<std::vector<double>> lData = InputDataManager::loadtxt(pFilePath, true, 0, '\t');
 
     // Deduce the number of bins and the bin widths
-    double binWidthX, binWidthY;
+    double lBinWidthX, lBinWidthY;
     for (size_t i = 1; i < lData[0].size(); i++)
     {
         if (lData[0][i] - lData[0][i - 1] > 0)
         {
-            binWidthX = lData[0][i] - lData[0][i - 1];
+            lBinWidthX = lData[0][i] - lData[0][i - 1];
             break;
         }
     }
@@ -41,33 +41,33 @@ TH2D *OMSimPMTResponse::createHistogramFromData(const std::string &pFilePath, co
     {
         if (lData[1][i] - lData[1][i - 1] > 0)
         {
-            binWidthY = lData[1][i] - lData[1][i - 1];
+            lBinWidthY = lData[1][i] - lData[1][i - 1];
             break;
         }
     }
-    double minX = *std::min_element(lData[0].begin(), lData[0].end()) - binWidthX / 2.0;
-    double maxX = *std::max_element(lData[0].begin(), lData[0].end()) + binWidthX / 2.0;
-    double minY = *std::min_element(lData[1].begin(), lData[1].end()) - binWidthY / 2.0;
-    double maxY = *std::max_element(lData[1].begin(), lData[1].end()) + binWidthY / 2.0;
-    int nBinsX = (int)((maxX - minX) / binWidthX);
-    int nBinsY = (int)((maxY - minY) / binWidthY);
+    double lMinX = *std::min_element(lData[0].begin(), lData[0].end()) - lBinWidthX / 2.0;
+    double lMaxX = *std::max_element(lData[0].begin(), lData[0].end()) + lBinWidthX / 2.0;
+    double lMinY = *std::min_element(lData[1].begin(), lData[1].end()) - lBinWidthY / 2.0;
+    double lMaxY = *std::max_element(lData[1].begin(), lData[1].end()) + lBinWidthY / 2.0;
+    int lNbinsX = (int)((lMaxX - lMinX) / lBinWidthX);
+    int lNbinsY = (int)((lMaxY - lMinY) / lBinWidthY);
 
     // Create histogram
-    TH2D *h = new TH2D(pTH2DName, "title", nBinsX, minX, maxX, nBinsY, minY, maxY);
+    TH2D *lTH2Dhistogram = new TH2D(pTH2DName, "title", lNbinsX, lMinX, lMaxX, lNbinsY, lMinY, lMaxY);
 
     // Fill the histogram
     for (size_t i = 0; i < lData[0].size(); i++)
     {
-        h->Fill(lData[0][i], lData[1][i], lData[2][i]);
+        lTH2Dhistogram->Fill(lData[0][i], lData[1][i], lData[2][i]);
     }
 
-    return h;
+    return lTH2Dhistogram;
 }
 
 /**
  * @brief Retrieve the charge in PE from measurements for a given wavelength.
  *
- * This method returns the charge sampled from a Gaussian distribution with the mean
+ * Charge sampled from a Gaussian distribution with the mean
  * and standard deviation of the single photon electron (SPE) resolution for the
  * provided wavelength key.
  *
@@ -185,7 +185,7 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::getPulseFromKey(G4double pWavelengt
 {
     OMSimPMTResponse::PMTPulse lPulse;
     lPulse.PE = getCharge(pWavelengthKey);
-    lPulse.TransitTime = getTransitTime(pWavelengthKey);
+    lPulse.transitTime = getTransitTime(pWavelengthKey);
 
     return lPulse;
 }
@@ -200,7 +200,7 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::getPulseFromInterpolation(G4double 
 {
     OMSimPMTResponse::PMTPulse lPulse;
     lPulse.PE = getCharge(pWavelengthKey1, pWavelengthKey2);
-    lPulse.TransitTime = getTransitTime(pWavelengthKey1, pWavelengthKey2);
+    lPulse.transitTime = getTransitTime(pWavelengthKey1, pWavelengthKey2);
     return lPulse;
 }
 
@@ -230,8 +230,8 @@ bool OMSimPMTResponse::passQE(G4double pWavelength)
 {
     double lQE = mQEInterp->Eval(pWavelength / nm) / 100.;
     // Check against random value
-    G4double rand = G4UniformRand();
-    return rand < lQE;
+    G4double lRand = G4UniformRand();
+    return lRand < lQE;
 }
 
 /**
@@ -248,9 +248,9 @@ bool OMSimPMTResponse::passQE(G4double pWavelength)
 OMSimPMTResponse::PMTPulse OMSimPMTResponse::processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength)
 {
     OMSimPMTResponse::PMTPulse lPulse;
-    lPulse.DetectionProbability = -1;
+    lPulse.detectionProbability = -1;
     lPulse.PE = -1;
-    lPulse.TransitTime = -1;
+    lPulse.transitTime = -1;
 
     if (!scansAvailable())
         return lPulse;
@@ -260,7 +260,7 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::processPhotocathodeHit(G4double pX,
     G4double lR = std::sqrt(mX * mX + mY * mY);
     mWavelength = pWavelength;
 
-    lPulse.DetectionProbability = mRelativeDetectionEfficiencyInterp->Eval(lR);
+    lPulse.detectionProbability = mRelativeDetectionEfficiencyInterp->Eval(lR);
 
     std::vector<G4double> lScannedWavelengths = getScannedWavelengths();
 
@@ -307,9 +307,9 @@ mDOMPMTResponse::mDOMPMTResponse()
 {
     log_info("Using mDOM PMT response");
     log_debug("Opening mDOM photocathode scans data...");
-    std::string path = "../common/data/PMT_scans/";
+    std::string lPath = "../common/data/PMT_scans/";
 
-    mRelativeDetectionEfficiencyInterp = new TGraph((path + "weightsVsR_vFit_220nm.txt").c_str());
+    mRelativeDetectionEfficiencyInterp = new TGraph((lPath + "weightsVsR_vFit_220nm.txt").c_str());
     mRelativeDetectionEfficiencyInterp->SetName("RelativeDetectionEfficiencyWeight");
 
     if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut"))
@@ -318,10 +318,10 @@ mDOMPMTResponse::mDOMPMTResponse()
     for (const auto &lKey : getScannedWavelengths())
     {
         std::string lWv = std::to_string((int)(lKey / nm));
-        mGainG2Dmap[lKey] = createHistogramFromData(path + "Gain_PE_" + lWv + ".dat", ("Gain_PE_" + lWv).c_str());
-        mGainResolutionG2Dmap[lKey] = createHistogramFromData(path + "SPEresolution_" + lWv + ".dat", ("SPEresolution_" + lWv).c_str());
-        mTransitTimeSpreadG2Dmap[lKey] = createHistogramFromData(path + "TransitTimeSpread_" + lWv + ".dat", ("TransitTimeSpread_" + lWv).c_str());
-        mTransitTimeG2Dmap[lKey] = createHistogramFromData(path + "TransitTime_" + lWv + ".dat", ("TransitTime_" + lWv).c_str());
+        mGainG2Dmap[lKey] = createHistogramFromData(lPath + "Gain_PE_" + lWv + ".dat", ("Gain_PE_" + lWv).c_str());
+        mGainResolutionG2Dmap[lKey] = createHistogramFromData(lPath + "SPEresolution_" + lWv + ".dat", ("SPEresolution_" + lWv).c_str());
+        mTransitTimeSpreadG2Dmap[lKey] = createHistogramFromData(lPath + "TransitTimeSpread_" + lWv + ".dat", ("TransitTimeSpread_" + lWv).c_str());
+        mTransitTimeG2Dmap[lKey] = createHistogramFromData(lPath + "TransitTime_" + lWv + ".dat", ("TransitTime_" + lWv).c_str());
     }
 
     log_debug("Finished opening photocathode scans data...");
@@ -443,9 +443,9 @@ std::vector<G4double> NoResponse::getScannedWavelengths()
 OMSimPMTResponse::PMTPulse NoResponse::processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength)
 {
     OMSimPMTResponse::PMTPulse lPulse;
-    lPulse.DetectionProbability = -1;
+    lPulse.detectionProbability = -1;
     lPulse.PE = -1;
-    lPulse.TransitTime = -1;
+    lPulse.transitTime = -1;
     return lPulse;
 }
 

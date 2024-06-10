@@ -93,8 +93,8 @@ void OMSimSNAnalysis::Helper_AnalyzeEvent(EvtStat& this_evtStat, std::map<G4int,
                 G4int lOmNumber = pair.first;
                 const HitStats& lHitInfo = pair.second;
                 if (lOmNumber == k) {
-                    for (size_t hitindex = 0; hitindex < lHitInfo.hit_time.size(); ++hitindex) {
-                        if (lHitInfo.PMT_hit[hitindex] == i) {
+                    for (size_t hitindex = 0; hitindex < lHitInfo.hitTime.size(); ++hitindex) {
+                        if (lHitInfo.PMTnr[hitindex] == i) {
                         this_evtStat.nrHitTot += 1;
                         std::get<2>(hitsPMT) += 1; 
                         if ( ! hit ) {
@@ -152,9 +152,9 @@ void OMSimSNAnalysis::Writer_data(EvtStat& this_evtStat, std::map<G4int, HitStat
                 G4int lOmNumber = pair.first;
                 const HitStats& lHitInfo = pair.second;
                 if (lOmNumber == std::get<0>(this_evtStat.hitsPMTs[j])) {
-                    for (size_t hitindex = 0; hitindex < lHitInfo.hit_time.size(); ++hitindex) {
-                        if (lHitInfo.PMT_hit[hitindex] == std::get<1>(this_evtStat.hitsPMTs[j])) {
-                            datafile << lHitInfo.hit_time[hitindex]/ns << "\t";
+                    for (size_t hitindex = 0; hitindex < lHitInfo.hitTime.size(); ++hitindex) {
+                        if (lHitInfo.PMTnr[hitindex] == std::get<1>(this_evtStat.hitsPMTs[j])) {
+                            datafile << lHitInfo.hitTime[hitindex]/ns << "\t";
                         }
                     }   
                 }

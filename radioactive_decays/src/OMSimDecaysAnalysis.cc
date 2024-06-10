@@ -13,7 +13,7 @@
 void OMSimDecaysAnalysis::appendDecay(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition)
 {
 	G4int lEventID = EventInfoManager::getInstance().getCurrentEventID();
-	mDecaysStats.event_id.push_back(lEventID);
+	mDecaysStats.eventId.push_back(lEventID);
 	mDecaysStats.isotope_name.push_back(pParticleName);
 	mDecaysStats.decay_time.push_back(pDecayTime);
 	mDecaysStats.decay_position.push_back(pDecayPosition);
@@ -51,11 +51,11 @@ void OMSimDecaysAnalysis::writeMultiplicity()
 void OMSimDecaysAnalysis::writeDecayInformation()
 {
 	mDatafile.open(mDecaysFileName.c_str(), std::ios::out | std::ios::app);
-	if (mDecaysStats.event_id.size() > 0)
+	if (mDecaysStats.eventId.size() > 0)
 	{
-		for (int i = 0; i < (int)mDecaysStats.event_id.size(); i++)
+		for (int i = 0; i < (int)mDecaysStats.eventId.size(); i++)
 		{
-			mDatafile << mDecaysStats.event_id.at(i) << "\t";
+			mDatafile << mDecaysStats.eventId.at(i) << "\t";
 			mDatafile << std::setprecision(13);
 			mDatafile << mDecaysStats.decay_time.at(i) << "\t";
 			mDatafile << std::setprecision(4);
@@ -77,22 +77,22 @@ void OMSimDecaysAnalysis::writeHitInformation()
 	HitStats lHits = OMSimHitManager::getInstance().getHitsOfModule();
 
 	mDatafile.open(mHitsFileName.c_str(), std::ios::out | std::ios::app);
-	if (lHits.event_id.size() > 0)
+	if (lHits.eventId.size() > 0)
 	{
-		for (int i = 0; i < (int)lHits.event_id.size(); i++)
+		for (int i = 0; i < (int)lHits.eventId.size(); i++)
 		{
-			mDatafile << lHits.event_id.at(i) << "\t";
+			mDatafile << lHits.eventId.at(i) << "\t";
 			mDatafile << std::setprecision(13);
-			mDatafile << lHits.hit_time.at(i) / s << "\t";
+			mDatafile << lHits.hitTime.at(i) / s << "\t";
 			mDatafile << std::setprecision(4);
-			mDatafile << lHits.PMT_hit.at(i) << "\t";
-			mDatafile << lHits.photon_energy.at(i) << "\t";
-			mDatafile << lHits.photon_global_position.at(i).x() << "\t";
-			mDatafile << lHits.photon_global_position.at(i).y() << "\t";
-			mDatafile << lHits.photon_global_position.at(i).z() << "\t";
-			mDatafile << lHits.PMT_response.at(i).PE << "\t";
-			mDatafile << lHits.PMT_response.at(i).TransitTime << "\t";
-			mDatafile << lHits.PMT_response.at(i).DetectionProbability << "\t";
+			mDatafile << lHits.PMTnr.at(i) << "\t";
+			mDatafile << lHits.energy.at(i) << "\t";
+			mDatafile << lHits.globalPosition.at(i).x() << "\t";
+			mDatafile << lHits.globalPosition.at(i).y() << "\t";
+			mDatafile << lHits.globalPosition.at(i).z() << "\t";
+			mDatafile << lHits.PMTresponse.at(i).PE << "\t";
+			mDatafile << lHits.PMTresponse.at(i).transitTime << "\t";
+			mDatafile << lHits.PMTresponse.at(i).detectionProbability << "\t";
 			mDatafile << G4endl;
 		}
 	}

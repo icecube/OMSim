@@ -2,7 +2,7 @@
  * @file OMSim.cc
  * @brief Implementation of the OMSim class.
  * 
- *  @warning
+ * @warning
  * There are a few material related arguments that are depracated as for example the glass and gel arguments. This were used to easily change materials during the OM development phase. Check @link InputDataManager::getMaterial @endlink and modify the respective OM class if you want to use these args.
  * 
  * @ingroup common
@@ -15,17 +15,14 @@
 namespace po = boost::program_options;
 extern std::shared_ptr<spdlog::logger> globalLogger;
 
-/**
- * This constructor initializes the Geant4 run manager, visualization manager,
- * and navigator. It also sets up the command line arguments for the simulation.
- */
-OMSim::OMSim() : mGeneralOptions("General options")
+OMSim::OMSim() : mStartingTime(clock() / CLOCKS_PER_SEC), mGeneralOptions("General options"), mRunManager(new G4RunManager()), mVisManager(new G4VisExecutive()), mNavigator(new G4Navigator())
 {
-    mStartingTime = clock() / CLOCKS_PER_SEC;
-    mRunManager = new G4RunManager();
-    mVisManager = new G4VisExecutive();
-    mNavigator = new G4Navigator();
+    setGeneralOptions();
+    initialLoggerConfiguration();
+}
 
+void OMSim::setGeneralOptions()
+{
     mGeneralOptions.add_options()("help", "produce help message")
     ("log_level", po::value<std::string>()->default_value("info"), "Granularity of logger, defaults to info [trace, debug, info, warn, error, critical, off]")
     ("output_file,o", po::value<std::string>()->default_value("output"), "filename for output")
@@ -45,14 +42,16 @@ OMSim::OMSim() : mGeneralOptions("General options")
     ("gel", po::value<G4int>()->default_value(1), "DEPRECATED. Index to select gel type [Wacker = 0, Chiba = 1, IceCube = 2, Wacker_company = 3]")
     ("reflective_surface", po::value<G4int>()->default_value(0), "DEPRECATED. Index to select reflective surface type [Refl_V95Gel = 0, Refl_V98Gel = 1, Refl_Aluminium = 2, Refl_Total98 = 3]")
     ("pmt_model", po::value<G4int>()->default_value(0), "DEPRECATED. R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3");
+}
 
-
+void OMSim::initialLoggerConfiguration()
+{
     globalLogger = spdlog::stdout_color_mt("console");
     globalLogger->set_level(spdlog::level::info); // Set the desired log level
     globalLogger->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e][%l][%s:%#]%$ %v");
-    spdlog::set_default_logger(globalLogger);  
-
+    spdlog::set_default_logger(globalLogger); 
 }
+ 
 
 spdlog::level::level_enum getLogLevelFromString(const std::string &pLevelString)
 {
@@ -89,19 +88,16 @@ void OMSim::startVisualisationIfRequested()
     if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
     {
         OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-        char argumv0[] = "all";
-        char *argumv[] = {argumv0, NULL};
-        G4UIExecutive *UIEx = new G4UIExecutive(1, argumv);
+        char lArg0[] = "all";
+        char *lArgv[] = {lArg0, NULL};
+        G4UIExecutive *UIEx = new G4UIExecutive(1, lArgv);
         lUIinterface.applyCommand("/control/execute ../aux/init_vis.mac");
         UIEx->SessionStart();
         delete UIEx;
     }
 }
 /**
- * @brief Ensure that the output directory for the simulation results exists.
- *
- * If the output directory does not exist, this function will create it.
- *
+ * @brief Ensure that the output directory for the simulation results exists
  * @param pFilePath The path to the output directory.
  */
 void OMSim::ensureOutputDirectoryExists(const std::string &pFilePath)
@@ -122,9 +118,7 @@ OMSimDetectorConstruction* OMSim::getDetectorConstruction()
 */
 
 /**
- * @brief Initialize the simulation.
- *
- * This function sets up the necessary Geant4 components.
+ * @brief Initialize the simulation constructing all Geant instances.
  */
 void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstruction)
 {
@@ -184,7 +178,7 @@ void OMSim::extendOptions(po::options_description pNewOptions)
 
 
 /**
- * @brief Parses user arguments to a variables map 
+ * @brief Parses user terminal arguments to a variables map 
  */
 po::variables_map OMSim::parseArguments(int pArgumentCount, char *pArgumentVector[])
 {   
