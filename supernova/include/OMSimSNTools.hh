@@ -4,8 +4,6 @@
  * 
  * This class serves as a central utility to house common methods needed in the generation 
  * of SN neutrino interactions.
- *
- * @author Cristian Jesus Lozano Mariscal
  * @ingroup sngroup
  */
 

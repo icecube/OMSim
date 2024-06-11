@@ -181,13 +181,13 @@ G4SubtractionSolid *abcDetectorComponent::substractToVolume(G4VSolid *pInputVolu
 {
     G4SubtractionSolid *lSubstractedVolume;
     G4Transform3D lTrans;
-    G4int iCounter = 0;
+    G4int lCounter = 0;
     for (auto const &[key, Component] : mComponents)
     {
         lTrans = getNewPosition(pSubstractionPos, pSubstractionRot, Component.Position, Component.Rotation);
         G4String mssg = "Substracting " + key + " from " + pInputVolume->GetName() + ".";
         log_debug(mssg);
-        if (iCounter == 0)
+        if (lCounter == 0)
         {
             lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", pInputVolume, Component.VSolid, lTrans);
         }
@@ -195,7 +195,7 @@ G4SubtractionSolid *abcDetectorComponent::substractToVolume(G4VSolid *pInputVolu
         {
             lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", lSubstractedVolume, Component.VSolid, lTrans);
         }
-        iCounter++;
+        lCounter++;
     }
     return lSubstractedVolume;
 }
@@ -213,12 +213,12 @@ G4SubtractionSolid *abcDetectorComponent::substractToVolume(G4VSolid *pInputVolu
 G4SubtractionSolid *abcDetectorComponent::substractToVolume(G4VSolid *pInputVolume, G4Transform3D pTrans, G4String pNewVolumeName)
 {
     G4SubtractionSolid *lSubstractedVolume;
-    G4int iCounter = 0;
+    G4int lCounter = 0;
     for (auto const &[key, Component] : mComponents)
     {
         G4String mssg = "Substracting " + key + " from " + pInputVolume->GetName() + ".";
         log_debug(mssg);
-        if (iCounter == 0)
+        if (lCounter == 0)
         {
             lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", pInputVolume, Component.VSolid, pTrans);
         }
@@ -226,7 +226,7 @@ G4SubtractionSolid *abcDetectorComponent::substractToVolume(G4VSolid *pInputVolu
         {
             lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", lSubstractedVolume, Component.VSolid, pTrans);
         }
-        iCounter++;
+        lCounter++;
     }
     return lSubstractedVolume;
 }

@@ -1,7 +1,5 @@
 /** @file OMSimPrimaryGeneratorMessenger.cc
  *  @brief Primary generator messenger to choose the corresponding primary generator.
- * 
- *  @author Cristian Jesus Lozano Mariscal
  */
 
 #include "OMSimPrimaryGeneratorMessenger.hh"

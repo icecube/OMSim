@@ -1,9 +1,6 @@
 /**
  * @file OMSimIBD.hh
  * @brief This file contains the class in charge of generating positrons from IBD of supernova antineutrino interactions
- *
- * @author Cristian Jesus Lozano Mariscal
- * @version 10.1
  * @ingroup SN
  */
 

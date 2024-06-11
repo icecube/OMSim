@@ -1,7 +1,6 @@
 /**
  * @file 
  * @brief This file contains the classes in charge of particle generation 
- * @author Cristian Jesus Lozano Mariscal
  * @ingroup sngroup
  */
 

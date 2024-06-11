@@ -1,7 +1,5 @@
 /** @file OMSimPrimaryGeneratorAction.cc
  *  @brief Main primary generator. Chooses between generators 0 (IBD), 1 (ENES), 2 (SN ibd)
- * 
- *  @author Cristian Jesus Lozano Mariscal
  */
 
 #include "OMSimPrimaryGeneratorAction.hh"

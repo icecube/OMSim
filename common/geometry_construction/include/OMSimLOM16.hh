@@ -1,7 +1,5 @@
 /** @file OMSimLOM16.hh
  *  @brief Construction of LOM16.
- *
- *  @author Javi Vara & Markus Dittmer
  *  @ingroup common
  */
 

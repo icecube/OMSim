@@ -1,6 +1,3 @@
-/**
- * @todo Check ReflectiveSurface::extractInformation(), code look suspicious.
- */
 #include "OMSimDataFileTypes.hh"
 #include "OMSimInputData.hh"
 #include "OMSimLogger.hh"

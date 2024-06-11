@@ -1,7 +1,5 @@
 /** @file OMSimSNAnalysis.cc
  *  @brief Analyze data and write output files
- * 
- *  @author Cristian Jesus Lozano Mariscal
  */
 
 #include "OMSimSNAnalysis.hh"

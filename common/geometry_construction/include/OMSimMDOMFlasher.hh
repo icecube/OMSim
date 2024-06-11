@@ -7,8 +7,6 @@
  * mDOMFlasher is responsible for creating the flashers in the mDOM, which includes a LED, 
  * the air around it, and a glass window on top. The class provides functionalities for constructing 
  * the solids and logical volumes, retrieving them, and simulating the LED flashing based on a given profile.
- *
- * @author Anna-Sophia Tenbruck, Cristian Lozano, Martin Unland
  * @ingroup common
  */
 

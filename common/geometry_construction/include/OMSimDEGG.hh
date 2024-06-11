@@ -1,7 +1,6 @@
 /**
  * @file OMSimDEGG.hh
- * @brief Construction of the DEGG class.
- * @author Geometry from DOUMEKI parsed by Berit Schlüter
+ * @brief Construction of the DEGG class. From DOUMEKI
  * @ingroup common
  */
 
