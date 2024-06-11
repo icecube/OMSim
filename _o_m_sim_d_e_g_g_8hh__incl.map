@@ -1,5 +1,5 @@
 <map id="OMSimDEGG.hh" name="OMSimDEGG.hh">
-<area shape="rect" id="node1" title="Construction of the DEGG class." alt="" coords="936,5,1063,32"/>
+<area shape="rect" id="node1" title="Construction of the DEGG class. From DOUMEKI." alt="" coords="936,5,1063,32"/>
 <area shape="rect" id="node2" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="821,155,1020,181"/>
 <area shape="rect" id="node24" href="$_o_m_sim_optical_module_8hh.html" title=" " alt="" coords="981,80,1164,107"/>
 <area shape="rect" id="node3" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="903,229,1099,256"/>
