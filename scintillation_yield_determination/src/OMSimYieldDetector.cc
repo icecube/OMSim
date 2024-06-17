@@ -1,4 +1,4 @@
-#include "OMSimRadDecaysDetector.hh"
+#include "OMSimYieldDetector.hh"
 #include "OMSimYieldSetup.hh"
 #include "OMSimMDOM.hh"
 #include "OMSimPDOM.hh"
@@ -14,7 +14,7 @@
 /**
  * @brief Constructs the world volume (sphere).
  */
-void OMSimRadDecaysDetector::constructWorld()
+void OMSimYieldDetector::constructWorld()
 {
     mWorldSolid = new G4Orb("World", OMSimCommandArgsTable::getInstance().get<G4double>("world_radius") * m);
     mWorldLogical = new G4LogicalVolume(mWorldSolid, mData->getMaterial("argWorld"), "World_log", 0, 0, 0);
@@ -26,7 +26,7 @@ void OMSimRadDecaysDetector::constructWorld()
 /**
  * @brief Constructs the selected detector from the command line argument.
  */
-void OMSimRadDecaysDetector::constructDetector()
+void OMSimYieldDetector::constructDetector()
 {
     OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
     bool lPlaceHarness = OMSimCommandArgsTable::getInstance().get<bool>("place_harness");
@@ -56,6 +56,7 @@ void OMSimRadDecaysDetector::constructDetector()
 
         Cs137Source *lSource = new Cs137Source(mData);
         lSource->placeIt(G4ThreeVector(0, -lySample, lzSource), G4RotationMatrix(), mWorldLogical, "");
+        mSource = lSource;
 
         break;
     }

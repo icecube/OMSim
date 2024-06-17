@@ -1,10 +1,5 @@
-/**
- * @file
- * @brief Defines the OMSimRadDecaysDetector class for the radioactive decays simulation.
- * @ingroup radioactive
- */
-#ifndef OMSimRadDecaysDetector_h
-#define OMSimRadDecaysDetector_h 1
+#ifndef OMSimYieldDetector
+#define OMSimYieldDetector 1
 
 #include "OMSimOpticalModule.hh"
 #include "abcDetectorComponent.hh"
@@ -19,12 +14,13 @@
  * @brief Detector construction of radioactive decays simulation.
  * @ingroup radioactive
  */
-class OMSimRadDecaysDetector : public OMSimDetectorConstruction
+class OMSimYieldDetector : public OMSimYieldDetector
 {
 public:
-    OMSimRadDecaysDetector(){};
-    ~OMSimRadDecaysDetector(){};
+    OMSimYieldDetector(){};
+    ~OMSimYieldDetector(){};
     OMSimOpticalModule *mOpticalModule;
+    abcDetectorComponent *mSource = nullptr;
 private:
     void constructWorld();
     void constructDetector();
