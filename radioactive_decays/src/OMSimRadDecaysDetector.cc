@@ -37,7 +37,14 @@ void OMSimRadDecaysDetector::constructDetector()
 
     case 0:
     {
-        log_critical("No custom detector implemented!");
+        log_info("Constructing Okamoto Cs-137 Source setup for electron yield");
+        OMSimPMTConstruction *lPMTManager = new OMSimPMTConstruction(mData);
+        lPMTManager->selectPMT("argPMT");
+        lPMTManager->construction();
+        lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
+        lHitManager.setNumberOfPMTs(1, 0);
+        lPMTManager->configureSensitiveVolume(this, "/PMT/0");
+
         break;
     }
     case 1:
