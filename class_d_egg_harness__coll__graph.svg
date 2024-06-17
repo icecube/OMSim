@@ -28,7 +28,7 @@
 </g>
 </g>
 <!-- Node1&#45;&gt;Node5 -->
-<g id="edge10" class="edge">
+<g id="edge9" class="edge">
 <title>Node1&#45;&gt;Node5</title>
 <path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M29.69,-117.61C12.54,-102.47 -7.7,-78.54 3.74,-57 13.23,-39.12 33.11,-26.93 48.94,-19.61"/>
 <polygon fill="#9a32cd" stroke="#9a32cd" points="27.79,-120.58 37.71,-124.29 32.27,-115.2 27.79,-120.58"/>
@@ -38,16 +38,16 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="classabc_detector_component.html" target="_top" xlink:title="Abstract base class used for constructing detector components.">
-<polygon fill="white" stroke="black" points="48.74,-181.5 48.74,-200.5 180.74,-200.5 180.74,-181.5 48.74,-181.5"/>
-<text text-anchor="middle" x="114.74" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcDetectorComponent</text>
+<polygon fill="white" stroke="black" points="52.74,-181.5 52.74,-200.5 184.74,-200.5 184.74,-181.5 52.74,-181.5"/>
+<text text-anchor="middle" x="118.74" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcDetectorComponent</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
 <g id="edge1" class="edge">
 <title>Node2&#45;&gt;Node1</title>
-<path fill="none" stroke="midnightblue" d="M96.67,-174.71C84.86,-164.72 69.86,-152.02 60.04,-143.71"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="94.69,-177.62 104.58,-181.41 99.21,-172.27 94.69,-177.62"/>
+<path fill="none" stroke="midnightblue" d="M99.92,-175C87.33,-164.96 71.2,-152.1 60.67,-143.71"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="97.96,-177.91 107.96,-181.41 102.32,-172.44 97.96,-177.91"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
@@ -61,8 +61,8 @@
 <!-- Node2&#45;&gt;Node6 -->
 <g id="edge6" class="edge">
 <title>Node2&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M119.49,-171.42C123.37,-157.82 129.55,-139.17 137.74,-124 147.64,-105.66 163.35,-86.99 172.79,-76.51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="116.1,-170.52 116.87,-181.08 122.86,-172.35 116.1,-170.52"/>
+<path fill="none" stroke="midnightblue" d="M122.13,-171.44C125.08,-157.82 130.1,-139.13 137.74,-124 147.02,-105.62 162.64,-87.24 172.28,-76.79"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="118.65,-171.01 120.13,-181.5 125.52,-172.38 118.65,-171.01"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
@@ -76,46 +76,39 @@
 <!-- Node2&#45;&gt;Node7 -->
 <g id="edge8" class="edge">
 <title>Node2&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M138.97,-176.54C157.51,-166.24 182.51,-152.35 198.38,-143.53"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="137.25,-173.49 130.21,-181.41 140.65,-179.61 137.25,-173.49"/>
+<path fill="none" stroke="midnightblue" d="M142.24,-176.39C160,-166.11 183.84,-152.31 199,-143.53"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="140.48,-173.37 133.58,-181.41 143.99,-179.42 140.48,-173.37"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="class_input_data_manager.html" target="_top" xlink:title="Manages the input data, including parsing and storing material properties.">
-<polygon fill="white" stroke="black" points="112.24,-248.5 112.24,-267.5 219.24,-267.5 219.24,-248.5 112.24,-248.5"/>
-<text text-anchor="middle" x="165.74" y="-255.5" font-family="Helvetica,sans-Serif" font-size="10.00">InputDataManager</text>
+<polygon fill="white" stroke="black" points="65.24,-248.5 65.24,-267.5 172.24,-267.5 172.24,-248.5 65.24,-248.5"/>
+<text text-anchor="middle" x="118.74" y="-255.5" font-family="Helvetica,sans-Serif" font-size="10.00">InputDataManager</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node2 -->
 <g id="edge2" class="edge">
 <title>Node3&#45;&gt;Node2</title>
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M152.61,-240.27C142.67,-227.6 129.41,-210.7 121.51,-200.63"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="149.93,-242.53 158.86,-248.23 155.44,-238.21 149.93,-242.53"/>
-<text text-anchor="middle" x="162.24" y="-222" font-family="Helvetica,sans-Serif" font-size="10.00"> mData</text>
-</g>
-<!-- Node3&#45;&gt;Node7 -->
-<g id="edge9" class="edge">
-<title>Node3&#45;&gt;Node7</title>
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M178.85,-240.07C181.01,-236.84 183.08,-233.4 184.74,-230 199.43,-199.95 208.51,-160.89 212.04,-143.73"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="175.83,-238.28 172.82,-248.44 181.51,-242.38 175.83,-238.28"/>
-<text text-anchor="middle" x="220.24" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00"> mData</text>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M118.74,-238.04C118.74,-225.67 118.74,-210.12 118.74,-200.63"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="115.24,-238.23 118.74,-248.23 122.24,-238.23 115.24,-238.23"/>
+<text text-anchor="middle" x="137.24" y="-222" font-family="Helvetica,sans-Serif" font-size="10.00"> mData</text>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="class_parameter_table.html" target="_top" xlink:title="A utility class for managing JSON&#45;based data tables.">
-<polygon fill="white" stroke="black" points="119.74,-305.5 119.74,-324.5 211.74,-324.5 211.74,-305.5 119.74,-305.5"/>
-<text text-anchor="middle" x="165.74" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParameterTable</text>
+<polygon fill="white" stroke="black" points="72.74,-305.5 72.74,-324.5 164.74,-324.5 164.74,-305.5 72.74,-305.5"/>
+<text text-anchor="middle" x="118.74" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParameterTable</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node3 -->
 <g id="edge3" class="edge">
 <title>Node4&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M165.74,-295.12C165.74,-285.82 165.74,-275.06 165.74,-267.71"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="162.24,-295.41 165.74,-305.41 169.24,-295.41 162.24,-295.41"/>
+<path fill="none" stroke="midnightblue" d="M118.74,-295.12C118.74,-285.82 118.74,-275.06 118.74,-267.71"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="115.24,-295.41 118.74,-305.41 122.24,-295.41 115.24,-295.41"/>
 </g>
 <!-- Node5&#45;&gt;Node1 -->
 <g id="edge4" class="edge">

@@ -30,7 +30,6 @@ var class_o_m_sim_p_m_t_construction =
     [ "sphereEllipsePhotocathode", "class_o_m_sim_p_m_t_construction.html#a6724e1b0920884b77cd6401da6588ca9", null ],
     [ "mCheckOverlaps", "class_o_m_sim_p_m_t_construction.html#a954bc0a8936589dcd842089408d4f0a1", null ],
     [ "mConstructionFinished", "class_o_m_sim_p_m_t_construction.html#a74f1218bdab815e7d608696ca7f3dab0", null ],
-    [ "mData", "class_o_m_sim_p_m_t_construction.html#a352a0447cb3025f24340fa5cecb0b0c4", null ],
     [ "mDynodeSystem", "class_o_m_sim_p_m_t_construction.html#a6b9aad40552f479df2d6a8bc0179fd76", null ],
     [ "mEllipsePos_y", "class_o_m_sim_p_m_t_construction.html#a1b423922ceb61e5a5042d14f24f098c9", null ],
     [ "mEllipseXYaxis", "class_o_m_sim_p_m_t_construction.html#a6b62f7345d468f6926f5e46ebc2f68af", null ],

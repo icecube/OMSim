@@ -62,7 +62,7 @@ var searchData=
   ['omsimmdomflasher_2ehh_717',['OMSimMDOMFlasher.hh',['../_o_m_sim_m_d_o_m_flasher_8hh.html',1,'']]],
   ['omsimmdomharness_2ecc_718',['OMSimMDOMHarness.cc',['../_o_m_sim_m_d_o_m_harness_8cc.html',1,'']]],
   ['omsimmdomharness_2ehh_719',['OMSimMDOMHarness.hh',['../_o_m_sim_m_d_o_m_harness_8hh.html',1,'']]],
-  ['omsimopticalmodule_720',['OMSimOpticalModule',['../class_o_m_sim_optical_module.html',1,'OMSimOpticalModule'],['../class_o_m_sim_optical_module.html#ac745eb1b31be4f70c3bf6076d73d46fc',1,'OMSimOpticalModule::OMSimOpticalModule()']]],
+  ['omsimopticalmodule_720',['OMSimOpticalModule',['../class_o_m_sim_optical_module.html',1,'OMSimOpticalModule'],['../class_o_m_sim_optical_module.html#a2068762f5d85b911253ee6adb26c79f5',1,'OMSimOpticalModule::OMSimOpticalModule()']]],
   ['omsimopticalmodule_2ecc_721',['OMSimOpticalModule.cc',['../_o_m_sim_optical_module_8cc.html',1,'']]],
   ['omsimopticalmodule_2ehh_722',['OMSimOpticalModule.hh',['../_o_m_sim_optical_module_8hh.html',1,'']]],
   ['omsimpdom_2ecc_723',['OMSimPDOM.cc',['../_o_m_sim_p_d_o_m_8cc.html',1,'']]],

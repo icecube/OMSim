@@ -1,7 +1,7 @@
 var class_o_m_sim_optical_module =
 [
+    [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html#a2068762f5d85b911253ee6adb26c79f5", null ],
     [ "~OMSimOpticalModule", "class_o_m_sim_optical_module.html#a40298d3f38fec537945c6af1ae5a172e", null ],
-    [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html#ac745eb1b31be4f70c3bf6076d73d46fc", null ],
     [ "configureSensitiveVolume", "class_o_m_sim_optical_module.html#a846d980c07324a88cfc0153ed1d6ca84", null ],
     [ "getName", "class_o_m_sim_optical_module.html#a039a483d855aa87a6baa94800d8280f5", null ],
     [ "getNumberOfPMTs", "class_o_m_sim_optical_module.html#a802253f7f4b4cb4759c57fbff51023ae", null ],

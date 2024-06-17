@@ -217,7 +217,7 @@ var group__common =
         [ "VLogical", "structabc_detector_component_1_1_component.html#a22a626006281f88b43853c57b104a20f", null ],
         [ "VSolid", "structabc_detector_component_1_1_component.html#af39293b9b096379b48b083c80b3e2587", null ]
       ] ],
-      [ "abcDetectorComponent", "classabc_detector_component.html#a49a4c0e7138f1c0ed90736f80dc41377", null ],
+      [ "abcDetectorComponent", "classabc_detector_component.html#a1456e88942caeab1e8895c64d9df3613", null ],
       [ "appendComponent", "classabc_detector_component.html#a467235840a313b6481569ae9ea9d2673", null ],
       [ "checkIfExists", "classabc_detector_component.html#a3d796bd0c3a6e22e8bbd11765b98d2e8", null ],
       [ "construction", "classabc_detector_component.html#a8e7f01c218d5f093e80e46b33a0672bf", null ],
@@ -289,8 +289,8 @@ var group__common =
       [ "mProfileY", "classm_d_o_m_flasher.html#a46a5e36504e75195e7035a231d150cd9", null ]
     ] ],
     [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html", [
+      [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html#a2068762f5d85b911253ee6adb26c79f5", null ],
       [ "~OMSimOpticalModule", "class_o_m_sim_optical_module.html#a40298d3f38fec537945c6af1ae5a172e", null ],
-      [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html#ac745eb1b31be4f70c3bf6076d73d46fc", null ],
       [ "configureSensitiveVolume", "class_o_m_sim_optical_module.html#a846d980c07324a88cfc0153ed1d6ca84", null ],
       [ "getName", "class_o_m_sim_optical_module.html#a039a483d855aa87a6baa94800d8280f5", null ],
       [ "getNumberOfPMTs", "class_o_m_sim_optical_module.html#a802253f7f4b4cb4759c57fbff51023ae", null ],

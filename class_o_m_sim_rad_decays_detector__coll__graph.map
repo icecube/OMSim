@@ -1,10 +1,10 @@
 <map id="OMSimRadDecaysDetector" name="OMSimRadDecaysDetector">
-<area shape="rect" id="node1" title="Detector construction of radioactive decays simulation." alt="" coords="1400,41,1599,68"/>
-<area shape="rect" id="node2" href="$class_o_m_sim_detector_construction.html" title="Class for detector construction in the effective area simulation." alt="" coords="492,16,699,43"/>
+<area shape="rect" id="node1" title="Detector construction of radioactive decays simulation." alt="" coords="1400,45,1599,72"/>
+<area shape="rect" id="node2" href="$class_o_m_sim_detector_construction.html" title="Class for detector construction in the effective area simulation." alt="" coords="492,20,699,47"/>
 <area shape="rect" id="node3" title=" " alt="" coords="177,5,395,32"/>
-<area shape="rect" id="node4" href="$class_input_data_manager.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="215,85,357,112"/>
-<area shape="rect" id="node7" href="$classabc_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="507,81,683,108"/>
-<area shape="rect" id="node8" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="748,117,927,144"/>
-<area shape="rect" id="node5" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="5,85,128,112"/>
-<area shape="rect" id="node6" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="1077,67,1240,93"/>
+<area shape="rect" id="node4" href="$class_input_data_manager.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="215,71,357,97"/>
+<area shape="rect" id="node7" href="$classabc_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="507,85,683,112"/>
+<area shape="rect" id="node5" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="5,71,128,97"/>
+<area shape="rect" id="node6" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="1077,71,1240,97"/>
+<area shape="rect" id="node8" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="748,121,927,148"/>
 </map>

@@ -61,8 +61,8 @@ var NAVTREEINDEX =
 "class_distribution_sampler.html",
 "class_l_o_m_hamamatsu_response.html#ad04746112c82705965136dcf1f1fa1d8",
 "class_o_m_sim_p_m_t_construction.html#a1a8373e9ae3095062edb477245133a9e",
-"class_s_n_base_particle_generator.html#a98d77fbed2a543dd845befc2db055393",
-"functions_vars_h.html"
+"class_s_n_base_particle_generator.html#ab0d0ee63c617404dbb96d72efa8c6e6f",
+"functions_vars_i.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

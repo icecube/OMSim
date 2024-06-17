@@ -1,7 +1,7 @@
 var searchData=
 [
   ['abcdatafile_1262',['abcDataFile',['../classabc_data_file.html#afa294a5fd58c6c3911d1a57683f7688a',1,'abcDataFile']]],
-  ['abcdetectorcomponent_1263',['abcDetectorComponent',['../classabc_detector_component.html#a49a4c0e7138f1c0ed90736f80dc41377',1,'abcDetectorComponent']]],
+  ['abcdetectorcomponent_1263',['abcDetectorComponent',['../classabc_detector_component.html#a1456e88942caeab1e8895c64d9df3613',1,'abcDetectorComponent']]],
   ['abcmaterialdata_1264',['abcMaterialData',['../classabc_material_data.html#ae30f0dc56953e39e0f5cb711c645d5a5',1,'abcMaterialData']]],
   ['addmesh_1265',['AddMesh',['../class_c_a_d_mesh_1_1_file_1_1_reader.html#a3485fbb3da05fcba3814469773fa9043',1,'CADMesh::File::Reader']]],
   ['addmoduleoptions_1266',['addModuleOptions',['../_o_m_sim__effective__area_8cc.html#ae548ed843bde184e37c74bafc447131f',1,'addModuleOptions(OMSim *pSimulation):&#160;OMSim_effective_area.cc'],['../_o_m_sim__radioactive__decays_8cc.html#ae548ed843bde184e37c74bafc447131f',1,'addModuleOptions(OMSim *pSimulation):&#160;OMSim_radioactive_decays.cc'],['../_o_m_sim__supernova_8cc.html#ae548ed843bde184e37c74bafc447131f',1,'addModuleOptions(OMSim *pSimulation):&#160;OMSim_supernova.cc']]],
