@@ -39,3 +39,5 @@ doxygen_documentation/html
 doxygen_documentation/latex
 .vscode/
 CMakeLists.txt
+
+240617_analysis/*

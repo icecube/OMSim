@@ -101,10 +101,12 @@ pt::ptree ParameterTable::getJSONTree(G4String pKey)
  */
 G4bool ParameterTable::checkIfKeyInTable(G4String pKey)
 {
+    log_trace("Checking if key {} is in table...", pKey);
     const G4int lFound = mTable.count(pKey);
     if (lFound > 0)
         return true;
     else
+        log_trace("Key {} was not found...", pKey);
         return false;
 }
 

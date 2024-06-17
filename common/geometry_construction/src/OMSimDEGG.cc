@@ -14,12 +14,9 @@
 #include <G4Sphere.hh>
 #include <G4Polycone.hh>
 
-DEGG::DEGG(InputDataManager *pData, G4bool pPlaceHarness)
+DEGG::DEGG(InputDataManager *pData, G4bool pPlaceHarness): OMSimOpticalModule(pData, new OMSimPMTConstruction(pData))
 {
    log_info("Constructing DEGG");
-   mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
-   mData = pData;
-   mPMTManager = new OMSimPMTConstruction(mData);
    mPMTManager->selectPMT("pmt_Hamamatsu_R5912_20_100");
    mPMTManager->construction();
    construction(); // always before harness, otherwise harness will be deleted :(

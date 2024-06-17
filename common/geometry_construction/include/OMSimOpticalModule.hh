@@ -23,8 +23,8 @@ class OMSimDetectorConstruction;
 class OMSimOpticalModule : public abcDetectorComponent
 {
 public:
+    OMSimOpticalModule(InputDataManager* pData, OMSimPMTConstruction* pPMTManager);
     virtual ~OMSimOpticalModule();
-    OMSimOpticalModule();
 
     /**
      *  @brief Virtual method to get the weight of the pressure vessel.

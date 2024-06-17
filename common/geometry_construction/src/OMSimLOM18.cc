@@ -21,12 +21,9 @@ LOM18::~LOM18()
     //delete mHarness;
 }
 
-LOM18::LOM18(InputDataManager* pData, G4bool pPlaceHarness) {
+LOM18::LOM18(InputDataManager* pData, G4bool pPlaceHarness): OMSimOpticalModule(pData, new OMSimPMTConstruction(pData)), mPlaceHarness(pPlaceHarness)
+ {
     log_info("Constructing LOM18");
-        
-    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
-    mData = pData;
-    mPMTManager = new OMSimPMTConstruction(mData);
     mPMTManager->includeHAcoating();
     mPMTManager->selectPMT("pmt_Hamamatsu_4inch");
     mPMTManager->construction();

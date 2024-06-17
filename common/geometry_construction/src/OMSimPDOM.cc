@@ -7,14 +7,9 @@
 #include <G4Orb.hh>
 #include <G4Polycone.hh>
 
-pDOM::pDOM(InputDataManager *pData, G4bool pPlaceHarness)
+pDOM::pDOM(InputDataManager *pData, G4bool pPlaceHarness): OMSimOpticalModule(pData, new OMSimPMTConstruction(pData)), mPlaceHarness(pPlaceHarness)
 {
     log_info("Constructing pDOM");
-    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
-
-    mPlaceHarness = pPlaceHarness;
-    mData = pData;
-    mPMTManager = new OMSimPMTConstruction(mData);
     mPMTManager->selectPMT("pmt_Hamamatsu_R7081");
     mPMTManager->construction();
     construction();

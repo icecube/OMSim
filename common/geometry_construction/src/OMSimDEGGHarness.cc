@@ -7,11 +7,8 @@
 #include <G4Tubs.hh>
 
 
-DEggHarness::DEggHarness(DEGG *pDEGG, InputDataManager *pData)
+DEggHarness::DEggHarness(DEGG *pDEGG, InputDataManager *pData): abcDetectorComponent(pData), mOM(pDEGG)
 {
-    mOM = pDEGG;
-    mData = pData;
-    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
     construction();
 }
 

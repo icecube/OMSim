@@ -11,9 +11,8 @@
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
-mDOMFlasher::mDOMFlasher(InputDataManager *pData) 
+mDOMFlasher::mDOMFlasher(InputDataManager *pData): abcDetectorComponent(pData) 
 {
-	mData = pData;
 	construction();
 }
 
