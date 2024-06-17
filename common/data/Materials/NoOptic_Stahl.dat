@@ -5,7 +5,7 @@
       "G4_STAINLESS-STEEL": 1.0
    },
    "jDensity": {
-      "jValue": 8,
+      "jValue": 7.8,
       "jUnit": "g/cm3"
    },
    "jState": "kStateSolid"

@@ -38,7 +38,25 @@ void OMSimRadDecaysDetector::constructDetector()
 
     case 0:
     {
-        log_critical("No custom detector implemented!");
+        log_info("Constructing Okamoto Cs-137 Source setup for electron yield");
+        OMSimPMTConstruction *lPMTManager = new OMSimPMTConstruction(mData);
+        lPMTManager->selectPMT("argPMT");
+        lPMTManager->construction();
+        lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix().rotateY(1*deg), mWorldLogical, "_0");
+        lHitManager.setNumberOfPMTs(1, 0);
+        lPMTManager->configureSensitiveVolume(this, "/PMT/0");
+
+        OkamotoLargeSample *lOkamotoSample = new OkamotoLargeSample(mData);
+        G4double lzSample = 4.46*cm+lPMTManager->getDistancePMTCenterToTip();
+        G4double lySample = 21.77*mm-(40*mm-25*mm);
+
+        lOkamotoSample->placeIt(G4ThreeVector(0, -lySample, lzSample), G4RotationMatrix(), mWorldLogical, "");
+
+        G4double lzSource = lzSample+lOkamotoSample->getSampleThickness()+0.96*cm;
+
+        Cs137Source *lSource = new Cs137Source(mData);
+        lSource->placeIt(G4ThreeVector(0, -lySample, lzSource), G4RotationMatrix(), mWorldLogical, "");
+
         break;
     }
     case 1:
