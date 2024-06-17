@@ -30,7 +30,6 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
     log_debug("Starting detector construction");
     mData = new InputDataManager();
     mData->searchFolders();
-
     constructWorld();
     constructDetector();
 

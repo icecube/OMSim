@@ -39,7 +39,6 @@ public:
 
 private:
     G4LogicalVolume* mPhotocathodeLV;
-    InputDataManager *mData;
     G4String mSelectedPMT;
     G4bool mDynodeSystem = false;
     G4bool mInternalReflections = false;

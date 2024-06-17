@@ -19,16 +19,10 @@ mDOM::~mDOM()
         delete mHarness;
     }
 }
-mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
+mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness): OMSimOpticalModule(pData, new OMSimPMTConstruction(pData)), mPlaceHarness(pPlaceHarness)
 {
     log_info("Constructing mDOM");
-
-    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
-    mPlaceHarness = pPlaceHarness;
-    mData = pData;
-    mPMTManager = new OMSimPMTConstruction(mData);
     mFlashers = new mDOMFlasher(mData);
-
     mPMTManager->selectPMT("pmt_Hamamatsu_R15458_20nm");
     mPMTManager->construction();
     mRefConeIdealInRad = mPMTManager->getMaxPMTRadius() + 2 * mm;

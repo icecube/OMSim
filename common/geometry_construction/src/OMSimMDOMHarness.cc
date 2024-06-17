@@ -11,12 +11,10 @@
 #include <G4Polycone.hh>
 #include <G4Torus.hh>
 
-mDOMHarness::mDOMHarness(mDOM *pMDOM, InputDataManager *pData)
+mDOMHarness::mDOMHarness(mDOM *pMDOM, InputDataManager *pData): abcDetectorComponent(pData)
 {
     mOM = pMDOM;
-    mData = pData;
     mTotalWidth = mOM->mGlassOutRad + mTeraThickness + mPadThickness + mBridgeAddedThickness;
-    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
     construction();
 };
 

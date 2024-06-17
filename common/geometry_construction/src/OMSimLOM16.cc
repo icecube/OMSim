@@ -19,19 +19,14 @@ LOM16::~LOM16()
     // delete mHarness;
 }
 
-LOM16::LOM16(InputDataManager *pData, G4bool pPlaceHarness)
+LOM16::LOM16(InputDataManager *pData, G4bool pPlaceHarness): OMSimOpticalModule(pData, new OMSimPMTConstruction(pData)), mPlaceHarness(pPlaceHarness)
 {
     log_info("Constructing LOM16");
-    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
-    mData = pData;
-    mPMTManager = new OMSimPMTConstruction(mData);
     mPMTManager->includeHAcoating();
     mPMTManager->selectPMT(mPMTModel);
     mPMTManager->construction();
     mPMToffset = mPMTManager->getDistancePMTCenterToTip();
     mMaxPMTRadius = mPMTManager->getMaxPMTRadius() + 2 * mm;
-
-    mPlaceHarness = pPlaceHarness;
     if (mPlaceHarness)
     {
         // mHarness = new mDOMHarness(this, mData);

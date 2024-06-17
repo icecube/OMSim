@@ -13,11 +13,9 @@
 #include <G4Torus.hh>
 #include <OMSimLogger.hh>
 
-OMSimPMTConstruction::OMSimPMTConstruction(InputDataManager *pData)
+OMSimPMTConstruction::OMSimPMTConstruction(InputDataManager *pData): abcDetectorComponent(pData)
 {   
-    mData = pData;
     mInternalReflections = OMSimCommandArgsTable::getInstance().get<bool>("detail_pmt");
-    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
 }
 
 /**
