@@ -145,5 +145,10 @@ var files_dup =
     [ "OMSimTrackingAction.hh", "_o_m_sim_tracking_action_8hh.html", [
       [ "OMSimTrackingAction", "class_o_m_sim_tracking_action.html", "class_o_m_sim_tracking_action" ]
     ] ],
-    [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", null ]
+    [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", null ],
+    [ "OMSimYieldSetup.cc", "_o_m_sim_yield_setup_8cc.html", null ],
+    [ "OMSimYieldSetup.hh", "_o_m_sim_yield_setup_8hh.html", [
+      [ "Cs137Source", "class_cs137_source.html", "class_cs137_source" ],
+      [ "OkamotoLargeSample", "class_okamoto_large_sample.html", "class_okamoto_large_sample" ]
+    ] ]
 ];

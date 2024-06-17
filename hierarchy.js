@@ -17,6 +17,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "abcDetectorComponent", "classabc_detector_component.html", [
+      [ "Cs137Source", "class_cs137_source.html", null ],
       [ "DEggHarness", "class_d_egg_harness.html", null ],
       [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html", [
         [ "DEGG", "class_d_e_g_g.html", null ],
@@ -26,6 +27,7 @@ var hierarchy =
         [ "pDOM", "classp_d_o_m.html", null ]
       ] ],
       [ "OMSimPMTConstruction", "class_o_m_sim_p_m_t_construction.html", null ],
+      [ "OkamotoLargeSample", "class_okamoto_large_sample.html", null ],
       [ "mDOMFlasher", "classm_d_o_m_flasher.html", null ],
       [ "mDOMHarness", "classm_d_o_m_harness.html", null ]
     ] ],
