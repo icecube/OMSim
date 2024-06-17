@@ -10,6 +10,7 @@
  */
 #ifndef OpticalModule_h
 #define OpticalModule_h 1
+
 #include "abcDetectorComponent.hh"
 #include "OMSimHitManager.hh"
 #include "OMSimPMTConstruction.hh"
