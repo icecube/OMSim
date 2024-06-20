@@ -47,7 +47,7 @@ include(${ROOT_USE_FILE})
 
 add_subdirectory(common)
 #add_subdirectory(effective_area)
-add_subdirectory(radioactive_decays)
+add_subdirectory(scintillation_yield_determination)
 #add_subdirectory(supernova)
 
 # Copy auxiliary files from source directory to binary directory

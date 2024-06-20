@@ -55,6 +55,7 @@ void OMSimYieldDetector::constructDetector()
         G4double lzSource = lzSample+lOkamotoSample->getSampleThickness()+0.96*cm;
 
         Cs137Source *lSource = new Cs137Source(mData);
+        log_trace("Position of source {} {} {}", 0, -lySample/m, lzSource/m);
         lSource->placeIt(G4ThreeVector(0, -lySample, lzSource), G4RotationMatrix(), mWorldLogical, "");
         mSource = lSource;
 

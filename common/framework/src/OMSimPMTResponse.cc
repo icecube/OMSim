@@ -260,8 +260,6 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::processPhotocathodeHit(G4double pX,
     G4double lR = std::sqrt(mX * mX + mY * mY);
     mWavelength = pWavelength;
 
-    lPulse.detectionProbability = mRelativeDetectionEfficiencyInterp->Eval(lR);
-
     std::vector<G4double> lScannedWavelengths = getScannedWavelengths();
 
     // If wavelength matches with one of the measured ones
@@ -291,6 +289,8 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::processPhotocathodeHit(G4double pX,
         lPulse = getPulseFromInterpolation(lW1, lW2);
     }
 
+    lPulse.detectionProbability = mRelativeDetectionEfficiencyInterp->Eval(lR);
+    
     return lPulse;
 }
 

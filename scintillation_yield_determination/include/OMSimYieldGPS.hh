@@ -15,8 +15,8 @@ public:
   }
 
   void setEmitterVolume(abcDetectorComponent *pEmitterVolume) { mEmitterVolume = pEmitterVolume; };
-  void setProductionRadius(G4double pProductionRadius);
-
+  void setProductionRadius(G4double pProductionRadius) {mProductionRadius = pProductionRadius;};
+  void limitThetaEmission(G4double pThetaMin, G4double pThetaMax);
   void configureGammaEmitter(G4double pEnergy, G4String pVolumeName);
   
 private:

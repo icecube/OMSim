@@ -16,7 +16,7 @@ std::shared_ptr<spdlog::logger> globalLogger;
 
 namespace po = boost::program_options;
 
-void runRadioactiveDecays(OMSimRadDecaysDetector *pDetector)
+void runYieldSetup(OMSimYieldDetector *pDetector)
 {
 	OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
@@ -29,11 +29,13 @@ void runRadioactiveDecays(OMSimRadDecaysDetector *pDetector)
 	{
 	case 0:
 		lDecays.setEmitterVolume(pDetector->mSource);
-		lDecays.setProductionRadius(200 * mm);
-		lDecays.configureGammaEmitter();
+		lDecays.setProductionRadius(1*cm);
+		lDecays.configureGammaEmitter(661.7*keV, "Cs137");
+		//lDecays.limitThetaEmission(90*deg, 180*deg);
 		lUIinterface.runBeamOn();
 		break;
 	}
+	lAnalysisManager.writeHitInformation();
 }
 
 /**
@@ -58,10 +60,10 @@ int main(int pArgumentCount, char *pArgumentVector[])
 	if (!lContinue)
 		return 0;
 
-	OMSimRadDecaysDetector *lDetectorConstruction = new OMSimRadDecaysDetector();
+	OMSimYieldDetector *lDetectorConstruction = new OMSimYieldDetector();
 	lSimulation.initialiseSimulation(lDetectorConstruction);
 
-	runRadioactiveDecays(lDetectorConstruction);
+	runYieldSetup(lDetectorConstruction);
 
 	lSimulation.startVisualisationIfRequested();
 	return 0;

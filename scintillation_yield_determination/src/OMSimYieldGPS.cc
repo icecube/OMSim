@@ -4,7 +4,12 @@
 #include <G4SystemOfUnits.hh>
 #include <G4Poisson.hh>
 
-
+void OMSimYieldGPS::limitThetaEmission(G4double pThetaMin, G4double pThetaMax)
+{
+    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+    lUIinterface.applyCommand("/gps/ang/maxtheta ", pThetaMax / deg, " deg");
+    lUIinterface.applyCommand("/gps/ang/mintheta ", pThetaMin / deg, " deg");
+}
 void OMSimYieldGPS::configureGammaEmitter(G4double pEnergy, G4String pVolumeName)
 {
     log_debug("Configuring gamma emitter of energy {} in volume {}", pEnergy, pVolumeName);
@@ -14,8 +19,8 @@ void OMSimYieldGPS::configureGammaEmitter(G4double pEnergy, G4String pVolumeName
     lUIinterface.applyCommand("/run/initialize");
     lUIinterface.applyCommand("/gps/particle gamma");
     G4ThreeVector lPosition = mEmitterVolume->mPlacedPositions.at(0);
-    lUIinterface.applyCommand("/gps/pos/centre ", lPosition.x()/m, " ", lPosition.y()/m, " ", lPosition.z()/m, " m");
-    lUIinterface.applyCommand("/gps/ene/mono 0 eV");
+    lUIinterface.applyCommand("/gps/pos/centre ", lPosition.x() / m, " ", lPosition.y() / m, " ", lPosition.z() / m, " m");
+    lUIinterface.applyCommand("/gps/energy ", pEnergy / keV, " keV");
     lUIinterface.applyCommand("/gps/pos/type Volume");
     lUIinterface.applyCommand("/gps/pos/shape Sphere");
     lUIinterface.applyCommand("/gps/pos/radius ", mProductionRadius, " mm");
@@ -35,4 +40,3 @@ void OMSimYieldGPS::configureGammaEmitter(G4double pEnergy, G4String pVolumeName
 
     lUIinterface.applyCommand("/gps/pos/confine " + pVolumeName);
 }
-

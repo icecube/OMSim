@@ -1,5 +1,5 @@
-#ifndef OMSimYieldDetector
-#define OMSimYieldDetector 1
+#ifndef OMSimYieldDetector_h
+#define OMSimYieldDetector_h 1
 
 #include "OMSimOpticalModule.hh"
 #include "abcDetectorComponent.hh"
@@ -14,7 +14,7 @@
  * @brief Detector construction of radioactive decays simulation.
  * @ingroup radioactive
  */
-class OMSimYieldDetector : public OMSimYieldDetector
+class OMSimYieldDetector : public OMSimDetectorConstruction
 {
 public:
     OMSimYieldDetector(){};
