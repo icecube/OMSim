@@ -17,6 +17,8 @@
 
 #include <G4ThreeVector.hh>
 #include <fstream>
+#include <G4AutoLock.hh>
+#include <G4Threading.hh>
 
 /**
  * @struct HitStats
@@ -59,15 +61,9 @@ class OMSimHitManager
     OMSimHitManager &operator=(const OMSimHitManager &) = delete;
 
 public:
-    /**
-     * @brief Returns the singleton instance of the OMSimHitManager.
-     * @return A reference to the singleton instance.
-     */
-    static OMSimHitManager &getInstance()
-    {
-        static OMSimHitManager instance;
-        return instance;
-    }
+
+
+    static OMSimHitManager& getInstance();
 
     void appendHitInfo(
         G4double pGlobalTime,
@@ -88,13 +84,23 @@ public:
     HitStats getHitsOfModule(int pModuleIndex = 0);
     void sortHitStatsByTime(HitStats &pHits);
     std::vector<int> calculateMultiplicity(const G4double pTimeWindow, int pModuleNumber = 0);
-    std::map<G4int, HitStats> mModuleHits; ///< Map of a HitStats containing hit information for each simulated optical module
-
     G4int getNextDetectorIndex() { return ++mCurrentIndex; }
+    void mergeThreadData();
+
+    std::map<G4int, HitStats> mModuleHits; ///< Map of a HitStats containing hit information for each simulated optical module
 
 private:
     std::map<G4int, G4int> mNumPMTs; ///< Map of number of PMTs in the used optical modules
     G4int mCurrentIndex = -1;
+
+    static G4Mutex mMutex;
+    static OMSimHitManager* mInstance;
+
+    struct ThreadLocalData {
+        std::map<G4int, HitStats> moduleHits;
+    };
+    G4ThreadLocal static ThreadLocalData* mThreadData;
+    G4bool mDataWasMerged = false;
 };
 
 #endif

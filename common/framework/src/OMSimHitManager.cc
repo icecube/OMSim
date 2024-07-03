@@ -5,6 +5,27 @@
 
 #include <numeric>
 
+G4Mutex OMSimHitManager::mMutex = G4Mutex();
+OMSimHitManager *OMSimHitManager::mInstance = nullptr;
+G4ThreadLocal OMSimHitManager::ThreadLocalData *OMSimHitManager::mThreadData = nullptr;
+
+/**
+ * @brief Returns the singleton instance of the OMSimHitManager.
+ * @return A reference to the singleton instance.
+ */
+OMSimHitManager &OMSimHitManager::getInstance()
+{
+	if (!mInstance)
+	{
+		G4AutoLock lock(&mMutex);
+		if (!mInstance)
+		{
+			mInstance = new OMSimHitManager();
+		}
+	}
+	return *mInstance;
+}
+
 /**
  * @brief Applies a given permutation to a container.
  *
@@ -21,7 +42,7 @@ void applyPermutation(std::vector<T> &pVec, const std::vector<std::size_t> &pPer
 	for (std::size_t i = 0; i < pVec.size(); ++i)
 	{
 		if (lDone[i])
-			continue;	// Skip the item if it's already in place.
+			continue;	 // Skip the item if it's already in place.
 		lDone[i] = true; // Mark the item as placed.
 		std::size_t prev_j = i;
 		std::size_t j = pPermutation[i];
@@ -66,24 +87,29 @@ void OMSimHitManager::appendHitInfo(
 	OMSimPMTResponse::PMTPulse pResponse,
 	G4int pModuleNumber)
 {
-	// Check if the module exists in the map
-	if (mModuleHits.find(pModuleNumber) == mModuleHits.end())
+	if (!mThreadData)
+	{
+		mThreadData = new ThreadLocalData();
+	}
+
+	// Check if the module exists in the thread-local map
+	if (mThreadData->moduleHits.find(pModuleNumber) == mThreadData->moduleHits.end())
 	{
 		// Create a new HitStats for this module
-		mModuleHits[pModuleNumber] = HitStats();
+		mThreadData->moduleHits[pModuleNumber] = HitStats();
 	}
-	G4int lEventID = EventInfoManager::getInstance().getCurrentEventID();
-	mModuleHits[pModuleNumber].eventId.push_back(lEventID);
-	mModuleHits[pModuleNumber].hitTime.push_back(pGlobalTime);
-	mModuleHits[pModuleNumber].flightTime.push_back(pLocalTime);
-	mModuleHits[pModuleNumber].pathLenght.push_back(pTrackLength);
-	mModuleHits[pModuleNumber].energy.push_back(pEnergy);
-	mModuleHits[pModuleNumber].PMTnr.push_back(pPMTHitNumber);
-	mModuleHits[pModuleNumber].direction.push_back(pMomentumDirection);
-	mModuleHits[pModuleNumber].globalPosition.push_back(pGlobalPos);
-	mModuleHits[pModuleNumber].localPosition.push_back(pLocalPos);
-	mModuleHits[pModuleNumber].generationDetectionDistance.push_back(pDistance);
-	mModuleHits[pModuleNumber].PMTresponse.push_back(pResponse);
+	auto &moduleHits = mThreadData->moduleHits[pModuleNumber];
+	moduleHits.eventId.push_back(EventInfoManager::getInstance().getCurrentEventID());
+	moduleHits.hitTime.push_back(pGlobalTime);
+	moduleHits.flightTime.push_back(pLocalTime);
+	moduleHits.pathLenght.push_back(pTrackLength);
+	moduleHits.energy.push_back(pEnergy);
+	moduleHits.PMTnr.push_back(pPMTHitNumber);
+	moduleHits.direction.push_back(pMomentumDirection);
+	moduleHits.globalPosition.push_back(pGlobalPos);
+	moduleHits.localPosition.push_back(pLocalPos);
+	moduleHits.generationDetectionDistance.push_back(pDistance);
+	moduleHits.PMTresponse.push_back(pResponse);
 }
 
 /**
@@ -113,6 +139,11 @@ HitStats OMSimHitManager::getHitsOfModule(int pModuleIndex)
 void OMSimHitManager::reset()
 {
 	mModuleHits.clear();
+
+	if (mThreadData)
+	{
+		mThreadData->moduleHits.clear();
+	}
 }
 
 /**
@@ -123,6 +154,7 @@ void OMSimHitManager::reset()
 std::vector<double> OMSimHitManager::countHits(int pModuleIndex)
 {
 	log_debug("Counting number of detected photons in module with index {}", pModuleIndex);
+	if (!mDataWasMerged){mergeThreadData();};
 	HitStats lHitsOfModule = mModuleHits[pModuleIndex];
 	G4int lNumberPMTs = mNumPMTs[pModuleIndex];
 
@@ -187,6 +219,8 @@ void OMSimHitManager::sortHitStatsByTime(HitStats &lHits)
 std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double pTimeWindow, int pModuleIndex)
 {
 	log_debug("Calculating multiplicity in time window {} for module with index", pTimeWindow, pModuleIndex);
+	if (!mDataWasMerged){mergeThreadData();};
+
 	HitStats lHitsOfModule = mModuleHits[pModuleIndex];
 	G4int lNumberPMTs = mNumPMTs[pModuleIndex];
 
@@ -230,4 +264,30 @@ std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double pTimeWind
 		lMultiplicity[lCurrentSum - 1] += 1;
 	}
 	return lMultiplicity;
+}
+
+void OMSimHitManager::mergeThreadData()
+{
+	G4AutoLock lock(&mMutex);
+	if (mThreadData)
+	{
+		for (const auto &[moduleIndex, hits] : mThreadData->moduleHits)
+		{
+			auto &globalHits = mModuleHits[moduleIndex];
+			globalHits.eventId.insert(globalHits.eventId.end(), hits.eventId.begin(), hits.eventId.end());
+			globalHits.hitTime.insert(globalHits.hitTime.end(), hits.hitTime.begin(), hits.hitTime.end());
+			globalHits.flightTime.insert(globalHits.flightTime.end(), hits.flightTime.begin(), hits.flightTime.end());
+			globalHits.pathLenght.insert(globalHits.pathLenght.end(), hits.pathLenght.begin(), hits.pathLenght.end());
+			globalHits.energy.insert(globalHits.energy.end(), hits.energy.begin(), hits.energy.end());
+			globalHits.PMTnr.insert(globalHits.PMTnr.end(), hits.PMTnr.begin(), hits.PMTnr.end());
+			globalHits.direction.insert(globalHits.direction.end(), hits.direction.begin(), hits.direction.end());
+			globalHits.localPosition.insert(globalHits.localPosition.end(), hits.localPosition.begin(), hits.localPosition.end());
+			globalHits.globalPosition.insert(globalHits.globalPosition.end(), hits.globalPosition.begin(), hits.globalPosition.end());
+			globalHits.generationDetectionDistance.insert(globalHits.generationDetectionDistance.end(), hits.generationDetectionDistance.begin(), hits.generationDetectionDistance.end());
+			globalHits.PMTresponse.insert(globalHits.PMTresponse.end(), hits.PMTresponse.begin(), hits.PMTresponse.end());
+		}
+		delete mThreadData;
+		mThreadData = nullptr;
+	}
+	mDataWasMerged = true;
 }
