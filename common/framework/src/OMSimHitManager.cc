@@ -2,7 +2,8 @@
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimEventAction.hh"
 #include "OMSimLogger.hh"
-
+#include "G4EventManager.hh"
+#include "G4Event.hh"  
 #include <numeric>
 
 G4Mutex OMSimHitManager::mMutex = G4Mutex();
@@ -99,7 +100,8 @@ void OMSimHitManager::appendHitInfo(
 		mThreadData->moduleHits[pModuleNumber] = HitStats();
 	}
 	auto &moduleHits = mThreadData->moduleHits[pModuleNumber];
-	moduleHits.eventId.push_back(EventInfoManager::getInstance().getCurrentEventID());
+	G4int eventID = G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetEventID();
+	moduleHits.eventId.push_back(eventID);
 	moduleHits.hitTime.push_back(pGlobalTime);
 	moduleHits.flightTime.push_back(pLocalTime);
 	moduleHits.pathLenght.push_back(pTrackLength);
