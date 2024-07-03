@@ -46,7 +46,15 @@ void addModuleOptions(OMSim *pSimulation)
 	po::options_description lSpecific("User arguments for radioactive decays simulation");
 
 	// Do not use G4String as type here...
-	lSpecific.add_options()("world_radius,w", po::value<G4double>()->default_value(3.0), "radius of world sphere in m")("radius,r", po::value<G4double>()->default_value(300.0), "plane wave radius in mm")("no_PV_decays", po::bool_switch(), "skips the simulation of decays in pressure vessel")("no_PMT_decays", po::bool_switch(), "skips the simulation of decays in PMT glass")("multiplicity_study", po::bool_switch(), "only multiplicity is calculated and written in output. Hit information is not written in output (file would be too large!).")("scint_off", po::bool_switch(), "deactivates scintillation process.")("cherenkov_off", po::bool_switch(), "deactivates Cherenkov process.")("temperature", po::value<std::string>(), "temperature in C° (scintillation is temperature dependent)")("time_window", po::value<G4double>()->default_value(60.0), "time length in which the decays are simulated.")("yield_alphas", po::value<G4double>(), "scintillation yield for alpha particles. This affects all materials with scintillation properties!")("yield_electrons", po::value<G4double>(), "scintillation yield for electrons. This affects all materials with scintillation properties!")("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
+	lSpecific.add_options()("world_radius,w", po::value<G4double>()->default_value(3.0), "radius of world sphere in m")
+	("radius,r", po::value<G4double>()->default_value(300.0), "plane wave radius in mm")
+	("scint_off", po::bool_switch(), "deactivates scintillation process.")
+	("cherenkov_off", po::bool_switch(), "deactivates Cherenkov process.")
+	("temperature", po::value<std::string>(), "temperature in C° (scintillation is temperature dependent)")
+	("yield_alphas", po::value<G4double>(), "scintillation yield for alpha particles. This affects all materials with scintillation properties!")
+	("yield_electrons", po::value<G4double>(), "scintillation yield for electrons. This affects all materials with scintillation properties!")
+	("systematics",  po::bool_switch(), "The construction of the setup is varied each run sampling using the given uncertainties")
+	("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
 
 	pSimulation->extendOptions(lSpecific);
 }

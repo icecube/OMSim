@@ -10,7 +10,6 @@
 #include "G4SDManager.hh"
 #include "OMSimSensitiveDetector.hh"
 
-
 /**
  * @brief Constructs the world volume (sphere).
  */
@@ -29,34 +28,54 @@ void OMSimYieldDetector::constructWorld()
 void OMSimYieldDetector::constructDetector()
 {
     OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
-    bool lPlaceHarness = OMSimCommandArgsTable::getInstance().get<bool>("place_harness");
+    OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+    bool lPlaceHarness = lArgs.get<bool>("place_harness");
 
     OMSimOpticalModule *lOpticalModule = nullptr;
 
-    switch (OMSimCommandArgsTable::getInstance().get<G4int>("detector_type"))
+    switch (lArgs.get<G4int>("detector_type"))
     {
 
     case 0:
     {
         log_info("Constructing Okamoto Cs-137 Source setup for electron yield");
+        G4double lZrandom = 0;
+        G4double lYrandom = 0;
+        G4double lZrandomSource = 0;
+        G4double lYrandomSource = 0;
+        G4double lXSource = 0;
+        G4double lXSample = 0;
+        G4double lPMTrotY = 1*deg;
+        G4double lPMTrotX = 0*deg;
+        if (lArgs.get<bool>("systematics"))
+        {
+            lZrandom = G4RandGauss::shoot(0, 0.02) * cm;
+            lYrandom = G4RandGauss::shoot(0, 2) * mm;
+            lZrandomSource = G4RandGauss::shoot(0, 0.01) * cm;
+            lYrandomSource = G4RandGauss::shoot(0, 2) * mm;
+            lXSource = G4RandGauss::shoot(0, 2) * mm;
+            lXSample = G4RandGauss::shoot(0, 2) * mm;
+            lPMTrotY = G4RandGauss::shoot(1, 0.1) * deg;
+            lPMTrotX = G4RandGauss::shoot(0, 0.1) * deg;
+        }
+
         OMSimPMTConstruction *lPMTManager = new OMSimPMTConstruction(mData);
         lPMTManager->selectPMT("argPMT");
         lPMTManager->construction();
-        lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix().rotateY(1*deg), mWorldLogical, "_0");
+        lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix().rotateY(lPMTrotY).rotateX(lPMTrotX), mWorldLogical, "_0");
         lHitManager.setNumberOfPMTs(1, 0);
         lPMTManager->configureSensitiveVolume(this, "/PMT/0");
 
         OkamotoLargeSample *lOkamotoSample = new OkamotoLargeSample(mData);
-        G4double lzSample = 4.46*cm+lPMTManager->getDistancePMTCenterToTip();
-        G4double lySample = 21.77*mm-(40*mm-25*mm);
 
-        lOkamotoSample->placeIt(G4ThreeVector(0, -lySample, lzSample), G4RotationMatrix(), mWorldLogical, "");
+        G4double lzSample = 4.46 * cm + lPMTManager->getDistancePMTCenterToTip() + lZrandom;
+        G4double lySample = 21.77 * mm - (40 * mm - 25 * mm)+lYrandom;
 
-        G4double lzSource = lzSample+lOkamotoSample->getSampleThickness()+0.96*cm;
+        lOkamotoSample->placeIt(G4ThreeVector(lXSample, -lySample, lzSample), G4RotationMatrix(), mWorldLogical, "");
 
+        G4double lzSource = lzSample + lOkamotoSample->getSampleThickness() + 0.96 * cm + lZrandomSource;
         Cs137Source *lSource = new Cs137Source(mData);
-        log_trace("Position of source {} {} {}", 0, -lySample/m, lzSource/m);
-        lSource->placeIt(G4ThreeVector(0, -lySample, lzSource), G4RotationMatrix(), mWorldLogical, "");
+        lSource->placeIt(G4ThreeVector(lXSource, -lySample+lYrandomSource, lzSource), G4RotationMatrix(), mWorldLogical, "");
         mSource = lSource;
 
         break;

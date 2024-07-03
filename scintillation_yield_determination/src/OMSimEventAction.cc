@@ -28,11 +28,8 @@ void OMSimEventAction::EndOfEventAction(const G4Event *evt)
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
-	if (!lArgs.get<bool>("multiplicity_study"))
-	{
-		lAnalysisManager.writeHitInformation();
-		lAnalysisManager.writeDecayInformation();
-		lHitManager.reset();
-		lAnalysisManager.reset();
-	}
+	lAnalysisManager.writeHitInformation();
+	lHitManager.reset();
+	lAnalysisManager.reset();
+
 }
