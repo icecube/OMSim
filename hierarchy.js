@@ -122,5 +122,6 @@ var hierarchy =
     [ "CADMesh::File::State", "struct_c_a_d_mesh_1_1_file_1_1_state.html", [
       [ "CADMesh::File::__FinalState", "struct_c_a_d_mesh_1_1_file_1_1_____final_state.html", null ]
     ] ],
+    [ "OMSimHitManager::ThreadLocalData", "struct_o_m_sim_hit_manager_1_1_thread_local_data.html", null ],
     [ "CADMesh::File::Token", "struct_c_a_d_mesh_1_1_file_1_1_token.html", null ]
 ];

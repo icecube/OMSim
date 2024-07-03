@@ -1,5 +1,10 @@
 var NAVTREEINDEX6 =
 {
+"functions_vars_d.html":[5,3,2,2],
+"functions_vars_e.html":[5,3,2,3],
+"functions_vars_f.html":[5,3,2,4],
+"functions_vars_g.html":[5,3,2,5],
+"functions_vars_h.html":[5,3,2,6],
 "functions_vars_i.html":[5,3,2,7],
 "functions_vars_k.html":[5,3,2,8],
 "functions_vars_l.html":[5,3,2,9],
@@ -107,6 +112,8 @@ var NAVTREEINDEX6 =
 "struct_hit_stats.html#ae73c03f4d9024845eb1bfd5de71eb653":[3,0,32,4],
 "struct_hit_stats.html#ae7c3d380f7f961927f73fef4ee20fe4d":[3,0,32,8],
 "struct_hit_stats.html#af603afdc7e643ea0246cb0b642ae8bb5":[3,0,32,9],
+"struct_o_m_sim_hit_manager_1_1_thread_local_data.html":[3,0,33,0],
+"struct_o_m_sim_hit_manager_1_1_thread_local_data.html#af3728eb7e2df5e46bd29fb5220d8bf28":[3,0,33,0,0],
 "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html":[5,0,46,0],
 "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html#a36649e95b6f7a081fbd15e799ea12584":[5,0,46,0,1],
 "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html#a842337fbd6979ff70f1b5ab67ca52493":[5,0,46,0,2],
