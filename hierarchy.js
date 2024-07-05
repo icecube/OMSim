@@ -64,6 +64,9 @@ var hierarchy =
     [ "G4VSensitiveDetector", null, [
       [ "OMSimSensitiveDetector", "class_o_m_sim_sensitive_detector.html", null ]
     ] ],
+    [ "G4VUserActionInitialization", null, [
+      [ "OMSimActionInitialization", "class_o_m_sim_action_initialization.html", null ]
+    ] ],
     [ "G4VUserDetectorConstruction", null, [
       [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html", [
         [ "OMSimEffectiveAreaDetector", "class_o_m_sim_effective_area_detector.html", null ],
@@ -119,6 +122,7 @@ var hierarchy =
       [ "CADMesh::File::PLYReader", "class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html", null ],
       [ "CADMesh::File::STLReader", "class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader.html", null ]
     ] ],
+    [ "OMSimDetectorConstruction::SDInfo", "struct_o_m_sim_detector_construction_1_1_s_d_info.html", null ],
     [ "CADMesh::File::State", "struct_c_a_d_mesh_1_1_file_1_1_state.html", [
       [ "CADMesh::File::__FinalState", "struct_c_a_d_mesh_1_1_file_1_1_____final_state.html", null ]
     ] ],

@@ -48,6 +48,7 @@ var annotated_dup =
     [ "NoOptics", "class_no_optics.html", "class_no_optics" ],
     [ "NoResponse", "class_no_response.html", "class_no_response" ],
     [ "OMSim", "class_o_m_sim.html", "class_o_m_sim" ],
+    [ "OMSimActionInitialization", "class_o_m_sim_action_initialization.html", "class_o_m_sim_action_initialization" ],
     [ "OMSimCommandArgsTable", "class_o_m_sim_command_args_table.html", "class_o_m_sim_command_args_table" ],
     [ "OMSimDecaysAnalysis", "class_o_m_sim_decays_analysis.html", "class_o_m_sim_decays_analysis" ],
     [ "OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html", "class_o_m_sim_decays_g_p_s" ],

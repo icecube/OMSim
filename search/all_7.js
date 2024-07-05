@@ -10,8 +10,10 @@ var searchData=
   ['boundaryphotondetector_42',['BoundaryPhotonDetector',['../_o_m_sim_sensitive_detector_8hh.html#aba5019e335fb2939e79e0e5b62202729a6d615a8de3479e15a0b21956527ecde2',1,'OMSimSensitiveDetector.hh']]],
   ['bridgeropessolid_43',['bridgeRopesSolid',['../classm_d_o_m_harness.html#a0e96a969656eb27a4eec62bf40f31061',1,'mDOMHarness']]],
   ['bubble_20column_44',['Bubble column',['../group__bubble.html',1,'']]],
-  ['buildharnesssolid_45',['buildHarnessSolid',['../class_d_egg_harness.html#aa3eb83756ab591cba4478dbcb23550fc',1,'DEggHarness']]],
-  ['buildphysicstable_46',['BuildPhysicsTable',['../class_g4_radioactive_decay.html#a21ab4cfa243f192552e3129d7634cc76',1,'G4RadioactiveDecay::BuildPhysicsTable()'],['../class_o_m_sim_g4_scintillation.html#ab952ecd9987e9aa6d666b76acc942123',1,'OMSimG4Scintillation::BuildPhysicsTable()']]],
-  ['builtin_47',['BuiltIn',['../namespace_c_a_d_mesh_1_1_file.html#a9c42d96997dc5e3f0639267e672b704f',1,'CADMesh::File']]],
-  ['builtinreader_48',['BuiltInReader',['../class_c_a_d_mesh_1_1_file_1_1_built_in_reader.html#ae36e5a19d278934c86c34c94b14d9aec',1,'CADMesh::File::BuiltInReader::BuiltInReader()'],['../class_c_a_d_mesh_1_1_file_1_1_built_in_reader.html',1,'CADMesh::File::BuiltInReader']]]
+  ['build_45',['Build',['../class_o_m_sim_action_initialization.html#ad984828208ce9f945c7b6418c891864e',1,'OMSimActionInitialization']]],
+  ['buildformaster_46',['BuildForMaster',['../class_o_m_sim_action_initialization.html#aeb30d0f2361b13694e277a636289bd45',1,'OMSimActionInitialization']]],
+  ['buildharnesssolid_47',['buildHarnessSolid',['../class_d_egg_harness.html#aa3eb83756ab591cba4478dbcb23550fc',1,'DEggHarness']]],
+  ['buildphysicstable_48',['BuildPhysicsTable',['../class_g4_radioactive_decay.html#a21ab4cfa243f192552e3129d7634cc76',1,'G4RadioactiveDecay::BuildPhysicsTable()'],['../class_o_m_sim_g4_scintillation.html#ab952ecd9987e9aa6d666b76acc942123',1,'OMSimG4Scintillation::BuildPhysicsTable()']]],
+  ['builtin_49',['BuiltIn',['../namespace_c_a_d_mesh_1_1_file.html#a9c42d96997dc5e3f0639267e672b704f',1,'CADMesh::File']]],
+  ['builtinreader_50',['BuiltInReader',['../class_c_a_d_mesh_1_1_file_1_1_built_in_reader.html#ae36e5a19d278934c86c34c94b14d9aec',1,'CADMesh::File::BuiltInReader::BuiltInReader()'],['../class_c_a_d_mesh_1_1_file_1_1_built_in_reader.html',1,'CADMesh::File::BuiltInReader']]]
 ];

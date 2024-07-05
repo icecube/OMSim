@@ -164,6 +164,8 @@ Public Attributes</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a8718ff8784bfd2f381114d092e072b1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a8718ff8784bfd2f381114d092e072b1c">initialLoggerConfiguration</a> ()</td></tr>
 <tr class="separator:a8718ff8784bfd2f381114d092e072b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5821847aa7865e5f607e4d55a3c1f178"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a5821847aa7865e5f607e4d55a3c1f178">determineNumberOfThreads</a> ()</td></tr>
+<tr class="separator:a5821847aa7865e5f607e4d55a3c1f178"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22f2335b943429a2697c0c8b3747e658"><td class="memItemLeft" align="right" valign="top">po::variables_map&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a22f2335b943429a2697c0c8b3747e658">parseArguments</a> (int pArgumentCount, char *pArgumentVector[])</td></tr>
 <tr class="memdesc:a22f2335b943429a2697c0c8b3747e658"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses user terminal arguments to a variables map.  <a href="class_o_m_sim.html#a22f2335b943429a2697c0c8b3747e658">More...</a><br /></td></tr>
 <tr class="separator:a22f2335b943429a2697c0c8b3747e658"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,28 +177,18 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a63d81cbf53a7eb4d42f5c69397eb14eb"><td class="memItemLeft" align="right" valign="top">G4RunManager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a63d81cbf53a7eb4d42f5c69397eb14eb">mRunManager</a> = nullptr</td></tr>
-<tr class="separator:a63d81cbf53a7eb4d42f5c69397eb14eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bded781b54a28ea07c04923eb98b23e"><td class="memItemLeft" align="right" valign="top">G4VisExecutive *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a8bded781b54a28ea07c04923eb98b23e">mVisManager</a> = nullptr</td></tr>
-<tr class="separator:a8bded781b54a28ea07c04923eb98b23e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae423f68ad8ea948dc4a2bcc6ed8c6bf"><td class="memItemLeft" align="right" valign="top">G4Navigator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#aae423f68ad8ea948dc4a2bcc6ed8c6bf">mNavigator</a> = nullptr</td></tr>
-<tr class="separator:aae423f68ad8ea948dc4a2bcc6ed8c6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73b7ac711ab9d9c1bc4ad38d6c985b94"><td class="memItemLeft" align="right" valign="top">G4VUserPhysicsList *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a73b7ac711ab9d9c1bc4ad38d6c985b94">mPhysics</a> = nullptr</td></tr>
-<tr class="separator:a73b7ac711ab9d9c1bc4ad38d6c985b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0920dcd6fa769919824d4c9c1ea97fed"><td class="memItemLeft" align="right" valign="top">G4VUserPrimaryGeneratorAction *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a0920dcd6fa769919824d4c9c1ea97fed">mGenAction</a> = nullptr</td></tr>
-<tr class="separator:a0920dcd6fa769919824d4c9c1ea97fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2fd0b66e65e7fb851583881ba52d1c0"><td class="memItemLeft" align="right" valign="top">G4UserRunAction *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#af2fd0b66e65e7fb851583881ba52d1c0">mRunAction</a> = nullptr</td></tr>
-<tr class="separator:af2fd0b66e65e7fb851583881ba52d1c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5b7adf0ed2750115e09d70772d220ae"><td class="memItemLeft" align="right" valign="top">G4UserEventAction *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#ab5b7adf0ed2750115e09d70772d220ae">mEventAction</a> = nullptr</td></tr>
-<tr class="separator:ab5b7adf0ed2750115e09d70772d220ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af873226fae0ebc465ab6716c9e2d9cb9"><td class="memItemLeft" align="right" valign="top">G4UserTrackingAction *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#af873226fae0ebc465ab6716c9e2d9cb9">mTracking</a> = nullptr</td></tr>
-<tr class="separator:af873226fae0ebc465ab6716c9e2d9cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a610d64ca0157bc3795cf83a1a09a6d0c"><td class="memItemLeft" align="right" valign="top">G4UserSteppingAction *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a610d64ca0157bc3795cf83a1a09a6d0c">mStepping</a> = nullptr</td></tr>
-<tr class="separator:a610d64ca0157bc3795cf83a1a09a6d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04ad05f6b01a547002f3c36fe116c35f"><td class="memItemLeft" align="right" valign="top">G4TouchableHistory *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a04ad05f6b01a547002f3c36fe116c35f">mHistory</a> = nullptr</td></tr>
-<tr class="separator:a04ad05f6b01a547002f3c36fe116c35f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdddb6d2392b131b35aae4f20a551a7c"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#afdddb6d2392b131b35aae4f20a551a7c">mStartingTime</a> = 0</td></tr>
-<tr class="separator:afdddb6d2392b131b35aae4f20a551a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86515923f2071d37d4496880b5db5c22"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; G4MTRunManager &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a86515923f2071d37d4496880b5db5c22">mRunManager</a></td></tr>
+<tr class="separator:a86515923f2071d37d4496880b5db5c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a111387fc99c82da9d87512638019727f"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; G4VisExecutive &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a111387fc99c82da9d87512638019727f">mVisManager</a></td></tr>
+<tr class="separator:a111387fc99c82da9d87512638019727f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55c93ccf9b192c5cf3ff1b862e14fdeb"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; G4VUserPhysicsList &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a55c93ccf9b192c5cf3ff1b862e14fdeb">mPhysics</a></td></tr>
+<tr class="separator:a55c93ccf9b192c5cf3ff1b862e14fdeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af006e5676aeca6dfc63a7ab0f0e11cae"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; G4TouchableHistory &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#af006e5676aeca6dfc63a7ab0f0e11cae">mHistory</a></td></tr>
+<tr class="separator:af006e5676aeca6dfc63a7ab0f0e11cae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47d7d0c83e0290c37b1cd4d6e29ddfec"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; G4Navigator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a47d7d0c83e0290c37b1cd4d6e29ddfec">mNavigator</a></td></tr>
+<tr class="separator:a47d7d0c83e0290c37b1cd4d6e29ddfec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9458e7ab12abb7c94a08f27366f15836"><td class="memItemLeft" align="right" valign="top">std::chrono::high_resolution_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a9458e7ab12abb7c94a08f27366f15836">mStartingTime</a></td></tr>
+<tr class="separator:a9458e7ab12abb7c94a08f27366f15836"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afc01df8f57a1303823b79ffd79088a89"></a>
@@ -247,6 +239,31 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5821847aa7865e5f607e4d55a3c1f178"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5821847aa7865e5f607e4d55a3c1f178">&#9670;&nbsp;</a></span>determineNumberOfThreads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OMSim::determineNumberOfThreads </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -495,50 +512,6 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab5b7adf0ed2750115e09d70772d220ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5b7adf0ed2750115e09d70772d220ae">&#9670;&nbsp;</a></span>mEventAction</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">G4UserEventAction* OMSim::mEventAction = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0920dcd6fa769919824d4c9c1ea97fed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0920dcd6fa769919824d4c9c1ea97fed">&#9670;&nbsp;</a></span>mGenAction</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">G4VUserPrimaryGeneratorAction* OMSim::mGenAction = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="adc89f2fa01d3958389e86c36e8064805"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc89f2fa01d3958389e86c36e8064805">&#9670;&nbsp;</a></span>mGeneralOptions</h2>
 
@@ -553,8 +526,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a04ad05f6b01a547002f3c36fe116c35f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04ad05f6b01a547002f3c36fe116c35f">&#9670;&nbsp;</a></span>mHistory</h2>
+<a id="af006e5676aeca6dfc63a7ab0f0e11cae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af006e5676aeca6dfc63a7ab0f0e11cae">&#9670;&nbsp;</a></span>mHistory</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -563,7 +536,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4TouchableHistory* OMSim::mHistory = nullptr</td>
+          <td class="memname">std::unique_ptr&lt;G4TouchableHistory&gt; OMSim::mHistory</td>
         </tr>
       </table>
   </td>
@@ -575,8 +548,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aae423f68ad8ea948dc4a2bcc6ed8c6bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae423f68ad8ea948dc4a2bcc6ed8c6bf">&#9670;&nbsp;</a></span>mNavigator</h2>
+<a id="a47d7d0c83e0290c37b1cd4d6e29ddfec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47d7d0c83e0290c37b1cd4d6e29ddfec">&#9670;&nbsp;</a></span>mNavigator</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -585,7 +558,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4Navigator* OMSim::mNavigator = nullptr</td>
+          <td class="memname">std::unique_ptr&lt;G4Navigator&gt; OMSim::mNavigator</td>
         </tr>
       </table>
   </td>
@@ -597,8 +570,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a73b7ac711ab9d9c1bc4ad38d6c985b94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73b7ac711ab9d9c1bc4ad38d6c985b94">&#9670;&nbsp;</a></span>mPhysics</h2>
+<a id="a55c93ccf9b192c5cf3ff1b862e14fdeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55c93ccf9b192c5cf3ff1b862e14fdeb">&#9670;&nbsp;</a></span>mPhysics</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -607,7 +580,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4VUserPhysicsList* OMSim::mPhysics = nullptr</td>
+          <td class="memname">std::unique_ptr&lt;G4VUserPhysicsList&gt; OMSim::mPhysics</td>
         </tr>
       </table>
   </td>
@@ -619,8 +592,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af2fd0b66e65e7fb851583881ba52d1c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2fd0b66e65e7fb851583881ba52d1c0">&#9670;&nbsp;</a></span>mRunAction</h2>
+<a id="a86515923f2071d37d4496880b5db5c22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86515923f2071d37d4496880b5db5c22">&#9670;&nbsp;</a></span>mRunManager</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -629,7 +602,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4UserRunAction* OMSim::mRunAction = nullptr</td>
+          <td class="memname">std::unique_ptr&lt;G4MTRunManager&gt; OMSim::mRunManager</td>
         </tr>
       </table>
   </td>
@@ -641,8 +614,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a63d81cbf53a7eb4d42f5c69397eb14eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63d81cbf53a7eb4d42f5c69397eb14eb">&#9670;&nbsp;</a></span>mRunManager</h2>
+<a id="a9458e7ab12abb7c94a08f27366f15836"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9458e7ab12abb7c94a08f27366f15836">&#9670;&nbsp;</a></span>mStartingTime</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -651,7 +624,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4RunManager* OMSim::mRunManager = nullptr</td>
+          <td class="memname">std::chrono::high_resolution_clock::time_point OMSim::mStartingTime</td>
         </tr>
       </table>
   </td>
@@ -663,8 +636,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afdddb6d2392b131b35aae4f20a551a7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afdddb6d2392b131b35aae4f20a551a7c">&#9670;&nbsp;</a></span>mStartingTime</h2>
+<a id="a111387fc99c82da9d87512638019727f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a111387fc99c82da9d87512638019727f">&#9670;&nbsp;</a></span>mVisManager</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -673,73 +646,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4double OMSim::mStartingTime = 0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a610d64ca0157bc3795cf83a1a09a6d0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a610d64ca0157bc3795cf83a1a09a6d0c">&#9670;&nbsp;</a></span>mStepping</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">G4UserSteppingAction* OMSim::mStepping = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af873226fae0ebc465ab6716c9e2d9cb9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af873226fae0ebc465ab6716c9e2d9cb9">&#9670;&nbsp;</a></span>mTracking</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">G4UserTrackingAction* OMSim::mTracking = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8bded781b54a28ea07c04923eb98b23e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8bded781b54a28ea07c04923eb98b23e">&#9670;&nbsp;</a></span>mVisManager</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">G4VisExecutive* OMSim::mVisManager = nullptr</td>
+          <td class="memname">std::unique_ptr&lt;G4VisExecutive&gt; OMSim::mVisManager</td>
         </tr>
       </table>
   </td>
@@ -761,7 +668,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim.html">OMSim</a></li>
-    <li class="footer">Generated on Wed Jul 3 2024 15:12:51 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Jul 5 2024 10:27:48 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

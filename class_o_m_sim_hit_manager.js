@@ -16,7 +16,6 @@ var class_o_m_sim_hit_manager =
     [ "setNumberOfPMTs", "class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8", null ],
     [ "sortHitStatsByTime", "class_o_m_sim_hit_manager.html#a756d2a85121e00d2a2d8b6c04cd0ebd1", null ],
     [ "mCurrentIndex", "class_o_m_sim_hit_manager.html#a0fa16a90854630de2ddf703f8649cd24", null ],
-    [ "mDataWasMerged", "class_o_m_sim_hit_manager.html#a269c534b9c3e7e304887fca920ef63ff", null ],
     [ "mInstance", "class_o_m_sim_hit_manager.html#a210a00b8b16e5b2ebcc6920da22ceb93", null ],
     [ "mModuleHits", "class_o_m_sim_hit_manager.html#a5b5170bb63b04190829aeb79183a5d3f", null ],
     [ "mMutex", "class_o_m_sim_hit_manager.html#ab99b6dee5be51adb534057be74e9a4b5", null ],

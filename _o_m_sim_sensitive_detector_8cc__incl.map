@@ -1,24 +1,23 @@
 <map id="OMSimSensitiveDetector.cc" name="OMSimSensitiveDetector.cc">
-<area shape="rect" id="node1" title=" " alt="" coords="2095,5,2297,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="2013,5,2216,32"/>
 <area shape="rect" id="node2" href="$_o_m_sim_sensitive_detector_8hh.html" title=" " alt="" coords="431,80,635,107"/>
 <area shape="rect" id="node5" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="515,155,695,181"/>
 <area shape="rect" id="node13" title=" " alt="" coords="1346,80,1425,107"/>
 <area shape="rect" id="node14" title=" " alt="" coords="1449,80,1604,107"/>
 <area shape="rect" id="node15" title=" " alt="" coords="1628,80,1799,107"/>
 <area shape="rect" id="node16" title=" " alt="" coords="1823,80,1969,107"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1993,80,2127,107"/>
-<area shape="rect" id="node18" title=" " alt="" coords="2151,80,2241,107"/>
-<area shape="rect" id="node19" title=" " alt="" coords="2265,80,2436,107"/>
-<area shape="rect" id="node20" title=" " alt="" coords="2461,80,2555,107"/>
-<area shape="rect" id="node21" title=" " alt="" coords="2579,80,2751,107"/>
-<area shape="rect" id="node22" title=" " alt="" coords="2775,80,2910,107"/>
-<area shape="rect" id="node23" title=" " alt="" coords="2934,80,3101,107"/>
-<area shape="rect" id="node24" title=" " alt="" coords="3125,80,3275,107"/>
-<area shape="rect" id="node25" href="$_o_m_sim_command_args_table_8hh.html" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="1103,80,1321,107"/>
-<area shape="rect" id="node34" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="887,80,1051,107"/>
-<area shape="rect" id="node37" title=" " alt="" coords="3299,80,3418,107"/>
-<area shape="rect" id="node38" title=" " alt="" coords="3442,80,3593,107"/>
-<area shape="rect" id="node39" title=" " alt="" coords="3617,80,3783,107"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1993,80,2082,107"/>
+<area shape="rect" id="node18" title=" " alt="" coords="2107,80,2277,107"/>
+<area shape="rect" id="node19" title=" " alt="" coords="2302,80,2397,107"/>
+<area shape="rect" id="node20" title=" " alt="" coords="2421,80,2593,107"/>
+<area shape="rect" id="node21" title=" " alt="" coords="2617,80,2751,107"/>
+<area shape="rect" id="node22" title=" " alt="" coords="2775,80,2942,107"/>
+<area shape="rect" id="node23" title=" " alt="" coords="2966,80,3117,107"/>
+<area shape="rect" id="node24" href="$_o_m_sim_command_args_table_8hh.html" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="1103,80,1321,107"/>
+<area shape="rect" id="node33" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="887,80,1051,107"/>
+<area shape="rect" id="node36" title=" " alt="" coords="3141,80,3259,107"/>
+<area shape="rect" id="node37" title=" " alt="" coords="3283,80,3434,107"/>
+<area shape="rect" id="node38" title=" " alt="" coords="3458,80,3625,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,155,189,181"/>
 <area shape="rect" id="node4" title=" " alt="" coords="719,155,857,181"/>
 <area shape="rect" id="node11" title=" " alt="" coords="214,155,405,181"/>
@@ -28,14 +27,14 @@
 <area shape="rect" id="node8" title=" " alt="" coords="389,237,440,263"/>
 <area shape="rect" id="node9" title=" " alt="" coords="465,237,546,263"/>
 <area shape="rect" id="node10" title=" " alt="" coords="570,237,641,263"/>
-<area shape="rect" id="node26" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="1273,155,1405,181"/>
-<area shape="rect" id="node31" title=" " alt="" coords="1175,155,1249,181"/>
-<area shape="rect" id="node32" title=" " alt="" coords="1429,155,1541,181"/>
-<area shape="rect" id="node33" title=" " alt="" coords="1565,155,1656,181"/>
-<area shape="rect" id="node27" title=" " alt="" coords="1201,237,1325,263"/>
-<area shape="rect" id="node28" title=" " alt="" coords="1349,229,1497,271"/>
-<area shape="rect" id="node29" title=" " alt="" coords="1521,237,1599,263"/>
-<area shape="rect" id="node30" title=" " alt="" coords="1045,237,1176,263"/>
-<area shape="rect" id="node35" title=" " alt="" coords="1031,155,1151,181"/>
-<area shape="rect" id="node36" title=" " alt="" coords="881,155,1007,181"/>
+<area shape="rect" id="node25" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="1273,155,1405,181"/>
+<area shape="rect" id="node30" title=" " alt="" coords="1175,155,1249,181"/>
+<area shape="rect" id="node31" title=" " alt="" coords="1429,155,1541,181"/>
+<area shape="rect" id="node32" title=" " alt="" coords="1565,155,1656,181"/>
+<area shape="rect" id="node26" title=" " alt="" coords="1201,237,1325,263"/>
+<area shape="rect" id="node27" title=" " alt="" coords="1349,229,1497,271"/>
+<area shape="rect" id="node28" title=" " alt="" coords="1521,237,1599,263"/>
+<area shape="rect" id="node29" title=" " alt="" coords="1045,237,1176,263"/>
+<area shape="rect" id="node34" title=" " alt="" coords="1031,155,1151,181"/>
+<area shape="rect" id="node35" title=" " alt="" coords="881,155,1007,181"/>
 </map>

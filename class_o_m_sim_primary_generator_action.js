@@ -19,5 +19,5 @@ var class_o_m_sim_primary_generator_action =
     [ "fGunMessenger", "class_o_m_sim_primary_generator_action.html#a0b7134413f8ec64f5badb7637a70295d", null ],
     [ "fParticleGun", "class_o_m_sim_primary_generator_action.html#a37006d3fff78a0539d08d75de63450a2", null ],
     [ "fSelectedAction", "class_o_m_sim_primary_generator_action.html#a9269fb1f33103f35d5160354f6f9bd15", null ],
-    [ "lParticleSource", "class_o_m_sim_primary_generator_action.html#a105e1b1860e4eb6f26cd366512332e70", null ]
+    [ "mParticleSource", "class_o_m_sim_primary_generator_action.html#aba87f6f4ba0e8ead86b53ddf06b258e0", null ]
 ];

@@ -114,6 +114,7 @@ $(document).ready(function(){initNavTree('class_o_m_sim_detector_construction.ht
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
@@ -139,6 +140,11 @@ Collaboration diagram for OMSimDetectorConstruction:</div>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_o_m_sim_detector_construction_1_1_s_d_info.html">SDInfo</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa74ddd6acfc0db023185dcc92820215f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_detector_construction.html#aa74ddd6acfc0db023185dcc92820215f">OMSimDetectorConstruction</a> ()</td></tr>
@@ -148,8 +154,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9e16ad5da3921b502473b303609caad0"><td class="memItemLeft" align="right" valign="top">G4VPhysicalVolume *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_detector_construction.html#a9e16ad5da3921b502473b303609caad0">Construct</a> ()</td></tr>
 <tr class="memdesc:a9e16ad5da3921b502473b303609caad0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the selected detector from the command line argument and returns the physical world volume.  <a href="class_o_m_sim_detector_construction.html#a9e16ad5da3921b502473b303609caad0">More...</a><br /></td></tr>
 <tr class="separator:a9e16ad5da3921b502473b303609caad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab084de58ec3e7ec98569c5db62fb6ecb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_detector_construction.html#ab084de58ec3e7ec98569c5db62fb6ecb">setSensitiveDetector</a> (G4LogicalVolume *logVol, G4VSensitiveDetector *aSD)</td></tr>
-<tr class="separator:ab084de58ec3e7ec98569c5db62fb6ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7396d4c4a761b9d79104ce1459f77468"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_detector_construction.html#a7396d4c4a761b9d79104ce1459f77468">ConstructSDandField</a> () override</td></tr>
+<tr class="separator:a7396d4c4a761b9d79104ce1459f77468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bc12d4354f99ecb63606d0be2db301c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_detector_construction.html#a5bc12d4354f99ecb63606d0be2db301c">registerSensitiveDetector</a> (G4LogicalVolume *logVol, G4VSensitiveDetector *aSD)</td></tr>
+<tr class="separator:a5bc12d4354f99ecb63606d0be2db301c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -171,6 +179,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ad38baf42d9d13f7be6dc579fc6521917"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ac97195a35b28817fcc5e38ca872ed8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_input_data_manager.html">InputDataManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_detector_construction.html#a6ac97195a35b28817fcc5e38ca872ed8">mData</a></td></tr>
 <tr class="separator:a6ac97195a35b28817fcc5e38ca872ed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a348c1e39b07d7d63c5566aa456fb2115"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_o_m_sim_detector_construction_1_1_s_d_info.html">SDInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_detector_construction.html#a348c1e39b07d7d63c5566aa456fb2115">mSensitiveDetectors</a></td></tr>
+<tr class="separator:a348c1e39b07d7d63c5566aa456fb2115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa74ddd6acfc0db023185dcc92820215f"></a>
@@ -253,6 +263,31 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a7396d4c4a761b9d79104ce1459f77468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7396d4c4a761b9d79104ce1459f77468">&#9670;&nbsp;</a></span>ConstructSDandField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimDetectorConstruction::ConstructSDandField </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a0bab6798cb1c5dab85ecf8dbec6b2fb3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0bab6798cb1c5dab85ecf8dbec6b2fb3">&#9670;&nbsp;</a></span>constructWorld()</h2>
 
@@ -280,14 +315,14 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab084de58ec3e7ec98569c5db62fb6ecb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab084de58ec3e7ec98569c5db62fb6ecb">&#9670;&nbsp;</a></span>setSensitiveDetector()</h2>
+<a id="a5bc12d4354f99ecb63606d0be2db301c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bc12d4354f99ecb63606d0be2db301c">&#9670;&nbsp;</a></span>registerSensitiveDetector()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void OMSimDetectorConstruction::setSensitiveDetector </td>
+          <td class="memname">void OMSimDetectorConstruction::registerSensitiveDetector </td>
           <td>(</td>
           <td class="paramtype">G4LogicalVolume *&#160;</td>
           <td class="paramname"><em>logVol</em>, </td>
@@ -320,6 +355,28 @@ Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_input_data_manager.html">InputDataManager</a>* OMSimDetectorConstruction::mData</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a348c1e39b07d7d63c5566aa456fb2115"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a348c1e39b07d7d63c5566aa456fb2115">&#9670;&nbsp;</a></span>mSensitiveDetectors</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="struct_o_m_sim_detector_construction_1_1_s_d_info.html">SDInfo</a>&gt; OMSimDetectorConstruction::mSensitiveDetectors</td>
         </tr>
       </table>
   </td>
@@ -399,7 +456,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_detector_construction.html">OMSimDetectorConstruction</a></li>
-    <li class="footer">Generated on Wed Jul 3 2024 15:12:51 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Jul 5 2024 10:27:48 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

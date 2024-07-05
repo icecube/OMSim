@@ -39,6 +39,8 @@ po\+::options\+\_\+description \mbox{\hyperlink{class_o_m_sim_adc89f2fa01d395838
 \item 
 void \mbox{\hyperlink{class_o_m_sim_a8718ff8784bfd2f381114d092e072b1c}{initial\+Logger\+Configuration}} ()
 \item 
+int \mbox{\hyperlink{class_o_m_sim_a5821847aa7865e5f607e4d55a3c1f178}{determine\+Number\+Of\+Threads}} ()
+\item 
 po\+::variables\+\_\+map \mbox{\hyperlink{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}{parse\+Arguments}} (int p\+Argument\+Count, char $\ast$p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Parses user terminal arguments to a variables map. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}{set\+User\+Arguments\+To\+Arg\+Table}} (po\+::variables\+\_\+map p\+Variables\+Map)
@@ -48,27 +50,17 @@ void \mbox{\hyperlink{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347}{set\+Gene
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-G4\+Run\+Manager $\ast$ \mbox{\hyperlink{class_o_m_sim_a63d81cbf53a7eb4d42f5c69397eb14eb}{m\+Run\+Manager}} = nullptr
+std\+::unique\+\_\+ptr$<$ G4\+MTRun\+Manager $>$ \mbox{\hyperlink{class_o_m_sim_a86515923f2071d37d4496880b5db5c22}{m\+Run\+Manager}}
 \item 
-G4\+Vis\+Executive $\ast$ \mbox{\hyperlink{class_o_m_sim_a8bded781b54a28ea07c04923eb98b23e}{m\+Vis\+Manager}} = nullptr
+std\+::unique\+\_\+ptr$<$ G4\+Vis\+Executive $>$ \mbox{\hyperlink{class_o_m_sim_a111387fc99c82da9d87512638019727f}{m\+Vis\+Manager}}
 \item 
-G4\+Navigator $\ast$ \mbox{\hyperlink{class_o_m_sim_aae423f68ad8ea948dc4a2bcc6ed8c6bf}{m\+Navigator}} = nullptr
+std\+::unique\+\_\+ptr$<$ G4\+VUser\+Physics\+List $>$ \mbox{\hyperlink{class_o_m_sim_a55c93ccf9b192c5cf3ff1b862e14fdeb}{m\+Physics}}
 \item 
-G4\+VUser\+Physics\+List $\ast$ \mbox{\hyperlink{class_o_m_sim_a73b7ac711ab9d9c1bc4ad38d6c985b94}{m\+Physics}} = nullptr
+std\+::unique\+\_\+ptr$<$ G4\+Touchable\+History $>$ \mbox{\hyperlink{class_o_m_sim_af006e5676aeca6dfc63a7ab0f0e11cae}{m\+History}}
 \item 
-G4\+VUser\+Primary\+Generator\+Action $\ast$ \mbox{\hyperlink{class_o_m_sim_a0920dcd6fa769919824d4c9c1ea97fed}{m\+Gen\+Action}} = nullptr
+std\+::unique\+\_\+ptr$<$ G4\+Navigator $>$ \mbox{\hyperlink{class_o_m_sim_a47d7d0c83e0290c37b1cd4d6e29ddfec}{m\+Navigator}}
 \item 
-G4\+User\+Run\+Action $\ast$ \mbox{\hyperlink{class_o_m_sim_af2fd0b66e65e7fb851583881ba52d1c0}{m\+Run\+Action}} = nullptr
-\item 
-G4\+User\+Event\+Action $\ast$ \mbox{\hyperlink{class_o_m_sim_ab5b7adf0ed2750115e09d70772d220ae}{m\+Event\+Action}} = nullptr
-\item 
-G4\+User\+Tracking\+Action $\ast$ \mbox{\hyperlink{class_o_m_sim_af873226fae0ebc465ab6716c9e2d9cb9}{m\+Tracking}} = nullptr
-\item 
-G4\+User\+Stepping\+Action $\ast$ \mbox{\hyperlink{class_o_m_sim_a610d64ca0157bc3795cf83a1a09a6d0c}{m\+Stepping}} = nullptr
-\item 
-G4\+Touchable\+History $\ast$ \mbox{\hyperlink{class_o_m_sim_a04ad05f6b01a547002f3c36fe116c35f}{m\+History}} = nullptr
-\item 
-G4double \mbox{\hyperlink{class_o_m_sim_afdddb6d2392b131b35aae4f20a551a7c}{m\+Starting\+Time}} = 0
+std\+::chrono\+::high\+\_\+resolution\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{class_o_m_sim_a9458e7ab12abb7c94a08f27366f15836}{m\+Starting\+Time}}
 \end{DoxyCompactItemize}
 
 
@@ -93,6 +85,12 @@ G4double \mbox{\hyperlink{class_o_m_sim_afdddb6d2392b131b35aae4f20a551a7c}{m\+St
 \index{configureLogger@{configureLogger}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{configureLogger()}{configureLogger()}}
 {\footnotesize\ttfamily void OMSim\+::configure\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_o_m_sim_a5821847aa7865e5f607e4d55a3c1f178}\label{class_o_m_sim_a5821847aa7865e5f607e4d55a3c1f178}} 
+\index{OMSim@{OMSim}!determineNumberOfThreads@{determineNumberOfThreads}}
+\index{determineNumberOfThreads@{determineNumberOfThreads}!OMSim@{OMSim}}
+\doxysubsubsection{\texorpdfstring{determineNumberOfThreads()}{determineNumberOfThreads()}}
+{\footnotesize\ttfamily int OMSim\+::determine\+Number\+Of\+Threads (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_o_m_sim_a5fdec07501bb76199f652ac95bd1e961}\label{class_o_m_sim_a5fdec07501bb76199f652ac95bd1e961}} 
 \index{OMSim@{OMSim}!ensureOutputDirectoryExists@{ensureOutputDirectoryExists}}
@@ -165,77 +163,47 @@ true if simulation should continue, if --help is called it will return false and
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_o_m_sim_ab5b7adf0ed2750115e09d70772d220ae}\label{class_o_m_sim_ab5b7adf0ed2750115e09d70772d220ae}} 
-\index{OMSim@{OMSim}!mEventAction@{mEventAction}}
-\index{mEventAction@{mEventAction}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mEventAction}{mEventAction}}
-{\footnotesize\ttfamily G4\+User\+Event\+Action$\ast$ OMSim\+::m\+Event\+Action = nullptr\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_a0920dcd6fa769919824d4c9c1ea97fed}\label{class_o_m_sim_a0920dcd6fa769919824d4c9c1ea97fed}} 
-\index{OMSim@{OMSim}!mGenAction@{mGenAction}}
-\index{mGenAction@{mGenAction}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mGenAction}{mGenAction}}
-{\footnotesize\ttfamily G4\+VUser\+Primary\+Generator\+Action$\ast$ OMSim\+::m\+Gen\+Action = nullptr\hspace{0.3cm}{\ttfamily [private]}}
-
 \mbox{\Hypertarget{class_o_m_sim_adc89f2fa01d3958389e86c36e8064805}\label{class_o_m_sim_adc89f2fa01d3958389e86c36e8064805}} 
 \index{OMSim@{OMSim}!mGeneralOptions@{mGeneralOptions}}
 \index{mGeneralOptions@{mGeneralOptions}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mGeneralOptions}{mGeneralOptions}}
 {\footnotesize\ttfamily po\+::options\+\_\+description OMSim\+::m\+General\+Options}
 
-\mbox{\Hypertarget{class_o_m_sim_a04ad05f6b01a547002f3c36fe116c35f}\label{class_o_m_sim_a04ad05f6b01a547002f3c36fe116c35f}} 
+\mbox{\Hypertarget{class_o_m_sim_af006e5676aeca6dfc63a7ab0f0e11cae}\label{class_o_m_sim_af006e5676aeca6dfc63a7ab0f0e11cae}} 
 \index{OMSim@{OMSim}!mHistory@{mHistory}}
 \index{mHistory@{mHistory}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mHistory}{mHistory}}
-{\footnotesize\ttfamily G4\+Touchable\+History$\ast$ OMSim\+::m\+History = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$G4\+Touchable\+History$>$ OMSim\+::m\+History\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_o_m_sim_aae423f68ad8ea948dc4a2bcc6ed8c6bf}\label{class_o_m_sim_aae423f68ad8ea948dc4a2bcc6ed8c6bf}} 
+\mbox{\Hypertarget{class_o_m_sim_a47d7d0c83e0290c37b1cd4d6e29ddfec}\label{class_o_m_sim_a47d7d0c83e0290c37b1cd4d6e29ddfec}} 
 \index{OMSim@{OMSim}!mNavigator@{mNavigator}}
 \index{mNavigator@{mNavigator}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mNavigator}{mNavigator}}
-{\footnotesize\ttfamily G4\+Navigator$\ast$ OMSim\+::m\+Navigator = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$G4\+Navigator$>$ OMSim\+::m\+Navigator\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_o_m_sim_a73b7ac711ab9d9c1bc4ad38d6c985b94}\label{class_o_m_sim_a73b7ac711ab9d9c1bc4ad38d6c985b94}} 
+\mbox{\Hypertarget{class_o_m_sim_a55c93ccf9b192c5cf3ff1b862e14fdeb}\label{class_o_m_sim_a55c93ccf9b192c5cf3ff1b862e14fdeb}} 
 \index{OMSim@{OMSim}!mPhysics@{mPhysics}}
 \index{mPhysics@{mPhysics}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mPhysics}{mPhysics}}
-{\footnotesize\ttfamily G4\+VUser\+Physics\+List$\ast$ OMSim\+::m\+Physics = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$G4\+VUser\+Physics\+List$>$ OMSim\+::m\+Physics\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_o_m_sim_af2fd0b66e65e7fb851583881ba52d1c0}\label{class_o_m_sim_af2fd0b66e65e7fb851583881ba52d1c0}} 
-\index{OMSim@{OMSim}!mRunAction@{mRunAction}}
-\index{mRunAction@{mRunAction}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mRunAction}{mRunAction}}
-{\footnotesize\ttfamily G4\+User\+Run\+Action$\ast$ OMSim\+::m\+Run\+Action = nullptr\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_a63d81cbf53a7eb4d42f5c69397eb14eb}\label{class_o_m_sim_a63d81cbf53a7eb4d42f5c69397eb14eb}} 
+\mbox{\Hypertarget{class_o_m_sim_a86515923f2071d37d4496880b5db5c22}\label{class_o_m_sim_a86515923f2071d37d4496880b5db5c22}} 
 \index{OMSim@{OMSim}!mRunManager@{mRunManager}}
 \index{mRunManager@{mRunManager}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mRunManager}{mRunManager}}
-{\footnotesize\ttfamily G4\+Run\+Manager$\ast$ OMSim\+::m\+Run\+Manager = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$G4\+MTRun\+Manager$>$ OMSim\+::m\+Run\+Manager\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_o_m_sim_afdddb6d2392b131b35aae4f20a551a7c}\label{class_o_m_sim_afdddb6d2392b131b35aae4f20a551a7c}} 
+\mbox{\Hypertarget{class_o_m_sim_a9458e7ab12abb7c94a08f27366f15836}\label{class_o_m_sim_a9458e7ab12abb7c94a08f27366f15836}} 
 \index{OMSim@{OMSim}!mStartingTime@{mStartingTime}}
 \index{mStartingTime@{mStartingTime}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mStartingTime}{mStartingTime}}
-{\footnotesize\ttfamily G4double OMSim\+::m\+Starting\+Time = 0\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::chrono\+::high\+\_\+resolution\+\_\+clock\+::time\+\_\+point OMSim\+::m\+Starting\+Time\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_o_m_sim_a610d64ca0157bc3795cf83a1a09a6d0c}\label{class_o_m_sim_a610d64ca0157bc3795cf83a1a09a6d0c}} 
-\index{OMSim@{OMSim}!mStepping@{mStepping}}
-\index{mStepping@{mStepping}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mStepping}{mStepping}}
-{\footnotesize\ttfamily G4\+User\+Stepping\+Action$\ast$ OMSim\+::m\+Stepping = nullptr\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_af873226fae0ebc465ab6716c9e2d9cb9}\label{class_o_m_sim_af873226fae0ebc465ab6716c9e2d9cb9}} 
-\index{OMSim@{OMSim}!mTracking@{mTracking}}
-\index{mTracking@{mTracking}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mTracking}{mTracking}}
-{\footnotesize\ttfamily G4\+User\+Tracking\+Action$\ast$ OMSim\+::m\+Tracking = nullptr\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_a8bded781b54a28ea07c04923eb98b23e}\label{class_o_m_sim_a8bded781b54a28ea07c04923eb98b23e}} 
+\mbox{\Hypertarget{class_o_m_sim_a111387fc99c82da9d87512638019727f}\label{class_o_m_sim_a111387fc99c82da9d87512638019727f}} 
 \index{OMSim@{OMSim}!mVisManager@{mVisManager}}
 \index{mVisManager@{mVisManager}!OMSim@{OMSim}}
 \doxysubsubsection{\texorpdfstring{mVisManager}{mVisManager}}
-{\footnotesize\ttfamily G4\+Vis\+Executive$\ast$ OMSim\+::m\+Vis\+Manager = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$G4\+Vis\+Executive$>$ OMSim\+::m\+Vis\+Manager\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

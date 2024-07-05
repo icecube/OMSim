@@ -15,6 +15,10 @@ var files_dup =
     [ "OMSim_effective_area.cc", "_o_m_sim__effective__area_8cc.html", "_o_m_sim__effective__area_8cc" ],
     [ "OMSim_radioactive_decays.cc", "_o_m_sim__radioactive__decays_8cc.html", "_o_m_sim__radioactive__decays_8cc" ],
     [ "OMSim_supernova.cc", "_o_m_sim__supernova_8cc.html", "_o_m_sim__supernova_8cc" ],
+    [ "OMSimActionInitialization.cc", "_o_m_sim_action_initialization_8cc.html", null ],
+    [ "OMSimActionInitialization.hh", "_o_m_sim_action_initialization_8hh.html", [
+      [ "OMSimActionInitialization", "class_o_m_sim_action_initialization.html", "class_o_m_sim_action_initialization" ]
+    ] ],
     [ "OMSimAngularScan.cc", "_o_m_sim_angular_scan_8cc.html", null ],
     [ "OMSimAngularScan.hh", "_o_m_sim_angular_scan_8hh.html", null ],
     [ "OMSimCommandArgsTable.hh", "_o_m_sim_command_args_table_8hh.html", "_o_m_sim_command_args_table_8hh" ],
@@ -31,7 +35,9 @@ var files_dup =
       [ "DEggHarness", "class_d_egg_harness.html", "class_d_egg_harness" ]
     ] ],
     [ "OMSimDetectorConstruction.cc", "_o_m_sim_detector_construction_8cc.html", null ],
-    [ "OMSimDetectorConstruction.hh", "_o_m_sim_detector_construction_8hh.html", null ],
+    [ "OMSimDetectorConstruction.hh", "_o_m_sim_detector_construction_8hh.html", [
+      [ "SDInfo", "struct_o_m_sim_detector_construction_1_1_s_d_info.html", "struct_o_m_sim_detector_construction_1_1_s_d_info" ]
+    ] ],
     [ "OMSimEffectiveAreaAnalyisis.cc", "_o_m_sim_effective_area_analyisis_8cc.html", null ],
     [ "OMSimEffectiveAreaAnalyisis.hh", "_o_m_sim_effective_area_analyisis_8hh.html", [
       [ "effectiveAreaResult", "structeffective_area_result.html", "structeffective_area_result" ]
@@ -147,5 +153,6 @@ var files_dup =
     [ "OMSimTrackingAction.hh", "_o_m_sim_tracking_action_8hh.html", [
       [ "OMSimTrackingAction", "class_o_m_sim_tracking_action.html", "class_o_m_sim_tracking_action" ]
     ] ],
-    [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", null ]
+    [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", null ],
+    [ "OMSimYieldDetector.cc", "_o_m_sim_yield_detector_8cc.html", null ]
 ];

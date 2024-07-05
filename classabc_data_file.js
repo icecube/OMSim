@@ -1,6 +1,7 @@
 var classabc_data_file =
 [
     [ "abcDataFile", "classabc_data_file.html#afa294a5fd58c6c3911d1a57683f7688a", null ],
+    [ "~abcDataFile", "classabc_data_file.html#a09322347b2356236b06ea16551d5ad31", null ],
     [ "extractInformation", "classabc_data_file.html#afc01d4904129c5b170f0299f96ec7f8a", null ],
     [ "sortVectorByReference", "classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee", null ],
     [ "mFileData", "classabc_data_file.html#a794403b1f022f0376e4a38e0ac28c281", null ],

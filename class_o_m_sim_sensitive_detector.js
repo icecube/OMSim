@@ -1,7 +1,7 @@
 var class_o_m_sim_sensitive_detector =
 [
     [ "OMSimSensitiveDetector", "class_o_m_sim_sensitive_detector.html#ac8df596a75c482bafb3b83d1ed011316", null ],
-    [ "~OMSimSensitiveDetector", "class_o_m_sim_sensitive_detector.html#ab75c704bb88a18c9450f74040b3a4ce1", null ],
+    [ "~OMSimSensitiveDetector", "class_o_m_sim_sensitive_detector.html#a86abb731f3b352ee3609b6f844380862", null ],
     [ "checkBoundaryAbsorption", "class_o_m_sim_sensitive_detector.html#aee2e914dd514bf5c949d45e12def5447", null ],
     [ "checkVolumeAbsorption", "class_o_m_sim_sensitive_detector.html#a9d70226340ca6ca44a09efebd7acb1e0", null ],
     [ "fetchBoundaryProcess", "class_o_m_sim_sensitive_detector.html#a9086dbe47568c71cba08feef8b665146", null ],
