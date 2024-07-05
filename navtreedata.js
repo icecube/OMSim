@@ -60,9 +60,9 @@ var NAVTREEINDEX =
 "_o_m_sim_tracking_action_8hh.html",
 "class_d_egg_harness.html#ac58521c32fb88070a406e5cb09721e04",
 "class_l_o_m_hamamatsu_response.html#a4a70ed272eba497760c380a8696c7b29",
-"class_o_m_sim_optical_module.html#a7f388d1ec142804f350635035e56beb1",
-"class_s_n_base_particle_generator.html#a0ce85426728c9c1fea5cd711e537f25e",
-"functions_t.html"
+"class_o_m_sim_optical_module.html#a802253f7f4b4cb4759c57fbff51023ae",
+"class_s_n_base_particle_generator.html#a120cea78d1a8f92b88cd1632bc0c92c6",
+"functions_type.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
