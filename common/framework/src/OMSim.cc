@@ -155,7 +155,7 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstructio
 
     //CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
     //CLHEP::HepRandom::setTheEngine(new CLHEP::MixMaxRng(lArgs.get<long>("seed")));
-    //G4Random::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
+    
     
 
     mRunManager->SetUserInitialization(pDetectorConstruction);

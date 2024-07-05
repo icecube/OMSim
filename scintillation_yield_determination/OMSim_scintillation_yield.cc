@@ -28,6 +28,7 @@ void runYieldSetup(OMSimYieldDetector *pDetector)
 	switch (lArgs.get<G4int>("detector_type"))
 	{
 	case 0:
+	{
 		lDecays.setEmitterVolume(pDetector->mSource);
 		lDecays.setProductionRadius(1*cm);
 		lDecays.configureGammaEmitter(661.7*keV, "Cs137");
@@ -35,7 +36,27 @@ void runYieldSetup(OMSimYieldDetector *pDetector)
 		lUIinterface.runBeamOn();
 		break;
 	}
+	case 1:
+	{
+		lDecays.setEmitterVolume(pDetector->mSource);
+		lDecays.setProductionRadius(1.1*cm);
+		lDecays.configureAm241Emitter("Emitter");
+		//lDecays.limitThetaEmission(90*deg, 180*deg);
+		lUIinterface.runBeamOn();
+		break;
+	}
+	case 2:
+	{
+		lDecays.setEmitterVolume(pDetector->mSource);
+		lDecays.setProductionRadius(1.1*cm);
+		lDecays.configureAm241EmitterForActivity("Emitter");
+		//lDecays.limitThetaEmission(90*deg, 180*deg);
+		lUIinterface.runBeamOn();
+		break;
+	}
+	}
 	lAnalysisManager.writeHitInformation();
+	lAnalysisManager.countHits();
 }
 
 /**
@@ -68,10 +89,11 @@ int main(int pArgumentCount, char *pArgumentVector[])
 	if (!lContinue)
 		return 0;
 
-	OMSimYieldDetector *lDetectorConstruction = new OMSimYieldDetector();
-	lSimulation.initialiseSimulation(lDetectorConstruction);
-
-	runYieldSetup(lDetectorConstruction);
+	std::unique_ptr<OMSimYieldDetector> lDetectorConstruction = std::make_unique<OMSimYieldDetector>();
+	lSimulation.initialiseSimulation(lDetectorConstruction.get());
+	
+	runYieldSetup(lDetectorConstruction.get());
+	lDetectorConstruction.release();
 
 	lSimulation.startVisualisationIfRequested();
 	return 0;

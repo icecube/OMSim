@@ -40,3 +40,57 @@ void OMSimYieldGPS::configureGammaEmitter(G4double pEnergy, G4String pVolumeName
 
     lUIinterface.applyCommand("/gps/pos/confine " + pVolumeName);
 }
+
+
+
+void OMSimYieldGPS::configureAm241Emitter(G4String pVolumeName)
+{
+    log_debug("Configuring Am241 emitter in volume {}", pVolumeName);
+    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+    OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+
+    lUIinterface.applyCommand("/run/initialize");
+    lUIinterface.applyCommand("/gps/particle GenericIon");
+    lUIinterface.applyCommand("/gps/ion 95 241 0");
+    G4ThreeVector lPosition = mEmitterVolume->mPlacedPositions.at(0);
+    lUIinterface.applyCommand("/gps/pos/centre ", lPosition.x() / m, " ", lPosition.y() / m, " ", lPosition.z() / m, " m");
+    lUIinterface.applyCommand("/gps/energy 0 keV");
+    lUIinterface.applyCommand("/gps/pos/type Volume");
+    lUIinterface.applyCommand("/gps/pos/shape Sphere");
+    lUIinterface.applyCommand("/gps/pos/radius ", mProductionRadius, " mm");
+    lUIinterface.applyCommand("/gps/ang/type iso");
+
+    if (lArgs.get<bool>("scint_off"))
+    {
+        log_debug("Inactivating scintillation process");
+        lUIinterface.applyCommand("/process/inactivate Scintillation");
+    }
+
+    if (lArgs.get<bool>("cherenkov_off"))
+    {
+        log_debug("Inactivating Cerenkov process");
+        lUIinterface.applyCommand("/process/inactivate Cerenkov");
+    }
+
+    lUIinterface.applyCommand("/gps/pos/confine " + pVolumeName);
+}
+
+
+
+void OMSimYieldGPS::configureAm241EmitterForActivity(G4String pVolumeName)
+{
+    log_debug("Configuring Am241 emitter in volume {}", pVolumeName);
+    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+    OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+
+    lUIinterface.applyCommand("/run/initialize");
+    lUIinterface.applyCommand("/gps/particle opticalphoton");
+    lUIinterface.applyCommand("/gps/energy", 1239.84193 / 450, "eV");
+    G4ThreeVector lPosition = mEmitterVolume->mPlacedPositions.at(0);
+    lUIinterface.applyCommand("/gps/pos/centre ", lPosition.x() / m, " ", lPosition.y() / m, " ", lPosition.z() / m, " m");
+    lUIinterface.applyCommand("/gps/pos/type Volume");
+    lUIinterface.applyCommand("/gps/pos/shape Sphere");
+    lUIinterface.applyCommand("/gps/pos/radius ", mProductionRadius, " mm");
+    lUIinterface.applyCommand("/gps/ang/type iso");
+    lUIinterface.applyCommand("/gps/pos/confine " + pVolumeName);
+}

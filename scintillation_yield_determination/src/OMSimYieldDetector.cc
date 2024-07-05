@@ -79,51 +79,75 @@ void OMSimYieldDetector::constructDetector()
 
         break;
     }
-    case 1:
+     case 1:
     {
-        log_info("Constructing single PMT");
+        log_info("Constructing Okamoto Cs-137 Source setup for electron yield");
+        G4double lZrandom = 0;
+        G4double lYrandom = 0;
+        G4double lZrandomSource = 0;
+        G4double lYrandomSource = 0;
+        G4double lXSource = 0;
+        G4double lXSample = 0;
+        G4double lPMTrotY = 1*deg;
+        G4double lPMTrotX = 0*deg;
+        if (lArgs.get<bool>("systematics"))
+        {
+            lZrandom = G4RandGauss::shoot(0, 0.02) * cm;
+            lYrandom = G4RandGauss::shoot(0, 2) * mm;
+            lZrandomSource = G4RandGauss::shoot(0.1, 0.01) * mm;
+            lYrandomSource = G4RandGauss::shoot(0, 2) * mm;
+            lXSource = G4RandGauss::shoot(0, 2) * mm;
+            lXSample = G4RandGauss::shoot(0, 2) * mm;
+            lPMTrotY = G4RandGauss::shoot(1, 0.1) * deg;
+            lPMTrotX = G4RandGauss::shoot(0, 0.1) * deg;
+        }
+
         OMSimPMTConstruction *lPMTManager = new OMSimPMTConstruction(mData);
         lPMTManager->selectPMT("argPMT");
         lPMTManager->construction();
-        lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
+        lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix().rotateY(lPMTrotY).rotateX(lPMTrotX), mWorldLogical, "_0");
         lHitManager.setNumberOfPMTs(1, 0);
         lPMTManager->configureSensitiveVolume(this, "/PMT/0");
-        break;
-    }
-    case 2:
-    {
-        lOpticalModule = new mDOM(mData, lPlaceHarness);
-        break;
-    }
-    case 3:
-    {
 
-        lOpticalModule = new pDOM(mData, lPlaceHarness);
-        break;
-    }
-    case 4:
-    {
+        OkamotoSmallSample *lOkamotoSample = new OkamotoSmallSample(mData);
 
-        lOpticalModule = new LOM16(mData, lPlaceHarness);
-        break;
-    }
-    case 5:
-    {
+        G4double lzSample = 4.46 * cm + lPMTManager->getDistancePMTCenterToTip() + lZrandom;
+        G4double lySample = 21.77 * mm - (40 * mm - 25 * mm)+lYrandom;
 
-        lOpticalModule = new LOM18(mData, lPlaceHarness);
+        lOkamotoSample->placeIt(G4ThreeVector(lXSample, -lySample, lzSample), G4RotationMatrix(), mWorldLogical, "");
+
+        G4double lzSource = lzSample + lOkamotoSample->getSampleThickness() + lZrandomSource;
+        Am241Source *lSource = new Am241Source(mData);
+        lSource->placeIt(G4ThreeVector(lXSource, -lySample+lYrandomSource, lzSource), G4RotationMatrix(), mWorldLogical, "");
+        mSource = lSource;
+
         break;
-    }
-    case 6:
-    {
-        lOpticalModule = new DEGG(mData, lPlaceHarness);
-        break;
-    }
     }
 
-    if (lOpticalModule)
+
+     case 2:
     {
-        lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
-        lOpticalModule->configureSensitiveVolume(this);
-        mOpticalModule = lOpticalModule;
+        log_info("Constructing Okamoto Cs-137 Source setup for electron yield");
+        G4double lZ = 0.2*mm;
+        G4double lYrandom = 0;
+        if (lArgs.get<bool>("systematics"))
+        {
+            lYrandom = G4RandGauss::shoot(0, 1) * mm;
+        }
+
+        AMETEKSiliconDetector *lDetector = new AMETEKSiliconDetector(mData);
+        Am241Source *lSource = new Am241Source(mData);
+        lSource->placeIt(G4ThreeVector(0,lYrandom,lZ), G4RotationMatrix(), mWorldLogical, "");
+        lDetector->placeIt(G4ThreeVector(0,0,0), G4RotationMatrix(), mWorldLogical, "");
+
+        OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector("/Si/0", DetectorType::VolumePhotonDetector);
+        lSensitiveDetector->setPMTResponse(&NoResponse::getInstance());
+        lHitManager.setNumberOfPMTs(1, 0);
+        registerSensitiveDetector(lDetector->getComponent("Detector").VLogical, lSensitiveDetector);
+
+        mSource = lSource;
+        break;
     }
+    }
+
 }

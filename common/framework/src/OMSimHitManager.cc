@@ -94,6 +94,9 @@ void OMSimHitManager::appendHitInfo(
 	if (!mThreadData)
 	{
 		log_debug("Initialized mThreadData for thread {}", G4Threading::G4GetThreadId());
+				G4cout << "Current RNG engine: " << G4Random::getTheEngine()->name() << G4endl;
+		G4cout << "Thread ID: " << G4Threading::G4GetThreadId()
+			   << " Engine address: " << G4Random::getTheEngine() << " "<< G4Random::getTheEngine()->getSeed() << G4endl;
 		mThreadData = new ThreadLocalData();
 	}
 
@@ -145,6 +148,7 @@ HitStats OMSimHitManager::getHitsOfModule(int pModuleIndex)
  */
 void OMSimHitManager::reset()
 {
+	log_debug("Clearing hit vector...");
 	mModuleHits.clear();
 
 	if (mThreadData)

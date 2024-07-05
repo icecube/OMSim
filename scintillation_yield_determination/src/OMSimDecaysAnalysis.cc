@@ -28,7 +28,23 @@ void OMSimDecaysAnalysis::setOutputFileName(G4String pName)
 	mMultiplicityFileName = pName + "_multiplicity.dat";
 	mHitsFileName = pName + "_hits.dat";
 	mDecaysFileName = pName + "_decays.dat";
+	mCountFilename = pName + "_decays.dat";
 }
+
+void OMSimDecaysAnalysis::countHits() {
+    std::vector<double> lHits = OMSimHitManager::getInstance().countHits();
+    mDatafile.open(mCountFilename.c_str(), std::ios::out | std::ios::app);
+
+    G4double lTotalHits = 0;
+    for (const auto &hit : lHits) {
+        mDatafile << hit << "\t";
+        lTotalHits = hit; // last element is total nr of hits
+    }
+    mDatafile << G4endl;
+    mDatafile.close();
+}
+
+
 
 /**
  * @brief Calls calculateMultiplicity and writes the results to the output file.

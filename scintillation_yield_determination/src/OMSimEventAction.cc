@@ -24,12 +24,6 @@ void OMSimEventAction::BeginOfEventAction(const G4Event *evt)
  */
 void OMSimEventAction::EndOfEventAction(const G4Event *evt)
 {
-	OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
-	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
-	lAnalysisManager.writeHitInformation();
-	lHitManager.reset();
-	lAnalysisManager.reset();
 
 }

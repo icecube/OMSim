@@ -11,6 +11,14 @@ public:
 
 };
 
+class Am241Source : public abcDetectorComponent
+{
+public:
+    Am241Source(InputDataManager *pData);
+    void construction();
+
+};
+
 class OkamotoLargeSample : public abcDetectorComponent
 {
 public:
@@ -22,5 +30,27 @@ private:
     G4double mMeanThickness;
 
 };
+
+
+class OkamotoSmallSample : public abcDetectorComponent
+{
+public:
+    OkamotoSmallSample(InputDataManager *pData);
+    void construction();
+    G4double getSampleThickness();
+    
+private:
+    G4double mMeanThickness;
+
+};
+
+class AMETEKSiliconDetector : public abcDetectorComponent
+{
+public:
+    AMETEKSiliconDetector(InputDataManager *pData);
+    void construction();
+};
+
+
 
 #endif // OMSIM_YIELD_SETUP_HH

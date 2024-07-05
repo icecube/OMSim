@@ -44,6 +44,7 @@ public:
     void writeMultiplicity();
     void writeDecayInformation();
     void writeHitInformation();
+    void countHits();
 
     void reset();
     
@@ -56,7 +57,8 @@ private:
     G4String mHitsFileName;
     G4String mDecaysFileName;
     G4String mMultiplicityFileName;
-
+    G4String mCountFilename;
+    
     OMSimDecaysAnalysis() = default;
     ~OMSimDecaysAnalysis() = default;
     OMSimDecaysAnalysis(const OMSimDecaysAnalysis &) = delete;

@@ -31,6 +31,7 @@ void OMSimActionInitialization::Build() const
     long lSeed = (mMasterSeed + (G4Threading::G4GetThreadId()+1) * lPrime);
     lSeed = lSeed % std::numeric_limits<long>::max();
     log_debug("Random engine of thread {} was assigned seed {}", G4Threading::G4GetThreadId(), lSeed);
-    G4Random::setTheSeed(lSeed);
-    G4Random::setTheEngine(new CLHEP::RanluxEngine);
+    G4Random::setTheEngine(new CLHEP::RanluxEngine(lSeed));
+    G4cout << " Engine address: " << G4Random::getTheEngine() << " "<< G4Random::getTheEngine()->getSeed() << G4endl;
+    //G4Random::setTheSeed(lSeed);
 }
