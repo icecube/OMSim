@@ -271,7 +271,7 @@ G4OpticalSurface *InputDataManager::getOpticalSurface(G4String pName)
  */
 void InputDataManager::searchFolders()
 {
-    log_debug("Searching folders for data json files...");
+    log_trace("Searching folders for data json files...");
     std::vector<std::string> directories = {
         "../common/data/Materials", "../common/data/PMTs", "../common/data/scintillation",
         // ... you can add more directories here ...

@@ -57,7 +57,7 @@ public:
      */
     void runBeamOn(G4int pNumberOfEvents = -1)
     {
-        log_debug("Running beamOn command");
+        log_trace("Running beamOn command");
         G4int lNumEvents = pNumberOfEvents >= 0 ? pNumberOfEvents : OMSimCommandArgsTable::getInstance().get<G4int>("numevents");
         applyCommand("/run/beamOn ", lNumEvents);
     }

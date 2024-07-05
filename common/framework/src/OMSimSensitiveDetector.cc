@@ -4,7 +4,6 @@
 #include "G4LogicalVolume.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4ParticleTypes.hh"
-#include "G4SDManager.hh"
 #include "G4Step.hh"
 #include "G4TouchableHistory.hh"
 #include "G4Track.hh"

@@ -7,7 +7,6 @@
 #include "OMSimDEGG.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimHitManager.hh"
-#include "G4SDManager.hh"
 #include "OMSimSensitiveDetector.hh"
 
 /**

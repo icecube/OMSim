@@ -6,7 +6,6 @@
 #include "OMSimMDOM.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimHitManager.hh"
-#include "G4SDManager.hh"
 #include <G4Orb.hh>
 #include "OMSimSensitiveDetector.hh"
 #include "G4LogicalVolume.hh"

@@ -41,6 +41,7 @@ class abcDataFile
 {
 public:
     abcDataFile(G4String pFileName);
+    ~abcDataFile();
     G4String mFileName;
     G4String mObjectName;
 
@@ -66,7 +67,6 @@ public:
     abcMaterialData(G4String pFileName) : abcDataFile(pFileName){};
     G4Material *mMaterial;
     G4MaterialPropertiesTable *mMPT;
-    G4NistManager *mMatDatBase;
 
     void createMaterial();
     void extractAbsorptionLength();

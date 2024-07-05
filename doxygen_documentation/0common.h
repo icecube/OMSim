@@ -68,7 +68,7 @@
  * @warning Only the mDOM PMT currently supports a detailed PMT response.
  * 
  * For photon detection in both simple and complex geometries, the photons must be absorbed within the photocathode volume. The PMTs' photocathodes are made sensitive through the OMSimSensitiveDetector class, following Geant4's G4VSensitiveDetector pattern. This configuration is achieved by invoking `OMSimOpticalModule::configureSensitiveVolume` (or `OMSimPMTConstruction::configureSensitiveVolume` when simulating a single PMT). 
- * It is essential to invoke this method in the detector construction, as it needs the instance of `OMSimDetectorConstruction` to call `G4VUserDetectorConstruction::SetSensitiveDetector` for successful operation in Geant4 (refer to `OMSimDetectorConstruction::setSensitiveDetector`).
+ * It is essential to invoke this method in the detector construction, as it needs the instance of `OMSimDetectorConstruction` to call `G4VUserDetectorConstruction::SetSensitiveDetector` for successful operation in Geant4 (refer to `OMSimDetectorConstruction::registerSensitiveDetector`).
  * 
  * Every step of a particle through the photocathode triggers the `OMSimSensitiveDetector::ProcessHits` method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4's philosophy concerning G4VSensitiveDetector, consult the <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector#g4vsensitivedetector">Geant4 guide for application developers</a>.
  * 
@@ -101,7 +101,7 @@
  *  OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector("myDetector", DetectorType::GeneralPhotonDetector); 
  *  OMSimHitManager lHitManager =  OMSimHitManager::getInstance();
  *  lHitManager.setNumberOfPMTs(1, lHitManager.getNextDetectorIndex());
- *  setSensitiveDetector(lDetectorLV, lSensitiveDetector);
+ *  registerSensitiveDetector(lDetectorLV, lSensitiveDetector);
  * ~~~~~~~~~~~~~
  * In this case, `OMSimSensitiveDetector::ProcessHits` will store all absorbed photons. The number of photons absorbed will depend on the absorption length of the material connected to the logical volume. 
  * If there's a need to make a volume sensitive to particles other than photons, add a new entry to the `DetectorType` enum (in `OMSimSensitiveDetector.hh`) and incorporate a new method that handles this scenario in `OMSimSensitiveDetector::ProcessHits`. 

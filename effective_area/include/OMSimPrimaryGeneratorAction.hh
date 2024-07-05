@@ -15,7 +15,7 @@ public:
 	void GeneratePrimaries(G4Event* anEvent);
 
 private:
-	G4GeneralParticleSource* lParticleSource;
+	G4GeneralParticleSource* mParticleSource;
 };
 
 #endif

@@ -122,7 +122,7 @@ void abcDetectorComponent::placeIt(G4ThreeVector pPosition, G4RotationMatrix pRo
     for (auto const &[key, Component] : mComponents)
     {
         G4String mssg = "Placing " + key + " in " + pMother->GetName() + ".";
-        log_debug(mssg);
+        log_trace(mssg);
         lTrans = getNewPosition(pPosition, pRotation, Component.Position, Component.Rotation);
         mLastPhysicals[key] = new G4PVPlacement(lTrans, Component.VLogical, Component.Name + pNameExtension, pMother, false, 0, mCheckOverlaps);
     }
@@ -141,7 +141,7 @@ void abcDetectorComponent::placeIt(G4Transform3D pTrans, G4LogicalVolume *&pMoth
     G4Transform3D lTrans;
     for (auto const &[key, Component] : mComponents)
     {
-        log_debug("Placing {} in {}.", key, pMother->GetName());
+        log_trace("Placing {} in {}.", key, pMother->GetName());
         lTrans = getNewPosition(pTrans.getTranslation(), pTrans.getRotation(), Component.Position, Component.Rotation);
         mLastPhysicals[key] = new G4PVPlacement(lTrans, Component.VLogical, Component.Name + pNameExtension, pMother, false, 0, mCheckOverlaps);
     }
@@ -186,7 +186,7 @@ G4SubtractionSolid *abcDetectorComponent::substractToVolume(G4VSolid *pInputVolu
     {
         lTrans = getNewPosition(pSubstractionPos, pSubstractionRot, Component.Position, Component.Rotation);
         G4String mssg = "Substracting " + key + " from " + pInputVolume->GetName() + ".";
-        log_debug(mssg);
+        log_trace(mssg);
         if (lCounter == 0)
         {
             lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", pInputVolume, Component.VSolid, lTrans);
@@ -217,7 +217,7 @@ G4SubtractionSolid *abcDetectorComponent::substractToVolume(G4VSolid *pInputVolu
     for (auto const &[key, Component] : mComponents)
     {
         G4String mssg = "Substracting " + key + " from " + pInputVolume->GetName() + ".";
-        log_debug(mssg);
+        log_trace(mssg);
         if (lCounter == 0)
         {
             lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", pInputVolume, Component.VSolid, pTrans);

@@ -70,7 +70,7 @@ private:
     G4double mMissingTubeLength;
     G4PVPlacement *mVacuumBackPhysical;
 
-    bool mCheckOverlaps = true;
+    bool mCheckOverlaps;
 
     // Variables from json files are saved in the following members
     G4double mTotalLenght;

@@ -10,12 +10,18 @@
 
 #include "OMSim.hh"
 #include "OMSimLogger.hh"
+#include "OMSimActionInitialization.hh"
 #include <boost/program_options.hpp>
 
 namespace po = boost::program_options;
 extern std::shared_ptr<spdlog::logger> globalLogger;
 
-OMSim::OMSim() : mStartingTime(clock() / CLOCKS_PER_SEC), mGeneralOptions("General options"), mRunManager(new G4RunManager()), mVisManager(new G4VisExecutive()), mNavigator(new G4Navigator())
+OMSim::OMSim() : 
+mStartingTime(std::chrono::high_resolution_clock::now()), 
+mGeneralOptions("General options"), 
+mRunManager(std::make_unique<G4MTRunManager>()),
+mVisManager(std::make_unique<G4VisExecutive>()),
+mNavigator(std::make_unique<G4Navigator>())
 {
     setGeneralOptions();
     initialLoggerConfiguration();
@@ -41,7 +47,8 @@ void OMSim::setGeneralOptions()
     ("glass", po::value<G4int>()->default_value(0), "DEPRECATED. Index to select glass type [VITROVEX = 0, Chiba = 1, Kopp = 2, myVitroVex = 3, myChiba = 4, WOMQuartz = 5, fusedSilica = 6]")
     ("gel", po::value<G4int>()->default_value(1), "DEPRECATED. Index to select gel type [Wacker = 0, Chiba = 1, IceCube = 2, Wacker_company = 3]")
     ("reflective_surface", po::value<G4int>()->default_value(0), "DEPRECATED. Index to select reflective surface type [Refl_V95Gel = 0, Refl_V98Gel = 1, Refl_Aluminium = 2, Refl_Total98 = 3]")
-    ("pmt_model", po::value<G4int>()->default_value(0), "DEPRECATED. R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3");
+    ("pmt_model", po::value<G4int>()->default_value(0), "DEPRECATED. R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3")
+    ("threads", po::value<int>()->default_value(1), "number of threads to use.");
 }
 
 void OMSim::initialLoggerConfiguration()
@@ -117,6 +124,21 @@ OMSimDetectorConstruction* OMSim::getDetectorConstruction()
 }
 */
 
+int OMSim::determineNumberOfThreads()
+{
+    int requestedThreads = OMSimCommandArgsTable::getInstance().get<int>("threads");
+    int availableThreads = G4Threading::G4GetNumberOfCores();
+    
+    if (requestedThreads <= 0) {
+        log_info("Auto-detected {} available cores", availableThreads);
+        return availableThreads;
+    } else {
+        int threadsToUse = std::min(requestedThreads, availableThreads);
+        log_info("Using {} out of {} available cores", threadsToUse, availableThreads);
+        return threadsToUse;
+    }
+}
+
 /**
  * @brief Initialize the simulation constructing all Geant instances.
  */
@@ -131,41 +153,35 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstructio
     if (lArgs.get<bool>("save_args"))
         lArgs.writeToJson(lFileName);
 
-    CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
+    //CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
+    //CLHEP::HepRandom::setTheEngine(new CLHEP::MixMaxRng(lArgs.get<long>("seed")));
+    //G4Random::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
+    
 
     mRunManager->SetUserInitialization(pDetectorConstruction);
 
-    mPhysics = new OMSimPhysicsList;
-    mRunManager->SetUserInitialization(mPhysics);
+    mPhysics = std::make_unique<OMSimPhysicsList>();
+    mRunManager->SetUserInitialization(mPhysics.get());
+    mPhysics.release();
 
     mVisManager->Initialize();
 
-    mGenAction = new OMSimPrimaryGeneratorAction();
-    mRunManager->SetUserAction(mGenAction);
+    OMSimActionInitialization* actionInitialization = new OMSimActionInitialization(lArgs.get<long>("seed"));
+    mRunManager->SetUserInitialization(actionInitialization);
 
-    mRunAction = new OMSimRunAction();
-    mRunManager->SetUserAction(mRunAction);
-
-    mEventAction = new OMSimEventAction();
-    mRunManager->SetUserAction(mEventAction);
-
-    mTracking = new OMSimTrackingAction();
-    mRunManager->SetUserAction(mTracking);
-
-    mStepping = new OMSimSteppingAction();
-    mRunManager->SetUserAction(mStepping);
+    // Set number of threads
+    int nThreads = determineNumberOfThreads();
+    mRunManager->SetNumberOfThreads(nThreads);
 
     mRunManager->Initialize();
 
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     lUIinterface.setUI(G4UImanager::GetUIpointer());
 
-    mNavigator->SetWorldVolume(pDetectorConstruction->mWorldPhysical);
-    mNavigator->LocateGlobalPointAndSetup(G4ThreeVector(0., 0., 0.));
+    mNavigator.get()->SetWorldVolume(pDetectorConstruction->mWorldPhysical);
+    mNavigator.get()->LocateGlobalPointAndSetup(G4ThreeVector(0., 0., 0.));
 
-    mHistory = mNavigator->CreateTouchableHistory();
-
-    lUIinterface.applyCommand("/control/execute ", lArgs.get<bool>("visual"));
+    mHistory = std::unique_ptr<G4TouchableHistory>(mNavigator->CreateTouchableHistory());
 }
 
 /**
@@ -238,23 +254,45 @@ bool OMSim::handleArguments(int pArgumentCount, char *pArgumentVector[])
 OMSim::~OMSim()
 {
     log_trace("OMSim destructor");
-    if (mRunManager) {
-        log_trace("Deleting RunManager");
-        delete mRunManager;
-        mRunManager = nullptr;
-    }
+    // if (mRunManager) {
+    //     log_trace("Deleting RunManager");
+    //     delete mRunManager;
+    //     mRunManager = nullptr;
+    // }
 
-    if (mVisManager) {
-        log_trace("Deleting VisManager");
-        delete mVisManager;
-        mVisManager = nullptr;
-    }
+    // if (mVisManager) {
+    //     log_trace("Deleting VisManager");
+    //     delete mVisManager;
+    //     mVisManager = nullptr;
+    // }
 
-    if (mNavigator) {
-        log_trace("Deleting Navigator");
-        delete mNavigator;
-        mNavigator = nullptr;
-    }
-    double lFinishtime = clock() / CLOCKS_PER_SEC;
-    log_info("Computation time: {} {}", lFinishtime - mStartingTime, " seconds.");
+    // if (mNavigator) {
+    //     log_trace("Deleting Navigator");
+    //     delete mNavigator;
+    //     mNavigator = nullptr;
+    // }
+
+    log_trace("OMSim destructor started");
+    
+    log_trace("Resetting mHistory");
+    mHistory.reset();
+    
+    log_trace("Resetting mNavigator");
+    mNavigator.reset();
+    
+    log_trace("Resetting mPhysics");
+    mPhysics.reset();
+    
+    log_trace("Resetting mVisManager");
+    mVisManager.reset();
+    
+    log_trace("Resetting mRunManager");
+    mRunManager.reset();
+    
+    log_trace("OMSim destructor finished");
+    
+
+    std::chrono::high_resolution_clock::time_point lFinishtime = std::chrono::high_resolution_clock::now();
+    const std::chrono::duration<double> lDiff = lFinishtime - mStartingTime;
+    log_info("Computation time: {} {}", lDiff.count(), " seconds.");
 }

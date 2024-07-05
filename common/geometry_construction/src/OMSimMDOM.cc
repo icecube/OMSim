@@ -19,7 +19,13 @@ mDOM::~mDOM()
         delete mHarness;
     }
 }
-mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness): OMSimOpticalModule(pData, new OMSimPMTConstruction(pData)), mPlaceHarness(pPlaceHarness)
+mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
+    : OMSimOpticalModule(pData, new OMSimPMTConstruction(pData)),
+      mPlaceHarness(pPlaceHarness),
+      mFlashers(nullptr),
+      mHarness(nullptr),
+      mRefConeIdealInRad(0),
+      mPMToffset(0)
 {
     log_info("Constructing mDOM");
     mFlashers = new mDOMFlasher(mData);
@@ -35,7 +41,7 @@ mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness): OMSimOpticalModule(pD
     }
 
     construction();
-    log_debug("Finished constructing mDOM");
+    log_trace("Finished constructing mDOM");
 }
 
 void mDOM::construction()

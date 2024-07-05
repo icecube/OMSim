@@ -275,7 +275,7 @@ void LOM18::placeCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical)
     CADfile << "EverythingButPMTsGelpadsVesselPenetrator.obj";
     //CADfile << "Internal.obj";
     
-    G4cout <<  "using the following CAD file for support structure: "  << CADfile.str()  << G4endl;
+    log_debug("Using the following CAD file for support structure: {}", CADfile.str());
 
     //load mesh
     auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/LOM18/" + CADfile.str() );

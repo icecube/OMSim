@@ -33,10 +33,11 @@
 
 
 build/
+build2/
 build*/
 doxygen_documentation/html
 doxygen_documentation/latex
 .vscode/
 CMakeLists.txt
-240617_analysis/*
 
+240617_analysis/*
