@@ -24,7 +24,8 @@ public:
     ~OMSimDetectorConstruction();
 
     G4VPhysicalVolume *Construct();
-    void setSensitiveDetector(G4LogicalVolume* logVol, G4VSensitiveDetector* aSD);
+    void ConstructSDandField() override;
+    void registerSensitiveDetector(G4LogicalVolume* logVol, G4VSensitiveDetector* aSD);
     G4VPhysicalVolume *mWorldPhysical;
 
 protected:
@@ -33,6 +34,12 @@ protected:
     virtual void constructWorld() = 0;
     virtual void constructDetector() = 0;
     InputDataManager *mData;
+
+    struct SDInfo {
+        G4LogicalVolume* logicalVolume;
+        G4VSensitiveDetector* sensitiveDetector;
+    };
+    std::vector<SDInfo> mSensitiveDetectors;
 };
 
 #endif

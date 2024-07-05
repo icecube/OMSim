@@ -35,7 +35,7 @@ mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness): OMSimOpticalModule(pD
     }
 
     construction();
-    log_debug("Finished constructing mDOM");
+    log_trace("Finished constructing mDOM");
 }
 
 void mDOM::construction()

@@ -19,7 +19,7 @@
 #include "OMSimSteppingAction.hh"
 #include "OMSimUIinterface.hh"
 
-#include <G4RunManager.hh>
+#include <G4MTRunManager.hh>
 #include <G4VisExecutive.hh>
 #include <G4UIExecutive.hh>
 
@@ -53,28 +53,24 @@ public:
     void startVisualisationIfRequested();
     // OMSimDetectorConstruction* getDetectorConstruction();
 
-    G4Navigator *getNavigator() { return mNavigator; };
+    G4Navigator *getNavigator() { return mNavigator.get(); };
     void extendOptions(po::options_description pNewOptions);
     po::options_description mGeneralOptions;
 
 private:
     void initialLoggerConfiguration();
+    int determineNumberOfThreads();
     po::variables_map parseArguments(int pArgumentCount, char *pArgumentVector[]);
     void setUserArgumentsToArgTable(po::variables_map pVariablesMap);
     void setGeneralOptions();
 
-    G4RunManager *mRunManager = nullptr;
-    G4VisExecutive *mVisManager = nullptr;
-    G4Navigator *mNavigator = nullptr;
-    G4VUserPhysicsList *mPhysics = nullptr;
-    G4VUserPrimaryGeneratorAction *mGenAction = nullptr;
-    G4UserRunAction *mRunAction = nullptr;
-    G4UserEventAction *mEventAction = nullptr;
-    G4UserTrackingAction *mTracking = nullptr;
-    G4UserSteppingAction *mStepping = nullptr;
-    G4TouchableHistory *mHistory = nullptr;
+    std::unique_ptr<G4MTRunManager> mRunManager;
+    std::unique_ptr<G4VisExecutive> mVisManager;
+    std::unique_ptr<G4VUserPhysicsList> mPhysics;
+    std::unique_ptr<G4TouchableHistory> mHistory;
+    std::unique_ptr<G4Navigator> mNavigator;
 
-    G4double mStartingTime = 0;
+    std::chrono::high_resolution_clock::time_point mStartingTime;
 };
 
 #endif // OMSIM_H

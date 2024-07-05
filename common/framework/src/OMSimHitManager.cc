@@ -3,7 +3,7 @@
 #include "OMSimEventAction.hh"
 #include "OMSimLogger.hh"
 #include "G4EventManager.hh"
-#include "G4Event.hh"  
+#include "G4Event.hh"
 #include <numeric>
 
 G4Mutex OMSimHitManager::mMutex = G4Mutex();
@@ -16,6 +16,7 @@ G4ThreadLocal OMSimHitManager::ThreadLocalData *OMSimHitManager::mThreadData = n
  */
 OMSimHitManager &OMSimHitManager::getInstance()
 {
+
 	if (!mInstance)
 	{
 		G4AutoLock lock(&mMutex);
@@ -24,6 +25,7 @@ OMSimHitManager &OMSimHitManager::getInstance()
 			mInstance = new OMSimHitManager();
 		}
 	}
+
 	return *mInstance;
 }
 
@@ -88,8 +90,10 @@ void OMSimHitManager::appendHitInfo(
 	OMSimPMTResponse::PMTPulse pResponse,
 	G4int pModuleNumber)
 {
+
 	if (!mThreadData)
 	{
+		log_debug("Initialized mThreadData for thread {}", G4Threading::G4GetThreadId());
 		mThreadData = new ThreadLocalData();
 	}
 
@@ -112,6 +116,7 @@ void OMSimHitManager::appendHitInfo(
 	moduleHits.localPosition.push_back(pLocalPos);
 	moduleHits.generationDetectionDistance.push_back(pDistance);
 	moduleHits.PMTresponse.push_back(pResponse);
+	log_trace("Saved hit on module {} sensor {}", pModuleNumber, pPMTHitNumber);
 }
 
 /**
@@ -155,8 +160,7 @@ void OMSimHitManager::reset()
  */
 std::vector<double> OMSimHitManager::countHits(int pModuleIndex)
 {
-	log_debug("Counting number of detected photons in module with index {}", pModuleIndex);
-	if (!mDataWasMerged){mergeThreadData();};
+	log_trace("Counting number of detected photons in module with index {}", pModuleIndex);
 	HitStats lHitsOfModule = mModuleHits[pModuleIndex];
 	G4int lNumberPMTs = mNumPMTs[pModuleIndex];
 
@@ -220,8 +224,7 @@ void OMSimHitManager::sortHitStatsByTime(HitStats &lHits)
  */
 std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double pTimeWindow, int pModuleIndex)
 {
-	log_debug("Calculating multiplicity in time window {} for module with index", pTimeWindow, pModuleIndex);
-	if (!mDataWasMerged){mergeThreadData();};
+	log_trace("Calculating multiplicity in time window {} for module with index", pTimeWindow, pModuleIndex);
 
 	HitStats lHitsOfModule = mModuleHits[pModuleIndex];
 	G4int lNumberPMTs = mNumPMTs[pModuleIndex];
@@ -273,8 +276,12 @@ void OMSimHitManager::mergeThreadData()
 	G4AutoLock lock(&mMutex);
 	if (mThreadData)
 	{
+		log_debug("Merging data of different threads");
 		for (const auto &[moduleIndex, hits] : mThreadData->moduleHits)
 		{
+			log_debug("Thread ID: {} - Module Index: {} - Hit vector sizes: ={}",
+					  G4Threading::G4GetThreadId(), moduleIndex, hits.eventId.size());
+
 			auto &globalHits = mModuleHits[moduleIndex];
 			globalHits.eventId.insert(globalHits.eventId.end(), hits.eventId.begin(), hits.eventId.end());
 			globalHits.hitTime.insert(globalHits.hitTime.end(), hits.hitTime.begin(), hits.hitTime.end());
@@ -291,5 +298,4 @@ void OMSimHitManager::mergeThreadData()
 		delete mThreadData;
 		mThreadData = nullptr;
 	}
-	mDataWasMerged = true;
 }

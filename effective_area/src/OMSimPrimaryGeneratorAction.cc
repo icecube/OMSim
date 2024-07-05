@@ -2,20 +2,21 @@
 
 #include <G4GeneralParticleSource.hh>
 #include <G4ParticleTypes.hh>
-
+#include <G4RandomTools.hh>
 
 
 OMSimPrimaryGeneratorAction::OMSimPrimaryGeneratorAction()
 {
-	lParticleSource = new G4GeneralParticleSource ();
+	mParticleSource = new G4GeneralParticleSource ();
 }
 
 OMSimPrimaryGeneratorAction::~OMSimPrimaryGeneratorAction()
 {
-	delete lParticleSource;
+	delete mParticleSource;
 }
 
 void OMSimPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
-	lParticleSource->GeneratePrimaryVertex(anEvent);
+	mParticleSource->SetParticlePolarization(G4RandomDirection());
+	mParticleSource->GeneratePrimaryVertex(anEvent);
 }

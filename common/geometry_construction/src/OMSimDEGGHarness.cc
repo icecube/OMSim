@@ -26,8 +26,7 @@ void DEggHarness::construction()
     }
     else
     {
-        G4cout << "Penetrator not implemented for Geant4 native version, use -c if you need them" << G4endl;
-        G4cout << "Ropes not implemented for Geant4 native version, use -c if you need them" << G4endl;
+        log_warning("Penetrator and harness not implemented for Geant4 native version, use cad implementation if you need them");
         G4VSolid *EggHarness = buildHarnessSolid(mRmin, mRmax, mSphi, mDphi, mStheta, mDtheta);
         G4LogicalVolume *lEggHarness = new G4LogicalVolume(EggHarness, mData->getMaterial("NoOptic_Reflector"), "");
         appendComponent(EggHarness, lEggHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "dEGG_Harness");

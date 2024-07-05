@@ -78,9 +78,10 @@ int main(int pArgumentCount, char *pArgumentVector[])
 	bool lContinue = lSimulation.handleArguments(pArgumentCount, pArgumentVector);
 	if (!lContinue) return 0;
 
-	OMSimEffectiveAreaDetector* lDetectorConstruction = new OMSimEffectiveAreaDetector();
-	lSimulation.initialiseSimulation(lDetectorConstruction);
-
+	std::unique_ptr<OMSimEffectiveAreaDetector> lDetectorConstruction = std::make_unique<OMSimEffectiveAreaDetector>();
+	lSimulation.initialiseSimulation(lDetectorConstruction.get());
+	lDetectorConstruction.release();
+	
 	runEffectiveAreaSimulation();
 
 	lSimulation.startVisualisationIfRequested();

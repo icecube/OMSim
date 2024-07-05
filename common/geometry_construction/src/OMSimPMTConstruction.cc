@@ -67,6 +67,7 @@ void OMSimPMTConstruction::construction()
 
 OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 {
+
     G4String jResponseData;
     try
     {
@@ -103,9 +104,9 @@ OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 
 void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *pDetConst, G4String pName)
 {
-    auto lSensitiveDetector = new OMSimSensitiveDetector(pName, DetectorType::PMT);
+    OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector(pName, DetectorType::PMT);
     lSensitiveDetector->setPMTResponse(getPMTResponseInstance());
-    pDetConst->setSensitiveDetector(mPhotocathodeLV, lSensitiveDetector);
+    pDetConst->registerSensitiveDetector(mPhotocathodeLV, lSensitiveDetector);
 }
 
 void OMSimPMTConstruction::constructHAcoating()
@@ -394,11 +395,6 @@ void OMSimPMTConstruction::checkPhotocathodeThickness()
     G4double lEllipsePos_y = mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipsePos_y");
 
     lSide = "jInnerShape";
-    G4cout << "lOutRad " << (mData->getValueWithUnit(mSelectedPMT, lSide + ".jOutRad") - lOutRad) / nm << G4endl;
-    G4cout << "lEllipseXYaxis " << (mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipseXYaxis") - lEllipseXYaxis) / nm << G4endl;
-    G4cout << "lEllispesZaxis " << (mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipseZaxis") - lEllipseZaxis) / nm << G4endl;
-    G4cout << "lSpherePos_y " << (mData->getValueWithUnit(mSelectedPMT, lSide + ".jSpherePos_y") - lSpherePos_y) / nm << G4endl;
-    G4cout << "lEllipsePos_y " << (mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipsePos_y") - lEllipsePos_y) / nm << G4endl;
 }
 
 /**

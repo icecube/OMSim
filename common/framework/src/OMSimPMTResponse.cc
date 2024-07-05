@@ -306,7 +306,7 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::processPhotocathodeHit(G4double pX,
 mDOMPMTResponse::mDOMPMTResponse()
 {
     log_info("Using mDOM PMT response");
-    log_debug("Opening mDOM photocathode scans data...");
+    log_trace("Opening mDOM photocathode scans data...");
     std::string lPath = "../common/data/PMT_scans/";
 
     mRelativeDetectionEfficiencyInterp = new TGraph((lPath + "weightsVsR_vFit_220nm.txt").c_str());
@@ -324,7 +324,7 @@ mDOMPMTResponse::mDOMPMTResponse()
         mTransitTimeG2Dmap[lKey] = createHistogramFromData(lPath + "TransitTime_" + lWv + ".dat", ("TransitTime_" + lWv).c_str());
     }
 
-    log_debug("Finished opening photocathode scans data...");
+    log_trace("Finished opening photocathode scans data...");
 }
 
 std::vector<G4double> mDOMPMTResponse::getScannedWavelengths()
@@ -431,7 +431,7 @@ LOMNNVTResponse::~LOMNNVTResponse()
  */
 NoResponse::NoResponse()
 {
-    log_debug("OMSimResponse NoResponse initiated");
+    log_trace("OMSimResponse NoResponse initiated");
 }
 
 std::vector<G4double> NoResponse::getScannedWavelengths()
@@ -442,6 +442,7 @@ std::vector<G4double> NoResponse::getScannedWavelengths()
 
 OMSimPMTResponse::PMTPulse NoResponse::processPhotocathodeHit(G4double pX, G4double pY, G4double pWavelength)
 {
+
     OMSimPMTResponse::PMTPulse lPulse;
     lPulse.detectionProbability = -1;
     lPulse.PE = -1;

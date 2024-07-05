@@ -51,7 +51,7 @@ class OMSimSensitiveDetector : public G4VSensitiveDetector
 {
 public:
     OMSimSensitiveDetector(G4String pName, DetectorType pDetectorType);
-    virtual ~OMSimSensitiveDetector() {};
+    ~OMSimSensitiveDetector() {};
 
     G4bool ProcessHits(G4Step *pStep, G4TouchableHistory *pTouchableHistory) override;
     void setPMTResponse(OMSimPMTResponse *pResponse);

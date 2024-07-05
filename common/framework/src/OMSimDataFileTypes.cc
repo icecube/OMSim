@@ -18,6 +18,11 @@ abcDataFile::abcDataFile(G4String pFileName) : mFileData(new ParameterTable()), 
 {
 }
 
+abcDataFile::~abcDataFile()
+{
+    //delete mFileData;
+}
+
 /**
  *  @brief Sorts two vectors (pSortVector & pReferenceVector) based on the order of values in pReferenceVector.
  *
@@ -70,7 +75,7 @@ void abcMaterialData::createMaterial()
 {
     mJsonTree = mFileData->appendAndReturnTree(mFileName);
     mMPT = new G4MaterialPropertiesTable();
-    mMatDatBase = G4NistManager::Instance();
+    G4NistManager *lMatDatBase = G4NistManager::Instance();
     mObjectName = mJsonTree.get<G4String>("jName");
 
     log_trace("Creating new material from file {} with name {}", mFileName, mObjectName);
@@ -90,10 +95,10 @@ void abcMaterialData::createMaterial()
     {
         std::string componentName = key.first;
         double componentFraction = key.second.get_value<double>();
-        mMaterial->AddMaterial(mMatDatBase->FindOrBuildMaterial(componentName), componentFraction);
+        mMaterial->AddMaterial(lMatDatBase->FindOrBuildMaterial(componentName), componentFraction);
     }
 
-    log_debug("New Material defined: {}", mMaterial->GetName());
+    log_trace("New Material defined: {}", mMaterial->GetName());
 }
 /**
  *  @brief Extracts absorption length data from a json-file and adds it to the material property table.
@@ -190,11 +195,11 @@ void IceCubeIce::extractInformation()
 {
     log_trace("Extracting ice properties from file {}", mFileName);
     mSpiceDepth_pos = OMSimCommandArgsTable::getInstance().get<int>("depth_pos");
-
+    G4NistManager *lMatDatBase = G4NistManager::Instance();
     createMaterial(); // creates IceCubeICE
 
-    G4Material *lIceMie = new G4Material("IceCubeICE_SPICE", mFileData->getValueWithUnit(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid);      // create IceCubeICE_SPICE
-    G4Material *lBubleColumnMie = new G4Material("Mat_BubColumn", mFileData->getValueWithUnit(mObjectName, "jDensity"), mMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid); // create IceCubeICE_SPICE
+    G4Material *lIceMie = new G4Material("IceCubeICE_SPICE", mFileData->getValueWithUnit(mObjectName, "jDensity"), lMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid);      // create IceCubeICE_SPICE
+    G4Material *lBubleColumnMie = new G4Material("Mat_BubColumn", mFileData->getValueWithUnit(mObjectName, "jDensity"), lMatDatBase->FindOrBuildMaterial("G4_WATER"), kStateSolid); // create IceCubeICE_SPICE
     std::vector<G4double> lMieScatteringLength;
     std::vector<G4double> lMieScatteringLength_BubleColumn;
     std::vector<G4double> lWavelength;
@@ -345,12 +350,13 @@ void ReflectiveSurface::extractInformation()
     }
 
     mOpticalSurface->SetMaterialPropertiesTable(lMPT);
-    log_debug("New Optical Surface: {}", mObjectName);
+    log_trace("New Optical Surface: {}", mObjectName);
 }
 
 /*
  * %%%%%%%%%%%%%%%% Functions for scintillation properties %%%%%%%%%%%%%%%%
  */
+
 
 /**
  * @brief Extract sctintillation properties from json-file and adds them to existing material table
@@ -366,7 +372,6 @@ void ScintillationProperties::extractInformation()
 
     if (lArgs.keyExists("temperature"))
     {
-        G4cout << lArgs.keyExists("temperature") << G4endl;
         lTemperature = lArgs.get<std::string>("temperature");
     }
 
@@ -611,7 +616,7 @@ void CustomProperties::extractConstProperties()
         G4String lKey = item.first;
         G4double lValue = mFileData->getValueWithUnit(mJsonTree.get<G4String>("jName"), "ConstProperties." + lKey);
         mMPT->AddConstProperty(lKey, lValue, true);
-        log_debug("Added {} constant property to {}.", lKey, mJsonTree.get<G4String>("jMaterialName"));
+        log_trace("Added {} constant property to {}.", lKey, mJsonTree.get<G4String>("jMaterialName"));
     }
 }
 
@@ -638,7 +643,7 @@ void CustomProperties::extractProperties()
 
         mMPT->AddProperty(lKey, &lX[0], &lY[0], static_cast<int>(lY.size()), true);
         G4String mssg = "Added " + lKey + " array property to " + mJsonTree.get<G4String>("jName");
-        log_debug(mssg);
+        log_trace(mssg);
     }
 }
 

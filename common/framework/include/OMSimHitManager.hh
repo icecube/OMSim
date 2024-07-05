@@ -100,7 +100,6 @@ private:
         std::map<G4int, HitStats> moduleHits;
     };
     G4ThreadLocal static ThreadLocalData* mThreadData;
-    G4bool mDataWasMerged = false;
 };
 
 #endif
