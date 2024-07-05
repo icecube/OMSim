@@ -19,7 +19,7 @@ extern std::shared_ptr<spdlog::logger> globalLogger;
 OMSim::OMSim() : 
 mStartingTime(std::chrono::high_resolution_clock::now()), 
 mGeneralOptions("General options"), 
-mRunManager(std::make_unique<G4MTRunManager>()),
+mRunManager(nullptr),
 mVisManager(std::make_unique<G4VisExecutive>()),
 mNavigator(std::make_unique<G4Navigator>())
 {
@@ -155,9 +155,9 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstructio
 
     //CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
     //CLHEP::HepRandom::setTheEngine(new CLHEP::MixMaxRng(lArgs.get<long>("seed")));
-    //G4Random::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
+    G4Random::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
     
-
+    mRunManager = std::make_unique<G4MTRunManager>();
     mRunManager->SetUserInitialization(pDetectorConstruction);
 
     mPhysics = std::make_unique<OMSimPhysicsList>();
@@ -166,7 +166,7 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstructio
 
     mVisManager->Initialize();
 
-    OMSimActionInitialization* actionInitialization = new OMSimActionInitialization(lArgs.get<long>("seed"));
+    OMSimActionInitialization* actionInitialization = new OMSimActionInitialization();
     mRunManager->SetUserInitialization(actionInitialization);
 
     // Set number of threads
@@ -182,6 +182,7 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstructio
     mNavigator.get()->LocateGlobalPointAndSetup(G4ThreeVector(0., 0., 0.));
 
     mHistory = std::unique_ptr<G4TouchableHistory>(mNavigator->CreateTouchableHistory());
+
 }
 
 /**

@@ -6,14 +6,11 @@
 class OMSimActionInitialization : public G4VUserActionInitialization
 {
 public:
-    OMSimActionInitialization(long pSeed);
+    OMSimActionInitialization();
     virtual ~OMSimActionInitialization();
 
     virtual void BuildForMaster() const;
     virtual void Build() const;
-
-private:
-    long mMasterSeed;
 };
 
 #endif
