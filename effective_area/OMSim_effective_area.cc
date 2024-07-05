@@ -28,7 +28,7 @@ void runEffectiveAreaSimulation()
 	// If angle file is provided, run over all angle pairs in file
 	if (lArgs.keyExists("angles_file"))
 	{
-		std::vector<G4PV2DDataVector> data = InputDataManager::loadtxt(lArgs.get<std::string>("angles_file"), false);
+		std::vector<G4PV2DDataVector> data = InputDataManager::loadtxt(lArgs.get<std::string>("angles_file"), true);
 		std::vector<G4double> lThetas = data.at(0);
 		std::vector<G4double> lPhis = data.at(1);
 
