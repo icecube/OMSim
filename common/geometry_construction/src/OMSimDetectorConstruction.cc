@@ -46,13 +46,8 @@ void OMSimDetectorConstruction::ConstructSDandField()
 {
     log_trace("ConstructSDandField started");
 
-    // G4SDManager* lSDManager = G4SDManager::GetSDMpointer();
     for (const auto& sdInfo : mSensitiveDetectors) {
         G4String sdName = sdInfo.sensitiveDetector->GetName();
-        // if (!lSDManager->FindSensitiveDetector(sdName)) {
-        //     lSDManager->AddNewDetector(sdInfo.sensitiveDetector);
-        //     log_trace("Added new sensitive detector: {}", sdName);
-        // }
         SetSensitiveDetector(sdInfo.logicalVolume, sdInfo.sensitiveDetector);
         log_trace("Set sensitive detector {} for logical volume {}", 
                   sdName, sdInfo.logicalVolume->GetName());
