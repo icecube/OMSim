@@ -118,6 +118,7 @@ $(document).ready(function(){initNavTree('class_o_m_sim_decays_analysis.html',''
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_o_m_sim_decays_analysis-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">OMSimDecaysAnalysis Class Reference<div class="ingroups"><a class="el" href="group__radioactive.html">Radioactive decays</a></div></div>  </div>
@@ -129,7 +130,7 @@ $(document).ready(function(){initNavTree('class_o_m_sim_decays_analysis.html',''
 <div class="dynheader">
 Collaboration diagram for OMSimDecaysAnalysis:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_o_m_sim_decays_analysis__coll__graph.svg" width="196" height="127"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_o_m_sim_decays_analysis__coll__graph.svg" width="280" height="127"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -138,9 +139,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a35aa71b0f55694ab682eb12e33e773d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a35aa71b0f55694ab682eb12e33e773d3">appendDecay</a> (G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition)</td></tr>
 <tr class="memdesc:a35aa71b0f55694ab682eb12e33e773d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append decay information to internal data structures.  <a href="class_o_m_sim_decays_analysis.html#a35aa71b0f55694ab682eb12e33e773d3">More...</a><br /></td></tr>
 <tr class="separator:a35aa71b0f55694ab682eb12e33e773d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accb91a2a739e0a9d3aebd6256ef46de6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#accb91a2a739e0a9d3aebd6256ef46de6">setOutputFileName</a> (G4String pName)</td></tr>
-<tr class="memdesc:accb91a2a739e0a9d3aebd6256ef46de6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the base filename for output files.  <a href="class_o_m_sim_decays_analysis.html#accb91a2a739e0a9d3aebd6256ef46de6">More...</a><br /></td></tr>
-<tr class="separator:accb91a2a739e0a9d3aebd6256ef46de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a715d4897705da383ce1a1d93b68def9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a715d4897705da383ce1a1d93b68def9b">mergeDecayData</a> ()</td></tr>
+<tr class="separator:a715d4897705da383ce1a1d93b68def9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49fbd38776fcc7d1edf12e786d227ae6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a49fbd38776fcc7d1edf12e786d227ae6">writeMultiplicity</a> ()</td></tr>
 <tr class="memdesc:a49fbd38776fcc7d1edf12e786d227ae6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls calculateMultiplicity and writes the results to the output file.  <a href="class_o_m_sim_decays_analysis.html#a49fbd38776fcc7d1edf12e786d227ae6">More...</a><br /></td></tr>
 <tr class="separator:a49fbd38776fcc7d1edf12e786d227ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,12 +156,14 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a61cac28b7c2966247d95b344f78ffa21"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a61cac28b7c2966247d95b344f78ffa21">getInstance</a> ()</td></tr>
-<tr class="memdesc:a61cac28b7c2966247d95b344f78ffa21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the instance of <a class="el" href="class_o_m_sim_decays_analysis.html" title="Singleton class responsible for managing, analysing, and saving decay-related data.">OMSimDecaysAnalysis</a> (Singleton pattern).  <a href="class_o_m_sim_decays_analysis.html#a61cac28b7c2966247d95b344f78ffa21">More...</a><br /></td></tr>
-<tr class="separator:a61cac28b7c2966247d95b344f78ffa21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aea9bd04b3f168cfcae98808b33f90c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a4aea9bd04b3f168cfcae98808b33f90c">getInstance</a> ()</td></tr>
+<tr class="memdesc:a4aea9bd04b3f168cfcae98808b33f90c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the instance of <a class="el" href="class_o_m_sim_decays_analysis.html" title="Singleton class responsible for managing, analysing, and saving decay-related data.">OMSimDecaysAnalysis</a> (Singleton pattern).  <a href="class_o_m_sim_decays_analysis.html#a4aea9bd04b3f168cfcae98808b33f90c">More...</a><br /></td></tr>
+<tr class="separator:a4aea9bd04b3f168cfcae98808b33f90c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a3a15072bb49ce504d9876d8e26b21f3c"><td class="memItemLeft" align="right" valign="top">G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a3a15072bb49ce504d9876d8e26b21f3c">getThreadIDStr</a> ()</td></tr>
+<tr class="separator:a3a15072bb49ce504d9876d8e26b21f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69166537ec42005ec45a793106810114"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a69166537ec42005ec45a793106810114">OMSimDecaysAnalysis</a> ()=default</td></tr>
 <tr class="separator:a69166537ec42005ec45a793106810114"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b70a07ae097f64f448e191500699673"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a2b70a07ae097f64f448e191500699673">~OMSimDecaysAnalysis</a> ()=default</td></tr>
@@ -173,16 +175,17 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a4be2795e5c1d4295220eb7f6c31e16cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_decay_stats.html">DecayStats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a4be2795e5c1d4295220eb7f6c31e16cc">mDecaysStats</a></td></tr>
-<tr class="separator:a4be2795e5c1d4295220eb7f6c31e16cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb7b5987aeeab388a3e9571eff9d9c9a"><td class="memItemLeft" align="right" valign="top">std::fstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#adb7b5987aeeab388a3e9571eff9d9c9a">mDatafile</a></td></tr>
 <tr class="separator:adb7b5987aeeab388a3e9571eff9d9c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1bab5a939f8e056ccd156b4b9ffb612"><td class="memItemLeft" align="right" valign="top">G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#ab1bab5a939f8e056ccd156b4b9ffb612">mHitsFileName</a></td></tr>
-<tr class="separator:ab1bab5a939f8e056ccd156b4b9ffb612"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a435ef1969df04d0080449e309f577ee9"><td class="memItemLeft" align="right" valign="top">G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a435ef1969df04d0080449e309f577ee9">mDecaysFileName</a></td></tr>
-<tr class="separator:a435ef1969df04d0080449e309f577ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fe45181c11565e0fbee8d1ce40b2c02"><td class="memItemLeft" align="right" valign="top">G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a8fe45181c11565e0fbee8d1ce40b2c02">mMultiplicityFileName</a></td></tr>
-<tr class="separator:a8fe45181c11565e0fbee8d1ce40b2c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ab4a0cbaeebe1c1d49f829d735d237b9a"><td class="memItemLeft" align="right" valign="top">static G4ThreadLocal <a class="el" href="struct_decay_stats.html">DecayStats</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#ab4a0cbaeebe1c1d49f829d735d237b9a">mThreadDecayStats</a> = nullptr</td></tr>
+<tr class="separator:ab4a0cbaeebe1c1d49f829d735d237b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e1f6266a5d299b7b694e334f4e15e13"><td class="memItemLeft" align="right" valign="top">static G4Mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a9e1f6266a5d299b7b694e334f4e15e13">mMutex</a> = G4Mutex()</td></tr>
+<tr class="separator:a9e1f6266a5d299b7b694e334f4e15e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2df6ba1c18fb3087ceb2aeb5cfe1cd7c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_decays_analysis.html#a2df6ba1c18fb3087ceb2aeb5cfe1cd7c">mInstance</a> = nullptr</td></tr>
+<tr class="separator:a2df6ba1c18fb3087ceb2aeb5cfe1cd7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a69166537ec42005ec45a793106810114"></a>
@@ -304,8 +307,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a61cac28b7c2966247d95b344f78ffa21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61cac28b7c2966247d95b344f78ffa21">&#9670;&nbsp;</a></span>getInstance()</h2>
+<a id="a4aea9bd04b3f168cfcae98808b33f90c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aea9bd04b3f168cfcae98808b33f90c">&#9670;&nbsp;</a></span>getInstance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -314,7 +317,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a>&amp; OMSimDecaysAnalysis::getInstance </td>
+          <td class="memname"><a class="el" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a> &amp; OMSimDecaysAnalysis::getInstance </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -322,9 +325,51 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a15072bb49ce504d9876d8e26b21f3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a15072bb49ce504d9876d8e26b21f3c">&#9670;&nbsp;</a></span>getThreadIDStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">G4String OMSimDecaysAnalysis::getThreadIDStr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a715d4897705da383ce1a1d93b68def9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a715d4897705da383ce1a1d93b68def9b">&#9670;&nbsp;</a></span>mergeDecayData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimDecaysAnalysis::mergeDecayData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
@@ -369,30 +414,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="accb91a2a739e0a9d3aebd6256ef46de6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accb91a2a739e0a9d3aebd6256ef46de6">&#9670;&nbsp;</a></span>setOutputFileName()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void OMSimDecaysAnalysis::setOutputFileName </td>
-          <td>(</td>
-          <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pName</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pName</td><td>Base filename. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -470,8 +491,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a435ef1969df04d0080449e309f577ee9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a435ef1969df04d0080449e309f577ee9">&#9670;&nbsp;</a></span>mDecaysFileName</h2>
+<a id="a2df6ba1c18fb3087ceb2aeb5cfe1cd7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2df6ba1c18fb3087ceb2aeb5cfe1cd7c">&#9670;&nbsp;</a></span>mInstance</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -480,20 +501,20 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4String OMSimDecaysAnalysis::mDecaysFileName</td>
+          <td class="memname"><a class="el" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a> * OMSimDecaysAnalysis::mInstance = nullptr</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a4be2795e5c1d4295220eb7f6c31e16cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4be2795e5c1d4295220eb7f6c31e16cc">&#9670;&nbsp;</a></span>mDecaysStats</h2>
+<a id="a9e1f6266a5d299b7b694e334f4e15e13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e1f6266a5d299b7b694e334f4e15e13">&#9670;&nbsp;</a></span>mMutex</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -502,20 +523,20 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_decay_stats.html">DecayStats</a> OMSimDecaysAnalysis::mDecaysStats</td>
+          <td class="memname">G4Mutex OMSimDecaysAnalysis::mMutex = G4Mutex()</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ab1bab5a939f8e056ccd156b4b9ffb612"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1bab5a939f8e056ccd156b4b9ffb612">&#9670;&nbsp;</a></span>mHitsFileName</h2>
+<a id="ab4a0cbaeebe1c1d49f829d735d237b9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4a0cbaeebe1c1d49f829d735d237b9a">&#9670;&nbsp;</a></span>mThreadDecayStats</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -524,34 +545,12 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4String OMSimDecaysAnalysis::mHitsFileName</td>
+          <td class="memname">G4ThreadLocal <a class="el" href="struct_decay_stats.html">DecayStats</a> * OMSimDecaysAnalysis::mThreadDecayStats = nullptr</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8fe45181c11565e0fbee8d1ce40b2c02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fe45181c11565e0fbee8d1ce40b2c02">&#9670;&nbsp;</a></span>mMultiplicityFileName</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">G4String OMSimDecaysAnalysis::mMultiplicityFileName</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -568,7 +567,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a></li>
-    <li class="footer">Generated on Fri Jul 5 2024 15:14:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jul 9 2024 15:50:08 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

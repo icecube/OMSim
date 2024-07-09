@@ -153,6 +153,5 @@ var files_dup =
     [ "OMSimTrackingAction.hh", "_o_m_sim_tracking_action_8hh.html", [
       [ "OMSimTrackingAction", "class_o_m_sim_tracking_action.html", "class_o_m_sim_tracking_action" ]
     ] ],
-    [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", null ],
-    [ "OMSimYieldDetector.cc", "_o_m_sim_yield_detector_8cc.html", null ]
+    [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", null ]
 ];

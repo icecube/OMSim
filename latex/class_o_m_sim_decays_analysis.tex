@@ -12,7 +12,7 @@ Collaboration diagram for OMSim\+Decays\+Analysis\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=219pt]{class_o_m_sim_decays_analysis__coll__graph}
+\includegraphics[width=282pt]{class_o_m_sim_decays_analysis__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -20,8 +20,8 @@ Collaboration diagram for OMSim\+Decays\+Analysis\+:
 \item 
 void \mbox{\hyperlink{class_o_m_sim_decays_analysis_a35aa71b0f55694ab682eb12e33e773d3}{append\+Decay}} (G4\+String p\+Particle\+Name, G4double p\+Decay\+Time, G4\+Three\+Vector p\+Decay\+Position)
 \begin{DoxyCompactList}\small\item\em Append decay information to internal data structures. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_decays_analysis_accb91a2a739e0a9d3aebd6256ef46de6}{set\+Output\+File\+Name}} (G4\+String p\+Name)
-\begin{DoxyCompactList}\small\item\em Set the base filename for output files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_decays_analysis_a715d4897705da383ce1a1d93b68def9b}{merge\+Decay\+Data}} ()
+\item 
 void \mbox{\hyperlink{class_o_m_sim_decays_analysis_a49fbd38776fcc7d1edf12e786d227ae6}{write\+Multiplicity}} ()
 \begin{DoxyCompactList}\small\item\em Calls calculate\+Multiplicity and writes the results to the output file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_decays_analysis_a6fa1755be622573173e625460f807201}{write\+Decay\+Information}} ()
@@ -33,10 +33,12 @@ void \mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} \& \mbox{\hyperlink{class_o_m_sim_decays_analysis_a61cac28b7c2966247d95b344f78ffa21}{get\+Instance}} ()
+static \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} \& \mbox{\hyperlink{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}{get\+Instance}} ()
 \begin{DoxyCompactList}\small\item\em Returns the instance of \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} (Singleton pattern). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+G4\+String \mbox{\hyperlink{class_o_m_sim_decays_analysis_a3a15072bb49ce504d9876d8e26b21f3c}{get\+Thread\+IDStr}} ()
 \item 
 \mbox{\hyperlink{class_o_m_sim_decays_analysis_a69166537ec42005ec45a793106810114}{OMSim\+Decays\+Analysis}} ()=default
 \item 
@@ -49,15 +51,16 @@ static \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{struct_decay_stats}{Decay\+Stats}} \mbox{\hyperlink{class_o_m_sim_decays_analysis_a4be2795e5c1d4295220eb7f6c31e16cc}{m\+Decays\+Stats}}
-\item 
 std\+::fstream \mbox{\hyperlink{class_o_m_sim_decays_analysis_adb7b5987aeeab388a3e9571eff9d9c9a}{m\+Datafile}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
 \item 
-G4\+String \mbox{\hyperlink{class_o_m_sim_decays_analysis_ab1bab5a939f8e056ccd156b4b9ffb612}{m\+Hits\+File\+Name}}
+static G4\+Thread\+Local \mbox{\hyperlink{struct_decay_stats}{Decay\+Stats}} $\ast$ \mbox{\hyperlink{class_o_m_sim_decays_analysis_ab4a0cbaeebe1c1d49f829d735d237b9a}{m\+Thread\+Decay\+Stats}} = nullptr
 \item 
-G4\+String \mbox{\hyperlink{class_o_m_sim_decays_analysis_a435ef1969df04d0080449e309f577ee9}{m\+Decays\+File\+Name}}
+static G4\+Mutex \mbox{\hyperlink{class_o_m_sim_decays_analysis_a9e1f6266a5d299b7b694e334f4e15e13}{m\+Mutex}} = G4\+Mutex()
 \item 
-G4\+String \mbox{\hyperlink{class_o_m_sim_decays_analysis_a8fe45181c11565e0fbee8d1ce40b2c02}{m\+Multiplicity\+File\+Name}}
+static \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} $\ast$ \mbox{\hyperlink{class_o_m_sim_decays_analysis_a2df6ba1c18fb3087ceb2aeb5cfe1cd7c}{m\+Instance}} = nullptr
 \end{DoxyCompactItemize}
 
 
@@ -98,11 +101,23 @@ G4\+String \mbox{\hyperlink{class_o_m_sim_decays_analysis_a8fe45181c11565e0fbee8
 {\em p\+Decay\+Position} & Global position of the decay. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a61cac28b7c2966247d95b344f78ffa21}\label{class_o_m_sim_decays_analysis_a61cac28b7c2966247d95b344f78ffa21}} 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}\label{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}} 
 \index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!getInstance@{getInstance}}
 \index{getInstance@{getInstance}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
 \doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
-{\footnotesize\ttfamily static \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}\& OMSim\+Decays\+Analysis\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} \& OMSim\+Decays\+Analysis\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a3a15072bb49ce504d9876d8e26b21f3c}\label{class_o_m_sim_decays_analysis_a3a15072bb49ce504d9876d8e26b21f3c}} 
+\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!getThreadIDStr@{getThreadIDStr}}
+\index{getThreadIDStr@{getThreadIDStr}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
+\doxysubsubsection{\texorpdfstring{getThreadIDStr()}{getThreadIDStr()}}
+{\footnotesize\ttfamily G4\+String OMSim\+Decays\+Analysis\+::get\+Thread\+IDStr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a715d4897705da383ce1a1d93b68def9b}\label{class_o_m_sim_decays_analysis_a715d4897705da383ce1a1d93b68def9b}} 
+\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!mergeDecayData@{mergeDecayData}}
+\index{mergeDecayData@{mergeDecayData}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
+\doxysubsubsection{\texorpdfstring{mergeDecayData()}{mergeDecayData()}}
+{\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::merge\+Decay\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{class_o_m_sim_decays_analysis_af4b8d2cd736ede06f4dcf7258fb46090}\label{class_o_m_sim_decays_analysis_af4b8d2cd736ede06f4dcf7258fb46090}} 
 \index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!operator=@{operator=}}
@@ -116,17 +131,6 @@ G4\+String \mbox{\hyperlink{class_o_m_sim_decays_analysis_a8fe45181c11565e0fbee8
 \doxysubsubsection{\texorpdfstring{reset()}{reset()}}
 {\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_o_m_sim_decays_analysis_accb91a2a739e0a9d3aebd6256ef46de6}\label{class_o_m_sim_decays_analysis_accb91a2a739e0a9d3aebd6256ef46de6}} 
-\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!setOutputFileName@{setOutputFileName}}
-\index{setOutputFileName@{setOutputFileName}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
-\doxysubsubsection{\texorpdfstring{setOutputFileName()}{setOutputFileName()}}
-{\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::set\+Output\+File\+Name (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Name }\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em p\+Name} & Base filename. \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{class_o_m_sim_decays_analysis_a6fa1755be622573173e625460f807201}\label{class_o_m_sim_decays_analysis_a6fa1755be622573173e625460f807201}} 
 \index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!writeDecayInformation@{writeDecayInformation}}
 \index{writeDecayInformation@{writeDecayInformation}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
@@ -154,29 +158,23 @@ G4\+String \mbox{\hyperlink{class_o_m_sim_decays_analysis_a8fe45181c11565e0fbee8
 \doxysubsubsection{\texorpdfstring{mDatafile}{mDatafile}}
 {\footnotesize\ttfamily std\+::fstream OMSim\+Decays\+Analysis\+::m\+Datafile\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a435ef1969df04d0080449e309f577ee9}\label{class_o_m_sim_decays_analysis_a435ef1969df04d0080449e309f577ee9}} 
-\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!mDecaysFileName@{mDecaysFileName}}
-\index{mDecaysFileName@{mDecaysFileName}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
-\doxysubsubsection{\texorpdfstring{mDecaysFileName}{mDecaysFileName}}
-{\footnotesize\ttfamily G4\+String OMSim\+Decays\+Analysis\+::m\+Decays\+File\+Name\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a2df6ba1c18fb3087ceb2aeb5cfe1cd7c}\label{class_o_m_sim_decays_analysis_a2df6ba1c18fb3087ceb2aeb5cfe1cd7c}} 
+\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!mInstance@{mInstance}}
+\index{mInstance@{mInstance}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
+\doxysubsubsection{\texorpdfstring{mInstance}{mInstance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} $\ast$ OMSim\+Decays\+Analysis\+::m\+Instance = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a4be2795e5c1d4295220eb7f6c31e16cc}\label{class_o_m_sim_decays_analysis_a4be2795e5c1d4295220eb7f6c31e16cc}} 
-\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!mDecaysStats@{mDecaysStats}}
-\index{mDecaysStats@{mDecaysStats}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
-\doxysubsubsection{\texorpdfstring{mDecaysStats}{mDecaysStats}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_decay_stats}{Decay\+Stats}} OMSim\+Decays\+Analysis\+::m\+Decays\+Stats\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a9e1f6266a5d299b7b694e334f4e15e13}\label{class_o_m_sim_decays_analysis_a9e1f6266a5d299b7b694e334f4e15e13}} 
+\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!mMutex@{mMutex}}
+\index{mMutex@{mMutex}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
+\doxysubsubsection{\texorpdfstring{mMutex}{mMutex}}
+{\footnotesize\ttfamily G4\+Mutex OMSim\+Decays\+Analysis\+::m\+Mutex = G4\+Mutex()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_o_m_sim_decays_analysis_ab1bab5a939f8e056ccd156b4b9ffb612}\label{class_o_m_sim_decays_analysis_ab1bab5a939f8e056ccd156b4b9ffb612}} 
-\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!mHitsFileName@{mHitsFileName}}
-\index{mHitsFileName@{mHitsFileName}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
-\doxysubsubsection{\texorpdfstring{mHitsFileName}{mHitsFileName}}
-{\footnotesize\ttfamily G4\+String OMSim\+Decays\+Analysis\+::m\+Hits\+File\+Name\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a8fe45181c11565e0fbee8d1ce40b2c02}\label{class_o_m_sim_decays_analysis_a8fe45181c11565e0fbee8d1ce40b2c02}} 
-\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!mMultiplicityFileName@{mMultiplicityFileName}}
-\index{mMultiplicityFileName@{mMultiplicityFileName}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
-\doxysubsubsection{\texorpdfstring{mMultiplicityFileName}{mMultiplicityFileName}}
-{\footnotesize\ttfamily G4\+String OMSim\+Decays\+Analysis\+::m\+Multiplicity\+File\+Name\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_ab4a0cbaeebe1c1d49f829d735d237b9a}\label{class_o_m_sim_decays_analysis_ab4a0cbaeebe1c1d49f829d735d237b9a}} 
+\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!mThreadDecayStats@{mThreadDecayStats}}
+\index{mThreadDecayStats@{mThreadDecayStats}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
+\doxysubsubsection{\texorpdfstring{mThreadDecayStats}{mThreadDecayStats}}
+{\footnotesize\ttfamily G4\+Thread\+Local \mbox{\hyperlink{struct_decay_stats}{Decay\+Stats}} $\ast$ OMSim\+Decays\+Analysis\+::m\+Thread\+Decay\+Stats = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
 
 
