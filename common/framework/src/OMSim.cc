@@ -55,7 +55,7 @@ void OMSim::initialLoggerConfiguration()
 {
     globalLogger = spdlog::stdout_color_mt("console");
     globalLogger->set_level(spdlog::level::info); // Set the desired log level
-    globalLogger->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e][%l][%s:%#]%$ %v");
+    globalLogger->set_pattern("%^[%H:%M:%S.%e][t %t][%l][%s:%#]%$ %v");
     spdlog::set_default_logger(globalLogger); 
 }
  

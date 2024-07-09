@@ -116,7 +116,7 @@ void OMSimHitManager::appendHitInfo(
 	moduleHits.localPosition.push_back(pLocalPos);
 	moduleHits.generationDetectionDistance.push_back(pDistance);
 	moduleHits.PMTresponse.push_back(pResponse);
-	log_trace("Saved hit on module {} sensor {}", pModuleNumber, pPMTHitNumber);
+	log_trace("Saved hit on module {} sensor {} (thread {})", pModuleNumber, pPMTHitNumber, G4Threading::G4GetThreadId());
 }
 
 /**
@@ -145,11 +145,14 @@ HitStats OMSimHitManager::getHitsOfModule(int pModuleIndex)
  */
 void OMSimHitManager::reset()
 {
-	mModuleHits.clear();
-
+	log_trace("Reseting hit manager");
+	//mModuleHits.clear();
 	if (mThreadData)
 	{
+		log_trace("Deleting mThreadData of Thread ID {}", G4Threading::G4GetThreadId());
 		mThreadData->moduleHits.clear();
+		delete mThreadData;
+		mThreadData = nullptr;
 	}
 }
 

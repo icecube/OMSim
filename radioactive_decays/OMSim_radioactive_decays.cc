@@ -27,8 +27,6 @@ void runRadioactiveDecays(OMSimRadDecaysDetector *pDetector)
 	OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 
-	lAnalysisManager.setOutputFileName(lArgs.get<std::string>("output_file"));
-
 	OMSimDecaysGPS &lDecays = OMSimDecaysGPS::getInstance();
 	lDecays.setOpticalModule(pDetector->mOpticalModule);
 	lDecays.setProductionRadius(200*mm);
