@@ -126,7 +126,8 @@ Installation</h1>
 Installing Geant4</h3>
 <p>First you should install Geant4 following <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html">the guide provided by cern</a>. <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> is currently optimised for Geant4-11.1.1. If you want to use the visualisation tools of Geant, you should include the following cmake options:</p>
 <div class="fragment"><div class="line">-DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_GDML=ON -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_QT=ON -DGEANT4_USE_RAYTRACER_X11=ON -DGEANT4_USE_XM=ON</div>
-</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md3"></a>
+</div><!-- fragment --><p> Do not change "GEANT4_BUILD_MULTITHREADED" to OFF, as <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> supports multithreading.</p>
+<h3><a class="anchor" id="autotoc_md3"></a>
 Requirements</h3>
 <p>There are a few dependencies. You can install them using the following command:</p>
 <div class="fragment"><div class="line">apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev qtbase5-dev libmotif-dev libargtable2-0 libboost-all-dev libqt53dextras5 libspdlog-dev libfmt-dev</div>
@@ -164,7 +165,7 @@ Available studies</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jul 18 2024 15:46:56 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jul 18 2024 15:54:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

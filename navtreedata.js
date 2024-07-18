@@ -27,6 +27,7 @@ var NAVTREE =
   [ "OMSim", "index.html", [
     [ "Installation", "index.html#autotoc_md1", null ],
     [ "Available studies", "index.html#autotoc_md5", null ],
+    [ "Test", "test_page.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Files", "files.html", [

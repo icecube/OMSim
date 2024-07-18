@@ -22,7 +22,9 @@ If you wish to load additional data, you can either define a new type in OMSim\+
 \DoxyCodeLine{\textcolor{comment}{// ...}}
 
 \end{DoxyCode}
-\hypertarget{group__common_geometry}{}\doxyparagraph{Geometry construction}\label{group__common_geometry}
+
+
+See the \mbox{\hyperlink{test_page}{Test Page}} for more information.\hypertarget{group__common_geometry}{}\doxyparagraph{Geometry construction}\label{group__common_geometry}
 Each optical module and harness is defined in its respective class, located in the {\ttfamily /common/geometry\+\_\+construction/} folder. These inherit from the virtual base class {\ttfamily \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}}. This inheritance ensures the definition of functions to retrieve the pressure vessel\textquotesingle{}s weight (necessary for radioactive decay studies) and the count of PMTs inside the module. The {\ttfamily \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}} interface inherits from {\ttfamily \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}}}, a general helper class simplifying construction. Most \mbox{\hyperlink{class_o_m_sim}{OMSim}} geometries inherit from this class, as illustrated in the dependency diagram below\+: 
 
 The {\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}}} class constructs PMTs. There are two PMT construction approaches. The first is simple, with a solid photocathode where all entering photons are recorded. The second type simulates the photocathode as a thin layer, also representing the internal components accounting for internal reflections. For more information, refer to Chapter 9 of \href{https://zenodo.org/record/8121321}{\texttt{ Martin Unland\textquotesingle{}s thesis}}. The construction of different PMT models (e.\+g. the 3\textquotesingle{}\textquotesingle{} or 10\textquotesingle{}\textquotesingle{} PMTs) is quite similar. However, the frontal window shape varies among models, leading to diverse combinations of ellipsoids and spheres.
