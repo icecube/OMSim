@@ -25,8 +25,9 @@ var searchData=
   ['applyarm_28',['applyARM',['../class_g4_radioactive_decay.html#aed109fef1bc4bec284610743f40bb589',1,'G4RadioactiveDecay']]],
   ['applycommand_29',['applyCommand',['../class_o_m_sim_u_iinterface.html#aa08ab9820d0591b64d0dd8c5599ddd14',1,'OMSimUIinterface']]],
   ['applypermutation_30',['applyPermutation',['../_o_m_sim_hit_manager_8cc.html#a5cd392e4449d123c3b8697014c513a0a',1,'OMSimHitManager.cc']]],
-  ['assembly_5f_31',['assembly_',['../class_c_a_d_mesh_1_1_c_a_d_mesh_template.html#aebb5f2c52db6b5b9f8739d165c64792b',1,'CADMesh::CADMeshTemplate']]],
-  ['atendofline_32',['AtEndOfLine',['../_c_a_d_mesh_8hh.html#a95d14906166c75f8ce8f0d9b03100faa',1,'CADMesh.hh']]],
-  ['atrestdoit_33',['AtRestDoIt',['../class_o_m_sim_g4_scintillation.html#a1ab6f916bd26e5443d0f56238bc2df0e',1,'OMSimG4Scintillation::AtRestDoIt()'],['../class_g4_radioactive_decay.html#a0fb4257aca98bf87d751a0021dcf4639',1,'G4RadioactiveDecay::AtRestDoIt(const G4Track &amp;theTrack, const G4Step &amp;theStep)']]],
-  ['atrestgetphysicalinteractionlength_34',['AtRestGetPhysicalInteractionLength',['../class_g4_radioactive_decay.html#af23392c70746be540ba3b666cdac1114',1,'G4RadioactiveDecay']]]
+  ['aretherehitsinmodule_31',['areThereHitsInModule',['../class_o_m_sim_hit_manager.html#abd81abd7cdede402c175ba89179f2edb',1,'OMSimHitManager']]],
+  ['assembly_5f_32',['assembly_',['../class_c_a_d_mesh_1_1_c_a_d_mesh_template.html#aebb5f2c52db6b5b9f8739d165c64792b',1,'CADMesh::CADMeshTemplate']]],
+  ['atendofline_33',['AtEndOfLine',['../_c_a_d_mesh_8hh.html#a95d14906166c75f8ce8f0d9b03100faa',1,'CADMesh.hh']]],
+  ['atrestdoit_34',['AtRestDoIt',['../class_o_m_sim_g4_scintillation.html#a1ab6f916bd26e5443d0f56238bc2df0e',1,'OMSimG4Scintillation::AtRestDoIt()'],['../class_g4_radioactive_decay.html#a0fb4257aca98bf87d751a0021dcf4639',1,'G4RadioactiveDecay::AtRestDoIt(const G4Track &amp;theTrack, const G4Step &amp;theStep)']]],
+  ['atrestgetphysicalinteractionlength_35',['AtRestGetPhysicalInteractionLength',['../class_g4_radioactive_decay.html#af23392c70746be540ba3b666cdac1114',1,'G4RadioactiveDecay']]]
 ];

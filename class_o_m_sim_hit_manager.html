@@ -137,7 +137,7 @@ Collaboration diagram for OMSimHitManager:</div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stores, manages, and provides access information related to detected photons across multiple optical modules. The manager can be accessed via a singleton pattern, ensuring a unified access point for photon hit data.</p>
-<p>The hits are stored using '<a class="el" href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e" title="Appends hit information for a detected photon to the corresponding module&#39;s hit data.">OMSimHitManager::appendHitInfo</a>'. The analysis manager of each study is in charge of writing the stored information into a file (see for example '<a class="el" href="class_o_m_sim_effective_area_analyisis.html#af2f7ac6a789bb50ec7d0d8a81487ec20" title="Writes a scan result to the output file.">OMSimEffectiveAreaAnalyisis::writeScan</a>' or '<a class="el" href="class_o_m_sim_decays_analysis.html#ae35ea36c7616b45b3ca49fff54e2862a" title="Write data of the hits to the output file.">OMSimDecaysAnalysis::writeHitInformation</a>'). Once the data is written, do not forget calling '<a class="el" href="class_o_m_sim_hit_manager.html#a00bb034e7751905f8a8229de3f8a39b1" title="Deletes hit information in memory for all modules.">OMSimHitManager::reset</a>'!. </p>
+<p>The hits are stored using '<a class="el" href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e" title="Appends hit information for a detected photon to the corresponding module&#39;s hit data.">OMSimHitManager::appendHitInfo</a>'. The analysis manager of each study is in charge of writing the stored information into a file (see for example '<a class="el" href="class_o_m_sim_effective_area_analyisis.html#af2f7ac6a789bb50ec7d0d8a81487ec20" title="Writes a scan result to the output file.">OMSimEffectiveAreaAnalyisis::writeScan</a>' or 'OMSimDecaysAnalysis::writeHitInformation'). Once the data is written, do not forget calling '<a class="el" href="class_o_m_sim_hit_manager.html#a00bb034e7751905f8a8229de3f8a39b1" title="Deletes hit information in memory for all modules.">OMSimHitManager::reset</a>'!. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -159,8 +159,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab4a1060283a53660e52626d08a77ebc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the number of PMTs in a module for correct data handling.  <a href="class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8">More...</a><br /></td></tr>
 <tr class="separator:ab4a1060283a53660e52626d08a77ebc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42abfc56abccb86e9ce2841a39be24a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_hit_stats.html">HitStats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a42abfc56abccb86e9ce2841a39be24a9">getHitsOfModule</a> (int pModuleIndex=0)</td></tr>
-<tr class="memdesc:a42abfc56abccb86e9ce2841a39be24a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> structure for the specified module.  <a href="class_o_m_sim_hit_manager.html#a42abfc56abccb86e9ce2841a39be24a9">More...</a><br /></td></tr>
+<tr class="memdesc:a42abfc56abccb86e9ce2841a39be24a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> structure for the specified module, should be called after data between threads was merged.  <a href="class_o_m_sim_hit_manager.html#a42abfc56abccb86e9ce2841a39be24a9">More...</a><br /></td></tr>
 <tr class="separator:a42abfc56abccb86e9ce2841a39be24a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45a63dbb6cdb3815db3cfde00ae36f70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_hit_stats.html">HitStats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a45a63dbb6cdb3815db3cfde00ae36f70">getSingleThreadHitsOfModule</a> (int pModuleIndex=0)</td></tr>
+<tr class="memdesc:a45a63dbb6cdb3815db3cfde00ae36f70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> structure for the specified module of single thread.  <a href="class_o_m_sim_hit_manager.html#a45a63dbb6cdb3815db3cfde00ae36f70">More...</a><br /></td></tr>
+<tr class="separator:a45a63dbb6cdb3815db3cfde00ae36f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd81abd7cdede402c175ba89179f2edb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#abd81abd7cdede402c175ba89179f2edb">areThereHitsInModule</a> (int pModuleIndex=0)</td></tr>
+<tr class="separator:abd81abd7cdede402c175ba89179f2edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a756d2a85121e00d2a2d8b6c04cd0ebd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a756d2a85121e00d2a2d8b6c04cd0ebd1">sortHitStatsByTime</a> (<a class="el" href="struct_hit_stats.html">HitStats</a> &amp;pHits)</td></tr>
 <tr class="memdesc:a756d2a85121e00d2a2d8b6c04cd0ebd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts the hit statistics by the hit time.  <a href="class_o_m_sim_hit_manager.html#a756d2a85121e00d2a2d8b6c04cd0ebd1">More...</a><br /></td></tr>
 <tr class="separator:a756d2a85121e00d2a2d8b6c04cd0ebd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -389,6 +394,24 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="abd81abd7cdede402c175ba89179f2edb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd81abd7cdede402c175ba89179f2edb">&#9670;&nbsp;</a></span>areThereHitsInModule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool OMSimHitManager::areThereHitsInModule </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pModuleIndex</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a01638ba2c16fcde1244b90e9672425c0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a01638ba2c16fcde1244b90e9672425c0">&#9670;&nbsp;</a></span>calculateMultiplicity()</h2>
 
@@ -471,6 +494,7 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_o_m_sim_hit_manager.html#aeaaa60e5b1a57b96a45e16e91128b4f0">mergeThreadData</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">moduleIndex</td><td>Index of the module for which to retrieve hit statistics. Default is 0. </td></tr>
@@ -529,6 +553,31 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45a63dbb6cdb3815db3cfde00ae36f70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45a63dbb6cdb3815db3cfde00ae36f70">&#9670;&nbsp;</a></span>getSingleThreadHitsOfModule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_hit_stats.html">HitStats</a> OMSimHitManager::getSingleThreadHitsOfModule </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pModuleIndex</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">moduleIndex</td><td>Index of the module for which to retrieve hit statistics. Default is 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> structure containing hit information of specified module. </dd></dl>
 
 </div>
 </div>
@@ -786,7 +835,7 @@ Static Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></li>
-    <li class="footer">Generated on Tue Jul 9 2024 15:50:08 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jul 18 2024 14:22:28 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

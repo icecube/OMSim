@@ -24,9 +24,9 @@ void \mbox{\hyperlink{class_o_m_sim_decays_analysis_a715d4897705da383ce1a1d93b68
 \item 
 void \mbox{\hyperlink{class_o_m_sim_decays_analysis_a49fbd38776fcc7d1edf12e786d227ae6}{write\+Multiplicity}} ()
 \begin{DoxyCompactList}\small\item\em Calls calculate\+Multiplicity and writes the results to the output file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_decays_analysis_a6fa1755be622573173e625460f807201}{write\+Decay\+Information}} ()
+void \mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{write\+Thread\+Decay\+Information}} ()
 \begin{DoxyCompactList}\small\item\em Write isotoped related data to the output file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_decays_analysis_ae35ea36c7616b45b3ca49fff54e2862a}{write\+Hit\+Information}} ()
+void \mbox{\hyperlink{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}{write\+Thread\+Hit\+Information}} ()
 \begin{DoxyCompactList}\small\item\em Write data of the hits to the output file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}} ()
 \begin{DoxyCompactList}\small\item\em Resets (deletes) decay and hits data. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -47,11 +47,6 @@ G4\+String \mbox{\hyperlink{class_o_m_sim_decays_analysis_a3a15072bb49ce504d9876
 \mbox{\hyperlink{class_o_m_sim_decays_analysis_a5a809421faa0dd4ad201891f58850af5}{OMSim\+Decays\+Analysis}} (const \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} \&)=delete
 \item 
 \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} \& \mbox{\hyperlink{class_o_m_sim_decays_analysis_af4b8d2cd736ede06f4dcf7258fb46090}{operator=}} (const \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} \&)=delete
-\end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
-\begin{DoxyCompactItemize}
-\item 
-std\+::fstream \mbox{\hyperlink{class_o_m_sim_decays_analysis_adb7b5987aeeab388a3e9571eff9d9c9a}{m\+Datafile}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
@@ -131,33 +126,27 @@ static \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}
 \doxysubsubsection{\texorpdfstring{reset()}{reset()}}
 {\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a6fa1755be622573173e625460f807201}\label{class_o_m_sim_decays_analysis_a6fa1755be622573173e625460f807201}} 
-\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!writeDecayInformation@{writeDecayInformation}}
-\index{writeDecayInformation@{writeDecayInformation}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
-\doxysubsubsection{\texorpdfstring{writeDecayInformation()}{writeDecayInformation()}}
-{\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::write\+Decay\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_o_m_sim_decays_analysis_ae35ea36c7616b45b3ca49fff54e2862a}\label{class_o_m_sim_decays_analysis_ae35ea36c7616b45b3ca49fff54e2862a}} 
-\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!writeHitInformation@{writeHitInformation}}
-\index{writeHitInformation@{writeHitInformation}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
-\doxysubsubsection{\texorpdfstring{writeHitInformation()}{writeHitInformation()}}
-{\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::write\+Hit\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_o_m_sim_decays_analysis_a49fbd38776fcc7d1edf12e786d227ae6}\label{class_o_m_sim_decays_analysis_a49fbd38776fcc7d1edf12e786d227ae6}} 
 \index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!writeMultiplicity@{writeMultiplicity}}
 \index{writeMultiplicity@{writeMultiplicity}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
 \doxysubsubsection{\texorpdfstring{writeMultiplicity()}{writeMultiplicity()}}
 {\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::write\+Multiplicity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}\label{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}} 
+\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!writeThreadDecayInformation@{writeThreadDecayInformation}}
+\index{writeThreadDecayInformation@{writeThreadDecayInformation}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
+\doxysubsubsection{\texorpdfstring{writeThreadDecayInformation()}{writeThreadDecayInformation()}}
+{\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::write\+Thread\+Decay\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}\label{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}} 
+\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!writeThreadHitInformation@{writeThreadHitInformation}}
+\index{writeThreadHitInformation@{writeThreadHitInformation}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
+\doxysubsubsection{\texorpdfstring{writeThreadHitInformation()}{writeThreadHitInformation()}}
+{\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::write\+Thread\+Hit\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_o_m_sim_decays_analysis_adb7b5987aeeab388a3e9571eff9d9c9a}\label{class_o_m_sim_decays_analysis_adb7b5987aeeab388a3e9571eff9d9c9a}} 
-\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!mDatafile@{mDatafile}}
-\index{mDatafile@{mDatafile}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
-\doxysubsubsection{\texorpdfstring{mDatafile}{mDatafile}}
-{\footnotesize\ttfamily std\+::fstream OMSim\+Decays\+Analysis\+::m\+Datafile\hspace{0.3cm}{\ttfamily [private]}}
-
 \mbox{\Hypertarget{class_o_m_sim_decays_analysis_a2df6ba1c18fb3087ceb2aeb5cfe1cd7c}\label{class_o_m_sim_decays_analysis_a2df6ba1c18fb3087ceb2aeb5cfe1cd7c}} 
 \index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!mInstance@{mInstance}}
 \index{mInstance@{mInstance}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}

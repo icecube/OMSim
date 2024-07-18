@@ -5,6 +5,5 @@ var class_o_m_sim_effective_area_analyisis =
     [ "calculateEffectiveArea", "class_o_m_sim_effective_area_analyisis.html#aa9380b8148a1a0846b2f026d7dfa0046", null ],
     [ "writeHeader", "class_o_m_sim_effective_area_analyisis.html#a400b1a20fbf322894cd7c2564a7dbb35", null ],
     [ "writeScan", "class_o_m_sim_effective_area_analyisis.html#af2f7ac6a789bb50ec7d0d8a81487ec20", null ],
-    [ "mDatafile", "class_o_m_sim_effective_area_analyisis.html#ac392f952bcc7e92c303e8e371b00c594", null ],
     [ "mOutputFileName", "class_o_m_sim_effective_area_analyisis.html#a93a35ab4f557df790de84ec0ab5e9fab", null ]
 ];
