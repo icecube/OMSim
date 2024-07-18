@@ -1,4 +1,5 @@
 /**
+ *  @page
  *  @defgroup EffectiveArea Effective area
  *  @brief  All specific to the effective area studies of the optical modules.
  *
