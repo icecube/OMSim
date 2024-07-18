@@ -22,7 +22,6 @@
  *  // ...
  *  ~~~~~~~~~~~~~
  * 
- *  See the [Test Page]( @ref test_page) for more information.
  * 
  *  @subsubsection geometry Geometry construction
  * 

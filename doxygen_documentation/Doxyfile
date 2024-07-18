@@ -983,7 +983,9 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                =
+EXCLUDE                = ../common/data/ \ 
+                         ../aux/ \
+                         ../trash
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -1341,7 +1343,7 @@ HTML_EXTRA_STYLESHEET  = style/doxygen-awesome.css \
                          style/doxygen-awesome-sidebar-only.css \
                          style/doxygen-awesome-sidebar-only-darkmode-toggle.css \
                          style/custom-alternative.css
-
+                         
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note
 # that these files will be copied to the base HTML output directory. Use the
@@ -2646,7 +2648,8 @@ DIR_GRAPH_MAX_DEPTH    = 1
 # This tag requires that the tag HAVE_DOT is set to YES.
 
 DOT_IMAGE_FORMAT       = svg
-
+DOT_TRANSPARENT       = YES
+         
 # If DOT_IMAGE_FORMAT is set to svg, then this option can be set to YES to
 # enable generation of interactive SVG images that allow zooming and panning.
 #
