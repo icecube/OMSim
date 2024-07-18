@@ -15,6 +15,8 @@ First you should install Geant4 following [the guide provided by cern](https://g
 ```bash
 -DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_GDML=ON -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_QT=ON -DGEANT4_USE_RAYTRACER_X11=ON -DGEANT4_USE_XM=ON
 ``` 
+Do not change "GEANT4_BUILD_MULTITHREADED" to OFF, as OMSim supports multithreading.
+
 #### Requirements
 There are a few dependencies. You can install them using the following command:
 

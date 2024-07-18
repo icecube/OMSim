@@ -21,7 +21,9 @@
  *  std::vector<G4double> second_column = data.at(1);
  *  // ...
  *  ~~~~~~~~~~~~~
- *
+ * 
+ *  See the [Test Page]( @ref test_page) for more information.
+ * 
  *  @subsubsection geometry Geometry construction
  * 
  *  Each optical module and harness is defined in its respective class, located in the `/common/geometry_construction/` folder. These inherit from the virtual base class `OMSimOpticalModule`. 
