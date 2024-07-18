@@ -87,7 +87,7 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 OMSimG4Scintillation::OMSimG4Scintillation(const G4String &processName,
-                                 G4ProcessType type)
+                                           G4ProcessType type)
     : G4VRestDiscreteProcess(processName, type), fIntegralTable1(nullptr), fIntegralTable2(nullptr), fIntegralTable3(nullptr), fEmSaturation(nullptr), fNumPhotons(0)
 {
   secID = G4PhysicsModelCatalog::GetModelID("model_Scintillation");
@@ -333,7 +333,7 @@ void OMSimG4Scintillation::BuildPhysicsTable(const G4ParticleDefinition &)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 G4VParticleChange *OMSimG4Scintillation::AtRestDoIt(const G4Track &aTrack,
-                                               const G4Step &aStep)
+                                                    const G4Step &aStep)
 // This routine simply calls the equivalent PostStepDoIt since all the
 // necessary information resides in aStep.GetTotalEnergyDeposit()
 {
@@ -342,7 +342,7 @@ G4VParticleChange *OMSimG4Scintillation::AtRestDoIt(const G4Track &aTrack,
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 G4VParticleChange *OMSimG4Scintillation::PostStepDoIt(const G4Track &aTrack,
-                                                 const G4Step &aStep)
+                                                      const G4Step &aStep)
 // This routine is called for each tracking step of a charged particle
 // in a scintillator. A Poisson/Gauss-distributed number of photons is
 // generated according to the scintillation yield formula, distributed
@@ -354,34 +354,21 @@ G4VParticleChange *OMSimG4Scintillation::PostStepDoIt(const G4Track &aTrack,
   const G4DynamicParticle *aParticle = aTrack.GetDynamicParticle();
   const G4Material *aMaterial = aTrack.GetMaterial();
 
-  G4StepPoint *pPreStepPoint = aStep.GetPreStepPoint();
-  G4StepPoint *pPostStepPoint = aStep.GetPostStepPoint();
-
-  G4ThreeVector x0 = pPreStepPoint->GetPosition();
-  G4ThreeVector p0 = aStep.GetDeltaPosition().unit();
-  G4double t0 = pPreStepPoint->GetGlobalTime();
-
-  G4double TotalEnergyDeposit = aStep.GetTotalEnergyDeposit();
-
   G4MaterialPropertiesTable *MPT = aMaterial->GetMaterialPropertiesTable();
   if (!MPT)
     return G4VRestDiscreteProcess::PostStepDoIt(aTrack, aStep);
 
   G4MaterialPropertyVector *lScintSpectrum = MPT->GetProperty(kSCINTILLATIONCOMPONENT1);
-
   G4MaterialPropertyVector *lScintComponents = MPT->GetProperty("FRACTIONLIFETIMES");
 
-  G4int nscnt = 0;
-  if (!lScintSpectrum)
+  if (!lScintSpectrum || !lScintComponents)
     return G4VRestDiscreteProcess::PostStepDoIt(aTrack, aStep);
 
-  if (lScintSpectrum)
-    nscnt = lScintComponents->GetVectorLength();
-
+  G4int nscnt = lScintComponents->GetVectorLength();
   G4double ResolutionScale = MPT->GetConstProperty("RESOLUTIONSCALE");
-
   G4double ScintillationYield = MPT->GetConstProperty("SCINTILLATIONYIELD");
 
+  G4double TotalEnergyDeposit = aStep.GetTotalEnergyDeposit();
   G4ParticleDefinition *pDef = aParticle->GetDefinition();
 
   if (pDef == G4Electron::ElectronDefinition() || pDef == G4Positron::PositronDefinition() || pDef == G4Gamma::GammaDefinition())
@@ -390,18 +377,17 @@ G4VParticleChange *OMSimG4Scintillation::PostStepDoIt(const G4Track &aTrack,
   }
 
   G4double MeanNumberOfPhotons = ScintillationYield * TotalEnergyDeposit;
-  
+
   G4int NumPhotons;
   if (MeanNumberOfPhotons > 10.)
   {
-    G4double sigma = ResolutionScale * std::sqrt(MeanNumberOfPhotons);
-    NumPhotons = G4int(G4RandGauss::shoot(MeanNumberOfPhotons, sigma) + 0.5);
+    NumPhotons = G4int(G4RandGauss::shoot(MeanNumberOfPhotons, ResolutionScale * std::sqrt(MeanNumberOfPhotons)) + 0.5);
   }
   else
   {
     NumPhotons = G4int(G4Poisson(MeanNumberOfPhotons));
   }
- 
+
   if (NumPhotons <= 0 || !fStackingFlag)
   {
     // return unchanged particle and no secondaries
@@ -411,117 +397,111 @@ G4VParticleChange *OMSimG4Scintillation::PostStepDoIt(const G4Track &aTrack,
 
   aParticleChange.SetNumberOfSecondaries(NumPhotons);
 
-  if (fTrackSecondariesFirst)
+  if (fTrackSecondariesFirst && aTrack.GetTrackStatus() == fAlive)
   {
-    if (aTrack.GetTrackStatus() == fAlive)
-      aParticleChange.ProposeTrackStatus(fSuspend);
+    aParticleChange.ProposeTrackStatus(fSuspend);
   }
 
   G4int materialIndex = (G4int)aMaterial->GetIndex();
 
-  std::vector<G4double> lFractions;
-  std::vector<G4double> lTimes;
+  std::vector<G4double> lFractions(nscnt);
+  std::vector<G4double> lTimes(nscnt);
 
   G4double lFractionNormalization = 0;
   for (G4int scnt = 0; scnt < nscnt; scnt++)
   {
     G4double lCurrentFraction = lScintComponents->Energy(scnt); // don't get confused about the energy here, it is a fraction... I wanted to use the G4 vectors, and this is the nomenclature
-    G4double lCurrentTime = lScintComponents->Value(lCurrentFraction);
     lFractionNormalization += lCurrentFraction;
-    lTimes.push_back(lCurrentTime);
-    lFractions.push_back(lCurrentFraction);
+    lTimes[scnt] = lScintComponents->Value(lCurrentFraction);
+    lFractions[scnt] = lCurrentFraction;
   }
 
-  
-std::vector<G4int> Nums(nscnt, 0);
-G4int lTotalNr = 0;
+  std::vector<G4int> Nums(nscnt, 0);
+  G4int lTotalNr = 0;
 
-for (G4int scnt = 0; scnt < nscnt; scnt++)
-{
+  for (G4int scnt = 0; scnt < nscnt; scnt++)
+  {
     lFractions[scnt] /= lFractionNormalization;
     Nums[scnt] = G4int(lFractions[scnt] * NumPhotons);
     lTotalNr += Nums[scnt];
-}
+  }
 
-G4double difference = lTotalNr - NumPhotons;
+  G4double difference = lTotalNr - NumPhotons;
 
-if (difference != 0)
-{
+  if (difference != 0)
+  {
     // Prepare a list of the fractional parts
-    std::vector<std::pair<G4double, G4int>> photonFractions;
+    std::vector<std::pair<G4double, G4int>> photonFractions(nscnt);
     G4double totalFractionalSum = 0.0;
-    for (G4int scnt = 0; scnt < nscnt; scnt++) 
+    for (G4int scnt = 0; scnt < nscnt; scnt++)
     {
-        G4double fractionalPart = lFractions[scnt] * NumPhotons - Nums[scnt];
-        photonFractions.push_back(std::make_pair(fractionalPart, scnt));
-        totalFractionalSum += fractionalPart;
+      G4double fractionalPart = lFractions[scnt] * NumPhotons - Nums[scnt];
+      photonFractions[scnt] = std::make_pair(fractionalPart, scnt);
+      totalFractionalSum += fractionalPart;
     }
 
     // Distribute the leftover photons
-    for (G4int i = 0; i < abs(difference); i++) 
+    for (G4int i = 0; i < abs(difference); i++)
     {
-        G4double randValue = G4UniformRand() * totalFractionalSum;
-        G4double cumulativeSum = 0;
+      G4double randValue = G4UniformRand() * totalFractionalSum;
+      G4double cumulativeSum = 0;
 
-        for (auto& p : photonFractions)
+      for (auto &p : photonFractions)
+      {
+        cumulativeSum += p.first;
+        if (randValue < cumulativeSum)
         {
-            cumulativeSum += p.first;
-            if (randValue < cumulativeSum)
-            {
-                if (difference < 0)
-                    Nums[p.second]++;
-                else
-                    Nums[p.second]--;
-                totalFractionalSum -= p.first;
-                p.first = 0; // Ensure this bin is not selected again
-                break;
-            }
+          if (difference < 0)
+            Nums[p.second]++;
+          else
+            Nums[p.second]--;
+          totalFractionalSum -= p.first;
+          p.first = 0; // Ensure this bin is not selected again
+          break;
         }
+      }
     }
-}
+  }
 
-lTotalNr =0;
-for (G4int scnt = 0; scnt < nscnt; scnt++)
-{
+  G4PhysicsFreeVector* ScintillationIntegral = (G4PhysicsFreeVector*)((*fIntegralTable1)(materialIndex));
+  if (!ScintillationIntegral) return G4VRestDiscreteProcess::PostStepDoIt(aTrack, aStep);
 
-    lTotalNr += Nums[scnt];
-}
-if (lTotalNr != NumPhotons){
-  G4cout << lTotalNr << " " << NumPhotons << G4endl;
-}
+  G4double CIImax = ScintillationIntegral->GetMaxValue();
+  G4StepPoint *pPreStepPoint = aStep.GetPreStepPoint();
+  G4StepPoint *pPostStepPoint = aStep.GetPostStepPoint();
 
-  for (G4int scnt = 1; scnt <= nscnt; scnt++)
+  G4ThreeVector x0 = pPreStepPoint->GetPosition();
+  G4ThreeVector p0 = aStep.GetDeltaPosition().unit();
+  G4double t0 = pPreStepPoint->GetGlobalTime();
+
+  G4double stepLength = aStep.GetStepLength();
+  G4double avgVelocity = (pPreStepPoint->GetVelocity() + pPostStepPoint->GetVelocity()) / 2.;
+
+  lTotalNr = 0;
+  for (G4int scnt = 0; scnt < nscnt; scnt++)
   {
 
+    lTotalNr += Nums[scnt];
+  }
+
+  if (lTotalNr != NumPhotons)
+  {
+    log_critical("Error in scintillation processes! Wrong number of photons");
+  }
+
+  for (G4int scnt = 0; scnt < nscnt; scnt++)
+  {
+    G4int Num = Nums[scnt];
+    if (Num == 0) continue;
+
+    G4double ScintillationTime = lTimes[scnt];
     G4double ScintillationRiseTime = 0. * ns;
-
-    G4int Num = Nums[scnt - 1];
-
-    G4double ScintillationTime = lTimes[scnt - 1];
-    G4PhysicsFreeVector *ScintillationIntegral = (G4PhysicsFreeVector *)((*fIntegralTable1)(materialIndex));
-
-    if (!ScintillationIntegral)
-      continue;
-
-    // Max Scintillation Integral
-
-    G4double CIImax = ScintillationIntegral->GetMaxValue();
 
     for (G4int i = 0; i < Num; i++)
     {
 
       // Determine photon energy
-
-      G4double CIIvalue = G4UniformRand() * CIImax;
-      G4double sampledEnergy =
-          ScintillationIntegral->GetEnergy(CIIvalue);
-
-      if (verboseLevel > 1)
-      {
-        G4cout << "sampledEnergy = " << sampledEnergy << G4endl;
-        G4cout << "CIIvalue =        " << CIIvalue << G4endl;
-      }
-
+      G4double sampledEnergy = ScintillationIntegral->GetEnergy(G4UniformRand() * CIImax);
       // Generate random photon direction
 
       G4double cost = 1. - 2. * G4UniformRand();
@@ -531,31 +511,20 @@ if (lTotalNr != NumPhotons){
       G4double sinp = std::sin(phi);
       G4double cosp = std::cos(phi);
 
-      G4double px = sint * cosp;
-      G4double py = sint * sinp;
-      G4double pz = cost;
-
       // Create photon momentum direction vector
-
-      G4ParticleMomentum photonMomentum(px, py, pz);
+      G4ParticleMomentum photonMomentum(sint * cosp, sint * sinp, cost);
 
       // Determine polarization of new photon
-
-      G4double sx = cost * cosp;
-      G4double sy = cost * sinp;
-      G4double sz = -sint;
-
-      G4ThreeVector photonPolarization(sx, sy, sz);
+      G4ThreeVector photonPolarization(cost * cosp, cost * sinp, -sint);
 
       G4ThreeVector perp = photonMomentum.cross(photonPolarization);
-      // G4cout << photonMomentum.x() << " " << photonMomentum.y() << " " << photonMomentum.z() << G4endl;
+
       phi = twopi * G4UniformRand();
       sinp = std::sin(phi);
       cosp = std::cos(phi);
 
-      photonPolarization = cosp * photonPolarization + sinp * perp;
+      photonPolarization = (cosp * photonPolarization + sinp * perp).unit();
 
-      photonPolarization = photonPolarization.unit();
 
       // Generate a new photon:
 
@@ -570,49 +539,28 @@ if (lTotalNr != NumPhotons){
 
       // Generate new G4Track object:
 
-      G4double rand;
+      G4double rand = (aParticle->GetDefinition()->GetPDGCharge() != 0) ? G4UniformRand() : 1.0;
 
-      if (aParticle->GetDefinition()->GetPDGCharge() != 0)
-      {
-        rand = G4UniformRand();
-      }
-      else
-      {
-        rand = 1.0;
-      }
-
-      G4double delta = rand * aStep.GetStepLength();
-      G4double deltaTime = delta /
-                           ((pPreStepPoint->GetVelocity() +
-                             pPostStepPoint->GetVelocity()) /
-                            2.);
+      G4double delta = rand * stepLength;
+      G4double deltaTime = delta / avgVelocity;
 
       // emission time distribution
       if (ScintillationRiseTime == 0.0)
       {
-        deltaTime = deltaTime -
-                    ScintillationTime * std::log(G4UniformRand());
+        deltaTime -= ScintillationTime * std::log(G4UniformRand());
       }
       else
       {
-        deltaTime = deltaTime +
-                    sample_time(ScintillationRiseTime, ScintillationTime);
+        deltaTime += sample_time(ScintillationRiseTime, ScintillationTime);
       }
 
       G4double aSecondaryTime = t0 + deltaTime;
 
-      // G4cout << deltaTime << " " << t0 << " " <<aSecondaryTime<<  G4endl;
+      G4ThreeVector aSecondaryPosition = x0 + rand * aStep.GetDeltaPosition();
 
-      G4ThreeVector aSecondaryPosition =
-          x0 + rand * aStep.GetDeltaPosition();
+      G4Track *aSecondaryTrack = new G4Track(aScintillationPhoton, aSecondaryTime, aSecondaryPosition);
 
-      G4Track *aSecondaryTrack =
-          new G4Track(aScintillationPhoton, aSecondaryTime, aSecondaryPosition);
-
-      aSecondaryTrack->SetTouchableHandle(
-          aStep.GetPreStepPoint()->GetTouchableHandle());
-      // aSecondaryTrack->SetTouchableHandle((G4VTouchable*)0);
-
+      aSecondaryTrack->SetTouchableHandle( aStep.GetPreStepPoint()->GetTouchableHandle());
       aSecondaryTrack->SetParentID(aTrack.GetTrackID());
       aSecondaryTrack->SetCreatorModelID(secID);
       aParticleChange.AddSecondary(aSecondaryTrack);
@@ -630,7 +578,7 @@ if (lTotalNr != NumPhotons){
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 G4double OMSimG4Scintillation::GetMeanFreePath(const G4Track &, G4double,
-                                          G4ForceCondition *condition)
+                                               G4ForceCondition *condition)
 {
   *condition = StronglyForced;
   return DBL_MAX;
@@ -638,7 +586,7 @@ G4double OMSimG4Scintillation::GetMeanFreePath(const G4Track &, G4double,
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 G4double OMSimG4Scintillation::GetMeanLifeTime(const G4Track &,
-                                          G4ForceCondition *condition)
+                                               G4ForceCondition *condition)
 {
   *condition = Forced;
   return DBL_MAX;

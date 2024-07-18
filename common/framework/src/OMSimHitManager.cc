@@ -131,13 +131,31 @@ void OMSimHitManager::setNumberOfPMTs(int pNumberOfPMTs, int pModuleIndex)
 }
 
 /**
- * @brief Retrieves the HitStats structure for the specified module.
+ * @brief Retrieves the HitStats structure for the specified module, should be called after data between threads was merged. @see mergeThreadData
  * @param moduleIndex Index of the module for which to retrieve hit statistics. Default is 0.
  * @return A HitStats structure containing hit information of specified module.
  */
 HitStats OMSimHitManager::getHitsOfModule(int pModuleIndex)
 {
 	return mModuleHits[pModuleIndex];
+}
+
+/**
+ * @brief Retrieves the HitStats structure for the specified module of single thread.
+ * @param moduleIndex Index of the module for which to retrieve hit statistics. Default is 0.
+ * @return A HitStats structure containing hit information of specified module.
+ */
+HitStats OMSimHitManager::getSingleThreadHitsOfModule(int pModuleIndex)
+{
+	log_debug("Getting mThreadData of thread {}", G4Threading::G4GetThreadId());
+	return mThreadData->moduleHits[pModuleIndex];
+}
+
+
+bool OMSimHitManager::areThereHitsInModule(int pModuleIndex)
+{
+	if (!mThreadData) {return false;};
+	return mThreadData->moduleHits.find(pModuleIndex) != mThreadData->moduleHits.end();
 }
 
 /**
@@ -154,6 +172,7 @@ void OMSimHitManager::reset()
 		delete mThreadData;
 		mThreadData = nullptr;
 	}
+	log_trace("Finished reseting hit manager");
 }
 
 /**

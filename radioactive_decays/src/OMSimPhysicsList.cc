@@ -36,7 +36,7 @@
 
 OMSimPhysicsList::OMSimPhysicsList() : G4VUserPhysicsList()
 {
-	defaultCutValue = 0.1 * mm;
+	defaultCutValue = 0.1 * um;
 	SetVerboseLevel(0);
 }
 
@@ -53,6 +53,7 @@ void OMSimPhysicsList::ConstructParticle()
 	G4AntiNeutrinoE::AntiNeutrinoEDefinition();
 	G4NeutrinoMu::NeutrinoMuDefinition();
 	G4AntiNeutrinoMu::AntiNeutrinoMuDefinition();
+	G4Proton::ProtonDefinition();
 }
 
 void OMSimPhysicsList::ConstructProcess()

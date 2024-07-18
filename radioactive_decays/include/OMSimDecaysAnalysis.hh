@@ -37,8 +37,8 @@ public:
     void appendDecay(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition);
     void mergeDecayData();
     void writeMultiplicity();
-    void writeDecayInformation();
-    void writeHitInformation();
+    void writeThreadDecayInformation();
+    void writeThreadHitInformation();
     void reset();
 
 private:
@@ -47,7 +47,6 @@ private:
 
     static G4Mutex mMutex;
 
-    std::fstream mDatafile;
     static OMSimDecaysAnalysis* mInstance;
     OMSimDecaysAnalysis() = default;
     ~OMSimDecaysAnalysis() = default;

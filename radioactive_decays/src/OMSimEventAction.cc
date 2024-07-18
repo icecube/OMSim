@@ -31,8 +31,8 @@ void OMSimEventAction::EndOfEventAction(const G4Event *evt)
 	if (!lArgs.get<bool>("multiplicity_study"))
 	{
 		log_debug("End of event, saving information and reseting (thread {})", G4Threading::G4GetThreadId());
-		lAnalysisManager.writeHitInformation();
-		lAnalysisManager.writeDecayInformation();
+		lAnalysisManager.writeThreadHitInformation();
+		lAnalysisManager.writeThreadDecayInformation();
 		lHitManager.reset();
 		lAnalysisManager.reset();
 	}

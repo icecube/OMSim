@@ -63,73 +63,84 @@ void OMSimDecaysAnalysis::writeMultiplicity()
 	G4String lMultiplicityFileName = lOutputSuffix + "_" + getThreadIDStr() + "_multiplicity.dat";
 
 	std::vector<int> lMultiplicity = OMSimHitManager::getInstance().calculateMultiplicity(20 * ns);
-	mDatafile.open(lMultiplicityFileName.c_str(), std::ios::out | std::ios::app);
+	
+	std::fstream lDatafile;
+	lDatafile.open(lMultiplicityFileName.c_str(), std::ios::out | std::ios::app);
 
 	for (const auto &value : lMultiplicity)
 	{
-		mDatafile << value << "\t";
+		lDatafile << value << "\t";
 	}
-	mDatafile << G4endl;
-	mDatafile.close();
+	lDatafile << G4endl;
+	lDatafile.close();
 }
 
 /**
  * @brief Write isotoped related data to the output file.
  */
-void OMSimDecaysAnalysis::writeDecayInformation()
+void OMSimDecaysAnalysis::writeThreadDecayInformation()
 {
+	log_trace("Writing decay information of {} decays", mThreadDecayStats->eventId.size());
+
 	G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
 	G4String lDecaysFileName = lOutputSuffix + "_" + getThreadIDStr() + "_decays.dat";
 
-	mDatafile.open(lDecaysFileName.c_str(), std::ios::out | std::ios::app);
+	std::fstream lDatafile;
+	lDatafile.open(lDecaysFileName.c_str(), std::ios::out | std::ios::app);
 	if (mThreadDecayStats->eventId.size() > 0)
 	{
 		for (int i = 0; i < (int)mThreadDecayStats->eventId.size(); i++)
 		{
-			mDatafile << mThreadDecayStats->eventId.at(i) << "\t";
-			mDatafile << std::setprecision(13);
-			mDatafile << mThreadDecayStats->decay_time.at(i) << "\t";
-			mDatafile << std::setprecision(4);
-			mDatafile << mThreadDecayStats->isotope_name.at(i) << "\t";
-			mDatafile << mThreadDecayStats->decay_position.at(i).x() << "\t";
-			mDatafile << mThreadDecayStats->decay_position.at(i).y() << "\t";
-			mDatafile << mThreadDecayStats->decay_position.at(i).z() << "\t";
-			mDatafile << G4endl;
+			lDatafile << mThreadDecayStats->eventId.at(i) << "\t";
+			lDatafile << std::setprecision(13);
+			lDatafile << mThreadDecayStats->decay_time.at(i) << "\t";
+			lDatafile << std::setprecision(4);
+			lDatafile << mThreadDecayStats->isotope_name.at(i) << "\t";
+			lDatafile << mThreadDecayStats->decay_position.at(i).x() << "\t";
+			lDatafile << mThreadDecayStats->decay_position.at(i).y() << "\t";
+			lDatafile << mThreadDecayStats->decay_position.at(i).z() << "\t";
+			lDatafile << G4endl;
 		}
 	}
-	mDatafile.close();
+	lDatafile.close();
+	log_trace("Finished writing decay information");
 }
 
 /**
  * @brief Write data of the hits to the output file.
  */
-void OMSimDecaysAnalysis::writeHitInformation()
+void OMSimDecaysAnalysis::writeThreadHitInformation()
 {
-	HitStats lHits = OMSimHitManager::getInstance().getHitsOfModule();
+	if (!OMSimHitManager::getInstance().areThereHitsInModule()) return;
+
+	HitStats lHits = OMSimHitManager::getInstance().getSingleThreadHitsOfModule();
 	G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
 	G4String lHitsFileName = lOutputSuffix + "_" + getThreadIDStr() + "_hits.dat";
+	log_trace("Writing hit information of {} hits", lHits.eventId.size());
 
-	mDatafile.open(lHitsFileName.c_str(), std::ios::out | std::ios::app);
+	std::fstream lDatafile;
+	lDatafile.open(lHitsFileName.c_str(), std::ios::out | std::ios::app);
 	if (lHits.eventId.size() > 0)
 	{
 		for (int i = 0; i < (int)lHits.eventId.size(); i++)
 		{
-			mDatafile << lHits.eventId.at(i) << "\t";
-			mDatafile << std::setprecision(13);
-			mDatafile << lHits.hitTime.at(i) / s << "\t";
-			mDatafile << std::setprecision(4);
-			mDatafile << lHits.PMTnr.at(i) << "\t";
-			mDatafile << lHits.energy.at(i) << "\t";
-			mDatafile << lHits.globalPosition.at(i).x() << "\t";
-			mDatafile << lHits.globalPosition.at(i).y() << "\t";
-			mDatafile << lHits.globalPosition.at(i).z() << "\t";
-			mDatafile << lHits.PMTresponse.at(i).PE << "\t";
-			mDatafile << lHits.PMTresponse.at(i).transitTime << "\t";
-			mDatafile << lHits.PMTresponse.at(i).detectionProbability << "\t";
-			mDatafile << G4endl;
+			lDatafile << lHits.eventId.at(i) << "\t";
+			lDatafile << std::setprecision(13);
+			lDatafile << lHits.hitTime.at(i) / s << "\t";
+			lDatafile << std::setprecision(4);
+			lDatafile << lHits.PMTnr.at(i) << "\t";
+			lDatafile << lHits.energy.at(i) << "\t";
+			lDatafile << lHits.globalPosition.at(i).x() << "\t";
+			lDatafile << lHits.globalPosition.at(i).y() << "\t";
+			lDatafile << lHits.globalPosition.at(i).z() << "\t";
+			lDatafile << lHits.PMTresponse.at(i).PE << "\t";
+			lDatafile << lHits.PMTresponse.at(i).transitTime << "\t";
+			lDatafile << lHits.PMTresponse.at(i).detectionProbability << "\t";
+			lDatafile << G4endl;
 		}
 	}
-	mDatafile.close();
+	lDatafile.close();
+	log_trace("Finished writing detailed hit information");
 }
 
 /**

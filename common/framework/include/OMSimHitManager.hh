@@ -82,6 +82,8 @@ public:
     std::vector<double> countHits(int pModuleIndex = 0);
     void setNumberOfPMTs(int pNumberOfPMTs, int pModuleIndex = 0);
     HitStats getHitsOfModule(int pModuleIndex = 0);
+    HitStats getSingleThreadHitsOfModule(int pModuleIndex = 0);
+    bool areThereHitsInModule(int pModuleIndex = 0);
     void sortHitStatsByTime(HitStats &pHits);
     std::vector<int> calculateMultiplicity(const G4double pTimeWindow, int pModuleNumber = 0);
     G4int getNextDetectorIndex() { return ++mCurrentIndex; }
