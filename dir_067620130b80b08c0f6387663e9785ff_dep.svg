@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 110.00 151.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 147)">
 <title>include</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-147 106,-147 106,4 -4,4"/>
 <g id="clust1" class="cluster">
 <title>clusterdir_0508a806709bbb036eb481438c5edd07</title>
 <g id="a_clust1"><a xlink:href="dir_0508a806709bbb036eb481438c5edd07.html" target="_top" xlink:title="effective_area">
@@ -30,7 +29,7 @@
 <g id="node2" class="node">
 <title>dir_bdd9a5d540de89e9fe90efdfc6973a4f</title>
 <g id="a_node2"><a xlink:href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html" target="_top" xlink:title="common">
-<polygon fill="white" stroke="red" points="80.5,-36 21.5,-36 21.5,0 80.5,0 80.5,-36"/>
+<polygon fill="none" stroke="red" points="80.5,-36 21.5,-36 21.5,0 80.5,0 80.5,-36"/>
 <text text-anchor="middle" x="51" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00">common</text>
 </a>
 </g>

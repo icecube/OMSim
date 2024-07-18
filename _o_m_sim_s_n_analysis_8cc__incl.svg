@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 1136.48 263.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 259)">
 <title>OMSimSNAnalysis.cc</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-259 1132.48,-259 1132.48,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="_o_m_sim_s_n_analysis_8hh_source.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="496.48,-179.5 496.48,-198.5 618.48,-198.5 618.48,-179.5 496.48,-179.5"/>
+<polygon fill="none" stroke="black" points="496.48,-179.5 496.48,-198.5 618.48,-198.5 618.48,-179.5 496.48,-179.5"/>
 <text text-anchor="middle" x="557.48" y="-186.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimSNAnalysis.hh</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="_o_m_sim_hit_manager_8hh.html" target="_top" xlink:title="Defines structures and classes related to optical module photon hit management.">
-<polygon fill="white" stroke="black" points="329.98,-123.5 329.98,-142.5 452.98,-142.5 452.98,-123.5 329.98,-123.5"/>
+<polygon fill="none" stroke="black" points="329.98,-123.5 329.98,-142.5 452.98,-142.5 452.98,-123.5 329.98,-123.5"/>
 <text text-anchor="middle" x="391.48" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimHitManager.hh</text>
 </a>
 </g>
@@ -52,7 +51,7 @@
 <g id="node8" class="node">
 <title>Node8</title>
 <g id="a_node8"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="0.98,-0.5 0.98,-19.5 119.98,-19.5 119.98,-0.5 0.98,-0.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="0.98,-0.5 0.98,-19.5 119.98,-19.5 119.98,-0.5 0.98,-0.5"/>
 <text text-anchor="middle" x="60.48" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4SystemOfUnits.hh</text>
 </a>
 </g>
@@ -67,7 +66,7 @@
 <g id="node17" class="node">
 <title>Node17</title>
 <g id="a_node17"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="951.98,-179.5 951.98,-198.5 1010.98,-198.5 1010.98,-179.5 951.98,-179.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="951.98,-179.5 951.98,-198.5 1010.98,-198.5 1010.98,-179.5 951.98,-179.5"/>
 <text text-anchor="middle" x="981.48" y="-186.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4ios.hh</text>
 </a>
 </g>
@@ -82,7 +81,7 @@
 <g id="node18" class="node">
 <title>Node18</title>
 <g id="a_node18"><a xlink:href="_o_m_sim_command_args_table_8hh.html" target="_top" xlink:title="Definition of the OMSimCommandArgsTable singleton class, which controls user args.">
-<polygon fill="white" stroke="black" points="769.48,-179.5 769.48,-198.5 933.48,-198.5 933.48,-179.5 769.48,-179.5"/>
+<polygon fill="none" stroke="black" points="769.48,-179.5 769.48,-198.5 933.48,-198.5 933.48,-179.5 769.48,-179.5"/>
 <text text-anchor="middle" x="851.48" y="-186.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimCommandArgsTable.hh</text>
 </a>
 </g>
@@ -97,7 +96,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="450.98,-0.5 450.98,-19.5 523.98,-19.5 523.98,-0.5 450.98,-0.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="450.98,-0.5 450.98,-19.5 523.98,-19.5 523.98,-0.5 450.98,-0.5"/>
 <text text-anchor="middle" x="487.48" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4Types.hh</text>
 </a>
 </g>
@@ -112,7 +111,7 @@
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="585.48,-123.5 585.48,-142.5 659.48,-142.5 659.48,-123.5 585.48,-123.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="585.48,-123.5 585.48,-142.5 659.48,-142.5 659.48,-123.5 585.48,-123.5"/>
 <text text-anchor="middle" x="622.48" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4String.hh</text>
 </a>
 </g>
@@ -127,7 +126,7 @@
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="387.98,-62 387.98,-81 490.98,-81 490.98,-62 387.98,-62"/>
+<polygon fill="none" stroke="#bfbfbf" points="387.98,-62 387.98,-81 490.98,-81 490.98,-62 387.98,-62"/>
 <text text-anchor="middle" x="439.48" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">G4ThreeVector.hh</text>
 </a>
 </g>
@@ -148,7 +147,7 @@
 <g id="node12" class="node">
 <title>Node12</title>
 <g id="a_node12"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="547.98,-62 547.98,-81 602.98,-81 602.98,-62 547.98,-62"/>
+<polygon fill="none" stroke="#bfbfbf" points="547.98,-62 547.98,-81 602.98,-81 602.98,-62 547.98,-62"/>
 <text text-anchor="middle" x="575.48" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">fstream</text>
 </a>
 </g>
@@ -163,7 +162,7 @@
 <g id="node15" class="node">
 <title>Node15</title>
 <g id="a_node15"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="677.98,-123.5 677.98,-142.5 724.98,-142.5 724.98,-123.5 677.98,-123.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="677.98,-123.5 677.98,-142.5 724.98,-142.5 724.98,-123.5 677.98,-123.5"/>
 <text text-anchor="middle" x="701.48" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">vector</text>
 </a>
 </g>
@@ -178,7 +177,7 @@
 <g id="node16" class="node">
 <title>Node16</title>
 <g id="a_node16"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="742.98,-123.5 742.98,-142.5 783.98,-142.5 783.98,-123.5 742.98,-123.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="742.98,-123.5 742.98,-142.5 783.98,-142.5 783.98,-123.5 742.98,-123.5"/>
 <text text-anchor="middle" x="763.48" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">tuple</text>
 </a>
 </g>
@@ -199,7 +198,7 @@
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:href="_o_m_sim_p_m_t_response_8hh.html" target="_top" xlink:title="Simulation of PMT response.">
-<polygon fill="white" stroke="black" points="234.98,-62 234.98,-81 369.98,-81 369.98,-62 234.98,-62"/>
+<polygon fill="none" stroke="black" points="234.98,-62 234.98,-81 369.98,-81 369.98,-62 234.98,-62"/>
 <text text-anchor="middle" x="302.48" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPMTResponse.hh</text>
 </a>
 </g>
@@ -220,7 +219,7 @@
 <g id="node13" class="node">
 <title>Node13</title>
 <g id="a_node13"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="14.48,-62 14.48,-81 104.48,-81 104.48,-62 14.48,-62"/>
+<polygon fill="none" stroke="#bfbfbf" points="14.48,-62 14.48,-81 104.48,-81 104.48,-62 14.48,-62"/>
 <text text-anchor="middle" x="59.48" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">G4AutoLock.hh</text>
 </a>
 </g>
@@ -235,7 +234,7 @@
 <g id="node14" class="node">
 <title>Node14</title>
 <g id="a_node14"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="122.48,-62 122.48,-81 216.48,-81 216.48,-62 122.48,-62"/>
+<polygon fill="none" stroke="#bfbfbf" points="122.48,-62 122.48,-81 216.48,-81 216.48,-62 122.48,-62"/>
 <text text-anchor="middle" x="169.48" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">G4Threading.hh</text>
 </a>
 </g>
@@ -262,7 +261,7 @@
 <g id="node9" class="node">
 <title>Node9</title>
 <g id="a_node9"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="283.48,-0.5 283.48,-19.5 321.48,-19.5 321.48,-0.5 283.48,-0.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="283.48,-0.5 283.48,-19.5 321.48,-19.5 321.48,-0.5 283.48,-0.5"/>
 <text text-anchor="middle" x="302.48" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">map</text>
 </a>
 </g>
@@ -277,7 +276,7 @@
 <g id="node10" class="node">
 <title>Node10</title>
 <g id="a_node10"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="339.98,-0.5 339.98,-19.5 400.98,-19.5 400.98,-0.5 339.98,-0.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="339.98,-0.5 339.98,-19.5 400.98,-19.5 400.98,-0.5 339.98,-0.5"/>
 <text text-anchor="middle" x="370.48" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">TGraph.h</text>
 </a>
 </g>
@@ -292,7 +291,7 @@
 <g id="node11" class="node">
 <title>Node11</title>
 <g id="a_node11"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="211.98,-0.5 211.98,-19.5 264.98,-19.5 264.98,-0.5 211.98,-0.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="211.98,-0.5 211.98,-19.5 264.98,-19.5 264.98,-0.5 211.98,-0.5"/>
 <text text-anchor="middle" x="238.48" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">TH2D.h</text>
 </a>
 </g>
@@ -313,7 +312,7 @@
 <g id="node19" class="node">
 <title>Node19</title>
 <g id="a_node19"><a xlink:href="_o_m_sim_logger_8hh_source.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="840.98,-123.5 840.98,-142.5 939.98,-142.5 939.98,-123.5 840.98,-123.5"/>
+<polygon fill="none" stroke="black" points="840.98,-123.5 840.98,-142.5 939.98,-142.5 939.98,-123.5 840.98,-123.5"/>
 <text text-anchor="middle" x="890.48" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimLogger.hh</text>
 </a>
 </g>
@@ -328,7 +327,7 @@
 <g id="node24" class="node">
 <title>Node24</title>
 <g id="a_node24"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="958.48,-123.5 958.48,-142.5 1042.48,-142.5 1042.48,-123.5 958.48,-123.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="958.48,-123.5 958.48,-142.5 1042.48,-142.5 1042.48,-123.5 958.48,-123.5"/>
 <text text-anchor="middle" x="1000.48" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">boost/any.hpp</text>
 </a>
 </g>
@@ -343,7 +342,7 @@
 <g id="node25" class="node">
 <title>Node25</title>
 <g id="a_node25"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="1060.48,-123.5 1060.48,-142.5 1128.48,-142.5 1128.48,-123.5 1060.48,-123.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="1060.48,-123.5 1060.48,-142.5 1128.48,-142.5 1128.48,-123.5 1060.48,-123.5"/>
 <text text-anchor="middle" x="1094.48" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">sys/time.h</text>
 </a>
 </g>
@@ -358,7 +357,7 @@
 <g id="node20" class="node">
 <title>Node20</title>
 <g id="a_node20"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="1005.98,-62 1005.98,-81 1098.98,-81 1098.98,-62 1005.98,-62"/>
+<polygon fill="none" stroke="#bfbfbf" points="1005.98,-62 1005.98,-81 1098.98,-81 1098.98,-62 1005.98,-62"/>
 <text text-anchor="middle" x="1052.48" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">spdlog/spdlog.h</text>
 </a>
 </g>
@@ -373,7 +372,7 @@
 <g id="node21" class="node">
 <title>Node21</title>
 <g id="a_node21"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="683.98,-56.5 683.98,-86.5 794.98,-86.5 794.98,-56.5 683.98,-56.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="683.98,-56.5 683.98,-86.5 794.98,-86.5 794.98,-56.5 683.98,-56.5"/>
 <text text-anchor="start" x="691.98" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">spdlog/sinks/stdout</text>
 <text text-anchor="middle" x="739.48" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">_color_sinks.h</text>
 </a>
@@ -389,7 +388,7 @@
 <g id="node22" class="node">
 <title>Node22</title>
 <g id="a_node22"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="813.48,-62 813.48,-81 871.48,-81 871.48,-62 813.48,-62"/>
+<polygon fill="none" stroke="#bfbfbf" points="813.48,-62 813.48,-81 871.48,-81 871.48,-62 813.48,-62"/>
 <text text-anchor="middle" x="842.48" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">memory</text>
 </a>
 </g>
@@ -404,7 +403,7 @@
 <g id="node23" class="node">
 <title>Node23</title>
 <g id="a_node23"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="889.48,-62 889.48,-81 987.48,-81 987.48,-62 889.48,-62"/>
+<polygon fill="none" stroke="#bfbfbf" points="889.48,-62 889.48,-81 987.48,-81 987.48,-62 889.48,-62"/>
 <text text-anchor="middle" x="938.48" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">spdlog/fmt/fmt.h</text>
 </a>
 </g>

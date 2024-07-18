@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 512.50 174.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 170)">
 <title>OMSimIBD</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-170 508.5,-170 508.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="class_s_n_base_particle_generator.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="183,-57.5 183,-76.5 322,-76.5 322,-57.5 183,-57.5"/>
+<polygon fill="none" stroke="black" points="183,-57.5 183,-76.5 322,-76.5 322,-57.5 183,-57.5"/>
 <text text-anchor="middle" x="252.5" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">SNBaseParticleGenerator</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="0,-146.5 0,-165.5 177,-165.5 177,-146.5 0,-146.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="0,-146.5 0,-165.5 177,-165.5 177,-146.5 0,-146.5"/>
 <text text-anchor="middle" x="88.5" y="-153.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4VUserPrimaryGeneratorAction</text>
 </a>
 </g>
@@ -52,7 +51,7 @@
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="class_distribution_sampler.html" target="_top" xlink:title="Utility class for sampling from a given distribution using the inverse cumulative function and interp...">
-<polygon fill="white" stroke="black" points="195.5,-146.5 195.5,-165.5 309.5,-165.5 309.5,-146.5 195.5,-146.5"/>
+<polygon fill="none" stroke="black" points="195.5,-146.5 195.5,-165.5 309.5,-165.5 309.5,-146.5 195.5,-146.5"/>
 <text text-anchor="middle" x="252.5" y="-153.5" font-family="Helvetica,sans-Serif" font-size="10.00">DistributionSampler</text>
 </a>
 </g>
@@ -70,7 +69,7 @@
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="class_o_m_sim_s_n_tools.html" target="_top" xlink:title="Provides utility methods for generating ENES and IBD interactions.">
-<polygon fill="white" stroke="black" points="398.5,-146.5 398.5,-165.5 488.5,-165.5 488.5,-146.5 398.5,-146.5"/>
+<polygon fill="none" stroke="black" points="398.5,-146.5 398.5,-165.5 488.5,-165.5 488.5,-146.5 398.5,-146.5"/>
 <text text-anchor="middle" x="443.5" y="-153.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimSNTools</text>
 </a>
 </g>

@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 676.50 140.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 136)">
 <title>abcDataFile</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-136 672.5,-136 672.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="class_custom_properties.html" target="_top" xlink:title="Adds user defined properties to already defined materials.">
-<polygon fill="white" stroke="black" points="0,-56.5 0,-75.5 104,-75.5 104,-56.5 0,-56.5"/>
+<polygon fill="none" stroke="black" points="0,-56.5 0,-75.5 104,-75.5 104,-56.5 0,-56.5"/>
 <text text-anchor="middle" x="52" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">CustomProperties</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="class_reflective_surface.html" target="_top" xlink:title="Reflective surfaces parsed from a JSON file.">
-<polygon fill="white" stroke="black" points="122,-56.5 122,-75.5 224,-75.5 224,-56.5 122,-56.5"/>
+<polygon fill="none" stroke="black" points="122,-56.5 122,-75.5 224,-75.5 224,-56.5 122,-56.5"/>
 <text text-anchor="middle" x="173" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">ReflectiveSurface</text>
 </a>
 </g>
@@ -58,7 +57,7 @@
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="class_scintillation_properties.html" target="_top" xlink:title="Scintillation properties extraction for existing materials.">
-<polygon fill="white" stroke="black" points="242,-56.5 242,-75.5 366,-75.5 366,-56.5 242,-56.5"/>
+<polygon fill="none" stroke="black" points="242,-56.5 242,-75.5 366,-75.5 366,-56.5 242,-56.5"/>
 <text text-anchor="middle" x="304" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">ScintillationProperties</text>
 </a>
 </g>
@@ -73,7 +72,7 @@
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="classabc_material_data.html" target="_top" xlink:title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f...">
-<polygon fill="white" stroke="black" points="384,-56.5 384,-75.5 482,-75.5 482,-56.5 384,-56.5"/>
+<polygon fill="none" stroke="black" points="384,-56.5 384,-75.5 482,-75.5 482,-56.5 384,-56.5"/>
 <text text-anchor="middle" x="433" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcMaterialData</text>
 </a>
 </g>
@@ -88,7 +87,7 @@
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="class_ice_cube_ice.html" target="_top" xlink:title="Creation and extraction of IceCube&#39;s ice optical properties.">
-<polygon fill="white" stroke="black" points="255,-0.5 255,-19.5 325,-19.5 325,-0.5 255,-0.5"/>
+<polygon fill="none" stroke="black" points="255,-0.5 255,-19.5 325,-19.5 325,-0.5 255,-0.5"/>
 <text text-anchor="middle" x="290" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">IceCubeIce</text>
 </a>
 </g>
@@ -109,7 +108,7 @@
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:href="class_no_optics.html" target="_top" xlink:title="Materials without optical properties defined.">
-<polygon fill="white" stroke="black" points="343.5,-0.5 343.5,-19.5 404.5,-19.5 404.5,-0.5 343.5,-0.5"/>
+<polygon fill="none" stroke="black" points="343.5,-0.5 343.5,-19.5 404.5,-19.5 404.5,-0.5 343.5,-0.5"/>
 <text text-anchor="middle" x="374" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">NoOptics</text>
 </a>
 </g>
@@ -130,7 +129,7 @@
 <g id="node8" class="node">
 <title>Node8</title>
 <g id="a_node8"><a xlink:href="class_refraction_and_absorption.html" target="_top" xlink:title="Materials with defined refractive index and absorption length.">
-<polygon fill="white" stroke="black" points="423,-0.5 423,-19.5 561,-19.5 561,-0.5 423,-0.5"/>
+<polygon fill="none" stroke="black" points="423,-0.5 423,-19.5 561,-19.5 561,-0.5 423,-0.5"/>
 <text text-anchor="middle" x="492" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">RefractionAndAbsorption</text>
 </a>
 </g>
@@ -151,7 +150,7 @@
 <g id="node9" class="node">
 <title>Node9</title>
 <g id="a_node9"><a xlink:href="class_refraction_only.html" target="_top" xlink:title="Materials only with refractive index defined.">
-<polygon fill="white" stroke="black" points="579.5,-0.5 579.5,-19.5 668.5,-19.5 668.5,-0.5 579.5,-0.5"/>
+<polygon fill="none" stroke="black" points="579.5,-0.5 579.5,-19.5 668.5,-19.5 668.5,-0.5 579.5,-0.5"/>
 <text text-anchor="middle" x="624" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">RefractionOnly</text>
 </a>
 </g>

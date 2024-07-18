@@ -8,12 +8,11 @@
  viewBox="0.00 0.00 504.00 85.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 81)">
 <title>Graphical Class Hierarchy</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-81 500,-81 500,4 -4,4"/>
 <!-- Node55 -->
 <g id="node1" class="node">
 <title>Node55</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="0,-38.5 0,-57.5 177,-57.5 177,-38.5 0,-38.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="0,-38.5 0,-57.5 177,-57.5 177,-38.5 0,-38.5"/>
 <text text-anchor="middle" x="88.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4VUserPrimaryGeneratorAction</text>
 </a>
 </g>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node0</title>
 <g id="a_node2"><a xlink:href="class_o_m_sim_primary_generator_action.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="213,-57.5 213,-76.5 383,-76.5 383,-57.5 213,-57.5"/>
+<polygon fill="none" stroke="black" points="213,-57.5 213,-76.5 383,-76.5 383,-57.5 213,-57.5"/>
 <text text-anchor="middle" x="298" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPrimaryGeneratorAction</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node3" class="node">
 <title>Node57</title>
 <g id="a_node3"><a xlink:href="class_s_n_base_particle_generator.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="228.5,-19.5 228.5,-38.5 367.5,-38.5 367.5,-19.5 228.5,-19.5"/>
+<polygon fill="none" stroke="black" points="228.5,-19.5 228.5,-38.5 367.5,-38.5 367.5,-19.5 228.5,-19.5"/>
 <text text-anchor="middle" x="298" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">SNBaseParticleGenerator</text>
 </a>
 </g>
@@ -52,7 +51,7 @@
 <g id="node4" class="node">
 <title>Node58</title>
 <g id="a_node4"><a xlink:href="class_o_m_sim_e_n_e_s.html" target="_top" xlink:title="Class in charge of generating electrons from Electron&#45;electron_Neutrino Elastic Scattering (ENES) nu_...">
-<polygon fill="white" stroke="black" points="419,-38.5 419,-57.5 496,-57.5 496,-38.5 419,-38.5"/>
+<polygon fill="none" stroke="black" points="419,-38.5 419,-57.5 496,-57.5 496,-38.5 419,-38.5"/>
 <text text-anchor="middle" x="457.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimENES</text>
 </a>
 </g>
@@ -67,7 +66,7 @@
 <g id="node5" class="node">
 <title>Node59</title>
 <g id="a_node5"><a xlink:href="class_o_m_sim_i_b_d.html" target="_top" xlink:title="Class in charge of generating positrons from IBD of supernova antineutrino interactions.">
-<polygon fill="white" stroke="black" points="423,-0.5 423,-19.5 492,-19.5 492,-0.5 423,-0.5"/>
+<polygon fill="none" stroke="black" points="423,-0.5 423,-19.5 492,-19.5 492,-0.5 423,-0.5"/>
 <text text-anchor="middle" x="457.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimIBD</text>
 </a>
 </g>

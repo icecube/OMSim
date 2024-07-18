@@ -8,12 +8,11 @@
  viewBox="0.00 0.00 310.00 218.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 214)">
 <title>Graphical Class Hierarchy</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-214 306,-214 306,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node">
 <title>Node0</title>
 <g id="a_node1"><a xlink:href="class_o_m_sim_p_m_t_response.html" target="_top" xlink:title="Singleton class to simulate PMT response.">
-<polygon fill="white" stroke="black" points="0,-95.5 0,-114.5 120,-114.5 120,-95.5 0,-95.5"/>
+<polygon fill="none" stroke="black" points="0,-95.5 0,-114.5 120,-114.5 120,-95.5 0,-95.5"/>
 <text text-anchor="middle" x="60" y="-102.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPMTResponse</text>
 </a>
 </g>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node1</title>
 <g id="a_node2"><a xlink:href="class_d_e_g_g_p_m_t_response.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="172.5,-190.5 172.5,-209.5 285.5,-209.5 285.5,-190.5 172.5,-190.5"/>
+<polygon fill="none" stroke="black" points="172.5,-190.5 172.5,-209.5 285.5,-209.5 285.5,-190.5 172.5,-190.5"/>
 <text text-anchor="middle" x="229" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">DEGGPMTResponse</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node3" class="node">
 <title>Node2</title>
 <g id="a_node3"><a xlink:href="class_gen1_p_m_t_response.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="174,-152.5 174,-171.5 284,-171.5 284,-152.5 174,-152.5"/>
+<polygon fill="none" stroke="black" points="174,-152.5 174,-171.5 284,-171.5 284,-152.5 174,-152.5"/>
 <text text-anchor="middle" x="229" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">Gen1PMTResponse</text>
 </a>
 </g>
@@ -52,7 +51,7 @@
 <g id="node4" class="node">
 <title>Node3</title>
 <g id="a_node4"><a xlink:href="class_l_o_m_hamamatsu_response.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="156,-114.5 156,-133.5 302,-133.5 302,-114.5 156,-114.5"/>
+<polygon fill="none" stroke="black" points="156,-114.5 156,-133.5 302,-133.5 302,-114.5 156,-114.5"/>
 <text text-anchor="middle" x="229" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">LOMHamamatsuResponse</text>
 </a>
 </g>
@@ -67,7 +66,7 @@
 <g id="node5" class="node">
 <title>Node4</title>
 <g id="a_node5"><a xlink:href="class_l_o_m_n_n_v_t_response.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="172.5,-76.5 172.5,-95.5 285.5,-95.5 285.5,-76.5 172.5,-76.5"/>
+<polygon fill="none" stroke="black" points="172.5,-76.5 172.5,-95.5 285.5,-95.5 285.5,-76.5 172.5,-76.5"/>
 <text text-anchor="middle" x="229" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">LOMNNVTResponse</text>
 </a>
 </g>
@@ -82,7 +81,7 @@
 <g id="node6" class="node">
 <title>Node5</title>
 <g id="a_node6"><a xlink:href="class_no_response.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="190.5,-38.5 190.5,-57.5 267.5,-57.5 267.5,-38.5 190.5,-38.5"/>
+<polygon fill="none" stroke="black" points="190.5,-38.5 190.5,-57.5 267.5,-57.5 267.5,-38.5 190.5,-38.5"/>
 <text text-anchor="middle" x="229" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">NoResponse</text>
 </a>
 </g>
@@ -97,7 +96,7 @@
 <g id="node7" class="node">
 <title>Node6</title>
 <g id="a_node7"><a xlink:href="classm_d_o_m_p_m_t_response.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="169.5,-0.5 169.5,-19.5 288.5,-19.5 288.5,-0.5 169.5,-0.5"/>
+<polygon fill="none" stroke="black" points="169.5,-0.5 169.5,-19.5 288.5,-19.5 288.5,-0.5 169.5,-0.5"/>
 <text text-anchor="middle" x="229" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">mDOMPMTResponse</text>
 </a>
 </g>

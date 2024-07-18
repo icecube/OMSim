@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 171.00 140.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 136)">
 <title>OMSimEffectiveAreaDetector</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-136 167,-136 167,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="class_o_m_sim_detector_construction.html" target="_top" xlink:title="Class for detector construction in the effective area simulation.">
-<polygon fill="white" stroke="black" points="4,-56.5 4,-75.5 159,-75.5 159,-56.5 4,-56.5"/>
+<polygon fill="none" stroke="black" points="4,-56.5 4,-75.5 159,-75.5 159,-56.5 4,-56.5"/>
 <text text-anchor="middle" x="81.5" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDetectorConstruction</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="0,-112.5 0,-131.5 163,-131.5 163,-112.5 0,-112.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="0,-112.5 0,-131.5 163,-131.5 163,-112.5 0,-112.5"/>
 <text text-anchor="middle" x="81.5" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4VUserDetectorConstruction</text>
 </a>
 </g>

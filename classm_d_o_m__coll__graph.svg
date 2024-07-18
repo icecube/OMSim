@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 252.00 409.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 405)">
 <title>mDOM</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-405 248,-405 248,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:href="classm_d_o_m_harness.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="154,-0.5 154,-19.5 244,-19.5 244,-0.5 154,-0.5"/>
+<polygon fill="none" stroke="black" points="154,-0.5 154,-19.5 244,-19.5 244,-0.5 154,-0.5"/>
 <text text-anchor="middle" x="199" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">mDOMHarness</text>
 </a>
 </g>
@@ -38,7 +37,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="class_o_m_sim_optical_module.html" target="_top" xlink:title="Base class for OMs works as interface.">
-<polygon fill="white" stroke="black" points="0,-124.5 0,-143.5 122,-143.5 122,-124.5 0,-124.5"/>
+<polygon fill="none" stroke="black" points="0,-124.5 0,-143.5 122,-143.5 122,-124.5 0,-124.5"/>
 <text text-anchor="middle" x="61" y="-131.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimOpticalModule</text>
 </a>
 </g>
@@ -53,7 +52,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="classabc_detector_component.html" target="_top" xlink:title="Abstract base class used for constructing detector components.">
-<polygon fill="white" stroke="black" points="106,-257.5 106,-276.5 238,-276.5 238,-257.5 106,-257.5"/>
+<polygon fill="none" stroke="black" points="106,-257.5 106,-276.5 238,-276.5 238,-257.5 106,-257.5"/>
 <text text-anchor="middle" x="172" y="-264.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcDetectorComponent</text>
 </a>
 </g>
@@ -68,7 +67,7 @@
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="class_o_m_sim_p_m_t_construction.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="34,-200.5 34,-219.5 168,-219.5 168,-200.5 34,-200.5"/>
+<polygon fill="none" stroke="black" points="34,-200.5 34,-219.5 168,-219.5 168,-200.5 34,-200.5"/>
 <text text-anchor="middle" x="101" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPMTConstruction</text>
 </a>
 </g>
@@ -89,7 +88,7 @@
 <g id="node8" class="node">
 <title>Node8</title>
 <g id="a_node8"><a xlink:href="classm_d_o_m_flasher.html" target="_top" xlink:title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module.">
-<polygon fill="white" stroke="black" points="143,-162.5 143,-181.5 229,-181.5 229,-162.5 143,-162.5"/>
+<polygon fill="none" stroke="black" points="143,-162.5 143,-181.5 229,-181.5 229,-162.5 143,-162.5"/>
 <text text-anchor="middle" x="186" y="-169.5" font-family="Helvetica,sans-Serif" font-size="10.00">mDOMFlasher</text>
 </a>
 </g>
@@ -104,7 +103,7 @@
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="class_input_data_manager.html" target="_top" xlink:title="Manages the input data, including parsing and storing material properties.">
-<polygon fill="white" stroke="black" points="118.5,-324.5 118.5,-343.5 225.5,-343.5 225.5,-324.5 118.5,-324.5"/>
+<polygon fill="none" stroke="black" points="118.5,-324.5 118.5,-343.5 225.5,-343.5 225.5,-324.5 118.5,-324.5"/>
 <text text-anchor="middle" x="172" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00">InputDataManager</text>
 </a>
 </g>
@@ -120,7 +119,7 @@
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="class_parameter_table.html" target="_top" xlink:title="A utility class for managing JSON&#45;based data tables.">
-<polygon fill="white" stroke="black" points="126,-381.5 126,-400.5 218,-400.5 218,-381.5 126,-381.5"/>
+<polygon fill="none" stroke="black" points="126,-381.5 126,-400.5 218,-400.5 218,-381.5 126,-381.5"/>
 <text text-anchor="middle" x="172" y="-388.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParameterTable</text>
 </a>
 </g>

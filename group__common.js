@@ -1,8 +1,8 @@
 var group__common =
 [
-    [ "Installing Geant4", "index.html#autotoc_md2", null ],
-    [ "Requirements", "index.html#autotoc_md3", null ],
-    [ "Compiling OMSim", "index.html#autotoc_md4", null ],
+    [ "Installing Geant4", "index.html#autotoc_md3", null ],
+    [ "Requirements", "index.html#autotoc_md4", null ],
+    [ "Compiling OMSim", "index.html#autotoc_md5", null ],
     [ "OMSim.hh", "_o_m_sim_8hh.html", null ],
     [ "OMSimCommandArgsTable.hh", "_o_m_sim_command_args_table_8hh.html", null ],
     [ "OMSimDataFileTypes.hh", "_o_m_sim_data_file_types_8hh.html", null ],

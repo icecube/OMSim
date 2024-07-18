@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 594.00 140.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 136)">
 <title>abcDetectorComponent</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-136 590,-136 590,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="class_d_egg_harness.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="0,-56.5 0,-75.5 82,-75.5 82,-56.5 0,-56.5"/>
+<polygon fill="none" stroke="black" points="0,-56.5 0,-75.5 82,-75.5 82,-56.5 0,-56.5"/>
 <text text-anchor="middle" x="41" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">DEggHarness</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="class_o_m_sim_optical_module.html" target="_top" xlink:title="Base class for OMs works as interface.">
-<polygon fill="white" stroke="black" points="100,-56.5 100,-75.5 222,-75.5 222,-56.5 100,-56.5"/>
+<polygon fill="none" stroke="black" points="100,-56.5 100,-75.5 222,-75.5 222,-56.5 100,-56.5"/>
 <text text-anchor="middle" x="161" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimOpticalModule</text>
 </a>
 </g>
@@ -52,7 +51,7 @@
 <g id="node9" class="node">
 <title>Node9</title>
 <g id="a_node9"><a xlink:href="class_o_m_sim_p_m_t_construction.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="240,-56.5 240,-75.5 374,-75.5 374,-56.5 240,-56.5"/>
+<polygon fill="none" stroke="black" points="240,-56.5 240,-75.5 374,-75.5 374,-56.5 240,-56.5"/>
 <text text-anchor="middle" x="307" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPMTConstruction</text>
 </a>
 </g>
@@ -67,7 +66,7 @@
 <g id="node10" class="node">
 <title>Node10</title>
 <g id="a_node10"><a xlink:href="classm_d_o_m_flasher.html" target="_top" xlink:title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module.">
-<polygon fill="white" stroke="black" points="392,-56.5 392,-75.5 478,-75.5 478,-56.5 392,-56.5"/>
+<polygon fill="none" stroke="black" points="392,-56.5 392,-75.5 478,-75.5 478,-56.5 392,-56.5"/>
 <text text-anchor="middle" x="435" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">mDOMFlasher</text>
 </a>
 </g>
@@ -82,7 +81,7 @@
 <g id="node11" class="node">
 <title>Node11</title>
 <g id="a_node11"><a xlink:href="classm_d_o_m_harness.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="496,-56.5 496,-75.5 586,-75.5 586,-56.5 496,-56.5"/>
+<polygon fill="none" stroke="black" points="496,-56.5 496,-75.5 586,-75.5 586,-56.5 496,-56.5"/>
 <text text-anchor="middle" x="541" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">mDOMHarness</text>
 </a>
 </g>
@@ -97,7 +96,7 @@
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="class_d_e_g_g.html" target="_top" xlink:title="Construction of the DEGG detector geometry.">
-<polygon fill="white" stroke="black" points="4.5,-0.5 4.5,-19.5 49.5,-19.5 49.5,-0.5 4.5,-0.5"/>
+<polygon fill="none" stroke="black" points="4.5,-0.5 4.5,-19.5 49.5,-19.5 49.5,-0.5 4.5,-0.5"/>
 <text text-anchor="middle" x="27" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">DEGG</text>
 </a>
 </g>
@@ -112,7 +111,7 @@
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="class_l_o_m16.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="68,-0.5 68,-19.5 118,-19.5 118,-0.5 68,-0.5"/>
+<polygon fill="none" stroke="black" points="68,-0.5 68,-19.5 118,-19.5 118,-0.5 68,-0.5"/>
 <text text-anchor="middle" x="93" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">LOM16</text>
 </a>
 </g>
@@ -127,7 +126,7 @@
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="class_l_o_m18.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="136,-0.5 136,-19.5 186,-19.5 186,-0.5 136,-0.5"/>
+<polygon fill="none" stroke="black" points="136,-0.5 136,-19.5 186,-19.5 186,-0.5 136,-0.5"/>
 <text text-anchor="middle" x="161" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">LOM18</text>
 </a>
 </g>
@@ -142,7 +141,7 @@
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:href="classm_d_o_m.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="204,-0.5 204,-19.5 254,-19.5 254,-0.5 204,-0.5"/>
+<polygon fill="none" stroke="black" points="204,-0.5 204,-19.5 254,-19.5 254,-0.5 204,-0.5"/>
 <text text-anchor="middle" x="229" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">mDOM</text>
 </a>
 </g>
@@ -157,7 +156,7 @@
 <g id="node8" class="node">
 <title>Node8</title>
 <g id="a_node8"><a xlink:href="classp_d_o_m.html" target="_top" xlink:title="pDOM class represents the construction of pDOM/Gen1 DOM.">
-<polygon fill="white" stroke="black" points="272.5,-0.5 272.5,-19.5 319.5,-19.5 319.5,-0.5 272.5,-0.5"/>
+<polygon fill="none" stroke="black" points="272.5,-0.5 272.5,-19.5 319.5,-19.5 319.5,-0.5 272.5,-0.5"/>
 <text text-anchor="middle" x="296" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">pDOM</text>
 </a>
 </g>

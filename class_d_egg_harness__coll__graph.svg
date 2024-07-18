@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 288.74 333.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 329)">
 <title>DEggHarness</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-329 284.74,-329 284.74,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="class_d_e_g_g.html" target="_top" xlink:title="Construction of the DEGG detector geometry.">
-<polygon fill="white" stroke="black" points="49.24,-0.5 49.24,-19.5 94.24,-19.5 94.24,-0.5 49.24,-0.5"/>
+<polygon fill="none" stroke="black" points="49.24,-0.5 49.24,-19.5 94.24,-19.5 94.24,-0.5 49.24,-0.5"/>
 <text text-anchor="middle" x="71.74" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">DEGG</text>
 </a>
 </g>
@@ -38,7 +37,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="classabc_detector_component.html" target="_top" xlink:title="Abstract base class used for constructing detector components.">
-<polygon fill="white" stroke="black" points="52.74,-181.5 52.74,-200.5 184.74,-200.5 184.74,-181.5 52.74,-181.5"/>
+<polygon fill="none" stroke="black" points="52.74,-181.5 52.74,-200.5 184.74,-200.5 184.74,-181.5 52.74,-181.5"/>
 <text text-anchor="middle" x="118.74" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcDetectorComponent</text>
 </a>
 </g>
@@ -53,7 +52,7 @@
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="class_o_m_sim_optical_module.html" target="_top" xlink:title="Base class for OMs works as interface.">
-<polygon fill="white" stroke="black" points="119.74,-57.5 119.74,-76.5 241.74,-76.5 241.74,-57.5 119.74,-57.5"/>
+<polygon fill="none" stroke="black" points="119.74,-57.5 119.74,-76.5 241.74,-76.5 241.74,-57.5 119.74,-57.5"/>
 <text text-anchor="middle" x="180.74" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimOpticalModule</text>
 </a>
 </g>
@@ -68,7 +67,7 @@
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:href="class_o_m_sim_p_m_t_construction.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="146.74,-124.5 146.74,-143.5 280.74,-143.5 280.74,-124.5 146.74,-124.5"/>
+<polygon fill="none" stroke="black" points="146.74,-124.5 146.74,-143.5 280.74,-143.5 280.74,-124.5 146.74,-124.5"/>
 <text text-anchor="middle" x="213.74" y="-131.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPMTConstruction</text>
 </a>
 </g>
@@ -83,7 +82,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="class_input_data_manager.html" target="_top" xlink:title="Manages the input data, including parsing and storing material properties.">
-<polygon fill="white" stroke="black" points="65.24,-248.5 65.24,-267.5 172.24,-267.5 172.24,-248.5 65.24,-248.5"/>
+<polygon fill="none" stroke="black" points="65.24,-248.5 65.24,-267.5 172.24,-267.5 172.24,-248.5 65.24,-248.5"/>
 <text text-anchor="middle" x="118.74" y="-255.5" font-family="Helvetica,sans-Serif" font-size="10.00">InputDataManager</text>
 </a>
 </g>
@@ -99,7 +98,7 @@
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="class_parameter_table.html" target="_top" xlink:title="A utility class for managing JSON&#45;based data tables.">
-<polygon fill="white" stroke="black" points="72.74,-305.5 72.74,-324.5 164.74,-324.5 164.74,-305.5 72.74,-305.5"/>
+<polygon fill="none" stroke="black" points="72.74,-305.5 72.74,-324.5 164.74,-324.5 164.74,-305.5 72.74,-305.5"/>
 <text text-anchor="middle" x="118.74" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParameterTable</text>
 </a>
 </g>

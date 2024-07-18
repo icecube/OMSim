@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 512.50 117.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 113)">
 <title>SNBaseParticleGenerator</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-113 508.5,-113 508.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="0,-89.5 0,-108.5 177,-108.5 177,-89.5 0,-89.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="0,-89.5 0,-108.5 177,-108.5 177,-89.5 0,-89.5"/>
 <text text-anchor="middle" x="88.5" y="-96.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4VUserPrimaryGeneratorAction</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="class_distribution_sampler.html" target="_top" xlink:title="Utility class for sampling from a given distribution using the inverse cumulative function and interp...">
-<polygon fill="white" stroke="black" points="195.5,-89.5 195.5,-108.5 309.5,-108.5 309.5,-89.5 195.5,-89.5"/>
+<polygon fill="none" stroke="black" points="195.5,-89.5 195.5,-108.5 309.5,-108.5 309.5,-89.5 195.5,-89.5"/>
 <text text-anchor="middle" x="252.5" y="-96.5" font-family="Helvetica,sans-Serif" font-size="10.00">DistributionSampler</text>
 </a>
 </g>
@@ -55,7 +54,7 @@
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="class_o_m_sim_s_n_tools.html" target="_top" xlink:title="Provides utility methods for generating ENES and IBD interactions.">
-<polygon fill="white" stroke="black" points="398.5,-89.5 398.5,-108.5 488.5,-108.5 488.5,-89.5 398.5,-89.5"/>
+<polygon fill="none" stroke="black" points="398.5,-89.5 398.5,-108.5 488.5,-108.5 488.5,-89.5 398.5,-89.5"/>
 <text text-anchor="middle" x="443.5" y="-96.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimSNTools</text>
 </a>
 </g>

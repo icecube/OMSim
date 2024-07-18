@@ -8,12 +8,11 @@
  viewBox="0.00 0.00 557.00 104.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 100)">
 <title>Graphical Class Hierarchy</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-100 553,-100 553,4 -4,4"/>
 <!-- Node48 -->
 <g id="node1" class="node">
 <title>Node48</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="0,-38.5 0,-57.5 163,-57.5 163,-38.5 0,-38.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="0,-38.5 0,-57.5 163,-57.5 163,-38.5 0,-38.5"/>
 <text text-anchor="middle" x="81.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4VUserDetectorConstruction</text>
 </a>
 </g>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node0</title>
 <g id="a_node2"><a xlink:href="class_o_m_sim_detector_construction.html" target="_top" xlink:title="Class for detector construction in the effective area simulation.">
-<polygon fill="white" stroke="black" points="199,-38.5 199,-57.5 354,-57.5 354,-38.5 199,-38.5"/>
+<polygon fill="none" stroke="black" points="199,-38.5 199,-57.5 354,-57.5 354,-38.5 199,-38.5"/>
 <text text-anchor="middle" x="276.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDetectorConstruction</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node3" class="node">
 <title>Node1</title>
 <g id="a_node3"><a xlink:href="class_o_m_sim_effective_area_detector.html" target="_top" xlink:title="Class for detector construction in the effective area simulation.">
-<polygon fill="white" stroke="black" points="390,-76.5 390,-95.5 549,-95.5 549,-76.5 390,-76.5"/>
+<polygon fill="none" stroke="black" points="390,-76.5 390,-95.5 549,-95.5 549,-76.5 390,-76.5"/>
 <text text-anchor="middle" x="469.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimEffectiveAreaDetector</text>
 </a>
 </g>
@@ -52,7 +51,7 @@
 <g id="node4" class="node">
 <title>Node2</title>
 <g id="a_node4"><a xlink:href="class_o_m_sim_rad_decays_detector.html" target="_top" xlink:title="Detector construction of radioactive decays simulation.">
-<polygon fill="white" stroke="black" points="395,-38.5 395,-57.5 544,-57.5 544,-38.5 395,-38.5"/>
+<polygon fill="none" stroke="black" points="395,-38.5 395,-57.5 544,-57.5 544,-38.5 395,-38.5"/>
 <text text-anchor="middle" x="469.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimRadDecaysDetector</text>
 </a>
 </g>
@@ -67,7 +66,7 @@
 <g id="node5" class="node">
 <title>Node3</title>
 <g id="a_node5"><a xlink:href="class_o_m_sim_s_ndetector.html" target="_top" xlink:title="Class for detector construction in the SN neutrino simulation.">
-<polygon fill="white" stroke="black" points="416.5,-0.5 416.5,-19.5 522.5,-19.5 522.5,-0.5 416.5,-0.5"/>
+<polygon fill="none" stroke="black" points="416.5,-0.5 416.5,-19.5 522.5,-19.5 522.5,-0.5 416.5,-0.5"/>
 <text text-anchor="middle" x="469.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimSNdetector</text>
 </a>
 </g>

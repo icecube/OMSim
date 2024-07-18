@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 1036.00 308.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 304)">
 <title>abcDetectorComponent.hh</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-304 1032,-304 1032,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="_o_m_sim_d_e_g_g_harness_8hh.html" target="_top" xlink:title="Construction of the DEGG harness.">
-<polygon fill="white" stroke="black" points="84.5,-224.5 84.5,-243.5 219.5,-243.5 219.5,-224.5 84.5,-224.5"/>
+<polygon fill="none" stroke="black" points="84.5,-224.5 84.5,-243.5 219.5,-243.5 219.5,-224.5 84.5,-224.5"/>
 <text text-anchor="middle" x="152" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDEGGHarness.hh</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="_o_m_sim_m_d_o_m_flasher_8hh.html" target="_top" xlink:title="Defines the mDOMFlasher class for simulating the 10 flashers in an mDOM optical module.">
-<polygon fill="white" stroke="black" points="10.5,-168.5 10.5,-187.5 145.5,-187.5 145.5,-168.5 10.5,-168.5"/>
+<polygon fill="none" stroke="black" points="10.5,-168.5 10.5,-187.5 145.5,-187.5 145.5,-168.5 10.5,-168.5"/>
 <text text-anchor="middle" x="78" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimMDOMFlasher.hh</text>
 </a>
 </g>
@@ -52,7 +51,7 @@
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="_o_m_sim_m_d_o_m_harness_8hh.html" target="_top" xlink:title="Construction of mDOM harness.">
-<polygon fill="white" stroke="black" points="888,-224.5 888,-243.5 1028,-243.5 1028,-224.5 888,-224.5"/>
+<polygon fill="none" stroke="black" points="888,-224.5 888,-243.5 1028,-243.5 1028,-224.5 888,-224.5"/>
 <text text-anchor="middle" x="958" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimMDOMHarness.hh</text>
 </a>
 </g>
@@ -67,7 +66,7 @@
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="_o_m_sim_optical_module_8hh_source.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="395.5,-168.5 395.5,-187.5 532.5,-187.5 532.5,-168.5 395.5,-168.5"/>
+<polygon fill="none" stroke="black" points="395.5,-168.5 395.5,-187.5 532.5,-187.5 532.5,-168.5 395.5,-168.5"/>
 <text text-anchor="middle" x="464" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimOpticalModule.hh</text>
 </a>
 </g>
@@ -82,7 +81,7 @@
 <g id="node15" class="node">
 <title>Node15</title>
 <g id="a_node15"><a xlink:href="_o_m_sim_rad_decays_detector_8hh.html" target="_top" xlink:title="Defines the OMSimRadDecaysDetector class for the radioactive decays simulation.">
-<polygon fill="white" stroke="black" points="689.5,-56.5 689.5,-75.5 852.5,-75.5 852.5,-56.5 689.5,-56.5"/>
+<polygon fill="none" stroke="black" points="689.5,-56.5 689.5,-75.5 852.5,-75.5 852.5,-56.5 689.5,-56.5"/>
 <text text-anchor="middle" x="771" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimRadDecaysDetector.hh</text>
 </a>
 </g>
@@ -97,7 +96,7 @@
 <g id="node22" class="node">
 <title>Node22</title>
 <g id="a_node22"><a xlink:href="_o_m_sim_p_m_t_construction_8hh.html" target="_top" xlink:title="Construction of the PMTs.">
-<polygon fill="white" stroke="black" points="275.5,-224.5 275.5,-243.5 424.5,-243.5 424.5,-224.5 275.5,-224.5"/>
+<polygon fill="none" stroke="black" points="275.5,-224.5 275.5,-243.5 424.5,-243.5 424.5,-224.5 275.5,-224.5"/>
 <text text-anchor="middle" x="350" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPMTConstruction.hh</text>
 </a>
 </g>
@@ -112,7 +111,7 @@
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="_o_m_sim_m_d_o_m_8hh.html" target="_top" xlink:title="Construction of mDOM.">
-<polygon fill="white" stroke="black" points="0,-112.5 0,-131.5 100,-131.5 100,-112.5 0,-112.5"/>
+<polygon fill="none" stroke="black" points="0,-112.5 0,-131.5 100,-131.5 100,-112.5 0,-112.5"/>
 <text text-anchor="middle" x="50" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimMDOM.hh</text>
 </a>
 </g>
@@ -133,7 +132,7 @@
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:href="_o_m_sim_d_e_g_g_8hh.html" target="_top" xlink:title="Construction of the DEGG class. From DOUMEKI.">
-<polygon fill="white" stroke="black" points="118.5,-112.5 118.5,-131.5 213.5,-131.5 213.5,-112.5 118.5,-112.5"/>
+<polygon fill="none" stroke="black" points="118.5,-112.5 118.5,-131.5 213.5,-131.5 213.5,-112.5 118.5,-112.5"/>
 <text text-anchor="middle" x="166" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDEGG.hh</text>
 </a>
 </g>
@@ -148,7 +147,7 @@
 <g id="node8" class="node">
 <title>Node8</title>
 <g id="a_node8"><a xlink:href="_o_m_sim_detector_construction_8hh_source.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="470,-112.5 470,-131.5 640,-131.5 640,-112.5 470,-112.5"/>
+<polygon fill="none" stroke="black" points="470,-112.5 470,-131.5 640,-131.5 640,-112.5 470,-112.5"/>
 <text text-anchor="middle" x="555" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDetectorConstruction.hh</text>
 </a>
 </g>
@@ -169,7 +168,7 @@
 <g id="node17" class="node">
 <title>Node17</title>
 <g id="a_node17"><a xlink:href="_o_m_sim_l_o_m16_8hh.html" target="_top" xlink:title="Construction of LOM16.">
-<polygon fill="white" stroke="black" points="231.5,-112.5 231.5,-131.5 332.5,-131.5 332.5,-112.5 231.5,-112.5"/>
+<polygon fill="none" stroke="black" points="231.5,-112.5 231.5,-131.5 332.5,-131.5 332.5,-112.5 231.5,-112.5"/>
 <text text-anchor="middle" x="282" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimLOM16.hh</text>
 </a>
 </g>
@@ -184,7 +183,7 @@
 <g id="node18" class="node">
 <title>Node18</title>
 <g id="a_node18"><a xlink:href="_o_m_sim_l_o_m18_8hh.html" target="_top" xlink:title="Construction of LOM18.">
-<polygon fill="white" stroke="black" points="350.5,-112.5 350.5,-131.5 451.5,-131.5 451.5,-112.5 350.5,-112.5"/>
+<polygon fill="none" stroke="black" points="350.5,-112.5 350.5,-131.5 451.5,-131.5 451.5,-112.5 350.5,-112.5"/>
 <text text-anchor="middle" x="401" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimLOM18.hh</text>
 </a>
 </g>
@@ -199,7 +198,7 @@
 <g id="node20" class="node">
 <title>Node20</title>
 <g id="a_node20"><a xlink:href="_o_m_sim_p_d_o_m_8hh.html" target="_top" xlink:title="Implementation of the pDOM/Gen1 DOM class.">
-<polygon fill="white" stroke="black" points="734.5,-112.5 734.5,-131.5 831.5,-131.5 831.5,-112.5 734.5,-112.5"/>
+<polygon fill="none" stroke="black" points="734.5,-112.5 734.5,-131.5 831.5,-131.5 831.5,-112.5 734.5,-112.5"/>
 <text text-anchor="middle" x="783" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPDOM.hh</text>
 </a>
 </g>
@@ -214,7 +213,7 @@
 <g id="node21" class="node">
 <title>Node21</title>
 <g id="a_node21"><a xlink:href="_o_m_sim_decays_g_p_s_8hh.html" target="_top" xlink:title="Defines the OMSimDecaysGPS class for the radioactive decays simulation.">
-<polygon fill="white" stroke="black" points="871,-56.5 871,-75.5 993,-75.5 993,-56.5 871,-56.5"/>
+<polygon fill="none" stroke="black" points="871,-56.5 871,-75.5 993,-75.5 993,-56.5 871,-56.5"/>
 <text text-anchor="middle" x="932" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDecaysGPS.hh</text>
 </a>
 </g>
@@ -229,7 +228,7 @@
 <g id="node9" class="node">
 <title>Node9</title>
 <g id="a_node9"><a xlink:href="_o_m_sim_8hh.html" target="_top" xlink:title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,...">
-<polygon fill="white" stroke="black" points="465.5,-56.5 465.5,-75.5 532.5,-75.5 532.5,-56.5 465.5,-56.5"/>
+<polygon fill="none" stroke="black" points="465.5,-56.5 465.5,-75.5 532.5,-75.5 532.5,-56.5 465.5,-56.5"/>
 <text text-anchor="middle" x="499" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSim.hh</text>
 </a>
 </g>
@@ -244,7 +243,7 @@
 <g id="node14" class="node">
 <title>Node14</title>
 <g id="a_node14"><a xlink:href="_o_m_sim_effective_area_detector_8hh.html" target="_top" xlink:title="Defines the OMSimEffectiveAreaDetector class for effective area simulation detector construction.">
-<polygon fill="white" stroke="black" points="274.5,-56.5 274.5,-75.5 447.5,-75.5 447.5,-56.5 274.5,-56.5"/>
+<polygon fill="none" stroke="black" points="274.5,-56.5 274.5,-75.5 447.5,-75.5 447.5,-56.5 274.5,-56.5"/>
 <text text-anchor="middle" x="361" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimEffectiveAreaDetector.hh</text>
 </a>
 </g>
@@ -265,7 +264,7 @@
 <g id="node16" class="node">
 <title>Node16</title>
 <g id="a_node16"><a xlink:href="_o_m_sim_s_ndetector_8hh_source.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="551,-56.5 551,-75.5 671,-75.5 671,-56.5 551,-56.5"/>
+<polygon fill="none" stroke="black" points="551,-56.5 551,-75.5 671,-75.5 671,-56.5 551,-56.5"/>
 <text text-anchor="middle" x="611" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimSNdetector.hh</text>
 </a>
 </g>
@@ -280,7 +279,7 @@
 <g id="node10" class="node">
 <title>Node10</title>
 <g id="a_node10"><a xlink:href="_o_m_sim_8cc.html" target="_top" xlink:title="Implementation of the OMSim class.">
-<polygon fill="white" stroke="black" points="465.5,-0.5 465.5,-19.5 530.5,-19.5 530.5,-0.5 465.5,-0.5"/>
+<polygon fill="none" stroke="black" points="465.5,-0.5 465.5,-19.5 530.5,-19.5 530.5,-0.5 465.5,-0.5"/>
 <text text-anchor="middle" x="498" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSim.cc</text>
 </a>
 </g>
@@ -295,7 +294,7 @@
 <g id="node11" class="node">
 <title>Node11</title>
 <g id="a_node11"><a xlink:href="_o_m_sim__effective__area_8cc.html" target="_top" xlink:title="Main for the calculation of effective areas.">
-<polygon fill="white" stroke="black" points="300,-0.5 300,-19.5 440,-19.5 440,-0.5 300,-0.5"/>
+<polygon fill="none" stroke="black" points="300,-0.5 300,-19.5 440,-19.5 440,-0.5 300,-0.5"/>
 <text text-anchor="middle" x="370" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSim_effective_area.cc</text>
 </a>
 </g>
@@ -310,7 +309,7 @@
 <g id="node12" class="node">
 <title>Node12</title>
 <g id="a_node12"><a xlink:href="_o_m_sim__radioactive__decays_8cc.html" target="_top" xlink:title="Main of the radioactive decay study.">
-<polygon fill="white" stroke="black" points="689.5,-0.5 689.5,-19.5 854.5,-19.5 854.5,-0.5 689.5,-0.5"/>
+<polygon fill="none" stroke="black" points="689.5,-0.5 689.5,-19.5 854.5,-19.5 854.5,-0.5 689.5,-0.5"/>
 <text text-anchor="middle" x="772" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSim_radioactive_decays.cc</text>
 </a>
 </g>
@@ -325,7 +324,7 @@
 <g id="node13" class="node">
 <title>Node13</title>
 <g id="a_node13"><a xlink:href="_o_m_sim__supernova_8cc.html" target="_top" xlink:title="Main of the supernova study.">
-<polygon fill="white" stroke="black" points="549,-0.5 549,-19.5 671,-19.5 671,-0.5 549,-0.5"/>
+<polygon fill="none" stroke="black" points="549,-0.5 549,-19.5 671,-19.5 671,-0.5 549,-0.5"/>
 <text text-anchor="middle" x="610" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSim_supernova.cc</text>
 </a>
 </g>
@@ -358,7 +357,7 @@
 <g id="node19" class="node">
 <title>Node19</title>
 <g id="a_node19"><a xlink:href="_o_m_sim_l_o_m18_8cc.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="157.5,-56.5 157.5,-75.5 256.5,-75.5 256.5,-56.5 157.5,-56.5"/>
+<polygon fill="none" stroke="black" points="157.5,-56.5 157.5,-75.5 256.5,-75.5 256.5,-56.5 157.5,-56.5"/>
 <text text-anchor="middle" x="207" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimLOM18.cc</text>
 </a>
 </g>

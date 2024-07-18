@@ -8,12 +8,11 @@
  viewBox="0.00 0.00 331.00 142.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 138)">
 <title>Graphical Class Hierarchy</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-138 327,-138 327,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node">
 <title>Node0</title>
 <g id="a_node1"><a xlink:href="class_c_a_d_mesh_1_1_file_1_1_reader.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="0,-57.5 0,-76.5 128,-76.5 128,-57.5 0,-57.5"/>
+<polygon fill="none" stroke="black" points="0,-57.5 0,-76.5 128,-76.5 128,-57.5 0,-57.5"/>
 <text text-anchor="middle" x="64" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">CADMesh::File::Reader</text>
 </a>
 </g>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node1</title>
 <g id="a_node2"><a xlink:href="class_c_a_d_mesh_1_1_file_1_1_built_in_reader.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="164,-114.5 164,-133.5 323,-133.5 323,-114.5 164,-114.5"/>
+<polygon fill="none" stroke="black" points="164,-114.5 164,-133.5 323,-133.5 323,-114.5 164,-114.5"/>
 <text text-anchor="middle" x="243.5" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">CADMesh::File::BuiltInReader</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node3" class="node">
 <title>Node2</title>
 <g id="a_node3"><a xlink:href="class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="171,-76.5 171,-95.5 316,-95.5 316,-76.5 171,-76.5"/>
+<polygon fill="none" stroke="black" points="171,-76.5 171,-95.5 316,-95.5 316,-76.5 171,-76.5"/>
 <text text-anchor="middle" x="243.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">CADMesh::File::OBJReader</text>
 </a>
 </g>
@@ -52,7 +51,7 @@
 <g id="node4" class="node">
 <title>Node3</title>
 <g id="a_node4"><a xlink:href="class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="171.5,-38.5 171.5,-57.5 315.5,-57.5 315.5,-38.5 171.5,-38.5"/>
+<polygon fill="none" stroke="black" points="171.5,-38.5 171.5,-57.5 315.5,-57.5 315.5,-38.5 171.5,-38.5"/>
 <text text-anchor="middle" x="243.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">CADMesh::File::PLYReader</text>
 </a>
 </g>
@@ -67,7 +66,7 @@
 <g id="node5" class="node">
 <title>Node4</title>
 <g id="a_node5"><a xlink:href="class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="171,-0.5 171,-19.5 316,-19.5 316,-0.5 171,-0.5"/>
+<polygon fill="none" stroke="black" points="171,-0.5 171,-19.5 316,-19.5 316,-0.5 171,-0.5"/>
 <text text-anchor="middle" x="243.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">CADMesh::File::STLReader</text>
 </a>
 </g>

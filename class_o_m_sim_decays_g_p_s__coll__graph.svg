@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 224.00 343.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 339)">
 <title>OMSimDecaysGPS</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-339 220,-339 220,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="class_o_m_sim_optical_module.html" target="_top" xlink:title="Base class for OMs works as interface.">
-<polygon fill="white" stroke="black" points="9,-67.5 9,-86.5 131,-86.5 131,-67.5 9,-67.5"/>
+<polygon fill="none" stroke="black" points="9,-67.5 9,-86.5 131,-86.5 131,-67.5 9,-67.5"/>
 <text text-anchor="middle" x="70" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimOpticalModule</text>
 </a>
 </g>
@@ -38,7 +37,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="classabc_detector_component.html" target="_top" xlink:title="Abstract base class used for constructing detector components.">
-<polygon fill="white" stroke="black" points="0,-191.5 0,-210.5 132,-210.5 132,-191.5 0,-191.5"/>
+<polygon fill="none" stroke="black" points="0,-191.5 0,-210.5 132,-210.5 132,-191.5 0,-191.5"/>
 <text text-anchor="middle" x="66" y="-198.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcDetectorComponent</text>
 </a>
 </g>
@@ -53,7 +52,7 @@
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="class_o_m_sim_p_m_t_construction.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="82,-134.5 82,-153.5 216,-153.5 216,-134.5 82,-134.5"/>
+<polygon fill="none" stroke="black" points="82,-134.5 82,-153.5 216,-153.5 216,-134.5 82,-134.5"/>
 <text text-anchor="middle" x="149" y="-141.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPMTConstruction</text>
 </a>
 </g>
@@ -68,7 +67,7 @@
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="class_input_data_manager.html" target="_top" xlink:title="Manages the input data, including parsing and storing material properties.">
-<polygon fill="white" stroke="black" points="12.5,-258.5 12.5,-277.5 119.5,-277.5 119.5,-258.5 12.5,-258.5"/>
+<polygon fill="none" stroke="black" points="12.5,-258.5 12.5,-277.5 119.5,-277.5 119.5,-258.5 12.5,-258.5"/>
 <text text-anchor="middle" x="66" y="-265.5" font-family="Helvetica,sans-Serif" font-size="10.00">InputDataManager</text>
 </a>
 </g>
@@ -84,7 +83,7 @@
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="class_parameter_table.html" target="_top" xlink:title="A utility class for managing JSON&#45;based data tables.">
-<polygon fill="white" stroke="black" points="20,-315.5 20,-334.5 112,-334.5 112,-315.5 20,-315.5"/>
+<polygon fill="none" stroke="black" points="20,-315.5 20,-334.5 112,-334.5 112,-315.5 20,-315.5"/>
 <text text-anchor="middle" x="66" y="-322.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParameterTable</text>
 </a>
 </g>

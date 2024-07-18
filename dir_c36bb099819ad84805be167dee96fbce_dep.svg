@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 223.00 204.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 200)">
 <title>radioactive_decays</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-200 219,-200 219,4 -4,4"/>
 <g id="clust1" class="cluster">
 <title>clusterdir_c36bb099819ad84805be167dee96fbce</title>
 <g id="a_clust1"><a xlink:href="dir_c36bb099819ad84805be167dee96fbce.html" target="_top">
@@ -44,7 +43,7 @@
 <g id="node4" class="node">
 <title>dir_bdd9a5d540de89e9fe90efdfc6973a4f</title>
 <g id="a_node4"><a xlink:href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html" target="_top" xlink:title="common">
-<polygon fill="white" stroke="red" points="173.5,-36 114.5,-36 114.5,0 173.5,0 173.5,-36"/>
+<polygon fill="none" stroke="red" points="173.5,-36 114.5,-36 114.5,0 173.5,0 173.5,-36"/>
 <text text-anchor="middle" x="144" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00">common</text>
 </a>
 </g>

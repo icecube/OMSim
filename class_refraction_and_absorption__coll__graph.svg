@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 146.00 209.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 205)">
 <title>RefractionAndAbsorption</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 142,-205 142,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="classabc_material_data.html" target="_top" xlink:title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f...">
-<polygon fill="white" stroke="black" points="20,-57.5 20,-76.5 118,-76.5 118,-57.5 20,-57.5"/>
+<polygon fill="none" stroke="black" points="20,-57.5 20,-76.5 118,-76.5 118,-57.5 20,-57.5"/>
 <text text-anchor="middle" x="69" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcMaterialData</text>
 </a>
 </g>
@@ -43,7 +42,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="classabc_data_file.html" target="_top" xlink:title="This is an abstract base class that provides an interface for handling data files in the simulation.">
-<polygon fill="white" stroke="black" points="32,-114.5 32,-133.5 106,-133.5 106,-114.5 32,-114.5"/>
+<polygon fill="none" stroke="black" points="32,-114.5 32,-133.5 106,-133.5 106,-114.5 32,-114.5"/>
 <text text-anchor="middle" x="69" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcDataFile</text>
 </a>
 </g>
@@ -58,7 +57,7 @@
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="class_parameter_table.html" target="_top" xlink:title="A utility class for managing JSON&#45;based data tables.">
-<polygon fill="white" stroke="black" points="23,-181.5 23,-200.5 115,-200.5 115,-181.5 23,-181.5"/>
+<polygon fill="none" stroke="black" points="23,-181.5 23,-200.5 115,-200.5 115,-181.5 23,-181.5"/>
 <text text-anchor="middle" x="69" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParameterTable</text>
 </a>
 </g>

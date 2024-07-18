@@ -135,8 +135,7 @@ Materials and User Data</h3>
 <div class="line">std::vector&lt;G4double&gt; second_column = data.at(1);</div>
 <div class="line"><span class="comment">// ...</span></div>
 <div class="ttc" id="aclass_input_data_manager_html_a3a233522b61c65875ebb7b274ff31507"><div class="ttname"><a href="class_input_data_manager.html#a3a233522b61c65875ebb7b274ff31507">InputDataManager::loadtxt</a></div><div class="ttdeci">static std::vector&lt; std::vector&lt; double &gt; &gt; loadtxt(const std::string &amp;pFilePath, bool pUnpack=true, size_t pSkipRows=0, char pDelimiter=' ')</div><div class="ttdoc">Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:135</div></div>
-</div><!-- fragment --><p>See the <a class="el" href="test_page.html">Test Page</a> for more information.</p>
-<h3><a class="anchor" id="geometry"></a>
+</div><!-- fragment --><h3><a class="anchor" id="geometry"></a>
 Geometry construction</h3>
 <p>Each optical module and harness is defined in its respective class, located in the <code>/common/geometry_construction/</code> folder. These inherit from the virtual base class <code><a class="el" href="class_o_m_sim_optical_module.html" title="Base class for OMs works as interface.">OMSimOpticalModule</a></code>. This inheritance ensures the definition of functions to retrieve the pressure vessel's weight (necessary for radioactive decay studies) and the count of PMTs inside the module. The <code><a class="el" href="class_o_m_sim_optical_module.html" title="Base class for OMs works as interface.">OMSimOpticalModule</a></code> interface inherits from <code><a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a></code>, a general helper class simplifying construction. Most <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> geometries inherit from this class, as illustrated in the dependency diagram below:  
  <div class="center">
@@ -301,7 +300,7 @@ Classes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jul 18 2024 15:54:26 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jul 18 2024 16:52:13 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

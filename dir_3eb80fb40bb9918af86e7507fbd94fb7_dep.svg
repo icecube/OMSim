@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 107.50 223.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 219)">
 <title>src</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-219 103.5,-219 103.5,4 -4,4"/>
 <g id="clust1" class="cluster">
 <title>clusterdir_d93c684152b9dbfa36b614b4419d35b9</title>
 <g id="a_clust1"><a xlink:href="dir_d93c684152b9dbfa36b614b4419d35b9.html" target="_top" xlink:title="supernova">
@@ -30,7 +29,7 @@
 <g id="node3" class="node">
 <title>dir_bdd9a5d540de89e9fe90efdfc6973a4f</title>
 <g id="a_node3"><a xlink:href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html" target="_top" xlink:title="common">
-<polygon fill="white" stroke="red" points="99.5,-36 40.5,-36 40.5,0 99.5,0 99.5,-36"/>
+<polygon fill="none" stroke="red" points="99.5,-36 40.5,-36 40.5,0 99.5,0 99.5,-36"/>
 <text text-anchor="middle" x="70" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00">common</text>
 </a>
 </g>

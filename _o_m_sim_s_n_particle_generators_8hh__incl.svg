@@ -8,7 +8,6 @@
  viewBox="0.00 0.00 913.50 140.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 136)">
 <title>OMSimSNParticleGenerators.hh</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-136 909.5,-136 909.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -22,7 +21,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="0,-56.5 0,-75.5 192,-75.5 192,-56.5 0,-56.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="0,-56.5 0,-75.5 192,-75.5 192,-56.5 0,-56.5"/>
 <text text-anchor="middle" x="96" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4VUserPrimaryGeneratorAction.hh</text>
 </a>
 </g>
@@ -37,7 +36,7 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="_o_m_sim_primary_generator_messenger_8hh_source.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="210,-56.5 210,-75.5 416,-75.5 416,-56.5 210,-56.5"/>
+<polygon fill="none" stroke="black" points="210,-56.5 210,-75.5 416,-75.5 416,-56.5 210,-56.5"/>
 <text text-anchor="middle" x="313" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPrimaryGeneratorMessenger.hh</text>
 </a>
 </g>
@@ -52,7 +51,7 @@
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="383.5,-0.5 383.5,-19.5 450.5,-19.5 450.5,-0.5 383.5,-0.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="383.5,-0.5 383.5,-19.5 450.5,-19.5 450.5,-0.5 383.5,-0.5"/>
 <text text-anchor="middle" x="417" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">globals.hh</text>
 </a>
 </g>
@@ -67,7 +66,7 @@
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="_o_m_sim_s_n_tools_8hh.html" target="_top" xlink:title="Provides the definition for the OMSimSNTools class, centralizing utility methods for Supernova (SN) n...">
-<polygon fill="white" stroke="black" points="510.5,-56.5 510.5,-75.5 615.5,-75.5 615.5,-56.5 510.5,-56.5"/>
+<polygon fill="none" stroke="black" points="510.5,-56.5 510.5,-75.5 615.5,-75.5 615.5,-56.5 510.5,-56.5"/>
 <text text-anchor="middle" x="563" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimSNTools.hh</text>
 </a>
 </g>
@@ -82,7 +81,7 @@
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="468.5,-0.5 468.5,-19.5 515.5,-19.5 515.5,-0.5 468.5,-0.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="468.5,-0.5 468.5,-19.5 515.5,-19.5 515.5,-0.5 468.5,-0.5"/>
 <text text-anchor="middle" x="492" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">vector</text>
 </a>
 </g>
@@ -97,7 +96,7 @@
 <g id="node10" class="node">
 <title>Node10</title>
 <g id="a_node10"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="634,-56.5 634,-75.5 768,-75.5 768,-56.5 634,-56.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="634,-56.5 634,-75.5 768,-75.5 768,-56.5 634,-56.5"/>
 <text text-anchor="middle" x="701" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4PhysicalConstants.hh</text>
 </a>
 </g>
@@ -112,7 +111,7 @@
 <g id="node11" class="node">
 <title>Node11</title>
 <g id="a_node11"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="786.5,-56.5 786.5,-75.5 905.5,-75.5 905.5,-56.5 786.5,-56.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="786.5,-56.5 786.5,-75.5 905.5,-75.5 905.5,-56.5 786.5,-56.5"/>
 <text text-anchor="middle" x="846" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4SystemOfUnits.hh</text>
 </a>
 </g>
@@ -127,7 +126,7 @@
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="256.5,-0.5 256.5,-19.5 365.5,-19.5 365.5,-0.5 256.5,-0.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="256.5,-0.5 256.5,-19.5 365.5,-19.5 365.5,-0.5 256.5,-0.5"/>
 <text text-anchor="middle" x="311" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4UImessenger.hh</text>
 </a>
 </g>
@@ -160,7 +159,7 @@
 <g id="node8" class="node">
 <title>Node8</title>
 <g id="a_node8"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="612.5,-0.5 612.5,-19.5 715.5,-19.5 715.5,-0.5 612.5,-0.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="612.5,-0.5 612.5,-19.5 715.5,-19.5 715.5,-0.5 612.5,-0.5"/>
 <text text-anchor="middle" x="664" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4ThreeVector.hh</text>
 </a>
 </g>
@@ -175,7 +174,7 @@
 <g id="node9" class="node">
 <title>Node9</title>
 <g id="a_node9"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="533.5,-0.5 533.5,-19.5 594.5,-19.5 594.5,-0.5 533.5,-0.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="533.5,-0.5 533.5,-19.5 594.5,-19.5 594.5,-0.5 533.5,-0.5"/>
 <text text-anchor="middle" x="564" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">TGraph.h</text>
 </a>
 </g>
