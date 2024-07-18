@@ -10,7 +10,7 @@ var searchData=
   ['write_5fto_5fjson_5fif_5ftype_5fmatches_1029',['WRITE_TO_JSON_IF_TYPE_MATCHES',['../_o_m_sim_command_args_table_8hh.html#aa41bdc30fcdd046324b69c10b14d4524',1,'OMSimCommandArgsTable.hh']]],
   ['writeheader_1030',['writeHeader',['../class_o_m_sim_effective_area_analyisis.html#a400b1a20fbf322894cd7c2564a7dbb35',1,'OMSimEffectiveAreaAnalyisis']]],
   ['writeheaders_1031',['WriteHeaders',['../class_o_m_sim_s_n_analysis.html#a831d168d0555363c428ef757b9594f9d',1,'OMSimSNAnalysis']]],
-  ['writemultiplicity_1032',['writeMultiplicity',['../class_o_m_sim_decays_analysis.html#a49fbd38776fcc7d1edf12e786d227ae6',1,'OMSimDecaysAnalysis']]],
+  ['writemultiplicity_1032',['writeMultiplicity',['../class_o_m_sim_decays_analysis.html#af747109a424e5878d2a4e42b6308f3cb',1,'OMSimDecaysAnalysis']]],
   ['writer_5fdata_1033',['Writer_data',['../class_o_m_sim_s_n_analysis.html#a377860961a569510c908d35f00d6051a',1,'OMSimSNAnalysis']]],
   ['writer_5finfofile_1034',['Writer_InfoFile',['../class_o_m_sim_s_n_analysis.html#aa8b4bac60356048e3002c81669df2b6a',1,'OMSimSNAnalysis']]],
   ['writescan_1035',['writeScan',['../class_o_m_sim_effective_area_analyisis.html#af2f7ac6a789bb50ec7d0d8a81487ec20',1,'OMSimEffectiveAreaAnalyisis']]],

@@ -25,7 +25,7 @@ var group__radioactive =
       [ "mergeDecayData", "class_o_m_sim_decays_analysis.html#a715d4897705da383ce1a1d93b68def9b", null ],
       [ "operator=", "class_o_m_sim_decays_analysis.html#af4b8d2cd736ede06f4dcf7258fb46090", null ],
       [ "reset", "class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0", null ],
-      [ "writeMultiplicity", "class_o_m_sim_decays_analysis.html#a49fbd38776fcc7d1edf12e786d227ae6", null ],
+      [ "writeMultiplicity", "class_o_m_sim_decays_analysis.html#af747109a424e5878d2a4e42b6308f3cb", null ],
       [ "writeThreadDecayInformation", "class_o_m_sim_decays_analysis.html#abf3b99f2998f27c9ad1f792dfc716e0c", null ],
       [ "writeThreadHitInformation", "class_o_m_sim_decays_analysis.html#a78449c898f237d5a40c75042123c19af", null ],
       [ "mInstance", "class_o_m_sim_decays_analysis.html#a2df6ba1c18fb3087ceb2aeb5cfe1cd7c", null ],
