@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OMSim: Multithreading</title>
+<title>OMSim: Multi-threading in Geant4</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -114,17 +114,161 @@ $(document).ready(function(){initNavTree('md_multithreading.html',''); initResiz
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Multithreading </div>  </div>
+<div class="title">Multi-threading in Geant4 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Test </p>
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#autotoc_md1">Introduction</a></li>
+<li class="level1"><a href="#autotoc_md2">Thread Safety Guidelines</a></li>
+<li class="level1"><a href="#autotoc_md3">Thread-Safe Singleton Implementation</a><ul><li class="level2"><a href="#autotoc_md4">Example: OMSimHitManager</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#autotoc_md5">Best Practices for Creating New Thread-Safe Containers</a></li>
+</ul>
+</div>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+Introduction</h1>
+<p>Geant4 implements multi-threading using a master-worker model:</p>
+<ol type="1">
+<li><b>Master Thread</b>: Responsible for initialization, geometry construction, and coordinating worker threads.</li>
+<li><b>Worker Threads</b>: Each simulates complete events independently.</li>
+</ol>
+<p>Key points:</p><ul>
+<li>Geometry and physics tables are shared read-only among threads.</li>
+<li>Each thread has its own instance of sensitive detectors, event and tracking managers.</li>
+<li>Random number generators are designed to produce independent streams for each thread.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Thread Safety Guidelines</h1>
+<ol type="1">
+<li><b>Use Thread-Local Storage</b>: For data unique to each thread, use <code>G4ThreadLocal</code>.</li>
+<li><b>Protect Shared Resources</b>: Use mutex locks when accessing shared resources.</li>
+<li><b>Minimize Global Variables</b>: Prefer class members or local variables instead.</li>
+<li><b>Implement Thread-Safe Containers</b>: Ensure thread-safe access and modification of containers.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Thread-Safe Singleton Implementation</h1>
+<p>Both <code><a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a></code> and <code><a class="el" href="class_o_m_sim_decays_analysis.html" title="Singleton class responsible for managing, analysing, and saving decay-related data.">OMSimDecaysAnalysis</a></code> utilize the singleton pattern with a thread-safe <code>getInstance</code> method. This method employs a double-checked locking pattern to ensure thread safety while minimizing synchronization overhead. The process works as follows:</p>
+<ol type="1">
+<li>Check if the instance exists without locking.</li>
+<li>If the instance doesn't exist, acquire a lock.</li>
+<li>After acquiring the lock, check again if the instance exists (to handle potential creation by another thread during the lock wait). Without this check, multiple threads could pass the first check and reach the lock. Once inside the locked section, each thread would create a new instance if the second check wasn't there, potentially leading to multiple instances.</li>
+<li>If the instance still doesn't exist, create it.</li>
+</ol>
+<p>Implementation of the <code>getInstance</code> method:</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">    <span class="keywordflow">if</span> (!mInstance)  <span class="comment">// First check without locking</span></div>
+<div class="line">    {</div>
+<div class="line">        G4AutoLock lock(&amp;mMutex);  <span class="comment">// Lock if instance doesn&#39;t exist</span></div>
+<div class="line">        <span class="keywordflow">if</span> (!mInstance)  <span class="comment">// Double-check after locking</span></div>
+<div class="line">        {</div>
+<div class="line">            mInstance = <span class="keyword">new</span> <a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a>();  <span class="comment">// Create instance if it still doesn&#39;t exist</span></div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> *mInstance;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_o_m_sim_hit_manager_html"><div class="ttname"><a href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div><div class="ttdoc">Manages detected photon information.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.hh:57</div></div>
+</div><!-- fragment --><p>This approach guarantees the creation of only one instance, even in a multi-threaded environment, while ensuring thread-safe initialization. The use of <code>G4AutoLock</code> and a static mutex provides proper synchronization across threads.</p>
+<blockquote class="doxtable">
+<p><b>Note</b>: While this singleton implementation is thread-safe, consider whether a singleton is the best design choice for your specific use case. Singletons can sometimes lead to issues with testability and create hidden dependencies. </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Example: OMSimHitManager</h2>
+<p>The <code><a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a></code> class demonstrates several thread-safety techniques:</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span><a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="keyword">static</span> <a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a>&amp; <a class="code" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">getInstance</a>();</div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">appendHitInfo</a>(<span class="comment">/* parameters */</span>);</div>
+<div class="line">    <span class="keywordtype">void</span> mergeThreadData();</div>
+<div class="line">    <span class="comment">// ... other methods ...</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">private</span>:</div>
+<div class="line">    <span class="keyword">static</span> G4Mutex mMutex;  <span class="comment">// Mutex for thread synchronization</span></div>
+<div class="line">    <span class="keyword">static</span> <a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a>* mInstance;  <span class="comment">// Singleton instance</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">struct </span>ThreadLocalData {</div>
+<div class="line">        std::map&lt;G4int, HitStats&gt; moduleHits;</div>
+<div class="line">    };</div>
+<div class="line">    <span class="comment">// Thread-local storage for hit data</span></div>
+<div class="line">    G4ThreadLocal <span class="keyword">static</span> ThreadLocalData* mThreadData;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// ... constructor and destructor ...</span></div>
+<div class="line">};</div>
+<div class="ttc" id="aclass_o_m_sim_hit_manager_html_a8c2dab4767b46f9c2eb16d5173ba527e"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">OMSimHitManager::appendHitInfo</a></div><div class="ttdeci">void appendHitInfo(G4double pGlobalTime, G4double pLocalTime, G4double pTrackLength, G4double pEnergy, G4int pPMTHitNumber, G4ThreeVector pMomentumDirection, G4ThreeVector pGlobalPos, G4ThreeVector pLocalPos, G4double pDistance, OMSimPMTResponse::PMTPulse pResponse, G4int pModuleIndex=0)</div><div class="ttdoc">Appends hit information for a detected photon to the corresponding module's hit data.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:80</div></div>
+<div class="ttc" id="aclass_o_m_sim_hit_manager_html_aaa3e7a28d658d8e2e6db704b910cc35c"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a></div><div class="ttdeci">static OMSimHitManager &amp; getInstance()</div><div class="ttdoc">Returns the singleton instance of the OMSimHitManager.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:17</div></div>
+</div><!-- fragment --><p>Key features:</p><ul>
+<li>Singleton pattern for global access (consider if necessary for your use case).</li>
+<li>Thread-local storage for hit data (<code>mThreadData</code>).</li>
+<li>Mutex for thread synchronization.</li>
+</ul>
+<p>The <code>appendHitInfo</code> method:</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">OMSimHitManager::appendHitInfo</a>(<span class="comment">/* parameters */</span>)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">if</span> (!mThreadData)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// Initialize thread-local data on first use</span></div>
+<div class="line">        mThreadData = <span class="keyword">new</span> ThreadLocalData();</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Append hit information to thread-local container</span></div>
+<div class="line">    <span class="comment">// This is thread-safe as each thread has its own mThreadData</span></div>
+<div class="line">    <span class="comment">// ... append hit information to mThreadData-&gt;moduleHits ...</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><p>The <code>mergeThreadData</code> method combines data from all threads:</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> OMSimHitManager::mergeThreadData()</div>
+<div class="line">{</div>
+<div class="line">    G4AutoLock lock(&amp;mMutex);  <span class="comment">// Ensure thread-safe access to shared data</span></div>
+<div class="line">    <span class="keywordflow">if</span> (mThreadData)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// Merge thread-local data into a single container</span></div>
+<div class="line">        <span class="comment">// This is where data from all threads is combined</span></div>
+<div class="line">        <span class="comment">// ...</span></div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Clean up thread-local data after merging</span></div>
+<div class="line">        <span class="keyword">delete</span> mThreadData;</div>
+<div class="line">        mThreadData = <span class="keyword">nullptr</span>;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p><b>Important</b>: Call <code>mergeThreadData</code> after all threads have finished simulating (after a run has completed). </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Best Practices for Creating New Thread-Safe Containers</h1>
+<p>When implementing new thread-safe containers in Geant4:</p>
+<ol type="1">
+<li><b>Use Thread-Local Storage</b>: <div class="fragment"><div class="line"><span class="comment">// Declare thread-local storage</span></div>
+<div class="line">G4ThreadLocal <span class="keyword">static</span> YourDataType* threadLocalData = <span class="keyword">nullptr</span>;</div>
+</div><!-- fragment --></li>
+<li><b>Initialize on First Use</b>: <div class="fragment"><div class="line"><span class="keywordflow">if</span> (!threadLocalData) {</div>
+<div class="line">    <span class="comment">// Initialize thread-local data only when first accessed</span></div>
+<div class="line">    threadLocalData = <span class="keyword">new</span> YourDataType();</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+<li><b>Implement Data Merging (if necessary)</b>: <div class="fragment"><div class="line"><span class="keywordtype">void</span> mergeThreadData() {</div>
+<div class="line">    G4AutoLock lock(&amp;mMutex);  <span class="comment">// Ensure thread-safe access</span></div>
+<div class="line">    <span class="comment">// Merge threadLocalData into a global container</span></div>
+<div class="line">    <span class="comment">// This is where you combine data from all threads</span></div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+<li><b>Ensure Proper Cleanup</b>: <div class="fragment"><div class="line"><span class="keywordtype">void</span> reset() {</div>
+<div class="line">    <span class="comment">// Clean up thread-local data</span></div>
+<div class="line">    <span class="keyword">delete</span> threadLocalData;</div>
+<div class="line">    threadLocalData = <span class="keyword">nullptr</span>;</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+<li><b>Implement Thread-Safe Access</b>: Use mutex locks for shared resource access: <div class="fragment"><div class="line">G4AutoLock lock(&amp;mMutex);  <span class="comment">// Protect access to shared resources</span></div>
+<div class="line"><span class="comment">// Access or modify shared resources</span></div>
+</div><!-- fragment --></li>
+</ol>
+<p>By following these guidelines and studying the provided examples, you can create thread-safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-threaded environments. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jul 18 2024 16:52:13 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jul 18 2024 17:40:11 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
