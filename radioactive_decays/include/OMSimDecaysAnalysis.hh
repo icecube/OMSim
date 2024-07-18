@@ -36,7 +36,7 @@ public:
     static OMSimDecaysAnalysis &getInstance();
     void appendDecay(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition);
     void mergeDecayData();
-    void writeMultiplicity();
+    void writeMultiplicity(G4double pTimeWindow);
     void writeThreadDecayInformation();
     void writeThreadHitInformation();
     void reset();

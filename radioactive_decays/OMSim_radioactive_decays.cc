@@ -47,7 +47,8 @@ void runRadioactiveDecays(OMSimRadDecaysDetector *pDetector)
 
 		if (lArgs.get<bool>("multiplicity_study"))
 		{
-			lAnalysisManager.writeMultiplicity();
+			G4double lCoincidenceTimeWindow = lArgs.get<double>("multiplicity_time_window")*ns;
+			lAnalysisManager.writeMultiplicity(lCoincidenceTimeWindow);
 			lAnalysisManager.reset();
 		}
 	}
@@ -72,6 +73,7 @@ void addModuleOptions(OMSim* pSimulation)
 	("cherenkov_off", po::bool_switch(), "deactivates Cherenkov process.")
 	("temperature", po::value<std::string>(), "temperature in C° (scintillation is temperature dependent)")
 	("time_window", po::value<G4double>()->default_value(60.0), "time length in which the decays are simulated.")
+	("multiplicity_time_window", po::value<double>()->default_value(20.), "time window in ns for coincidences in multiplicity calculation")
 	("yield_alphas", po::value<G4double>(), "scintillation yield for alpha particles. This affects all materials with scintillation properties!")
 	("yield_electrons", po::value<G4double>(), "scintillation yield for electrons. This affects all materials with scintillation properties!")
 	("no_header", po::bool_switch(), "if given, the header of the output file will not be written");

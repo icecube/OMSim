@@ -172,6 +172,7 @@ void OMSimHitManager::reset()
 		delete mThreadData;
 		mThreadData = nullptr;
 	}
+	mModuleHits.clear();
 	log_trace("Finished reseting hit manager");
 }
 

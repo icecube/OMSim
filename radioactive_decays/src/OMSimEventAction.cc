@@ -24,16 +24,12 @@ void OMSimEventAction::BeginOfEventAction(const G4Event *evt)
  */
 void OMSimEventAction::EndOfEventAction(const G4Event *evt)
 {
-	OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
-	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
-
-	if (!lArgs.get<bool>("multiplicity_study"))
+	if (!OMSimCommandArgsTable::getInstance().get<bool>("multiplicity_study"))
 	{
 		log_debug("End of event, saving information and reseting (thread {})", G4Threading::G4GetThreadId());
+		OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
 		lAnalysisManager.writeThreadHitInformation();
 		lAnalysisManager.writeThreadDecayInformation();
-		lHitManager.reset();
 		lAnalysisManager.reset();
 	}
 }

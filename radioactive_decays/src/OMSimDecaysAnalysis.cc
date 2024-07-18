@@ -57,12 +57,13 @@ G4String OMSimDecaysAnalysis::getThreadIDStr()
 /**
  * @brief Calls calculateMultiplicity and writes the results to the output file.
  */
-void OMSimDecaysAnalysis::writeMultiplicity()
+void OMSimDecaysAnalysis::writeMultiplicity(G4double pTimeWindow)
 {
 	G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
-	G4String lMultiplicityFileName = lOutputSuffix + "_" + getThreadIDStr() + "_multiplicity.dat";
+	G4String lMultiplicityFileName = lOutputSuffix + "_multiplicity.dat";
 
-	std::vector<int> lMultiplicity = OMSimHitManager::getInstance().calculateMultiplicity(20 * ns);
+	OMSimHitManager::getInstance().mergeThreadData();
+	std::vector<int> lMultiplicity = OMSimHitManager::getInstance().calculateMultiplicity(pTimeWindow);
 	
 	std::fstream lDatafile;
 	lDatafile.open(lMultiplicityFileName.c_str(), std::ios::out | std::ios::app);
@@ -151,5 +152,5 @@ void OMSimDecaysAnalysis::reset()
 	log_trace("Deleting mThreadDecayStats of Thread ID {}", G4Threading::G4GetThreadId());
 	delete mThreadDecayStats;
 	mThreadDecayStats = nullptr;
-
+	OMSimHitManager::getInstance().reset();
 }
