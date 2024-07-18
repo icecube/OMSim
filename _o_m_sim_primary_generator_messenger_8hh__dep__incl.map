@@ -1,6 +1,0 @@
-<map id="OMSimPrimaryGeneratorMessenger.hh" name="OMSimPrimaryGeneratorMessenger.hh">
-<area shape="rect" id="node1" title=" " alt="" coords="67,5,342,32"/>
-<area shape="rect" id="node2" href="$supernova_2include_2_o_m_sim_primary_generator_action_8hh.html" title=" " alt="" coords="5,155,252,181"/>
-<area shape="rect" id="node3" href="$_o_m_sim_s_n_particle_generators_8hh.html" title="This file contains the classes in charge of particle generation." alt="" coords="91,80,318,107"/>
-<area shape="rect" id="node4" href="$_o_m_sim_primary_generator_messenger_8cc.html" title="Primary generator messenger to choose the corresponding primary generator." alt="" coords="343,80,616,107"/>
-</map>

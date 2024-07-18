@@ -1,7 +1,7 @@
 var annotated_dup =
 [
-    [ "CADMesh", "namespace_c_a_d_mesh.html", [
-      [ "File", "namespace_c_a_d_mesh_1_1_file.html", [
+    [ "CADMesh", null, [
+      [ "File", null, [
         [ "Reader", "class_c_a_d_mesh_1_1_file_1_1_reader.html", "class_c_a_d_mesh_1_1_file_1_1_reader" ],
         [ "Token", "struct_c_a_d_mesh_1_1_file_1_1_token.html", "struct_c_a_d_mesh_1_1_file_1_1_token" ],
         [ "Item", "struct_c_a_d_mesh_1_1_file_1_1_item.html", "struct_c_a_d_mesh_1_1_file_1_1_item" ],

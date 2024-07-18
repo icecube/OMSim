@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['action_1793',['Action',['../class_o_m_sim_primary_generator_messenger.html#a3187f4116274659228a6bd13599b1839',1,'OMSimPrimaryGeneratorMessenger']]],
-  ['applyarm_1794',['applyARM',['../class_g4_radioactive_decay.html#aed109fef1bc4bec284610743f40bb589',1,'G4RadioactiveDecay']]],
-  ['assembly_5f_1795',['assembly_',['../class_c_a_d_mesh_1_1_c_a_d_mesh_template.html#aebb5f2c52db6b5b9f8739d165c64792b',1,'CADMesh::CADMeshTemplate']]]
+  ['decay_5fposition_634',['decay_position',['../struct_decay_stats.html#ac359be5448828a37fed75a9de0537cdd',1,'DecayStats']]],
+  ['decay_5ftime_635',['decay_time',['../struct_decay_stats.html#a0d8b961cbbf2f5944a703593356736c8',1,'DecayStats']]],
+  ['deltaposition_636',['deltaPosition',['../struct_photon_info.html#a1bbbf9b8b9f55898a98f6da0cb8972f0',1,'PhotonInfo']]],
+  ['detectionprobability_637',['detectionProbability',['../struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html#a87f21652e10a0bc82870ded9697b57f2',1,'OMSimPMTResponse::PMTPulse']]],
+  ['detectorid_638',['detectorID',['../struct_photon_info.html#ad6ed8e117168b3f741793572bde83b18',1,'PhotonInfo']]],
+  ['direction_639',['direction',['../struct_hit_stats.html#a383cfeda6e6e515b56aee0a369ec5085',1,'HitStats']]]
 ];

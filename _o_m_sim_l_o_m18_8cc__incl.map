@@ -1,13 +1,13 @@
 <map id="OMSimLOM18.cc" name="OMSimLOM18.cc">
 <area shape="rect" id="node1" title=" " alt="" coords="3505,5,3637,32"/>
 <area shape="rect" id="node2" href="$_o_m_sim_l_o_m18_8hh.html" title="Construction of LOM18." alt="" coords="1177,80,1312,107"/>
-<area shape="rect" id="node6" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="2071,453,2203,480"/>
-<area shape="rect" id="node30" href="$_c_a_d_mesh_8hh.html" title=" " alt="" coords="2631,229,2736,256"/>
+<area shape="rect" id="node6" href="$_o_m_sim_logger_8hh_source.html" title=" " alt="" coords="2071,453,2203,480"/>
+<area shape="rect" id="node30" href="$_c_a_d_mesh_8hh_source.html" title=" " alt="" coords="2631,229,2736,256"/>
 <area shape="rect" id="node46" href="$_o_m_sim_command_args_table_8hh.html" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="1449,229,1667,256"/>
 <area shape="rect" id="node49" title=" " alt="" coords="3907,80,3999,107"/>
 <area shape="rect" id="node50" title=" " alt="" coords="4023,80,4192,107"/>
 <area shape="rect" id="node3" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="572,229,771,256"/>
-<area shape="rect" id="node23" href="$_o_m_sim_optical_module_8hh.html" title=" " alt="" coords="867,155,1049,181"/>
+<area shape="rect" id="node23" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="867,155,1049,181"/>
 <area shape="rect" id="node28" title=" " alt="" coords="1678,304,1833,331"/>
 <area shape="rect" id="node29" title=" " alt="" coords="1185,155,1304,181"/>
 <area shape="rect" id="node4" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="547,304,743,331"/>

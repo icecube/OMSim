@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="_o_m_sim_optical_module_8hh.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="_o_m_sim_optical_module_8hh_source.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="621,-302.5 621,-321.5 758,-321.5 758,-302.5 621,-302.5"/>
 <text text-anchor="middle" x="689.5" y="-309.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimOpticalModule.hh</text>
 </a>
@@ -51,7 +51,7 @@
 <!-- Node30 -->
 <g id="node30" class="node">
 <title>Node30</title>
-<g id="a_node30"><a xlink:href="_o_m_sim_detector_construction_8hh.html" target="_top" xlink:title=" ">
+<g id="a_node30"><a xlink:href="_o_m_sim_detector_construction_8hh_source.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="762.5,-358.5 762.5,-377.5 932.5,-377.5 932.5,-358.5 762.5,-358.5"/>
 <text text-anchor="middle" x="847.5" y="-365.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDetectorConstruction.hh</text>
 </a>
@@ -192,7 +192,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="_o_m_sim_logger_8hh.html" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="_o_m_sim_logger_8hh_source.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="169,-73 169,-92 268,-92 268,-73 169,-73"/>
 <text text-anchor="middle" x="218.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimLogger.hh</text>
 </a>

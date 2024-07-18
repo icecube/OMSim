@@ -32,13 +32,12 @@ Supported by \mbox{\hyperlink{class_o_m_sim_s_n_tools}{OMSim\+SNTools}}, this cl
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_o_m_sim_i_b_d_a5d6c43352e94f00acf16a4e27e2dff3a}{OMSim\+IBD}} (G4\+Particle\+Gun $\ast$)
-\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{class_o_m_sim_i_b_d}{OMSim\+IBD}} class. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_o_m_sim_i_b_d_a876dcf3f85bd6b17b37ab2b81f08153e}{$\sim$\+OMSim\+IBD}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{class_o_m_sim_i_b_d}{OMSim\+IBD}} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_o_m_sim_i_b_d_a1c7513003d6f04d49f32c1c12bee3a97}{initialise\+Particle}} ()
+\mbox{\Hypertarget{class_o_m_sim_i_b_d_a1c7513003d6f04d49f32c1c12bee3a97}\label{class_o_m_sim_i_b_d_a1c7513003d6f04d49f32c1c12bee3a97}} 
+void {\bfseries initialise\+Particle} ()
 \item 
 \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} \mbox{\hyperlink{class_o_m_sim_i_b_d_a99e9ba505d7c148ea66c63f9c31ed952}{angular\+Distribution}} (G4double Enu)
 \begin{DoxyCompactList}\small\item\em Computes the angular distribution of the reaction ( \textbackslash{}bar\{\textbackslash{}nu\}\+\_\+e + p \textbackslash{}rightarrow e$^\wedge$+ + n ). \end{DoxyCompactList}\item 
@@ -61,12 +60,6 @@ G4double \mbox{\hyperlink{class_o_m_sim_i_b_d_aad2e0e4a3f6501f4d2c3fb896b032ade}
 {\em gun} & Pointer to the particle gun object used for simulation. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_i_b_d_a876dcf3f85bd6b17b37ab2b81f08153e}\label{class_o_m_sim_i_b_d_a876dcf3f85bd6b17b37ab2b81f08153e}} 
-\index{OMSimIBD@{OMSimIBD}!````~OMSimIBD@{$\sim$OMSimIBD}}
-\index{````~OMSimIBD@{$\sim$OMSimIBD}!OMSimIBD@{OMSimIBD}}
-\doxysubsubsection{\texorpdfstring{$\sim$OMSimIBD()}{~OMSimIBD()}}
-{\footnotesize\ttfamily OMSim\+IBD\+::$\sim$\+OMSim\+IBD (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
 
 
 \doxysubsection{Member Function Documentation}
@@ -88,7 +81,7 @@ This function populates the l\+Angular\+Distribution\+\_\+x and l\+Angular\+Dist
 \end{DoxyNote}
 
 
-Implements \mbox{\hyperlink{class_s_n_base_particle_generator_ac0357a030e33ca274826668e596c9667}{SNBase\+Particle\+Generator}}.
+Implements \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\+Generator}}.
 
 \mbox{\Hypertarget{class_o_m_sim_i_b_d_af04e93cf44abe395e2b65cad4b385d1f}\label{class_o_m_sim_i_b_d_af04e93cf44abe395e2b65cad4b385d1f}} 
 \index{OMSimIBD@{OMSimIBD}!calculateSecondaryParticleEnergy@{calculateSecondaryParticleEnergy}}
@@ -110,17 +103,7 @@ Energy of the emitted positron as a result of the inverse beta decay process. @r
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_s_n_base_particle_generator_a392037639419db88c10a5ba50707fee0}{SNBase\+Particle\+Generator}}.
-
-\mbox{\Hypertarget{class_o_m_sim_i_b_d_a1c7513003d6f04d49f32c1c12bee3a97}\label{class_o_m_sim_i_b_d_a1c7513003d6f04d49f32c1c12bee3a97}} 
-\index{OMSimIBD@{OMSimIBD}!initialiseParticle@{initialiseParticle}}
-\index{initialiseParticle@{initialiseParticle}!OMSimIBD@{OMSimIBD}}
-\doxysubsubsection{\texorpdfstring{initialiseParticle()}{initialiseParticle()}}
-{\footnotesize\ttfamily void OMSim\+IBD\+::initialise\+Particle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{class_s_n_base_particle_generator_a4d854c081bb9c6301afc3fdfd6d30609}{SNBase\+Particle\+Generator}}.
+Implements \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\+Generator}}.
 
 \mbox{\Hypertarget{class_o_m_sim_i_b_d_aad2e0e4a3f6501f4d2c3fb896b032ade}\label{class_o_m_sim_i_b_d_aad2e0e4a3f6501f4d2c3fb896b032ade}} 
 \index{OMSimIBD@{OMSimIBD}!totalCrossSection@{totalCrossSection}}
@@ -140,11 +123,11 @@ Total cross-\/section for the given energy. @reference T. Totani, K. Sato, H. E.
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_s_n_base_particle_generator_a07fec2091432f15e3b6087435bc665fb}{SNBase\+Particle\+Generator}}.
+Implements \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\+Generator}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_o_m_sim_s_n_particle_generators_8hh}{OMSim\+SNParticle\+Generators.\+hh}}\item 
-\mbox{\hyperlink{_o_m_sim_s_n_particle_generators_8cc}{OMSim\+SNParticle\+Generators.\+cc}}\end{DoxyCompactItemize}
+OMSim\+SNParticle\+Generators.\+cc\end{DoxyCompactItemize}

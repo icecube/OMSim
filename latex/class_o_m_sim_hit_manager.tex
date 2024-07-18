@@ -30,6 +30,7 @@ struct \mbox{\hyperlink{struct_o_m_sim_hit_manager_1_1_thread_local_data}{Thread
 \item 
 void \mbox{\hyperlink{class_o_m_sim_hit_manager_a8c2dab4767b46f9c2eb16d5173ba527e}{append\+Hit\+Info}} (G4double p\+Global\+Time, G4double p\+Local\+Time, G4double p\+Track\+Length, G4double p\+Energy, G4int p\+PMTHit\+Number, G4\+Three\+Vector p\+Momentum\+Direction, G4\+Three\+Vector p\+Global\+Pos, G4\+Three\+Vector p\+Local\+Pos, G4double p\+Distance, \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} p\+Response, G4int p\+Module\+Index=0)
 \begin{DoxyCompactList}\small\item\em Appends hit information for a detected photon to the corresponding module\textquotesingle{}s hit data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}\label{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}} 
 void \mbox{\hyperlink{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}{reset}} ()
 \begin{DoxyCompactList}\small\item\em Deletes hit information in memory for all modules. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{class_o_m_sim_hit_manager_a5b83dcdf63f9da4856a2de6d279544cf}{count\+Hits}} (int p\+Module\+Index=0)
@@ -40,15 +41,18 @@ void \mbox{\hyperlink{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc
 \begin{DoxyCompactList}\small\item\em Retrieves the \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure for the specified module, should be called after data between threads was merged. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} \mbox{\hyperlink{class_o_m_sim_hit_manager_a45a63dbb6cdb3815db3cfde00ae36f70}{get\+Single\+Thread\+Hits\+Of\+Module}} (int p\+Module\+Index=0)
 \begin{DoxyCompactList}\small\item\em Retrieves the \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure for the specified module of single thread. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{class_o_m_sim_hit_manager_abd81abd7cdede402c175ba89179f2edb}{are\+There\+Hits\+In\+Module}} (int p\+Module\+Index=0)
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_abd81abd7cdede402c175ba89179f2edb}\label{class_o_m_sim_hit_manager_abd81abd7cdede402c175ba89179f2edb}} 
+bool {\bfseries are\+There\+Hits\+In\+Module} (int p\+Module\+Index=0)
 \item 
 void \mbox{\hyperlink{class_o_m_sim_hit_manager_a756d2a85121e00d2a2d8b6c04cd0ebd1}{sort\+Hit\+Stats\+By\+Time}} (\mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} \&p\+Hits)
 \begin{DoxyCompactList}\small\item\em Sorts the hit statistics by the hit time. \end{DoxyCompactList}\item 
 std\+::vector$<$ int $>$ \mbox{\hyperlink{class_o_m_sim_hit_manager_a01638ba2c16fcde1244b90e9672425c0}{calculate\+Multiplicity}} (const G4double p\+Time\+Window, int p\+Module\+Number=0)
 \begin{DoxyCompactList}\small\item\em Calculates the multiplicity of hits within a specified time window for a given module. \end{DoxyCompactList}\item 
-G4int \mbox{\hyperlink{class_o_m_sim_hit_manager_abcdc764e8a8b756e6a1eb745403da57b}{get\+Next\+Detector\+Index}} ()
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_abcdc764e8a8b756e6a1eb745403da57b}\label{class_o_m_sim_hit_manager_abcdc764e8a8b756e6a1eb745403da57b}} 
+G4int {\bfseries get\+Next\+Detector\+Index} ()
 \item 
-void \mbox{\hyperlink{class_o_m_sim_hit_manager_aeaaa60e5b1a57b96a45e16e91128b4f0}{merge\+Thread\+Data}} ()
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_aeaaa60e5b1a57b96a45e16e91128b4f0}\label{class_o_m_sim_hit_manager_aeaaa60e5b1a57b96a45e16e91128b4f0}} 
+void {\bfseries merge\+Thread\+Data} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -58,56 +62,39 @@ static \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& \mbo
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_a5b5170bb63b04190829aeb79183a5d3f}\label{class_o_m_sim_hit_manager_a5b5170bb63b04190829aeb79183a5d3f}} 
 std\+::map$<$ G4int, \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} $>$ \mbox{\hyperlink{class_o_m_sim_hit_manager_a5b5170bb63b04190829aeb79183a5d3f}{m\+Module\+Hits}}
 \begin{DoxyCompactList}\small\item\em Map of a \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} containing hit information for each simulated optical module. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_o_m_sim_hit_manager_a7590a8dd5b3b9df30c7ca92bdecf7277}{OMSim\+Hit\+Manager}} ()=default
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_a588ee2ee380c68a3a4904e2bab762268}\label{class_o_m_sim_hit_manager_a588ee2ee380c68a3a4904e2bab762268}} 
+{\bfseries OMSim\+Hit\+Manager} (const \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \&)=delete
 \item 
-\mbox{\hyperlink{class_o_m_sim_hit_manager_ab65c1cbe54f5bdd1261635428dc3f9cf}{$\sim$\+OMSim\+Hit\+Manager}} ()=default
-\item 
-\mbox{\hyperlink{class_o_m_sim_hit_manager_a588ee2ee380c68a3a4904e2bab762268}{OMSim\+Hit\+Manager}} (const \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \&)=delete
-\item 
-\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& \mbox{\hyperlink{class_o_m_sim_hit_manager_a6baf2795e91dc2ff99c3eda3e5143bc3}{operator=}} (const \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \&)=delete
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_a6baf2795e91dc2ff99c3eda3e5143bc3}\label{class_o_m_sim_hit_manager_a6baf2795e91dc2ff99c3eda3e5143bc3}} 
+\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \&)=delete
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_a68b3614293ca71096ff48c4fc5943de2}\label{class_o_m_sim_hit_manager_a68b3614293ca71096ff48c4fc5943de2}} 
 std\+::map$<$ G4int, G4int $>$ \mbox{\hyperlink{class_o_m_sim_hit_manager_a68b3614293ca71096ff48c4fc5943de2}{m\+Num\+PMTs}}
 \begin{DoxyCompactList}\small\item\em Map of number of PMTs in the used optical modules. \end{DoxyCompactList}\item 
-G4int \mbox{\hyperlink{class_o_m_sim_hit_manager_a0fa16a90854630de2ddf703f8649cd24}{m\+Current\+Index}} = -\/1
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_a0fa16a90854630de2ddf703f8649cd24}\label{class_o_m_sim_hit_manager_a0fa16a90854630de2ddf703f8649cd24}} 
+G4int {\bfseries m\+Current\+Index} = -\/1
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static G4\+Mutex \mbox{\hyperlink{class_o_m_sim_hit_manager_ab99b6dee5be51adb534057be74e9a4b5}{m\+Mutex}} = G4\+Mutex()
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_ab99b6dee5be51adb534057be74e9a4b5}\label{class_o_m_sim_hit_manager_ab99b6dee5be51adb534057be74e9a4b5}} 
+static G4\+Mutex {\bfseries m\+Mutex} = G4\+Mutex()
 \item 
-static \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} $\ast$ \mbox{\hyperlink{class_o_m_sim_hit_manager_a210a00b8b16e5b2ebcc6920da22ceb93}{m\+Instance}} = nullptr
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_a210a00b8b16e5b2ebcc6920da22ceb93}\label{class_o_m_sim_hit_manager_a210a00b8b16e5b2ebcc6920da22ceb93}} 
+static \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} $\ast$ {\bfseries m\+Instance} = nullptr
 \item 
-static G4\+Thread\+Local \mbox{\hyperlink{struct_o_m_sim_hit_manager_1_1_thread_local_data}{Thread\+Local\+Data}} $\ast$ \mbox{\hyperlink{class_o_m_sim_hit_manager_a52db100408f00b19bf86a0bbfa08b6fd}{m\+Thread\+Data}} = nullptr
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_a52db100408f00b19bf86a0bbfa08b6fd}\label{class_o_m_sim_hit_manager_a52db100408f00b19bf86a0bbfa08b6fd}} 
+static G4\+Thread\+Local \mbox{\hyperlink{struct_o_m_sim_hit_manager_1_1_thread_local_data}{Thread\+Local\+Data}} $\ast$ {\bfseries m\+Thread\+Data} = nullptr
 \end{DoxyCompactItemize}
-
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a7590a8dd5b3b9df30c7ca92bdecf7277}\label{class_o_m_sim_hit_manager_a7590a8dd5b3b9df30c7ca92bdecf7277}} 
-\index{OMSimHitManager@{OMSimHitManager}!OMSimHitManager@{OMSimHitManager}}
-\index{OMSimHitManager@{OMSimHitManager}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{OMSimHitManager()}{OMSimHitManager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily OMSim\+Hit\+Manager\+::\+OMSim\+Hit\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [default]}}
-
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_ab65c1cbe54f5bdd1261635428dc3f9cf}\label{class_o_m_sim_hit_manager_ab65c1cbe54f5bdd1261635428dc3f9cf}} 
-\index{OMSimHitManager@{OMSimHitManager}!````~OMSimHitManager@{$\sim$OMSimHitManager}}
-\index{````~OMSimHitManager@{$\sim$OMSimHitManager}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{$\sim$OMSimHitManager()}{~OMSimHitManager()}}
-{\footnotesize\ttfamily OMSim\+Hit\+Manager\+::$\sim$\+OMSim\+Hit\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [default]}}
-
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a588ee2ee380c68a3a4904e2bab762268}\label{class_o_m_sim_hit_manager_a588ee2ee380c68a3a4904e2bab762268}} 
-\index{OMSimHitManager@{OMSimHitManager}!OMSimHitManager@{OMSimHitManager}}
-\index{OMSimHitManager@{OMSimHitManager}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{OMSimHitManager()}{OMSimHitManager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily OMSim\+Hit\+Manager\+::\+OMSim\+Hit\+Manager (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
-
 
 
 \doxysubsection{Member Function Documentation}
@@ -144,12 +131,6 @@ This method appends hit information to the corresponding module\textquotesingle{
 {\em p\+Module\+Number} & ID of the module in which the photon was detected. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_abd81abd7cdede402c175ba89179f2edb}\label{class_o_m_sim_hit_manager_abd81abd7cdede402c175ba89179f2edb}} 
-\index{OMSimHitManager@{OMSimHitManager}!areThereHitsInModule@{areThereHitsInModule}}
-\index{areThereHitsInModule@{areThereHitsInModule}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{areThereHitsInModule()}{areThereHitsInModule()}}
-{\footnotesize\ttfamily bool OMSim\+Hit\+Manager\+::are\+There\+Hits\+In\+Module (\begin{DoxyParamCaption}\item[{int}]{p\+Module\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_a01638ba2c16fcde1244b90e9672425c0}\label{class_o_m_sim_hit_manager_a01638ba2c16fcde1244b90e9672425c0}} 
 \index{OMSimHitManager@{OMSimHitManager}!calculateMultiplicity@{calculateMultiplicity}}
 \index{calculateMultiplicity@{calculateMultiplicity}!OMSimHitManager@{OMSimHitManager}}
@@ -196,7 +177,7 @@ A vector containing the hit count for each PMT in the specified module.
 {\footnotesize\ttfamily \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} OMSim\+Hit\+Manager\+::get\+Hits\+Of\+Module (\begin{DoxyParamCaption}\item[{int}]{p\+Module\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 \begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{class_o_m_sim_hit_manager_aeaaa60e5b1a57b96a45e16e91128b4f0}{merge\+Thread\+Data}} 
+merge\+Thread\+Data 
 \end{DoxySeeAlso}
 
 \begin{DoxyParams}{Parameters}
@@ -215,12 +196,6 @@ A \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure containing hit infor
 \begin{DoxyReturn}{Returns}
 A reference to the singleton instance. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_abcdc764e8a8b756e6a1eb745403da57b}\label{class_o_m_sim_hit_manager_abcdc764e8a8b756e6a1eb745403da57b}} 
-\index{OMSimHitManager@{OMSimHitManager}!getNextDetectorIndex@{getNextDetectorIndex}}
-\index{getNextDetectorIndex@{getNextDetectorIndex}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{getNextDetectorIndex()}{getNextDetectorIndex()}}
-{\footnotesize\ttfamily G4int OMSim\+Hit\+Manager\+::get\+Next\+Detector\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_a45a63dbb6cdb3815db3cfde00ae36f70}\label{class_o_m_sim_hit_manager_a45a63dbb6cdb3815db3cfde00ae36f70}} 
 \index{OMSimHitManager@{OMSimHitManager}!getSingleThreadHitsOfModule@{getSingleThreadHitsOfModule}}
 \index{getSingleThreadHitsOfModule@{getSingleThreadHitsOfModule}!OMSimHitManager@{OMSimHitManager}}
@@ -235,24 +210,6 @@ A reference to the singleton instance.
 \begin{DoxyReturn}{Returns}
 A \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure containing hit information of specified module. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_aeaaa60e5b1a57b96a45e16e91128b4f0}\label{class_o_m_sim_hit_manager_aeaaa60e5b1a57b96a45e16e91128b4f0}} 
-\index{OMSimHitManager@{OMSimHitManager}!mergeThreadData@{mergeThreadData}}
-\index{mergeThreadData@{mergeThreadData}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{mergeThreadData()}{mergeThreadData()}}
-{\footnotesize\ttfamily void OMSim\+Hit\+Manager\+::merge\+Thread\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a6baf2795e91dc2ff99c3eda3e5143bc3}\label{class_o_m_sim_hit_manager_a6baf2795e91dc2ff99c3eda3e5143bc3}} 
-\index{OMSimHitManager@{OMSimHitManager}!operator=@{operator=}}
-\index{operator=@{operator=}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}\& OMSim\+Hit\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
-
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}\label{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}} 
-\index{OMSimHitManager@{OMSimHitManager}!reset@{reset}}
-\index{reset@{reset}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
-{\footnotesize\ttfamily void OMSim\+Hit\+Manager\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}\label{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}} 
 \index{OMSimHitManager@{OMSimHitManager}!setNumberOfPMTs@{setNumberOfPMTs}}
 \index{setNumberOfPMTs@{setNumberOfPMTs}!OMSimHitManager@{OMSimHitManager}}
@@ -279,46 +236,7 @@ A \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure containing hit infor
 \end{DoxyParams}
 
 
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a0fa16a90854630de2ddf703f8649cd24}\label{class_o_m_sim_hit_manager_a0fa16a90854630de2ddf703f8649cd24}} 
-\index{OMSimHitManager@{OMSimHitManager}!mCurrentIndex@{mCurrentIndex}}
-\index{mCurrentIndex@{mCurrentIndex}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{mCurrentIndex}{mCurrentIndex}}
-{\footnotesize\ttfamily G4int OMSim\+Hit\+Manager\+::m\+Current\+Index = -\/1\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a210a00b8b16e5b2ebcc6920da22ceb93}\label{class_o_m_sim_hit_manager_a210a00b8b16e5b2ebcc6920da22ceb93}} 
-\index{OMSimHitManager@{OMSimHitManager}!mInstance@{mInstance}}
-\index{mInstance@{mInstance}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{mInstance}{mInstance}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} $\ast$ OMSim\+Hit\+Manager\+::m\+Instance = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a5b5170bb63b04190829aeb79183a5d3f}\label{class_o_m_sim_hit_manager_a5b5170bb63b04190829aeb79183a5d3f}} 
-\index{OMSimHitManager@{OMSimHitManager}!mModuleHits@{mModuleHits}}
-\index{mModuleHits@{mModuleHits}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{mModuleHits}{mModuleHits}}
-{\footnotesize\ttfamily std\+::map$<$G4int, \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}}$>$ OMSim\+Hit\+Manager\+::m\+Module\+Hits}
-
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_ab99b6dee5be51adb534057be74e9a4b5}\label{class_o_m_sim_hit_manager_ab99b6dee5be51adb534057be74e9a4b5}} 
-\index{OMSimHitManager@{OMSimHitManager}!mMutex@{mMutex}}
-\index{mMutex@{mMutex}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{mMutex}{mMutex}}
-{\footnotesize\ttfamily G4\+Mutex OMSim\+Hit\+Manager\+::m\+Mutex = G4\+Mutex()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a68b3614293ca71096ff48c4fc5943de2}\label{class_o_m_sim_hit_manager_a68b3614293ca71096ff48c4fc5943de2}} 
-\index{OMSimHitManager@{OMSimHitManager}!mNumPMTs@{mNumPMTs}}
-\index{mNumPMTs@{mNumPMTs}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{mNumPMTs}{mNumPMTs}}
-{\footnotesize\ttfamily std\+::map$<$G4int, G4int$>$ OMSim\+Hit\+Manager\+::m\+Num\+PMTs\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a52db100408f00b19bf86a0bbfa08b6fd}\label{class_o_m_sim_hit_manager_a52db100408f00b19bf86a0bbfa08b6fd}} 
-\index{OMSimHitManager@{OMSimHitManager}!mThreadData@{mThreadData}}
-\index{mThreadData@{mThreadData}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{mThreadData}{mThreadData}}
-{\footnotesize\ttfamily G4\+Thread\+Local \mbox{\hyperlink{struct_o_m_sim_hit_manager_1_1_thread_local_data}{OMSim\+Hit\+Manager\+::\+Thread\+Local\+Data}} $\ast$ OMSim\+Hit\+Manager\+::m\+Thread\+Data = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
-
-
-
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_o_m_sim_hit_manager_8hh}{OMSim\+Hit\+Manager.\+hh}}\item 
-\mbox{\hyperlink{_o_m_sim_hit_manager_8cc}{OMSim\+Hit\+Manager.\+cc}}\end{DoxyCompactItemize}
+OMSim\+Hit\+Manager.\+cc\end{DoxyCompactItemize}

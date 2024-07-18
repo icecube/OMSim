@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kineticenergy_1869',['kineticEnergy',['../struct_photon_info.html#a20a8691860c91f4dcd139524c3f262e8',1,'PhotonInfo']]]
+  ['name_681',['Name',['../structabc_detector_component_1_1_component.html#a4dcf93b5baee28f73c52313138580b5e',1,'abcDetectorComponent::Component']]]
 ];

@@ -28,64 +28,37 @@ Collaboration diagram for OMSim\+Optical\+Module\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_o_m_sim_optical_module_a2068762f5d85b911253ee6adb26c79f5}{OMSim\+Optical\+Module}} (\mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}} $\ast$p\+Data, \mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} $\ast$p\+PMTManager)
-\item 
-virtual \mbox{\hyperlink{class_o_m_sim_optical_module_a40298d3f38fec537945c6af1ae5a172e}{$\sim$\+OMSim\+Optical\+Module}} ()
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a2068762f5d85b911253ee6adb26c79f5}\label{class_o_m_sim_optical_module_a2068762f5d85b911253ee6adb26c79f5}} 
+{\bfseries OMSim\+Optical\+Module} (\mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}} $\ast$p\+Data, \mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} $\ast$p\+PMTManager)
 \item 
 virtual double \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}{get\+Pressure\+Vessel\+Weight}} ()=0
 \begin{DoxyCompactList}\small\item\em Virtual method to get the weight of the pressure vessel. \end{DoxyCompactList}\item 
 virtual int \mbox{\hyperlink{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}{get\+Number\+Of\+PMTs}} ()=0
 \begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_optical_module_a846d980c07324a88cfc0153ed1d6ca84}{configure\+Sensitive\+Volume}} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$p\+Det\+Const)
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a846d980c07324a88cfc0153ed1d6ca84}\label{class_o_m_sim_optical_module_a846d980c07324a88cfc0153ed1d6ca84}} 
+void {\bfseries configure\+Sensitive\+Volume} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$p\+Det\+Const)
 \item 
-virtual G4\+String \mbox{\hyperlink{class_o_m_sim_optical_module_a039a483d855aa87a6baa94800d8280f5}{get\+Name}} ()=0
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a039a483d855aa87a6baa94800d8280f5}\label{class_o_m_sim_optical_module_a039a483d855aa87a6baa94800d8280f5}} 
+virtual G4\+String {\bfseries get\+Name} ()=0
 \item 
-\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} $\ast$ \mbox{\hyperlink{class_o_m_sim_optical_module_ac6653d6f98e3e1803e72c50c55bbef43}{get\+PMTmanager}} ()
+\mbox{\Hypertarget{class_o_m_sim_optical_module_ac6653d6f98e3e1803e72c50c55bbef43}\label{class_o_m_sim_optical_module_ac6653d6f98e3e1803e72c50c55bbef43}} 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} $\ast$ {\bfseries get\+PMTmanager} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-G4int \mbox{\hyperlink{class_o_m_sim_optical_module_a7f388d1ec142804f350635035e56beb1}{m\+Index}}
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a7f388d1ec142804f350635035e56beb1}\label{class_o_m_sim_optical_module_a7f388d1ec142804f350635035e56beb1}} 
+G4int {\bfseries m\+Index}
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} $\ast$ \mbox{\hyperlink{class_o_m_sim_optical_module_a4cfb660337a6a32c7ddd3df6ce761919}{m\+PMTManager}}
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a4cfb660337a6a32c7ddd3df6ce761919}\label{class_o_m_sim_optical_module_a4cfb660337a6a32c7ddd3df6ce761919}} 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} $\ast$ {\bfseries m\+PMTManager}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_o_m_sim_optical_module_a2068762f5d85b911253ee6adb26c79f5}\label{class_o_m_sim_optical_module_a2068762f5d85b911253ee6adb26c79f5}} 
-\index{OMSimOpticalModule@{OMSimOpticalModule}!OMSimOpticalModule@{OMSimOpticalModule}}
-\index{OMSimOpticalModule@{OMSimOpticalModule}!OMSimOpticalModule@{OMSimOpticalModule}}
-\doxysubsubsection{\texorpdfstring{OMSimOpticalModule()}{OMSimOpticalModule()}}
-{\footnotesize\ttfamily OMSim\+Optical\+Module\+::\+OMSim\+Optical\+Module (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}} $\ast$}]{p\+Data,  }\item[{\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} $\ast$}]{p\+PMTManager }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_o_m_sim_optical_module_a40298d3f38fec537945c6af1ae5a172e}\label{class_o_m_sim_optical_module_a40298d3f38fec537945c6af1ae5a172e}} 
-\index{OMSimOpticalModule@{OMSimOpticalModule}!````~OMSimOpticalModule@{$\sim$OMSimOpticalModule}}
-\index{````~OMSimOpticalModule@{$\sim$OMSimOpticalModule}!OMSimOpticalModule@{OMSimOpticalModule}}
-\doxysubsubsection{\texorpdfstring{$\sim$OMSimOpticalModule()}{~OMSimOpticalModule()}}
-{\footnotesize\ttfamily OMSim\+Optical\+Module\+::$\sim$\+OMSim\+Optical\+Module (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_optical_module_a846d980c07324a88cfc0153ed1d6ca84}\label{class_o_m_sim_optical_module_a846d980c07324a88cfc0153ed1d6ca84}} 
-\index{OMSimOpticalModule@{OMSimOpticalModule}!configureSensitiveVolume@{configureSensitiveVolume}}
-\index{configureSensitiveVolume@{configureSensitiveVolume}!OMSimOpticalModule@{OMSimOpticalModule}}
-\doxysubsubsection{\texorpdfstring{configureSensitiveVolume()}{configureSensitiveVolume()}}
-{\footnotesize\ttfamily void OMSim\+Optical\+Module\+::configure\+Sensitive\+Volume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$}]{p\+Det\+Const }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_o_m_sim_optical_module_a039a483d855aa87a6baa94800d8280f5}\label{class_o_m_sim_optical_module_a039a483d855aa87a6baa94800d8280f5}} 
-\index{OMSimOpticalModule@{OMSimOpticalModule}!getName@{getName}}
-\index{getName@{getName}!OMSimOpticalModule@{OMSimOpticalModule}}
-\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
-{\footnotesize\ttfamily virtual G4\+String OMSim\+Optical\+Module\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-Implemented in \mbox{\hyperlink{classp_d_o_m_aa9814a5b6f153228ce5f5622f7944a3a}{p\+DOM}}, \mbox{\hyperlink{classm_d_o_m_a6ad860a00a1fd6d2a41d14d8e3d834ad}{m\+DOM}}, \mbox{\hyperlink{class_l_o_m18_a1dfd8b1711eacfaedcd447fc2c5a3b94}{LOM18}}, \mbox{\hyperlink{class_l_o_m16_affe936616d3d9f54332cc680d4effe98}{LOM16}}, and \mbox{\hyperlink{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}{DEGG}}.
-
 \mbox{\Hypertarget{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}\label{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}} 
 \index{OMSimOpticalModule@{OMSimOpticalModule}!getNumberOfPMTs@{getNumberOfPMTs}}
 \index{getNumberOfPMTs@{getNumberOfPMTs}!OMSimOpticalModule@{OMSimOpticalModule}}
@@ -98,12 +71,6 @@ Number of PMTs in the optical module.
 
 
 Implemented in \mbox{\hyperlink{classp_d_o_m_a1e2c5cf50a25e2b234d9326f4fbbee9d}{p\+DOM}}, \mbox{\hyperlink{classm_d_o_m_ad7e07f1380a50158f7cede9aa84721be}{m\+DOM}}, \mbox{\hyperlink{class_l_o_m18_ac61b9f417138d26d168abbf48f0c0379}{LOM18}}, \mbox{\hyperlink{class_l_o_m16_ab6c3906a5b9bb9f05ff72d7d089cf967}{LOM16}}, and \mbox{\hyperlink{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}{DEGG}}.
-
-\mbox{\Hypertarget{class_o_m_sim_optical_module_ac6653d6f98e3e1803e72c50c55bbef43}\label{class_o_m_sim_optical_module_ac6653d6f98e3e1803e72c50c55bbef43}} 
-\index{OMSimOpticalModule@{OMSimOpticalModule}!getPMTmanager@{getPMTmanager}}
-\index{getPMTmanager@{getPMTmanager}!OMSimOpticalModule@{OMSimOpticalModule}}
-\doxysubsubsection{\texorpdfstring{getPMTmanager()}{getPMTmanager()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} $\ast$ OMSim\+Optical\+Module\+::get\+PMTmanager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}\label{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}} 
 \index{OMSimOpticalModule@{OMSimOpticalModule}!getPressureVesselWeight@{getPressureVesselWeight}}
@@ -120,22 +87,7 @@ Implemented in \mbox{\hyperlink{classp_d_o_m_aff18b63813f3940d3cc8c0c49a3595d5}{
 
 
 
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_o_m_sim_optical_module_a7f388d1ec142804f350635035e56beb1}\label{class_o_m_sim_optical_module_a7f388d1ec142804f350635035e56beb1}} 
-\index{OMSimOpticalModule@{OMSimOpticalModule}!mIndex@{mIndex}}
-\index{mIndex@{mIndex}!OMSimOpticalModule@{OMSimOpticalModule}}
-\doxysubsubsection{\texorpdfstring{mIndex}{mIndex}}
-{\footnotesize\ttfamily G4int OMSim\+Optical\+Module\+::m\+Index}
-
-\mbox{\Hypertarget{class_o_m_sim_optical_module_a4cfb660337a6a32c7ddd3df6ce761919}\label{class_o_m_sim_optical_module_a4cfb660337a6a32c7ddd3df6ce761919}} 
-\index{OMSimOpticalModule@{OMSimOpticalModule}!mPMTManager@{mPMTManager}}
-\index{mPMTManager@{mPMTManager}!OMSimOpticalModule@{OMSimOpticalModule}}
-\doxysubsubsection{\texorpdfstring{mPMTManager}{mPMTManager}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}}$\ast$ OMSim\+Optical\+Module\+::m\+PMTManager\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{_o_m_sim_optical_module_8hh}{OMSim\+Optical\+Module.\+hh}}\item 
-\mbox{\hyperlink{_o_m_sim_optical_module_8cc}{OMSim\+Optical\+Module.\+cc}}\end{DoxyCompactItemize}
+OMSim\+Optical\+Module.\+hh\item 
+OMSim\+Optical\+Module.\+cc\end{DoxyCompactItemize}

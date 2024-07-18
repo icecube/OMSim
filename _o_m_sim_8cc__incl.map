@@ -1,22 +1,22 @@
 <map id="OMSim.cc" name="OMSim.cc">
 <area shape="rect" id="node1" title="Implementation of the OMSim class." alt="" coords="1729,5,1815,32"/>
 <area shape="rect" id="node2" href="$_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="1686,80,1775,107"/>
-<area shape="rect" id="node7" href="$_o_m_sim_logger_8hh.html" title=" " alt="" coords="315,528,447,555"/>
+<area shape="rect" id="node7" href="$_o_m_sim_logger_8hh_source.html" title=" " alt="" coords="315,528,447,555"/>
 <area shape="rect" id="node48" title=" " alt="" coords="2583,155,2783,181"/>
-<area shape="rect" id="node49" href="$_o_m_sim_action_initialization_8hh.html" title=" " alt="" coords="2627,80,2837,107"/>
-<area shape="rect" id="node3" href="$_o_m_sim_detector_construction_8hh.html" title=" " alt="" coords="636,155,863,181"/>
+<area shape="rect" id="node49" href="$_o_m_sim_action_initialization_8hh_source.html" title=" " alt="" coords="2627,80,2837,107"/>
+<area shape="rect" id="node3" href="$_o_m_sim_detector_construction_8hh_source.html" title=" " alt="" coords="636,155,863,181"/>
 <area shape="rect" id="node30" title=" " alt="" coords="887,155,1049,181"/>
 <area shape="rect" id="node31" title=" " alt="" coords="1073,155,1319,181"/>
-<area shape="rect" id="node32" href="$_o_m_sim_run_action_8hh.html" title=" " alt="" coords="489,229,644,256"/>
+<area shape="rect" id="node32" href="$_o_m_sim_run_action_8hh_source.html" title=" " alt="" coords="489,229,644,256"/>
 <area shape="rect" id="node34" title=" " alt="" coords="1343,155,1510,181"/>
-<area shape="rect" id="node35" href="$_o_m_sim_tracking_action_8hh.html" title=" " alt="" coords="1535,155,1719,181"/>
+<area shape="rect" id="node35" href="$_o_m_sim_tracking_action_8hh_source.html" title=" " alt="" coords="1535,155,1719,181"/>
 <area shape="rect" id="node37" href="$_o_m_sim_stepping_action_8hh.html" title="Defines OMSimSteppingAction.Currently it only checks for trapped photons." alt="" coords="1743,155,1929,181"/>
 <area shape="rect" id="node39" href="$_o_m_sim_u_iinterface_8hh.html" title=" " alt="" coords="226,229,387,256"/>
 <area shape="rect" id="node44" title=" " alt="" coords="1954,155,2115,181"/>
 <area shape="rect" id="node45" title=" " alt="" coords="2139,155,2282,181"/>
 <area shape="rect" id="node46" title=" " alt="" coords="2306,155,2443,181"/>
 <area shape="rect" id="node47" title=" " alt="" coords="2468,155,2559,181"/>
-<area shape="rect" id="node4" href="$_o_m_sim_optical_module_8hh.html" title=" " alt="" coords="669,229,851,256"/>
+<area shape="rect" id="node4" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="669,229,851,256"/>
 <area shape="rect" id="node28" title=" " alt="" coords="876,229,959,256"/>
 <area shape="rect" id="node29" title=" " alt="" coords="983,229,1220,256"/>
 <area shape="rect" id="node5" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="1154,379,1350,405"/>

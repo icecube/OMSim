@@ -8,10 +8,6 @@ Utility class for sampling from a given distribution using the inverse cumulativ
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_distribution_sampler_a0116490aae983d5e4a594f1724aba3b2}{Distribution\+Sampler}} ()
-\item 
-\mbox{\hyperlink{class_distribution_sampler_a8f214e2ac1b2c557f1120c42081205a6}{$\sim$\+Distribution\+Sampler}} ()
-\item 
 G4double \mbox{\hyperlink{class_distribution_sampler_aa3a2ca8ec78298b7c58b3f2af0e549ce}{sample\+From\+Distribution}} ()
 \begin{DoxyCompactList}\small\item\em Samples values from a given distribution using the Inverse CDF algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_distribution_sampler_a62407876667af623ba546ef60b9fca3a}{set\+Data}} (const std\+::vector$<$ G4double $>$ \&pX, const std\+::vector$<$ G4double $>$ \&pY, G4\+String p\+Name)
@@ -30,37 +26,30 @@ void \mbox{\hyperlink{class_distribution_sampler_aa0b62effce220e28d3a08c8904c6ee
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-G4double \mbox{\hyperlink{class_distribution_sampler_a352d00d44df3e54ec112dcba95e392ca}{m\+XUnit}}
+\mbox{\Hypertarget{class_distribution_sampler_a352d00d44df3e54ec112dcba95e392ca}\label{class_distribution_sampler_a352d00d44df3e54ec112dcba95e392ca}} 
+G4double {\bfseries m\+XUnit}
 \item 
-G4double \mbox{\hyperlink{class_distribution_sampler_ac5ae149ec9a8afa742073504c7f0e41b}{m\+YUnit}}
+\mbox{\Hypertarget{class_distribution_sampler_ac5ae149ec9a8afa742073504c7f0e41b}\label{class_distribution_sampler_ac5ae149ec9a8afa742073504c7f0e41b}} 
+G4double {\bfseries m\+YUnit}
 \item 
-std\+::vector$<$ G4double $>$ \mbox{\hyperlink{class_distribution_sampler_a41af8967d4226835925267fd7a261188}{mX}}
+\mbox{\Hypertarget{class_distribution_sampler_a41af8967d4226835925267fd7a261188}\label{class_distribution_sampler_a41af8967d4226835925267fd7a261188}} 
+std\+::vector$<$ G4double $>$ {\bfseries mX}
 \item 
-std\+::vector$<$ G4double $>$ \mbox{\hyperlink{class_distribution_sampler_a677f4153eceb6c90587c38000d559b4d}{mY}}
+\mbox{\Hypertarget{class_distribution_sampler_a677f4153eceb6c90587c38000d559b4d}\label{class_distribution_sampler_a677f4153eceb6c90587c38000d559b4d}} 
+std\+::vector$<$ G4double $>$ {\bfseries mY}
 \item 
-std\+::vector$<$ G4double $>$ \mbox{\hyperlink{class_distribution_sampler_a0e5a3b5d614d0d0c8599ea0f2e470a33}{m\+Slopes}}
+\mbox{\Hypertarget{class_distribution_sampler_a0e5a3b5d614d0d0c8599ea0f2e470a33}\label{class_distribution_sampler_a0e5a3b5d614d0d0c8599ea0f2e470a33}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+Slopes}
 \item 
-std\+::vector$<$ G4double $>$ \mbox{\hyperlink{class_distribution_sampler_a8c589167286b401aba541dcee1f5872b}{m\+CDF}}
+\mbox{\Hypertarget{class_distribution_sampler_a8c589167286b401aba541dcee1f5872b}\label{class_distribution_sampler_a8c589167286b401aba541dcee1f5872b}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+CDF}
 \item 
-G4\+String \mbox{\hyperlink{class_distribution_sampler_a11d6ba97005fca66c123f6bf21fa342e}{m\+Dist\+Name}}
+\mbox{\Hypertarget{class_distribution_sampler_a11d6ba97005fca66c123f6bf21fa342e}\label{class_distribution_sampler_a11d6ba97005fca66c123f6bf21fa342e}} 
+G4\+String {\bfseries m\+Dist\+Name}
 \item 
-TGraph $\ast$ \mbox{\hyperlink{class_distribution_sampler_a236177102b7383642247b5f04355179a}{m\+Interpolator}} = nullptr
+\mbox{\Hypertarget{class_distribution_sampler_a236177102b7383642247b5f04355179a}\label{class_distribution_sampler_a236177102b7383642247b5f04355179a}} 
+TGraph $\ast$ {\bfseries m\+Interpolator} = nullptr
 \end{DoxyCompactItemize}
-
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_distribution_sampler_a0116490aae983d5e4a594f1724aba3b2}\label{class_distribution_sampler_a0116490aae983d5e4a594f1724aba3b2}} 
-\index{DistributionSampler@{DistributionSampler}!DistributionSampler@{DistributionSampler}}
-\index{DistributionSampler@{DistributionSampler}!DistributionSampler@{DistributionSampler}}
-\doxysubsubsection{\texorpdfstring{DistributionSampler()}{DistributionSampler()}}
-{\footnotesize\ttfamily Distribution\+Sampler\+::\+Distribution\+Sampler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-\mbox{\Hypertarget{class_distribution_sampler_a8f214e2ac1b2c557f1120c42081205a6}\label{class_distribution_sampler_a8f214e2ac1b2c557f1120c42081205a6}} 
-\index{DistributionSampler@{DistributionSampler}!````~DistributionSampler@{$\sim$DistributionSampler}}
-\index{````~DistributionSampler@{$\sim$DistributionSampler}!DistributionSampler@{DistributionSampler}}
-\doxysubsubsection{\texorpdfstring{$\sim$DistributionSampler()}{~DistributionSampler()}}
-{\footnotesize\ttfamily Distribution\+Sampler\+::$\sim$\+Distribution\+Sampler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 
 
 \doxysubsection{Member Function Documentation}
@@ -133,58 +122,7 @@ This method sets the x and y data points for the distribution and assigns a name
 \end{DoxyParams}
 
 
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_distribution_sampler_a8c589167286b401aba541dcee1f5872b}\label{class_distribution_sampler_a8c589167286b401aba541dcee1f5872b}} 
-\index{DistributionSampler@{DistributionSampler}!mCDF@{mCDF}}
-\index{mCDF@{mCDF}!DistributionSampler@{DistributionSampler}}
-\doxysubsubsection{\texorpdfstring{mCDF}{mCDF}}
-{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Distribution\+Sampler\+::m\+CDF\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_distribution_sampler_a11d6ba97005fca66c123f6bf21fa342e}\label{class_distribution_sampler_a11d6ba97005fca66c123f6bf21fa342e}} 
-\index{DistributionSampler@{DistributionSampler}!mDistName@{mDistName}}
-\index{mDistName@{mDistName}!DistributionSampler@{DistributionSampler}}
-\doxysubsubsection{\texorpdfstring{mDistName}{mDistName}}
-{\footnotesize\ttfamily G4\+String Distribution\+Sampler\+::m\+Dist\+Name\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_distribution_sampler_a236177102b7383642247b5f04355179a}\label{class_distribution_sampler_a236177102b7383642247b5f04355179a}} 
-\index{DistributionSampler@{DistributionSampler}!mInterpolator@{mInterpolator}}
-\index{mInterpolator@{mInterpolator}!DistributionSampler@{DistributionSampler}}
-\doxysubsubsection{\texorpdfstring{mInterpolator}{mInterpolator}}
-{\footnotesize\ttfamily TGraph$\ast$ Distribution\+Sampler\+::m\+Interpolator = nullptr\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_distribution_sampler_a0e5a3b5d614d0d0c8599ea0f2e470a33}\label{class_distribution_sampler_a0e5a3b5d614d0d0c8599ea0f2e470a33}} 
-\index{DistributionSampler@{DistributionSampler}!mSlopes@{mSlopes}}
-\index{mSlopes@{mSlopes}!DistributionSampler@{DistributionSampler}}
-\doxysubsubsection{\texorpdfstring{mSlopes}{mSlopes}}
-{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Distribution\+Sampler\+::m\+Slopes\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_distribution_sampler_a41af8967d4226835925267fd7a261188}\label{class_distribution_sampler_a41af8967d4226835925267fd7a261188}} 
-\index{DistributionSampler@{DistributionSampler}!mX@{mX}}
-\index{mX@{mX}!DistributionSampler@{DistributionSampler}}
-\doxysubsubsection{\texorpdfstring{mX}{mX}}
-{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Distribution\+Sampler\+::mX\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_distribution_sampler_a352d00d44df3e54ec112dcba95e392ca}\label{class_distribution_sampler_a352d00d44df3e54ec112dcba95e392ca}} 
-\index{DistributionSampler@{DistributionSampler}!mXUnit@{mXUnit}}
-\index{mXUnit@{mXUnit}!DistributionSampler@{DistributionSampler}}
-\doxysubsubsection{\texorpdfstring{mXUnit}{mXUnit}}
-{\footnotesize\ttfamily G4double Distribution\+Sampler\+::m\+XUnit\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_distribution_sampler_a677f4153eceb6c90587c38000d559b4d}\label{class_distribution_sampler_a677f4153eceb6c90587c38000d559b4d}} 
-\index{DistributionSampler@{DistributionSampler}!mY@{mY}}
-\index{mY@{mY}!DistributionSampler@{DistributionSampler}}
-\doxysubsubsection{\texorpdfstring{mY}{mY}}
-{\footnotesize\ttfamily std\+::vector$<$G4double$>$ Distribution\+Sampler\+::mY\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_distribution_sampler_ac5ae149ec9a8afa742073504c7f0e41b}\label{class_distribution_sampler_ac5ae149ec9a8afa742073504c7f0e41b}} 
-\index{DistributionSampler@{DistributionSampler}!mYUnit@{mYUnit}}
-\index{mYUnit@{mYUnit}!DistributionSampler@{DistributionSampler}}
-\doxysubsubsection{\texorpdfstring{mYUnit}{mYUnit}}
-{\footnotesize\ttfamily G4double Distribution\+Sampler\+::m\+YUnit\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_o_m_sim_s_n_tools_8hh}{OMSim\+SNTools.\+hh}}\item 
-\mbox{\hyperlink{_o_m_sim_s_n_tools_8cc}{OMSim\+SNTools.\+cc}}\end{DoxyCompactItemize}
+OMSim\+SNTools.\+cc\end{DoxyCompactItemize}

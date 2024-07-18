@@ -23,145 +23,53 @@ Collaboration diagram for CADMesh\+::File\+::STLReader\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ac225b702546fbe94c08fe5fbc7e28d16}{STLReader}} ()
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a5532c7daf8ff2fe69412879d6e898b44}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a5532c7daf8ff2fe69412879d6e898b44}} 
+G4bool {\bfseries Read} (G4\+String filepath)
 \item 
-G4bool \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a5532c7daf8ff2fe69412879d6e898b44}{Read}} (G4\+String filepath)
-\item 
-G4bool \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a2b56819d2cee7404a6e8c5f1f0af9953}{Can\+Read}} (\mbox{\hyperlink{namespace_c_a_d_mesh_1_1_file_af3e6984a5299332307e93abd7553bfce}{Type}} file\+\_\+type)
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a2b56819d2cee7404a6e8c5f1f0af9953}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a2b56819d2cee7404a6e8c5f1f0af9953}} 
+G4bool {\bfseries Can\+Read} (Type file\+\_\+type)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a6c78a40f3aeeb176b8d10c67a8b76126}{CADMesh\+Lexer\+State\+Definition}} (Start\+Solid)
-\item 
-\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ae2569e892a24c7b8a774ebab75ca6712}{CADMesh\+Lexer\+State\+Definition}} (End\+Solid)
-\item 
-\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_af22b9e076e42edbc9b87a7eff07ebfcb}{CADMesh\+Lexer\+State\+Definition}} (Start\+Facet)
-\item 
-\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_af8080a0e1c74fe38b3c8f8147929b754}{CADMesh\+Lexer\+State\+Definition}} (End\+Facet)
-\item 
-\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a69a7454dabf5ea8c64835b57cfc37539}{CADMesh\+Lexer\+State\+Definition}} (Start\+Vertices)
-\item 
-\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ae41c59726a063f6ad45a1e3f10a3ff30}{CADMesh\+Lexer\+State\+Definition}} (End\+Vertices)
-\item 
-\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_aed5c4c7881177c7216d2cbbda415b273}{CADMesh\+Lexer\+State\+Definition}} (Vertex)
-\item 
-\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a4baa1bc48bbb4d1c62cef7f465c4acb3}{CADMesh\+Lexer\+State\+Definition}} (Three\+Vector)
-\item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ab89cead37cd34d7ae647c7f0863be411}{Parse\+Mesh}} (\mbox{\hyperlink{namespace_c_a_d_mesh_1_1_file_a935eb0895b6399a13457a3c6831cf2ac}{Items}} items)
-\item 
-G4\+Triangular\+Facet $\ast$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a375c926a3522247144c3f113290b9d22}{Parse\+Facet}} (\mbox{\hyperlink{namespace_c_a_d_mesh_1_1_file_a935eb0895b6399a13457a3c6831cf2ac}{Items}} items)
-\item 
-G4\+Triangular\+Facet $\ast$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a4ccfd84945f3b5e13f5adde9561209b7}{Parse\+Vertices}} (\mbox{\hyperlink{namespace_c_a_d_mesh_1_1_file_a935eb0895b6399a13457a3c6831cf2ac}{Items}} items)
-\item 
-G4\+Three\+Vector \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_aa236d7530f33bdce60d98856def3bc1b}{Parse\+Three\+Vector}} (\mbox{\hyperlink{namespace_c_a_d_mesh_1_1_file_a935eb0895b6399a13457a3c6831cf2ac}{Items}} items)
-\end{DoxyCompactItemize}
-
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ac225b702546fbe94c08fe5fbc7e28d16}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ac225b702546fbe94c08fe5fbc7e28d16}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!STLReader@{STLReader}}
-\index{STLReader@{STLReader}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{STLReader()}{STLReader()}}
-{\footnotesize\ttfamily CADMesh\+::\+File\+::\+STLReader\+::\+STLReader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_af8080a0e1c74fe38b3c8f8147929b754}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_af8080a0e1c74fe38b3c8f8147929b754}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}}
-\index{CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{CADMeshLexerStateDefinition()}{CADMeshLexerStateDefinition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
-{\footnotesize\ttfamily CADMesh\+::\+File\+::\+STLReader\+::\+CADMesh\+Lexer\+State\+Definition (\begin{DoxyParamCaption}\item[{End\+Facet}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ae2569e892a24c7b8a774ebab75ca6712}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ae2569e892a24c7b8a774ebab75ca6712}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}}
-\index{CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{CADMeshLexerStateDefinition()}{CADMeshLexerStateDefinition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
-{\footnotesize\ttfamily CADMesh\+::\+File\+::\+STLReader\+::\+CADMesh\+Lexer\+State\+Definition (\begin{DoxyParamCaption}\item[{End\+Solid}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ae41c59726a063f6ad45a1e3f10a3ff30}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ae41c59726a063f6ad45a1e3f10a3ff30}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}}
-\index{CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{CADMeshLexerStateDefinition()}{CADMeshLexerStateDefinition()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
-{\footnotesize\ttfamily CADMesh\+::\+File\+::\+STLReader\+::\+CADMesh\+Lexer\+State\+Definition (\begin{DoxyParamCaption}\item[{End\+Vertices}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_af22b9e076e42edbc9b87a7eff07ebfcb}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_af22b9e076e42edbc9b87a7eff07ebfcb}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}}
-\index{CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{CADMeshLexerStateDefinition()}{CADMeshLexerStateDefinition()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
-{\footnotesize\ttfamily CADMesh\+::\+File\+::\+STLReader\+::\+CADMesh\+Lexer\+State\+Definition (\begin{DoxyParamCaption}\item[{Start\+Facet}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
 \mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a6c78a40f3aeeb176b8d10c67a8b76126}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a6c78a40f3aeeb176b8d10c67a8b76126}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}}
-\index{CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{CADMeshLexerStateDefinition()}{CADMeshLexerStateDefinition()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
-{\footnotesize\ttfamily CADMesh\+::\+File\+::\+STLReader\+::\+CADMesh\+Lexer\+State\+Definition (\begin{DoxyParamCaption}\item[{Start\+Solid}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
+{\bfseries CADMesh\+Lexer\+State\+Definition} (Start\+Solid)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ae2569e892a24c7b8a774ebab75ca6712}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ae2569e892a24c7b8a774ebab75ca6712}} 
+{\bfseries CADMesh\+Lexer\+State\+Definition} (End\+Solid)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_af22b9e076e42edbc9b87a7eff07ebfcb}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_af22b9e076e42edbc9b87a7eff07ebfcb}} 
+{\bfseries CADMesh\+Lexer\+State\+Definition} (Start\+Facet)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_af8080a0e1c74fe38b3c8f8147929b754}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_af8080a0e1c74fe38b3c8f8147929b754}} 
+{\bfseries CADMesh\+Lexer\+State\+Definition} (End\+Facet)
+\item 
 \mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a69a7454dabf5ea8c64835b57cfc37539}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a69a7454dabf5ea8c64835b57cfc37539}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}}
-\index{CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{CADMeshLexerStateDefinition()}{CADMeshLexerStateDefinition()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
-{\footnotesize\ttfamily CADMesh\+::\+File\+::\+STLReader\+::\+CADMesh\+Lexer\+State\+Definition (\begin{DoxyParamCaption}\item[{Start\+Vertices}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a4baa1bc48bbb4d1c62cef7f465c4acb3}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a4baa1bc48bbb4d1c62cef7f465c4acb3}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}}
-\index{CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{CADMeshLexerStateDefinition()}{CADMeshLexerStateDefinition()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
-{\footnotesize\ttfamily CADMesh\+::\+File\+::\+STLReader\+::\+CADMesh\+Lexer\+State\+Definition (\begin{DoxyParamCaption}\item[{Three\+Vector}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
+{\bfseries CADMesh\+Lexer\+State\+Definition} (Start\+Vertices)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ae41c59726a063f6ad45a1e3f10a3ff30}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ae41c59726a063f6ad45a1e3f10a3ff30}} 
+{\bfseries CADMesh\+Lexer\+State\+Definition} (End\+Vertices)
+\item 
 \mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_aed5c4c7881177c7216d2cbbda415b273}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_aed5c4c7881177c7216d2cbbda415b273}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}}
-\index{CADMeshLexerStateDefinition@{CADMeshLexerStateDefinition}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{CADMeshLexerStateDefinition()}{CADMeshLexerStateDefinition()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
-{\footnotesize\ttfamily CADMesh\+::\+File\+::\+STLReader\+::\+CADMesh\+Lexer\+State\+Definition (\begin{DoxyParamCaption}\item[{Vertex}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a2b56819d2cee7404a6e8c5f1f0af9953}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a2b56819d2cee7404a6e8c5f1f0af9953}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!CanRead@{CanRead}}
-\index{CanRead@{CanRead}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{CanRead()}{CanRead()}}
-{\footnotesize\ttfamily G4bool CADMesh\+::\+File\+::\+STLReader\+::\+Can\+Read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_c_a_d_mesh_1_1_file_af3e6984a5299332307e93abd7553bfce}{Type}}}]{file\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader_a94e6a07240c8834ee57d7c93b5402b42}{CADMesh\+::\+File\+::\+Reader}}.
-
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a375c926a3522247144c3f113290b9d22}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a375c926a3522247144c3f113290b9d22}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!ParseFacet@{ParseFacet}}
-\index{ParseFacet@{ParseFacet}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{ParseFacet()}{ParseFacet()}}
-{\footnotesize\ttfamily G4\+Triangular\+Facet $\ast$ CADMesh\+::\+File\+::\+STLReader\+::\+Parse\+Facet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_c_a_d_mesh_1_1_file_a935eb0895b6399a13457a3c6831cf2ac}{Items}}}]{items }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
-
+{\bfseries CADMesh\+Lexer\+State\+Definition} (Vertex)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a4baa1bc48bbb4d1c62cef7f465c4acb3}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a4baa1bc48bbb4d1c62cef7f465c4acb3}} 
+{\bfseries CADMesh\+Lexer\+State\+Definition} (Three\+Vector)
+\item 
 \mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ab89cead37cd34d7ae647c7f0863be411}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_ab89cead37cd34d7ae647c7f0863be411}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!ParseMesh@{ParseMesh}}
-\index{ParseMesh@{ParseMesh}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{ParseMesh()}{ParseMesh()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ CADMesh\+::\+File\+::\+STLReader\+::\+Parse\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_c_a_d_mesh_1_1_file_a935eb0895b6399a13457a3c6831cf2ac}{Items}}}]{items }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_aa236d7530f33bdce60d98856def3bc1b}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_aa236d7530f33bdce60d98856def3bc1b}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!ParseThreeVector@{ParseThreeVector}}
-\index{ParseThreeVector@{ParseThreeVector}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{ParseThreeVector()}{ParseThreeVector()}}
-{\footnotesize\ttfamily G4\+Three\+Vector CADMesh\+::\+File\+::\+STLReader\+::\+Parse\+Three\+Vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_c_a_d_mesh_1_1_file_a935eb0895b6399a13457a3c6831cf2ac}{Items}}}]{items }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
-
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ {\bfseries Parse\+Mesh} (Items items)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a375c926a3522247144c3f113290b9d22}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a375c926a3522247144c3f113290b9d22}} 
+G4\+Triangular\+Facet $\ast$ {\bfseries Parse\+Facet} (Items items)
+\item 
 \mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a4ccfd84945f3b5e13f5adde9561209b7}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a4ccfd84945f3b5e13f5adde9561209b7}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!ParseVertices@{ParseVertices}}
-\index{ParseVertices@{ParseVertices}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{ParseVertices()}{ParseVertices()}}
-{\footnotesize\ttfamily G4\+Triangular\+Facet $\ast$ CADMesh\+::\+File\+::\+STLReader\+::\+Parse\+Vertices (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_c_a_d_mesh_1_1_file_a935eb0895b6399a13457a3c6831cf2ac}{Items}}}]{items }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a5532c7daf8ff2fe69412879d6e898b44}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_a5532c7daf8ff2fe69412879d6e898b44}} 
-\index{CADMesh::File::STLReader@{CADMesh::File::STLReader}!Read@{Read}}
-\index{Read@{Read}!CADMesh::File::STLReader@{CADMesh::File::STLReader}}
-\doxysubsubsection{\texorpdfstring{Read()}{Read()}}
-{\footnotesize\ttfamily G4bool CADMesh\+::\+File\+::\+STLReader\+::\+Read (\begin{DoxyParamCaption}\item[{G4\+String}]{filepath }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader_abf265fbc9d0e4ec2bebfce8bc835b74c}{CADMesh\+::\+File\+::\+Reader}}.
-
+G4\+Triangular\+Facet $\ast$ {\bfseries Parse\+Vertices} (Items items)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_aa236d7530f33bdce60d98856def3bc1b}\label{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader_aa236d7530f33bdce60d98856def3bc1b}} 
+G4\+Three\+Vector {\bfseries Parse\+Three\+Vector} (Items items)
+\end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{_c_a_d_mesh_8hh}{CADMesh.\+hh}}\end{DoxyCompactItemize}
+CADMesh.\+hh\end{DoxyCompactItemize}

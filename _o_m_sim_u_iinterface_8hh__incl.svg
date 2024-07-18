@@ -51,7 +51,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="_o_m_sim_logger_8hh.html" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="_o_m_sim_logger_8hh_source.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="168,-67.5 168,-86.5 267,-86.5 267,-67.5 168,-67.5"/>
 <text text-anchor="middle" x="217.5" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimLogger.hh</text>
 </a>

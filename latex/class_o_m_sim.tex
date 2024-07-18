@@ -11,87 +11,73 @@ Controls the main simulation process.
 The \mbox{\hyperlink{class_o_m_sim}{OMSim}} class is the top-\/level controller for the simulation. It sets up and manages the individual components of the Geant4 simulation, such as the run manager, the visualization manager, and the navigator. It also enables user interaction with the simulation through a command line interface and visualisation tools. This class is used in the main function of all studies as provides the basic flow of control of any Geant4 simulation. \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_o_m_sim_afc01df8f57a1303823b79ffd79088a89}{OMSim}} ()
-\item 
-\mbox{\hyperlink{class_o_m_sim_a61d63cc8b99c7ac89ecce97720fbb41a}{$\sim$\+OMSim}} ()
-\item 
 void \mbox{\hyperlink{class_o_m_sim_a5fdec07501bb76199f652ac95bd1e961}{ensure\+Output\+Directory\+Exists}} (const std\+::string \&filepath)
 \begin{DoxyCompactList}\small\item\em Ensure that the output directory for the simulation results exists. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}\label{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}} 
 void \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{initialise\+Simulation}} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$p\+Detector\+Construction)
 \begin{DoxyCompactList}\small\item\em Initialize the simulation constructing all Geant instances. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_a3e43df3d28f3e5e7cbec8a6e3ef1dcf5}{configure\+Logger}} ()
+\mbox{\Hypertarget{class_o_m_sim_a3e43df3d28f3e5e7cbec8a6e3ef1dcf5}\label{class_o_m_sim_a3e43df3d28f3e5e7cbec8a6e3ef1dcf5}} 
+void {\bfseries configure\+Logger} ()
 \item 
 bool \mbox{\hyperlink{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}{handle\+Arguments}} (int p\+Argument\+Count, char $\ast$p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Parses the user arguments into variables that can be accessed in the simulation via \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_adfafdeb214a66be94c423076b8c13bbb}\label{class_o_m_sim_adfafdeb214a66be94c423076b8c13bbb}} 
 void \mbox{\hyperlink{class_o_m_sim_adfafdeb214a66be94c423076b8c13bbb}{start\+Visualisation\+If\+Requested}} ()
 \begin{DoxyCompactList}\small\item\em UIEx session is started for visualisation. \end{DoxyCompactList}\item 
-G4\+Navigator $\ast$ \mbox{\hyperlink{class_o_m_sim_acae00a5a9eef0b872175474315e7a657}{get\+Navigator}} ()
+\mbox{\Hypertarget{class_o_m_sim_acae00a5a9eef0b872175474315e7a657}\label{class_o_m_sim_acae00a5a9eef0b872175474315e7a657}} 
+G4\+Navigator $\ast$ {\bfseries get\+Navigator} ()
 \item 
+\mbox{\Hypertarget{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}\label{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}} 
 void \mbox{\hyperlink{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}{extend\+Options}} (po\+::options\+\_\+description p\+New\+Options)
 \begin{DoxyCompactList}\small\item\em Adds options from the different simulation modules to the option description list (what is printed in --help). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-po\+::options\+\_\+description \mbox{\hyperlink{class_o_m_sim_adc89f2fa01d3958389e86c36e8064805}{m\+General\+Options}}
+\mbox{\Hypertarget{class_o_m_sim_adc89f2fa01d3958389e86c36e8064805}\label{class_o_m_sim_adc89f2fa01d3958389e86c36e8064805}} 
+po\+::options\+\_\+description {\bfseries m\+General\+Options}
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_o_m_sim_a8718ff8784bfd2f381114d092e072b1c}{initial\+Logger\+Configuration}} ()
+\mbox{\Hypertarget{class_o_m_sim_a8718ff8784bfd2f381114d092e072b1c}\label{class_o_m_sim_a8718ff8784bfd2f381114d092e072b1c}} 
+void {\bfseries initial\+Logger\+Configuration} ()
 \item 
-int \mbox{\hyperlink{class_o_m_sim_a5821847aa7865e5f607e4d55a3c1f178}{determine\+Number\+Of\+Threads}} ()
+\mbox{\Hypertarget{class_o_m_sim_a5821847aa7865e5f607e4d55a3c1f178}\label{class_o_m_sim_a5821847aa7865e5f607e4d55a3c1f178}} 
+int {\bfseries determine\+Number\+Of\+Threads} ()
 \item 
+\mbox{\Hypertarget{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}\label{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}} 
 po\+::variables\+\_\+map \mbox{\hyperlink{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}{parse\+Arguments}} (int p\+Argument\+Count, char $\ast$p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Parses user terminal arguments to a variables map. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}\label{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}} 
 void \mbox{\hyperlink{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}{set\+User\+Arguments\+To\+Arg\+Table}} (po\+::variables\+\_\+map p\+Variables\+Map)
 \begin{DoxyCompactList}\small\item\em Sets variables from a variables map to the instance of \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347}{set\+General\+Options}} ()
+\mbox{\Hypertarget{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347}\label{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347}} 
+void {\bfseries set\+General\+Options} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::unique\+\_\+ptr$<$ G4\+MTRun\+Manager $>$ \mbox{\hyperlink{class_o_m_sim_a86515923f2071d37d4496880b5db5c22}{m\+Run\+Manager}}
+\mbox{\Hypertarget{class_o_m_sim_a86515923f2071d37d4496880b5db5c22}\label{class_o_m_sim_a86515923f2071d37d4496880b5db5c22}} 
+std\+::unique\+\_\+ptr$<$ G4\+MTRun\+Manager $>$ {\bfseries m\+Run\+Manager}
 \item 
-std\+::unique\+\_\+ptr$<$ G4\+Vis\+Executive $>$ \mbox{\hyperlink{class_o_m_sim_a111387fc99c82da9d87512638019727f}{m\+Vis\+Manager}}
+\mbox{\Hypertarget{class_o_m_sim_a111387fc99c82da9d87512638019727f}\label{class_o_m_sim_a111387fc99c82da9d87512638019727f}} 
+std\+::unique\+\_\+ptr$<$ G4\+Vis\+Executive $>$ {\bfseries m\+Vis\+Manager}
 \item 
-std\+::unique\+\_\+ptr$<$ G4\+VUser\+Physics\+List $>$ \mbox{\hyperlink{class_o_m_sim_a55c93ccf9b192c5cf3ff1b862e14fdeb}{m\+Physics}}
+\mbox{\Hypertarget{class_o_m_sim_a55c93ccf9b192c5cf3ff1b862e14fdeb}\label{class_o_m_sim_a55c93ccf9b192c5cf3ff1b862e14fdeb}} 
+std\+::unique\+\_\+ptr$<$ G4\+VUser\+Physics\+List $>$ {\bfseries m\+Physics}
 \item 
-std\+::unique\+\_\+ptr$<$ G4\+Touchable\+History $>$ \mbox{\hyperlink{class_o_m_sim_af006e5676aeca6dfc63a7ab0f0e11cae}{m\+History}}
+\mbox{\Hypertarget{class_o_m_sim_af006e5676aeca6dfc63a7ab0f0e11cae}\label{class_o_m_sim_af006e5676aeca6dfc63a7ab0f0e11cae}} 
+std\+::unique\+\_\+ptr$<$ G4\+Touchable\+History $>$ {\bfseries m\+History}
 \item 
-std\+::unique\+\_\+ptr$<$ G4\+Navigator $>$ \mbox{\hyperlink{class_o_m_sim_a47d7d0c83e0290c37b1cd4d6e29ddfec}{m\+Navigator}}
+\mbox{\Hypertarget{class_o_m_sim_a47d7d0c83e0290c37b1cd4d6e29ddfec}\label{class_o_m_sim_a47d7d0c83e0290c37b1cd4d6e29ddfec}} 
+std\+::unique\+\_\+ptr$<$ G4\+Navigator $>$ {\bfseries m\+Navigator}
 \item 
-std\+::chrono\+::high\+\_\+resolution\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{class_o_m_sim_a9458e7ab12abb7c94a08f27366f15836}{m\+Starting\+Time}}
+\mbox{\Hypertarget{class_o_m_sim_a9458e7ab12abb7c94a08f27366f15836}\label{class_o_m_sim_a9458e7ab12abb7c94a08f27366f15836}} 
+std\+::chrono\+::high\+\_\+resolution\+\_\+clock\+::time\+\_\+point {\bfseries m\+Starting\+Time}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_o_m_sim_afc01df8f57a1303823b79ffd79088a89}\label{class_o_m_sim_afc01df8f57a1303823b79ffd79088a89}} 
-\index{OMSim@{OMSim}!OMSim@{OMSim}}
-\index{OMSim@{OMSim}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{OMSim()}{OMSim()}}
-{\footnotesize\ttfamily OMSim\+::\+OMSim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_o_m_sim_a61d63cc8b99c7ac89ecce97720fbb41a}\label{class_o_m_sim_a61d63cc8b99c7ac89ecce97720fbb41a}} 
-\index{OMSim@{OMSim}!````~OMSim@{$\sim$OMSim}}
-\index{````~OMSim@{$\sim$OMSim}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{$\sim$OMSim()}{~OMSim()}}
-{\footnotesize\ttfamily OMSim\+::$\sim$\+OMSim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_a3e43df3d28f3e5e7cbec8a6e3ef1dcf5}\label{class_o_m_sim_a3e43df3d28f3e5e7cbec8a6e3ef1dcf5}} 
-\index{OMSim@{OMSim}!configureLogger@{configureLogger}}
-\index{configureLogger@{configureLogger}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{configureLogger()}{configureLogger()}}
-{\footnotesize\ttfamily void OMSim\+::configure\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_o_m_sim_a5821847aa7865e5f607e4d55a3c1f178}\label{class_o_m_sim_a5821847aa7865e5f607e4d55a3c1f178}} 
-\index{OMSim@{OMSim}!determineNumberOfThreads@{determineNumberOfThreads}}
-\index{determineNumberOfThreads@{determineNumberOfThreads}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{determineNumberOfThreads()}{determineNumberOfThreads()}}
-{\footnotesize\ttfamily int OMSim\+::determine\+Number\+Of\+Threads (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
 \mbox{\Hypertarget{class_o_m_sim_a5fdec07501bb76199f652ac95bd1e961}\label{class_o_m_sim_a5fdec07501bb76199f652ac95bd1e961}} 
 \index{OMSim@{OMSim}!ensureOutputDirectoryExists@{ensureOutputDirectoryExists}}
 \index{ensureOutputDirectoryExists@{ensureOutputDirectoryExists}!OMSim@{OMSim}}
@@ -103,18 +89,6 @@ std\+::chrono\+::high\+\_\+resolution\+\_\+clock\+::time\+\_\+point \mbox{\hyper
 {\em p\+File\+Path} & The path to the output directory. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}\label{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}} 
-\index{OMSim@{OMSim}!extendOptions@{extendOptions}}
-\index{extendOptions@{extendOptions}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{extendOptions()}{extendOptions()}}
-{\footnotesize\ttfamily void OMSim\+::extend\+Options (\begin{DoxyParamCaption}\item[{po\+::options\+\_\+description}]{p\+New\+Options }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_o_m_sim_acae00a5a9eef0b872175474315e7a657}\label{class_o_m_sim_acae00a5a9eef0b872175474315e7a657}} 
-\index{OMSim@{OMSim}!getNavigator@{getNavigator}}
-\index{getNavigator@{getNavigator}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{getNavigator()}{getNavigator()}}
-{\footnotesize\ttfamily G4\+Navigator$\ast$ OMSim\+::get\+Navigator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
 \mbox{\Hypertarget{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}\label{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}} 
 \index{OMSim@{OMSim}!handleArguments@{handleArguments}}
 \index{handleArguments@{handleArguments}!OMSim@{OMSim}}
@@ -124,87 +98,6 @@ std\+::chrono\+::high\+\_\+resolution\+\_\+clock\+::time\+\_\+point \mbox{\hyper
 \begin{DoxyReturn}{Returns}
 true if simulation should continue, if --help is called it will return false and stop the program 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}\label{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}} 
-\index{OMSim@{OMSim}!initialiseSimulation@{initialiseSimulation}}
-\index{initialiseSimulation@{initialiseSimulation}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{initialiseSimulation()}{initialiseSimulation()}}
-{\footnotesize\ttfamily void OMSim\+::initialise\+Simulation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$}]{p\+Detector\+Construction }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_o_m_sim_a8718ff8784bfd2f381114d092e072b1c}\label{class_o_m_sim_a8718ff8784bfd2f381114d092e072b1c}} 
-\index{OMSim@{OMSim}!initialLoggerConfiguration@{initialLoggerConfiguration}}
-\index{initialLoggerConfiguration@{initialLoggerConfiguration}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{initialLoggerConfiguration()}{initialLoggerConfiguration()}}
-{\footnotesize\ttfamily void OMSim\+::initial\+Logger\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}\label{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}} 
-\index{OMSim@{OMSim}!parseArguments@{parseArguments}}
-\index{parseArguments@{parseArguments}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{parseArguments()}{parseArguments()}}
-{\footnotesize\ttfamily po\+::variables\+\_\+map OMSim\+::parse\+Arguments (\begin{DoxyParamCaption}\item[{int}]{p\+Argument\+Count,  }\item[{char $\ast$}]{p\+Argument\+Vector\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347}\label{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347}} 
-\index{OMSim@{OMSim}!setGeneralOptions@{setGeneralOptions}}
-\index{setGeneralOptions@{setGeneralOptions}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{setGeneralOptions()}{setGeneralOptions()}}
-{\footnotesize\ttfamily void OMSim\+::set\+General\+Options (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}\label{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}} 
-\index{OMSim@{OMSim}!setUserArgumentsToArgTable@{setUserArgumentsToArgTable}}
-\index{setUserArgumentsToArgTable@{setUserArgumentsToArgTable}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{setUserArgumentsToArgTable()}{setUserArgumentsToArgTable()}}
-{\footnotesize\ttfamily void OMSim\+::set\+User\+Arguments\+To\+Arg\+Table (\begin{DoxyParamCaption}\item[{po\+::variables\+\_\+map}]{p\+Variables\+Map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_adfafdeb214a66be94c423076b8c13bbb}\label{class_o_m_sim_adfafdeb214a66be94c423076b8c13bbb}} 
-\index{OMSim@{OMSim}!startVisualisationIfRequested@{startVisualisationIfRequested}}
-\index{startVisualisationIfRequested@{startVisualisationIfRequested}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{startVisualisationIfRequested()}{startVisualisationIfRequested()}}
-{\footnotesize\ttfamily void OMSim\+::start\+Visualisation\+If\+Requested (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_o_m_sim_adc89f2fa01d3958389e86c36e8064805}\label{class_o_m_sim_adc89f2fa01d3958389e86c36e8064805}} 
-\index{OMSim@{OMSim}!mGeneralOptions@{mGeneralOptions}}
-\index{mGeneralOptions@{mGeneralOptions}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mGeneralOptions}{mGeneralOptions}}
-{\footnotesize\ttfamily po\+::options\+\_\+description OMSim\+::m\+General\+Options}
-
-\mbox{\Hypertarget{class_o_m_sim_af006e5676aeca6dfc63a7ab0f0e11cae}\label{class_o_m_sim_af006e5676aeca6dfc63a7ab0f0e11cae}} 
-\index{OMSim@{OMSim}!mHistory@{mHistory}}
-\index{mHistory@{mHistory}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mHistory}{mHistory}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$G4\+Touchable\+History$>$ OMSim\+::m\+History\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_a47d7d0c83e0290c37b1cd4d6e29ddfec}\label{class_o_m_sim_a47d7d0c83e0290c37b1cd4d6e29ddfec}} 
-\index{OMSim@{OMSim}!mNavigator@{mNavigator}}
-\index{mNavigator@{mNavigator}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mNavigator}{mNavigator}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$G4\+Navigator$>$ OMSim\+::m\+Navigator\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_a55c93ccf9b192c5cf3ff1b862e14fdeb}\label{class_o_m_sim_a55c93ccf9b192c5cf3ff1b862e14fdeb}} 
-\index{OMSim@{OMSim}!mPhysics@{mPhysics}}
-\index{mPhysics@{mPhysics}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mPhysics}{mPhysics}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$G4\+VUser\+Physics\+List$>$ OMSim\+::m\+Physics\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_a86515923f2071d37d4496880b5db5c22}\label{class_o_m_sim_a86515923f2071d37d4496880b5db5c22}} 
-\index{OMSim@{OMSim}!mRunManager@{mRunManager}}
-\index{mRunManager@{mRunManager}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mRunManager}{mRunManager}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$G4\+MTRun\+Manager$>$ OMSim\+::m\+Run\+Manager\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_a9458e7ab12abb7c94a08f27366f15836}\label{class_o_m_sim_a9458e7ab12abb7c94a08f27366f15836}} 
-\index{OMSim@{OMSim}!mStartingTime@{mStartingTime}}
-\index{mStartingTime@{mStartingTime}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mStartingTime}{mStartingTime}}
-{\footnotesize\ttfamily std\+::chrono\+::high\+\_\+resolution\+\_\+clock\+::time\+\_\+point OMSim\+::m\+Starting\+Time\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_o_m_sim_a111387fc99c82da9d87512638019727f}\label{class_o_m_sim_a111387fc99c82da9d87512638019727f}} 
-\index{OMSim@{OMSim}!mVisManager@{mVisManager}}
-\index{mVisManager@{mVisManager}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{mVisManager}{mVisManager}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$G4\+Vis\+Executive$>$ OMSim\+::m\+Vis\+Manager\hspace{0.3cm}{\ttfamily [private]}}
-
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -1,9 +1,6 @@
 <map id="OMSimUIinterface.hh" name="OMSimUIinterface.hh">
-<area shape="rect" id="node1" title=" " alt="" coords="500,5,661,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="243,5,404,32"/>
 <area shape="rect" id="node2" href="$_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="279,80,368,107"/>
-<area shape="rect" id="node7" href="$_o_m_sim_m_d_o_m_flasher_8cc.html" title=" " alt="" coords="393,80,571,107"/>
-<area shape="rect" id="node8" href="$_o_m_sim_angular_scan_8cc.html" title=" " alt="" coords="595,80,763,107"/>
-<area shape="rect" id="node9" href="$_o_m_sim_decays_g_p_s_8cc.html" title=" " alt="" coords="788,80,949,107"/>
 <area shape="rect" id="node3" href="$_o_m_sim_8cc.html" title="Implementation of the OMSim class." alt="" coords="5,155,92,181"/>
 <area shape="rect" id="node4" href="$_o_m_sim__effective__area_8cc.html" title="Main for the calculation of effective areas." alt="" coords="117,155,303,181"/>
 <area shape="rect" id="node5" href="$_o_m_sim__radioactive__decays_8cc.html" title="Main of the radioactive decay study." alt="" coords="328,155,548,181"/>

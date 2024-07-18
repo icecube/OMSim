@@ -33,31 +33,35 @@ The \mbox{\hyperlink{class_d_e_g_g}{DEGG}} class is responsible for constructing
 \item 
 \mbox{\hyperlink{class_d_e_g_g_a93dc17fd3d8523e54ad70a42925ff4f1}{DEGG}} (\mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}} $\ast$p\+Data, G4bool p\+Place\+Harness=true)
 \item 
-\mbox{\hyperlink{class_d_e_g_g_a943f7bfe01d8646165b4873c7b57a388}{$\sim$\+DEGG}} ()
-\item 
+\mbox{\Hypertarget{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}\label{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}} 
 void \mbox{\hyperlink{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}{construction}} ()
 \begin{DoxyCompactList}\small\item\em Construction of the whole \mbox{\hyperlink{class_d_e_g_g}{DEGG}}. If you want to change any component, you have to change it at the specific function. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076}{get\+Pressure\+Vessel\+Weight}} ()
 \begin{DoxyCompactList}\small\item\em Virtual method to get the weight of the pressure vessel. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}{get\+Number\+Of\+PMTs}} ()
 \begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\item 
-G4\+String \mbox{\hyperlink{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}{get\+Name}} ()
+\mbox{\Hypertarget{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}\label{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}} 
+G4\+String {\bfseries get\+Name} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954}{append\+PMTs}} ()
+\mbox{\Hypertarget{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954}\label{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954}} 
+void {\bfseries append\+PMTs} ()
 \item 
-void \mbox{\hyperlink{class_d_e_g_g_ab670e114ce175ce302631a49d8518236}{append\+Internal\+Components\+From\+CAD}} ()
+\mbox{\Hypertarget{class_d_e_g_g_ab670e114ce175ce302631a49d8518236}\label{class_d_e_g_g_ab670e114ce175ce302631a49d8518236}} 
+void {\bfseries append\+Internal\+Components\+From\+CAD} ()
 \item 
-void \mbox{\hyperlink{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}{append\+Pressure\+Vessel\+From\+CAD}} ()
+\mbox{\Hypertarget{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}\label{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}} 
+void {\bfseries append\+Pressure\+Vessel\+From\+CAD} ()
 \item 
 G4\+VSolid $\ast$ \mbox{\hyperlink{class_d_e_g_g_a7cb478ce4431037cd195380c77916a5a}{create\+Egg\+Solid}} (G4int p\+Segments\+\_\+1, G4double p\+Sphere\+Rmax, G4double p\+Sphered\+Theta, G4double p\+Sphere\+TransformZ, G4double p\+Torus1R, G4double p\+Center\+Of\+Torus1R, G4int p\+Segments\+\_\+2, G4double p\+Torus2R, G4double p\+Center\+Of\+Torus2R, G4double p\+Center\+Of\+Torus2\+\_\+z, G4double p\+Torus2\+\_\+\+Zmin, G4double p\+Torus2\+\_\+\+Zmax, G4double p\+Torus2\+\_\+\+Z0, G4double p\+Torus1\+TransformZ)
 \begin{DoxyCompactList}\small\item\em Creates the solid shape for the \mbox{\hyperlink{class_d_e_g_g}{DEGG}} pressure vessel. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_d_egg_harness}{DEgg\+Harness}} $\ast$ \mbox{\hyperlink{class_d_e_g_g_a1a210a334a32f74c9ce28ff11fc05fb4}{m\+Harness}}
+\mbox{\Hypertarget{class_d_e_g_g_a1a210a334a32f74c9ce28ff11fc05fb4}\label{class_d_e_g_g_a1a210a334a32f74c9ce28ff11fc05fb4}} 
+\mbox{\hyperlink{class_d_egg_harness}{DEgg\+Harness}} $\ast$ {\bfseries m\+Harness}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -77,43 +81,9 @@ G4\+VSolid $\ast$ \mbox{\hyperlink{class_d_e_g_g_a7cb478ce4431037cd195380c77916a
 \item Subtract CAD penetrator from the vessel.
 \item Investigate why the gel does not reach the photocathode edge. (Should the photocathode edge end earlier? Gel, Vessel, and PMT shape are correct.) 
 \end{DoxyItemize}\end{DoxyRefDesc}
-\mbox{\Hypertarget{class_d_e_g_g_a943f7bfe01d8646165b4873c7b57a388}\label{class_d_e_g_g_a943f7bfe01d8646165b4873c7b57a388}} 
-\index{DEGG@{DEGG}!````~DEGG@{$\sim$DEGG}}
-\index{````~DEGG@{$\sim$DEGG}!DEGG@{DEGG}}
-\doxysubsubsection{\texorpdfstring{$\sim$DEGG()}{~DEGG()}}
-{\footnotesize\ttfamily DEGG\+::$\sim$\+DEGG (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_d_e_g_g_ab670e114ce175ce302631a49d8518236}\label{class_d_e_g_g_ab670e114ce175ce302631a49d8518236}} 
-\index{DEGG@{DEGG}!appendInternalComponentsFromCAD@{appendInternalComponentsFromCAD}}
-\index{appendInternalComponentsFromCAD@{appendInternalComponentsFromCAD}!DEGG@{DEGG}}
-\doxysubsubsection{\texorpdfstring{appendInternalComponentsFromCAD()}{appendInternalComponentsFromCAD()}}
-{\footnotesize\ttfamily void DEGG\+::append\+Internal\+Components\+From\+CAD (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954}\label{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954}} 
-\index{DEGG@{DEGG}!appendPMTs@{appendPMTs}}
-\index{appendPMTs@{appendPMTs}!DEGG@{DEGG}}
-\doxysubsubsection{\texorpdfstring{appendPMTs()}{appendPMTs()}}
-{\footnotesize\ttfamily void DEGG\+::append\+PMTs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}\label{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}} 
-\index{DEGG@{DEGG}!appendPressureVesselFromCAD@{appendPressureVesselFromCAD}}
-\index{appendPressureVesselFromCAD@{appendPressureVesselFromCAD}!DEGG@{DEGG}}
-\doxysubsubsection{\texorpdfstring{appendPressureVesselFromCAD()}{appendPressureVesselFromCAD()}}
-{\footnotesize\ttfamily void DEGG\+::append\+Pressure\+Vessel\+From\+CAD (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}\label{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}} 
-\index{DEGG@{DEGG}!construction@{construction}}
-\index{construction@{construction}!DEGG@{DEGG}}
-\doxysubsubsection{\texorpdfstring{construction()}{construction()}}
-{\footnotesize\ttfamily void DEGG\+::construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{classabc_detector_component_a8e7f01c218d5f093e80e46b33a0672bf}{abc\+Detector\+Component}}.
-
 \mbox{\Hypertarget{class_d_e_g_g_a7cb478ce4431037cd195380c77916a5a}\label{class_d_e_g_g_a7cb478ce4431037cd195380c77916a5a}} 
 \index{DEGG@{DEGG}!createEggSolid@{createEggSolid}}
 \index{createEggSolid@{createEggSolid}!DEGG@{DEGG}}
@@ -154,16 +124,6 @@ Implements \mbox{\hyperlink{classabc_detector_component_a8e7f01c218d5f093e80e46b
 \begin{DoxyReturn}{Returns}
 The outer or inner shape of the glass vessel as a G4\+VSolid. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}\label{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}} 
-\index{DEGG@{DEGG}!getName@{getName}}
-\index{getName@{getName}!DEGG@{DEGG}}
-\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
-{\footnotesize\ttfamily G4\+String DEGG\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a039a483d855aa87a6baa94800d8280f5}{OMSim\+Optical\+Module}}.
-
 \mbox{\Hypertarget{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}\label{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}} 
 \index{DEGG@{DEGG}!getNumberOfPMTs@{getNumberOfPMTs}}
 \index{getNumberOfPMTs@{getNumberOfPMTs}!DEGG@{DEGG}}
@@ -192,16 +152,7 @@ Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dc
 
 
 
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_d_e_g_g_a1a210a334a32f74c9ce28ff11fc05fb4}\label{class_d_e_g_g_a1a210a334a32f74c9ce28ff11fc05fb4}} 
-\index{DEGG@{DEGG}!mHarness@{mHarness}}
-\index{mHarness@{mHarness}!DEGG@{DEGG}}
-\doxysubsubsection{\texorpdfstring{mHarness}{mHarness}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_d_egg_harness}{DEgg\+Harness}}$\ast$ DEGG\+::m\+Harness\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_o_m_sim_d_e_g_g_8hh}{OMSim\+DEGG.\+hh}}\item 
-\mbox{\hyperlink{_o_m_sim_d_e_g_g_8cc}{OMSim\+DEGG.\+cc}}\end{DoxyCompactItemize}
+OMSim\+DEGG.\+cc\end{DoxyCompactItemize}

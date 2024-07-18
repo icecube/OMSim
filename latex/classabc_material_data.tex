@@ -28,38 +28,35 @@ Collaboration diagram for abc\+Material\+Data\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classabc_material_data_ae30f0dc56953e39e0f5cb711c645d5a5}{abc\+Material\+Data}} (G4\+String p\+File\+Name)
+\mbox{\Hypertarget{classabc_material_data_ae30f0dc56953e39e0f5cb711c645d5a5}\label{classabc_material_data_ae30f0dc56953e39e0f5cb711c645d5a5}} 
+{\bfseries abc\+Material\+Data} (G4\+String p\+File\+Name)
 \item 
 void \mbox{\hyperlink{classabc_material_data_abd444fe5c9bf9ea0ad3629e448bd0d4e}{create\+Material}} ()
 \begin{DoxyCompactList}\small\item\em Defines a new material from data in a json-\/file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}\label{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}} 
 void \mbox{\hyperlink{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}{extract\+Absorption\+Length}} ()
 \begin{DoxyCompactList}\small\item\em Extracts absorption length data from a json-\/file and adds it to the material property table. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classabc_material_data_a2a5b07c86c18825c5eca27818ad6268c}\label{classabc_material_data_a2a5b07c86c18825c5eca27818ad6268c}} 
 void \mbox{\hyperlink{classabc_material_data_a2a5b07c86c18825c5eca27818ad6268c}{extract\+Refraction\+Index}} ()
 \begin{DoxyCompactList}\small\item\em Extracts refraction index data from a json-\/file and adds it to the material property table. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-G4\+Material $\ast$ \mbox{\hyperlink{classabc_material_data_af94d1f778c1998286f35cae107a3a167}{m\+Material}}
+\mbox{\Hypertarget{classabc_material_data_af94d1f778c1998286f35cae107a3a167}\label{classabc_material_data_af94d1f778c1998286f35cae107a3a167}} 
+G4\+Material $\ast$ {\bfseries m\+Material}
 \item 
-G4\+Material\+Properties\+Table $\ast$ \mbox{\hyperlink{classabc_material_data_a598d1d21330a101855229b2fb08357a9}{m\+MPT}}
+\mbox{\Hypertarget{classabc_material_data_a598d1d21330a101855229b2fb08357a9}\label{classabc_material_data_a598d1d21330a101855229b2fb08357a9}} 
+G4\+Material\+Properties\+Table $\ast$ {\bfseries m\+MPT}
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 G4\+State \mbox{\hyperlink{classabc_material_data_a8fee96bfd62337bcaefd70ba42b35aa6}{get\+State}} (G4\+String p\+State)
 \begin{DoxyCompactList}\small\item\em Converts a string representing a state of matter to a G4\+State. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classabc_material_data_acca9fc268907f29e89960699cadb0b53}\label{classabc_material_data_acca9fc268907f29e89960699cadb0b53}} 
 virtual void \mbox{\hyperlink{classabc_material_data_acca9fc268907f29e89960699cadb0b53}{extract\+Information}} ()=0
 \begin{DoxyCompactList}\small\item\em abstract method that has to be defined in derived classes \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
-
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classabc_material_data_ae30f0dc56953e39e0f5cb711c645d5a5}\label{classabc_material_data_ae30f0dc56953e39e0f5cb711c645d5a5}} 
-\index{abcMaterialData@{abcMaterialData}!abcMaterialData@{abcMaterialData}}
-\index{abcMaterialData@{abcMaterialData}!abcMaterialData@{abcMaterialData}}
-\doxysubsubsection{\texorpdfstring{abcMaterialData()}{abcMaterialData()}}
-{\footnotesize\ttfamily abc\+Material\+Data\+::abc\+Material\+Data (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+File\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
 
 
 \doxysubsection{Member Function Documentation}
@@ -69,33 +66,7 @@ virtual void \mbox{\hyperlink{classabc_material_data_acca9fc268907f29e89960699ca
 \doxysubsubsection{\texorpdfstring{createMaterial()}{createMaterial()}}
 {\footnotesize\ttfamily void abc\+Material\+Data\+::create\+Material (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Reads a JSON file containing material data, parses the data into a material properties table, and creates a new material in the G4\+Nist\+Manager. \mbox{\Hypertarget{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}\label{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}} 
-\index{abcMaterialData@{abcMaterialData}!extractAbsorptionLength@{extractAbsorptionLength}}
-\index{extractAbsorptionLength@{extractAbsorptionLength}!abcMaterialData@{abcMaterialData}}
-\doxysubsubsection{\texorpdfstring{extractAbsorptionLength()}{extractAbsorptionLength()}}
-{\footnotesize\ttfamily void abc\+Material\+Data\+::extract\+Absorption\+Length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classabc_material_data_acca9fc268907f29e89960699cadb0b53}\label{classabc_material_data_acca9fc268907f29e89960699cadb0b53}} 
-\index{abcMaterialData@{abcMaterialData}!extractInformation@{extractInformation}}
-\index{extractInformation@{extractInformation}!abcMaterialData@{abcMaterialData}}
-\doxysubsubsection{\texorpdfstring{extractInformation()}{extractInformation()}}
-{\footnotesize\ttfamily virtual void abc\+Material\+Data\+::extract\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
-
-
-
-Implements \mbox{\hyperlink{classabc_data_file_afc01d4904129c5b170f0299f96ec7f8a}{abc\+Data\+File}}.
-
-
-
-Implemented in \mbox{\hyperlink{class_ice_cube_ice_ac9d7a61c33f41d0025d128d7268d077f}{Ice\+Cube\+Ice}}, \mbox{\hyperlink{class_no_optics_ac9d755acccf586cfbc80510bb946e345}{No\+Optics}}, \mbox{\hyperlink{class_refraction_only_a0c360b4beb97682982ddbe8146708b90}{Refraction\+Only}}, and \mbox{\hyperlink{class_refraction_and_absorption_ac921e76f96cfacad6f3af7c6a8941c51}{Refraction\+And\+Absorption}}.
-
-\mbox{\Hypertarget{classabc_material_data_a2a5b07c86c18825c5eca27818ad6268c}\label{classabc_material_data_a2a5b07c86c18825c5eca27818ad6268c}} 
-\index{abcMaterialData@{abcMaterialData}!extractRefractionIndex@{extractRefractionIndex}}
-\index{extractRefractionIndex@{extractRefractionIndex}!abcMaterialData@{abcMaterialData}}
-\doxysubsubsection{\texorpdfstring{extractRefractionIndex()}{extractRefractionIndex()}}
-{\footnotesize\ttfamily void abc\+Material\+Data\+::extract\+Refraction\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classabc_material_data_a8fee96bfd62337bcaefd70ba42b35aa6}\label{classabc_material_data_a8fee96bfd62337bcaefd70ba42b35aa6}} 
+Reads a JSON file containing material data, parses the data into a material properties table, and creates a new material in the G4\+Nist\+Manager. \mbox{\Hypertarget{classabc_material_data_a8fee96bfd62337bcaefd70ba42b35aa6}\label{classabc_material_data_a8fee96bfd62337bcaefd70ba42b35aa6}} 
 \index{abcMaterialData@{abcMaterialData}!getState@{getState}}
 \index{getState@{getState}!abcMaterialData@{abcMaterialData}}
 \doxysubsubsection{\texorpdfstring{getState()}{getState()}}
@@ -111,22 +82,7 @@ A G4\+State representing the state of matter. Will be k\+State\+Undefined if the
 \end{DoxyReturn}
 
 
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{classabc_material_data_af94d1f778c1998286f35cae107a3a167}\label{classabc_material_data_af94d1f778c1998286f35cae107a3a167}} 
-\index{abcMaterialData@{abcMaterialData}!mMaterial@{mMaterial}}
-\index{mMaterial@{mMaterial}!abcMaterialData@{abcMaterialData}}
-\doxysubsubsection{\texorpdfstring{mMaterial}{mMaterial}}
-{\footnotesize\ttfamily G4\+Material$\ast$ abc\+Material\+Data\+::m\+Material}
-
-\mbox{\Hypertarget{classabc_material_data_a598d1d21330a101855229b2fb08357a9}\label{classabc_material_data_a598d1d21330a101855229b2fb08357a9}} 
-\index{abcMaterialData@{abcMaterialData}!mMPT@{mMPT}}
-\index{mMPT@{mMPT}!abcMaterialData@{abcMaterialData}}
-\doxysubsubsection{\texorpdfstring{mMPT}{mMPT}}
-{\footnotesize\ttfamily G4\+Material\+Properties\+Table$\ast$ abc\+Material\+Data\+::m\+MPT}
-
-
-
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_o_m_sim_data_file_types_8hh}{OMSim\+Data\+File\+Types.\+hh}}\item 
-\mbox{\hyperlink{_o_m_sim_data_file_types_8cc}{OMSim\+Data\+File\+Types.\+cc}}\end{DoxyCompactItemize}
+OMSim\+Data\+File\+Types.\+cc\end{DoxyCompactItemize}

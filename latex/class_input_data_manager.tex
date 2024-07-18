@@ -49,14 +49,11 @@ Example usage (see also \mbox{\hyperlink{class_parameter_table_ExampleUsageParam
 This class assumes certain conventions in naming and structuring the input files, which aids in automatically identifying and processing them. For example, files with names starting with \char`\"{}\+Ri\+Abs\char`\"{} are treated as describing refractive and absorption properties. \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_input_data_manager_a425e28ed0c8675fc0deb04779171a9d6}{Input\+Data\+Manager}} ()
-\item 
-\mbox{\hyperlink{class_input_data_manager_ae67f19e11a39c0bcacf7847133a72837}{$\sim$\+Input\+Data\+Manager}} ()
-\item 
 G4\+Material $\ast$ \mbox{\hyperlink{class_input_data_manager_a970eddaab6756e6288504390454a38f4}{get\+Material}} (G4\+String p\+Name)
 \item 
 G4\+Optical\+Surface $\ast$ \mbox{\hyperlink{class_input_data_manager_ae6ae987535a442a42ad47d53394ade56}{get\+Optical\+Surface}} (G4\+String p\+Name)
 \item 
+\mbox{\Hypertarget{class_input_data_manager_a7376d0446251d09973d90fb370a9373d}\label{class_input_data_manager_a7376d0446251d09973d90fb370a9373d}} 
 void \mbox{\hyperlink{class_input_data_manager_a7376d0446251d09973d90fb370a9373d}{search\+Folders}} ()
 \begin{DoxyCompactList}\small\item\em Searches through predefined folders for input data files. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
@@ -67,6 +64,7 @@ static std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_i
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{class_input_data_manager_a48e36f6062300c12d0787b1005c0d7ec}\label{class_input_data_manager_a48e36f6062300c12d0787b1005c0d7ec}} 
 std\+::map$<$ G4\+String, G4\+Optical\+Surface $\ast$ $>$ \mbox{\hyperlink{class_input_data_manager_a48e36f6062300c12d0787b1005c0d7ec}{m\+Optical\+Surface\+Map}}
 \begin{DoxyCompactList}\small\item\em Map that links names with optical surfaces. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
@@ -79,23 +77,9 @@ void \mbox{\hyperlink{class_input_data_manager_aaa51bcbd29214afb735bb7657bee05de
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{class_input_data_manager_ae31826093d7c8092d0251ca296e6065e}\label{class_input_data_manager_ae31826093d7c8092d0251ca296e6065e}} 
 G4\+String \mbox{\hyperlink{class_input_data_manager_ae31826093d7c8092d0251ca296e6065e}{m\+Data\+Directory}}
 \begin{DoxyCompactList}\small\item\em The current directory being scanned for data. \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_input_data_manager_a425e28ed0c8675fc0deb04779171a9d6}\label{class_input_data_manager_a425e28ed0c8675fc0deb04779171a9d6}} 
-\index{InputDataManager@{InputDataManager}!InputDataManager@{InputDataManager}}
-\index{InputDataManager@{InputDataManager}!InputDataManager@{InputDataManager}}
-\doxysubsubsection{\texorpdfstring{InputDataManager()}{InputDataManager()}}
-{\footnotesize\ttfamily Input\+Data\+Manager\+::\+Input\+Data\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-\mbox{\Hypertarget{class_input_data_manager_ae67f19e11a39c0bcacf7847133a72837}\label{class_input_data_manager_ae67f19e11a39c0bcacf7847133a72837}} 
-\index{InputDataManager@{InputDataManager}!````~InputDataManager@{$\sim$InputDataManager}}
-\index{````~InputDataManager@{$\sim$InputDataManager}!InputDataManager@{InputDataManager}}
-\doxysubsubsection{\texorpdfstring{$\sim$InputDataManager()}{~InputDataManager()}}
-{\footnotesize\ttfamily Input\+Data\+Manager\+::$\sim$\+Input\+Data\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
 
 
 \doxysubsection{Member Function Documentation}
@@ -178,30 +162,9 @@ Scann for data files inside m\+Data\+Directory and process files.
 {\em p\+Name} & name of the material \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_input_data_manager_a7376d0446251d09973d90fb370a9373d}\label{class_input_data_manager_a7376d0446251d09973d90fb370a9373d}} 
-\index{InputDataManager@{InputDataManager}!searchFolders@{searchFolders}}
-\index{searchFolders@{searchFolders}!InputDataManager@{InputDataManager}}
-\doxysubsubsection{\texorpdfstring{searchFolders()}{searchFolders()}}
-{\footnotesize\ttfamily void Input\+Data\+Manager\+::search\+Folders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_input_data_manager_ae31826093d7c8092d0251ca296e6065e}\label{class_input_data_manager_ae31826093d7c8092d0251ca296e6065e}} 
-\index{InputDataManager@{InputDataManager}!mDataDirectory@{mDataDirectory}}
-\index{mDataDirectory@{mDataDirectory}!InputDataManager@{InputDataManager}}
-\doxysubsubsection{\texorpdfstring{mDataDirectory}{mDataDirectory}}
-{\footnotesize\ttfamily G4\+String Input\+Data\+Manager\+::m\+Data\+Directory\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_input_data_manager_a48e36f6062300c12d0787b1005c0d7ec}\label{class_input_data_manager_a48e36f6062300c12d0787b1005c0d7ec}} 
-\index{InputDataManager@{InputDataManager}!mOpticalSurfaceMap@{mOpticalSurfaceMap}}
-\index{mOpticalSurfaceMap@{mOpticalSurfaceMap}!InputDataManager@{InputDataManager}}
-\doxysubsubsection{\texorpdfstring{mOpticalSurfaceMap}{mOpticalSurfaceMap}}
-{\footnotesize\ttfamily std\+::map$<$G4\+String, G4\+Optical\+Surface $\ast$$>$ Input\+Data\+Manager\+::m\+Optical\+Surface\+Map}
-
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_o_m_sim_input_data_8hh}{OMSim\+Input\+Data.\+hh}}\item 
-\mbox{\hyperlink{_o_m_sim_input_data_8cc}{OMSim\+Input\+Data.\+cc}}\end{DoxyCompactItemize}
+OMSim\+Input\+Data.\+cc\end{DoxyCompactItemize}

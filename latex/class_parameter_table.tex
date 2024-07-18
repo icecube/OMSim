@@ -36,8 +36,6 @@ Its main use is as base class of \mbox{\hyperlink{class_input_data_manager}{Inpu
  \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_parameter_table_a6acdd356fb3153bcc463f29e495c211d}{Parameter\+Table}} ()
-\item 
 {\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{class_parameter_table_adb1234ccb47c9e44ecd7f8c5cb9e0407}{get\+Value}} (G4\+String p\+Key, G4\+String p\+Parameter)
 \begin{DoxyCompactList}\small\item\em Fetches a value from the table based on a key and parameter. \end{DoxyCompactList}\item 
 G4bool \mbox{\hyperlink{class_parameter_table_afd0aa495dfeeb68bf370c3ea8390192d}{check\+If\+Key\+In\+Table}} (G4\+String p\+Key)
@@ -55,19 +53,12 @@ pt\+::ptree \mbox{\hyperlink{class_parameter_table_a042ee0eca2c9daa755d7a472608e
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{class_parameter_table_a749bc840cf2aea18fb5b63da8b68c23c}\label{class_parameter_table_a749bc840cf2aea18fb5b63da8b68c23c}} 
 std\+::map$<$ G4\+String, boost\+::property\+\_\+tree\+::ptree $>$ \mbox{\hyperlink{class_parameter_table_a749bc840cf2aea18fb5b63da8b68c23c}{m\+Table}}
 \begin{DoxyCompactList}\small\item\em A table mapping keys to property trees. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_parameter_table_aedee4e855aba079f6d22432f8b41e134}\label{class_parameter_table_aedee4e855aba079f6d22432f8b41e134}} 
 std\+::map$<$ G4\+String, G4\+String $>$ \mbox{\hyperlink{class_parameter_table_aedee4e855aba079f6d22432f8b41e134}{m\+Key\+File\+Origin}}
 \begin{DoxyCompactList}\small\item\em A table mapping keys to original file name. \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_parameter_table_a6acdd356fb3153bcc463f29e495c211d}\label{class_parameter_table_a6acdd356fb3153bcc463f29e495c211d}} 
-\index{ParameterTable@{ParameterTable}!ParameterTable@{ParameterTable}}
-\index{ParameterTable@{ParameterTable}!ParameterTable@{ParameterTable}}
-\doxysubsubsection{\texorpdfstring{ParameterTable()}{ParameterTable()}}
-{\footnotesize\ttfamily Parameter\+Table\+::\+Parameter\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
 
 
 \doxysubsection{Member Function Documentation}
@@ -202,22 +193,7 @@ This overloaded method additionally requires a map key to first retrieve the JSO
 \end{DoxyTemplParams}
 
 
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_parameter_table_aedee4e855aba079f6d22432f8b41e134}\label{class_parameter_table_aedee4e855aba079f6d22432f8b41e134}} 
-\index{ParameterTable@{ParameterTable}!mKeyFileOrigin@{mKeyFileOrigin}}
-\index{mKeyFileOrigin@{mKeyFileOrigin}!ParameterTable@{ParameterTable}}
-\doxysubsubsection{\texorpdfstring{mKeyFileOrigin}{mKeyFileOrigin}}
-{\footnotesize\ttfamily std\+::map$<$G4\+String, G4\+String$>$ Parameter\+Table\+::m\+Key\+File\+Origin\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_parameter_table_a749bc840cf2aea18fb5b63da8b68c23c}\label{class_parameter_table_a749bc840cf2aea18fb5b63da8b68c23c}} 
-\index{ParameterTable@{ParameterTable}!mTable@{mTable}}
-\index{mTable@{mTable}!ParameterTable@{ParameterTable}}
-\doxysubsubsection{\texorpdfstring{mTable}{mTable}}
-{\footnotesize\ttfamily std\+::map$<$G4\+String, boost\+::property\+\_\+tree\+::ptree$>$ Parameter\+Table\+::m\+Table\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{_o_m_sim_input_data_8hh}{OMSim\+Input\+Data.\+hh}}\item 
-\mbox{\hyperlink{_o_m_sim_input_data_8cc}{OMSim\+Input\+Data.\+cc}}\end{DoxyCompactItemize}
+OMSim\+Input\+Data.\+cc\end{DoxyCompactItemize}

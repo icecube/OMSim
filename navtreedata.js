@@ -34,9 +34,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ],
@@ -47,8 +44,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", "functions_vars" ],
-        [ "Typedefs", "functions_type.html", null ]
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ]
   ] ]
@@ -56,13 +52,12 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"0common_8h.html",
-"_o_m_sim_tracking_action_8hh.html",
-"class_d_egg_harness.html#ad333af59c4fdc85979f3e6d3def16a34",
-"class_l_o_m_hamamatsu_response.html#a5e95f2b7268cdb5be780c88967b0a9a3",
-"class_o_m_sim_optical_module.html#a846d980c07324a88cfc0153ed1d6ca84",
-"class_s_n_base_particle_generator.html#a2ae1658cf4b6bae74f09ebccd2e6557a",
-"functions_u.html"
+"0common_8h_source.html",
+"class_c_a_d_mesh_1_1_file_1_1_reader.html#ae80a5e692f18b66fc78b8d42c5e186a2",
+"class_l_o_m16.html#a7fb8e6c358934ebaf8b97318f7591cb7",
+"class_o_m_sim_event_action.html#ae04b5b7339c3a0820eb71278c1eb8a96",
+"class_o_m_sim_s_n_analysis.html#aa68d0e90eb58b85e1d75ae8cf56dbb5e",
+"classm_d_o_m_harness.html#a0e96a969656eb27a4eec62bf40f31061"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

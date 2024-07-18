@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="_o_m_sim_s_n_analysis_8hh.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="_o_m_sim_s_n_analysis_8hh_source.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="496.48,-179.5 496.48,-198.5 618.48,-198.5 618.48,-179.5 496.48,-179.5"/>
 <text text-anchor="middle" x="557.48" y="-186.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimSNAnalysis.hh</text>
 </a>
@@ -312,7 +312,7 @@
 <!-- Node19 -->
 <g id="node19" class="node">
 <title>Node19</title>
-<g id="a_node19"><a xlink:href="_o_m_sim_logger_8hh.html" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="_o_m_sim_logger_8hh_source.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="840.98,-123.5 840.98,-142.5 939.98,-142.5 939.98,-123.5 840.98,-123.5"/>
 <text text-anchor="middle" x="890.48" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimLogger.hh</text>
 </a>
