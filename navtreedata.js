@@ -25,18 +25,19 @@
 var NAVTREE =
 [
   [ "OMSim", "index.html", [
-    [ "Installation", "index.html#autotoc_md7", null ],
-    [ "Available studies", "index.html#autotoc_md11", null ],
+    [ "Installation", "index.html#autotoc_md8", null ],
+    [ "Available studies", "index.html#autotoc_md12", null ],
     [ "Multi-threading in Geant4", "md_multithreading.html", [
       [ "Introduction", "md_multithreading.html#autotoc_md1", null ],
       [ "Thread Safety Guidelines", "md_multithreading.html#autotoc_md2", null ],
       [ "Thread-Safe Singleton Implementation", "md_multithreading.html#autotoc_md3", [
-        [ "Installing Geant4", "index.html#autotoc_md8", null ],
-        [ "Requirements", "index.html#autotoc_md9", null ],
-        [ "Compiling OMSim", "index.html#autotoc_md10", null ],
-        [ "Example: OMSimHitManager", "md_multithreading.html#autotoc_md4", null ]
+        [ "Installing Geant4", "index.html#autotoc_md9", null ],
+        [ "Requirements", "index.html#autotoc_md10", null ],
+        [ "Compiling OMSim", "index.html#autotoc_md11", null ],
+        [ "Example: OMSimHitManager", "md_multithreading.html#autotoc_md4", null ],
+        [ "Example: Saving Data Per Thread", "md_multithreading.html#autotoc_md5", null ]
       ] ],
-      [ "Best Practices for Creating New Thread-Safe Containers", "md_multithreading.html#autotoc_md5", null ]
+      [ "Best Practices for Creating New Thread-Safe Containers", "md_multithreading.html#autotoc_md6", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],

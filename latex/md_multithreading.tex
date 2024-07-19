@@ -133,7 +133,87 @@ The {\ttfamily merge\+Thread\+Data} method combines data from all threads\+:
 
 \begin{quote}
 {\bfseries{Important}}\+: Call {\ttfamily merge\+Thread\+Data} after all threads have finished simulating (after a run has completed). \end{quote}
-\hypertarget{md_multithreading_autotoc_md5}{}\doxysection{Best Practices for Creating New Thread-\/\+Safe Containers}\label{md_multithreading_autotoc_md5}
+\hypertarget{md_multithreading_autotoc_md5}{}\doxysubsection{Example\+: Saving Data Per Thread}\label{md_multithreading_autotoc_md5}
+In scenarios where merging data is unnecessary, or the amount of data is too large to wait until end of run, each thread can save its data in separate files. This is demonstrated in the {\ttfamily \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}} class.
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{append\+Decay}}\+: Collects decay data for each thread.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//from radioactive\_decays/src/OMSimDecaysAnalysis.cc}}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_decays_analysis_a35aa71b0f55694ab682eb12e33e773d3}{OMSimDecaysAnalysis::appendDecay}}(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (!mThreadDecayStats)}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        mThreadDecayStats = \textcolor{keyword}{new} \mbox{\hyperlink{struct_decay_stats}{DecayStats}}();}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    G4int lEventID = G4EventManager::GetEventManager()-\/>GetConstCurrentEvent()-\/>GetEventID();}
+\DoxyCodeLine{    mThreadDecayStats-\/>\mbox{\hyperlink{struct_decay_stats_a7cead323e226455fe4c847ff5043bd20}{eventId}}.push\_back(lEventID);}
+\DoxyCodeLine{    (...)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{write\+Thread\+Decay\+Information}}\+: Writes decay data to a file specific to each thread.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//from radioactive\_decays/src/OMSimDecaysAnalysis.cc}}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{OMSimDecaysAnalysis::writeThreadDecayInformation}}()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    G4String lOutputSuffix = \mbox{\hyperlink{class_o_m_sim_command_args_table_a2a6179839e4ed5f503e52fca917c84c2}{OMSimCommandArgsTable::getInstance}}().\mbox{\hyperlink{class_o_m_sim_command_args_table_a98ca3b003cebba64f357e342d16ea968}{get}}<std::string>(\textcolor{stringliteral}{"{}output\_file"{}});}
+\DoxyCodeLine{    G4String lDecaysFileName = lOutputSuffix + \textcolor{stringliteral}{"{}\_"{}} + getThreadIDStr() + \textcolor{stringliteral}{"{}\_decays.dat"{}}; \textcolor{comment}{// one file per thread, appending thread id to file name}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    std::fstream lDatafile;}
+\DoxyCodeLine{    lDatafile.open(lDecaysFileName.c\_str(), std::ios::out | std::ios::app);}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (mThreadDecayStats-\/>\mbox{\hyperlink{struct_decay_stats_a7cead323e226455fe4c847ff5043bd20}{eventId}}.size() > 0)}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        (...)}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    lDatafile.close();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Data is saved after each event in the {\ttfamily End\+Of\+Event\+Action} method to handle large volumes of data\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//from radioactive\_decays/src/OMSimEventAction.cc}}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_event_action_a10298c7dff0337cec4ee06a25ca9c116}{OMSimEventAction::EndOfEventAction}}(\textcolor{keyword}{const} G4Event *evt)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_o_m_sim_command_args_table_a2a6179839e4ed5f503e52fca917c84c2}{OMSimCommandArgsTable::getInstance}}().get<bool>(\textcolor{stringliteral}{"{}multiplicity\_study"{}}))}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}} \&lAnalysisManager = \mbox{\hyperlink{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}{OMSimDecaysAnalysis::getInstance}}();}
+\DoxyCodeLine{        lAnalysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}{writeThreadHitInformation}}();}
+\DoxyCodeLine{        lAnalysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{writeThreadDecayInformation}}();}
+\DoxyCodeLine{        lAnalysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}}();}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+As you can see, in case of multiplicity study, we need to merge the data, as we are looking for coincidences. In that case we have to merge\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//from radioactive\_decays/OMSim\_radioactive\_decays.cc}}
+\DoxyCodeLine{        \textcolor{keywordflow}{if} (lArgs.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"{}multiplicity\_study"{}}))}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{            G4double lCoincidenceTimeWindow = lArgs.get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"{}multiplicity\_time\_window"{}})*ns;}
+\DoxyCodeLine{            lAnalysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_af747109a424e5878d2a4e42b6308f3cb}{writeMultiplicity}}(lCoincidenceTimeWindow);}
+\DoxyCodeLine{            lAnalysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}}();}
+\DoxyCodeLine{        \}}
+
+\end{DoxyCode}
+\hypertarget{md_multithreading_autotoc_md6}{}\doxysection{Best Practices for Creating New Thread-\/\+Safe Containers}\label{md_multithreading_autotoc_md6}
 When implementing new thread-\/safe containers in Geant4\+:
 
 
