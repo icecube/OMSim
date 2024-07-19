@@ -120,6 +120,75 @@ void OMSimHitManager::mergeThreadData()
 > **Important**: Call `mergeThreadData` after all threads have finished simulating (after a run has completed).
 
 
+
+### Example: Saving Data Per Thread
+
+In scenarios where merging data is unnecessary, or the amount of data is too large to wait until end of run, each thread can save its data in separate files. This is demonstrated in the `OMSimDecaysAnalysis` class.
+
+
+1. **appendDecay**: Collects decay data for each thread.
+
+```cpp
+//from radioactive_decays/src/OMSimDecaysAnalysis.cc
+void OMSimDecaysAnalysis::appendDecay(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition)
+{
+    if (!mThreadDecayStats)
+    {
+        mThreadDecayStats = new DecayStats();
+    }
+    G4int lEventID = G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetEventID();
+    mThreadDecayStats->eventId.push_back(lEventID);
+    (...)
+}
+```
+
+2. **writeThreadDecayInformation**: Writes decay data to a file specific to each thread.
+
+```cpp
+//from radioactive_decays/src/OMSimDecaysAnalysis.cc
+void OMSimDecaysAnalysis::writeThreadDecayInformation()
+{
+    G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
+    G4String lDecaysFileName = lOutputSuffix + "_" + getThreadIDStr() + "_decays.dat"; // one file per thread, appending thread id to file name
+
+    std::fstream lDatafile;
+    lDatafile.open(lDecaysFileName.c_str(), std::ios::out | std::ios::app);
+    if (mThreadDecayStats->eventId.size() > 0)
+    {
+        (...)
+    }
+    lDatafile.close();
+}
+```
+
+Data is saved after each event in the `EndOfEventAction` method to handle large volumes of data:
+
+```cpp 
+//from radioactive_decays/src/OMSimEventAction.cc
+void OMSimEventAction::EndOfEventAction(const G4Event *evt)
+{
+    if (!OMSimCommandArgsTable::getInstance().get<bool>("multiplicity_study"))
+    {
+        OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
+        lAnalysisManager.writeThreadHitInformation();
+        lAnalysisManager.writeThreadDecayInformation();
+        lAnalysisManager.reset();
+    }
+}
+```
+
+As you can see, in case of multiplicity study, we need to merge the data, as we are looking for coincidences. In that case we have to merge:
+```cpp
+//from radioactive_decays/OMSim_radioactive_decays.cc
+		if (lArgs.get<bool>("multiplicity_study"))
+		{
+			G4double lCoincidenceTimeWindow = lArgs.get<double>("multiplicity_time_window")*ns;
+			lAnalysisManager.writeMultiplicity(lCoincidenceTimeWindow);
+			lAnalysisManager.reset();
+		}
+```        
+
+
 ## Best Practices for Creating New Thread-Safe Containers
 
 When implementing new thread-safe containers in Geant4:
@@ -164,3 +233,48 @@ When implementing new thread-safe containers in Geant4:
    ```
 
 By following these guidelines and studying the provided examples, you can create thread-safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-threaded environments.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
