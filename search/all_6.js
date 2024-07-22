@@ -1,7 +1,26 @@
 var searchData=
 [
-  ['finalize_87',['finalize',['../class_o_m_sim_command_args_table.html#acd0700b601ac3b3279657ad1bc1363e8',1,'OMSimCommandArgsTable']]],
-  ['findmpt_88',['findMPT',['../class_scintillation_properties.html#af525e651ef632ab272850c743ea9c76f',1,'ScintillationProperties::findMPT()'],['../class_custom_properties.html#abca98b6b320fe77b30a9754511ac99fe',1,'CustomProperties::findMPT()']]],
-  ['flighttime_89',['flightTime',['../struct_hit_stats.html#a254bd94585df0605a6e2e863e3e00851',1,'HitStats']]],
-  ['fullbulbconstruction_90',['fullBulbConstruction',['../class_o_m_sim_p_m_t_construction.html#a6b84182c7a5b45461160c954e9a384f0',1,'OMSimPMTConstruction']]]
+  ['ea_66',['EA',['../structeffective_area_result.html#a3acf96bff88a577c68bff29f1ec3ad05',1,'effectiveAreaResult']]],
+  ['eaerror_67',['EAError',['../structeffective_area_result.html#ae691bfd6fd88abed6217d739ed8ca36a',1,'effectiveAreaResult']]],
+  ['effective_20area_68',['Effective area',['../group___effective_area.html',1,'']]],
+  ['effective_20area_20study_69',['Effective Area Study',['../md_2_effective_area.html',1,'']]],
+  ['effectivearearesult_70',['effectiveAreaResult',['../structeffective_area_result.html',1,'']]],
+  ['endofeventaction_71',['EndOfEventAction',['../class_o_m_sim_event_action.html#a10298c7dff0337cec4ee06a25ca9c116',1,'OMSimEventAction']]],
+  ['energy_72',['energy',['../struct_hit_stats.html#a542a1e55040646afe6966f281194117b',1,'HitStats']]],
+  ['ensureoutputdirectoryexists_73',['ensureOutputDirectoryExists',['../class_o_m_sim.html#a5fdec07501bb76199f652ac95bd1e961',1,'OMSim']]],
+  ['eventid_74',['eventId',['../struct_hit_stats.html#a5b5b61f1096a1e02d495d7bab1fff259',1,'HitStats::eventId()'],['../struct_decay_stats.html#a7cead323e226455fe4c847ff5043bd20',1,'DecayStats::eventId()']]],
+  ['eventinfomanager_75',['EventInfoManager',['../class_event_info_manager.html',1,'']]],
+  ['evtstat_76',['EvtStat',['../struct_evt_stat.html',1,'']]],
+  ['extendoptions_77',['extendOptions',['../class_o_m_sim.html#a4c86b790eaf609fd69919432d170d853',1,'OMSim']]],
+  ['extractabsorptionlength_78',['extractAbsorptionLength',['../classabc_material_data.html#a0ae68961031fd55ab0356112f49aedd0',1,'abcMaterialData']]],
+  ['extractconstproperties_79',['extractConstProperties',['../class_custom_properties.html#a8f8afa0c715f51ead8ffc33b6e9e55f5',1,'CustomProperties']]],
+  ['extractinformation_80',['extractInformation',['../class_refraction_only.html#a0c360b4beb97682982ddbe8146708b90',1,'RefractionOnly::extractInformation()'],['../classabc_data_file.html#afc01d4904129c5b170f0299f96ec7f8a',1,'abcDataFile::extractInformation()'],['../classabc_material_data.html#acca9fc268907f29e89960699cadb0b53',1,'abcMaterialData::extractInformation()'],['../class_custom_properties.html#a453e83cc8168f5d141fd41591f28f14e',1,'CustomProperties::extractInformation()'],['../class_scintillation_properties.html#a6c16439c71032b0df72dfff7aa776e69',1,'ScintillationProperties::extractInformation()'],['../class_reflective_surface.html#a5dff8f89e20cf4e629024fe3a1b1d78f',1,'ReflectiveSurface::extractInformation()'],['../class_ice_cube_ice.html#ac9d7a61c33f41d0025d128d7268d077f',1,'IceCubeIce::extractInformation()'],['../class_no_optics.html#ac9d755acccf586cfbc80510bb946e345',1,'NoOptics::extractInformation()'],['../class_refraction_and_absorption.html#ac921e76f96cfacad6f3af7c6a8941c51',1,'RefractionAndAbsorption::extractInformation()']]],
+  ['extractlifetimes_81',['extractLifeTimes',['../class_scintillation_properties.html#a3c9fea78ae17e8a52784e4a5fbd09342',1,'ScintillationProperties']]],
+  ['extractlifetimesfortemperature_82',['extractLifeTimesForTemperature',['../class_scintillation_properties.html#afd7145815d2baf2008a755c487d0a613',1,'ScintillationProperties']]],
+  ['extractproperties_83',['extractProperties',['../class_custom_properties.html#ab45e2d203b1eb3acccf2a8d1b4868e0e',1,'CustomProperties']]],
+  ['extractrefractionindex_84',['extractRefractionIndex',['../classabc_material_data.html#a2a5b07c86c18825c5eca27818ad6268c',1,'abcMaterialData']]],
+  ['extractspectrum_85',['extractSpectrum',['../class_scintillation_properties.html#a2f5e62b56857772f598738907d3ed210',1,'ScintillationProperties']]],
+  ['extractyield_86',['extractYield',['../class_scintillation_properties.html#ac8ab70819d1cdb35cc6ce2155f990379',1,'ScintillationProperties']]],
+  ['extractyieldalpha_87',['extractYieldAlpha',['../class_scintillation_properties.html#a37ebebbb7e81f92499faf54aabd89c6c',1,'ScintillationProperties']]],
+  ['extractyieldelectron_88',['extractYieldElectron',['../class_scintillation_properties.html#afd81afebbf2a8addf8f2f4c775dc255e',1,'ScintillationProperties']]]
 ];

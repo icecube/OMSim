@@ -19,6 +19,9 @@ var group__common =
     [ "OMSimMDOMHarness.hh", "_o_m_sim_m_d_o_m_harness_8hh.html", null ],
     [ "OMSimPDOM.hh", "_o_m_sim_p_d_o_m_8hh.html", null ],
     [ "OMSim", "class_o_m_sim.html", [
+      [ "Installing Geant4", "index.html#autotoc_md30", null ],
+      [ "Requirements", "index.html#autotoc_md31", null ],
+      [ "Compiling OMSim", "index.html#autotoc_md32", null ],
       [ "OMSim", "class_o_m_sim.html#afc01df8f57a1303823b79ffd79088a89", null ],
       [ "~OMSim", "class_o_m_sim.html#a61d63cc8b99c7ac89ecce97720fbb41a", null ],
       [ "configureLogger", "class_o_m_sim.html#a3e43df3d28f3e5e7cbec8a6e3ef1dcf5", null ],

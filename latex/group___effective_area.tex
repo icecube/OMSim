@@ -16,55 +16,7 @@ Collaboration diagram for Effective area\+:
 
 
 \doxysubsection{Detailed Description}
-\begin{DoxyNote}{Note}
-In the following a short introduction of an effective area study is made with the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} as an example. For further details see Chapter 10 of \href{https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/doktorarbeiten/1702-phd_lclassen.pdf}{\texttt{ Lew Classen\textquotesingle{}s thesis}} or Section 9.\+3.\+5 of \href{https://zenodo.org/record/8121321}{\texttt{ Martin Unland\textquotesingle{}s thesis}}.
-\end{DoxyNote}
-During the design of a module its sensitivity is optimised by considering the optical properties of various materials and altering the geometry and positioning of the mechanical components in the Geant4 simulation. The metric to optimise the module\textquotesingle{}s sensitivity is the effective area $A_{\mathrm{eff}}(\theta, \phi)$. This represents the area that is detected from a plane wave of incidence angle of $\theta$ (zenith) and $\phi$ (azimuth) with respect to the module. This parameter is calculated with \mbox{\hyperlink{class_o_m_sim}{OMSim}} by simulating a disk emitting mono-\/energetic photons perpendicular to its surface with a uniform density profile. The photon generation is made with the module \mbox{\hyperlink{class_angular_scan}{Angular\+Scan}}, running the method \mbox{\hyperlink{class_angular_scan_a465f642ebbe30fc94f9ed8ec6e554ef4}{Angular\+Scan\+::run\+Single\+Angular\+Scan}} once for each direction to be investigated    ~\newline
- Figure 1\+: {\itshape Screenshot of an \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} illuminated by a disk emitter simulating the incidence of a plane wave from the direction $\theta$ (zenith) and $\phi$ (azimuth) using the Geant4 visualiser. The photon trajectories are represented by orange lines, and yellow dots mark the locations of physical interactions. Image from \href{https://zenodo.org/record/8121321}{\texttt{ this thesis}}.}  
-
-After simulating \$N\$ photons from a plane of area $A_{\mathrm{rad}}$ (which has to be larger than the projected area of the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}}), the effective area is calculated as \[ A_{\mathrm{eff}}(\theta, \phi) = \frac{N_{\mathrm{det}}(\theta, \phi)}{N}\cdot A_{\mathrm{rad}}, \] where $N_{\mathrm{det}}$ is the number of photons detected by the module. To optimise the sensitivity over multiple directions, $A_{\mathrm{eff}}(\theta, \phi)$ is calculated for various angle pairs, and the mean effective area, $\overline{A}_{\mathrm{eff}}$, is determined. The $n$ angle pairs are chosen using healpix, which separates a sphere into $n$ pixels of equal area. Thus, \[ \overline{A}_{\mathrm{eff}} = \frac{1}{n}\sum_{i=1}^n A_{\mathrm{eff}}(\theta_i, \phi_i). \]
-
-Since the effective area is wavelength dependent, the calculation must be repeated for different wavelengths. Wavelengths shorter than 300nm are absorbed by the pressure vessel, whereas the QE of the PMT approaches zero at wavelengths longer than 700nm.\hypertarget{group___effective_area_exampleEA}{}\doxysubsubsection{Example using healpy}\label{group___effective_area_exampleEA}
-In the following a toy example of the usage of the effective area module is given. Although there are c++ healpix libraries, in my opinion the easiest way of getting the angle pair coordinates is using Healpy in python.
-
-In principle for short simulations you could run the program directly from python using the angles from healpy as input parameters\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{import} healpy \textcolor{keyword}{as} hp}
-\DoxyCodeLine{\textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
-\DoxyCodeLine{\textcolor{keyword}{from} os \textcolor{keyword}{import} system}
-\DoxyCodeLine{}
-\DoxyCodeLine{NSIDE = 8 \textcolor{comment}{\#only powers of 2 allowed, the larger, the more pixels are calculated}}
-\DoxyCodeLine{NPIX = hp.nside2npix(NSIDE)}
-\DoxyCodeLine{thetas, phis = np.degrees(hp.pix2ang(nside=NSIDE, ipix=np.arange(NPIX)))}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordflow}{for} i, (theta, phi) \textcolor{keywordflow}{in} enumerate(zip(thetas, phis)):}
-\DoxyCodeLine{    \textcolor{keywordflow}{if} i==0:}
-\DoxyCodeLine{        system(f\textcolor{stringliteral}{"{}./OMSim\_effective\_area -\/n 10000 -\/-\/environment 1 -\/r 300 -\/t \{theta\} -\/f  \{phi\} -\/-\/output\_file output"{}})}
-\DoxyCodeLine{    \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{        system(f\textcolor{stringliteral}{"{}./OMSim\_effective\_area -\/n 10000 -\/-\/environment 1 -\/r 300 -\/t \{theta\} -\/f  \{phi\} -\/-\/output\_file output -\/-\/no\_header"{}})}
-
-\end{DoxyCode}
-
-
-However, this is {\bfseries{very}} inefficient. The best is to save the angle pairs into a file and pass it as argument. If you give a file as argument, the arg theta and phi are ignored.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{import} healpy \textcolor{keyword}{as} hp}
-\DoxyCodeLine{\textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
-\DoxyCodeLine{\textcolor{keyword}{from} os \textcolor{keyword}{import} system}
-\DoxyCodeLine{}
-\DoxyCodeLine{NSIDE = 8 \textcolor{comment}{\#only powers of 2 allowed, the larger, the more pixels are calculated}}
-\DoxyCodeLine{NPIX = hp.nside2npix(NSIDE)}
-\DoxyCodeLine{thetas, phis = np.degrees(hp.pix2ang(nside=NSIDE, ipix=np.arange(NPIX)))}
-\DoxyCodeLine{fname = \textcolor{stringliteral}{"{}angle\_pairs.txt"{}}}
-\DoxyCodeLine{np.savetxt(fname, np.column\_stack((thetas, phis)))}
-\DoxyCodeLine{system(f\textcolor{stringliteral}{"{}./OMSim\_effective\_area -\/n 10000 -\/-\/environment 1 -\/r 300 -\/-\/angles\_file \{fname\} -\/-\/output\_file output"{}})}
-
-\end{DoxyCode}
-
-
-In my PC the first code block needs 51 seconds (tested with NSIDE=2) , the second block only 14 seconds (as simulation has to be initialised only once). \doxysubsection*{Files}
+\doxysubsection*{Files}
 \begin{DoxyCompactItemize}
 \item 
 file \mbox{\hyperlink{_o_m_sim_angular_scan_8hh}{OMSim\+Angular\+Scan.\+hh}}

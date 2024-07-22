@@ -1,10 +1,6 @@
 var files_dup =
 [
-    [ "0common.h", "0common_8h_source.html", null ],
-    [ "1effectiveArea.h", "1effective_area_8h_source.html", null ],
-    [ "2radioactive.h", "2radioactive_8h_source.html", null ],
-    [ "3SN.h", "3_s_n_8h_source.html", null ],
-    [ "4bubble.h", "4bubble_8h_source.html", null ],
+    [ "5_group_definitions.h", "5__group__definitions_8h_source.html", null ],
     [ "abcDetectorComponent.hh", "abc_detector_component_8hh.html", [
       [ "Component", "structabc_detector_component_1_1_component.html", "structabc_detector_component_1_1_component" ]
     ] ],

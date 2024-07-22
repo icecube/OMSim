@@ -130,18 +130,6 @@ Collaboration diagram for Radioactive decays:</div>
 </div>
 </div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<dl class="section warning"><dt>Warning</dt><dd>This study has been tested only for Vitrovex glass (mDOM/LOM16) and the 80mm <a class="el" href="classm_d_o_m.html">mDOM</a> PMTs. Okamoto glass (D-Egg/LOM18) is currently under investigation.</dd></dl>
-<p>The simulation considers the measured scintillation parameters and the specific activity of the isotopes to provide insights into the behavior of OMs in both air and ice environments over a time window \(t_{w}\). The number of time windows simulated is given by the argument &ndash;numevents. The primary output is a timestamped list of detected photons, which can be utilized to compute parameters such as the module's expected dark rate. The simulation steps can be summarized as:</p><ul>
-<li>Determining the number of decays within \(t_{w}\) based on measured data.</li>
-<li>Initiating decay chains for each event by positioning an isotope randomly in the pressure vessel.</li>
-<li>Assigning decay times from a uniform distribution within [0, \(t_{w}\)], in case the time difference between mother-daughter decay times surpasses \(t_{w}\).</li>
-<li>Capturing photons detected by the PMTs for downstream analysis.</li>
-</ul>
-<p>Important customizations in the simulation involve the extension of Geant4's original scintillation class, facilitating the simulation of more complex decay processes (8 lifetimes), and the modification the <a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a> class which amends default decay time of isotopes. The scintillation properties of the <a class="el" href="classm_d_o_m.html">mDOM</a> glass were measured in the scope of several theses. For a summary check section 11.2 of <a href="https://zenodo.org/record/8121321">this thesis</a>.</p>
-<p>Currently, there are two analysis modes:</p><ul>
-<li>With the '&ndash;multiplicity_study' argument: After each \(t_{w}\) time window, the multiplicity is calculated and saved to a file. Raw data isn't stored, as multiplicity studies generally involve extended simulation durations, leading to large volumes of photon data.</li>
-<li>Without the '&ndash;multiplicity_study' argument: Data pertaining to photons and decayed isotopes is saved to files. </li>
-</ul>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
@@ -199,7 +187,7 @@ Classes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 19 2024 07:25:22 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jul 22 2024 12:57:24 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

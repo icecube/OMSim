@@ -130,43 +130,6 @@ Collaboration diagram for Effective area:</div>
 </div>
 </div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<dl class="section note"><dt>Note</dt><dd>In the following a short introduction of an effective area study is made with the <a class="el" href="classm_d_o_m.html">mDOM</a> as an example. For further details see Chapter 10 of <a href="https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/doktorarbeiten/1702-phd_lclassen.pdf">Lew Classen's thesis</a> or Section 9.3.5 of <a href="https://zenodo.org/record/8121321">Martin Unland's thesis</a>.</dd></dl>
-<p>During the design of a module its sensitivity is optimised by considering the optical properties of various materials and altering the geometry and positioning of the mechanical components in the Geant4 simulation. The metric to optimise the module's sensitivity is the effective area \(A_{\mathrm{eff}}(\theta, \phi)\). This represents the area that is detected from a plane wave of incidence angle of \(\theta\) (zenith) and \(\phi\) (azimuth) with respect to the module. This parameter is calculated with <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> by simulating a disk emitting mono-energetic photons perpendicular to its surface with a uniform density profile. The photon generation is made with the module <a class="el" href="class_angular_scan.html">AngularScan</a>, running the method <a class="el" href="class_angular_scan.html#a465f642ebbe30fc94f9ed8ec6e554ef4">AngularScan::runSingleAngularScan</a> once for each direction to be investigated </p><div style="width: 100%; text-align: center;"> <img src="mDOM_scan.png" alt="" width="400" height="400" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
- Figure 1: <em>Screenshot of an <a class="el" href="classm_d_o_m.html">mDOM</a> illuminated by a disk emitter simulating the incidence of a plane wave from the direction \(\theta\) (zenith) and \(\phi\) (azimuth) using the Geant4 visualiser. The photon trajectories are represented by orange lines, and yellow dots mark the locations of physical interactions. Image from <a href="https://zenodo.org/record/8121321">this thesis</a>.</em> </div> </div><p>After simulating $N$ photons from a plane of area \(A_{\mathrm{rad}}\) (which has to be larger than the projected area of the <a class="el" href="classm_d_o_m.html">mDOM</a>), the effective area is calculated as </p><p class="formulaDsp">
-\[ A_{\mathrm{eff}}(\theta, \phi) = \frac{N_{\mathrm{det}}(\theta, \phi)}{N}\cdot A_{\mathrm{rad}}, \]
-</p>
-<p> where \(N_{\mathrm{det}}\) is the number of photons detected by the module. To optimise the sensitivity over multiple directions, \(A_{\mathrm{eff}}(\theta, \phi)\) is calculated for various angle pairs, and the mean effective area, \(\overline{A}_{\mathrm{eff}}\), is determined. The \(n\) angle pairs are chosen using healpix, which separates a sphere into \(n\) pixels of equal area. Thus, </p><p class="formulaDsp">
-\[ \overline{A}_{\mathrm{eff}} = \frac{1}{n}\sum_{i=1}^n A_{\mathrm{eff}}(\theta_i, \phi_i). \]
-</p>
-<p>Since the effective area is wavelength dependent, the calculation must be repeated for different wavelengths. Wavelengths shorter than 300nm are absorbed by the pressure vessel, whereas the QE of the PMT approaches zero at wavelengths longer than 700nm.</p>
-<h2><a class="anchor" id="exampleEA"></a>
-Example using healpy</h2>
-<p>In the following a toy example of the usage of the effective area module is given. Although there are c++ healpix libraries, in my opinion the easiest way of getting the angle pair coordinates is using Healpy in python.</p>
-<p>In principle for short simulations you could run the program directly from python using the angles from healpy as input parameters: </p><div class="fragment"><div class="line"><span class="keyword">import</span> healpy <span class="keyword">as</span> hp</div>
-<div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div>
-<div class="line"><span class="keyword">from</span> os <span class="keyword">import</span> system</div>
-<div class="line"> </div>
-<div class="line">NSIDE = 8 <span class="comment">#only powers of 2 allowed, the larger, the more pixels are calculated</span></div>
-<div class="line">NPIX = hp.nside2npix(NSIDE)</div>
-<div class="line">thetas, phis = np.degrees(hp.pix2ang(nside=NSIDE, ipix=np.arange(NPIX)))</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordflow">for</span> i, (theta, phi) <span class="keywordflow">in</span> enumerate(zip(thetas, phis)):</div>
-<div class="line">    <span class="keywordflow">if</span> i==0:</div>
-<div class="line">        system(f<span class="stringliteral">&quot;./OMSim_effective_area -n 10000 --environment 1 -r 300 -t {theta} -f  {phi} --output_file output&quot;</span>)</div>
-<div class="line">    <span class="keywordflow">else</span>:</div>
-<div class="line">        system(f<span class="stringliteral">&quot;./OMSim_effective_area -n 10000 --environment 1 -r 300 -t {theta} -f  {phi} --output_file output --no_header&quot;</span>)</div>
-</div><!-- fragment --><p>However, this is <b>very</b> inefficient. The best is to save the angle pairs into a file and pass it as argument. If you give a file as argument, the arg theta and phi are ignored.</p>
-<div class="fragment"><div class="line"><span class="keyword">import</span> healpy <span class="keyword">as</span> hp</div>
-<div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div>
-<div class="line"><span class="keyword">from</span> os <span class="keyword">import</span> system</div>
-<div class="line"> </div>
-<div class="line">NSIDE = 8 <span class="comment">#only powers of 2 allowed, the larger, the more pixels are calculated</span></div>
-<div class="line">NPIX = hp.nside2npix(NSIDE)</div>
-<div class="line">thetas, phis = np.degrees(hp.pix2ang(nside=NSIDE, ipix=np.arange(NPIX)))</div>
-<div class="line">fname = <span class="stringliteral">&quot;angle_pairs.txt&quot;</span></div>
-<div class="line">np.savetxt(fname, np.column_stack((thetas, phis)))</div>
-<div class="line">system(f<span class="stringliteral">&quot;./OMSim_effective_area -n 10000 --environment 1 -r 300 --angles_file {fname} --output_file output&quot;</span>)</div>
-</div><!-- fragment --><p>In my PC the first code block needs 51 seconds (tested with NSIDE=2) , the second block only 14 seconds (as simulation has to be initialised only once). </p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
@@ -209,7 +172,7 @@ Classes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 19 2024 07:25:22 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jul 22 2024 12:57:24 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

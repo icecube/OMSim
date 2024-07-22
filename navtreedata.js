@@ -25,19 +25,45 @@
 var NAVTREE =
 [
   [ "OMSim", "index.html", [
-    [ "Installation", "index.html#autotoc_md8", null ],
-    [ "Available studies", "index.html#autotoc_md12", null ],
-    [ "Multi-threading in Geant4", "md_multithreading.html", [
-      [ "Introduction", "md_multithreading.html#autotoc_md1", null ],
-      [ "Thread Safety Guidelines", "md_multithreading.html#autotoc_md2", null ],
-      [ "Thread-Safe Singleton Implementation", "md_multithreading.html#autotoc_md3", [
-        [ "Installing Geant4", "index.html#autotoc_md9", null ],
-        [ "Requirements", "index.html#autotoc_md10", null ],
-        [ "Compiling OMSim", "index.html#autotoc_md11", null ],
-        [ "Example: OMSimHitManager", "md_multithreading.html#autotoc_md4", null ],
-        [ "Example: Saving Data Per Thread", "md_multithreading.html#autotoc_md5", null ]
+    [ "OMSim Geant4 Framework", "index.html", [
+      [ "Installation", "index.html#autotoc_md29", null ],
+      [ "Available studies", "index.html#autotoc_md33", null ]
+    ] ],
+    [ "Framework functionality", "md_0_common.html", [
+      [ "Materials and User Data", "md_0_common.html#autotoc_md1", null ],
+      [ "Geometry construction", "md_0_common.html#autotoc_md2", null ],
+      [ "PMT Response and Saving Hits", "md_0_common.html#autotoc_md3", null ],
+      [ "Making other volumes sensitive to photons", "md_0_common.html#autotoc_md4", null ]
+    ] ],
+    [ "Multi-threading mode", "md_1_multithreading.html", [
+      [ "Introduction", "md_1_multithreading.html#autotoc_md6", null ],
+      [ "Thread Safety Guidelines", "md_1_multithreading.html#autotoc_md7", null ],
+      [ "Thread-Safe Singleton Implementation", "md_1_multithreading.html#autotoc_md8", [
+        [ "Example: OMSimHitManager", "md_1_multithreading.html#autotoc_md9", null ],
+        [ "Example: Saving Data Per Thread", "md_1_multithreading.html#autotoc_md10", null ]
       ] ],
-      [ "Best Practices for Creating New Thread-Safe Containers", "md_multithreading.html#autotoc_md6", null ]
+      [ "Best Practices for Creating New Thread-Safe Containers", "md_1_multithreading.html#autotoc_md11", null ]
+    ] ],
+    [ "Effective Area Study", "md_2_effective_area.html", [
+      [ "Introduction to effective areas", "md_2_effective_area.html#autotoc_md13", null ],
+      [ "Example using healpy", "md_2_effective_area.html#autotoc_md14", null ]
+    ] ],
+    [ "Radioactive Decays Study", "md_3_radioactive_decays.html", null ],
+    [ "Supernova Studies", "md_4__s_n.html", [
+      [ "Input Parameters", "md_4__s_n.html#autotoc_md17", [
+        [ "General Parameters", "md_4__s_n.html#autotoc_md18", null ],
+        [ "SN Framework Parameters", "md_4__s_n.html#autotoc_md19", null ],
+        [ "Fixed Energy Studies", "md_4__s_n.html#autotoc_md20", null ]
+      ] ],
+      [ "Output Files", "md_4__s_n.html#autotoc_md21", [
+        [ "*_info.dat", "md_4__s_n.html#autotoc_md22", null ],
+        [ "*_data.dat", "md_4__s_n.html#autotoc_md23", null ]
+      ] ],
+      [ "Weights", "md_4__s_n.html#autotoc_md24", [
+        [ "Interaction Probability Weight:", "md_4__s_n.html#autotoc_md25", null ],
+        [ "Flux Weight:", "md_4__s_n.html#autotoc_md26", null ],
+        [ "Effective Weight:", "md_4__s_n.html#autotoc_md27", null ]
+      ] ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -64,12 +90,12 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"0common_8h_source.html",
-"class_c_a_d_mesh_1_1_file_1_1_reader.html#ae80a5e692f18b66fc78b8d42c5e186a2",
-"class_l_o_m16.html#a7fb8e6c358934ebaf8b97318f7591cb7",
-"class_o_m_sim_event_action.html#ae04b5b7339c3a0820eb71278c1eb8a96",
-"class_o_m_sim_s_n_analysis.html#aa68d0e90eb58b85e1d75ae8cf56dbb5e",
-"classm_d_o_m_harness.html#a0e96a969656eb27a4eec62bf40f31061"
+"5__group__definitions_8h_source.html",
+"class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader.html#a4baa1bc48bbb4d1c62cef7f465c4acb3",
+"class_l_o_m16.html#a93c141790620554394cdf9864096d011",
+"class_o_m_sim_g4_scintillation.html#a136cdd00f76f00faa5b53ac495437ceb",
+"class_o_m_sim_s_n_analysis.html#adecef736c5d91a751823c3c942c6d8de",
+"classm_d_o_m_harness.html#a2a136b21fda87052b7f49e7f681af7ce"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
