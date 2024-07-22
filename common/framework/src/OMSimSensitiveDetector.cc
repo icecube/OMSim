@@ -1,3 +1,7 @@
+/**
+ * @todo Test several optical modules of same type with new type
+*/
+
 #include "OMSimSensitiveDetector.hh"
 
 #include "G4ios.hh"

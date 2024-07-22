@@ -17,31 +17,32 @@
  * Files are located in "supernova/models"
  *
  * @param value The integer identifier representing a specific supernova model.
- * @todo Handle error cases more robustly than just console output.
  * @return A pair containing the neutrino and antineutrino flux file names.
  */
 std::pair<std::string, std::string> OMSimSNTools::getFileNames(int value)
 {
-  // TODO: make this more robust?
-  std::string basePath = "../supernova/models/";
-  switch (value)
-  {
-  case 0:
-    return {basePath + "Flux_Nu_Heavy_ls220.cfg", basePath + "Flux_Nubar_Heavy_ls220.cfg"}; // 27 solar masses type II model
-  case 1:
-    return {basePath + "Flux_Nu_light_ls220.cfg", basePath + "Flux_Nubar_light_ls220.cfg"}; // 9.6 solar masses type II model
-  case 2:
-    return {basePath + "nu_DDT.cfg", basePath + "nubar_DDT.cfg"}; // type 1 SN
-  case 3:
-    return {basePath + "nu_GCD.cfg", basePath + "nubar_GCD.cfg"}; // type 1 SN
-  case 4:
-    return {basePath + "Flux_Nu_tailSN.cfg", basePath + "Flux_Nubar_tailSN.cfg"}; // long tailed type II
-  default:
-    // TODO handle error properly
-    log_error("ERROR!! Choose a valid SN model");
-    return {"", ""};
+    const std::string basePath = "../supernova/models/";
+
+    const std::map<int, std::pair<std::string, std::string>> fileMap = {
+        {0, {basePath + "Flux_Nu_Heavy_ls220.cfg", basePath + "Flux_Nubar_Heavy_ls220.cfg"}}, // 27 solar masses type II model
+        {1, {basePath + "Flux_Nu_light_ls220.cfg", basePath + "Flux_Nubar_light_ls220.cfg"}}, // 9.6 solar masses type II model
+        {2, {basePath + "nu_DDT.cfg", basePath + "nubar_DDT.cfg"}},                          // type 1 SN
+        {3, {basePath + "nu_GCD.cfg", basePath + "nubar_GCD.cfg"}},                          // type 1 SN
+        {4, {basePath + "Flux_Nu_tailSN.cfg", basePath + "Flux_Nubar_tailSN.cfg"}}           // long tailed type II
+    };
+
+    auto it = fileMap.find(value);
+    if (it != fileMap.end())
+    {
+      log_debug("Using SN model files {} {}" , it->second.first, it->second.second);
+      return it->second;
+    }
+    else
+    {
+        log_error("ERROR!! Choose a valid SN model");
+        throw std::invalid_argument("Invalid value for SN model");
+    }
   }
-}
 /**
  * @brief Checks if a given position is within any of the modules.
  *
