@@ -141,30 +141,30 @@ Introduction to effective areas</h1>
 Example using healpy</h1>
 <p>In the following, an example of the usage of the effective area module is given. Although there are C++ healpix libraries, in my opinion, the easiest way of getting the angle pair coordinates is using Healpy in Python.</p>
 <p>In principle, for short simulations, you could run the program directly from Python using the angles from healpy as input parameters:</p>
-<div class="fragment"><div class="line">import healpy as hp</div>
-<div class="line">import numpy as np</div>
-<div class="line">from os import system</div>
+<div class="fragment"><div class="line"><span class="keyword">import</span> healpy <span class="keyword">as</span> hp</div>
+<div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div>
+<div class="line"><span class="keyword">from</span> os <span class="keyword">import</span> system</div>
 <div class="line"> </div>
-<div class="line">NSIDE = 8 #only powers of 2 allowed, the larger, the more pixels are calculated</div>
+<div class="line">NSIDE = 8 <span class="comment">#only powers of 2 allowed, the larger, the more pixels are calculated</span></div>
 <div class="line">NPIX = hp.nside2npix(NSIDE)</div>
 <div class="line">thetas, phis = np.degrees(hp.pix2ang(nside=NSIDE, ipix=np.arange(NPIX)))</div>
 <div class="line"> </div>
-<div class="line">for i, (theta, phi) in enumerate(zip(thetas, phis)):</div>
-<div class="line">    if i==0:</div>
-<div class="line">        system(f&quot;./OMSim_effective_area -n 10000 --environment 1 -r 300 -t {theta} -f  {phi} --output_file output&quot;)</div>
-<div class="line">    else:</div>
-<div class="line">        system(f&quot;./OMSim_effective_area -n 10000 --environment 1 -r 300 -t {theta} -f  {phi} --output_file output --no_header&quot;)</div>
+<div class="line"><span class="keywordflow">for</span> i, (theta, phi) <span class="keywordflow">in</span> enumerate(zip(thetas, phis)):</div>
+<div class="line">    <span class="keywordflow">if</span> i==0:</div>
+<div class="line">        system(f<span class="stringliteral">&quot;./OMSim_effective_area -n 10000 --environment 1 -r 300 -t {theta} -f  {phi} --output_file output&quot;</span>)</div>
+<div class="line">    <span class="keywordflow">else</span>:</div>
+<div class="line">        system(f<span class="stringliteral">&quot;./OMSim_effective_area -n 10000 --environment 1 -r 300 -t {theta} -f  {phi} --output_file output --no_header&quot;</span>)</div>
 </div><!-- fragment --><p>However, this is quite inefficient. The best is to save the angle pairs into a file and pass it as an argument. If you give a file as an argument, the arg theta and phi are ignored.</p>
-<div class="fragment"><div class="line">import healpy as hp</div>
-<div class="line">import numpy as np</div>
-<div class="line">from os import system</div>
+<div class="fragment"><div class="line"><span class="keyword">import</span> healpy <span class="keyword">as</span> hp</div>
+<div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div>
+<div class="line"><span class="keyword">from</span> os <span class="keyword">import</span> system</div>
 <div class="line"> </div>
-<div class="line">NSIDE = 8 #only powers of 2 allowed, the larger, the more pixels are calculated</div>
+<div class="line">NSIDE = 8 <span class="comment">#only powers of 2 allowed, the larger, the more pixels are calculated</span></div>
 <div class="line">NPIX = hp.nside2npix(NSIDE)</div>
 <div class="line">thetas, phis = np.degrees(hp.pix2ang(nside=NSIDE, ipix=np.arange(NPIX)))</div>
-<div class="line">fname = &quot;angle_pairs.txt&quot;</div>
+<div class="line">fname = <span class="stringliteral">&quot;angle_pairs.txt&quot;</span></div>
 <div class="line">np.savetxt(fname, np.column_stack((thetas, phis)))</div>
-<div class="line">system(f&quot;./OMSim_effective_area -n 10000 --environment 1 -r 300 --angles_file {fname} --output_file output&quot;)</div>
+<div class="line">system(f<span class="stringliteral">&quot;./OMSim_effective_area -n 10000 --environment 1 -r 300 --angles_file {fname} --output_file output&quot;</span>)</div>
 </div><!-- fragment --><p>In my PC, the first code block needs 51 seconds (tested with NSIDE=2), the second block only 14 seconds (as simulation has to be initialised only once). </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -172,7 +172,7 @@ Example using healpy</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jul 22 2024 13:05:56 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jul 22 2024 13:08:08 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

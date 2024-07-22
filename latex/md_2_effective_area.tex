@@ -25,19 +25,19 @@ In principle, for short simulations, you could run the program directly from Pyt
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{import healpy as hp}
-\DoxyCodeLine{import numpy as np}
-\DoxyCodeLine{from os import system}
+\DoxyCodeLine{\textcolor{keyword}{import} healpy \textcolor{keyword}{as} hp}
+\DoxyCodeLine{\textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\textcolor{keyword}{from} os \textcolor{keyword}{import} system}
 \DoxyCodeLine{}
-\DoxyCodeLine{NSIDE = 8 \#only powers of 2 allowed, the larger, the more pixels are calculated}
+\DoxyCodeLine{NSIDE = 8 \textcolor{comment}{\#only powers of 2 allowed, the larger, the more pixels are calculated}}
 \DoxyCodeLine{NPIX = hp.nside2npix(NSIDE)}
 \DoxyCodeLine{thetas, phis = np.degrees(hp.pix2ang(nside=NSIDE, ipix=np.arange(NPIX)))}
 \DoxyCodeLine{}
-\DoxyCodeLine{for i, (theta, phi) in enumerate(zip(thetas, phis)):}
-\DoxyCodeLine{    if i==0:}
-\DoxyCodeLine{        system(f"{}./OMSim\_effective\_area -\/n 10000 -\/-\/environment 1 -\/r 300 -\/t \{theta\} -\/f  \{phi\} -\/-\/output\_file output"{})}
-\DoxyCodeLine{    else:}
-\DoxyCodeLine{        system(f"{}./OMSim\_effective\_area -\/n 10000 -\/-\/environment 1 -\/r 300 -\/t \{theta\} -\/f  \{phi\} -\/-\/output\_file output -\/-\/no\_header"{})}
+\DoxyCodeLine{\textcolor{keywordflow}{for} i, (theta, phi) \textcolor{keywordflow}{in} enumerate(zip(thetas, phis)):}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} i==0:}
+\DoxyCodeLine{        system(f\textcolor{stringliteral}{"{}./OMSim\_effective\_area -\/n 10000 -\/-\/environment 1 -\/r 300 -\/t \{theta\} -\/f  \{phi\} -\/-\/output\_file output"{}})}
+\DoxyCodeLine{    \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{        system(f\textcolor{stringliteral}{"{}./OMSim\_effective\_area -\/n 10000 -\/-\/environment 1 -\/r 300 -\/t \{theta\} -\/f  \{phi\} -\/-\/output\_file output -\/-\/no\_header"{}})}
 
 \end{DoxyCode}
 
@@ -46,16 +46,16 @@ However, this is quite inefficient. The best is to save the angle pairs into a f
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{import healpy as hp}
-\DoxyCodeLine{import numpy as np}
-\DoxyCodeLine{from os import system}
+\DoxyCodeLine{\textcolor{keyword}{import} healpy \textcolor{keyword}{as} hp}
+\DoxyCodeLine{\textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\textcolor{keyword}{from} os \textcolor{keyword}{import} system}
 \DoxyCodeLine{}
-\DoxyCodeLine{NSIDE = 8 \#only powers of 2 allowed, the larger, the more pixels are calculated}
+\DoxyCodeLine{NSIDE = 8 \textcolor{comment}{\#only powers of 2 allowed, the larger, the more pixels are calculated}}
 \DoxyCodeLine{NPIX = hp.nside2npix(NSIDE)}
 \DoxyCodeLine{thetas, phis = np.degrees(hp.pix2ang(nside=NSIDE, ipix=np.arange(NPIX)))}
-\DoxyCodeLine{fname = "{}angle\_pairs.txt"{}}
+\DoxyCodeLine{fname = \textcolor{stringliteral}{"{}angle\_pairs.txt"{}}}
 \DoxyCodeLine{np.savetxt(fname, np.column\_stack((thetas, phis)))}
-\DoxyCodeLine{system(f"{}./OMSim\_effective\_area -\/n 10000 -\/-\/environment 1 -\/r 300 -\/-\/angles\_file \{fname\} -\/-\/output\_file output"{})}
+\DoxyCodeLine{system(f\textcolor{stringliteral}{"{}./OMSim\_effective\_area -\/n 10000 -\/-\/environment 1 -\/r 300 -\/-\/angles\_file \{fname\} -\/-\/output\_file output"{}})}
 
 \end{DoxyCode}
 
