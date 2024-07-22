@@ -1,4 +1,4 @@
-#  OMSim
+#  %OMSim Geant4 Framework
 [TOC]
 
 **Under construction. If you want to use OMSim contact martin.u in IC-slack...**
@@ -60,6 +60,5 @@ OMSim has been utilized in a range of studies, each simulating unique physics, t
 - [Effective area](https://icecube.github.io/OMSim/group___effective_area.html): calculates the effective area of the optical modules/PMTs.
 - [Radioactive decays](https://icecube.github.io/OMSim/group__radioactive.html): simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.
 - [Supernova studies](https://icecube.github.io/OMSim/group__sngroup.html): used for the development of an improved SN trigger for IceCube using multi-PMT modules.
-- [Bubble column](https://icecube.github.io/OMSim/group__bubble.html): used for investigating the capability of the mDOM flashers in determining bubble column parameters.
 
 Most users will likely utilize just one of these studies, meaning there's no need to compile all of them. If you wish to exclude certain studies from compilation, you can comment out the undesired ones in the CMakeLists.txt between lines 41-43 (where the **add_subdirectory** commands are located).

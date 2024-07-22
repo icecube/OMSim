@@ -1,5 +1,8 @@
-# Multi-threading in Geant4
+# Multi-threading mode
 [TOC]
+
+The OMSim-Framework allows for multi-threading. The number of threads can be controlled with the `--threads` argument (default 1). If you specify more threads than available, only the maximum available will be used.
+
 ## Introduction
 Geant4 implements multi-threading using a master-worker model:
 
