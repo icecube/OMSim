@@ -42,7 +42,6 @@ public:
     void reset();
 
 private:
-    G4String getThreadIDStr();
     G4ThreadLocal static DecayStats *mThreadDecayStats;
 
     static G4Mutex mMutex;

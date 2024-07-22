@@ -113,7 +113,7 @@ This file contains the detection information. Its structure is designed to facil
 The default content structure is as follows:
 
 ```
-Total hits | Modules hit | PMTs hit | "...for each PMT hit..." | Module number | PMT number | Hits in that PMT | "...for each Hit..." | hit time |
+Nr of sim. modules > Number of hits per module > for each PMT hit starting with module 0: { PMT number | Hit time | Det. probability }
 ```
 
 Note that the number of columns varies per line, contingent on the number of photons detected for the simulated neutrinos.

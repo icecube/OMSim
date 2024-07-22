@@ -46,14 +46,6 @@ void OMSimDecaysAnalysis::appendDecay(G4String pParticleName, G4double pDecayTim
 	mThreadDecayStats->decay_position.push_back(pDecayPosition);
 }
 
-G4String OMSimDecaysAnalysis::getThreadIDStr()
-{
-	std::ostringstream oss;
-	oss << G4Threading::G4GetThreadId();
-	G4String threadIdStr = oss.str();
-	return threadIdStr;
-}
-
 /**
  * @brief Calls calculateMultiplicity and writes the results to the output file.
  */
@@ -84,7 +76,8 @@ void OMSimDecaysAnalysis::writeThreadDecayInformation()
 	log_trace("Writing decay information of {} decays", mThreadDecayStats->eventId.size());
 
 	G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
-	G4String lDecaysFileName = lOutputSuffix + "_" + getThreadIDStr() + "_decays.dat";
+
+	G4String lDecaysFileName = lOutputSuffix + "_" + OMSimHitManager::getInstance().getThreadIDStr() + "_decays.dat";
 
 	std::fstream lDatafile;
 	lDatafile.open(lDecaysFileName.c_str(), std::ios::out | std::ios::app);
@@ -112,11 +105,12 @@ void OMSimDecaysAnalysis::writeThreadDecayInformation()
  */
 void OMSimDecaysAnalysis::writeThreadHitInformation()
 {
-	if (!OMSimHitManager::getInstance().areThereHitsInModule()) return;
+	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
+	if (!lHitManager.areThereHitsInModuleSingleThread()) return;
 
-	HitStats lHits = OMSimHitManager::getInstance().getSingleThreadHitsOfModule();
+	HitStats lHits = lHitManager.getSingleThreadHitsOfModule();
 	G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
-	G4String lHitsFileName = lOutputSuffix + "_" + getThreadIDStr() + "_hits.dat";
+	G4String lHitsFileName = lOutputSuffix + "_" + lHitManager.getThreadIDStr() + "_hits.dat";
 	log_trace("Writing hit information of {} hits", lHits.eventId.size());
 
 	std::fstream lDatafile;

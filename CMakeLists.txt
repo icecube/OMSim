@@ -6,8 +6,8 @@ project(OMSim)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 # Add these lines for debug information
-#set(CMAKE_BUILD_TYPE Debug)
-#set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
+set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
 
 # Option to build example with Geant4 UI and Vis drivers
 option(WITH_GEANT4_UIVIS "Build example with Geant4 UI and Vis drivers" ON)
@@ -51,8 +51,8 @@ include(${ROOT_USE_FILE})
 
 add_subdirectory(common)
 #add_subdirectory(effective_area)
-add_subdirectory(radioactive_decays)
-#add_subdirectory(supernova)
+#add_subdirectory(radioactive_decays)
+add_subdirectory(supernova)
 
 # Copy auxiliary files from source directory to binary directory
 set(mdom_aux

@@ -83,10 +83,13 @@ public:
     void setNumberOfPMTs(int pNumberOfPMTs, int pModuleIndex = 0);
     HitStats getHitsOfModule(int pModuleIndex = 0);
     HitStats getSingleThreadHitsOfModule(int pModuleIndex = 0);
-    bool areThereHitsInModule(int pModuleIndex = 0);
+    bool areThereHitsInModuleSingleThread(int pModuleIndex = 0);
     void sortHitStatsByTime(HitStats &pHits);
     std::vector<int> calculateMultiplicity(const G4double pTimeWindow, int pModuleNumber = 0);
     G4int getNextDetectorIndex() { return ++mCurrentIndex; }
+    G4int getNumberOfModules() { return mCurrentIndex+1; }
+    G4String getThreadIDStr();
+
     void mergeThreadData();
 
     std::map<G4int, HitStats> mModuleHits; ///< Map of a HitStats containing hit information for each simulated optical module

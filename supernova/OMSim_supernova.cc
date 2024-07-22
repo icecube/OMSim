@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file
  * @ingroup sngroup
  * @brief Main of the supernova study.
  * @details @see sngroup
@@ -13,40 +13,18 @@
 
 std::shared_ptr<spdlog::logger> globalLogger;
 
-// TODO: change this global. getInstance?
-G4Navigator* gNavigator =nullptr;
-void setGlobalNavigator(G4Navigator* pNavigator){gNavigator = pNavigator;}
-
 namespace po = boost::program_options;
-
-void prepareAnalysis() {
-	OMSimSNAnalysis &lAnalysisManager = OMSimSNAnalysis::getInstance();
-	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-	G4String lDataOutputName = lArgs.get<std::string>("output_file") + ".dat";
-    G4String lInfoOutputName = lArgs.get<std::string>("output_file") + "_info.dat";
-    if (!lArgs.get<bool>("SNfixEnergy")) {
-    	lAnalysisManager.maininfofile.open(lInfoOutputName, std::ios::out| std::ios::trunc); 
-    }
-    lAnalysisManager.datafile.open(lDataOutputName, std::ios::out| std::ios::trunc); 
-    lAnalysisManager.WriteHeaders();
-}
 
 void runSupernovaNeutrinoSimulation()
 {
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
-	//TODO: Check whether this is right, since runmanager and primarygenerators are being
-	//called also in OMSim.cc
+	// TODO: Check whether this is right, since runmanager and primarygenerators are being
+	// called also in OMSim.cc
 	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
 	lUIinterface.applyCommand("/selectGun", lArgs.getInstance().get<G4int>("SNgun"));
-
-	prepareAnalysis();
-
-    lUIinterface.runBeamOn();
-
+	lUIinterface.runBeamOn();
 }
-
 
 /**
  * @brief Add options for the user input arguments for the SN module
@@ -69,18 +47,17 @@ void addModuleOptions(OMSim* pSimulation)
 	pSimulation->extendOptions(lSpecific);
 }
 
-
 int main(int pArgumentCount, char *pArgumentVector[])
 {
 
 	OMSim lSimulation;
 	addModuleOptions(&lSimulation);
 	bool lContinue = lSimulation.handleArguments(pArgumentCount, pArgumentVector);
-	if (!lContinue) return 0;
+	if (!lContinue)
+		return 0;
 
-	OMSimSNdetector* lDetectorConstruction = new OMSimSNdetector();
+	OMSimSNdetector *lDetectorConstruction = new OMSimSNdetector();
 	lSimulation.initialiseSimulation(lDetectorConstruction);
-
 	runSupernovaNeutrinoSimulation();
 
 	lSimulation.startVisualisationIfRequested();

@@ -140,6 +140,15 @@ HitStats OMSimHitManager::getHitsOfModule(int pModuleIndex)
 	return mModuleHits[pModuleIndex];
 }
 
+
+G4String OMSimHitManager::getThreadIDStr()
+{
+	std::ostringstream oss;
+	oss << G4Threading::G4GetThreadId();
+	G4String threadIdStr = oss.str();
+	return threadIdStr;
+}
+
 /**
  * @brief Retrieves the HitStats structure for the specified module of single thread.
  * @param moduleIndex Index of the module for which to retrieve hit statistics. Default is 0.
@@ -152,7 +161,7 @@ HitStats OMSimHitManager::getSingleThreadHitsOfModule(int pModuleIndex)
 }
 
 
-bool OMSimHitManager::areThereHitsInModule(int pModuleIndex)
+bool OMSimHitManager::areThereHitsInModuleSingleThread(int pModuleIndex)
 {
 	if (!mThreadData) {return false;};
 	return mThreadData->moduleHits.find(pModuleIndex) != mThreadData->moduleHits.end();

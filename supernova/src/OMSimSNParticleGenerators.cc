@@ -56,7 +56,8 @@ void SNBaseParticleGenerator::initialiseDistribution(int pColumnIndex, int pNrOf
 void SNBaseParticleGenerator::GeneratePrimaries(G4Event *pEvent)
 {
     initialiseParticle();
-
+    OMSimSNAnalysis &lAnalysisManager = OMSimSNAnalysis::getInstance();
+    OMSimSNAnalysis::getInstance().initEventStat();
     G4double lNeutrinoEnergy = calculateNeutrinoEnergy();
 
     G4ThreeVector lMomentumDirection = calculateMomentumDirection(lNeutrinoEnergy);
@@ -67,9 +68,9 @@ void SNBaseParticleGenerator::GeneratePrimaries(G4Event *pEvent)
 
     G4double lWeight = calculateWeight(lNeutrinoEnergy);
 
-    OMSimSNAnalysis &lAnalysisManager = OMSimSNAnalysis::getInstance();
-    lAnalysisManager.weigh = lWeight;
-    lAnalysisManager.primaryEnergy = lParticleEnergy;
+    
+    lAnalysisManager.mEventStat->weight = lWeight;
+    lAnalysisManager.mEventStat->primary_energy = lParticleEnergy;
 
     mParticleGun->GeneratePrimaryVertex(pEvent);
 }
@@ -82,8 +83,7 @@ G4ThreeVector SNBaseParticleGenerator::calculateMomentumDirection(G4double pNuEn
     G4double zdir = -lCosTheta;
     G4double xdir = -lSinTheta * std::cos(phi);
     G4double ydir = -lSinTheta * std::sin(phi);
-    OMSimSNAnalysis &lAnalysisManager = OMSimSNAnalysis::getInstance();
-    lAnalysisManager.cosTheta = lCosTheta;
+    OMSimSNAnalysis::getInstance().mEventStat->cos_theta = lCosTheta;
     return G4ThreeVector(xdir, ydir, zdir);
 }
 
@@ -140,9 +140,9 @@ G4double SNBaseParticleGenerator::calculateNeutrinoEnergy()
     }
 
     OMSimSNAnalysis &lAnalysisManager = OMSimSNAnalysis::getInstance();
-    lAnalysisManager.nuTime = lTimeOfSpectrum;
-    lAnalysisManager.nuMeanEnergy = lMeanEnergy;
-    lAnalysisManager.nuEnergy = lNeutrinoEnergy;
+    lAnalysisManager.mEventStat->neutrino_time = lTimeOfSpectrum;
+    lAnalysisManager.mEventStat->mean_energy = lMeanEnergy;
+    lAnalysisManager.mEventStat->neutrino_energy = lNeutrinoEnergy;
     return lNeutrinoEnergy;
 }
 
