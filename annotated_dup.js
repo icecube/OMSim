@@ -29,11 +29,9 @@ var annotated_dup =
     [ "DistributionSampler", "class_distribution_sampler.html", "class_distribution_sampler" ],
     [ "effectiveAreaResult", "structeffective_area_result.html", "structeffective_area_result" ],
     [ "EventInfoManager", "class_event_info_manager.html", "class_event_info_manager" ],
-    [ "EvtStat", "struct_evt_stat.html", "struct_evt_stat" ],
     [ "G4RadioactiveDecay", "class_g4_radioactive_decay.html", "class_g4_radioactive_decay" ],
     [ "Gen1PMTResponse", "class_gen1_p_m_t_response.html", "class_gen1_p_m_t_response" ],
     [ "GlobalPosition", "struct_global_position.html", "struct_global_position" ],
-    [ "HitStat", "struct_hit_stat.html", "struct_hit_stat" ],
     [ "HitStats", "struct_hit_stats.html", "struct_hit_stats" ],
     [ "IceCubeIce", "class_ice_cube_ice.html", "class_ice_cube_ice" ],
     [ "InputDataManager", "class_input_data_manager.html", "class_input_data_manager" ],
@@ -82,5 +80,6 @@ var annotated_dup =
     [ "RefractionAndAbsorption", "class_refraction_and_absorption.html", "class_refraction_and_absorption" ],
     [ "RefractionOnly", "class_refraction_only.html", "class_refraction_only" ],
     [ "ScintillationProperties", "class_scintillation_properties.html", "class_scintillation_properties" ],
-    [ "SNBaseParticleGenerator", "class_s_n_base_particle_generator.html", "class_s_n_base_particle_generator" ]
+    [ "SNBaseParticleGenerator", "class_s_n_base_particle_generator.html", "class_s_n_base_particle_generator" ],
+    [ "SNEventStats", "struct_s_n_event_stats.html", "struct_s_n_event_stats" ]
 ];

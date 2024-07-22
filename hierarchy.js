@@ -39,7 +39,6 @@ var hierarchy =
     [ "DistributionSampler", "class_distribution_sampler.html", null ],
     [ "effectiveAreaResult", "structeffective_area_result.html", null ],
     [ "EventInfoManager", "class_event_info_manager.html", null ],
-    [ "EvtStat", "struct_evt_stat.html", null ],
     [ "G4UImessenger", null, [
       [ "OMSimPrimaryGeneratorMessenger", "class_o_m_sim_primary_generator_messenger.html", null ]
     ] ],
@@ -89,7 +88,6 @@ var hierarchy =
       ] ]
     ] ],
     [ "GlobalPosition", "struct_global_position.html", null ],
-    [ "HitStat", "struct_hit_stat.html", null ],
     [ "HitStats", "struct_hit_stats.html", null ],
     [ "CADMesh::File::Item", "struct_c_a_d_mesh_1_1_file_1_1_item.html", null ],
     [ "CADMesh::File::Lexer", "class_c_a_d_mesh_1_1_file_1_1_lexer.html", null ],
@@ -123,6 +121,7 @@ var hierarchy =
       [ "CADMesh::File::STLReader", "class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader.html", null ]
     ] ],
     [ "OMSimDetectorConstruction::SDInfo", "struct_o_m_sim_detector_construction_1_1_s_d_info.html", null ],
+    [ "SNEventStats", "struct_s_n_event_stats.html", null ],
     [ "CADMesh::File::State", "struct_c_a_d_mesh_1_1_file_1_1_state.html", [
       [ "CADMesh::File::__FinalState", "struct_c_a_d_mesh_1_1_file_1_1_____final_state.html", null ]
     ] ],

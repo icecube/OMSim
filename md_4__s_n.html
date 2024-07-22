@@ -206,7 +206,7 @@ Output Files</h1>
 *_data.dat</h2>
 <p>This file contains the detection information. Its structure is designed to facilitate various trigger studies, allowing the examination of different time windows. Users might evaluate its structure for convenience, particularly if the trigger check is integrated within the simulation (requiring a predefined time window).</p>
 <p>The default content structure is as follows:</p>
-<div class="fragment"><div class="line">Total hits | Modules hit | PMTs hit | &quot;...for each PMT hit...&quot; | Module number | PMT number | Hits in that PMT | &quot;...for each Hit...&quot; | hit time |</div>
+<div class="fragment"><div class="line">Nr of sim. modules &gt; Number of hits per module &gt; for each PMT hit starting with module 0: { PMT number | Hit time | Det. probability }</div>
 </div><!-- fragment --><p>Note that the number of columns varies per line, contingent on the number of photons detected for the simulated neutrinos.</p>
 <h1><a class="anchor" id="autotoc_md24"></a>
 Weights</h1>
@@ -251,7 +251,7 @@ Effective Weight:</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jul 22 2024 13:08:08 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jul 22 2024 15:40:37 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

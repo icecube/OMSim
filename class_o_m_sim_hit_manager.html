@@ -165,9 +165,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a45a63dbb6cdb3815db3cfde00ae36f70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_hit_stats.html">HitStats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a45a63dbb6cdb3815db3cfde00ae36f70">getSingleThreadHitsOfModule</a> (int pModuleIndex=0)</td></tr>
 <tr class="memdesc:a45a63dbb6cdb3815db3cfde00ae36f70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> structure for the specified module of single thread.  <a href="class_o_m_sim_hit_manager.html#a45a63dbb6cdb3815db3cfde00ae36f70">More...</a><br /></td></tr>
 <tr class="separator:a45a63dbb6cdb3815db3cfde00ae36f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd81abd7cdede402c175ba89179f2edb"><td class="memItemLeft" align="right" valign="top"><a id="abd81abd7cdede402c175ba89179f2edb"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>areThereHitsInModule</b> (int pModuleIndex=0)</td></tr>
-<tr class="separator:abd81abd7cdede402c175ba89179f2edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80e97d87c4e35e25870523939e458817"><td class="memItemLeft" align="right" valign="top"><a id="a80e97d87c4e35e25870523939e458817"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>areThereHitsInModuleSingleThread</b> (int pModuleIndex=0)</td></tr>
+<tr class="separator:a80e97d87c4e35e25870523939e458817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a756d2a85121e00d2a2d8b6c04cd0ebd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a756d2a85121e00d2a2d8b6c04cd0ebd1">sortHitStatsByTime</a> (<a class="el" href="struct_hit_stats.html">HitStats</a> &amp;pHits)</td></tr>
 <tr class="memdesc:a756d2a85121e00d2a2d8b6c04cd0ebd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts the hit statistics by the hit time.  <a href="class_o_m_sim_hit_manager.html#a756d2a85121e00d2a2d8b6c04cd0ebd1">More...</a><br /></td></tr>
 <tr class="separator:a756d2a85121e00d2a2d8b6c04cd0ebd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,6 +177,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>areThereHitsInModule<
 <tr class="memitem:abcdc764e8a8b756e6a1eb745403da57b"><td class="memItemLeft" align="right" valign="top"><a id="abcdc764e8a8b756e6a1eb745403da57b"></a>
 G4int&#160;</td><td class="memItemRight" valign="bottom"><b>getNextDetectorIndex</b> ()</td></tr>
 <tr class="separator:abcdc764e8a8b756e6a1eb745403da57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aad9c1f5979d9d5557dc6a1cf8cb838"><td class="memItemLeft" align="right" valign="top"><a id="a1aad9c1f5979d9d5557dc6a1cf8cb838"></a>
+G4int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumberOfModules</b> ()</td></tr>
+<tr class="separator:a1aad9c1f5979d9d5557dc6a1cf8cb838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03a62d588f625b5ce20e36ac62743cab"><td class="memItemLeft" align="right" valign="top"><a id="a03a62d588f625b5ce20e36ac62743cab"></a>
+G4String&#160;</td><td class="memItemRight" valign="bottom"><b>getThreadIDStr</b> ()</td></tr>
+<tr class="separator:a03a62d588f625b5ce20e36ac62743cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaaa60e5b1a57b96a45e16e91128b4f0"><td class="memItemLeft" align="right" valign="top"><a id="aeaaa60e5b1a57b96a45e16e91128b4f0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>mergeThreadData</b> ()</td></tr>
 <tr class="separator:aeaaa60e5b1a57b96a45e16e91128b4f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -538,7 +544,7 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></li>
-    <li class="footer">Generated on Mon Jul 22 2024 13:08:08 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jul 22 2024 15:40:37 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

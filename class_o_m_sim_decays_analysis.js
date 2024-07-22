@@ -5,7 +5,6 @@ var class_o_m_sim_decays_analysis =
     [ "OMSimDecaysAnalysis", "class_o_m_sim_decays_analysis.html#a5a809421faa0dd4ad201891f58850af5", null ],
     [ "appendDecay", "class_o_m_sim_decays_analysis.html#a35aa71b0f55694ab682eb12e33e773d3", null ],
     [ "getInstance", "class_o_m_sim_decays_analysis.html#a4aea9bd04b3f168cfcae98808b33f90c", null ],
-    [ "getThreadIDStr", "class_o_m_sim_decays_analysis.html#a3a15072bb49ce504d9876d8e26b21f3c", null ],
     [ "mergeDecayData", "class_o_m_sim_decays_analysis.html#a715d4897705da383ce1a1d93b68def9b", null ],
     [ "operator=", "class_o_m_sim_decays_analysis.html#af4b8d2cd736ede06f4dcf7258fb46090", null ],
     [ "reset", "class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0", null ],
