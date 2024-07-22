@@ -14,6 +14,7 @@ jobs:
         run: |
           sudo apt-get install doxygen graphviz
           cd doxygen_documentation
+          rm -rf html
           doxygen Doxyfile
           cd ..
           
