@@ -40,7 +40,7 @@ In the following, an example of the usage of the effective area module is given.
 
 In principle, for short simulations, you could run the program directly from Python using the angles from healpy as input parameters:
 
-```python
+```py
 import healpy as hp
 import numpy as np
 from os import system
@@ -58,7 +58,7 @@ for i, (theta, phi) in enumerate(zip(thetas, phis)):
 
 However, this is quite inefficient. The best is to save the angle pairs into a file and pass it as an argument. If you give a file as an argument, the arg theta and phi are ignored.
 
-```python
+```py
 import healpy as hp
 import numpy as np
 from os import system
