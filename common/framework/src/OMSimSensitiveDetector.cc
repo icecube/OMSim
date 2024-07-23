@@ -162,13 +162,7 @@ G4bool OMSimSensitiveDetector::handlePMT(G4Step *pStep, G4TouchableHistory *pTou
 {
   PhotonInfo lInfo = getPhotonInfo(pStep);
 
-  if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut"))
-  {
-    if (mPMTResponse->passQE(lInfo.wavelength))
-    {
-      return false;
-    }
-  }
+  if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut") && !mPMTResponse->passQE(lInfo.wavelength)) return false;
 
   std::vector<G4String> lPMTNameNR = splitStringByDelimiter(pStep->GetPreStepPoint()->GetTouchableHandle()->GetVolume(2)->GetName(), '_');
   lInfo.pmtNumber = atoi(lPMTNameNR.at(1));
