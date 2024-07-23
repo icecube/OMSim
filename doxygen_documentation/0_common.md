@@ -38,6 +38,8 @@ This inheritance ensures the definition of functions to retrieve the pressure ve
 
 The `OMSimPMTConstruction` class constructs PMTs. There are two PMT construction approaches. The first is simple, with a solid photocathode where all entering photons are recorded. The second type simulates the photocathode as a thin layer, also representing the internal components accounting for internal reflections. For more information, refer to Chapter 9 of [Martin Unland's thesis](https://zenodo.org/record/8121321).
 
+In the complex PMT model, the photocathodes are not real volumes, but are defined as a boundary condition between the glass and internal vacuum. The original `G4OpBoundaryProcess` of Geant4 was modified in `OMSimOpBoundaryProcess.cc` in order to simulate the optical propierties of thin layers (see [Nicolai Krybus's thesis]()).
+
 The construction of different PMT models (e.g. the 3'' or 10'' PMTs) is quite similar. However, the frontal window shape varies among models, leading to diverse combinations of ellipsoids and spheres.
 
 <div style="width: 100%; text-align: center;">
@@ -68,11 +70,11 @@ Figure 3: <i>QE of simulation with the absorption length currently used compared
 
 ## Making PMTs and OMs sensitive
 
-For photon detection in both simple and complex geometries, the photons must be absorbed within the photocathode volume. The PMTs' photocathodes are made sensitive through the OMSimSensitiveDetector class, following Geant4's G4VSensitiveDetector pattern. This configuration is achieved by invoking `OMSimOpticalModule::configureSensitiveVolume` (or `OMSimPMTConstruction::configureSensitiveVolume` when simulating a single PMT). 
+For photon detection in both simple and complex geometries, the photons must be absorbed within the photocathode. The photocathodes are made sensitive through the OMSimSensitiveDetector class, following Geant4's G4VSensitiveDetector pattern. This configuration is achieved by invoking `OMSimOpticalModule::configureSensitiveVolume` (or `OMSimPMTConstruction::configureSensitiveVolume` when simulating a single PMT). 
 
 It is essential to invoke this method in the detector construction, as it needs the instance of `OMSimDetectorConstruction` to call `G4VUserDetectorConstruction::SetSensitiveDetector` for successful operation in Geant4 (refer to `OMSimDetectorConstruction::registerSensitiveDetector`).
 
-> **Important**: Each optical module should have its own instance of OMSimSensitiveDetector. Creating a new instance for each module ensures that hits are correctly associated with their respective modules and prevents cross-talk between detectors.
+> **Important**: Creating a new instance for each module to ensure that hits are correctly associated with their respective modules and prevents cross-talk between detectors.
 
 Here's an example of how to properly create and configure sensitive detectors for multiple optical modules:
 
@@ -87,13 +89,14 @@ for (int i = 0; i < numberOfModules; ++i) {
 
 Every step of a particle through the photocathode triggers the `OMSimSensitiveDetector::ProcessHits` method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4's philosophy concerning G4VSensitiveDetector, consult the [Geant4 guide for application developers](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector#g4vsensitivedetector).
 
-## PMT response
+## Storing hits and PMT response
 
+### PMTs Charge, transit time and detection probability 
 > **Warning**: Only the mDOM PMT currently supports a detailed PMT response.
 
 In `OMSimPMTConstruction::configureSensitiveVolume`, PMTs are associated with an instance of `OMSimPMTResponse`, contingent on the PMT under simulation. This class offers a precise PMT simulation by sampling from real measurements, obtaining the relative transit time, charge (in PE), and detection probability (using the measured scans from [M. Unland's thesis](https://zenodo.org/record/8121321)). For details, refer to Section 9.3.4 of the linked thesis.
 
-This sampling is performed for every absorbed photon in `OMSimSensitiveDetector::ProcessHits` invoking `OMSimPMTResponse::processPhotocathodeHit`.
+This sampling is performed for every absorbed photon in `OMSimSensitiveDetector::ProcessHits` invoking `OMSimPMTResponse::processPhotocathodeHit`. The position of the photon on the photocathode is retrieved, the 2D-histograms of the gain, SPE resolution, transit time and TTS are interpolated for that position and the charge / transit time of the photon is sampled from a Gaussian using the interpolated values as mean (in case of gain / transit time) and standard deviation (in case of SPE resolution / TTS). The detection probability is the product of the QE (dependent on the wavelength of the photon) and the collection efficiency weight (dependent on absorption position).
 
 <div style="width: 100%; text-align: center;">
 <img src="PW_beam_geant4_TT.png" width="256" height="440" alt="PMT response compared to measurement" />
@@ -103,11 +106,14 @@ Figure 4: <i>PMT response compared to measurement for different light sources. I
 </div>
 </div>
 
+### Hit storage
+
 The data of absorbed photons is managed by the `OMSimHitManager` singleton. To analyze and export this data, consult example methods like `OMSimEffectiveAreaAnalyisis::writeScan` and `OMSimDecaysAnalysis::writeHitInformation` for direction.
 
 An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in `OMSimHitManager`. To enable this feature, provide the "QE_cut" argument via the command line. In this case `OMSimSensitiveDetector::ProcessHits` will call `OMSimPMTResponse::passQE` and break early if it returns false, without storing the photon information.
 
 > **Note**: In most scenarios, it's not recommended to use --QE_cut since it reduces your statistics. Its presence in OMSim is primarily for testing purposes. It's generally better to perform post-analysis using the saved `OMSimPMTResponse::PMTPulse::detectionProbability` for each absorbed photon.
+
 
 ## Making other volumes sensitive to photons
 
