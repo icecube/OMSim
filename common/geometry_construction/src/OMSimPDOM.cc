@@ -71,7 +71,7 @@ void pDOM::construction()
 
     G4PVPlacement *lAirPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lAirLogical, "pDOMAirPhys ", lGelLogical, false, 0, mCheckOverlaps);
 
-    mPMTManager->placeIt(G4ThreeVector(0, 0, lPMTz), G4RotationMatrix(), lGelLogical);
+    mPMTManager->placeIt(G4ThreeVector(0, 0, lPMTz), G4RotationMatrix(), lGelLogical, "_0");
 
     G4PVPlacement *lGelPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lGelLogical, "pDOMGelPhys", lGlassSphereLogical, false, 0, mCheckOverlaps);
 
