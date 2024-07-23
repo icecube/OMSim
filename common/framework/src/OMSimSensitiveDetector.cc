@@ -1,26 +1,24 @@
 /**
  * @todo Test several optical modules of same type with new type
-*/
+ */
 
 #include "OMSimSensitiveDetector.hh"
+#include "OMSimPMTResponse.hh"
+#include "OMSimCommandArgsTable.hh"
+#include "OMSimHitManager.hh"
 
 #include "G4ios.hh"
-#include "G4LogicalVolume.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4ParticleTypes.hh"
 #include "G4Step.hh"
 #include "G4TouchableHistory.hh"
 #include "G4Track.hh"
-#include "G4VPhysicalVolume.hh"
 #include "G4VTouchable.hh"
-#include "OMSimEventAction.hh"
 #include "G4OpticalPhoton.hh"
-#include "OMSimPMTResponse.hh"
-#include "OMSimCommandArgsTable.hh"
-#include "OMSimHitManager.hh"
 #include "G4VProcess.hh"
 #include "G4ProcessVector.hh"
 #include "G4ProcessManager.hh"
+
 std::vector<G4String> splitStringByDelimiter(G4String const &pString, char pDelim)
 {
   std::vector<G4String> result;
@@ -128,7 +126,6 @@ PhotonInfo OMSimSensitiveDetector::getPhotonInfo(G4Step *pStep)
   return info;
 }
 
-
 G4bool OMSimSensitiveDetector::checkVolumeAbsorption(G4Step *pStep)
 {
   return pStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "OpAbsorption";
@@ -165,8 +162,13 @@ G4bool OMSimSensitiveDetector::handlePMT(G4Step *pStep, G4TouchableHistory *pTou
 {
   PhotonInfo lInfo = getPhotonInfo(pStep);
 
-  if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut") && !mPMTResponse->passQE(lInfo.wavelength))
-    return false;
+  if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut"))
+  {
+    if (mPMTResponse->passQE(lInfo.wavelength))
+    {
+      return false;
+    }
+  }
 
   std::vector<G4String> lPMTNameNR = splitStringByDelimiter(pStep->GetPreStepPoint()->GetTouchableHandle()->GetVolume(2)->GetName(), '_');
   lInfo.pmtNumber = atoi(lPMTNameNR.at(1));

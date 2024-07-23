@@ -104,6 +104,7 @@ OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 
 void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *pDetConst, G4String pName)
 {
+    log_debug("Configuring PMTs of {} as sensitive detector", pName);
     OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector(pName, DetectorType::PMT);
     lSensitiveDetector->setPMTResponse(getPMTResponseInstance());
     pDetConst->registerSensitiveDetector(mPhotocathodeLV, lSensitiveDetector);

@@ -10,6 +10,11 @@ G4Mutex OMSimHitManager::mMutex = G4Mutex();
 OMSimHitManager *OMSimHitManager::mInstance = nullptr;
 G4ThreadLocal OMSimHitManager::ThreadLocalData *OMSimHitManager::mThreadData = nullptr;
 
+OMSimHitManager::OMSimHitManager(): mCurrentIndex(-1)
+{
+};
+
+
 /**
  * @brief Returns the singleton instance of the OMSimHitManager.
  * @return A reference to the singleton instance.
@@ -116,7 +121,7 @@ void OMSimHitManager::appendHitInfo(
 	moduleHits.localPosition.push_back(pLocalPos);
 	moduleHits.generationDetectionDistance.push_back(pDistance);
 	moduleHits.PMTresponse.push_back(pResponse);
-	log_trace("Saved hit on module {} sensor {} (thread {})", pModuleNumber, pPMTHitNumber, G4Threading::G4GetThreadId());
+	log_trace("Saved hit nr {} on module {} sensor {} (thread {})", moduleHits.eventId.size(), pModuleNumber, pPMTHitNumber, G4Threading::G4GetThreadId());
 }
 
 /**
@@ -156,7 +161,7 @@ G4String OMSimHitManager::getThreadIDStr()
  */
 HitStats OMSimHitManager::getSingleThreadHitsOfModule(int pModuleIndex)
 {
-	log_debug("Getting mThreadData of thread {}", G4Threading::G4GetThreadId());
+	log_debug("Getting mThreadData of module {} (thread {})", pModuleIndex, G4Threading::G4GetThreadId());
 	return mThreadData->moduleHits[pModuleIndex];
 }
 

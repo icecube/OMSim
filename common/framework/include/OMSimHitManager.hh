@@ -55,7 +55,7 @@ struct HitStats
  */
 class OMSimHitManager
 {
-    OMSimHitManager() = default;
+    OMSimHitManager();
     ~OMSimHitManager() = default;
     OMSimHitManager(const OMSimHitManager &) = delete;
     OMSimHitManager &operator=(const OMSimHitManager &) = delete;
@@ -96,7 +96,7 @@ public:
 
 private:
     std::map<G4int, G4int> mNumPMTs; ///< Map of number of PMTs in the used optical modules
-    G4int mCurrentIndex = -1;
+    G4int mCurrentIndex;
 
     static G4Mutex mMutex;
     static OMSimHitManager* mInstance;

@@ -5,7 +5,6 @@
 OMSimOpticalModule::OMSimOpticalModule(InputDataManager *pData, OMSimPMTConstruction *pPMTManager) : abcDetectorComponent(pData), mPMTManager(pPMTManager)
 {
     log_trace("Constructor of OMSimOpticalModule");
-    mIndex = OMSimHitManager::getInstance().getNextDetectorIndex();
 }
 
 OMSimOpticalModule::~OMSimOpticalModule()
@@ -24,7 +23,9 @@ OMSimPMTConstruction *OMSimOpticalModule::getPMTmanager()
 }
 
 void OMSimOpticalModule::configureSensitiveVolume(OMSimDetectorConstruction *pDetConst)
-{
+{   
+    mIndex = OMSimHitManager::getInstance().getNextDetectorIndex();
+    log_debug("Configuring {} as sensitive detector", getName());
     OMSimHitManager::getInstance().setNumberOfPMTs(getNumberOfPMTs(), mIndex);
     mPMTManager->configureSensitiveVolume(pDetConst, getName());
 }
