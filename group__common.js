@@ -19,9 +19,9 @@ var group__common =
     [ "OMSimMDOMHarness.hh", "_o_m_sim_m_d_o_m_harness_8hh.html", null ],
     [ "OMSimPDOM.hh", "_o_m_sim_p_d_o_m_8hh.html", null ],
     [ "OMSim", "class_o_m_sim.html", [
-      [ "Installing Geant4", "index.html#autotoc_md30", null ],
-      [ "Requirements", "index.html#autotoc_md31", null ],
-      [ "Compiling OMSim", "index.html#autotoc_md32", null ],
+      [ "Installing Geant4", "index.html#autotoc_md32", null ],
+      [ "Requirements", "index.html#autotoc_md33", null ],
+      [ "Compiling OMSim", "index.html#autotoc_md34", null ],
       [ "OMSim", "class_o_m_sim.html#afc01df8f57a1303823b79ffd79088a89", null ],
       [ "~OMSim", "class_o_m_sim.html#a61d63cc8b99c7ac89ecce97720fbb41a", null ],
       [ "configureLogger", "class_o_m_sim.html#a3e43df3d28f3e5e7cbec8a6e3ef1dcf5", null ],
@@ -154,7 +154,7 @@ var group__common =
       [ "ThreadLocalData", "struct_o_m_sim_hit_manager_1_1_thread_local_data.html", [
         [ "moduleHits", "struct_o_m_sim_hit_manager_1_1_thread_local_data.html#af3728eb7e2df5e46bd29fb5220d8bf28", null ]
       ] ],
-      [ "OMSimHitManager", "class_o_m_sim_hit_manager.html#a7590a8dd5b3b9df30c7ca92bdecf7277", null ],
+      [ "OMSimHitManager", "class_o_m_sim_hit_manager.html#a5cec10e41685343e1549768995f137e6", null ],
       [ "~OMSimHitManager", "class_o_m_sim_hit_manager.html#ab65c1cbe54f5bdd1261635428dc3f9cf", null ],
       [ "OMSimHitManager", "class_o_m_sim_hit_manager.html#a588ee2ee380c68a3a4904e2bab762268", null ],
       [ "appendHitInfo", "class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e", null ],

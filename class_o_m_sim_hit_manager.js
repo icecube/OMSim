@@ -1,7 +1,7 @@
 var class_o_m_sim_hit_manager =
 [
     [ "ThreadLocalData", "struct_o_m_sim_hit_manager_1_1_thread_local_data.html", "struct_o_m_sim_hit_manager_1_1_thread_local_data" ],
-    [ "OMSimHitManager", "class_o_m_sim_hit_manager.html#a7590a8dd5b3b9df30c7ca92bdecf7277", null ],
+    [ "OMSimHitManager", "class_o_m_sim_hit_manager.html#a5cec10e41685343e1549768995f137e6", null ],
     [ "~OMSimHitManager", "class_o_m_sim_hit_manager.html#ab65c1cbe54f5bdd1261635428dc3f9cf", null ],
     [ "OMSimHitManager", "class_o_m_sim_hit_manager.html#a588ee2ee380c68a3a4904e2bab762268", null ],
     [ "appendHitInfo", "class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e", null ],
