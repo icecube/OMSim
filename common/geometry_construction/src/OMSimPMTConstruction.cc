@@ -459,7 +459,7 @@ G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String pSide)
     G4double lEllipseZaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis_2");
     G4double lEllipsePos_y_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y_2");
 
-    G4double lEllipseEllipseTransition_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseEllipseTransition_y");
+    G4double lEllipseEllipseTransition_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y");
 
     G4Ellipsoid *lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
     G4Ellipsoid *lBulbEllipsoid_2 = new G4Ellipsoid("Solid Bulb Ellipsoid 2", lEllipseXYaxis_2, lEllipseXYaxis_2, lEllipseZaxis_2);
