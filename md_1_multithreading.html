@@ -118,17 +118,17 @@ $(document).ready(function(){initNavTree('md_1_multithreading.html',''); initRes
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md8">Introduction</a></li>
-<li class="level1"><a href="#autotoc_md9">Thread Safety Guidelines</a></li>
-<li class="level1"><a href="#autotoc_md10">Thread-Safe Singleton Implementation</a><ul><li class="level2"><a href="#autotoc_md11">Example: OMSimHitManager</a></li>
-<li class="level2"><a href="#autotoc_md12">Example: Saving Data Per Thread</a></li>
+<ul><li class="level1"><a href="#autotoc_md7">Introduction</a></li>
+<li class="level1"><a href="#autotoc_md8">Thread Safety Guidelines</a></li>
+<li class="level1"><a href="#autotoc_md9">Thread-Safe Singleton Implementation</a><ul><li class="level2"><a href="#autotoc_md10">Example: OMSimHitManager</a></li>
+<li class="level2"><a href="#autotoc_md11">Example: Saving Data Per Thread</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md13">Best Practices for Creating New Thread-Safe Containers</a></li>
+<li class="level1"><a href="#autotoc_md12">Best Practices for Creating New Thread-Safe Containers</a></li>
 </ul>
 </div>
 <div class="textblock"><p>The OMSim-Framework allows for multi-threading. The number of threads can be controlled with the <code>--threads</code> argument (default 1). If you specify more threads than available, only the maximum available will be used.</p>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Introduction</h1>
 <p>Geant4 implements multi-threading using a master-worker model:</p>
 <ol type="1">
@@ -140,7 +140,7 @@ Introduction</h1>
 <li>Each thread has its own instance of sensitive detectors, event and tracking managers.</li>
 <li>Random number generators are designed to produce independent streams for each thread.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Thread Safety Guidelines</h1>
 <ol type="1">
 <li><b>Use Thread-Local Storage</b>: For data unique to each thread, use <code>G4ThreadLocal</code>.</li>
@@ -148,7 +148,7 @@ Thread Safety Guidelines</h1>
 <li><b>Minimize Global Variables</b>: Prefer class members or local variables instead.</li>
 <li><b>Implement Thread-Safe Containers</b>: Ensure thread-safe access and modification of containers.</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 Thread-Safe Singleton Implementation</h1>
 <p>Both <code><a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a></code> and <code><a class="el" href="class_o_m_sim_decays_analysis.html" title="Singleton class responsible for managing, analysing, and saving decay-related data.">OMSimDecaysAnalysis</a></code> utilize the singleton pattern with a thread-safe <code>getInstance</code> method. This method employs a double-checked locking pattern to ensure thread safety while minimizing synchronization overhead. The process works as follows:</p>
 <ol type="1">
@@ -174,7 +174,7 @@ Thread-Safe Singleton Implementation</h1>
 <blockquote class="doxtable">
 <p><b>Note</b>: While this singleton implementation is thread-safe, consider whether a singleton is the best design choice for your specific use case. Singletons can sometimes lead to issues with testability and create hidden dependencies. </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Example: OMSimHitManager</h2>
 <p>The <code><a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a></code> class demonstrates several thread-safety techniques:</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div>
@@ -235,7 +235,7 @@ Example: OMSimHitManager</h2>
 </div><!-- fragment --><blockquote class="doxtable">
 <p><b>Important</b>: Call <code>mergeThreadData</code> after all threads have finished simulating (after a run has completed). </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Example: Saving Data Per Thread</h2>
 <p>In scenarios where merging data is unnecessary, or the amount of data is too large to wait until end of run, each thread can save its data in separate files. This is demonstrated in the <code><a class="el" href="class_o_m_sim_decays_analysis.html" title="Singleton class responsible for managing, analysing, and saving decay-related data.">OMSimDecaysAnalysis</a></code> class.</p>
 <ol type="1">
@@ -300,7 +300,7 @@ Example: Saving Data Per Thread</h2>
 <div class="line">            lAnalysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0">reset</a>();</div>
 <div class="line">        }</div>
 <div class="ttc" id="aclass_o_m_sim_decays_analysis_html_af747109a424e5878d2a4e42b6308f3cb"><div class="ttname"><a href="class_o_m_sim_decays_analysis.html#af747109a424e5878d2a4e42b6308f3cb">OMSimDecaysAnalysis::writeMultiplicity</a></div><div class="ttdeci">void writeMultiplicity(G4double pTimeWindow)</div><div class="ttdoc">Calls calculateMultiplicity and writes the results to the output file.</div><div class="ttdef"><b>Definition:</b> OMSimDecaysAnalysis.cc:52</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
 Best Practices for Creating New Thread-Safe Containers</h1>
 <p>When implementing new thread-safe containers in Geant4:</p>
 <ol type="1">
@@ -335,7 +335,7 @@ Best Practices for Creating New Thread-Safe Containers</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jul 23 2024 09:59:57 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jul 23 2024 10:04:34 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

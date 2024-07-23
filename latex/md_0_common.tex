@@ -43,9 +43,7 @@ The construction of different PMT models (e.\+g. the 3\textquotesingle{}\textquo
 In the complex PMT model, the photocathode has an absorption length that matches the measured quantum efficiency of the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMTs. For the other PMT models, this matching still has to be performed.
 
    ~\newline
- Figure 3\+: {\itshape QE of simulation with the absorption length currently used compared to measurements. Image from \href{https://zenodo.org/record/8121321}{\texttt{ M. Unland\textquotesingle{}s thesis}}.}  \hypertarget{md_0_common_autotoc_md3}{}\doxysection{PMT Response and Saving Hits}\label{md_0_common_autotoc_md3}
-\begin{quote}
-{\bfseries{Warning}}\+: Only the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT currently supports a detailed PMT response. \end{quote}
+ Figure 3\+: {\itshape QE of simulation with the absorption length currently used compared to measurements. Image from \href{https://zenodo.org/record/8121321}{\texttt{ M. Unland\textquotesingle{}s thesis}}.}  \hypertarget{md_0_common_autotoc_md3}{}\doxysection{Making PMTs and OMs sensitive}\label{md_0_common_autotoc_md3}
 For photon detection in both simple and complex geometries, the photons must be absorbed within the photocathode volume. The PMTs\textquotesingle{} photocathodes are made sensitive through the \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSim\+Sensitive\+Detector}} class, following Geant4\textquotesingle{}s G4\+VSensitive\+Detector pattern. This configuration is achieved by invoking {\ttfamily OMSim\+Optical\+Module\+::configure\+Sensitive\+Volume} (or {\ttfamily OMSim\+PMTConstruction\+::configure\+Sensitive\+Volume} when simulating a single PMT).
 
 It is essential to invoke this method in the detector construction, as it needs the instance of {\ttfamily \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}} to call {\ttfamily G4\+VUser\+Detector\+Construction\+::\+Set\+Sensitive\+Detector} for successful operation in Geant4 (refer to {\ttfamily OMSim\+Detector\+Construction\+::register\+Sensitive\+Detector}).
@@ -66,8 +64,9 @@ Here\textquotesingle{}s an example of how to properly create and configure sensi
 \end{DoxyCode}
 
 
-Every step of a particle through the photocathode triggers the {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4\textquotesingle{}s philosophy concerning G4\+VSensitive\+Detector, consult the \href{https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector\#g4vsensitivedetector}{\texttt{ Geant4 guide for application developers}}.
-
+Every step of a particle through the photocathode triggers the {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4\textquotesingle{}s philosophy concerning G4\+VSensitive\+Detector, consult the \href{https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector\#g4vsensitivedetector}{\texttt{ Geant4 guide for application developers}}.\hypertarget{md_0_common_autotoc_md4}{}\doxysection{PMT response}\label{md_0_common_autotoc_md4}
+\begin{quote}
+{\bfseries{Warning}}\+: Only the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT currently supports a detailed PMT response. \end{quote}
 In {\ttfamily OMSim\+PMTConstruction\+::configure\+Sensitive\+Volume}, PMTs are associated with an instance of {\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}}}, contingent on the PMT under simulation. This class offers a precise PMT simulation by sampling from real measurements, obtaining the relative transit time, charge (in PE), and detection probability (using the measured scans from \href{https://zenodo.org/record/8121321}{\texttt{ M. Unland\textquotesingle{}s thesis}}). For details, refer to Section 9.\+3.\+4 of the linked thesis.
 
 This sampling is performed for every absorbed photon in {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} invoking {\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}{OMSim\+PMTResponse\+::process\+Photocathode\+Hit}}}.
@@ -81,7 +80,7 @@ An additional feature allows for the direct application of a QE cut. This ensure
 
 \begin{quote}
 {\bfseries{Note}}\+: In most scenarios, it\textquotesingle{}s not recommended to use --QE\+\_\+cut since it reduces your statistics. Its presence in \mbox{\hyperlink{class_o_m_sim}{OMSim}} is primarily for testing purposes. It\textquotesingle{}s generally better to perform post-\/analysis using the saved {\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse_a87f21652e10a0bc82870ded9697b57f2}{OMSim\+PMTResponse\+::\+PMTPulse\+::detection\+Probability}}} for each absorbed photon. \end{quote}
-\hypertarget{md_0_common_autotoc_md4}{}\doxysection{Making other volumes sensitive to photons}\label{md_0_common_autotoc_md4}
+\hypertarget{md_0_common_autotoc_md5}{}\doxysection{Making other volumes sensitive to photons}\label{md_0_common_autotoc_md5}
 For some studies, you might want a volume to detect photons, without this necessarily being a PMT. For such cases, the framework has a provision in place\+: use the {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSim\+Sensitive\+Detector}}} and pass {\ttfamily Detector\+Type\+::\+General\+Photon\+Detector} as its constructor argument.
 
 In this case, the {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} will use an instance {\ttfamily \mbox{\hyperlink{class_no_response}{No\+Response}}} as PMT response, which is just a dummy placeholder. ~\newline
@@ -107,14 +106,4 @@ In this case, {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12
 
 If there\textquotesingle{}s a need to make a volume sensitive to particles other than photons, add a new entry to the {\ttfamily Detector\+Type} enum (in {\ttfamily \mbox{\hyperlink{_o_m_sim_sensitive_detector_8hh_source}{OMSim\+Sensitive\+Detector.\+hh}}}) and incorporate a new method that handles this scenario in {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}}.
 
-You might also track these particles in {\ttfamily \mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSim\+Tracking\+Action}}} or {\ttfamily \mbox{\hyperlink{class_o_m_sim_stepping_action}{OMSim\+Stepping\+Action}}}, but using a class derived from {\ttfamily G4\+VSensitive\+Detector} aligns with the philosophy of Geant4.\hypertarget{md_0_common_autotoc_md5}{}\doxysection{Framework functionality}\label{md_0_common_autotoc_md5}
-... \mbox{[}previous content remains unchanged\mbox{]} ...\hypertarget{md_0_common_autotoc_md6}{}\doxysubsection{PMT Response and Saving Hits}\label{md_0_common_autotoc_md6}
-\begin{quote}
-{\bfseries{Warning}}\+: Only the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT currently supports a detailed PMT response. \end{quote}
-For photon detection in both simple and complex geometries, the photons must be absorbed within the photocathode volume. The PMTs\textquotesingle{} photocathodes are made sensitive through the \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSim\+Sensitive\+Detector}} class, following Geant4\textquotesingle{}s G4\+VSensitive\+Detector pattern. This configuration is achieved by invoking {\ttfamily OMSim\+Optical\+Module\+::configure\+Sensitive\+Volume} (or {\ttfamily OMSim\+PMTConstruction\+::configure\+Sensitive\+Volume} when simulating a single PMT).
-
-It is essential to invoke this method in the detector construction, as it needs the instance of {\ttfamily \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}} to call {\ttfamily G4\+VUser\+Detector\+Construction\+::\+Set\+Sensitive\+Detector} for successful operation in Geant4 (refer to {\ttfamily OMSim\+Detector\+Construction\+::register\+Sensitive\+Detector}).
-
-Every step of a particle through the photocathode triggers the {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4\textquotesingle{}s philosophy concerning G4\+VSensitive\+Detector, consult the \href{https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector\#g4vsensitivedetector}{\texttt{ Geant4 guide for application developers}}.
-
-... \mbox{[}rest of the content remains unchanged\mbox{]} ... 
+You might also track these particles in {\ttfamily \mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSim\+Tracking\+Action}}} or {\ttfamily \mbox{\hyperlink{class_o_m_sim_stepping_action}{OMSim\+Stepping\+Action}}}, but using a class derived from {\ttfamily G4\+VSensitive\+Detector} aligns with the philosophy of Geant4. 
