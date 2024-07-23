@@ -153,15 +153,15 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a00bb034e7751905f8a8229de3f8a39b1">reset</a> ()</td></tr>
 <tr class="memdesc:a00bb034e7751905f8a8229de3f8a39b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes hit information in memory for all modules. <br /></td></tr>
 <tr class="separator:a00bb034e7751905f8a8229de3f8a39b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b83dcdf63f9da4856a2de6d279544cf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a5b83dcdf63f9da4856a2de6d279544cf">countHits</a> (int pModuleIndex=0)</td></tr>
-<tr class="memdesc:a5b83dcdf63f9da4856a2de6d279544cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts hits for a specified module.  <a href="class_o_m_sim_hit_manager.html#a5b83dcdf63f9da4856a2de6d279544cf">More...</a><br /></td></tr>
-<tr class="separator:a5b83dcdf63f9da4856a2de6d279544cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53fa8ca9af417687fd1efb51be5c4307"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a53fa8ca9af417687fd1efb51be5c4307">countMergedHits</a> (int pModuleIndex=0)</td></tr>
+<tr class="memdesc:a53fa8ca9af417687fd1efb51be5c4307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts hits for a specified module.  <a href="class_o_m_sim_hit_manager.html#a53fa8ca9af417687fd1efb51be5c4307">More...</a><br /></td></tr>
+<tr class="separator:a53fa8ca9af417687fd1efb51be5c4307"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4a1060283a53660e52626d08a77ebc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8">setNumberOfPMTs</a> (int pNumberOfPMTs, int pModuleIndex=0)</td></tr>
 <tr class="memdesc:ab4a1060283a53660e52626d08a77ebc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the number of PMTs in a module for correct data handling.  <a href="class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8">More...</a><br /></td></tr>
 <tr class="separator:ab4a1060283a53660e52626d08a77ebc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42abfc56abccb86e9ce2841a39be24a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_hit_stats.html">HitStats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a42abfc56abccb86e9ce2841a39be24a9">getHitsOfModule</a> (int pModuleIndex=0)</td></tr>
-<tr class="memdesc:a42abfc56abccb86e9ce2841a39be24a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> structure for the specified module, should be called after data between threads was merged.  <a href="class_o_m_sim_hit_manager.html#a42abfc56abccb86e9ce2841a39be24a9">More...</a><br /></td></tr>
-<tr class="separator:a42abfc56abccb86e9ce2841a39be24a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae10481ea62eca89b774ced9e01b991ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_hit_stats.html">HitStats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#ae10481ea62eca89b774ced9e01b991ab">getMergedHitsOfModule</a> (int pModuleIndex=0)</td></tr>
+<tr class="memdesc:ae10481ea62eca89b774ced9e01b991ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> structure for the specified module, should be called after data between threads was merged.  <a href="class_o_m_sim_hit_manager.html#ae10481ea62eca89b774ced9e01b991ab">More...</a><br /></td></tr>
+<tr class="separator:ae10481ea62eca89b774ced9e01b991ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45a63dbb6cdb3815db3cfde00ae36f70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_hit_stats.html">HitStats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a45a63dbb6cdb3815db3cfde00ae36f70">getSingleThreadHitsOfModule</a> (int pModuleIndex=0)</td></tr>
 <tr class="memdesc:a45a63dbb6cdb3815db3cfde00ae36f70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> structure for the specified module of single thread.  <a href="class_o_m_sim_hit_manager.html#a45a63dbb6cdb3815db3cfde00ae36f70">More...</a><br /></td></tr>
 <tr class="separator:a45a63dbb6cdb3815db3cfde00ae36f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -373,14 +373,14 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 
 </div>
 </div>
-<a id="a5b83dcdf63f9da4856a2de6d279544cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b83dcdf63f9da4856a2de6d279544cf">&#9670;&nbsp;</a></span>countHits()</h2>
+<a id="a53fa8ca9af417687fd1efb51be5c4307"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53fa8ca9af417687fd1efb51be5c4307">&#9670;&nbsp;</a></span>countMergedHits()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; double &gt; OMSimHitManager::countHits </td>
+          <td class="memname">std::vector&lt; double &gt; OMSimHitManager::countMergedHits </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>pModuleIndex</em> = <code>0</code></td><td>)</td>
@@ -395,32 +395,6 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A vector containing the hit count for each PMT in the specified module. </dd></dl>
-
-</div>
-</div>
-<a id="a42abfc56abccb86e9ce2841a39be24a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42abfc56abccb86e9ce2841a39be24a9">&#9670;&nbsp;</a></span>getHitsOfModule()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_hit_stats.html">HitStats</a> OMSimHitManager::getHitsOfModule </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pModuleIndex</em> = <code>0</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section see"><dt>See also</dt><dd>mergeThreadData </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">moduleIndex</td><td>Index of the module for which to retrieve hit statistics. Default is 0. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> structure containing hit information of specified module. </dd></dl>
 
 </div>
 </div>
@@ -447,6 +421,32 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>A reference to the singleton instance. </dd></dl>
+
+</div>
+</div>
+<a id="ae10481ea62eca89b774ced9e01b991ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae10481ea62eca89b774ced9e01b991ab">&#9670;&nbsp;</a></span>getMergedHitsOfModule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_hit_stats.html">HitStats</a> OMSimHitManager::getMergedHitsOfModule </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pModuleIndex</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd>mergeThreadData </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">moduleIndex</td><td>Index of the module for which to retrieve hit statistics. Default is 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> structure containing hit information of specified module. </dd></dl>
 
 </div>
 </div>
@@ -544,7 +544,7 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></li>
-    <li class="footer">Generated on Tue Jul 23 2024 10:33:21 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jul 23 2024 10:55:07 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

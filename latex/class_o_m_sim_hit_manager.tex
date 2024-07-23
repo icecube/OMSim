@@ -33,11 +33,11 @@ void \mbox{\hyperlink{class_o_m_sim_hit_manager_a8c2dab4767b46f9c2eb16d5173ba527
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}\label{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}} 
 void \mbox{\hyperlink{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}{reset}} ()
 \begin{DoxyCompactList}\small\item\em Deletes hit information in memory for all modules. \end{DoxyCompactList}\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{class_o_m_sim_hit_manager_a5b83dcdf63f9da4856a2de6d279544cf}{count\+Hits}} (int p\+Module\+Index=0)
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_o_m_sim_hit_manager_a53fa8ca9af417687fd1efb51be5c4307}{count\+Merged\+Hits}} (int p\+Module\+Index=0)
 \begin{DoxyCompactList}\small\item\em Counts hits for a specified module. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}{set\+Number\+Of\+PMTs}} (int p\+Number\+Of\+PMTs, int p\+Module\+Index=0)
 \begin{DoxyCompactList}\small\item\em Stores the number of PMTs in a module for correct data handling. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} \mbox{\hyperlink{class_o_m_sim_hit_manager_a42abfc56abccb86e9ce2841a39be24a9}{get\+Hits\+Of\+Module}} (int p\+Module\+Index=0)
+\mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} \mbox{\hyperlink{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}{get\+Merged\+Hits\+Of\+Module}} (int p\+Module\+Index=0)
 \begin{DoxyCompactList}\small\item\em Retrieves the \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure for the specified module, should be called after data between threads was merged. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} \mbox{\hyperlink{class_o_m_sim_hit_manager_a45a63dbb6cdb3815db3cfde00ae36f70}{get\+Single\+Thread\+Hits\+Of\+Module}} (int p\+Module\+Index=0)
 \begin{DoxyCompactList}\small\item\em Retrieves the \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure for the specified module of single thread. \end{DoxyCompactList}\item 
@@ -162,11 +162,11 @@ For instance, if the resulting vector is \mbox{[}5, 3, 2\mbox{]}, it means\+:
 \begin{DoxyReturn}{Returns}
 A vector containing the multiplicity data. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a5b83dcdf63f9da4856a2de6d279544cf}\label{class_o_m_sim_hit_manager_a5b83dcdf63f9da4856a2de6d279544cf}} 
-\index{OMSimHitManager@{OMSimHitManager}!countHits@{countHits}}
-\index{countHits@{countHits}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{countHits()}{countHits()}}
-{\footnotesize\ttfamily std\+::vector$<$ double $>$ OMSim\+Hit\+Manager\+::count\+Hits (\begin{DoxyParamCaption}\item[{int}]{p\+Module\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_a53fa8ca9af417687fd1efb51be5c4307}\label{class_o_m_sim_hit_manager_a53fa8ca9af417687fd1efb51be5c4307}} 
+\index{OMSimHitManager@{OMSimHitManager}!countMergedHits@{countMergedHits}}
+\index{countMergedHits@{countMergedHits}!OMSimHitManager@{OMSimHitManager}}
+\doxysubsubsection{\texorpdfstring{countMergedHits()}{countMergedHits()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ OMSim\+Hit\+Manager\+::count\+Merged\+Hits (\begin{DoxyParamCaption}\item[{int}]{p\+Module\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -176,11 +176,20 @@ A vector containing the multiplicity data.
 \begin{DoxyReturn}{Returns}
 A vector containing the hit count for each PMT in the specified module. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a42abfc56abccb86e9ce2841a39be24a9}\label{class_o_m_sim_hit_manager_a42abfc56abccb86e9ce2841a39be24a9}} 
-\index{OMSimHitManager@{OMSimHitManager}!getHitsOfModule@{getHitsOfModule}}
-\index{getHitsOfModule@{getHitsOfModule}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{getHitsOfModule()}{getHitsOfModule()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} OMSim\+Hit\+Manager\+::get\+Hits\+Of\+Module (\begin{DoxyParamCaption}\item[{int}]{p\+Module\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}\label{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}} 
+\index{OMSimHitManager@{OMSimHitManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!OMSimHitManager@{OMSimHitManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& OMSim\+Hit\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+A reference to the singleton instance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}\label{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}} 
+\index{OMSimHitManager@{OMSimHitManager}!getMergedHitsOfModule@{getMergedHitsOfModule}}
+\index{getMergedHitsOfModule@{getMergedHitsOfModule}!OMSimHitManager@{OMSimHitManager}}
+\doxysubsubsection{\texorpdfstring{getMergedHitsOfModule()}{getMergedHitsOfModule()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} OMSim\+Hit\+Manager\+::get\+Merged\+Hits\+Of\+Module (\begin{DoxyParamCaption}\item[{int}]{p\+Module\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 \begin{DoxySeeAlso}{See also}
 merge\+Thread\+Data 
@@ -192,15 +201,6 @@ merge\+Thread\+Data
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure containing hit information of specified module. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}\label{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}} 
-\index{OMSimHitManager@{OMSimHitManager}!getInstance@{getInstance}}
-\index{getInstance@{getInstance}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& OMSim\+Hit\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-\begin{DoxyReturn}{Returns}
-A reference to the singleton instance. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_a45a63dbb6cdb3815db3cfde00ae36f70}\label{class_o_m_sim_hit_manager_a45a63dbb6cdb3815db3cfde00ae36f70}} 
 \index{OMSimHitManager@{OMSimHitManager}!getSingleThreadHitsOfModule@{getSingleThreadHitsOfModule}}

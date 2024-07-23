@@ -24,7 +24,7 @@ var searchData=
   ['constructphotocathodelayer_502',['constructPhotocathodeLayer',['../class_o_m_sim_p_m_t_construction.html#a0e08b1af0e16f19f16569af2a7cfa8fc',1,'OMSimPMTConstruction']]],
   ['constructprocess_503',['ConstructProcess',['../class_o_m_sim_physics_list.html#a52292caf7091b6a7666c07f29189a9d1',1,'OMSimPhysicsList']]],
   ['constructworld_504',['constructWorld',['../class_o_m_sim_rad_decays_detector.html#a7616ce083479e613cd3d9dfa9ac8b1fa',1,'OMSimRadDecaysDetector::constructWorld()'],['../class_o_m_sim_s_ndetector.html#aa331476cc1f56d3bee80c954f7a2d793',1,'OMSimSNdetector::constructWorld()'],['../class_o_m_sim_effective_area_detector.html#a6c4ccbdfac66c2820f9480d518614fa3',1,'OMSimEffectiveAreaDetector::constructWorld()']]],
-  ['counthits_505',['countHits',['../class_o_m_sim_hit_manager.html#a5b83dcdf63f9da4856a2de6d279544cf',1,'OMSimHitManager']]],
+  ['countmergedhits_505',['countMergedHits',['../class_o_m_sim_hit_manager.html#a53fa8ca9af417687fd1efb51be5c4307',1,'OMSimHitManager']]],
   ['createeggsolid_506',['createEggSolid',['../class_d_e_g_g.html#a7cb478ce4431037cd195380c77916a5a',1,'DEGG']]],
   ['creategelpadlogicalvolumes_507',['createGelpadLogicalVolumes',['../class_l_o_m18.html#ab5292cecae375e7f04caf7b995ccc8ae',1,'LOM18']]],
   ['createhistogramfromdata_508',['createHistogramFromData',['../class_o_m_sim_p_m_t_response.html#a0dd544847ff216a24aa8c528e76c9aed',1,'OMSimPMTResponse']]],
