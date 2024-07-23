@@ -91,6 +91,7 @@ void OMSimSNAnalysis::writeDataFile()
     
     lDatafile << lHitManager.getNumberOfModules() << "\t";
 
+    //write hit count for each module
     for (int iModule = 0; iModule < lHitManager.getNumberOfModules(); iModule++)
     {
         G4double lNrHits = 0;
@@ -103,6 +104,7 @@ void OMSimSNAnalysis::writeDataFile()
         lDatafile << lNrHits << "\t";
     }
 
+    //write hit information
     for (int iModule = 0; iModule < lHitManager.getNumberOfModules(); iModule++)
     {
         if (lHitManager.areThereHitsInModuleSingleThread(iModule))

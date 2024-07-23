@@ -140,7 +140,7 @@ void OMSimHitManager::setNumberOfPMTs(int pNumberOfPMTs, int pModuleIndex)
  * @param moduleIndex Index of the module for which to retrieve hit statistics. Default is 0.
  * @return A HitStats structure containing hit information of specified module.
  */
-HitStats OMSimHitManager::getHitsOfModule(int pModuleIndex)
+HitStats OMSimHitManager::getMergedHitsOfModule(int pModuleIndex)
 {
 	return mModuleHits[pModuleIndex];
 }
@@ -195,7 +195,7 @@ void OMSimHitManager::reset()
  * @param pModuleIndex Index of the module for which to count hits. Default is 0.
  * @return A vector containing the hit count for each PMT in the specified module.
  */
-std::vector<double> OMSimHitManager::countHits(int pModuleIndex)
+std::vector<double> OMSimHitManager::countMergedHits(int pModuleIndex)
 {
 	log_trace("Counting number of detected photons in module with index {}", pModuleIndex);
 	HitStats lHitsOfModule = mModuleHits[pModuleIndex];
@@ -310,6 +310,7 @@ std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double pTimeWind
 
 void OMSimHitManager::mergeThreadData()
 {
+	log_trace("Merge thread data was called");
 	G4AutoLock lock(&mMutex);
 	if (mThreadData)
 	{

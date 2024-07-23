@@ -48,7 +48,7 @@ public:
 template <typename... Args>
 void OMSimEffectiveAreaAnalyisis::writeScan(Args... args)
 {
-    std::vector<double> lHits = OMSimHitManager::getInstance().countHits();
+    std::vector<double> lHits = OMSimHitManager::getInstance().countMergedHits();
 
     std::fstream lDataFile;
     lDataFile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);

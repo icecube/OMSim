@@ -79,9 +79,9 @@ public:
         G4int pModuleIndex = 0);
 
     void reset();
-    std::vector<double> countHits(int pModuleIndex = 0);
+    std::vector<double> countMergedHits(int pModuleIndex = 0);
     void setNumberOfPMTs(int pNumberOfPMTs, int pModuleIndex = 0);
-    HitStats getHitsOfModule(int pModuleIndex = 0);
+    HitStats getMergedHitsOfModule(int pModuleIndex = 0);
     HitStats getSingleThreadHitsOfModule(int pModuleIndex = 0);
     bool areThereHitsInModuleSingleThread(int pModuleIndex = 0);
     void sortHitStatsByTime(HitStats &pHits);
