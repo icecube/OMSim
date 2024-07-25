@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['icecubeice_372',['IceCubeIce',['../class_ice_cube_ice.html',1,'']]],
-  ['inputdatamanager_373',['InputDataManager',['../class_input_data_manager.html',1,'']]],
-  ['item_374',['Item',['../struct_c_a_d_mesh_1_1_file_1_1_item.html',1,'CADMesh::File']]]
+  ['hitstats_377',['HitStats',['../struct_hit_stats.html',1,'']]]
 ];

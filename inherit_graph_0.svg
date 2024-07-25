@@ -35,31 +35,31 @@
 <!-- Node2 -->
 <g id="node3" class="node">
 <title>Node2</title>
-<g id="a_node3"><a xlink:href="class_reflective_surface.html" target="_top" xlink:title="Reflective surfaces parsed from a JSON file.">
-<polygon fill="none" stroke="black" points="121,-133.5 121,-152.5 223,-152.5 223,-133.5 121,-133.5"/>
-<text text-anchor="middle" x="172" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">ReflectiveSurface</text>
+<g id="a_node3"><a xlink:href="class_scintillation_properties.html" target="_top" xlink:title="Scintillation properties extraction for existing materials.">
+<polygon fill="none" stroke="black" points="110,-133.5 110,-152.5 234,-152.5 234,-133.5 110,-133.5"/>
+<text text-anchor="middle" x="172" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">ScintillationProperties</text>
 </a>
 </g>
 </g>
 <!-- Node0&#45;&gt;Node2 -->
 <g id="edge2" class="edge">
 <title>Node0&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M84.39,-130.63C96.14,-132.31 108.81,-134.12 120.74,-135.82"/>
+<path fill="none" stroke="midnightblue" d="M84.46,-130.64C92.68,-131.81 101.34,-133.05 109.89,-134.27"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="84.74,-127.14 74.34,-129.19 83.75,-134.07 84.74,-127.14"/>
 </g>
 <!-- Node3 -->
 <g id="node4" class="node">
 <title>Node3</title>
-<g id="a_node4"><a xlink:href="class_scintillation_properties.html" target="_top" xlink:title="Scintillation properties extraction for existing materials.">
-<polygon fill="none" stroke="black" points="110,-95.5 110,-114.5 234,-114.5 234,-95.5 110,-95.5"/>
-<text text-anchor="middle" x="172" y="-102.5" font-family="Helvetica,sans-Serif" font-size="10.00">ScintillationProperties</text>
+<g id="a_node4"><a xlink:href="class_surface.html" target="_top" xlink:title="Reflective surfaces parsed from a JSON file.">
+<polygon fill="none" stroke="black" points="145.5,-95.5 145.5,-114.5 198.5,-114.5 198.5,-95.5 145.5,-95.5"/>
+<text text-anchor="middle" x="172" y="-102.5" font-family="Helvetica,sans-Serif" font-size="10.00">Surface</text>
 </a>
 </g>
 </g>
 <!-- Node0&#45;&gt;Node3 -->
 <g id="edge3" class="edge">
 <title>Node0&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M84.46,-117.36C92.68,-116.19 101.34,-114.95 109.89,-113.73"/>
+<path fill="none" stroke="midnightblue" d="M84.4,-117.37C104.81,-114.46 127.99,-111.14 145.24,-108.68"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="83.75,-113.93 74.34,-118.81 84.74,-120.86 83.75,-113.93"/>
 </g>
 <!-- Node4 -->

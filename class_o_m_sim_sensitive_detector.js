@@ -5,6 +5,7 @@ var class_o_m_sim_sensitive_detector =
     [ "checkBoundaryAbsorption", "class_o_m_sim_sensitive_detector.html#aee2e914dd514bf5c949d45e12def5447", null ],
     [ "checkVolumeAbsorption", "class_o_m_sim_sensitive_detector.html#a9d70226340ca6ca44a09efebd7acb1e0", null ],
     [ "fetchBoundaryProcess", "class_o_m_sim_sensitive_detector.html#a9086dbe47568c71cba08feef8b665146", null ],
+    [ "findAndCachePMTVolumeDepth", "class_o_m_sim_sensitive_detector.html#a3000daa9043f8a04ded96f2d2aa516d1", null ],
     [ "getPhotonInfo", "class_o_m_sim_sensitive_detector.html#a4312e760ce38246d09e2933aa37b8725", null ],
     [ "handleGeneralPhotonDetector", "class_o_m_sim_sensitive_detector.html#a4b3d72f7aa132ea975541843a30a2f22", null ],
     [ "handlePMT", "class_o_m_sim_sensitive_detector.html#a0e8d0c59cdefec63a33c443ff903d2cf", null ],
@@ -13,5 +14,6 @@ var class_o_m_sim_sensitive_detector =
     [ "storePhotonHit", "class_o_m_sim_sensitive_detector.html#a329ead0f229868eaf8ac21132cbc6746", null ],
     [ "mBoundaryProcess", "class_o_m_sim_sensitive_detector.html#aaccd68cf580a6c9beee6e597385147bb", null ],
     [ "mDetectorType", "class_o_m_sim_sensitive_detector.html#ab14f76ffaa75e268fc49cdec4103a034", null ],
-    [ "mPMTResponse", "class_o_m_sim_sensitive_detector.html#a9352dc2cb5522d037044f99fce178b70", null ]
+    [ "mPMTResponse", "class_o_m_sim_sensitive_detector.html#a9352dc2cb5522d037044f99fce178b70", null ],
+    [ "mPMTVolumeDepth", "class_o_m_sim_sensitive_detector.html#a91d2ded95786de72b4d403fdfcf23455", null ]
 ];

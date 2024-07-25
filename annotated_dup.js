@@ -29,6 +29,8 @@ var annotated_dup =
     [ "DistributionSampler", "class_distribution_sampler.html", "class_distribution_sampler" ],
     [ "effectiveAreaResult", "structeffective_area_result.html", "structeffective_area_result" ],
     [ "EventInfoManager", "class_event_info_manager.html", "class_event_info_manager" ],
+    [ "FresnelCoefficients", "struct_fresnel_coefficients.html", "struct_fresnel_coefficients" ],
+    [ "G4OpBoundaryProcess", "class_g4_op_boundary_process.html", "class_g4_op_boundary_process" ],
     [ "G4RadioactiveDecay", "class_g4_radioactive_decay.html", "class_g4_radioactive_decay" ],
     [ "Gen1PMTResponse", "class_gen1_p_m_t_response.html", "class_gen1_p_m_t_response" ],
     [ "GlobalPosition", "struct_global_position.html", "struct_global_position" ],
@@ -73,13 +75,15 @@ var annotated_dup =
     [ "OMSimSteppingAction", "class_o_m_sim_stepping_action.html", "class_o_m_sim_stepping_action" ],
     [ "OMSimTrackingAction", "class_o_m_sim_tracking_action.html", "class_o_m_sim_tracking_action" ],
     [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html", "class_o_m_sim_u_iinterface" ],
+    [ "OpticalLayerResult", "struct_optical_layer_result.html", "struct_optical_layer_result" ],
     [ "ParameterTable", "class_parameter_table.html", "class_parameter_table" ],
     [ "pDOM", "classp_d_o_m.html", "classp_d_o_m" ],
     [ "PhotonInfo", "struct_photon_info.html", "struct_photon_info" ],
-    [ "ReflectiveSurface", "class_reflective_surface.html", "class_reflective_surface" ],
+    [ "PhotonMaterialTracking", "class_photon_material_tracking.html", "class_photon_material_tracking" ],
     [ "RefractionAndAbsorption", "class_refraction_and_absorption.html", "class_refraction_and_absorption" ],
     [ "RefractionOnly", "class_refraction_only.html", "class_refraction_only" ],
     [ "ScintillationProperties", "class_scintillation_properties.html", "class_scintillation_properties" ],
     [ "SNBaseParticleGenerator", "class_s_n_base_particle_generator.html", "class_s_n_base_particle_generator" ],
-    [ "SNEventStats", "struct_s_n_event_stats.html", "struct_s_n_event_stats" ]
+    [ "SNEventStats", "struct_s_n_event_stats.html", "struct_s_n_event_stats" ],
+    [ "Surface", "class_surface.html", "class_surface" ]
 ];

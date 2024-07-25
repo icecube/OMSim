@@ -2,9 +2,9 @@ var hierarchy =
 [
     [ "abcDataFile", "classabc_data_file.html", [
       [ "CustomProperties", "class_custom_properties.html", null ],
-      [ "ReflectiveSurface", "class_reflective_surface.html", null ],
-      [ "ReflectiveSurface", "class_reflective_surface.html", null ],
       [ "ScintillationProperties", "class_scintillation_properties.html", null ],
+      [ "Surface", "class_surface.html", null ],
+      [ "Surface", "class_surface.html", null ],
       [ "abcMaterialData", "classabc_material_data.html", [
         [ "IceCubeIce", "class_ice_cube_ice.html", null ],
         [ "IceCubeIce", "class_ice_cube_ice.html", null ],
@@ -39,6 +39,7 @@ var hierarchy =
     [ "DistributionSampler", "class_distribution_sampler.html", null ],
     [ "effectiveAreaResult", "structeffective_area_result.html", null ],
     [ "EventInfoManager", "class_event_info_manager.html", null ],
+    [ "FresnelCoefficients", "struct_fresnel_coefficients.html", null ],
     [ "G4UImessenger", null, [
       [ "OMSimPrimaryGeneratorMessenger", "class_o_m_sim_primary_generator_messenger.html", null ]
     ] ],
@@ -55,6 +56,9 @@ var hierarchy =
     ] ],
     [ "G4UserTrackingAction", null, [
       [ "OMSimTrackingAction", "class_o_m_sim_tracking_action.html", null ]
+    ] ],
+    [ "G4VDiscreteProcess", null, [
+      [ "G4OpBoundaryProcess", "class_g4_op_boundary_process.html", null ]
     ] ],
     [ "G4VRestDiscreteProcess", null, [
       [ "G4RadioactiveDecay", "class_g4_radioactive_decay.html", null ],
@@ -87,6 +91,9 @@ var hierarchy =
         [ "OMSimIBD", "class_o_m_sim_i_b_d.html", null ]
       ] ]
     ] ],
+    [ "G4VUserTrackInformation", null, [
+      [ "PhotonMaterialTracking", "class_photon_material_tracking.html", null ]
+    ] ],
     [ "GlobalPosition", "struct_global_position.html", null ],
     [ "HitStats", "struct_hit_stats.html", null ],
     [ "CADMesh::File::Item", "struct_c_a_d_mesh_1_1_file_1_1_item.html", null ],
@@ -109,6 +116,7 @@ var hierarchy =
     [ "OMSimSNAnalysis", "class_o_m_sim_s_n_analysis.html", null ],
     [ "OMSimSNTools", "class_o_m_sim_s_n_tools.html", null ],
     [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html", null ],
+    [ "OpticalLayerResult", "struct_optical_layer_result.html", null ],
     [ "ParameterTable", "class_parameter_table.html", [
       [ "InputDataManager", "class_input_data_manager.html", null ]
     ] ],

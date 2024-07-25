@@ -107,13 +107,13 @@ var group__common =
       [ "mSpiceDepth", "class_ice_cube_ice.html#ab4bb3c52de20e3e2703fc9886338f620", null ],
       [ "mSpiceDepth_pos", "class_ice_cube_ice.html#a2931d719308ecb6d6bc34733ac6e0f8e", null ]
     ] ],
-    [ "ReflectiveSurface", "class_reflective_surface.html", [
-      [ "ReflectiveSurface", "class_reflective_surface.html#a7cddce7d1786a5039a117b01a8a3511f", null ],
-      [ "extractInformation", "class_reflective_surface.html#a5dff8f89e20cf4e629024fe3a1b1d78f", null ],
-      [ "getOpticalSurfaceFinish", "class_reflective_surface.html#acc655c30d33488fee8b8a1ab9a81233b", null ],
-      [ "getOpticalSurfaceModel", "class_reflective_surface.html#a50cd398b79ecdeb97d03dcb614c016c8", null ],
-      [ "getSurfaceType", "class_reflective_surface.html#ae3e32d0fa4d3fba60478f4aaa3d537c5", null ],
-      [ "mOpticalSurface", "class_reflective_surface.html#a366da1b1126e219615c342b9bc9a4e16", null ]
+    [ "Surface", "class_surface.html", [
+      [ "Surface", "class_surface.html#a9fb1c942459b05fb216731ef7cc78e52", null ],
+      [ "extractInformation", "class_surface.html#accebb04b0468876b68298b72380c6d37", null ],
+      [ "getOpticalSurfaceFinish", "class_surface.html#ac425ef0a4f51424549eaa541766ea8cf", null ],
+      [ "getOpticalSurfaceModel", "class_surface.html#a81a6d02fd2b3f605673932a34a7bb1bf", null ],
+      [ "getSurfaceType", "class_surface.html#a9c69d5516b6e0544d59efed89d7a4ceb", null ],
+      [ "mOpticalSurface", "class_surface.html#a2e3ad23371b044da46648c991aab3294", null ]
     ] ],
     [ "ScintillationProperties", "class_scintillation_properties.html", [
       [ "ScintillationProperties", "class_scintillation_properties.html#a03dca72bd4861b8500283dc15c0864e0", null ],
