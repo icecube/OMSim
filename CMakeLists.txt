@@ -91,17 +91,3 @@ add_subdirectory(common)
 add_subdirectory(effective_area)
 #add_subdirectory(radioactive_decays)
 #add_subdirectory(supernova)
-
-# Copy auxiliary files from source directory to binary directory
-set(mdom_aux
-    aux/vis.mac
-    aux/vis.ogl
-)
-
-foreach(_script ${mdom_aux})
-    configure_file(
-        ${PROJECT_SOURCE_DIR}/${_script}
-        ${PROJECT_BINARY_DIR}/${_script}
-    COPYONLY
-    )
-endforeach()

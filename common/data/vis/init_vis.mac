@@ -13,5 +13,5 @@
 /run/initialize
 #
 # Visualization setting
-#/control/execute ../aux/vis_raytracer.mac
-/control/execute ../aux/vis.mac
+#/control/execute ../common/data/vis/vis_raytracer.mac
+/control/execute ../common/data/vis/vis.mac
