@@ -1,4 +1,4 @@
-The OMSim-\/\+Framework allows for multi-\/threading. The number of threads can be controlled with the {\ttfamily -\/-\/threads} argument (default 1). If you specify more threads than available, only the maximum available will be used.\hypertarget{md_1_multithreading_autotoc_md9}{}\doxysection{Introduction}\label{md_1_multithreading_autotoc_md9}
+The OMSim-\/\+Framework allows for multi-\/threading. The number of threads can be controlled with the {\ttfamily -\/-\/threads} argument (default 1). If you specify more threads than available, only the maximum available will be used.\hypertarget{md_extra_doc_1_multithreading_autotoc_md9}{}\doxysection{Introduction}\label{md_extra_doc_1_multithreading_autotoc_md9}
 Geant4 implements multi-\/threading using a master-\/worker model\+:
 
 
@@ -12,14 +12,14 @@ Key points\+:
 \item Geometry and physics tables are shared read-\/only among threads.
 \item Each thread has its own instance of sensitive detectors, event and tracking managers.
 \item Random number generators are designed to produce independent streams for each thread.
-\end{DoxyItemize}\hypertarget{md_1_multithreading_autotoc_md10}{}\doxysection{Thread Safety Guidelines}\label{md_1_multithreading_autotoc_md10}
+\end{DoxyItemize}\hypertarget{md_extra_doc_1_multithreading_autotoc_md10}{}\doxysection{Thread Safety Guidelines}\label{md_extra_doc_1_multithreading_autotoc_md10}
 
 \begin{DoxyEnumerate}
 \item {\bfseries{Use Thread-\/\+Local Storage}}\+: For data unique to each thread, use {\ttfamily G4\+Thread\+Local}.
 \item {\bfseries{Protect Shared Resources}}\+: Use mutex locks when accessing shared resources.
 \item {\bfseries{Minimize Global Variables}}\+: Prefer class members or local variables instead.
 \item {\bfseries{Implement Thread-\/\+Safe Containers}}\+: Ensure thread-\/safe access and modification of containers.
-\end{DoxyEnumerate}\hypertarget{md_1_multithreading_autotoc_md11}{}\doxysection{Thread-\/\+Safe Singleton Implementation}\label{md_1_multithreading_autotoc_md11}
+\end{DoxyEnumerate}\hypertarget{md_extra_doc_1_multithreading_autotoc_md11}{}\doxysection{Thread-\/\+Safe Singleton Implementation}\label{md_extra_doc_1_multithreading_autotoc_md11}
 Both {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} and {\ttfamily \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}} utilize the singleton pattern with a thread-\/safe {\ttfamily get\+Instance} method. This method employs a double-\/checked locking pattern to ensure thread safety while minimizing synchronization overhead. The process works as follows\+:
 
 
@@ -53,7 +53,7 @@ This approach guarantees the creation of only one instance, even in a multi-\/th
 
 \begin{quote}
 {\bfseries{Note}}\+: While this singleton implementation is thread-\/safe, consider whether a singleton is the best design choice for your specific use case. Singletons can sometimes lead to issues with testability and create hidden dependencies. \end{quote}
-\hypertarget{md_1_multithreading_autotoc_md12}{}\doxysubsection{Example\+: OMSim\+Hit\+Manager}\label{md_1_multithreading_autotoc_md12}
+\hypertarget{md_extra_doc_1_multithreading_autotoc_md12}{}\doxysubsection{Example\+: OMSim\+Hit\+Manager}\label{md_extra_doc_1_multithreading_autotoc_md12}
 The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} class demonstrates several thread-\/safety techniques\+:
 
 
@@ -133,7 +133,7 @@ The {\ttfamily merge\+Thread\+Data} method combines data from all threads\+:
 
 \begin{quote}
 {\bfseries{Important}}\+: Call {\ttfamily merge\+Thread\+Data} after all threads have finished simulating (after a run has completed). \end{quote}
-\hypertarget{md_1_multithreading_autotoc_md13}{}\doxysubsection{Example\+: Saving Data Per Thread}\label{md_1_multithreading_autotoc_md13}
+\hypertarget{md_extra_doc_1_multithreading_autotoc_md13}{}\doxysubsection{Example\+: Saving Data Per Thread}\label{md_extra_doc_1_multithreading_autotoc_md13}
 In scenarios where merging data is unnecessary, or the amount of data is too large to wait until end of run, each thread can save its data in separate files. This is demonstrated in the {\ttfamily \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}} class.
 
 
@@ -213,7 +213,7 @@ As you can see, in case of multiplicity study, we need to merge the data, as we 
 \DoxyCodeLine{        \}}
 
 \end{DoxyCode}
-\hypertarget{md_1_multithreading_autotoc_md14}{}\doxysection{Best Practices for Creating New Thread-\/\+Safe Containers}\label{md_1_multithreading_autotoc_md14}
+\hypertarget{md_extra_doc_1_multithreading_autotoc_md14}{}\doxysection{Best Practices for Creating New Thread-\/\+Safe Containers}\label{md_extra_doc_1_multithreading_autotoc_md14}
 When implementing new thread-\/safe containers in Geant4\+:
 
 

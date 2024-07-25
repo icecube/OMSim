@@ -37,44 +37,44 @@ var NAVTREE =
         [ "Customising Compilation", "index.html#autotoc_md38", null ]
       ] ]
     ] ],
-    [ "Framework functionality", "md_0_common.html", [
-      [ "Materials and User Data", "md_0_common.html#autotoc_md1", null ],
-      [ "Geometry construction", "md_0_common.html#autotoc_md2", null ],
-      [ "Making PMTs and OMs sensitive", "md_0_common.html#autotoc_md3", null ],
-      [ "Storing hits and PMT response", "md_0_common.html#autotoc_md4", [
-        [ "PMTs Charge, transit time and detection probability", "md_0_common.html#autotoc_md5", null ],
-        [ "Hit storage", "md_0_common.html#autotoc_md6", null ]
+    [ "Framework functionality", "md_extra_doc_0_common.html", [
+      [ "Materials and User Data", "md_extra_doc_0_common.html#autotoc_md1", null ],
+      [ "Geometry construction", "md_extra_doc_0_common.html#autotoc_md2", null ],
+      [ "Making PMTs and OMs sensitive", "md_extra_doc_0_common.html#autotoc_md3", null ],
+      [ "Storing hits and PMT response", "md_extra_doc_0_common.html#autotoc_md4", [
+        [ "PMTs Charge, transit time and detection probability", "md_extra_doc_0_common.html#autotoc_md5", null ],
+        [ "Hit storage", "md_extra_doc_0_common.html#autotoc_md6", null ]
       ] ],
-      [ "Making other volumes sensitive to photons", "md_0_common.html#autotoc_md7", null ]
+      [ "Making other volumes sensitive to photons", "md_extra_doc_0_common.html#autotoc_md7", null ]
     ] ],
-    [ "Multi-threading mode", "md_1_multithreading.html", [
-      [ "Introduction", "md_1_multithreading.html#autotoc_md9", null ],
-      [ "Thread Safety Guidelines", "md_1_multithreading.html#autotoc_md10", null ],
-      [ "Thread-Safe Singleton Implementation", "md_1_multithreading.html#autotoc_md11", [
-        [ "Example: OMSimHitManager", "md_1_multithreading.html#autotoc_md12", null ],
-        [ "Example: Saving Data Per Thread", "md_1_multithreading.html#autotoc_md13", null ]
+    [ "Multi-threading mode", "md_extra_doc_1_multithreading.html", [
+      [ "Introduction", "md_extra_doc_1_multithreading.html#autotoc_md9", null ],
+      [ "Thread Safety Guidelines", "md_extra_doc_1_multithreading.html#autotoc_md10", null ],
+      [ "Thread-Safe Singleton Implementation", "md_extra_doc_1_multithreading.html#autotoc_md11", [
+        [ "Example: OMSimHitManager", "md_extra_doc_1_multithreading.html#autotoc_md12", null ],
+        [ "Example: Saving Data Per Thread", "md_extra_doc_1_multithreading.html#autotoc_md13", null ]
       ] ],
-      [ "Best Practices for Creating New Thread-Safe Containers", "md_1_multithreading.html#autotoc_md14", null ]
+      [ "Best Practices for Creating New Thread-Safe Containers", "md_extra_doc_1_multithreading.html#autotoc_md14", null ]
     ] ],
-    [ "Effective Area Study", "md_2_effective_area.html", [
-      [ "Introduction to effective areas", "md_2_effective_area.html#autotoc_md16", null ],
-      [ "Example using healpy", "md_2_effective_area.html#autotoc_md17", null ]
+    [ "Effective Area Study", "md_extra_doc_2_effective_area.html", [
+      [ "Introduction to effective areas", "md_extra_doc_2_effective_area.html#autotoc_md16", null ],
+      [ "Example using healpy", "md_extra_doc_2_effective_area.html#autotoc_md17", null ]
     ] ],
-    [ "Radioactive Decays Study", "md_3_radioactive_decays.html", null ],
-    [ "Supernova Studies", "md_4__s_n.html", [
-      [ "Input Parameters", "md_4__s_n.html#autotoc_md20", [
-        [ "General Parameters", "md_4__s_n.html#autotoc_md21", null ],
-        [ "SN Framework Parameters", "md_4__s_n.html#autotoc_md22", null ],
-        [ "Fixed Energy Studies", "md_4__s_n.html#autotoc_md23", null ]
+    [ "Radioactive Decays Study", "md_extra_doc_3_radioactive_decays.html", null ],
+    [ "Supernova Studies", "md_extra_doc_4__s_n.html", [
+      [ "Input Parameters", "md_extra_doc_4__s_n.html#autotoc_md20", [
+        [ "General Parameters", "md_extra_doc_4__s_n.html#autotoc_md21", null ],
+        [ "SN Framework Parameters", "md_extra_doc_4__s_n.html#autotoc_md22", null ],
+        [ "Fixed Energy Studies", "md_extra_doc_4__s_n.html#autotoc_md23", null ]
       ] ],
-      [ "Output Files", "md_4__s_n.html#autotoc_md24", [
-        [ "*_info.dat", "md_4__s_n.html#autotoc_md25", null ],
-        [ "*_data.dat", "md_4__s_n.html#autotoc_md26", null ]
+      [ "Output Files", "md_extra_doc_4__s_n.html#autotoc_md24", [
+        [ "*_info.dat", "md_extra_doc_4__s_n.html#autotoc_md25", null ],
+        [ "*_data.dat", "md_extra_doc_4__s_n.html#autotoc_md26", null ]
       ] ],
-      [ "Weights", "md_4__s_n.html#autotoc_md27", [
-        [ "Interaction Probability Weight:", "md_4__s_n.html#autotoc_md28", null ],
-        [ "Flux Weight:", "md_4__s_n.html#autotoc_md29", null ],
-        [ "Effective Weight:", "md_4__s_n.html#autotoc_md30", null ]
+      [ "Weights", "md_extra_doc_4__s_n.html#autotoc_md27", [
+        [ "Interaction Probability Weight:", "md_extra_doc_4__s_n.html#autotoc_md28", null ],
+        [ "Flux Weight:", "md_extra_doc_4__s_n.html#autotoc_md29", null ],
+        [ "Effective Weight:", "md_extra_doc_4__s_n.html#autotoc_md30", null ]
       ] ]
     ] ],
     [ "Todo List", "todo.html", null ],

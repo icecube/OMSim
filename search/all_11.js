@@ -34,6 +34,6 @@ var searchData=
   ['stlreader_328',['STLReader',['../class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader.html',1,'CADMesh::File']]],
   ['storephotonhit_329',['storePhotonHit',['../class_o_m_sim_sensitive_detector.html#a329ead0f229868eaf8ac21132cbc6746',1,'OMSimSensitiveDetector']]],
   ['substracttovolume_330',['substractToVolume',['../classabc_detector_component.html#aaf0d85ee9a57f6bda0d48c4dad2b6dc5',1,'abcDetectorComponent::substractToVolume(G4VSolid *pInputVolume, G4ThreeVector pSubstractionPos, G4RotationMatrix pSubstractionRot, G4String pNewVolumeName)'],['../classabc_detector_component.html#a53c7979298ef9eda66b44f0a3c4f2e6b',1,'abcDetectorComponent::substractToVolume(G4VSolid *pInputVolume, G4Transform3D pTrans, G4String pNewVolumeName)']]],
-  ['supernova_20studies_331',['Supernova Studies',['../md_4__s_n.html',1,'(Global Namespace)'],['../group__sngroup.html',1,'(Global Namespace)']]],
+  ['supernova_20studies_331',['Supernova Studies',['../md_extra_doc_4__s_n.html',1,'(Global Namespace)'],['../group__sngroup.html',1,'(Global Namespace)']]],
   ['surface_332',['Surface',['../class_surface.html',1,'']]]
 ];

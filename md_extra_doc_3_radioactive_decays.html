@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OMSim: src -&gt; include Relation</title>
+<title>OMSim: Radioactive Decays Study</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -94,7 +94,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('dir_3eb80fb40bb9918af86e7507fbd94fb7.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('md_extra_doc_3_radioactive_decays.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -112,14 +112,37 @@ $(document).ready(function(){initNavTree('dir_3eb80fb40bb9918af86e7507fbd94fb7.h
 </iframe>
 </div>
 
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">Radioactive Decays Study </div>  </div>
+</div><!--header-->
 <div class="contents">
-<h3>src &rarr; include Relation</h3><table class="dirtab"><tr class="dirtab"><th class="dirtab">File in supernova/src</th><th class="dirtab">Includes file in supernova/include</th></tr><tr class="dirtab"><td class="dirtab"><b>OMSimSNTools.cc</b></td><td class="dirtab"><a class="el" href="_o_m_sim_s_n_tools_8hh.html">OMSimSNTools.hh</a></td></tr></table></div><!-- contents -->
+<div class="textblock"><p>Study for understanding the background produced by radioactive decays in borosilicate glass of optical modules &amp; PMTs.</p>
+<blockquote class="doxtable">
+<p><b>Warning</b>: This study has been tested only for Vitrovex glass (mDOM/LOM16) and the 80mm <a class="el" href="classm_d_o_m.html">mDOM</a> PMTs. Okamoto glass (D-Egg/LOM18) is currently under investigation. </p>
+</blockquote>
+<p>The simulation considers the measured scintillation parameters and the specific activity of the isotopes to provide insights into the behavior of OMs in both air and ice environments over a time window t_w. The number of time windows simulated is given by the argument <code>--numevents</code>`.</p>
+<p>The primary output is a timestamped list of detected photons, which can be utilized to compute parameters such as the module's expected dark rate. The simulation steps can be summarized as:</p>
+<ul>
+<li>Determining the number of decays within t_w based on measured data.</li>
+<li>Initiating decay chains for each event by positioning an isotope randomly in the pressure vessel.</li>
+<li>Assigning decay times from a uniform distribution within [0, t_w], in case the time difference between mother-daughter decay times surpasses t_w.</li>
+<li>Saving into memory photons detected by the PMTs for downstream analysis.</li>
+</ul>
+<p>Important customizations in the simulation involve the extension of Geant4's original scintillation class, facilitating the simulation of more complex decay processes (8 lifetimes), and the modification of the <a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a> class which amends default decay time of isotopes.</p>
+<p>The scintillation properties of the <a class="el" href="classm_d_o_m.html">mDOM</a> glass were measured in the scope of several theses. For a summary check section 11.2 of <a href="https://zenodo.org/record/8121321">this thesis</a>.</p>
+<p>Currently, there are two analysis modes:</p>
+<ol type="1">
+<li>With the <code>--multiplicity_study</code> argument: After each t_w time window, the multiplicity is calculated and saved to a file. Raw data isn't stored, as multiplicity studies generally involve extended simulation durations, leading to large volumes of photon data.</li>
+<li>Without the <code>--multiplicity_study</code> argument: Data pertaining to photons and decayed isotopes is saved to files. If you are using multithreaded mode, then each thread will produce its own file. </li>
+</ol>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d93c684152b9dbfa36b614b4419d35b9.html">supernova</a></li><li class="navelem"><a class="el" href="dir_3eb80fb40bb9918af86e7507fbd94fb7.html">src</a></li>
-    <li class="footer">Generated on Thu Jul 25 2024 07:23:41 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jul 25 2024 07:34:49 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -4,7 +4,7 @@ var searchData=
   ['omsimphysicslist_2ehh_281',['OMSimPhysicsList.hh',['../radioactive__decays_2include_2_o_m_sim_physics_list_8hh.html',1,'']]],
   ['omsimprimarygeneratoraction_2ehh_282',['OMSimPrimaryGeneratorAction.hh',['../radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh.html',1,'']]],
   ['radioactive_20decays_283',['Radioactive decays',['../group__radioactive.html',1,'']]],
-  ['radioactive_20decays_20study_284',['Radioactive Decays Study',['../md_3_radioactive_decays.html',1,'']]],
+  ['radioactive_20decays_20study_284',['Radioactive Decays Study',['../md_extra_doc_3_radioactive_decays.html',1,'']]],
   ['randomposition_285',['randomPosition',['../class_o_m_sim_s_n_tools.html#a7e746f08979e8ead130088b7396871a1',1,'OMSimSNTools']]],
   ['reader_286',['Reader',['../class_c_a_d_mesh_1_1_file_1_1_reader.html',1,'CADMesh::File']]],
   ['readflasherprofile_287',['readFlasherProfile',['../classm_d_o_m_flasher.html#a4c7d36af1760026c53a9164bf02dc057',1,'mDOMFlasher']]],

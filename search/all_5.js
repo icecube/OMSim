@@ -3,7 +3,7 @@ var searchData=
   ['ea_65',['EA',['../structeffective_area_result.html#a3acf96bff88a577c68bff29f1ec3ad05',1,'effectiveAreaResult']]],
   ['eaerror_66',['EAError',['../structeffective_area_result.html#ae691bfd6fd88abed6217d739ed8ca36a',1,'effectiveAreaResult']]],
   ['effective_20area_67',['Effective area',['../group___effective_area.html',1,'']]],
-  ['effective_20area_20study_68',['Effective Area Study',['../md_2_effective_area.html',1,'']]],
+  ['effective_20area_20study_68',['Effective Area Study',['../md_extra_doc_2_effective_area.html',1,'']]],
   ['effectivearearesult_69',['effectiveAreaResult',['../structeffective_area_result.html',1,'']]],
   ['endofeventaction_70',['EndOfEventAction',['../class_o_m_sim_event_action.html#a10298c7dff0337cec4ee06a25ca9c116',1,'OMSimEventAction']]],
   ['energy_71',['energy',['../struct_hit_stats.html#a542a1e55040646afe6966f281194117b',1,'HitStats']]],
