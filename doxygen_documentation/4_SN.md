@@ -13,7 +13,7 @@ In the IBD case, the outgoing neutron is not simulated; hence, the neutron captu
 Although CCSN models incorporate neutrino oscillations, the default simulation does not include any oscillation scenario in the weight calculations.
 
 <div style="width: 100%; text-align: center;">
-<img src="SNsimDiagram.png" width="810" height="270" alt="Diagram of CCSN neutrino simulation steps" />
+<img src="imgs/SNsimDiagram.png" width="810" height="270" alt="Diagram of CCSN neutrino simulation steps" />
 <div style="width: 80%; margin: auto;">
 <br/>
 Figure 1: <i>Diagram of the steps involved to generate the events for the simulation of CCSN neutrinos. The scheme is valid for both IBD and ENES, except for the threshold check. Here, `e` stands for both electron from ENES or positron from IBD, and `ν` for both electronic neutrino from ENES or electronic antineutrino from IBD. Image from <a href="https://zenodo.org/record/8107177">this thesis</a>.</i>
