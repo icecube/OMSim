@@ -244,8 +244,8 @@ G4OpticalSurface *InputDataManager::getOpticalSurface(G4String pName)
     // Check if requested material is an argument surface
     if (pName.substr(0, 12) == "argReflector")
     {
-        G4String lRefCones[] = {"Refl_V95Gel", "Refl_V98Gel", "Refl_Aluminium",
-                                "Refl_Total98"};
+        G4String lRefCones[] = {"Surf_V95Gel", "Surf_V98Gel", "Surf_Aluminium",
+                                "Surf_Total98"};
         G4int lReflectiveIndex =
             OMSimCommandArgsTable::getInstance().get<G4int>("reflective_surface");
         return getOpticalSurface(lRefCones[lReflectiveIndex]);
@@ -288,9 +288,9 @@ void InputDataManager::searchFolders()
  * @brief Processes a data file based on its name prefix.
  *
  * The function identifies the type of data file (RefractionAndAbsorption,
- * RefractionOnly, NoOptics, IceCubeIce, ReflectiveSurface or others) based on
+ * RefractionOnly, NoOptics, IceCubeIce, Surface or others) based on
  * the prefix of the filename. It then constructs an object of the appropriate
- * class and invokes its information extraction method. For 'Refl' prefixed
+ * class and invokes its information extraction method. For 'Surf' prefixed
  * files, it also updates the mOpticalSurfaceMap. For 'pmt_', 'om_', and
  * 'usr_' prefixed files, it invokes directly appendAndReturnTree without any
  * extra parsing into Geant4 objects.
@@ -323,9 +323,9 @@ void InputDataManager::processFile(const std::string &pFilePath,
         IceCubeIce lDataFile(pFilePath);
         lDataFile.extractInformation();
     }
-    else if ((pFileName.substr(0, 4) == "Refl"))
+    else if ((pFileName.substr(0, 4) == "Surf"))
     {
-        ReflectiveSurface lDataFile(pFilePath);
+        Surface lDataFile(pFilePath);
         lDataFile.extractInformation();
         mOpticalSurfaceMap[lDataFile.mObjectName] = lDataFile.mOpticalSurface;
     }

@@ -7,7 +7,7 @@
 #define OMSimInputData_h 1
 
 #include "OMSimLogger.hh"
-#include <G4OpBoundaryProcess.hh>
+#include "OMSimOpBoundaryProcess.hh"
 #include <G4SystemOfUnits.hh>
 #include <boost/property_tree/json_parser.hpp>
 

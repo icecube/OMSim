@@ -1,4 +1,4 @@
-#  %OMSim Geant4 Framework
+#  OMSim Geant4 Framework
 [TOC]
 
 **Under construction. If you want to use OMSim contact martin.u in IC-slack...**
@@ -18,6 +18,11 @@ First you should install Geant4 following [the guide provided by cern](https://g
 ``` 
 Do not change "GEANT4_BUILD_MULTITHREADED" to OFF, as OMSim supports multithreading.
 
+Source the Geant4 library (best: add this to your .bashrc):
+```bash
+source YOUR_G4_INSTALL_PATH/bin/geant4.sh
+``` 
+
 #### Requirements
 There are a few dependencies. You can install them using the following command:
 
@@ -34,23 +39,13 @@ source $ROOTSYS/bin/thisroot.sh
 
 #### Compiling OMSim
 - Clone this branch.
-- Check _CMakeLists.txt_ and change the paths with the Geant4 bins and libraries of your system
 - Make a new folder named e.g. "build" 
-- From the build folder run cmake as follows
-```bash
-cmake -D4Geant4_DIR=YOUR_G4_INSTALL/lib/Geant4-11.1.1/ ..
-``` 
-where "YOUR_G4_INSTALL" is the path to the install folder of Geant4 in your system.
-
-@note If you have to compile the project several times you should add an alias in your bashrc, e.g. 
-```bash
-alias mycmake="cmake -D4Geant4_DIR=YOUR_G4_INSTALL/lib/Geant4-11.1.1/"
-``` 
-
--Source the Geant4 library (you could add this to your .bashrc)
+- From the build folder run `cmake ..`` as follows
+- If cmake does not find Geant4 (or if you have several installations), use 
 ```bash
 source YOUR_G4_INSTALL/bin/geant4.sh
 ``` 
+where "YOUR_G4_INSTALL" is the path to the install folder of Geant4 in your system. 
 - Finally, just run ```make``` or ```make -j N``` where N is number of cores you want to use for the compilation.
 
 ## Available studies
@@ -61,4 +56,4 @@ OMSim has been utilized in a range of studies, each simulating unique physics, t
 - [Radioactive decays](https://icecube.github.io/OMSim/group__radioactive.html): simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.
 - [Supernova studies](https://icecube.github.io/OMSim/group__sngroup.html): used for the development of an improved SN trigger for IceCube using multi-PMT modules.
 
-Most users will likely utilize just one of these studies, meaning there's no need to compile all of them. If you wish to exclude certain studies from compilation, you can comment out the undesired ones in the CMakeLists.txt between lines 41-43 (where the **add_subdirectory** commands are located).
+Most users will likely utilize just one of these studies, meaning there's no need to compile all of them. If you wish to exclude certain studies from compilation, you can comment out the undesired ones in the CMakeLists.txt between lines 52-55 (where the **add_subdirectory** commands are located).

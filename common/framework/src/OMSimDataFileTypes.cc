@@ -315,27 +315,34 @@ G4double IceCubeIce::mieScattering(G4double pLambd)
  * @brief Define a new reflective surface from data in a json-file.
  *
  */
-void ReflectiveSurface::extractInformation()
+void Surface::extractInformation()
 {
     log_trace("Extracting file {} as a reflactive surface.", mFileName);
     pt::read_json(mFileName, mJsonTree); // read json file into mJsonTree
-
+    log_trace("here");
     mObjectName = mJsonTree.get<G4String>("jName");
-    G4String lModelStr = mJsonTree.get<G4String>("jModel");
-    G4String lFinishStr = mJsonTree.get<G4String>("jFinish");
-    G4String lTypeStr = mJsonTree.get<G4String>("jType");
-
-    G4OpticalSurfaceModel lModel = getOpticalSurfaceModel(lModelStr);
-    G4OpticalSurfaceFinish lFinish = getOpticalSurfaceFinish(lFinishStr);
-    G4SurfaceType lType = getSurfaceType(lTypeStr);
-
-    mOpticalSurface = new G4OpticalSurface(mObjectName, lModel, lFinish, lType);
+    mOpticalSurface = new G4OpticalSurface(mObjectName);
     G4MaterialPropertiesTable *lMPT = new G4MaterialPropertiesTable();
+    log_trace("here");
+    if(mJsonTree.get_optional<G4String>("jModel"))
+        mOpticalSurface->SetModel(getOpticalSurfaceModel(mJsonTree.get<G4String>("jModel")));
+    
+    if(mJsonTree.get_optional<G4String>("jType"))
+        mOpticalSurface->SetType(getSurfaceType(mJsonTree.get<G4String>("jType")));
 
+    if(mJsonTree.get_optional<G4String>("jFinish"))
+        mOpticalSurface->SetFinish(getOpticalSurfaceFinish(mJsonTree.get<G4String>("jFinish")));
+    
     if (mJsonTree.get_optional<G4double>("jSigmaAlpha"))
-    { // if key exists
+    { 
         G4double lSigmaAlpha = mJsonTree.get<G4double>("jSigmaAlpha");
         mOpticalSurface->SetSigmaAlpha(lSigmaAlpha);
+    }
+    log_trace("here2");
+    if (mJsonTree.get_optional<G4double>("jCoatThicknessNM"))
+    { 
+        G4double lThickness = mJsonTree.get<G4double>("jCoatThicknessNM");
+        lMPT->AddConstProperty("COATEDTHICKNESS", lThickness*nm);
     }
 
     for (pt::ptree::value_type &key : mJsonTree.get_child("jProperties"))
@@ -343,7 +350,9 @@ void ReflectiveSurface::extractInformation()
         G4String lKey = key.second.get_value<G4String>();
         std::vector<G4double> lPhotonEnergy;
         std::vector<G4double> lValues;
-        mFileData->parseKeyContentToVector(lValues, mJsonTree, "jValues_" + lKey, 1., false);
+        G4double lScaling = 1.;
+        if (lKey=="ABSLENGTH") lScaling = 1*mm;
+        mFileData->parseKeyContentToVector(lValues, mJsonTree, "jValues_" + lKey, lScaling, false);
         mFileData->parseKeyContentToVector(lPhotonEnergy, mJsonTree, "jWavelength_" + lKey, mHC_eVnm, true);
         sortVectorByReference(lPhotonEnergy, lValues);
         lMPT->AddProperty(lKey, &lPhotonEnergy[0], &lValues[0], static_cast<int>(lPhotonEnergy.size()));
@@ -661,7 +670,7 @@ void CustomProperties::findMPT()
 }
 
 /*
- * %%%%%%%%%%%%%%%% Functions for ReflectiveSurface %%%%%%%%%%%%%%%%
+ * %%%%%%%%%%%%%%%% Functions for Surface %%%%%%%%%%%%%%%%
  */
 
 /**
@@ -670,7 +679,7 @@ void CustomProperties::findMPT()
  * @param  pFinish Finish in G4String format.
  * @return Finish in G4OpticalSurfaceFinish format.
  */
-G4OpticalSurfaceFinish ReflectiveSurface::getOpticalSurfaceFinish(G4String pFinish)
+G4OpticalSurfaceFinish Surface::getOpticalSurfaceFinish(G4String pFinish)
 {
     G4OpticalSurfaceFinish lFinish;
     if (pFinish == "polished")
@@ -741,7 +750,7 @@ G4OpticalSurfaceFinish ReflectiveSurface::getOpticalSurfaceFinish(G4String pFini
  * @param  G4String
  * @return G4OpticalSurfaceModel
  */
-G4OpticalSurfaceModel ReflectiveSurface::getOpticalSurfaceModel(G4String pModel)
+G4OpticalSurfaceModel Surface::getOpticalSurfaceModel(G4String pModel)
 {
     G4OpticalSurfaceModel lModel;
     if (pModel == "glisur")
@@ -758,7 +767,7 @@ G4OpticalSurfaceModel ReflectiveSurface::getOpticalSurfaceModel(G4String pModel)
  * @param  G4String
  * @return G4SurfaceType
  */
-G4SurfaceType ReflectiveSurface::getSurfaceType(G4String pType)
+G4SurfaceType Surface::getSurfaceType(G4String pType)
 {
 
     G4SurfaceType lType;

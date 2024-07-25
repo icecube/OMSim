@@ -158,11 +158,11 @@ void mDOM::construction()
     appendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(mIndex));
     // ------------------- optical border surfaces --------------------------------------------------------------------------------
     new G4LogicalSkinSurface("RefCone_skin", lRefConePolarLogical,
-                             mData->getOpticalSurface("Refl_V95Gel"));
+                             mData->getOpticalSurface("Surf_V95Gel"));
     new G4LogicalSkinSurface("RefCone_skin", lRefconeEqUpCutLogical,
-                             mData->getOpticalSurface("Refl_V95Gel"));
+                             mData->getOpticalSurface("Surf_V95Gel"));
     new G4LogicalSkinSurface("RefCone_skin", lRefconeEqLoCutLogical,
-                             mData->getOpticalSurface("Refl_V95Gel"));
+                             mData->getOpticalSurface("Surf_V95Gel"));
 
     //     // ---------------- visualisation attributes --------------------------------------------------------------------------------
     lGlassLogical->SetVisAttributes(mGlassVis);

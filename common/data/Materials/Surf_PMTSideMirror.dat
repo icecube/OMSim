@@ -1,5 +1,5 @@
 {
-   "jName": "Refl_PMTSideMirror",
+   "jName": "Surf_PMTSideMirror",
    "jModel": "unified",
    "jProperties": [
       "SPECULARLOBECONSTANT",

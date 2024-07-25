@@ -109,7 +109,7 @@ void DEggHarness::mainDataCable()
     G4Tubs *lDataCableSolid = new G4Tubs("MainDataCable_solid", 0, lDataCableRadius, lDataCableLength / 2., 0, 2 * CLHEP::pi);
 
     G4LogicalVolume *lDataCableLogical = new G4LogicalVolume(lDataCableSolid, mData->getMaterial("NoOptic_Absorber"), "MainDataCable_logical");
-    new G4LogicalSkinSurface("MainDataCable_skin", lDataCableLogical, mData->getOpticalSurface("Refl_BlackDuctTapePolished"));
+    new G4LogicalSkinSurface("MainDataCable_skin", lDataCableLogical, mData->getOpticalSurface("Surf_BlackDuctTapePolished"));
     lDataCableLogical->SetVisAttributes(mAbsorberVis);
 
     G4ThreeVector lDataCablePosition = G4ThreeVector((mTotalWidth + lDataCableRadius + 0.5 * cm) * sin(mHarnessRotAngle),

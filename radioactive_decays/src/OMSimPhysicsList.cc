@@ -1,6 +1,7 @@
 #include "OMSimPhysicsList.hh"
 #include "OMSimG4Scintillation.hh"
 #include "OMSimG4RadioactiveDecay.hh"
+#include "OMSimOpBoundaryProcess.hh"
 
 #include "G4ProcessManager.hh"
 #include "G4ParticleTypes.hh"
@@ -24,7 +25,7 @@
 
 
 #include "G4OpAbsorption.hh"
-#include "G4OpBoundaryProcess.hh"
+
 
 #include "G4PhysicsListHelper.hh"
 #include "G4LossTableManager.hh"

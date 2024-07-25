@@ -292,7 +292,7 @@ void LOM18::placeCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical)
     // Place all of the meshes it can find in the file as solids individually.
     for (auto solid : mesh->GetSolids())
     { 
-        mSupportStructureLogical  = new G4LogicalVolume( solid , mData->getMaterial("NoOptic_Absorber") , "logical" , 0, 0, 0); //should be Refl_AluminiumGround
+        mSupportStructureLogical  = new G4LogicalVolume( solid , mData->getMaterial("NoOptic_Absorber") , "logical" , 0, 0, 0); //should be Surf_AluminiumGround
         mSupportStructureLogical->SetVisAttributes(mAluVis);
         new G4PVPlacement( lRot , G4ThreeVector(0, 0, 0) , mSupportStructureLogical, "Support structure" , lInnerVolumeLogical, false, 0, mCheckOverlaps);
     }

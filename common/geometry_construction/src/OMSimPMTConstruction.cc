@@ -23,10 +23,13 @@ OMSimPMTConstruction::OMSimPMTConstruction(InputDataManager *pData): abcDetector
  */
 void OMSimPMTConstruction::construction()
 {   log_trace("Starting construction of PMT");
+    definePhotocathodeProperties();
+
     mComponents.clear();
     G4VSolid *lPMTSolid;
     G4VSolid *lVacuumPhotocathodeSolid;
     G4VSolid *lGlassInside;
+
     std::tie(lPMTSolid, lVacuumPhotocathodeSolid) = getBulbSolid("jOuterShape");
     std::tie(lGlassInside, lVacuumPhotocathodeSolid) = getBulbSolid("jInnerShape");
     G4SubtractionSolid *lVacuumBack = new G4SubtractionSolid("Vacuum Tube solid", lGlassInside, lVacuumPhotocathodeSolid, 0, G4ThreeVector(0, 0, 0));
@@ -35,12 +38,14 @@ void OMSimPMTConstruction::construction()
 
     // The ? of the following two lines are ternary operators that replace if-else-statements
     lPMTlogical = new G4LogicalVolume(lPMTSolid, mData->getMaterial(mInternalReflections ? "RiAbs_Glass_Tube" : "Ri_Glass_Tube"), "PMT tube logical");
-    mPhotocathodeLV = new G4LogicalVolume(mInternalReflections ? constructPhotocathodeLayer() : lVacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
+    //mPhotocathodeLV = new G4LogicalVolume(mInternalReflections ? constructPhotocathodeLayer() : lVacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
+    mPhotocathodeLV = new G4LogicalVolume(lVacuumPhotocathodeSolid, mData->getMaterial("Ri_Vacuum"), "PhotocathodeRegionVacuum");
 
     G4LogicalVolume *lTubeVacuum = new G4LogicalVolume(lGlassInside, mData->getMaterial("Ri_Vacuum"), "PMTvacuum");
     G4LogicalVolume *lVacuumBackLogical = new G4LogicalVolume(lVacuumBack, mData->getMaterial("Ri_Vacuum"), "PMTvacuum");
 
-    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), mPhotocathodeLV, "Photocathode", lTubeVacuum, false, 0, mCheckOverlaps);
+    mPhotocathodeRegionVacuumPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), mPhotocathodeLV, "PhotocathodeRegionVacuum", lTubeVacuum, false, 0, mCheckOverlaps);
+
     if (mInternalReflections)
     {
         mVacuumBackPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lVacuumBackLogical, "VacuumTubeBack", lTubeVacuum, false, 0, mCheckOverlaps);
@@ -65,9 +70,14 @@ void OMSimPMTConstruction::construction()
     log_trace("Construction of PMT finished");
 }
 
+
+void OMSimPMTConstruction::definePhotocathodeProperties()
+{
+    mPhotocathodeOpticalSurface = mData->getOpticalSurface("Surf_Hamamatsu_R15458");
+}
 OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 {
-
+    return &NoResponse::getInstance();
     G4String jResponseData;
     try
     {
@@ -107,7 +117,8 @@ void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *p
     log_debug("Configuring PMTs of {} as sensitive detector", pName);
     OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector(pName, DetectorType::PMT);
     lSensitiveDetector->setPMTResponse(getPMTResponseInstance());
-    pDetConst->registerSensitiveDetector(mPhotocathodeLV, lSensitiveDetector);
+    pDetConst->registerSensitiveDetector(getComponent("PMT").VLogical, lSensitiveDetector);
+    //pDetConst->registerSensitiveDetector(mPhotocathodeLV, lSensitiveDetector);
 }
 
 void OMSimPMTConstruction::constructHAcoating()
@@ -134,10 +145,13 @@ void OMSimPMTConstruction::placeIt(G4ThreeVector pPosition, G4RotationMatrix pRo
 {
     abcDetectorComponent::placeIt(pPosition, pRotation, pMother, pNameExtension);
 
+    new G4LogicalBorderSurface("PhotoGlassToVacuum", mLastPhysicals["PMT"], mPhotocathodeRegionVacuumPhysical, mPhotocathodeOpticalSurface);
+    new G4LogicalBorderSurface("PhotoVacuumToGlass", mPhotocathodeRegionVacuumPhysical, mLastPhysicals["PMT"], mPhotocathodeOpticalSurface);
+    
     if (mInternalReflections)
     {
-        new G4LogicalBorderSurface("PMT_mirrorglass", mVacuumBackPhysical, mLastPhysicals["PMT"], mData->getOpticalSurface("Refl_PMTSideMirror"));
-        new G4LogicalBorderSurface("PMT_mirrorglass", mLastPhysicals["PMT"], mVacuumBackPhysical, mData->getOpticalSurface("Refl_PMTSideMirror"));
+        new G4LogicalBorderSurface("PMT_mirrorglass", mVacuumBackPhysical, mLastPhysicals["PMT"], mData->getOpticalSurface("Surf_PMTSideMirror"));
+        new G4LogicalBorderSurface("PMT_mirrorglass", mLastPhysicals["PMT"], mVacuumBackPhysical, mData->getOpticalSurface("Surf_PMTSideMirror"));
     }
 }
 
@@ -148,11 +162,12 @@ void OMSimPMTConstruction::placeIt(G4ThreeVector pPosition, G4RotationMatrix pRo
 void OMSimPMTConstruction::placeIt(G4Transform3D pTransform, G4LogicalVolume *&pMother, G4String pNameExtension)
 {
     abcDetectorComponent::placeIt(pTransform, pMother, pNameExtension);
-
+    new G4LogicalBorderSurface("PhotoGlassToVacuum", mLastPhysicals["PMT"], mPhotocathodeRegionVacuumPhysical, mPhotocathodeOpticalSurface);
+    new G4LogicalBorderSurface("PhotoVacuumToGlass", mPhotocathodeRegionVacuumPhysical, mLastPhysicals["PMT"], mPhotocathodeOpticalSurface);
     if (mInternalReflections)
     {
-        new G4LogicalBorderSurface("PMT_mirrorglass", mVacuumBackPhysical, mLastPhysicals["PMT"], mData->getOpticalSurface("Refl_PMTSideMirror"));
-        new G4LogicalBorderSurface("PMT_mirrorglass", mLastPhysicals["PMT"], mVacuumBackPhysical, mData->getOpticalSurface("Refl_PMTSideMirror"));
+        new G4LogicalBorderSurface("PMT_mirrorglass", mVacuumBackPhysical, mLastPhysicals["PMT"], mData->getOpticalSurface("Surf_PMTSideMirror"));
+        new G4LogicalBorderSurface("PMT_mirrorglass", mLastPhysicals["PMT"], mVacuumBackPhysical, mData->getOpticalSurface("Surf_PMTSideMirror"));
     }
 }
 
@@ -300,9 +315,9 @@ void OMSimPMTConstruction::constructCADdynodeSystem(G4LogicalVolume *pMother)
     G4LogicalVolume *lFrontalPlate = new G4LogicalVolume(lFrontalPlateMesh->GetSolid(), mData->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
     G4LogicalVolume *lDynodes = new G4LogicalVolume(lDynodesMesh->GetSolid(), mData->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
 
-    new G4LogicalSkinSurface("SkinFrontalPlate", lFrontalPlate, mData->getOpticalSurface("Refl_PMTFrontPlate"));
-    new G4LogicalSkinSurface("SkinSupportStructure", lSupportStructure, mData->getOpticalSurface("Refl_AluminiumGround"));
-    new G4LogicalSkinSurface("SkinDynodes", lDynodes, mData->getOpticalSurface("Refl_Dynode"));
+    new G4LogicalSkinSurface("SkinFrontalPlate", lFrontalPlate, mData->getOpticalSurface("Surf_PMTFrontPlate"));
+    new G4LogicalSkinSurface("SkinSupportStructure", lSupportStructure, mData->getOpticalSurface("Surf_AluminiumGround"));
+    new G4LogicalSkinSurface("SkinDynodes", lDynodes, mData->getOpticalSurface("Surf_Dynode"));
 
     // lAbsorbers->SetVisAttributes(mAbsorberVis);
     // new G4PVPlacement( lRot , G4ThreeVector(0, 0, 0) , lAbsorbers, "DynodeSystemAbsorbers" , pMother, false, 0, mCheckOverlaps);

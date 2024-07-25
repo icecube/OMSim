@@ -45,6 +45,7 @@ private:
     G4bool mHACoatingBool = false;
     G4bool mConstructionFinished = false;
 
+    void definePhotocathodeProperties();
     std::tuple<G4VSolid *, G4VSolid *> getBulbSolid(G4String pSide);
     std::tuple<G4VSolid *, G4VSolid *> simpleBulbConstruction(G4String pSide);
     std::tuple<G4VSolid *, G4VSolid *> fullBulbConstruction(G4String pSide);
@@ -69,6 +70,8 @@ private:
     G4bool mSimpleBulb = false;
     G4double mMissingTubeLength;
     G4PVPlacement *mVacuumBackPhysical;
+    G4PVPlacement* mPhotocathodeRegionVacuumPhysical;
+    G4OpticalSurface* mPhotocathodeOpticalSurface;
 
     bool mCheckOverlaps;
 

@@ -1,9 +1,9 @@
 #include "OMSimPhysicsList.hh"
+#include "OMSimOpBoundaryProcess.hh"
 
 #include <G4OpRayleigh.hh>
 #include <G4OpMieHG.hh>
 #include <G4OpAbsorption.hh>
-#include <G4OpBoundaryProcess.hh>
 #include <G4ProcessManager.hh>
 #include <G4SystemOfUnits.hh>
 

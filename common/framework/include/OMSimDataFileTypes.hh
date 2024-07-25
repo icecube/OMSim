@@ -10,7 +10,7 @@
  * - RefractionOnly: Handles materials with only refraction index defined.
  * - NoOptics: Handles materials without optical properties.
  * - IceCubeIce: Handles creation and property extraction of IceCube's ice.
- * - ReflectiveSurface: Defines a new reflective surface.
+ * - Surface: Defines a new reflective surface.
  *
  * Each class has an `extractInformation()` method that is responsible for creating the material or surface and extracting the necessary optical properties.
  *
@@ -20,8 +20,9 @@
 #ifndef OMSimDataFileTypes_h
 #define OMSimDataFileTypes_h 1
 
+#include "OMSimOpBoundaryProcess.hh"
+
 #include <G4NistManager.hh>
-#include <G4OpBoundaryProcess.hh>
 #include <G4SystemOfUnits.hh>
 #include <boost/property_tree/json_parser.hpp>
 #include <OMSimCommandArgsTable.hh>
@@ -147,15 +148,15 @@ private:
 };
 
 /**
- * @class   ReflectiveSurface
+ * @class   Surface
  * @brief   Reflective surfaces parsed from a JSON file.
  * @inherit abcDataFile
  * @ingroup common
  */
-class ReflectiveSurface : public abcDataFile
+class Surface : public abcDataFile
 {
 public:
-    ReflectiveSurface(G4String pFilename) : abcDataFile(pFilename){};
+    Surface(G4String pFilename) : abcDataFile(pFilename){};
     G4OpticalSurface *mOpticalSurface;
 
     G4OpticalSurfaceFinish getOpticalSurfaceFinish(G4String pFinish);

@@ -96,6 +96,8 @@ G4bool OMSimSensitiveDetector::ProcessHits(G4Step *pStep, G4TouchableHistory *pT
       {
       case DetectorType::BoundaryPhotonDetector:
         return handleGeneralPhotonDetector(pStep, pTouchableHistory);
+      case DetectorType::PMT:
+        return handlePMT(pStep, pTouchableHistory);
       }
     }
   }
@@ -152,6 +154,19 @@ G4bool OMSimSensitiveDetector::checkBoundaryAbsorption(G4Step *pStep)
   return false;
 }
 
+G4int OMSimSensitiveDetector::findAndCachePMTVolumeDepth(const G4VTouchable* pTouchable) {
+    if (!pTouchable) return -1;
+
+    for (G4int i = 0; i < pTouchable->GetHistoryDepth(); ++i) {
+        G4VPhysicalVolume* volume = pTouchable->GetVolume(i);
+        if (volume && volume->GetName().substr(0, 3) == "PMT") {
+            return i;
+        }
+    }
+    return -1;  // No PMT volume found
+}
+
+
 /**
  * @brief Handles hits for PMTs.
  * @param pStep The current step information.
@@ -161,10 +176,9 @@ G4bool OMSimSensitiveDetector::checkBoundaryAbsorption(G4Step *pStep)
 G4bool OMSimSensitiveDetector::handlePMT(G4Step *pStep, G4TouchableHistory *pTouchableHistory)
 {
   PhotonInfo lInfo = getPhotonInfo(pStep);
-
   if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut") && !mPMTResponse->passQE(lInfo.wavelength)) return false;
 
-  std::vector<G4String> lPMTNameNR = splitStringByDelimiter(pStep->GetPreStepPoint()->GetTouchableHandle()->GetVolume(2)->GetName(), '_');
+  std::vector<G4String> lPMTNameNR = splitStringByDelimiter(pStep->GetPreStepPoint()->GetTouchableHandle()->GetVolume(0)->GetName(), '_');
   lInfo.pmtNumber = atoi(lPMTNameNR.at(1));
 
   storePhotonHit(lInfo);

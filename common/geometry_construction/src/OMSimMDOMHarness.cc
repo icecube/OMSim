@@ -75,8 +75,8 @@ void mDOMHarness::bandsAndClamps()
     G4LogicalVolume *lBandsLogicalTop = new G4LogicalVolume(lBandsSolidTop, mData->getMaterial("NoOptic_Stahl"), "mBands logical top");
     G4LogicalVolume *lBandsLogicalBottom = new G4LogicalVolume(lBandsSolidBottom, mData->getMaterial("NoOptic_Stahl"), "mBands logical bottom");
 
-    new G4LogicalSkinSurface("band_skin", lBandsLogicalTop, mData->getOpticalSurface("Refl_StainlessSteelGround"));
-    new G4LogicalSkinSurface("band_skin", lBandsLogicalBottom, mData->getOpticalSurface("Refl_StainlessSteelGround"));
+    new G4LogicalSkinSurface("band_skin", lBandsLogicalTop, mData->getOpticalSurface("Surf_StainlessSteelGround"));
+    new G4LogicalSkinSurface("band_skin", lBandsLogicalBottom, mData->getOpticalSurface("Surf_StainlessSteelGround"));
 
     lBandsLogicalTop->SetVisAttributes(mSteelVis);
     lBandsLogicalBottom->SetVisAttributes(mSteelVis);
@@ -160,7 +160,7 @@ void mDOMHarness::bridgeRopesSolid()
     G4UnionSolid *lRopesUnionSolid = new G4UnionSolid("lRopesUnionSolid", lTempUnion4, lTempUnion2, G4Transform3D(lRot, G4ThreeVector(0, 0, 0)));
     G4LogicalVolume *lRopesUnionLogical = new G4LogicalVolume(lRopesUnionSolid, mData->getMaterial("NoOptic_Stahl"), "");
 
-    new G4LogicalSkinSurface("ropes_skin", lRopesUnionLogical, mData->getOpticalSurface("Refl_StainlessSteelGround"));
+    new G4LogicalSkinSurface("ropes_skin", lRopesUnionLogical, mData->getOpticalSurface("Surf_StainlessSteelGround"));
 
     G4RotationMatrix lRopesRot = G4RotationMatrix();
     lRopesRot.rotateZ(mHarnessRotAngle);
@@ -176,7 +176,7 @@ void mDOMHarness::mainDataCable()
     G4Tubs *lDataCableSolid = new G4Tubs("MainDataCable_solid", 0, lDataCableRadius, lDataCableLength / 2.0, 0, 2 * CLHEP::pi);
 
     G4LogicalVolume *lDataCableLogical = new G4LogicalVolume(lDataCableSolid, mData->getMaterial("NoOptic_Absorber"), "MainDataCable_logical");
-    new G4LogicalSkinSurface("MainDataCable_skin", lDataCableLogical, mData->getOpticalSurface("Refl_BlackDuctTapePolished"));
+    new G4LogicalSkinSurface("MainDataCable_skin", lDataCableLogical, mData->getOpticalSurface("Surf_BlackDuctTapePolished"));
     lDataCableLogical->SetVisAttributes(mAbsorberVis);
 
     G4double lMainCableAngle = 90.0 * deg;
@@ -206,7 +206,7 @@ void mDOMHarness::pads()
 
     G4UnionSolid *lPadsUnionSolid = new G4UnionSolid("lPadsUnionSolid", lTempPadUnion3, lTempPadUnion1, G4Transform3D(lRot, G4ThreeVector(0, 0, 0)));
     G4LogicalVolume *lPadsUnionLogical = new G4LogicalVolume(lPadsUnionSolid, mData->getMaterial("NoOptic_Absorber"), "");
-    new G4LogicalSkinSurface("pad_skin", lPadsUnionLogical, mData->getOpticalSurface("Refl_PadSurface"));
+    new G4LogicalSkinSurface("pad_skin", lPadsUnionLogical, mData->getOpticalSurface("Surf_PadSurface"));
 
     lPadsUnionLogical->SetVisAttributes(mRedVis);
 
@@ -226,7 +226,7 @@ void mDOMHarness::PCA()
 
     G4Tubs *lMushCylSolid = new G4Tubs("Mush solid", 0, lMushRadiusLower, lMushCylHeight / 2., 0, 2. * CLHEP::pi);
     G4LogicalVolume *lMushCylLogical = new G4LogicalVolume(lMushCylSolid, mData->getMaterial("NoOptic_Stahl"), "Mush logical");
-    new G4LogicalSkinSurface("mush_cyl_skin", lMushCylLogical, mData->getOpticalSurface("Refl_AluminiumGround"));
+    new G4LogicalSkinSurface("mush_cyl_skin", lMushCylLogical, mData->getOpticalSurface("Surf_AluminiumGround"));
     lMushCylLogical->SetVisAttributes(mSteelVis);
 
     G4RotationMatrix lMushRot = G4RotationMatrix();
@@ -286,7 +286,7 @@ void mDOMHarness::PCA()
 
     G4UnionSolid *lPCASolid = new G4UnionSolid("PCACable_solid", lPenCableRigid_solid, lCableTempUnion2, G4Transform3D(lRot3, lPos3)); // reference frame of this object is the same as placing lMushConeSolid alone, so the part in contact with the metal part of the penetrator in the module
     G4LogicalVolume *lPCALogical = new G4LogicalVolume(lPCASolid, mData->getMaterial("NoOptic_Absorber"), "Penetrator cable logical");
-    new G4LogicalSkinSurface("penetrator cable skin", lPCALogical, mData->getOpticalSurface("Refl_BlackDuctTapePolished"));
+    new G4LogicalSkinSurface("penetrator cable skin", lPCALogical, mData->getOpticalSurface("Surf_BlackDuctTapePolished"));
     lPCALogical->SetVisAttributes(mAbsorberVis);
 
     G4ThreeVector lPCAPosition = G4ThreeVector((mOM->mGlassOutRad + (2 * lMushCylHeight + lMushConeHeight) / 2.) * (cos(mHarnessRotAngle)) * sin(mPlugAngle), (mOM->mGlassOutRad + (2 * lMushCylHeight + lMushConeHeight) / 2) * sin(mHarnessRotAngle) * sin(mPlugAngle), (mOM->mGlassOutRad + (2 * lMushCylHeight + lMushConeHeight) / 2) * cos(mPlugAngle) + mOM->mCylHigh);
@@ -308,7 +308,7 @@ void mDOMHarness::plug()
     lPlugRotation.rotateZ(mHarnessRotAngle - 90 * deg);
 
     G4LogicalVolume *lPlugLogical = new G4LogicalVolume(lPlugSolid, mData->getMaterial("NoOptic_Stahl"), "Plug_logical");
-    new G4LogicalSkinSurface("plug_skin", lPlugLogical, mData->getOpticalSurface("Refl_AluminiumGround"));
+    new G4LogicalSkinSurface("plug_skin", lPlugLogical, mData->getOpticalSurface("Surf_AluminiumGround"));
     lPlugLogical->SetVisAttributes(mSteelVis);
 
     appendComponent(lPlugSolid, lPlugLogical, lPlugPosition, lPlugRotation, "Plug");
@@ -328,7 +328,7 @@ void mDOMHarness::teraBelt()
     G4SubtractionSolid *lTeraSolid = new G4SubtractionSolid("tera_solid", lTeraSolidTemp2, lTeraSolidTemp1, G4Transform3D(G4RotationMatrix(), G4ThreeVector(0, 0, 0)));
 
     G4LogicalVolume *lTeraLogical = new G4LogicalVolume(lTeraSolid, mData->getMaterial("NoOptic_Absorber"), "tera_logical");
-    new G4LogicalSkinSurface("tera_skin", lTeraLogical, mData->getOpticalSurface("Refl_BlackDuctTapePolished"));
+    new G4LogicalSkinSurface("tera_skin", lTeraLogical, mData->getOpticalSurface("Surf_BlackDuctTapePolished"));
     lTeraLogical->SetVisAttributes(mAbsorberVis);
 
     appendComponent(lTeraSolid, lTeraLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "TeraTapeBelt");

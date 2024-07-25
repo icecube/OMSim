@@ -21,7 +21,8 @@
 #include "G4eBremsstrahlung.hh"
 
 #include "G4OpAbsorption.hh"
-#include "G4OpBoundaryProcess.hh"
+
+#include "OMSimOpBoundaryProcess.hh"
 
 
 OMSimPhysicsList::OMSimPhysicsList():  G4VUserPhysicsList()

@@ -1,5 +1,5 @@
 {
-   "jName": "Refl_PadSurface",
+   "jName": "Surf_PadSurface",
    "jProperties": [
       "REFLECTIVITY"
    ],

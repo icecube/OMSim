@@ -4,7 +4,7 @@
 #include "G4VSensitiveDetector.hh"
 #include "G4ThreeVector.hh"
 #include "OMSimPMTResponse.hh"
-#include "G4OpBoundaryProcess.hh"
+#include "OMSimOpBoundaryProcess.hh"
 #include <vector>
 
 class G4Step;
@@ -65,6 +65,9 @@ private:
     G4bool handleGeneralPhotonDetector(G4Step *pStep, G4TouchableHistory *pTouchableHistory);
     void storePhotonHit(PhotonInfo &pInfo);
     void fetchBoundaryProcess();
+
+    std::unordered_map<G4int, G4int> mPMTVolumeDepth;
+    G4int findAndCachePMTVolumeDepth(const G4VTouchable* touchable);
 
     OMSimPMTResponse *mPMTResponse;
     DetectorType mDetectorType;
