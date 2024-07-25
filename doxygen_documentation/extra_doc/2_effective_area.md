@@ -13,7 +13,7 @@ The metric to optimise the module's sensitivity is the effective area A_eff(θ, 
 The photon generation is made with the module `AngularScan`, running the method `AngularScan::runSingleAngularScan` once for each direction to be investigated.
 
 <div style="width: 100%; text-align: center;">
-<img src="imgs/mDOM_scan.png" width="400" height="400" alt="mDOM illuminated by a disk emitter" />
+<img src="mDOM_scan.png" width="400" height="400" alt="mDOM illuminated by a disk emitter" />
 <div style="width: 80%; margin: auto;">
 <br/>
 Figure 1: <i>Screenshot of an mDOM illuminated by a disk emitter simulating the incidence of a plane wave from the direction θ (zenith) and φ (azimuth) using the Geant4 visualiser. The photon trajectories are represented by orange lines, and yellow dots mark the locations of physical interactions. Image taken from <a href="https://zenodo.org/record/8121321">this thesis</a>.</i>
