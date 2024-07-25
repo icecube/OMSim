@@ -26,8 +26,16 @@ var NAVTREE =
 [
   [ "OMSim", "index.html", [
     [ "OMSim Geant4 Framework", "index.html", [
-      [ "Installation", "index.html#autotoc_md32", null ],
-      [ "Available studies", "index.html#autotoc_md36", null ]
+      [ "Installation", "index.html#autotoc_md32", [
+        [ "Installing Geant4", "index.html#autotoc_md33", null ],
+        [ "Installing Dependencies", "index.html#autotoc_md34", null ],
+        [ "Installing ROOT", "index.html#autotoc_md35", [
+          [ "Compiling OMSim", "index.html#autotoc_md36", null ]
+        ] ]
+      ] ],
+      [ "Available studies", "index.html#autotoc_md37", [
+        [ "Customising Compilation", "index.html#autotoc_md38", null ]
+      ] ]
     ] ],
     [ "Framework functionality", "md_0_common.html", [
       [ "Materials and User Data", "md_0_common.html#autotoc_md1", null ],
@@ -100,7 +108,7 @@ var NAVTREEINDEX =
 "class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0",
 "class_o_m_sim_physics_list.html#a1e29e39ab1756fafc94970b05e84a467",
 "classm_d_o_m.html#a0ea5b69f38842184f0ec6f0c65c328ed",
-"struct_hit_stats.html#ae7c3d380f7f961927f73fef4ee20fe4d"
+"struct_hit_stats.html#ae0c5192a6db7a2fc8dec37e62a6a1e76"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

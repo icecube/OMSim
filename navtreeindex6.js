@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"struct_hit_stats.html#ae0c5192a6db7a2fc8dec37e62a6a1e76":[7,0,29,6],
+"struct_hit_stats.html#ae73c03f4d9024845eb1bfd5de71eb653":[7,0,29,4],
 "struct_hit_stats.html#ae7c3d380f7f961927f73fef4ee20fe4d":[7,0,29,8],
 "struct_hit_stats.html#af603afdc7e643ea0246cb0b642ae8bb5":[7,0,29,9],
 "struct_o_m_sim_detector_construction_1_1_s_d_info.html":[7,1,3,0],
