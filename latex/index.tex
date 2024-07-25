@@ -23,11 +23,11 @@ For the latest updates and information, check our \href{https://github.com/icecu
 \end{DoxyCode}
 
 
-Note\+: Do not change \char`\"{}\+GEANT4\+\_\+\+BUILD\+\_\+\+MULTITHREADED\char`\"{} to OFF, as \mbox{\hyperlink{class_o_m_sim}{OMSim}} supports multithreading.
+Note\+: Do not change {\ttfamily GEANT4\+\_\+\+BUILD\+\_\+\+MULTITHREADED} to OFF, as \mbox{\hyperlink{class_o_m_sim}{OMSim}} supports multithreading.
 
 
 \begin{DoxyEnumerate}
-\item Source the Geant4 library and add this to your .bashrc\+: 
+\item Source the Geant4 library and add this to your .bashrc, where \char`\"{}\+YOUR\+\_\+\+G4\+\_\+\+INSTALL\char`\"{} is the path to the install folder of Geant4 in your system\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{source YOUR\_G4\_INSTALL\_PATH/bin/geant4.sh}
 
@@ -59,7 +59,7 @@ Note\+: spdlog will be automatically installed by CMake if not found on your sys
 \begin{DoxyEnumerate}
 \item Clone this repository\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{git clone https://github.com/your-\/repo/OMSim.git}
+\DoxyCodeLine{git clone https://github.com/icecube/OMSim.git}
 \DoxyCodeLine{cd OMSim}
 
 \end{DoxyCode}
@@ -92,8 +92,8 @@ Note\+: spdlog will be automatically installed by CMake if not found on your sys
 
 
 \begin{DoxyItemize}
-\item \href{https://icecube.github.io/OMSim/group___effective_area.html}{\texttt{ Effective area}}\+: calculates the effective area of the optical modules/\+PMTs.
-\item \href{https://icecube.github.io/OMSim/group__radioactive.html}{\texttt{ Radioactive decays}}\+: simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.
-\item \href{https://icecube.github.io/OMSim/group__sngroup.html}{\texttt{ Supernova studies}}\+: used for the development of an improved SN trigger for Ice\+Cube using multi-\/\+PMT modules.
+\item \href{https://icecube.github.io/OMSim/md_2_effective_area.html}{\texttt{ Effective area}}\+: calculates the effective area of the optical modules/\+PMTs.
+\item \href{https://icecube.github.io/OMSim/md_3_radioactive_decays.html}{\texttt{ Radioactive decays}}\+: simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.
+\item \href{https://icecube.github.io/OMSim/md_4__s_n.html}{\texttt{ Supernova studies}}\+: used for the development of an improved SN trigger for Ice\+Cube using multi-\/\+PMT modules.
 \end{DoxyItemize}\hypertarget{index_autotoc_md38}{}\doxysubsection{Customising Compilation}\label{index_autotoc_md38}
 To exclude certain studies from compilation, edit the master CMake\+Lists.\+txt file and comment out the unwanted {\ttfamily add\+\_\+subdirectory()} calls before running CMake. 
