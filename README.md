@@ -21,9 +21,9 @@ For the latest updates and information, check our [GitHub repository](https://gi
    -DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_GDML=ON -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_QT=ON -DGEANT4_USE_RAYTRACER_X11=ON -DGEANT4_USE_XM=ON
    ``` 
 
-   Note: Do not change "GEANT4_BUILD_MULTITHREADED" to OFF, as OMSim supports multithreading.
+   Note: Do not change `GEANT4_BUILD_MULTITHREADED` to OFF, as OMSim supports multithreading.
 
-3. Source the Geant4 library and add this to your .bashrc:
+3. Source the Geant4 library and add this to your .bashrc, where "YOUR_G4_INSTALL" is the path to the install folder of Geant4 in your system:
    ```bash
    source YOUR_G4_INSTALL_PATH/bin/geant4.sh
    ``` 
@@ -53,7 +53,7 @@ Note: spdlog will be automatically installed by CMake if not found on your syste
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-repo/OMSim.git
+   git clone https://github.com/icecube/OMSim.git
    cd OMSim
    ```
 
@@ -80,9 +80,9 @@ Note: spdlog will be automatically installed by CMake if not found on your syste
 
 OMSim has been utilized in a range of studies, each simulating unique physics, thereby necessitating distinct Physicslist/analysis setups. In this repository, we have compiled a selection of these studies, each contained within its own folder and accompanied by its own main file. Currently available:
 
-- [Effective area](https://icecube.github.io/OMSim/group___effective_area.html): calculates the effective area of the optical modules/PMTs.
-- [Radioactive decays](https://icecube.github.io/OMSim/group__radioactive.html): simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.
-- [Supernova studies](https://icecube.github.io/OMSim/group__sngroup.html): used for the development of an improved SN trigger for IceCube using multi-PMT modules.
+- [Effective area](https://icecube.github.io/OMSim/md_2_effective_area.html): calculates the effective area of the optical modules/PMTs.
+- [Radioactive decays](https://icecube.github.io/OMSim/md_3_radioactive_decays.html): simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.
+- [Supernova studies](https://icecube.github.io/OMSim/md_4__s_n.html): used for the development of an improved SN trigger for IceCube using multi-PMT modules.
 
 ### Customising Compilation
 To exclude certain studies from compilation, edit the master CMakeLists.txt file and comment out the unwanted `add_subdirectory()` calls before running CMake.
