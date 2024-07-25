@@ -1,52 +1,80 @@
 #  OMSim Geant4 Framework
 [TOC]
 
-**Under construction. If you want to use OMSim contact martin.u in IC-slack...**
+**Note:** This project is under active development. If you're interested in using OMSim, please contact martin.u on IC-slack.
 
-**OMSim** is a Geant4 framework for the simulation of optical modules of the IceCube Observatory. It has been mostly developed by the Münster IceCube Group during different master and PhD theses. The project is separated into different modules depending on the study (e.g. background investigations with radioactive decays, or sensitivity studies). These modules share common files (in the "common" folder) which, for example, define geometries from modules and PMTs or also material properties.
+**OMSim** is a Geant4 framework for simulating optical modules of the IceCube Observatory. It comprises multiple modules for different studies such as background investigations with radioactive decays and sensitivity analyses. These modules share common files (in the "common" folder) that define, for example, geometries of modules and PMTs, as well as material properties.
 
-Please check the different Modules in the [documentation](https://icecube.github.io/OMSim/) for further details and examples. 
+For more information, please refer to our [comprehensive documentation](https://icecube.github.io/OMSim/).
+
+For the latest updates and information, check our [GitHub repository](https://github.com/icecube/OMSim). If you need assistance or want to report problems, please open an issue on our GitHub page or contact the maintainers directly.
 
 ## Installation
 
-#### Installing Geant4
+### Installing Geant4
 
-First you should install Geant4 following [the guide provided by cern](https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html). OMSim is currently optimised for Geant4-11.1.1. If you want to use the visualisation tools of Geant, you should include the following cmake options: 
+1. Install Geant4 following [the guide provided by CERN](https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html). OMSim is currently optimised for Geant4-11.1.1.
+
+2. For visualisation tools, include the following CMake options:
+
+   ```bash
+   -DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_GDML=ON -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_QT=ON -DGEANT4_USE_RAYTRACER_X11=ON -DGEANT4_USE_XM=ON
+   ``` 
+
+   Note: Do not change "GEANT4_BUILD_MULTITHREADED" to OFF, as OMSim supports multithreading.
+
+3. Source the Geant4 library and add this to your .bashrc:
+   ```bash
+   source YOUR_G4_INSTALL_PATH/bin/geant4.sh
+   ``` 
+
+### Installing Dependencies
+
+Install the required dependencies using:
 
 ```bash
--DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_GDML=ON -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_QT=ON -DGEANT4_USE_RAYTRACER_X11=ON -DGEANT4_USE_XM=ON
-``` 
-Do not change "GEANT4_BUILD_MULTITHREADED" to OFF, as OMSim supports multithreading.
-
-Source the Geant4 library (best: add this to your .bashrc):
-```bash
-source YOUR_G4_INSTALL_PATH/bin/geant4.sh
+sudo apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev qtbase5-dev libmotif-dev libargtable2-0 libboost-all-dev libqt53dextras5 libfmt-dev
 ``` 
 
-#### Requirements
-There are a few dependencies. You can install them using the following command:
+Note: spdlog will be automatically installed by CMake if not found on your system.
 
-```bash
-apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev qtbase5-dev libmotif-dev libargtable2-0 libboost-all-dev libqt53dextras5 libspdlog-dev libfmt-dev
-``` 
-If you needed to install more, add a comment it in the Git project, so we can complete the above command 😊
+### Installing ROOT
 
-Also you will need ROOT. Download the last binary (e.g. at time of writing latest version is 6.28/04 https://root.cern/releases/release-62804/), or compile the source distribution. For simplicity add the source in your .bashrc (or you will have to source it yourself manually every time you run or compile OMSim):
-```bash
-export ROOTSYS= YOUR_ROOT_PATH
-source $ROOTSYS/bin/thisroot.sh
-``` 
+1. Download the latest ROOT binary from [ROOT's official website](https://root.cern/releases/) (e.g., version 6.28/04 at the time of writing), or compile from source.
+
+2. Add the following to your .bashrc for convenience:
+   ```bash
+   export ROOTSYS=YOUR_ROOT_PATH
+   source $ROOTSYS/bin/thisroot.sh
+   ``` 
 
 #### Compiling OMSim
-- Clone this branch.
-- Make a new folder named e.g. "build" 
-- From the build folder run `cmake ..`` as follows
-- If cmake does not find Geant4 (or if you have several installations), use 
-```bash
-source YOUR_G4_INSTALL/bin/geant4.sh
-``` 
-where "YOUR_G4_INSTALL" is the path to the install folder of Geant4 in your system. 
-- Finally, just run ```make``` or ```make -j N``` where N is number of cores you want to use for the compilation.
+
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-repo/OMSim.git
+   cd OMSim
+   ```
+
+2. Create a build directory:
+   ```bash
+   mkdir build && cd build
+   ```
+
+3. Run CMake:
+   ```bash
+   cmake ..
+   ```
+   If CMake doesn't find Geant4, use the following, where "YOUR_G4_INSTALL" is the path to the install folder of Geant4 in your system:
+   ```bash
+   cmake -DGeant4_DIR=YOUR_G4_INSTALL/lib/Geant4-11.1.1/ ..
+   ```
+
+4. Compile the project:
+   ```bash
+   make -j$(nproc)
+   ```
 
 ## Available studies
 
@@ -56,4 +84,7 @@ OMSim has been utilized in a range of studies, each simulating unique physics, t
 - [Radioactive decays](https://icecube.github.io/OMSim/group__radioactive.html): simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.
 - [Supernova studies](https://icecube.github.io/OMSim/group__sngroup.html): used for the development of an improved SN trigger for IceCube using multi-PMT modules.
 
-Most users will likely utilize just one of these studies, meaning there's no need to compile all of them. If you wish to exclude certain studies from compilation, you can comment out the undesired ones in the CMakeLists.txt between lines 52-55 (where the **add_subdirectory** commands are located).
+### Customising Compilation
+To exclude certain studies from compilation, edit the master CMakeLists.txt file and comment out the unwanted `add_subdirectory()` calls before running CMake.
+
+
