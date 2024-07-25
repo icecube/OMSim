@@ -43,7 +43,7 @@ In the complex PMT model, the photocathodes are not real volumes, but are define
 The construction of different PMT models (e.g. the 3'' or 10'' PMTs) is quite similar. However, the frontal window shape varies among models, leading to diverse combinations of ellipsoids and spheres.
 
 <div style="width: 100%; text-align: center;">
-<img src="simulation_vs_sketch_old.png" width="280" height="320" alt="Cross section of simple mDOM PMT model" />
+<img src="imgs/simulation_vs_sketch_old.png" width="280" height="320" alt="Cross section of simple mDOM PMT model" />
 <div style="width: 80%; margin: auto;">
 <br/>
 Figure 1: <i>Cross section of simple mDOM PMT model. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
@@ -51,7 +51,7 @@ Figure 1: <i>Cross section of simple mDOM PMT model. Image from <a href="https:/
 
 </div>
 <div style="width: 100%; text-align: center;">
-<img src="simulation_dynodes_screenshot.png" width="400" height="328" alt="Side view of complex mDOM PMT model" />
+<img src="imgs/simulation_dynodes_screenshot.png" width="400" height="328" alt="Side view of complex mDOM PMT model" />
 <div style="width: 80%; margin: auto;">
 <br/>
 Figure 2: <i>Side view of complex mDOM PMT model. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
@@ -61,7 +61,7 @@ Figure 2: <i>Side view of complex mDOM PMT model. Image from <a href="https://ze
 In the complex PMT model, the photocathode has an absorption length that matches the measured quantum efficiency of the mDOM PMTs. For the other PMT models, this matching still has to be performed.
 
 <div style="width: 100%; text-align: center;">
-<img src="QE_meas_VS_simulation.png" width="360" height="308" alt="QE of simulation compared to measurements" />
+<img src="imgs/QE_meas_VS_simulation.png" width="360" height="308" alt="QE of simulation compared to measurements" />
 <div style="width: 80%; margin: auto;">
 <br/>
 Figure 3: <i>QE of simulation with the absorption length currently used compared to measurements. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
@@ -99,7 +99,7 @@ In `OMSimPMTConstruction::configureSensitiveVolume`, PMTs are associated with an
 This sampling is performed for every absorbed photon in `OMSimSensitiveDetector::ProcessHits` invoking `OMSimPMTResponse::processPhotocathodeHit`. The position of the photon on the photocathode is retrieved, the 2D-histograms of the gain, SPE resolution, transit time and TTS are interpolated for that position and the charge / transit time of the photon is sampled from a Gaussian using the interpolated values as mean (in case of gain / transit time) and standard deviation (in case of SPE resolution / TTS). The detection probability is the product of the QE (dependent on the wavelength of the photon) and the collection efficiency weight (dependent on absorption position).
 
 <div style="width: 100%; text-align: center;">
-<img src="PW_beam_geant4_TT.png" width="256" height="440" alt="PMT response compared to measurement" />
+<img src="imgs/PW_beam_geant4_TT.png" width="256" height="440" alt="PMT response compared to measurement" />
 <div style="width: 80%; margin: auto;">
 <br/>
 Figure 4: <i>PMT response compared to measurement for different light sources. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
