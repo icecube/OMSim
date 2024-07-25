@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('md_4__s_n.html',''); initResizable(); 
 </ul>
 <p>In the IBD case, the outgoing neutron is not simulated; hence, the neutron capture process that might be detected is not included in the simulation. Each event is assigned a weight based on the interaction probability, detailed later on this page. By default, the surrounding ice is represented as a cylinder facing the CCSN, simplifying the weight calculations.</p>
 <p>Although CCSN models incorporate neutrino oscillations, the default simulation does not include any oscillation scenario in the weight calculations.</p>
-<div style="width: 100%; text-align: center;"> <img src="SNsimDiagram.png" alt="Diagram of CCSN neutrino simulation steps" width="810" height="270" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
+<div style="width: 100%; text-align: center;"> <img src="imgs/SNsimDiagram.png" alt="Diagram of CCSN neutrino simulation steps" width="810" height="270" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
  Figure 1: <em>Diagram of the steps involved to generate the events for the simulation of CCSN neutrinos. The scheme is valid for both IBD and ENES, except for the threshold check. Here, <code>e</code> stands for both electron from ENES or positron from IBD, and <code>ν</code> for both electronic neutrino from ENES or electronic antineutrino from IBD. Image from <a href="https://zenodo.org/record/8107177">this thesis</a>.</em> </div> </div><p>The detailed procedure for this simulation is comprehensively described in <a href="https://zenodo.org/record/8107177">this thesis</a>, specifically in section 6.4. Below is a summary extracted from this source, outlining the steps taken to generate the events:</p>
 <ol type="1">
 <li>Utilizing the models, the expected flux per area is calculated from the luminosity <code>L(t)</code> and the mean energy <code>&lt;E(t)&gt;</code> according to <code>Φ(t) = (1 / (4πd²)) · (L(t) / &lt;E(t)&gt;)</code>.</li>
@@ -251,7 +251,7 @@ Effective Weight:</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jul 25 2024 07:17:54 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jul 25 2024 07:19:38 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

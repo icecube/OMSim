@@ -131,7 +131,7 @@ Introduction to effective areas</h1>
 <p>During the design of a module, its sensitivity is optimised by considering the optical properties of various materials and altering the geometry and positioning of the mechanical components in the Geant4 simulation.</p>
 <p>The metric to optimise the module's sensitivity is the effective area A_eff(θ, φ). This represents the area that is detected from a plane wave of incidence angle of θ (zenith) and φ (azimuth) with respect to the module. This parameter is calculated with <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> by simulating a disk emitting mono-energetic photons perpendicular to its surface with a uniform density profile.</p>
 <p>The photon generation is made with the module <code><a class="el" href="class_angular_scan.html" title="Class for defining and running simple GPS beam configurations with angular scans.">AngularScan</a></code>, running the method <code><a class="el" href="class_angular_scan.html#a465f642ebbe30fc94f9ed8ec6e554ef4" title="Run a single angular scan with the specified angles.">AngularScan::runSingleAngularScan</a></code> once for each direction to be investigated.</p>
-<div style="width: 100%; text-align: center;"> <img src="mDOM_scan.png" alt="mDOM illuminated by a disk emitter" width="400" height="400" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
+<div style="width: 100%; text-align: center;"> <img src="imgs/mDOM_scan.png" alt="mDOM illuminated by a disk emitter" width="400" height="400" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
  Figure 1: <em>Screenshot of an <a class="el" href="classm_d_o_m.html">mDOM</a> illuminated by a disk emitter simulating the incidence of a plane wave from the direction θ (zenith) and φ (azimuth) using the Geant4 visualiser. The photon trajectories are represented by orange lines, and yellow dots mark the locations of physical interactions. Image taken from <a href="https://zenodo.org/record/8121321">this thesis</a>.</em> </div> </div><p>After simulating N photons from a plane of area A_rad (which has to be larger than the projected area of the <a class="el" href="classm_d_o_m.html">mDOM</a>), the effective area is calculated as</p>
 <p>$$ A_{\mathrm{eff}}(\theta, \phi) = \frac{N_{\mathrm{det}}(\theta, \phi)}{N}\cdot A_{\mathrm{rad}}, $$</p>
 <p>where N_det is the number of photons detected by the module. To optimise the sensitivity over multiple directions, A_eff(θ, φ) is calculated for various angle pairs, and the mean effective area, A_eff_mean, is determined. The n angle pairs are chosen using healpix, which separates a sphere into n pixels of equal area. Thus,</p>
@@ -172,7 +172,7 @@ Example using healpy</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jul 25 2024 07:17:54 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jul 25 2024 07:19:38 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
