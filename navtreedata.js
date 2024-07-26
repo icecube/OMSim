@@ -56,7 +56,7 @@ var NAVTREE =
       [ "Best Practices for Creating New Thread-Safe Containers", "md_extra_doc_1_multithreading.html#autotoc_md14", null ],
       [ "Troubleshooting Multi-threading Issues", "md_extra_doc_1_multithreading.html#autotoc_md15", [
         [ "1. Use Valgrind Tools", "md_extra_doc_1_multithreading.html#autotoc_md16", null ],
-        [ "2. Analyze the Output", "md_extra_doc_1_multithreading.html#autotoc_md17", null ],
+        [ "2. Analyse the Output", "md_extra_doc_1_multithreading.html#autotoc_md17", null ],
         [ "4. Modify and repeat", "md_extra_doc_1_multithreading.html#autotoc_md18", null ]
       ] ]
     ] ],

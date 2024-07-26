@@ -264,7 +264,7 @@ When implementing new thread-\/safe containers in Geant4\+:
 \end{DoxyEnumerate}
 
 By following these guidelines and studying the provided examples, you can create thread-\/safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-\/threaded environments.\hypertarget{md_extra_doc_1_multithreading_autotoc_md15}{}\doxysection{Troubleshooting Multi-\/threading Issues}\label{md_extra_doc_1_multithreading_autotoc_md15}
-When working with multi-\/threaded simulations in Geant4, you may encounter race conditions or other thread-\/related issues. Here\textquotesingle{}s a general approach to diagnose and resolve these problems\+:\hypertarget{md_extra_doc_1_multithreading_autotoc_md16}{}\doxysubsection{1. Use Valgrind Tools}\label{md_extra_doc_1_multithreading_autotoc_md16}
+When developing new code with multi-\/threaded simulations in Geant4, you may encounter race conditions or other thread-\/related issues. Here\textquotesingle{}s a general approach to diagnose and resolve these problems\+:\hypertarget{md_extra_doc_1_multithreading_autotoc_md16}{}\doxysubsection{1. Use Valgrind Tools}\label{md_extra_doc_1_multithreading_autotoc_md16}
 Valgrind provides powerful tools for detecting thread-\/related issues\+:
 
 a) Helgrind\+: 
@@ -281,7 +281,7 @@ b) DRD (Data Race Detector)\+:
 \end{DoxyCode}
 
 
-These tools can identify potential race conditions and other thread-\/related issues. \hypertarget{md_extra_doc_1_multithreading_autotoc_md17}{}\doxysubsection{2. Analyze the Output}\label{md_extra_doc_1_multithreading_autotoc_md17}
+These tools can identify potential race conditions and other thread-\/related issues. \hypertarget{md_extra_doc_1_multithreading_autotoc_md17}{}\doxysubsection{2. Analyse the Output}\label{md_extra_doc_1_multithreading_autotoc_md17}
 
 \begin{DoxyItemize}
 \item Review the Valgrind output carefully. Look for\+:
