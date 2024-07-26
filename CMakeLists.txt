@@ -88,7 +88,5 @@ set(COMMON_LIBRARIES ${COMMON_LIBRARIES} CACHE INTERNAL "")
 
 # Include the subdirectories
 add_subdirectory(common)
-#add_subdirectory(effective_area)
-add_subdirectory(QE_calibration)
-#add_subdirectory(radioactive_decays)
-#add_subdirectory(supernova)
+add_subdirectory(simulations)
+

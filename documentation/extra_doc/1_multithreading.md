@@ -241,7 +241,7 @@ By following these guidelines and studying the provided examples, you can create
 
 ## Troubleshooting Multi-threading Issues
 
-When working with multi-threaded simulations in Geant4, you may encounter race conditions or other thread-related issues. Here's a general approach to diagnose and resolve these problems:
+When developing new code with multi-threaded simulations in Geant4, you may encounter race conditions or other thread-related issues. Here's a general approach to diagnose and resolve these problems:
 
 ### 1. Use Valgrind Tools
 Valgrind provides powerful tools for detecting thread-related issues:
@@ -257,7 +257,7 @@ b) DRD (Data Race Detector):
    ```
 
 These tools can identify potential race conditions and other thread-related issues.
-### 2. Analyze the Output
+### 2. Analyse the Output
 - Review the Valgrind output carefully. Look for:
 - Data race warnings
 - Mutex-related issues

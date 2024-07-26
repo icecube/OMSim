@@ -85,6 +85,6 @@ OMSim has been utilized in a range of studies, each simulating unique physics, t
 - [Supernova studies](https://icecube.github.io/OMSim/md_4__s_n.html): used for the development of an improved SN trigger for IceCube using multi-PMT modules.
 
 ### Customising Compilation
-To exclude certain studies from compilation, edit the master CMakeLists.txt file and comment out the unwanted `add_subdirectory()` calls before running CMake.
+To exclude certain studies from compilation, edit the `simulations/CMakeLists.tx` file and comment out the unwanted `add_subdirectory()` calls before running CMake.
 
 

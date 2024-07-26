@@ -13,7 +13,7 @@ jobs:
       - name: Generate Doxygen
         run: |
           sudo apt-get install doxygen graphviz
-          cd doxygen_documentation
+          cd documentation
           rm -rf html
           doxygen Doxyfile
           cd ..
@@ -22,6 +22,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./doxygen_documentation/html
+          publish_dir: ./documentation/html
           clean: true
 

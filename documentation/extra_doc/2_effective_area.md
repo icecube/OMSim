@@ -1,7 +1,7 @@
 # Effective Area Study
 [TOC]
 
-In the folder `effective_area` you find the files pertinent to the effective area studies. 
+In the folder `simulations/effective_area` you find the files pertinent to the effective area studies. 
 
 ## Introduction to effective areas
 > **Note**: In the following, a short introduction of an effective area study is made with the mDOM as an example. For further details see Chapter 10 of [Lew Classen's thesis](https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/doktorarbeiten/1702-phd_lclassen.pdf) or Section 9.3.5 of [Martin Unland's thesis](https://zenodo.org/record/8121321).
