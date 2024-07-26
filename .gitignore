@@ -37,6 +37,5 @@ build*/
 documentation/html
 documentation/latex
 .vscode/
-CMakeLists.txt
 
 240617_analysis/*
