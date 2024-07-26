@@ -13,7 +13,7 @@ For the latest updates and information, check our [GitHub repository](https://gi
 
 ### Installing Geant4
 
-1. Install Geant4 following [the guide provided by CERN](https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html). OMSim is currently optimised for Geant4-11.1.1.
+1. Install Geant4 following [the guide provided by CERN](https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html). OMSim is currently optimised for Geant4-11 (last tested with 11.2.2).
 
 2. For visualisation tools, include the following CMake options:
 
@@ -68,7 +68,7 @@ Note: spdlog will be automatically installed by CMake if not found on your syste
    ```
    If CMake doesn't find Geant4, use the following, where "YOUR_G4_INSTALL" is the path to the install folder of Geant4 in your system:
    ```bash
-   cmake -DGeant4_DIR=YOUR_G4_INSTALL/lib/Geant4-11.1.1/ ..
+   cmake -DGeant4_DIR=YOUR_G4_INSTALL/lib/Geant4-11.2.2/ ..
    ```
 
 4. Compile the project:

@@ -32,10 +32,7 @@
 
 
 build/
-build2/
 build*/
 documentation/html
 documentation/latex
 .vscode/
-
-240617_analysis/*
