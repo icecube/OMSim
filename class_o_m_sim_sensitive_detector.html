@@ -117,6 +117,7 @@ $(document).ready(function(){initNavTree('class_o_m_sim_sensitive_detector.html'
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_o_m_sim_sensitive_detector-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">OMSimSensitiveDetector Class Reference</div>  </div>
@@ -173,24 +174,20 @@ G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkBoundaryAbsorp
 <tr class="memitem:a9086dbe47568c71cba08feef8b665146"><td class="memItemLeft" align="right" valign="top"><a id="a9086dbe47568c71cba08feef8b665146"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>fetchBoundaryProcess</b> ()</td></tr>
 <tr class="separator:a9086dbe47568c71cba08feef8b665146"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3000daa9043f8a04ded96f2d2aa516d1"><td class="memItemLeft" align="right" valign="top"><a id="a3000daa9043f8a04ded96f2d2aa516d1"></a>
-G4int&#160;</td><td class="memItemRight" valign="bottom"><b>findAndCachePMTVolumeDepth</b> (const G4VTouchable *touchable)</td></tr>
-<tr class="separator:a3000daa9043f8a04ded96f2d2aa516d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a91d2ded95786de72b4d403fdfcf23455"><td class="memItemLeft" align="right" valign="top"><a id="a91d2ded95786de72b4d403fdfcf23455"></a>
-std::unordered_map&lt; G4int, G4int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mPMTVolumeDepth</b></td></tr>
-<tr class="separator:a91d2ded95786de72b4d403fdfcf23455"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9352dc2cb5522d037044f99fce178b70"><td class="memItemLeft" align="right" valign="top"><a id="a9352dc2cb5522d037044f99fce178b70"></a>
 <a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mPMTResponse</b></td></tr>
 <tr class="separator:a9352dc2cb5522d037044f99fce178b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab14f76ffaa75e268fc49cdec4103a034"><td class="memItemLeft" align="right" valign="top"><a id="ab14f76ffaa75e268fc49cdec4103a034"></a>
 DetectorType&#160;</td><td class="memItemRight" valign="bottom"><b>mDetectorType</b></td></tr>
 <tr class="separator:ab14f76ffaa75e268fc49cdec4103a034"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaccd68cf580a6c9beee6e597385147bb"><td class="memItemLeft" align="right" valign="top"><a id="aaccd68cf580a6c9beee6e597385147bb"></a>
-<a class="el" href="class_g4_op_boundary_process.html">G4OpBoundaryProcess</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mBoundaryProcess</b> = nullptr</td></tr>
-<tr class="separator:aaccd68cf580a6c9beee6e597385147bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a4f8fb54b28c422464b26e05a6cfa579b"><td class="memItemLeft" align="right" valign="top">static thread_local <a class="el" href="class_g4_op_boundary_process.html">G4OpBoundaryProcess</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a4f8fb54b28c422464b26e05a6cfa579b">mBoundaryProcess</a> = nullptr</td></tr>
+<tr class="separator:a4f8fb54b28c422464b26e05a6cfa579b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac8df596a75c482bafb3b83d1ed011316"></a>
@@ -393,6 +390,30 @@ DetectorType&#160;</td><td class="memItemRight" valign="bottom"><b>mDetectorType
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4f8fb54b28c422464b26e05a6cfa579b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f8fb54b28c422464b26e05a6cfa579b">&#9670;&nbsp;</a></span>mBoundaryProcess</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">thread_local <a class="el" href="class_g4_op_boundary_process.html">G4OpBoundaryProcess</a> * OMSimSensitiveDetector::mBoundaryProcess = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Test several optical modules of same type with new type </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_o_m_sim_sensitive_detector_8hh_source.html">OMSimSensitiveDetector.hh</a></li>
 <li>OMSimSensitiveDetector.cc</li>
@@ -403,7 +424,7 @@ DetectorType&#160;</td><td class="memItemRight" valign="bottom"><b>mDetectorType
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a></li>
-    <li class="footer">Generated on Thu Jul 25 2024 07:56:38 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Jul 26 2024 10:48:59 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

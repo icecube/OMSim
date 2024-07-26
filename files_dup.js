@@ -8,10 +8,12 @@ var files_dup =
     [ "OMSim.cc", "_o_m_sim_8cc.html", "_o_m_sim_8cc" ],
     [ "OMSim.hh", "_o_m_sim_8hh.html", null ],
     [ "OMSim_effective_area.cc", "_o_m_sim__effective__area_8cc.html", "_o_m_sim__effective__area_8cc" ],
+    [ "OMSim_QE_calibration.cc", "_o_m_sim___q_e__calibration_8cc.html", "_o_m_sim___q_e__calibration_8cc" ],
     [ "OMSim_radioactive_decays.cc", "_o_m_sim__radioactive__decays_8cc.html", "_o_m_sim__radioactive__decays_8cc" ],
     [ "OMSim_supernova.cc", "_o_m_sim__supernova_8cc.html", "_o_m_sim__supernova_8cc" ],
     [ "OMSimActionInitialization.hh", "_o_m_sim_action_initialization_8hh_source.html", null ],
-    [ "OMSimAngularScan.hh", "_o_m_sim_angular_scan_8hh.html", null ],
+    [ "effective_area/include/OMSimAngularScan.hh", "effective__area_2include_2_o_m_sim_angular_scan_8hh.html", null ],
+    [ "QE_calibration/include/OMSimAngularScan.hh", "_q_e__calibration_2include_2_o_m_sim_angular_scan_8hh.html", null ],
     [ "OMSimCommandArgsTable.hh", "_o_m_sim_command_args_table_8hh.html", "_o_m_sim_command_args_table_8hh" ],
     [ "OMSimDataFileTypes.hh", "_o_m_sim_data_file_types_8hh.html", null ],
     [ "OMSimDecaysAnalysis.hh", "_o_m_sim_decays_analysis_8hh.html", null ],
@@ -21,9 +23,12 @@ var files_dup =
       [ "DEggHarness", "class_d_egg_harness.html", "class_d_egg_harness" ]
     ] ],
     [ "OMSimDetectorConstruction.hh", "_o_m_sim_detector_construction_8hh_source.html", null ],
-    [ "OMSimEffectiveAreaAnalyisis.hh", "_o_m_sim_effective_area_analyisis_8hh_source.html", null ],
-    [ "OMSimEffectiveAreaDetector.hh", "_o_m_sim_effective_area_detector_8hh.html", null ],
+    [ "effective_area/include/OMSimEffectiveAreaAnalyisis.hh", "effective__area_2include_2_o_m_sim_effective_area_analyisis_8hh_source.html", null ],
+    [ "QE_calibration/include/OMSimEffectiveAreaAnalyisis.hh", "_q_e__calibration_2include_2_o_m_sim_effective_area_analyisis_8hh_source.html", null ],
+    [ "effective_area/include/OMSimEffectiveAreaDetector.hh", "effective__area_2include_2_o_m_sim_effective_area_detector_8hh.html", null ],
+    [ "QE_calibration/include/OMSimEffectiveAreaDetector.hh", "_q_e__calibration_2include_2_o_m_sim_effective_area_detector_8hh.html", null ],
     [ "effective_area/include/OMSimEventAction.hh", "effective__area_2include_2_o_m_sim_event_action_8hh_source.html", null ],
+    [ "QE_calibration/include/OMSimEventAction.hh", "_q_e__calibration_2include_2_o_m_sim_event_action_8hh_source.html", null ],
     [ "radioactive_decays/include/OMSimEventAction.hh", "radioactive__decays_2include_2_o_m_sim_event_action_8hh.html", null ],
     [ "supernova/include/OMSimEventAction.hh", "supernova_2include_2_o_m_sim_event_action_8hh_source.html", null ],
     [ "OMSimG4RadioactiveDecay.hh", "_o_m_sim_g4_radioactive_decay_8hh.html", "_o_m_sim_g4_radioactive_decay_8hh" ],
@@ -55,6 +60,7 @@ var files_dup =
     [ "OMSimOpticalModule.hh", "_o_m_sim_optical_module_8hh_source.html", null ],
     [ "OMSimPDOM.hh", "_o_m_sim_p_d_o_m_8hh.html", null ],
     [ "effective_area/include/OMSimPhysicsList.hh", "effective__area_2include_2_o_m_sim_physics_list_8hh_source.html", null ],
+    [ "QE_calibration/include/OMSimPhysicsList.hh", "_q_e__calibration_2include_2_o_m_sim_physics_list_8hh_source.html", null ],
     [ "radioactive_decays/include/OMSimPhysicsList.hh", "radioactive__decays_2include_2_o_m_sim_physics_list_8hh.html", null ],
     [ "supernova/include/OMSimPhysicsList.hh", "supernova_2include_2_o_m_sim_physics_list_8hh_source.html", null ],
     [ "OMSimPMTConstruction.hh", "_o_m_sim_p_m_t_construction_8hh.html", [
@@ -71,6 +77,7 @@ var files_dup =
       [ "NoResponse", "class_no_response.html", "class_no_response" ]
     ] ],
     [ "effective_area/include/OMSimPrimaryGeneratorAction.hh", "effective__area_2include_2_o_m_sim_primary_generator_action_8hh_source.html", null ],
+    [ "QE_calibration/include/OMSimPrimaryGeneratorAction.hh", "_q_e__calibration_2include_2_o_m_sim_primary_generator_action_8hh_source.html", null ],
     [ "radioactive_decays/include/OMSimPrimaryGeneratorAction.hh", "radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh.html", [
       [ "OMSimPrimaryGeneratorAction", "class_o_m_sim_primary_generator_action.html", "class_o_m_sim_primary_generator_action" ]
     ] ],

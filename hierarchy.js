@@ -46,6 +46,7 @@ var hierarchy =
     [ "G4UserEventAction", null, [
       [ "OMSimEventAction", "class_o_m_sim_event_action.html", null ],
       [ "OMSimEventAction", "class_o_m_sim_event_action.html", null ],
+      [ "OMSimEventAction", "class_o_m_sim_event_action.html", null ],
       [ "OMSimEventAction", "class_o_m_sim_event_action.html", null ]
     ] ],
     [ "G4UserRunAction", null, [
@@ -73,6 +74,7 @@ var hierarchy =
     [ "G4VUserDetectorConstruction", null, [
       [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html", [
         [ "OMSimEffectiveAreaDetector", "class_o_m_sim_effective_area_detector.html", null ],
+        [ "OMSimEffectiveAreaDetector", "class_o_m_sim_effective_area_detector.html", null ],
         [ "OMSimRadDecaysDetector", "class_o_m_sim_rad_decays_detector.html", null ],
         [ "OMSimSNdetector", "class_o_m_sim_s_ndetector.html", null ]
       ] ]
@@ -80,9 +82,11 @@ var hierarchy =
     [ "G4VUserPhysicsList", null, [
       [ "OMSimPhysicsList", "class_o_m_sim_physics_list.html", null ],
       [ "OMSimPhysicsList", "class_o_m_sim_physics_list.html", null ],
+      [ "OMSimPhysicsList", "class_o_m_sim_physics_list.html", null ],
       [ "OMSimPhysicsList", "class_o_m_sim_physics_list.html", null ]
     ] ],
     [ "G4VUserPrimaryGeneratorAction", null, [
+      [ "OMSimPrimaryGeneratorAction", "class_o_m_sim_primary_generator_action.html", null ],
       [ "OMSimPrimaryGeneratorAction", "class_o_m_sim_primary_generator_action.html", null ],
       [ "OMSimPrimaryGeneratorAction", "class_o_m_sim_primary_generator_action.html", null ],
       [ "OMSimPrimaryGeneratorAction", "class_o_m_sim_primary_generator_action.html", null ],

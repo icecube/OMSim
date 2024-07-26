@@ -10,7 +10,6 @@ var classm_d_o_m =
     [ "pressureVessel", "classm_d_o_m.html#a95cb59294f27f0e119d27d4b7e4f2cfe", null ],
     [ "runBeamOnFlasher", "classm_d_o_m.html#adf748d77a8bae2516db1ba79b805841b", null ],
     [ "setLEDPositions", "classm_d_o_m.html#ae1946d5874274ca30123bbbcd7af1411", null ],
-    [ "setNavigator", "classm_d_o_m.html#a48e3f7091cebec1b23d96c33580ec3e5", null ],
     [ "setPMTPositions", "classm_d_o_m.html#aa787ab8bfad6c8d820050a7d8c1f9bf5", null ],
     [ "substractFlashers", "classm_d_o_m.html#a7096fa5b925a0be159c56f415daf8f89", null ],
     [ "substractHarnessPlug", "classm_d_o_m.html#a3d936da0f23132258600d0825d3998f5", null ],

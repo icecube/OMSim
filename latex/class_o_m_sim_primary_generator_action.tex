@@ -26,6 +26,9 @@ Collaboration diagram for OMSim\+Primary\+Generator\+Action\+:
 \mbox{\Hypertarget{class_o_m_sim_primary_generator_action_add3404f43902d7d268744eed9bc7c49b}\label{class_o_m_sim_primary_generator_action_add3404f43902d7d268744eed9bc7c49b}} 
 void {\bfseries Generate\+Primaries} (G4\+Event $\ast$an\+Event)
 \item 
+\mbox{\Hypertarget{class_o_m_sim_primary_generator_action_a77207c72543c23fef95a2db01a1915e0}\label{class_o_m_sim_primary_generator_action_a77207c72543c23fef95a2db01a1915e0}} 
+void {\bfseries Generate\+Primaries} (G4\+Event $\ast$an\+Event) override
+\item 
 \mbox{\Hypertarget{class_o_m_sim_primary_generator_action_add3404f43902d7d268744eed9bc7c49b}\label{class_o_m_sim_primary_generator_action_add3404f43902d7d268744eed9bc7c49b}} 
 void {\bfseries Generate\+Primaries} (G4\+Event $\ast$an\+Event)
 \item 
@@ -67,6 +70,15 @@ G4int {\bfseries f\+Selected\+Action}
 \item 
 \mbox{\Hypertarget{class_o_m_sim_primary_generator_action_a0b7134413f8ec64f5badb7637a70295d}\label{class_o_m_sim_primary_generator_action_a0b7134413f8ec64f5badb7637a70295d}} 
 \mbox{\hyperlink{class_o_m_sim_primary_generator_messenger}{OMSim\+Primary\+Generator\+Messenger}} $\ast$ {\bfseries f\+Gun\+Messenger}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_primary_generator_action_a50b7919e089d8b1c6d6f8cd4b4ef2cc3}\label{class_o_m_sim_primary_generator_action_a50b7919e089d8b1c6d6f8cd4b4ef2cc3}} 
+static thread\+\_\+local std\+::unique\+\_\+ptr$<$ G4\+General\+Particle\+Source $>$ {\bfseries m\+Particle\+Source}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_primary_generator_action_a030f31ee71aab2b0b93a7f013a427385}\label{class_o_m_sim_primary_generator_action_a030f31ee71aab2b0b93a7f013a427385}} 
+static G4\+Mutex {\bfseries m\+Mutex}
 \end{DoxyCompactItemize}
 
 

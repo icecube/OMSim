@@ -263,4 +263,37 @@ When implementing new thread-\/safe containers in Geant4\+:
 
 \end{DoxyEnumerate}
 
-By following these guidelines and studying the provided examples, you can create thread-\/safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-\/threaded environments. 
+By following these guidelines and studying the provided examples, you can create thread-\/safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-\/threaded environments.\hypertarget{md_extra_doc_1_multithreading_autotoc_md15}{}\doxysection{Troubleshooting Multi-\/threading Issues}\label{md_extra_doc_1_multithreading_autotoc_md15}
+When working with multi-\/threaded simulations in Geant4, you may encounter race conditions or other thread-\/related issues. Here\textquotesingle{}s a general approach to diagnose and resolve these problems\+:\hypertarget{md_extra_doc_1_multithreading_autotoc_md16}{}\doxysubsection{1. Use Valgrind Tools}\label{md_extra_doc_1_multithreading_autotoc_md16}
+Valgrind provides powerful tools for detecting thread-\/related issues\+:
+
+a) Helgrind\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{valgrind -\/-\/log-\/file="{}output\_helgrind.txt"{} -\/-\/tool=helgrind ./OMSim\_* [arguments]}
+
+\end{DoxyCode}
+
+
+b) DRD (Data Race Detector)\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{valgrind -\/-\/log-\/file="{}output\_helgrind.txt"{} -\/-\/tool=drd ./OMSim\_* [arguments]}
+
+\end{DoxyCode}
+
+
+These tools can identify potential race conditions and other thread-\/related issues. \hypertarget{md_extra_doc_1_multithreading_autotoc_md17}{}\doxysubsection{2. Analyze the Output}\label{md_extra_doc_1_multithreading_autotoc_md17}
+
+\begin{DoxyItemize}
+\item Review the Valgrind output carefully. Look for\+:
+\item Data race warnings
+\item Mutex-\/related issues
+\item Potential deadlocks
+\item Tip\+: Use an LLM (like Chat\+GPT) to help interpret complex error messages and suggest potential solutions.
+\end{DoxyItemize}\hypertarget{md_extra_doc_1_multithreading_autotoc_md18}{}\doxysubsection{4. Modify and repeat}\label{md_extra_doc_1_multithreading_autotoc_md18}
+
+\begin{DoxyItemize}
+\item Once you identify the object/method causing the error, check if it\textquotesingle{}s obviously not thread-\/safe and being shared during simulation.
+\item For a deeper understanding, provide the complete class (header + source) to the LLM for more detailed guidance.
+\item Make changes to address the identified issues.
+\item Use Valgrind tools again to verify if the issues have been resolved. 
+\end{DoxyItemize}

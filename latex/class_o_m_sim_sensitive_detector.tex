@@ -55,24 +55,20 @@ void \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a329ead0f229868eaf8ac2113
 \begin{DoxyCompactList}\small\item\em Stores photon hit information into the Hit\+Manager. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a9086dbe47568c71cba08feef8b665146}\label{class_o_m_sim_sensitive_detector_a9086dbe47568c71cba08feef8b665146}} 
 void {\bfseries fetch\+Boundary\+Process} ()
-\item 
-\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a3000daa9043f8a04ded96f2d2aa516d1}\label{class_o_m_sim_sensitive_detector_a3000daa9043f8a04ded96f2d2aa516d1}} 
-G4int {\bfseries find\+And\+Cache\+PMTVolume\+Depth} (const G4\+VTouchable $\ast$touchable)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a91d2ded95786de72b4d403fdfcf23455}\label{class_o_m_sim_sensitive_detector_a91d2ded95786de72b4d403fdfcf23455}} 
-std\+::unordered\+\_\+map$<$ G4int, G4int $>$ {\bfseries m\+PMTVolume\+Depth}
 \item 
 \mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a9352dc2cb5522d037044f99fce178b70}\label{class_o_m_sim_sensitive_detector_a9352dc2cb5522d037044f99fce178b70}} 
 \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} $\ast$ {\bfseries m\+PMTResponse}
 \item 
 \mbox{\Hypertarget{class_o_m_sim_sensitive_detector_ab14f76ffaa75e268fc49cdec4103a034}\label{class_o_m_sim_sensitive_detector_ab14f76ffaa75e268fc49cdec4103a034}} 
 Detector\+Type {\bfseries m\+Detector\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_aaccd68cf580a6c9beee6e597385147bb}\label{class_o_m_sim_sensitive_detector_aaccd68cf580a6c9beee6e597385147bb}} 
-\mbox{\hyperlink{class_g4_op_boundary_process}{G4\+Op\+Boundary\+Process}} $\ast$ {\bfseries m\+Boundary\+Process} = nullptr
+static thread\+\_\+local \mbox{\hyperlink{class_g4_op_boundary_process}{G4\+Op\+Boundary\+Process}} $\ast$ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a4f8fb54b28c422464b26e05a6cfa579b}{m\+Boundary\+Process}} = nullptr
 \end{DoxyCompactItemize}
 
 
@@ -152,6 +148,17 @@ True if the particle was stored as hit, false otherwise.
 {\em info} & The photon hit information. \\
 \hline
 \end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_o_m_sim_sensitive_detector_a4f8fb54b28c422464b26e05a6cfa579b}\label{class_o_m_sim_sensitive_detector_a4f8fb54b28c422464b26e05a6cfa579b}} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!mBoundaryProcess@{mBoundaryProcess}}
+\index{mBoundaryProcess@{mBoundaryProcess}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{mBoundaryProcess}{mBoundaryProcess}}
+{\footnotesize\ttfamily thread\+\_\+local \mbox{\hyperlink{class_g4_op_boundary_process}{G4\+Op\+Boundary\+Process}} $\ast$ OMSim\+Sensitive\+Detector\+::m\+Boundary\+Process = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]Test several optical modules of same type with new type \end{DoxyRefDesc}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

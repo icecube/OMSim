@@ -33,6 +33,7 @@ var class_g4_op_boundary_process =
     [ "SetInvokeSD", "class_g4_op_boundary_process.html#ad479aa13f935f556de65bc74a3d8ff5d", null ],
     [ "SetVerboseLevel", "class_g4_op_boundary_process.html#a8cecb483bde657fa71b2e16ec358a324", null ],
     [ "ThreeLayerSystem", "class_g4_op_boundary_process.html#a3e94692b6a0d08e3325c2371ea2e18c8", null ],
+    [ "boundaryProcessMutex", "class_g4_op_boundary_process.html#afae70d6a168a430e9bc6cfee4ba47762", null ],
     [ "f_iTE", "class_g4_op_boundary_process.html#a9963aa5d596a1ac55506f708f9d257ab", null ],
     [ "f_iTM", "class_g4_op_boundary_process.html#a9ff075bb99015d307ead3e0ac43f7ca6", null ],
     [ "fAbsorptionLength1", "class_g4_op_boundary_process.html#a1bb19c971a9972d968f89334cf5be1e4", null ],

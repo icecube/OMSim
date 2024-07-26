@@ -125,6 +125,11 @@ $(document).ready(function(){initNavTree('md_extra_doc_1_multithreading.html',''
 </ul>
 </li>
 <li class="level1"><a href="#autotoc_md14">Best Practices for Creating New Thread-Safe Containers</a></li>
+<li class="level1"><a href="#autotoc_md15">Troubleshooting Multi-threading Issues</a><ul><li class="level2"><a href="#autotoc_md16">1. Use Valgrind Tools</a></li>
+<li class="level2"><a href="#autotoc_md17">2. Analyze the Output</a></li>
+<li class="level2"><a href="#autotoc_md18">4. Modify and repeat</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="textblock"><p>The OMSim-Framework allows for multi-threading. The number of threads can be controlled with the <code>--threads</code> argument (default 1). If you specify more threads than available, only the maximum available will be used.</p>
@@ -328,14 +333,40 @@ Best Practices for Creating New Thread-Safe Containers</h1>
 <div class="line"><span class="comment">// Access or modify shared resources</span></div>
 </div><!-- fragment --></li>
 </ol>
-<p>By following these guidelines and studying the provided examples, you can create thread-safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-threaded environments. </p>
+<p>By following these guidelines and studying the provided examples, you can create thread-safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-threaded environments.</p>
+<h1><a class="anchor" id="autotoc_md15"></a>
+Troubleshooting Multi-threading Issues</h1>
+<p>When working with multi-threaded simulations in Geant4, you may encounter race conditions or other thread-related issues. Here's a general approach to diagnose and resolve these problems:</p>
+<h2><a class="anchor" id="autotoc_md16"></a>
+1. Use Valgrind Tools</h2>
+<p>Valgrind provides powerful tools for detecting thread-related issues:</p>
+<p>a) Helgrind: </p><div class="fragment"><div class="line">valgrind --log-file=&quot;output_helgrind.txt&quot; --tool=helgrind ./OMSim_* [arguments]</div>
+</div><!-- fragment --><p>b) DRD (Data Race Detector): </p><div class="fragment"><div class="line">valgrind --log-file=&quot;output_helgrind.txt&quot; --tool=drd ./OMSim_* [arguments]</div>
+</div><!-- fragment --><p>These tools can identify potential race conditions and other thread-related issues. </p>
+<h2><a class="anchor" id="autotoc_md17"></a>
+2. Analyze the Output</h2>
+<ul>
+<li>Review the Valgrind output carefully. Look for:</li>
+<li>Data race warnings</li>
+<li>Mutex-related issues</li>
+<li>Potential deadlocks</li>
+<li>Tip: Use an LLM (like ChatGPT) to help interpret complex error messages and suggest potential solutions.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md18"></a>
+4. Modify and repeat</h2>
+<ul>
+<li>Once you identify the object/method causing the error, check if it's obviously not thread-safe and being shared during simulation.</li>
+<li>For a deeper understanding, provide the complete class (header + source) to the LLM for more detailed guidance.</li>
+<li>Make changes to address the identified issues.</li>
+<li>Use Valgrind tools again to verify if the issues have been resolved. </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jul 25 2024 07:56:38 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Jul 26 2024 10:48:59 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

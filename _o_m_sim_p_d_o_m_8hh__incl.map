@@ -1,20 +1,20 @@
 <map id="OMSimPDOM.hh" name="OMSimPDOM.hh">
-<area shape="rect" id="node1" title="Implementation of the pDOM/Gen1 DOM class." alt="" coords="1577,5,1707,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="1544,155,1743,181"/>
-<area shape="rect" id="node29" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="1616,80,1799,107"/>
-<area shape="rect" id="node3" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="1291,229,1487,256"/>
-<area shape="rect" id="node22" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="1780,229,1960,256"/>
-<area shape="rect" id="node27" title=" " alt="" coords="1511,229,1642,256"/>
-<area shape="rect" id="node28" title=" " alt="" coords="1667,229,1756,256"/>
-<area shape="rect" id="node4" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and InputDataManager." alt="" coords="845,304,999,331"/>
-<area shape="rect" id="node18" title=" " alt="" coords="1023,304,1165,331"/>
-<area shape="rect" id="node19" title=" " alt="" coords="1190,304,1334,331"/>
-<area shape="rect" id="node20" title=" " alt="" coords="1359,304,1525,331"/>
-<area shape="rect" id="node21" title=" " alt="" coords="1550,304,1697,331"/>
+<area shape="rect" id="node1" title="Implementation of the pDOM/Gen1 DOM class." alt="" coords="1460,5,1589,32"/>
+<area shape="rect" id="node2" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="1427,155,1625,181"/>
+<area shape="rect" id="node31" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="1499,80,1681,107"/>
+<area shape="rect" id="node3" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="1229,229,1425,256"/>
+<area shape="rect" id="node24" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="1607,304,1787,331"/>
+<area shape="rect" id="node29" title=" " alt="" coords="1513,229,1643,256"/>
+<area shape="rect" id="node30" title=" " alt="" coords="1668,229,1757,256"/>
+<area shape="rect" id="node4" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and InputDataManager." alt="" coords="731,304,884,331"/>
+<area shape="rect" id="node20" title=" " alt="" coords="908,304,1051,331"/>
+<area shape="rect" id="node21" title=" " alt="" coords="1075,304,1219,331"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1244,304,1411,331"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1435,304,1582,331"/>
 <area shape="rect" id="node5" href="$_o_m_sim_logger_8hh_source.html" title=" " alt="" coords="299,386,431,413"/>
 <area shape="rect" id="node10" href="$_o_m_sim_op_boundary_process_8hh_source.html" title=" " alt="" coords="813,386,1031,413"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1443,386,1601,413"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1056,379,1207,420"/>
+<area shape="rect" id="node18" title=" " alt="" coords="1231,386,1389,413"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1056,379,1207,420"/>
 <area shape="rect" id="node6" title=" " alt="" coords="5,475,129,502"/>
 <area shape="rect" id="node7" title=" " alt="" coords="153,468,301,509"/>
 <area shape="rect" id="node8" title=" " alt="" coords="326,475,403,502"/>
@@ -24,13 +24,13 @@
 <area shape="rect" id="node13" title=" " alt="" coords="937,475,1083,502"/>
 <area shape="rect" id="node14" title=" " alt="" coords="1107,475,1281,502"/>
 <area shape="rect" id="node15" title=" " alt="" coords="1305,475,1515,502"/>
-<area shape="rect" id="node23" title=" " alt="" coords="1772,304,1869,331"/>
-<area shape="rect" id="node24" title=" " alt="" coords="1894,304,1945,331"/>
-<area shape="rect" id="node25" title=" " alt="" coords="1969,304,2051,331"/>
-<area shape="rect" id="node26" title=" " alt="" coords="2075,304,2145,331"/>
-<area shape="rect" id="node30" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="2035,155,2199,181"/>
-<area shape="rect" id="node31" title=" " alt="" coords="1984,229,2121,256"/>
-<area shape="rect" id="node32" title=" " alt="" coords="2145,229,2219,256"/>
-<area shape="rect" id="node33" title=" " alt="" coords="2243,229,2363,256"/>
-<area shape="rect" id="node34" title=" " alt="" coords="2387,229,2513,256"/>
+<area shape="rect" id="node16" title=" " alt="" coords="1594,475,1714,502"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1759,475,1885,502"/>
+<area shape="rect" id="node25" title=" " alt="" coords="1413,386,1511,413"/>
+<area shape="rect" id="node26" title=" " alt="" coords="1535,386,1586,413"/>
+<area shape="rect" id="node27" title=" " alt="" coords="1611,386,1692,413"/>
+<area shape="rect" id="node28" title=" " alt="" coords="1716,386,1787,413"/>
+<area shape="rect" id="node32" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="1787,229,1951,256"/>
+<area shape="rect" id="node33" title=" " alt="" coords="1913,304,2051,331"/>
+<area shape="rect" id="node34" title=" " alt="" coords="2075,304,2148,331"/>
 </map>
