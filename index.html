@@ -139,7 +139,7 @@ Installation</h1>
 <h2><a class="anchor" id="autotoc_md37"></a>
 Installing Geant4</h2>
 <ol type="1">
-<li>Install Geant4 following <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html">the guide provided by CERN</a>. <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> is currently optimised for Geant4-11.1.1.</li>
+<li>Install Geant4 following <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html">the guide provided by CERN</a>. <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> is currently optimised for Geant4-11 (last tested with 11.2.2).</li>
 <li>For visualisation tools, include the following CMake options:</li>
 </ol>
 <div class="fragment"><div class="line">-DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_GDML=ON -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_QT=ON -DGEANT4_USE_RAYTRACER_X11=ON -DGEANT4_USE_XM=ON</div>
@@ -170,7 +170,7 @@ Compiling OMSim</h2>
 <li>Create a build directory: <div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
 </div><!-- fragment --></li>
 <li>Run CMake: <div class="fragment"><div class="line">cmake ..</div>
-</div><!-- fragment --> If CMake doesn't find Geant4, use the following, where "YOUR_G4_INSTALL" is the path to the install folder of Geant4 in your system: <div class="fragment"><div class="line">cmake -DGeant4_DIR=YOUR_G4_INSTALL/lib/Geant4-11.1.1/ ..</div>
+</div><!-- fragment --> If CMake doesn't find Geant4, use the following, where "YOUR_G4_INSTALL" is the path to the install folder of Geant4 in your system: <div class="fragment"><div class="line">cmake -DGeant4_DIR=YOUR_G4_INSTALL/lib/Geant4-11.2.2/ ..</div>
 </div><!-- fragment --></li>
 <li>Compile the project: <div class="fragment"><div class="line">make -j$(nproc)</div>
 </div><!-- fragment --></li>
@@ -192,7 +192,7 @@ Customising Compilation</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 26 2024 11:19:10 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Jul 26 2024 11:24:26 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
