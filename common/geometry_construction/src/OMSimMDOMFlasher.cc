@@ -1,7 +1,8 @@
 #include "OMSimMDOM.hh"
 #include "OMSimUIinterface.hh"
 #include "OMSimCommandArgsTable.hh"
-
+#include "G4TouchableHistoryHandle.hh"
+#include "G4TransportationManager.hh"
 #include <G4Cons.hh>
 #include <G4Ellipsoid.hh>
 
@@ -149,10 +150,9 @@ GlobalPosition mDOMFlasher::getFlasherPositionInfo(mDOM *pMDOMInstance, G4int pM
 	lGlobalPos.z = lFlasherGlobalPosition.getZ();
 
 	// Get rotation of the flasher
-	G4TouchableHistoryHandle lTouchable;
-
-	mNavigator->LocateGlobalPointAndSetup(G4ThreeVector(lGlobalPos.x, lGlobalPos.y, lGlobalPos.z));
-	lTouchable = mNavigator->CreateTouchableHistoryHandle();
+	G4Navigator* lNavigator = G4TransportationManager::GetTransportationManager()->GetNavigatorForTracking();
+	lNavigator->LocateGlobalPointAndSetup(G4ThreeVector(lGlobalPos.x, lGlobalPos.y, lGlobalPos.z));
+	G4TouchableHistoryHandle lTouchable = lNavigator->CreateTouchableHistoryHandle();
 	lGlobalPos.rotation = lTouchable->GetRotation()->inverse();
 
 	return lGlobalPos;

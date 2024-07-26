@@ -48,7 +48,7 @@ Note: spdlog will be automatically installed by CMake if not found on your syste
    source $ROOTSYS/bin/thisroot.sh
    ``` 
 
-#### Compiling OMSim
+### Compiling OMSim
 
 
 1. Clone this repository:

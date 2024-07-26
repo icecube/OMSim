@@ -98,7 +98,7 @@ void OMSimHitManager::appendHitInfo(
 
 	if (!mThreadData)
 	{
-		log_debug("Initialized mThreadData for thread {}", G4Threading::G4GetThreadId());
+		log_debug("Initialized mThreadData for thread {} seed {}", G4Threading::G4GetThreadId(),  G4Random::getTheSeed());
 		mThreadData = new ThreadLocalData();
 	}
 
@@ -108,8 +108,10 @@ void OMSimHitManager::appendHitInfo(
 		// Create a new HitStats for this module
 		mThreadData->moduleHits[pModuleNumber] = HitStats();
 	}
+	
 	auto &moduleHits = mThreadData->moduleHits[pModuleNumber];
 	G4int eventID = G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetEventID();
+	//log_debug("Thread {} Seed {} event {} size {}", G4Threading::G4GetThreadId(),  G4Random::getTheSeed(), eventID, moduleHits.eventId.size());
 	moduleHits.eventId.push_back(eventID);
 	moduleHits.hitTime.push_back(pGlobalTime);
 	moduleHits.flightTime.push_back(pLocalTime);
@@ -314,13 +316,14 @@ void OMSimHitManager::mergeThreadData()
 	G4AutoLock lock(&mMutex);
 	if (mThreadData)
 	{
-		log_debug("Merging data of different threads");
+		log_debug("Merging data for thread {}", G4Threading::G4GetThreadId());
 		for (const auto &[moduleIndex, hits] : mThreadData->moduleHits)
 		{
-			log_debug("Thread ID: {} - Module Index: {} - Hit vector sizes: ={}",
-					  G4Threading::G4GetThreadId(), moduleIndex, hits.eventId.size());
-
 			auto &globalHits = mModuleHits[moduleIndex];
+
+			log_debug("Thread ID: {} - Module Index: {} - Hit vector sizes: ={} - Merged size prior {}",
+					  G4Threading::G4GetThreadId(), moduleIndex, hits.eventId.size(), globalHits.eventId.size());
+
 			globalHits.eventId.insert(globalHits.eventId.end(), hits.eventId.begin(), hits.eventId.end());
 			globalHits.hitTime.insert(globalHits.hitTime.end(), hits.hitTime.begin(), hits.hitTime.end());
 			globalHits.flightTime.insert(globalHits.flightTime.end(), hits.flightTime.begin(), hits.flightTime.end());

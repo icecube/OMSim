@@ -50,10 +50,6 @@ public:
     std::tuple<G4UnionSolid *, G4UnionSolid *, G4Tubs *> getSolids();
     void runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex);
 
-    /**
-     * @brief This is needed to access to the flasher position and rotation
-     */
-    void setNavigator(G4Navigator *pNavigator) { mNavigator = pNavigator; } 
 
 private:
     void makeSolids();
@@ -72,7 +68,6 @@ private:
     G4bool mFlasherProfileAvailable = false;
     std::vector<double> mProfileX;
     std::vector<double> mProfileY;
-    G4Navigator *mNavigator;
 };
 
 #endif // OMSimMDOMFlasher_H

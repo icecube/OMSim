@@ -239,11 +239,36 @@ By following these guidelines and studying the provided examples, you can create
 
 
 
+## Troubleshooting Multi-threading Issues
 
+When working with multi-threaded simulations in Geant4, you may encounter race conditions or other thread-related issues. Here's a general approach to diagnose and resolve these problems:
 
+### 1. Use Valgrind Tools
+Valgrind provides powerful tools for detecting thread-related issues:
 
+a) Helgrind:
+   ```
+   valgrind --log-file="output_helgrind.txt" --tool=helgrind ./OMSim_* [arguments]
+   ```
 
+b) DRD (Data Race Detector):
+   ```
+   valgrind --log-file="output_helgrind.txt" --tool=drd ./OMSim_* [arguments]
+   ```
 
+These tools can identify potential race conditions and other thread-related issues.
+### 2. Analyze the Output
+- Review the Valgrind output carefully. Look for:
+- Data race warnings
+- Mutex-related issues
+- Potential deadlocks
+- Tip: Use an LLM (like ChatGPT) to help interpret complex error messages and suggest potential solutions.
+
+### 4. Modify and repeat
+- Once you identify the object/method causing the error, check if it's obviously not thread-safe and being shared during simulation.
+- For a deeper understanding, provide the complete class (header + source) to the LLM for more detailed guidance.
+- Make changes to address the identified issues.
+- Use Valgrind tools again to verify if the issues have been resolved.
 
 
 

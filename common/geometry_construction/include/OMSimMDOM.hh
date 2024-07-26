@@ -40,7 +40,6 @@ public:
      * @param pLEDIndex The index of the flasher within the module.
      */
     void runBeamOnFlasher(G4int pModuleIndex, G4int pLEDIndex) { mFlashers->runBeamOnFlasher(this, pModuleIndex, pLEDIndex); }
-    void setNavigator(G4Navigator *pNavigator) { mFlashers->setNavigator(pNavigator); } // this is needed to get the rotation of the flasher
 
 private:
     mDOMHarness *mHarness;

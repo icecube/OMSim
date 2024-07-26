@@ -66,12 +66,9 @@ private:
     void storePhotonHit(PhotonInfo &pInfo);
     void fetchBoundaryProcess();
 
-    std::unordered_map<G4int, G4int> mPMTVolumeDepth;
-    G4int findAndCachePMTVolumeDepth(const G4VTouchable* touchable);
-
     OMSimPMTResponse *mPMTResponse;
     DetectorType mDetectorType;
-    G4OpBoundaryProcess* mBoundaryProcess = nullptr;
+    thread_local static G4OpBoundaryProcess* mBoundaryProcess;
 };
 
 #endif

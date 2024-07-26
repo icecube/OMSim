@@ -117,8 +117,8 @@ void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *p
     log_debug("Configuring PMTs of {} as sensitive detector", pName);
     OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector(pName, DetectorType::PMT);
     lSensitiveDetector->setPMTResponse(getPMTResponseInstance());
-    pDetConst->registerSensitiveDetector(getComponent("PMT").VLogical, lSensitiveDetector);
-    //pDetConst->registerSensitiveDetector(mPhotocathodeLV, lSensitiveDetector);
+    //pDetConst->registerSensitiveDetector(getComponent("PMT").VLogical, lSensitiveDetector); //only one otherwise you get double hits!
+    pDetConst->registerSensitiveDetector(mPhotocathodeLV, lSensitiveDetector);
 }
 
 void OMSimPMTConstruction::constructHAcoating()

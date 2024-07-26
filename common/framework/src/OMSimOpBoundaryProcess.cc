@@ -593,8 +593,9 @@ G4VParticleChange *G4OpBoundaryProcess::PostStepDoIt(const G4Track &aTrack,
     }
   }
 
-  if (fStatus == Detection && fInvokeSD) // Invokes the sensitive detector if the status is "Detection" and the detector is configured to be invoked
+  if (fStatus == Detection)// && fInvokeSD) // Invokes the sensitive detector if the status is "Detection" and the detector is configured to be invoked
     InvokeSD(pStep);
+
   return G4VDiscreteProcess::PostStepDoIt(aTrack, aStep);
 }
 
@@ -1116,6 +1117,7 @@ void G4OpBoundaryProcess::DielectricDichroic()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void G4OpBoundaryProcess::DielectricDielectric()
 {
+  std::lock_guard<std::mutex> lock(boundaryProcessMutex);
   G4bool inside = false;
   G4bool swap = false;
 
@@ -1551,9 +1553,18 @@ G4bool G4OpBoundaryProcess::InvokeSD(const G4Step *pStep)
 
   G4VSensitiveDetector *sd = aStep.GetPostStepPoint()->GetSensitiveDetector();
   if (sd != nullptr)
+  {
     return sd->Hit(&aStep); // notifying the sensitive detector that a hit has occurred
+  }
+    
   else
+  {
+    sd = aStep.GetPreStepPoint()->GetSensitiveDetector();
+    if (sd != nullptr) return sd->Hit(&aStep);
+    log_warning("Not found");
     return false;
+  }
+    
 }
 // The function returns true if a sensitive detector was found and the Hit method was invoked successfully. Otherwise, it returns false
 
@@ -1574,6 +1585,7 @@ void G4OpBoundaryProcess::SetVerboseLevel(G4int verbose)
 
 void G4OpBoundaryProcess::PhotocathodeCoatedComplex(const G4Track *pTrack)
 {
+  std::lock_guard<std::mutex> lock(boundaryProcessMutex);
   // Pre-compute constants
   const G4double lWavelength = h_Planck * c_light / fPhotonMomentum;
   const G4double lK0 = 2 * pi / lWavelength;

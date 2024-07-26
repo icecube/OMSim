@@ -69,6 +69,8 @@
 #include "G4RandomTools.hh"
 #include "G4VDiscreteProcess.hh"
 #include "G4VUserTrackInformation.hh"
+#include <G4AutoLock.hh>
+#include <G4Threading.hh>
 
 class PhotonMaterialTracking : public G4VUserTrackInformation
 {
@@ -196,10 +198,10 @@ private:
 
   G4ThreeVector GetFacetNormal(const G4ThreeVector &Momentum,
                                const G4ThreeVector &Normal) const;
-
+  G4Mutex boundaryProcessMutex; 
   void DielectricMetal();
   void DielectricDielectric();
-
+ 
   void DielectricLUT();
   void DielectricLUTDAVIS();
 
@@ -332,6 +334,7 @@ inline G4bool G4OpBoundaryProcess::IsApplicable(
 
 inline G4OpBoundaryProcessStatus G4OpBoundaryProcess::GetStatus() const
 {
+
   return fStatus;
 }
 

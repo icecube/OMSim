@@ -20,8 +20,8 @@ OMSim::OMSim() :
 mStartingTime(std::chrono::high_resolution_clock::now()), 
 mGeneralOptions("General options"), 
 mRunManager(nullptr),
-mVisManager(std::make_unique<G4VisExecutive>()),
-mNavigator(std::make_unique<G4Navigator>())
+mVisManager(nullptr),
+mNavigator(nullptr)
 {
     setGeneralOptions();
     initialLoggerConfiguration();
@@ -135,7 +135,7 @@ int OMSim::determineNumberOfThreads()
     } else {
         int threadsToUse = std::min(requestedThreads, availableThreads);
         log_info("Using {} out of {} available cores", threadsToUse, availableThreads);
-        return threadsToUse;
+        return requestedThreads;
     }
 }
 
@@ -155,9 +155,19 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstructio
 
     //CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
     //CLHEP::HepRandom::setTheEngine(new CLHEP::MixMaxRng(lArgs.get<long>("seed")));
-    G4Random::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
-    
+    //G4Random::setTheEngine(new CLHEP::MixMaxRng(lArgs.get<long>("seed")));
+    long seed = lArgs.get<long>("seed");
+    G4Random::setTheEngine(new CLHEP::MixMaxRng(seed));
+    G4Random::setTheSeed(seed);
+
     mRunManager = std::make_unique<G4MTRunManager>();
+    //mRunManager->SetVerboseLevel(2);
+    mVisManager = std::make_unique<G4VisExecutive>();
+    mNavigator = std::make_unique<G4Navigator>();
+
+    int nThreads = determineNumberOfThreads();
+    mRunManager->SetNumberOfThreads(nThreads);
+
     mRunManager->SetUserInitialization(pDetectorConstruction);
 
     mPhysics = std::make_unique<OMSimPhysicsList>();
@@ -168,12 +178,8 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstructio
 
     OMSimActionInitialization* actionInitialization = new OMSimActionInitialization();
     mRunManager->SetUserInitialization(actionInitialization);
-
-    // Set number of threads
-    int nThreads = determineNumberOfThreads();
-    mRunManager->SetNumberOfThreads(nThreads);
-
     mRunManager->Initialize();
+    
 
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     lUIinterface.setUI(G4UImanager::GetUIpointer());
@@ -255,23 +261,6 @@ bool OMSim::handleArguments(int pArgumentCount, char *pArgumentVector[])
 OMSim::~OMSim()
 {
     log_trace("OMSim destructor");
-    // if (mRunManager) {
-    //     log_trace("Deleting RunManager");
-    //     delete mRunManager;
-    //     mRunManager = nullptr;
-    // }
-
-    // if (mVisManager) {
-    //     log_trace("Deleting VisManager");
-    //     delete mVisManager;
-    //     mVisManager = nullptr;
-    // }
-
-    // if (mNavigator) {
-    //     log_trace("Deleting Navigator");
-    //     delete mNavigator;
-    //     mNavigator = nullptr;
-    // }
 
     log_trace("OMSim destructor started");
     
@@ -286,10 +275,9 @@ OMSim::~OMSim()
     
     log_trace("Resetting mVisManager");
     mVisManager.reset();
-    
     log_trace("Resetting mRunManager");
     mRunManager.reset();
-    
+
     log_trace("OMSim destructor finished");
     
 
