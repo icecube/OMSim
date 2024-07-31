@@ -1,0 +1,123 @@
+\hypertarget{class_tools}{}\doxysection{Tools Class Reference}
+\label{class_tools}\index{Tools@{Tools}}
+
+
+A collection of helper functions for numerical operations.  
+
+
+
+
+\doxysubsection{Detailed Description}
+This class provides static methods for common numerical tasks such as loading data from a file, and generating linearly and logarithmically spaced sequences. These methods are utility functions and do not require instantiation of the {\ttfamily \mbox{\hyperlink{class_tools}{Tools}}} class. \doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_tools_aa786c067e62992fa1bab16b2b70955d2}{loadtxt}} (const std\+::string \&p\+File\+Path, bool p\+Unpack=true, size\+\_\+t p\+Skip\+Rows=0, char p\+Delimiter=\textquotesingle{} \textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.\+loadtxt. \end{DoxyCompactList}\item 
+static std\+::vector$<$ double $>$ \mbox{\hyperlink{class_tools_a4dee2a839a3b5295fdf43c74d87c92c1}{linspace}} (double start, double end, int num\+\_\+points)
+\begin{DoxyCompactList}\small\item\em Generates a linearly spaced vector. \end{DoxyCompactList}\item 
+static std\+::vector$<$ double $>$ \mbox{\hyperlink{class_tools_a8666b7ef6077cbd0d521ecaa081e3ac0}{logspace}} (double start, double end, int num\+\_\+points)
+\begin{DoxyCompactList}\small\item\em Generates a logarithmically spaced vector. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_tools_acaec430cf45979bd09e6c19571127478}{sort\+Vector\+By\+Reference}} (std\+::vector$<$ G4double $>$ \&reference\+Vector, std\+::vector$<$ G4double $>$ \&sort\+Vector)
+\begin{DoxyCompactList}\small\item\em Sorts two vectors (p\+Sort\+Vector \& p\+Reference\+Vector) based on the order of values in p\+Reference\+Vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_tools_a4dee2a839a3b5295fdf43c74d87c92c1}\label{class_tools_a4dee2a839a3b5295fdf43c74d87c92c1}} 
+\index{Tools@{Tools}!linspace@{linspace}}
+\index{linspace@{linspace}!Tools@{Tools}}
+\doxysubsubsection{\texorpdfstring{linspace()}{linspace()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Tools\+::linspace (\begin{DoxyParamCaption}\item[{double}]{start,  }\item[{double}]{end,  }\item[{int}]{num\+\_\+points }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Creates a vector of equally spaced values between {\ttfamily start} and {\ttfamily end}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The starting value of the sequence. \\
+\hline
+{\em end} & The ending value of the sequence. \\
+\hline
+{\em num\+\_\+points} & The number of points to generate in the sequence. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of linearly spaced values. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if {\ttfamily num\+\_\+points} is less than 2. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_tools_aa786c067e62992fa1bab16b2b70955d2}\label{class_tools_aa786c067e62992fa1bab16b2b70955d2}} 
+\index{Tools@{Tools}!loadtxt@{loadtxt}}
+\index{loadtxt@{loadtxt}!Tools@{Tools}}
+\doxysubsubsection{\texorpdfstring{loadtxt()}{loadtxt()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Tools\+::loadtxt (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+File\+Path,  }\item[{bool}]{p\+Unpack = {\ttfamily true},  }\item[{size\+\_\+t}]{p\+Skip\+Rows = {\ttfamily 0},  }\item[{char}]{p\+Delimiter = {\ttfamily \textquotesingle{}~\textquotesingle{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+File\+Path} & The path to the input file. \\
+\hline
+{\em p\+Unpack} & Optional. If true, the returned data is transposed, i.\+e., unpacked into columns. Default is true. \\
+\hline
+{\em p\+Skip\+Rows} & Optional. The number of lines to skip at the beginning of the file. Default is 0. \\
+\hline
+{\em p\+Delimiter} & The character used to separate values in each line of the input file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A 2D vector of doubles. The outer vector groups all columns (or rows if \textquotesingle{}unpack\textquotesingle{} is false), and each inner vector represents one of the columns (or one of the rows if \textquotesingle{}unpack\textquotesingle{} is false) of data file. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the file cannot be opened. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_tools_a8666b7ef6077cbd0d521ecaa081e3ac0}\label{class_tools_a8666b7ef6077cbd0d521ecaa081e3ac0}} 
+\index{Tools@{Tools}!logspace@{logspace}}
+\index{logspace@{logspace}!Tools@{Tools}}
+\doxysubsubsection{\texorpdfstring{logspace()}{logspace()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Tools\+::logspace (\begin{DoxyParamCaption}\item[{double}]{start,  }\item[{double}]{end,  }\item[{int}]{num\+\_\+points }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Creates a vector of values that are logarithmically spaced between {\ttfamily start} and {\ttfamily end}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The starting value of the sequence (log10 of the starting value). \\
+\hline
+{\em end} & The ending value of the sequence (log10 of the ending value). \\
+\hline
+{\em num\+\_\+points} & The number of points to generate in the sequence. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of logarithmically spaced values. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if {\ttfamily num\+\_\+points} is less than 2 or if {\ttfamily start} or {\ttfamily end} are non-\/positive. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_tools_acaec430cf45979bd09e6c19571127478}\label{class_tools_acaec430cf45979bd09e6c19571127478}} 
+\index{Tools@{Tools}!sortVectorByReference@{sortVectorByReference}}
+\index{sortVectorByReference@{sortVectorByReference}!Tools@{Tools}}
+\doxysubsubsection{\texorpdfstring{sortVectorByReference()}{sortVectorByReference()}}
+{\footnotesize\ttfamily void Tools\+::sort\+Vector\+By\+Reference (\begin{DoxyParamCaption}\item[{std\+::vector$<$ G4double $>$ \&}]{p\+Reference\+Vector,  }\item[{std\+::vector$<$ G4double $>$ \&}]{p\+Sort\+Vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Reference\+Vector} & The ordering of these values will determine the final order of both vectors. \\
+\hline
+{\em p\+Sort\+Vector} & The vector to be sorted according to the p\+Reference\+Vector.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if the vectors do not have the same size. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_tools_8hh}{OMSim\+Tools.\+hh}}\item 
+OMSim\+Tools.\+cc\end{DoxyCompactItemize}

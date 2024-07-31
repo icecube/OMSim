@@ -7,6 +7,7 @@ var group__common =
     [ "OMSimInputData.hh", "_o_m_sim_input_data_8hh.html", null ],
     [ "OMSimPMTResponse.hh", "_o_m_sim_p_m_t_response_8hh.html", null ],
     [ "OMSimSteppingAction.hh", "_o_m_sim_stepping_action_8hh.html", null ],
+    [ "OMSimTools.hh", "_o_m_sim_tools_8hh.html", null ],
     [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", null ],
     [ "OMSim.cc", "_o_m_sim_8cc.html", null ],
     [ "abcDetectorComponent.hh", "abc_detector_component_8hh.html", null ],
@@ -61,7 +62,6 @@ var group__common =
       [ "abcDataFile", "classabc_data_file.html#afa294a5fd58c6c3911d1a57683f7688a", null ],
       [ "~abcDataFile", "classabc_data_file.html#a09322347b2356236b06ea16551d5ad31", null ],
       [ "extractInformation", "classabc_data_file.html#afc01d4904129c5b170f0299f96ec7f8a", null ],
-      [ "sortVectorByReference", "classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee", null ],
       [ "mFileData", "classabc_data_file.html#a794403b1f022f0376e4a38e0ac28c281", null ],
       [ "mFileName", "classabc_data_file.html#ad2a6eb774f0168b51176d745b84c1d9c", null ],
       [ "mHC_eVnm", "classabc_data_file.html#ac936f1db15895afb06fc9a40e2a77677", null ],
@@ -193,12 +193,19 @@ var group__common =
       [ "~InputDataManager", "class_input_data_manager.html#ae67f19e11a39c0bcacf7847133a72837", null ],
       [ "getMaterial", "class_input_data_manager.html#a970eddaab6756e6288504390454a38f4", null ],
       [ "getOpticalSurface", "class_input_data_manager.html#ae6ae987535a442a42ad47d53394ade56", null ],
-      [ "loadtxt", "class_input_data_manager.html#a3a233522b61c65875ebb7b274ff31507", null ],
       [ "processFile", "class_input_data_manager.html#aaa51bcbd29214afb735bb7657bee05de", null ],
       [ "scannDataDirectory", "class_input_data_manager.html#ac65312ce694a331615ba2d16bdddc78e", null ],
       [ "searchFolders", "class_input_data_manager.html#a7376d0446251d09973d90fb370a9373d", null ],
       [ "mDataDirectory", "class_input_data_manager.html#ae31826093d7c8092d0251ca296e6065e", null ],
       [ "mOpticalSurfaceMap", "class_input_data_manager.html#a48e36f6062300c12d0787b1005c0d7ec", null ]
+    ] ],
+    [ "Tools", "class_tools.html", [
+      [ "Tools", "class_tools.html#afb07d80318b98bb63771efa0654f961e", null ],
+      [ "~Tools", "class_tools.html#a18472d06fc4c94a3af67d49d128a8510", null ],
+      [ "linspace", "class_tools.html#a4dee2a839a3b5295fdf43c74d87c92c1", null ],
+      [ "loadtxt", "class_tools.html#aa786c067e62992fa1bab16b2b70955d2", null ],
+      [ "logspace", "class_tools.html#a8666b7ef6077cbd0d521ecaa081e3ac0", null ],
+      [ "sortVectorByReference", "class_tools.html#acaec430cf45979bd09e6c19571127478", null ]
     ] ],
     [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html", [
       [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html#a71034bda00b1648e8368f78431c4e0e9", null ],

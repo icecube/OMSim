@@ -30,6 +30,7 @@ var hierarchy =
       [ "mDOMHarness", "classm_d_o_m_harness.html", null ]
     ] ],
     [ "AngularScan", "class_angular_scan.html", null ],
+    [ "Beam", "class_beam.html", null ],
     [ "CADMesh::CADMeshTemplate< T >", "class_c_a_d_mesh_1_1_c_a_d_mesh_template.html", null ],
     [ "CADMesh::CADMeshTemplate< TessellatedMesh >", "class_c_a_d_mesh_1_1_c_a_d_mesh_template.html", [
       [ "CADMesh::TessellatedMesh", "class_c_a_d_mesh_1_1_tessellated_mesh.html", null ]
@@ -138,5 +139,6 @@ var hierarchy =
       [ "CADMesh::File::__FinalState", "struct_c_a_d_mesh_1_1_file_1_1_____final_state.html", null ]
     ] ],
     [ "OMSimHitManager::ThreadLocalData", "struct_o_m_sim_hit_manager_1_1_thread_local_data.html", null ],
-    [ "CADMesh::File::Token", "struct_c_a_d_mesh_1_1_file_1_1_token.html", null ]
+    [ "CADMesh::File::Token", "struct_c_a_d_mesh_1_1_file_1_1_token.html", null ],
+    [ "Tools", "class_tools.html", null ]
 ];

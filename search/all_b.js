@@ -1,11 +1,13 @@
 var searchData=
 [
   ['lexer_146',['Lexer',['../class_c_a_d_mesh_1_1_file_1_1_lexer.html',1,'CADMesh::File']]],
-  ['loadtxt_147',['loadtxt',['../class_input_data_manager.html#a3a233522b61c65875ebb7b274ff31507',1,'InputDataManager']]],
-  ['localposition_148',['localPosition',['../struct_hit_stats.html#a82333e4544d85c231e0aab2660f99cda',1,'HitStats::localPosition()'],['../struct_photon_info.html#afdd5b9d7e5365a4aa7abd854ab7f4915',1,'PhotonInfo::localPosition()']]],
-  ['localtime_149',['localTime',['../struct_photon_info.html#abb511bb057118b060b12d84ed9315851',1,'PhotonInfo']]],
-  ['lom16_150',['LOM16',['../class_l_o_m16.html',1,'']]],
-  ['lom18_151',['LOM18',['../class_l_o_m18.html',1,'']]],
-  ['lomhamamatsuresponse_152',['LOMHamamatsuResponse',['../class_l_o_m_hamamatsu_response.html',1,'']]],
-  ['lomnnvtresponse_153',['LOMNNVTResponse',['../class_l_o_m_n_n_v_t_response.html',1,'']]]
+  ['linspace_147',['linspace',['../class_tools.html#a4dee2a839a3b5295fdf43c74d87c92c1',1,'Tools']]],
+  ['loadtxt_148',['loadtxt',['../class_tools.html#aa786c067e62992fa1bab16b2b70955d2',1,'Tools']]],
+  ['localposition_149',['localPosition',['../struct_hit_stats.html#a82333e4544d85c231e0aab2660f99cda',1,'HitStats::localPosition()'],['../struct_photon_info.html#afdd5b9d7e5365a4aa7abd854ab7f4915',1,'PhotonInfo::localPosition()']]],
+  ['localtime_150',['localTime',['../struct_photon_info.html#abb511bb057118b060b12d84ed9315851',1,'PhotonInfo']]],
+  ['logspace_151',['logspace',['../class_tools.html#a8666b7ef6077cbd0d521ecaa081e3ac0',1,'Tools']]],
+  ['lom16_152',['LOM16',['../class_l_o_m16.html',1,'']]],
+  ['lom18_153',['LOM18',['../class_l_o_m18.html',1,'']]],
+  ['lomhamamatsuresponse_154',['LOMHamamatsuResponse',['../class_l_o_m_hamamatsu_response.html',1,'']]],
+  ['lomnnvtresponse_155',['LOMNNVTResponse',['../class_l_o_m_n_n_v_t_response.html',1,'']]]
 ];

@@ -115,7 +115,6 @@ $(document).ready(function(){initNavTree('class_input_data_manager.html',''); in
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -150,7 +149,7 @@ Collaboration diagram for InputDataManager:</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">auto</span> lData = manager.loadtxt(<span class="stringliteral">&quot;path/to/data.txt&quot;</span>); <span class="comment">// Load data from a text file into a 2D vector</span></div>
 <div class="ttc" id="aclass_input_data_manager_html"><div class="ttname"><a href="class_input_data_manager.html">InputDataManager</a></div><div class="ttdoc">Manages the input data, including parsing and storing material properties.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.hh:194</div></div>
-<div class="ttc" id="aclass_input_data_manager_html_a7376d0446251d09973d90fb370a9373d"><div class="ttname"><a href="class_input_data_manager.html#a7376d0446251d09973d90fb370a9373d">InputDataManager::searchFolders</a></div><div class="ttdeci">void searchFolders()</div><div class="ttdoc">Searches through predefined folders for input data files.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:272</div></div>
+<div class="ttc" id="aclass_input_data_manager_html_a7376d0446251d09973d90fb370a9373d"><div class="ttname"><a href="class_input_data_manager.html#a7376d0446251d09973d90fb370a9373d">InputDataManager::searchFolders</a></div><div class="ttdeci">void searchFolders()</div><div class="ttdoc">Searches through predefined folders for input data files.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:207</div></div>
 </div><!-- fragment --><p>This class assumes certain conventions in naming and structuring the input files, which aids in automatically identifying and processing them. For example, files with names starting with "RiAbs" are treated as describing refractive and absorption properties. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -186,12 +185,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a9862489604c6a5b4683709dc6bdc5799 inherit pub_methods_class_parameter_table"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#a9862489604c6a5b4683709dc6bdc5799">parseKeyContentToVector</a> (std::vector&lt; T &gt; &amp;pVector, std::basic_string&lt; char &gt; pMapKey, std::basic_string&lt; char &gt; pKey, G4double pScaling, bool pInverse)</td></tr>
 <tr class="memdesc:a9862489604c6a5b4683709dc6bdc5799 inherit pub_methods_class_parameter_table"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the content of a JSON subtree into a vector, scaling values if necessary.  <a href="class_parameter_table.html#a9862489604c6a5b4683709dc6bdc5799">More...</a><br /></td></tr>
 <tr class="separator:a9862489604c6a5b4683709dc6bdc5799 inherit pub_methods_class_parameter_table"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a3a233522b61c65875ebb7b274ff31507"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_data_manager.html#a3a233522b61c65875ebb7b274ff31507">loadtxt</a> (const std::string &amp;pFilePath, bool pUnpack=true, size_t pSkipRows=0, char pDelimiter=' ')</td></tr>
-<tr class="memdesc:a3a233522b61c65875ebb7b274ff31507"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.  <a href="class_input_data_manager.html#a3a233522b61c65875ebb7b274ff31507">More...</a><br /></td></tr>
-<tr class="separator:a3a233522b61c65875ebb7b274ff31507"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -263,70 +256,6 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>G4OpticalSurface </dd></dl>
-
-</div>
-</div>
-<a id="a3a233522b61c65875ebb7b274ff31507"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a233522b61c65875ebb7b274ff31507">&#9670;&nbsp;</a></span>loadtxt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt; InputDataManager::loadtxt </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>pFilePath</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>pUnpack</em> = <code>true</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>pSkipRows</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>pDelimiter</em> = <code>'&#160;'</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pFilePath</td><td>The path to the input file. </td></tr>
-    <tr><td class="paramname">pUnpack</td><td>Optional. If true, the returned data is transposed, i.e., unpacked into columns. Default is true. </td></tr>
-    <tr><td class="paramname">pSkipRows</td><td>Optional. The number of lines to skip at the beginning of the file. Default is 0. </td></tr>
-    <tr><td class="paramname">pDelimiter</td><td>The character used to separate values in each line of the input file. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A 2D vector of doubles. The outer vector groups all columns (or rows if 'unpack' is false), and each inner vector represents one of the columns (or one of the rows if 'unpack' is false) of data file. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>if the file cannot be opened. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -415,7 +344,7 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_input_data_manager.html">InputDataManager</a></li>
-    <li class="footer">Generated on Fri Jul 26 2024 11:24:26 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Jul 31 2024 16:31:33 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

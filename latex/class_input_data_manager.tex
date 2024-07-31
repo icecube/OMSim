@@ -56,11 +56,6 @@ G4\+Optical\+Surface $\ast$ \mbox{\hyperlink{class_input_data_manager_ae6ae98753
 \mbox{\Hypertarget{class_input_data_manager_a7376d0446251d09973d90fb370a9373d}\label{class_input_data_manager_a7376d0446251d09973d90fb370a9373d}} 
 void \mbox{\hyperlink{class_input_data_manager_a7376d0446251d09973d90fb370a9373d}{search\+Folders}} ()
 \begin{DoxyCompactList}\small\item\em Searches through predefined folders for input data files. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Static Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-static std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_input_data_manager_a3a233522b61c65875ebb7b274ff31507}{loadtxt}} (const std\+::string \&p\+File\+Path, bool p\+Unpack=true, size\+\_\+t p\+Skip\+Rows=0, char p\+Delimiter=\textquotesingle{} \textquotesingle{})
-\begin{DoxyCompactList}\small\item\em Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.\+loadtxt. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -111,31 +106,6 @@ Get a G4\+Optical\+Surface. In order to get custom built materials, method \mbox
 \begin{DoxyReturn}{Returns}
 G4\+Optical\+Surface 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_input_data_manager_a3a233522b61c65875ebb7b274ff31507}\label{class_input_data_manager_a3a233522b61c65875ebb7b274ff31507}} 
-\index{InputDataManager@{InputDataManager}!loadtxt@{loadtxt}}
-\index{loadtxt@{loadtxt}!InputDataManager@{InputDataManager}}
-\doxysubsubsection{\texorpdfstring{loadtxt()}{loadtxt()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Input\+Data\+Manager\+::loadtxt (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+File\+Path,  }\item[{bool}]{p\+Unpack = {\ttfamily true},  }\item[{size\+\_\+t}]{p\+Skip\+Rows = {\ttfamily 0},  }\item[{char}]{p\+Delimiter = {\ttfamily \textquotesingle{}~\textquotesingle{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-\begin{DoxyParams}{Parameters}
-{\em p\+File\+Path} & The path to the input file. \\
-\hline
-{\em p\+Unpack} & Optional. If true, the returned data is transposed, i.\+e., unpacked into columns. Default is true. \\
-\hline
-{\em p\+Skip\+Rows} & Optional. The number of lines to skip at the beginning of the file. Default is 0. \\
-\hline
-{\em p\+Delimiter} & The character used to separate values in each line of the input file. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A 2D vector of doubles. The outer vector groups all columns (or rows if \textquotesingle{}unpack\textquotesingle{} is false), and each inner vector represents one of the columns (or one of the rows if \textquotesingle{}unpack\textquotesingle{} is false) of data file. 
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em std\+::runtime\+\_\+error} & if the file cannot be opened. \\
-\hline
-\end{DoxyExceptions}
 \mbox{\Hypertarget{class_input_data_manager_aaa51bcbd29214afb735bb7657bee05de}\label{class_input_data_manager_aaa51bcbd29214afb735bb7657bee05de}} 
 \index{InputDataManager@{InputDataManager}!processFile@{processFile}}
 \index{processFile@{processFile}!InputDataManager@{InputDataManager}}

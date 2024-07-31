@@ -158,9 +158,6 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><b>mObjectName</b></
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a3c104cd7ecc9722cfd4b29360018b7ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee">sortVectorByReference</a> (std::vector&lt; G4double &gt; &amp;referenceVector, std::vector&lt; G4double &gt; &amp;sortVector)</td></tr>
-<tr class="memdesc:a3c104cd7ecc9722cfd4b29360018b7ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts two vectors (pSortVector &amp; pReferenceVector) based on the order of values in pReferenceVector.  <a href="classabc_data_file.html#a3c104cd7ecc9722cfd4b29360018b7ee">More...</a><br /></td></tr>
-<tr class="separator:a3c104cd7ecc9722cfd4b29360018b7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc01d4904129c5b170f0299f96ec7f8a"><td class="memItemLeft" align="right" valign="top"><a id="afc01d4904129c5b170f0299f96ec7f8a"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html#afc01d4904129c5b170f0299f96ec7f8a">extractInformation</a> ()=0</td></tr>
 <tr class="memdesc:afc01d4904129c5b170f0299f96ec7f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">abstract method you have to define for a derived class <br /></td></tr>
@@ -179,56 +176,6 @@ boost::property_tree::ptree&#160;</td><td class="memItemRight" valign="bottom"><
 <a class="el" href="class_parameter_table.html">ParameterTable</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mFileData</b></td></tr>
 <tr class="separator:a794403b1f022f0376e4a38e0ac28c281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3c104cd7ecc9722cfd4b29360018b7ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c104cd7ecc9722cfd4b29360018b7ee">&#9670;&nbsp;</a></span>sortVectorByReference()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void abcDataFile::sortVectorByReference </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; G4double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>pReferenceVector</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; G4double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>pSortVector</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pReferenceVector</td><td>The ordering of these values will determine the final order of both vectors. </td></tr>
-    <tr><td class="paramname">pSortVector</td><td>The vector to be sorted according to the pReferenceVector.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::invalid_argument</td><td>if the vectors do not have the same size. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_o_m_sim_data_file_types_8hh_source.html">OMSimDataFileTypes.hh</a></li>
 <li>OMSimDataFileTypes.cc</li>
@@ -239,7 +186,7 @@ boost::property_tree::ptree&#160;</td><td class="memItemRight" valign="bottom"><
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classabc_data_file.html">abcDataFile</a></li>
-    <li class="footer">Generated on Fri Jul 26 2024 11:24:26 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Jul 31 2024 16:31:33 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

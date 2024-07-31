@@ -12,8 +12,8 @@ var files_dup =
     [ "OMSim_radioactive_decays.cc", "_o_m_sim__radioactive__decays_8cc.html", "_o_m_sim__radioactive__decays_8cc" ],
     [ "OMSim_supernova.cc", "_o_m_sim__supernova_8cc.html", "_o_m_sim__supernova_8cc" ],
     [ "OMSimActionInitialization.hh", "_o_m_sim_action_initialization_8hh_source.html", null ],
-    [ "effective_area/include/OMSimAngularScan.hh", "effective__area_2include_2_o_m_sim_angular_scan_8hh.html", null ],
-    [ "QE_calibration/include/OMSimAngularScan.hh", "_q_e__calibration_2include_2_o_m_sim_angular_scan_8hh.html", null ],
+    [ "OMSimAngularScan.hh", "_o_m_sim_angular_scan_8hh.html", null ],
+    [ "OMSimBeam.hh", "_o_m_sim_beam_8hh_source.html", null ],
     [ "OMSimCommandArgsTable.hh", "_o_m_sim_command_args_table_8hh.html", "_o_m_sim_command_args_table_8hh" ],
     [ "OMSimDataFileTypes.hh", "_o_m_sim_data_file_types_8hh.html", null ],
     [ "OMSimDecaysAnalysis.hh", "_o_m_sim_decays_analysis_8hh.html", null ],
@@ -97,6 +97,7 @@ var files_dup =
     [ "OMSimSteppingAction.hh", "_o_m_sim_stepping_action_8hh.html", [
       [ "OMSimSteppingAction", "class_o_m_sim_stepping_action.html", "class_o_m_sim_stepping_action" ]
     ] ],
+    [ "OMSimTools.hh", "_o_m_sim_tools_8hh.html", null ],
     [ "OMSimTrackingAction.hh", "_o_m_sim_tracking_action_8hh_source.html", null ],
     [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", null ]
 ];

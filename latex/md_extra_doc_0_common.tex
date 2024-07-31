@@ -13,11 +13,12 @@ This approach was adopted because various PMTs are constructed similarly, elimin
 
 Thus, an instance of {\ttfamily \mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}}} is always passed to all classes related to geometry construction (see \href{\#geometry-construction}{\texttt{ geometry}}).
 
-If you wish to load additional data, you can either define a new type in OMSim\+Data\+File\+Types or load it into a tree as previously mentioned. For simpler tasks, use the static method {\ttfamily \mbox{\hyperlink{class_input_data_manager_a3a233522b61c65875ebb7b274ff31507}{Input\+Data\+Manager\+::loadtxt}}}, which operates similarly to Python\textquotesingle{}s numpy.\+loadtxt. For example\+:
+If you wish to load additional data, you can either define a new type in OMSim\+Data\+File\+Types or load it into a tree as previously mentioned. For simpler tasks, use the static method {\ttfamily \mbox{\hyperlink{class_tools_aa786c067e62992fa1bab16b2b70955d2}{Tools\+::loadtxt}}} provided in {\ttfamily \mbox{\hyperlink{_o_m_sim_tools_8hh}{OMSim\+Tools.\+hh}}}, which operates similarly to Python\textquotesingle{}s numpy.\+loadtxt. For example\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{std::vector<G4PV2DDataVector> data = \mbox{\hyperlink{class_input_data_manager_a3a233522b61c65875ebb7b274ff31507}{InputDataManager::loadtxt}}(\textcolor{stringliteral}{"{}path/file\_name.txt"{}});}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_o_m_sim_tools_8hh}{OMSimTools.hh}}"{}}}
+\DoxyCodeLine{std::vector<G4PV2DDataVector> data = \mbox{\hyperlink{class_tools_aa786c067e62992fa1bab16b2b70955d2}{Tools::loadtxt}}(\textcolor{stringliteral}{"{}path/file\_name.txt"{}});}
 \DoxyCodeLine{std::vector<G4double> first\_column = data.at(0);}
 \DoxyCodeLine{std::vector<G4double> second\_column = data.at(1);}
 \DoxyCodeLine{\textcolor{comment}{// ...}}

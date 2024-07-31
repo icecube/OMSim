@@ -21,6 +21,7 @@ var annotated_dup =
     [ "abcDetectorComponent", "classabc_detector_component.html", "classabc_detector_component" ],
     [ "abcMaterialData", "classabc_material_data.html", "classabc_material_data" ],
     [ "AngularScan", "class_angular_scan.html", "class_angular_scan" ],
+    [ "Beam", "class_beam.html", "class_beam" ],
     [ "CustomProperties", "class_custom_properties.html", "class_custom_properties" ],
     [ "DecayStats", "struct_decay_stats.html", "struct_decay_stats" ],
     [ "DEGG", "class_d_e_g_g.html", "class_d_e_g_g" ],
@@ -85,5 +86,6 @@ var annotated_dup =
     [ "ScintillationProperties", "class_scintillation_properties.html", "class_scintillation_properties" ],
     [ "SNBaseParticleGenerator", "class_s_n_base_particle_generator.html", "class_s_n_base_particle_generator" ],
     [ "SNEventStats", "struct_s_n_event_stats.html", "struct_s_n_event_stats" ],
-    [ "Surface", "class_surface.html", "class_surface" ]
+    [ "Surface", "class_surface.html", "class_surface" ],
+    [ "Tools", "class_tools.html", "class_tools" ]
 ];
