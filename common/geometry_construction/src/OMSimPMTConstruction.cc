@@ -90,11 +90,15 @@ void OMSimPMTConstruction::definePhotocathodeProperties()
 
     std::vector<double> lWavelengths = lQEData[0];
     std::vector<double> lQEs = lQEData[1];
-    double lMaxWavelength = *std::max_element(lWavelengths.begin(), lWavelengths.end());
-    log_info("max wabelength {} {}", lMaxWavelength, lWavelengths.size());
-    lWavelengths.push_back(lMaxWavelength + 5.0);
-    lMaxWavelength = lMaxWavelength + 5.0;
+    double lMaxWavelength = *std::max_element(lWavelengths.begin(), lWavelengths.end()) + 2.0;
+    double lMinWavelength = *std::min_element(lWavelengths.begin(), lWavelengths.end()) - 2.0;
+
+    lWavelengths.push_back(lMaxWavelength);
+    lWavelengths.push_back(lMinWavelength);
     lQEs.push_back(1e-5);
+    lQEs.push_back(1e-5);
+    Tools::sortVectorByReference(lWavelengths, lQEs);
+
     TGraph *lQEgraph = new TGraph(lWavelengths.size(), lWavelengths.data(), lQEs.data());
 
     lQEMatchingParameters = Tools::loadtxt(mData->getValue<G4String>(mSelectedPMT, "jQEMatchingfile"), true, 0, '\t');
@@ -108,7 +112,7 @@ void OMSimPMTConstruction::definePhotocathodeProperties()
     {
 
         double wavelength = lWavelengthMatching[i];
-        if (wavelength < lMaxWavelength)
+        if (wavelength < lMaxWavelength && wavelength > lMinWavelength)
         {
             double interpolatedQE = lQEgraph->Eval(wavelength);
             double amp = lAmplitude[i];
@@ -120,8 +124,11 @@ void OMSimPMTConstruction::definePhotocathodeProperties()
             G4cout << wavelength << " " << needed_abs << " " << ((CLHEP::h_Planck * CLHEP::c_light) / (wavelength * CLHEP::nanometer)) / eV << G4endl;
         }
     }
+    lEnergy.push_back((CLHEP::h_Planck * CLHEP::c_light) / (lMinWavelength * CLHEP::nanometer));
     lEnergy.push_back((CLHEP::h_Planck * CLHEP::c_light) / (lMaxWavelength * CLHEP::nanometer));
     lNeededAbs.push_back(1*m); // very large number, to get QE ~0.
+    lNeededAbs.push_back(1*m); // very large number, to get QE ~0.
+    
     Tools::sortVectorByReference(lEnergy, lNeededAbs);
     G4MaterialPropertiesTable *lMPT = mPhotocathodeOpticalSurface->GetMaterialPropertiesTable();
     lMPT->AddProperty("ABSLENGTH", &lEnergy[0], &lNeededAbs[0], static_cast<int>(lNeededAbs.size()));
