@@ -18,7 +18,7 @@ OMSimPrimaryGeneratorAction::~OMSimPrimaryGeneratorAction()
 {
 
 }
-
+ 
 void OMSimPrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 {
 	if (mParticleSource)

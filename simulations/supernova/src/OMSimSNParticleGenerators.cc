@@ -4,7 +4,7 @@
 
 #include <G4ParticleGun.hh>
 #include <G4ParticleTable.hh>
-#include <OMSimInputData.hh>
+#include <OMSimTools.hh>
 
 void setupDistribution(DistributionSampler &sampler,
                        const std::vector<G4double> &xData,
@@ -45,7 +45,7 @@ void SNBaseParticleGenerator::initialiseDistribution(int pColumnIndex, int pNrOf
             lFluxName = lFluxNames.second;
         }
 
-        std::vector<std::vector<double>> lData = InputDataManager::loadtxt(lFluxName, true, 0, '\t');
+        std::vector<std::vector<double>> lData = Tools::loadtxt(lFluxName, true, 0, '\t');
         setupDistribution(mTimeDistribution, lData[0], lData[1], "SNLuminosityVsTime", 1 * s, 1);
         setupDistribution(mMeanEnergyDistribution, lData[0], lData[2], "SNMeanEnergyVsTime", 1 * s, 1 * MeV);
         setupDistribution(mMeanEnergySquaredDistribution, lData[0], lData[3], "SNMeanEnergySquaredVsTime", 1 * s, 1 * MeV * MeV);

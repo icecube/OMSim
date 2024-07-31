@@ -2,7 +2,7 @@
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimDetectorConstruction.hh"
 #include "OMSimSensitiveDetector.hh"
-
+#include "OMSimTools.hh"
 #include "CADMesh.hh"
 
 #include <G4Cons.hh>
@@ -12,9 +12,11 @@
 #include <G4Sphere.hh>
 #include <G4Torus.hh>
 #include <OMSimLogger.hh>
+#include <cmath>
+#include "G4SystemOfUnits.hh"
 
-OMSimPMTConstruction::OMSimPMTConstruction(InputDataManager *pData): abcDetectorComponent(pData)
-{   
+OMSimPMTConstruction::OMSimPMTConstruction(InputDataManager *pData) : abcDetectorComponent(pData)
+{
     mInternalReflections = OMSimCommandArgsTable::getInstance().get<bool>("detail_pmt");
 }
 
@@ -22,7 +24,8 @@ OMSimPMTConstruction::OMSimPMTConstruction(InputDataManager *pData): abcDetector
  * @brief Constructs the PMT solid with all its components.
  */
 void OMSimPMTConstruction::construction()
-{   log_trace("Starting construction of PMT");
+{
+    log_trace("Starting construction of PMT");
     definePhotocathodeProperties();
 
     mComponents.clear();
@@ -38,7 +41,7 @@ void OMSimPMTConstruction::construction()
 
     // The ? of the following two lines are ternary operators that replace if-else-statements
     lPMTlogical = new G4LogicalVolume(lPMTSolid, mData->getMaterial(mInternalReflections ? "RiAbs_Glass_Tube" : "Ri_Glass_Tube"), "PMT tube logical");
-    //mPhotocathodeLV = new G4LogicalVolume(mInternalReflections ? constructPhotocathodeLayer() : lVacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
+    // mPhotocathodeLV = new G4LogicalVolume(mInternalReflections ? constructPhotocathodeLayer() : lVacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
     mPhotocathodeLV = new G4LogicalVolume(lVacuumPhotocathodeSolid, mData->getMaterial("Ri_Vacuum"), "PhotocathodeRegionVacuum");
 
     G4LogicalVolume *lTubeVacuum = new G4LogicalVolume(lGlassInside, mData->getMaterial("Ri_Vacuum"), "PMTvacuum");
@@ -61,7 +64,6 @@ void OMSimPMTConstruction::construction()
     if (mHACoatingBool)
         constructHAcoating();
 
-
     mPhotocathodeLV->SetVisAttributes(mPhotocathodeVis);
     lPMTlogical->SetVisAttributes(mGlassVis);
     lTubeVacuum->SetVisAttributes(mAirVis);
@@ -70,11 +72,61 @@ void OMSimPMTConstruction::construction()
     log_trace("Construction of PMT finished");
 }
 
-
 void OMSimPMTConstruction::definePhotocathodeProperties()
 {
-    mPhotocathodeOpticalSurface = mData->getOpticalSurface("Surf_Hamamatsu_R15458");
+    mPhotocathodeOpticalSurface = mData->getOpticalSurface("Surf_Generic_Photocathode_20nm");
+
+    std::vector<std::vector<double>> lQEData, lQEMatchingParameters;
+    std::string lCustomQEFileName = OMSimCommandArgsTable::getInstance().get<std::string>("QE_file");
+    if (lCustomQEFileName != "default")
+    {
+        lQEData = Tools::loadtxt(lCustomQEFileName, true, 0, '\t');
+    }
+    else
+    {
+        lQEData = Tools::loadtxt(mData->getValue<G4String>(mSelectedPMT, "jQEfile"), true, 0, '\t');
+    }
+    // lQEData = Tools::loadtxt(mData->getValue<G4String>(mSelectedPMT, "jQEfile"), true, 0, '\t');
+
+    std::vector<double> lWavelengths = lQEData[0];
+    std::vector<double> lQEs = lQEData[1];
+    double lMaxWavelength = *std::max_element(lWavelengths.begin(), lWavelengths.end());
+    log_info("max wabelength {} {}", lMaxWavelength, lWavelengths.size());
+    lWavelengths.push_back(lMaxWavelength + 5.0);
+    lMaxWavelength = lMaxWavelength + 5.0;
+    lQEs.push_back(1e-5);
+    TGraph *lQEgraph = new TGraph(lWavelengths.size(), lWavelengths.data(), lQEs.data());
+
+    lQEMatchingParameters = Tools::loadtxt(mData->getValue<G4String>(mSelectedPMT, "jQEMatchingfile"), true, 0, '\t');
+    std::vector<double> lWavelengthMatching = lQEMatchingParameters[0];
+    std::vector<double> lAmplitude = lQEMatchingParameters[1];
+    std::vector<double> lEffectiveThickness = lQEMatchingParameters[2];
+
+    std::vector<double> lNeededAbs;
+    std::vector<double> lEnergy;
+    for (size_t i = 0; i < lWavelengthMatching.size(); ++i)
+    {
+
+        double wavelength = lWavelengthMatching[i];
+        if (wavelength < lMaxWavelength)
+        {
+            double interpolatedQE = lQEgraph->Eval(wavelength);
+            double amp = lAmplitude[i];
+            double t_eff = lEffectiveThickness[i];
+            double log_term = std::log(1 - interpolatedQE / amp);
+            double needed_abs = -t_eff / log_term;
+            lNeededAbs.push_back(needed_abs * nm);
+            lEnergy.push_back((CLHEP::h_Planck * CLHEP::c_light) / (wavelength * CLHEP::nanometer));
+            G4cout << wavelength << " " << needed_abs << " " << ((CLHEP::h_Planck * CLHEP::c_light) / (wavelength * CLHEP::nanometer)) / eV << G4endl;
+        }
+    }
+    lEnergy.push_back((CLHEP::h_Planck * CLHEP::c_light) / (lMaxWavelength * CLHEP::nanometer));
+    lNeededAbs.push_back(1*m); // very large number, to get QE ~0.
+    Tools::sortVectorByReference(lEnergy, lNeededAbs);
+    G4MaterialPropertiesTable *lMPT = mPhotocathodeOpticalSurface->GetMaterialPropertiesTable();
+    lMPT->AddProperty("ABSLENGTH", &lEnergy[0], &lNeededAbs[0], static_cast<int>(lNeededAbs.size()));
 }
+
 OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 {
     return &NoResponse::getInstance();
@@ -107,7 +159,7 @@ OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
     }
     else
     {
-        log_warning( "Selected jResponseData '{}' in PMT json-file '{}' has no response class associated. No PMT response will be simulated...", jResponseData, mSelectedPMT);
+        log_warning("Selected jResponseData '{}' in PMT json-file '{}' has no response class associated. No PMT response will be simulated...", jResponseData, mSelectedPMT);
         return &NoResponse::getInstance();
     }
 }
@@ -115,9 +167,9 @@ OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *pDetConst, G4String pName)
 {
     log_debug("Configuring PMTs of {} as sensitive detector", pName);
-    OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector(pName, DetectorType::PMT);
+    OMSimSensitiveDetector *lSensitiveDetector = new OMSimSensitiveDetector(pName, DetectorType::PMT);
     lSensitiveDetector->setPMTResponse(getPMTResponseInstance());
-    //pDetConst->registerSensitiveDetector(getComponent("PMT").VLogical, lSensitiveDetector); //only one otherwise you get double hits!
+    // pDetConst->registerSensitiveDetector(getComponent("PMT").VLogical, lSensitiveDetector); //only one otherwise you get double hits!
     pDetConst->registerSensitiveDetector(mPhotocathodeLV, lSensitiveDetector);
 }
 
@@ -147,7 +199,7 @@ void OMSimPMTConstruction::placeIt(G4ThreeVector pPosition, G4RotationMatrix pRo
 
     new G4LogicalBorderSurface("PhotoGlassToVacuum", mLastPhysicals["PMT"], mPhotocathodeRegionVacuumPhysical, mPhotocathodeOpticalSurface);
     new G4LogicalBorderSurface("PhotoVacuumToGlass", mPhotocathodeRegionVacuumPhysical, mLastPhysicals["PMT"], mPhotocathodeOpticalSurface);
-    
+
     if (mInternalReflections)
     {
         new G4LogicalBorderSurface("PMT_mirrorglass", mVacuumBackPhysical, mLastPhysicals["PMT"], mData->getOpticalSurface("Surf_PMTSideMirror"));
@@ -370,7 +422,7 @@ G4VSolid *OMSimPMTConstruction::frontalBulbConstruction(G4String pSide)
     else if (lFrontalShape == "SingleEllipse")
         return ellipsePhotocathode();
     else
-    {   
+    {
         log_critical("Type of PMT frontal shape {} type not known!", lFrontalShape);
         throw std::runtime_error("Type of PMT frontal shape type not known!");
     }
@@ -563,7 +615,8 @@ void OMSimPMTConstruction::includeHAcoating()
 }
 
 G4double OMSimPMTConstruction::getPMTGlassWeight()
-{   log_trace("Getting PMT bulb weight");
+{
+    log_trace("Getting PMT bulb weight");
     try
     {
         return mData->getValue<double>(mSelectedPMT, "jBulbWeight");

@@ -165,7 +165,13 @@ G4VParticleChange *G4OpBoundaryProcess::PostStepDoIt(const G4Track &aTrack,
   {
     fMaterial1 = pStep->GetPreStepPoint()->GetMaterial();
     fMaterial2 = pStep->GetPostStepPoint()->GetMaterial();
-
+    if (fMaterial1 == fMaterial2)
+    {
+      fStatus = NotAtBoundary;
+      if (verboseLevel > 1)
+        BoundaryProcessVerbose();
+      return G4VDiscreteProcess::PostStepDoIt(aTrack, aStep);
+    }
     // Checks if the photon is at the geometry boundary. If true, it retrieves the materials of the two volumes on either side of the boundary.
     // Little tool to track how often beta is being factored to the Fresnel coefficients
     G4VUserTrackInformation *lUserInformation = aTrack.GetUserInformation();
@@ -326,17 +332,7 @@ G4VParticleChange *G4OpBoundaryProcess::PostStepDoIt(const G4Track &aTrack,
   {
     fRindex1 = rIndexMPV->Value(fPhotonMomentum, idx_rindex1);
   }
-  // newly added, Nico
-  if (MPT != nullptr)
-  {
-    absLengthMPV = MPT->GetProperty(kABSLENGTH);
-    if (absLengthMPV != nullptr)
-    { // Checking if "kABSLENGTH" property is defined for this material.
 
-      fAbsorptionLength1 = absLengthMPV->Value(fPhotonMomentum, idx_abslength1);
-    }
-  }
-  // end of newly added
   else
   {
     fStatus = NoRINDEX; // Handling no refractive index
@@ -593,7 +589,7 @@ G4VParticleChange *G4OpBoundaryProcess::PostStepDoIt(const G4Track &aTrack,
     }
   }
 
-  if (fStatus == Detection)// && fInvokeSD) // Invokes the sensitive detector if the status is "Detection" and the detector is configured to be invoked
+  if (fStatus == Detection) // && fInvokeSD) // Invokes the sensitive detector if the status is "Detection" and the detector is configured to be invoked
     InvokeSD(pStep);
 
   return G4VDiscreteProcess::PostStepDoIt(aTrack, aStep);
@@ -1556,15 +1552,15 @@ G4bool G4OpBoundaryProcess::InvokeSD(const G4Step *pStep)
   {
     return sd->Hit(&aStep); // notifying the sensitive detector that a hit has occurred
   }
-    
+
   else
   {
     sd = aStep.GetPreStepPoint()->GetSensitiveDetector();
-    if (sd != nullptr) return sd->Hit(&aStep);
+    if (sd != nullptr)
+      return sd->Hit(&aStep);
     log_warning("Not found");
     return false;
   }
-    
 }
 // The function returns true if a sensitive detector was found and the Hit method was invoked successfully. Otherwise, it returns false
 
@@ -1598,14 +1594,18 @@ void G4OpBoundaryProcess::PhotocathodeCoatedComplex(const G4Track *pTrack)
   G4bool lThrough = false;
   G4bool lDone = false;
 
-  // New local variables (previously class members)
   G4double lCoatedThickness = 0.0;
   G4double lCoatedAbsLength = 0.0;
   G4double lCoatedRindex = 0.0;
 
   G4complex lSint1Complex, lSintTLComplex, lSint2Complex, lCost1Complex, lCostTLComplex, lCost2Complex;
 
-  // Get material properties (moved outside the loop)
+  G4MaterialPropertiesTable *lMPT1 = fMaterial1->GetMaterialPropertiesTable();
+  G4MaterialPropertyVector *lRIndexMPV1 = lMPT1 ? lMPT1->GetProperty(kRINDEX) : nullptr;
+  G4MaterialPropertyVector *lAbsLengthMPV1 = lMPT1? lMPT1->GetProperty(kABSLENGTH) : nullptr;
+
+  fAbsorptionLength1 = lAbsLengthMPV1 ? lAbsLengthMPV1->Value(fPhotonMomentum, idx_abslength1) : 0;
+
   G4MaterialPropertiesTable *lMPT2 = fMaterial2->GetMaterialPropertiesTable();
   G4MaterialPropertyVector *lRIndexMPV2 = lMPT2 ? lMPT2->GetProperty(kRINDEX) : nullptr;
   G4MaterialPropertyVector *lAbsLengthMPV2 = lMPT2 ? lMPT2->GetProperty(kABSLENGTH) : nullptr;
@@ -1613,9 +1613,12 @@ void G4OpBoundaryProcess::PhotocathodeCoatedComplex(const G4Track *pTrack)
   fRindex2 = lRIndexMPV2 ? lRIndexMPV2->Value(fPhotonMomentum, idx_rindex2) : 0;
   fAbsorptionLength2 = lAbsLengthMPV2 ? lAbsLengthMPV2->Value(fPhotonMomentum, idx_abslength2) : 0;
 
+
   G4MaterialPropertiesTable *lMPTCoated = fOpticalSurface->GetMaterialPropertiesTable();
+
   if (lMPTCoated)
   {
+
     G4MaterialPropertyVector *lPpCoated;
     if ((lPpCoated = lMPTCoated->GetProperty(kRINDEX)))
       lCoatedRindex = lPpCoated->Value(fPhotonMomentum, idx_coatedrindex);
@@ -1632,17 +1635,26 @@ void G4OpBoundaryProcess::PhotocathodeCoatedComplex(const G4Track *pTrack)
   // Get material before the boundary
   G4VUserTrackInformation *lUserInformation = pTrack->GetUserInformation();
   PhotonMaterialTracking *lMyInfo = dynamic_cast<PhotonMaterialTracking *>(lUserInformation);
-  G4MaterialPropertiesTable *lMPTPrevious = lMyInfo->getNthPreviousVolume(1);
+  G4MaterialPropertiesTable *lMPTPrevious;
 
   G4double lRindexBefore = 0;
   G4double lBeforeImagRindex = 0;
 
   if (lMyInfo->getVolumeHistorySize() > 1)
   {
-    if (auto lProp = lMyInfo->getNthPreviousVolume(1)->GetProperty(kRINDEX))
-      lRindexBefore = lProp->Value(fPhotonMomentum, idx_coatedrindex);
-    if (auto lProp = lMyInfo->getNthPreviousVolume(1)->GetProperty(kABSLENGTH))
-      lBeforeImagRindex = lWavelength / (4 * pi * lProp->Value(fPhotonMomentum, idx_coatedrindex));
+    lMPTPrevious = lMyInfo->getNthPreviousVolume(1);
+    if (lMPTPrevious)
+    {
+
+      auto lRindexProp = lMPTPrevious->GetProperty(kRINDEX);
+      auto lAbsLengthProp = lMPTPrevious->GetProperty(kABSLENGTH);
+
+      if (lRindexProp)
+        lRindexBefore = lRindexProp->Value(fPhotonMomentum, idx_coatedrindex);
+
+      if (lAbsLengthProp)
+        lBeforeImagRindex = lWavelength / (4 * pi * lAbsLengthProp->Value(fPhotonMomentum, idx_coatedrindex));
+    }
   }
 
   G4complex lBeforeComplexRindex(lRindexBefore, lBeforeImagRindex);
@@ -1711,12 +1723,13 @@ void G4OpBoundaryProcess::PhotocathodeCoatedComplex(const G4Track *pTrack)
 
     lCost1Complex = G4complex(lCost1, 0);
 
-    if (lMyInfo->getVolumeHistorySize() > 1)
+    if (lMyInfo->getVolumeHistorySize() > 1 && lRindexBefore != 0)
     {
       G4complex lSintLayer0 = fRindex1 * lSint1 / lRindexBefore;
       G4complex lSint1 = lBeforeComplexRindex * lSintLayer0 / lComplexRindex1;
       lCost1Complex = std::sqrt(G4complex(1.0, 0.0) - lSint1 * lSint1);
     }
+
 
     FresnelCoefficients lCoefficients1TL = CalculateFresnelCoefficientsComplex(lComplexRindex1, lComplexCoatedRindex, lCost1Complex, lCostTLComplex);
     FresnelCoefficients lCoefficientsTL2 = CalculateFresnelCoefficientsComplex(lComplexCoatedRindex, lComplexRindex2, lCostTLComplex, lCost2Complex);

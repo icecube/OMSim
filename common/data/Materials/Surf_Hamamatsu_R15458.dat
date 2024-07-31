@@ -1,11 +1,10 @@
 {
-   "jName": "Surf_Hamamatsu_R15458",
+   "jName": "Surf_Generic_Photocathode_20nm",
    "jFinish": "polished",
    "jType": "coated",
     "jCoatThicknessNM": 20,
    "jProperties": [
-      "RINDEX",
-      "ABSLENGTH"
+      "RINDEX"
    ],
    "jValues_RINDEX": [
       2.05939,
@@ -166,13 +165,6 @@
       674.39416,
       678.42415,
       680.50158
-   ],
-    "jValues_ABSLENGTH": [
-    0.0001, 0.0001
-   ],
-   "jWavelength_ABSLENGTH": [
-        250,
-        750
    ]
 }
 

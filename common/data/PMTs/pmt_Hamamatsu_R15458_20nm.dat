@@ -1,6 +1,8 @@
 {
    "jName": "pmt_Hamamatsu_R15458_20nm",
    "jFrontalShape": "SphereEllipse",
+   "jQEfile": "../common/data/PMTs/QE/mDOM_Hamamatsu_R15458_mean_QE.dat",
+   "jQEMatchingfile": "../common/data/PMTs/QE/mDOM_Hamamatsu_R15458_QE_matching_parameters.dat",
    "jResponseData" : "R15458",
    "jBulbBackShape": "FullFit",
    "jDynodeCADOffset": {
