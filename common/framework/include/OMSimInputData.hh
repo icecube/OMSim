@@ -197,10 +197,6 @@ public:
     ~InputDataManager(){};
     G4Material *getMaterial(G4String pName);
     G4OpticalSurface *getOpticalSurface(G4String pName);
-    static std::vector<std::vector<double>> loadtxt(const std::string &pFilePath,
-                                                    bool pUnpack = true,
-                                                    size_t pSkipRows = 0,
-                                                    char pDelimiter = ' ');
     void searchFolders();
     std::map<G4String, G4OpticalSurface *> mOpticalSurfaceMap; ///< Map that links names with optical surfaces.
 

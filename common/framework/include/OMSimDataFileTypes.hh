@@ -47,8 +47,6 @@ public:
     G4String mObjectName;
 
 protected:
-    void sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector);
-
     virtual void extractInformation() = 0;     ///< abstract method you have to define for a derived class
     const G4double mHC_eVnm = 1239.84193 * eV; ///< h*c in eV * nm
     boost::property_tree::ptree mJsonTree;

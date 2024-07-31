@@ -1,10 +1,11 @@
 #include "OMSimDataFileTypes.hh"
 #include "OMSimInputData.hh"
 #include "OMSimLogger.hh"
+#include "OMSimTools.hh"
 
 #include <G4MaterialPropertiesIndex.hh>
 #include <TGraph.h>
-#include <numeric>
+
 
 namespace pt = boost::property_tree;
 
@@ -21,49 +22,6 @@ abcDataFile::abcDataFile(G4String pFileName) : mFileData(new ParameterTable()), 
 abcDataFile::~abcDataFile()
 {
     //delete mFileData;
-}
-
-/**
- *  @brief Sorts two vectors (pSortVector & pReferenceVector) based on the order of values in pReferenceVector.
- *
- *  @param pReferenceVector The ordering of these values will determine the final order of both vectors.
- *  @param pSortVector The vector to be sorted according to the pReferenceVector.
- *
- *  @throws std::invalid_argument if the vectors do not have the same size.
- */
-void abcDataFile::sortVectorByReference(std::vector<G4double> &pReferenceVector, std::vector<G4double> &pSortVector)
-{
-    log_trace("Sorting vector");
-    // Check if the vectors have the same size
-    if (pReferenceVector.size() != pSortVector.size())
-    {
-        // Handle error
-        throw std::invalid_argument("The two vectors must have the same size.");
-    }
-
-    // Create a vector of indices
-    std::vector<std::size_t> lIndices(pReferenceVector.size());
-    std::iota(lIndices.begin(), lIndices.end(), 0);
-
-    // Sort the indices based on the values in pReferenceVector
-    std::sort(lIndices.begin(), lIndices.end(),
-              [&pReferenceVector](std::size_t i1, std::size_t i2)
-              { return pReferenceVector[i1] < pReferenceVector[i2]; });
-
-    // Create temporary vectors to hold the sorted data
-    std::vector<G4double> lSortedSortVector(pSortVector.size());
-    std::vector<G4double> lSortedReferenceVector(pReferenceVector.size());
-
-    // Apply the sorted indices to the vectors
-    for (std::size_t i = 0; i < lIndices.size(); ++i)
-    {
-        lSortedSortVector[i] = pSortVector[lIndices[i]];
-        lSortedReferenceVector[i] = pReferenceVector[lIndices[i]];
-    }
-
-    // Replace the original vectors with the sorted ones
-    pSortVector = std::move(lSortedSortVector);
-    pReferenceVector = std::move(lSortedReferenceVector);
 }
 
 /**
@@ -110,7 +68,7 @@ void abcMaterialData::extractAbsorptionLength()
     std::vector<G4double> lAbsLengthEnergy;
     mFileData->parseKeyContentToVector(lAbsLength, mJsonTree, "jAbsLength", 1 * mm, false);
     mFileData->parseKeyContentToVector(lAbsLengthEnergy, mJsonTree, "jAbsLengthWavelength", mHC_eVnm, true);
-    sortVectorByReference(lAbsLengthEnergy, lAbsLength);
+    Tools::sortVectorByReference(lAbsLengthEnergy, lAbsLength);
     mMPT->AddProperty("ABSLENGTH", &lAbsLengthEnergy[0], &lAbsLength[0], static_cast<int>(lAbsLength.size()));
 }
 
@@ -124,7 +82,7 @@ void abcMaterialData::extractRefractionIndex()
     std::vector<G4double> lRefractionIndexEnergy;
     mFileData->parseKeyContentToVector(lRefractionIndex, mJsonTree, "jRefractiveIdx", 1., false);
     mFileData->parseKeyContentToVector(lRefractionIndexEnergy, mJsonTree, "jRefractiveIdxWavelength", mHC_eVnm, true);
-    sortVectorByReference(lRefractionIndexEnergy, lRefractionIndex);
+    Tools::sortVectorByReference(lRefractionIndexEnergy, lRefractionIndex);
     mMPT->AddProperty("RINDEX", &lRefractionIndexEnergy[0], &lRefractionIndex[0], static_cast<int>(lRefractionIndex.size()));
 }
 
@@ -354,7 +312,7 @@ void Surface::extractInformation()
         if (lKey=="ABSLENGTH") lScaling = 1*mm;
         mFileData->parseKeyContentToVector(lValues, mJsonTree, "jValues_" + lKey, lScaling, false);
         mFileData->parseKeyContentToVector(lPhotonEnergy, mJsonTree, "jWavelength_" + lKey, mHC_eVnm, true);
-        sortVectorByReference(lPhotonEnergy, lValues);
+        Tools::sortVectorByReference(lPhotonEnergy, lValues);
         lMPT->AddProperty(lKey, &lPhotonEnergy[0], &lValues[0], static_cast<int>(lPhotonEnergy.size()));
     }
 
@@ -419,7 +377,7 @@ void ScintillationProperties::extractSpectrum()
     std::vector<G4double> lEnergy;
     mFileData->parseKeyContentToVector(lSpectrumIntensity, mJsonTree, "jSpectrumIntensity", 1, false);
     mFileData->parseKeyContentToVector(lEnergy, mJsonTree, "jSpectrumWavelength", mHC_eVnm, true);
-    sortVectorByReference(lEnergy, lSpectrumIntensity);
+    Tools::sortVectorByReference(lEnergy, lSpectrumIntensity);
     mMPT->AddProperty("SCINTILLATIONCOMPONENT1", &lEnergy[0], &lSpectrumIntensity[0], static_cast<int>(lSpectrumIntensity.size()));
 }
 
@@ -521,7 +479,7 @@ void ScintillationProperties::extractLifeTimes(G4String pTemperature)
         }
     }
 
-    sortVectorByReference(lAllLAmplitudes, lAllLTimes);
+    Tools::sortVectorByReference(lAllLAmplitudes, lAllLTimes);
     mMPT->AddProperty("FRACTIONLIFETIMES", &lAllLAmplitudes[0], &lAllLTimes[0], static_cast<int>(lAllLTimes.size()), true);
 }
 

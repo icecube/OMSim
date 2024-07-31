@@ -63,8 +63,8 @@ void OMSimEffectiveAreaAnalyisis::writeScan(Args... args)
         lTotalHits = hit; // last element is total nr of hits
     }
 
-    effectiveAreaResult lEffectiveArea = calculateEffectiveArea(lTotalHits);
-    lDataFile << lEffectiveArea.EA << "\t" << lEffectiveArea.EAError << "\t";
+    //effectiveAreaResult lEffectiveArea = calculateEffectiveArea(lTotalHits);
+    //lDataFile << lEffectiveArea.EA << "\t" << lEffectiveArea.EAError << "\t";
     lDataFile << G4endl;
     lDataFile.close();
 }

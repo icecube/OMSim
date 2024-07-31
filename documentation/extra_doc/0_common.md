@@ -19,10 +19,11 @@ This approach was adopted because various PMTs are constructed similarly, elimin
 
 Thus, an instance of `InputDataManager` is always passed to all classes related to geometry construction (see [geometry](#geometry-construction)).
 
-If you wish to load additional data, you can either define a new type in OMSimDataFileTypes or load it into a tree as previously mentioned. For simpler tasks, use the static method `InputDataManager::loadtxt`, which operates similarly to Python's numpy.loadtxt. For example:
+If you wish to load additional data, you can either define a new type in OMSimDataFileTypes or load it into a tree as previously mentioned. For simpler tasks, use the static method `Tools::loadtxt` provided in `OMSimTools.hh`, which operates similarly to Python's numpy.loadtxt. For example:
 
 ```cpp
-std::vector<G4PV2DDataVector> data = InputDataManager::loadtxt("path/file_name.txt");
+#include "OMSimTools.hh"
+std::vector<G4PV2DDataVector> data = Tools::loadtxt("path/file_name.txt");
 std::vector<G4double> first_column = data.at(0);
 std::vector<G4double> second_column = data.at(1);
 // ...

@@ -6,7 +6,7 @@
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimLogger.hh"
 #include "OMSimInputData.hh"
-
+#include "OMSimTools.hh"
 /*
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  *                                  Base Abstract Classes
@@ -25,7 +25,7 @@
 TH2D *OMSimPMTResponse::createHistogramFromData(const std::string &pFilePath, const char *pTH2DName)
 {
     // Load the data
-    std::vector<std::vector<double>> lData = InputDataManager::loadtxt(pFilePath, true, 0, '\t');
+    std::vector<std::vector<double>> lData = Tools::loadtxt(pFilePath, true, 0, '\t');
 
     // Deduce the number of bins and the bin widths
     double lBinWidthX, lBinWidthY;

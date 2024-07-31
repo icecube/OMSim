@@ -1,6 +1,7 @@
 #include "OMSimMDOM.hh"
 #include "OMSimUIinterface.hh"
 #include "OMSimCommandArgsTable.hh"
+#include "OMSimTools.hh"
 #include "G4TouchableHistoryHandle.hh"
 #include "G4TransportationManager.hh"
 #include <G4Cons.hh>
@@ -108,7 +109,7 @@ void mDOMFlasher::runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4in
  */
 void mDOMFlasher::readFlasherProfile()
 {
-	std::vector<G4PV2DDataVector> lData = mData->loadtxt("../common/data/UserInputData/processedlightspectrum_9_level_2_ext3.cfg", true, 0, '\t');
+	std::vector<G4PV2DDataVector> lData = Tools::loadtxt("../common/data/UserInputData/processedlightspectrum_9_level_2_ext3.cfg", true, 0, '\t');
 	mProfileX = lData.at(0);
 	mProfileY = lData.at(1);
 	mFlasherProfileAvailable = true;

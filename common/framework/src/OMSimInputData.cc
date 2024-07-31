@@ -115,72 +115,7 @@ G4bool ParameterTable::checkIfKeyInTable(G4String pKey)
  *                                Main class methods
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
-/**
- * @brief Reads numerical data from a file and returns it as a 2D vector.
- * Similar to numpy.loadtxt.
- *
- * @param pFilePath The path to the input file.
- * @param pUnpack Optional. If true, the returned data is transposed, i.e.,
- * unpacked into columns. Default is true.
- * @param pSkipRows Optional. The number of lines to skip at the beginning of
- * the file. Default is 0.
- * @param pDelimiter The character used to separate values in each line of the
- * input file.
- * @return A 2D vector of doubles. The outer vector groups all columns (or
- * rows if 'unpack' is false), and each inner vector represents one of the
- * columns (or one of the rows if 'unpack' is false) of data file.
- * @throws std::runtime_error if the file cannot be opened.
- */
-std::vector<std::vector<double>>
-InputDataManager::loadtxt(const std::string &pFilePath, bool pUnpack,
-                          size_t pSkipRows, char pDelimiter)
-{
-    std::vector<std::vector<double>> lData;
-    std::ifstream lInFile(pFilePath);
 
-    if (!lInFile.is_open())
-    {
-        log_error("Could not open file {}",pFilePath);
-        throw std::runtime_error("Could not open file " + pFilePath);
-    }
-
-    std::string lLine;
-    size_t lRowCounter = 0;
-
-    while (getline(lInFile, lLine))
-    {
-        if (lRowCounter++ < pSkipRows)
-            continue;
-        std::vector<double> lRow;
-        std::stringstream lSs(lLine);
-        std::string lItem;
-        while (getline(lSs, lItem, pDelimiter))
-        {
-            lRow.push_back(stod(lItem));
-        }
-        lData.push_back(lRow);
-    }
-
-    if (pUnpack)
-    {
-        size_t lNumCols = lData[0].size();
-        std::vector<std::vector<double>> lTransposedData(
-            lNumCols, std::vector<double>(lData.size()));
-
-        for (size_t i = 0; i < lData.size(); ++i)
-        {
-            for (size_t j = 0; j < lNumCols; ++j)
-            {
-                lTransposedData[j][i] = lData[i][j];
-            }
-        }
-        return lTransposedData;
-    }
-    else
-    {
-        return lData;
-    }
-}
 /**
  * Get a G4Material. In order to get custom built materials, method
  * searchFolders() should have already been called. Standard materials from
