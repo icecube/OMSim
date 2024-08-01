@@ -31,7 +31,7 @@ void OMSimSNAnalysis::writeHeaders()
 
 void OMSimSNAnalysis::writeInfoFileHeader()
 {
-    G4String lFileName = mOutputSuffix + "_" + OMSimHitManager::getInstance().getThreadIDStr() + "_info.dat";
+    G4String lFileName = mOutputSuffix + "_" + Tools::getThreadIDStr() + "_info.dat";
     std::fstream lDatafile;
     lDatafile.open(lFileName.c_str(), std::ios::out | std::ios::app);
     lDatafile << "#" << G4endl;
@@ -42,7 +42,7 @@ void OMSimSNAnalysis::writeInfoFileHeader()
 
 void OMSimSNAnalysis::writeDataFileHeader()
 {
-    G4String lFileName = mOutputSuffix + "_" + OMSimHitManager::getInstance().getThreadIDStr() + "_data.dat";
+    G4String lFileName = mOutputSuffix + "_" + Tools::getThreadIDStr() + "_data.dat";
     std::fstream lDatafile;
     lDatafile.open(lFileName.c_str(), std::ios::out | std::ios::app);
     lDatafile << "#" << G4endl;
@@ -67,7 +67,7 @@ void OMSimSNAnalysis::processEvent()
 void OMSimSNAnalysis::writeInfoFile()
 {
     log_trace("Writing SN event info file");
-    G4String lFileName = mOutputSuffix + "_" + OMSimHitManager::getInstance().getThreadIDStr() + "_info.dat";
+    G4String lFileName = mOutputSuffix + "_" + Tools::getThreadIDStr() + "_info.dat";
 
     std::fstream lDatafile;
     lDatafile.open(lFileName.c_str(), std::ios::out | std::ios::app);
@@ -85,7 +85,7 @@ void OMSimSNAnalysis::writeDataFile()
     log_trace("Writing SN event hit data file");
     OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
-    G4String lFileName = mOutputSuffix + "_" + lHitManager.getThreadIDStr() + "_data.dat";
+    G4String lFileName = mOutputSuffix + "_" + Tools::getThreadIDStr() + "_data.dat";
     std::fstream lDatafile;
     lDatafile.open(lFileName.c_str(), std::ios::out | std::ios::app);
     

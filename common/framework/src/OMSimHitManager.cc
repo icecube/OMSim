@@ -10,21 +10,35 @@ G4Mutex OMSimHitManager::mMutex = G4Mutex();
 OMSimHitManager *OMSimHitManager::mInstance = nullptr;
 G4ThreadLocal OMSimHitManager::ThreadLocalData *OMSimHitManager::mThreadData = nullptr;
 
+
 OMSimHitManager::OMSimHitManager(): mCurrentIndex(-1)
 {
 };
 
+/**
+ * @brief Initializes the global instance of OMSimHitManager.
+ * 
+ * This is normally done in OMSim::initialiseSimulation.
+ */
 void OMSimHitManager::init()
 {
 	if (!gHitManager) gHitManager = new OMSimHitManager();
 }
 
+/**
+ * @brief Shuts down and deletes the global instance of OMSimHitManager.
+ */
 void OMSimHitManager::shutdown()
 {
 	delete gHitManager;
 	gHitManager = nullptr;
 }
 
+
+/**
+ * @return A reference to the global OMSimHitManager instance.
+ * @throws assert if instance exists (i.e. if it was called before init() or after shutdown()).
+ */
 OMSimHitManager &OMSimHitManager::getInstance()
 {
 	assert(gHitManager);
@@ -145,13 +159,7 @@ HitStats OMSimHitManager::getMergedHitsOfModule(int pModuleIndex)
 }
 
 
-G4String OMSimHitManager::getThreadIDStr()
-{
-	std::ostringstream oss;
-	oss << G4Threading::G4GetThreadId();
-	G4String threadIdStr = oss.str();
-	return threadIdStr;
-}
+
 
 /**
  * @brief Retrieves the HitStats structure for the specified module of single thread.

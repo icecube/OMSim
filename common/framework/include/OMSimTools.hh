@@ -7,29 +7,27 @@
 
 #include "OMSimLogger.hh"
 #include "globals.hh"
+
 /**
- * @class Tools
+ * @namespace Tools
  * @brief A collection of helper functions for numerical operations.
  * 
- * This class provides static methods for common numerical tasks such as 
+ * This namespace provides static methods for common numerical tasks such as 
  * loading data from a file, and generating linearly and logarithmically 
- * spaced sequences. These methods are utility functions and do not 
- * require instantiation of the `Tools` class.
+ * spaced sequences. 
  * 
  * @ingroup common
  */
-class Tools
+namespace Tools
 {
-public:
-    Tools(){};
-    ~Tools(){};
-    static std::vector<std::vector<double>> loadtxt(const std::string &pFilePath,
+    std::vector<std::vector<double>> loadtxt(const std::string &pFilePath,
                                                     bool pUnpack = true,
                                                     size_t pSkipRows = 0,
                                                     char pDelimiter = ' ');
-    static std::vector<double> linspace(double start, double end, int num_points);
-    static std::vector<double> logspace(double start, double end, int num_points);
-    static void sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector);
+    std::vector<double> linspace(double start, double end, int num_points);
+    std::vector<double> logspace(double start, double end, int num_points);
+    void sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector);
+    G4String getThreadIDStr();
 };
 
 #endif

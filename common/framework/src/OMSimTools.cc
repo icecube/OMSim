@@ -1,8 +1,13 @@
 #include "OMSimTools.hh"
-#include <fstream>    // For std::ifstream
-#include <sstream>    // For std::stringstream
-#include <stdexcept>  // For std::runtime_error
+#include <G4Threading.hh>
+#include <fstream>  
+#include <sstream>   
+#include <stdexcept>  
 #include <numeric>
+
+
+namespace Tools{
+
 /**
  * @brief Reads numerical data from a file and returns it as a 2D vector.
  * Similar to numpy.loadtxt.
@@ -19,7 +24,7 @@
  * columns (or one of the rows if 'unpack' is false) of data file.
  * @throws std::runtime_error if the file cannot be opened.
  */
-std::vector<std::vector<double>> Tools::loadtxt(const std::string &pFilePath, bool pUnpack,
+std::vector<std::vector<double>> loadtxt(const std::string &pFilePath, bool pUnpack,
 												size_t pSkipRows, char pDelimiter)
 {
 	std::vector<std::vector<double>> lData;
@@ -80,7 +85,7 @@ std::vector<std::vector<double>> Tools::loadtxt(const std::string &pFilePath, bo
  * @return A vector of linearly spaced values.
  * @throws std::invalid_argument if `num_points` is less than 2.
  */
-std::vector<double> Tools::linspace(double start, double end, int num_points)
+std::vector<double> linspace(double start, double end, int num_points)
 {
 	if (num_points < 2)
 	{
@@ -107,7 +112,7 @@ std::vector<double> Tools::linspace(double start, double end, int num_points)
  * @throws std::invalid_argument if `num_points` is less than 2 or if `start` or `end` are non-positive.
  */
 
-std::vector<double> Tools::logspace(double start, double end, int num_points)
+std::vector<double> logspace(double start, double end, int num_points)
 {
 
 	if (num_points < 2)
@@ -144,7 +149,7 @@ std::vector<double> Tools::logspace(double start, double end, int num_points)
  *
  *  @throws std::invalid_argument if the vectors do not have the same size.
  */
-void Tools::sortVectorByReference(std::vector<G4double> &pReferenceVector, std::vector<G4double> &pSortVector)
+void sortVectorByReference(std::vector<G4double> &pReferenceVector, std::vector<G4double> &pSortVector)
 {
     log_trace("Sorting vector");
     // Check if the vectors have the same size
@@ -177,4 +182,16 @@ void Tools::sortVectorByReference(std::vector<G4double> &pReferenceVector, std::
     // Replace the original vectors with the sorted ones
     pSortVector = std::move(lSortedSortVector);
     pReferenceVector = std::move(lSortedReferenceVector);
+}
+
+
+G4String getThreadIDStr()
+{
+	std::ostringstream oss;
+	oss << G4Threading::G4GetThreadId();
+	G4String threadIdStr = oss.str();
+	return threadIdStr;
+}
+
+
 }

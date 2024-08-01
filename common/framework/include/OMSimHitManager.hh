@@ -45,11 +45,14 @@ struct HitStats
  * @brief Manages detected photon information.
  *
  * Stores, manages, and provides access information related to detected photons across multiple optical modules.
- * The manager can be accessed via a singleton pattern, ensuring a unified access point for photon hit data.
+ * The manager uses a global instance pattern, ensuring a unified access point for photon hit data.
+ *
+ * The class must be initialized with `OMSimHitManager::init()` before use and shut down with 
+ * `OMSimHitManager::shutdown()` when no longer needed. This is handled by the OMSim class.
  *
  * The hits are stored using 'OMSimHitManager::appendHitInfo'.
  * The analysis manager of each study is in charge of writing the stored information into a file (see for example 'OMSimEffectiveAreaAnalyisis::writeScan' or 'OMSimDecaysAnalysis::writeHitInformation').
- * Once the data is written, do not forget calling 'OMSimHitManager::reset'!.
+ * If the simulation will continue after the data is written, do not forget calling 'OMSimHitManager::reset'!.
  *
  * @ingroup common
  */
@@ -88,7 +91,6 @@ public:
     std::vector<int> calculateMultiplicity(const G4double pTimeWindow, int pModuleNumber = 0);
     G4int getNextDetectorIndex() { return ++mCurrentIndex; }
     G4int getNumberOfModules() { return mCurrentIndex + 1; }
-    G4String getThreadIDStr();
 
     void mergeThreadData();
 

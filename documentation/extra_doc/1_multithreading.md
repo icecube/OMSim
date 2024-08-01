@@ -152,7 +152,7 @@ void OMSimDecaysAnalysis::appendDecay(G4String pParticleName, G4double pDecayTim
 void OMSimDecaysAnalysis::writeThreadDecayInformation()
 {
     G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
-    G4String lDecaysFileName = lOutputSuffix + "_" + getThreadIDStr() + "_decays.dat"; // one file per thread, appending thread id to file name
+    G4String lDecaysFileName = lOutputSuffix + "_" + Tools::getThreadIDStr() + "_decays.dat"; // one file per thread, appending thread id to file name
 
     std::fstream lDatafile;
     lDatafile.open(lDecaysFileName.c_str(), std::ios::out | std::ios::app);

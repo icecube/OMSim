@@ -6,6 +6,7 @@
 #include "OMSimHitManager.hh"
 #include <numeric>
 #include "G4AutoLock.hh"
+#include "OMSimTools.hh"
 
 G4Mutex OMSimDecaysAnalysis::mMutex = G4Mutex();
 OMSimDecaysAnalysis *OMSimDecaysAnalysis::mInstance = nullptr;
@@ -77,7 +78,7 @@ void OMSimDecaysAnalysis::writeThreadDecayInformation()
 
 	G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
 
-	G4String lDecaysFileName = lOutputSuffix + "_" + OMSimHitManager::getInstance().getThreadIDStr() + "_decays.dat";
+	G4String lDecaysFileName = lOutputSuffix + "_" + Tools::getThreadIDStr() + "_decays.dat";
 
 	std::fstream lDatafile;
 	lDatafile.open(lDecaysFileName.c_str(), std::ios::out | std::ios::app);
@@ -110,7 +111,7 @@ void OMSimDecaysAnalysis::writeThreadHitInformation()
 
 	HitStats lHits = lHitManager.getSingleThreadHitsOfModule();
 	G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
-	G4String lHitsFileName = lOutputSuffix + "_" + lHitManager.getThreadIDStr() + "_hits.dat";
+	G4String lHitsFileName = lOutputSuffix + "_" + Tools::getThreadIDStr() + "_hits.dat";
 	log_trace("Writing hit information of {} hits", lHits.eventId.size());
 
 	std::fstream lDatafile;
