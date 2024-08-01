@@ -13,18 +13,17 @@
 OMSimDetectorConstruction::OMSimDetectorConstruction()
     : mWorldSolid(0), mWorldLogical(0), mWorldPhysical(0)
 {
+    OMSimInputData::init();
+    mData = &OMSimInputData::getInstance();
 }
 
 OMSimDetectorConstruction::~OMSimDetectorConstruction()
 {
-    log_trace("OMSimDetectorConstruction destructor called");
+    log_trace("Clearing sensitive detectors");
     mSensitiveDetectors.clear();
-    if (mData){
-        delete mData;
-        mData = nullptr;
-    }
-    
-    log_trace("OMSimDetectorConstruction destructor finished");
+
+    log_trace("Deleting OMSimInputData");
+    OMSimInputData::shutdown();
 }
 
 /**
@@ -34,11 +33,8 @@ OMSimDetectorConstruction::~OMSimDetectorConstruction()
 G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
 {
     log_trace("Starting detector construction");
-    mData = new InputDataManager();
-    mData->searchFolders();
     constructWorld();
     constructDetector();
-
     return mWorldPhysical;
 }
 

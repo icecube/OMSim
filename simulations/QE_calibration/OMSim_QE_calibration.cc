@@ -13,9 +13,9 @@ std::shared_ptr<spdlog::logger> globalLogger;
 
 namespace po = boost::program_options;
 
-void modifyPhotocathodeAbsorptionLength(InputDataManager *pData, G4double pAbs)
+void modifyPhotocathodeAbsorptionLength(G4double pAbs)
 {
-	G4OpticalSurface *lSurface = pData->getOpticalSurface("Surf_Generic_Photocathode_20nm");
+	G4OpticalSurface *lSurface = OMSimInputData::getInstance().getOpticalSurface("Surf_Generic_Photocathode_20nm");
 	G4MaterialPropertiesTable* mMPT = lSurface->GetMaterialPropertiesTable();
 	mMPT->RemoveProperty("ABSLENGTH");
 	G4double energies[] = {1.5 * eV, 9 * eV};
@@ -25,7 +25,7 @@ void modifyPhotocathodeAbsorptionLength(InputDataManager *pData, G4double pAbs)
 
 
 
-void runQEbeamSimulationVaryingAbsorptionLength(InputDataManager *pData)
+void runQEbeamSimulationVaryingAbsorptionLength()
 {
 	OMSimEffectiveAreaAnalyisis lAnalysisManager;
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
@@ -46,7 +46,7 @@ void runQEbeamSimulationVaryingAbsorptionLength(InputDataManager *pData)
 		lScanner->setWavelength(wavelength);
 		for (const auto &abslength : lAbsLengths)
 		{
-			modifyPhotocathodeAbsorptionLength(pData, abslength*m);
+			modifyPhotocathodeAbsorptionLength(abslength*m);
 
 			lScanner->runBeam(0, 0);
 			lAnalysisManager.writeScan(wavelength, abslength/m);
@@ -55,7 +55,7 @@ void runQEbeamSimulationVaryingAbsorptionLength(InputDataManager *pData)
 	}
 }
 
-void runQEbeamSimulation(InputDataManager *pData)
+void runQEbeamSimulation()
 {
 	OMSimEffectiveAreaAnalyisis lAnalysisManager;
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
@@ -115,11 +115,9 @@ int main(int pArgumentCount, char *pArgumentVector[])
 
 	std::unique_ptr<OMSimEffectiveAreaDetector> lDetectorConstruction = std::make_unique<OMSimEffectiveAreaDetector>();
 	lSimulation.initialiseSimulation(lDetectorConstruction.get());
-
-	InputDataManager* lData = lDetectorConstruction->getDataManager();
 	lDetectorConstruction.release();
 
-	runQEbeamSimulation(lData);
+	runQEbeamSimulation();
 
 	lSimulation.startVisualisationIfRequested();
 	return 0;

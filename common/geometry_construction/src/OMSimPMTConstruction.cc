@@ -15,7 +15,7 @@
 #include <cmath>
 #include "G4SystemOfUnits.hh"
 
-OMSimPMTConstruction::OMSimPMTConstruction(InputDataManager *pData) : abcDetectorComponent(pData)
+OMSimPMTConstruction::OMSimPMTConstruction() : abcDetectorComponent()
 {
     mInternalReflections = OMSimCommandArgsTable::getInstance().get<bool>("detail_pmt");
 }
@@ -128,7 +128,7 @@ void OMSimPMTConstruction::definePhotocathodeProperties()
     lEnergy.push_back((CLHEP::h_Planck * CLHEP::c_light) / (lMaxWavelength * CLHEP::nanometer));
     lNeededAbs.push_back(1*m); // very large number, to get QE ~0.
     lNeededAbs.push_back(1*m); // very large number, to get QE ~0.
-    
+
     Tools::sortVectorByReference(lEnergy, lNeededAbs);
     G4MaterialPropertiesTable *lMPT = mPhotocathodeOpticalSurface->GetMaterialPropertiesTable();
     lMPT->AddProperty("ABSLENGTH", &lEnergy[0], &lNeededAbs[0], static_cast<int>(lNeededAbs.size()));

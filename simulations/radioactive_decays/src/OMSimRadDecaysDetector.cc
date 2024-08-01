@@ -43,7 +43,7 @@ void OMSimRadDecaysDetector::constructDetector()
     case 1:
     {
         log_info("Constructing single PMT");
-        OMSimPMTConstruction *lPMTManager = new OMSimPMTConstruction(mData);
+        OMSimPMTConstruction *lPMTManager = new OMSimPMTConstruction();
         lPMTManager->selectPMT("argPMT");
         lPMTManager->construction();
         lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
@@ -53,30 +53,30 @@ void OMSimRadDecaysDetector::constructDetector()
     }
     case 2:
     {
-        lOpticalModule = new mDOM(mData, lPlaceHarness);
+        lOpticalModule = new mDOM(lPlaceHarness);
         break;
     }
     case 3:
     {
 
-        lOpticalModule = new pDOM(mData, lPlaceHarness);
+        lOpticalModule = new pDOM(lPlaceHarness);
         break;
     }
     case 4:
     {
 
-        lOpticalModule = new LOM16(mData, lPlaceHarness);
+        lOpticalModule = new LOM16(lPlaceHarness);
         break;
     }
     case 5:
     {
 
-        lOpticalModule = new LOM18(mData, lPlaceHarness);
+        lOpticalModule = new LOM18(lPlaceHarness);
         break;
     }
     case 6:
     {
-        lOpticalModule = new DEGG(mData, lPlaceHarness);
+        lOpticalModule = new DEGG(lPlaceHarness);
         break;
     }
     }

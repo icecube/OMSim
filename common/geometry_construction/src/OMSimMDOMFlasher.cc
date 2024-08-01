@@ -13,7 +13,7 @@
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
-mDOMFlasher::mDOMFlasher(InputDataManager *pData): abcDetectorComponent(pData) 
+mDOMFlasher::mDOMFlasher(): abcDetectorComponent() 
 {
 	construction();
 }

@@ -10,7 +10,7 @@
 
 
 
-abcDetectorComponent::abcDetectorComponent(InputDataManager *pData) : mData(pData)
+abcDetectorComponent::abcDetectorComponent() : mData(&OMSimInputData::getInstance())
 {
     mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
 }

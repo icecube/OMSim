@@ -31,12 +31,20 @@
 #include <boost/any.hpp>
 #include <sys/time.h>
 
+
+// Forward declaration of the class
+class OMSimCommandArgsTable;
+
+// Declaration and definition of the inline global pointer
+inline OMSimCommandArgsTable* gCommandArgsTable = nullptr;
+
+
 /**
  * @class OMSimCommandArgsTable
- * @brief A singleton class used to hold OMSim command arguments.
+ * @brief A class used to hold OMSim command arguments with global instance access.
  *
- * This class uses a map to hold key-value pairs of simulation command arguments. In principle it is just a wrapper around the map created by the boost library to avoid users changing the arg values after initialisation.
- * Provides a method to write the parameters to a JSON file.
+ * This class uses a map to hold key-value pairs of simulation command arguments.
+ * It provides a method to write the parameters to a JSON file.
  * @ingroup common
  */
 class OMSimCommandArgsTable
@@ -50,14 +58,27 @@ public:
     using Key = std::string;
     using Value = boost::any; //  Using boost::any to hold any type
 
+    static void init()
+    {
+        if (!gCommandArgsTable)
+            gCommandArgsTable = new OMSimCommandArgsTable();
+    }
+
+    static void shutdown()
+    {
+        delete gCommandArgsTable;
+        gCommandArgsTable = nullptr;
+    }
+
     /**
-     * @brief Retrieves the instance of the singleton.
-     * @return The instance of OMSimCommandArgsTable.
+     * @return A reference to the OMSimCommandArgsTable instance.
+     * @throw std::runtime_error if accessed before initialization or after shutdown.
      */
     static OMSimCommandArgsTable &getInstance()
     {
-        static OMSimCommandArgsTable instance;
-        return instance;
+        if (!gCommandArgsTable)
+            throw std::runtime_error("OMSimCommandArgsTable accessed before initialization or after shutdown!");
+        return *gCommandArgsTable;
     }
 
     /**

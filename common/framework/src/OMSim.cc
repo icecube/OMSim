@@ -3,7 +3,7 @@
  * @brief Implementation of the OMSim class.
  * 
  * @warning
- * There are a few material related arguments that are depracated as for example the glass and gel arguments. This were used to easily change materials during the OM development phase. Check @link InputDataManager::getMaterial @endlink and modify the respective OM class if you want to use these args.
+ * There are a few material related arguments that are depracated as for example the glass and gel arguments. This were used to easily change materials during the OM development phase. Check @link OMSimInputData::getMaterial @endlink and modify the respective OM class if you want to use these args.
  * 
  * @ingroup common
  */
@@ -23,6 +23,7 @@ mRunManager(nullptr),
 mVisManager(nullptr),
 mNavigator(nullptr)
 {
+    OMSimCommandArgsTable::init();
     setGeneralOptions();
     initialLoggerConfiguration();
 }
@@ -145,9 +146,9 @@ int OMSim::determineNumberOfThreads()
  */
 void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstruction)
 {
-    configureLogger();
     OMSimHitManager::init();
-
+    configureLogger();
+    
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
     ensureOutputDirectoryExists(lArgs.get<std::string>("output_file"));
 
@@ -280,6 +281,8 @@ OMSim::~OMSim()
     log_trace("Deleting OMSimHitManager");
     OMSimHitManager::shutdown();
 
+    log_trace("Deleting OMSimCommandArgsTable");
+    OMSimCommandArgsTable::shutdown();
 
     log_trace("OMSim destructor finished");
     std::chrono::high_resolution_clock::time_point lFinishtime = std::chrono::high_resolution_clock::now();

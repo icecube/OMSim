@@ -13,11 +13,9 @@ class mDOMHarness;
 
 class mDOM : public OMSimOpticalModule
 {
-private:
-    mDOMFlasher *mFlashers;
 
 public:
-    mDOM(InputDataManager *pData, G4bool pPlaceHarness = true);
+    mDOM(G4bool pPlaceHarness = true);
     ~mDOM();
     void construction();
     double getPressureVesselWeight() { return 13.0 * kg; };
@@ -42,6 +40,7 @@ public:
     void runBeamOnFlasher(G4int pModuleIndex, G4int pLEDIndex) { mFlashers->runBeamOnFlasher(this, pModuleIndex, pLEDIndex); }
 
 private:
+    mDOMFlasher *mFlashers;
     mDOMHarness *mHarness;
     G4SubtractionSolid *equatorialReflector(G4VSolid *pSupportStructure, G4Cons *pReflCone, G4double pAngle, G4String pSuffix);
     void setPMTPositions();

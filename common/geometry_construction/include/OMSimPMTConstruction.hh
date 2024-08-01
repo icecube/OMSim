@@ -20,7 +20,7 @@ class OMSimPMTConstruction : public abcDetectorComponent
 {
 
 public:
-    OMSimPMTConstruction(InputDataManager *pData);
+    OMSimPMTConstruction();
 
     void construction();
     void configureSensitiveVolume(OMSimDetectorConstruction* pDetConst, G4String pName);

@@ -19,8 +19,8 @@ mDOM::~mDOM()
         delete mHarness;
     }
 }
-mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
-    : OMSimOpticalModule(pData, new OMSimPMTConstruction(pData)),
+mDOM::mDOM(G4bool pPlaceHarness)
+    : OMSimOpticalModule(new OMSimPMTConstruction()),
       mPlaceHarness(pPlaceHarness),
       mFlashers(nullptr),
       mHarness(nullptr),
@@ -28,7 +28,7 @@ mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
       mPMToffset(0)
 {
     log_info("Constructing mDOM");
-    mFlashers = new mDOMFlasher(mData);
+    mFlashers = new mDOMFlasher();
     mPMTManager->selectPMT("pmt_Hamamatsu_R15458_20nm");
     mPMTManager->construction();
     mRefConeIdealInRad = mPMTManager->getMaxPMTRadius() + 2 * mm;
@@ -36,7 +36,7 @@ mDOM::mDOM(InputDataManager *pData, G4bool pPlaceHarness)
 
     if (mPlaceHarness)
     {
-        mHarness = new mDOMHarness(this, mData);
+        mHarness = new mDOMHarness(this);
         integrateDetectorComponent(mHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
     }
 

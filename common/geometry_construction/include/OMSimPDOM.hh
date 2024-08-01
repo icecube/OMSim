@@ -17,7 +17,7 @@
 class pDOM : public OMSimOpticalModule
 {
 public:
-    pDOM(InputDataManager *pData, G4bool pPlaceHarness = true);
+    pDOM(G4bool pPlaceHarness = true);
     ~pDOM(){};
     void construction();
     G4bool mPlaceHarness;

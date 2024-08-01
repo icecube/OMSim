@@ -45,7 +45,7 @@ struct GlobalPosition
 class mDOMFlasher : public abcDetectorComponent
 {
 public:
-    mDOMFlasher(InputDataManager *pData);
+    mDOMFlasher();
     void construction();
     std::tuple<G4UnionSolid *, G4UnionSolid *, G4Tubs *> getSolids();
     void runBeamOnFlasher(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex);

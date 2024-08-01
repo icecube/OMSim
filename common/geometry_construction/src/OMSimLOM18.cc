@@ -21,7 +21,7 @@ LOM18::~LOM18()
     //delete mHarness;
 }
 
-LOM18::LOM18(InputDataManager* pData, G4bool pPlaceHarness): OMSimOpticalModule(pData, new OMSimPMTConstruction(pData)), mPlaceHarness(pPlaceHarness)
+LOM18::LOM18(G4bool pPlaceHarness): OMSimOpticalModule(new OMSimPMTConstruction()), mPlaceHarness(pPlaceHarness)
  {
     log_info("Constructing LOM18");
     mPMTManager->includeHAcoating();

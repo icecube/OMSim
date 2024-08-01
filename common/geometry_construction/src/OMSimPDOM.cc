@@ -7,7 +7,7 @@
 #include <G4Orb.hh>
 #include <G4Polycone.hh>
 
-pDOM::pDOM(InputDataManager *pData, G4bool pPlaceHarness): OMSimOpticalModule(pData, new OMSimPMTConstruction(pData)), mPlaceHarness(pPlaceHarness)
+pDOM::pDOM(G4bool pPlaceHarness): OMSimOpticalModule(new OMSimPMTConstruction()), mPlaceHarness(pPlaceHarness)
 {
     log_info("Constructing pDOM");
     mPMTManager->selectPMT("pmt_Hamamatsu_R7081");

@@ -13,8 +13,7 @@ class DEGG;
 class DEggHarness : public abcDetectorComponent
 {
 public:
-    // DEggHarness(InputDataManager *pData);
-    DEggHarness(DEGG *pDEGG, InputDataManager *pData);
+    DEggHarness(DEGG *pDEGG);
     void construction();
     G4String mDataKey = "om_DEGG_Harness";
 

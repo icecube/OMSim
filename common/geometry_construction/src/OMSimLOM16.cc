@@ -19,7 +19,7 @@ LOM16::~LOM16()
     // delete mHarness;
 }
 
-LOM16::LOM16(InputDataManager *pData, G4bool pPlaceHarness): OMSimOpticalModule(pData, new OMSimPMTConstruction(pData)), mPlaceHarness(pPlaceHarness)
+LOM16::LOM16(G4bool pPlaceHarness): OMSimOpticalModule(new OMSimPMTConstruction()), mPlaceHarness(pPlaceHarness)
 {
     log_info("Constructing LOM16");
     mPMTManager->includeHAcoating();

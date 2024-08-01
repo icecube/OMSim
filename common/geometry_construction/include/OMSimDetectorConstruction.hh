@@ -27,14 +27,14 @@ public:
     void ConstructSDandField() override;
     void registerSensitiveDetector(G4LogicalVolume* logVol, G4VSensitiveDetector* aSD);
     G4VPhysicalVolume *mWorldPhysical;
-    InputDataManager* getDataManager() {return mData;};
+    OMSimInputData* getDataManager() {return mData;};
 
 protected:
     G4VSolid *mWorldSolid;
     G4LogicalVolume *mWorldLogical;
     virtual void constructWorld() = 0;
     virtual void constructDetector() = 0;
-    InputDataManager *mData;
+    OMSimInputData *mData;
 
     struct SDInfo {
         G4LogicalVolume* logicalVolume;

@@ -11,9 +11,8 @@
 #include <G4Polycone.hh>
 #include <G4Torus.hh>
 
-mDOMHarness::mDOMHarness(mDOM *pMDOM, InputDataManager *pData): abcDetectorComponent(pData)
+mDOMHarness::mDOMHarness(mDOM *pMDOM): abcDetectorComponent(), mOM(pMDOM)
 {
-    mOM = pMDOM;
     mTotalWidth = mOM->mGlassOutRad + mTeraThickness + mPadThickness + mBridgeAddedThickness;
     construction();
 };

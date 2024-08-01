@@ -7,7 +7,7 @@
 #include <G4Tubs.hh>
 
 
-DEggHarness::DEggHarness(DEGG *pDEGG, InputDataManager *pData): abcDetectorComponent(pData), mOM(pDEGG)
+DEggHarness::DEggHarness(DEGG *pDEGG): abcDetectorComponent(), mOM(pDEGG)
 {
     construction();
 }

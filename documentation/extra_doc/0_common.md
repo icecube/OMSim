@@ -7,17 +7,17 @@ This framework offers tools to simplify geometry construction and material defin
 
 User-defined material data are stored in JSON files under `/common/data` to minimize file length (the original detector construction had over 4,000 lines, mainly due to material properties!).
 
-The `InputDataManager` (see `OMSimInputData.hh`) loads these properties directly into the Geant4 framework. Materials loaded via this class can be retrieved using Geant4's conventional method `G4Material::GetMaterial`, but the framework also provides the wrapper `InputDataManager::getMaterial` to handle default parameters.
+The `OMSimInputData` (see `OMSimInputData.hh`) loads these properties directly into the Geant4 framework. Materials loaded via this class can be retrieved using Geant4's conventional method `G4Material::GetMaterial`, but the framework also provides the wrapper `OMSimInputData::getMaterial` to handle default parameters.
 
-The class also provides an analogue method for optical surfaces `InputDataManager::getOpticalSurface` which does not exist in Geant4.
+The class also provides an analogue method for optical surfaces `OMSimInputData::getOpticalSurface` which does not exist in Geant4.
 
 Since different materials have different types of properties, the data is loaded in multiple ways. These different material types are defined in `OMSimDataFileTypes.hh`.
 
-Additionally, geometry data used during PMT construction are also stored in JSON files (`/common/data/PMTs`). These are saved in a "tree" (essentially a dictionary containing the JSON file's keys and values) in `InputDataManager::mTable`. 
+Additionally, geometry data used during PMT construction are also stored in JSON files (`/common/data/PMTs`). These are saved in a "tree" (essentially a dictionary containing the JSON file's keys and values) in `OMSimInputData::mTable`. 
 
 This approach was adopted because various PMTs are constructed similarly, eliminating the need to define a unique class for each PMT type, as is done for the optical modules. 
 
-Thus, an instance of `InputDataManager` is always passed to all classes related to geometry construction (see [geometry](#geometry-construction)).
+Thus, an instance of `OMSimInputData` is always passed to all classes related to geometry construction (see [geometry](#geometry-construction)).
 
 If you wish to load additional data, you can either define a new type in OMSimDataFileTypes or load it into a tree as previously mentioned. For simpler tasks, use the static method `Tools::loadtxt` provided in `OMSimTools.hh`, which operates similarly to Python's numpy.loadtxt. For example:
 

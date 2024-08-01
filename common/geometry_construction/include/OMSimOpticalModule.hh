@@ -23,7 +23,7 @@ class OMSimDetectorConstruction;
 class OMSimOpticalModule : public abcDetectorComponent
 {
 public:
-    OMSimOpticalModule(InputDataManager* pData, OMSimPMTConstruction* pPMTManager);
+    OMSimOpticalModule(OMSimPMTConstruction* pPMTManager);
     virtual ~OMSimOpticalModule();
 
     /**

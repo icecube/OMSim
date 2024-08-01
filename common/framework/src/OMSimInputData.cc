@@ -116,6 +116,34 @@ G4bool ParameterTable::checkIfKeyInTable(G4String pKey)
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
+
+void OMSimInputData::init()
+{
+    if (!gOMSimInputData){
+        gOMSimInputData = new OMSimInputData();
+        gOMSimInputData->searchFolders();
+    }
+        
+}
+
+void OMSimInputData::shutdown()
+{
+    delete gOMSimInputData;
+    gOMSimInputData = nullptr;
+}
+
+/**
+ * @return A reference to the OMSimInputData instance.
+ * @throw std::runtime_error if accessed before initialization or after shutdown.
+ */
+OMSimInputData& OMSimInputData::getInstance()
+{
+    if (!gOMSimInputData)
+        throw std::runtime_error("OMSimInputData accessed before initialization or after shutdown!");
+    return *gOMSimInputData;
+}
+
+
 /**
  * Get a G4Material. In order to get custom built materials, method
  * searchFolders() should have already been called. Standard materials from
@@ -127,7 +155,7 @@ G4bool ParameterTable::checkIfKeyInTable(G4String pKey)
  * "argWorld" for argument materials
  * @return G4Material
  */
-G4Material *InputDataManager::getMaterial(G4String pName)
+G4Material *OMSimInputData::getMaterial(G4String pName)
 {
 
     // Check if requested material is an argument material
@@ -173,7 +201,7 @@ G4Material *InputDataManager::getMaterial(G4String pName)
  * "argReflector"
  * @return G4OpticalSurface
  */
-G4OpticalSurface *InputDataManager::getOpticalSurface(G4String pName)
+G4OpticalSurface *OMSimInputData::getOpticalSurface(G4String pName)
 {
 
     // Check if requested material is an argument surface
@@ -204,7 +232,7 @@ G4OpticalSurface *InputDataManager::getOpticalSurface(G4String pName)
 /**
  * @brief Searches through predefined folders for input data files.
  */
-void InputDataManager::searchFolders()
+void OMSimInputData::searchFolders()
 {
     log_trace("Searching folders for data json files...");
     std::vector<std::string> directories = {
@@ -233,7 +261,7 @@ void InputDataManager::searchFolders()
  * @param pFilePath Full path to the file.
  * @param pFileName Name of the file (without the path).
  */
-void InputDataManager::processFile(const std::string &pFilePath,
+void OMSimInputData::processFile(const std::string &pFilePath,
                                    const std::string &pFileName)
 {
     log_trace("Processing file {}", pFileName);
@@ -284,7 +312,7 @@ void InputDataManager::processFile(const std::string &pFilePath,
  * Scann for data files inside mDataDirectory and process files.
  * @param pName name of the material
  */
-void InputDataManager::scannDataDirectory()
+void OMSimInputData::scannDataDirectory()
 {
     log_trace("Loading files in {}", mDataDirectory);
     DIR *lDirectory = opendir(mDataDirectory.data());

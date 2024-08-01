@@ -14,7 +14,7 @@
 class LOM18 : public OMSimOpticalModule
 {
 public:
-    LOM18(InputDataManager* pData, G4bool pPlaceHarness = false);
+    LOM18(G4bool pPlaceHarness = false);
     ~LOM18();
     void construction();
     double getPressureVesselWeight() {return 17.0*kg;};

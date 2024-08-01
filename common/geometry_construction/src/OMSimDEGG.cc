@@ -14,7 +14,7 @@
 #include <G4Sphere.hh>
 #include <G4Polycone.hh>
 
-DEGG::DEGG(InputDataManager *pData, G4bool pPlaceHarness): OMSimOpticalModule(pData, new OMSimPMTConstruction(pData))
+DEGG::DEGG(G4bool pPlaceHarness): OMSimOpticalModule(new OMSimPMTConstruction())
 {
    log_info("Constructing DEGG");
    mPMTManager->selectPMT("pmt_Hamamatsu_R5912_20_100");

@@ -23,7 +23,7 @@ class DEggHarness;
 class DEGG : public OMSimOpticalModule
 {
 public:
-    DEGG(InputDataManager *pData, G4bool pPlaceHarness = true);
+    DEGG(G4bool pPlaceHarness = true);
     ~DEGG(){};
 
     void construction();

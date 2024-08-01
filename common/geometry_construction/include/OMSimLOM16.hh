@@ -12,7 +12,7 @@
 class LOM16 : public OMSimOpticalModule
 {
 public:
-    LOM16(InputDataManager* pData, G4bool pPlaceHarness = false);
+    LOM16(G4bool pPlaceHarness = false);
     ~LOM16();
     void construction();
     double getPressureVesselWeight() {return (5.38+5.35)*kg;};

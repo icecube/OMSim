@@ -13,7 +13,7 @@ class mDOM;
 class mDOMHarness : public abcDetectorComponent
 {
 public:
-    mDOMHarness(mDOM* pMDOM, InputDataManager *pData);
+    mDOMHarness(mDOM* pMDOM);
     void construction();
     
 private:

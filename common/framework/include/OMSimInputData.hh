@@ -1,5 +1,5 @@
 /** @file
- *  @brief Definition of ParameterTable and InputDataManager.
+ *  @brief Definition of ParameterTable and OMSimInputData.
  * @ingroup common
  */
 
@@ -20,7 +20,7 @@ namespace pt = boost::property_tree;
  * Interface for handling and querying data in the form of a property tree of the boost library. It facilitates the extraction of specific
  * parameters from loaded JSON files while also supporting units and scales.
  * 
- * Its main use is as base class of InputDataManager, but you may use it as needed (see @ref ExampleUsageParameterTable).
+ * Its main use is as base class of OMSimInputData, but you may use it as needed (see @ref ExampleUsageParameterTable).
  *
  * @ingroup common
  *
@@ -165,7 +165,7 @@ private:
 };
 
 /**
- * @class InputDataManager
+ * @class OMSimInputData
  * @brief Manages the input data, including parsing and storing material properties.
  *
  * @details
@@ -178,7 +178,7 @@ private:
  * Example usage (see also @ref ExampleUsageParameterTable):
  *
  * @code
- * InputDataManager lManager;
+ * OMSimInputData lManager;
  * lManager.searchFolders(); // Search for all recognized data files in the predefined directories
  * G4Material* lWater = manager.getMaterial("CustomWater"); // Retrieve a Geant4 material by name
  * G4OpticalSurface* lSurface = manager.getOpticalSurface("SomeSurfaceName"); // Retrieve an optical surface by name
@@ -190,21 +190,28 @@ private:
  *
  * @ingroup common
  */
-class InputDataManager : public ParameterTable
+class OMSimInputData : public ParameterTable
 {
 public:
-    InputDataManager(){};
-    ~InputDataManager(){};
+    static void init();
+    static void shutdown();
+    static OMSimInputData& getInstance();
     G4Material *getMaterial(G4String pName);
     G4OpticalSurface *getOpticalSurface(G4String pName);
     void searchFolders();
     std::map<G4String, G4OpticalSurface *> mOpticalSurfaceMap; ///< Map that links names with optical surfaces.
 
 private:
+    OMSimInputData() = default;
+    ~OMSimInputData() = default;
+    OMSimInputData(const OMSimInputData&) = delete;
+    OMSimInputData& operator=(const OMSimInputData&) = delete;
     void scannDataDirectory();
     void processFile(const std::string &filePath, const std::string &fileName);
     G4String mDataDirectory; ///< The current directory being scanned for data.
 };
+
+inline OMSimInputData* gOMSimInputData = nullptr;
 
 #endif
 //
