@@ -54,6 +54,7 @@ var NAVTREEINDEX0 =
 "_o_m_sim_g4_scintillation_8hh.html":[8,0,28],
 "_o_m_sim_g4_scintillation_8hh_source.html":[8,0,28],
 "_o_m_sim_hit_manager_8hh.html":[8,0,29],
+"_o_m_sim_hit_manager_8hh.html#ab954ada613a3ad8a65ee7785f7d68d3e":[8,0,29,1],
 "_o_m_sim_hit_manager_8hh_source.html":[8,0,29],
 "_o_m_sim_input_data_8hh.html":[8,0,30],
 "_o_m_sim_input_data_8hh_source.html":[8,0,30],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html#a843a3aa083a194e39a9a891b7af1b0a4":[9,0,0,0,9,13],
 "class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html#a88d0abd6a20e3922bf9b0d8857da45a9":[9,0,0,0,9,11],
 "class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html#a8b96675c49628775ab77c0e4d048f675":[9,0,0,0,9,18],
-"class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html#a937882fa2ae2b9f4e571ac89f8eb96ea":[9,0,0,0,9,15],
-"class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html#a97a79b1113b089a587f6dfd32e99525f":[9,0,0,0,9,14]
+"class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html#a937882fa2ae2b9f4e571ac89f8eb96ea":[9,0,0,0,9,15]
 };

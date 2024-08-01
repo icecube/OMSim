@@ -63,8 +63,15 @@ void {\bfseries merge\+Thread\+Data} ()
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{get\+Instance}} ()
-\begin{DoxyCompactList}\small\item\em Returns the singleton instance of the \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}\label{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}} 
+static void {\bfseries init} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}\label{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}} 
+static void {\bfseries shutdown} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}\label{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}} 
+static \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& {\bfseries get\+Instance} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -175,15 +182,6 @@ A vector containing the multiplicity data.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A vector containing the hit count for each PMT in the specified module. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}\label{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}} 
-\index{OMSimHitManager@{OMSimHitManager}!getInstance@{getInstance}}
-\index{getInstance@{getInstance}!OMSimHitManager@{OMSimHitManager}}
-\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& OMSim\+Hit\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-\begin{DoxyReturn}{Returns}
-A reference to the singleton instance. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}\label{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}} 
 \index{OMSimHitManager@{OMSimHitManager}!getMergedHitsOfModule@{getMergedHitsOfModule}}
