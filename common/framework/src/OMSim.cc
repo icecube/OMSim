@@ -146,6 +146,7 @@ int OMSim::determineNumberOfThreads()
 void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstruction)
 {
     configureLogger();
+    OMSimHitManager::init();
 
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
     ensureOutputDirectoryExists(lArgs.get<std::string>("output_file"));
@@ -261,10 +262,6 @@ bool OMSim::handleArguments(int pArgumentCount, char *pArgumentVector[])
 
 OMSim::~OMSim()
 {
-    log_trace("OMSim destructor");
-
-    log_trace("OMSim destructor started");
-    
     log_trace("Resetting mHistory");
     mHistory.reset();
     
@@ -276,12 +273,15 @@ OMSim::~OMSim()
     
     log_trace("Resetting mVisManager");
     mVisManager.reset();
+
     log_trace("Resetting mRunManager");
     mRunManager.reset();
 
-    log_trace("OMSim destructor finished");
-    
+    log_trace("Deleting OMSimHitManager");
+    OMSimHitManager::shutdown();
 
+
+    log_trace("OMSim destructor finished");
     std::chrono::high_resolution_clock::time_point lFinishtime = std::chrono::high_resolution_clock::now();
     const std::chrono::duration<double> lDiff = lFinishtime - mStartingTime;
     log_info("Computation time: {} {}", lDiff.count(), " seconds.");

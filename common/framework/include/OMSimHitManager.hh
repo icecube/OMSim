@@ -61,9 +61,9 @@ class OMSimHitManager
     OMSimHitManager &operator=(const OMSimHitManager &) = delete;
 
 public:
-
-
-    static OMSimHitManager& getInstance();
+    static void init();
+    static void shutdown();
+    static OMSimHitManager &getInstance();
 
     void appendHitInfo(
         G4double pGlobalTime,
@@ -87,7 +87,7 @@ public:
     void sortHitStatsByTime(HitStats &pHits);
     std::vector<int> calculateMultiplicity(const G4double pTimeWindow, int pModuleNumber = 0);
     G4int getNextDetectorIndex() { return ++mCurrentIndex; }
-    G4int getNumberOfModules() { return mCurrentIndex+1; }
+    G4int getNumberOfModules() { return mCurrentIndex + 1; }
     G4String getThreadIDStr();
 
     void mergeThreadData();
@@ -99,12 +99,15 @@ private:
     G4int mCurrentIndex;
 
     static G4Mutex mMutex;
-    static OMSimHitManager* mInstance;
+    static OMSimHitManager *mInstance;
 
-    struct ThreadLocalData {
+    struct ThreadLocalData
+    {
         std::map<G4int, HitStats> moduleHits;
     };
-    G4ThreadLocal static ThreadLocalData* mThreadData;
+    G4ThreadLocal static ThreadLocalData *mThreadData;
 };
+
+inline OMSimHitManager *gHitManager = nullptr;
 
 #endif

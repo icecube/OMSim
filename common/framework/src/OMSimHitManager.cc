@@ -14,24 +14,21 @@ OMSimHitManager::OMSimHitManager(): mCurrentIndex(-1)
 {
 };
 
+void OMSimHitManager::init()
+{
+	if (!gHitManager) gHitManager = new OMSimHitManager();
+}
 
-/**
- * @brief Returns the singleton instance of the OMSimHitManager.
- * @return A reference to the singleton instance.
- */
+void OMSimHitManager::shutdown()
+{
+	delete gHitManager;
+	gHitManager = nullptr;
+}
+
 OMSimHitManager &OMSimHitManager::getInstance()
 {
-
-	if (!mInstance)
-	{
-		G4AutoLock lock(&mMutex);
-		if (!mInstance)
-		{
-			mInstance = new OMSimHitManager();
-		}
-	}
-
-	return *mInstance;
+	assert(gHitManager);
+	return *gHitManager;
 }
 
 /**
