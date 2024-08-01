@@ -27,7 +27,6 @@ public:
     void ConstructSDandField() override;
     void registerSensitiveDetector(G4LogicalVolume* logVol, G4VSensitiveDetector* aSD);
     G4VPhysicalVolume *mWorldPhysical;
-    OMSimInputData* getDataManager() {return mData;};
 
 protected:
     G4VSolid *mWorldSolid;

@@ -24,7 +24,6 @@
 #include <G4VisExecutive.hh>
 #include <G4UIExecutive.hh>
 
-#include <filesystem>
 #include <boost/program_options.hpp>
 
 namespace po = boost::program_options;
@@ -47,12 +46,10 @@ public:
     OMSim();
     ~OMSim();
 
-    void ensureOutputDirectoryExists(const std::string &filepath);
     void initialiseSimulation(OMSimDetectorConstruction *pDetectorConstruction);
     void configureLogger();
     bool handleArguments(int pArgumentCount, char *pArgumentVector[]);
     void startVisualisationIfRequested();
-    // OMSimDetectorConstruction* getDetectorConstruction();
 
     G4Navigator *getNavigator() { return mNavigator.get(); };
     void extendOptions(po::options_description pNewOptions);

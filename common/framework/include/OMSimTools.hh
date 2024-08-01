@@ -20,6 +20,8 @@
  */
 namespace Tools
 {
+    void ensureDirectoryExists(const std::string &filepath);
+    G4String getThreadIDStr();
     std::vector<std::vector<double>> loadtxt(const std::string &pFilePath,
                                                     bool pUnpack = true,
                                                     size_t pSkipRows = 0,
@@ -27,7 +29,6 @@ namespace Tools
     std::vector<double> linspace(double start, double end, int num_points);
     std::vector<double> logspace(double start, double end, int num_points);
     void sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector);
-    G4String getThreadIDStr();
 };
 
 #endif

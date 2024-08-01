@@ -4,7 +4,7 @@
 #include <sstream>   
 #include <stdexcept>  
 #include <numeric>
-
+#include <filesystem>
 
 namespace Tools{
 
@@ -184,7 +184,9 @@ void sortVectorByReference(std::vector<G4double> &pReferenceVector, std::vector<
     pReferenceVector = std::move(lSortedReferenceVector);
 }
 
-
+/**
+ * @return Thread id which called method as string
+ */
 G4String getThreadIDStr()
 {
 	std::ostringstream oss;
@@ -193,5 +195,19 @@ G4String getThreadIDStr()
 	return threadIdStr;
 }
 
+
+/**
+ * @brief Ensure that the directory of a file to be created exists
+ * @param pFilePath The path of file.
+ */
+void ensureDirectoryExists(const std::string &pFilePath)
+{
+    std::filesystem::path full_path(pFilePath);
+    std::filesystem::path dir = full_path.parent_path();
+    if (!dir.empty() && !std::filesystem::exists(dir))
+    {
+        std::filesystem::create_directories(dir);
+    }
+}
 
 }

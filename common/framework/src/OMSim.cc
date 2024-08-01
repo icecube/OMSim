@@ -9,6 +9,7 @@
  */
 
 #include "OMSim.hh"
+#include "OMSimTools.hh"
 #include "OMSimLogger.hh"
 #include "OMSimActionInitialization.hh"
 #include <boost/program_options.hpp>
@@ -105,26 +106,7 @@ void OMSim::startVisualisationIfRequested()
         delete UIEx;
     }
 }
-/**
- * @brief Ensure that the output directory for the simulation results exists
- * @param pFilePath The path to the output directory.
- */
-void OMSim::ensureOutputDirectoryExists(const std::string &pFilePath)
-{
-    std::filesystem::path full_path(pFilePath);
-    std::filesystem::path dir = full_path.parent_path();
-    if (!dir.empty() && !std::filesystem::exists(dir))
-    {
-        std::filesystem::create_directories(dir);
-    }
-}
 
-/*
-OMSimDetectorConstruction* OMSim::getDetectorConstruction()
-{
-    return mDetector;
-}
-*/
 
 int OMSim::determineNumberOfThreads()
 {
@@ -150,7 +132,7 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstructio
     configureLogger();
     
     OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-    ensureOutputDirectoryExists(lArgs.get<std::string>("output_file"));
+    Tools::ensureDirectoryExists(lArgs.get<std::string>("output_file"));
 
     std::string lFileName = lArgs.get<std::string>("output_file") + "_args.json";
     if (lArgs.get<bool>("save_args"))
