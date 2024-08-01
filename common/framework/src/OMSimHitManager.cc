@@ -18,7 +18,7 @@ OMSimHitManager::OMSimHitManager(): mCurrentIndex(-1)
 /**
  * @brief Initializes the global instance of OMSimHitManager.
  * 
- * This is normally done in OMSim::initialiseSimulation.
+ * This method is normally called in OMSim::initialiseSimulation.
  */
 void OMSimHitManager::init()
 {
@@ -26,7 +26,9 @@ void OMSimHitManager::init()
 }
 
 /**
- * @brief Shuts down and deletes the global instance of OMSimHitManager.
+ * @brief Deletes the global instance of OMSimHitManager.
+ * 
+ * This method is normally called in the destructor ~OMSim.
  */
 void OMSimHitManager::shutdown()
 {
@@ -41,7 +43,8 @@ void OMSimHitManager::shutdown()
  */
 OMSimHitManager &OMSimHitManager::getInstance()
 {
-	assert(gHitManager);
+    if (!gHitManager)
+        throw std::runtime_error("OMSimHitManager accessed before initialization or after shutdown!");
 	return *gHitManager;
 }
 

@@ -117,6 +117,11 @@ G4bool ParameterTable::checkIfKeyInTable(G4String pKey)
  */
 
 
+/**
+ * @brief Initializes the global instance of OMSimInputData and calls OMSimInputData::searchFolders to load data
+ * 
+ * This method is normally called during construction of the base class OMSimDetectorConstruction.
+ */
 void OMSimInputData::init()
 {
     if (!gOMSimInputData){
@@ -126,6 +131,11 @@ void OMSimInputData::init()
         
 }
 
+/**
+ * @brief Deletes the global instance of OMSimInputData.
+ * 
+ * This method is normally called in the destructor ~OMSimDetectorConstruction.
+ */
 void OMSimInputData::shutdown()
 {
     delete gOMSimInputData;

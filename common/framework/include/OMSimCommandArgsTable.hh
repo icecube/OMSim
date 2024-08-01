@@ -58,12 +58,22 @@ public:
     using Key = std::string;
     using Value = boost::any; //  Using boost::any to hold any type
 
+    /**
+     * @brief Initializes the global instance of OMSimCommandArgsTable.
+     * 
+     * This method is normally called in the constructor of OMSim.
+     */
     static void init()
     {
         if (!gCommandArgsTable)
             gCommandArgsTable = new OMSimCommandArgsTable();
     }
 
+    /**
+     * @brief Deletes the global instance of OMSimCommandArgsTable.
+     * 
+     * This method is normally called in the destructor ~OMSim.
+     */
     static void shutdown()
     {
         delete gCommandArgsTable;
