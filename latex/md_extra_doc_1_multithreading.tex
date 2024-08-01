@@ -19,40 +19,58 @@ Key points\+:
 \item {\bfseries{Protect Shared Resources}}\+: Use mutex locks when accessing shared resources.
 \item {\bfseries{Minimize Global Variables}}\+: Prefer class members or local variables instead.
 \item {\bfseries{Implement Thread-\/\+Safe Containers}}\+: Ensure thread-\/safe access and modification of containers.
-\end{DoxyEnumerate}\hypertarget{md_extra_doc_1_multithreading_autotoc_md11}{}\doxysection{Thread-\/\+Safe Singleton Implementation}\label{md_extra_doc_1_multithreading_autotoc_md11}
-Both {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} and {\ttfamily \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}} utilize the singleton pattern with a thread-\/safe {\ttfamily get\+Instance} method. This method employs a double-\/checked locking pattern to ensure thread safety while minimizing synchronization overhead. The process works as follows\+:
+\end{DoxyEnumerate}\hypertarget{md_extra_doc_1_multithreading_autotoc_md11}{}\doxysection{Thread-\/\+Safe Global Instance Implementation}\label{md_extra_doc_1_multithreading_autotoc_md11}
+Both {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} and {\ttfamily \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}} utilize a global instance pattern. This approach provides better control over the lifecycle of the instance and can prevent potential memory leaks when integrated into larger frameworks. The process works as follows\+:
 
 
 \begin{DoxyEnumerate}
-\item Check if the instance exists without locking.
-\item If the instance doesn\textquotesingle{}t exist, acquire a lock.
-\item After acquiring the lock, check again if the instance exists (to handle potential creation by another thread during the lock wait). Without this check, multiple threads could pass the first check and reach the lock. Once inside the locked section, each thread would create a new instance if the second check wasn\textquotesingle{}t there, potentially leading to multiple instances.
-\item If the instance still doesn\textquotesingle{}t exist, create it.
+\item Initialize the global instance explicitly at the start of the program. This is means, before the multi-\/threading starts.
+\item Access the instance through a global pointer.
+\item Shut down and clean up the instance explicitly at the end of the program.
 \end{DoxyEnumerate}
 
-Implementation of the {\ttfamily get\+Instance} method\+:
+Implementation of the global instance pattern\+:
 
 
 \begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{// In the header file}}
+\DoxyCodeLine{\textcolor{keyword}{class }\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    \textcolor{keywordflow}{if} (!mInstance)  \textcolor{comment}{// First check without locking}}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{        G4AutoLock lock(\&mMutex);  \textcolor{comment}{// Lock if instance doesn't exist}}
-\DoxyCodeLine{        \textcolor{keywordflow}{if} (!mInstance)  \textcolor{comment}{// Double-\/check after locking}}
-\DoxyCodeLine{        \{}
-\DoxyCodeLine{            mInstance = \textcolor{keyword}{new} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}();  \textcolor{comment}{// Create instance if it still doesn't exist}}
-\DoxyCodeLine{        \}}
-\DoxyCodeLine{    \}}
-\DoxyCodeLine{    \textcolor{keywordflow}{return} *mInstance;}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{    \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}{init}}();}
+\DoxyCodeLine{    \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}{shutdown}}();}
+\DoxyCodeLine{    \textcolor{keyword}{static} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\& \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{getInstance}}();}
+\DoxyCodeLine{    \textcolor{comment}{// ... other methods ...}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:}
+\DoxyCodeLine{    \textcolor{comment}{// ... other members ...}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{inline} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}* gHitManager = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// In the source file}}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}{OMSimHitManager::init}}()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (!gHitManager) gHitManager = \textcolor{keyword}{new} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}{OMSimHitManager::shutdown}}()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{keyword}{delete} gHitManager;}
+\DoxyCodeLine{    gHitManager = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\& \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    assert(gHitManager);}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} *gHitManager;}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
 
 
-This approach guarantees the creation of only one instance, even in a multi-\/threaded environment, while ensuring thread-\/safe initialization. The use of {\ttfamily G4\+Auto\+Lock} and a static mutex provides proper synchronization across threads.
-
 \begin{quote}
-{\bfseries{Note}}\+: While this singleton implementation is thread-\/safe, consider whether a singleton is the best design choice for your specific use case. Singletons can sometimes lead to issues with testability and create hidden dependencies. \end{quote}
+{\bfseries{Note}}\+: While this global instance implementation provides better control over the instance lifecycle, it requires explicit initialization and shutdown. Ensure these are called at appropriate times (single-\/thread) in your application (for example in main before/after run). \end{quote}
 \hypertarget{md_extra_doc_1_multithreading_autotoc_md12}{}\doxysubsection{Example\+: OMSim\+Hit\+Manager}\label{md_extra_doc_1_multithreading_autotoc_md12}
 The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} class demonstrates several thread-\/safety techniques\+:
 
@@ -61,14 +79,12 @@ The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}
 \DoxyCodeLine{\textcolor{keyword}{class }\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\textcolor{keyword}{public}:}
-\DoxyCodeLine{    \textcolor{keyword}{static} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\& \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{getInstance}}();}
 \DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_hit_manager_a8c2dab4767b46f9c2eb16d5173ba527e}{appendHitInfo}}(\textcolor{comment}{/* parameters */});}
 \DoxyCodeLine{    \textcolor{keywordtype}{void} mergeThreadData();}
 \DoxyCodeLine{    \textcolor{comment}{// ... other methods ...}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{private}:}
 \DoxyCodeLine{    \textcolor{keyword}{static} G4Mutex mMutex;  \textcolor{comment}{// Mutex for thread synchronization}}
-\DoxyCodeLine{    \textcolor{keyword}{static} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}* mInstance;  \textcolor{comment}{// Singleton instance}}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{struct }ThreadLocalData \{}
 \DoxyCodeLine{        std::map<G4int, HitStats> moduleHits;}
@@ -76,7 +92,7 @@ The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}
 \DoxyCodeLine{    \textcolor{comment}{// Thread-\/local storage for hit data}}
 \DoxyCodeLine{    G4ThreadLocal \textcolor{keyword}{static} ThreadLocalData* mThreadData;}
 \DoxyCodeLine{}
-\DoxyCodeLine{    \textcolor{comment}{// ... constructor and destructor ...}}
+\DoxyCodeLine{    \textcolor{comment}{// ... }}
 \DoxyCodeLine{\};}
 
 \end{DoxyCode}
@@ -84,7 +100,6 @@ The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}
 
 Key features\+:
 \begin{DoxyItemize}
-\item Singleton pattern for global access (consider if necessary for your use case).
 \item Thread-\/local storage for hit data ({\ttfamily m\+Thread\+Data}).
 \item Mutex for thread synchronization.
 \end{DoxyItemize}

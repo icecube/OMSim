@@ -49,7 +49,7 @@ var NAVTREE =
     [ "Multi-threading mode", "md_extra_doc_1_multithreading.html", [
       [ "Introduction", "md_extra_doc_1_multithreading.html#autotoc_md9", null ],
       [ "Thread Safety Guidelines", "md_extra_doc_1_multithreading.html#autotoc_md10", null ],
-      [ "Thread-Safe Singleton Implementation", "md_extra_doc_1_multithreading.html#autotoc_md11", [
+      [ "Thread-Safe Global Instance Implementation", "md_extra_doc_1_multithreading.html#autotoc_md11", [
         [ "Example: OMSimHitManager", "md_extra_doc_1_multithreading.html#autotoc_md12", null ],
         [ "Example: Saving Data Per Thread", "md_extra_doc_1_multithreading.html#autotoc_md13", null ]
       ] ],
