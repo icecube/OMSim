@@ -172,21 +172,17 @@ private:
  * Extends the functionalities provided by the `ParameterTable` class.
  * It's dedicated to the specific needs of managing input data related to materials and optical properties.
  *
- * You should have a single instance of this class.
- * Normally it is loaded in the main DetectorConstruction and passed to the other construction classes.
- *
- * Example usage (see also @ref ExampleUsageParameterTable):
+ * This class follows a global instance pattern and its lifecycle is managed by OMSimDetectorConstruction. It can be accessed by other classes using OMSimInputData::getInstance().
+ * For example:
  *
  * @code
- * OMSimInputData lManager;
- * lManager.searchFolders(); // Search for all recognized data files in the predefined directories
- * G4Material* lWater = manager.getMaterial("CustomWater"); // Retrieve a Geant4 material by name
- * G4OpticalSurface* lSurface = manager.getOpticalSurface("SomeSurfaceName"); // Retrieve an optical surface by name
- *
- * auto lData = manager.loadtxt("path/to/data.txt"); // Load data from a text file into a 2D vector
+ * G4Material* lWater = OMSimInputData::getInstance().getMaterial("CustomWater"); // Retrieve a Geant4 material by name
+ * G4OpticalSurface* lSurface = OMSimInputData::getInstance().getOpticalSurface("SomeSurfaceName"); // Retrieve an optical surface by name
  * @endcode
  *
- * This class assumes certain conventions in naming and structuring the input files, which aids in automatically identifying and processing them. For example, files with names starting with "RiAbs" are treated as describing refractive and absorption properties.
+ * (see also @ref ExampleUsageParameterTable)
+ * This class assumes certain conventions in naming and structuring the input files, which aids in automatically identifying and processing them. 
+ * For example, files with names starting with "RiAbs" are treated as describing refractive and absorption properties.
  *
  * @ingroup common
  */
