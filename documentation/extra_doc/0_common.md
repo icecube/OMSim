@@ -30,7 +30,7 @@ std::vector<G4double> lFirstColumn = lData.at(0);
 std::vector<G4double> lSecondColumn = lData.at(1);
 
 std::vector<double> lWavelengths = Tools::linspace(275, 750, 96);
-std::vector<double> lAbsLengths = Tools::logspace(1e-9, 1e-4, 20);
+std::vector<double> lAbsLengths = Tools::logspace(-9, -4, 20);
 
 // ...
 ```

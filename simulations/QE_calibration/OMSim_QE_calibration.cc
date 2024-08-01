@@ -39,7 +39,7 @@ void runQEbeamSimulationVaryingAbsorptionLength()
 		lAnalysisManager.writeHeader("Wavelength", "Abs. length");
 
 	std::vector<double> lWavelengths = Tools::linspace(275, 750, 96);
-	std::vector<double> lAbsLengths = Tools::logspace(1e-9, 1e-4, 20);
+	std::vector<double> lAbsLengths = Tools::logspace(-9, -4, 20);
 
 	for (const auto &wavelength : lWavelengths)
 	{
