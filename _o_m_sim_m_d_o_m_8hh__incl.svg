@@ -110,7 +110,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="_o_m_sim_input_data_8hh.html" target="_top" xlink:title="Definition of ParameterTable and InputDataManager.">
+<g id="a_node4"><a xlink:href="_o_m_sim_input_data_8hh.html" target="_top" xlink:title="Definition of ParameterTable and OMSimInputData.">
 <polygon fill="none" stroke="black" points="527,-134.5 527,-153.5 642,-153.5 642,-134.5 527,-134.5"/>
 <text text-anchor="middle" x="584.5" y="-141.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimInputData.hh</text>
 </a>

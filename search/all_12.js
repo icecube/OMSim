@@ -2,10 +2,10 @@ var searchData=
 [
   ['sampleenergy_305',['sampleEnergy',['../class_o_m_sim_s_n_tools.html#a48caade81da87bfc2a0ac9da94b57110',1,'OMSimSNTools']]],
   ['samplefromdistribution_306',['sampleFromDistribution',['../class_distribution_sampler.html#aa3a2ca8ec78298b7c58b3f2af0e549ce',1,'DistributionSampler']]],
-  ['scanndatadirectory_307',['scannDataDirectory',['../class_input_data_manager.html#ac65312ce694a331615ba2d16bdddc78e',1,'InputDataManager']]],
+  ['scanndatadirectory_307',['scannDataDirectory',['../class_o_m_sim_input_data.html#ae6e28e3df96ad7ca980aec5d3b1f8ce6',1,'OMSimInputData']]],
   ['scintillationproperties_308',['ScintillationProperties',['../class_scintillation_properties.html',1,'']]],
   ['sdinfo_309',['SDInfo',['../struct_o_m_sim_detector_construction_1_1_s_d_info.html',1,'OMSimDetectorConstruction']]],
-  ['searchfolders_310',['searchFolders',['../class_input_data_manager.html#a7376d0446251d09973d90fb370a9373d',1,'InputDataManager']]],
+  ['searchfolders_310',['searchFolders',['../class_o_m_sim_input_data.html#a84781faca6d03b8f9f13777c85a1c9dc',1,'OMSimInputData']]],
   ['selectpmt_311',['selectPMT',['../class_o_m_sim_p_m_t_construction.html#a1a8373e9ae3095062edb477245133a9e',1,'OMSimPMTConstruction']]],
   ['setcuts_312',['SetCuts',['../class_o_m_sim_physics_list.html#a21a650f31fd33e281cdb144f755875e4',1,'OMSimPhysicsList']]],
   ['setdata_313',['setData',['../class_distribution_sampler.html#a62407876667af623ba546ef60b9fca3a',1,'DistributionSampler']]],

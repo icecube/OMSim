@@ -1,6 +1,6 @@
 var classm_d_o_m_flasher =
 [
-    [ "mDOMFlasher", "classm_d_o_m_flasher.html#af57c5f01f7137b62d33154d20ca1348f", null ],
+    [ "mDOMFlasher", "classm_d_o_m_flasher.html#a72046d9cb91445e64f63be33bae6f914", null ],
     [ "configureGPS", "classm_d_o_m_flasher.html#a364e96471e231b5b7838cc8df92529fc", null ],
     [ "construction", "classm_d_o_m_flasher.html#aac8c466bbcc6d952ad82fbd29daa675f", null ],
     [ "getFlasherPositionInfo", "classm_d_o_m_flasher.html#aa74e2bfee6f21cb652e7dd9929e8e688", null ],

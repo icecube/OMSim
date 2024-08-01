@@ -125,10 +125,10 @@ $(document).ready(function(){initNavTree('class_o_m_sim_command_args_table.html'
 </div><!--header-->
 <div class="contents">
 
-<p>A singleton class used to hold <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> command arguments.  
+<p>A class used to hold <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> command arguments with global instance access.  
  <a href="class_o_m_sim_command_args_table.html#details">More...</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class uses a map to hold key-value pairs of simulation command arguments. In principle it is just a wrapper around the map created by the boost library to avoid users changing the arg values after initialisation. Provides a method to write the parameters to a JSON file. </p>
+<div class="textblock"><p>This class uses a map to hold key-value pairs of simulation command arguments. It provides a method to write the parameters to a JSON file. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -161,8 +161,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a026ab40121c89f344e60dc9103157e22"><td class="memItemLeft" align="right" valign="top"><a id="a026ab40121c89f344e60dc9103157e22"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+<tr class="separator:a026ab40121c89f344e60dc9103157e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab258da8c6a509441e0b599bb9a59e414"><td class="memItemLeft" align="right" valign="top"><a id="ab258da8c6a509441e0b599bb9a59e414"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> ()</td></tr>
+<tr class="separator:ab258da8c6a509441e0b599bb9a59e414"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a6179839e4ed5f503e52fca917c84c2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">getInstance</a> ()</td></tr>
-<tr class="memdesc:a2a6179839e4ed5f503e52fca917c84c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the instance of the singleton.  <a href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">More...</a><br /></td></tr>
 <tr class="separator:a2a6179839e4ed5f503e52fca917c84c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
@@ -247,7 +252,13 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The instance of <a class="el" href="class_o_m_sim_command_args_table.html" title="A singleton class used to hold OMSim command arguments.">OMSimCommandArgsTable</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the <a class="el" href="class_o_m_sim_command_args_table.html" title="A class used to hold OMSim command arguments with global instance access.">OMSimCommandArgsTable</a> instance. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if accessed before initialization or after shutdown. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -347,7 +358,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a></li>
-    <li class="footer">Generated on Thu Aug 1 2024 08:09:37 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 1 2024 09:16:23 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

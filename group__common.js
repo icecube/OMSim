@@ -51,9 +51,11 @@ var group__common =
       [ "finalize", "class_o_m_sim_command_args_table.html#acd0700b601ac3b3279657ad1bc1363e8", null ],
       [ "get", "class_o_m_sim_command_args_table.html#a98ca3b003cebba64f357e342d16ea968", null ],
       [ "getInstance", "class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2", null ],
+      [ "init", "class_o_m_sim_command_args_table.html#a026ab40121c89f344e60dc9103157e22", null ],
       [ "keyExists", "class_o_m_sim_command_args_table.html#a9d2d11a0b82744dd4d56a099e9d7286d", null ],
       [ "operator=", "class_o_m_sim_command_args_table.html#a99ffce1b38ff88b262c0cc38aa2dd288", null ],
       [ "setParameter", "class_o_m_sim_command_args_table.html#a27e163c6835956c98a52689bb7cf2cc6", null ],
+      [ "shutdown", "class_o_m_sim_command_args_table.html#ab258da8c6a509441e0b599bb9a59e414", null ],
       [ "writeToJson", "class_o_m_sim_command_args_table.html#a4f90935ea49fb19c1ae77b826dbdb410", null ],
       [ "mFinalized", "class_o_m_sim_command_args_table.html#a40786683b20f76ce73bde3a5f7b529c1", null ],
       [ "mParameters", "class_o_m_sim_command_args_table.html#ac242e3ba27d82d44ba2937770ffa3761", null ]
@@ -189,16 +191,21 @@ var group__common =
       [ "mKeyFileOrigin", "class_parameter_table.html#aedee4e855aba079f6d22432f8b41e134", null ],
       [ "mTable", "class_parameter_table.html#a749bc840cf2aea18fb5b63da8b68c23c", null ]
     ] ],
-    [ "InputDataManager", "class_input_data_manager.html", [
-      [ "InputDataManager", "class_input_data_manager.html#a425e28ed0c8675fc0deb04779171a9d6", null ],
-      [ "~InputDataManager", "class_input_data_manager.html#ae67f19e11a39c0bcacf7847133a72837", null ],
-      [ "getMaterial", "class_input_data_manager.html#a970eddaab6756e6288504390454a38f4", null ],
-      [ "getOpticalSurface", "class_input_data_manager.html#ae6ae987535a442a42ad47d53394ade56", null ],
-      [ "processFile", "class_input_data_manager.html#aaa51bcbd29214afb735bb7657bee05de", null ],
-      [ "scannDataDirectory", "class_input_data_manager.html#ac65312ce694a331615ba2d16bdddc78e", null ],
-      [ "searchFolders", "class_input_data_manager.html#a7376d0446251d09973d90fb370a9373d", null ],
-      [ "mDataDirectory", "class_input_data_manager.html#ae31826093d7c8092d0251ca296e6065e", null ],
-      [ "mOpticalSurfaceMap", "class_input_data_manager.html#a48e36f6062300c12d0787b1005c0d7ec", null ]
+    [ "OMSimInputData", "class_o_m_sim_input_data.html", [
+      [ "OMSimInputData", "class_o_m_sim_input_data.html#ab6c8d9586fc3f3230298dfa19f892415", null ],
+      [ "~OMSimInputData", "class_o_m_sim_input_data.html#ac3b07c03ac42364b340135898dab1f93", null ],
+      [ "OMSimInputData", "class_o_m_sim_input_data.html#a2fe2c68872dc59b3a8fe9e961a28ec94", null ],
+      [ "getInstance", "class_o_m_sim_input_data.html#a810d7ae3b652d05e7b85eb568873eed2", null ],
+      [ "getMaterial", "class_o_m_sim_input_data.html#a12e64f3ec83f33c173da0cd5954dd5b2", null ],
+      [ "getOpticalSurface", "class_o_m_sim_input_data.html#aca56b05e268bbb47761dbcc8e487c283", null ],
+      [ "init", "class_o_m_sim_input_data.html#ae785a4cec814dcf95b2a4c0c0f2119db", null ],
+      [ "operator=", "class_o_m_sim_input_data.html#aaa697f53e9f26f530c9f463c1c7af9db", null ],
+      [ "processFile", "class_o_m_sim_input_data.html#a85c2bfa74bb3ac64f0e5f628d81bf4be", null ],
+      [ "scannDataDirectory", "class_o_m_sim_input_data.html#ae6e28e3df96ad7ca980aec5d3b1f8ce6", null ],
+      [ "searchFolders", "class_o_m_sim_input_data.html#a84781faca6d03b8f9f13777c85a1c9dc", null ],
+      [ "shutdown", "class_o_m_sim_input_data.html#a9ba12328d251141daeb086ae37f95f98", null ],
+      [ "mDataDirectory", "class_o_m_sim_input_data.html#a9b0073c725ef7569e354242545a2912e", null ],
+      [ "mOpticalSurfaceMap", "class_o_m_sim_input_data.html#addde153519e7a6884a9583614d6c5f49", null ]
     ] ],
     [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html", [
       [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html#a71034bda00b1648e8368f78431c4e0e9", null ],
@@ -221,7 +228,7 @@ var group__common =
         [ "VLogical", "structabc_detector_component_1_1_component.html#a22a626006281f88b43853c57b104a20f", null ],
         [ "VSolid", "structabc_detector_component_1_1_component.html#af39293b9b096379b48b083c80b3e2587", null ]
       ] ],
-      [ "abcDetectorComponent", "classabc_detector_component.html#a1456e88942caeab1e8895c64d9df3613", null ],
+      [ "abcDetectorComponent", "classabc_detector_component.html#a49a4c0e7138f1c0ed90736f80dc41377", null ],
       [ "appendComponent", "classabc_detector_component.html#a467235840a313b6481569ae9ea9d2673", null ],
       [ "checkIfExists", "classabc_detector_component.html#a3d796bd0c3a6e22e8bbd11765b98d2e8", null ],
       [ "construction", "classabc_detector_component.html#a8e7f01c218d5f093e80e46b33a0672bf", null ],
@@ -243,7 +250,7 @@ var group__common =
       [ "mBoardVis", "classabc_detector_component.html#ac7a9c9a60d06356614e2756447d02ed6", null ],
       [ "mCheckOverlaps", "classabc_detector_component.html#a1c7b2be94d93696561d0302c3edb74ca", null ],
       [ "mComponents", "classabc_detector_component.html#aa830916e7f5f8ae31eb31e3c37c9841e", null ],
-      [ "mData", "classabc_detector_component.html#af50c1e99e08ed19b5c9dcf5c7af3074f", null ],
+      [ "mData", "classabc_detector_component.html#aaba7a5849794363a99313fd9765860b5", null ],
       [ "mGelVis", "classabc_detector_component.html#a926b2004c884fe3405f6cc53be98a6e4", null ],
       [ "mGlassVis", "classabc_detector_component.html#ac1148f128706991ad6c1aac7a3c1fda2", null ],
       [ "mInvisibleVis", "classabc_detector_component.html#afe7ebded0a06d419ced9ba97ba344c44", null ],
@@ -258,7 +265,7 @@ var group__common =
       [ "mWhite", "classabc_detector_component.html#ad57a37961439b26587d55ba4e3c6603b", null ]
     ] ],
     [ "DEGG", "class_d_e_g_g.html", [
-      [ "DEGG", "class_d_e_g_g.html#a93dc17fd3d8523e54ad70a42925ff4f1", null ],
+      [ "DEGG", "class_d_e_g_g.html#a2bcfb59a4bfa47e91a5ad00745fd5989", null ],
       [ "~DEGG", "class_d_e_g_g.html#a943f7bfe01d8646165b4873c7b57a388", null ],
       [ "appendInternalComponentsFromCAD", "class_d_e_g_g.html#ab670e114ce175ce302631a49d8518236", null ],
       [ "appendPMTs", "class_d_e_g_g.html#a98d1b6beb474e30f11f1668c15f26954", null ],
@@ -271,7 +278,7 @@ var group__common =
       [ "mHarness", "class_d_e_g_g.html#a1a210a334a32f74c9ce28ff11fc05fb4", null ]
     ] ],
     [ "mDOMFlasher", "classm_d_o_m_flasher.html", [
-      [ "mDOMFlasher", "classm_d_o_m_flasher.html#af57c5f01f7137b62d33154d20ca1348f", null ],
+      [ "mDOMFlasher", "classm_d_o_m_flasher.html#a72046d9cb91445e64f63be33bae6f914", null ],
       [ "configureGPS", "classm_d_o_m_flasher.html#a364e96471e231b5b7838cc8df92529fc", null ],
       [ "construction", "classm_d_o_m_flasher.html#aac8c466bbcc6d952ad82fbd29daa675f", null ],
       [ "getFlasherPositionInfo", "classm_d_o_m_flasher.html#aa74e2bfee6f21cb652e7dd9929e8e688", null ],
@@ -291,7 +298,7 @@ var group__common =
       [ "mProfileY", "classm_d_o_m_flasher.html#a46a5e36504e75195e7035a231d150cd9", null ]
     ] ],
     [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html", [
-      [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html#a2068762f5d85b911253ee6adb26c79f5", null ],
+      [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html#a7626f60e761d321d1d5af4b8ba174b12", null ],
       [ "~OMSimOpticalModule", "class_o_m_sim_optical_module.html#a40298d3f38fec537945c6af1ae5a172e", null ],
       [ "configureSensitiveVolume", "class_o_m_sim_optical_module.html#a846d980c07324a88cfc0153ed1d6ca84", null ],
       [ "getName", "class_o_m_sim_optical_module.html#a039a483d855aa87a6baa94800d8280f5", null ],
@@ -302,7 +309,7 @@ var group__common =
       [ "mPMTManager", "class_o_m_sim_optical_module.html#a4cfb660337a6a32c7ddd3df6ce761919", null ]
     ] ],
     [ "pDOM", "classp_d_o_m.html", [
-      [ "pDOM", "classp_d_o_m.html#a8702e858160254f80acfbf15b38053c3", null ],
+      [ "pDOM", "classp_d_o_m.html#a1f83025dc8d3c35a774cc2c75b8a525f", null ],
       [ "~pDOM", "classp_d_o_m.html#aff85691171a4d8a8a1ad30ba1721b8c1", null ],
       [ "construction", "classp_d_o_m.html#a6fc9511f8287a69ef498167162a92ec4", null ],
       [ "getName", "classp_d_o_m.html#aa9814a5b6f153228ce5f5622f7944a3a", null ],

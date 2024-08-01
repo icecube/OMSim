@@ -1,6 +1,6 @@
 var class_l_o_m16 =
 [
-    [ "LOM16", "class_l_o_m16.html#a1f077aaff6dce0e39c9518e202b62df0", null ],
+    [ "LOM16", "class_l_o_m16.html#ac675e8f354491e6ff46d798dd0f1ed14", null ],
     [ "~LOM16", "class_l_o_m16.html#a93c141790620554394cdf9864096d011", null ],
     [ "appendEquatorBand", "class_l_o_m16.html#a95892bef682cd9694232bf0ef1faae6c", null ],
     [ "construction", "class_l_o_m16.html#ab837d810e22d601fc1a298ba0dfddd48", null ],

@@ -8,7 +8,7 @@ var searchData=
   ['placegelpads_607',['placeGelpads',['../class_l_o_m18.html#a1275540bdcd8b359b7332690e7c8da4b',1,'LOM18']]],
   ['placeit_608',['placeIt',['../classabc_detector_component.html#a2915a5d0b8278207ff5dd53eac9c4b9a',1,'abcDetectorComponent::placeIt()'],['../class_o_m_sim_p_m_t_construction.html#a4960a7f095c1948985bf48bc3c0ae6f9',1,'OMSimPMTConstruction::placeIt(G4Transform3D pTrans, G4LogicalVolume *&amp;pMother, G4String pNameExtension=&quot;&quot;)'],['../class_o_m_sim_p_m_t_construction.html#a1f7915c14fc9eee203f861e59f26f333',1,'OMSimPMTConstruction::placeIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume *&amp;pMother, G4String pNameExtension=&quot;&quot;)'],['../classabc_detector_component.html#a8fb7a3e2c2e647c445447a56ef5955d1',1,'abcDetectorComponent::placeIt()']]],
   ['placepmts_609',['placePMTs',['../class_l_o_m18.html#a2d136add4da3246223c611155412321a',1,'LOM18']]],
-  ['processfile_610',['processFile',['../class_input_data_manager.html#aaa51bcbd29214afb735bb7657bee05de',1,'InputDataManager']]],
+  ['processfile_610',['processFile',['../class_o_m_sim_input_data.html#a85c2bfa74bb3ac64f0e5f628d81bf4be',1,'OMSimInputData']]],
   ['processhits_611',['ProcessHits',['../class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4',1,'OMSimSensitiveDetector']]],
   ['processphotocathodehit_612',['processPhotocathodeHit',['../class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08',1,'OMSimPMTResponse::processPhotocathodeHit()'],['../class_no_response.html#aa904db4023917812120742e949d1fd88',1,'NoResponse::processPhotocathodeHit()']]]
 ];

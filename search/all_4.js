@@ -3,7 +3,7 @@ var searchData=
   ['decay_5fposition_53',['decay_position',['../struct_decay_stats.html#ac359be5448828a37fed75a9de0537cdd',1,'DecayStats']]],
   ['decay_5ftime_54',['decay_time',['../struct_decay_stats.html#a0d8b961cbbf2f5944a703593356736c8',1,'DecayStats']]],
   ['decaystats_55',['DecayStats',['../struct_decay_stats.html',1,'']]],
-  ['degg_56',['DEGG',['../class_d_e_g_g.html',1,'DEGG'],['../class_d_e_g_g.html#a93dc17fd3d8523e54ad70a42925ff4f1',1,'DEGG::DEGG()']]],
+  ['degg_56',['DEGG',['../class_d_e_g_g.html',1,'DEGG'],['../class_d_e_g_g.html#a2bcfb59a4bfa47e91a5ad00745fd5989',1,'DEGG::DEGG()']]],
   ['deggharness_57',['DEggHarness',['../class_d_egg_harness.html',1,'']]],
   ['deggpmtresponse_58',['DEGGPMTResponse',['../class_d_e_g_g_p_m_t_response.html',1,'']]],
   ['deletecomponent_59',['deleteComponent',['../classabc_detector_component.html#aba216e0e619ddc3810ab66700e05a04c',1,'abcDetectorComponent']]],

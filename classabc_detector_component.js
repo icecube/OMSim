@@ -1,7 +1,7 @@
 var classabc_detector_component =
 [
     [ "Component", "structabc_detector_component_1_1_component.html", "structabc_detector_component_1_1_component" ],
-    [ "abcDetectorComponent", "classabc_detector_component.html#a1456e88942caeab1e8895c64d9df3613", null ],
+    [ "abcDetectorComponent", "classabc_detector_component.html#a49a4c0e7138f1c0ed90736f80dc41377", null ],
     [ "appendComponent", "classabc_detector_component.html#a467235840a313b6481569ae9ea9d2673", null ],
     [ "checkIfExists", "classabc_detector_component.html#a3d796bd0c3a6e22e8bbd11765b98d2e8", null ],
     [ "construction", "classabc_detector_component.html#a8e7f01c218d5f093e80e46b33a0672bf", null ],
@@ -23,7 +23,7 @@ var classabc_detector_component =
     [ "mBoardVis", "classabc_detector_component.html#ac7a9c9a60d06356614e2756447d02ed6", null ],
     [ "mCheckOverlaps", "classabc_detector_component.html#a1c7b2be94d93696561d0302c3edb74ca", null ],
     [ "mComponents", "classabc_detector_component.html#aa830916e7f5f8ae31eb31e3c37c9841e", null ],
-    [ "mData", "classabc_detector_component.html#af50c1e99e08ed19b5c9dcf5c7af3074f", null ],
+    [ "mData", "classabc_detector_component.html#aaba7a5849794363a99313fd9765860b5", null ],
     [ "mGelVis", "classabc_detector_component.html#a926b2004c884fe3405f6cc53be98a6e4", null ],
     [ "mGlassVis", "classabc_detector_component.html#ac1148f128706991ad6c1aac7a3c1fda2", null ],
     [ "mInvisibleVis", "classabc_detector_component.html#afe7ebded0a06d419ced9ba97ba344c44", null ],

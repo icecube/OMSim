@@ -50,17 +50,17 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="class_input_data_manager.html" target="_top" xlink:title="Manages the input data, including parsing and storing material properties.">
-<polygon fill="none" stroke="black" points="157,-38.5 157,-57.5 264,-57.5 264,-38.5 157,-38.5"/>
-<text text-anchor="middle" x="210.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">InputDataManager</text>
+<g id="a_node4"><a xlink:href="class_o_m_sim_input_data.html" target="_top" xlink:title="Manages the input data, including parsing and storing material properties.">
+<polygon fill="none" stroke="black" points="160.5,-38.5 160.5,-57.5 260.5,-57.5 260.5,-38.5 160.5,-38.5"/>
+<text text-anchor="middle" x="210.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimInputData</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node2 -->
 <g id="edge3" class="edge">
 <title>Node4&#45;&gt;Node2</title>
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M274.14,-58.35C308.32,-64 350.35,-70.94 383.74,-76.46"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="274.7,-54.89 264.27,-56.72 273.56,-61.8 274.7,-54.89"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M270.6,-57.76C305.47,-63.53 349.4,-70.78 383.99,-76.5"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="271,-54.28 260.56,-56.11 269.85,-61.19 271,-54.28"/>
 <text text-anchor="middle" x="328.5" y="-72" font-family="Helvetica,sans-Serif" font-size="10.00"> mData</text>
 </g>
 <!-- Node7 -->
@@ -75,8 +75,8 @@
 <!-- Node4&#45;&gt;Node7 -->
 <g id="edge7" class="edge">
 <title>Node4&#45;&gt;Node7</title>
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M274.33,-40.73C286.17,-39.62 298.45,-38.63 310,-38 331.54,-36.83 355.1,-36.38 376.25,-36.29"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="273.69,-37.28 264.08,-41.74 274.38,-44.25 273.69,-37.28"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M270.72,-41.08C283.65,-39.82 297.27,-38.69 310,-38 331.54,-36.83 355.1,-36.38 376.25,-36.29"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="270.13,-37.62 260.53,-42.11 270.83,-44.59 270.13,-37.62"/>
 <text text-anchor="middle" x="328.5" y="-41" font-family="Helvetica,sans-Serif" font-size="10.00"> mData</text>
 </g>
 <!-- Node5 -->
@@ -91,7 +91,7 @@
 <!-- Node5&#45;&gt;Node4 -->
 <g id="edge4" class="edge">
 <title>Node5&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M102.38,-48C119.95,-48 139.33,-48 156.72,-48"/>
+<path fill="none" stroke="midnightblue" d="M102.49,-48C121.32,-48 142.21,-48 160.49,-48"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="102.27,-44.5 92.27,-48 102.27,-51.5 102.27,-44.5"/>
 </g>
 <!-- Node6 -->

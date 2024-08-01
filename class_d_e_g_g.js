@@ -1,6 +1,6 @@
 var class_d_e_g_g =
 [
-    [ "DEGG", "class_d_e_g_g.html#a93dc17fd3d8523e54ad70a42925ff4f1", null ],
+    [ "DEGG", "class_d_e_g_g.html#a2bcfb59a4bfa47e91a5ad00745fd5989", null ],
     [ "~DEGG", "class_d_e_g_g.html#a943f7bfe01d8646165b4873c7b57a388", null ],
     [ "appendInternalComponentsFromCAD", "class_d_e_g_g.html#ab670e114ce175ce302631a49d8518236", null ],
     [ "appendPMTs", "class_d_e_g_g.html#a98d1b6beb474e30f11f1668c15f26954", null ],

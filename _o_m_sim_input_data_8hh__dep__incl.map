@@ -1,5 +1,5 @@
 <map id="OMSimInputData.hh" name="OMSimInputData.hh">
-<area shape="rect" id="node1" title="Definition of ParameterTable and InputDataManager." alt="" coords="481,5,635,32"/>
+<area shape="rect" id="node1" title="Definition of ParameterTable and OMSimInputData." alt="" coords="481,5,635,32"/>
 <area shape="rect" id="node2" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="460,80,656,107"/>
 <area shape="rect" id="node3" href="$_o_m_sim_d_e_g_g_harness_8hh.html" title="Construction of the DEGG harness." alt="" coords="124,155,304,181"/>
 <area shape="rect" id="node4" href="$_o_m_sim_m_d_o_m_flasher_8hh.html" title="Defines the mDOMFlasher class for simulating the 10 flashers in an mDOM optical module." alt="" coords="25,229,205,256"/>

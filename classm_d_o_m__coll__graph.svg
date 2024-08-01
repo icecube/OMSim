@@ -102,9 +102,9 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="class_input_data_manager.html" target="_top" xlink:title="Manages the input data, including parsing and storing material properties.">
-<polygon fill="none" stroke="black" points="118.5,-324.5 118.5,-343.5 225.5,-343.5 225.5,-324.5 118.5,-324.5"/>
-<text text-anchor="middle" x="172" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00">InputDataManager</text>
+<g id="a_node4"><a xlink:href="class_o_m_sim_input_data.html" target="_top" xlink:title="Manages the input data, including parsing and storing material properties.">
+<polygon fill="none" stroke="black" points="122,-324.5 122,-343.5 222,-343.5 222,-324.5 122,-324.5"/>
+<text text-anchor="middle" x="172" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimInputData</text>
 </a>
 </g>
 </g>

@@ -1,6 +1,6 @@
 var class_o_m_sim_p_m_t_construction =
 [
-    [ "OMSimPMTConstruction", "class_o_m_sim_p_m_t_construction.html#a272ed7058afad0b7d7f848c0881b8187", null ],
+    [ "OMSimPMTConstruction", "class_o_m_sim_p_m_t_construction.html#aa91d8b25d7a89c1b7ee973d6506a17b5", null ],
     [ "checkPhotocathodeThickness", "class_o_m_sim_p_m_t_construction.html#aa850b229e2e9ab26afbe4e2e0d21683d", null ],
     [ "configureSensitiveVolume", "class_o_m_sim_p_m_t_construction.html#a7e93cf3d4db824a1bef18505fad6cb66", null ],
     [ "constructCADdynodeSystem", "class_o_m_sim_p_m_t_construction.html#a961bf82e229e26d5ae6ae835e58acf24", null ],

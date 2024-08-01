@@ -21,7 +21,7 @@ var searchData=
   ['pmtresponse_281',['PMTResponse',['../struct_photon_info.html#a1669c552fd4a31bb23d4920eb946fafc',1,'PhotonInfo']]],
   ['pmtresponse_282',['PMTresponse',['../struct_hit_stats.html#a3c8b0736ba6927c644ee1b9e62e02e64',1,'HitStats']]],
   ['position_283',['Position',['../structabc_detector_component_1_1_component.html#ae0731322875b6911305cb8971fbd998f',1,'abcDetectorComponent::Component']]],
-  ['processfile_284',['processFile',['../class_input_data_manager.html#aaa51bcbd29214afb735bb7657bee05de',1,'InputDataManager']]],
+  ['processfile_284',['processFile',['../class_o_m_sim_input_data.html#a85c2bfa74bb3ac64f0e5f628d81bf4be',1,'OMSimInputData']]],
   ['processhits_285',['ProcessHits',['../class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4',1,'OMSimSensitiveDetector']]],
   ['processphotocathodehit_286',['processPhotocathodeHit',['../class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08',1,'OMSimPMTResponse::processPhotocathodeHit()'],['../class_no_response.html#aa904db4023917812120742e949d1fd88',1,'NoResponse::processPhotocathodeHit()']]]
 ];

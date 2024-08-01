@@ -123,7 +123,7 @@ var hierarchy =
     [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html", null ],
     [ "OpticalLayerResult", "struct_optical_layer_result.html", null ],
     [ "ParameterTable", "class_parameter_table.html", [
-      [ "InputDataManager", "class_input_data_manager.html", null ]
+      [ "OMSimInputData", "class_o_m_sim_input_data.html", null ]
     ] ],
     [ "PhotonInfo", "struct_photon_info.html", null ],
     [ "OMSimPMTResponse::PMTPulse", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html", null ],

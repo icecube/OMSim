@@ -6,7 +6,7 @@
 <area shape="rect" id="node36" title=" " alt="" coords="1439,155,1521,181"/>
 <area shape="rect" id="node24" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="1473,304,1637,331"/>
 <area shape="rect" id="node32" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="991,229,1190,256"/>
-<area shape="rect" id="node4" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and InputDataManager." alt="" coords="342,379,495,405"/>
+<area shape="rect" id="node4" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and OMSimInputData." alt="" coords="342,379,495,405"/>
 <area shape="rect" id="node20" title=" " alt="" coords="519,379,662,405"/>
 <area shape="rect" id="node21" title=" " alt="" coords="687,379,831,405"/>
 <area shape="rect" id="node22" title=" " alt="" coords="855,379,1022,405"/>

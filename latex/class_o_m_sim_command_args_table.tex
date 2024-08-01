@@ -2,13 +2,13 @@
 \label{class_o_m_sim_command_args_table}\index{OMSimCommandArgsTable@{OMSimCommandArgsTable}}
 
 
-A singleton class used to hold \mbox{\hyperlink{class_o_m_sim}{OMSim}} command arguments.  
+A class used to hold \mbox{\hyperlink{class_o_m_sim}{OMSim}} command arguments with global instance access.  
 
 
 
 
 \doxysubsection{Detailed Description}
-This class uses a map to hold key-\/value pairs of simulation command arguments. In principle it is just a wrapper around the map created by the boost library to avoid users changing the arg values after initialisation. Provides a method to write the parameters to a JSON file. \doxysubsection*{Public Types}
+This class uses a map to hold key-\/value pairs of simulation command arguments. It provides a method to write the parameters to a JSON file. \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_o_m_sim_command_args_table_a83cfd0564d03cb198f91926cd5c4f731}\label{class_o_m_sim_command_args_table_a83cfd0564d03cb198f91926cd5c4f731}} 
@@ -35,8 +35,14 @@ void \mbox{\hyperlink{class_o_m_sim_command_args_table_acd0700b601ac3b3279657ad1
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{class_o_m_sim_command_args_table_a026ab40121c89f344e60dc9103157e22}\label{class_o_m_sim_command_args_table_a026ab40121c89f344e60dc9103157e22}} 
+static void {\bfseries init} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_command_args_table_ab258da8c6a509441e0b599bb9a59e414}\label{class_o_m_sim_command_args_table_ab258da8c6a509441e0b599bb9a59e414}} 
+static void {\bfseries shutdown} ()
+\item 
 static \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} \& \mbox{\hyperlink{class_o_m_sim_command_args_table_a2a6179839e4ed5f503e52fca917c84c2}{get\+Instance}} ()
-\begin{DoxyCompactList}\small\item\em Retrieves the instance of the singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -85,8 +91,13 @@ The parameter value.
 {\footnotesize\ttfamily static \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}\& OMSim\+Command\+Args\+Table\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
 \begin{DoxyReturn}{Returns}
-The instance of \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}. 
+A reference to the \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} instance. 
 \end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if accessed before initialization or after shutdown. \\
+\hline
+\end{DoxyExceptions}
 \mbox{\Hypertarget{class_o_m_sim_command_args_table_a27e163c6835956c98a52689bb7cf2cc6}\label{class_o_m_sim_command_args_table_a27e163c6835956c98a52689bb7cf2cc6}} 
 \index{OMSimCommandArgsTable@{OMSimCommandArgsTable}!setParameter@{setParameter}}
 \index{setParameter@{setParameter}!OMSimCommandArgsTable@{OMSimCommandArgsTable}}

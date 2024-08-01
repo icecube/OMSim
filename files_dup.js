@@ -36,7 +36,7 @@ var files_dup =
       [ "OMSimG4Scintillation", "class_o_m_sim_g4_scintillation.html", "class_o_m_sim_g4_scintillation" ]
     ] ],
     [ "OMSimHitManager.hh", "_o_m_sim_hit_manager_8hh.html", "_o_m_sim_hit_manager_8hh" ],
-    [ "OMSimInputData.hh", "_o_m_sim_input_data_8hh.html", null ],
+    [ "OMSimInputData.hh", "_o_m_sim_input_data_8hh.html", "_o_m_sim_input_data_8hh" ],
     [ "OMSimLogger.hh", "_o_m_sim_logger_8hh_source.html", null ],
     [ "OMSimLOM16.hh", "_o_m_sim_l_o_m16_8hh.html", [
       [ "LOM16", "class_l_o_m16.html", "class_l_o_m16" ]
