@@ -5,7 +5,7 @@ This framework offers tools to simplify geometry construction and material defin
 
 ## Materials and User Data
 
-User-defined material data are stored in JSON files under `/common/data` to minimize file length (the original detector construction had over 4,000 lines, mainly due to material properties!).
+User-defined material data are stored in JSON files under `/common/data` to minimize file length.
 
 The `OMSimInputData` (see `OMSimInputData.hh`) loads these properties directly into the Geant4 framework. Materials loaded via this class can be retrieved using Geant4's conventional method `G4Material::GetMaterial`, but the framework also provides the wrapper `OMSimInputData::getMaterial` to handle default parameters.
 
@@ -16,8 +16,6 @@ Since different materials have different types of properties, the data is loaded
 Additionally, geometry data used during PMT construction are also stored in JSON files (`/common/data/PMTs`). These are saved in a "tree" (essentially a dictionary containing the JSON file's keys and values) in `OMSimInputData::mTable`. 
 
 This approach was adopted because various PMTs are constructed similarly, eliminating the need to define a unique class for each PMT type, as is done for the optical modules. 
-
-Thus, an instance of `OMSimInputData` is always passed to all classes related to geometry construction (see [geometry](#geometry-construction)).
 
 If you wish to load additional data, you can either define a new type in OMSimDataFileTypes or load it into a tree as previously mentioned. For simpler tasks, use the static method `Tools::loadtxt` provided in `OMSimTools.hh`, which operates similarly to Python's numpy.loadtxt. For example:
 
@@ -81,7 +79,7 @@ Here's an example of how to properly create and configure sensitive detectors fo
 
 ```cpp
 for (int i = 0; i < numberOfModules; ++i) {
-    mDOM* module = new mDOM(mData, false);
+    mDOM* module = new mDOM(false);
     G4String lExtension = "_" + std::to_string(i);
     module->placeIt(G4ThreeVector(0, 0, i*3*m), G4RotationMatrix(), mWorldLogical, lExtension); //you have to have unique names
     module->configureSensitiveVolume(this);
@@ -109,7 +107,7 @@ Figure 4: <i>PMT response compared to measurement for different light sources. I
 
 ### Hit storage
 
-The absorbed photon data is managed by the `OMSimHitManager` singleton. It maintains a vector of hit information (`HitStats` struct) for each sensitive detector. To analyze and export this data, use the `OMSimHitManager::getSingleThreadHitsOfModule` method to retrieve data for the current thread, or `OMSimHitManager::getMergedHitsOfModule` to obtain merged data from all threads. Note that `OMSimHitManager::getMergedHitsOfModule` works only if `OMSimHitManager::mergeThreadData` has been called (happens at the end of the run when `OMSimRunActio::EndOfRunAction` is called). For analysis or storage at the end of an event, handle each thread separately as events end asynchronously. For practical examples, refer to the methods in `OMSimEffectiveAreaAnalysis` and `OMSimSNAnalysis::writeDataFile`.
+The absorbed photon data is managed by the `OMSimHitManager` global instance. It maintains a vector of hit information (`HitStats` struct) for each sensitive detector. To analyze and export this data, use the `OMSimHitManager::getSingleThreadHitsOfModule` method to retrieve data for the current thread, or `OMSimHitManager::getMergedHitsOfModule` to obtain merged data from all threads. Note that `OMSimHitManager::getMergedHitsOfModule` works only if `OMSimHitManager::mergeThreadData` has been called (happens at the end of the run when `OMSimRunActio::EndOfRunAction` is called). For analysis or storage at the end of an event, handle each thread separately as events end asynchronously. For practical examples, refer to the methods in `OMSimEffectiveAreaAnalysis` and `OMSimSNAnalysis::writeDataFile`.
 
 An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in `OMSimHitManager`. To enable this feature, provide the "QE_cut" argument via the command line. In this case `OMSimSensitiveDetector::ProcessHits` will call `OMSimPMTResponse::passQE` and break early if it returns false, without storing the photon information.
 

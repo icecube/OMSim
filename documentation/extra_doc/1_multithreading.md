@@ -71,7 +71,7 @@ OMSimHitManager& OMSimHitManager::getInstance()
 
 ### Example: OMSimHitManager
 
-The `OMSimHitManager` class demonstrates several thread-safety techniques:
+The `OMSimHitManager` class demonstrates several thread-safety techniques for saving data:
 
 ```cpp
 class OMSimHitManager
@@ -95,11 +95,11 @@ private:
 ```
 
 Key features:
-- Thread-local storage for hit data (`mThreadData`).
-- Mutex for thread synchronization.
+- Thread-local storage for hit data (`mThreadData`), each thread will start one
+- Mutex (`mMutex`) for thread synchronization.
 
 
-The `appendHitInfo` method:
+The `appendHitInfo` method is used by all threads and uses to the thread-local `mThreadData`:
 
 ```cpp
 void OMSimHitManager::appendHitInfo(/* parameters */)
@@ -110,13 +110,14 @@ void OMSimHitManager::appendHitInfo(/* parameters */)
         mThreadData = new ThreadLocalData();
     }
 
-    // Append hit information to thread-local container
-    // This is thread-safe as each thread has its own mThreadData
-    // ... append hit information to mThreadData->moduleHits ...
+	auto &moduleHits = mThreadData->moduleHits[pModuleNumber];
+	G4int eventID = G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetEventID();
+	moduleHits.eventId.push_back(eventID);
+    //...
 }
 ```
 
-The `mergeThreadData` method combines data from all threads:
+The `mergeThreadData` method combines data from all threads into a single vector:
 
 ```cpp
 void OMSimHitManager::mergeThreadData()
@@ -249,7 +250,6 @@ When implementing new thread-safe containers in Geant4:
    ```
 
 By following these guidelines and studying the provided examples, you can create thread-safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-threaded environments.
-
 
 
 ## Troubleshooting Multi-threading Issues
