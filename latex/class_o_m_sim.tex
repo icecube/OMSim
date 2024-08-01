@@ -11,8 +11,6 @@ Controls the main simulation process.
 The \mbox{\hyperlink{class_o_m_sim}{OMSim}} class is the top-\/level controller for the simulation. It sets up and manages the individual components of the Geant4 simulation, such as the run manager, the visualization manager, and the navigator. It also enables user interaction with the simulation through a command line interface and visualisation tools. This class is used in the main function of all studies as provides the basic flow of control of any Geant4 simulation. \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_o_m_sim_a5fdec07501bb76199f652ac95bd1e961}{ensure\+Output\+Directory\+Exists}} (const std\+::string \&filepath)
-\begin{DoxyCompactList}\small\item\em Ensure that the output directory for the simulation results exists. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}\label{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}} 
 void \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{initialise\+Simulation}} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$p\+Detector\+Construction)
 \begin{DoxyCompactList}\small\item\em Initialize the simulation constructing all Geant instances. \end{DoxyCompactList}\item 
@@ -78,17 +76,6 @@ std\+::chrono\+::high\+\_\+resolution\+\_\+clock\+::time\+\_\+point {\bfseries m
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_a5fdec07501bb76199f652ac95bd1e961}\label{class_o_m_sim_a5fdec07501bb76199f652ac95bd1e961}} 
-\index{OMSim@{OMSim}!ensureOutputDirectoryExists@{ensureOutputDirectoryExists}}
-\index{ensureOutputDirectoryExists@{ensureOutputDirectoryExists}!OMSim@{OMSim}}
-\doxysubsubsection{\texorpdfstring{ensureOutputDirectoryExists()}{ensureOutputDirectoryExists()}}
-{\footnotesize\ttfamily void OMSim\+::ensure\+Output\+Directory\+Exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+File\+Path }\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em p\+File\+Path} & The path to the output directory. \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}\label{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}} 
 \index{OMSim@{OMSim}!handleArguments@{handleArguments}}
 \index{handleArguments@{handleArguments}!OMSim@{OMSim}}

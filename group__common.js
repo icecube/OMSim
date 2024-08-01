@@ -24,7 +24,6 @@ var group__common =
       [ "~OMSim", "class_o_m_sim.html#a61d63cc8b99c7ac89ecce97720fbb41a", null ],
       [ "configureLogger", "class_o_m_sim.html#a3e43df3d28f3e5e7cbec8a6e3ef1dcf5", null ],
       [ "determineNumberOfThreads", "class_o_m_sim.html#a5821847aa7865e5f607e4d55a3c1f178", null ],
-      [ "ensureOutputDirectoryExists", "class_o_m_sim.html#a5fdec07501bb76199f652ac95bd1e961", null ],
       [ "extendOptions", "class_o_m_sim.html#a4c86b790eaf609fd69919432d170d853", null ],
       [ "getNavigator", "class_o_m_sim.html#acae00a5a9eef0b872175474315e7a657", null ],
       [ "handleArguments", "class_o_m_sim.html#a07759a6885ca398dd1e7c3a9954ceded", null ],

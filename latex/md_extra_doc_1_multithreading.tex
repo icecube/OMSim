@@ -185,7 +185,7 @@ In scenarios where merging data is unnecessary, or the amount of data is too lar
 \DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{OMSimDecaysAnalysis::writeThreadDecayInformation}}()}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{    G4String lOutputSuffix = \mbox{\hyperlink{class_o_m_sim_command_args_table_a2a6179839e4ed5f503e52fca917c84c2}{OMSimCommandArgsTable::getInstance}}().\mbox{\hyperlink{class_o_m_sim_command_args_table_a98ca3b003cebba64f357e342d16ea968}{get}}<std::string>(\textcolor{stringliteral}{"{}output\_file"{}});}
-\DoxyCodeLine{    G4String lDecaysFileName = lOutputSuffix + \textcolor{stringliteral}{"{}\_"{}} + Tools::getThreadIDStr() + \textcolor{stringliteral}{"{}\_decays.dat"{}}; \textcolor{comment}{// one file per thread, appending thread id to file name}}
+\DoxyCodeLine{    G4String lDecaysFileName = lOutputSuffix + \textcolor{stringliteral}{"{}\_"{}} + \mbox{\hyperlink{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}{Tools::getThreadIDStr}}() + \textcolor{stringliteral}{"{}\_decays.dat"{}}; \textcolor{comment}{// one file per thread, appending thread id to file name}}
 \DoxyCodeLine{}
 \DoxyCodeLine{    std::fstream lDatafile;}
 \DoxyCodeLine{    lDatafile.open(lDecaysFileName.c\_str(), std::ios::out | std::ios::app);}

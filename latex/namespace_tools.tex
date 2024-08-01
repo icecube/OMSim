@@ -8,6 +8,10 @@ A collection of helper functions for numerical operations.
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{namespace_tools_a3da6cd6203cc849a373a25283d772f36}{ensure\+Directory\+Exists}} (const std\+::string \&p\+File\+Path)
+\begin{DoxyCompactList}\small\item\em Ensure that the directory of a file to be created exists. \end{DoxyCompactList}\item 
+G4\+String \mbox{\hyperlink{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}{get\+Thread\+IDStr}} ()
+\item 
 std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{namespace_tools_a82269e4a0ecbf0878c2e257659ee1ab9}{loadtxt}} (const std\+::string \&p\+File\+Path, bool p\+Unpack, size\+\_\+t p\+Skip\+Rows, char p\+Delimiter)
 \begin{DoxyCompactList}\small\item\em Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.\+loadtxt. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_a4dee2a839a3b5295fdf43c74d87c92c1}{linspace}} (double start, double end, int num\+\_\+points)
@@ -15,16 +19,33 @@ std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_a4dee2a839a3b5295fd
 std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_a8666b7ef6077cbd0d521ecaa081e3ac0}{logspace}} (double start, double end, int num\+\_\+points)
 \begin{DoxyCompactList}\small\item\em Generates a logarithmically spaced vector. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_tools_a7e168c04a34f0c7ace018063e95b4835}{sort\+Vector\+By\+Reference}} (std\+::vector$<$ G4double $>$ \&p\+Reference\+Vector, std\+::vector$<$ G4double $>$ \&p\+Sort\+Vector)
-\begin{DoxyCompactList}\small\item\em Sorts two vectors (p\+Sort\+Vector \& p\+Reference\+Vector) based on the order of values in p\+Reference\+Vector. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}\label{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}} 
-G4\+String {\bfseries get\+Thread\+IDStr} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sorts two vectors (p\+Sort\+Vector \& p\+Reference\+Vector) based on the order of values in p\+Reference\+Vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 This namespace provides static methods for common numerical tasks such as loading data from a file, and generating linearly and logarithmically spaced sequences. 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_tools_a3da6cd6203cc849a373a25283d772f36}\label{namespace_tools_a3da6cd6203cc849a373a25283d772f36}} 
+\index{Tools@{Tools}!ensureDirectoryExists@{ensureDirectoryExists}}
+\index{ensureDirectoryExists@{ensureDirectoryExists}!Tools@{Tools}}
+\doxysubsubsection{\texorpdfstring{ensureDirectoryExists()}{ensureDirectoryExists()}}
+{\footnotesize\ttfamily void Tools\+::ensure\+Directory\+Exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+File\+Path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+File\+Path} & The path of file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}\label{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}} 
+\index{Tools@{Tools}!getThreadIDStr@{getThreadIDStr}}
+\index{getThreadIDStr@{getThreadIDStr}!Tools@{Tools}}
+\doxysubsubsection{\texorpdfstring{getThreadIDStr()}{getThreadIDStr()}}
+{\footnotesize\ttfamily G4\+String Tools\+::get\+Thread\+IDStr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Thread id which called method as string 
+\end{DoxyReturn}
 \mbox{\Hypertarget{namespace_tools_a4dee2a839a3b5295fdf43c74d87c92c1}\label{namespace_tools_a4dee2a839a3b5295fdf43c74d87c92c1}} 
 \index{Tools@{Tools}!linspace@{linspace}}
 \index{linspace@{linspace}!Tools@{Tools}}

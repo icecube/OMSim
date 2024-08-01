@@ -125,6 +125,11 @@ $(document).ready(function(){initNavTree('namespace_tools.html',''); initResizab
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a3da6cd6203cc849a373a25283d772f36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools.html#a3da6cd6203cc849a373a25283d772f36">ensureDirectoryExists</a> (const std::string &amp;pFilePath)</td></tr>
+<tr class="memdesc:a3da6cd6203cc849a373a25283d772f36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure that the directory of a file to be created exists.  <a href="namespace_tools.html#a3da6cd6203cc849a373a25283d772f36">More...</a><br /></td></tr>
+<tr class="separator:a3da6cd6203cc849a373a25283d772f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee9fb48a4947040e59508fd02baa6b4f"><td class="memItemLeft" align="right" valign="top">G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools.html#aee9fb48a4947040e59508fd02baa6b4f">getThreadIDStr</a> ()</td></tr>
+<tr class="separator:aee9fb48a4947040e59508fd02baa6b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82269e4a0ecbf0878c2e257659ee1ab9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools.html#a82269e4a0ecbf0878c2e257659ee1ab9">loadtxt</a> (const std::string &amp;pFilePath, bool pUnpack, size_t pSkipRows, char pDelimiter)</td></tr>
 <tr class="memdesc:a82269e4a0ecbf0878c2e257659ee1ab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.  <a href="namespace_tools.html#a82269e4a0ecbf0878c2e257659ee1ab9">More...</a><br /></td></tr>
 <tr class="separator:a82269e4a0ecbf0878c2e257659ee1ab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,13 +142,52 @@ Functions</h2></td></tr>
 <tr class="memitem:a7e168c04a34f0c7ace018063e95b4835"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools.html#a7e168c04a34f0c7ace018063e95b4835">sortVectorByReference</a> (std::vector&lt; G4double &gt; &amp;pReferenceVector, std::vector&lt; G4double &gt; &amp;pSortVector)</td></tr>
 <tr class="memdesc:a7e168c04a34f0c7ace018063e95b4835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts two vectors (pSortVector &amp; pReferenceVector) based on the order of values in pReferenceVector.  <a href="namespace_tools.html#a7e168c04a34f0c7ace018063e95b4835">More...</a><br /></td></tr>
 <tr class="separator:a7e168c04a34f0c7ace018063e95b4835"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee9fb48a4947040e59508fd02baa6b4f"><td class="memItemLeft" align="right" valign="top"><a id="aee9fb48a4947040e59508fd02baa6b4f"></a>
-G4String&#160;</td><td class="memItemRight" valign="bottom"><b>getThreadIDStr</b> ()</td></tr>
-<tr class="separator:aee9fb48a4947040e59508fd02baa6b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This namespace provides static methods for common numerical tasks such as loading data from a file, and generating linearly and logarithmically spaced sequences. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a3da6cd6203cc849a373a25283d772f36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3da6cd6203cc849a373a25283d772f36">&#9670;&nbsp;</a></span>ensureDirectoryExists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tools::ensureDirectoryExists </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>pFilePath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pFilePath</td><td>The path of file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aee9fb48a4947040e59508fd02baa6b4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee9fb48a4947040e59508fd02baa6b4f">&#9670;&nbsp;</a></span>getThreadIDStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">G4String Tools::getThreadIDStr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Thread id which called method as string </dd></dl>
+
+</div>
+</div>
 <a id="a4dee2a839a3b5295fdf43c74d87c92c1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4dee2a839a3b5295fdf43c74d87c92c1">&#9670;&nbsp;</a></span>linspace()</h2>
 
@@ -347,7 +391,7 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><b>getThreadIDStr</b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_tools.html">Tools</a></li>
-    <li class="footer">Generated on Thu Aug 1 2024 09:29:59 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 1 2024 09:37:45 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

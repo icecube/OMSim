@@ -1,5 +1,6 @@
 var _o_m_sim_tools_8hh =
 [
+    [ "ensureDirectoryExists", "_o_m_sim_tools_8hh.html#a3da6cd6203cc849a373a25283d772f36", null ],
     [ "getThreadIDStr", "_o_m_sim_tools_8hh.html#aee9fb48a4947040e59508fd02baa6b4f", null ],
     [ "linspace", "_o_m_sim_tools_8hh.html#a4dee2a839a3b5295fdf43c74d87c92c1", null ],
     [ "loadtxt", "_o_m_sim_tools_8hh.html#a82269e4a0ecbf0878c2e257659ee1ab9", null ],
