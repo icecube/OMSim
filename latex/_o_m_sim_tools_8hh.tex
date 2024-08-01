@@ -24,15 +24,19 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_ae8fc38b90057fbc501c79aac16621764}{Tools\+::arange}} (double start, double stop, double step)
+\begin{DoxyCompactList}\small\item\em Generates a sequence of numbers. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_tools_a3da6cd6203cc849a373a25283d772f36}{Tools\+::ensure\+Directory\+Exists}} (const std\+::string \&p\+File\+Path)
 \begin{DoxyCompactList}\small\item\em Ensure that the directory of a file to be created exists. \end{DoxyCompactList}\item 
+std\+::pair$<$ std\+::vector$<$ double $>$, std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{namespace_tools_a85d11bc0105a9b716e71264528bea413}{Tools\+::histogram}} (const std\+::vector$<$ double $>$ \&data, const std\+::variant$<$ int, std\+::vector$<$ double $>$$>$ \&bins, const std\+::optional$<$ std\+::pair$<$ double, double $>$$>$ \&range)
+\begin{DoxyCompactList}\small\item\em Compute the histogram of a dataset. \end{DoxyCompactList}\item 
 G4\+String \mbox{\hyperlink{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}{Tools\+::get\+Thread\+IDStr}} ()
 \item 
 std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{namespace_tools_a82269e4a0ecbf0878c2e257659ee1ab9}{Tools\+::loadtxt}} (const std\+::string \&p\+File\+Path, bool p\+Unpack, size\+\_\+t p\+Skip\+Rows, char p\+Delimiter)
 \begin{DoxyCompactList}\small\item\em Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.\+loadtxt. \end{DoxyCompactList}\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_a4dee2a839a3b5295fdf43c74d87c92c1}{Tools\+::linspace}} (double start, double end, int num\+\_\+points)
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_a068657387a0d190043d3e0959e84e18c}{Tools\+::linspace}} (double start, double stop, int num, bool endpoint)
 \begin{DoxyCompactList}\small\item\em Generates a linearly spaced vector. \end{DoxyCompactList}\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_a8666b7ef6077cbd0d521ecaa081e3ac0}{Tools\+::logspace}} (double start, double end, int num\+\_\+points)
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_a5150dab6894acffb1c04085437e8e0b8}{Tools\+::logspace}} (double start, double stop, int num, double base, bool endpoint)
 \begin{DoxyCompactList}\small\item\em Generates a logarithmically spaced vector. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_tools_a7e168c04a34f0c7ace018063e95b4835}{Tools\+::sort\+Vector\+By\+Reference}} (std\+::vector$<$ G4double $>$ \&p\+Reference\+Vector, std\+::vector$<$ G4double $>$ \&p\+Sort\+Vector)
 \begin{DoxyCompactList}\small\item\em Sorts two vectors (p\+Sort\+Vector \& p\+Reference\+Vector) based on the order of values in p\+Reference\+Vector. \end{DoxyCompactList}\end{DoxyCompactItemize}

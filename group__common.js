@@ -32,7 +32,7 @@ var group__common =
       [ "parseArguments", "class_o_m_sim.html#a22f2335b943429a2697c0c8b3747e658", null ],
       [ "setGeneralOptions", "class_o_m_sim.html#a44734b9c775a2e3f44b3f734f62db347", null ],
       [ "setUserArgumentsToArgTable", "class_o_m_sim.html#a1428504bbe25b1baeb0976e897a98bcb", null ],
-      [ "startVisualisationIfRequested", "class_o_m_sim.html#adfafdeb214a66be94c423076b8c13bbb", null ],
+      [ "startVisualisation", "class_o_m_sim.html#a42d86958aba31a17fb0c8a39fbc9c9b5", null ],
       [ "mGeneralOptions", "class_o_m_sim.html#adc89f2fa01d3958389e86c36e8064805", null ],
       [ "mHistory", "class_o_m_sim.html#af006e5676aeca6dfc63a7ab0f0e11cae", null ],
       [ "mNavigator", "class_o_m_sim.html#a47d7d0c83e0290c37b1cd4d6e29ddfec", null ],

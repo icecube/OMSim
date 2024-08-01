@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['linspace_594',['linspace',['../namespace_tools.html#a4dee2a839a3b5295fdf43c74d87c92c1',1,'Tools']]],
-  ['loadtxt_595',['loadtxt',['../namespace_tools.html#a82269e4a0ecbf0878c2e257659ee1ab9',1,'Tools']]],
-  ['logspace_596',['logspace',['../namespace_tools.html#a8666b7ef6077cbd0d521ecaa081e3ac0',1,'Tools']]]
+  ['linspace_598',['linspace',['../namespace_tools.html#a068657387a0d190043d3e0959e84e18c',1,'Tools']]],
+  ['loadtxt_599',['loadtxt',['../namespace_tools.html#a82269e4a0ecbf0878c2e257659ee1ab9',1,'Tools']]],
+  ['logspace_600',['logspace',['../namespace_tools.html#a5150dab6894acffb1c04085437e8e0b8',1,'Tools']]]
 ];
