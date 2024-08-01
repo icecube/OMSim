@@ -21,35 +21,53 @@ Key points:
 3. **Minimize Global Variables**: Prefer class members or local variables instead.
 4. **Implement Thread-Safe Containers**: Ensure thread-safe access and modification of containers.
 
-## Thread-Safe Singleton Implementation
+## Thread-Safe Global Instance Implementation
 
-Both `OMSimHitManager` and `OMSimDecaysAnalysis` utilize the singleton pattern with a thread-safe `getInstance` method. This method employs a double-checked locking pattern to ensure thread safety while minimizing synchronization overhead. The process works as follows:
 
-1. Check if the instance exists without locking.
-2. If the instance doesn't exist, acquire a lock.
-3. After acquiring the lock, check again if the instance exists (to handle potential creation by another thread during the lock wait). Without this check, multiple threads could pass the first check and reach the lock. Once inside the locked section, each thread would create a new instance if the second check wasn't there, potentially leading to multiple instances.
-4. If the instance still doesn't exist, create it.
+Both `OMSimHitManager` and `OMSimDecaysAnalysis` utilize a global instance pattern. This approach provides better control over the lifecycle of the instance and can prevent potential memory leaks when integrated into larger frameworks. The process works as follows:
 
-Implementation of the `getInstance` method:
+1. Initialize the global instance explicitly at the start of the program. This is means, before the multi-threading starts. 
+2. Access the instance through a global pointer.
+3. Shut down and clean up the instance explicitly at the end of the program.
+
+Implementation of the global instance pattern:
 
 ```cpp
+// In the header file
+class OMSimHitManager
 {
-    if (!mInstance)  // First check without locking
-    {
-        G4AutoLock lock(&mMutex);  // Lock if instance doesn't exist
-        if (!mInstance)  // Double-check after locking
-        {
-            mInstance = new OMSimHitManager();  // Create instance if it still doesn't exist
-        }
-    }
-    return *mInstance;
+public:
+    static void init();
+    static void shutdown();
+    static OMSimHitManager& getInstance();
+    // ... other methods ...
+
+private:
+    // ... other members ...
+};
+
+inline OMSimHitManager* gHitManager = nullptr;
+
+// In the source file
+void OMSimHitManager::init()
+{
+    if (!gHitManager) gHitManager = new OMSimHitManager();
+}
+
+void OMSimHitManager::shutdown()
+{
+    delete gHitManager;
+    gHitManager = nullptr;
+}
+
+OMSimHitManager& OMSimHitManager::getInstance()
+{
+    assert(gHitManager);
+    return *gHitManager;
 }
 ```
 
-This approach guarantees the creation of only one instance, even in a multi-threaded environment, while ensuring thread-safe initialization. The use of `G4AutoLock` and a static mutex provides proper synchronization across threads.
-
-> **Note**: While this singleton implementation is thread-safe, consider whether a singleton is the best design choice for your specific use case. Singletons can sometimes lead to issues with testability and create hidden dependencies.
-
+> **Note**: While this global instance implementation provides better control over the instance lifecycle, it requires explicit initialization and shutdown. Ensure these are called at appropriate times (single-thread) in your application (for example in main before/after run).
 
 ### Example: OMSimHitManager
 
@@ -59,14 +77,12 @@ The `OMSimHitManager` class demonstrates several thread-safety techniques:
 class OMSimHitManager
 {
 public:
-    static OMSimHitManager& getInstance();
     void appendHitInfo(/* parameters */);
     void mergeThreadData();
     // ... other methods ...
 
 private:
     static G4Mutex mMutex;  // Mutex for thread synchronization
-    static OMSimHitManager* mInstance;  // Singleton instance
 
     struct ThreadLocalData {
         std::map<G4int, HitStats> moduleHits;
@@ -74,12 +90,11 @@ private:
     // Thread-local storage for hit data
     G4ThreadLocal static ThreadLocalData* mThreadData;
 
-    // ... constructor and destructor ...
+    // ... 
 };
 ```
 
 Key features:
-- Singleton pattern for global access (consider if necessary for your use case).
 - Thread-local storage for hit data (`mThreadData`).
 - Mutex for thread synchronization.
 
@@ -121,8 +136,6 @@ void OMSimHitManager::mergeThreadData()
 ```
 
 > **Important**: Call `mergeThreadData` after all threads have finished simulating (after a run has completed).
-
-
 
 ### Example: Saving Data Per Thread
 
@@ -269,40 +282,6 @@ These tools can identify potential race conditions and other thread-related issu
 - For a deeper understanding, provide the complete class (header + source) to the LLM for more detailed guidance.
 - Make changes to address the identified issues.
 - Use Valgrind tools again to verify if the issues have been resolved.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
