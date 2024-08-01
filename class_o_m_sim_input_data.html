@@ -150,7 +150,7 @@ Collaboration diagram for OMSimInputData:</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">auto</span> lData = manager.loadtxt(<span class="stringliteral">&quot;path/to/data.txt&quot;</span>); <span class="comment">// Load data from a text file into a 2D vector</span></div>
 <div class="ttc" id="aclass_o_m_sim_input_data_html"><div class="ttname"><a href="class_o_m_sim_input_data.html">OMSimInputData</a></div><div class="ttdoc">Manages the input data, including parsing and storing material properties.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.hh:194</div></div>
-<div class="ttc" id="aclass_o_m_sim_input_data_html_a84781faca6d03b8f9f13777c85a1c9dc"><div class="ttname"><a href="class_o_m_sim_input_data.html#a84781faca6d03b8f9f13777c85a1c9dc">OMSimInputData::searchFolders</a></div><div class="ttdeci">void searchFolders()</div><div class="ttdoc">Searches through predefined folders for input data files.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:235</div></div>
+<div class="ttc" id="aclass_o_m_sim_input_data_html_a84781faca6d03b8f9f13777c85a1c9dc"><div class="ttname"><a href="class_o_m_sim_input_data.html#a84781faca6d03b8f9f13777c85a1c9dc">OMSimInputData::searchFolders</a></div><div class="ttdeci">void searchFolders()</div><div class="ttdoc">Searches through predefined folders for input data files.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:245</div></div>
 </div><!-- fragment --><p>This class assumes certain conventions in naming and structuring the input files, which aids in automatically identifying and processing them. For example, files with names starting with "RiAbs" are treated as describing refractive and absorption properties. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -189,11 +189,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ae785a4cec814dcf95b2a4c0c0f2119db"><td class="memItemLeft" align="right" valign="top"><a id="ae785a4cec814dcf95b2a4c0c0f2119db"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+<tr class="memitem:ae785a4cec814dcf95b2a4c0c0f2119db"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html#ae785a4cec814dcf95b2a4c0c0f2119db">init</a> ()</td></tr>
+<tr class="memdesc:ae785a4cec814dcf95b2a4c0c0f2119db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the global instance of <a class="el" href="class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties.">OMSimInputData</a> and calls <a class="el" href="class_o_m_sim_input_data.html#a84781faca6d03b8f9f13777c85a1c9dc" title="Searches through predefined folders for input data files.">OMSimInputData::searchFolders</a> to load data.  <a href="class_o_m_sim_input_data.html#ae785a4cec814dcf95b2a4c0c0f2119db">More...</a><br /></td></tr>
 <tr class="separator:ae785a4cec814dcf95b2a4c0c0f2119db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ba12328d251141daeb086ae37f95f98"><td class="memItemLeft" align="right" valign="top"><a id="a9ba12328d251141daeb086ae37f95f98"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> ()</td></tr>
+<tr class="memitem:a9ba12328d251141daeb086ae37f95f98"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html#a9ba12328d251141daeb086ae37f95f98">shutdown</a> ()</td></tr>
+<tr class="memdesc:a9ba12328d251141daeb086ae37f95f98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the global instance of <a class="el" href="class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties.">OMSimInputData</a>.  <a href="class_o_m_sim_input_data.html#a9ba12328d251141daeb086ae37f95f98">More...</a><br /></td></tr>
 <tr class="separator:a9ba12328d251141daeb086ae37f95f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a810d7ae3b652d05e7b85eb568873eed2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_m_sim_input_data.html">OMSimInputData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html#a810d7ae3b652d05e7b85eb568873eed2">getInstance</a> ()</td></tr>
 <tr class="separator:a810d7ae3b652d05e7b85eb568873eed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -309,6 +309,32 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 
 </div>
 </div>
+<a id="ae785a4cec814dcf95b2a4c0c0f2119db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae785a4cec814dcf95b2a4c0c0f2119db">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimInputData::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This method is normally called during construction of the base class <a class="el" href="class_o_m_sim_detector_construction.html" title="Class for detector construction in the effective area simulation.">OMSimDetectorConstruction</a>. </p>
+
+</div>
+</div>
 <a id="a85c2bfa74bb3ac64f0e5f628d81bf4be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a85c2bfa74bb3ac64f0e5f628d81bf4be">&#9670;&nbsp;</a></span>processFile()</h2>
 
@@ -384,6 +410,32 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 
 </div>
 </div>
+<a id="a9ba12328d251141daeb086ae37f95f98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ba12328d251141daeb086ae37f95f98">&#9670;&nbsp;</a></span>shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimInputData::shutdown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This method is normally called in the destructor ~OMSimDetectorConstruction. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_o_m_sim_input_data_8hh_source.html">OMSimInputData.hh</a></li>
 <li>OMSimInputData.cc</li>
@@ -394,7 +446,7 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_input_data.html">OMSimInputData</a></li>
-    <li class="footer">Generated on Thu Aug 1 2024 09:37:45 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 1 2024 09:48:22 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

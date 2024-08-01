@@ -35,12 +35,10 @@ void \mbox{\hyperlink{class_o_m_sim_command_args_table_acd0700b601ac3b3279657ad1
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_a026ab40121c89f344e60dc9103157e22}\label{class_o_m_sim_command_args_table_a026ab40121c89f344e60dc9103157e22}} 
-static void {\bfseries init} ()
-\item 
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_ab258da8c6a509441e0b599bb9a59e414}\label{class_o_m_sim_command_args_table_ab258da8c6a509441e0b599bb9a59e414}} 
-static void {\bfseries shutdown} ()
-\item 
+static void \mbox{\hyperlink{class_o_m_sim_command_args_table_a026ab40121c89f344e60dc9103157e22}{init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the global instance of \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_o_m_sim_command_args_table_ab258da8c6a509441e0b599bb9a59e414}{shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Deletes the global instance of \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} \& \mbox{\hyperlink{class_o_m_sim_command_args_table_a2a6179839e4ed5f503e52fca917c84c2}{get\+Instance}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
@@ -98,7 +96,13 @@ A reference to the \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Com
 {\em std\+::runtime\+\_\+error} & if accessed before initialization or after shutdown. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_a27e163c6835956c98a52689bb7cf2cc6}\label{class_o_m_sim_command_args_table_a27e163c6835956c98a52689bb7cf2cc6}} 
+\mbox{\Hypertarget{class_o_m_sim_command_args_table_a026ab40121c89f344e60dc9103157e22}\label{class_o_m_sim_command_args_table_a026ab40121c89f344e60dc9103157e22}} 
+\index{OMSimCommandArgsTable@{OMSimCommandArgsTable}!init@{init}}
+\index{init@{init}!OMSimCommandArgsTable@{OMSimCommandArgsTable}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily static void OMSim\+Command\+Args\+Table\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+This method is normally called in the constructor of \mbox{\hyperlink{class_o_m_sim}{OMSim}}. \mbox{\Hypertarget{class_o_m_sim_command_args_table_a27e163c6835956c98a52689bb7cf2cc6}\label{class_o_m_sim_command_args_table_a27e163c6835956c98a52689bb7cf2cc6}} 
 \index{OMSimCommandArgsTable@{OMSimCommandArgsTable}!setParameter@{setParameter}}
 \index{setParameter@{setParameter}!OMSimCommandArgsTable@{OMSimCommandArgsTable}}
 \doxysubsubsection{\texorpdfstring{setParameter()}{setParameter()}}
@@ -116,7 +120,13 @@ A reference to the \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Com
 {\em std\+::runtime\+\_\+error} & If the table is already finalized (i.\+e. somebody is trying to set a new arg parameter after args were parsed (?!)). \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_a4f90935ea49fb19c1ae77b826dbdb410}\label{class_o_m_sim_command_args_table_a4f90935ea49fb19c1ae77b826dbdb410}} 
+\mbox{\Hypertarget{class_o_m_sim_command_args_table_ab258da8c6a509441e0b599bb9a59e414}\label{class_o_m_sim_command_args_table_ab258da8c6a509441e0b599bb9a59e414}} 
+\index{OMSimCommandArgsTable@{OMSimCommandArgsTable}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!OMSimCommandArgsTable@{OMSimCommandArgsTable}}
+\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily static void OMSim\+Command\+Args\+Table\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+This method is normally called in the destructor $\sim$\+OMSim. \mbox{\Hypertarget{class_o_m_sim_command_args_table_a4f90935ea49fb19c1ae77b826dbdb410}\label{class_o_m_sim_command_args_table_a4f90935ea49fb19c1ae77b826dbdb410}} 
 \index{OMSimCommandArgsTable@{OMSimCommandArgsTable}!writeToJson@{writeToJson}}
 \index{writeToJson@{writeToJson}!OMSimCommandArgsTable@{OMSimCommandArgsTable}}
 \doxysubsubsection{\texorpdfstring{writeToJson()}{writeToJson()}}

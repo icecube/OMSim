@@ -59,12 +59,10 @@ void \mbox{\hyperlink{class_o_m_sim_input_data_a84781faca6d03b8f9f13777c85a1c9dc
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_input_data_ae785a4cec814dcf95b2a4c0c0f2119db}\label{class_o_m_sim_input_data_ae785a4cec814dcf95b2a4c0c0f2119db}} 
-static void {\bfseries init} ()
-\item 
-\mbox{\Hypertarget{class_o_m_sim_input_data_a9ba12328d251141daeb086ae37f95f98}\label{class_o_m_sim_input_data_a9ba12328d251141daeb086ae37f95f98}} 
-static void {\bfseries shutdown} ()
-\item 
+static void \mbox{\hyperlink{class_o_m_sim_input_data_ae785a4cec814dcf95b2a4c0c0f2119db}{init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the global instance of \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} and calls \mbox{\hyperlink{class_o_m_sim_input_data_a84781faca6d03b8f9f13777c85a1c9dc}{OMSim\+Input\+Data\+::search\+Folders}} to load data. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_o_m_sim_input_data_a9ba12328d251141daeb086ae37f95f98}{shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Deletes the global instance of \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}}. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \& \mbox{\hyperlink{class_o_m_sim_input_data_a810d7ae3b652d05e7b85eb568873eed2}{get\+Instance}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
@@ -137,7 +135,13 @@ Get a G4\+Optical\+Surface. In order to get custom built materials, method \mbox
 \begin{DoxyReturn}{Returns}
 G4\+Optical\+Surface 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_input_data_a85c2bfa74bb3ac64f0e5f628d81bf4be}\label{class_o_m_sim_input_data_a85c2bfa74bb3ac64f0e5f628d81bf4be}} 
+\mbox{\Hypertarget{class_o_m_sim_input_data_ae785a4cec814dcf95b2a4c0c0f2119db}\label{class_o_m_sim_input_data_ae785a4cec814dcf95b2a4c0c0f2119db}} 
+\index{OMSimInputData@{OMSimInputData}!init@{init}}
+\index{init@{init}!OMSimInputData@{OMSimInputData}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void OMSim\+Input\+Data\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+This method is normally called during construction of the base class \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}. \mbox{\Hypertarget{class_o_m_sim_input_data_a85c2bfa74bb3ac64f0e5f628d81bf4be}\label{class_o_m_sim_input_data_a85c2bfa74bb3ac64f0e5f628d81bf4be}} 
 \index{OMSimInputData@{OMSimInputData}!processFile@{processFile}}
 \index{processFile@{processFile}!OMSimInputData@{OMSimInputData}}
 \doxysubsubsection{\texorpdfstring{processFile()}{processFile()}}
@@ -163,7 +167,13 @@ Scann for data files inside m\+Data\+Directory and process files.
 {\em p\+Name} & name of the material \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_input_data_a9ba12328d251141daeb086ae37f95f98}\label{class_o_m_sim_input_data_a9ba12328d251141daeb086ae37f95f98}} 
+\index{OMSimInputData@{OMSimInputData}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!OMSimInputData@{OMSimInputData}}
+\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily void OMSim\+Input\+Data\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+This method is normally called in the destructor $\sim$\+OMSim\+Detector\+Construction. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

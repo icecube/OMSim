@@ -137,7 +137,7 @@ Collaboration diagram for OMSimHitManager:</div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stores, manages, and provides access information related to detected photons across multiple optical modules. The manager uses a global instance pattern, ensuring a unified access point for photon hit data.</p>
-<p>The class must be initialized with <code><a class="el" href="class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671" title="Initializes the global instance of OMSimHitManager.">OMSimHitManager::init()</a></code> before use and shut down with <code><a class="el" href="class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf" title="Shuts down and deletes the global instance of OMSimHitManager.">OMSimHitManager::shutdown()</a></code> when no longer needed. This is handled by the <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> class.</p>
+<p>The class must be initialized with <code><a class="el" href="class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671" title="Initializes the global instance of OMSimHitManager.">OMSimHitManager::init()</a></code> before use and shut down with <code><a class="el" href="class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf" title="Deletes the global instance of OMSimHitManager.">OMSimHitManager::shutdown()</a></code> when no longer needed. This is handled by the <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> class.</p>
 <p>The hits are stored using '<a class="el" href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e" title="Appends hit information for a detected photon to the corresponding module&#39;s hit data.">OMSimHitManager::appendHitInfo</a>'. The analysis manager of each study is in charge of writing the stored information into a file (see for example '<a class="el" href="class_o_m_sim_effective_area_analyisis.html#af2f7ac6a789bb50ec7d0d8a81487ec20" title="Writes a scan result to the output file.">OMSimEffectiveAreaAnalyisis::writeScan</a>' or 'OMSimDecaysAnalysis::writeHitInformation'). If the simulation will continue after the data is written, do not forget calling '<a class="el" href="class_o_m_sim_hit_manager.html#a00bb034e7751905f8a8229de3f8a39b1" title="Deletes hit information in memory for all modules.">OMSimHitManager::reset</a>'!. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -190,9 +190,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac26f7ad778584ece58f86d60192ef671"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671">init</a> ()</td></tr>
 <tr class="memdesc:ac26f7ad778584ece58f86d60192ef671"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the global instance of <a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a>.  <a href="class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671">More...</a><br /></td></tr>
 <tr class="separator:ac26f7ad778584ece58f86d60192ef671"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8a139a9068c92b7babf471c9ec23ecf"><td class="memItemLeft" align="right" valign="top"><a id="ad8a139a9068c92b7babf471c9ec23ecf"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf">shutdown</a> ()</td></tr>
-<tr class="memdesc:ad8a139a9068c92b7babf471c9ec23ecf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down and deletes the global instance of <a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a>. <br /></td></tr>
+<tr class="memitem:ad8a139a9068c92b7babf471c9ec23ecf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf">shutdown</a> ()</td></tr>
+<tr class="memdesc:ad8a139a9068c92b7babf471c9ec23ecf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the global instance of <a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a>.  <a href="class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf">More...</a><br /></td></tr>
 <tr class="separator:ad8a139a9068c92b7babf471c9ec23ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa3e7a28d658d8e2e6db704b910cc35c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">getInstance</a> ()</td></tr>
 <tr class="separator:aaa3e7a28d658d8e2e6db704b910cc35c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -427,7 +426,7 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 <dl class="section return"><dt>Returns</dt><dd>A reference to the global <a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a> instance. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">assert</td><td>if instance exists (i.e. if it was called before <a class="el" href="class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671" title="Initializes the global instance of OMSimHitManager.">init()</a> or after <a class="el" href="class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf" title="Shuts down and deletes the global instance of OMSimHitManager.">shutdown()</a>). </td></tr>
+    <tr><td class="paramname">assert</td><td>if instance exists (i.e. if it was called before <a class="el" href="class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671" title="Initializes the global instance of OMSimHitManager.">init()</a> or after <a class="el" href="class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf" title="Deletes the global instance of OMSimHitManager.">shutdown()</a>). </td></tr>
   </table>
   </dd>
 </dl>
@@ -507,7 +506,7 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This is normally done in <a class="el" href="class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2" title="Initialize the simulation constructing all Geant instances.">OMSim::initialiseSimulation</a>. </p>
+<p>This method is normally called in <a class="el" href="class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2" title="Initialize the simulation constructing all Geant instances.">OMSim::initialiseSimulation</a>. </p>
 
 </div>
 </div>
@@ -546,6 +545,32 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 
 </div>
 </div>
+<a id="ad8a139a9068c92b7babf471c9ec23ecf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8a139a9068c92b7babf471c9ec23ecf">&#9670;&nbsp;</a></span>shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimHitManager::shutdown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This method is normally called in the destructor ~OMSim. </p>
+
+</div>
+</div>
 <a id="a756d2a85121e00d2a2d8b6c04cd0ebd1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a756d2a85121e00d2a2d8b6c04cd0ebd1">&#9670;&nbsp;</a></span>sortHitStatsByTime()</h2>
 
@@ -580,7 +605,7 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></li>
-    <li class="footer">Generated on Thu Aug 1 2024 09:37:45 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 1 2024 09:48:22 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

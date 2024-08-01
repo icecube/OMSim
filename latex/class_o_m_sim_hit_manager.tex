@@ -64,9 +64,8 @@ void {\bfseries merge\+Thread\+Data} ()
 \item 
 static void \mbox{\hyperlink{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}{init}} ()
 \begin{DoxyCompactList}\small\item\em Initializes the global instance of \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}\label{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}} 
 static void \mbox{\hyperlink{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}{shutdown}} ()
-\begin{DoxyCompactList}\small\item\em Shuts down and deletes the global instance of \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Deletes the global instance of \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{get\+Instance}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
@@ -231,7 +230,7 @@ A \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure containing hit infor
 \doxysubsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily void OMSim\+Hit\+Manager\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-This is normally done in \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{OMSim\+::initialise\+Simulation}}. \mbox{\Hypertarget{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}\label{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}} 
+This method is normally called in \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{OMSim\+::initialise\+Simulation}}. \mbox{\Hypertarget{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}\label{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}} 
 \index{OMSimHitManager@{OMSimHitManager}!setNumberOfPMTs@{setNumberOfPMTs}}
 \index{setNumberOfPMTs@{setNumberOfPMTs}!OMSimHitManager@{OMSimHitManager}}
 \doxysubsubsection{\texorpdfstring{setNumberOfPMTs()}{setNumberOfPMTs()}}
@@ -244,7 +243,13 @@ This is normally done in \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dc
 {\em p\+Module\+Index} & Module index for which we are getting the information (default 0) \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a756d2a85121e00d2a2d8b6c04cd0ebd1}\label{class_o_m_sim_hit_manager_a756d2a85121e00d2a2d8b6c04cd0ebd1}} 
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}\label{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}} 
+\index{OMSimHitManager@{OMSimHitManager}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!OMSimHitManager@{OMSimHitManager}}
+\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily void OMSim\+Hit\+Manager\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+This method is normally called in the destructor $\sim$\+OMSim. \mbox{\Hypertarget{class_o_m_sim_hit_manager_a756d2a85121e00d2a2d8b6c04cd0ebd1}\label{class_o_m_sim_hit_manager_a756d2a85121e00d2a2d8b6c04cd0ebd1}} 
 \index{OMSimHitManager@{OMSimHitManager}!sortHitStatsByTime@{sortHitStatsByTime}}
 \index{sortHitStatsByTime@{sortHitStatsByTime}!OMSimHitManager@{OMSimHitManager}}
 \doxysubsubsection{\texorpdfstring{sortHitStatsByTime()}{sortHitStatsByTime()}}

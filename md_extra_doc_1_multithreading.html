@@ -195,9 +195,9 @@ Thread-Safe Global Instance Implementation</h1>
 <div class="line">    <span class="keywordflow">return</span> *gHitManager;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html"><div class="ttname"><a href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div><div class="ttdoc">Manages detected photon information.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.hh:60</div></div>
-<div class="ttc" id="aclass_o_m_sim_hit_manager_html_aaa3e7a28d658d8e2e6db704b910cc35c"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a></div><div class="ttdeci">static OMSimHitManager &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:42</div></div>
+<div class="ttc" id="aclass_o_m_sim_hit_manager_html_aaa3e7a28d658d8e2e6db704b910cc35c"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a></div><div class="ttdeci">static OMSimHitManager &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:44</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_ac26f7ad778584ece58f86d60192ef671"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671">OMSimHitManager::init</a></div><div class="ttdeci">static void init()</div><div class="ttdoc">Initializes the global instance of OMSimHitManager.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:23</div></div>
-<div class="ttc" id="aclass_o_m_sim_hit_manager_html_ad8a139a9068c92b7babf471c9ec23ecf"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf">OMSimHitManager::shutdown</a></div><div class="ttdeci">static void shutdown()</div><div class="ttdoc">Shuts down and deletes the global instance of OMSimHitManager.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:31</div></div>
+<div class="ttc" id="aclass_o_m_sim_hit_manager_html_ad8a139a9068c92b7babf471c9ec23ecf"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf">OMSimHitManager::shutdown</a></div><div class="ttdeci">static void shutdown()</div><div class="ttdoc">Deletes the global instance of OMSimHitManager.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:33</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
 <p><b>Note</b>: While this global instance implementation provides better control over the instance lifecycle, it requires explicit initialization and shutdown. Ensure these are called at appropriate times (single-thread) in your application (for example in main before/after run). </p>
 </blockquote>
@@ -222,7 +222,7 @@ Example: OMSimHitManager</h2>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// ... </span></div>
 <div class="line">};</div>
-<div class="ttc" id="aclass_o_m_sim_hit_manager_html_a8c2dab4767b46f9c2eb16d5173ba527e"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">OMSimHitManager::appendHitInfo</a></div><div class="ttdeci">void appendHitInfo(G4double pGlobalTime, G4double pLocalTime, G4double pTrackLength, G4double pEnergy, G4int pPMTHitNumber, G4ThreeVector pMomentumDirection, G4ThreeVector pGlobalPos, G4ThreeVector pLocalPos, G4double pDistance, OMSimPMTResponse::PMTPulse pResponse, G4int pModuleIndex=0)</div><div class="ttdoc">Appends hit information for a detected photon to the corresponding module's hit data.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:96</div></div>
+<div class="ttc" id="aclass_o_m_sim_hit_manager_html_a8c2dab4767b46f9c2eb16d5173ba527e"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">OMSimHitManager::appendHitInfo</a></div><div class="ttdeci">void appendHitInfo(G4double pGlobalTime, G4double pLocalTime, G4double pTrackLength, G4double pEnergy, G4int pPMTHitNumber, G4ThreeVector pMomentumDirection, G4ThreeVector pGlobalPos, G4ThreeVector pLocalPos, G4double pDistance, OMSimPMTResponse::PMTPulse pResponse, G4int pModuleIndex=0)</div><div class="ttdoc">Appends hit information for a detected photon to the corresponding module's hit data.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:99</div></div>
 </div><!-- fragment --><p>Key features:</p><ul>
 <li>Thread-local storage for hit data (<code>mThreadData</code>), each thread will start one</li>
 <li>Mutex (<code>mMutex</code>) for thread synchronization.</li>
@@ -296,8 +296,8 @@ Example: Saving Data Per Thread</h2>
 <div class="line">    }</div>
 <div class="line">    lDatafile.close();</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a2a6179839e4ed5f503e52fca917c84c2"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">OMSimCommandArgsTable::getInstance</a></div><div class="ttdeci">static OMSimCommandArgsTable &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:77</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a98ca3b003cebba64f357e342d16ea968"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a98ca3b003cebba64f357e342d16ea968">OMSimCommandArgsTable::get</a></div><div class="ttdeci">T get(const std::string &amp;pKey)</div><div class="ttdoc">Retrieves a parameter from the table.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:106</div></div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a2a6179839e4ed5f503e52fca917c84c2"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">OMSimCommandArgsTable::getInstance</a></div><div class="ttdeci">static OMSimCommandArgsTable &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:87</div></div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a98ca3b003cebba64f357e342d16ea968"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a98ca3b003cebba64f357e342d16ea968">OMSimCommandArgsTable::get</a></div><div class="ttdeci">T get(const std::string &amp;pKey)</div><div class="ttdoc">Retrieves a parameter from the table.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:116</div></div>
 <div class="ttc" id="aclass_o_m_sim_decays_analysis_html_abf3b99f2998f27c9ad1f792dfc716e0c"><div class="ttname"><a href="class_o_m_sim_decays_analysis.html#abf3b99f2998f27c9ad1f792dfc716e0c">OMSimDecaysAnalysis::writeThreadDecayInformation</a></div><div class="ttdeci">void writeThreadDecayInformation()</div><div class="ttdoc">Write isotoped related data to the output file.</div><div class="ttdef"><b>Definition:</b> OMSimDecaysAnalysis.cc:75</div></div>
 <div class="ttc" id="anamespace_tools_html_aee9fb48a4947040e59508fd02baa6b4f"><div class="ttname"><a href="namespace_tools.html#aee9fb48a4947040e59508fd02baa6b4f">Tools::getThreadIDStr</a></div><div class="ttdeci">G4String getThreadIDStr()</div><div class="ttdef"><b>Definition:</b> OMSimTools.cc:190</div></div>
 </div><!-- fragment --><p>Data is saved after each event in the <code>EndOfEventAction</code> method to handle large volumes of data:</p>
@@ -386,7 +386,7 @@ Troubleshooting Multi-threading Issues</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Aug 1 2024 09:37:45 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 1 2024 09:48:22 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
