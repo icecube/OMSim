@@ -45,10 +45,7 @@ struct HitStats
  * @brief Manages detected photon information.
  *
  * Stores, manages, and provides access information related to detected photons across multiple optical modules.
- * The manager uses a global instance pattern, ensuring a unified access point for photon hit data.
- *
- * The class must be initialized with `OMSimHitManager::init()` before use and shut down with 
- * `OMSimHitManager::shutdown()` when no longer needed. This is handled by the OMSim class.
+ * The manager uses a global instance pattern, ensuring a unified access point for photon hit data. Its lifecycle is managed by the OMSim class.
  *
  * The hits are stored using 'OMSimHitManager::appendHitInfo'.
  * The analysis manager of each study is in charge of writing the stored information into a file (see for example 'OMSimEffectiveAreaAnalyisis::writeScan' or 'OMSimDecaysAnalysis::writeHitInformation').

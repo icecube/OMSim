@@ -17,13 +17,21 @@ Additionally, geometry data used during PMT construction are also stored in JSON
 
 This approach was adopted because various PMTs are constructed similarly, eliminating the need to define a unique class for each PMT type, as is done for the optical modules. 
 
-If you wish to load additional data, you can either define a new type in OMSimDataFileTypes or load it into a tree as previously mentioned. For simpler tasks, use the static method `Tools::loadtxt` provided in `OMSimTools.hh`, which operates similarly to Python's numpy.loadtxt. For example:
+If you wish to load additional data, you can either define a new type in OMSimDataFileTypes or use a json file to load it into a tree as previously mentioned. For simpler tasks, use the static method `Tools::loadtxt` provided by the `Tools` namespace.
+
+## The Tools namespace
+ 
+The tools namespace provide several methods that could help you. For example, `Tools::loadtxt`, `Tools::linspace` and `Tools::logspace` operate similarly to their Python's numpy counterparts:
 
 ```cpp
 #include "OMSimTools.hh"
-std::vector<G4PV2DDataVector> data = Tools::loadtxt("path/file_name.txt");
-std::vector<G4double> first_column = data.at(0);
-std::vector<G4double> second_column = data.at(1);
+std::vector<G4PV2DDataVector> lData = Tools::loadtxt("path/file_name.txt", true);
+std::vector<G4double> lFirstColumn = lData.at(0);
+std::vector<G4double> lSecondColumn = lData.at(1);
+
+std::vector<double> lWavelengths = Tools::linspace(275, 750, 96);
+std::vector<double> lAbsLengths = Tools::logspace(1e-9, 1e-4, 20);
+
 // ...
 ```
 

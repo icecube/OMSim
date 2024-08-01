@@ -44,7 +44,8 @@ inline OMSimCommandArgsTable* gCommandArgsTable = nullptr;
  * @brief A class used to hold OMSim command arguments with global instance access.
  *
  * This class uses a map to hold key-value pairs of simulation command arguments.
- * It provides a method to write the parameters to a JSON file.
+ * It provides a method to write the parameters to a JSON file. Its lifecycle is managed by the OMSim class.
+ * 
  * @ingroup common
  */
 class OMSimCommandArgsTable
