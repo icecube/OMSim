@@ -72,7 +72,7 @@ Implementation of the global instance pattern\+:
 \begin{quote}
 {\bfseries{Note}}\+: While this global instance implementation provides better control over the instance lifecycle, it requires explicit initialization and shutdown. Ensure these are called at appropriate times (single-\/thread) in your application (for example in main before/after run). \end{quote}
 \hypertarget{md_extra_doc_1_multithreading_autotoc_md12}{}\doxysubsection{Example\+: OMSim\+Hit\+Manager}\label{md_extra_doc_1_multithreading_autotoc_md12}
-The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} class demonstrates several thread-\/safety techniques\+:
+The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} class demonstrates several thread-\/safety techniques for saving data\+:
 
 
 \begin{DoxyCode}{0}
@@ -100,11 +100,11 @@ The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}
 
 Key features\+:
 \begin{DoxyItemize}
-\item Thread-\/local storage for hit data ({\ttfamily m\+Thread\+Data}).
-\item Mutex for thread synchronization.
+\item Thread-\/local storage for hit data ({\ttfamily m\+Thread\+Data}), each thread will start one
+\item Mutex ({\ttfamily m\+Mutex}) for thread synchronization.
 \end{DoxyItemize}
 
-The {\ttfamily append\+Hit\+Info} method\+:
+The {\ttfamily append\+Hit\+Info} method is used by all threads and uses to the thread-\/local {\ttfamily m\+Thread\+Data}\+:
 
 
 \begin{DoxyCode}{0}
@@ -116,15 +116,16 @@ The {\ttfamily append\+Hit\+Info} method\+:
 \DoxyCodeLine{        mThreadData = \textcolor{keyword}{new} ThreadLocalData();}
 \DoxyCodeLine{    \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{    \textcolor{comment}{// Append hit information to thread-\/local container}}
-\DoxyCodeLine{    \textcolor{comment}{// This is thread-\/safe as each thread has its own mThreadData}}
-\DoxyCodeLine{    \textcolor{comment}{// ... append hit information to mThreadData-\/>moduleHits ...}}
+\DoxyCodeLine{    \textcolor{keyword}{auto} \&moduleHits = mThreadData-\/>moduleHits[pModuleNumber];}
+\DoxyCodeLine{    G4int eventID = G4EventManager::GetEventManager()-\/>GetConstCurrentEvent()-\/>GetEventID();}
+\DoxyCodeLine{    moduleHits.eventId.push\_back(eventID);}
+\DoxyCodeLine{    \textcolor{comment}{//...}}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
 
 
-The {\ttfamily merge\+Thread\+Data} method combines data from all threads\+:
+The {\ttfamily merge\+Thread\+Data} method combines data from all threads into a single vector\+:
 
 
 \begin{DoxyCode}{0}

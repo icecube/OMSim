@@ -203,7 +203,7 @@ Thread-Safe Global Instance Implementation</h1>
 </blockquote>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Example: OMSimHitManager</h2>
-<p>The <code><a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a></code> class demonstrates several thread-safety techniques:</p>
+<p>The <code><a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a></code> class demonstrates several thread-safety techniques for saving data:</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div>
 <div class="line">{</div>
 <div class="line"><span class="keyword">public</span>:</div>
@@ -224,10 +224,10 @@ Example: OMSimHitManager</h2>
 <div class="line">};</div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_a8c2dab4767b46f9c2eb16d5173ba527e"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">OMSimHitManager::appendHitInfo</a></div><div class="ttdeci">void appendHitInfo(G4double pGlobalTime, G4double pLocalTime, G4double pTrackLength, G4double pEnergy, G4int pPMTHitNumber, G4ThreeVector pMomentumDirection, G4ThreeVector pGlobalPos, G4ThreeVector pLocalPos, G4double pDistance, OMSimPMTResponse::PMTPulse pResponse, G4int pModuleIndex=0)</div><div class="ttdoc">Appends hit information for a detected photon to the corresponding module's hit data.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:96</div></div>
 </div><!-- fragment --><p>Key features:</p><ul>
-<li>Thread-local storage for hit data (<code>mThreadData</code>).</li>
-<li>Mutex for thread synchronization.</li>
+<li>Thread-local storage for hit data (<code>mThreadData</code>), each thread will start one</li>
+<li>Mutex (<code>mMutex</code>) for thread synchronization.</li>
 </ul>
-<p>The <code>appendHitInfo</code> method:</p>
+<p>The <code>appendHitInfo</code> method is used by all threads and uses to the thread-local <code>mThreadData</code>:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">OMSimHitManager::appendHitInfo</a>(<span class="comment">/* parameters */</span>)</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordflow">if</span> (!mThreadData)</div>
@@ -236,11 +236,12 @@ Example: OMSimHitManager</h2>
 <div class="line">        mThreadData = <span class="keyword">new</span> ThreadLocalData();</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// Append hit information to thread-local container</span></div>
-<div class="line">    <span class="comment">// This is thread-safe as each thread has its own mThreadData</span></div>
-<div class="line">    <span class="comment">// ... append hit information to mThreadData-&gt;moduleHits ...</span></div>
+<div class="line">    <span class="keyword">auto</span> &amp;moduleHits = mThreadData-&gt;moduleHits[pModuleNumber];</div>
+<div class="line">    G4int eventID = G4EventManager::GetEventManager()-&gt;GetConstCurrentEvent()-&gt;GetEventID();</div>
+<div class="line">    moduleHits.eventId.push_back(eventID);</div>
+<div class="line">    <span class="comment">//...</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><p>The <code>mergeThreadData</code> method combines data from all threads:</p>
+</div><!-- fragment --><p>The <code>mergeThreadData</code> method combines data from all threads into a single vector:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> OMSimHitManager::mergeThreadData()</div>
 <div class="line">{</div>
 <div class="line">    G4AutoLock lock(&amp;mMutex);  <span class="comment">// Ensure thread-safe access to shared data</span></div>
@@ -384,7 +385,7 @@ Troubleshooting Multi-threading Issues</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Aug 1 2024 09:16:23 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 1 2024 09:29:58 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
