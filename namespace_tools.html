@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OMSim: Tools Class Reference</title>
+<title>OMSim: Tools Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -94,7 +94,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('class_tools.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('namespace_tools.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -114,42 +114,41 @@ $(document).ready(function(){initNavTree('class_tools.html',''); initResizable()
 
 <div class="header">
   <div class="summary">
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="class_tools-members.html">List of all members</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Tools Class Reference<div class="ingroups"><a class="el" href="group__common.html">Common framework</a></div></div>  </div>
+<div class="title">Tools Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>A collection of helper functions for numerical operations.  
- <a href="class_tools.html#details">More...</a></p>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class provides static methods for common numerical tasks such as loading data from a file, and generating linearly and logarithmically spaced sequences. These methods are utility functions and do not require instantiation of the <code><a class="el" href="class_tools.html" title="A collection of helper functions for numerical operations.">Tools</a></code> class. </p>
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aa786c067e62992fa1bab16b2b70955d2"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools.html#aa786c067e62992fa1bab16b2b70955d2">loadtxt</a> (const std::string &amp;pFilePath, bool pUnpack=true, size_t pSkipRows=0, char pDelimiter=' ')</td></tr>
-<tr class="memdesc:aa786c067e62992fa1bab16b2b70955d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.  <a href="class_tools.html#aa786c067e62992fa1bab16b2b70955d2">More...</a><br /></td></tr>
-<tr class="separator:aa786c067e62992fa1bab16b2b70955d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dee2a839a3b5295fdf43c74d87c92c1"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools.html#a4dee2a839a3b5295fdf43c74d87c92c1">linspace</a> (double start, double end, int num_points)</td></tr>
-<tr class="memdesc:a4dee2a839a3b5295fdf43c74d87c92c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a linearly spaced vector.  <a href="class_tools.html#a4dee2a839a3b5295fdf43c74d87c92c1">More...</a><br /></td></tr>
+<a href="namespace_tools.html#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a82269e4a0ecbf0878c2e257659ee1ab9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools.html#a82269e4a0ecbf0878c2e257659ee1ab9">loadtxt</a> (const std::string &amp;pFilePath, bool pUnpack, size_t pSkipRows, char pDelimiter)</td></tr>
+<tr class="memdesc:a82269e4a0ecbf0878c2e257659ee1ab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.  <a href="namespace_tools.html#a82269e4a0ecbf0878c2e257659ee1ab9">More...</a><br /></td></tr>
+<tr class="separator:a82269e4a0ecbf0878c2e257659ee1ab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dee2a839a3b5295fdf43c74d87c92c1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools.html#a4dee2a839a3b5295fdf43c74d87c92c1">linspace</a> (double start, double end, int num_points)</td></tr>
+<tr class="memdesc:a4dee2a839a3b5295fdf43c74d87c92c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a linearly spaced vector.  <a href="namespace_tools.html#a4dee2a839a3b5295fdf43c74d87c92c1">More...</a><br /></td></tr>
 <tr class="separator:a4dee2a839a3b5295fdf43c74d87c92c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8666b7ef6077cbd0d521ecaa081e3ac0"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools.html#a8666b7ef6077cbd0d521ecaa081e3ac0">logspace</a> (double start, double end, int num_points)</td></tr>
-<tr class="memdesc:a8666b7ef6077cbd0d521ecaa081e3ac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a logarithmically spaced vector.  <a href="class_tools.html#a8666b7ef6077cbd0d521ecaa081e3ac0">More...</a><br /></td></tr>
+<tr class="memitem:a8666b7ef6077cbd0d521ecaa081e3ac0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools.html#a8666b7ef6077cbd0d521ecaa081e3ac0">logspace</a> (double start, double end, int num_points)</td></tr>
+<tr class="memdesc:a8666b7ef6077cbd0d521ecaa081e3ac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a logarithmically spaced vector.  <a href="namespace_tools.html#a8666b7ef6077cbd0d521ecaa081e3ac0">More...</a><br /></td></tr>
 <tr class="separator:a8666b7ef6077cbd0d521ecaa081e3ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acaec430cf45979bd09e6c19571127478"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools.html#acaec430cf45979bd09e6c19571127478">sortVectorByReference</a> (std::vector&lt; G4double &gt; &amp;referenceVector, std::vector&lt; G4double &gt; &amp;sortVector)</td></tr>
-<tr class="memdesc:acaec430cf45979bd09e6c19571127478"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts two vectors (pSortVector &amp; pReferenceVector) based on the order of values in pReferenceVector.  <a href="class_tools.html#acaec430cf45979bd09e6c19571127478">More...</a><br /></td></tr>
-<tr class="separator:acaec430cf45979bd09e6c19571127478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e168c04a34f0c7ace018063e95b4835"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools.html#a7e168c04a34f0c7ace018063e95b4835">sortVectorByReference</a> (std::vector&lt; G4double &gt; &amp;pReferenceVector, std::vector&lt; G4double &gt; &amp;pSortVector)</td></tr>
+<tr class="memdesc:a7e168c04a34f0c7ace018063e95b4835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts two vectors (pSortVector &amp; pReferenceVector) based on the order of values in pReferenceVector.  <a href="namespace_tools.html#a7e168c04a34f0c7ace018063e95b4835">More...</a><br /></td></tr>
+<tr class="separator:a7e168c04a34f0c7ace018063e95b4835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee9fb48a4947040e59508fd02baa6b4f"><td class="memItemLeft" align="right" valign="top"><a id="aee9fb48a4947040e59508fd02baa6b4f"></a>
+G4String&#160;</td><td class="memItemRight" valign="bottom"><b>getThreadIDStr</b> ()</td></tr>
+<tr class="separator:aee9fb48a4947040e59508fd02baa6b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This namespace provides static methods for common numerical tasks such as loading data from a file, and generating linearly and logarithmically spaced sequences. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a4dee2a839a3b5295fdf43c74d87c92c1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4dee2a839a3b5295fdf43c74d87c92c1">&#9670;&nbsp;</a></span>linspace()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; double &gt; Tools::linspace </td>
@@ -175,11 +174,6 @@ Static Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Creates a vector of equally spaced values between <code>start</code> and <code>end</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -200,14 +194,11 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa786c067e62992fa1bab16b2b70955d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa786c067e62992fa1bab16b2b70955d2">&#9670;&nbsp;</a></span>loadtxt()</h2>
+<a id="a82269e4a0ecbf0878c2e257659ee1ab9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82269e4a0ecbf0878c2e257659ee1ab9">&#9670;&nbsp;</a></span>loadtxt()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt; Tools::loadtxt </td>
@@ -219,19 +210,19 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>pUnpack</em> = <code>true</code>, </td>
+          <td class="paramname"><em>pUnpack</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>pSkipRows</em> = <code>0</code>, </td>
+          <td class="paramname"><em>pSkipRows</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>pDelimiter</em> = <code>'&#160;'</code>&#160;</td>
+          <td class="paramname"><em>pDelimiter</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -239,11 +230,6 @@ Static Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -269,9 +255,6 @@ Static Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; double &gt; Tools::logspace </td>
@@ -297,11 +280,6 @@ Static Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Creates a vector of values that are logarithmically spaced between <code>start</code> and <code>end</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -322,14 +300,11 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acaec430cf45979bd09e6c19571127478"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acaec430cf45979bd09e6c19571127478">&#9670;&nbsp;</a></span>sortVectorByReference()</h2>
+<a id="a7e168c04a34f0c7ace018063e95b4835"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e168c04a34f0c7ace018063e95b4835">&#9670;&nbsp;</a></span>sortVectorByReference()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Tools::sortVectorByReference </td>
@@ -349,11 +324,6 @@ Static Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -371,17 +341,13 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_o_m_sim_tools_8hh_source.html">OMSimTools.hh</a></li>
-<li>OMSimTools.cc</li>
-</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="class_tools.html">Tools</a></li>
-    <li class="footer">Generated on Thu Aug 1 2024 07:36:11 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="navelem"><a class="el" href="namespace_tools.html">Tools</a></li>
+    <li class="footer">Generated on Thu Aug 1 2024 07:59:38 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

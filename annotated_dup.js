@@ -86,6 +86,5 @@ var annotated_dup =
     [ "ScintillationProperties", "class_scintillation_properties.html", "class_scintillation_properties" ],
     [ "SNBaseParticleGenerator", "class_s_n_base_particle_generator.html", "class_s_n_base_particle_generator" ],
     [ "SNEventStats", "struct_s_n_event_stats.html", "struct_s_n_event_stats" ],
-    [ "Surface", "class_surface.html", "class_surface" ],
-    [ "Tools", "class_tools.html", "class_tools" ]
+    [ "Surface", "class_surface.html", "class_surface" ]
 ];

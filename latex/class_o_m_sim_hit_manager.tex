@@ -18,9 +18,11 @@ Collaboration diagram for OMSim\+Hit\+Manager\+:
 
 
 \doxysubsection{Detailed Description}
-Stores, manages, and provides access information related to detected photons across multiple optical modules. The manager can be accessed via a singleton pattern, ensuring a unified access point for photon hit data.
+Stores, manages, and provides access information related to detected photons across multiple optical modules. The manager uses a global instance pattern, ensuring a unified access point for photon hit data.
 
-The hits are stored using \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_hit_manager_a8c2dab4767b46f9c2eb16d5173ba527e}{OMSim\+Hit\+Manager\+::append\+Hit\+Info}}\textquotesingle{}. The analysis manager of each study is in charge of writing the stored information into a file (see for example \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_af2f7ac6a789bb50ec7d0d8a81487ec20}{OMSim\+Effective\+Area\+Analyisis\+::write\+Scan}}\textquotesingle{} or \textquotesingle{}OMSim\+Decays\+Analysis\+::write\+Hit\+Information\textquotesingle{}). Once the data is written, do not forget calling \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}{OMSim\+Hit\+Manager\+::reset}}\textquotesingle{}!. \doxysubsection*{Classes}
+The class must be initialized with {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}{OMSim\+Hit\+Manager\+::init()}}} before use and shut down with {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}{OMSim\+Hit\+Manager\+::shutdown()}}} when no longer needed. This is handled by the \mbox{\hyperlink{class_o_m_sim}{OMSim}} class.
+
+The hits are stored using \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_hit_manager_a8c2dab4767b46f9c2eb16d5173ba527e}{OMSim\+Hit\+Manager\+::append\+Hit\+Info}}\textquotesingle{}. The analysis manager of each study is in charge of writing the stored information into a file (see for example \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_af2f7ac6a789bb50ec7d0d8a81487ec20}{OMSim\+Effective\+Area\+Analyisis\+::write\+Scan}}\textquotesingle{} or \textquotesingle{}OMSim\+Decays\+Analysis\+::write\+Hit\+Information\textquotesingle{}). If the simulation will continue after the data is written, do not forget calling \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}{OMSim\+Hit\+Manager\+::reset}}\textquotesingle{}!. \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_o_m_sim_hit_manager_1_1_thread_local_data}{Thread\+Local\+Data}}
@@ -54,23 +56,18 @@ G4int {\bfseries get\+Next\+Detector\+Index} ()
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_a1aad9c1f5979d9d5557dc6a1cf8cb838}\label{class_o_m_sim_hit_manager_a1aad9c1f5979d9d5557dc6a1cf8cb838}} 
 G4int {\bfseries get\+Number\+Of\+Modules} ()
 \item 
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a03a62d588f625b5ce20e36ac62743cab}\label{class_o_m_sim_hit_manager_a03a62d588f625b5ce20e36ac62743cab}} 
-G4\+String {\bfseries get\+Thread\+IDStr} ()
-\item 
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_aeaaa60e5b1a57b96a45e16e91128b4f0}\label{class_o_m_sim_hit_manager_aeaaa60e5b1a57b96a45e16e91128b4f0}} 
 void {\bfseries merge\+Thread\+Data} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}\label{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}} 
-static void {\bfseries init} ()
-\item 
+static void \mbox{\hyperlink{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}{init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the global instance of \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}\label{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}} 
-static void {\bfseries shutdown} ()
-\item 
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}\label{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}} 
-static \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& {\bfseries get\+Instance} ()
+static void \mbox{\hyperlink{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}{shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Shuts down and deletes the global instance of \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{get\+Instance}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -183,6 +180,20 @@ A vector containing the multiplicity data.
 \begin{DoxyReturn}{Returns}
 A vector containing the hit count for each PMT in the specified module. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}\label{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}} 
+\index{OMSimHitManager@{OMSimHitManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!OMSimHitManager@{OMSimHitManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} \& OMSim\+Hit\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+A reference to the global \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} instance. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em assert} & if instance exists (i.\+e. if it was called before \mbox{\hyperlink{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}{init()}} or after \mbox{\hyperlink{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}{shutdown()}}). \\
+\hline
+\end{DoxyExceptions}
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}\label{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}} 
 \index{OMSimHitManager@{OMSimHitManager}!getMergedHitsOfModule@{getMergedHitsOfModule}}
 \index{getMergedHitsOfModule@{getMergedHitsOfModule}!OMSimHitManager@{OMSimHitManager}}
@@ -214,7 +225,13 @@ A \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure containing hit infor
 \begin{DoxyReturn}{Returns}
 A \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}} structure containing hit information of specified module. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}\label{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}} 
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}\label{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}} 
+\index{OMSimHitManager@{OMSimHitManager}!init@{init}}
+\index{init@{init}!OMSimHitManager@{OMSimHitManager}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void OMSim\+Hit\+Manager\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+This is normally done in \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{OMSim\+::initialise\+Simulation}}. \mbox{\Hypertarget{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}\label{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}} 
 \index{OMSimHitManager@{OMSimHitManager}!setNumberOfPMTs@{setNumberOfPMTs}}
 \index{setNumberOfPMTs@{setNumberOfPMTs}!OMSimHitManager@{OMSimHitManager}}
 \doxysubsubsection{\texorpdfstring{setNumberOfPMTs()}{setNumberOfPMTs()}}

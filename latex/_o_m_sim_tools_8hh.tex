@@ -16,8 +16,22 @@ This graph shows which files directly or indirectly include this file\+:
 \includegraphics[width=350pt]{_o_m_sim_tools_8hh__dep__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Classes}
+\doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{class_tools}{Tools}}
+ \mbox{\hyperlink{namespace_tools}{Tools}}
 \begin{DoxyCompactList}\small\item\em A collection of helper functions for numerical operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{namespace_tools_a82269e4a0ecbf0878c2e257659ee1ab9}{Tools\+::loadtxt}} (const std\+::string \&p\+File\+Path, bool p\+Unpack, size\+\_\+t p\+Skip\+Rows, char p\+Delimiter)
+\begin{DoxyCompactList}\small\item\em Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.\+loadtxt. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_a4dee2a839a3b5295fdf43c74d87c92c1}{Tools\+::linspace}} (double start, double end, int num\+\_\+points)
+\begin{DoxyCompactList}\small\item\em Generates a linearly spaced vector. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_a8666b7ef6077cbd0d521ecaa081e3ac0}{Tools\+::logspace}} (double start, double end, int num\+\_\+points)
+\begin{DoxyCompactList}\small\item\em Generates a logarithmically spaced vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_tools_a7e168c04a34f0c7ace018063e95b4835}{Tools\+::sort\+Vector\+By\+Reference}} (std\+::vector$<$ G4double $>$ \&p\+Reference\+Vector, std\+::vector$<$ G4double $>$ \&p\+Sort\+Vector)
+\begin{DoxyCompactList}\small\item\em Sorts two vectors (p\+Sort\+Vector \& p\+Reference\+Vector) based on the order of values in p\+Reference\+Vector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}\label{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}} 
+G4\+String {\bfseries Tools\+::get\+Thread\+IDStr} ()
+\end{DoxyCompactItemize}

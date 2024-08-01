@@ -61,7 +61,7 @@ The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}
 \DoxyCodeLine{\textcolor{keyword}{class }\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\textcolor{keyword}{public}:}
-\DoxyCodeLine{    \textcolor{keyword}{static} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\& getInstance();}
+\DoxyCodeLine{    \textcolor{keyword}{static} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\& \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{getInstance}}();}
 \DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_hit_manager_a8c2dab4767b46f9c2eb16d5173ba527e}{appendHitInfo}}(\textcolor{comment}{/* parameters */});}
 \DoxyCodeLine{    \textcolor{keywordtype}{void} mergeThreadData();}
 \DoxyCodeLine{    \textcolor{comment}{// ... other methods ...}}
@@ -169,7 +169,7 @@ In scenarios where merging data is unnecessary, or the amount of data is too lar
 \DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{OMSimDecaysAnalysis::writeThreadDecayInformation}}()}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{    G4String lOutputSuffix = \mbox{\hyperlink{class_o_m_sim_command_args_table_a2a6179839e4ed5f503e52fca917c84c2}{OMSimCommandArgsTable::getInstance}}().\mbox{\hyperlink{class_o_m_sim_command_args_table_a98ca3b003cebba64f357e342d16ea968}{get}}<std::string>(\textcolor{stringliteral}{"{}output\_file"{}});}
-\DoxyCodeLine{    G4String lDecaysFileName = lOutputSuffix + \textcolor{stringliteral}{"{}\_"{}} + getThreadIDStr() + \textcolor{stringliteral}{"{}\_decays.dat"{}}; \textcolor{comment}{// one file per thread, appending thread id to file name}}
+\DoxyCodeLine{    G4String lDecaysFileName = lOutputSuffix + \textcolor{stringliteral}{"{}\_"{}} + Tools::getThreadIDStr() + \textcolor{stringliteral}{"{}\_decays.dat"{}}; \textcolor{comment}{// one file per thread, appending thread id to file name}}
 \DoxyCodeLine{}
 \DoxyCodeLine{    std::fstream lDatafile;}
 \DoxyCodeLine{    lDatafile.open(lDecaysFileName.c\_str(), std::ios::out | std::ios::app);}

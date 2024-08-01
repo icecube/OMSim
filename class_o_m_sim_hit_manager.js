@@ -13,7 +13,6 @@ var class_o_m_sim_hit_manager =
     [ "getNextDetectorIndex", "class_o_m_sim_hit_manager.html#abcdc764e8a8b756e6a1eb745403da57b", null ],
     [ "getNumberOfModules", "class_o_m_sim_hit_manager.html#a1aad9c1f5979d9d5557dc6a1cf8cb838", null ],
     [ "getSingleThreadHitsOfModule", "class_o_m_sim_hit_manager.html#a45a63dbb6cdb3815db3cfde00ae36f70", null ],
-    [ "getThreadIDStr", "class_o_m_sim_hit_manager.html#a03a62d588f625b5ce20e36ac62743cab", null ],
     [ "init", "class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671", null ],
     [ "mergeThreadData", "class_o_m_sim_hit_manager.html#aeaaa60e5b1a57b96a45e16e91128b4f0", null ],
     [ "operator=", "class_o_m_sim_hit_manager.html#a6baf2795e91dc2ff99c3eda3e5143bc3", null ],

@@ -13,12 +13,12 @@ This approach was adopted because various PMTs are constructed similarly, elimin
 
 Thus, an instance of {\ttfamily \mbox{\hyperlink{class_input_data_manager}{Input\+Data\+Manager}}} is always passed to all classes related to geometry construction (see \href{\#geometry-construction}{\texttt{ geometry}}).
 
-If you wish to load additional data, you can either define a new type in OMSim\+Data\+File\+Types or load it into a tree as previously mentioned. For simpler tasks, use the static method {\ttfamily \mbox{\hyperlink{class_tools_aa786c067e62992fa1bab16b2b70955d2}{Tools\+::loadtxt}}} provided in {\ttfamily \mbox{\hyperlink{_o_m_sim_tools_8hh}{OMSim\+Tools.\+hh}}}, which operates similarly to Python\textquotesingle{}s numpy.\+loadtxt. For example\+:
+If you wish to load additional data, you can either define a new type in OMSim\+Data\+File\+Types or load it into a tree as previously mentioned. For simpler tasks, use the static method {\ttfamily \mbox{\hyperlink{namespace_tools_a82269e4a0ecbf0878c2e257659ee1ab9}{Tools\+::loadtxt}}} provided in {\ttfamily \mbox{\hyperlink{_o_m_sim_tools_8hh}{OMSim\+Tools.\+hh}}}, which operates similarly to Python\textquotesingle{}s numpy.\+loadtxt. For example\+:
 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_o_m_sim_tools_8hh}{OMSimTools.hh}}"{}}}
-\DoxyCodeLine{std::vector<G4PV2DDataVector> data = \mbox{\hyperlink{class_tools_aa786c067e62992fa1bab16b2b70955d2}{Tools::loadtxt}}(\textcolor{stringliteral}{"{}path/file\_name.txt"{}});}
+\DoxyCodeLine{std::vector<G4PV2DDataVector> data = \mbox{\hyperlink{namespace_tools_a82269e4a0ecbf0878c2e257659ee1ab9}{Tools::loadtxt}}(\textcolor{stringliteral}{"{}path/file\_name.txt"{}});}
 \DoxyCodeLine{std::vector<G4double> first\_column = data.at(0);}
 \DoxyCodeLine{std::vector<G4double> second\_column = data.at(1);}
 \DoxyCodeLine{\textcolor{comment}{// ...}}
@@ -98,7 +98,7 @@ This approach ensures a smooth integration of the photosensitive volume within t
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}OMSimSensitiveDetector.hh"{}}}
 \DoxyCodeLine{\textcolor{comment}{//... Assume the logical volume of your detector has been defined and is referred to as "{}lDetectorLV"{}}}
 \DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}* lSensitiveDetector = \textcolor{keyword}{new} \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}(\textcolor{stringliteral}{"{}myDetector"{}}, DetectorType::GeneralPhotonDetector); }
-\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}} lHitManager =  OMSimHitManager::getInstance();}
+\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}} lHitManager =  \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}();}
 \DoxyCodeLine{lHitManager.\mbox{\hyperlink{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}{setNumberOfPMTs}}(1, lHitManager.getNextDetectorIndex());}
 \DoxyCodeLine{registerSensitiveDetector(lDetectorLV, lSensitiveDetector);}
 

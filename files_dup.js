@@ -95,7 +95,7 @@ var files_dup =
     [ "OMSimSteppingAction.hh", "_o_m_sim_stepping_action_8hh.html", [
       [ "OMSimSteppingAction", "class_o_m_sim_stepping_action.html", "class_o_m_sim_stepping_action" ]
     ] ],
-    [ "OMSimTools.hh", "_o_m_sim_tools_8hh.html", null ],
+    [ "OMSimTools.hh", "_o_m_sim_tools_8hh.html", "_o_m_sim_tools_8hh" ],
     [ "OMSimTrackingAction.hh", "_o_m_sim_tracking_action_8hh_source.html", null ],
     [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", null ]
 ];

@@ -163,7 +163,6 @@ var group__common =
       [ "getNextDetectorIndex", "class_o_m_sim_hit_manager.html#abcdc764e8a8b756e6a1eb745403da57b", null ],
       [ "getNumberOfModules", "class_o_m_sim_hit_manager.html#a1aad9c1f5979d9d5557dc6a1cf8cb838", null ],
       [ "getSingleThreadHitsOfModule", "class_o_m_sim_hit_manager.html#a45a63dbb6cdb3815db3cfde00ae36f70", null ],
-      [ "getThreadIDStr", "class_o_m_sim_hit_manager.html#a03a62d588f625b5ce20e36ac62743cab", null ],
       [ "init", "class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671", null ],
       [ "mergeThreadData", "class_o_m_sim_hit_manager.html#aeaaa60e5b1a57b96a45e16e91128b4f0", null ],
       [ "operator=", "class_o_m_sim_hit_manager.html#a6baf2795e91dc2ff99c3eda3e5143bc3", null ],
@@ -200,14 +199,6 @@ var group__common =
       [ "searchFolders", "class_input_data_manager.html#a7376d0446251d09973d90fb370a9373d", null ],
       [ "mDataDirectory", "class_input_data_manager.html#ae31826093d7c8092d0251ca296e6065e", null ],
       [ "mOpticalSurfaceMap", "class_input_data_manager.html#a48e36f6062300c12d0787b1005c0d7ec", null ]
-    ] ],
-    [ "Tools", "class_tools.html", [
-      [ "Tools", "class_tools.html#afb07d80318b98bb63771efa0654f961e", null ],
-      [ "~Tools", "class_tools.html#a18472d06fc4c94a3af67d49d128a8510", null ],
-      [ "linspace", "class_tools.html#a4dee2a839a3b5295fdf43c74d87c92c1", null ],
-      [ "loadtxt", "class_tools.html#aa786c067e62992fa1bab16b2b70955d2", null ],
-      [ "logspace", "class_tools.html#a8666b7ef6077cbd0d521ecaa081e3ac0", null ],
-      [ "sortVectorByReference", "class_tools.html#acaec430cf45979bd09e6c19571127478", null ]
     ] ],
     [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html", [
       [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html#a71034bda00b1648e8368f78431c4e0e9", null ],
