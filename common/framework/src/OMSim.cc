@@ -93,20 +93,16 @@ void OMSim::configureLogger()
 /**
  * @brief UIEx session is started for visualisation.
  */
-void OMSim::startVisualisationIfRequested()
+void OMSim::startVisualisation()
 {
-    if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
-    {
-        OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-        char lArg0[] = "all";
-        char *lArgv[] = {lArg0, NULL};
-        G4UIExecutive *UIEx = new G4UIExecutive(1, lArgv);
-        lUIinterface.applyCommand("/control/execute ../common/data/vis/init_vis.mac");
-        UIEx->SessionStart();
-        delete UIEx;
-    }
+    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+    char lArg0[] = "all";
+    char *lArgv[] = {lArg0, NULL};
+    G4UIExecutive *UIEx = new G4UIExecutive(1, lArgv);
+    lUIinterface.applyCommand("/control/execute ../common/data/vis/init_vis.mac");
+    UIEx->SessionStart();
+    delete UIEx;
 }
-
 
 int OMSim::determineNumberOfThreads()
 {

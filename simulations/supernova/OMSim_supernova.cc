@@ -60,6 +60,7 @@ int main(int pArgumentCount, char *pArgumentVector[])
 	lSimulation.initialiseSimulation(lDetectorConstruction);
 	runSupernovaNeutrinoSimulation();
 
-	lSimulation.startVisualisationIfRequested();
+	if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
+		lSimulation.startVisualisation();
 	return 0;
 }

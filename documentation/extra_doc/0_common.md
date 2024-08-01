@@ -32,6 +32,9 @@ std::vector<G4double> lSecondColumn = lData.at(1);
 std::vector<double> lWavelengths = Tools::linspace(275, 750, 96);
 std::vector<double> lAbsLengths = Tools::logspace(-9, -4, 20);
 
+std::vector<double> data = {1, 2, 2, 3, 3, 3, 4, 4, 5};
+auto [counts, edges] = Tools::histogram(data, 5);
+
 // ...
 ```
 

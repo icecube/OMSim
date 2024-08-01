@@ -70,21 +70,22 @@ void addModuleOptions(OMSim* pSimulation)
 	pSimulation->extendOptions(lSpecific);
 }
 
-
 int main(int pArgumentCount, char *pArgumentVector[])
 {
 
 	OMSim lSimulation;
 	addModuleOptions(&lSimulation);
 	bool lContinue = lSimulation.handleArguments(pArgumentCount, pArgumentVector);
-	if (!lContinue) return 0;
+	if (!lContinue)
+		return 0;
 
 	std::unique_ptr<OMSimEffectiveAreaDetector> lDetectorConstruction = std::make_unique<OMSimEffectiveAreaDetector>();
 	lSimulation.initialiseSimulation(lDetectorConstruction.get());
 	lDetectorConstruction.release();
-	
+
 	runEffectiveAreaSimulation();
 
-	lSimulation.startVisualisationIfRequested();
+	if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
+		lSimulation.startVisualisation();
 	return 0;
 }

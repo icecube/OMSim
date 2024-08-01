@@ -94,6 +94,7 @@ int main(int pArgumentCount, char *pArgumentVector[])
 
 	runRadioactiveDecays(lDetectorConstruction);
 	
-	lSimulation.startVisualisationIfRequested();
+	if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
+		lSimulation.startVisualisation();
 	return 0;
 }

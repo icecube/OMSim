@@ -7,27 +7,33 @@
 
 #include "OMSimLogger.hh"
 #include "globals.hh"
-
+#include <variant>
 /**
  * @namespace Tools
  * @brief A collection of helper functions for numerical operations.
- * 
- * This namespace provides static methods for common numerical tasks such as 
- * loading data from a file, and generating linearly and logarithmically 
- * spaced sequences. 
- * 
+ *
+ * This namespace provides static methods for common numerical tasks such as
+ * loading data from a file, and generating linearly and logarithmically
+ * spaced sequences.
+ *
  * @ingroup common
  */
 namespace Tools
 {
+    std::vector<double> arange(double start, double stop, double step);
     void ensureDirectoryExists(const std::string &filepath);
+    std::pair<std::vector<double>, std::vector<double>> histogram(
+        const std::vector<double> &data,
+        const std::variant<int, std::vector<double>> &bins = 10,
+        const std::optional<std::pair<double, double>> &range = std::nullopt);
+
     G4String getThreadIDStr();
     std::vector<std::vector<double>> loadtxt(const std::string &pFilePath,
-                                                    bool pUnpack = true,
-                                                    size_t pSkipRows = 0,
-                                                    char pDelimiter = ' ');
-    std::vector<double> linspace(double start, double end, int num_points);
-    std::vector<double> logspace(double start, double end, int num_points);
+                                             bool pUnpack = true,
+                                             size_t pSkipRows = 0,
+                                             char pDelimiter = ' ');
+    std::vector<double> linspace(double start, double end, int num_points, bool endpoint = true);
+    std::vector<double> logspace(double start, double end, int num_points, double base = 10.0, bool endpoint = true);
     void sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector);
 };
 

@@ -80,6 +80,18 @@ void runQEbeamSimulation()
 	}
 }
 
+void print_result(const std::vector<double>& counts, const std::vector<double>& edges) {
+    std::cout << "Counts: ";
+    for (const auto& count : counts) {
+        std::cout << count << " ";
+    }
+    std::cout << "\nEdges:  ";
+    for (const auto& edge : edges) {
+        std::cout << std::fixed << std::setprecision(2) << edge << " ";
+    }
+    std::cout << std::endl << std::endl;
+}
+
 void runXYZfrontalScan()
 {
 
@@ -99,6 +111,7 @@ void addModuleOptions(OMSim *pSimulation)
 	("theta,t", po::value<G4double>()->default_value(0.0), "theta (= zenith) in deg")
 	("phi,f", po::value<G4double>()->default_value(0.0), "phi (= azimuth) in deg")
 	("wavelength,l", po::value<G4double>()->default_value(400.0), "wavelength of incoming light in nm")
+	("simulation_step", po::value<G4int>()->default_value(0), "simulation step to be performed (0, 1, 2)")
 	("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
 
 	pSimulation->extendOptions(lSpecific);
@@ -117,8 +130,28 @@ int main(int pArgumentCount, char *pArgumentVector[])
 	lSimulation.initialiseSimulation(lDetectorConstruction.get());
 	lDetectorConstruction.release();
 
-	runQEbeamSimulation();
+   switch (OMSimCommandArgsTable::getInstance().get<G4int>("simulation_step"))
+    {
 
-	lSimulation.startVisualisationIfRequested();
+    case 0:
+    {
+		//Vary absorption length of photocathode for different wavelengths to determine amount of detected photons
+		runQEbeamSimulationVaryingAbsorptionLength();
+    }
+    case 1:
+    {
+		//After fitting the QE vs abs. length curves and making the corresponding parameter files, check that QE is being mapped correctly
+		runQEbeamSimulation();
+    }
+    case 2:
+    {
+		//Scan photocathode to save absorption position. Needed to calculate collection efficiency weight.
+		runXYZfrontalScan();
+    }
+    }
+
+
+	if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
+		lSimulation.startVisualisation();
 	return 0;
 }

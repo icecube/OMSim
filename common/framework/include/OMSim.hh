@@ -49,7 +49,7 @@ public:
     void initialiseSimulation(OMSimDetectorConstruction *pDetectorConstruction);
     void configureLogger();
     bool handleArguments(int pArgumentCount, char *pArgumentVector[]);
-    void startVisualisationIfRequested();
+    void startVisualisation();
 
     G4Navigator *getNavigator() { return mNavigator.get(); };
     void extendOptions(po::options_description pNewOptions);
