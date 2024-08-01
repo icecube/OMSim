@@ -3,116 +3,119 @@
 #include <G4SystemOfUnits.hh>
 
 
-Beam::Beam(G4double pBeamRadius, G4double pBeamDistance) : mBeamRadius(pBeamRadius), mBeamDistance(pBeamDistance)
+Beam::Beam(G4double pBeamRadius, G4double pBeamDistance) : mBeamRadius(pBeamRadius), mBeamDistance(pBeamDistance), mZcorrection(nullptr)
 {
 
 }
+
+
 void Beam::setWavelength(double pWavelength){
     mWavelength = pWavelength;
 }
 
-void Beam::configurePosCoordinates()
-{
-    double lRho = mBeamDistance * sin(mTheta);
-    double lPosX = lRho * cos(mPhi);
-    double lPosY = lRho * sin(mPhi);
-    double lPosZ = mBeamDistance * cos(mTheta);
-    setXYZ(lPosX, lPosY, lPosZ);
-}
 
-void Beam::setXYZ(double pX, double pY, double pZ)
+
+void Beam::configureXYZScan_NKTLaser()
 {
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-    lUIinterface.applyCommand("/gps/pos/centre", pX, pY, pZ, "mm");
-    lUIinterface.applyCommand("/gps/pos/radius", mBeamRadius, "mm");
-}
+    lUIinterface.applyCommand("/event/verbose 0");
+    lUIinterface.applyCommand("/control/verbose 0");
+    lUIinterface.applyCommand("/run/verbose 0");
+    lUIinterface.applyCommand("/gps/particle opticalphoton");
+    lUIinterface.applyCommand("/gps/energy", 1239.84193 / 459, "eV");
 
-void Beam::configureAngCoordinates()
-{
-    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-    double x, y, z;
-    x = -sin(mPhi);
-    y = cos(mPhi);
-    z = 0;
-    lUIinterface.applyCommand("/gps/pos/rot1", x, y, z);
-    lUIinterface.applyCommand("/gps/ang/rot1", x, y, z);
+    lUIinterface.applyCommand("/gps/pos/type Beam");
+    lUIinterface.applyCommand("/gps/ang/type beam1d");
+    lUIinterface.applyCommand("/gps/pos/radius 0 mm");
+    lUIinterface.applyCommand("/gps/pos/sigma_r 0.14 mm");
+    lUIinterface.applyCommand("/gps/ang/sigma_r 0 deg");
+    
 
-    x = -cos(mPhi) * cos(mTheta);
-    y = -sin(mPhi) * cos(mTheta);
-    z = sin(mTheta);
+    lUIinterface.applyCommand("/gps/pos/rot1 0 1 0");
+    lUIinterface.applyCommand("/gps/ang/rot1 0 1 0");
+    lUIinterface.applyCommand("/gps/pos/rot2 -1 0 0");
+    lUIinterface.applyCommand("/gps/ang/rot2 -1 0 0");
 
-    lUIinterface.applyCommand("/gps/pos/rot2", x, y, z);
-    lUIinterface.applyCommand("/gps/ang/rot2", x, y, z);
+    lUIinterface.applyCommand("/gps/pos/centre 0 0 30 mm");
+
 }
 
 
-void Beam::configureAngScan()
-{
-    // Obtain an instance of OMSimUIinterface
-    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+/* For Erlangens QE measurement setup*/
 
-    // Use applyCommand to send commands
+void Beam::configureErlangenQESetup()
+{
+    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     lUIinterface.applyCommand("/event/verbose 0");
     lUIinterface.applyCommand("/control/verbose 0");
     lUIinterface.applyCommand("/run/verbose 0");
     lUIinterface.applyCommand("/gps/particle opticalphoton");
     lUIinterface.applyCommand("/gps/energy", 1239.84193 / mWavelength, "eV");
+
     lUIinterface.applyCommand("/gps/pos/type Plane");
     lUIinterface.applyCommand("/gps/pos/shape Circle");
-    lUIinterface.applyCommand("/gps/pos/centre 0 0 30 cm");
-    lUIinterface.applyCommand("/gps/pos/radius 80 mm");
-    lUIinterface.applyCommand("/gps/pos/rot1 0 1 0");
-    lUIinterface.applyCommand("/gps/pos/rot2 0 0 1");
-    lUIinterface.applyCommand("/gps/ang/rot1 0 1 0");
-    lUIinterface.applyCommand("/gps/ang/rot2 0 0 1");
-    lUIinterface.applyCommand("/gps/ang/type beam2d");
-    lUIinterface.applyCommand("/gps/ang/sigma_x 0");
-    lUIinterface.applyCommand("/gps/ang/sigma_y 0");
-    configurePosCoordinates();
-    configureAngCoordinates();
-}
+    lUIinterface.applyCommand("/gps/pos/radius 5 mm");
+    lUIinterface.applyCommand("/gps/ang/type focused");
+    lUIinterface.applyCommand("/gps/ang/focuspoint 0 0 279.5 mm");
+    
 
-void Beam::configureXYZScan(double pX, double pY, double pZ)
-{
-    // Obtain an instance of OMSimUIinterface
-    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-
-    // Use applyCommand to send commands
-    lUIinterface.applyCommand("/event/verbose 0");
-    lUIinterface.applyCommand("/control/verbose 0");
-    lUIinterface.applyCommand("/run/verbose 0");
-    lUIinterface.applyCommand("/gps/particle opticalphoton");
-    lUIinterface.applyCommand("/gps/energy", 1239.84193 / mWavelength, "eV");
-    lUIinterface.applyCommand("/gps/pos/type Plane");
-    lUIinterface.applyCommand("/gps/pos/shape Circle");
-    lUIinterface.applyCommand("/gps/pos/centre 0 0 30 cm");
-    lUIinterface.applyCommand("/gps/pos/radius 80 mm");
     lUIinterface.applyCommand("/gps/pos/rot1 0 1 0");
-    lUIinterface.applyCommand("/gps/pos/rot2 0 0 1");
     lUIinterface.applyCommand("/gps/ang/rot1 0 1 0");
-    lUIinterface.applyCommand("/gps/ang/rot2 0 0 1");
-    lUIinterface.applyCommand("/gps/ang/type beam2d");
-    lUIinterface.applyCommand("/gps/ang/sigma_x 0");
-    lUIinterface.applyCommand("/gps/ang/sigma_y 0");
-    setXYZ(pX, pY, pZ);
-    configureAngCoordinates();
+    lUIinterface.applyCommand("/gps/pos/rot2 -1 0 0");
+    lUIinterface.applyCommand("/gps/ang/rot2 -1 0 0");
+
+    lUIinterface.applyCommand("/gps/pos/centre 0 0 535.5 mm");
+
 }
 
 
-void Beam::runBeam(G4double pPhi, G4double pTheta)
+void Beam::runErlangenQEBeam()
 {
-    mTheta = pTheta * deg;
-    mPhi = pPhi * deg;
-    configureAngScan();
+    configureErlangenQESetup();
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
     lUIinterface.runBeamOn();
 }
 
-void Beam::runBeam(G4double pX, G4double pY,  G4double pZ)
+/* For Münsters PicoQuant 3D scanner setup*/
+
+void Beam::configureZCorrection_PicoQuant()
 {
-    mTheta = 0 * deg;
-    mPhi = 0 * deg;
-    configureXYZScan(pX, pY, pZ);
+    mZcorrection = new TGraph("../common/data/PMT_scans/setup_stuff/mDOMPMT_PicoQuant_Scan_Zcorrection.txt");
+    mZcorrection->SetName("Zcorrection");
+}
+
+void Beam::configureXYZScan_PicoQuantSetup()
+{
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+    lUIinterface.applyCommand("/event/verbose 0");
+    lUIinterface.applyCommand("/control/verbose 0");
+    lUIinterface.applyCommand("/run/verbose 0");
+    lUIinterface.applyCommand("/gps/particle opticalphoton");
+    lUIinterface.applyCommand("/gps/energy", 1239.84193 / 459, "eV");
+
+    lUIinterface.applyCommand("/gps/pos/type Beam");
+    lUIinterface.applyCommand("/gps/ang/type beam1d");
+    lUIinterface.applyCommand("/gps/pos/radius 0 mm");
+    lUIinterface.applyCommand("/gps/pos/sigma_r 0.3822 mm");
+    lUIinterface.applyCommand("/gps/ang/sigma_r 1.05 deg");
+    
+
+    lUIinterface.applyCommand("/gps/pos/rot1 0 1 0");
+    lUIinterface.applyCommand("/gps/ang/rot1 0 1 0");
+    lUIinterface.applyCommand("/gps/pos/rot2 -1 0 0");
+    lUIinterface.applyCommand("/gps/ang/rot2 -1 0 0");
+
+    lUIinterface.applyCommand("/gps/pos/centre 0 0 24.8 mm");
+}
+
+void Beam::runBeamPicoQuantSetup(G4double pX, G4double pY)
+{
+    double lZ = mZcorrection->Eval(std::sqrt(pX*pX+pY*pY));
+    if (lZ<4.8) { lZ = 4.8;}
+    G4cout << std::sqrt(pX*pX+pY*pY) <<" " << lZ << G4endl;
+    configureXYZScan_PicoQuantSetup();
+
+    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+    lUIinterface.applyCommand("/gps/pos/centre", pX, pY, lZ, "mm");
     lUIinterface.runBeamOn();
 }

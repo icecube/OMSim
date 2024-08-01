@@ -8,7 +8,7 @@
 #define OMSimBeam_h 1
 
 #include "globals.hh"
-
+#include "TGraph.h"
 class Beam
 {
 public:
@@ -16,16 +16,18 @@ public:
   Beam(G4double pBeamRadius, G4double pBeamDistance);
   ~Beam();
 
-  void runBeam(G4double pPhi, G4double pTheta);
-  void runBeam(double pX, double pY, double pZ);
+  void runErlangenQEBeam();
+  void runBeamPicoQuantSetup(double pX, double pY);
   void setWavelength(double pWavelength);
+  void configureZCorrection_PicoQuant();
 private:
 
-  void configurePosCoordinates();
-  void configureAngCoordinates();
-  void configureAngScan();
-  void configureXYZScan(double pX, double pY, double pZ);
-  void setXYZ(double x, double y, double z);
+
+  void configureErlangenQESetup();
+  void configureXYZScan_NKTLaser();
+  void configureXYZScan_PicoQuantSetup();
+
+  TGraph* mZcorrection;
   G4double mBeamRadius;
   G4double mBeamDistance;
   G4double mWavelength;

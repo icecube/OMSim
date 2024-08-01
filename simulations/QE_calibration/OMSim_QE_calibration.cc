@@ -39,17 +39,17 @@ void runQEbeamSimulationVaryingAbsorptionLength()
 		lAnalysisManager.writeHeader("Wavelength", "Abs. length");
 
 	std::vector<double> lWavelengths = Tools::linspace(275, 750, 96);
-	std::vector<double> lAbsLengths = Tools::logspace(-9, -4, 20);
+	std::vector<double> lAbsLengths = Tools::logspace(-8.5, -5, 20);
 
 	for (const auto &wavelength : lWavelengths)
 	{
 		lScanner->setWavelength(wavelength);
+		
 		for (const auto &abslength : lAbsLengths)
 		{
 			modifyPhotocathodeAbsorptionLength(abslength*m);
-
-			lScanner->runBeam(0, 0);
-			lAnalysisManager.writeScan(wavelength, abslength/m);
+			lScanner->runErlangenQEBeam();
+			lAnalysisManager.writeScan(wavelength, abslength);
 			lHitManager.reset();
 		}
 	}
@@ -73,28 +73,40 @@ void runQEbeamSimulation()
 	for (const auto &wavelength : lWavelengths)
 	{
 		lScanner->setWavelength(wavelength);
-		lScanner->runBeam(0, 0);
+		lScanner->runErlangenQEBeam();
 		lAnalysisManager.writeScan(wavelength);
 		lHitManager.reset();
 		
 	}
 }
 
-void print_result(const std::vector<double>& counts, const std::vector<double>& edges) {
-    std::cout << "Counts: ";
-    for (const auto& count : counts) {
-        std::cout << count << " ";
-    }
-    std::cout << "\nEdges:  ";
-    for (const auto& edge : edges) {
-        std::cout << std::fixed << std::setprecision(2) << edge << " ";
-    }
-    std::cout << std::endl << std::endl;
-}
 
 void runXYZfrontalScan()
 {
+	OMSimEffectiveAreaAnalyisis lAnalysisManager;
+	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
+	Beam *lScanner = new Beam(0.3, lArgs.get<G4double>("distance"));
+	lScanner->configureZCorrection_PicoQuant();
+	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
+	lScanner->setWavelength(459);
+
+	std::vector<double> lX = Tools::arange(-41, 42, 1);
+	double lRlim = 42;
+
+	for (const auto &x : lX)
+	{
+		for (const auto &y : lX)
+		{
+			if (std::sqrt(x*x+y*y)< lRlim)
+			{
+				lScanner->runBeamPicoQuantSetup(x, y);
+				lAnalysisManager.writeHitPositionHistogram(x,y);
+				lHitManager.reset();
+			}
+		}
+	}
 }
 
 /**
@@ -137,16 +149,19 @@ int main(int pArgumentCount, char *pArgumentVector[])
     {
 		//Vary absorption length of photocathode for different wavelengths to determine amount of detected photons
 		runQEbeamSimulationVaryingAbsorptionLength();
+		break;
     }
     case 1:
     {
 		//After fitting the QE vs abs. length curves and making the corresponding parameter files, check that QE is being mapped correctly
 		runQEbeamSimulation();
+		break;
     }
     case 2:
     {
 		//Scan photocathode to save absorption position. Needed to calculate collection efficiency weight.
 		runXYZfrontalScan();
+		break;
     }
     }
 

@@ -36,7 +36,7 @@ public:
     void writeScan(Args... args);
     template <typename... Args>
     void writeHeader(Args... args);
-
+    void writeHitPositionHistogram(double x, double y);
     effectiveAreaResult calculateEffectiveArea(double pHits);
     G4String mOutputFileName;
 };
