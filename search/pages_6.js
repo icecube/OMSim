@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['todo_20list_740',['Todo List',['../todo.html',1,'']]]
+  ['supernova_20studies_741',['Supernova Studies',['../md_extra_doc_4__s_n.html',1,'']]]
 ];

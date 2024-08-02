@@ -1,0 +1,121 @@
+\hypertarget{md_extra_doc_00__p_m_t_autotoc_md1}{}\doxysection{Detection efficiency}\label{md_extra_doc_00__p_m_t_autotoc_md1}
+\hypertarget{md_extra_doc_00__p_m_t_autotoc_md2}{}\doxysubsection{QE calibration}\label{md_extra_doc_00__p_m_t_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\textcolor{keyword}{from} scipy.optimize \textcolor{keyword}{import} curve\_fit, minimize}
+\DoxyCodeLine{\textcolor{keyword}{from} dataclasses \textcolor{keyword}{import} dataclass}
+\DoxyCodeLine{\textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\textcolor{keyword}{from} typing \textcolor{keyword}{import} Tuple}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\# Constants}}
+\DoxyCodeLine{INITIAL\_GUESS = [1, 20, 10]}
+\DoxyCodeLine{MAX\_ITERATIONS = 8000}
+\DoxyCodeLine{SINGLE\_EXP\_THRESHOLD = 5}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{def }double\_exp(abs\_length: np.ndarray, amplitude: float, effective\_thickness: float, reflectivity\_coef: float) -\/> np.ndarray:}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}"{}"{}Calculate double exponential function."{}"{}"{}}}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} amplitude * (1 -\/ np.exp(-\/effective\_thickness / abs\_length)) * np.exp(-\/reflectivity\_coef / abs\_length)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{def }single\_exp(abs\_length: np.ndarray, amplitude: float, effective\_thickness: float) -\/> np.ndarray:}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}"{}"{}Calculate single exponential function."{}"{}"{}}}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} amplitude * (1 -\/ np.exp(-\/effective\_thickness / abs\_length))}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{@dataclass}}
+\DoxyCodeLine{\textcolor{keyword}{class }CalibrationCurve:}
+\DoxyCodeLine{    abs\_length: np.ndarray}
+\DoxyCodeLine{    fraction: np.ndarray}
+\DoxyCodeLine{    error: np.ndarray}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \textcolor{keyword}{def }\_\_post\_init\_\_(self):}
+\DoxyCodeLine{        self.popt\_double: Tuple[float, float, float] = \textcolor{keywordtype}{None}}
+\DoxyCodeLine{        self.pcov\_double: np.ndarray = \textcolor{keywordtype}{None}}
+\DoxyCodeLine{        self.popt\_single: Tuple[float, float] = \textcolor{keywordtype}{None}}
+\DoxyCodeLine{        self.pcov\_single: np.ndarray = \textcolor{keywordtype}{None}}
+\DoxyCodeLine{        self.max\_pos\_x: float = \textcolor{keywordtype}{None}}
+\DoxyCodeLine{        self.max\_pos\_y: float = \textcolor{keywordtype}{None}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{def }process(self):}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}"{}"{}Process the calibration curve data."{}"{}"{}}}
+\DoxyCodeLine{        self.fit\_double()}
+\DoxyCodeLine{        self.get\_max\_fit()}
+\DoxyCodeLine{        self.fit\_single()}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{def }get\_max\_fit(self):}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}"{}"{}Find the maximum of the double exponential fit."{}"{}"{}}}
+\DoxyCodeLine{        to\_min = \textcolor{keyword}{lambda} x: -\/double\_exp(x, *self.popt\_double)}
+\DoxyCodeLine{        result = minimize(to\_min, x0=10)}
+\DoxyCodeLine{        self.max\_pos\_x = result.x[0]}
+\DoxyCodeLine{        self.max\_pos\_y = double\_exp(self.max\_pos\_x, *self.popt\_double)}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{def }fit\_double(self):}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}"{}"{}Fit the data to a double exponential function."{}"{}"{}}}
+\DoxyCodeLine{        \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{            self.popt\_double, self.pcov\_double = curve\_fit(}
+\DoxyCodeLine{                double\_exp, }
+\DoxyCodeLine{                self.abs\_length * 1e9, }
+\DoxyCodeLine{                self.fraction, }
+\DoxyCodeLine{                sigma=self.error, }
+\DoxyCodeLine{                p0=INITIAL\_GUESS, }
+\DoxyCodeLine{                maxfev=MAX\_ITERATIONS}
+\DoxyCodeLine{            )}
+\DoxyCodeLine{        \textcolor{keywordflow}{except} RuntimeError:}
+\DoxyCodeLine{            print(\textcolor{stringliteral}{"{}Error: Failed to fit double exponential function."{}})}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{def }fit\_single(self):}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}"{}"{}Fit the data to a single exponential function."{}"{}"{}}}
+\DoxyCodeLine{        mask = self.abs\_length * 1e9 > self.max\_pos\_x * SINGLE\_EXP\_THRESHOLD}
+\DoxyCodeLine{        x = self.abs\_length[mask] * 1e9}
+\DoxyCodeLine{        \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{            self.popt\_single, self.pcov\_single = curve\_fit(}
+\DoxyCodeLine{                single\_exp, }
+\DoxyCodeLine{                x, }
+\DoxyCodeLine{                self.fraction[mask], }
+\DoxyCodeLine{                sigma=self.error[mask], }
+\DoxyCodeLine{                p0=self.popt\_double[:-\/1], }
+\DoxyCodeLine{                maxfev=MAX\_ITERATIONS}
+\DoxyCodeLine{            )}
+\DoxyCodeLine{        \textcolor{keywordflow}{except} RuntimeError:}
+\DoxyCodeLine{            print(\textcolor{stringliteral}{"{}Error: Failed to fit single exponential function."{}})}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{def }plot\_single\_exp(self):}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}"{}"{}Plot the single exponential fit."{}"{}"{}}}
+\DoxyCodeLine{        \textcolor{keywordflow}{if} self.popt\_single \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{            x = np.linspace(min(self.abs\_length), max(self.abs\_length), 100)}
+\DoxyCodeLine{            plt.figure(figsize=(10, 6))}
+\DoxyCodeLine{            plt.plot(x, single\_exp(x * 1e9, *self.popt\_single), \textcolor{stringliteral}{'b-\/'}, label=\textcolor{stringliteral}{'Single Exp Fit'})}
+\DoxyCodeLine{            plt.plot(self.abs\_length, self.fraction, \textcolor{stringliteral}{'ro'}, label=\textcolor{stringliteral}{'Data'})}
+\DoxyCodeLine{            plt.xlabel(\textcolor{stringliteral}{'Absorption Length (m)'})}
+\DoxyCodeLine{            plt.ylabel(\textcolor{stringliteral}{'Fraction'})}
+\DoxyCodeLine{            plt.legend()}
+\DoxyCodeLine{            plt.title(\textcolor{stringliteral}{'Single Exponential Fit'})}
+\DoxyCodeLine{            plt.show()}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{def }get\_needed\_abs(self, QE: float) -\/> float:}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}"{}"{}Calculate the needed absorption length for a given quantum efficiency."{}"{}"{}}}
+\DoxyCodeLine{        \textcolor{keywordflow}{if} self.popt\_single \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{            \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"{}Single exponential fit has not been performed."{}})}
+\DoxyCodeLine{        amp, t\_eff = self.popt\_single}
+\DoxyCodeLine{        log\_term = np.log(1 -\/ QE / amp)}
+\DoxyCodeLine{        \textcolor{keywordflow}{return} -\/t\_eff / log\_term}
+\DoxyCodeLine{}
+\DoxyCodeLine{wvs, a, h,\_ =np.loadtxt(\textcolor{stringliteral}{"{}step0\_QE.dat"{}}, unpack=1)}
+\DoxyCodeLine{N = 100000}
+\DoxyCodeLine{data = \{\}}
+\DoxyCodeLine{plt.figure()}
+\DoxyCodeLine{\textcolor{keywordflow}{for} wv \textcolor{keywordflow}{in} np.unique(wvs):}
+\DoxyCodeLine{    data[wv] = CalibrationCurve(a[wvs==wv], h[wvs==wv]/N, np.sqrt(h[wvs==wv])/N)}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    plt.plot(data[wv].abs\_length, data[wv].fraction)}
+\DoxyCodeLine{    data[wv].process()}
+\DoxyCodeLine{plt.loglog()}
+\DoxyCodeLine{}
+\DoxyCodeLine{amplitude = [data[key].popt\_single[0] \textcolor{keywordflow}{for} key \textcolor{keywordflow}{in} data]}
+\DoxyCodeLine{eff\_thick = [data[key].popt\_single[1] \textcolor{keywordflow}{for} key \textcolor{keywordflow}{in} data]}
+\DoxyCodeLine{wavelengths = [key \textcolor{keywordflow}{for} key \textcolor{keywordflow}{in} data]}
+\DoxyCodeLine{np.savetxt(\textcolor{stringliteral}{"{}mDOM\_Hamamatsu\_R15458\_QE\_matching\_parameters.dat"{}},}
+\DoxyCodeLine{           np.array([wavelengths\_all, amp, eff\_thick]).T,}
+\DoxyCodeLine{           delimiter=\textcolor{stringliteral}{"{}\(\backslash\)t"{}}, header=\textcolor{stringliteral}{"{}Wavelength(nm) \(\backslash\)t Amplitude \(\backslash\)t Effective thickness (nm)"{}})}
+
+\end{DoxyCode}
+ 
