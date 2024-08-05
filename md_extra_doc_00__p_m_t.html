@@ -121,6 +121,8 @@ $(document).ready(function(){initNavTree('md_extra_doc_00__p_m_t.html',''); init
 Detection efficiency</h1>
 <h2><a class="anchor" id="autotoc_md2"></a>
 QE calibration</h2>
+<h3><a class="anchor" id="autotoc_md3"></a>
+Step 0</h3>
 <div class="fragment"><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div>
 <div class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> curve_fit, minimize</div>
 <div class="line"><span class="keyword">from</span> dataclasses <span class="keyword">import</span> dataclass</div>
@@ -197,19 +199,14 @@ QE calibration</h2>
 <div class="line">        <span class="keywordflow">except</span> RuntimeError:</div>
 <div class="line">            print(<span class="stringliteral">&quot;Error: Failed to fit single exponential function.&quot;</span>)</div>
 <div class="line"> </div>
-<div class="line">    <span class="keyword">def </span>plot_single_exp(self):</div>
+<div class="line">    <span class="keyword">def </span>plot_single_exp(self, ax):</div>
 <div class="line">        <span class="stringliteral">&quot;&quot;&quot;Plot the single exponential fit.&quot;&quot;&quot;</span></div>
 <div class="line">        <span class="keywordflow">if</span> self.popt_single <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
-<div class="line">            x = np.linspace(min(self.abs_length), max(self.abs_length), 100)</div>
-<div class="line">            plt.figure(figsize=(10, 6))</div>
-<div class="line">            plt.plot(x, single_exp(x * 1e9, *self.popt_single), <span class="stringliteral">&#39;b-&#39;</span>, label=<span class="stringliteral">&#39;Single Exp Fit&#39;</span>)</div>
-<div class="line">            plt.plot(self.abs_length, self.fraction, <span class="stringliteral">&#39;ro&#39;</span>, label=<span class="stringliteral">&#39;Data&#39;</span>)</div>
-<div class="line">            plt.xlabel(<span class="stringliteral">&#39;Absorption Length (m)&#39;</span>)</div>
-<div class="line">            plt.ylabel(<span class="stringliteral">&#39;Fraction&#39;</span>)</div>
-<div class="line">            plt.legend()</div>
-<div class="line">            plt.title(<span class="stringliteral">&#39;Single Exponential Fit&#39;</span>)</div>
-<div class="line">            plt.show()</div>
-<div class="line"> </div>
+<div class="line">            x = np.logspace(np.log10(np.amin(self.abs_length[self.mask])), -4, 100)</div>
+<div class="line">            ax.plot(x, single_exp(x * 1e9, *self.popt_single), <span class="stringliteral">&#39;--&#39;</span>, label=<span class="stringliteral">&#39;Single Exp Fit&#39;</span>)</div>
+<div class="line">            ax.errorbar(self.abs_length[self.mask], self.fraction[self.mask], yerr = self.error[self.mask],</div>
+<div class="line">                    fmt =  <span class="stringliteral">&#39;.&#39;</span>, label=<span class="stringliteral">&#39;Fitted Data&#39;</span>)</div>
+<div class="line">            </div>
 <div class="line">    <span class="keyword">def </span>get_needed_abs(self, QE: float) -&gt; float:</div>
 <div class="line">        <span class="stringliteral">&quot;&quot;&quot;Calculate the needed absorption length for a given quantum efficiency.&quot;&quot;&quot;</span></div>
 <div class="line">        <span class="keywordflow">if</span> self.popt_single <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
@@ -231,17 +228,22 @@ QE calibration</h2>
 <div class="line"> </div>
 <div class="line">amplitude = [data[key].popt_single[0] <span class="keywordflow">for</span> key <span class="keywordflow">in</span> data]</div>
 <div class="line">eff_thick = [data[key].popt_single[1] <span class="keywordflow">for</span> key <span class="keywordflow">in</span> data]</div>
+<div class="line">max_QE = [curve.max_pos_y <span class="keywordflow">for</span> curve <span class="keywordflow">in</span> data.values()]</div>
 <div class="line">wavelengths = [key <span class="keywordflow">for</span> key <span class="keywordflow">in</span> data]</div>
 <div class="line">np.savetxt(<span class="stringliteral">&quot;mDOM_Hamamatsu_R15458_QE_matching_parameters.dat&quot;</span>,</div>
-<div class="line">           np.array([wavelengths_all, amp, eff_thick]).T,</div>
-<div class="line">           delimiter=<span class="stringliteral">&quot;\t&quot;</span>, header=<span class="stringliteral">&quot;Wavelength(nm) \t Amplitude \t Effective thickness (nm)&quot;</span>)</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+<div class="line">           np.array([wavelengths_all, amp, eff_thick, max_QE]).T,</div>
+<div class="line">           delimiter=<span class="stringliteral">&quot;\t&quot;</span>, header=<span class="stringliteral">&quot;Wavelength(nm) \t Amplitude \t Effective thickness (nm) \t Max. QE&quot;</span>)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md4"></a>
+Step 1</h3>
+<h3><a class="anchor" id="autotoc_md5"></a>
+Step 2</h3>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Aug 2 2024 10:06:19 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Aug 5 2024 14:25:36 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

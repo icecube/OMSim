@@ -26,65 +26,69 @@ var NAVTREE =
 [
   [ "OMSim", "index.html", [
     [ "OMSim Geant4 Framework", "index.html", [
-      [ "Installation", "index.html#autotoc_md40", [
-        [ "Installing Geant4", "index.html#autotoc_md41", null ],
-        [ "Installing Dependencies", "index.html#autotoc_md42", null ],
-        [ "Installing ROOT", "index.html#autotoc_md43", null ],
-        [ "Compiling OMSim", "index.html#autotoc_md44", null ]
+      [ "Installation", "index.html#autotoc_md43", [
+        [ "Installing Geant4", "index.html#autotoc_md44", null ],
+        [ "Installing Dependencies", "index.html#autotoc_md45", null ],
+        [ "Installing ROOT", "index.html#autotoc_md46", null ],
+        [ "Compiling OMSim", "index.html#autotoc_md47", null ]
       ] ],
-      [ "Available studies", "index.html#autotoc_md45", [
-        [ "Customising Compilation", "index.html#autotoc_md46", null ]
+      [ "Available studies", "index.html#autotoc_md48", [
+        [ "Customising Compilation", "index.html#autotoc_md49", null ]
       ] ]
     ] ],
     [ "Including new PMTs", "md_extra_doc_00__p_m_t.html", [
       [ "Detection efficiency", "md_extra_doc_00__p_m_t.html#autotoc_md1", [
-        [ "QE calibration", "md_extra_doc_00__p_m_t.html#autotoc_md2", null ]
+        [ "QE calibration", "md_extra_doc_00__p_m_t.html#autotoc_md2", [
+          [ "Step 0", "md_extra_doc_00__p_m_t.html#autotoc_md3", null ],
+          [ "Step 1", "md_extra_doc_00__p_m_t.html#autotoc_md4", null ],
+          [ "Step 2", "md_extra_doc_00__p_m_t.html#autotoc_md5", null ]
+        ] ]
       ] ]
     ] ],
     [ "Framework functionality", "md_extra_doc_0_common.html", [
-      [ "Materials and User Data", "md_extra_doc_0_common.html#autotoc_md4", null ],
-      [ "The Tools namespace", "md_extra_doc_0_common.html#autotoc_md5", null ],
-      [ "Geometry construction", "md_extra_doc_0_common.html#autotoc_md6", null ],
-      [ "Making PMTs and OMs sensitive", "md_extra_doc_0_common.html#autotoc_md7", null ],
-      [ "Storing hits and PMT response", "md_extra_doc_0_common.html#autotoc_md8", [
-        [ "PMTs Charge, transit time and detection probability", "md_extra_doc_0_common.html#autotoc_md9", null ],
-        [ "Hit storage", "md_extra_doc_0_common.html#autotoc_md10", null ]
+      [ "Materials and User Data", "md_extra_doc_0_common.html#autotoc_md7", null ],
+      [ "The Tools namespace", "md_extra_doc_0_common.html#autotoc_md8", null ],
+      [ "Geometry construction", "md_extra_doc_0_common.html#autotoc_md9", null ],
+      [ "Making PMTs and OMs sensitive", "md_extra_doc_0_common.html#autotoc_md10", null ],
+      [ "Storing hits and PMT response", "md_extra_doc_0_common.html#autotoc_md11", [
+        [ "PMTs Charge, transit time and detection probability", "md_extra_doc_0_common.html#autotoc_md12", null ],
+        [ "Hit storage", "md_extra_doc_0_common.html#autotoc_md13", null ]
       ] ],
-      [ "Making other volumes sensitive to photons", "md_extra_doc_0_common.html#autotoc_md11", null ]
+      [ "Making other volumes sensitive to photons", "md_extra_doc_0_common.html#autotoc_md14", null ]
     ] ],
     [ "Multi-threading mode", "md_extra_doc_1_multithreading.html", [
-      [ "Introduction", "md_extra_doc_1_multithreading.html#autotoc_md13", null ],
-      [ "Thread Safety Guidelines", "md_extra_doc_1_multithreading.html#autotoc_md14", null ],
-      [ "Thread-Safe Global Instance Implementation", "md_extra_doc_1_multithreading.html#autotoc_md15", [
-        [ "Example: OMSimHitManager", "md_extra_doc_1_multithreading.html#autotoc_md16", null ],
-        [ "Example: Saving Data Per Thread", "md_extra_doc_1_multithreading.html#autotoc_md17", null ]
+      [ "Introduction", "md_extra_doc_1_multithreading.html#autotoc_md16", null ],
+      [ "Thread Safety Guidelines", "md_extra_doc_1_multithreading.html#autotoc_md17", null ],
+      [ "Thread-Safe Global Instance Implementation", "md_extra_doc_1_multithreading.html#autotoc_md18", [
+        [ "Example: OMSimHitManager", "md_extra_doc_1_multithreading.html#autotoc_md19", null ],
+        [ "Example: Saving Data Per Thread", "md_extra_doc_1_multithreading.html#autotoc_md20", null ]
       ] ],
-      [ "Best Practices for Creating New Thread-Safe Containers", "md_extra_doc_1_multithreading.html#autotoc_md18", null ],
-      [ "Troubleshooting Multi-threading Issues", "md_extra_doc_1_multithreading.html#autotoc_md19", [
-        [ "1. Use Valgrind Tools", "md_extra_doc_1_multithreading.html#autotoc_md20", null ],
-        [ "2. Analyse the Output", "md_extra_doc_1_multithreading.html#autotoc_md21", null ],
-        [ "4. Modify and repeat", "md_extra_doc_1_multithreading.html#autotoc_md22", null ]
+      [ "Best Practices for Creating New Thread-Safe Containers", "md_extra_doc_1_multithreading.html#autotoc_md21", null ],
+      [ "Troubleshooting Multi-threading Issues", "md_extra_doc_1_multithreading.html#autotoc_md22", [
+        [ "1. Use Valgrind Tools", "md_extra_doc_1_multithreading.html#autotoc_md23", null ],
+        [ "2. Analyse the Output", "md_extra_doc_1_multithreading.html#autotoc_md24", null ],
+        [ "4. Modify and repeat", "md_extra_doc_1_multithreading.html#autotoc_md25", null ]
       ] ]
     ] ],
     [ "Effective Area Study", "md_extra_doc_2_effective_area.html", [
-      [ "Introduction to effective areas", "md_extra_doc_2_effective_area.html#autotoc_md24", null ],
-      [ "Example using healpy", "md_extra_doc_2_effective_area.html#autotoc_md25", null ]
+      [ "Introduction to effective areas", "md_extra_doc_2_effective_area.html#autotoc_md27", null ],
+      [ "Example using healpy", "md_extra_doc_2_effective_area.html#autotoc_md28", null ]
     ] ],
     [ "Radioactive Decays Study", "md_extra_doc_3_radioactive_decays.html", null ],
     [ "Supernova Studies", "md_extra_doc_4__s_n.html", [
-      [ "Input Parameters", "md_extra_doc_4__s_n.html#autotoc_md28", [
-        [ "General Parameters", "md_extra_doc_4__s_n.html#autotoc_md29", null ],
-        [ "SN Framework Parameters", "md_extra_doc_4__s_n.html#autotoc_md30", null ],
-        [ "Fixed Energy Studies", "md_extra_doc_4__s_n.html#autotoc_md31", null ]
+      [ "Input Parameters", "md_extra_doc_4__s_n.html#autotoc_md31", [
+        [ "General Parameters", "md_extra_doc_4__s_n.html#autotoc_md32", null ],
+        [ "SN Framework Parameters", "md_extra_doc_4__s_n.html#autotoc_md33", null ],
+        [ "Fixed Energy Studies", "md_extra_doc_4__s_n.html#autotoc_md34", null ]
       ] ],
-      [ "Output Files", "md_extra_doc_4__s_n.html#autotoc_md32", [
-        [ "*_info.dat", "md_extra_doc_4__s_n.html#autotoc_md33", null ],
-        [ "*_data.dat", "md_extra_doc_4__s_n.html#autotoc_md34", null ]
+      [ "Output Files", "md_extra_doc_4__s_n.html#autotoc_md35", [
+        [ "*_info.dat", "md_extra_doc_4__s_n.html#autotoc_md36", null ],
+        [ "*_data.dat", "md_extra_doc_4__s_n.html#autotoc_md37", null ]
       ] ],
-      [ "Weights", "md_extra_doc_4__s_n.html#autotoc_md35", [
-        [ "Interaction Probability Weight:", "md_extra_doc_4__s_n.html#autotoc_md36", null ],
-        [ "Flux Weight:", "md_extra_doc_4__s_n.html#autotoc_md37", null ],
-        [ "Effective Weight:", "md_extra_doc_4__s_n.html#autotoc_md38", null ]
+      [ "Weights", "md_extra_doc_4__s_n.html#autotoc_md38", [
+        [ "Interaction Probability Weight:", "md_extra_doc_4__s_n.html#autotoc_md39", null ],
+        [ "Flux Weight:", "md_extra_doc_4__s_n.html#autotoc_md40", null ],
+        [ "Effective Weight:", "md_extra_doc_4__s_n.html#autotoc_md41", null ]
       ] ]
     ] ],
     [ "Todo List", "todo.html", null ],
@@ -113,12 +117,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "5__group__definitions_8h_source.html",
-"class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html",
-"class_g4_op_boundary_process.html#aeb2c3e89792931041e4a179504cca7fc",
-"class_o_m_sim_action_initialization.html",
-"class_o_m_sim_p_m_t_construction.html#a1b6532117aa4234d9081024d1ba7d85a",
-"class_scintillation_properties.html#a63544a170f82e5862fd96180f49551f1",
-"md_extra_doc_0_common.html#autotoc_md4"
+"class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader.html#af045154e64566c91c93374c8aa2fa75e",
+"class_g4_op_boundary_process.html#adcf984df2203351de989177d2aa66d9c",
+"class_o_m_sim.html#adc89f2fa01d3958389e86c36e8064805",
+"class_o_m_sim_p_m_t_construction.html#a1a07b518f5591dd80dafb9154cdd3a5d",
+"class_scintillation_properties.html#a37ebebbb7e81f92499faf54aabd89c6c",
+"md_extra_doc_00__p_m_t.html#autotoc_md3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

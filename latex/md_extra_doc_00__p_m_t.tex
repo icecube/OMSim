@@ -1,5 +1,6 @@
 \hypertarget{md_extra_doc_00__p_m_t_autotoc_md1}{}\doxysection{Detection efficiency}\label{md_extra_doc_00__p_m_t_autotoc_md1}
 \hypertarget{md_extra_doc_00__p_m_t_autotoc_md2}{}\doxysubsection{QE calibration}\label{md_extra_doc_00__p_m_t_autotoc_md2}
+\hypertarget{md_extra_doc_00__p_m_t_autotoc_md3}{}\doxysubsubsection{Step 0}\label{md_extra_doc_00__p_m_t_autotoc_md3}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
@@ -78,19 +79,14 @@
 \DoxyCodeLine{        \textcolor{keywordflow}{except} RuntimeError:}
 \DoxyCodeLine{            print(\textcolor{stringliteral}{"{}Error: Failed to fit single exponential function."{}})}
 \DoxyCodeLine{}
-\DoxyCodeLine{    \textcolor{keyword}{def }plot\_single\_exp(self):}
+\DoxyCodeLine{    \textcolor{keyword}{def }plot\_single\_exp(self, ax):}
 \DoxyCodeLine{        \textcolor{stringliteral}{"{}"{}"{}Plot the single exponential fit."{}"{}"{}}}
 \DoxyCodeLine{        \textcolor{keywordflow}{if} self.popt\_single \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{            x = np.linspace(min(self.abs\_length), max(self.abs\_length), 100)}
-\DoxyCodeLine{            plt.figure(figsize=(10, 6))}
-\DoxyCodeLine{            plt.plot(x, single\_exp(x * 1e9, *self.popt\_single), \textcolor{stringliteral}{'b-\/'}, label=\textcolor{stringliteral}{'Single Exp Fit'})}
-\DoxyCodeLine{            plt.plot(self.abs\_length, self.fraction, \textcolor{stringliteral}{'ro'}, label=\textcolor{stringliteral}{'Data'})}
-\DoxyCodeLine{            plt.xlabel(\textcolor{stringliteral}{'Absorption Length (m)'})}
-\DoxyCodeLine{            plt.ylabel(\textcolor{stringliteral}{'Fraction'})}
-\DoxyCodeLine{            plt.legend()}
-\DoxyCodeLine{            plt.title(\textcolor{stringliteral}{'Single Exponential Fit'})}
-\DoxyCodeLine{            plt.show()}
-\DoxyCodeLine{}
+\DoxyCodeLine{            x = np.logspace(np.log10(np.amin(self.abs\_length[self.mask])), -\/4, 100)}
+\DoxyCodeLine{            ax.plot(x, single\_exp(x * 1e9, *self.popt\_single), \textcolor{stringliteral}{'-\/-\/'}, label=\textcolor{stringliteral}{'Single Exp Fit'})}
+\DoxyCodeLine{            ax.errorbar(self.abs\_length[self.mask], self.fraction[self.mask], yerr = self.error[self.mask],}
+\DoxyCodeLine{                    fmt =  \textcolor{stringliteral}{'.'}, label=\textcolor{stringliteral}{'Fitted Data'})}
+\DoxyCodeLine{            }
 \DoxyCodeLine{    \textcolor{keyword}{def }get\_needed\_abs(self, QE: float) -\/> float:}
 \DoxyCodeLine{        \textcolor{stringliteral}{"{}"{}"{}Calculate the needed absorption length for a given quantum efficiency."{}"{}"{}}}
 \DoxyCodeLine{        \textcolor{keywordflow}{if} self.popt\_single \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:}
@@ -112,10 +108,12 @@
 \DoxyCodeLine{}
 \DoxyCodeLine{amplitude = [data[key].popt\_single[0] \textcolor{keywordflow}{for} key \textcolor{keywordflow}{in} data]}
 \DoxyCodeLine{eff\_thick = [data[key].popt\_single[1] \textcolor{keywordflow}{for} key \textcolor{keywordflow}{in} data]}
+\DoxyCodeLine{max\_QE = [curve.max\_pos\_y \textcolor{keywordflow}{for} curve \textcolor{keywordflow}{in} data.values()]}
 \DoxyCodeLine{wavelengths = [key \textcolor{keywordflow}{for} key \textcolor{keywordflow}{in} data]}
 \DoxyCodeLine{np.savetxt(\textcolor{stringliteral}{"{}mDOM\_Hamamatsu\_R15458\_QE\_matching\_parameters.dat"{}},}
-\DoxyCodeLine{           np.array([wavelengths\_all, amp, eff\_thick]).T,}
-\DoxyCodeLine{           delimiter=\textcolor{stringliteral}{"{}\(\backslash\)t"{}}, header=\textcolor{stringliteral}{"{}Wavelength(nm) \(\backslash\)t Amplitude \(\backslash\)t Effective thickness (nm)"{}})}
+\DoxyCodeLine{           np.array([wavelengths\_all, amp, eff\_thick, max\_QE]).T,}
+\DoxyCodeLine{           delimiter=\textcolor{stringliteral}{"{}\(\backslash\)t"{}}, header=\textcolor{stringliteral}{"{}Wavelength(nm) \(\backslash\)t Amplitude \(\backslash\)t Effective thickness (nm) \(\backslash\)t Max. QE"{}})}
 
 \end{DoxyCode}
- 
+\hypertarget{md_extra_doc_00__p_m_t_autotoc_md4}{}\doxysubsubsection{Step 1}\label{md_extra_doc_00__p_m_t_autotoc_md4}
+\hypertarget{md_extra_doc_00__p_m_t_autotoc_md5}{}\doxysubsubsection{Step 2}\label{md_extra_doc_00__p_m_t_autotoc_md5}

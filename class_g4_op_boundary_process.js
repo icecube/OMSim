@@ -72,6 +72,7 @@ var class_g4_op_boundary_process =
     [ "idx_abslength2", "class_g4_op_boundary_process.html#a42f490c1cd1daec7284fa87bbd2c0af5", null ],
     [ "idx_back", "class_g4_op_boundary_process.html#a03855fa562abcc92acaa7498328ca3b2", null ],
     [ "idx_coatedabslength", "class_g4_op_boundary_process.html#a1a686654a122e7de7f6c73eebd55484f", null ],
+    [ "idx_coatedimagindex", "class_g4_op_boundary_process.html#a922accb03c04ed5918516767389bc6c4", null ],
     [ "idx_coatedrindex", "class_g4_op_boundary_process.html#a7e4f995032dd4fa6ad87ab9288e17a5a", null ],
     [ "idx_dichroicX", "class_g4_op_boundary_process.html#a426e69dc26d6f5139cdcfd9aa069fb16", null ],
     [ "idx_dichroicY", "class_g4_op_boundary_process.html#ada754d48e91f5188a14ebfc17c66e539", null ],

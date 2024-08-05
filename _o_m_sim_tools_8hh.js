@@ -5,7 +5,7 @@ var _o_m_sim_tools_8hh =
     [ "getThreadIDStr", "_o_m_sim_tools_8hh.html#aee9fb48a4947040e59508fd02baa6b4f", null ],
     [ "histogram", "_o_m_sim_tools_8hh.html#a85d11bc0105a9b716e71264528bea413", null ],
     [ "linspace", "_o_m_sim_tools_8hh.html#a068657387a0d190043d3e0959e84e18c", null ],
-    [ "loadtxt", "_o_m_sim_tools_8hh.html#a82269e4a0ecbf0878c2e257659ee1ab9", null ],
+    [ "loadtxt", "_o_m_sim_tools_8hh.html#a6d49cd2d5cb0e03b596870bcb9c12681", null ],
     [ "logspace", "_o_m_sim_tools_8hh.html#a5150dab6894acffb1c04085437e8e0b8", null ],
     [ "sortVectorByReference", "_o_m_sim_tools_8hh.html#a7e168c04a34f0c7ace018063e95b4835", null ]
 ];
