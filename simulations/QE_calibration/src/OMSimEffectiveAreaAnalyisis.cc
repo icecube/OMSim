@@ -24,7 +24,7 @@ void OMSimEffectiveAreaAnalyisis::writeHitPositionHistogram(double x, double y)
 	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 	HitStats lHits = lHitManager.getMergedHitsOfModule();
 
-	std::vector<double> lR(lHits.eventId.size());
+	std::vector<double> lR;
 
 	for (int i = 0; i < (int)lHits.eventId.size(); i++)
 	{
@@ -33,7 +33,7 @@ void OMSimEffectiveAreaAnalyisis::writeHitPositionHistogram(double x, double y)
 		lR.push_back(std::sqrt(lX * lX + lY * lY));
 	}
 
-	auto lRange = Tools::arange(0, 42.25, 0.25);
+	auto lRange = Tools::arange(0, 41.25, 0.25);
 	auto [lCounts, lEdges] = Tools::histogram(lR, lRange);
 
 	std::fstream lDatafile;
@@ -41,7 +41,7 @@ void OMSimEffectiveAreaAnalyisis::writeHitPositionHistogram(double x, double y)
 
 	lDatafile << x << "\t" << y << "\t";
 	for (const auto &count : lCounts)
-	{
+	{ 
 		lDatafile << count << "\t";
 	}
 	lDatafile << "\n";

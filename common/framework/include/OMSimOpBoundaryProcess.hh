@@ -311,6 +311,7 @@ private:
   // newly added
   size_t idx_abslength1 = 0;
   size_t idx_abslength2 = 0;
+  size_t idx_coatedimagindex = 0;
   size_t idx_coatedabslength = 0;
 
   G4bool fInvokeSD;

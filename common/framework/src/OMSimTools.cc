@@ -165,13 +165,15 @@ namespace Tools
 	 * the file. Default is 0.
 	 * @param pDelimiter The character used to separate values in each line of the
 	 * input file.
+	 * @param pComments Optional. The character used to indicate the start of a
+	 * comment. Default is '#'.
 	 * @return A 2D vector of doubles. The outer vector groups all columns (or
 	 * rows if 'unpack' is false), and each inner vector represents one of the
 	 * columns (or one of the rows if 'unpack' is false) of data file.
 	 * @throws std::runtime_error if the file cannot be opened.
 	 */
 	std::vector<std::vector<double>> loadtxt(const std::string &pFilePath, bool pUnpack,
-											 size_t pSkipRows, char pDelimiter)
+											 size_t pSkipRows, char pDelimiter, char pComments)
 	{
 		std::vector<std::vector<double>> lData;
 		std::ifstream lInFile(pFilePath);
@@ -189,6 +191,8 @@ namespace Tools
 		{
 			if (lRowCounter++ < pSkipRows)
 				continue;
+			if (!lLine.empty() && lLine[0] == pComments)
+            	continue;
 			std::vector<double> lRow;
 			std::stringstream lSs(lLine);
 			std::string lItem;

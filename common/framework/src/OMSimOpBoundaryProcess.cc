@@ -1602,7 +1602,7 @@ void G4OpBoundaryProcess::PhotocathodeCoatedComplex(const G4Track *pTrack)
 
   G4MaterialPropertiesTable *lMPT1 = fMaterial1->GetMaterialPropertiesTable();
   G4MaterialPropertyVector *lRIndexMPV1 = lMPT1 ? lMPT1->GetProperty(kRINDEX) : nullptr;
-  G4MaterialPropertyVector *lAbsLengthMPV1 = lMPT1? lMPT1->GetProperty(kABSLENGTH) : nullptr;
+  G4MaterialPropertyVector *lAbsLengthMPV1 = lMPT1 ? lMPT1->GetProperty(kABSLENGTH) : nullptr;
 
   fAbsorptionLength1 = lAbsLengthMPV1 ? lAbsLengthMPV1->Value(fPhotonMomentum, idx_abslength1) : 0;
 
@@ -1613,24 +1613,30 @@ void G4OpBoundaryProcess::PhotocathodeCoatedComplex(const G4Track *pTrack)
   fRindex2 = lRIndexMPV2 ? lRIndexMPV2->Value(fPhotonMomentum, idx_rindex2) : 0;
   fAbsorptionLength2 = lAbsLengthMPV2 ? lAbsLengthMPV2->Value(fPhotonMomentum, idx_abslength2) : 0;
 
-
   G4MaterialPropertiesTable *lMPTCoated = fOpticalSurface->GetMaterialPropertiesTable();
 
+  G4double lCoatedImagRIndex = 0;
   if (lMPTCoated)
   {
 
     G4MaterialPropertyVector *lPpCoated;
     if ((lPpCoated = lMPTCoated->GetProperty(kRINDEX)))
       lCoatedRindex = lPpCoated->Value(fPhotonMomentum, idx_coatedrindex);
-    if ((lPpCoated = lMPTCoated->GetProperty(kABSLENGTH)))
+    if ((lPpCoated = lMPTCoated->GetProperty(kIMAGINARYRINDEX)))
+    {
+      lCoatedImagRIndex = lPpCoated->Value(fPhotonMomentum, idx_coatedimagindex);
+    }
+    else if ((lPpCoated = lMPTCoated->GetProperty(kABSLENGTH)))
+    {
       lCoatedAbsLength = lPpCoated->Value(fPhotonMomentum, idx_coatedabslength);
+      lCoatedImagRIndex = lCoatedAbsLength != 0 ? lWavelength / (4 * pi * lCoatedAbsLength) : 0;
+    }
     lCoatedThickness = lMPTCoated->ConstPropertyExists(kCOATEDTHICKNESS) ? lMPTCoated->GetConstProperty(kCOATEDTHICKNESS) : 0;
   }
 
   // Convert absorption length to complex refractive index
   G4double limagRIndex1 = fAbsorptionLength1 != 0 ? lWavelength / (4 * pi * fAbsorptionLength1) : 0;
   G4double limagRIndex2 = fAbsorptionLength2 != 0 ? lWavelength / (4 * pi * fAbsorptionLength2) : 0;
-  G4double lCoatedImagRIndex = lCoatedAbsLength != 0 ? lWavelength / (4 * pi * lCoatedAbsLength) : 0;
 
   // Get material before the boundary
   G4VUserTrackInformation *lUserInformation = pTrack->GetUserInformation();
@@ -1729,7 +1735,6 @@ void G4OpBoundaryProcess::PhotocathodeCoatedComplex(const G4Track *pTrack)
       G4complex lSint1 = lBeforeComplexRindex * lSintLayer0 / lComplexRindex1;
       lCost1Complex = std::sqrt(G4complex(1.0, 0.0) - lSint1 * lSint1);
     }
-
 
     FresnelCoefficients lCoefficients1TL = CalculateFresnelCoefficientsComplex(lComplexRindex1, lComplexCoatedRindex, lCost1Complex, lCostTLComplex);
     FresnelCoefficients lCoefficientsTL2 = CalculateFresnelCoefficientsComplex(lComplexCoatedRindex, lComplexRindex2, lCostTLComplex, lCost2Complex);
@@ -1869,11 +1874,9 @@ OpticalLayerResult G4OpBoundaryProcess::Fresnel2ProbabilityComplex(FresnelCoeffi
   G4double lReflTE = std::norm(pCoefficients.rTE);
   G4double lReflTM = std::norm(pCoefficients.rTM);
 
-
   G4double prefactor = std::real((lComplexRindex2 * pCost2) / (lComplexRindex1 * pCost1));
   G4double lTransTE = prefactor * std::norm(pCoefficients.tTE);
   G4double lTransTM = prefactor * std::norm(pCoefficients.tTM);
-
 
   // real probabilities:
   lResult.Reflectivity = (lReflTE + lReflTM) * 0.5;

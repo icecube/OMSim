@@ -4,6 +4,7 @@
 
 ### QE calibration
 
+#### Step 0
 ```py
 import numpy as np
 from scipy.optimize import curve_fit, minimize
@@ -81,19 +82,14 @@ class CalibrationCurve:
         except RuntimeError:
             print("Error: Failed to fit single exponential function.")
 
-    def plot_single_exp(self):
+    def plot_single_exp(self, ax):
         """Plot the single exponential fit."""
         if self.popt_single is not None:
-            x = np.linspace(min(self.abs_length), max(self.abs_length), 100)
-            plt.figure(figsize=(10, 6))
-            plt.plot(x, single_exp(x * 1e9, *self.popt_single), 'b-', label='Single Exp Fit')
-            plt.plot(self.abs_length, self.fraction, 'ro', label='Data')
-            plt.xlabel('Absorption Length (m)')
-            plt.ylabel('Fraction')
-            plt.legend()
-            plt.title('Single Exponential Fit')
-            plt.show()
-
+            x = np.logspace(np.log10(np.amin(self.abs_length[self.mask])), -4, 100)
+            ax.plot(x, single_exp(x * 1e9, *self.popt_single), '--', label='Single Exp Fit')
+            ax.errorbar(self.abs_length[self.mask], self.fraction[self.mask], yerr = self.error[self.mask],
+                    fmt =  '.', label='Fitted Data')
+            
     def get_needed_abs(self, QE: float) -> float:
         """Calculate the needed absorption length for a given quantum efficiency."""
         if self.popt_single is None:
@@ -115,8 +111,14 @@ plt.loglog()
 
 amplitude = [data[key].popt_single[0] for key in data]
 eff_thick = [data[key].popt_single[1] for key in data]
+max_QE = [curve.max_pos_y for curve in data.values()]
 wavelengths = [key for key in data]
 np.savetxt("mDOM_Hamamatsu_R15458_QE_matching_parameters.dat",
-           np.array([wavelengths_all, amp, eff_thick]).T,
-           delimiter="\t", header="Wavelength(nm) \t Amplitude \t Effective thickness (nm)")
+           np.array([wavelengths_all, amp, eff_thick, max_QE]).T,
+           delimiter="\t", header="Wavelength(nm) \t Amplitude \t Effective thickness (nm) \t Max. QE")
 ```
+
+
+#### Step 1
+
+#### Step 2
