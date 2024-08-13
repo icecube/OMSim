@@ -166,4 +166,5 @@
 /vis/viewer/set/background white
 /vis/viewer/set/lineSegmentsPerCircle 50
 
+
 #/vis/viewer/addCutawayPlane 0 0 0 m 0 1 0   /vis/viewer/set/lightsVector 1 1 1

@@ -105,17 +105,17 @@ void runXYZfrontalScan()
 		}
 	}
 
-	lX = Tools::arange(-7, 7, 0.3);
+	// lX = Tools::arange(-7, 7, 0.3);
 
-	for (const auto &x : lX)
-	{
-		for (const auto &y : lX)
-		{
-			lScanner->runBeamPicoQuantSetup(x, y);
-			lAnalysisManager.writeHitPositionHistogram(x, y);
-			lHitManager.reset();
-		}
-	}
+	// for (const auto &x : lX)
+	// {
+	// 	for (const auto &y : lX)
+	// 	{
+	// 		lScanner->runBeamPicoQuantSetup(x, y);
+	// 		lAnalysisManager.writeHitPositionHistogram(x, y);
+	// 		lHitManager.reset();
+	// 	}
+	// }
 }
 
 void print_result(const std::vector<double> &counts, const std::vector<double> &edges)

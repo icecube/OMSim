@@ -356,10 +356,10 @@ void OMSimPMTConstruction::constructCADdynodeSystem(G4LogicalVolume *pMother)
     auto lFrontalPlateMesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/PMT/frontalPlateonly.obj");
     auto lDynodesMesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/PMT/dynodes.obj");
 
-    G4double lDynodeOffset = mData->getValueWithUnit(mSelectedPMT, "jDynodeCADOffset");
+    G4double lDynodeOffset = mData->getValueWithUnit(mSelectedPMT, "jDynodeCADOffsetFromTip");
+    G4double lDynodeZ0 = mData->getValueWithUnit(mSelectedPMT, "jDynodeCADZ0");
     G4double lScale = mData->getValueWithUnit(mSelectedPMT, "jDynodeCADscale");
-
-    G4ThreeVector lCADoffset = G4ThreeVector(0, 0, -(lDynodeOffset - getDistancePMTCenterToTip())); // -(54.2 + 19.5));
+    G4ThreeVector lCADoffset = G4ThreeVector(0, 0, getDistancePMTCenterToTip()-lDynodeZ0-lDynodeOffset); 
     lSupportStructureMesh->SetOffset(lCADoffset);
     lFrontalPlateMesh->SetOffset(lCADoffset);
     lDynodesMesh->SetOffset(lCADoffset);
@@ -533,13 +533,13 @@ G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String pSide)
     G4double lEllipseZaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis_2");
     G4double lEllipsePos_y_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y_2");
 
-    G4double lEllipseEllipseTransition_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y");
+    G4double lEllipseEllipseTransition_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseEllipseTransition_y");
 
     G4Ellipsoid *lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
     G4Ellipsoid *lBulbEllipsoid_2 = new G4Ellipsoid("Solid Bulb Ellipsoid 2", lEllipseXYaxis_2, lEllipseXYaxis_2, lEllipseZaxis_2);
 
-    G4double lExcess = lEllipseZaxis_2 - (lEllipseEllipseTransition_y - lEllipsePos_y_2);
-    G4Tubs *lSubtractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, lEllipseXYaxis_2 * 2, lEllipseZaxis_2, 0, 2 * CLHEP::pi);
+    G4double lExcess = lEllipseZaxis_2 - (lEllipseEllipseTransition_y-lEllipsePos_y_2);
+    G4Tubs *lSubtractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, lEllipseXYaxis_2 * 3, lEllipseZaxis_2, 0, 2 * CLHEP::pi);
     G4SubtractionSolid *lSubstractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", lBulbEllipsoid_2,
                                                                             lSubtractionTube, 0, G4ThreeVector(0, 0, -lExcess));
     G4UnionSolid *lBulbSolid = new G4UnionSolid("Solid Bulb", lBulbEllipsoid, lSubstractedLargeEllipsoid, 0, G4ThreeVector(0, 0, -mEllipsePos_y + lEllipsePos_y_2));
@@ -594,7 +594,7 @@ void OMSimPMTConstruction::selectPMT(G4String pPMTtoSelect)
 {
     if (pPMTtoSelect.substr(0, 6) == "argPMT")
     {
-        const G4String lPMTTypes[] = {"pmt_Hamamatsu_R15458_20nm", "pmt_Hamamatsu_R7081", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100"};
+        const G4String lPMTTypes[] = {"pmt_Hamamatsu_R15458_CAT", "pmt_Hamamatsu_R7081", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100"};
         pPMTtoSelect = lPMTTypes[OMSimCommandArgsTable::getInstance().get<G4int>("pmt_model")];
     }
 

@@ -1,10 +1,16 @@
 {
    "jName": "pmt_Hamamatsu_R15458_CAT",
    "jFrontalShape": "TwoEllipses",
+   "jQEfile": "../common/data/PMTs/QE/mDOM_Hamamatsu_R15458_mean_QE.dat",
+   "jQEMatchingfile": "../common/data/PMTs/QE/mDOM_Hamamatsu_R15458_QE_matching_parameters.dat",
    "jResponseData" : "R15458",
    "jBulbBackShape": "FullFit",
-   "jDynodeCADOffset": {
-      "jValue": 99,
+   "jDynodeCADZ0": {
+      "jValue": 54.2, 
+      "jUnit": "mm"
+   },
+   "jDynodeCADOffsetFromTip": {
+      "jValue": 42.5, 
       "jUnit": "mm"
    },
    "jDynodeCADscale": {
