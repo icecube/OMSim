@@ -6,10 +6,10 @@
 
 {\bfseries{\mbox{\hyperlink{class_o_m_sim}{OMSim}}}} is a Geant4 framework for simulating optical modules of the Ice\+Cube Observatory. It comprises multiple modules for different studies such as background investigations with radioactive decays and sensitivity analyses. These modules share common files (in the \char`\"{}common\char`\"{} folder) that define, for example, geometries of modules and PMTs, as well as material properties.
 
-For more information, please refer to our \href{https://icecube.github.io/OMSim/}{\texttt{ comprehensive documentation}}.
+For more information, please refer to our \href{https://icecube.github.io/OMSim/}{\texttt{ documentation}}.
 
-For the latest updates and information, check our \href{https://github.com/icecube/OMSim}{\texttt{ Git\+Hub repository}}. If you need assistance or want to report problems, please open an issue on our Git\+Hub page or contact the maintainers directly.\hypertarget{index_autotoc_md42}{}\doxysection{Installation}\label{index_autotoc_md42}
-\hypertarget{index_autotoc_md43}{}\doxysubsection{Installing Geant4}\label{index_autotoc_md43}
+For the latest updates and information, check our \href{https://github.com/icecube/OMSim}{\texttt{ Git\+Hub repository}}. If you need assistance or want to report problems, please open an issue on our Git\+Hub page or contact the maintainers directly.\hypertarget{index_autotoc_md49}{}\doxysection{Installation}\label{index_autotoc_md49}
+\hypertarget{index_autotoc_md50}{}\doxysubsection{Installing Geant4}\label{index_autotoc_md50}
 
 \begin{DoxyEnumerate}
 \item Install Geant4 following \href{https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html}{\texttt{ the guide provided by CERN}}. \mbox{\hyperlink{class_o_m_sim}{OMSim}} is currently optimised for Geant4-\/11 (last tested with 11.\+2.\+2).
@@ -33,7 +33,7 @@ Note\+: Do not change {\ttfamily GEANT4\+\_\+\+BUILD\+\_\+\+MULTITHREADED} to OF
 
 \end{DoxyCode}
 
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md44}{}\doxysubsection{Installing Dependencies}\label{index_autotoc_md44}
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md51}{}\doxysubsection{Installing Dependencies}\label{index_autotoc_md51}
 Install the required dependencies using\+:
 
 
@@ -43,7 +43,7 @@ Install the required dependencies using\+:
 \end{DoxyCode}
 
 
-Note\+: spdlog will be automatically installed by CMake if not found on your system.\hypertarget{index_autotoc_md45}{}\doxysubsection{Installing ROOT}\label{index_autotoc_md45}
+Note\+: spdlog will be automatically installed by CMake if not found on your system.\hypertarget{index_autotoc_md52}{}\doxysubsection{Installing ROOT}\label{index_autotoc_md52}
 
 \begin{DoxyEnumerate}
 \item Download the latest ROOT binary from \href{https://root.cern/releases/}{\texttt{ ROOT\textquotesingle{}s official website}} (e.\+g., version 6.\+28/04 at the time of writing), or compile from source.
@@ -54,7 +54,7 @@ Note\+: spdlog will be automatically installed by CMake if not found on your sys
 
 \end{DoxyCode}
 
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md46}{}\doxysubsection{Compiling OMSim}\label{index_autotoc_md46}
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md53}{}\doxysubsection{Compiling OMSim}\label{index_autotoc_md53}
 
 \begin{DoxyEnumerate}
 \item Clone this repository\+: 
@@ -87,7 +87,7 @@ Note\+: spdlog will be automatically installed by CMake if not found on your sys
 
 \end{DoxyCode}
 
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md47}{}\doxysection{Available studies}\label{index_autotoc_md47}
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md54}{}\doxysection{Available studies}\label{index_autotoc_md54}
 \mbox{\hyperlink{class_o_m_sim}{OMSim}} has been utilized in a range of studies, each simulating unique physics, thereby necessitating distinct Physicslist/analysis setups. In this repository, we have compiled a selection of these studies, each contained within its own folder and accompanied by its own main file. Currently available\+:
 
 
@@ -95,5 +95,5 @@ Note\+: spdlog will be automatically installed by CMake if not found on your sys
 \item \href{https://icecube.github.io/OMSim/md_2_effective_area.html}{\texttt{ Effective area}}\+: calculates the effective area of the optical modules/\+PMTs.
 \item \href{https://icecube.github.io/OMSim/md_3_radioactive_decays.html}{\texttt{ Radioactive decays}}\+: simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.
 \item \href{https://icecube.github.io/OMSim/md_4__s_n.html}{\texttt{ Supernova studies}}\+: used for the development of an improved SN trigger for Ice\+Cube using multi-\/\+PMT modules.
-\end{DoxyItemize}\hypertarget{index_autotoc_md48}{}\doxysubsection{Customising Compilation}\label{index_autotoc_md48}
+\end{DoxyItemize}\hypertarget{index_autotoc_md55}{}\doxysubsection{Customising Compilation}\label{index_autotoc_md55}
 To exclude certain studies from compilation, edit the {\ttfamily simulations/\+CMake\+Lists.\+tx} file and comment out the unwanted {\ttfamily add\+\_\+subdirectory()} calls before running CMake. 

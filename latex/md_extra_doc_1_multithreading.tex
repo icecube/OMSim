@@ -1,4 +1,4 @@
-The OMSim-\/\+Framework allows for multi-\/threading. The number of threads can be controlled with the {\ttfamily -\/-\/threads} argument (default 1). If you specify more threads than available, only the maximum available will be used.\hypertarget{md_extra_doc_1_multithreading_autotoc_md10}{}\doxysection{Introduction}\label{md_extra_doc_1_multithreading_autotoc_md10}
+The OMSim-\/\+Framework allows for multi-\/threading. The number of threads can be controlled with the {\ttfamily -\/-\/threads} argument (default 1). If you specify more threads than available, only the maximum available will be used.\hypertarget{md_extra_doc_1_multithreading_autotoc_md14}{}\doxysection{Introduction}\label{md_extra_doc_1_multithreading_autotoc_md14}
 Geant4 implements multi-\/threading using a master-\/worker model\+:
 
 
@@ -12,14 +12,14 @@ Key points\+:
 \item Geometry and physics tables are shared read-\/only among threads.
 \item Each thread has its own instance of sensitive detectors, event and tracking managers.
 \item Random number generators are designed to produce independent streams for each thread.
-\end{DoxyItemize}\hypertarget{md_extra_doc_1_multithreading_autotoc_md11}{}\doxysection{Thread Safety Guidelines}\label{md_extra_doc_1_multithreading_autotoc_md11}
+\end{DoxyItemize}\hypertarget{md_extra_doc_1_multithreading_autotoc_md15}{}\doxysection{Thread Safety Guidelines}\label{md_extra_doc_1_multithreading_autotoc_md15}
 
 \begin{DoxyEnumerate}
 \item {\bfseries{Use Thread-\/\+Local Storage}}\+: For data unique to each thread, use {\ttfamily G4\+Thread\+Local}.
 \item {\bfseries{Protect Shared Resources}}\+: Use mutex locks when accessing shared resources.
 \item {\bfseries{Minimize Global Variables}}\+: Prefer class members or local variables instead.
 \item {\bfseries{Implement Thread-\/\+Safe Containers}}\+: Ensure thread-\/safe access and modification of containers.
-\end{DoxyEnumerate}\hypertarget{md_extra_doc_1_multithreading_autotoc_md12}{}\doxysection{Thread-\/\+Safe Global Instance Implementation}\label{md_extra_doc_1_multithreading_autotoc_md12}
+\end{DoxyEnumerate}\hypertarget{md_extra_doc_1_multithreading_autotoc_md16}{}\doxysection{Thread-\/\+Safe Global Instance Implementation}\label{md_extra_doc_1_multithreading_autotoc_md16}
 Both {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} and {\ttfamily \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}} utilize a global instance pattern. This approach provides better control over the lifecycle of the instance and can prevent potential memory leaks when integrated into larger frameworks. The process works as follows\+:
 
 
@@ -71,7 +71,7 @@ Implementation of the global instance pattern\+:
 
 \begin{quote}
 {\bfseries{Note}}\+: While this global instance implementation provides better control over the instance lifecycle, it requires explicit initialization and shutdown. Ensure these are called at appropriate times (single-\/thread) in your application (for example in main before/after run). \end{quote}
-\hypertarget{md_extra_doc_1_multithreading_autotoc_md13}{}\doxysubsection{Example\+: OMSim\+Hit\+Manager}\label{md_extra_doc_1_multithreading_autotoc_md13}
+\hypertarget{md_extra_doc_1_multithreading_autotoc_md17}{}\doxysubsection{Example\+: OMSim\+Hit\+Manager}\label{md_extra_doc_1_multithreading_autotoc_md17}
 The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} class demonstrates several thread-\/safety techniques for saving data\+:
 
 
@@ -149,7 +149,7 @@ The {\ttfamily merge\+Thread\+Data} method combines data from all threads into a
 
 \begin{quote}
 {\bfseries{Important}}\+: Call {\ttfamily merge\+Thread\+Data} after all threads have finished simulating (after a run has completed). \end{quote}
-\hypertarget{md_extra_doc_1_multithreading_autotoc_md14}{}\doxysubsection{Example\+: Saving Data Per Thread}\label{md_extra_doc_1_multithreading_autotoc_md14}
+\hypertarget{md_extra_doc_1_multithreading_autotoc_md18}{}\doxysubsection{Example\+: Saving Data Per Thread}\label{md_extra_doc_1_multithreading_autotoc_md18}
 In scenarios where merging data is unnecessary, or the amount of data is too large to wait until end of run, each thread can save its data in separate files. This is demonstrated in the {\ttfamily \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}} class.
 
 
@@ -229,7 +229,7 @@ As you can see, in case of multiplicity study, we need to merge the data, as we 
 \DoxyCodeLine{        \}}
 
 \end{DoxyCode}
-\hypertarget{md_extra_doc_1_multithreading_autotoc_md15}{}\doxysection{Best Practices for Creating New Thread-\/\+Safe Containers}\label{md_extra_doc_1_multithreading_autotoc_md15}
+\hypertarget{md_extra_doc_1_multithreading_autotoc_md19}{}\doxysection{Best Practices for Creating New Thread-\/\+Safe Containers}\label{md_extra_doc_1_multithreading_autotoc_md19}
 When implementing new thread-\/safe containers in Geant4\+:
 
 
@@ -279,8 +279,8 @@ When implementing new thread-\/safe containers in Geant4\+:
 
 \end{DoxyEnumerate}
 
-By following these guidelines and studying the provided examples, you can create thread-\/safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-\/threaded environments.\hypertarget{md_extra_doc_1_multithreading_autotoc_md16}{}\doxysection{Troubleshooting Multi-\/threading Issues}\label{md_extra_doc_1_multithreading_autotoc_md16}
-When developing new code with multi-\/threaded simulations in Geant4, you may encounter race conditions or other thread-\/related issues. Here\textquotesingle{}s a general approach to diagnose and resolve these problems\+:\hypertarget{md_extra_doc_1_multithreading_autotoc_md17}{}\doxysubsection{1. Use Valgrind Tools}\label{md_extra_doc_1_multithreading_autotoc_md17}
+By following these guidelines and studying the provided examples, you can create thread-\/safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-\/threaded environments.\hypertarget{md_extra_doc_1_multithreading_autotoc_md20}{}\doxysection{Troubleshooting Multi-\/threading Issues}\label{md_extra_doc_1_multithreading_autotoc_md20}
+When developing new code with multi-\/threaded simulations in Geant4, you may encounter race conditions or other thread-\/related issues. Here\textquotesingle{}s a general approach to diagnose and resolve these problems\+:\hypertarget{md_extra_doc_1_multithreading_autotoc_md21}{}\doxysubsection{1. Use Valgrind Tools}\label{md_extra_doc_1_multithreading_autotoc_md21}
 Valgrind provides powerful tools for detecting thread-\/related issues\+:
 
 a) Helgrind\+: 
@@ -297,7 +297,7 @@ b) DRD (Data Race Detector)\+:
 \end{DoxyCode}
 
 
-These tools can identify potential race conditions and other thread-\/related issues. \hypertarget{md_extra_doc_1_multithreading_autotoc_md18}{}\doxysubsection{2. Analyse the Output}\label{md_extra_doc_1_multithreading_autotoc_md18}
+These tools can identify potential race conditions and other thread-\/related issues. \hypertarget{md_extra_doc_1_multithreading_autotoc_md22}{}\doxysubsection{2. Analyse the Output}\label{md_extra_doc_1_multithreading_autotoc_md22}
 
 \begin{DoxyItemize}
 \item Review the Valgrind output carefully. Look for\+:
@@ -305,7 +305,7 @@ These tools can identify potential race conditions and other thread-\/related is
 \item Mutex-\/related issues
 \item Potential deadlocks
 \item Tip\+: Use an LLM (like Chat\+GPT) to help interpret complex error messages and suggest potential solutions.
-\end{DoxyItemize}\hypertarget{md_extra_doc_1_multithreading_autotoc_md19}{}\doxysubsection{4. Modify and repeat}\label{md_extra_doc_1_multithreading_autotoc_md19}
+\end{DoxyItemize}\hypertarget{md_extra_doc_1_multithreading_autotoc_md23}{}\doxysubsection{4. Modify and repeat}\label{md_extra_doc_1_multithreading_autotoc_md23}
 
 \begin{DoxyItemize}
 \item Once you identify the object/method causing the error, check if it\textquotesingle{}s obviously not thread-\/safe and being shared during simulation.

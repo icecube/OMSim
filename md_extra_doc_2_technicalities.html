@@ -117,17 +117,40 @@ $(document).ready(function(){initNavTree('md_extra_doc_2_technicalities.html',''
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md21">Matching PMT Efficiency to Measurements</a><ul><li class="level2"><a href="#autotoc_md22">Step 1: Fraction of absorbed photons</a></li>
-<li class="level2"><a href="#autotoc_md23">Step 2: Expand OMSimPMTResponse and Verify QE</a></li>
-<li class="level2"><a href="#autotoc_md24">Step 3: Matching detection efficiency scan</a></li>
+<ul><li class="level1"><a href="#autotoc_md25">The Tools namespace</a></li>
+<li class="level1"><a href="#autotoc_md27">Matching PMT Efficiency to Measurements</a><ul><li class="level2"><a href="#autotoc_md28">Step 1: Fraction of absorbed photons</a></li>
+<li class="level2"><a href="#autotoc_md29">Step 2: Expand OMSimPMTResponse and Verify QE</a></li>
+<li class="level2"><a href="#autotoc_md30">Step 3: Matching detection efficiency scan</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="textblock"><h1><a class="anchor" id="autotoc_md21"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md25"></a>
+The Tools namespace</h1>
+<p>The tools namespace provide several methods that could help you. For example, <code><a class="el" href="namespace_tools.html#a6d49cd2d5cb0e03b596870bcb9c12681" title="Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.">Tools::loadtxt</a></code>, <code><a class="el" href="namespace_tools.html#a068657387a0d190043d3e0959e84e18c" title="Generates a linearly spaced vector.">Tools::linspace</a></code> and <code><a class="el" href="namespace_tools.html#a5150dab6894acffb1c04085437e8e0b8" title="Generates a logarithmically spaced vector.">Tools::logspace</a></code> operate similarly to their Python's numpy counterparts:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_o_m_sim_tools_8hh.html">OMSimTools.hh</a>&quot;</span></div>
+<div class="line">std::vector&lt;G4PV2DDataVector&gt; lData = <a class="code" href="namespace_tools.html#a6d49cd2d5cb0e03b596870bcb9c12681">Tools::loadtxt</a>(<span class="stringliteral">&quot;path/file_name.txt&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line">std::vector&lt;G4double&gt; lFirstColumn = lData.at(0);</div>
+<div class="line">std::vector&lt;G4double&gt; lSecondColumn = lData.at(1);</div>
+<div class="line"> </div>
+<div class="line">std::vector&lt;double&gt; lWavelengths = <a class="code" href="namespace_tools.html#a068657387a0d190043d3e0959e84e18c">Tools::linspace</a>(275, 750, 96);</div>
+<div class="line">std::vector&lt;double&gt; lAbsLengths = <a class="code" href="namespace_tools.html#a5150dab6894acffb1c04085437e8e0b8">Tools::logspace</a>(-9, -4, 20);</div>
+<div class="line"> </div>
+<div class="line">std::vector&lt;double&gt; data = {1, 2, 2, 3, 3, 3, 4, 4, 5};</div>
+<div class="line"><span class="keyword">auto</span> [counts, edges] = <a class="code" href="namespace_tools.html#ab83e877c5728fe5cbfd4c6496c88166f">Tools::histogram</a>(data, 5);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ...</span></div>
+<div class="ttc" id="a_o_m_sim_tools_8hh_html"><div class="ttname"><a href="_o_m_sim_tools_8hh.html">OMSimTools.hh</a></div></div>
+<div class="ttc" id="anamespace_tools_html_a068657387a0d190043d3e0959e84e18c"><div class="ttname"><a href="namespace_tools.html#a068657387a0d190043d3e0959e84e18c">Tools::linspace</a></div><div class="ttdeci">std::vector&lt; double &gt; linspace(double start, double end, int num_points, bool endpoint=true)</div><div class="ttdoc">Generates a linearly spaced vector.</div><div class="ttdef"><b>Definition:</b> OMSimTools.cc:331</div></div>
+<div class="ttc" id="anamespace_tools_html_a5150dab6894acffb1c04085437e8e0b8"><div class="ttname"><a href="namespace_tools.html#a5150dab6894acffb1c04085437e8e0b8">Tools::logspace</a></div><div class="ttdeci">std::vector&lt; double &gt; logspace(double start, double end, int num_points, double base=10.0, bool endpoint=true)</div><div class="ttdoc">Generates a logarithmically spaced vector.</div><div class="ttdef"><b>Definition:</b> OMSimTools.cc:365</div></div>
+<div class="ttc" id="anamespace_tools_html_a6d49cd2d5cb0e03b596870bcb9c12681"><div class="ttname"><a href="namespace_tools.html#a6d49cd2d5cb0e03b596870bcb9c12681">Tools::loadtxt</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; loadtxt(const std::string &amp;pFilePath, bool pUnpack=true, size_t pSkipRows=0, char pDelimiter=' ', char pComments='#')</div><div class="ttdoc">Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.</div><div class="ttdef"><b>Definition:</b> OMSimTools.cc:265</div></div>
+<div class="ttc" id="anamespace_tools_html_ab83e877c5728fe5cbfd4c6496c88166f"><div class="ttname"><a href="namespace_tools.html#ab83e877c5728fe5cbfd4c6496c88166f">Tools::histogram</a></div><div class="ttdeci">std::pair&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt; histogram(const std::vector&lt; double &gt; &amp;data, const std::variant&lt; int, std::vector&lt; double &gt;&gt; &amp;bins=10, const std::optional&lt; std::pair&lt; double, double &gt;&gt; &amp;range=std::nullopt, const std::vector&lt; double &gt; &amp;weights=std::vector&lt; double &gt;())</div><div class="ttdoc">Compute the histogram of a dataset.</div><div class="ttdef"><b>Definition:</b> OMSimTools.cc:162</div></div>
+</div><!-- fragment --><hr  />
+ <hr  />
+<h1><a class="anchor" id="autotoc_md27"></a>
 Matching PMT Efficiency to Measurements</h1>
 <p>In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (<a href="md_extra_doc_0_common.html#autotoc_md5">click here</a> for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module <code>efficiency_calibration</code> facilitates this procedure. In the following, the <a class="el" href="classm_d_o_m.html">mDOM</a> PMT is used as an example.</p>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 Step 1: Fraction of absorbed photons</h2>
 <p>The optical properties (refractive index, thickness, and absorption length) of the glass tube and photocathode determine the number of photons absorbed in the photocathode. The optical properties of the photocathode (defined in file <code>Surf_Generic_Photocathode_20nm.dat</code>) are from this paper <a href="https://arxiv.org/abs/physics/0408075">https://arxiv.org/abs/physics/0408075</a> .</p>
 <p>To calculate the quantum efficiency weight, we have to know how many photons are absorbed in the photocathode in the simulation. For this, go through the following steps:</p><ul>
@@ -158,7 +181,7 @@ Step 1: Fraction of absorbed photons</h2>
 <p><b>Note</b>: Ensure that the QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! </p>
 </blockquote>
 <p>If everything looks good, save the file (in the example above <code>mDOM_Hamamatsu_R15458_CAT_intrinsic_QE.dat</code>) in <code>common/data/PMTs/measurement_matching_data/QE/</code> and move to step 2.</p>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 Step 2: Expand OMSimPMTResponse and Verify QE</h2>
 <p>Each PMT has its own derived class in <code>OMSimPMTResponse.cc</code>. If your PMT has not class yet, create one following the other PMTs as example. In its constructor add a call to <code>configureQEweightInterpolator()</code> adding the file that you generated in the last step and a default QE file for this PMT. Make sure you are not creating any CE weight interpolator at this point (this happens in step 3 of this documentation), as otherwise the weights will be smaller than expected from QE only!</p>
 <p>Now run the simulation again </p><div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 2 -n 100000 --threads 4 --detail_pmt --output_file step2</div>
@@ -176,7 +199,7 @@ Step 2: Expand OMSimPMTResponse and Verify QE</h2>
 <div class="line">plt.grid()</div>
 <div class="line">plt.legend()</div>
 </div><!-- fragment --><div style="width: 100%; text-align: center;"> <img src="step2_qe.png" alt="" width="450" height="320" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
- </div> </div><h2><a class="anchor" id="autotoc_md24"></a>
+ </div> </div><h2><a class="anchor" id="autotoc_md30"></a>
 Step 3: Matching detection efficiency scan</h2>
 <p>The last step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.</p>
 <ul>
@@ -188,15 +211,17 @@ Step 3: Matching detection efficiency scan</h2>
 <li>Fit the weights using simulation data. The analysis done for the <a class="el" href="classm_d_o_m.html">mDOM</a> can be found in the notebook located in <code>documentation/notebooks/detection_efficiency_matching/</code>.</li>
 <li>Save the weights in a file and store it in <code>common/data/PMTs/measurement_matching_data/CE_weight/</code></li>
 <li>Add the <code>configureCEweightInterpolator()</code> in the constructor of your PMT class using the new file as input</li>
-<li>Run the simulation again and check if the weights are correct. </li>
+<li>Run the simulation again and check if the weights are correct.</li>
 </ul>
-</div></div><!-- contents -->
+<hr  />
+ <hr  />
+ </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Aug 20 2024 15:41:36 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Aug 20 2024 16:06:17 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
