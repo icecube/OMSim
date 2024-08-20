@@ -9,17 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          
-      - name: Clean gh-pages branch
-        run: |
-          git push origin --delete gh-pages
-          git checkout --orphan gh-pages
-          git rm -rf --dry-run .
-          git rm -rf .
-          git push gh-pages
-
       - name: Generate Doxygen
         run: |
           sudo apt-get install doxygen graphviz
