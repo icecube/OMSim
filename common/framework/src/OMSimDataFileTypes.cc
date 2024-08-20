@@ -519,9 +519,9 @@ void ScintillationProperties::extractYield(G4String pTemperature, G4String pYiel
             throw std::invalid_argument(("Error parsing the JSON for key: " + pTreeKeyYield).c_str());
         }
 
-        TGraph *mYieldInterpolation = new TGraph(static_cast<int>(lTemperatures.size()), &lTemperatures[0], &lYields[0]);
+        TGraph *m_YieldInterpolation = new TGraph(static_cast<int>(lTemperatures.size()), &lTemperatures[0], &lYields[0]);
 
-        mMPT->AddConstProperty(pYieldPropertyName, mYieldInterpolation->Eval(std::stod(pTemperature)) / MeV, true);
+        mMPT->AddConstProperty(pYieldPropertyName, m_YieldInterpolation->Eval(std::stod(pTemperature)) / MeV, true);
     }
 }
 

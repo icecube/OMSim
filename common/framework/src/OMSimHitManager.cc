@@ -203,9 +203,10 @@ void OMSimHitManager::reset()
 /**
  * @brief Counts hits for a specified module.
  * @param pModuleIndex Index of the module for which to count hits. Default is 0.
+ * @param pDEweighted If true, the counts are weighted with detection probability
  * @return A vector containing the hit count for each PMT in the specified module.
  */
-std::vector<double> OMSimHitManager::countMergedHits(int pModuleIndex)
+std::vector<double> OMSimHitManager::countMergedHits(int pModuleIndex, bool pDEweighted)
 {
 	log_trace("Counting number of detected photons in module with index {}", pModuleIndex);
 	HitStats lHitsOfModule = mModuleHits[pModuleIndex];
@@ -214,8 +215,9 @@ std::vector<double> OMSimHitManager::countMergedHits(int pModuleIndex)
 	std::vector<double> lHits(lNumberPMTs + 1, 0.0);
 	for (int i = 0; i < (int)lHitsOfModule.PMTnr.size(); i++)
 	{
-		lHits[lHitsOfModule.PMTnr.at(i)] += 1; // lHitsOfModule.PMTresponse.at(i).detectionProbability;
-		lHits[lNumberPMTs] += 1;
+		double lNewcount = (pDEweighted) ?  lHitsOfModule.PMTresponse.at(i).detectionProbability : 1;
+		lHits[lHitsOfModule.PMTnr.at(i)] += lNewcount;
+		lHits[lNumberPMTs] += lNewcount;
 	}
 
 	return lHits;

@@ -1,85 +1,36 @@
-/**
- * @file
- * @ingroup EffectiveArea
- * @brief Main for the calculation of effective areas.
- * @details The effective area of a module is calculated simulating a plane wave from a certain direction.
- */
+
 #include "OMSim.hh"
 #include "OMSimBeam.hh"
-#include "OMSimEffectiveAreaAnalyisis.hh"
+#include "OMSimEffiCaliAnalyisis.hh"
 #include "OMSimEffectiveAreaDetector.hh"
 #include "OMSimTools.hh"
 std::shared_ptr<spdlog::logger> globalLogger;
 
 namespace po = boost::program_options;
 
-void modifyPhotocathodeAbsorptionLength(G4double pAbs)
-{
-	G4OpticalSurface *lSurface = OMSimInputData::getInstance().getOpticalSurface("Surf_Generic_Photocathode_20nm");
-	G4MaterialPropertiesTable *mMPT = lSurface->GetMaterialPropertiesTable();
-	mMPT->RemoveProperty("ABSLENGTH");
-	G4double energies[] = {1.5 * eV, 9 * eV};
-	G4double absLengths[] = {pAbs, pAbs};
-	mMPT->AddProperty("ABSLENGTH", energies, absLengths, 2);
-}
-
-void runQEbeamSimulationVaryingAbsorptionLength()
-{
-	OMSimEffectiveAreaAnalyisis lAnalysisManager;
-	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
-
-	Beam *lScanner = new Beam(lArgs.get<G4double>("radius"), lArgs.get<G4double>("distance"));
-	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
-
-	bool lWriteHeader = !lArgs.get<bool>("no_header");
-	if (lWriteHeader)
-		lAnalysisManager.writeHeader("Wavelength", "Abs. length");
-
-	std::vector<double> lWavelengths = Tools::linspace(275, 750, 96);
-	std::vector<double> lAbsLengths = Tools::logspace(-8.5, -5, 20);
-
-	for (const auto &wavelength : lWavelengths)
-	{
-		lScanner->setWavelength(wavelength);
-
-		for (const auto &abslength : lAbsLengths)
-		{
-			modifyPhotocathodeAbsorptionLength(abslength * m);
-			lScanner->runErlangenQEBeam();
-			lAnalysisManager.writeScan(wavelength, abslength);
-			lHitManager.reset();
-		}
-	}
-}
-
 void runQEbeamSimulation()
 {
-	OMSimEffectiveAreaAnalyisis lAnalysisManager;
+	OMSimEffiCaliAnalyisis lAnalysisManager;
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
 	Beam *lScanner = new Beam(lArgs.get<G4double>("radius"), lArgs.get<G4double>("distance"));
 	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
 
-	bool lWriteHeader = !lArgs.get<bool>("no_header");
-	if (lWriteHeader)
-		lAnalysisManager.writeHeader("Wavelength");
-
-	std::vector<double> lWavelengths = Tools::arange(250, 755, 5);
+	std::vector<double> lWavelengths = Tools::arange(250, 800, 5);
 
 	for (const auto &wavelength : lWavelengths)
 	{
 		lScanner->setWavelength(wavelength);
 		lScanner->runErlangenQEBeam();
-		lAnalysisManager.writeScan(wavelength);
+		lAnalysisManager.writeHits(wavelength);
 		lHitManager.reset();
 	}
 }
 
 void runXYZfrontalScan()
 {
-	OMSimEffectiveAreaAnalyisis lAnalysisManager;
+	OMSimEffiCaliAnalyisis lAnalysisManager;
 	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
 	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
 
@@ -118,29 +69,6 @@ void runXYZfrontalScan()
 	// }
 }
 
-void print_result(const std::vector<double> &counts, const std::vector<double> &edges)
-{
-	std::cout << "Counts: ";
-	for (const auto &count : counts)
-	{
-		std::cout << std::fixed << std::setprecision(2) << count << " ";
-	}
-	std::cout << "\nEdges:  ";
-	for (const auto &edge : edges)
-	{
-		std::cout << std::fixed << std::setprecision(2) << edge << " ";
-	}
-	std::cout << std::endl
-			  << std::endl;
-}
-void testHisto()
-{
-	auto lRange = Tools::arange(0, 42.25, 0.25);
-	std::vector<double> data = {36.7077, 36.94, 37.45};
-	auto [lCounts, lEdges] = Tools::histogram(data, lRange);
-	print_result(lCounts, lEdges);
-}
-
 /**
  * @brief Add options for the user input arguments for the effective area module
  */
@@ -169,28 +97,19 @@ int main(int pArgumentCount, char *pArgumentVector[])
 
 	switch (OMSimCommandArgsTable::getInstance().get<G4int>("simulation_step"))
 	{
-
-	case 0:
-	{
-		// Vary absorption length of photocathode for different wavelengths to determine amount of detected photons
-		runQEbeamSimulationVaryingAbsorptionLength();
-		break;
-	}
 	case 1:
 	{
-		// After fitting the QE vs abs. length curves and making the corresponding parameter files, check that QE is being mapped correctly
 		runQEbeamSimulation();
 		break;
 	}
 	case 2:
 	{
-		// Scan photocathode to save absorption position. Needed to calculate collection efficiency weight.
-		runXYZfrontalScan();
+		runQEbeamSimulation();
 		break;
 	}
 	case 3:
 	{
-		testHisto();
+		runXYZfrontalScan();
 		break;
 	}
 	}

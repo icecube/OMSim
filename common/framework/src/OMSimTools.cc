@@ -57,6 +57,91 @@ namespace Tools
 	}
 
 	/**
+	 * @brief Creates a TGraph interpolator from x and y data points.
+	 *
+	 * @param pX Vector of x-coordinates.
+	 * @param pY Vector of y-coordinates.
+	 * @param pName Optional name for the TGraph. It should be unique!
+	 * @return Pointer to the new TGraph object.
+	 * @note Caller is responsible for deleting the returned TGraph!
+	 */
+	TGraph *create1dInterpolator(const std::vector<double> &pX, const std::vector<double> &pY, const std::string &pName)
+	{
+		auto lInterpolator = new TGraph(pX.size(), pX.data(), pY.data());
+		if (!pName.empty())
+		{
+			lInterpolator->SetName(pName.c_str());
+		}
+		return lInterpolator;
+	}
+
+	/**
+	 * @brief Creates a TGraph interpolator from x and y in file.
+	 * @param pFileName 
+	 * @return Pointer to the new TGraph object.
+	 * @note Caller is responsible for deleting the returned TGraph!
+	 */
+	TGraph *create1dInterpolator(const std::string &pFileName)
+	{
+		auto lInterpolator = new TGraph(pFileName.c_str());
+		lInterpolator->SetName(pFileName.c_str());
+		return lInterpolator;
+	}
+
+	/**
+ * @brief Create a histogram from provided data.
+ *
+ * Loads the data from a given path and constructs a histogram based on the data.
+ *
+ * @param pFilePath Path to the data file.
+ * @param pTH2DName Name of the histogram.
+ * @return Pointer to the created histogram.
+ * @note Caller is responsible for deleting the returned TH2D!
+ */
+TH2D *create2DHistogramFromDataFile(const std::string &pFilePath)
+{
+    // Load the data
+    std::vector<std::vector<double>> lData = Tools::loadtxt(pFilePath, true, 0, '\t');
+
+    // Deduce the number of bins and the bin widths
+    double lBinWidthX, lBinWidthY;
+    for (size_t i = 1; i < lData[0].size(); i++)
+    {
+        if (lData[0][i] - lData[0][i - 1] > 0)
+        {
+            lBinWidthX = lData[0][i] - lData[0][i - 1];
+            break;
+        }
+    }
+    for (size_t i = 1; i < lData[1].size(); i++)
+    {
+        if (lData[1][i] - lData[1][i - 1] > 0)
+        {
+            lBinWidthY = lData[1][i] - lData[1][i - 1];
+            break;
+        }
+    }
+    double lMinX = *std::min_element(lData[0].begin(), lData[0].end()) - lBinWidthX / 2.0;
+    double lMaxX = *std::max_element(lData[0].begin(), lData[0].end()) + lBinWidthX / 2.0;
+    double lMinY = *std::min_element(lData[1].begin(), lData[1].end()) - lBinWidthY / 2.0;
+    double lMaxY = *std::max_element(lData[1].begin(), lData[1].end()) + lBinWidthY / 2.0;
+    int lNbinsX = (int)((lMaxX - lMinX) / lBinWidthX);
+    int lNbinsY = (int)((lMaxY - lMinY) / lBinWidthY);
+
+    // Create histogram
+    TH2D *lTH2Dhistogram = new TH2D(pFilePath.c_str(), "title", lNbinsX, lMinX, lMaxX, lNbinsY, lMinY, lMaxY);
+
+    // Fill the histogram
+    for (size_t i = 0; i < lData[0].size(); i++)
+    {
+        lTH2Dhistogram->Fill(lData[0][i], lData[1][i], lData[2][i]);
+    }
+
+    return lTH2Dhistogram;
+}
+
+
+	/**
 	 * @brief Compute the histogram of a dataset.
 	 *
 	 * @param data Input data. The histogram is computed over the data.
@@ -76,7 +161,8 @@ namespace Tools
 	 */
 	std::pair<std::vector<double>, std::vector<double>> histogram(const std::vector<double> &data,
 																  const std::variant<int, std::vector<double>> &bins,
-																  const std::optional<std::pair<double, double>> &range)
+																  const std::optional<std::pair<double, double>> &range,
+																  const std::vector<double> &weights)
 	{
 
 		// Handle empty input
@@ -93,7 +179,9 @@ namespace Tools
 				return {std::vector<double>(bin_edges.size() - 1, 0.0), bin_edges};
 			}
 		}
-
+		std::vector<double> actual_weights = (weights.empty() || weights.size() != data.size())
+												 ? std::vector<double>(data.size(), 1.0)
+												 : weights;
 		double data_min, data_max;
 		if (range)
 		{
@@ -131,8 +219,10 @@ namespace Tools
 
 		std::vector<double> counts(bin_edges.size() - 1, 0.0);
 
-		for (double value : data)
+		for (size_t i = 0; i < data.size(); ++i)
 		{
+			double value = data[i];
+			double weight = actual_weights[i];
 			if (value >= data_min && value <= data_max)
 			{
 				auto it = std::upper_bound(bin_edges.begin(), bin_edges.end(), value);
@@ -141,11 +231,11 @@ namespace Tools
 					int index = std::distance(bin_edges.begin(), it) - 1;
 					if (index == counts.size() && value == data_max)
 					{
-						counts.back()++;
+						counts.back() += weight;
 					}
 					else
 					{
-						counts[index]++;
+						counts[index] += weight;
 					}
 				}
 			}
@@ -192,7 +282,7 @@ namespace Tools
 			if (lRowCounter++ < pSkipRows)
 				continue;
 			if (!lLine.empty() && lLine[0] == pComments)
-            	continue;
+				continue;
 			std::vector<double> lRow;
 			std::stringstream lSs(lLine);
 			std::string lItem;

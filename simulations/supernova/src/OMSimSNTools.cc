@@ -224,7 +224,7 @@ G4double OMSimSNTools::calculateWeight(G4double pSigma, G4double pNrTargets)
 G4double DistributionSampler::sampleFromDistribution()
 {
   // Total number of points
-  G4int pNrPoints = static_cast<G4int>(mX.size());
+  G4int pNrPoints = static_cast<G4int>(m_X.size());
 
   // Randomly choose a y-value from the CDF's range
   G4double lYrndm = G4UniformRand() * mCDF[pNrPoints - 1];
@@ -235,23 +235,23 @@ G4double DistributionSampler::sampleFromDistribution()
 
   // Convert random y-value to a random x-value
   // The conversion is based on the fact that the CDF is represented as a second-order polynomial
-  G4double lXrndm = mX[j];
+  G4double lXrndm = m_X[j];
   G4double lSlope = mSlopes[j];
 
   if (lSlope != 0.)
   {
-    G4double b = mY[j] / lSlope;
+    G4double b = m_Y[j] / lSlope;
     G4double c = 2 * (lYrndm - mCDF[j]) / lSlope;
     G4double lDelta = b * b + c;
     G4int lSign = (lSlope < 0.) ? -1 : 1;
     lXrndm += lSign * std::sqrt(lDelta) - b;
   }
-  else if (mY[j] > 0.)
+  else if (m_Y[j] > 0.)
   {
-    lXrndm += (lYrndm - mCDF[j]) / mY[j];
+    lXrndm += (lYrndm - mCDF[j]) / m_Y[j];
   }
 
-  return lXrndm*mXUnit;
+  return lXrndm*m_XUnit;
 }
 
 /**
@@ -265,8 +265,8 @@ G4double DistributionSampler::sampleFromDistribution()
  */
 void DistributionSampler::setData(const std::vector<G4double> &pX, const std::vector<G4double> &pY, G4String pName)
 {
-  mX = pX;
-  mY = pY;
+  m_X = pX;
+  m_Y = pY;
   mDistName = pName; // TGraph needs unique name, also good for debugging
   calculateSlopesAndCDF();
 }
@@ -280,7 +280,7 @@ void DistributionSampler::setData(const std::vector<G4double> &pX, const std::ve
  */
 void DistributionSampler::makeInterpolator()
 {
-  mInterpolator = new TGraph(static_cast<int>(mX.size()), mX.data(), mY.data());
+  mInterpolator = new TGraph(static_cast<int>(m_X.size()), m_X.data(), m_Y.data());
   mInterpolator->SetName(mDistName);
 }
 
@@ -293,7 +293,7 @@ void DistributionSampler::makeInterpolator()
  */
 void DistributionSampler::calculateSlopesAndCDF()
 {
-  G4int lNrPoints = static_cast<G4int>(mX.size());
+  G4int lNrPoints = static_cast<G4int>(m_X.size());
   mSlopes.resize(lNrPoints, 0.0); // Initialize with zeros
   mCDF.resize(lNrPoints, 0.0);    // Initialize with zeros
   for (G4int j = 0; j < lNrPoints; j++)
@@ -301,13 +301,13 @@ void DistributionSampler::calculateSlopesAndCDF()
     // Compute slopes for all except the last point
     if (j < lNrPoints - 1)
     {
-      mSlopes[j] = (mY[j + 1] - mY[j]) / (mX[j + 1] - mX[j]);
+      mSlopes[j] = (m_Y[j + 1] - m_Y[j]) / (m_X[j + 1] - m_X[j]);
     }
 
     // Compute cumulative function
     if (j > 0)
     {
-      mCDF[j] = mCDF[j - 1] + 0.5 * (mY[j] + mY[j - 1]) * (mX[j] - mX[j - 1]);
+      mCDF[j] = mCDF[j - 1] + 0.5 * (m_Y[j] + m_Y[j - 1]) * (m_X[j] - m_X[j - 1]);
     }
   }
 }
@@ -325,7 +325,7 @@ G4double DistributionSampler::interpolate(G4double pX)
     throw("Error: mInterpolator not initialized!");
     return 0.0;
   }
-  return mInterpolator->Eval(pX/mXUnit) * mYUnit;
+  return mInterpolator->Eval(pX/m_XUnit) * m_YUnit;
 }
 
 
@@ -336,8 +336,8 @@ G4double DistributionSampler::interpolate(G4double pX)
  */
 void DistributionSampler::setUnits(G4double pX, G4double pY)
 {
-  mYUnit = pY;
-  mXUnit = pX;
+  m_YUnit = pY;
+  m_XUnit = pX;
 }
 
 DistributionSampler::~DistributionSampler()

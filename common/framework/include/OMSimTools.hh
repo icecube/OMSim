@@ -7,6 +7,8 @@
 
 #include "OMSimLogger.hh"
 #include "globals.hh"
+#include <TGraph.h>
+#include <TH2D.h>
 #include <variant>
 /**
  * @namespace Tools
@@ -21,11 +23,16 @@
 namespace Tools
 {
     std::vector<double> arange(double start, double stop, double step);
+    TGraph* create1dInterpolator(const std::vector<double>& pX, const std::vector<double>& pY, const std::string& pName);
+    TGraph* create1dInterpolator(const std::string& pFileName);
+    TH2D *create2DHistogramFromDataFile(const std::string &pFilePath);
+
     void ensureDirectoryExists(const std::string &filepath);
     std::pair<std::vector<double>, std::vector<double>> histogram(
         const std::vector<double> &data,
         const std::variant<int, std::vector<double>> &bins = 10,
-        const std::optional<std::pair<double, double>> &range = std::nullopt);
+        const std::optional<std::pair<double, double>> &range = std::nullopt,
+        const std::vector<double> &weights = std::vector<double>());
 
     G4String getThreadIDStr();
     std::vector<std::vector<double>> loadtxt(const std::string &pFilePath,

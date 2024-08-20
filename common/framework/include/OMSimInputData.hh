@@ -108,7 +108,7 @@ public:
      * This overloaded method additionally requires a map key to first retrieve the JSON subtree.
      *
      * @param pVector Vector where the values will be stored.
-     * @param pMapKey Key of the JSON map to retrieve the desired subtree.
+     * @param p_MapKey Key of the JSON map to retrieve the desired subtree.
      * @param pKey JSON key within the subtree whose associated array values are to be extracted.
      * @param pScaling Scaling factor applied to each value.
      * @param pInverse If true, the value is divided by the scaling factor, if false it's multiplied.
@@ -117,19 +117,19 @@ public:
      */
     template <typename T>
     void parseKeyContentToVector(std::vector<T> &pVector,
-                                 std::basic_string<char> pMapKey,
+                                 std::basic_string<char> p_MapKey,
                                  std::basic_string<char> pKey, G4double pScaling,
                                  bool pInverse)
     {
         log_trace("Parsing content in key {} to a vector", pKey);
 
         // Get the JSON tree
-        boost::property_tree::ptree lTree = getJSONTree(pMapKey);
+        boost::property_tree::ptree lTree = getJSONTree(p_MapKey);
 
         // Check if the tree is empty
         if (lTree.empty())
         {
-            log_warning("JSON tree is empty for key {}", pMapKey);
+            log_warning("JSON tree is empty for key {}", p_MapKey);
             return;
         }
 

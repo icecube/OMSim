@@ -26,8 +26,8 @@ OMSimPMTConstruction::OMSimPMTConstruction() : abcDetectorComponent()
 void OMSimPMTConstruction::construction()
 {
     log_trace("Starting construction of PMT");
-    definePhotocathodeProperties();
-
+    //definePhotocathodeProperties();
+     mPhotocathodeOpticalSurface = mData->getOpticalSurface("Surf_Generic_Photocathode_20nm");
     mComponents.clear();
     G4VSolid *lPMTSolid;
     G4VSolid *lVacuumPhotocathodeSolid;
@@ -136,7 +136,6 @@ void OMSimPMTConstruction::definePhotocathodeProperties()
 
 OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 {
-    return &NoResponse::getInstance();
     G4String jResponseData;
     try
     {

@@ -1,4 +1,4 @@
-# Radioactive Decays Study
+# > Radioactive Decays Studies
 
 Study for understanding the background produced by radioactive decays in borosilicate glass of optical modules & PMTs.
 

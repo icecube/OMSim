@@ -147,7 +147,6 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstructio
     mNavigator = std::make_unique<G4Navigator>();
 
     int nThreads = determineNumberOfThreads();
-    mRunManager->SetStoreTrajectory(true);
     mRunManager->SetNumberOfThreads(nThreads);
 
     mRunManager->SetUserInitialization(pDetectorConstruction);

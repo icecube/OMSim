@@ -34,10 +34,10 @@ class DistributionSampler
 
 	private:
 		void calculateSlopesAndCDF();
-		G4double mXUnit;
-		G4double mYUnit;
-		std::vector<G4double> mX;
-		std::vector<G4double> mY;
+		G4double m_XUnit;
+		G4double m_YUnit;
+		std::vector<G4double> m_X;
+		std::vector<G4double> m_Y;
 		std::vector<G4double> mSlopes;
 		std::vector<G4double> mCDF;
 		G4String mDistName;

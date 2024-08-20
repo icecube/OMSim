@@ -11,7 +11,6 @@
 #include <map>
 #include <TGraph.h>
 #include <TH2D.h>
-
 /**
  *  @class OMSimPMTResponse
  *  @brief Singleton class to simulate PMT response.
@@ -21,8 +20,8 @@
 class OMSimPMTResponse
 {
 protected:
-    OMSimPMTResponse(){};
-    virtual ~OMSimPMTResponse(){};
+    OMSimPMTResponse();
+    ~OMSimPMTResponse();
 
 public:
     /**
@@ -40,29 +39,34 @@ public:
     virtual bool passQE(G4double pWavelength);
 
 protected:
-    void configureQEinterpolator(const char *pFileName);
-    TH2D *createHistogramFromData(const std::string &pFilePath, const char *pTH2DName);
-    G4double getCharge(G4double pWavelengthKey);
-    G4double getCharge(G4double pWavelengthKey1, G4double pWavelengthKey2);
-    G4double getTransitTime(G4double pWavelengthKey);
-    G4double getTransitTime(G4double pWavelengthKey1, G4double pWavelengthKey2);
-    PMTPulse getPulseFromInterpolation(G4double pWavelengthKey1, G4double pWavelengthKey2);
-    PMTPulse getPulseFromKey(G4double pWavelengthKey);
-    G4double wavelengthInterpolatedValue(std::map<G4double, TH2D *> pMap, G4double pWavelengthKey1, G4double pWavelengthKey2);
+    void configureQEweightInterpolator(const std::string& p_FileNameAbsorbedFraction, const std::string& p_FileNameTargetQE);
+    void configureCEweightInterpolator(const std::string& p_FileName);
+    void configureScansInterpolators(const std::string &p_PathToFiles);
+
+    G4double getCharge(G4double p_WavelengthKey);
+    G4double getCharge(G4double p_WavelengthKey1, G4double p_WavelengthKey2);
+    G4double getTransitTime(G4double p_WavelengthKey);
+    G4double getTransitTime(G4double p_WavelengthKey1, G4double p_WavelengthKey2);
+    PMTPulse getPulseFromInterpolation(G4double p_WavelengthKey1, G4double p_WavelengthKey2);
+    PMTPulse getPulseFromKey(G4double p_WavelengthKey);
+    G4double wavelengthInterpolatedValue(std::map<G4double, TH2D *> p_Map, G4double p_WavelengthKey1, G4double p_WavelengthKey2);
 
     virtual std::vector<G4double> getScannedWavelengths() = 0;
-    virtual bool scansAvailable() = 0;
-    double mX;
-    double mY;
+
+    bool m_ScansInterpolatorsAvailable = false;
+    bool m_QEWeightInterpolatorAvailable = false;
+    bool m_CEWeightInterpolatorAvailable = false;
+    double m_X;
+    double m_Y;
 
     G4double mWavelength;
 
-    TGraph *mRelativeDetectionEfficiencyInterp;
-    TGraph *mQEInterp;
-    std::map<G4double, TH2D *> mGainG2Dmap;
-    std::map<G4double, TH2D *> mGainResolutionG2Dmap;
-    std::map<G4double, TH2D *> mTransitTimeG2Dmap;
-    std::map<G4double, TH2D *> mTransitTimeSpreadG2Dmap;
+    TGraph *m_RelativeDetectionEfficiencyInterpolator;
+    TGraph *m_QEInterpolator;
+    std::map<G4double, TH2D *> m_GainG2Dmap;
+    std::map<G4double, TH2D *> m_GainResolutionG2Dmap;
+    std::map<G4double, TH2D *> m_TransitTimeG2Dmap;
+    std::map<G4double, TH2D *> m_TransitTimeSpreadG2Dmap;
 };
 
 class mDOMPMTResponse : public OMSimPMTResponse
@@ -74,9 +78,8 @@ public:
         return instance;
     }
     std::vector<G4double> getScannedWavelengths();
-    bool scansAvailable() { return true; };
     mDOMPMTResponse();
-    ~mDOMPMTResponse();
+    ~mDOMPMTResponse(){};
     mDOMPMTResponse(const mDOMPMTResponse &) = delete;
     mDOMPMTResponse &operator=(const mDOMPMTResponse &) = delete;
 };
@@ -90,9 +93,8 @@ public:
         return instance;
     }
     std::vector<G4double> getScannedWavelengths();
-    bool scansAvailable() { return false; };
     Gen1PMTResponse();
-    ~Gen1PMTResponse();
+    ~Gen1PMTResponse(){};
     Gen1PMTResponse(const Gen1PMTResponse &) = delete;
     Gen1PMTResponse &operator=(const Gen1PMTResponse &) = delete;
 };
@@ -106,9 +108,8 @@ public:
         return instance;
     }
     std::vector<G4double> getScannedWavelengths();
-    bool scansAvailable() { return false; };
     DEGGPMTResponse();
-    ~DEGGPMTResponse();
+    ~DEGGPMTResponse(){};
     DEGGPMTResponse(const DEGGPMTResponse &) = delete;
     DEGGPMTResponse &operator=(const DEGGPMTResponse &) = delete;
 };
@@ -122,9 +123,8 @@ public:
         return instance;
     }
     std::vector<G4double> getScannedWavelengths();
-    bool scansAvailable() { return false; };
     LOMHamamatsuResponse();
-    ~LOMHamamatsuResponse();
+    ~LOMHamamatsuResponse(){};
     LOMHamamatsuResponse(const LOMHamamatsuResponse &) = delete;
     LOMHamamatsuResponse &operator=(const LOMHamamatsuResponse &) = delete;
 };
@@ -138,9 +138,8 @@ public:
         return instance;
     }
     std::vector<G4double> getScannedWavelengths();
-    bool scansAvailable() { return false; };
     LOMNNVTResponse();
-    ~LOMNNVTResponse();
+    ~LOMNNVTResponse(){};
     LOMNNVTResponse(const LOMNNVTResponse &) = delete;
     LOMNNVTResponse &operator=(const LOMNNVTResponse &) = delete;
 };
@@ -163,7 +162,6 @@ public:
 
 private:
     std::vector<G4double> getScannedWavelengths();
-    bool scansAvailable() { return false; };
 };
 
 #endif

@@ -80,7 +80,7 @@ void Beam::runErlangenQEBeam()
 
 void Beam::configureZCorrection_PicoQuant()
 {
-    mZcorrection = new TGraph("../common/data/PMT_scans/setup_stuff/mDOMPMT_PicoQuant_Scan_Zcorrection.txt");
+    mZcorrection = new TGraph("../common/data/PMTs/measurement_matching_data/setup_stuff/mDOMPMT_PicoQuant_Scan_Zcorrection.txt");
     mZcorrection->SetName("Zcorrection");
 }
 

@@ -1,4 +1,4 @@
-# Effective Area Study
+# > Effective Area Studies
 [TOC]
 
 In the folder `simulations/effective_area` you find the files pertinent to the effective area studies. 
