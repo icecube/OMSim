@@ -3,6 +3,8 @@
 
 This framework offers tools to simplify geometry construction and material definitions, as well as a detailed PMT response mechanism. This page provides a brief introduction to the main features.
 
+---
+
 ## Materials and User Data
 
 User-defined material data are stored in JSON files under `/common/data` to minimize file length.
@@ -17,26 +19,9 @@ Additionally, geometry data used during PMT construction are also stored in JSON
 
 This approach was adopted because various PMTs are constructed similarly, eliminating the need to define a unique class for each PMT type, as is done for the optical modules. 
 
-If you wish to load additional data, you can either define a new type in OMSimDataFileTypes or use a json file to load it into a tree as previously mentioned. For simpler tasks, use the static method `Tools::loadtxt` provided by the `Tools` namespace.
+If you wish to load additional data, you can either define a new type in OMSimDataFileTypes or use a json file to load it into a tree as previously mentioned. For simpler tasks, use the static method `Tools::loadtxt` provided by the [`Tools` namespace](md_extra_doc_2_technicalities.html#autotoc_md20).
 
-## The Tools namespace
- 
-The tools namespace provide several methods that could help you. For example, `Tools::loadtxt`, `Tools::linspace` and `Tools::logspace` operate similarly to their Python's numpy counterparts:
-
-```cpp
-#include "OMSimTools.hh"
-std::vector<G4PV2DDataVector> lData = Tools::loadtxt("path/file_name.txt", true);
-std::vector<G4double> lFirstColumn = lData.at(0);
-std::vector<G4double> lSecondColumn = lData.at(1);
-
-std::vector<double> lWavelengths = Tools::linspace(275, 750, 96);
-std::vector<double> lAbsLengths = Tools::logspace(-9, -4, 20);
-
-std::vector<double> data = {1, 2, 2, 3, 3, 3, 4, 4, 5};
-auto [counts, edges] = Tools::histogram(data, 5);
-
-// ...
-```
+---
 
 ## Geometry construction
 
@@ -68,15 +53,7 @@ Figure 2: <i>Side view of complex mDOM PMT model. Image from <a href="https://ze
 </div>
 </div>
 
-In the complex PMT model, the photocathode has an absorption length that matches the measured quantum efficiency of the mDOM PMTs. For the other PMT models, this matching still has to be performed.
-
-<div style="width: 100%; text-align: center;">
-<img src="QE_meas_VS_simulation.png" width="360" height="308" alt="QE of simulation compared to measurements" />
-<div style="width: 80%; margin: auto;">
-<br/>
-Figure 3: <i>QE of simulation with the absorption length currently used compared to measurements. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
-</div>
-</div>
+---
 
 ## Making PMTs and OMs sensitive
 
@@ -99,6 +76,10 @@ for (int i = 0; i < numberOfModules; ++i) {
 
 Every step of a particle through the photocathode triggers the `OMSimSensitiveDetector::ProcessHits` method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4's philosophy concerning G4VSensitiveDetector, consult the [Geant4 guide for application developers](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector#g4vsensitivedetector).
 
+
+---
+
+
 ## Storing hits and PMT response
 
 ### PMTs Charge, transit time and detection probability 
@@ -112,18 +93,36 @@ This sampling is performed for every absorbed photon in `OMSimSensitiveDetector:
 <img src="PW_beam_geant4_TT.png" width="256" height="440" alt="PMT response compared to measurement" />
 <div style="width: 80%; margin: auto;">
 <br/>
-Figure 4: <i>PMT response compared to measurement for different light sources. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
+Figure 3: <i>PMT response compared to measurement for different light sources. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
 </div>
 </div>
+
+The QE and collection efficiency weights are calculated to match measurements. See the section [Matching PMT Efficiency to Measurements](md_extra_doc_2_technicalities.html#autotoc_md21) for further technicalities.
+
+<div style="width: 100%; text-align: center;">
+<img src="QE_meas_VS_simulation.png" width="360" height="308" alt="QE of simulation compared to measurements" />
+<div style="width: 80%; margin: auto;">
+<br/>
+Figure 4: <i>QE of simulation with the absorption length currently used compared to measurements. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
+</div>
+</div>
+
+<div style="width: 100%; text-align: center;">
+<img src="rel_de.png" width="600" height="250" alt="DE of simulation compared to measurements" />
+<div style="width: 80%; margin: auto;">
+<br/>
+Figure 5: <i>Detection efficiency simulation (left) compared to measurement (right) using the calculated collection efficiency weights. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
+</div>
+</div>
+
 
 ### Hit storage
 
 The absorbed photon data is managed by the `OMSimHitManager` global instance. It maintains a vector of hit information (`HitStats` struct) for each sensitive detector. To analyze and export this data, use the `OMSimHitManager::getSingleThreadHitsOfModule` method to retrieve data for the current thread, or `OMSimHitManager::getMergedHitsOfModule` to obtain merged data from all threads. Note that `OMSimHitManager::getMergedHitsOfModule` works only if `OMSimHitManager::mergeThreadData` has been called (happens at the end of the run when `OMSimRunActio::EndOfRunAction` is called). For analysis or storage at the end of an event, handle each thread separately as events end asynchronously. For practical examples, refer to the methods in `OMSimEffectiveAreaAnalysis` and `OMSimSNAnalysis::writeDataFile`.
 
-An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in `OMSimHitManager`. To enable this feature, provide the "QE_cut" argument via the command line. In this case `OMSimSensitiveDetector::ProcessHits` will call `OMSimPMTResponse::passQE` and break early if it returns false, without storing the photon information.
+An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in `OMSimHitManager`. To enable this feature, provide the "QE_cut" argument via the command line. In this case `OMSimSensitiveDetector::ProcessHits` will call `OMSimPMTResponse::passQE` and break early if it returns false, without storing the photon information. In most scenarios, it's not recommended to use --QE_cut since it reduces your statistics. Its presence in OMSim is primarily for testing purposes. It's generally better to perform post-analysis using the saved `OMSimPMTResponse::PMTPulse::detectionProbability` for each absorbed photon.
 
-> **Note**: In most scenarios, it's not recommended to use --QE_cut since it reduces your statistics. Its presence in OMSim is primarily for testing purposes. It's generally better to perform post-analysis using the saved `OMSimPMTResponse::PMTPulse::detectionProbability` for each absorbed photon.
-
+---
 
 ## Making other volumes sensitive to photons
 

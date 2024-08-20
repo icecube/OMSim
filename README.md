@@ -5,7 +5,7 @@
 
 **OMSim** is a Geant4 framework for simulating optical modules of the IceCube Observatory. It comprises multiple modules for different studies such as background investigations with radioactive decays and sensitivity analyses. These modules share common files (in the "common" folder) that define, for example, geometries of modules and PMTs, as well as material properties.
 
-For more information, please refer to our [comprehensive documentation](https://icecube.github.io/OMSim/).
+For more information, please refer to our [documentation](https://icecube.github.io/OMSim/).
 
 For the latest updates and information, check our [GitHub repository](https://github.com/icecube/OMSim). If you need assistance or want to report problems, please open an issue on our GitHub page or contact the maintainers directly.
 

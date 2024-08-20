@@ -1,6 +1,28 @@
 # Technicalities for Developers
 [TOC]
 
+## The Tools namespace
+ 
+The tools namespace provide several methods that could help you. For example, `Tools::loadtxt`, `Tools::linspace` and `Tools::logspace` operate similarly to their Python's numpy counterparts:
+
+```cpp
+#include "OMSimTools.hh"
+std::vector<G4PV2DDataVector> lData = Tools::loadtxt("path/file_name.txt", true);
+std::vector<G4double> lFirstColumn = lData.at(0);
+std::vector<G4double> lSecondColumn = lData.at(1);
+
+std::vector<double> lWavelengths = Tools::linspace(275, 750, 96);
+std::vector<double> lAbsLengths = Tools::logspace(-9, -4, 20);
+
+std::vector<double> data = {1, 2, 2, 3, 3, 3, 4, 4, 5};
+auto [counts, edges] = Tools::histogram(data, 5);
+
+// ...
+```
+
+---
+---
+
 ## Matching PMT Efficiency to Measurements
 
 In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability ([click here](md_extra_doc_0_common.html#autotoc_md5) for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module `efficiency_calibration` facilitates this procedure. In the following, the mDOM PMT is used as an example.
@@ -100,3 +122,5 @@ The last step is to create the collection efficiency weights to match the relati
  - Run the simulation again and check if the weights are correct.
 
  
+---
+---
