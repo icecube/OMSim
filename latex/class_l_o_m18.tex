@@ -1,0 +1,297 @@
+\hypertarget{class_l_o_m18}{}\doxysection{LOM18 Class Reference}
+\label{class_l_o_m18}\index{LOM18@{LOM18}}
+
+
+Inheritance diagram for LOM18\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{class_l_o_m18__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for LOM18\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{class_l_o_m18__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_ac5aa1e0e7f9290425113ec1eae2bf601}\label{class_l_o_m18_ac5aa1e0e7f9290425113ec1eae2bf601}} 
+{\bfseries LOM18} (G4bool p\+Place\+Harness=false)
+\item 
+void \mbox{\hyperlink{class_l_o_m18_a0744107f29517a84a06b2544e81b00e0}{construction}} ()
+\item 
+double \mbox{\hyperlink{class_l_o_m18_a6e42615d2a84e6b94ec28a32ede7ec25}{get\+Pressure\+Vessel\+Weight}} ()
+\begin{DoxyCompactList}\small\item\em Virtual method to get the weight of the pressure vessel. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_m18_ac61b9f417138d26d168abbf48f0c0379}{get\+Number\+Of\+PMTs}} ()
+\begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_l_o_m18_a1dfd8b1711eacfaedcd447fc2c5a3b94}\label{class_l_o_m18_a1dfd8b1711eacfaedcd447fc2c5a3b94}} 
+G4\+String {\bfseries get\+Name} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a8d3a63b84358091b09f920a6f07d36d2}\label{class_l_o_m18_a8d3a63b84358091b09f920a6f07d36d2}} 
+G4double {\bfseries m\+Cylinder\+Angle} = 1.\+5$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m18_acf14b281761a789c531b4402c2eefc2f}\label{class_l_o_m18_acf14b281761a789c531b4402c2eefc2f}} 
+G4double {\bfseries m\+Glass\+Out\+Rad}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+G4\+Polycone $\ast$ \mbox{\hyperlink{class_l_o_m18_a0c6423e526bb3c38904cde7ef6673ec2}{create\+LOM18\+Outer\+Solid}} ()
+\item 
+G4\+Polycone $\ast$ \mbox{\hyperlink{class_l_o_m18_a45b2c68239eac03aaf1b76225dc377f1}{create\+LOM18\+Inner\+Solid}} ()
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a9b4e4a3c6f9a41931bc299a4fb53d730}\label{class_l_o_m18_a9b4e4a3c6f9a41931bc299a4fb53d730}} 
+void {\bfseries append\+Equator\+Band} ()
+\item 
+void \mbox{\hyperlink{class_l_o_m18_ab12d337504e3ec8be903b391acd6bef2}{place\+CADSupport\+Structure}} (G4\+Logical\+Volume $\ast$l\+Inner\+Volume\+Logical)
+\item 
+void \mbox{\hyperlink{class_l_o_m18_a6f6f50683c9c78ded2c92ca1b9177446}{place\+CADPenetrator}} (G4\+Logical\+Volume $\ast$l\+Inner\+Volume\+Logical)
+\item 
+void \mbox{\hyperlink{class_l_o_m18_a07ecf58441de167ca0d41650a14a7190}{set\+PMTPositions}} ()
+\item 
+void \mbox{\hyperlink{class_l_o_m18_ab5292cecae375e7f04caf7b995ccc8ae}{create\+Gelpad\+Logical\+Volumes}} (G4\+Polycone $\ast$l\+Gel\+Solid)
+\item 
+void \mbox{\hyperlink{class_l_o_m18_a2d136add4da3246223c611155412321a}{place\+PMTs}} (G4\+Logical\+Volume $\ast$l\+Inner\+Volume\+Logical)
+\item 
+void \mbox{\hyperlink{class_l_o_m18_a1275540bdcd8b359b7332690e7c8da4b}{place\+Gelpads}} (G4\+Logical\+Volume $\ast$l\+Inner\+Volume\+Logical)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a0917e7f0b7b73595372fba0196285758}\label{class_l_o_m18_a0917e7f0b7b73595372fba0196285758}} 
+G4\+Logical\+Volume $\ast$ {\bfseries m\+Support\+Structure\+Logical}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_adc629481aca63d9bd6439dbdf31dd367}\label{class_l_o_m18_adc629481aca63d9bd6439dbdf31dd367}} 
+G4bool {\bfseries m\+Place\+Harness} = true
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a44cad808e98498a6f15f5a6a6e3f9cc6}\label{class_l_o_m18_a44cad808e98498a6f15f5a6a6e3f9cc6}} 
+G4bool {\bfseries m\+Harness\+Union} = true
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a2172809d29b8f57493d5f283479e149e}\label{class_l_o_m18_a2172809d29b8f57493d5f283479e149e}} 
+std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+PMTPositions}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a79d822730d3183a39f5c0c6c2918ebcb}\label{class_l_o_m18_a79d822730d3183a39f5c0c6c2918ebcb}} 
+std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+Gelpad\+Positions}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a0c01888aa253061dd6a267098824b92d}\label{class_l_o_m18_a0c01888aa253061dd6a267098824b92d}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+PMT\+\_\+theta}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_ac8e7c2f454ac032dede4765bef54920c}\label{class_l_o_m18_ac8e7c2f454ac032dede4765bef54920c}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+PMT\+\_\+phi}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_ab957648cc6b136248d862d95c05e0ed9}\label{class_l_o_m18_ab957648cc6b136248d862d95c05e0ed9}} 
+G4double {\bfseries m\+Total\+Lenght}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_adf9f9375c04c8b62dab4d8f1dcab6a8c}\label{class_l_o_m18_adf9f9375c04c8b62dab4d8f1dcab6a8c}} 
+G4double {\bfseries m\+Out\+Rad}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a2154a87891daa53572917366b29be429}\label{class_l_o_m18_a2154a87891daa53572917366b29be429}} 
+G4double {\bfseries m\+Sphere\+Pos\+\_\+y}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a27b3c285549e626988a3365ab92a9dbb}\label{class_l_o_m18_a27b3c285549e626988a3365ab92a9dbb}} 
+G4double {\bfseries m\+Ellipse\+Pos\+\_\+y}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_aa6b6d2365c62af52bb82977f06536728}\label{class_l_o_m18_aa6b6d2365c62af52bb82977f06536728}} 
+G4double {\bfseries m\+Ellipse\+Zaxis}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a2649af83d6cc86aa5337e81aedcb6e27}\label{class_l_o_m18_a2649af83d6cc86aa5337e81aedcb6e27}} 
+std\+::stringstream {\bfseries m\+Conv}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a38d1b9559fee2f765ca281b5e1f18a8c}\label{class_l_o_m18_a38d1b9559fee2f765ca281b5e1f18a8c}} 
+std\+::stringstream {\bfseries converter2}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_ae41da990b9c4186a48b8cf636d975a85}\label{class_l_o_m18_ae41da990b9c4186a48b8cf636d975a85}} 
+G4\+Transform3D {\bfseries l\+Transformers}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a9ee52844f929222521ba69c4f7223692}\label{class_l_o_m18_a9ee52844f929222521ba69c4f7223692}} 
+G4\+Rotation\+Matrix $\ast$ {\bfseries l\+Rot} = new G4\+Rotation\+Matrix()
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a3b867ecc38897c1f3d61a7a68b3d596f}\label{class_l_o_m18_a3b867ecc38897c1f3d61a7a68b3d596f}} 
+std\+::vector$<$ G4\+Logical\+Volume $\ast$ $>$ {\bfseries m\+Gel\+Pad\+\_\+logical}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_aedafefdd7700360f6730297dd6bbd887}\label{class_l_o_m18_aedafefdd7700360f6730297dd6bbd887}} 
+G4double {\bfseries m\+Glass\+Equator\+Width} = 159$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a49d84f469e106e451f00037ff153a7b5}\label{class_l_o_m18_a49d84f469e106e451f00037ff153a7b5}} 
+G4double {\bfseries m\+Glass\+Pole\+Length} = 270$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a4654902fea888539bb93f8ba0a732621}\label{class_l_o_m18_a4654902fea888539bb93f8ba0a732621}} 
+G4double {\bfseries m\+Glass\+Thick\+Pole} = 12.\+5$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a90e74944b39754012a8dea62fa4d414f}\label{class_l_o_m18_a90e74944b39754012a8dea62fa4d414f}} 
+G4double {\bfseries m\+Glass\+Thick\+Equator} = 16.\+5$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m18_ae84b36b978f65481bf499bc23a642317}\label{class_l_o_m18_ae84b36b978f65481bf499bc23a642317}} 
+G4double {\bfseries m\+Theta\+Center} = 48.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a130ebb3a1a066d7fa63f3d475485e383}\label{class_l_o_m18_a130ebb3a1a066d7fa63f3d475485e383}} 
+G4double {\bfseries m\+Theta\+Equatorial} = 60.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a2479b62b87ee03e85b35b51a196318af}\label{class_l_o_m18_a2479b62b87ee03e85b35b51a196318af}} 
+G4int {\bfseries m\+Nr\+Polar\+PMTs} = 1
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a82436e308266ee21ed6306f3abfcf6bd}\label{class_l_o_m18_a82436e308266ee21ed6306f3abfcf6bd}} 
+G4int {\bfseries m\+Nr\+Center\+PMTs} = 4
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a63c388ce832bc756b035d2562a5f27a3}\label{class_l_o_m18_a63c388ce832bc756b035d2562a5f27a3}} 
+G4int {\bfseries m\+Nr\+Equatorial\+PMTs} = 4
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a6a90b00ae20c289e4132c109036bef96}\label{class_l_o_m18_a6a90b00ae20c289e4132c109036bef96}} 
+G4double {\bfseries m\+Eq\+PMTPhi\+Phase} = 45.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m18_adc1bfd8fe00cb98b9c273be0fe020699}\label{class_l_o_m18_adc1bfd8fe00cb98b9c273be0fe020699}} 
+G4double {\bfseries m\+Polar\+Pad\+Opening\+Angle} = 30.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m18_ae1ed814a48a17f22ade52dffc72660b7}\label{class_l_o_m18_ae1ed814a48a17f22ade52dffc72660b7}} 
+G4double {\bfseries m\+Center\+Pad\+Opening\+Angle} = 10.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a589c5ce185b7122397f594e2c48efc93}\label{class_l_o_m18_a589c5ce185b7122397f594e2c48efc93}} 
+G4double {\bfseries m\+Eq\+Pad\+Opening\+Angle} = 5.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m18_acd22389ebdd671dbd60995a4029bb512}\label{class_l_o_m18_acd22389ebdd671dbd60995a4029bb512}} 
+G4double {\bfseries m\+Gel\+Thickness\+Front\+Polar\+PMT} = 3.\+5$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m18_aafb0663c75645806ee0f55a2876bd4d3}\label{class_l_o_m18_aafb0663c75645806ee0f55a2876bd4d3}} 
+G4double {\bfseries m\+Gel\+Thickness\+Front\+Center\+PMT} = 12.\+93$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m18_af1f46bad27e4a936e5a2758a058e6763}\label{class_l_o_m18_af1f46bad27e4a936e5a2758a058e6763}} 
+G4double {\bfseries m\+Gel\+Thickness\+Front\+Eq\+PMT} = 14.\+52$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m18_aa2014d0e77c2e5e863d2297aabb938a3}\label{class_l_o_m18_aa2014d0e77c2e5e863d2297aabb938a3}} 
+G4int {\bfseries m\+Nr\+PMTs\+Per\+Half} = m\+Nr\+Polar\+PMTs + m\+Nr\+Center\+PMTs + m\+Nr\+Equatorial\+PMTs
+\item 
+\mbox{\Hypertarget{class_l_o_m18_aab422675380e8dcb4ddebe72b1894e64}\label{class_l_o_m18_aab422675380e8dcb4ddebe72b1894e64}} 
+G4int {\bfseries m\+Total\+Nr\+PMTs} = (m\+Nr\+Polar\+PMTs + m\+Nr\+Center\+PMTs + m\+Nr\+Equatorial\+PMTs) $\ast$ 2
+\item 
+\mbox{\Hypertarget{class_l_o_m18_aabfaf92402e391002021ef8ec9bdd496}\label{class_l_o_m18_aabfaf92402e391002021ef8ec9bdd496}} 
+G4double {\bfseries m\+PMToffset}
+\item 
+\mbox{\Hypertarget{class_l_o_m18_a67a9021cc008e90a2b9549ff341e94ff}\label{class_l_o_m18_a67a9021cc008e90a2b9549ff341e94ff}} 
+G4double {\bfseries m\+Max\+PMTRadius}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_l_o_m18_a0744107f29517a84a06b2544e81b00e0}\label{class_l_o_m18_a0744107f29517a84a06b2544e81b00e0}} 
+\index{LOM18@{LOM18}!construction@{construction}}
+\index{construction@{construction}!LOM18@{LOM18}}
+\doxysubsubsection{\texorpdfstring{construction()}{construction()}}
+{\footnotesize\ttfamily void LOM18\+::construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Placement function which appends all components into an \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} to be constructed in Detector\+Construction 
+
+Implements \mbox{\hyperlink{classabc_detector_component_a8e7f01c218d5f093e80e46b33a0672bf}{abc\+Detector\+Component}}.
+
+\mbox{\Hypertarget{class_l_o_m18_ab5292cecae375e7f04caf7b995ccc8ae}\label{class_l_o_m18_ab5292cecae375e7f04caf7b995ccc8ae}} 
+\index{LOM18@{LOM18}!createGelpadLogicalVolumes@{createGelpadLogicalVolumes}}
+\index{createGelpadLogicalVolumes@{createGelpadLogicalVolumes}!LOM18@{LOM18}}
+\doxysubsubsection{\texorpdfstring{createGelpadLogicalVolumes()}{createGelpadLogicalVolumes()}}
+{\footnotesize\ttfamily void LOM18\+::create\+Gelpad\+Logical\+Volumes (\begin{DoxyParamCaption}\item[{G4\+Polycone $\ast$}]{l\+Gel\+Solid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Creation of Logical\+Volume of gel pads 
+\begin{DoxyParams}{Parameters}
+{\em l\+Gel\+Solid} & Solid inner module volume. Intersection\+Solid with PMT cones is filled with gel \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_m18_a45b2c68239eac03aaf1b76225dc377f1}\label{class_l_o_m18_a45b2c68239eac03aaf1b76225dc377f1}} 
+\index{LOM18@{LOM18}!createLOM18InnerSolid@{createLOM18InnerSolid}}
+\index{createLOM18InnerSolid@{createLOM18InnerSolid}!LOM18@{LOM18}}
+\doxysubsubsection{\texorpdfstring{createLOM18InnerSolid()}{createLOM18InnerSolid()}}
+{\footnotesize\ttfamily G4\+Polycone $\ast$ LOM18\+::create\+LOM18\+Inner\+Solid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Creation of inner module volume based on pressure vessel technical drawing... stolen drom doumeki as of yet \begin{DoxyReturn}{Returns}
+Solid\+Volume of inner module volume 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_m18_a0c6423e526bb3c38904cde7ef6673ec2}\label{class_l_o_m18_a0c6423e526bb3c38904cde7ef6673ec2}} 
+\index{LOM18@{LOM18}!createLOM18OuterSolid@{createLOM18OuterSolid}}
+\index{createLOM18OuterSolid@{createLOM18OuterSolid}!LOM18@{LOM18}}
+\doxysubsubsection{\texorpdfstring{createLOM18OuterSolid()}{createLOM18OuterSolid()}}
+{\footnotesize\ttfamily G4\+Polycone $\ast$ LOM18\+::create\+LOM18\+Outer\+Solid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Creation of outer module volume based on pressure vessel technical drawing... stolen drom doumeki as of yet \begin{DoxyReturn}{Returns}
+Solid\+Volume of inner module volume 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_m18_ac61b9f417138d26d168abbf48f0c0379}\label{class_l_o_m18_ac61b9f417138d26d168abbf48f0c0379}} 
+\index{LOM18@{LOM18}!getNumberOfPMTs@{getNumberOfPMTs}}
+\index{getNumberOfPMTs@{getNumberOfPMTs}!LOM18@{LOM18}}
+\doxysubsubsection{\texorpdfstring{getNumberOfPMTs()}{getNumberOfPMTs()}}
+{\footnotesize\ttfamily int LOM18\+::get\+Number\+Of\+PMTs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+This method should be overridden in derived classes to provide the number of PMTs in the specific optical module. \begin{DoxyReturn}{Returns}
+Number of PMTs in the optical module. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}{OMSim\+Optical\+Module}}.
+
+\mbox{\Hypertarget{class_l_o_m18_a6e42615d2a84e6b94ec28a32ede7ec25}\label{class_l_o_m18_a6e42615d2a84e6b94ec28a32ede7ec25}} 
+\index{LOM18@{LOM18}!getPressureVesselWeight@{getPressureVesselWeight}}
+\index{getPressureVesselWeight@{getPressureVesselWeight}!LOM18@{LOM18}}
+\doxysubsubsection{\texorpdfstring{getPressureVesselWeight()}{getPressureVesselWeight()}}
+{\footnotesize\ttfamily double LOM18\+::get\+Pressure\+Vessel\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+This method should be overridden in derived classes to provide the weight of the pressure vessel for the specific optical module. \begin{DoxyReturn}{Returns}
+Weight of the pressure vessel. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}{OMSim\+Optical\+Module}}.
+
+\mbox{\Hypertarget{class_l_o_m18_a6f6f50683c9c78ded2c92ca1b9177446}\label{class_l_o_m18_a6f6f50683c9c78ded2c92ca1b9177446}} 
+\index{LOM18@{LOM18}!placeCADPenetrator@{placeCADPenetrator}}
+\index{placeCADPenetrator@{placeCADPenetrator}!LOM18@{LOM18}}
+\doxysubsubsection{\texorpdfstring{placeCADPenetrator()}{placeCADPenetrator()}}
+{\footnotesize\ttfamily void LOM18\+::place\+CADPenetrator (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{l\+Inner\+Volume\+Logical }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Imports inner Penetrator of module from CAD file and places them as an absorber (non optical compenents only since the tesselation is strong!) \mbox{\Hypertarget{class_l_o_m18_ab12d337504e3ec8be903b391acd6bef2}\label{class_l_o_m18_ab12d337504e3ec8be903b391acd6bef2}} 
+\index{LOM18@{LOM18}!placeCADSupportStructure@{placeCADSupportStructure}}
+\index{placeCADSupportStructure@{placeCADSupportStructure}!LOM18@{LOM18}}
+\doxysubsubsection{\texorpdfstring{placeCADSupportStructure()}{placeCADSupportStructure()}}
+{\footnotesize\ttfamily void LOM18\+::place\+CADSupport\+Structure (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{l\+Inner\+Volume\+Logical }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Imports inner components of module from CAD file and places them as an absorber (non optical compenents only since the tesselation is strong!) \mbox{\Hypertarget{class_l_o_m18_a1275540bdcd8b359b7332690e7c8da4b}\label{class_l_o_m18_a1275540bdcd8b359b7332690e7c8da4b}} 
+\index{LOM18@{LOM18}!placeGelpads@{placeGelpads}}
+\index{placeGelpads@{placeGelpads}!LOM18@{LOM18}}
+\doxysubsubsection{\texorpdfstring{placeGelpads()}{placeGelpads()}}
+{\footnotesize\ttfamily void LOM18\+::place\+Gelpads (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{l\+Inner\+Volume\+Logical }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Placement of gel pads 
+\begin{DoxyParams}{Parameters}
+{\em l\+Inner\+Volume\+Logical} & Logical\+Volume of inner module volume in which the gel pads are placed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_m18_a2d136add4da3246223c611155412321a}\label{class_l_o_m18_a2d136add4da3246223c611155412321a}} 
+\index{LOM18@{LOM18}!placePMTs@{placePMTs}}
+\index{placePMTs@{placePMTs}!LOM18@{LOM18}}
+\doxysubsubsection{\texorpdfstring{placePMTs()}{placePMTs()}}
+{\footnotesize\ttfamily void LOM18\+::place\+PMTs (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{l\+Inner\+Volume\+Logical }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Placement of PMTs 
+\begin{DoxyParams}{Parameters}
+{\em l\+Inner\+Volume\+Logical} & Logical\+Volume of inner module volume in which the PMTs are placed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_m18_a07ecf58441de167ca0d41650a14a7190}\label{class_l_o_m18_a07ecf58441de167ca0d41650a14a7190}} 
+\index{LOM18@{LOM18}!setPMTPositions@{setPMTPositions}}
+\index{setPMTPositions@{setPMTPositions}!LOM18@{LOM18}}
+\doxysubsubsection{\texorpdfstring{setPMTPositions()}{setPMTPositions()}}
+{\footnotesize\ttfamily void LOM18\+::set\+PMTPositions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Saves postition and angles of PMTs into arrays to be used in other functions. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_l_o_m18_8hh}{OMSim\+LOM18.\+hh}}\item 
+\mbox{\hyperlink{_o_m_sim_l_o_m18_8cc}{OMSim\+LOM18.\+cc}}\end{DoxyCompactItemize}

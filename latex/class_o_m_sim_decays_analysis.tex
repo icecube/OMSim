@@ -1,0 +1,88 @@
+\hypertarget{class_o_m_sim_decays_analysis}{}\doxysection{OMSim\+Decays\+Analysis Class Reference}
+\label{class_o_m_sim_decays_analysis}\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
+
+
+Singleton class responsible for managing, analysing, and saving decay-\/related data.  
+
+
+
+
+Collaboration diagram for OMSim\+Decays\+Analysis\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{class_o_m_sim_decays_analysis__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_o_m_sim_decays_analysis_a35aa71b0f55694ab682eb12e33e773d3}{append\+Decay}} (G4\+String p\+Particle\+Name, G4double p\+Decay\+Time, G4\+Three\+Vector p\+Decay\+Position)
+\begin{DoxyCompactList}\small\item\em Append decay information to internal data structures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a715d4897705da383ce1a1d93b68def9b}\label{class_o_m_sim_decays_analysis_a715d4897705da383ce1a1d93b68def9b}} 
+void {\bfseries merge\+Decay\+Data} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_af747109a424e5878d2a4e42b6308f3cb}\label{class_o_m_sim_decays_analysis_af747109a424e5878d2a4e42b6308f3cb}} 
+void \mbox{\hyperlink{class_o_m_sim_decays_analysis_af747109a424e5878d2a4e42b6308f3cb}{write\+Multiplicity}} (G4double p\+Time\+Window)
+\begin{DoxyCompactList}\small\item\em Calls calculate\+Multiplicity and writes the results to the output file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}\label{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}} 
+void \mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{write\+Thread\+Decay\+Information}} ()
+\begin{DoxyCompactList}\small\item\em Write isotoped related data to the output file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}\label{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}} 
+void \mbox{\hyperlink{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}{write\+Thread\+Hit\+Information}} ()
+\begin{DoxyCompactList}\small\item\em Write data of the hits to the output file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}\label{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}} 
+void \mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets (deletes) decay and hits data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}\label{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}} 
+static \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} \& \mbox{\hyperlink{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Returns the instance of \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} (Singleton pattern). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a5a809421faa0dd4ad201891f58850af5}\label{class_o_m_sim_decays_analysis_a5a809421faa0dd4ad201891f58850af5}} 
+{\bfseries OMSim\+Decays\+Analysis} (const \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_af4b8d2cd736ede06f4dcf7258fb46090}\label{class_o_m_sim_decays_analysis_af4b8d2cd736ede06f4dcf7258fb46090}} 
+\mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_ab4a0cbaeebe1c1d49f829d735d237b9a}\label{class_o_m_sim_decays_analysis_ab4a0cbaeebe1c1d49f829d735d237b9a}} 
+static G4\+Thread\+Local \mbox{\hyperlink{struct_decay_stats}{Decay\+Stats}} $\ast$ {\bfseries m\+Thread\+Decay\+Stats} = nullptr
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a9e1f6266a5d299b7b694e334f4e15e13}\label{class_o_m_sim_decays_analysis_a9e1f6266a5d299b7b694e334f4e15e13}} 
+static G4\+Mutex {\bfseries m\+Mutex} = G4\+Mutex()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a2df6ba1c18fb3087ceb2aeb5cfe1cd7c}\label{class_o_m_sim_decays_analysis_a2df6ba1c18fb3087ceb2aeb5cfe1cd7c}} 
+static \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} $\ast$ {\bfseries m\+Instance} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_a35aa71b0f55694ab682eb12e33e773d3}\label{class_o_m_sim_decays_analysis_a35aa71b0f55694ab682eb12e33e773d3}} 
+\index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!appendDecay@{appendDecay}}
+\index{appendDecay@{appendDecay}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
+\doxysubsubsection{\texorpdfstring{appendDecay()}{appendDecay()}}
+{\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::append\+Decay (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Particle\+Name,  }\item[{G4double}]{p\+Decay\+Time,  }\item[{G4\+Three\+Vector}]{p\+Decay\+Position }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Particle\+Name} & Name of the particle. \\
+\hline
+{\em p\+Decay\+Time} & Time of the decay. \\
+\hline
+{\em p\+Decay\+Position} & Global position of the decay. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_decays_analysis_8hh}{OMSim\+Decays\+Analysis.\+hh}}\item 
+OMSim\+Decays\+Analysis.\+cc\end{DoxyCompactItemize}

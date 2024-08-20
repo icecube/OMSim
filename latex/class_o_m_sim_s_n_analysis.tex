@@ -1,0 +1,77 @@
+\hypertarget{class_o_m_sim_s_n_analysis}{}\doxysection{OMSim\+SNAnalysis Class Reference}
+\label{class_o_m_sim_s_n_analysis}\index{OMSimSNAnalysis@{OMSimSNAnalysis}}
+
+
+Collaboration diagram for OMSim\+SNAnalysis\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{class_o_m_sim_s_n_analysis__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_a1364116db6b4d1aed3f0320700f8d07c}\label{class_o_m_sim_s_n_analysis_a1364116db6b4d1aed3f0320700f8d07c}} 
+void {\bfseries analyse\+Event} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_a9e9703618d87aec852812dc90dbc3660}\label{class_o_m_sim_s_n_analysis_a9e9703618d87aec852812dc90dbc3660}} 
+void {\bfseries init\+Event\+Stat} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_a99cdcfcb53625ccfea19d713567a6a78}\label{class_o_m_sim_s_n_analysis_a99cdcfcb53625ccfea19d713567a6a78}} 
+void {\bfseries process\+Event} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_af2d02134ccf2ad6534bc9b4aabe373e1}\label{class_o_m_sim_s_n_analysis_af2d02134ccf2ad6534bc9b4aabe373e1}} 
+void {\bfseries write\+Headers} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_aa5e2fb77768d1884e7ba4068fe430dd6}\label{class_o_m_sim_s_n_analysis_aa5e2fb77768d1884e7ba4068fe430dd6}} 
+void {\bfseries write\+Info\+File\+Header} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_a383749a9d8cc74f04c81690bef9537de}\label{class_o_m_sim_s_n_analysis_a383749a9d8cc74f04c81690bef9537de}} 
+void {\bfseries write\+Data\+File\+Header} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_a4b5cfc56187616edc57b65ecc103a740}\label{class_o_m_sim_s_n_analysis_a4b5cfc56187616edc57b65ecc103a740}} 
+void {\bfseries write\+Info\+File} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_ac0f583550774e88355ed71e96192c2e3}\label{class_o_m_sim_s_n_analysis_ac0f583550774e88355ed71e96192c2e3}} 
+void {\bfseries write\+Data\+File} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_o_m_sim_s_n_analysis}{OMSim\+SNAnalysis}} \& \mbox{\hyperlink{class_o_m_sim_s_n_analysis_a104b6afd769a07cdfc7b1583e4804fef}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Returns the singleton instance of the \mbox{\hyperlink{class_o_m_sim_s_n_analysis}{OMSim\+SNAnalysis}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_a9d06037da84e30786bc139484719baeb}\label{class_o_m_sim_s_n_analysis_a9d06037da84e30786bc139484719baeb}} 
+static G4\+Thread\+Local \mbox{\hyperlink{struct_s_n_event_stats}{SNEvent\+Stats}} $\ast$ {\bfseries m\+Event\+Stat} = nullptr
+\item 
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_a49cb680ee82390aa351b0698bad7f5f5}\label{class_o_m_sim_s_n_analysis_a49cb680ee82390aa351b0698bad7f5f5}} 
+static G4\+Thread\+Local bool {\bfseries m\+Header\+Was\+Written} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_a33f3e4fb352ae398f8013aa4621e31dd}\label{class_o_m_sim_s_n_analysis_a33f3e4fb352ae398f8013aa4621e31dd}} 
+G4\+String {\bfseries m\+Output\+Suffix}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_o_m_sim_s_n_analysis_a104b6afd769a07cdfc7b1583e4804fef}\label{class_o_m_sim_s_n_analysis_a104b6afd769a07cdfc7b1583e4804fef}} 
+\index{OMSimSNAnalysis@{OMSimSNAnalysis}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!OMSimSNAnalysis@{OMSimSNAnalysis}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_o_m_sim_s_n_analysis}{OMSim\+SNAnalysis}}\& OMSim\+SNAnalysis\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+A reference to the singleton instance. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+OMSim\+SNAnalysis.\+hh\item 
+\mbox{\hyperlink{_o_m_sim_s_n_analysis_8cc}{OMSim\+SNAnalysis.\+cc}}\end{DoxyCompactItemize}

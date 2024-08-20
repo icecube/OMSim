@@ -1,0 +1,85 @@
+\hypertarget{classp_d_o_m}{}\doxysection{p\+DOM Class Reference}
+\label{classp_d_o_m}\index{pDOM@{pDOM}}
+
+
+\mbox{\hyperlink{classp_d_o_m}{p\+DOM}} class represents the construction of p\+DOM/\+Gen1 DOM.  
+
+
+
+
+Inheritance diagram for p\+DOM\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classp_d_o_m__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for p\+DOM\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classp_d_o_m__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classp_d_o_m_a1f83025dc8d3c35a774cc2c75b8a525f}\label{classp_d_o_m_a1f83025dc8d3c35a774cc2c75b8a525f}} 
+{\bfseries p\+DOM} (G4bool p\+Place\+Harness=true)
+\item 
+\mbox{\Hypertarget{classp_d_o_m_a6fc9511f8287a69ef498167162a92ec4}\label{classp_d_o_m_a6fc9511f8287a69ef498167162a92ec4}} 
+void \mbox{\hyperlink{classp_d_o_m_a6fc9511f8287a69ef498167162a92ec4}{construction}} ()
+\begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classp_d_o_m_aa9814a5b6f153228ce5f5622f7944a3a}\label{classp_d_o_m_aa9814a5b6f153228ce5f5622f7944a3a}} 
+G4\+String {\bfseries get\+Name} ()
+\item 
+double \mbox{\hyperlink{classp_d_o_m_aff18b63813f3940d3cc8c0c49a3595d5}{get\+Pressure\+Vessel\+Weight}} ()
+\begin{DoxyCompactList}\small\item\em Virtual method to get the weight of the pressure vessel. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classp_d_o_m_a1e2c5cf50a25e2b234d9326f4fbbee9d}{get\+Number\+Of\+PMTs}} ()
+\begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classp_d_o_m_ac2957c4f838bb9cc9ced72e424691df5}\label{classp_d_o_m_ac2957c4f838bb9cc9ced72e424691df5}} 
+G4bool {\bfseries m\+Place\+Harness}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classp_d_o_m_a1e2c5cf50a25e2b234d9326f4fbbee9d}\label{classp_d_o_m_a1e2c5cf50a25e2b234d9326f4fbbee9d}} 
+\index{pDOM@{pDOM}!getNumberOfPMTs@{getNumberOfPMTs}}
+\index{getNumberOfPMTs@{getNumberOfPMTs}!pDOM@{pDOM}}
+\doxysubsubsection{\texorpdfstring{getNumberOfPMTs()}{getNumberOfPMTs()}}
+{\footnotesize\ttfamily int p\+DOM\+::get\+Number\+Of\+PMTs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+This method should be overridden in derived classes to provide the number of PMTs in the specific optical module. \begin{DoxyReturn}{Returns}
+Number of PMTs in the optical module. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}{OMSim\+Optical\+Module}}.
+
+\mbox{\Hypertarget{classp_d_o_m_aff18b63813f3940d3cc8c0c49a3595d5}\label{classp_d_o_m_aff18b63813f3940d3cc8c0c49a3595d5}} 
+\index{pDOM@{pDOM}!getPressureVesselWeight@{getPressureVesselWeight}}
+\index{getPressureVesselWeight@{getPressureVesselWeight}!pDOM@{pDOM}}
+\doxysubsubsection{\texorpdfstring{getPressureVesselWeight()}{getPressureVesselWeight()}}
+{\footnotesize\ttfamily double p\+DOM\+::get\+Pressure\+Vessel\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+This method should be overridden in derived classes to provide the weight of the pressure vessel for the specific optical module. \begin{DoxyReturn}{Returns}
+Weight of the pressure vessel. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}{OMSim\+Optical\+Module}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_p_d_o_m_8hh}{OMSim\+PDOM.\+hh}}\item 
+OMSim\+PDOM.\+cc\end{DoxyCompactItemize}

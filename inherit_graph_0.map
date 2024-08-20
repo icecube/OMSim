@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation." alt="" coords="5,81,104,108"/>
+<area shape="rect" id="node2" href="$class_custom_properties.html" title="Adds user defined properties to already defined materials." alt="" coords="165,5,304,32"/>
+<area shape="rect" id="node3" href="$class_scintillation_properties.html" title="Scintillation properties extraction for existing materials." alt="" coords="152,56,317,83"/>
+<area shape="rect" id="node4" href="$class_surface.html" title="Reflective surfaces parsed from a JSON file." alt="" coords="199,107,270,133"/>
+<area shape="rect" id="node5" href="$classabc_material_data.html" title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f..." alt="" coords="169,157,300,184"/>
+<area shape="rect" id="node6" href="$class_ice_cube_ice.html" title="Creation and extraction of IceCube&#39;s ice optical properties." alt="" coords="411,81,504,108"/>
+<area shape="rect" id="node7" href="$class_no_optics.html" title="Materials without optical properties defined." alt="" coords="417,132,498,159"/>
+<area shape="rect" id="node8" href="$class_refraction_and_absorption.html" title="Materials with defined refractive index and absorption length." alt="" coords="365,183,549,209"/>
+<area shape="rect" id="node9" href="$class_refraction_only.html" title="Materials only with refractive index defined." alt="" coords="398,233,517,260"/>
+</map>

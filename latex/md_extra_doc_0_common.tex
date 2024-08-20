@@ -1,0 +1,118 @@
+This framework offers tools to simplify geometry construction and material definitions, as well as a detailed PMT response mechanism. This page provides a brief introduction to the main features.\hypertarget{md_extra_doc_0_common_autotoc_md1}{}\doxysection{Materials and User Data}\label{md_extra_doc_0_common_autotoc_md1}
+User-\/defined material data are stored in JSON files under {\ttfamily /common/data} to minimize file length.
+
+The {\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}}} (see {\ttfamily \mbox{\hyperlink{_o_m_sim_input_data_8hh}{OMSim\+Input\+Data.\+hh}}}) loads these properties directly into the Geant4 framework. Materials loaded via this class can be retrieved using Geant4\textquotesingle{}s conventional method {\ttfamily G4\+Material\+::\+Get\+Material}, but the framework also provides the wrapper {\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data_a12e64f3ec83f33c173da0cd5954dd5b2}{OMSim\+Input\+Data\+::get\+Material}}} to handle default parameters.
+
+The class also provides an analogue method for optical surfaces {\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data_aca56b05e268bbb47761dbcc8e487c283}{OMSim\+Input\+Data\+::get\+Optical\+Surface}}} which does not exist in Geant4.
+
+Since different materials have different types of properties, the data is loaded in multiple ways. These different material types are defined in {\ttfamily \mbox{\hyperlink{_o_m_sim_data_file_types_8hh}{OMSim\+Data\+File\+Types.\+hh}}}.
+
+Additionally, geometry data used during PMT construction are also stored in JSON files ({\ttfamily /common/data/\+PMTs}). These are saved in a \char`\"{}tree\char`\"{} (essentially a dictionary containing the JSON file\textquotesingle{}s keys and values) in {\ttfamily \mbox{\hyperlink{class_parameter_table_a749bc840cf2aea18fb5b63da8b68c23c}{OMSim\+Input\+Data\+::m\+Table}}}.
+
+This approach was adopted because various PMTs are constructed similarly, eliminating the need to define a unique class for each PMT type, as is done for the optical modules.
+
+If you wish to load additional data, you can either define a new type in OMSim\+Data\+File\+Types or use a json file to load it into a tree as previously mentioned. For simpler tasks, use the static method {\ttfamily \mbox{\hyperlink{namespace_tools_a6d49cd2d5cb0e03b596870bcb9c12681}{Tools\+::loadtxt}}} provided by the {\ttfamily \mbox{\hyperlink{namespace_tools}{Tools}}} namespace.\hypertarget{md_extra_doc_0_common_autotoc_md2}{}\doxysection{The Tools namespace}\label{md_extra_doc_0_common_autotoc_md2}
+The tools namespace provide several methods that could help you. For example, {\ttfamily \mbox{\hyperlink{namespace_tools_a6d49cd2d5cb0e03b596870bcb9c12681}{Tools\+::loadtxt}}}, {\ttfamily \mbox{\hyperlink{namespace_tools_a068657387a0d190043d3e0959e84e18c}{Tools\+::linspace}}} and {\ttfamily \mbox{\hyperlink{namespace_tools_a5150dab6894acffb1c04085437e8e0b8}{Tools\+::logspace}}} operate similarly to their Python\textquotesingle{}s numpy counterparts\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_o_m_sim_tools_8hh}{OMSimTools.hh}}"{}}}
+\DoxyCodeLine{std::vector<G4PV2DDataVector> lData = \mbox{\hyperlink{namespace_tools_a6d49cd2d5cb0e03b596870bcb9c12681}{Tools::loadtxt}}(\textcolor{stringliteral}{"{}path/file\_name.txt"{}}, \textcolor{keyword}{true});}
+\DoxyCodeLine{std::vector<G4double> lFirstColumn = lData.at(0);}
+\DoxyCodeLine{std::vector<G4double> lSecondColumn = lData.at(1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::vector<double> lWavelengths = \mbox{\hyperlink{namespace_tools_a068657387a0d190043d3e0959e84e18c}{Tools::linspace}}(275, 750, 96);}
+\DoxyCodeLine{std::vector<double> lAbsLengths = \mbox{\hyperlink{namespace_tools_a5150dab6894acffb1c04085437e8e0b8}{Tools::logspace}}(-\/9, -\/4, 20);}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::vector<double> data = \{1, 2, 2, 3, 3, 3, 4, 4, 5\};}
+\DoxyCodeLine{\textcolor{keyword}{auto} [counts, edges] = \mbox{\hyperlink{namespace_tools_ab83e877c5728fe5cbfd4c6496c88166f}{Tools::histogram}}(data, 5);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// ...}}
+
+\end{DoxyCode}
+\hypertarget{md_extra_doc_0_common_autotoc_md3}{}\doxysection{Geometry construction}\label{md_extra_doc_0_common_autotoc_md3}
+Each optical module and harness is defined in its respective class, located in the {\ttfamily /common/geometry\+\_\+construction/} folder. These inherit from the virtual base class {\ttfamily \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}}.
+
+This inheritance ensures the definition of functions to retrieve the pressure vessel\textquotesingle{}s weight (necessary for radioactive decay studies) and the count of PMTs inside the module. The {\ttfamily \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}} interface inherits from {\ttfamily \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}}}, a general helper class simplifying construction. Most \mbox{\hyperlink{class_o_m_sim}{OMSim}} geometries inherit from this class, as illustrated in the dependency diagram below\+:
+
+
+
+The {\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}}} class constructs PMTs. There are two PMT construction approaches. The first is simple, with a solid photocathode where all entering photons are recorded. The second type simulates the photocathode as a thin layer, also representing the internal components accounting for internal reflections. For more information, refer to Chapter 9 of \href{https://zenodo.org/record/8121321}{\texttt{ Martin Unland\textquotesingle{}s thesis}}.
+
+In the complex PMT model, the photocathodes are not real volumes, but are defined as a boundary condition between the glass and internal vacuum. The original {\ttfamily \mbox{\hyperlink{class_g4_op_boundary_process}{G4\+Op\+Boundary\+Process}}} of Geant4 was modified in {\ttfamily OMSim\+Op\+Boundary\+Process.\+cc} in order to simulate the optical propierties of thin layers (see \mbox{[}Nicolai Krybus\textquotesingle{}s thesis\mbox{]}()).
+
+The construction of different PMT models (e.\+g. the 3\textquotesingle{}\textquotesingle{} or 10\textquotesingle{}\textquotesingle{} PMTs) is quite similar. However, the frontal window shape varies among models, leading to diverse combinations of ellipsoids and spheres.
+
+   ~\newline
+ Figure 1\+: {\itshape Cross section of simple \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT model. Image from \href{https://zenodo.org/record/8121321}{\texttt{ M. Unland\textquotesingle{}s thesis}}.} 
+
+    ~\newline
+ Figure 2\+: {\itshape Side view of complex \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT model. Image from \href{https://zenodo.org/record/8121321}{\texttt{ M. Unland\textquotesingle{}s thesis}}.}  
+
+In the complex PMT model, the photocathode has an absorption length that matches the measured quantum efficiency of the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMTs. For the other PMT models, this matching still has to be performed.
+
+   ~\newline
+ Figure 3\+: {\itshape QE of simulation with the absorption length currently used compared to measurements. Image from \href{https://zenodo.org/record/8121321}{\texttt{ M. Unland\textquotesingle{}s thesis}}.}  \hypertarget{md_extra_doc_0_common_autotoc_md4}{}\doxysection{Making PMTs and OMs sensitive}\label{md_extra_doc_0_common_autotoc_md4}
+For photon detection in both simple and complex geometries, the photons must be absorbed within the photocathode. The photocathodes are made sensitive through the \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSim\+Sensitive\+Detector}} class, following Geant4\textquotesingle{}s G4\+VSensitive\+Detector pattern. This configuration is achieved by invoking {\ttfamily OMSim\+Optical\+Module\+::configure\+Sensitive\+Volume} (or {\ttfamily OMSim\+PMTConstruction\+::configure\+Sensitive\+Volume} when simulating a single PMT).
+
+It is essential to invoke this method in the detector construction, as it needs the instance of {\ttfamily \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}} to call {\ttfamily G4\+VUser\+Detector\+Construction\+::\+Set\+Sensitive\+Detector} for successful operation in Geant4 (refer to {\ttfamily OMSim\+Detector\+Construction\+::register\+Sensitive\+Detector}).
+
+\begin{quote}
+{\bfseries{Important}}\+: Creating a new instance for each module to ensure that hits are correctly associated with their respective modules and prevents cross-\/talk between detectors. \end{quote}
+Here\textquotesingle{}s an example of how to properly create and configure sensitive detectors for multiple optical modules\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < numberOfModules; ++i) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{classm_d_o_m}{mDOM}}* module = \textcolor{keyword}{new} \mbox{\hyperlink{classm_d_o_m}{mDOM}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{    G4String lExtension = \textcolor{stringliteral}{"{}\_"{}} + std::to\_string(i);}
+\DoxyCodeLine{    module-\/>\mbox{\hyperlink{classabc_detector_component_a2915a5d0b8278207ff5dd53eac9c4b9a}{placeIt}}(G4ThreeVector(0, 0, i*3*m), G4RotationMatrix(), mWorldLogical, lExtension); \textcolor{comment}{//you have to have unique names}}
+\DoxyCodeLine{    module-\/>configureSensitiveVolume(\textcolor{keyword}{this});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Every step of a particle through the photocathode triggers the {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4\textquotesingle{}s philosophy concerning G4\+VSensitive\+Detector, consult the \href{https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector\#g4vsensitivedetector}{\texttt{ Geant4 guide for application developers}}.\hypertarget{md_extra_doc_0_common_autotoc_md5}{}\doxysection{Storing hits and PMT response}\label{md_extra_doc_0_common_autotoc_md5}
+\hypertarget{md_extra_doc_0_common_autotoc_md6}{}\doxysubsection{PMTs Charge, transit time and detection probability}\label{md_extra_doc_0_common_autotoc_md6}
+\begin{quote}
+{\bfseries{Warning}}\+: Only the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT currently supports a detailed PMT response. \end{quote}
+In {\ttfamily OMSim\+PMTConstruction\+::configure\+Sensitive\+Volume}, PMTs are associated with an instance of {\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}}}, contingent on the PMT under simulation. This class offers a precise PMT simulation by sampling from real measurements, obtaining the relative transit time, charge (in PE), and detection probability (using the measured scans from \href{https://zenodo.org/record/8121321}{\texttt{ M. Unland\textquotesingle{}s thesis}}). For details, refer to Section 9.\+3.\+4 of the linked thesis.
+
+This sampling is performed for every absorbed photon in {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} invoking {\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}{OMSim\+PMTResponse\+::process\+Photocathode\+Hit}}}. The position of the photon on the photocathode is retrieved, the 2D-\/histograms of the gain, SPE resolution, transit time and TTS are interpolated for that position and the charge / transit time of the photon is sampled from a Gaussian using the interpolated values as mean (in case of gain / transit time) and standard deviation (in case of SPE resolution / TTS). The detection probability is the product of the QE (dependent on the wavelength of the photon) and the collection efficiency weight (dependent on absorption position).
+
+   ~\newline
+ Figure 4\+: {\itshape PMT response compared to measurement for different light sources. Image from \href{https://zenodo.org/record/8121321}{\texttt{ M. Unland\textquotesingle{}s thesis}}.}  \hypertarget{md_extra_doc_0_common_autotoc_md7}{}\doxysubsection{Hit storage}\label{md_extra_doc_0_common_autotoc_md7}
+The absorbed photon data is managed by the {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} global instance. It maintains a vector of hit information ({\ttfamily \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}}} struct) for each sensitive detector. To analyze and export this data, use the {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager_a45a63dbb6cdb3815db3cfde00ae36f70}{OMSim\+Hit\+Manager\+::get\+Single\+Thread\+Hits\+Of\+Module}}} method to retrieve data for the current thread, or {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}{OMSim\+Hit\+Manager\+::get\+Merged\+Hits\+Of\+Module}}} to obtain merged data from all threads. Note that {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}{OMSim\+Hit\+Manager\+::get\+Merged\+Hits\+Of\+Module}}} works only if {\ttfamily OMSim\+Hit\+Manager\+::merge\+Thread\+Data} has been called (happens at the end of the run when {\ttfamily OMSim\+Run\+Actio\+::\+End\+Of\+Run\+Action} is called). For analysis or storage at the end of an event, handle each thread separately as events end asynchronously. For practical examples, refer to the methods in {\ttfamily OMSim\+Effective\+Area\+Analysis} and {\ttfamily OMSim\+SNAnalysis\+::write\+Data\+File}.
+
+An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}}. To enable this feature, provide the \char`\"{}\+QE\+\_\+cut\char`\"{} argument via the command line. In this case {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} will call {\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2447b2f9eb62a1e99f410bfeda917d5c}{OMSim\+PMTResponse\+::pass\+QE}}} and break early if it returns false, without storing the photon information.
+
+\begin{quote}
+{\bfseries{Note}}\+: In most scenarios, it\textquotesingle{}s not recommended to use --QE\+\_\+cut since it reduces your statistics. Its presence in \mbox{\hyperlink{class_o_m_sim}{OMSim}} is primarily for testing purposes. It\textquotesingle{}s generally better to perform post-\/analysis using the saved {\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse_a87f21652e10a0bc82870ded9697b57f2}{OMSim\+PMTResponse\+::\+PMTPulse\+::detection\+Probability}}} for each absorbed photon. \end{quote}
+\hypertarget{md_extra_doc_0_common_autotoc_md8}{}\doxysection{Making other volumes sensitive to photons}\label{md_extra_doc_0_common_autotoc_md8}
+For some studies, you might want a volume to detect photons, without this necessarily being a PMT. For such cases, the framework has a provision in place\+: use the {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSim\+Sensitive\+Detector}}} and pass {\ttfamily Detector\+Type\+::\+General\+Photon\+Detector} as its constructor argument.
+
+In this case, the {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} will use an instance {\ttfamily \mbox{\hyperlink{class_no_response}{No\+Response}}} as PMT response, which is just a dummy placeholder. ~\newline
+
+
+Remember to inform the {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} that this detector is equivalent to \char`\"{}a single PMT\char`\"{}, ensuring internal vector sizes adjust accordingly.
+
+This approach ensures a smooth integration of the photosensitive volume within the current system. Below is an example illustrating how this can be incorporated within the detector construction\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}OMSimSensitiveDetector.hh"{}}}
+\DoxyCodeLine{\textcolor{comment}{//... Assume the logical volume of your detector has been defined and is referred to as "{}lDetectorLV"{}}}
+\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}* lSensitiveDetector = \textcolor{keyword}{new} \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}(\textcolor{stringliteral}{"{}myDetector"{}}, DetectorType::GeneralPhotonDetector); }
+\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}} lHitManager =  \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}();}
+\DoxyCodeLine{lHitManager.\mbox{\hyperlink{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}{setNumberOfPMTs}}(1, lHitManager.getNextDetectorIndex());}
+\DoxyCodeLine{registerSensitiveDetector(lDetectorLV, lSensitiveDetector);}
+
+\end{DoxyCode}
+
+
+In this case, {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} will store all absorbed photons. The number of photons absorbed will depend on the absorption length of the material connected to the logical volume.
+
+If there\textquotesingle{}s a need to make a volume sensitive to particles other than photons, add a new entry to the {\ttfamily Detector\+Type} enum (in {\ttfamily \mbox{\hyperlink{_o_m_sim_sensitive_detector_8hh_source}{OMSim\+Sensitive\+Detector.\+hh}}}) and incorporate a new method that handles this scenario in {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}}.
+
+You might also track these particles in {\ttfamily \mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSim\+Tracking\+Action}}} or {\ttfamily \mbox{\hyperlink{class_o_m_sim_stepping_action}{OMSim\+Stepping\+Action}}}, but using a class derived from {\ttfamily G4\+VSensitive\+Detector} aligns with the philosophy of Geant4. 

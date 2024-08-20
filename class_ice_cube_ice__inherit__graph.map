@@ -1,0 +1,5 @@
+<map id="IceCubeIce" name="IceCubeIce">
+<area shape="rect" id="node1" title="Creation and extraction of IceCube&#39;s ice optical properties." alt="" coords="24,155,117,181"/>
+<area shape="rect" id="node2" href="$classabc_material_data.html" title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f..." alt="" coords="5,80,136,107"/>
+<area shape="rect" id="node3" href="$classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation." alt="" coords="21,5,120,32"/>
+</map>

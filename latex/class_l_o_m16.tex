@@ -1,0 +1,241 @@
+\hypertarget{class_l_o_m16}{}\doxysection{LOM16 Class Reference}
+\label{class_l_o_m16}\index{LOM16@{LOM16}}
+
+
+Inheritance diagram for LOM16\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{class_l_o_m16__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for LOM16\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{class_l_o_m16__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_ac675e8f354491e6ff46d798dd0f1ed14}\label{class_l_o_m16_ac675e8f354491e6ff46d798dd0f1ed14}} 
+{\bfseries LOM16} (G4bool p\+Place\+Harness=false)
+\item 
+\mbox{\hyperlink{class_l_o_m16_a93c141790620554394cdf9864096d011}{$\sim$\+LOM16}} ()
+\item 
+\mbox{\Hypertarget{class_l_o_m16_ab837d810e22d601fc1a298ba0dfddd48}\label{class_l_o_m16_ab837d810e22d601fc1a298ba0dfddd48}} 
+void \mbox{\hyperlink{class_l_o_m16_ab837d810e22d601fc1a298ba0dfddd48}{construction}} ()
+\begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_l_o_m16_aa91c920187061c71df5560864845c8a8}{get\+Pressure\+Vessel\+Weight}} ()
+\begin{DoxyCompactList}\small\item\em Virtual method to get the weight of the pressure vessel. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_m16_ab6c3906a5b9bb9f05ff72d7d089cf967}{get\+Number\+Of\+PMTs}} ()
+\begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_l_o_m16_affe936616d3d9f54332cc680d4effe98}\label{class_l_o_m16_affe936616d3d9f54332cc680d4effe98}} 
+G4\+String {\bfseries get\+Name} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a3d939b60805ad33dbe422c966bc6b7ee}\label{class_l_o_m16_a3d939b60805ad33dbe422c966bc6b7ee}} 
+G4\+Union\+Solid $\ast$ {\bfseries pressure\+Vessel} (const G4double p\+Out\+Rad, G4\+String p\+Suffix)
+\item 
+\mbox{\Hypertarget{class_l_o_m16_af5fcdb9e252d6a72b939673d5f67d419}\label{class_l_o_m16_af5fcdb9e252d6a72b939673d5f67d419}} 
+void {\bfseries place\+CADSupport\+Structure} ()
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a95892bef682cd9694232bf0ef1faae6c}\label{class_l_o_m16_a95892bef682cd9694232bf0ef1faae6c}} 
+void {\bfseries append\+Equator\+Band} ()
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a6d5d5a90600ba04ebc92b48f0f9963d1}\label{class_l_o_m16_a6d5d5a90600ba04ebc92b48f0f9963d1}} 
+void {\bfseries place\+PMTs\+And\+Gelpads} (G4\+VSolid $\ast$l\+Gel\+Solid, G4\+Logical\+Volume $\ast$l\+Gel\+Logical)
+\item 
+\mbox{\Hypertarget{class_l_o_m16_ac4fc9566019a96533841c56faef94dd5}\label{class_l_o_m16_ac4fc9566019a96533841c56faef94dd5}} 
+void {\bfseries set\+PMTAnd\+Gelpad\+Positions} ()
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a414aa068ef79f982e3f5a66911990c92}\label{class_l_o_m16_a414aa068ef79f982e3f5a66911990c92}} 
+void {\bfseries create\+Gelpad\+Logical\+Volumes} (G4\+VSolid $\ast$l\+Gel\+Solid)
+\item 
+\mbox{\Hypertarget{class_l_o_m16_ac511c00b9f11a13cf875d9110b9282fc}\label{class_l_o_m16_ac511c00b9f11a13cf875d9110b9282fc}} 
+void {\bfseries place\+PMTs} (G4\+Logical\+Volume $\ast$l\+Inner\+Volume\+Logical)
+\item 
+\mbox{\Hypertarget{class_l_o_m16_adffb1674e6001f29fb6b59128a5fbe5d}\label{class_l_o_m16_adffb1674e6001f29fb6b59128a5fbe5d}} 
+void {\bfseries place\+Gelpads} (G4\+Logical\+Volume $\ast$l\+Inner\+Volume\+Logical)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_af2ecc7ecb15fbcd4ecdfb52942dd6080}\label{class_l_o_m16_af2ecc7ecb15fbcd4ecdfb52942dd6080}} 
+G4bool {\bfseries m\+Place\+Harness} = true
+\item 
+\mbox{\Hypertarget{class_l_o_m16_ae88b58c295b3f4e744196270a302a48b}\label{class_l_o_m16_ae88b58c295b3f4e744196270a302a48b}} 
+G4bool {\bfseries m\+Harness\+Union} = true
+\item 
+\mbox{\Hypertarget{class_l_o_m16_adb48fd7e20d0c557bb8da36e52e94e05}\label{class_l_o_m16_adb48fd7e20d0c557bb8da36e52e94e05}} 
+std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+PMTPositions}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a3214b8bc26aa4d1033b3928925204867}\label{class_l_o_m16_a3214b8bc26aa4d1033b3928925204867}} 
+std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+Gelpad\+Positions}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a624361d5df27fe4e2f3606aba4a7f7f7}\label{class_l_o_m16_a624361d5df27fe4e2f3606aba4a7f7f7}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+PMT\+\_\+theta}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a7fcfa8ce0d27d89641dd795678bc9696}\label{class_l_o_m16_a7fcfa8ce0d27d89641dd795678bc9696}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+PMT\+\_\+phi}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_aaeef1c676cb789a866e426f4a1feb346}\label{class_l_o_m16_aaeef1c676cb789a866e426f4a1feb346}} 
+std\+::stringstream {\bfseries m\+Converter}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a5197d298c744168acad945ff0728af22}\label{class_l_o_m16_a5197d298c744168acad945ff0728af22}} 
+std\+::stringstream {\bfseries m\+Converter2}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_af3be4c8a0f0dc888ddef5e62c66369f3}\label{class_l_o_m16_af3be4c8a0f0dc888ddef5e62c66369f3}} 
+std\+::vector$<$ G4\+Logical\+Volume $\ast$ $>$ {\bfseries m\+Gel\+Pad\+\_\+logical}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a9529c482856b4dc161a4a13f6b077f20}\label{class_l_o_m16_a9529c482856b4dc161a4a13f6b077f20}} 
+G4\+String {\bfseries m\+PMTModel} = \char`\"{}pmt\+\_\+\+Hamamatsu\+\_\+4inch\char`\"{}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_ac6db865badac03de396bb66c66f7608c}\label{class_l_o_m16_ac6db865badac03de396bb66c66f7608c}} 
+const G4double {\bfseries m\+Internal\+CAD\+\_\+x} = 68.\+248$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_acb78395cc09da45da21b97583e17448f}\label{class_l_o_m16_acb78395cc09da45da21b97583e17448f}} 
+const G4double {\bfseries m\+Internal\+CAD\+\_\+y} = 0$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_aaaf0011ee252e452869752852d5fddc6}\label{class_l_o_m16_aaaf0011ee252e452869752852d5fddc6}} 
+const G4double {\bfseries m\+Internal\+CAD\+\_\+z} = -\/124.\+218$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_ad9d0b73c793c1df9b0ff05ff6b480a3c}\label{class_l_o_m16_ad9d0b73c793c1df9b0ff05ff6b480a3c}} 
+const G4double {\bfseries m\+Gel\+Pad\+DZ} = 30.\+0$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a7fb8e6c358934ebaf8b97318f7591cb7}\label{class_l_o_m16_a7fb8e6c358934ebaf8b97318f7591cb7}} 
+const G4double {\bfseries m\+Glass\+Out\+Rad} = 153.\+2$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_afbe8e0c432c0dd3bd88f0d603546cdab}\label{class_l_o_m16_afbe8e0c432c0dd3bd88f0d603546cdab}} 
+const G4double {\bfseries m\+Glass\+Thick} = 12.\+0$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a808ff99a0c0af1b94be62d58b643692f}\label{class_l_o_m16_a808ff99a0c0af1b94be62d58b643692f}} 
+const G4double {\bfseries m\+Glass\+In\+Rad} = m\+Glass\+Out\+Rad -\/ m\+Glass\+Thick
+\item 
+\mbox{\Hypertarget{class_l_o_m16_acdef94e66b8ac74a29de920aeb7a45cf}\label{class_l_o_m16_acdef94e66b8ac74a29de920aeb7a45cf}} 
+const G4double {\bfseries m\+Cyl\+High} = 68.\+8$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_aef64900a8681b5a7e674c92fbaa740bb}\label{class_l_o_m16_aef64900a8681b5a7e674c92fbaa740bb}} 
+const G4double {\bfseries m\+Cylinder\+Angle} = 2.\+5$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a802122b2b7444eb6dd4319df9132e901}\label{class_l_o_m16_a802122b2b7444eb6dd4319df9132e901}} 
+const G4double {\bfseries m\+Gel\+Thickness\+Front\+PMT} = 3.\+6$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a3b23adae14338a45b5d3e7f166494991}\label{class_l_o_m16_a3b23adae14338a45b5d3e7f166494991}} 
+const G4double {\bfseries m\+Gel\+Thickness} = 4.\+5$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a24b8c454631f4895dcbaec82665b63b4}\label{class_l_o_m16_a24b8c454631f4895dcbaec82665b63b4}} 
+const G4double {\bfseries m\+Eq\+PMTr\+Offset} = 2.\+6$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_ad67eddd52fe258c8b31a8aea34609f5d}\label{class_l_o_m16_ad67eddd52fe258c8b31a8aea34609f5d}} 
+const G4double {\bfseries m\+Eq\+PMTz\+Offset} = 62.\+5$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a11a524567892d80e444e7660cfc7d3d0}\label{class_l_o_m16_a11a524567892d80e444e7660cfc7d3d0}} 
+const G4double {\bfseries m\+Ref\+Cone\+HalfZ} = 15$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a638122bba64b3ca86ed12001d3764a6b}\label{class_l_o_m16_a638122bba64b3ca86ed12001d3764a6b}} 
+const G4double {\bfseries m\+Ref\+Cone\+Sheet\+Thickness} = 0.\+5$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_acaab3baf8897650c63d5e3da708c42e8}\label{class_l_o_m16_acaab3baf8897650c63d5e3da708c42e8}} 
+const G4double {\bfseries m\+Ref\+Cone\+To\+Holder} = 1.\+55$\ast$mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a4076d7c4ddebc022fdc24ecc294e8baf}\label{class_l_o_m16_a4076d7c4ddebc022fdc24ecc294e8baf}} 
+const G4double {\bfseries m\+Theta\+Polar} = 36.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m16_ae2cee7f0beffae5987af0f2c5fc2b975}\label{class_l_o_m16_ae2cee7f0beffae5987af0f2c5fc2b975}} 
+const G4double {\bfseries m\+Theta\+Equatorial} = 62.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a6b509d318fea3cd3b50cd4a006678999}\label{class_l_o_m16_a6b509d318fea3cd3b50cd4a006678999}} 
+const G4int {\bfseries m\+Nr\+Polar\+PMTs} = 4
+\item 
+\mbox{\Hypertarget{class_l_o_m16_ab868bfd67d17cae6cd17a416def9a36a}\label{class_l_o_m16_ab868bfd67d17cae6cd17a416def9a36a}} 
+const G4int {\bfseries m\+Nr\+Eq\+PMTs} = 4
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a57f09bfe621620d6b106c6770c72b741}\label{class_l_o_m16_a57f09bfe621620d6b106c6770c72b741}} 
+const G4double {\bfseries m\+Pol\+Eq\+PMTPhi\+Phase} = 45.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m16_ac02f29c52fa8de8e240cbae4be776888}\label{class_l_o_m16_ac02f29c52fa8de8e240cbae4be776888}} 
+const G4double {\bfseries m\+Eq\+Tilt\+Angle} = 15.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a2db3f58a04296a5d3286ce42030bcf60}\label{class_l_o_m16_a2db3f58a04296a5d3286ce42030bcf60}} 
+const G4double {\bfseries m\+Pol\+Pad\+Opening\+Angle} = 30.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a62f501a1e23290c426d7e43aaaf8dc86}\label{class_l_o_m16_a62f501a1e23290c426d7e43aaaf8dc86}} 
+const G4double {\bfseries m\+Eq\+Pad\+Opening\+Angle} = 22.\+0$\ast$deg
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a5be00822ddcd508bb9285436c9328f40}\label{class_l_o_m16_a5be00822ddcd508bb9285436c9328f40}} 
+const G4int {\bfseries m\+Total\+Nr\+PMTs} = (m\+Nr\+Polar\+PMTs + m\+Nr\+Eq\+PMTs) $\ast$ 2
+\item 
+\mbox{\Hypertarget{class_l_o_m16_aee32b6c77d484bc8503dfbfdac7a6dd9}\label{class_l_o_m16_aee32b6c77d484bc8503dfbfdac7a6dd9}} 
+G4double {\bfseries m\+PMToffset}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a1f3edd174943993ba5c2442dfd1f83fb}\label{class_l_o_m16_a1f3edd174943993ba5c2442dfd1f83fb}} 
+G4double {\bfseries m\+Max\+PMTRadius}
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a73be9ac847c54f61cbb32fc6f6c4d8bd}\label{class_l_o_m16_a73be9ac847c54f61cbb32fc6f6c4d8bd}} 
+const G4double {\bfseries m\+Eq\+Band\+Width} = 45 $\ast$ mm
+\item 
+\mbox{\Hypertarget{class_l_o_m16_a5a579ca8df0cbf056b857cb979addb76}\label{class_l_o_m16_a5a579ca8df0cbf056b857cb979addb76}} 
+const G4double {\bfseries m\+Eq\+Band\+Thickness} = 1 $\ast$ mm
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_l_o_m16_a93c141790620554394cdf9864096d011}\label{class_l_o_m16_a93c141790620554394cdf9864096d011}} 
+\index{LOM16@{LOM16}!````~LOM16@{$\sim$LOM16}}
+\index{````~LOM16@{$\sim$LOM16}!LOM16@{LOM16}}
+\doxysubsubsection{\texorpdfstring{$\sim$LOM16()}{~LOM16()}}
+{\footnotesize\ttfamily LOM16\+::$\sim$\+LOM16 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000005}{Todo}}]
+\begin{DoxyItemize}
+\item 18/07/22 Solve collisions of CAD with PMTs
+\begin{DoxyItemize}
+\item Clean up magic number variables and comment their meaning
+\item Write documentation and parse current comments into Doxygen style 
+\end{DoxyItemize}
+\end{DoxyItemize}\end{DoxyRefDesc}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_l_o_m16_ab6c3906a5b9bb9f05ff72d7d089cf967}\label{class_l_o_m16_ab6c3906a5b9bb9f05ff72d7d089cf967}} 
+\index{LOM16@{LOM16}!getNumberOfPMTs@{getNumberOfPMTs}}
+\index{getNumberOfPMTs@{getNumberOfPMTs}!LOM16@{LOM16}}
+\doxysubsubsection{\texorpdfstring{getNumberOfPMTs()}{getNumberOfPMTs()}}
+{\footnotesize\ttfamily int LOM16\+::get\+Number\+Of\+PMTs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+This method should be overridden in derived classes to provide the number of PMTs in the specific optical module. \begin{DoxyReturn}{Returns}
+Number of PMTs in the optical module. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}{OMSim\+Optical\+Module}}.
+
+\mbox{\Hypertarget{class_l_o_m16_aa91c920187061c71df5560864845c8a8}\label{class_l_o_m16_aa91c920187061c71df5560864845c8a8}} 
+\index{LOM16@{LOM16}!getPressureVesselWeight@{getPressureVesselWeight}}
+\index{getPressureVesselWeight@{getPressureVesselWeight}!LOM16@{LOM16}}
+\doxysubsubsection{\texorpdfstring{getPressureVesselWeight()}{getPressureVesselWeight()}}
+{\footnotesize\ttfamily double LOM16\+::get\+Pressure\+Vessel\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+This method should be overridden in derived classes to provide the weight of the pressure vessel for the specific optical module. \begin{DoxyReturn}{Returns}
+Weight of the pressure vessel. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}{OMSim\+Optical\+Module}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_l_o_m16_8hh}{OMSim\+LOM16.\+hh}}\item 
+OMSim\+LOM16.\+cc\end{DoxyCompactItemize}

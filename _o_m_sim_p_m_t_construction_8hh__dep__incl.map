@@ -1,0 +1,21 @@
+<map id="OMSimPMTConstruction.hh" name="OMSimPMTConstruction.hh">
+<area shape="rect" id="node1" title="Construction of the PMTs." alt="" coords="389,6,588,33"/>
+<area shape="rect" id="node2" href="$_o_m_sim_d_e_g_g_8hh.html" title="Construction of the DEGG class. From DOUMEKI." alt="" coords="87,156,213,182"/>
+<area shape="rect" id="node3" href="$_o_m_sim_l_o_m16_8hh.html" title="Construction of LOM16." alt="" coords="237,156,372,182"/>
+<area shape="rect" id="node4" href="$_o_m_sim_l_o_m18_8hh.html" title="Construction of LOM18." alt="" coords="396,156,531,182"/>
+<area shape="rect" id="node6" href="$_o_m_sim_m_d_o_m_8hh.html" title="Construction of mDOM." alt="" coords="555,156,689,182"/>
+<area shape="rect" id="node7" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="552,81,735,108"/>
+<area shape="rect" id="node18" href="$_o_m_sim_p_d_o_m_8hh.html" title="Implementation of the pDOM/Gen1 DOM class." alt="" coords="1065,156,1195,182"/>
+<area shape="rect" id="node5" href="$_o_m_sim_l_o_m18_8cc.html" title=" " alt="" coords="5,230,137,257"/>
+<area shape="rect" id="node8" href="$_o_m_sim_detector_construction_8hh_source.html" title=" " alt="" coords="713,156,939,182"/>
+<area shape="rect" id="node16" href="$_o_m_sim_rad_decays_detector_8hh.html" title="Defines the OMSimRadDecaysDetector class for the radioactive decays simulation." alt="" coords="969,230,1187,257"/>
+<area shape="rect" id="node19" href="$_o_m_sim_decays_g_p_s_8hh.html" title="Defines the OMSimDecaysGPS class for the radioactive decays simulation." alt="" coords="1211,230,1374,257"/>
+<area shape="rect" id="node9" href="$_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="856,230,945,257"/>
+<area shape="rect" id="node14" href="$effective__area_2include_2_o_m_sim_effective_area_detector_8hh.html" title="Defines the OMSimEffectiveAreaDetector class for effective area simulation detector construction." alt="" coords="161,230,392,257"/>
+<area shape="rect" id="node15" href="$efficiency__calibration_2include_2_o_m_sim_effective_area_detector_8hh.html" title="Defines the OMSimEffectiveAreaDetector class for effective area simulation detector construction." alt="" coords="416,230,647,257"/>
+<area shape="rect" id="node17" href="$_o_m_sim_s_ndetector_8hh_source.html" title=" " alt="" coords="671,230,831,257"/>
+<area shape="rect" id="node10" href="$_o_m_sim_8cc.html" title="Implementation of the OMSim class." alt="" coords="1019,305,1105,332"/>
+<area shape="rect" id="node11" href="$_o_m_sim__effective__area_8cc.html" title="Main for the calculation of effective areas." alt="" coords="807,305,994,332"/>
+<area shape="rect" id="node12" href="$_o_m_sim__radioactive__decays_8cc.html" title="Main of the radioactive decay study." alt="" coords="1129,305,1349,332"/>
+<area shape="rect" id="node13" href="$_o_m_sim__supernova_8cc.html" title="Main of the supernova study." alt="" coords="621,305,783,332"/>
+</map>

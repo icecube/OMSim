@@ -1,0 +1,72 @@
+\hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader}{}\doxysection{CADMesh\+::File\+::OBJReader Class Reference}
+\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader}\index{CADMesh::File::OBJReader@{CADMesh::File::OBJReader}}
+
+
+Inheritance diagram for CADMesh\+::File\+::OBJReader\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CADMesh\+::File\+::OBJReader\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a1a79c905172419920261d5e3814b1654}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a1a79c905172419920261d5e3814b1654}} 
+G4bool {\bfseries Read} (G4\+String filepath)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_acf49f62afd5273b34b195a1e8a4bf360}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_acf49f62afd5273b34b195a1e8a4bf360}} 
+G4bool {\bfseries Can\+Read} (Type file\+\_\+type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a9bdf8e5f161e10ded739482e9936b8fd}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a9bdf8e5f161e10ded739482e9936b8fd}} 
+{\bfseries CADMesh\+Lexer\+State\+Definition} (Start\+Solid)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_af045154e64566c91c93374c8aa2fa75e}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_af045154e64566c91c93374c8aa2fa75e}} 
+{\bfseries CADMesh\+Lexer\+State\+Definition} (End\+Solid)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_aeb370a474f5fbd8944932b79caa78f8c}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_aeb370a474f5fbd8944932b79caa78f8c}} 
+{\bfseries CADMesh\+Lexer\+State\+Definition} (Ignore)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a119e2ff43f2f1c87cb13f1d4e59f3e66}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a119e2ff43f2f1c87cb13f1d4e59f3e66}} 
+{\bfseries CADMesh\+Lexer\+State\+Definition} (Vertex)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a43c20b67c64edd6b2b5f5004150d9e8c}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a43c20b67c64edd6b2b5f5004150d9e8c}} 
+{\bfseries CADMesh\+Lexer\+State\+Definition} (Facet)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_ab3f19e796f6665582c57c5f91ff713af}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_ab3f19e796f6665582c57c5f91ff713af}} 
+{\bfseries CADMesh\+Lexer\+State\+Definition} (Object)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a5ba41fe0489c9c6cc040d1641b3bf479}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a5ba41fe0489c9c6cc040d1641b3bf479}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ {\bfseries Parse\+Mesh} (Items items)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a4b25fa7241a18aa3e51b20b54a7bc3ba}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a4b25fa7241a18aa3e51b20b54a7bc3ba}} 
+G4\+Three\+Vector {\bfseries Parse\+Vertex} (Items items)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_af724b456aed24e62d7d2f16c271eaa77}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_af724b456aed24e62d7d2f16c271eaa77}} 
+G4\+Triangular\+Facet $\ast$ {\bfseries Parse\+Facet} (Items items, G4bool quad)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a16bdd99754cfd2a1ff8428d80eed1907}\label{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader_a16bdd99754cfd2a1ff8428d80eed1907}} 
+Points {\bfseries vertices\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+CADMesh.\+hh\end{DoxyCompactItemize}

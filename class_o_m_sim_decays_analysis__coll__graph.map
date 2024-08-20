@@ -1,0 +1,4 @@
+<map id="OMSimDecaysAnalysis" name="OMSimDecaysAnalysis">
+<area shape="rect" id="node1" title="Singleton class responsible for managing, analysing, and saving decay&#45;related data." alt="" coords="5,95,177,121"/>
+<area shape="rect" id="node2" href="$struct_decay_stats.html" title="A structure to store information about decays." alt="" coords="43,5,139,32"/>
+</map>

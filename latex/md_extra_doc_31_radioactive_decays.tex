@@ -1,0 +1,27 @@
+Study for understanding the background produced by radioactive decays in borosilicate glass of optical modules \& PMTs.
+
+\begin{quote}
+{\bfseries{Warning}}\+: This study has been tested only for Vitrovex glass (m\+DOM/\+LOM16) and the 80mm \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMTs. Okamoto glass (D-\/\+Egg/\+LOM18) is currently under investigation. \end{quote}
+The simulation considers the measured scintillation parameters and the specific activity of the isotopes to provide insights into the behavior of OMs in both air and ice environments over a time window t\+\_\+w. The number of time windows simulated is given by the argument {\ttfamily -\/-\/numevents}\`{}.
+
+The primary output is a timestamped list of detected photons, which can be utilized to compute parameters such as the module\textquotesingle{}s expected dark rate. The simulation steps can be summarized as\+:
+
+
+\begin{DoxyItemize}
+\item Determining the number of decays within t\+\_\+w based on measured data.
+\item Initiating decay chains for each event by positioning an isotope randomly in the pressure vessel.
+\item Assigning decay times from a uniform distribution within \mbox{[}0, t\+\_\+w\mbox{]}, in case the time difference between mother-\/daughter decay times surpasses t\+\_\+w.
+\item Saving into memory photons detected by the PMTs for downstream analysis.
+\end{DoxyItemize}
+
+Important customizations in the simulation involve the extension of Geant4\textquotesingle{}s original scintillation class, facilitating the simulation of more complex decay processes (8 lifetimes), and the modification of the \mbox{\hyperlink{class_g4_radioactive_decay}{G4\+Radioactive\+Decay}} class which amends default decay time of isotopes.
+
+The scintillation properties of the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} glass were measured in the scope of several theses. For a summary check section 11.\+2 of \href{https://zenodo.org/record/8121321}{\texttt{ this thesis}}.
+
+Currently, there are two analysis modes\+:
+
+
+\begin{DoxyEnumerate}
+\item With the {\ttfamily -\/-\/multiplicity\+\_\+study} argument\+: After each t\+\_\+w time window, the multiplicity is calculated and saved to a file. Raw data isn\textquotesingle{}t stored, as multiplicity studies generally involve extended simulation durations, leading to large volumes of photon data.
+\item Without the {\ttfamily -\/-\/multiplicity\+\_\+study} argument\+: Data pertaining to photons and decayed isotopes is saved to files. If you are using multithreaded mode, then each thread will produce its own file. 
+\end{DoxyEnumerate}

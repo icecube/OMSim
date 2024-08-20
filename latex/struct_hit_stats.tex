@@ -1,0 +1,48 @@
+\hypertarget{struct_hit_stats}{}\doxysection{Hit\+Stats Struct Reference}
+\label{struct_hit_stats}\index{HitStats@{HitStats}}
+
+
+A structure of vectors to store information about detected photons.  
+
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_hit_stats_a5b5b61f1096a1e02d495d7bab1fff259}\label{struct_hit_stats_a5b5b61f1096a1e02d495d7bab1fff259}} 
+std\+::vector$<$ G4long $>$ \mbox{\hyperlink{struct_hit_stats_a5b5b61f1096a1e02d495d7bab1fff259}{event\+Id}}
+\begin{DoxyCompactList}\small\item\em ID of the event. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_hit_stats_ae0c5192a6db7a2fc8dec37e62a6a1e76}\label{struct_hit_stats_ae0c5192a6db7a2fc8dec37e62a6a1e76}} 
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_ae0c5192a6db7a2fc8dec37e62a6a1e76}{hit\+Time}}
+\begin{DoxyCompactList}\small\item\em Time of detection. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_hit_stats_a254bd94585df0605a6e2e863e3e00851}\label{struct_hit_stats_a254bd94585df0605a6e2e863e3e00851}} 
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_a254bd94585df0605a6e2e863e3e00851}{flight\+Time}}
+\begin{DoxyCompactList}\small\item\em Photon flight time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_hit_stats_ae7c3d380f7f961927f73fef4ee20fe4d}\label{struct_hit_stats_ae7c3d380f7f961927f73fef4ee20fe4d}} 
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_ae7c3d380f7f961927f73fef4ee20fe4d}{path\+Lenght}}
+\begin{DoxyCompactList}\small\item\em Length of the photon\textquotesingle{}s path before hitting. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_hit_stats_a542a1e55040646afe6966f281194117b}\label{struct_hit_stats_a542a1e55040646afe6966f281194117b}} 
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_a542a1e55040646afe6966f281194117b}{energy}}
+\begin{DoxyCompactList}\small\item\em Energy of the detected photon. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_hit_stats_af603afdc7e643ea0246cb0b642ae8bb5}\label{struct_hit_stats_af603afdc7e643ea0246cb0b642ae8bb5}} 
+std\+::vector$<$ G4int $>$ \mbox{\hyperlink{struct_hit_stats_af603afdc7e643ea0246cb0b642ae8bb5}{PMTnr}}
+\begin{DoxyCompactList}\small\item\em ID of the PMT that detected the photon. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_hit_stats_a383cfeda6e6e515b56aee0a369ec5085}\label{struct_hit_stats_a383cfeda6e6e515b56aee0a369ec5085}} 
+std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_a383cfeda6e6e515b56aee0a369ec5085}{direction}}
+\begin{DoxyCompactList}\small\item\em Momentum direction of the photon at the time of detection. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_hit_stats_a82333e4544d85c231e0aab2660f99cda}\label{struct_hit_stats_a82333e4544d85c231e0aab2660f99cda}} 
+std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_a82333e4544d85c231e0aab2660f99cda}{local\+Position}}
+\begin{DoxyCompactList}\small\item\em Local position of the detected photon within the PMT. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_hit_stats_a6a80e0ae23f39c939f1e46737cc80dd4}\label{struct_hit_stats_a6a80e0ae23f39c939f1e46737cc80dd4}} 
+std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_a6a80e0ae23f39c939f1e46737cc80dd4}{global\+Position}}
+\begin{DoxyCompactList}\small\item\em Global position of the detected photon. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_hit_stats_ae73c03f4d9024845eb1bfd5de71eb653}\label{struct_hit_stats_ae73c03f4d9024845eb1bfd5de71eb653}} 
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_ae73c03f4d9024845eb1bfd5de71eb653}{generation\+Detection\+Distance}}
+\begin{DoxyCompactList}\small\item\em Distance between generation and detection of photon. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_hit_stats_a3c8b0736ba6927c644ee1b9e62e02e64}\label{struct_hit_stats_a3c8b0736ba6927c644ee1b9e62e02e64}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} $>$ \mbox{\hyperlink{struct_hit_stats_a3c8b0736ba6927c644ee1b9e62e02e64}{PMTresponse}}
+\begin{DoxyCompactList}\small\item\em PMT\textquotesingle{}s response to the detected photon, encapsulated as a {\ttfamily PMTPulse}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_hit_manager_8hh}{OMSim\+Hit\+Manager.\+hh}}\end{DoxyCompactItemize}

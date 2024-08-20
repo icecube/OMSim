@@ -1,0 +1,316 @@
+\hypertarget{classabc_detector_component}{}\doxysection{abc\+Detector\+Component Class Reference}
+\label{classabc_detector_component}\index{abcDetectorComponent@{abcDetectorComponent}}
+
+
+Abstract base class used for constructing detector components.  
+
+
+
+
+Inheritance diagram for abc\+Detector\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classabc_detector_component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for abc\+Detector\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classabc_detector_component__coll__graph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Detailed Description}
+This class serves as a base class for constructing and manipulating detector components in \mbox{\hyperlink{class_o_m_sim}{OMSim}}. It provides a set of helper functions for creating and arranging components within a detector, as well as methods for altering the geometry, such as subtracting one component from another. The class maintains an internal list of components, allowing for operations to be performed on all components simultaneously. The {\ttfamily place\+It} methods allow for the placement of components within a specified logical volume, either via individual positioning and rotation parameters, or via a Geant4 transformation. Furthermore, components from one {\ttfamily \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}}} instance can be integrated into another, with user-\/specified position, rotation, and name extension. This makes it possible to build complex geometrical structures in a modular fashion in cases where a single mother volume cannot be used. \doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structabc_detector_component_1_1_component}{Component}}
+\begin{DoxyCompactList}\small\item\em This struct represents a single detector component within an \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classabc_detector_component_a8e7f01c218d5f093e80e46b33a0672bf}\label{classabc_detector_component_a8e7f01c218d5f093e80e46b33a0672bf}} 
+virtual void \mbox{\hyperlink{classabc_detector_component_a8e7f01c218d5f093e80e46b33a0672bf}{construction}} ()=0
+\begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classabc_detector_component_a467235840a313b6481569ae9ea9d2673}{append\+Component}} (G4\+VSolid $\ast$p\+Solid, G4\+Logical\+Volume $\ast$p\+Logical, G4\+Three\+Vector p\+Vector, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Append component to Components vector. \end{DoxyCompactList}\item 
+G4bool \mbox{\hyperlink{classabc_detector_component_a3d796bd0c3a6e22e8bbd11765b98d2e8}{check\+If\+Exists}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Check if a component with a certain name exists in the Components map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structabc_detector_component_1_1_component}{Component}} \mbox{\hyperlink{classabc_detector_component_a7a68cb95fa0c6b6bcd97f5640b0500b4}{get\+Component}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Retrieves a specified component from the Components map. \end{DoxyCompactList}\item 
+G4\+Transform3D \mbox{\hyperlink{classabc_detector_component_a2533b996a0f616d13ab44aeb39de1dc8}{get\+New\+Position}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Three\+Vector p\+Object\+Position, G4\+Rotation\+Matrix p\+Object\+Rotation)
+\begin{DoxyCompactList}\small\item\em Computes a new position for a sub-\/component, based on a given global position and rotation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classabc_detector_component_a822f4ef34db80d5bd78d4d2a9e904297}{integrate\+Detector\+Component}} (\mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} $\ast$p\+To\+Integrate, G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name\+Extension)
+\begin{DoxyCompactList}\small\item\em Integrates the components of another \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classabc_detector_component_aba216e0e619ddc3810ab66700e05a04c}{delete\+Component}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Deletes a specified component from the Components map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classabc_detector_component_a2915a5d0b8278207ff5dd53eac9c4b9a}{place\+It}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Logical\+Volume $\ast$\&p\+Mother, G4\+String p\+Name\+Extension=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Placement of the Detector\+Component. Each \mbox{\hyperlink{structabc_detector_component_1_1_component}{Component}} is placed in the same mother. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classabc_detector_component_a8fb7a3e2c2e647c445447a56ef5955d1}{place\+It}} (G4\+Transform3D p\+Trans, G4\+Logical\+Volume $\ast$\&p\+Mother, G4\+String p\+Name\+Extension=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Places the components in a specified mother volume using a provided transformation. \end{DoxyCompactList}\item 
+G4\+Subtraction\+Solid $\ast$ \mbox{\hyperlink{classabc_detector_component_aaf0d85ee9a57f6bda0d48c4dad2b6dc5}{substract\+To\+Volume}} (G4\+VSolid $\ast$p\+Input\+Volume, G4\+Three\+Vector p\+Substraction\+Pos, G4\+Rotation\+Matrix p\+Substraction\+Rot, G4\+String p\+New\+Volume\+Name)
+\begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume using position and rotation. \end{DoxyCompactList}\item 
+G4\+Subtraction\+Solid $\ast$ \mbox{\hyperlink{classabc_detector_component_a53c7979298ef9eda66b44f0a3c4f2e6b}{substract\+To\+Volume}} (G4\+VSolid $\ast$p\+Input\+Volume, G4\+Transform3D p\+Trans, G4\+String p\+New\+Volume\+Name)
+\begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classabc_detector_component_aaba7a5849794363a99313fd9765860b5}\label{classabc_detector_component_aaba7a5849794363a99313fd9765860b5}} 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} $\ast$ \mbox{\hyperlink{classabc_detector_component_aaba7a5849794363a99313fd9765860b5}{m\+Data}}
+\begin{DoxyCompactList}\small\item\em Instance of OMSim\+Inputdata, which should be started only once. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classabc_detector_component_a1c7b2be94d93696561d0302c3edb74ca}\label{classabc_detector_component_a1c7b2be94d93696561d0302c3edb74ca}} 
+bool {\bfseries m\+Check\+Overlaps} = false
+\item 
+\mbox{\Hypertarget{classabc_detector_component_a63d18669991ab4f35e24e7a80144f0a4}\label{classabc_detector_component_a63d18669991ab4f35e24e7a80144f0a4}} 
+std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{classabc_detector_component_a63d18669991ab4f35e24e7a80144f0a4}{m\+Placed\+Positions}}
+\begin{DoxyCompactList}\small\item\em store the positions each time the components are placed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classabc_detector_component_a0adfb8cac9a37b214e3da5b31b3d5277}\label{classabc_detector_component_a0adfb8cac9a37b214e3da5b31b3d5277}} 
+std\+::vector$<$ G4\+Rotation\+Matrix $>$ \mbox{\hyperlink{classabc_detector_component_a0adfb8cac9a37b214e3da5b31b3d5277}{m\+Placed\+Orientations}}
+\begin{DoxyCompactList}\small\item\em store the orientations each time the components are placed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classabc_detector_component_af063f48df26d1189fc6e908555397823}\label{classabc_detector_component_af063f48df26d1189fc6e908555397823}} 
+std\+::vector$<$ G4\+Transform3D $>$ \mbox{\hyperlink{classabc_detector_component_af063f48df26d1189fc6e908555397823}{m\+Placed\+Translations}}
+\begin{DoxyCompactList}\small\item\em store the translation each time the components are placed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classabc_detector_component_aa830916e7f5f8ae31eb31e3c37c9841e}\label{classabc_detector_component_aa830916e7f5f8ae31eb31e3c37c9841e}} 
+std\+::map$<$ G4\+String, \mbox{\hyperlink{structabc_detector_component_1_1_component}{Component}} $>$ \mbox{\hyperlink{classabc_detector_component_aa830916e7f5f8ae31eb31e3c37c9841e}{m\+Components}}
+\begin{DoxyCompactList}\small\item\em dictionary with each component \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classabc_detector_component_a87f97f72739f905f6c9d23a75849d15f}\label{classabc_detector_component_a87f97f72739f905f6c9d23a75849d15f}} 
+std\+::map$<$ G4\+String, G4\+PVPlacement $\ast$ $>$ \mbox{\hyperlink{classabc_detector_component_a87f97f72739f905f6c9d23a75849d15f}{m\+Last\+Physicals}}
+\begin{DoxyCompactList}\small\item\em dictionary with the (last) G4\+PVPlacement of each component m\+Components produced after calling place\+It \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classabc_detector_component_ac1148f128706991ad6c1aac7a3c1fda2}\label{classabc_detector_component_ac1148f128706991ad6c1aac7a3c1fda2}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Glass\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_a926b2004c884fe3405f6cc53be98a6e4}\label{classabc_detector_component_a926b2004c884fe3405f6cc53be98a6e4}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Gel\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_ad57eb4a0be4c50d570d436d559178ba3}\label{classabc_detector_component_ad57eb4a0be4c50d570d436d559178ba3}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Steel\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_aebcb11aa66774e0019331eda054282d0}\label{classabc_detector_component_aebcb11aa66774e0019331eda054282d0}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Alu\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(0.\+8, 0.\+8, 0.\+9, 1.\+0))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_ad57a37961439b26587d55ba4e3c6603b}\label{classabc_detector_component_ad57a37961439b26587d55ba4e3c6603b}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+White} = new G4\+Vis\+Attributes(G4\+Colour(1, 1, 1, 1.\+0))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_a0ccf01b688807fca37fbca6a99d94dc3}\label{classabc_detector_component_a0ccf01b688807fca37fbca6a99d94dc3}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Absorber\+Semi\+Transparent\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 0.\+5))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_a82128d0db519cef757cca31487e64cc1}\label{classabc_detector_component_a82128d0db519cef757cca31487e64cc1}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Absorber\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_ac7a9c9a60d06356614e2756447d02ed6}\label{classabc_detector_component_ac7a9c9a60d06356614e2756447d02ed6}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Board\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(0, 1, 0, 1))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_a6a1743aa6036e78109afba814f657536}\label{classabc_detector_component_a6a1743aa6036e78109afba814f657536}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Blue\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_aadeab169c130a27e360e8c951b8db14b}\label{classabc_detector_component_aadeab169c130a27e360e8c951b8db14b}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Air\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+2))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_a95ccc462a72ea0e52c31e2179e51ede1}\label{classabc_detector_component_a95ccc462a72ea0e52c31e2179e51ede1}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Air\+Vis2} = new G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0, 1., 0.\+5))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_afe7ebded0a06d419ced9ba97ba344c44}\label{classabc_detector_component_afe7ebded0a06d419ced9ba97ba344c44}} 
+const G4\+Vis\+Attributes {\bfseries m\+Invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
+\item 
+\mbox{\Hypertarget{classabc_detector_component_ad11572a6790aec6251f863a3899452af}\label{classabc_detector_component_ad11572a6790aec6251f863a3899452af}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Red\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+0, 0.\+0, 1))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_a710417860ff83235e3b85b7e730b1bc3}\label{classabc_detector_component_a710417860ff83235e3b85b7e730b1bc3}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Black\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0.\+0, 0.\+0, 1.\+0))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_a00db18700c93dd29e65da15dbbdd12d6}\label{classabc_detector_component_a00db18700c93dd29e65da15dbbdd12d6}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+LEDvis} = new G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
+\item 
+\mbox{\Hypertarget{classabc_detector_component_acc9920a01de42789db760463a06d16d7}\label{classabc_detector_component_acc9920a01de42789db760463a06d16d7}} 
+const G4\+Vis\+Attributes $\ast$ {\bfseries m\+Photocathode\+Vis} = new G4\+Vis\+Attributes(G4\+Colour(1.\+0, 1.\+0, 0.\+0, 0.\+1))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classabc_detector_component_a467235840a313b6481569ae9ea9d2673}\label{classabc_detector_component_a467235840a313b6481569ae9ea9d2673}} 
+\index{abcDetectorComponent@{abcDetectorComponent}!appendComponent@{appendComponent}}
+\index{appendComponent@{appendComponent}!abcDetectorComponent@{abcDetectorComponent}}
+\doxysubsubsection{\texorpdfstring{appendComponent()}{appendComponent()}}
+{\footnotesize\ttfamily void abc\+Detector\+Component\+::append\+Component (\begin{DoxyParamCaption}\item[{G4\+VSolid $\ast$}]{p\+Solid,  }\item[{G4\+Logical\+Volume $\ast$}]{p\+Logical,  }\item[{G4\+Three\+Vector}]{p\+Vector,  }\item[{G4\+Rotation\+Matrix}]{p\+Rotation,  }\item[{G4\+String}]{p\+Name }\end{DoxyParamCaption})}
+
+This function is used to add a new component to the \textquotesingle{}Components\textquotesingle{} vector. Each component contains the solid volume, logical volume, position, rotation, and a unique name. It checks first if a component with the same name already exists. If it does, a warning message is generated and the name of the new component is appended with a unique suffix to avoid conflicts. The new component is then added to the \textquotesingle{}Components\textquotesingle{} vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Solid} & A pointer to a G4\+VSolid object representing the solid volume of the component. \\
+\hline
+{\em p\+Logical} & A pointer to a G4\+Logical\+Volume object representing the logical volume of the component. \\
+\hline
+{\em p\+Vector} & A G4\+Three\+Vector object representing the position of the component with respect to the origin. \\
+\hline
+{\em p\+Rotation} & A G4\+Rotation\+Matrix object representing the rotation of the component with respect to the origin. \\
+\hline
+{\em p\+Name} & A G4\+String object representing the unique name of the component. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classabc_detector_component_a3d796bd0c3a6e22e8bbd11765b98d2e8}\label{classabc_detector_component_a3d796bd0c3a6e22e8bbd11765b98d2e8}} 
+\index{abcDetectorComponent@{abcDetectorComponent}!checkIfExists@{checkIfExists}}
+\index{checkIfExists@{checkIfExists}!abcDetectorComponent@{abcDetectorComponent}}
+\doxysubsubsection{\texorpdfstring{checkIfExists()}{checkIfExists()}}
+{\footnotesize\ttfamily G4bool abc\+Detector\+Component\+::check\+If\+Exists (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Name} & A G4\+String object representing the unique name of the component to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+G4bool True if the component exists in the map, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classabc_detector_component_aba216e0e619ddc3810ab66700e05a04c}\label{classabc_detector_component_aba216e0e619ddc3810ab66700e05a04c}} 
+\index{abcDetectorComponent@{abcDetectorComponent}!deleteComponent@{deleteComponent}}
+\index{deleteComponent@{deleteComponent}!abcDetectorComponent@{abcDetectorComponent}}
+\doxysubsubsection{\texorpdfstring{deleteComponent()}{deleteComponent()}}
+{\footnotesize\ttfamily void abc\+Detector\+Component\+::delete\+Component (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Name} & A G4\+String representing the name of the component to delete. The component must exist in the \textquotesingle{}Components\textquotesingle{} map. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classabc_detector_component_a7a68cb95fa0c6b6bcd97f5640b0500b4}\label{classabc_detector_component_a7a68cb95fa0c6b6bcd97f5640b0500b4}} 
+\index{abcDetectorComponent@{abcDetectorComponent}!getComponent@{getComponent}}
+\index{getComponent@{getComponent}!abcDetectorComponent@{abcDetectorComponent}}
+\doxysubsubsection{\texorpdfstring{getComponent()}{getComponent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structabc_detector_component_1_1_component}{abc\+Detector\+Component\+::\+Component}} abc\+Detector\+Component\+::get\+Component (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Name} & A G4\+String name of the component to fetch. The component must exist in the \textquotesingle{}Components\textquotesingle{} map. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structabc_detector_component_1_1_component}{abc\+Detector\+Component\+::\+Component}} structure containing the solid volume, logical volume, position, rotation, and name of component. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classabc_detector_component_a2533b996a0f616d13ab44aeb39de1dc8}\label{classabc_detector_component_a2533b996a0f616d13ab44aeb39de1dc8}} 
+\index{abcDetectorComponent@{abcDetectorComponent}!getNewPosition@{getNewPosition}}
+\index{getNewPosition@{getNewPosition}!abcDetectorComponent@{abcDetectorComponent}}
+\doxysubsubsection{\texorpdfstring{getNewPosition()}{getNewPosition()}}
+{\footnotesize\ttfamily G4\+Transform3D abc\+Detector\+Component\+::get\+New\+Position (\begin{DoxyParamCaption}\item[{G4\+Three\+Vector}]{p\+Position,  }\item[{G4\+Rotation\+Matrix}]{p\+Rotation,  }\item[{G4\+Three\+Vector}]{p\+Object\+Position,  }\item[{G4\+Rotation\+Matrix}]{p\+Object\+Rotation }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Position} & The initial position (a G4\+Three\+Vector) of the sub-\/component \\
+\hline
+{\em p\+Rotation} & The initial orientation (a G4\+Rotation\+Matrix) of the sub-\/component \\
+\hline
+{\em p\+Object\+Position} & The position (a G4\+Three\+Vector) of the object with respect to the original position \\
+\hline
+{\em p\+Object\+Rotation} & The orientation (a G4\+Rotation\+Matrix) of the object with respect to the original orientation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+G4\+Transform3D representing the new position and orientation of the component 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classabc_detector_component_a822f4ef34db80d5bd78d4d2a9e904297}\label{classabc_detector_component_a822f4ef34db80d5bd78d4d2a9e904297}} 
+\index{abcDetectorComponent@{abcDetectorComponent}!integrateDetectorComponent@{integrateDetectorComponent}}
+\index{integrateDetectorComponent@{integrateDetectorComponent}!abcDetectorComponent@{abcDetectorComponent}}
+\doxysubsubsection{\texorpdfstring{integrateDetectorComponent()}{integrateDetectorComponent()}}
+{\footnotesize\ttfamily void abc\+Detector\+Component\+::integrate\+Detector\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} $\ast$}]{p\+To\+Integrate,  }\item[{G4\+Three\+Vector}]{p\+Position,  }\item[{G4\+Rotation\+Matrix}]{p\+Rotation,  }\item[{G4\+String}]{p\+Name\+Extension }\end{DoxyParamCaption})}
+
+This function is used to incorporate the components of another instance of \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} into the current instance. The provided position and rotation parameters are used to transform the components from the input \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} instance before integrating. Each transformed component from the input instance is then appended to the current instance using the \mbox{\hyperlink{classabc_detector_component_a467235840a313b6481569ae9ea9d2673}{append\+Component()}} function. A name extension is applied to the original component names for distinction after integration.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+To\+Integrate} & The \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} instance whose components are to be integrated. \\
+\hline
+{\em p\+Position} & The G4\+Three\+Vector representing the position where the new \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} instance will be integrated. \\
+\hline
+{\em p\+Rotation} & The G4\+Rotation\+Matrix representing the rotation of the new \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} instance. \\
+\hline
+{\em p\+Name\+Extension} & A G4\+String used to extend the original name of the component. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classabc_detector_component_a2915a5d0b8278207ff5dd53eac9c4b9a}\label{classabc_detector_component_a2915a5d0b8278207ff5dd53eac9c4b9a}} 
+\index{abcDetectorComponent@{abcDetectorComponent}!placeIt@{placeIt}}
+\index{placeIt@{placeIt}!abcDetectorComponent@{abcDetectorComponent}}
+\doxysubsubsection{\texorpdfstring{placeIt()}{placeIt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void abc\+Detector\+Component\+::place\+It (\begin{DoxyParamCaption}\item[{G4\+Three\+Vector}]{p\+Position,  }\item[{G4\+Rotation\+Matrix}]{p\+Rotation,  }\item[{G4\+Logical\+Volume $\ast$\&}]{p\+Mother,  }\item[{G4\+String}]{p\+Name\+Extension = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Position} & G4\+Three\+Vector with position of the components (as in G4\+PVPlacement()). \\
+\hline
+{\em p\+Rotation} & G4\+Rotation\+Matrix with rotation of the components (as in G4\+PVPlacement()). \\
+\hline
+{\em p\+Mother} & G4\+Logical\+Volume where the components is going to be placed (as in G4\+PVPlacement()). \\
+\hline
+{\em p\+Name\+Extension} & G4\+String name of the physical volume. You should not have two physicals with the same name. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classabc_detector_component_a8fb7a3e2c2e647c445447a56ef5955d1}\label{classabc_detector_component_a8fb7a3e2c2e647c445447a56ef5955d1}} 
+\index{abcDetectorComponent@{abcDetectorComponent}!placeIt@{placeIt}}
+\index{placeIt@{placeIt}!abcDetectorComponent@{abcDetectorComponent}}
+\doxysubsubsection{\texorpdfstring{placeIt()}{placeIt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void abc\+Detector\+Component\+::place\+It (\begin{DoxyParamCaption}\item[{G4\+Transform3D}]{p\+Trans,  }\item[{G4\+Logical\+Volume $\ast$\&}]{p\+Mother,  }\item[{G4\+String}]{p\+Name\+Extension = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Trans} & The G4\+Transform3D object representing the transformation to be applied to the components. \\
+\hline
+{\em p\+Mother} & G4\+Logical\+Volume where the components is going to be placed (as in G4\+PVPlacement()). \\
+\hline
+{\em p\+Name\+Extension} & G4\+String name of the physical volume. You should not have two physicals with the same name. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classabc_detector_component_aaf0d85ee9a57f6bda0d48c4dad2b6dc5}\label{classabc_detector_component_aaf0d85ee9a57f6bda0d48c4dad2b6dc5}} 
+\index{abcDetectorComponent@{abcDetectorComponent}!substractToVolume@{substractToVolume}}
+\index{substractToVolume@{substractToVolume}!abcDetectorComponent@{abcDetectorComponent}}
+\doxysubsubsection{\texorpdfstring{substractToVolume()}{substractToVolume()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily G4\+Subtraction\+Solid $\ast$ abc\+Detector\+Component\+::substract\+To\+Volume (\begin{DoxyParamCaption}\item[{G4\+VSolid $\ast$}]{p\+Input\+Volume,  }\item[{G4\+Three\+Vector}]{p\+Substraction\+Pos,  }\item[{G4\+Rotation\+Matrix}]{p\+Substraction\+Rot,  }\item[{G4\+String}]{p\+New\+Volume\+Name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Input\+Volume} & The G4\+VSolid volume that components will be subtracted from. \\
+\hline
+{\em p\+Substraction\+Pos} & The G4\+Three\+Vector representing the position that will be used in the transformation of each component before it is subtracted from p\+Input\+Volume. \\
+\hline
+{\em p\+Substraction\+Rot} & The G4\+Rotation\+Matrix representing the rotation that will be used in the transformation of each component before it is subtracted from p\+Input\+Volume. \\
+\hline
+{\em p\+New\+Volume\+Name} & The G4\+String name for the new volume that results from the subtraction.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a G4\+Subtraction\+Solid which is the result of subtracting the \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}}\textquotesingle{}s components from p\+Input\+Volume. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classabc_detector_component_a53c7979298ef9eda66b44f0a3c4f2e6b}\label{classabc_detector_component_a53c7979298ef9eda66b44f0a3c4f2e6b}} 
+\index{abcDetectorComponent@{abcDetectorComponent}!substractToVolume@{substractToVolume}}
+\index{substractToVolume@{substractToVolume}!abcDetectorComponent@{abcDetectorComponent}}
+\doxysubsubsection{\texorpdfstring{substractToVolume()}{substractToVolume()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily G4\+Subtraction\+Solid $\ast$ abc\+Detector\+Component\+::substract\+To\+Volume (\begin{DoxyParamCaption}\item[{G4\+VSolid $\ast$}]{p\+Input\+Volume,  }\item[{G4\+Transform3D}]{p\+Trans,  }\item[{G4\+String}]{p\+New\+Volume\+Name }\end{DoxyParamCaption})}
+
+This function enables you to subtract the shape defined by components of the \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} instance from a specified input volume. This can be useful for modeling complex geometries where a solid needs to have some parts \char`\"{}cut out\char`\"{} from it. The method goes through each component of the \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}}, computes the transformation needed, and subtracts it from the input volume. The resulting subtracted solid is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Input\+Volume} & The G4\+VSolid volume that components will be subtracted from. \\
+\hline
+{\em p\+Trans} & The G4\+Transform3D representing the transformation that will be applied to each component before it is subtracted from p\+Input\+Volume. \\
+\hline
+{\em p\+New\+Volume\+Name} & The G4\+String name for the new volume that results from the subtraction.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a G4\+Subtraction\+Solid which is the result of subtracting the \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}}\textquotesingle{}s components from p\+Input\+Volume. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{abc_detector_component_8hh}{abc\+Detector\+Component.\+hh}}\item 
+abc\+Detector\+Component.\+cc\end{DoxyCompactItemize}

@@ -1,0 +1,93 @@
+\hypertarget{class_o_m_sim_optical_module}{}\doxysection{OMSim\+Optical\+Module Class Reference}
+\label{class_o_m_sim_optical_module}\index{OMSimOpticalModule@{OMSimOpticalModule}}
+
+
+Base class for OMs works as interface.  
+
+
+
+
+Inheritance diagram for OMSim\+Optical\+Module\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_o_m_sim_optical_module__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for OMSim\+Optical\+Module\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{class_o_m_sim_optical_module__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a7626f60e761d321d1d5af4b8ba174b12}\label{class_o_m_sim_optical_module_a7626f60e761d321d1d5af4b8ba174b12}} 
+{\bfseries OMSim\+Optical\+Module} (\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} $\ast$p\+PMTManager)
+\item 
+virtual double \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}{get\+Pressure\+Vessel\+Weight}} ()=0
+\begin{DoxyCompactList}\small\item\em Virtual method to get the weight of the pressure vessel. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}{get\+Number\+Of\+PMTs}} ()=0
+\begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a846d980c07324a88cfc0153ed1d6ca84}\label{class_o_m_sim_optical_module_a846d980c07324a88cfc0153ed1d6ca84}} 
+void {\bfseries configure\+Sensitive\+Volume} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} $\ast$p\+Det\+Const)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a039a483d855aa87a6baa94800d8280f5}\label{class_o_m_sim_optical_module_a039a483d855aa87a6baa94800d8280f5}} 
+virtual G4\+String {\bfseries get\+Name} ()=0
+\item 
+\mbox{\Hypertarget{class_o_m_sim_optical_module_ac6653d6f98e3e1803e72c50c55bbef43}\label{class_o_m_sim_optical_module_ac6653d6f98e3e1803e72c50c55bbef43}} 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} $\ast$ {\bfseries get\+PMTmanager} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a7f388d1ec142804f350635035e56beb1}\label{class_o_m_sim_optical_module_a7f388d1ec142804f350635035e56beb1}} 
+G4int {\bfseries m\+Index}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a4cfb660337a6a32c7ddd3df6ce761919}\label{class_o_m_sim_optical_module_a4cfb660337a6a32c7ddd3df6ce761919}} 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} $\ast$ {\bfseries m\+PMTManager}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}\label{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}} 
+\index{OMSimOpticalModule@{OMSimOpticalModule}!getNumberOfPMTs@{getNumberOfPMTs}}
+\index{getNumberOfPMTs@{getNumberOfPMTs}!OMSimOpticalModule@{OMSimOpticalModule}}
+\doxysubsubsection{\texorpdfstring{getNumberOfPMTs()}{getNumberOfPMTs()}}
+{\footnotesize\ttfamily virtual int OMSim\+Optical\+Module\+::get\+Number\+Of\+PMTs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+This method should be overridden in derived classes to provide the number of PMTs in the specific optical module. \begin{DoxyReturn}{Returns}
+Number of PMTs in the optical module. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classp_d_o_m_a1e2c5cf50a25e2b234d9326f4fbbee9d}{p\+DOM}}, \mbox{\hyperlink{classm_d_o_m_ad7e07f1380a50158f7cede9aa84721be}{m\+DOM}}, \mbox{\hyperlink{class_l_o_m18_ac61b9f417138d26d168abbf48f0c0379}{LOM18}}, \mbox{\hyperlink{class_l_o_m16_ab6c3906a5b9bb9f05ff72d7d089cf967}{LOM16}}, and \mbox{\hyperlink{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}{DEGG}}.
+
+\mbox{\Hypertarget{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}\label{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}} 
+\index{OMSimOpticalModule@{OMSimOpticalModule}!getPressureVesselWeight@{getPressureVesselWeight}}
+\index{getPressureVesselWeight@{getPressureVesselWeight}!OMSimOpticalModule@{OMSimOpticalModule}}
+\doxysubsubsection{\texorpdfstring{getPressureVesselWeight()}{getPressureVesselWeight()}}
+{\footnotesize\ttfamily virtual double OMSim\+Optical\+Module\+::get\+Pressure\+Vessel\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+This method should be overridden in derived classes to provide the weight of the pressure vessel for the specific optical module. \begin{DoxyReturn}{Returns}
+Weight of the pressure vessel. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classp_d_o_m_aff18b63813f3940d3cc8c0c49a3595d5}{p\+DOM}}, \mbox{\hyperlink{classm_d_o_m_a1fd32bb6eeff5f49f9ebbd09825b2e91}{m\+DOM}}, \mbox{\hyperlink{class_l_o_m18_a6e42615d2a84e6b94ec28a32ede7ec25}{LOM18}}, \mbox{\hyperlink{class_l_o_m16_aa91c920187061c71df5560864845c8a8}{LOM16}}, and \mbox{\hyperlink{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076}{DEGG}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+OMSim\+Optical\+Module.\+hh\item 
+OMSim\+Optical\+Module.\+cc\end{DoxyCompactItemize}

@@ -1,0 +1,182 @@
+\hypertarget{class_o_m_sim_decays_g_p_s}{}\doxysection{OMSim\+Decays\+GPS Class Reference}
+\label{class_o_m_sim_decays_g_p_s}\index{OMSimDecaysGPS@{OMSimDecaysGPS}}
+
+
+A class for simulating isotope decays inside the pressure vessel and PMT glass.  
+
+
+
+
+Collaboration diagram for OMSim\+Decays\+GPS\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{class_o_m_sim_decays_g_p_s__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_a2bba4e779b0200d277e01053c521587b}{simulate\+Decays\+In\+PMTs}} (G4double p\+Time\+Window)
+\begin{DoxyCompactList}\small\item\em Simulates the decays in the PMTs of the optical module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_ae43dceede1c8f2c332964fb43242cc76}{simulate\+Decays\+In\+Pressure\+Vessel}} (G4double p\+Time\+Window)
+\begin{DoxyCompactList}\small\item\em Simulates the decays in the pressure vessel of the optical module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_ac4abdcbf291642b9b0d8e4dfe3aaab64}{set\+Optical\+Module}} (\mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}} $\ast$p\+Optical\+Module)
+\begin{DoxyCompactList}\small\item\em Set the optical module to be used. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_a0fd01732515dd1175fe5434a9cb3d0c5}\label{class_o_m_sim_decays_g_p_s_a0fd01732515dd1175fe5434a9cb3d0c5}} 
+void {\bfseries set\+Production\+Radius} (G4double p\+Production\+Radius)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_a1e3f12bd7b3d1d92e9ce080bcb5b52be}\label{class_o_m_sim_decays_g_p_s_a1e3f12bd7b3d1d92e9ce080bcb5b52be}} 
+G4\+String {\bfseries get\+Decay\+Termination\+Nuclide} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_aa0f3b3dcf8f49e13b4319a31b5025a9e}\label{class_o_m_sim_decays_g_p_s_aa0f3b3dcf8f49e13b4319a31b5025a9e}} 
+static \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSim\+Decays\+GPS}} \& {\bfseries get\+Instance} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_abc1684c40b022ef35aa1c4eea6a7e557}\label{class_o_m_sim_decays_g_p_s_abc1684c40b022ef35aa1c4eea6a7e557}} 
+void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_abc1684c40b022ef35aa1c4eea6a7e557}{general\+GPS}} ()
+\begin{DoxyCompactList}\small\item\em Configures common GPS commands for the radioactive decays. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_ac6ba3293a0826c4da9b9a7a06c777fe5}{configure\+Isotope\+GPS}} (G4\+String Isotope, G4\+String location)
+\begin{DoxyCompactList}\small\item\em Configures GPS for the production and decay of an isotope within a specified location. \end{DoxyCompactList}\item 
+std\+::map$<$ G4\+String, G4int $>$ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_a61c910b065587f27f3e08b2e1e897cb2}{calculate\+Number\+Of\+Decays}} (G4\+Material\+Properties\+Table $\ast$p\+MPT, G4double p\+Time\+Window, G4double p\+Mass)
+\begin{DoxyCompactList}\small\item\em Calculates the number of decays for isotopes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_ac2a04f1f16ab33ec542053b50c0b47ea}\label{class_o_m_sim_decays_g_p_s_ac2a04f1f16ab33ec542053b50c0b47ea}} 
+{\bfseries OMSim\+Decays\+GPS} (const \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSim\+Decays\+GPS}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_a7f8cd22b4d5bd7f08ba126014fafe788}\label{class_o_m_sim_decays_g_p_s_a7f8cd22b4d5bd7f08ba126014fafe788}} 
+\mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSim\+Decays\+GPS}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSim\+Decays\+GPS}} \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ G4\+String, G4\+String $>$ {\bfseries m\+Isotope\+Commands}
+\item 
+std\+::map$<$ G4\+String, G4\+String $>$ {\bfseries m\+Termination\+Isotopes}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_a90b43354885ed69034c48df4f89326b3}\label{class_o_m_sim_decays_g_p_s_a90b43354885ed69034c48df4f89326b3}} 
+\mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}} $\ast$ {\bfseries m\+OM}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_a70c8a1985e53392c67247e6334eaaa17}\label{class_o_m_sim_decays_g_p_s_a70c8a1985e53392c67247e6334eaaa17}} 
+G4double {\bfseries m\+Production\+Radius}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_adcbc2275cda8196cfdbd5b1c3477f7ad}\label{class_o_m_sim_decays_g_p_s_adcbc2275cda8196cfdbd5b1c3477f7ad}} 
+G4\+String {\bfseries m\+Nuclide\+Stop\+Name}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_a61c910b065587f27f3e08b2e1e897cb2}\label{class_o_m_sim_decays_g_p_s_a61c910b065587f27f3e08b2e1e897cb2}} 
+\index{OMSimDecaysGPS@{OMSimDecaysGPS}!calculateNumberOfDecays@{calculateNumberOfDecays}}
+\index{calculateNumberOfDecays@{calculateNumberOfDecays}!OMSimDecaysGPS@{OMSimDecaysGPS}}
+\doxysubsubsection{\texorpdfstring{calculateNumberOfDecays()}{calculateNumberOfDecays()}}
+{\footnotesize\ttfamily std\+::map$<$ G4\+String, G4int $>$ OMSim\+Decays\+GPS\+::calculate\+Number\+Of\+Decays (\begin{DoxyParamCaption}\item[{G4\+Material\+Properties\+Table $\ast$}]{p\+MPT,  }\item[{G4double}]{p\+Time\+Window,  }\item[{G4double}]{p\+Mass }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+MPT} & Pointer to the material properties table. \\
+\hline
+{\em p\+Time\+Window} & Time window for decays. \\
+\hline
+{\em p\+Mass} & Mass of the volume in which decays occur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Map of isotopes and their respective number of decays. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_ac6ba3293a0826c4da9b9a7a06c777fe5}\label{class_o_m_sim_decays_g_p_s_ac6ba3293a0826c4da9b9a7a06c777fe5}} 
+\index{OMSimDecaysGPS@{OMSimDecaysGPS}!configureIsotopeGPS@{configureIsotopeGPS}}
+\index{configureIsotopeGPS@{configureIsotopeGPS}!OMSimDecaysGPS@{OMSimDecaysGPS}}
+\doxysubsubsection{\texorpdfstring{configureIsotopeGPS()}{configureIsotopeGPS()}}
+{\footnotesize\ttfamily void OMSim\+Decays\+GPS\+::configure\+Isotope\+GPS (\begin{DoxyParamCaption}\item[{G4\+String}]{Isotope,  }\item[{G4\+String}]{p\+Volume\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+If the daughter of the configured isotope is unstable, it will also decay in the same position as its mother
+
+
+\begin{DoxyParams}{Parameters}
+{\em Isotope} & The isotope which is going to be produced. \\
+\hline
+{\em p\+Volume\+Name} & The volume name where the isotope decays. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_ac4abdcbf291642b9b0d8e4dfe3aaab64}\label{class_o_m_sim_decays_g_p_s_ac4abdcbf291642b9b0d8e4dfe3aaab64}} 
+\index{OMSimDecaysGPS@{OMSimDecaysGPS}!setOpticalModule@{setOpticalModule}}
+\index{setOpticalModule@{setOpticalModule}!OMSimDecaysGPS@{OMSimDecaysGPS}}
+\doxysubsubsection{\texorpdfstring{setOpticalModule()}{setOpticalModule()}}
+{\footnotesize\ttfamily void OMSim\+Decays\+GPS\+::set\+Optical\+Module (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}} $\ast$}]{p\+Optical\+Module }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Optical\+Module} & Pointer to the optical module. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_a2bba4e779b0200d277e01053c521587b}\label{class_o_m_sim_decays_g_p_s_a2bba4e779b0200d277e01053c521587b}} 
+\index{OMSimDecaysGPS@{OMSimDecaysGPS}!simulateDecaysInPMTs@{simulateDecaysInPMTs}}
+\index{simulateDecaysInPMTs@{simulateDecaysInPMTs}!OMSimDecaysGPS@{OMSimDecaysGPS}}
+\doxysubsubsection{\texorpdfstring{simulateDecaysInPMTs()}{simulateDecaysInPMTs()}}
+{\footnotesize\ttfamily void OMSim\+Decays\+GPS\+::simulate\+Decays\+In\+PMTs (\begin{DoxyParamCaption}\item[{G4double}]{p\+Time\+Window }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Time\+Window} & The livetime that should be simulated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_ae43dceede1c8f2c332964fb43242cc76}\label{class_o_m_sim_decays_g_p_s_ae43dceede1c8f2c332964fb43242cc76}} 
+\index{OMSimDecaysGPS@{OMSimDecaysGPS}!simulateDecaysInPressureVessel@{simulateDecaysInPressureVessel}}
+\index{simulateDecaysInPressureVessel@{simulateDecaysInPressureVessel}!OMSimDecaysGPS@{OMSimDecaysGPS}}
+\doxysubsubsection{\texorpdfstring{simulateDecaysInPressureVessel()}{simulateDecaysInPressureVessel()}}
+{\footnotesize\ttfamily void OMSim\+Decays\+GPS\+::simulate\+Decays\+In\+Pressure\+Vessel (\begin{DoxyParamCaption}\item[{G4double}]{p\+Time\+Window }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Time\+Window} & The livetime that should be simulated. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_af4f9a615b6d1e9fa7d3b2104af3c2f3e}\label{class_o_m_sim_decays_g_p_s_af4f9a615b6d1e9fa7d3b2104af3c2f3e}} 
+\index{OMSimDecaysGPS@{OMSimDecaysGPS}!mIsotopeCommands@{mIsotopeCommands}}
+\index{mIsotopeCommands@{mIsotopeCommands}!OMSimDecaysGPS@{OMSimDecaysGPS}}
+\doxysubsubsection{\texorpdfstring{mIsotopeCommands}{mIsotopeCommands}}
+{\footnotesize\ttfamily std\+::map$<$G4\+String, G4\+String$>$ OMSim\+Decays\+GPS\+::m\+Isotope\+Commands\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}U238"{}}, \textcolor{stringliteral}{"{}/gps/ion 92 238 0"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}U235"{}}, \textcolor{stringliteral}{"{}/gps/ion 92 235 0"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Ra226"{}}, \textcolor{stringliteral}{"{}/gps/ion 88 226 0"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Ra224"{}}, \textcolor{stringliteral}{"{}/gps/ion 88 224 0"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Th232"{}}, \textcolor{stringliteral}{"{}/gps/ion 90 232 0"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}K40"{}}, \textcolor{stringliteral}{"{}/gps/ion 19 40 0"{}}\}\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_o_m_sim_decays_g_p_s_a363ea9066f59222ba1d3e3cd5f4a42d1}\label{class_o_m_sim_decays_g_p_s_a363ea9066f59222ba1d3e3cd5f4a42d1}} 
+\index{OMSimDecaysGPS@{OMSimDecaysGPS}!mTerminationIsotopes@{mTerminationIsotopes}}
+\index{mTerminationIsotopes@{mTerminationIsotopes}!OMSimDecaysGPS@{OMSimDecaysGPS}}
+\doxysubsubsection{\texorpdfstring{mTerminationIsotopes}{mTerminationIsotopes}}
+{\footnotesize\ttfamily std\+::map$<$G4\+String, G4\+String$>$ OMSim\+Decays\+GPS\+::m\+Termination\+Isotopes\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}U238"{}}, \textcolor{stringliteral}{"{}Ra226"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Th232"{}}, \textcolor{stringliteral}{"{}Ra224"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Ra226"{}}, \textcolor{stringliteral}{"{}none"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}Ra224"{}}, \textcolor{stringliteral}{"{}none"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}U235"{}}, \textcolor{stringliteral}{"{}none"{}}\},}
+\DoxyCodeLine{      \{\textcolor{stringliteral}{"{}K40"{}}, \textcolor{stringliteral}{"{}none"{}}\}\}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_decays_g_p_s_8hh}{OMSim\+Decays\+GPS.\+hh}}\item 
+OMSim\+Decays\+GPS.\+cc\end{DoxyCompactItemize}

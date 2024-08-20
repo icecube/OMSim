@@ -1,0 +1,94 @@
+\hypertarget{md_extra_doc_2_technicalities_autotoc_md21}{}\doxysection{Matching PMT Efficiency to Measurements}\label{md_extra_doc_2_technicalities_autotoc_md21}
+In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (\href{md_extra_doc_0_common.html\#autotoc_md5}{\texttt{ click here}} for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module {\ttfamily efficiency\+\_\+calibration} facilitates this procedure. In the following, the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT is used as an example.\hypertarget{md_extra_doc_2_technicalities_autotoc_md22}{}\doxysubsection{Step 1\+: Fraction of absorbed photons}\label{md_extra_doc_2_technicalities_autotoc_md22}
+The optical properties (refractive index, thickness, and absorption length) of the glass tube and photocathode determine the number of photons absorbed in the photocathode. The optical properties of the photocathode (defined in file {\ttfamily Surf\+\_\+\+Generic\+\_\+\+Photocathode\+\_\+20nm.\+dat}) are from this paper \href{https://arxiv.org/abs/physics/0408075}{\texttt{ https\+://arxiv.\+org/abs/physics/0408075}} .
+
+To calculate the quantum efficiency weight, we have to know how many photons are absorbed in the photocathode in the simulation. For this, go through the following steps\+:
+\begin{DoxyItemize}
+\item The most precise procedure is to simulate the beam used during the QE measurement (see for example {\ttfamily Beam\+::configure\+Erlangen\+QESetup} and {\ttfamily Beam\+::run\+Erlangen\+QEBeam} for the beam used in Erlangen). If you don\textquotesingle{}t know the divergence / beam size of the setup, you may use the one from Erlangen first.
+\item In {\ttfamily OMSim\+\_\+efficiency\+\_\+calibration.\+cc} change the method {\ttfamily run\+QEbeam\+Simulation()} to use the newly defined beam instead of {\ttfamily run\+Erlangen\+QEBeam}. Define there also the wavelength range to be simulated.
+\item Run the simulation with the following command, changing the PMT number to the one you want to simulate (make sure that your PMT is in the list in {\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a1a8373e9ae3095062edb477245133a9e}{OMSim\+PMTConstruction\+::select\+PMT}}}, or hard code it in {\ttfamily OMSim\+Eff\+Cali\+Detector.\+cc}) 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/pmt\_model 0 -\/-\/simulation\_step 1 -\/n 500000 -\/-\/threads 4 -\/-\/detail\_pmt -\/-\/output\_file step1}
+
+\end{DoxyCode}
+
+\item Check results and uncertainty. You want to determine the fraction pretty accurately, you may repeat the simulation at the UV region with higher statistics (change wavelength range in {\ttfamily run\+QEbeam\+Simulation()}).
+\end{DoxyItemize}
+
+To obtain the fraction I just run this python code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{wvs, h,\_ =np.loadtxt(\textcolor{stringliteral}{"{}step1.dat"{}}, unpack=1)}
+\DoxyCodeLine{N=500000}
+\DoxyCodeLine{err = np.sqrt(h) / N}
+\DoxyCodeLine{h /= N}
+\DoxyCodeLine{}
+\DoxyCodeLine{plt.figure()}
+\DoxyCodeLine{plt.errorbar(wvs, h, fmt=\textcolor{stringliteral}{"{}."{}}, yerr = err, label =\textcolor{stringliteral}{"{}Absorbed photons"{}})}
+\DoxyCodeLine{plt.ylabel(\textcolor{stringliteral}{"{}Fraction"{}})}
+\DoxyCodeLine{plt.xlabel(\textcolor{stringliteral}{"{}Wavelength (nm)"{}})}
+\DoxyCodeLine{plt.grid()}
+\DoxyCodeLine{plt.legend()}
+\DoxyCodeLine{np.savetxt(\textcolor{stringliteral}{"{}mDOM\_Hamamatsu\_R15458\_CAT\_intrinsic\_QE.dat"{}},}
+\DoxyCodeLine{           np.array([wvs, h, err]).T,}
+\DoxyCodeLine{           delimiter=\textcolor{stringliteral}{"{}\(\backslash\)t"{}}, header=\textcolor{stringliteral}{"{}Wavelength(nm) \(\backslash\)t QE \(\backslash\)t error"{}})}
+
+\end{DoxyCode}
+ Here the results of the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT including its mean QE as comparison\+:
+
+   ~\newline
+  
+
+\begin{quote}
+{\bfseries{Note}}\+: Ensure that the QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! \end{quote}
+If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra_doc_2_technicalities_autotoc_md23}{}\doxysubsection{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}\label{md_extra_doc_2_technicalities_autotoc_md23}
+Each PMT has its own derived class in {\ttfamily OMSim\+PMTResponse.\+cc}. If your PMT has not class yet, create one following the other PMTs as example. In its constructor add a call to {\ttfamily configure\+QEweight\+Interpolator()} adding the file that you generated in the last step and a default QE file for this PMT. Make sure you are not creating any CE weight interpolator at this point (this happens in step 3 of this documentation), as otherwise the weights will be smaller than expected from QE only!
+
+Now run the simulation again 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/pmt\_model 0 -\/-\/simulation\_step 2 -\/n 100000 -\/-\/threads 4 -\/-\/detail\_pmt -\/-\/output\_file step2}
+
+\end{DoxyCode}
+
+
+and check that the weights are being calculated correctly
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{wvs, h, w =np.loadtxt(\textcolor{stringliteral}{"{}step2.dat"{}}, unpack=1)}
+\DoxyCodeLine{N=100000}
+\DoxyCodeLine{err = np.sqrt(h)*w/N**2}
+\DoxyCodeLine{h /= N}
+\DoxyCodeLine{w /= N}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{plt.figure()}
+\DoxyCodeLine{plt.errorbar(wvs, w, fmt=\textcolor{stringliteral}{"{}."{}}, yerr = err, label =\textcolor{stringliteral}{"{}Mean sum of photon weights Geant4"{}})}
+\DoxyCodeLine{plt.xlabel(\textcolor{stringliteral}{"{}Wavelength (nm)"{}})}
+\DoxyCodeLine{plt.grid()}
+\DoxyCodeLine{plt.legend()}
+
+\end{DoxyCode}
+
+
+   ~\newline
+  \hypertarget{md_extra_doc_2_technicalities_autotoc_md24}{}\doxysubsection{Step 3\+: Matching detection efficiency scan}\label{md_extra_doc_2_technicalities_autotoc_md24}
+The last step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.
+
+
+\begin{DoxyItemize}
+\item As before, we have to simulate the beam used during the scan measurement (see for example {\ttfamily Beam\+::configure\+XYZScan\+\_\+\+Pico\+Quant\+Setup} and {\ttfamily Beam\+::run\+Beam\+Pico\+Quant\+Setup} for the beam used in Münster)
+\item In in {\ttfamily run\+XYZfrontal\+Scan()} of {\ttfamily OMSim\+\_\+efficiency\+\_\+calibration.\+cc} change the scan range ({\ttfamily lX} vector) and radius limit ({\ttfamily l\+Rlim}) according to the diameter of your PMT
+\item Also adjust the binning of the output histogram in {\ttfamily OMSim\+Effi\+Cali\+Analyisis\+::write\+Hit\+Position\+Histogram}
+\item Run the XY grid simulation. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/pmt\_model 0 -\/-\/simulation\_step 3 -\/n 10000 -\/-\/threads 4 -\/-\/detail\_pmt -\/-\/output\_file step3}
+
+\end{DoxyCode}
+
+\item Fit the weights using simulation data. The analysis done for the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} can be found in the notebook located in {\ttfamily documentation/notebooks/detection\+\_\+efficiency\+\_\+matching/}.
+\item Save the weights in a file and store it in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+CE\+\_\+weight/}
+\item Add the {\ttfamily configure\+CEweight\+Interpolator()} in the constructor of your PMT class using the new file as input
+\item Run the simulation again and check if the weights are correct. 
+\end{DoxyItemize}

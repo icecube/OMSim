@@ -1,0 +1,175 @@
+\hypertarget{class_o_m_sim_input_data}{}\doxysection{OMSim\+Input\+Data Class Reference}
+\label{class_o_m_sim_input_data}\index{OMSimInputData@{OMSimInputData}}
+
+
+Manages the input data, including parsing and storing material properties.  
+
+
+
+
+Inheritance diagram for OMSim\+Input\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_o_m_sim_input_data__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for OMSim\+Input\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_o_m_sim_input_data__coll__graph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Detailed Description}
+Extends the functionalities provided by the {\ttfamily \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}}} class. It\textquotesingle{}s dedicated to the specific needs of managing input data related to materials and optical properties.
+
+This class follows a global instance pattern and its lifecycle is managed by \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}. It can be accessed by other classes using \mbox{\hyperlink{class_o_m_sim_input_data_a810d7ae3b652d05e7b85eb568873eed2}{OMSim\+Input\+Data\+::get\+Instance()}}. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{G4Material* lWater = \mbox{\hyperlink{class_o_m_sim_input_data_a810d7ae3b652d05e7b85eb568873eed2}{OMSimInputData::getInstance}}().\mbox{\hyperlink{class_o_m_sim_input_data_a12e64f3ec83f33c173da0cd5954dd5b2}{getMaterial}}(\textcolor{stringliteral}{"{}CustomWater"{}}); \textcolor{comment}{// Retrieve a Geant4 material by name}}
+\DoxyCodeLine{G4OpticalSurface* lSurface = \mbox{\hyperlink{class_o_m_sim_input_data_a810d7ae3b652d05e7b85eb568873eed2}{OMSimInputData::getInstance}}().\mbox{\hyperlink{class_o_m_sim_input_data_aca56b05e268bbb47761dbcc8e487c283}{getOpticalSurface}}(\textcolor{stringliteral}{"{}SomeSurfaceName"{}}); \textcolor{comment}{// Retrieve an optical surface by name}}
+
+\end{DoxyCode}
+
+
+(see also \mbox{\hyperlink{class_parameter_table_ExampleUsageParameterTable}{Minimal example}}) This class assumes certain conventions in naming and structuring the input files, which aids in automatically identifying and processing them. For example, files with names starting with \char`\"{}\+Ri\+Abs\char`\"{} are treated as describing refractive and absorption properties. \doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+G4\+Material $\ast$ \mbox{\hyperlink{class_o_m_sim_input_data_a12e64f3ec83f33c173da0cd5954dd5b2}{get\+Material}} (G4\+String p\+Name)
+\item 
+G4\+Optical\+Surface $\ast$ \mbox{\hyperlink{class_o_m_sim_input_data_aca56b05e268bbb47761dbcc8e487c283}{get\+Optical\+Surface}} (G4\+String p\+Name)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_input_data_a84781faca6d03b8f9f13777c85a1c9dc}\label{class_o_m_sim_input_data_a84781faca6d03b8f9f13777c85a1c9dc}} 
+void \mbox{\hyperlink{class_o_m_sim_input_data_a84781faca6d03b8f9f13777c85a1c9dc}{search\+Folders}} ()
+\begin{DoxyCompactList}\small\item\em Searches through predefined folders for input data files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_o_m_sim_input_data_ae785a4cec814dcf95b2a4c0c0f2119db}{init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the global instance of \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} and calls \mbox{\hyperlink{class_o_m_sim_input_data_a84781faca6d03b8f9f13777c85a1c9dc}{OMSim\+Input\+Data\+::search\+Folders}} to load data. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_o_m_sim_input_data_a9ba12328d251141daeb086ae37f95f98}{shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Deletes the global instance of \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}}. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \& \mbox{\hyperlink{class_o_m_sim_input_data_a810d7ae3b652d05e7b85eb568873eed2}{get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_input_data_addde153519e7a6884a9583614d6c5f49}\label{class_o_m_sim_input_data_addde153519e7a6884a9583614d6c5f49}} 
+std\+::map$<$ G4\+String, G4\+Optical\+Surface $\ast$ $>$ \mbox{\hyperlink{class_o_m_sim_input_data_addde153519e7a6884a9583614d6c5f49}{m\+Optical\+Surface\+Map}}
+\begin{DoxyCompactList}\small\item\em Map that links names with optical surfaces. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_input_data_a2fe2c68872dc59b3a8fe9e961a28ec94}\label{class_o_m_sim_input_data_a2fe2c68872dc59b3a8fe9e961a28ec94}} 
+{\bfseries OMSim\+Input\+Data} (const \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_o_m_sim_input_data_aaa697f53e9f26f530c9f463c1c7af9db}\label{class_o_m_sim_input_data_aaa697f53e9f26f530c9f463c1c7af9db}} 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \&)=delete
+\item 
+void \mbox{\hyperlink{class_o_m_sim_input_data_ae6e28e3df96ad7ca980aec5d3b1f8ce6}{scann\+Data\+Directory}} ()
+\item 
+void \mbox{\hyperlink{class_o_m_sim_input_data_a85c2bfa74bb3ac64f0e5f628d81bf4be}{process\+File}} (const std\+::string \&file\+Path, const std\+::string \&file\+Name)
+\begin{DoxyCompactList}\small\item\em Processes a data file based on its name prefix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_input_data_a9b0073c725ef7569e354242545a2912e}\label{class_o_m_sim_input_data_a9b0073c725ef7569e354242545a2912e}} 
+G4\+String \mbox{\hyperlink{class_o_m_sim_input_data_a9b0073c725ef7569e354242545a2912e}{m\+Data\+Directory}}
+\begin{DoxyCompactList}\small\item\em The current directory being scanned for data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_o_m_sim_input_data_a810d7ae3b652d05e7b85eb568873eed2}\label{class_o_m_sim_input_data_a810d7ae3b652d05e7b85eb568873eed2}} 
+\index{OMSimInputData@{OMSimInputData}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!OMSimInputData@{OMSimInputData}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \& OMSim\+Input\+Data\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+A reference to the \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} instance. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if accessed before initialization or after shutdown. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_o_m_sim_input_data_a12e64f3ec83f33c173da0cd5954dd5b2}\label{class_o_m_sim_input_data_a12e64f3ec83f33c173da0cd5954dd5b2}} 
+\index{OMSimInputData@{OMSimInputData}!getMaterial@{getMaterial}}
+\index{getMaterial@{getMaterial}!OMSimInputData@{OMSimInputData}}
+\doxysubsubsection{\texorpdfstring{getMaterial()}{getMaterial()}}
+{\footnotesize\ttfamily G4\+Material $\ast$ OMSim\+Input\+Data\+::get\+Material (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Name }\end{DoxyParamCaption})}
+
+Get a G4\+Material. In order to get custom built materials, method \mbox{\hyperlink{class_o_m_sim_input_data_a84781faca6d03b8f9f13777c85a1c9dc}{search\+Folders()}} should have already been called. Standard materials from Geant4 are also transfered directly (if found through Find\+Or\+Build\+Material()). Materials defined by arguments of the main should start with \char`\"{}arg\char`\"{} and then we get the material name from the arrays depending on the global integers (g\+Gel, g\+Glass, g\+Environment..) . 
+\begin{DoxyParams}{Parameters}
+{\em p\+Name} & name of the (custom) material or \char`\"{}arg\+Vessel\+Glass\char`\"{}, \char`\"{}arg\+Gel\char`\"{}, \char`\"{}arg\+World\char`\"{} for argument materials \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+G4\+Material 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_input_data_aca56b05e268bbb47761dbcc8e487c283}\label{class_o_m_sim_input_data_aca56b05e268bbb47761dbcc8e487c283}} 
+\index{OMSimInputData@{OMSimInputData}!getOpticalSurface@{getOpticalSurface}}
+\index{getOpticalSurface@{getOpticalSurface}!OMSimInputData@{OMSimInputData}}
+\doxysubsubsection{\texorpdfstring{getOpticalSurface()}{getOpticalSurface()}}
+{\footnotesize\ttfamily G4\+Optical\+Surface $\ast$ OMSim\+Input\+Data\+::get\+Optical\+Surface (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Name }\end{DoxyParamCaption})}
+
+Get a G4\+Optical\+Surface. In order to get custom built materials, method \mbox{\hyperlink{class_o_m_sim_input_data_a84781faca6d03b8f9f13777c85a1c9dc}{search\+Folders()}} should have already been called. 
+\begin{DoxyParams}{Parameters}
+{\em p\+Name} & name of the optical surface or argument reflectors \char`\"{}arg\+Reflector\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+G4\+Optical\+Surface 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_input_data_ae785a4cec814dcf95b2a4c0c0f2119db}\label{class_o_m_sim_input_data_ae785a4cec814dcf95b2a4c0c0f2119db}} 
+\index{OMSimInputData@{OMSimInputData}!init@{init}}
+\index{init@{init}!OMSimInputData@{OMSimInputData}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void OMSim\+Input\+Data\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+This method is normally called during construction of the base class \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}. \mbox{\Hypertarget{class_o_m_sim_input_data_a85c2bfa74bb3ac64f0e5f628d81bf4be}\label{class_o_m_sim_input_data_a85c2bfa74bb3ac64f0e5f628d81bf4be}} 
+\index{OMSimInputData@{OMSimInputData}!processFile@{processFile}}
+\index{processFile@{processFile}!OMSimInputData@{OMSimInputData}}
+\doxysubsubsection{\texorpdfstring{processFile()}{processFile()}}
+{\footnotesize\ttfamily void OMSim\+Input\+Data\+::process\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+File\+Path,  }\item[{const std\+::string \&}]{p\+File\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+The function identifies the type of data file (\mbox{\hyperlink{class_refraction_and_absorption}{Refraction\+And\+Absorption}}, \mbox{\hyperlink{class_refraction_only}{Refraction\+Only}}, \mbox{\hyperlink{class_no_optics}{No\+Optics}}, \mbox{\hyperlink{class_ice_cube_ice}{Ice\+Cube\+Ice}}, \mbox{\hyperlink{class_surface}{Surface}} or others) based on the prefix of the filename. It then constructs an object of the appropriate class and invokes its information extraction method. For \textquotesingle{}Surf\textquotesingle{} prefixed files, it also updates the m\+Optical\+Surface\+Map. For \textquotesingle{}pmt\+\_\+\textquotesingle{}, \textquotesingle{}om\+\_\+\textquotesingle{}, and \textquotesingle{}usr\+\_\+\textquotesingle{} prefixed files, it invokes directly append\+And\+Return\+Tree without any extra parsing into Geant4 objects.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+File\+Path} & Full path to the file. \\
+\hline
+{\em p\+File\+Name} & Name of the file (without the path). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_input_data_ae6e28e3df96ad7ca980aec5d3b1f8ce6}\label{class_o_m_sim_input_data_ae6e28e3df96ad7ca980aec5d3b1f8ce6}} 
+\index{OMSimInputData@{OMSimInputData}!scannDataDirectory@{scannDataDirectory}}
+\index{scannDataDirectory@{scannDataDirectory}!OMSimInputData@{OMSimInputData}}
+\doxysubsubsection{\texorpdfstring{scannDataDirectory()}{scannDataDirectory()}}
+{\footnotesize\ttfamily void OMSim\+Input\+Data\+::scann\+Data\+Directory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Scann for data files inside m\+Data\+Directory and process files. 
+\begin{DoxyParams}{Parameters}
+{\em p\+Name} & name of the material \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_input_data_a9ba12328d251141daeb086ae37f95f98}\label{class_o_m_sim_input_data_a9ba12328d251141daeb086ae37f95f98}} 
+\index{OMSimInputData@{OMSimInputData}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!OMSimInputData@{OMSimInputData}}
+\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily void OMSim\+Input\+Data\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+This method is normally called in the destructor $\sim$\+OMSim\+Detector\+Construction. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_input_data_8hh}{OMSim\+Input\+Data.\+hh}}\item 
+OMSim\+Input\+Data.\+cc\end{DoxyCompactItemize}

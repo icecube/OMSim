@@ -1,0 +1,145 @@
+\hypertarget{class_ice_cube_ice}{}\doxysection{Ice\+Cube\+Ice Class Reference}
+\label{class_ice_cube_ice}\index{IceCubeIce@{IceCubeIce}}
+
+
+Creation and extraction of Ice\+Cube\textquotesingle{}s ice optical properties.  
+
+
+
+
+Inheritance diagram for Ice\+Cube\+Ice\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{class_ice_cube_ice__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ice\+Cube\+Ice\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_ice_cube_ice__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ice_cube_ice_a1720736962e3e3ef2002bc15931f7f8d}\label{class_ice_cube_ice_a1720736962e3e3ef2002bc15931f7f8d}} 
+{\bfseries Ice\+Cube\+Ice} (G4\+String p\+Filename)
+\item 
+void \mbox{\hyperlink{class_ice_cube_ice_ac9d7a61c33f41d0025d128d7268d077f}{extract\+Information}} ()
+\begin{DoxyCompactList}\small\item\em Extracts information and creates ice with optical properties from Ice\+Cube. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+G4double \mbox{\hyperlink{class_ice_cube_ice_aa11719c4167b5abb115c9ecc9aed08d7}{spice\+Temperature}} (G4double p\+Depth)
+\begin{DoxyCompactList}\small\item\em Calculate temperature of ice depending on the depth. \end{DoxyCompactList}\item 
+G4double \mbox{\hyperlink{class_ice_cube_ice_a435568d41c037359ed3425ad4d964312}{spice\+Absorption}} (G4double p\+Lambd)
+\begin{DoxyCompactList}\small\item\em Calculate absorption length of Ice\+Cube\textquotesingle{}s ice for a specific wavelength. \end{DoxyCompactList}\item 
+G4double \mbox{\hyperlink{class_ice_cube_ice_ae2f18c457a5b75e3cdb7d8b1dff68acf}{spice\+Refraction}} (G4double p\+Lambd)
+\begin{DoxyCompactList}\small\item\em Calculate refraction index of Ice\+Cube\textquotesingle{}s ice for a specific wavelength. \end{DoxyCompactList}\item 
+G4double \mbox{\hyperlink{class_ice_cube_ice_ae93c30abe662867d3ecc55dd894c5af2}{mie\+Scattering}} (G4double p\+Lambd)
+\begin{DoxyCompactList}\small\item\em Calculate mie scattering length of Ice\+Cube\textquotesingle{}s ice for a specific wavelength. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ice_cube_ice_a2931d719308ecb6d6bc34733ac6e0f8e}\label{class_ice_cube_ice_a2931d719308ecb6d6bc34733ac6e0f8e}} 
+int {\bfseries m\+Spice\+Depth\+\_\+pos}
+\item 
+\mbox{\Hypertarget{class_ice_cube_ice_ac100e7b3a092ade6255ac3ff156efebe}\label{class_ice_cube_ice_ac100e7b3a092ade6255ac3ff156efebe}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+Spice\+\_\+be400inv}
+\item 
+\mbox{\Hypertarget{class_ice_cube_ice_a1d7f8974a17a9f604c56bd535cad96f9}\label{class_ice_cube_ice_a1d7f8974a17a9f604c56bd535cad96f9}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+Spice\+\_\+a400inv}
+\item 
+\mbox{\Hypertarget{class_ice_cube_ice_ab4bb3c52de20e3e2703fc9886338f620}\label{class_ice_cube_ice_ab4bb3c52de20e3e2703fc9886338f620}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+Spice\+Depth}
+\item 
+\mbox{\Hypertarget{class_ice_cube_ice_ad4b33ebde2fda92e90a5e178c3a01b1f}\label{class_ice_cube_ice_ad4b33ebde2fda92e90a5e178c3a01b1f}} 
+const G4double {\bfseries m\+Mie\+Spice\+Const} \mbox{[}3\mbox{]} = \{0.\+972, 0.\+0000001, 1\}
+\item 
+\mbox{\Hypertarget{class_ice_cube_ice_a70ac529445cd531daf9f77754f543288}\label{class_ice_cube_ice_a70ac529445cd531daf9f77754f543288}} 
+G4double \mbox{\hyperlink{class_ice_cube_ice_a70ac529445cd531daf9f77754f543288}{m\+Inner\+Column\+\_\+b\+\_\+inv}} = 3 $\ast$ cm
+\begin{DoxyCompactList}\small\item\em Eff. scattering lenght of bubble column (if placed) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ice_cube_ice_ac9d7a61c33f41d0025d128d7268d077f}\label{class_ice_cube_ice_ac9d7a61c33f41d0025d128d7268d077f}} 
+\index{IceCubeIce@{IceCubeIce}!extractInformation@{extractInformation}}
+\index{extractInformation@{extractInformation}!IceCubeIce@{IceCubeIce}}
+\doxysubsubsection{\texorpdfstring{extractInformation()}{extractInformation()}}
+{\footnotesize\ttfamily void Ice\+Cube\+Ice\+::extract\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+This method is responsible for creating a material based on the properties of Ice\+Cube\textquotesingle{}s ice. It creates two additional materials \char`\"{}\+Ice\+Cube\+ICE\+\_\+\+SPICE\char`\"{} and \char`\"{}\+Mat\+\_\+\+Bub\+Column\char`\"{}, sets their properties, and also handles the calculations and assignments for the material\textquotesingle{}s properties such as refractive index, absorption length, and mie scattering length. 
+
+Implements \mbox{\hyperlink{classabc_material_data_acca9fc268907f29e89960699cadb0b53}{abc\+Material\+Data}}.
+
+\mbox{\Hypertarget{class_ice_cube_ice_ae93c30abe662867d3ecc55dd894c5af2}\label{class_ice_cube_ice_ae93c30abe662867d3ecc55dd894c5af2}} 
+\index{IceCubeIce@{IceCubeIce}!mieScattering@{mieScattering}}
+\index{mieScattering@{mieScattering}!IceCubeIce@{IceCubeIce}}
+\doxysubsubsection{\texorpdfstring{mieScattering()}{mieScattering()}}
+{\footnotesize\ttfamily G4double Ice\+Cube\+Ice\+::mie\+Scattering (\begin{DoxyParamCaption}\item[{G4double}]{p\+Lambd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Lambd} & Wavelength in nm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mie scattering length in m. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ice_cube_ice_a435568d41c037359ed3425ad4d964312}\label{class_ice_cube_ice_a435568d41c037359ed3425ad4d964312}} 
+\index{IceCubeIce@{IceCubeIce}!spiceAbsorption@{spiceAbsorption}}
+\index{spiceAbsorption@{spiceAbsorption}!IceCubeIce@{IceCubeIce}}
+\doxysubsubsection{\texorpdfstring{spiceAbsorption()}{spiceAbsorption()}}
+{\footnotesize\ttfamily G4double Ice\+Cube\+Ice\+::spice\+Absorption (\begin{DoxyParamCaption}\item[{G4double}]{p\+Lambd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Lambd} & Wavelength in nm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Absorption length in m. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ice_cube_ice_ae2f18c457a5b75e3cdb7d8b1dff68acf}\label{class_ice_cube_ice_ae2f18c457a5b75e3cdb7d8b1dff68acf}} 
+\index{IceCubeIce@{IceCubeIce}!spiceRefraction@{spiceRefraction}}
+\index{spiceRefraction@{spiceRefraction}!IceCubeIce@{IceCubeIce}}
+\doxysubsubsection{\texorpdfstring{spiceRefraction()}{spiceRefraction()}}
+{\footnotesize\ttfamily G4double Ice\+Cube\+Ice\+::spice\+Refraction (\begin{DoxyParamCaption}\item[{G4double}]{p\+Lambd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Lambd} & Wavelength in nm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Refraction index. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ice_cube_ice_aa11719c4167b5abb115c9ecc9aed08d7}\label{class_ice_cube_ice_aa11719c4167b5abb115c9ecc9aed08d7}} 
+\index{IceCubeIce@{IceCubeIce}!spiceTemperature@{spiceTemperature}}
+\index{spiceTemperature@{spiceTemperature}!IceCubeIce@{IceCubeIce}}
+\doxysubsubsection{\texorpdfstring{spiceTemperature()}{spiceTemperature()}}
+{\footnotesize\ttfamily G4double Ice\+Cube\+Ice\+::spice\+Temperature (\begin{DoxyParamCaption}\item[{G4double}]{p\+Depth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+This function is needed for the calculation of scattering and absorption length of the ice.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Depth} & Depth in m from where we need the temperature. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Temperature in Kelvin. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_data_file_types_8hh}{OMSim\+Data\+File\+Types.\+hh}}\item 
+OMSim\+Data\+File\+Types.\+cc\end{DoxyCompactItemize}

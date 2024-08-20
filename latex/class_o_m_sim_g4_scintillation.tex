@@ -1,0 +1,195 @@
+\hypertarget{class_o_m_sim_g4_scintillation}{}\doxysection{OMSim\+G4\+Scintillation Class Reference}
+\label{class_o_m_sim_g4_scintillation}\index{OMSimG4Scintillation@{OMSimG4Scintillation}}
+
+
+Inheritance diagram for OMSim\+G4\+Scintillation\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{class_o_m_sim_g4_scintillation__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for OMSim\+G4\+Scintillation\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{class_o_m_sim_g4_scintillation__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a8eaa160526dd9167f4472b31f11d73a2}\label{class_o_m_sim_g4_scintillation_a8eaa160526dd9167f4472b31f11d73a2}} 
+{\bfseries OMSim\+G4\+Scintillation} (const G4\+String \&process\+Name=\char`\"{}Scintillation\char`\"{}, G4\+Process\+Type type=f\+Electromagnetic)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_aa519da92a0bef3ca2fd2a92bcfdbb5de}\label{class_o_m_sim_g4_scintillation_aa519da92a0bef3ca2fd2a92bcfdbb5de}} 
+{\bfseries OMSim\+G4\+Scintillation} (const \mbox{\hyperlink{class_o_m_sim_g4_scintillation}{OMSim\+G4\+Scintillation}} \&right)=delete
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a63222479c6138d25e1915540c4a8561d}\label{class_o_m_sim_g4_scintillation_a63222479c6138d25e1915540c4a8561d}} 
+\mbox{\hyperlink{class_o_m_sim_g4_scintillation}{OMSim\+G4\+Scintillation}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_o_m_sim_g4_scintillation}{OMSim\+G4\+Scintillation}} \&right)=delete
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_ab04365263a4ba747d13689bab32b9e6e}\label{class_o_m_sim_g4_scintillation_ab04365263a4ba747d13689bab32b9e6e}} 
+G4bool {\bfseries Is\+Applicable} (const G4\+Particle\+Definition \&a\+Particle\+Type) override
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a912972f60a37dfbf30ab18fbadf087e7}\label{class_o_m_sim_g4_scintillation_a912972f60a37dfbf30ab18fbadf087e7}} 
+void {\bfseries Process\+Description} (std\+::ostream \&) const override
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a5f629400ff4c836455b5841dad77ed23}\label{class_o_m_sim_g4_scintillation_a5f629400ff4c836455b5841dad77ed23}} 
+void {\bfseries Dump\+Info} () const override
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_ab952ecd9987e9aa6d666b76acc942123}\label{class_o_m_sim_g4_scintillation_ab952ecd9987e9aa6d666b76acc942123}} 
+void {\bfseries Build\+Physics\+Table} (const G4\+Particle\+Definition \&a\+Particle\+Type) override
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a6a5cd1216acbb358bf7dce3a64f40cb9}\label{class_o_m_sim_g4_scintillation_a6a5cd1216acbb358bf7dce3a64f40cb9}} 
+void {\bfseries Prepare\+Physics\+Table} (const G4\+Particle\+Definition \&part) override
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a9d6025f7785c766ab53c4686bcaad610}\label{class_o_m_sim_g4_scintillation_a9d6025f7785c766ab53c4686bcaad610}} 
+void {\bfseries Initialise} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a3bc8d26ab87c8afb2bac4f00453a4000}\label{class_o_m_sim_g4_scintillation_a3bc8d26ab87c8afb2bac4f00453a4000}} 
+G4double {\bfseries Get\+Mean\+Free\+Path} (const G4\+Track \&a\+Track, G4double, G4\+Force\+Condition $\ast$) override
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a8587c2ae466cdd7281d5053da86df190}\label{class_o_m_sim_g4_scintillation_a8587c2ae466cdd7281d5053da86df190}} 
+G4double {\bfseries Get\+Mean\+Life\+Time} (const G4\+Track \&a\+Track, G4\+Force\+Condition $\ast$) override
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_ad66327a37ea93be7eadca9f1c7a494ba}\label{class_o_m_sim_g4_scintillation_ad66327a37ea93be7eadca9f1c7a494ba}} 
+G4\+VParticle\+Change $\ast$ {\bfseries Post\+Step\+Do\+It} (const G4\+Track \&a\+Track, const G4\+Step \&a\+Step) override
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a1ab6f916bd26e5443d0f56238bc2df0e}\label{class_o_m_sim_g4_scintillation_a1ab6f916bd26e5443d0f56238bc2df0e}} 
+G4\+VParticle\+Change $\ast$ {\bfseries At\+Rest\+Do\+It} (const G4\+Track \&a\+Track, const G4\+Step \&a\+Step) override
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a7a4ffade8b87db7e370b0f45326f0d4c}\label{class_o_m_sim_g4_scintillation_a7a4ffade8b87db7e370b0f45326f0d4c}} 
+G4double {\bfseries Get\+Scintillation\+Yield\+By\+Particle\+Type} (const G4\+Track \&a\+Track, const G4\+Step \&a\+Step, G4double \&yield1, G4double \&yield2, G4double \&yield3)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_ab3d326c57a509401293751cdf63641d8}\label{class_o_m_sim_g4_scintillation_ab3d326c57a509401293751cdf63641d8}} 
+void {\bfseries Set\+Track\+Secondaries\+First} (const G4bool state)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_acfa7b08d020811cb44a4631cca53753a}\label{class_o_m_sim_g4_scintillation_acfa7b08d020811cb44a4631cca53753a}} 
+G4bool {\bfseries Get\+Track\+Secondaries\+First} () const
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a136cdd00f76f00faa5b53ac495437ceb}\label{class_o_m_sim_g4_scintillation_a136cdd00f76f00faa5b53ac495437ceb}} 
+void {\bfseries Set\+Finite\+Rise\+Time} (const G4bool state)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_add2303def42c0504dd361100ac852837}\label{class_o_m_sim_g4_scintillation_add2303def42c0504dd361100ac852837}} 
+G4bool {\bfseries Get\+Finite\+Rise\+Time} () const
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a5d4f7a535fb8c2559115075111842794}\label{class_o_m_sim_g4_scintillation_a5d4f7a535fb8c2559115075111842794}} 
+G4\+Physics\+Table $\ast$ {\bfseries Get\+Integral\+Table1} () const
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_ae5c4392d7d5cbe21e9f7469301f2990a}\label{class_o_m_sim_g4_scintillation_ae5c4392d7d5cbe21e9f7469301f2990a}} 
+G4\+Physics\+Table $\ast$ {\bfseries Get\+Integral\+Table2} () const
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a327b57293ccff4eb880019897a9a5b95}\label{class_o_m_sim_g4_scintillation_a327b57293ccff4eb880019897a9a5b95}} 
+G4\+Physics\+Table $\ast$ {\bfseries Get\+Integral\+Table3} () const
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a82af8cb0c28c55e8f2913aee8b5aa47f}\label{class_o_m_sim_g4_scintillation_a82af8cb0c28c55e8f2913aee8b5aa47f}} 
+void {\bfseries Add\+Saturation} (G4\+Em\+Saturation $\ast$sat)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_afbf4f3adb47f1ea2ed9226c206f05c13}\label{class_o_m_sim_g4_scintillation_afbf4f3adb47f1ea2ed9226c206f05c13}} 
+void {\bfseries Remove\+Saturation} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_af37239792a034d934b07bb41fe9d8e8b}\label{class_o_m_sim_g4_scintillation_af37239792a034d934b07bb41fe9d8e8b}} 
+G4\+Em\+Saturation $\ast$ {\bfseries Get\+Saturation} () const
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a5bdd943e152a9eefe153c077957af9f3}\label{class_o_m_sim_g4_scintillation_a5bdd943e152a9eefe153c077957af9f3}} 
+void {\bfseries Set\+Scintillation\+By\+Particle\+Type} (const G4bool)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a29992f824b183379f57a6402faa22b23}\label{class_o_m_sim_g4_scintillation_a29992f824b183379f57a6402faa22b23}} 
+G4bool {\bfseries Get\+Scintillation\+By\+Particle\+Type} () const
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a9ce8c0b91c714c0da60fb82fcbe4ca32}\label{class_o_m_sim_g4_scintillation_a9ce8c0b91c714c0da60fb82fcbe4ca32}} 
+void {\bfseries Set\+Scintillation\+Track\+Info} (const G4bool track\+Type)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a88151995516413fe691c925d37086133}\label{class_o_m_sim_g4_scintillation_a88151995516413fe691c925d37086133}} 
+G4bool {\bfseries Get\+Scintillation\+Track\+Info} () const
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_ab33b6682970380b38556e55399e7c9bb}\label{class_o_m_sim_g4_scintillation_ab33b6682970380b38556e55399e7c9bb}} 
+void {\bfseries Set\+Stack\+Photons} (const G4bool)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a88dcac0697ccd2e7189d6d9045764dc5}\label{class_o_m_sim_g4_scintillation_a88dcac0697ccd2e7189d6d9045764dc5}} 
+G4bool {\bfseries Get\+Stack\+Photons} () const
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_aea1624b2a2c60cae1f59aec337fd7be3}\label{class_o_m_sim_g4_scintillation_aea1624b2a2c60cae1f59aec337fd7be3}} 
+G4int {\bfseries Get\+Num\+Photons} () const
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a697ecdd386ee8628c4c95d2c79bd3506}\label{class_o_m_sim_g4_scintillation_a697ecdd386ee8628c4c95d2c79bd3506}} 
+void {\bfseries Dump\+Physics\+Table} () const
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a70516d239033b37a9b79f59b57127617}\label{class_o_m_sim_g4_scintillation_a70516d239033b37a9b79f59b57127617}} 
+void {\bfseries Set\+Verbose\+Level} (G4int)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_af3a28ae7debbe60eff3c3e9b802b0ccc}\label{class_o_m_sim_g4_scintillation_af3a28ae7debbe60eff3c3e9b802b0ccc}} 
+G4double {\bfseries single\+\_\+exp} (G4double t, G4double tau2)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a12cc08522c70fc137bbd9ac243fd5458}\label{class_o_m_sim_g4_scintillation_a12cc08522c70fc137bbd9ac243fd5458}} 
+G4double {\bfseries bi\+\_\+exp} (G4double t, G4double tau1, G4double tau2)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a8039738ffd150682db6e5160cb0af1bf}\label{class_o_m_sim_g4_scintillation_a8039738ffd150682db6e5160cb0af1bf}} 
+G4double {\bfseries sample\+\_\+time} (G4double tau1, G4double tau2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a95d1ea751aa36feba859db503d188bb4}\label{class_o_m_sim_g4_scintillation_a95d1ea751aa36feba859db503d188bb4}} 
+G4\+Physics\+Table $\ast$ {\bfseries f\+Integral\+Table1}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a7382fdc3210912173504cdbcae803b1d}\label{class_o_m_sim_g4_scintillation_a7382fdc3210912173504cdbcae803b1d}} 
+G4\+Physics\+Table $\ast$ {\bfseries f\+Integral\+Table2}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a7ba0efe76dc92f2fa7e931086298e029}\label{class_o_m_sim_g4_scintillation_a7ba0efe76dc92f2fa7e931086298e029}} 
+G4\+Physics\+Table $\ast$ {\bfseries f\+Integral\+Table3}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a15c497f06a87f37a7dd3b3ccdd804d9f}\label{class_o_m_sim_g4_scintillation_a15c497f06a87f37a7dd3b3ccdd804d9f}} 
+G4\+Em\+Saturation $\ast$ {\bfseries f\+Em\+Saturation}
+\item 
+const G4\+Particle\+Definition $\ast$ {\bfseries opticalphoton}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a4346c5466c520016e310d256edc0f925}\label{class_o_m_sim_g4_scintillation_a4346c5466c520016e310d256edc0f925}} 
+G4int {\bfseries f\+Num\+Photons}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a8bb1d1d1d63c09f4b29b566569ea9593}\label{class_o_m_sim_g4_scintillation_a8bb1d1d1d63c09f4b29b566569ea9593}} 
+G4bool {\bfseries f\+Scintillation\+By\+Particle\+Type}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_acc921131b65333337d4101542e4e7c38}\label{class_o_m_sim_g4_scintillation_acc921131b65333337d4101542e4e7c38}} 
+G4bool {\bfseries f\+Scintillation\+Track\+Info}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a5331017b00d47d1767a335b890a0c068}\label{class_o_m_sim_g4_scintillation_a5331017b00d47d1767a335b890a0c068}} 
+G4bool {\bfseries f\+Stacking\+Flag}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a3fff3955a490babab19a0a6f7a35527a}\label{class_o_m_sim_g4_scintillation_a3fff3955a490babab19a0a6f7a35527a}} 
+G4bool {\bfseries f\+Track\+Secondaries\+First}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_afb8430d6ac06947bcd8330e11b6758b7}\label{class_o_m_sim_g4_scintillation_afb8430d6ac06947bcd8330e11b6758b7}} 
+G4bool {\bfseries f\+Finite\+Rise\+Time}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_abe8fb0b5c26d64ef025b98fba143b278}\label{class_o_m_sim_g4_scintillation_abe8fb0b5c26d64ef025b98fba143b278}} 
+G4int {\bfseries sec\+ID} = -\/1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_o_m_sim_g4_scintillation_a35ab618f447ed9b4f742ce6c6be8e4ff}\label{class_o_m_sim_g4_scintillation_a35ab618f447ed9b4f742ce6c6be8e4ff}} 
+\index{OMSimG4Scintillation@{OMSimG4Scintillation}!opticalphoton@{opticalphoton}}
+\index{opticalphoton@{opticalphoton}!OMSimG4Scintillation@{OMSimG4Scintillation}}
+\doxysubsubsection{\texorpdfstring{opticalphoton}{opticalphoton}}
+{\footnotesize\ttfamily const G4\+Particle\+Definition$\ast$ OMSim\+G4\+Scintillation\+::opticalphoton\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{    G4OpticalPhoton::OpticalPhotonDefinition()}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_g4_scintillation_8hh}{OMSim\+G4\+Scintillation.\+hh}}\item 
+OMSim\+G4\+Scintillation.\+cc\end{DoxyCompactItemize}

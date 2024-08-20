@@ -1,0 +1,33 @@
+\hypertarget{structabc_detector_component_1_1_component}{}\doxysection{abc\+Detector\+Component\+::Component Struct Reference}
+\label{structabc_detector_component_1_1_component}\index{abcDetectorComponent::Component@{abcDetectorComponent::Component}}
+
+
+This struct represents a single detector component within an \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} instance.  
+
+
+
+
+\doxysubsection{Detailed Description}
+A \mbox{\hyperlink{structabc_detector_component_1_1_component}{Component}} is defined by several properties which specify its physical properties and location within the detector. All operations available in \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}} utilize this struct to perform changes to handle all components. \doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structabc_detector_component_1_1_component_af39293b9b096379b48b083c80b3e2587}\label{structabc_detector_component_1_1_component_af39293b9b096379b48b083c80b3e2587}} 
+G4\+VSolid $\ast$ \mbox{\hyperlink{structabc_detector_component_1_1_component_af39293b9b096379b48b083c80b3e2587}{VSolid}}
+\begin{DoxyCompactList}\small\item\em A pointer to a Geant4 G4\+VSolid object that represents the physical volume of the component. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structabc_detector_component_1_1_component_a22a626006281f88b43853c57b104a20f}\label{structabc_detector_component_1_1_component_a22a626006281f88b43853c57b104a20f}} 
+G4\+Logical\+Volume $\ast$ \mbox{\hyperlink{structabc_detector_component_1_1_component_a22a626006281f88b43853c57b104a20f}{VLogical}}
+\begin{DoxyCompactList}\small\item\em A pointer to a Geant4 G4\+Logical\+Volume object that contains the material properties, sensitivity settings and visualization attributes of the component. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structabc_detector_component_1_1_component_ae0731322875b6911305cb8971fbd998f}\label{structabc_detector_component_1_1_component_ae0731322875b6911305cb8971fbd998f}} 
+G4\+Three\+Vector \mbox{\hyperlink{structabc_detector_component_1_1_component_ae0731322875b6911305cb8971fbd998f}{Position}}
+\begin{DoxyCompactList}\small\item\em A G4\+Three\+Vector object representing the position of the component with respect to the origin of its containing volume. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structabc_detector_component_1_1_component_ac8e9b52627b619a0eb2cc3d7b6256156}\label{structabc_detector_component_1_1_component_ac8e9b52627b619a0eb2cc3d7b6256156}} 
+G4\+Rotation\+Matrix \mbox{\hyperlink{structabc_detector_component_1_1_component_ac8e9b52627b619a0eb2cc3d7b6256156}{Rotation}}
+\begin{DoxyCompactList}\small\item\em A G4\+Rotation\+Matrix object representing the rotation of the component with respect to its initial orientation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structabc_detector_component_1_1_component_a4dcf93b5baee28f73c52313138580b5e}\label{structabc_detector_component_1_1_component_a4dcf93b5baee28f73c52313138580b5e}} 
+G4\+String \mbox{\hyperlink{structabc_detector_component_1_1_component_a4dcf93b5baee28f73c52313138580b5e}{Name}}
+\begin{DoxyCompactList}\small\item\em A G4\+String object representing the unique name of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{abc_detector_component_8hh}{abc\+Detector\+Component.\+hh}}\end{DoxyCompactItemize}

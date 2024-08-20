@@ -1,0 +1,6 @@
+<map id="SNBaseParticleGenerator" name="SNBaseParticleGenerator">
+<area shape="rect" id="node1" title=" " alt="" coords="249,124,435,151"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,241,32"/>
+<area shape="rect" id="node3" href="$class_distribution_sampler.html" title="Utility class for sampling from a given distribution using the inverse cumulative function and interp..." alt="" coords="266,5,418,32"/>
+<area shape="rect" id="node4" href="$class_o_m_sim_s_n_tools.html" title="Provides utility methods for generating ENES and IBD interactions." alt="" coords="537,5,657,32"/>
+</map>

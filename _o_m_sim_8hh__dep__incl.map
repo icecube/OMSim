@@ -1,0 +1,7 @@
+<map id="OMSim.hh" name="OMSim.hh">
+<area shape="rect" id="node1" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="279,5,368,32"/>
+<area shape="rect" id="node2" href="$_o_m_sim_8cc.html" title="Implementation of the OMSim class." alt="" coords="5,80,92,107"/>
+<area shape="rect" id="node3" href="$_o_m_sim__effective__area_8cc.html" title="Main for the calculation of effective areas." alt="" coords="117,80,303,107"/>
+<area shape="rect" id="node4" href="$_o_m_sim__radioactive__decays_8cc.html" title="Main of the radioactive decay study." alt="" coords="328,80,548,107"/>
+<area shape="rect" id="node5" href="$_o_m_sim__supernova_8cc.html" title="Main of the supernova study." alt="" coords="573,80,735,107"/>
+</map>

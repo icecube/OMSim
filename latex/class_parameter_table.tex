@@ -1,0 +1,199 @@
+\hypertarget{class_parameter_table}{}\doxysection{Parameter\+Table Class Reference}
+\label{class_parameter_table}\index{ParameterTable@{ParameterTable}}
+
+
+A utility class for managing JSON-\/based data tables.  
+
+
+
+
+Inheritance diagram for Parameter\+Table\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_parameter_table__inherit__graph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Detailed Description}
+Interface for handling and querying data in the form of a property tree of the boost library. It facilitates the extraction of specific parameters from loaded JSON files while also supporting units and scales.
+
+Its main use is as base class of \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}}, but you may use it as needed (see \mbox{\hyperlink{class_parameter_table_ExampleUsageParameterTable}{Minimal example}}).\hypertarget{class_parameter_table_ExampleUsageParameterTable}{}\doxysubsubsection{Minimal example}\label{class_parameter_table_ExampleUsageParameterTable}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_parameter_table}{ParameterTable}} lTable; \textcolor{comment}{// Create an instance of the table}}
+\DoxyCodeLine{lTable.\mbox{\hyperlink{class_parameter_table_a131ddfbbf38d27b59f454a4ec96b2b9e}{appendAndReturnTree}}(\textcolor{stringliteral}{"{}path/to/file.json"{}}); \textcolor{comment}{// Load a JSON file into the table. The key of this file (in the following "{}SomeKey"{}) is contained within the file under the variable "{}jName"{}}}
+\DoxyCodeLine{G4double lValue = lTable.\mbox{\hyperlink{class_parameter_table_adb1234ccb47c9e44ecd7f8c5cb9e0407}{getValue}}<G4double>(\textcolor{stringliteral}{"{}SomeKey"{}}, \textcolor{stringliteral}{"{}SomeParameter"{}}); \textcolor{comment}{// Fetch a specific value using its key and parameter name}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// Parsing array content from a JSON subtree into a vector using parseKeyContentToVector}}
+\DoxyCodeLine{std::vector<G4double> lVector;}
+\DoxyCodeLine{pt::ptree lSubtree = lTable.\mbox{\hyperlink{class_parameter_table_a042ee0eca2c9daa755d7a472608e6d66}{getJSONTree}}(\textcolor{stringliteral}{"{}SomeKey"{}}); \textcolor{comment}{// Retrieving the subtree of the file}}
+\DoxyCodeLine{lTable.\mbox{\hyperlink{class_parameter_table_a3c2a94b50a41341c104b5b1585d15efc}{parseKeyContentToVector}}(lVector, lSubtree, \textcolor{stringliteral}{"{}keyOfArray"{}}, 1.0, \textcolor{keyword}{false}); \textcolor{comment}{// parsing array into vector}}
+
+\end{DoxyCode}
+ \doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{class_parameter_table_adb1234ccb47c9e44ecd7f8c5cb9e0407}{get\+Value}} (G4\+String p\+Key, G4\+String p\+Parameter)
+\begin{DoxyCompactList}\small\item\em Fetches a value from the table based on a key and parameter. \end{DoxyCompactList}\item 
+G4bool \mbox{\hyperlink{class_parameter_table_afd0aa495dfeeb68bf370c3ea8390192d}{check\+If\+Key\+In\+Table}} (G4\+String p\+Key)
+\begin{DoxyCompactList}\small\item\em Checks if a key exists within the table. \end{DoxyCompactList}\item 
+G4double \mbox{\hyperlink{class_parameter_table_aa7546560723ba3b94c08229266b27307}{get\+Value\+With\+Unit}} (G4\+String p\+Key, G4\+String p\+Parameter)
+\begin{DoxyCompactList}\small\item\em Fetches the value associated with a given key and parameter. \end{DoxyCompactList}\item 
+pt\+::ptree \mbox{\hyperlink{class_parameter_table_a131ddfbbf38d27b59f454a4ec96b2b9e}{append\+And\+Return\+Tree}} (G4\+String p\+File\+Name)
+\item 
+pt\+::ptree \mbox{\hyperlink{class_parameter_table_a042ee0eca2c9daa755d7a472608e6d66}{get\+JSONTree}} (G4\+String p\+Key)
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_parameter_table_a3c2a94b50a41341c104b5b1585d15efc}{parse\+Key\+Content\+To\+Vector}} (std\+::vector$<$ T $>$ \&p\+Vector, pt\+::ptree p\+Tree, std\+::basic\+\_\+string$<$ char $>$ p\+Key, G4double p\+Scaling, bool p\+Inverse)
+\begin{DoxyCompactList}\small\item\em Parses the content of a JSON subtree into a vector, scaling values if necessary. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_parameter_table_aa74f75099b364ec36386ffc64d8dd3c7}{parse\+Key\+Content\+To\+Vector}} (std\+::vector$<$ T $>$ \&p\+Vector, std\+::basic\+\_\+string$<$ char $>$ p\+\_\+\+Map\+Key, std\+::basic\+\_\+string$<$ char $>$ p\+Key, G4double p\+Scaling, bool p\+Inverse)
+\begin{DoxyCompactList}\small\item\em Parses the content of a JSON subtree into a vector, scaling values if necessary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_parameter_table_a749bc840cf2aea18fb5b63da8b68c23c}\label{class_parameter_table_a749bc840cf2aea18fb5b63da8b68c23c}} 
+std\+::map$<$ G4\+String, boost\+::property\+\_\+tree\+::ptree $>$ \mbox{\hyperlink{class_parameter_table_a749bc840cf2aea18fb5b63da8b68c23c}{m\+Table}}
+\begin{DoxyCompactList}\small\item\em A table mapping keys to property trees. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_parameter_table_aedee4e855aba079f6d22432f8b41e134}\label{class_parameter_table_aedee4e855aba079f6d22432f8b41e134}} 
+std\+::map$<$ G4\+String, G4\+String $>$ \mbox{\hyperlink{class_parameter_table_aedee4e855aba079f6d22432f8b41e134}{m\+Key\+File\+Origin}}
+\begin{DoxyCompactList}\small\item\em A table mapping keys to original file name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_parameter_table_a131ddfbbf38d27b59f454a4ec96b2b9e}\label{class_parameter_table_a131ddfbbf38d27b59f454a4ec96b2b9e}} 
+\index{ParameterTable@{ParameterTable}!appendAndReturnTree@{appendAndReturnTree}}
+\index{appendAndReturnTree@{appendAndReturnTree}!ParameterTable@{ParameterTable}}
+\doxysubsubsection{\texorpdfstring{appendAndReturnTree()}{appendAndReturnTree()}}
+{\footnotesize\ttfamily pt\+::ptree Parameter\+Table\+::append\+And\+Return\+Tree (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+File\+Name }\end{DoxyParamCaption})}
+
+Appends information of json-\/file containing PMT/\+OM parameters to a dictionary of ptrees 
+\begin{DoxyParams}{Parameters}
+{\em p\+File\+Name} & Name of file containing json \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_parameter_table_afd0aa495dfeeb68bf370c3ea8390192d}\label{class_parameter_table_afd0aa495dfeeb68bf370c3ea8390192d}} 
+\index{ParameterTable@{ParameterTable}!checkIfKeyInTable@{checkIfKeyInTable}}
+\index{checkIfKeyInTable@{checkIfKeyInTable}!ParameterTable@{ParameterTable}}
+\doxysubsubsection{\texorpdfstring{checkIfKeyInTable()}{checkIfKeyInTable()}}
+{\footnotesize\ttfamily G4bool Parameter\+Table\+::check\+If\+Key\+In\+Table (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Key }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Key} & The key to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the key exists, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_parameter_table_a042ee0eca2c9daa755d7a472608e6d66}\label{class_parameter_table_a042ee0eca2c9daa755d7a472608e6d66}} 
+\index{ParameterTable@{ParameterTable}!getJSONTree@{getJSONTree}}
+\index{getJSONTree@{getJSONTree}!ParameterTable@{ParameterTable}}
+\doxysubsubsection{\texorpdfstring{getJSONTree()}{getJSONTree()}}
+{\footnotesize\ttfamily pt\+::ptree Parameter\+Table\+::get\+JSONTree (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Key }\end{DoxyParamCaption})}
+
+Get tree object saved in table 
+\begin{DoxyParams}{Parameters}
+{\em p\+Key} & Key of tree (\char`\"{}j\+Name\char`\"{} in corresponding json file) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pt\+::ptree 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_parameter_table_adb1234ccb47c9e44ecd7f8c5cb9e0407}\label{class_parameter_table_adb1234ccb47c9e44ecd7f8c5cb9e0407}} 
+\index{ParameterTable@{ParameterTable}!getValue@{getValue}}
+\index{getValue@{getValue}!ParameterTable@{ParameterTable}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T Parameter\+Table\+::get\+Value (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Key,  }\item[{G4\+String}]{p\+Parameter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the value to fetch. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Key} & The main key. \\
+\hline
+{\em p\+Parameter} & The parameter within the main key\textquotesingle{}s tree. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value associated with the key and parameter. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_parameter_table_aa7546560723ba3b94c08229266b27307}\label{class_parameter_table_aa7546560723ba3b94c08229266b27307}} 
+\index{ParameterTable@{ParameterTable}!getValueWithUnit@{getValueWithUnit}}
+\index{getValueWithUnit@{getValueWithUnit}!ParameterTable@{ParameterTable}}
+\doxysubsubsection{\texorpdfstring{getValueWithUnit()}{getValueWithUnit()}}
+{\footnotesize\ttfamily G4double Parameter\+Table\+::get\+Value\+With\+Unit (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Key,  }\item[{G4\+String}]{p\+Parameter }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Key} & The main key. \\
+\hline
+{\em p\+Parameter} & The parameter within the main key\textquotesingle{}s tree. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value associated with the key and parameter, with units converted to Geant4-\/compatible units. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_parameter_table_a3c2a94b50a41341c104b5b1585d15efc}\label{class_parameter_table_a3c2a94b50a41341c104b5b1585d15efc}} 
+\index{ParameterTable@{ParameterTable}!parseKeyContentToVector@{parseKeyContentToVector}}
+\index{parseKeyContentToVector@{parseKeyContentToVector}!ParameterTable@{ParameterTable}}
+\doxysubsubsection{\texorpdfstring{parseKeyContentToVector()}{parseKeyContentToVector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Parameter\+Table\+::parse\+Key\+Content\+To\+Vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ \&}]{p\+Vector,  }\item[{pt\+::ptree}]{p\+Tree,  }\item[{std\+::basic\+\_\+string$<$ char $>$}]{p\+Key,  }\item[{G4double}]{p\+Scaling,  }\item[{bool}]{p\+Inverse }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Vector} & Vector where the values will be stored. \\
+\hline
+{\em p\+Tree} & JSON subtree to extract values from. \\
+\hline
+{\em p\+Key} & JSON key whose associated array values are to be extracted. \\
+\hline
+{\em p\+Scaling} & Scaling factor applied to each value. \\
+\hline
+{\em p\+Inverse} & If true, the value is divided by the scaling factor, if false it\textquotesingle{}s multiplied.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of the values to be extracted from the JSON tree. \\
+\hline
+\end{DoxyTemplParams}
+\mbox{\Hypertarget{class_parameter_table_aa74f75099b364ec36386ffc64d8dd3c7}\label{class_parameter_table_aa74f75099b364ec36386ffc64d8dd3c7}} 
+\index{ParameterTable@{ParameterTable}!parseKeyContentToVector@{parseKeyContentToVector}}
+\index{parseKeyContentToVector@{parseKeyContentToVector}!ParameterTable@{ParameterTable}}
+\doxysubsubsection{\texorpdfstring{parseKeyContentToVector()}{parseKeyContentToVector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Parameter\+Table\+::parse\+Key\+Content\+To\+Vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ \&}]{p\+Vector,  }\item[{std\+::basic\+\_\+string$<$ char $>$}]{p\+\_\+\+Map\+Key,  }\item[{std\+::basic\+\_\+string$<$ char $>$}]{p\+Key,  }\item[{G4double}]{p\+Scaling,  }\item[{bool}]{p\+Inverse }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This overloaded method additionally requires a map key to first retrieve the JSON subtree.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Vector} & Vector where the values will be stored. \\
+\hline
+{\em p\+\_\+\+Map\+Key} & Key of the JSON map to retrieve the desired subtree. \\
+\hline
+{\em p\+Key} & JSON key within the subtree whose associated array values are to be extracted. \\
+\hline
+{\em p\+Scaling} & Scaling factor applied to each value. \\
+\hline
+{\em p\+Inverse} & If true, the value is divided by the scaling factor, if false it\textquotesingle{}s multiplied.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of the values to be extracted from the JSON tree. \\
+\hline
+\end{DoxyTemplParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_input_data_8hh}{OMSim\+Input\+Data.\+hh}}\item 
+OMSim\+Input\+Data.\+cc\end{DoxyCompactItemize}

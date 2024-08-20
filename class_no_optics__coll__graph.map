@@ -1,0 +1,6 @@
+<map id="NoOptics" name="NoOptics">
+<area shape="rect" id="node1" title="Materials without optical properties defined." alt="" coords="30,247,111,273"/>
+<area shape="rect" id="node2" href="$classabc_material_data.html" title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f..." alt="" coords="5,171,136,197"/>
+<area shape="rect" id="node3" href="$classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation." alt="" coords="21,95,120,121"/>
+<area shape="rect" id="node4" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="9,5,132,32"/>
+</map>

@@ -1,0 +1,158 @@
+\hypertarget{class_d_e_g_g}{}\doxysection{DEGG Class Reference}
+\label{class_d_e_g_g}\index{DEGG@{DEGG}}
+
+
+Construction of the \mbox{\hyperlink{class_d_e_g_g}{DEGG}} detector geometry.  
+
+
+
+
+Inheritance diagram for DEGG\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{class_d_e_g_g__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for DEGG\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{class_d_e_g_g__coll__graph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_d_e_g_g}{DEGG}} class is responsible for constructing the D-\/\+Egg detector geometry. It creates the pressure vessel, the inner volume, and places the PMTs inside the logical volume of the gel. The class is derived from the {\ttfamily \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}}} base class. \doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_d_e_g_g_a2bcfb59a4bfa47e91a5ad00745fd5989}{DEGG}} (G4bool p\+Place\+Harness=true)
+\item 
+\mbox{\Hypertarget{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}\label{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}} 
+void \mbox{\hyperlink{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}{construction}} ()
+\begin{DoxyCompactList}\small\item\em Construction of the whole \mbox{\hyperlink{class_d_e_g_g}{DEGG}}. If you want to change any component, you have to change it at the specific function. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076}{get\+Pressure\+Vessel\+Weight}} ()
+\begin{DoxyCompactList}\small\item\em Virtual method to get the weight of the pressure vessel. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}{get\+Number\+Of\+PMTs}} ()
+\begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}\label{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}} 
+G4\+String {\bfseries get\+Name} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954}\label{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954}} 
+void {\bfseries append\+PMTs} ()
+\item 
+\mbox{\Hypertarget{class_d_e_g_g_ab670e114ce175ce302631a49d8518236}\label{class_d_e_g_g_ab670e114ce175ce302631a49d8518236}} 
+void {\bfseries append\+Internal\+Components\+From\+CAD} ()
+\item 
+\mbox{\Hypertarget{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}\label{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}} 
+void {\bfseries append\+Pressure\+Vessel\+From\+CAD} ()
+\item 
+G4\+VSolid $\ast$ \mbox{\hyperlink{class_d_e_g_g_a7cb478ce4431037cd195380c77916a5a}{create\+Egg\+Solid}} (G4int p\+Segments\+\_\+1, G4double p\+Sphere\+Rmax, G4double p\+Sphered\+Theta, G4double p\+Sphere\+TransformZ, G4double p\+Torus1R, G4double p\+Center\+Of\+Torus1R, G4int p\+Segments\+\_\+2, G4double p\+Torus2R, G4double p\+Center\+Of\+Torus2R, G4double p\+Center\+Of\+Torus2\+\_\+z, G4double p\+Torus2\+\_\+\+Zmin, G4double p\+Torus2\+\_\+\+Zmax, G4double p\+Torus2\+\_\+\+Z0, G4double p\+Torus1\+TransformZ)
+\begin{DoxyCompactList}\small\item\em Creates the solid shape for the \mbox{\hyperlink{class_d_e_g_g}{DEGG}} pressure vessel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_d_e_g_g_a1a210a334a32f74c9ce28ff11fc05fb4}\label{class_d_e_g_g_a1a210a334a32f74c9ce28ff11fc05fb4}} 
+\mbox{\hyperlink{class_d_egg_harness}{DEgg\+Harness}} $\ast$ {\bfseries m\+Harness}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_d_e_g_g_a2bcfb59a4bfa47e91a5ad00745fd5989}\label{class_d_e_g_g_a2bcfb59a4bfa47e91a5ad00745fd5989}} 
+\index{DEGG@{DEGG}!DEGG@{DEGG}}
+\index{DEGG@{DEGG}!DEGG@{DEGG}}
+\doxysubsubsection{\texorpdfstring{DEGG()}{DEGG()}}
+{\footnotesize\ttfamily DEGG\+::\+DEGG (\begin{DoxyParamCaption}\item[{G4bool}]{p\+Place\+Harness = {\ttfamily true} }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000004}{Todo}}]
+\begin{DoxyItemize}
+\item I am not sure if the harness is correctly implemented!
+\item Clean up the code.
+\item Subtract CAD penetrator from the vessel.
+\item Investigate why the gel does not reach the photocathode edge. (Should the photocathode edge end earlier? Gel, Vessel, and PMT shape are correct.) 
+\end{DoxyItemize}\end{DoxyRefDesc}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_d_e_g_g_a7cb478ce4431037cd195380c77916a5a}\label{class_d_e_g_g_a7cb478ce4431037cd195380c77916a5a}} 
+\index{DEGG@{DEGG}!createEggSolid@{createEggSolid}}
+\index{createEggSolid@{createEggSolid}!DEGG@{DEGG}}
+\doxysubsubsection{\texorpdfstring{createEggSolid()}{createEggSolid()}}
+{\footnotesize\ttfamily G4\+VSolid $\ast$ DEGG\+::create\+Egg\+Solid (\begin{DoxyParamCaption}\item[{G4int}]{p\+Segments\+\_\+1,  }\item[{G4double}]{p\+Sphere\+Rmax,  }\item[{G4double}]{p\+Sphered\+Theta,  }\item[{G4double}]{p\+Sphere\+TransformZ,  }\item[{G4double}]{p\+Torus1R,  }\item[{G4double}]{p\+Center\+Of\+Torus1R,  }\item[{G4int}]{p\+Segments\+\_\+2,  }\item[{G4double}]{p\+Torus2R,  }\item[{G4double}]{p\+Center\+Of\+Torus2R,  }\item[{G4double}]{p\+Center\+Of\+Torus2\+\_\+z,  }\item[{G4double}]{p\+Torus2\+\_\+\+Zmin,  }\item[{G4double}]{p\+Torus2\+\_\+\+Zmax,  }\item[{G4double}]{p\+Torus2\+\_\+\+Z0,  }\item[{G4double}]{p\+Torus1\+TransformZ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Segments\+\_\+1} & Number of segments for the G4\+Sphere representing the outer glass. \\
+\hline
+{\em p\+Sphere\+Rmax} & Outer radius of the G4\+Sphere representing the outer glass. \\
+\hline
+{\em p\+Sphered\+Theta} & Delta theta angle of the G4\+Sphere segment. \\
+\hline
+{\em p\+Sphere\+TransformZ} & Shift of the G4\+Sphere in the z-\/direction. \\
+\hline
+{\em p\+Torus1R} & Radius of the small spindle torus sphere. \\
+\hline
+{\em p\+Center\+Of\+Torus1R} & Distance from the center of torus 1 to the z-\/axis. \\
+\hline
+{\em p\+Segments\+\_\+2} & Number of segments for the large spindle torus sphere. \\
+\hline
+{\em p\+Torus2R} & Radius of the large spindle torus sphere. \\
+\hline
+{\em p\+Center\+Of\+Torus2R} & Distance from the center of torus 2 to the z-\/axis (signed). \\
+\hline
+{\em p\+Center\+Of\+Torus2\+\_\+z} & Distance from the center of torus 2 to the z-\/axis (signed). \\
+\hline
+{\em p\+Torus2\+\_\+\+Zmin} & Minimum z shift from z=0 in the positive z direction. \\
+\hline
+{\em p\+Torus2\+\_\+\+Zmax} & Maximum z shift from z=0 in the positive z direction. \\
+\hline
+{\em p\+Torus2\+\_\+\+Z0} & G4double. \\
+\hline
+{\em p\+Torus1\+TransformZ} & G4double. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The outer or inner shape of the glass vessel as a G4\+VSolid. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}\label{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}} 
+\index{DEGG@{DEGG}!getNumberOfPMTs@{getNumberOfPMTs}}
+\index{getNumberOfPMTs@{getNumberOfPMTs}!DEGG@{DEGG}}
+\doxysubsubsection{\texorpdfstring{getNumberOfPMTs()}{getNumberOfPMTs()}}
+{\footnotesize\ttfamily int DEGG\+::get\+Number\+Of\+PMTs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+This method should be overridden in derived classes to provide the number of PMTs in the specific optical module. \begin{DoxyReturn}{Returns}
+Number of PMTs in the optical module. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}{OMSim\+Optical\+Module}}.
+
+\mbox{\Hypertarget{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076}\label{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076}} 
+\index{DEGG@{DEGG}!getPressureVesselWeight@{getPressureVesselWeight}}
+\index{getPressureVesselWeight@{getPressureVesselWeight}!DEGG@{DEGG}}
+\doxysubsubsection{\texorpdfstring{getPressureVesselWeight()}{getPressureVesselWeight()}}
+{\footnotesize\ttfamily double DEGG\+::get\+Pressure\+Vessel\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+This method should be overridden in derived classes to provide the weight of the pressure vessel for the specific optical module. \begin{DoxyReturn}{Returns}
+Weight of the pressure vessel. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}{OMSim\+Optical\+Module}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_d_e_g_g_8hh}{OMSim\+DEGG.\+hh}}\item 
+OMSim\+DEGG.\+cc\end{DoxyCompactItemize}

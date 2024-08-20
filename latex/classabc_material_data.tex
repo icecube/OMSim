@@ -1,0 +1,88 @@
+\hypertarget{classabc_material_data}{}\doxysection{abc\+Material\+Data Class Reference}
+\label{classabc_material_data}\index{abcMaterialData@{abcMaterialData}}
+
+
+Abstract base class for material data extraction from a json file. \mbox{\hyperlink{classabc_material_data}{abc\+Material\+Data}} class is derived from \mbox{\hyperlink{classabc_data_file}{abc\+Data\+File}} class. It is designed to manage the material data, such as refractive index and absorption length.  
+
+
+
+
+Inheritance diagram for abc\+Material\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classabc_material_data__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for abc\+Material\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{classabc_material_data__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classabc_material_data_ae30f0dc56953e39e0f5cb711c645d5a5}\label{classabc_material_data_ae30f0dc56953e39e0f5cb711c645d5a5}} 
+{\bfseries abc\+Material\+Data} (G4\+String p\+File\+Name)
+\item 
+void \mbox{\hyperlink{classabc_material_data_abd444fe5c9bf9ea0ad3629e448bd0d4e}{create\+Material}} ()
+\begin{DoxyCompactList}\small\item\em Defines a new material from data in a json-\/file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}\label{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}} 
+void \mbox{\hyperlink{classabc_material_data_a0ae68961031fd55ab0356112f49aedd0}{extract\+Absorption\+Length}} ()
+\begin{DoxyCompactList}\small\item\em Extracts absorption length data from a json-\/file and adds it to the material property table. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classabc_material_data_a2a5b07c86c18825c5eca27818ad6268c}\label{classabc_material_data_a2a5b07c86c18825c5eca27818ad6268c}} 
+void \mbox{\hyperlink{classabc_material_data_a2a5b07c86c18825c5eca27818ad6268c}{extract\+Refraction\+Index}} ()
+\begin{DoxyCompactList}\small\item\em Extracts refraction index data from a json-\/file and adds it to the material property table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classabc_material_data_af94d1f778c1998286f35cae107a3a167}\label{classabc_material_data_af94d1f778c1998286f35cae107a3a167}} 
+G4\+Material $\ast$ {\bfseries m\+Material}
+\item 
+\mbox{\Hypertarget{classabc_material_data_a598d1d21330a101855229b2fb08357a9}\label{classabc_material_data_a598d1d21330a101855229b2fb08357a9}} 
+G4\+Material\+Properties\+Table $\ast$ {\bfseries m\+MPT}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+G4\+State \mbox{\hyperlink{classabc_material_data_a8fee96bfd62337bcaefd70ba42b35aa6}{get\+State}} (G4\+String p\+State)
+\begin{DoxyCompactList}\small\item\em Converts a string representing a state of matter to a G4\+State. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classabc_material_data_acca9fc268907f29e89960699cadb0b53}\label{classabc_material_data_acca9fc268907f29e89960699cadb0b53}} 
+virtual void \mbox{\hyperlink{classabc_material_data_acca9fc268907f29e89960699cadb0b53}{extract\+Information}} ()=0
+\begin{DoxyCompactList}\small\item\em abstract method that has to be defined in derived classes \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classabc_material_data_abd444fe5c9bf9ea0ad3629e448bd0d4e}\label{classabc_material_data_abd444fe5c9bf9ea0ad3629e448bd0d4e}} 
+\index{abcMaterialData@{abcMaterialData}!createMaterial@{createMaterial}}
+\index{createMaterial@{createMaterial}!abcMaterialData@{abcMaterialData}}
+\doxysubsubsection{\texorpdfstring{createMaterial()}{createMaterial()}}
+{\footnotesize\ttfamily void abc\+Material\+Data\+::create\+Material (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reads a JSON file containing material data, parses the data into a material properties table, and creates a new material in the G4\+Nist\+Manager. \mbox{\Hypertarget{classabc_material_data_a8fee96bfd62337bcaefd70ba42b35aa6}\label{classabc_material_data_a8fee96bfd62337bcaefd70ba42b35aa6}} 
+\index{abcMaterialData@{abcMaterialData}!getState@{getState}}
+\index{getState@{getState}!abcMaterialData@{abcMaterialData}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily G4\+State abc\+Material\+Data\+::get\+State (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+State\+\_\+str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+State\+\_\+str} & A string representing a state of matter. Should be one of \char`\"{}k\+State\+Solid\char`\"{}, \char`\"{}k\+State\+Liquid\char`\"{}, \char`\"{}k\+State\+Gas\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A G4\+State representing the state of matter. Will be k\+State\+Undefined if the input string does not match any known states. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_data_file_types_8hh}{OMSim\+Data\+File\+Types.\+hh}}\item 
+OMSim\+Data\+File\+Types.\+cc\end{DoxyCompactItemize}

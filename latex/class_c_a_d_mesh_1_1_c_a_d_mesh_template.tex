@@ -1,0 +1,121 @@
+\hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template}{}\doxysection{CADMesh\+::CADMesh\+Template$<$ T $>$ Class Template Reference}
+\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template}\index{CADMesh::CADMeshTemplate$<$ T $>$@{CADMesh::CADMeshTemplate$<$ T $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ab3136fe77c9137eab12c320ff28e8933}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ab3136fe77c9137eab12c320ff28e8933}} 
+{\bfseries CADMesh\+Template} (G4\+String file\+\_\+name)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_add0691b7d6489e3c2536d413789588c3}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_add0691b7d6489e3c2536d413789588c3}} 
+{\bfseries CADMesh\+Template} (G4\+String file\+\_\+name, File\+::\+Type file\+\_\+type)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_afd91c67b24d02b530c006103d737d829}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_afd91c67b24d02b530c006103d737d829}} 
+{\bfseries CADMesh\+Template} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{File\+::\+Reader}} $>$ reader)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a958996781fc995caa16b9a198cfbd575}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a958996781fc995caa16b9a198cfbd575}} 
+{\bfseries CADMesh\+Template} (G4\+String file\+\_\+name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{File\+::\+Reader}} $>$ reader)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a0092ffff2e6fc43ec596b7b34150ff65}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a0092ffff2e6fc43ec596b7b34150ff65}} 
+{\bfseries CADMesh\+Template} (G4\+String file\+\_\+name, File\+::\+Type file\+\_\+type, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{File\+::\+Reader}} $>$ reader)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a720d23a6051b5b8cf90eed4016804fa3}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a720d23a6051b5b8cf90eed4016804fa3}} 
+virtual G4\+VSolid $\ast$ {\bfseries Get\+Solid} ()=0
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_af62de2e19df9462556f7f4503ca3366a}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_af62de2e19df9462556f7f4503ca3366a}} 
+virtual G4\+VSolid $\ast$ {\bfseries Get\+Solid} (G4int index)=0
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a4c4c34e8ec747327f3184c5621d10bb0}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a4c4c34e8ec747327f3184c5621d10bb0}} 
+virtual G4\+VSolid $\ast$ {\bfseries Get\+Solid} (G4\+String name, G4bool exact=true)=0
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ac4048ceffb2741eabf577ce4160c3bdc}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ac4048ceffb2741eabf577ce4160c3bdc}} 
+virtual std\+::vector$<$ G4\+VSolid $\ast$ $>$ {\bfseries Get\+Solids} ()=0
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ad4f9594770a52085d88d3f1728d0e393}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ad4f9594770a52085d88d3f1728d0e393}} 
+virtual G4\+Assembly\+Volume $\ast$ {\bfseries Get\+Assembly} ()=0
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a63882496ae5c828f85c67cf5e6dd7fd2}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a63882496ae5c828f85c67cf5e6dd7fd2}} 
+bool {\bfseries Is\+Valid\+For\+Navigation} ()
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a0a61dfea1f9dc79e2f76d93c7bac7faa}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a0a61dfea1f9dc79e2f76d93c7bac7faa}} 
+G4\+String {\bfseries Get\+File\+Name} ()
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a19f903fe1d8ab738f904fde16e4ac54b}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a19f903fe1d8ab738f904fde16e4ac54b}} 
+File\+::\+Type {\bfseries Get\+File\+Type} ()
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a82fd6ea099f9a97f50276983a58c73e5}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a82fd6ea099f9a97f50276983a58c73e5}} 
+void {\bfseries Set\+Verbose} (G4int verbose)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a81f6f6c513a85fafb137ddaf714b422b}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a81f6f6c513a85fafb137ddaf714b422b}} 
+G4int {\bfseries Get\+Verbose} ()
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_af7fa9ee3c99264c05032d4ad56c1efc8}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_af7fa9ee3c99264c05032d4ad56c1efc8}} 
+void {\bfseries Set\+Scale} (G4double scale)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a6d6bae2d86a5b9098ea53284db236155}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a6d6bae2d86a5b9098ea53284db236155}} 
+G4double {\bfseries Get\+Scale} ()
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a927ce172aa578d6cf232a788e8c30327}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a927ce172aa578d6cf232a788e8c30327}} 
+void {\bfseries Set\+Offset} (G4double x, G4double y, G4double z)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a6b0adece76056fe53ec1d7cdc3bd6895}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a6b0adece76056fe53ec1d7cdc3bd6895}} 
+void {\bfseries Set\+Offset} (G4\+Three\+Vector offset)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_aa70487611ee291f77e7a45868de09d5e}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_aa70487611ee291f77e7a45868de09d5e}} 
+G4\+Three\+Vector {\bfseries Get\+Offset} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a9bc217b68a0bed565e57243b61a8f67f}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a9bc217b68a0bed565e57243b61a8f67f}} 
+static std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries From} (G4\+String file\+\_\+name)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a1852c75c3596fe33561bcfc5cfad16b3}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a1852c75c3596fe33561bcfc5cfad16b3}} 
+static std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries From} (G4\+String file\+\_\+name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{File\+::\+Reader}} $>$ reader)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ae4212f4ea6a9f9cecd00f9de76b4862e}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ae4212f4ea6a9f9cecd00f9de76b4862e}} 
+static std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries From\+PLY} (G4\+String file\+\_\+name)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_aa211ec1f65959c93a33bc394093044fd}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_aa211ec1f65959c93a33bc394093044fd}} 
+static std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries From\+PLY} (G4\+String file\+\_\+name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{File\+::\+Reader}} $>$ reader)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_aabf1458c765717980fd6fa4f9702dbca}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_aabf1458c765717980fd6fa4f9702dbca}} 
+static std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries From\+STL} (G4\+String file\+\_\+name)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ab4a56ada0a8233435f4e64b8f95db8f2}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ab4a56ada0a8233435f4e64b8f95db8f2}} 
+static std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries From\+STL} (G4\+String file\+\_\+name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{File\+::\+Reader}} $>$ reader)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a4380e9ab22deab459f8402ae9e529b9f}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a4380e9ab22deab459f8402ae9e529b9f}} 
+static std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries From\+OBJ} (G4\+String file\+\_\+name)
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_adda57a3b47ed75e564e56a0437134963}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_adda57a3b47ed75e564e56a0437134963}} 
+static std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries From\+OBJ} (G4\+String file\+\_\+name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{File\+::\+Reader}} $>$ reader)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ae5b4e3222253e85b6206b3600a767acd}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_ae5b4e3222253e85b6206b3600a767acd}} 
+G4\+String {\bfseries file\+\_\+name\+\_\+}
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a667e373e0ad0876f5e823e093ec487e3}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a667e373e0ad0876f5e823e093ec487e3}} 
+File\+::\+Type {\bfseries file\+\_\+type\+\_\+}
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a0fba0a392cf318124cbabc4600a92559}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a0fba0a392cf318124cbabc4600a92559}} 
+G4int {\bfseries verbose\+\_\+}
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a7a34db19fc6bee43f7cb931706300220}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a7a34db19fc6bee43f7cb931706300220}} 
+G4double {\bfseries scale\+\_\+}
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a2f8411ada9c402551a38fdd012b7d090}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a2f8411ada9c402551a38fdd012b7d090}} 
+G4\+Three\+Vector {\bfseries offset\+\_\+}
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_aebb5f2c52db6b5b9f8739d165c64792b}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_aebb5f2c52db6b5b9f8739d165c64792b}} 
+G4\+Assembly\+Volume $\ast$ {\bfseries assembly\+\_\+} = nullptr
+\item 
+\mbox{\Hypertarget{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a1f893de622d0d1c4a07024f27650432a}\label{class_c_a_d_mesh_1_1_c_a_d_mesh_template_a1f893de622d0d1c4a07024f27650432a}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{File\+::\+Reader}} $>$ {\bfseries reader\+\_\+} = nullptr
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+CADMesh.\+hh\end{DoxyCompactItemize}

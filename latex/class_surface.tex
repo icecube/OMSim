@@ -1,0 +1,100 @@
+\hypertarget{class_surface}{}\doxysection{Surface Class Reference}
+\label{class_surface}\index{Surface@{Surface}}
+
+
+Reflective surfaces parsed from a JSON file.  
+
+
+
+
+Inheritance diagram for Surface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=154pt]{class_surface__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Surface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_surface__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_surface_a9fb1c942459b05fb216731ef7cc78e52}\label{class_surface_a9fb1c942459b05fb216731ef7cc78e52}} 
+{\bfseries Surface} (G4\+String p\+Filename)
+\item 
+G4\+Optical\+Surface\+Finish \mbox{\hyperlink{class_surface_ac425ef0a4f51424549eaa541766ea8cf}{get\+Optical\+Surface\+Finish}} (G4\+String p\+Finish)
+\begin{DoxyCompactList}\small\item\em Convert a string to a G4\+Optical\+Surface\+Finish. \end{DoxyCompactList}\item 
+G4\+Optical\+Surface\+Model \mbox{\hyperlink{class_surface_a81a6d02fd2b3f605673932a34a7bb1bf}{get\+Optical\+Surface\+Model}} (G4\+String p\+Model)
+\item 
+G4\+Surface\+Type \mbox{\hyperlink{class_surface_a9c69d5516b6e0544d59efed89d7a4ceb}{get\+Surface\+Type}} (G4\+String p\+Type)
+\item 
+\mbox{\Hypertarget{class_surface_accebb04b0468876b68298b72380c6d37}\label{class_surface_accebb04b0468876b68298b72380c6d37}} 
+void \mbox{\hyperlink{class_surface_accebb04b0468876b68298b72380c6d37}{extract\+Information}} ()
+\begin{DoxyCompactList}\small\item\em Define a new reflective surface from data in a json-\/file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_surface_a2e3ad23371b044da46648c991aab3294}\label{class_surface_a2e3ad23371b044da46648c991aab3294}} 
+G4\+Optical\+Surface $\ast$ {\bfseries m\+Optical\+Surface}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_surface_ac425ef0a4f51424549eaa541766ea8cf}\label{class_surface_ac425ef0a4f51424549eaa541766ea8cf}} 
+\index{Surface@{Surface}!getOpticalSurfaceFinish@{getOpticalSurfaceFinish}}
+\index{getOpticalSurfaceFinish@{getOpticalSurfaceFinish}!Surface@{Surface}}
+\doxysubsubsection{\texorpdfstring{getOpticalSurfaceFinish()}{getOpticalSurfaceFinish()}}
+{\footnotesize\ttfamily G4\+Optical\+Surface\+Finish Surface\+::get\+Optical\+Surface\+Finish (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Finish }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Finish} & Finish in G4\+String format. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Finish in G4\+Optical\+Surface\+Finish format. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_surface_a81a6d02fd2b3f605673932a34a7bb1bf}\label{class_surface_a81a6d02fd2b3f605673932a34a7bb1bf}} 
+\index{Surface@{Surface}!getOpticalSurfaceModel@{getOpticalSurfaceModel}}
+\index{getOpticalSurfaceModel@{getOpticalSurfaceModel}!Surface@{Surface}}
+\doxysubsubsection{\texorpdfstring{getOpticalSurfaceModel()}{getOpticalSurfaceModel()}}
+{\footnotesize\ttfamily G4\+Optical\+Surface\+Model Surface\+::get\+Optical\+Surface\+Model (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Model }\end{DoxyParamCaption})}
+
+Optical\+Surface\+Model in string to G4\+Optical\+Surface\+Model 
+\begin{DoxyParams}{Parameters}
+{\em G4\+String} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+G4\+Optical\+Surface\+Model 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_surface_a9c69d5516b6e0544d59efed89d7a4ceb}\label{class_surface_a9c69d5516b6e0544d59efed89d7a4ceb}} 
+\index{Surface@{Surface}!getSurfaceType@{getSurfaceType}}
+\index{getSurfaceType@{getSurfaceType}!Surface@{Surface}}
+\doxysubsubsection{\texorpdfstring{getSurfaceType()}{getSurfaceType()}}
+{\footnotesize\ttfamily G4\+Surface\+Type Surface\+::get\+Surface\+Type (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Type }\end{DoxyParamCaption})}
+
+Surface\+Type in string to G4\+Surface\+Type 
+\begin{DoxyParams}{Parameters}
+{\em G4\+String} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+G4\+Surface\+Type 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_data_file_types_8hh}{OMSim\+Data\+File\+Types.\+hh}}\item 
+OMSim\+Data\+File\+Types.\+cc\end{DoxyCompactItemize}

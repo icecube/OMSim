@@ -1,0 +1,298 @@
+\hypertarget{class_g4_op_boundary_process}{}\doxysection{G4\+Op\+Boundary\+Process Class Reference}
+\label{class_g4_op_boundary_process}\index{G4OpBoundaryProcess@{G4OpBoundaryProcess}}
+
+
+Inheritance diagram for G4\+Op\+Boundary\+Process\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{class_g4_op_boundary_process__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for G4\+Op\+Boundary\+Process\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{class_g4_op_boundary_process__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a42238051b141e1336e577e336882fd1b}\label{class_g4_op_boundary_process_a42238051b141e1336e577e336882fd1b}} 
+{\bfseries G4\+Op\+Boundary\+Process} (const G4\+String \&process\+Name=\char`\"{}Op\+Boundary\char`\"{}, G4\+Process\+Type type=f\+Optical)
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a564e9a509fbffada853795f0f2cb0981}\label{class_g4_op_boundary_process_a564e9a509fbffada853795f0f2cb0981}} 
+virtual G4bool {\bfseries Is\+Applicable} (const G4\+Particle\+Definition \&a\+Particle\+Type) override
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_ad4d9c8be2030988897b7f062ce5dcb0c}\label{class_g4_op_boundary_process_ad4d9c8be2030988897b7f062ce5dcb0c}} 
+virtual G4double {\bfseries Get\+Mean\+Free\+Path} (const G4\+Track \&, G4double, G4\+Force\+Condition $\ast$condition) override
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_aa8b5e3269584885e9592d8e41b938d00}\label{class_g4_op_boundary_process_aa8b5e3269584885e9592d8e41b938d00}} 
+G4\+VParticle\+Change $\ast$ {\bfseries Post\+Step\+Do\+It} (const G4\+Track \&a\+Track, const G4\+Step \&a\+Step) override
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a474f260ae1c04d3e2c29fdd4af31bfab}\label{class_g4_op_boundary_process_a474f260ae1c04d3e2c29fdd4af31bfab}} 
+virtual G4\+Op\+Boundary\+Process\+Status {\bfseries Get\+Status} () const
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_ad479aa13f935f556de65bc74a3d8ff5d}\label{class_g4_op_boundary_process_ad479aa13f935f556de65bc74a3d8ff5d}} 
+virtual void {\bfseries Set\+Invoke\+SD} (G4bool)
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_aee83cbc54d9f0fc238a9f26a2d45de95}\label{class_g4_op_boundary_process_aee83cbc54d9f0fc238a9f26a2d45de95}} 
+virtual void {\bfseries Prepare\+Physics\+Table} (const G4\+Particle\+Definition \&) override
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a6a97951554312984b3470d12b01fed0d}\label{class_g4_op_boundary_process_a6a97951554312984b3470d12b01fed0d}} 
+virtual void {\bfseries Initialise} ()
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a8cecb483bde657fa71b2e16ec358a324}\label{class_g4_op_boundary_process_a8cecb483bde657fa71b2e16ec358a324}} 
+void {\bfseries Set\+Verbose\+Level} (G4int)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a932a310563da94a0624c78cec058c9fd}\label{class_g4_op_boundary_process_a932a310563da94a0624c78cec058c9fd}} 
+{\bfseries G4\+Op\+Boundary\+Process} (const \mbox{\hyperlink{class_g4_op_boundary_process}{G4\+Op\+Boundary\+Process}} \&right)=delete
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a9e306c24efe57930e16dde4edbbec1b4}\label{class_g4_op_boundary_process_a9e306c24efe57930e16dde4edbbec1b4}} 
+\mbox{\hyperlink{class_g4_op_boundary_process}{G4\+Op\+Boundary\+Process}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_g4_op_boundary_process}{G4\+Op\+Boundary\+Process}} \&right)=delete
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_aeb20f0b98b2f9c1ee14125482ce0988e}\label{class_g4_op_boundary_process_aeb20f0b98b2f9c1ee14125482ce0988e}} 
+G4bool {\bfseries G4\+Boolean\+Rand} (const G4double prob) const
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a7c436962f14263303475ec154933495a}\label{class_g4_op_boundary_process_a7c436962f14263303475ec154933495a}} 
+G4\+Three\+Vector {\bfseries Get\+Facet\+Normal} (const G4\+Three\+Vector \&Momentum, const G4\+Three\+Vector \&Normal) const
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a10016d391c879d86b85fd0b2fc88b86d}\label{class_g4_op_boundary_process_a10016d391c879d86b85fd0b2fc88b86d}} 
+void {\bfseries Dielectric\+Metal} ()
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_adb421aabd7a1309080bccf4701d381ad}\label{class_g4_op_boundary_process_adb421aabd7a1309080bccf4701d381ad}} 
+void {\bfseries Dielectric\+Dielectric} ()
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a3814a3a4fe328bbdbcaf062dd1e1318c}\label{class_g4_op_boundary_process_a3814a3a4fe328bbdbcaf062dd1e1318c}} 
+void {\bfseries Dielectric\+LUT} ()
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a5be1e5be3aded7378d2f97ba5f84ff70}\label{class_g4_op_boundary_process_a5be1e5be3aded7378d2f97ba5f84ff70}} 
+void {\bfseries Dielectric\+LUTDAVIS} ()
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a452c76c4f1e1ceb385d56312cb79dbff}\label{class_g4_op_boundary_process_a452c76c4f1e1ceb385d56312cb79dbff}} 
+void {\bfseries Dielectric\+Dichroic} ()
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_afea4ec68181011a124e8cdf57bb2214d}\label{class_g4_op_boundary_process_afea4ec68181011a124e8cdf57bb2214d}} 
+void {\bfseries Photocathode\+Coated\+Complex} (const G4\+Track $\ast$p\+Track)
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a53b5aa578b0c7d8ebb1b842d658655b8}\label{class_g4_op_boundary_process_a53b5aa578b0c7d8ebb1b842d658655b8}} 
+void {\bfseries Choose\+Reflection} ()
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a6761dd6d67b09a129d028e3c5a4f6fe8}\label{class_g4_op_boundary_process_a6761dd6d67b09a129d028e3c5a4f6fe8}} 
+void {\bfseries Do\+Absorption} ()
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a00bfdace8eebe7926e66c8c604a83d17}\label{class_g4_op_boundary_process_a00bfdace8eebe7926e66c8c604a83d17}} 
+void {\bfseries Do\+Reflection} ()
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_abdb7a4839c881c31b051908c797841d4}\label{class_g4_op_boundary_process_abdb7a4839c881c31b051908c797841d4}} 
+G4double {\bfseries Get\+Incident\+Angle} ()
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a2e2abad2e131addbc4b474777c2224de}\label{class_g4_op_boundary_process_a2e2abad2e131addbc4b474777c2224de}} 
+G4double {\bfseries Get\+Reflectivity} (G4double E1\+\_\+perp, G4double E1\+\_\+parl, G4double incidentangle, G4double Real\+Rindex, G4double Imaginary\+Rindex)
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a3e94692b6a0d08e3325c2371ea2e18c8}\label{class_g4_op_boundary_process_a3e94692b6a0d08e3325c2371ea2e18c8}} 
+\mbox{\hyperlink{struct_fresnel_coefficients}{Fresnel\+Coefficients}} {\bfseries Three\+Layer\+System} (\mbox{\hyperlink{struct_fresnel_coefficients}{Fresnel\+Coefficients}} p\+Coefficients\+L1, \mbox{\hyperlink{struct_fresnel_coefficients}{Fresnel\+Coefficients}} p\+Coefficients\+L2, G4complex p\+Factor)
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a13fe04504bfb61ff4587f79e90d9c298}\label{class_g4_op_boundary_process_a13fe04504bfb61ff4587f79e90d9c298}} 
+G4\+Op\+Boundary\+Process\+Status {\bfseries get\+Status} (\mbox{\hyperlink{struct_optical_layer_result}{Optical\+Layer\+Result}} p\+Results)
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a39fbf39710f69684f7a11dd48ded3efd}\label{class_g4_op_boundary_process_a39fbf39710f69684f7a11dd48ded3efd}} 
+\mbox{\hyperlink{struct_optical_layer_result}{Optical\+Layer\+Result}} {\bfseries Calculate\+Thin\+Layer\+Coefficients\+Complex} (G4double sin\+TL, G4double wavelength, G4complex cost1, G4complex cost2, G4\+Track p\+Track)
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a325c1870d1ed89b3076d6a3bd4e652bc}\label{class_g4_op_boundary_process_a325c1870d1ed89b3076d6a3bd4e652bc}} 
+\mbox{\hyperlink{struct_fresnel_coefficients}{Fresnel\+Coefficients}} {\bfseries Calculate\+Fresnel\+Coefficients\+Complex} (G4complex p\+Complex\+Rindex1, G4complex p\+Complex\+Rindex2, G4complex p\+Cost1, G4complex p\+Cost2)
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_abc1a2da46daf4552e3594ede54bacb62}\label{class_g4_op_boundary_process_abc1a2da46daf4552e3594ede54bacb62}} 
+\mbox{\hyperlink{struct_optical_layer_result}{Optical\+Layer\+Result}} {\bfseries Fresnel2\+Probability\+Complex} (\mbox{\hyperlink{struct_fresnel_coefficients}{Fresnel\+Coefficients}} p\+Coefficients, G4double p\+Rindex1, G4double p\+Rindex2, G4double p\+Imag\+RIndex1, G4double p\+Imag\+RIndex2, G4complex p\+Cost1, G4complex p\+Cost2)
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a63c77b950e254d8a40543ba1eb5e2fb7}\label{class_g4_op_boundary_process_a63c77b950e254d8a40543ba1eb5e2fb7}} 
+void {\bfseries Calculate\+Reflectivity} ()
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_aa2f871435892dabd5291a63779517214}\label{class_g4_op_boundary_process_aa2f871435892dabd5291a63779517214}} 
+void {\bfseries Boundary\+Process\+Verbose} () const
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_afc22a67ba43951f3813228f318747346}\label{class_g4_op_boundary_process_afc22a67ba43951f3813228f318747346}} 
+G4bool {\bfseries Invoke\+SD} (const G4\+Step $\ast$step)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_afae70d6a168a430e9bc6cfee4ba47762}\label{class_g4_op_boundary_process_afae70d6a168a430e9bc6cfee4ba47762}} 
+G4\+Mutex {\bfseries boundary\+Process\+Mutex}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a690a305d2eb7c9fc763c6a34399a61e0}\label{class_g4_op_boundary_process_a690a305d2eb7c9fc763c6a34399a61e0}} 
+G4\+Three\+Vector {\bfseries f\+Old\+Momentum}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_afe7be5dcc4809382841f16392b4f9207}\label{class_g4_op_boundary_process_afe7be5dcc4809382841f16392b4f9207}} 
+G4\+Three\+Vector {\bfseries f\+Old\+Polarization}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_ac4ba33610a8a9d223d43e7f9f38e2156}\label{class_g4_op_boundary_process_ac4ba33610a8a9d223d43e7f9f38e2156}} 
+G4\+Three\+Vector {\bfseries f\+New\+Momentum}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a1dba0b582e906dd1dd06b92d92e42bb5}\label{class_g4_op_boundary_process_a1dba0b582e906dd1dd06b92d92e42bb5}} 
+G4\+Three\+Vector {\bfseries f\+New\+Polarization}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a553011ded1d5d830e56aca2a5228c82b}\label{class_g4_op_boundary_process_a553011ded1d5d830e56aca2a5228c82b}} 
+G4\+Three\+Vector {\bfseries f\+Global\+Normal}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a7116781e6eaaf4b25080c35b6781bdc1}\label{class_g4_op_boundary_process_a7116781e6eaaf4b25080c35b6781bdc1}} 
+G4\+Three\+Vector {\bfseries f\+Facet\+Normal}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_ae4d6dc9b1a7ab67b675ba8330799c15c}\label{class_g4_op_boundary_process_ae4d6dc9b1a7ab67b675ba8330799c15c}} 
+const G4\+Material $\ast$ {\bfseries f\+Material1}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a0770aa50c5aca79dbababa05857a9c17}\label{class_g4_op_boundary_process_a0770aa50c5aca79dbababa05857a9c17}} 
+const G4\+Material $\ast$ {\bfseries f\+Material2}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a49b36bd6bd2f8f8e67741f5bcdca0ec5}\label{class_g4_op_boundary_process_a49b36bd6bd2f8f8e67741f5bcdca0ec5}} 
+G4\+Optical\+Surface $\ast$ {\bfseries f\+Optical\+Surface}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a9d0d26495815a3f19d7098caae164bfc}\label{class_g4_op_boundary_process_a9d0d26495815a3f19d7098caae164bfc}} 
+G4\+Material\+Property\+Vector $\ast$ {\bfseries f\+Real\+RIndex\+MPV}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_ad1246201fca1d1e7968807ec071e0eec}\label{class_g4_op_boundary_process_ad1246201fca1d1e7968807ec071e0eec}} 
+G4\+Material\+Property\+Vector $\ast$ {\bfseries f\+Imag\+RIndex\+MPV}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a9450fa84132c4928f43e0cf257b2a3ab}\label{class_g4_op_boundary_process_a9450fa84132c4928f43e0cf257b2a3ab}} 
+G4\+Physics2\+DVector $\ast$ {\bfseries f\+Dichroic\+Vector}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a5158f522cf6d8f6d23faa7d182f3e2a4}\label{class_g4_op_boundary_process_a5158f522cf6d8f6d23faa7d182f3e2a4}} 
+G4double {\bfseries f\+Photon\+Momentum}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a56fbc5402a17663717a96b0829f3815d}\label{class_g4_op_boundary_process_a56fbc5402a17663717a96b0829f3815d}} 
+G4double {\bfseries f\+Rindex1}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_af5cd7233e3013eb405b006b2a2181208}\label{class_g4_op_boundary_process_af5cd7233e3013eb405b006b2a2181208}} 
+G4double {\bfseries f\+Rindex2}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a1bb19c971a9972d968f89334cf5be1e4}\label{class_g4_op_boundary_process_a1bb19c971a9972d968f89334cf5be1e4}} 
+G4double {\bfseries f\+Absorption\+Length1}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a8b816691e9ffd7e608b45e5229f4eaf7}\label{class_g4_op_boundary_process_a8b816691e9ffd7e608b45e5229f4eaf7}} 
+G4double {\bfseries f\+Absorption\+Length2}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a966ad211098602fbb64b54c4ca685786}\label{class_g4_op_boundary_process_a966ad211098602fbb64b54c4ca685786}} 
+G4double {\bfseries sint1}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a18a33712f9b7a7bf66b9b53ff2803f9b}\label{class_g4_op_boundary_process_a18a33712f9b7a7bf66b9b53ff2803f9b}} 
+G4double {\bfseries f\+Reflectivity}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_aeb2c3e89792931041e4a179504cca7fc}\label{class_g4_op_boundary_process_aeb2c3e89792931041e4a179504cca7fc}} 
+G4double {\bfseries f\+Efficiency}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a876202130c63ec820cb1ad7f53339d40}\label{class_g4_op_boundary_process_a876202130c63ec820cb1ad7f53339d40}} 
+G4double {\bfseries f\+Transmittance}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a11d45f165c91fcc90b46185fa994fb0c}\label{class_g4_op_boundary_process_a11d45f165c91fcc90b46185fa994fb0c}} 
+G4double {\bfseries f\+Surface\+Roughness}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_adcf984df2203351de989177d2aa66d9c}\label{class_g4_op_boundary_process_adcf984df2203351de989177d2aa66d9c}} 
+G4double {\bfseries f\+Prob\+\_\+sl}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a17968ccb29c446e4091a53ba6e9929b7}\label{class_g4_op_boundary_process_a17968ccb29c446e4091a53ba6e9929b7}} 
+G4double {\bfseries f\+Prob\+\_\+ss}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a27dba60d55d1c6c03d184c79c8d74070}\label{class_g4_op_boundary_process_a27dba60d55d1c6c03d184c79c8d74070}} 
+G4double {\bfseries f\+Prob\+\_\+bs}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a45128ebaf0a7ea55d7c964634863525d}\label{class_g4_op_boundary_process_a45128ebaf0a7ea55d7c964634863525d}} 
+G4double {\bfseries f\+Car\+Tolerance}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a4fb9414361082f44d568412bd4238020}\label{class_g4_op_boundary_process_a4fb9414361082f44d568412bd4238020}} 
+G4double {\bfseries f\+Coated\+Rindex}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a5cfa2a2aa9b3f7257cbfc9fada895a9b}\label{class_g4_op_boundary_process_a5cfa2a2aa9b3f7257cbfc9fada895a9b}} 
+G4double {\bfseries f\+Coated\+Thickness}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a18aa50cba98261b2c6cf61fb4461de58}\label{class_g4_op_boundary_process_a18aa50cba98261b2c6cf61fb4461de58}} 
+G4\+Op\+Boundary\+Process\+Status {\bfseries f\+Status}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a7b382c2d79e534d35d74201a7714bb70}\label{class_g4_op_boundary_process_a7b382c2d79e534d35d74201a7714bb70}} 
+G4\+Optical\+Surface\+Model {\bfseries f\+Model}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a129657e6b3bb4c8b370d7067354e60b2}\label{class_g4_op_boundary_process_a129657e6b3bb4c8b370d7067354e60b2}} 
+G4\+Optical\+Surface\+Finish {\bfseries f\+Finish}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a9963aa5d596a1ac55506f708f9d257ab}\label{class_g4_op_boundary_process_a9963aa5d596a1ac55506f708f9d257ab}} 
+G4int {\bfseries f\+\_\+i\+TE}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a9ff075bb99015d307ead3e0ac43f7ca6}\label{class_g4_op_boundary_process_a9ff075bb99015d307ead3e0ac43f7ca6}} 
+G4int {\bfseries f\+\_\+i\+TM}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_aa1623cbb35bba9cd8c7c3f2cf0687867}\label{class_g4_op_boundary_process_aa1623cbb35bba9cd8c7c3f2cf0687867}} 
+G4int {\bfseries f\+Num\+Warnings}
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a426e69dc26d6f5139cdcfd9aa069fb16}\label{class_g4_op_boundary_process_a426e69dc26d6f5139cdcfd9aa069fb16}} 
+size\+\_\+t {\bfseries idx\+\_\+dichroicX} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_ada754d48e91f5188a14ebfc17c66e539}\label{class_g4_op_boundary_process_ada754d48e91f5188a14ebfc17c66e539}} 
+size\+\_\+t {\bfseries idx\+\_\+dichroicY} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a44e89f5659ac965e96fed8bb4bb1a158}\label{class_g4_op_boundary_process_a44e89f5659ac965e96fed8bb4bb1a158}} 
+size\+\_\+t {\bfseries idx\+\_\+rindex1} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_ac8f3911cd1dd8c092c14bbf5d1894044}\label{class_g4_op_boundary_process_ac8f3911cd1dd8c092c14bbf5d1894044}} 
+size\+\_\+t {\bfseries idx\+\_\+rindex\+\_\+surface} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_af1f48efa25898aff71c99589fd4b9a43}\label{class_g4_op_boundary_process_af1f48efa25898aff71c99589fd4b9a43}} 
+size\+\_\+t {\bfseries idx\+\_\+reflect} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a47177a061419d08212d377c0859ab256}\label{class_g4_op_boundary_process_a47177a061419d08212d377c0859ab256}} 
+size\+\_\+t {\bfseries idx\+\_\+eff} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_afc9ab9b79d6877490dde42e09db95eac}\label{class_g4_op_boundary_process_afc9ab9b79d6877490dde42e09db95eac}} 
+size\+\_\+t {\bfseries idx\+\_\+trans} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a3c7cf08403fbf1edd359f3d3ca546b32}\label{class_g4_op_boundary_process_a3c7cf08403fbf1edd359f3d3ca546b32}} 
+size\+\_\+t {\bfseries idx\+\_\+lobe} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_af054b0ac39afa98a2f3576d3bf08e338}\label{class_g4_op_boundary_process_af054b0ac39afa98a2f3576d3bf08e338}} 
+size\+\_\+t {\bfseries idx\+\_\+spike} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a03855fa562abcc92acaa7498328ca3b2}\label{class_g4_op_boundary_process_a03855fa562abcc92acaa7498328ca3b2}} 
+size\+\_\+t {\bfseries idx\+\_\+back} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a0e1fa864872eeec7c129b759735f61df}\label{class_g4_op_boundary_process_a0e1fa864872eeec7c129b759735f61df}} 
+size\+\_\+t {\bfseries idx\+\_\+rindex2} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_ad7fd106fe802c646d8d790101623f93d}\label{class_g4_op_boundary_process_ad7fd106fe802c646d8d790101623f93d}} 
+size\+\_\+t {\bfseries idx\+\_\+groupvel} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_aff47b07f56ef0a8d6c9b492ba72dc5fa}\label{class_g4_op_boundary_process_aff47b07f56ef0a8d6c9b492ba72dc5fa}} 
+size\+\_\+t {\bfseries idx\+\_\+rrindex} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a78ec431496d41ce5cf5d38f1ca18b367}\label{class_g4_op_boundary_process_a78ec431496d41ce5cf5d38f1ca18b367}} 
+size\+\_\+t {\bfseries idx\+\_\+irindex} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a7e4f995032dd4fa6ad87ab9288e17a5a}\label{class_g4_op_boundary_process_a7e4f995032dd4fa6ad87ab9288e17a5a}} 
+size\+\_\+t {\bfseries idx\+\_\+coatedrindex} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a5a3273b8949af8826e42b5a4519d9e82}\label{class_g4_op_boundary_process_a5a3273b8949af8826e42b5a4519d9e82}} 
+size\+\_\+t {\bfseries idx\+\_\+abslength1} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a42f490c1cd1daec7284fa87bbd2c0af5}\label{class_g4_op_boundary_process_a42f490c1cd1daec7284fa87bbd2c0af5}} 
+size\+\_\+t {\bfseries idx\+\_\+abslength2} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a922accb03c04ed5918516767389bc6c4}\label{class_g4_op_boundary_process_a922accb03c04ed5918516767389bc6c4}} 
+size\+\_\+t {\bfseries idx\+\_\+coatedimagindex} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a1a686654a122e7de7f6c73eebd55484f}\label{class_g4_op_boundary_process_a1a686654a122e7de7f6c73eebd55484f}} 
+size\+\_\+t {\bfseries idx\+\_\+coatedabslength} = 0
+\item 
+\mbox{\Hypertarget{class_g4_op_boundary_process_a3d582fd8d025a68e445a6357c9c302ec}\label{class_g4_op_boundary_process_a3d582fd8d025a68e445a6357c9c302ec}} 
+G4bool {\bfseries f\+Invoke\+SD}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+OMSim\+Op\+Boundary\+Process.\+hh\item 
+OMSim\+Op\+Boundary\+Process.\+cc\end{DoxyCompactItemize}

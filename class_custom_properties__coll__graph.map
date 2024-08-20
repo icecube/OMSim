@@ -1,0 +1,5 @@
+<map id="CustomProperties" name="CustomProperties">
+<area shape="rect" id="node1" title="Adds user defined properties to already defined materials." alt="" coords="5,171,144,197"/>
+<area shape="rect" id="node2" href="$classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation." alt="" coords="25,95,124,121"/>
+<area shape="rect" id="node3" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="13,5,136,32"/>
+</map>

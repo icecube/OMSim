@@ -1,0 +1,102 @@
+\hypertarget{class_no_response}{}\doxysection{No\+Response Class Reference}
+\label{class_no_response}\index{NoResponse@{NoResponse}}
+
+
+Inheritance diagram for No\+Response\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{class_no_response__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for No\+Response\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{class_no_response__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_no_response_a902924c898fdcdc49738154e60ff07bb}\label{class_no_response_a902924c898fdcdc49738154e60ff07bb}} 
+{\bfseries No\+Response} (const \mbox{\hyperlink{class_no_response}{No\+Response}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_no_response_a1f4557e92de73c3d08dfd3a19d411d98}\label{class_no_response_a1f4557e92de73c3d08dfd3a19d411d98}} 
+\mbox{\hyperlink{class_no_response}{No\+Response}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_no_response}{No\+Response}} \&)=delete
+\item 
+\mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}} \mbox{\hyperlink{class_no_response_aa904db4023917812120742e949d1fd88}{process\+Photocathode\+Hit}} (G4double pX, G4double pY, G4double p\+Wavelength) override
+\begin{DoxyCompactList}\small\item\em Process a hit on the photocathode into a PMT pulse. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_no_response_a87d46b2cf6fcf1e32e3aa4c62b614c7b}{pass\+QE}} (G4double p\+Wavelength) override
+\begin{DoxyCompactList}\small\item\em Checks if photon with given wavelength passes QE check. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_no_response_a7f08958dab9ff1582e46bf5b8bda215e}\label{class_no_response_a7f08958dab9ff1582e46bf5b8bda215e}} 
+static \mbox{\hyperlink{class_no_response}{No\+Response}} \& {\bfseries get\+Instance} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_no_response_ae56766ceaa0520afcaa02ae8faff6b7a}\label{class_no_response_ae56766ceaa0520afcaa02ae8faff6b7a}} 
+std\+::vector$<$ G4double $>$ {\bfseries get\+Scanned\+Wavelengths} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_no_response_a87d46b2cf6fcf1e32e3aa4c62b614c7b}\label{class_no_response_a87d46b2cf6fcf1e32e3aa4c62b614c7b}} 
+\index{NoResponse@{NoResponse}!passQE@{passQE}}
+\index{passQE@{passQE}!NoResponse@{NoResponse}}
+\doxysubsubsection{\texorpdfstring{passQE()}{passQE()}}
+{\footnotesize\ttfamily bool No\+Response\+::pass\+QE (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Wavelength} & Photon wavelength to be checked in nm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the photon passes the QE check, false otherwise.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+configure\+QEinterpolator 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2447b2f9eb62a1e99f410bfeda917d5c}{OMSim\+PMTResponse}}.
+
+\mbox{\Hypertarget{class_no_response_aa904db4023917812120742e949d1fd88}\label{class_no_response_aa904db4023917812120742e949d1fd88}} 
+\index{NoResponse@{NoResponse}!processPhotocathodeHit@{processPhotocathodeHit}}
+\index{processPhotocathodeHit@{processPhotocathodeHit}!NoResponse@{NoResponse}}
+\doxysubsubsection{\texorpdfstring{processPhotocathodeHit()}{processPhotocathodeHit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} No\+Response\+::process\+Photocathode\+Hit (\begin{DoxyParamCaption}\item[{G4double}]{pX,  }\item[{G4double}]{pY,  }\item[{G4double}]{p\+Wavelength }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Transform a hit based on its location and photon wavelength to a PMT pulse, considering the transit time, charge, and detection probability.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pX} & x position on photocathode \\
+\hline
+{\em pY} & y position on photocathode \\
+\hline
+{\em p\+Wavelength} & Wavelength of the hitting photon \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+PMTPulse representing the processed hit. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}{OMSim\+PMTResponse}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_p_m_t_response_8hh}{OMSim\+PMTResponse.\+hh}}\item 
+OMSim\+PMTResponse.\+cc\end{DoxyCompactItemize}

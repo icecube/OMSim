@@ -1,0 +1,67 @@
+\hypertarget{_o_m_sim_command_args_table_8hh}{}\doxysection{OMSim\+Command\+Args\+Table.\+hh File Reference}
+\label{_o_m_sim_command_args_table_8hh}\index{OMSimCommandArgsTable.hh@{OMSimCommandArgsTable.hh}}
+
+
+Definition of the \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} singleton class, which controls user args.  
+
+
+Include dependency graph for OMSim\+Command\+Args\+Table.\+hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_o_m_sim_command_args_table_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_o_m_sim_command_args_table_8hh__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}
+\begin{DoxyCompactList}\small\item\em A class used to hold \mbox{\hyperlink{class_o_m_sim}{OMSim}} command arguments with global instance access. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_o_m_sim_command_args_table_8hh_aa41bdc30fcdd046324b69c10b14d4524}{WRITE\+\_\+\+TO\+\_\+\+JSON\+\_\+\+IF\+\_\+\+TYPE\+\_\+\+MATCHES}}(VARIANT,  TYPE)
+\begin{DoxyCompactList}\small\item\em Writes a key-\/value pair to a JSON file if the value type matches TYPE. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_o_m_sim_command_args_table_8hh_af84902b9e2e3efc57109c4046d07d207}\label{_o_m_sim_command_args_table_8hh_af84902b9e2e3efc57109c4046d07d207}} 
+\mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} $\ast$ {\bfseries g\+Command\+Args\+Table} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_o_m_sim_command_args_table_8hh_aa41bdc30fcdd046324b69c10b14d4524}\label{_o_m_sim_command_args_table_8hh_aa41bdc30fcdd046324b69c10b14d4524}} 
+\index{OMSimCommandArgsTable.hh@{OMSimCommandArgsTable.hh}!WRITE\_TO\_JSON\_IF\_TYPE\_MATCHES@{WRITE\_TO\_JSON\_IF\_TYPE\_MATCHES}}
+\index{WRITE\_TO\_JSON\_IF\_TYPE\_MATCHES@{WRITE\_TO\_JSON\_IF\_TYPE\_MATCHES}!OMSimCommandArgsTable.hh@{OMSimCommandArgsTable.hh}}
+\doxysubsubsection{\texorpdfstring{WRITE\_TO\_JSON\_IF\_TYPE\_MATCHES}{WRITE\_TO\_JSON\_IF\_TYPE\_MATCHES}}
+{\footnotesize\ttfamily \#define WRITE\+\_\+\+TO\+\_\+\+JSON\+\_\+\+IF\+\_\+\+TYPE\+\_\+\+MATCHES(\begin{DoxyParamCaption}\item[{}]{VARIANT,  }\item[{}]{TYPE }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (type == \textcolor{keyword}{typeid}(TYPE))                                          \(\backslash\)}
+\DoxyCodeLine{    \{                                                                  \(\backslash\)}
+\DoxyCodeLine{        lOutputFile << \textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)"{}"{}} << kv.first << \textcolor{stringliteral}{"{}\(\backslash\)"{}: "{}};                       \(\backslash\)}
+\DoxyCodeLine{        if (\textcolor{keyword}{typeid}(TYPE) == \textcolor{keyword}{typeid}(std::string))                       \(\backslash\)}
+\DoxyCodeLine{        \{                                                              \(\backslash\)}
+\DoxyCodeLine{            lOutputFile << \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}} << boost::any\_cast<TYPE>(VARIANT) << \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}; \(\backslash\)}
+\DoxyCodeLine{        \}                                                              \(\backslash\)}
+\DoxyCodeLine{        else                                                           \(\backslash\)}
+\DoxyCodeLine{        \{                                                              \(\backslash\)}
+\DoxyCodeLine{            lOutputFile << boost::any\_cast<TYPE>(VARIANT);                 \(\backslash\)}
+\DoxyCodeLine{        \}                                                              \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+\begin{DoxyNote}{Note}
+This macro is used inside the {\ttfamily \mbox{\hyperlink{class_o_m_sim_command_args_table_a4f90935ea49fb19c1ae77b826dbdb410}{OMSim\+Command\+Args\+Table\+::write\+To\+Json()}}} method. 
+\end{DoxyNote}

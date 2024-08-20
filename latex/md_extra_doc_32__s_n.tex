@@ -1,0 +1,161 @@
+This module provides a comprehensive analysis and simulations focusing on the detection of CCSN neutrinos with segmented sensors.
+
+This simulation is designed to emulate the detection of Core Collapse Supernova (CCSN or simply SN in the following) neutrinos using segmented sensors. It directly generates particles resulting from Inverse Beta Decay (IBD) and Electron Neutrino-\/\+Electron Elastic Scattering (ENES).
+
+
+\begin{DoxyItemize}
+\item IBD\+: {\ttfamily ν̄\+\_\+e + p → n + e⁺}
+\item ENES\+: {\ttfamily ν\+\_\+e + e⁻ → ν\+\_\+e + e⁻}
+\end{DoxyItemize}
+
+In the IBD case, the outgoing neutron is not simulated; hence, the neutron capture process that might be detected is not included in the simulation. Each event is assigned a weight based on the interaction probability, detailed later on this page. By default, the surrounding ice is represented as a cylinder facing the CCSN, simplifying the weight calculations.
+
+Although CCSN models incorporate neutrino oscillations, the default simulation does not include any oscillation scenario in the weight calculations.
+
+   ~\newline
+ Figure 1\+: {\itshape Diagram of the steps involved to generate the events for the simulation of CCSN neutrinos. The scheme is valid for both IBD and ENES, except for the threshold check. Here, {\ttfamily e} stands for both electron from ENES or positron from IBD, and {\ttfamily ν} for both electronic neutrino from ENES or electronic antineutrino from IBD. Image from \href{https://zenodo.org/record/8107177}{\texttt{ this thesis}}.}  
+
+The detailed procedure for this simulation is comprehensively described in \href{https://zenodo.org/record/8107177}{\texttt{ this thesis}}, specifically in section 6.\+4. Below is a summary extracted from this source, outlining the steps taken to generate the events\+:
+
+
+\begin{DoxyEnumerate}
+\item Utilizing the models, the expected flux per area is calculated from the luminosity {\ttfamily L(t)} and the mean energy {\ttfamily $<$E(t)$>$} according to {\ttfamily Φ(t) = (1 / (4πd²)) · (L(t) / $<$E(t)$>$)}.
+\item The distribution of {\ttfamily Φ(t)} is used to sample a time {\ttfamily t} of the burst via the inverse CDF (Cumulative Distribution Function) method. All other sampling from distributions within this simulation also employs the inverse CDF method.
+\item For the sampled time {\ttfamily t}, the corresponding mean energy and mean squared energy are extracted from the models. These parameters contribute to the construction of the energy spectrum {\ttfamily f(\+E,t)}, as elucidated in \href{https://arxiv.org/pdf/1211.3920.pdf}{\texttt{ this paper}}.
+\item The energy of the neutrino/antineutrino {\ttfamily E\+\_\+ν} is sampled from {\ttfamily f(\+E,t)}. If the energy falls below the IBD threshold, the algorithm reverts to the second step.
+\item From {\ttfamily E\+\_\+ν}, the angular cross section is devised. This informs the sampling of the angle {\ttfamily θ} between the incoming neutrino and the resulting {\ttfamily e⁻/e⁺}. The {\ttfamily φ} direction is randomly generated within the range of {\ttfamily 0} to {\ttfamily 2π}.
+\item The energy of {\ttfamily e⁻/e⁺} is deduced from {\ttfamily θ} and {\ttfamily E\+\_\+ν}. The interaction probability for such an event is ascertained using the total cross section, facilitating the computation of the interaction weight, as further described below.
+\item The {\ttfamily e⁻/e⁺} is manifested at a random position within the ice volume.
+\end{DoxyEnumerate}\hypertarget{md_extra_doc_32__s_n_autotoc_md30}{}\doxysection{Input Parameters}\label{md_extra_doc_32__s_n_autotoc_md30}
+Execute {\ttfamily ./\+OMSim\+\_\+supernova -\/-\/help} to display all possible input parameters.
+
+A typical command to run the simulation is\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./OMSim\_supernova -\/n 100 -\/-\/wheight 20 -\/-\/wradius 20 -\/-\/depth\_pos 75 -\/-\/SNgun 0 -\/-\/SNtype 0}
+
+\end{DoxyCode}
+\hypertarget{md_extra_doc_32__s_n_autotoc_md31}{}\doxysubsection{General Parameters}\label{md_extra_doc_32__s_n_autotoc_md31}
+
+\begin{DoxyItemize}
+\item {\ttfamily -\/-\/depth\+\_\+pos}\+: Index of the vector determining the depth of the simulated modules. Notable values include the dust layer (65), mean ice properties (approx) 75, and the cleanes ice (88). This selection affects the effective scattering and absorption lengths of the ice at the specified depth.
+\item {\ttfamily -\/o}\+: Output file name. By default, two output files are created\+: one containing the simulated event information, and another with detection data.
+\end{DoxyItemize}\hypertarget{md_extra_doc_32__s_n_autotoc_md32}{}\doxysubsection{SN Framework Parameters}\label{md_extra_doc_32__s_n_autotoc_md32}
+
+\begin{DoxyItemize}
+\item {\ttfamily -\/-\/wheight}\+: Height of the ice\textquotesingle{}s simulated world cylinder.
+\item {\ttfamily -\/-\/wradius}\+: Radius of the ice\textquotesingle{}s simulated world cylinder.
+\item {\ttfamily -\/-\/SNgun}\+: Chooses the interaction type (0 for IBD, 1 for ENES).
+\item {\ttfamily -\/-\/SNtype}\+: Selects the CCSN model. Two models are currently available, provided by the Garching group. These models represent the expected fluxes from two CCSNs resulting in neutron stars, with different progenitor masses (27 and 9.\+6 solar masses). Simulations yielding this data can be found at \href{https://arxiv.org/abs/1510.04643}{\texttt{ https\+://arxiv.\+org/abs/1510.\+04643}}
+\end{DoxyItemize}\hypertarget{md_extra_doc_32__s_n_autotoc_md33}{}\doxysubsection{Fixed Energy Studies}\label{md_extra_doc_32__s_n_autotoc_md33}
+The user can also manually set the mean energy of generated events by providing specific input parameters. For instance\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/SNfixEnergy -\/-\/SNmeanE 10.0 -\/-\/SNalpha 3.0}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily -\/-\/SNfix\+Energy}\+: Acts as a flag parameter. When invoked, the simulation disregards the actual mean energy of neutrinos corresponding to the burst time. Instead, it adopts the mean energy and the pinching parameter specified by the subsequent two parameters.
+\item {\ttfamily -\/-\/SNmeanE}\+: Specifies the mean energy of the neutrinos.
+\item {\ttfamily -\/-\/SNalpha}\+: Defines the pinching parameter of the energy distribution (see \href{https://arxiv.org/pdf/1211.3920.pdf}{\texttt{ this paper}}).
+\end{DoxyItemize}
+
+Consequently, the neutrinos\textquotesingle{} energy is sampled from the distribution, derived from these two parameters and the previously mentioned model.\hypertarget{md_extra_doc_32__s_n_autotoc_md34}{}\doxysection{Output Files}\label{md_extra_doc_32__s_n_autotoc_md34}
+Two files are produced\+:\hypertarget{md_extra_doc_32__s_n_autotoc_md35}{}\doxysubsection{$\ast$\+\_\+info.\+dat}\label{md_extra_doc_32__s_n_autotoc_md35}
+This file encapsulates data concerning each generated neutrino event. Each entry contains\+:
+
+
+\begin{DoxyItemize}
+\item Time of the neutrino burst.
+\item Corresponding mean energy derived from the model.
+\item Sampled neutrino energy {\ttfamily E\+\_\+ν}.
+\item {\ttfamily cos(θ)}, where {\ttfamily θ} is the angle between the incoming neutrino and the outgoing particle (e-\/ or e+).
+\item Energy of the outgoing particle (e-\/ or e+).
+\item Interaction weight, calculated using the formula\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{W\_int(E\_ν) = σ(E) · n\_target · l,}
+
+\end{DoxyCode}
+
+
+where\+:
+\begin{DoxyItemize}
+\item {\ttfamily σ(\+E)} is the total cross section for the interaction,
+\item {\ttfamily n\+\_\+target} is the number of targets available for the interaction in the ice,
+\item {\ttfamily l} is the length of the simulated cylindrical world.
+\end{DoxyItemize}\hypertarget{md_extra_doc_32__s_n_autotoc_md36}{}\doxysubsection{$\ast$\+\_\+data.\+dat}\label{md_extra_doc_32__s_n_autotoc_md36}
+This file contains the detection information. Its structure is designed to facilitate various trigger studies, allowing the examination of different time windows. Users might evaluate its structure for convenience, particularly if the trigger check is integrated within the simulation (requiring a predefined time window).
+
+The default content structure is as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Nr of sim. modules > Number of hits per module > for each PMT hit starting with module 0: \{ PMT number | Hit time | Det. probability \}}
+
+\end{DoxyCode}
+
+
+Note that the number of columns varies per line, contingent on the number of photons detected for the simulated neutrinos.\hypertarget{md_extra_doc_32__s_n_autotoc_md37}{}\doxysection{Weights}\label{md_extra_doc_32__s_n_autotoc_md37}
+The output files contain the interaction weight. However, users should also consider a weight factor depending on the total flux and the number of simulated events. In the most general case of simulating a single depth and then extrapolating the results to the entire detector, another weight factor is needed. This factor accounts for the ice properties of the simulated depth with respect to the whole detector. This last factor decreases in importance when using high multiplicity conditions, since these events generally interact closer to the module, making the photons less sensitive to changes in the optical properties.
+
+These weight factors can be added similarly as explained in \href{https://zenodo.org/record/8107177}{\texttt{ this thesis, section 6.\+4.\+2}}.
+
+The total weight is composed of 3 components\+: the interaction probability, the SN flux through the simulated volume, and the different optical properties of the modules at different depths\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{W = W\_int(E) · W\_flux(d) · W\_eff.}
+
+\end{DoxyCode}
+
+
+Each component is explained as follows\+:\hypertarget{md_extra_doc_32__s_n_autotoc_md38}{}\doxysubsection{Interaction Probability Weight\+:}\label{md_extra_doc_32__s_n_autotoc_md38}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{W\_int(E\_ν) = σ(E) · n\_target · l,}
+
+\end{DoxyCode}
+ where {\ttfamily σ(E\+\_\+ν)} is the total cross section for the interaction, {\ttfamily n\+\_\+target} is the number of targets per unit of volume for such interaction, and {\ttfamily l=40 m} is the length of the generation volume along the neutrino direction axis. This is the length of the cylinder facing the CCSN.\hypertarget{md_extra_doc_32__s_n_autotoc_md39}{}\doxysubsection{Flux Weight\+:}\label{md_extra_doc_32__s_n_autotoc_md39}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{W\_flux(d) = (1 / N\_gen) · (r² / d²) · ∫ (L(t) / <E(t)>) dt,}
+
+\end{DoxyCode}
+ where {\ttfamily r} is the cylindrical generation volume\textquotesingle{}s radius, {\ttfamily d} is the distance from Earth where the CCSN is assumed to occur, and {\ttfamily N\+\_\+gen} is the number of generated events.\hypertarget{md_extra_doc_32__s_n_autotoc_md40}{}\doxysubsection{Effective Weight\+:}\label{md_extra_doc_32__s_n_autotoc_md40}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{W\_eff = N\_modules · (<V\_eff(m)> / V\_eff(m,z\_sim)),}
+
+\end{DoxyCode}
+ where {\ttfamily N\+\_\+modules} is the total modules in the simulated detector, {\ttfamily V\+\_\+eff(m, z\+\_\+sim)} is the effective volume at the simulation depth, and {\ttfamily $<$V\+\_\+eff(m)$>$} is the mean effective volume for all modules in simulated detector. The term {\ttfamily m} represents multiplicity, defined as the count of different PMTs within a single module that detected the event within a specific time window.
+
+The effective volume can be calculated in different ways. Old simulations of the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}}, described in \href{https://zenodo.org/record/8107177}{\texttt{ this thesis, section 6.\+3}}, were used in past studies. A linear regression of the effective volume concerning the absorption length, derived from various depths, provides each depth\textquotesingle{}s effective volume. Although it is advisable to redo these simulations with a current \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} model, users can temporarily use the old data with a regression line of {\ttfamily V\+\_\+eff = b · x + c}, where {\ttfamily x = 1/a} is the inverse of the absorption length. The coefficients {\ttfamily b} and {\ttfamily c}, depending on the event\textquotesingle{}s multiplicity, were obtained as follows\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Multiplicity   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ b (slope, m²)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ c (m³)    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Multiplicity   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ b (slope, m²)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ c (m³)    }\\\cline{1-3}
+\endhead
+1   &15.\+1843   &0.\+000    \\\cline{1-3}
+2   &0.\+1352   &47.\+005    \\\cline{1-3}
+3   &0.\+0306   &16.\+170    \\\cline{1-3}
+4   &0.\+0095   &8.\+680    \\\cline{1-3}
+5   &0.\+0039   &5.\+105    \\\cline{1-3}
+$>$= 6   &0.\+0026   &2.\+909   \\\cline{1-3}
+\end{longtabu}
+
+
+Note that, for more than 5 PMTs, the same fit line is employed due to insufficient statistics at higher PMTs in the effective volume simulation. Additionally, since the absorption length depends on the wavelength, the fits above were obtained assuming a wavelength of {\ttfamily λ = 400 nm}. 

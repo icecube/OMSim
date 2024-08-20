@@ -1,0 +1,5 @@
+<map id="RefractionOnly" name="RefractionOnly">
+<area shape="rect" id="node1" title="Materials only with refractive index defined." alt="" coords="11,155,130,181"/>
+<area shape="rect" id="node2" href="$classabc_material_data.html" title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f..." alt="" coords="5,80,136,107"/>
+<area shape="rect" id="node3" href="$classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation." alt="" coords="21,5,120,32"/>
+</map>

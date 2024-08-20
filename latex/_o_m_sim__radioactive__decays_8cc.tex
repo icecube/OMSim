@@ -1,0 +1,58 @@
+\hypertarget{_o_m_sim__radioactive__decays_8cc}{}\doxysection{OMSim\+\_\+radioactive\+\_\+decays.\+cc File Reference}
+\label{_o_m_sim__radioactive__decays_8cc}\index{OMSim\_radioactive\_decays.cc@{OMSim\_radioactive\_decays.cc}}
+
+
+Main of the radioactive decay study.  
+
+
+Include dependency graph for OMSim\+\_\+radioactive\+\_\+decays.\+cc\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_o_m_sim__radioactive__decays_8cc__incl}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__radioactive}{Radioactive decays}} 
+\end{DoxySeeAlso}
+\begin{DoxyWarning}{Warning}
+This study has been tested only for Vitrovex glass (m\+DOM/\+LOM16) and the 80mm \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMTs. Okamoto glass (D-\/\+Egg/\+LOM18) is currently under investigation. 
+\end{DoxyWarning}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_o_m_sim__radioactive__decays_8cc_a4bb9be007ca2f07f890e1b10e77c9ba9}{run\+Radioactive\+Decays}} (\mbox{\hyperlink{class_o_m_sim_rad_decays_detector}{OMSim\+Rad\+Decays\+Detector}} $\ast$p\+Detector)
+\begin{DoxyCompactList}\small\item\em Runs the decay simulation for the specified optical module. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_o_m_sim__radioactive__decays_8cc_ae548ed843bde184e37c74bafc447131f}\label{_o_m_sim__radioactive__decays_8cc_ae548ed843bde184e37c74bafc447131f}} 
+void \mbox{\hyperlink{_o_m_sim__radioactive__decays_8cc_ae548ed843bde184e37c74bafc447131f}{add\+Module\+Options}} (\mbox{\hyperlink{class_o_m_sim}{OMSim}} $\ast$p\+Simulation)
+\begin{DoxyCompactList}\small\item\em Add options for the user input arguments for the radioactive decays module. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_o_m_sim__radioactive__decays_8cc_ac2560fc51fc41867e42a4654fd574664}\label{_o_m_sim__radioactive__decays_8cc_ac2560fc51fc41867e42a4654fd574664}} 
+int {\bfseries main} (int p\+Argument\+Count, char $\ast$p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_o_m_sim__radioactive__decays_8cc_a858b530d4b4534bb389fcc6c197d1278}\label{_o_m_sim__radioactive__decays_8cc_a858b530d4b4534bb389fcc6c197d1278}} 
+std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ {\bfseries global\+Logger}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_o_m_sim__radioactive__decays_8cc_a4bb9be007ca2f07f890e1b10e77c9ba9}\label{_o_m_sim__radioactive__decays_8cc_a4bb9be007ca2f07f890e1b10e77c9ba9}} 
+\index{OMSim\_radioactive\_decays.cc@{OMSim\_radioactive\_decays.cc}!runRadioactiveDecays@{runRadioactiveDecays}}
+\index{runRadioactiveDecays@{runRadioactiveDecays}!OMSim\_radioactive\_decays.cc@{OMSim\_radioactive\_decays.cc}}
+\doxysubsubsection{\texorpdfstring{runRadioactiveDecays()}{runRadioactiveDecays()}}
+{\footnotesize\ttfamily void run\+Radioactive\+Decays (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_rad_decays_detector}{OMSim\+Rad\+Decays\+Detector}} $\ast$}]{p\+Detector }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Detector} & Pointer to the \mbox{\hyperlink{class_o_m_sim_rad_decays_detector}{OMSim\+Rad\+Decays\+Detector}} object representing the detector for which the decay simulation is to be performed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSim\+Decays\+GPS}}, \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} 
+\end{DoxySeeAlso}
