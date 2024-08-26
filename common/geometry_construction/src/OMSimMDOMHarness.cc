@@ -255,7 +255,7 @@ void mDOMHarness::PCA()
     const G4double lWireRadius = 17.78 * cm;                                                                                                                                                                                                                                                                                                                                                                                                                                                       // minimum bending diameter of the cable (14 inches)
     const G4double lDistTubeToRope = ((mRopeStartingPoint) + mRopeRMax * (1 - cos(mRopeRotationAngleX)) - ((mOM->mGlassOutRad + lMushHeight - lTubeRadius) * cos(mPlugAngle) + lTubeLength * sin(mPlugAngle) + mOM->mCylHigh) * tan(mRopeRotationAngleX) - (mOM->mGlassOutRad + lMushHeight - lTubeRadius) * sin(mPlugAngle) + lTubeLength * cos(mPlugAngle)) / cos(mRopeRotationAngleX) - (lWireThickness / 2 + mRopeRMax) - mRopeDz * (1 - cos(mRopeRotationAngleX)) * sin(mRopeRotationAngleX); // Modified distance between start of first torus and end of second torus
 
-    const G4double lPCA2angle = acos((0.5) * (-lDistTubeToRope / lWireRadius + sin(mPlugAngle + mRopeRotationAngleX) + 1.));
+    const G4double lPCA2angle = acos((0.5) * (lDistTubeToRope / lWireRadius + sin(mPlugAngle + mRopeRotationAngleX) + 1.));
     const G4double lPCA1angle = 90. * deg + lPCA2angle - (mPlugAngle + mRopeRotationAngleX);
     const G4double lExtnLength = 30. * 2.54 * cm - lWireRadius * (lPCA1angle + lPCA2angle) - lTubeLength;
 
