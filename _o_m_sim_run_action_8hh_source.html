@@ -116,42 +116,39 @@ $(document).ready(function(){initNavTree('_o_m_sim_run_action_8hh_source.html','
 <div class="title">OMSimRunAction.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef OMSimRunAction_h</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define OMSimRunAction_h 1</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;G4UserRunAction.hh&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_o_m_sim_hit_manager_8hh.html">OMSimHitManager.hh</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;OMSimLogger.hh&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;Randomize.hh&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;G4Run.hh&quot;</span> </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_o_m_sim_run_action.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_run_action.html">OMSimRunAction</a> : <span class="keyword">public</span> G4UserRunAction</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="class_o_m_sim_run_action.html">OMSimRunAction</a>(){};</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  ~<a class="code" href="class_o_m_sim_run_action.html">OMSimRunAction</a>(){};</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">void</span> BeginOfRunAction(<span class="keyword">const</span> G4Run *run) {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  };</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">void</span> EndOfRunAction(<span class="keyword">const</span> G4Run *run)<span class="keyword"> override</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    log_debug(<span class="stringliteral">&quot;EndOfRunAction called, nr of events {}&quot;</span>, run-&gt;GetNumberOfEvent() );</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a>().mergeThreadData();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;G4UserRunAction.hh&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_o_m_sim_hit_manager_8hh.html">OMSimHitManager.hh</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;OMSimLogger.hh&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Randomize.hh&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;G4Run.hh&quot;</span> </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_o_m_sim_run_action.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_run_action.html">OMSimRunAction</a> : <span class="keyword">public</span> G4UserRunAction</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="class_o_m_sim_run_action.html">OMSimRunAction</a>(){};</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  ~<a class="code" href="class_o_m_sim_run_action.html">OMSimRunAction</a>(){};</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">void</span> BeginOfRunAction(<span class="keyword">const</span> G4Run *run) {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  };</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">void</span> EndOfRunAction(<span class="keyword">const</span> G4Run *run)<span class="keyword"> override</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    log_debug(<span class="stringliteral">&quot;EndOfRunAction called, nr of events {}&quot;</span>, run-&gt;GetNumberOfEvent() );</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a>().mergeThreadData();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
 <div class="ttc" id="a_o_m_sim_hit_manager_8hh_html"><div class="ttname"><a href="_o_m_sim_hit_manager_8hh.html">OMSimHitManager.hh</a></div><div class="ttdoc">Defines structures and classes related to optical module photon hit management.</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_aaa3e7a28d658d8e2e6db704b910cc35c"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a></div><div class="ttdeci">static OMSimHitManager &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:44</div></div>
-<div class="ttc" id="aclass_o_m_sim_run_action_html"><div class="ttname"><a href="class_o_m_sim_run_action.html">OMSimRunAction</a></div><div class="ttdef"><b>Definition:</b> OMSimRunAction.hh:11</div></div>
+<div class="ttc" id="aclass_o_m_sim_run_action_html"><div class="ttname"><a href="class_o_m_sim_run_action.html">OMSimRunAction</a></div><div class="ttdef"><b>Definition:</b> OMSimRunAction.hh:10</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_864f292c5cbb4a74180810cb2e80dd5b.html">framework</a></li><li class="navelem"><a class="el" href="dir_1bc21981797ed08ef994409d474646cd.html">include</a></li><li class="navelem"><b>OMSimRunAction.hh</b></li>
-    <li class="footer">Generated on Wed Aug 28 2024 14:27:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 17:32:17 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

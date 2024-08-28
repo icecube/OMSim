@@ -1,10 +1,10 @@
 <map id="mDOM" name="mDOM">
-<area shape="rect" id="node1" title=" " alt="" coords="161,424,228,451"/>
-<area shape="rect" id="node7" href="$classm_d_o_m_harness.html" title=" " alt="" coords="211,513,331,540"/>
+<area shape="rect" id="node1" title=" " alt="" coords="115,424,181,451"/>
+<area shape="rect" id="node7" href="$classm_d_o_m_harness.html" title=" " alt="" coords="141,513,261,540"/>
 <area shape="rect" id="node2" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="5,348,168,375"/>
-<area shape="rect" id="node3" href="$classabc_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="147,171,323,197"/>
-<area shape="rect" id="node6" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="51,247,229,273"/>
-<area shape="rect" id="node8" href="$classm_d_o_m_flasher.html" title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module." alt="" coords="196,297,311,324"/>
-<area shape="rect" id="node4" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="168,81,301,108"/>
-<area shape="rect" id="node5" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="173,5,296,32"/>
+<area shape="rect" id="node3" href="$classabc_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="155,171,331,197"/>
+<area shape="rect" id="node6" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="59,247,237,273"/>
+<area shape="rect" id="node8" href="$classm_d_o_m_flasher.html" title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module." alt="" coords="204,297,319,324"/>
+<area shape="rect" id="node4" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="176,81,309,108"/>
+<area shape="rect" id="node5" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="181,5,304,32"/>
 </map>

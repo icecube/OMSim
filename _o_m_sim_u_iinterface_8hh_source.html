@@ -117,88 +117,79 @@ $(document).ready(function(){initNavTree('_o_m_sim_u_iinterface_8hh_source.html'
 </div><!--header-->
 <div class="contents">
 <a href="_o_m_sim_u_iinterface_8hh.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef OMSimUIinterface_h</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define OMSimUIinterface_h 1</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_o_m_sim_command_args_table_8hh.html">OMSimCommandArgsTable.hh</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;G4UImanager.hh&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_o_m_sim_u_iinterface.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// Public static access for the singleton instance</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a> &amp;getInstance()</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a> instance;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">return</span> instance;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_o_m_sim_command_args_table_8hh.html">OMSimCommandArgsTable.hh</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;G4UImanager.hh&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_o_m_sim_u_iinterface.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">// Public static access for the singleton instance</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a> &amp;getInstance()</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a> instance;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">return</span> instance;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#ad5517f9564cb68e02a1f4efabf852b61">init</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#ae184798f646ff27968fd3cf89904298d">shutdown</a>();</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_o_m_sim_u_iinterface.html#aa08ab9820d0591b64d0dd8c5599ddd14">   35</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#aa08ab9820d0591b64d0dd8c5599ddd14">applyCommand</a>(<span class="keyword">const</span> std::string &amp;pCommand, <span class="keyword">const</span> Args &amp;...pArgs)</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_o_m_sim_u_iinterface.html#a795e5290544dc4bcc879388816d69a12">   35</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#a795e5290544dc4bcc879388816d69a12">applyCommand</a>(<span class="keyword">const</span> std::string &amp;p_command, <span class="keyword">const</span> Args &amp;...p_args)</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        std::stringstream lStream;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        lStream &lt;&lt; pCommand;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        appendToStream(lStream, pArgs...);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        log_trace(lStream.str().c_str());</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        mUImanager-&gt;ApplyCommand(lStream.str());</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        std::stringstream stream;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        stream &lt;&lt; p_command;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        appendToStream(stream, p_args...);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        log_trace(stream.str().c_str());</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        m_uiManager-&gt;ApplyCommand(stream.str());</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_o_m_sim_u_iinterface.html#ae66ce7c3befd8cc22460a1a6939eb5e1">   48</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#ae66ce7c3befd8cc22460a1a6939eb5e1">setUI</a>(G4UImanager *pUI)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        mUImanager = pUI;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_o_m_sim_u_iinterface.html#a671add7257f9229071a509b8677789d2">   58</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#a671add7257f9229071a509b8677789d2">runBeamOn</a>(G4int pNumberOfEvents = -1)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        log_trace(<span class="stringliteral">&quot;Running beamOn command&quot;</span>);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        G4int lNumEvents = pNumberOfEvents &gt;= 0 ? pNumberOfEvents : <a class="code" href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">OMSimCommandArgsTable::getInstance</a>().<a class="code" href="class_o_m_sim_command_args_table.html#a98ca3b003cebba64f357e342d16ea968">get</a>&lt;G4int&gt;(<span class="stringliteral">&quot;numevents&quot;</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="class_o_m_sim_u_iinterface.html#aa08ab9820d0591b64d0dd8c5599ddd14">applyCommand</a>(<span class="stringliteral">&quot;/run/beamOn &quot;</span>, lNumEvents);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// Private constructor and assignment operator to prevent direct creation or assignment</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a>() {}</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a>(<span class="keyword">const</span> <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a> &amp;) = <span class="keyword">delete</span>;            <span class="comment">// disable copying</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a> &amp;operator=(<span class="keyword">const</span> <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a> &amp;) = <span class="keyword">delete</span>; <span class="comment">// disable assignment</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> appendToStream(std::stringstream &amp;stream)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="comment">// if no additional arguments, do nothing</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_o_m_sim_u_iinterface.html#a7ba77890bae2eeeb33d40600d85d0589">   83</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#a7ba77890bae2eeeb33d40600d85d0589">appendToStream</a>(std::stringstream &amp;pStream, <span class="keyword">const</span> T &amp;pVal)</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        pStream &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; pVal;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#aebd8bceca0c4d305f6bad38afbf2d70b">setUI</a>(G4UImanager *p_ui);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#a880d9879e9373b6af3bc0c3b691160f8">runBeamOn</a>(G4int p_numberOfEvents = -1);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    G4UImanager *m_uiManager;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    ~<a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a>(<span class="keyword">const</span> <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a> &amp;) = <span class="keyword">delete</span>;            <span class="comment">// disable copying</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a> &amp;operator=(<span class="keyword">const</span> <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a> &amp;) = <span class="keyword">delete</span>; <span class="comment">// disable assignment</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> appendToStream(std::stringstream &amp;p_stream)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">// if no additional arguments, do nothing</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_o_m_sim_u_iinterface.html#a3762f6dcd5d107958ee90f1a68edb26e">   67</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#a3762f6dcd5d107958ee90f1a68edb26e">appendToStream</a>(std::stringstream &amp;p_stream, <span class="keyword">const</span> T &amp;p_val)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        p_stream &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; p_val;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="class_o_m_sim_u_iinterface.html#a3fa29b24b1df7d09d8852ca276f3375e">   81</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#a3fa29b24b1df7d09d8852ca276f3375e">appendToStream</a>(std::stringstream &amp;p_stream, <span class="keyword">const</span> T &amp;p_val, <span class="keyword">const</span> Args &amp;...p_args)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        p_stream &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; p_val;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        appendToStream(p_stream, p_args...);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;};</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_o_m_sim_u_iinterface.html#aa1632617642ce1430d81fe93186ed26e">   97</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_u_iinterface.html#aa1632617642ce1430d81fe93186ed26e">appendToStream</a>(std::stringstream &amp;pStream, <span class="keyword">const</span> T &amp;pVal, <span class="keyword">const</span> Args &amp;...pArgs)</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        pStream &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; pVal;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        appendToStream(pStream, pArgs...);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    G4UImanager *mUImanager;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;};</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor"></span><span class="comment">//</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a> *g_OMSimUIinterface = <span class="keyword">nullptr</span>;</div>
 <div class="ttc" id="a_o_m_sim_command_args_table_8hh_html"><div class="ttname"><a href="_o_m_sim_command_args_table_8hh.html">OMSimCommandArgsTable.hh</a></div><div class="ttdoc">Definition of the OMSimCommandArgsTable singleton class, which controls user args.</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a2a6179839e4ed5f503e52fca917c84c2"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">OMSimCommandArgsTable::getInstance</a></div><div class="ttdeci">static OMSimCommandArgsTable &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:88</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a98ca3b003cebba64f357e342d16ea968"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a98ca3b003cebba64f357e342d16ea968">OMSimCommandArgsTable::get</a></div><div class="ttdeci">T get(const std::string &amp;pKey)</div><div class="ttdoc">Retrieves a parameter from the table.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:117</div></div>
-<div class="ttc" id="aclass_o_m_sim_u_iinterface_html"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a></div><div class="ttdoc">Singleton interface to Geant4's UI manager.</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.hh:18</div></div>
-<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_a671add7257f9229071a509b8677789d2"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#a671add7257f9229071a509b8677789d2">OMSimUIinterface::runBeamOn</a></div><div class="ttdeci">void runBeamOn(G4int pNumberOfEvents=-1)</div><div class="ttdoc">Executes a run with a given number of events.</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.hh:58</div></div>
-<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_a7ba77890bae2eeeb33d40600d85d0589"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#a7ba77890bae2eeeb33d40600d85d0589">OMSimUIinterface::appendToStream</a></div><div class="ttdeci">void appendToStream(std::stringstream &amp;pStream, const T &amp;pVal)</div><div class="ttdoc">Append arguments to the command string stream.</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.hh:83</div></div>
-<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_aa08ab9820d0591b64d0dd8c5599ddd14"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#aa08ab9820d0591b64d0dd8c5599ddd14">OMSimUIinterface::applyCommand</a></div><div class="ttdeci">void applyCommand(const std::string &amp;pCommand, const Args &amp;...pArgs)</div><div class="ttdoc">Apply a command to Geant4's UI manager and log it. It accept any number of arguments that are then ap...</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.hh:35</div></div>
-<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_aa1632617642ce1430d81fe93186ed26e"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#aa1632617642ce1430d81fe93186ed26e">OMSimUIinterface::appendToStream</a></div><div class="ttdeci">void appendToStream(std::stringstream &amp;pStream, const T &amp;pVal, const Args &amp;...pArgs)</div><div class="ttdoc">Append multiple arguments to the command string stream.</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.hh:97</div></div>
-<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_ae66ce7c3befd8cc22460a1a6939eb5e1"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#ae66ce7c3befd8cc22460a1a6939eb5e1">OMSimUIinterface::setUI</a></div><div class="ttdeci">void setUI(G4UImanager *pUI)</div><div class="ttdoc">Set the UI manager for the OMSimUIinterface class.</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.hh:48</div></div>
+<div class="ttc" id="aclass_o_m_sim_u_iinterface_html"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a></div><div class="ttdoc">Singleton interface to Geant4's UI manager.</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.hh:17</div></div>
+<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_a3762f6dcd5d107958ee90f1a68edb26e"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#a3762f6dcd5d107958ee90f1a68edb26e">OMSimUIinterface::appendToStream</a></div><div class="ttdeci">void appendToStream(std::stringstream &amp;p_stream, const T &amp;p_val)</div><div class="ttdoc">Append arguments to the command string p_stream.</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.hh:67</div></div>
+<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_a3fa29b24b1df7d09d8852ca276f3375e"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#a3fa29b24b1df7d09d8852ca276f3375e">OMSimUIinterface::appendToStream</a></div><div class="ttdeci">void appendToStream(std::stringstream &amp;p_stream, const T &amp;p_val, const Args &amp;...p_args)</div><div class="ttdoc">Append multiple arguments to the command string p_stream.</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.hh:81</div></div>
+<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_a795e5290544dc4bcc879388816d69a12"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#a795e5290544dc4bcc879388816d69a12">OMSimUIinterface::applyCommand</a></div><div class="ttdeci">void applyCommand(const std::string &amp;p_command, const Args &amp;...p_args)</div><div class="ttdoc">Apply a command to Geant4's UI manager and log it. It accept any number of arguments that are then ap...</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.hh:35</div></div>
+<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_a880d9879e9373b6af3bc0c3b691160f8"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#a880d9879e9373b6af3bc0c3b691160f8">OMSimUIinterface::runBeamOn</a></div><div class="ttdeci">void runBeamOn(G4int p_numberOfEvents=-1)</div><div class="ttdoc">Executes a run with a given number of events.</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.cc:39</div></div>
+<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_ad5517f9564cb68e02a1f4efabf852b61"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#ad5517f9564cb68e02a1f4efabf852b61">OMSimUIinterface::init</a></div><div class="ttdeci">static void init()</div><div class="ttdoc">Initializes the global instance of OMSimUIinterface This method is normally called in OMSim::initiali...</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.cc:7</div></div>
+<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_ae184798f646ff27968fd3cf89904298d"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#ae184798f646ff27968fd3cf89904298d">OMSimUIinterface::shutdown</a></div><div class="ttdeci">static void shutdown()</div><div class="ttdoc">Deletes the global instance of OMSimUIinterface This method is normally called in the destructor ~OMS...</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.cc:19</div></div>
+<div class="ttc" id="aclass_o_m_sim_u_iinterface_html_aebd8bceca0c4d305f6bad38afbf2d70b"><div class="ttname"><a href="class_o_m_sim_u_iinterface.html#aebd8bceca0c4d305f6bad38afbf2d70b">OMSimUIinterface::setUI</a></div><div class="ttdeci">void setUI(G4UImanager *p_ui)</div><div class="ttdoc">Set the UI manager for the OMSimUIinterface class.</div><div class="ttdef"><b>Definition:</b> OMSimUIinterface.cc:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_864f292c5cbb4a74180810cb2e80dd5b.html">framework</a></li><li class="navelem"><a class="el" href="dir_1bc21981797ed08ef994409d474646cd.html">include</a></li><li class="navelem"><a class="el" href="_o_m_sim_u_iinterface_8hh.html">OMSimUIinterface.hh</a></li>
-    <li class="footer">Generated on Wed Aug 28 2024 14:27:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 17:32:17 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

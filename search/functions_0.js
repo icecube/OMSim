@@ -8,7 +8,7 @@ var searchData=
   ['appendcomponent_492',['appendComponent',['../classabc_detector_component.html#a467235840a313b6481569ae9ea9d2673',1,'abcDetectorComponent']]],
   ['appenddecay_493',['appendDecay',['../class_o_m_sim_decays_analysis.html#a35aa71b0f55694ab682eb12e33e773d3',1,'OMSimDecaysAnalysis']]],
   ['appendhitinfo_494',['appendHitInfo',['../class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e',1,'OMSimHitManager']]],
-  ['appendtostream_495',['appendToStream',['../class_o_m_sim_u_iinterface.html#a7ba77890bae2eeeb33d40600d85d0589',1,'OMSimUIinterface::appendToStream(std::stringstream &amp;pStream, const T &amp;pVal)'],['../class_o_m_sim_u_iinterface.html#aa1632617642ce1430d81fe93186ed26e',1,'OMSimUIinterface::appendToStream(std::stringstream &amp;pStream, const T &amp;pVal, const Args &amp;...pArgs)']]],
-  ['applycommand_496',['applyCommand',['../class_o_m_sim_u_iinterface.html#aa08ab9820d0591b64d0dd8c5599ddd14',1,'OMSimUIinterface']]],
+  ['appendtostream_495',['appendToStream',['../class_o_m_sim_u_iinterface.html#a3762f6dcd5d107958ee90f1a68edb26e',1,'OMSimUIinterface::appendToStream(std::stringstream &amp;p_stream, const T &amp;p_val)'],['../class_o_m_sim_u_iinterface.html#a3fa29b24b1df7d09d8852ca276f3375e',1,'OMSimUIinterface::appendToStream(std::stringstream &amp;p_stream, const T &amp;p_val, const Args &amp;...p_args)']]],
+  ['applycommand_496',['applyCommand',['../class_o_m_sim_u_iinterface.html#a795e5290544dc4bcc879388816d69a12',1,'OMSimUIinterface']]],
   ['arange_497',['arange',['../namespace_tools.html#afc07e23ed8113c72927202c1762c91a4',1,'Tools']]]
 ];

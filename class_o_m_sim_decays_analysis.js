@@ -11,7 +11,7 @@ var class_o_m_sim_decays_analysis =
     [ "writeMultiplicity", "class_o_m_sim_decays_analysis.html#af747109a424e5878d2a4e42b6308f3cb", null ],
     [ "writeThreadDecayInformation", "class_o_m_sim_decays_analysis.html#abf3b99f2998f27c9ad1f792dfc716e0c", null ],
     [ "writeThreadHitInformation", "class_o_m_sim_decays_analysis.html#a78449c898f237d5a40c75042123c19af", null ],
-    [ "mInstance", "class_o_m_sim_decays_analysis.html#a2df6ba1c18fb3087ceb2aeb5cfe1cd7c", null ],
-    [ "mMutex", "class_o_m_sim_decays_analysis.html#a9e1f6266a5d299b7b694e334f4e15e13", null ],
+    [ "m_instance", "class_o_m_sim_decays_analysis.html#a2eaf6dfdd1fad2f8a829db97ea5f8c9b", null ],
+    [ "m_mutex", "class_o_m_sim_decays_analysis.html#ab08bcf92e1751dfd749c6eabd91a9f27", null ],
     [ "mThreadDecayStats", "class_o_m_sim_decays_analysis.html#ab4a0cbaeebe1c1d49f829d735d237b9a", null ]
 ];

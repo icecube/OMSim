@@ -96,5 +96,5 @@ var files_dup =
     ] ],
     [ "OMSimTools.hh", "_o_m_sim_tools_8hh.html", "_o_m_sim_tools_8hh" ],
     [ "OMSimTrackingAction.hh", "_o_m_sim_tracking_action_8hh_source.html", null ],
-    [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", null ]
+    [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", "_o_m_sim_u_iinterface_8hh" ]
 ];

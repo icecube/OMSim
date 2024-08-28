@@ -117,177 +117,96 @@ $(document).ready(function(){initNavTree('_o_m_sim_command_args_table_8hh_source
 </div><!--header-->
 <div class="contents">
 <a href="_o_m_sim_command_args_table_8hh.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef OMSIMCOMMANDARGSTABLE_H</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define OMSIMCOMMANDARGSTABLE_H</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="_o_m_sim_command_args_table_8hh.html#aa41bdc30fcdd046324b69c10b14d4524">   14</a></span>&#160;<span class="preprocessor">#define WRITE_TO_JSON_IF_TYPE_MATCHES(VARIANT, TYPE)                   \</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">    if (type == typeid(TYPE))                                          \</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">    {                                                                  \</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">        lOutputFile &lt;&lt; &quot;\t\&quot;&quot;</span> &lt;&lt; kv.first &lt;&lt; &quot;\&quot;: &quot;;                       \</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        if (typeid(TYPE) == typeid(std::string))                       \</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {                                                              \</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            lOutputFile &lt;&lt; &quot;\&quot;&quot; &lt;&lt; boost::any_cast&lt;TYPE&gt;(VARIANT) &lt;&lt; &quot;\&quot;&quot;; \</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }                                                              \</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        else                                                           \</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {                                                              \</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            lOutputFile &lt;&lt; boost::any_cast&lt;TYPE&gt;(VARIANT);                 \</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }                                                              \</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;OMSimLogger.hh&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;boost/any.hpp&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;sys/time.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="_o_m_sim_command_args_table_8hh.html#aa41bdc30fcdd046324b69c10b14d4524">   13</a></span>&#160;<span class="preprocessor">#define WRITE_TO_JSON_IF_TYPE_MATCHES(VARIANT, TYPE)                   \</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">    if (type == typeid(TYPE))                                          \</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">    {                                                                  \</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">        outputFile &lt;&lt; &quot;\t\&quot;&quot;</span> &lt;&lt; kv.first &lt;&lt; &quot;\&quot;: &quot;;                       \</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        if (typeid(TYPE) == typeid(std::string))                       \</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {                                                              \</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            outputFile &lt;&lt; &quot;\&quot;&quot; &lt;&lt; boost::any_cast&lt;TYPE&gt;(VARIANT) &lt;&lt; &quot;\&quot;&quot;; \</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }                                                              \</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        else                                                           \</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {                                                              \</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            outputFile &lt;&lt; boost::any_cast&lt;TYPE&gt;(VARIANT);                 \</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }                                                              \</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;OMSimLogger.hh&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;boost/any.hpp&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;sys/time.h&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// Forward declaration of the class</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// Declaration and definition of the inline global pointer</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a>* gCommandArgsTable = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// Forward declaration of the class</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// Declaration and definition of the inline global pointer</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a>* g_commandArgsTable = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_o_m_sim_command_args_table.html">   51</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a>(<span class="keyword">const</span> <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a> &amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a> &amp;operator=(<span class="keyword">const</span> <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a> &amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    ~<a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_o_m_sim_command_args_table.html">   50</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a>(<span class="keyword">const</span> <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a> &amp;operator=(<span class="keyword">const</span> <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    ~<a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">using</span> Key = std::string;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">using</span> Value = boost::any; <span class="comment">//  Using boost::any to hold any type</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_o_m_sim_command_args_table.html#a026ab40121c89f344e60dc9103157e22">   67</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_command_args_table.html#a026ab40121c89f344e60dc9103157e22">init</a>()</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span> (!gCommandArgsTable)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            gCommandArgsTable = <span class="keyword">new</span> <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a>();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_o_m_sim_command_args_table.html#ab258da8c6a509441e0b599bb9a59e414">   78</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_command_args_table.html#ab258da8c6a509441e0b599bb9a59e414">shutdown</a>()</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">delete</span> gCommandArgsTable;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        gCommandArgsTable = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">   88</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a> &amp;<a class="code" href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">getInstance</a>()</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">if</span> (!gCommandArgsTable)</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;OMSimCommandArgsTable accessed before initialization or after shutdown!&quot;</span>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> *gCommandArgsTable;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_o_m_sim_command_args_table.html#a27e163c6835956c98a52689bb7cf2cc6">  101</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_command_args_table.html#a27e163c6835956c98a52689bb7cf2cc6">setParameter</a>(<span class="keyword">const</span> Key &amp;pKey, <span class="keyword">const</span> Value &amp;pValue)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">if</span> (mFinalized)</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Cannot modify OMSimCommandArgsTable after it&#39;s been finalized!&quot;</span>);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        mParameters[pKey] = pValue;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="class_o_m_sim_command_args_table.html#a98ca3b003cebba64f357e342d16ea968">  117</a></span>&#160;    T <a class="code" href="class_o_m_sim_command_args_table.html#a98ca3b003cebba64f357e342d16ea968">get</a>(<span class="keyword">const</span> std::string &amp;pKey)</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">return</span> boost::any_cast&lt;T&gt;(mParameters.at(pKey));</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">catch</span> (<span class="keyword">const</span> boost::bad_any_cast &amp;e)</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            log_error((<span class="stringliteral">&quot;Failed to get parameter &quot;</span> + pKey + <span class="stringliteral">&quot; as type &quot;</span> + <span class="keyword">typeid</span>(T).name()).c_str());</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Failed to get parameter &quot;</span> + pKey + <span class="stringliteral">&quot; as type &quot;</span> + <span class="keyword">typeid</span>(T).name());</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::out_of_range &amp;e)</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            log_error((<span class="stringliteral">&quot;Parameter &quot;</span> + pKey + <span class="stringliteral">&quot; does not exist&quot;</span>).c_str());</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Parameter &quot;</span> + pKey + <span class="stringliteral">&quot; does not exist&quot;</span>);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">bool</span> keyExists(<span class="keyword">const</span> Key &amp;pKey)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">return</span> mParameters.find(pKey) != mParameters.end();</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="class_o_m_sim_command_args_table.html#a4f90935ea49fb19c1ae77b826dbdb410">  145</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_command_args_table.html#a4f90935ea49fb19c1ae77b826dbdb410">writeToJson</a>(std::string pFileName)</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        std::ofstream lOutputFile(pFileName);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">if</span> (!lOutputFile.is_open())</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to open file &quot;</span> + pFileName);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        lOutputFile &lt;&lt; <span class="stringliteral">&quot;{\n&quot;</span>;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordtype">size_t</span> lCount = mParameters.size();</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;kv : mParameters)</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            --lCount; <span class="comment">// Decrease count for each iteration</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keywordflow">if</span> (kv.second.empty())</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                lOutputFile &lt;&lt; <span class="stringliteral">&quot;\t\&quot;&quot;</span> &lt;&lt; kv.first &lt;&lt; <span class="stringliteral">&quot;\&quot;: \&quot;\&quot;&quot;</span>;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <span class="keyword">const</span> std::type_info &amp;type = kv.second.type();</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                <a class="code" href="_o_m_sim_command_args_table_8hh.html#aa41bdc30fcdd046324b69c10b14d4524">WRITE_TO_JSON_IF_TYPE_MATCHES</a>(kv.second, <span class="keywordtype">int</span>)</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <a class="code" href="_o_m_sim_command_args_table_8hh.html#aa41bdc30fcdd046324b69c10b14d4524">WRITE_TO_JSON_IF_TYPE_MATCHES</a>(kv.second, <span class="keywordtype">double</span>)</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <a class="code" href="_o_m_sim_command_args_table_8hh.html#aa41bdc30fcdd046324b69c10b14d4524">WRITE_TO_JSON_IF_TYPE_MATCHES</a>(kv.second, <span class="keywordtype">long</span>)</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <a class="code" href="_o_m_sim_command_args_table_8hh.html#aa41bdc30fcdd046324b69c10b14d4524">WRITE_TO_JSON_IF_TYPE_MATCHES</a>(kv.second, <span class="keywordtype">bool</span>)</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <a class="code" href="_o_m_sim_command_args_table_8hh.html#aa41bdc30fcdd046324b69c10b14d4524">WRITE_TO_JSON_IF_TYPE_MATCHES</a>(kv.second, std::string)</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            }</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="comment">// Append comma if it&#39;s not the last item</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">if</span> (lCount != 0)</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                lOutputFile &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            lOutputFile &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        lOutputFile &lt;&lt; <span class="stringliteral">&quot;}\n&quot;</span>;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        lOutputFile.close();</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="class_o_m_sim_command_args_table.html#acd0700b601ac3b3279657ad1bc1363e8">  190</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_command_args_table.html#acd0700b601ac3b3279657ad1bc1363e8">finalize</a>()</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordtype">long</span> lSeed;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">if</span> (!keyExists(<span class="stringliteral">&quot;seed&quot;</span>))</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keyword">struct </span>timeval time_for_randy;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            gettimeofday(&amp;time_for_randy, NULL);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            lSeed = time_for_randy.tv_sec + 4294 * time_for_randy.tv_usec;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <a class="code" href="class_o_m_sim_command_args_table.html#a27e163c6835956c98a52689bb7cf2cc6">setParameter</a>(<span class="stringliteral">&quot;seed&quot;</span>, lSeed);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        }</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        mFinalized = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordtype">bool</span> mFinalized = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    std::map&lt;Key, Value&gt; mParameters;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;};</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// OMSIMCOMMANDARGSTABLE_H</span></div>
-<div class="ttc" id="a_o_m_sim_command_args_table_8hh_html_aa41bdc30fcdd046324b69c10b14d4524"><div class="ttname"><a href="_o_m_sim_command_args_table_8hh.html#aa41bdc30fcdd046324b69c10b14d4524">WRITE_TO_JSON_IF_TYPE_MATCHES</a></div><div class="ttdeci">#define WRITE_TO_JSON_IF_TYPE_MATCHES(VARIANT, TYPE)</div><div class="ttdoc">Writes a key-value pair to a JSON file if the value type matches TYPE.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:14</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html"><div class="ttname"><a href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a></div><div class="ttdoc">A class used to hold OMSim command arguments with global instance access.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:52</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a026ab40121c89f344e60dc9103157e22"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a026ab40121c89f344e60dc9103157e22">OMSimCommandArgsTable::init</a></div><div class="ttdeci">static void init()</div><div class="ttdoc">Initializes the global instance of OMSimCommandArgsTable.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:67</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a27e163c6835956c98a52689bb7cf2cc6"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a27e163c6835956c98a52689bb7cf2cc6">OMSimCommandArgsTable::setParameter</a></div><div class="ttdeci">void setParameter(const Key &amp;pKey, const Value &amp;pValue)</div><div class="ttdoc">Sets a parameter in the arg table.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:101</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a2a6179839e4ed5f503e52fca917c84c2"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">OMSimCommandArgsTable::getInstance</a></div><div class="ttdeci">static OMSimCommandArgsTable &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:88</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a4f90935ea49fb19c1ae77b826dbdb410"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a4f90935ea49fb19c1ae77b826dbdb410">OMSimCommandArgsTable::writeToJson</a></div><div class="ttdeci">void writeToJson(std::string pFileName)</div><div class="ttdoc">Writes the parameters to a JSON-formatted file.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:145</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a98ca3b003cebba64f357e342d16ea968"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a98ca3b003cebba64f357e342d16ea968">OMSimCommandArgsTable::get</a></div><div class="ttdeci">T get(const std::string &amp;pKey)</div><div class="ttdoc">Retrieves a parameter from the table.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:117</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_ab258da8c6a509441e0b599bb9a59e414"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#ab258da8c6a509441e0b599bb9a59e414">OMSimCommandArgsTable::shutdown</a></div><div class="ttdeci">static void shutdown()</div><div class="ttdoc">Deletes the global instance of OMSimCommandArgsTable.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:78</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_acd0700b601ac3b3279657ad1bc1363e8"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#acd0700b601ac3b3279657ad1bc1363e8">OMSimCommandArgsTable::finalize</a></div><div class="ttdeci">void finalize()</div><div class="ttdoc">Finalizes the table, setting a random seed if none was provided. mFinalized is set to true preventing...</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:190</div></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">bool</span> m_finalized = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::map&lt;Key, Value&gt; m_parameters;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_command_args_table.html#a6b23f4e37663c7cf07a7f4d3f44ffdab">init</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_command_args_table.html#ae25665b0429b0bfcfe0aac11ef982290">shutdown</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a> &amp;<a class="code" href="class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214">getInstance</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_command_args_table.html#a89368614d0c565dd2687c2560af8c79e">setParameter</a>(<span class="keyword">const</span> Key &amp;p_key, <span class="keyword">const</span> Value &amp;p_value);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">bool</span> keyExists(<span class="keyword">const</span> Key &amp;p_key); </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_command_args_table.html#a0bd61682f1c4bef12e41084acfee02dd">writeToJson</a>(std::string p_fileName);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_command_args_table.html#acd0700b601ac3b3279657ad1bc1363e8">finalize</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_o_m_sim_command_args_table.html#a6a455736ab058037381fd786c52ca86f">   82</a></span>&#160;    T <a class="code" href="class_o_m_sim_command_args_table.html#a6a455736ab058037381fd786c52ca86f">get</a>(<span class="keyword">const</span> std::string &amp;p_key)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">return</span> boost::any_cast&lt;T&gt;(m_parameters.at(p_key));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">catch</span> (<span class="keyword">const</span> boost::bad_any_cast &amp;e)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            log_error((<span class="stringliteral">&quot;Failed to get parameter &quot;</span> + p_key + <span class="stringliteral">&quot; as type &quot;</span> + <span class="keyword">typeid</span>(T).name()).c_str());</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Failed to get parameter &quot;</span> + p_key + <span class="stringliteral">&quot; as type &quot;</span> + <span class="keyword">typeid</span>(T).name());</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::out_of_range &amp;e)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            log_error((<span class="stringliteral">&quot;Parameter &quot;</span> + p_key + <span class="stringliteral">&quot; does not exist&quot;</span>).c_str());</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Parameter &quot;</span> + p_key + <span class="stringliteral">&quot; does not exist&quot;</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html"><div class="ttname"><a href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a></div><div class="ttdoc">A class used to hold OMSim command arguments with global instance access.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:51</div></div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a0bd61682f1c4bef12e41084acfee02dd"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a0bd61682f1c4bef12e41084acfee02dd">OMSimCommandArgsTable::writeToJson</a></div><div class="ttdeci">void writeToJson(std::string p_fileName)</div><div class="ttdoc">Writes the parameters to a JSON-formatted file.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.cc:62</div></div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a6a455736ab058037381fd786c52ca86f"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a6a455736ab058037381fd786c52ca86f">OMSimCommandArgsTable::get</a></div><div class="ttdeci">T get(const std::string &amp;p_key)</div><div class="ttdoc">Retrieves a parameter from the table.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:82</div></div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a6b23f4e37663c7cf07a7f4d3f44ffdab"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a6b23f4e37663c7cf07a7f4d3f44ffdab">OMSimCommandArgsTable::init</a></div><div class="ttdeci">static void init()</div><div class="ttdoc">Initializes the global instance of OMSimCommandArgsTable.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.cc:19</div></div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a89368614d0c565dd2687c2560af8c79e"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a89368614d0c565dd2687c2560af8c79e">OMSimCommandArgsTable::setParameter</a></div><div class="ttdeci">void setParameter(const Key &amp;p_key, const Value &amp;p_value)</div><div class="ttdoc">Sets a parameter in the arg table.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.cc:42</div></div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html_ac6f8ed95981671d5df9b029bcef93214"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214">OMSimCommandArgsTable::getInstance</a></div><div class="ttdeci">static OMSimCommandArgsTable &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.cc:7</div></div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html_acd0700b601ac3b3279657ad1bc1363e8"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#acd0700b601ac3b3279657ad1bc1363e8">OMSimCommandArgsTable::finalize</a></div><div class="ttdeci">void finalize()</div><div class="ttdoc">Finalizes the table, setting a random seed if none was provided. m_finalized is set to true preventin...</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.cc:107</div></div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html_ae25665b0429b0bfcfe0aac11ef982290"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#ae25665b0429b0bfcfe0aac11ef982290">OMSimCommandArgsTable::shutdown</a></div><div class="ttdeci">static void shutdown()</div><div class="ttdoc">Deletes the global instance of OMSimCommandArgsTable.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.cc:30</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_864f292c5cbb4a74180810cb2e80dd5b.html">framework</a></li><li class="navelem"><a class="el" href="dir_1bc21981797ed08ef994409d474646cd.html">include</a></li><li class="navelem"><a class="el" href="_o_m_sim_command_args_table_8hh.html">OMSimCommandArgsTable.hh</a></li>
-    <li class="footer">Generated on Wed Aug 28 2024 14:27:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 17:32:17 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

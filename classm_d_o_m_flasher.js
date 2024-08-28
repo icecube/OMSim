@@ -9,13 +9,13 @@ var classm_d_o_m_flasher =
     [ "makeSolids", "classm_d_o_m_flasher.html#aabf2d4ba14e3d072472ec7c46201362b", null ],
     [ "readFlasherProfile", "classm_d_o_m_flasher.html#a4c7d36af1760026c53a9164bf02dc057", null ],
     [ "runBeamOnFlasher", "classm_d_o_m_flasher.html#a268494f8d27175e1ae391789e1d66faf", null ],
-    [ "mFlasherHoleLogical", "classm_d_o_m_flasher.html#a6f304b70a2f95adca637c7921281f6ae", null ],
-    [ "mFlasherHoleSolid", "classm_d_o_m_flasher.html#a2ca002c507e40a6110b215cad5616217", null ],
-    [ "mFlasherProfileAvailable", "classm_d_o_m_flasher.html#a12f381573b29dc6ebd3533db8c373475", null ],
-    [ "mGlassWindowLogical", "classm_d_o_m_flasher.html#aec3f52b425378adcebbd1bf8dc5a389b", null ],
-    [ "mGlassWindowSolid", "classm_d_o_m_flasher.html#a02da4d7a31b2df29b495a75cf57b8eb0", null ],
-    [ "mLEDLogical", "classm_d_o_m_flasher.html#ab97e2fb06ead3a1d52d558f78f5a2757", null ],
-    [ "mLEDSolid", "classm_d_o_m_flasher.html#a79f91c6637b17ffdf867e05c0f79d46c", null ],
-    [ "mProfileX", "classm_d_o_m_flasher.html#a09ec0228902e4b9350736da03f8fae10", null ],
-    [ "mProfileY", "classm_d_o_m_flasher.html#a46a5e36504e75195e7035a231d150cd9", null ]
+    [ "m_flasherHoleLogical", "classm_d_o_m_flasher.html#a182cb1f290cd987b45919962c57dfad6", null ],
+    [ "m_flasherHoleSolid", "classm_d_o_m_flasher.html#a089cbf6beccfcba776d258d4ffb6b740", null ],
+    [ "m_flasherProfileAvailable", "classm_d_o_m_flasher.html#ac52d330c980684ba35362b840c536c4a", null ],
+    [ "m_glassWindowLogical", "classm_d_o_m_flasher.html#a74e713ee84a8ddbd33d94f46974a169f", null ],
+    [ "m_glassWindowSolid", "classm_d_o_m_flasher.html#aade9a58943312be53fc63291bf3919b2", null ],
+    [ "m_LEDLogical", "classm_d_o_m_flasher.html#abe202586641134e372dffaffb18204bd", null ],
+    [ "m_LEDSolid", "classm_d_o_m_flasher.html#a5f3da2a94fa9f21ba461cb7734ad1878", null ],
+    [ "m_profileX", "classm_d_o_m_flasher.html#a669a45599bac259aaac114bd9d8efa70", null ],
+    [ "m_profileY", "classm_d_o_m_flasher.html#a07e44d54a36e346fd470805fe11cc517", null ]
 ];

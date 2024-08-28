@@ -13,9 +13,9 @@ var class_o_m_sim_decays_g_p_s =
     [ "setProductionRadius", "class_o_m_sim_decays_g_p_s.html#a0fd01732515dd1175fe5434a9cb3d0c5", null ],
     [ "simulateDecaysInPMTs", "class_o_m_sim_decays_g_p_s.html#a2bba4e779b0200d277e01053c521587b", null ],
     [ "simulateDecaysInPressureVessel", "class_o_m_sim_decays_g_p_s.html#ae43dceede1c8f2c332964fb43242cc76", null ],
+    [ "m_opticalModule", "class_o_m_sim_decays_g_p_s.html#a2bb99830dc7b0204f85d0c9242425ab1", null ],
     [ "mIsotopeCommands", "class_o_m_sim_decays_g_p_s.html#af4f9a615b6d1e9fa7d3b2104af3c2f3e", null ],
     [ "mNuclideStopName", "class_o_m_sim_decays_g_p_s.html#adcbc2275cda8196cfdbd5b1c3477f7ad", null ],
-    [ "mOM", "class_o_m_sim_decays_g_p_s.html#a90b43354885ed69034c48df4f89326b3", null ],
     [ "mProductionRadius", "class_o_m_sim_decays_g_p_s.html#a70c8a1985e53392c67247e6334eaaa17", null ],
     [ "mTerminationIsotopes", "class_o_m_sim_decays_g_p_s.html#a363ea9066f59222ba1d3e3cd5f4a42d1", null ]
 ];

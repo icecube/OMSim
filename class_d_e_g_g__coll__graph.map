@@ -1,9 +1,9 @@
 <map id="DEGG" name="DEGG">
-<area shape="rect" id="node1" title="Construction of the DEGG detector geometry." alt="" coords="64,412,124,439"/>
-<area shape="rect" id="node7" href="$class_d_egg_harness.html" title=" " alt="" coords="93,501,202,528"/>
-<area shape="rect" id="node2" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="13,336,176,363"/>
-<area shape="rect" id="node3" href="$classabc_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="24,171,200,197"/>
-<area shape="rect" id="node6" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="22,247,201,273"/>
-<area shape="rect" id="node4" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="45,81,178,108"/>
-<area shape="rect" id="node5" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="50,5,173,32"/>
+<area shape="rect" id="node1" title="Construction of the DEGG detector geometry." alt="" coords="57,412,117,439"/>
+<area shape="rect" id="node7" href="$class_d_egg_harness.html" title=" " alt="" coords="124,501,233,528"/>
+<area shape="rect" id="node2" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="5,336,168,363"/>
+<area shape="rect" id="node3" href="$classabc_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="60,171,236,197"/>
+<area shape="rect" id="node6" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="59,247,237,273"/>
+<area shape="rect" id="node4" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="81,81,215,108"/>
+<area shape="rect" id="node5" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="87,5,209,32"/>
 </map>

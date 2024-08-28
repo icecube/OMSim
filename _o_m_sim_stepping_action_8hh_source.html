@@ -117,25 +117,22 @@ $(document).ready(function(){initNavTree('_o_m_sim_stepping_action_8hh_source.ht
 </div><!--header-->
 <div class="contents">
 <a href="_o_m_sim_stepping_action_8hh.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef OMSimSteppingAction_h</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define OMSimSteppingAction_h 1</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;G4UserSteppingAction.hh&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_o_m_sim_stepping_action.html">   17</a></span>&#160;<span class="comment"></span><span class="keyword">class </span><a class="code" href="class_o_m_sim_stepping_action.html">OMSimSteppingAction</a> : <span class="keyword">public</span> G4UserSteppingAction</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_o_m_sim_stepping_action.html">OMSimSteppingAction</a>(){};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   ~<a class="code" href="class_o_m_sim_stepping_action.html">OMSimSteppingAction</a>(){};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_stepping_action.html#ade0aef1899f7923ca171b3919ed636d1">UserSteppingAction</a>(<span class="keyword">const</span> G4Step*);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_o_m_sim_stepping_action_html"><div class="ttname"><a href="class_o_m_sim_stepping_action.html">OMSimSteppingAction</a></div><div class="ttdef"><b>Definition:</b> OMSimSteppingAction.hh:18</div></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;G4UserSteppingAction.hh&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_o_m_sim_stepping_action.html">   16</a></span>&#160;<span class="comment"></span><span class="keyword">class </span><a class="code" href="class_o_m_sim_stepping_action.html">OMSimSteppingAction</a> : <span class="keyword">public</span> G4UserSteppingAction</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_o_m_sim_stepping_action.html">OMSimSteppingAction</a>(){};</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   ~<a class="code" href="class_o_m_sim_stepping_action.html">OMSimSteppingAction</a>(){};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_stepping_action.html#ade0aef1899f7923ca171b3919ed636d1">UserSteppingAction</a>(<span class="keyword">const</span> G4Step*);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</span></div>
+<div class="ttc" id="aclass_o_m_sim_stepping_action_html"><div class="ttname"><a href="class_o_m_sim_stepping_action.html">OMSimSteppingAction</a></div><div class="ttdef"><b>Definition:</b> OMSimSteppingAction.hh:17</div></div>
 <div class="ttc" id="aclass_o_m_sim_stepping_action_html_ade0aef1899f7923ca171b3919ed636d1"><div class="ttname"><a href="class_o_m_sim_stepping_action.html#ade0aef1899f7923ca171b3919ed636d1">OMSimSteppingAction::UserSteppingAction</a></div><div class="ttdeci">void UserSteppingAction(const G4Step *)</div><div class="ttdoc">Custom actions during a tracking step. This function checks for particles that seem to be stuck (e....</div><div class="ttdef"><b>Definition:</b> OMSimSteppingAction.cc:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -143,7 +140,7 @@ $(document).ready(function(){initNavTree('_o_m_sim_stepping_action_8hh_source.ht
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_864f292c5cbb4a74180810cb2e80dd5b.html">framework</a></li><li class="navelem"><a class="el" href="dir_1bc21981797ed08ef994409d474646cd.html">include</a></li><li class="navelem"><a class="el" href="_o_m_sim_stepping_action_8hh.html">OMSimSteppingAction.hh</a></li>
-    <li class="footer">Generated on Wed Aug 28 2024 14:27:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 17:32:17 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

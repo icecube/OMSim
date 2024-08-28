@@ -20,10 +20,10 @@ var class_o_m_sim_hit_manager =
     [ "setNumberOfPMTs", "class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8", null ],
     [ "shutdown", "class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf", null ],
     [ "sortHitStatsByTime", "class_o_m_sim_hit_manager.html#a756d2a85121e00d2a2d8b6c04cd0ebd1", null ],
-    [ "mCurrentIndex", "class_o_m_sim_hit_manager.html#a0fa16a90854630de2ddf703f8649cd24", null ],
-    [ "mInstance", "class_o_m_sim_hit_manager.html#a210a00b8b16e5b2ebcc6920da22ceb93", null ],
-    [ "mModuleHits", "class_o_m_sim_hit_manager.html#a5b5170bb63b04190829aeb79183a5d3f", null ],
-    [ "mMutex", "class_o_m_sim_hit_manager.html#ab99b6dee5be51adb534057be74e9a4b5", null ],
-    [ "mNumPMTs", "class_o_m_sim_hit_manager.html#a68b3614293ca71096ff48c4fc5943de2", null ],
-    [ "mThreadData", "class_o_m_sim_hit_manager.html#a52db100408f00b19bf86a0bbfa08b6fd", null ]
+    [ "m_currentIndex", "class_o_m_sim_hit_manager.html#af56b8c9e7948e1943093a2966af2baf2", null ],
+    [ "m_instance", "class_o_m_sim_hit_manager.html#ad66e546c292509c0c9d22a1807f8e028", null ],
+    [ "m_moduleHits", "class_o_m_sim_hit_manager.html#a0fc9285c7ecc4cc283e883ceebbe423e", null ],
+    [ "m_mutex", "class_o_m_sim_hit_manager.html#abcfa51c9d79496d0ad57c796b74ae352", null ],
+    [ "m_numberOfPMTs", "class_o_m_sim_hit_manager.html#a8f1ac71e89bfb8d4f0db4b56c7152e50", null ],
+    [ "m_threadData", "class_o_m_sim_hit_manager.html#a1316fe3b0b60dbb1e4b06ef336f2ba41", null ]
 ];

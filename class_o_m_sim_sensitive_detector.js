@@ -11,7 +11,7 @@ var class_o_m_sim_sensitive_detector =
     [ "ProcessHits", "class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4", null ],
     [ "setPMTResponse", "class_o_m_sim_sensitive_detector.html#a345025c68ea4ff0d4a0f7ad017f06778", null ],
     [ "storePhotonHit", "class_o_m_sim_sensitive_detector.html#a329ead0f229868eaf8ac21132cbc6746", null ],
-    [ "mBoundaryProcess", "class_o_m_sim_sensitive_detector.html#a4f8fb54b28c422464b26e05a6cfa579b", null ],
-    [ "mDetectorType", "class_o_m_sim_sensitive_detector.html#ab14f76ffaa75e268fc49cdec4103a034", null ],
-    [ "mPMTResponse", "class_o_m_sim_sensitive_detector.html#a9352dc2cb5522d037044f99fce178b70", null ]
+    [ "m_boundaryProcess", "class_o_m_sim_sensitive_detector.html#a8a0377d3ae13a48c1b3b08cd56bfaa08", null ],
+    [ "m_detectorType", "class_o_m_sim_sensitive_detector.html#a180609fdc6beeddc5f23b0d88521c8f4", null ],
+    [ "m_PMTResponse", "class_o_m_sim_sensitive_detector.html#afbc50976a0dc1b3b9fa9dfa48ab59612", null ]
 ];

@@ -134,7 +134,7 @@ Inheritance diagram for OMSimSensitiveDetector:</div>
 <div class="dynheader">
 Collaboration diagram for OMSimSensitiveDetector:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_o_m_sim_sensitive_detector__coll__graph.svg" width="555" height="203"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_o_m_sim_sensitive_detector__coll__graph.svg" width="562" height="203"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -176,17 +176,17 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>fetchBoundaryProcess<
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a9352dc2cb5522d037044f99fce178b70"><td class="memItemLeft" align="right" valign="top"><a id="a9352dc2cb5522d037044f99fce178b70"></a>
-<a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mPMTResponse</b></td></tr>
-<tr class="separator:a9352dc2cb5522d037044f99fce178b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab14f76ffaa75e268fc49cdec4103a034"><td class="memItemLeft" align="right" valign="top"><a id="ab14f76ffaa75e268fc49cdec4103a034"></a>
-DetectorType&#160;</td><td class="memItemRight" valign="bottom"><b>mDetectorType</b></td></tr>
-<tr class="separator:ab14f76ffaa75e268fc49cdec4103a034"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbc50976a0dc1b3b9fa9dfa48ab59612"><td class="memItemLeft" align="right" valign="top"><a id="afbc50976a0dc1b3b9fa9dfa48ab59612"></a>
+<a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_PMTResponse</b></td></tr>
+<tr class="separator:afbc50976a0dc1b3b9fa9dfa48ab59612"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a180609fdc6beeddc5f23b0d88521c8f4"><td class="memItemLeft" align="right" valign="top"><a id="a180609fdc6beeddc5f23b0d88521c8f4"></a>
+DetectorType&#160;</td><td class="memItemRight" valign="bottom"><b>m_detectorType</b></td></tr>
+<tr class="separator:a180609fdc6beeddc5f23b0d88521c8f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a4f8fb54b28c422464b26e05a6cfa579b"><td class="memItemLeft" align="right" valign="top">static thread_local <a class="el" href="class_g4_op_boundary_process.html">G4OpBoundaryProcess</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a4f8fb54b28c422464b26e05a6cfa579b">mBoundaryProcess</a> = nullptr</td></tr>
-<tr class="separator:a4f8fb54b28c422464b26e05a6cfa579b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a0377d3ae13a48c1b3b08cd56bfaa08"><td class="memItemLeft" align="right" valign="top">static thread_local <a class="el" href="class_g4_op_boundary_process.html">G4OpBoundaryProcess</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a8a0377d3ae13a48c1b3b08cd56bfaa08">m_boundaryProcess</a> = nullptr</td></tr>
+<tr class="separator:a8a0377d3ae13a48c1b3b08cd56bfaa08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac8df596a75c482bafb3b83d1ed011316"></a>
@@ -199,13 +199,13 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">OMSimSensitiveDetector::OMSimSensitiveDetector </td>
           <td>(</td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pName</em>, </td>
+          <td class="paramname"><em>p_name</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">DetectorType&#160;</td>
-          <td class="paramname"><em>pDetectorType</em>&#160;</td>
+          <td class="paramname"><em>p_detectorType</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -216,8 +216,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pName</td><td>Name of the sensitive detector. </td></tr>
-    <tr><td class="paramname">pDetectorType</td><td>Type of the detector (e.g., PMT, VolumePhotonDetector). </td></tr>
+    <tr><td class="paramname">p_name</td><td>Name of the sensitive detector. </td></tr>
+    <tr><td class="paramname">p_detectorType</td><td>Type of the detector (e.g., PMT, VolumePhotonDetector). </td></tr>
   </table>
   </dd>
 </dl>
@@ -238,13 +238,13 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">G4bool OMSimSensitiveDetector::handleGeneralPhotonDetector </td>
           <td>(</td>
           <td class="paramtype">G4Step *&#160;</td>
-          <td class="paramname"><em>pStep</em>, </td>
+          <td class="paramname"><em>p_step</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4TouchableHistory *&#160;</td>
-          <td class="paramname"><em>pTouchableHistory</em>&#160;</td>
+          <td class="paramname"><em>p_touchableHistory</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -260,8 +260,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pStep</td><td>The current step information. </td></tr>
-    <tr><td class="paramname">pTouchableHistory</td><td>The history of touchable objects. </td></tr>
+    <tr><td class="paramname">p_step</td><td>The current step information. </td></tr>
+    <tr><td class="paramname">p_touchableHistory</td><td>The history of touchable objects. </td></tr>
   </table>
   </dd>
 </dl>
@@ -282,13 +282,13 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">G4bool OMSimSensitiveDetector::handlePMT </td>
           <td>(</td>
           <td class="paramtype">G4Step *&#160;</td>
-          <td class="paramname"><em>pStep</em>, </td>
+          <td class="paramname"><em>p_step</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4TouchableHistory *&#160;</td>
-          <td class="paramname"><em>pTouchableHistory</em>&#160;</td>
+          <td class="paramname"><em>p_touchableHistory</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -304,8 +304,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pStep</td><td>The current step information. </td></tr>
-    <tr><td class="paramname">pTouchableHistory</td><td>The history of touchable objects. </td></tr>
+    <tr><td class="paramname">p_step</td><td>The current step information. </td></tr>
+    <tr><td class="paramname">p_touchableHistory</td><td>The history of touchable objects. </td></tr>
   </table>
   </dd>
 </dl>
@@ -326,13 +326,13 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">G4bool OMSimSensitiveDetector::ProcessHits </td>
           <td>(</td>
           <td class="paramtype">G4Step *&#160;</td>
-          <td class="paramname"><em>pStep</em>, </td>
+          <td class="paramname"><em>p_step</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4TouchableHistory *&#160;</td>
-          <td class="paramname"><em>pTouchableHistory</em>&#160;</td>
+          <td class="paramname"><em>p_touchableHistory</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -348,8 +348,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pStep</td><td>The current step information. </td></tr>
-    <tr><td class="paramname">pTouchableHistory</td><td>The history of touchable objects. </td></tr>
+    <tr><td class="paramname">p_step</td><td>The current step information. </td></tr>
+    <tr><td class="paramname">p_touchableHistory</td><td>The history of touchable objects. </td></tr>
   </table>
   </dd>
 </dl>
@@ -370,7 +370,7 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">void OMSimSensitiveDetector::storePhotonHit </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_photon_info.html">PhotonInfo</a> &amp;&#160;</td>
-          <td class="paramname"><em>pInfo</em></td><td>)</td>
+          <td class="paramname"><em>p_info</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -382,7 +382,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">info</td><td>The photon hit information. </td></tr>
+    <tr><td class="paramname">p_info</td><td>The photon hit information. </td></tr>
   </table>
   </dd>
 </dl>
@@ -390,8 +390,8 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a4f8fb54b28c422464b26e05a6cfa579b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f8fb54b28c422464b26e05a6cfa579b">&#9670;&nbsp;</a></span>mBoundaryProcess</h2>
+<a id="a8a0377d3ae13a48c1b3b08cd56bfaa08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a0377d3ae13a48c1b3b08cd56bfaa08">&#9670;&nbsp;</a></span>m_boundaryProcess</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -400,7 +400,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">thread_local <a class="el" href="class_g4_op_boundary_process.html">G4OpBoundaryProcess</a> * OMSimSensitiveDetector::mBoundaryProcess = nullptr</td>
+          <td class="memname">thread_local <a class="el" href="class_g4_op_boundary_process.html">G4OpBoundaryProcess</a> * OMSimSensitiveDetector::m_boundaryProcess = nullptr</td>
         </tr>
       </table>
   </td>
@@ -423,7 +423,7 @@ Static Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a></li>
-    <li class="footer">Generated on Wed Aug 28 2024 14:27:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 17:32:17 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

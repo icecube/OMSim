@@ -22,7 +22,7 @@ Collaboration diagram for DEGG\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=255pt]{class_d_e_g_g__coll__graph}
+\includegraphics[width=282pt]{class_d_e_g_g__coll__graph}
 \end{center}
 \end{figure}
 
@@ -31,7 +31,7 @@ Collaboration diagram for DEGG\+:
 The \mbox{\hyperlink{class_d_e_g_g}{DEGG}} class is responsible for constructing the D-\/\+Egg detector geometry. It creates the pressure vessel, the inner volume, and places the PMTs inside the logical volume of the gel. The class is derived from the {\ttfamily \mbox{\hyperlink{classabc_detector_component}{abc\+Detector\+Component}}} base class. \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_d_e_g_g_a2bcfb59a4bfa47e91a5ad00745fd5989}{DEGG}} (G4bool p\+Place\+Harness=true)
+\mbox{\hyperlink{class_d_e_g_g_a6af6697e49866ad1c9c15a8182b86cbf}{DEGG}} (G4bool p\+\_\+place\+Harness=true)
 \item 
 \mbox{\Hypertarget{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}\label{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}} 
 void \mbox{\hyperlink{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}{construction}} ()
@@ -55,19 +55,19 @@ void {\bfseries append\+Internal\+Components\+From\+CAD} ()
 \mbox{\Hypertarget{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}\label{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}} 
 void {\bfseries append\+Pressure\+Vessel\+From\+CAD} ()
 \item 
-G4\+VSolid $\ast$ \mbox{\hyperlink{class_d_e_g_g_a7cb478ce4431037cd195380c77916a5a}{create\+Egg\+Solid}} (G4int p\+Segments\+\_\+1, G4double p\+Sphere\+Rmax, G4double p\+Sphered\+Theta, G4double p\+Sphere\+TransformZ, G4double p\+Torus1R, G4double p\+Center\+Of\+Torus1R, G4int p\+Segments\+\_\+2, G4double p\+Torus2R, G4double p\+Center\+Of\+Torus2R, G4double p\+Center\+Of\+Torus2\+\_\+z, G4double p\+Torus2\+\_\+\+Zmin, G4double p\+Torus2\+\_\+\+Zmax, G4double p\+Torus2\+\_\+\+Z0, G4double p\+Torus1\+TransformZ)
+G4\+VSolid $\ast$ \mbox{\hyperlink{class_d_e_g_g_a2c81a45df01d703ed34559a514880220}{create\+Egg\+Solid}} (G4int p\+\_\+segments\+\_\+1, G4double p\+Sphere\+Rmax, G4double p\+Sphered\+Theta, G4double p\+Sphere\+TransformZ, G4double p\+Torus1R, G4double p\+Center\+Of\+Torus1R, G4int p\+Segments\+\_\+2, G4double p\+Torus2R, G4double p\+Center\+Of\+Torus2R, G4double p\+Center\+Of\+Torus2\+\_\+z, G4double p\+Torus2\+\_\+\+Zmin, G4double p\+Torus2\+\_\+\+Zmax, G4double p\+Torus2\+\_\+\+Z0, G4double p\+Torus1\+TransformZ)
 \begin{DoxyCompactList}\small\item\em Creates the solid shape for the \mbox{\hyperlink{class_d_e_g_g}{DEGG}} pressure vessel. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_d_e_g_g_a1a210a334a32f74c9ce28ff11fc05fb4}\label{class_d_e_g_g_a1a210a334a32f74c9ce28ff11fc05fb4}} 
-\mbox{\hyperlink{class_d_egg_harness}{DEgg\+Harness}} $\ast$ {\bfseries m\+Harness}
+\mbox{\Hypertarget{class_d_e_g_g_a5670706998ff6df38c37a7df7564f339}\label{class_d_e_g_g_a5670706998ff6df38c37a7df7564f339}} 
+\mbox{\hyperlink{class_d_egg_harness}{DEgg\+Harness}} $\ast$ {\bfseries m\+\_\+harness}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_d_e_g_g_a2bcfb59a4bfa47e91a5ad00745fd5989}\label{class_d_e_g_g_a2bcfb59a4bfa47e91a5ad00745fd5989}} 
+\mbox{\Hypertarget{class_d_e_g_g_a6af6697e49866ad1c9c15a8182b86cbf}\label{class_d_e_g_g_a6af6697e49866ad1c9c15a8182b86cbf}} 
 \index{DEGG@{DEGG}!DEGG@{DEGG}}
 \index{DEGG@{DEGG}!DEGG@{DEGG}}
 \doxysubsubsection{\texorpdfstring{DEGG()}{DEGG()}}
@@ -84,41 +84,41 @@ G4\+VSolid $\ast$ \mbox{\hyperlink{class_d_e_g_g_a7cb478ce4431037cd195380c77916a
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_d_e_g_g_a7cb478ce4431037cd195380c77916a5a}\label{class_d_e_g_g_a7cb478ce4431037cd195380c77916a5a}} 
+\mbox{\Hypertarget{class_d_e_g_g_a2c81a45df01d703ed34559a514880220}\label{class_d_e_g_g_a2c81a45df01d703ed34559a514880220}} 
 \index{DEGG@{DEGG}!createEggSolid@{createEggSolid}}
 \index{createEggSolid@{createEggSolid}!DEGG@{DEGG}}
 \doxysubsubsection{\texorpdfstring{createEggSolid()}{createEggSolid()}}
-{\footnotesize\ttfamily G4\+VSolid $\ast$ DEGG\+::create\+Egg\+Solid (\begin{DoxyParamCaption}\item[{G4int}]{p\+Segments\+\_\+1,  }\item[{G4double}]{p\+Sphere\+Rmax,  }\item[{G4double}]{p\+Sphered\+Theta,  }\item[{G4double}]{p\+Sphere\+TransformZ,  }\item[{G4double}]{p\+Torus1R,  }\item[{G4double}]{p\+Center\+Of\+Torus1R,  }\item[{G4int}]{p\+Segments\+\_\+2,  }\item[{G4double}]{p\+Torus2R,  }\item[{G4double}]{p\+Center\+Of\+Torus2R,  }\item[{G4double}]{p\+Center\+Of\+Torus2\+\_\+z,  }\item[{G4double}]{p\+Torus2\+\_\+\+Zmin,  }\item[{G4double}]{p\+Torus2\+\_\+\+Zmax,  }\item[{G4double}]{p\+Torus2\+\_\+\+Z0,  }\item[{G4double}]{p\+Torus1\+TransformZ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4\+VSolid $\ast$ DEGG\+::create\+Egg\+Solid (\begin{DoxyParamCaption}\item[{G4int}]{p\+\_\+segments1,  }\item[{G4double}]{p\+\_\+sphere\+Rmax,  }\item[{G4double}]{p\+\_\+sphered\+Theta,  }\item[{G4double}]{p\+\_\+sphere\+TransformZ,  }\item[{G4double}]{p\+\_\+torus1R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus1R,  }\item[{G4int}]{p\+\_\+segments2,  }\item[{G4double}]{p\+\_\+torus2R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus2R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus2z,  }\item[{G4double}]{p\+\_\+torus2\+Zmin,  }\item[{G4double}]{p\+\_\+torus2\+Zmax,  }\item[{G4double}]{p\+\_\+torus2\+Z0,  }\item[{G4double}]{p\+\_\+torus1\+TransformZ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Segments\+\_\+1} & Number of segments for the G4\+Sphere representing the outer glass. \\
+{\em p\+\_\+segments1} & Number of segments for the G4\+Sphere representing the outer glass. \\
 \hline
-{\em p\+Sphere\+Rmax} & Outer radius of the G4\+Sphere representing the outer glass. \\
+{\em p\+\_\+sphere\+Rmax} & Outer radius of the G4\+Sphere representing the outer glass. \\
 \hline
-{\em p\+Sphered\+Theta} & Delta theta angle of the G4\+Sphere segment. \\
+{\em p\+\_\+sphered\+Theta} & Delta theta angle of the G4\+Sphere segment. \\
 \hline
-{\em p\+Sphere\+TransformZ} & Shift of the G4\+Sphere in the z-\/direction. \\
+{\em p\+\_\+sphere\+TransformZ} & Shift of the G4\+Sphere in the z-\/direction. \\
 \hline
-{\em p\+Torus1R} & Radius of the small spindle torus sphere. \\
+{\em p\+\_\+torus1R} & Radius of the small spindle torus sphere. \\
 \hline
-{\em p\+Center\+Of\+Torus1R} & Distance from the center of torus 1 to the z-\/axis. \\
+{\em p\+\_\+centre\+Of\+Torus1R} & Distance from the center of torus 1 to the z-\/axis. \\
 \hline
-{\em p\+Segments\+\_\+2} & Number of segments for the large spindle torus sphere. \\
+{\em p\+\_\+segments2} & Number of segments for the large spindle torus sphere. \\
 \hline
-{\em p\+Torus2R} & Radius of the large spindle torus sphere. \\
+{\em p\+\_\+torus2R} & Radius of the large spindle torus sphere. \\
 \hline
-{\em p\+Center\+Of\+Torus2R} & Distance from the center of torus 2 to the z-\/axis (signed). \\
+{\em p\+\_\+centre\+Of\+Torus2R} & Distance from the center of torus 2 to the z-\/axis (signed). \\
 \hline
-{\em p\+Center\+Of\+Torus2\+\_\+z} & Distance from the center of torus 2 to the z-\/axis (signed). \\
+{\em p\+\_\+centre\+Of\+Torus2z} & Distance from the center of torus 2 to the z-\/axis (signed). \\
 \hline
-{\em p\+Torus2\+\_\+\+Zmin} & Minimum z shift from z=0 in the positive z direction. \\
+{\em p\+\_\+torus2\+Zmin} & Minimum z shift from z=0 in the positive z direction. \\
 \hline
-{\em p\+Torus2\+\_\+\+Zmax} & Maximum z shift from z=0 in the positive z direction. \\
+{\em p\+\_\+torus2\+Zmax} & Maximum z shift from z=0 in the positive z direction. \\
 \hline
-{\em p\+Torus2\+\_\+\+Z0} & G4double. \\
+{\em p\+\_\+torus2\+Z0} & G4double. \\
 \hline
-{\em p\+Torus1\+TransformZ} & G4double. \\
+{\em p\+\_\+torus1\+TransformZ} & G4double. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

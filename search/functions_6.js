@@ -1,7 +1,7 @@
 var searchData=
 [
   ['generalgps_548',['generalGPS',['../class_o_m_sim_decays_g_p_s.html#abc1684c40b022ef35aa1c4eea6a7e557',1,'OMSimDecaysGPS']]],
-  ['get_549',['get',['../class_o_m_sim_command_args_table.html#a98ca3b003cebba64f357e342d16ea968',1,'OMSimCommandArgsTable']]],
+  ['get_549',['get',['../class_o_m_sim_command_args_table.html#a6a455736ab058037381fd786c52ca86f',1,'OMSimCommandArgsTable']]],
   ['getalpha_550',['getAlpha',['../class_o_m_sim_s_n_tools.html#aeb59462c439834b0bb9c5a5be3ad612c',1,'OMSimSNTools']]],
   ['getbulbsolid_551',['getBulbSolid',['../class_o_m_sim_p_m_t_construction.html#a759f6d30a70f3a9f34997e5dc9d38680',1,'OMSimPMTConstruction']]],
   ['getcharge_552',['getCharge',['../class_o_m_sim_p_m_t_response.html#ad175b3ea4665684d2891c7107e12abeb',1,'OMSimPMTResponse::getCharge(G4double p_WavelengthKey)'],['../class_o_m_sim_p_m_t_response.html#ad615e6ae60587d8619b737f5c8d59c8b',1,'OMSimPMTResponse::getCharge(G4double p_WavelengthKey1, G4double p_WavelengthKey2)']]],
@@ -9,7 +9,7 @@ var searchData=
   ['getdistancepmtcentertotip_554',['getDistancePMTCenterToTip',['../class_o_m_sim_p_m_t_construction.html#a9c780686ad7ab5cb712c494b7e1b20a5',1,'OMSimPMTConstruction']]],
   ['getfilenames_555',['getFileNames',['../class_o_m_sim_s_n_tools.html#a89a22f20d0aff91704cf6cab1b48d266',1,'OMSimSNTools']]],
   ['getflasherpositioninfo_556',['getFlasherPositionInfo',['../classm_d_o_m_flasher.html#aa74e2bfee6f21cb652e7dd9929e8e688',1,'mDOMFlasher']]],
-  ['getinstance_557',['getInstance',['../class_o_m_sim_decays_analysis.html#a4aea9bd04b3f168cfcae98808b33f90c',1,'OMSimDecaysAnalysis::getInstance()'],['../class_o_m_sim_s_n_analysis.html#a104b6afd769a07cdfc7b1583e4804fef',1,'OMSimSNAnalysis::getInstance()'],['../class_o_m_sim_input_data.html#a810d7ae3b652d05e7b85eb568873eed2',1,'OMSimInputData::getInstance()'],['../class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c',1,'OMSimHitManager::getInstance()'],['../class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2',1,'OMSimCommandArgsTable::getInstance()']]],
+  ['getinstance_557',['getInstance',['../class_o_m_sim_decays_analysis.html#a4aea9bd04b3f168cfcae98808b33f90c',1,'OMSimDecaysAnalysis::getInstance()'],['../class_o_m_sim_s_n_analysis.html#a104b6afd769a07cdfc7b1583e4804fef',1,'OMSimSNAnalysis::getInstance()'],['../class_o_m_sim_input_data.html#a810d7ae3b652d05e7b85eb568873eed2',1,'OMSimInputData::getInstance()'],['../class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c',1,'OMSimHitManager::getInstance()'],['../class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214',1,'OMSimCommandArgsTable::getInstance()']]],
   ['getjsontree_558',['getJSONTree',['../class_parameter_table.html#a042ee0eca2c9daa755d7a472608e6d66',1,'ParameterTable']]],
   ['getlifetimetemperaturerange_559',['getLifeTimeTemperatureRange',['../namespace_scintillation_processor.html#ad81d3abfcca6999f8addb34993ed90d5',1,'ScintillationProcessor']]],
   ['getlogicalvolume_560',['getLogicalVolume',['../class_o_m_sim_p_m_t_construction.html#af3b6282d6a0c3caa3f13244cdf2ed65a',1,'OMSimPMTConstruction']]],

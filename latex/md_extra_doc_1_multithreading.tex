@@ -184,7 +184,7 @@ In scenarios where merging data is unnecessary, or the amount of data is too lar
 \DoxyCodeLine{\textcolor{comment}{//from radioactive\_decays/src/OMSimDecaysAnalysis.cc}}
 \DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{OMSimDecaysAnalysis::writeThreadDecayInformation}}()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    G4String lOutputSuffix = \mbox{\hyperlink{class_o_m_sim_command_args_table_a2a6179839e4ed5f503e52fca917c84c2}{OMSimCommandArgsTable::getInstance}}().\mbox{\hyperlink{class_o_m_sim_command_args_table_a98ca3b003cebba64f357e342d16ea968}{get}}<std::string>(\textcolor{stringliteral}{"{}output\_file"{}});}
+\DoxyCodeLine{    G4String lOutputSuffix = \mbox{\hyperlink{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}{OMSimCommandArgsTable::getInstance}}().\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{get}}<std::string>(\textcolor{stringliteral}{"{}output\_file"{}});}
 \DoxyCodeLine{    G4String lDecaysFileName = lOutputSuffix + \textcolor{stringliteral}{"{}\_"{}} + \mbox{\hyperlink{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}{Tools::getThreadIDStr}}() + \textcolor{stringliteral}{"{}\_decays.dat"{}}; \textcolor{comment}{// one file per thread, appending thread id to file name}}
 \DoxyCodeLine{}
 \DoxyCodeLine{    std::fstream lDatafile;}
@@ -206,7 +206,7 @@ Data is saved after each event in the {\ttfamily End\+Of\+Event\+Action} method 
 \DoxyCodeLine{\textcolor{comment}{//from radioactive\_decays/src/OMSimEventAction.cc}}
 \DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_event_action_a10298c7dff0337cec4ee06a25ca9c116}{OMSimEventAction::EndOfEventAction}}(\textcolor{keyword}{const} G4Event *evt)}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_o_m_sim_command_args_table_a2a6179839e4ed5f503e52fca917c84c2}{OMSimCommandArgsTable::getInstance}}().get<bool>(\textcolor{stringliteral}{"{}multiplicity\_study"{}}))}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}{OMSimCommandArgsTable::getInstance}}().get<bool>(\textcolor{stringliteral}{"{}multiplicity\_study"{}}))}
 \DoxyCodeLine{    \{}
 \DoxyCodeLine{        \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}} \&lAnalysisManager = \mbox{\hyperlink{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}{OMSimDecaysAnalysis::getInstance}}();}
 \DoxyCodeLine{        lAnalysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}{writeThreadHitInformation}}();}

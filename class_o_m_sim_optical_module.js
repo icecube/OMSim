@@ -7,6 +7,6 @@ var class_o_m_sim_optical_module =
     [ "getNumberOfPMTs", "class_o_m_sim_optical_module.html#a802253f7f4b4cb4759c57fbff51023ae", null ],
     [ "getPMTmanager", "class_o_m_sim_optical_module.html#ac6653d6f98e3e1803e72c50c55bbef43", null ],
     [ "getPressureVesselWeight", "class_o_m_sim_optical_module.html#a10f0f95b9b84e8cc4837dcb84a82c70d", null ],
-    [ "mIndex", "class_o_m_sim_optical_module.html#a7f388d1ec142804f350635035e56beb1", null ],
-    [ "mPMTManager", "class_o_m_sim_optical_module.html#a4cfb660337a6a32c7ddd3df6ce761919", null ]
+    [ "m_index", "class_o_m_sim_optical_module.html#ad0efe718eda98bdea111f5f4b23365ea", null ],
+    [ "m_managerPMT", "class_o_m_sim_optical_module.html#abc56cd1b04475819d288524fe071a79e", null ]
 ];

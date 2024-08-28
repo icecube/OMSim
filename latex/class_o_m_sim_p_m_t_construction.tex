@@ -55,9 +55,6 @@ void {\bfseries include\+HAcoating} ()
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_af23202d8a326fcd4c05d7586419ad5fd}\label{class_o_m_sim_p_m_t_construction_af23202d8a326fcd4c05d7586419ad5fd}} 
-void {\bfseries define\+Photocathode\+Properties} ()
-\item 
 std\+::tuple$<$ G4\+VSolid $\ast$, G4\+VSolid $\ast$ $>$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a759f6d30a70f3a9f34997e5dc9d38680}{get\+Bulb\+Solid}} (G4\+String p\+Side)
 \item 
 std\+::tuple$<$ G4\+VSolid $\ast$, G4\+VSolid $\ast$ $>$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a3faaf0d512f9a3fe15c6f33efe6d062c}{simple\+Bulb\+Construction}} (G4\+String p\+Side)
@@ -79,15 +76,12 @@ G4\+Union\+Solid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_ae3063
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a05b6a96a4339d555cfb6c727a23d999d}\label{class_o_m_sim_p_m_t_construction_a05b6a96a4339d555cfb6c727a23d999d}} 
 G4\+Union\+Solid $\ast$ {\bfseries ellipse\+Photocathode} ()
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_aa850b229e2e9ab26afbe4e2e0d21683d}\label{class_o_m_sim_p_m_t_construction_aa850b229e2e9ab26afbe4e2e0d21683d}} 
-void {\bfseries check\+Photocathode\+Thickness} ()
-\item 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a136c7f4862d780eb2a874428715bfcb8}\label{class_o_m_sim_p_m_t_construction_a136c7f4862d780eb2a874428715bfcb8}} 
 void {\bfseries construct\+HAcoating} ()
 \item 
 void \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a07f99802d73ddd8d9a9f838725cc0354}{construct\+Cathode\+Backshield}} (G4\+Logical\+Volume $\ast$p\+PMTIinner)
 \item 
-void \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a961bf82e229e26d5ae6ae835e58acf24}{construct\+CADdynode\+System}} (G4\+Logical\+Volume $\ast$p\+Mother)
+void \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_aa54a3c69f09d875e1c1891d35517d9e8}{construct\+CADdynode\+System}} (G4\+Logical\+Volume $\ast$p\+\_\+mother)
 \item 
 G4\+Subtraction\+Solid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a0e08b1af0e16f19f16569af2a7cfa8fc}{construct\+Photocathode\+Layer}} ()
 \item 
@@ -97,86 +91,86 @@ G4\+Subtraction\+Solid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a1c24732fa1209d7371fcbaa53708d156}\label{class_o_m_sim_p_m_t_construction_a1c24732fa1209d7371fcbaa53708d156}} 
-G4\+Logical\+Volume $\ast$ {\bfseries m\+Photocathode\+LV}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_af24e48016bef1cfc9d36b6857f98f9ba}\label{class_o_m_sim_p_m_t_construction_af24e48016bef1cfc9d36b6857f98f9ba}} 
+G4\+Logical\+Volume $\ast$ {\bfseries m\+\_\+photocathode\+LV}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a495272aadd5226ffcaf2584827c686af}\label{class_o_m_sim_p_m_t_construction_a495272aadd5226ffcaf2584827c686af}} 
-G4\+String {\bfseries m\+Selected\+PMT}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a13951e51c75b330d242e657e837f57ea}\label{class_o_m_sim_p_m_t_construction_a13951e51c75b330d242e657e837f57ea}} 
+G4\+String {\bfseries m\+\_\+selected\+PMT}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a6b9aad40552f479df2d6a8bc0179fd76}\label{class_o_m_sim_p_m_t_construction_a6b9aad40552f479df2d6a8bc0179fd76}} 
-G4bool {\bfseries m\+Dynode\+System} = false
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_adafbf58803e4f9d2e2a5665b105d60c9}\label{class_o_m_sim_p_m_t_construction_adafbf58803e4f9d2e2a5665b105d60c9}} 
+G4bool {\bfseries m\+\_\+dynode\+System} = false
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_aacc6fad7cb84f5e3558d77220fd7ffc1}\label{class_o_m_sim_p_m_t_construction_aacc6fad7cb84f5e3558d77220fd7ffc1}} 
-G4bool {\bfseries m\+Internal\+Reflections} = false
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ac70ccf5c74e1c1efc069fd8b79d56914}\label{class_o_m_sim_p_m_t_construction_ac70ccf5c74e1c1efc069fd8b79d56914}} 
+G4bool {\bfseries m\+\_\+internal\+Reflections} = false
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a624aff368c4b01c8c4185808b896584c}\label{class_o_m_sim_p_m_t_construction_a624aff368c4b01c8c4185808b896584c}} 
-G4bool {\bfseries m\+HACoating\+Bool} = false
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a8e4f001d065d20a74479a9bdfa370a4f}\label{class_o_m_sim_p_m_t_construction_a8e4f001d065d20a74479a9bdfa370a4f}} 
+G4bool {\bfseries m\+\_\+\+HACoating\+Bool} = false
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a74f1218bdab815e7d608696ca7f3dab0}\label{class_o_m_sim_p_m_t_construction_a74f1218bdab815e7d608696ca7f3dab0}} 
-G4bool {\bfseries m\+Construction\+Finished} = false
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ae635940cdc35d6b8f2278bb01c96e145}\label{class_o_m_sim_p_m_t_construction_ae635940cdc35d6b8f2278bb01c96e145}} 
+G4bool {\bfseries m\+\_\+construction\+Finished} = false
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a6d889058c3109fed43de98cd2556ed05}\label{class_o_m_sim_p_m_t_construction_a6d889058c3109fed43de98cd2556ed05}} 
-G4bool {\bfseries m\+Simple\+Bulb} = false
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a5eb1c4fa16ed5f7c39e241df13828983}\label{class_o_m_sim_p_m_t_construction_a5eb1c4fa16ed5f7c39e241df13828983}} 
+G4bool {\bfseries m\+\_\+simple\+Bulb} = false
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_abb776a1362b0d7eeba3027a9cf5650f8}\label{class_o_m_sim_p_m_t_construction_abb776a1362b0d7eeba3027a9cf5650f8}} 
-G4double {\bfseries m\+Missing\+Tube\+Length}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_aae684bb515caaff53fe64d1e2b5374d5}\label{class_o_m_sim_p_m_t_construction_aae684bb515caaff53fe64d1e2b5374d5}} 
+G4double {\bfseries m\+\_\+missing\+Tube\+Length}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a1ea9af390bcef6414db1ab17df684feb}\label{class_o_m_sim_p_m_t_construction_a1ea9af390bcef6414db1ab17df684feb}} 
-G4\+PVPlacement $\ast$ {\bfseries m\+Vacuum\+Back\+Physical}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ab23945f6e4c938ae2c351ba7a4f4073e}\label{class_o_m_sim_p_m_t_construction_ab23945f6e4c938ae2c351ba7a4f4073e}} 
+G4\+PVPlacement $\ast$ {\bfseries m\+\_\+vacuum\+Back\+Physical}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ae7579726c9618478bad3a0b48025077d}\label{class_o_m_sim_p_m_t_construction_ae7579726c9618478bad3a0b48025077d}} 
-G4\+PVPlacement $\ast$ {\bfseries m\+Photocathode\+Region\+Vacuum\+Physical}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a3e352641385511c2e56b5c5d8390ee3b}\label{class_o_m_sim_p_m_t_construction_a3e352641385511c2e56b5c5d8390ee3b}} 
+G4\+PVPlacement $\ast$ {\bfseries m\+\_\+photocathode\+Region\+Vacuum\+Physical}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_acdfd8fea4e9dc18c13fc9306d1076429}\label{class_o_m_sim_p_m_t_construction_acdfd8fea4e9dc18c13fc9306d1076429}} 
-G4\+Optical\+Surface $\ast$ {\bfseries m\+Photocathode\+Optical\+Surface}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a9cb7351768a10e8a320a3f653782e70e}\label{class_o_m_sim_p_m_t_construction_a9cb7351768a10e8a320a3f653782e70e}} 
+G4\+Optical\+Surface $\ast$ {\bfseries m\+\_\+photocathode\+Optical\+Surface}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a954bc0a8936589dcd842089408d4f0a1}\label{class_o_m_sim_p_m_t_construction_a954bc0a8936589dcd842089408d4f0a1}} 
-bool {\bfseries m\+Check\+Overlaps}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_af434bc5d3f4d2b119d6f66cd1770d573}\label{class_o_m_sim_p_m_t_construction_af434bc5d3f4d2b119d6f66cd1770d573}} 
+bool {\bfseries m\+\_\+check\+Overlaps}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a1b6532117aa4234d9081024d1ba7d85a}\label{class_o_m_sim_p_m_t_construction_a1b6532117aa4234d9081024d1ba7d85a}} 
-G4double {\bfseries m\+Total\+Lenght}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a20680fdab35285811a47d4f5f9fde8d4}\label{class_o_m_sim_p_m_t_construction_a20680fdab35285811a47d4f5f9fde8d4}} 
+G4double {\bfseries m\+\_\+total\+Lenght}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a8027fe5070e25f7a8cb414d653da0d00}\label{class_o_m_sim_p_m_t_construction_a8027fe5070e25f7a8cb414d653da0d00}} 
-G4double {\bfseries m\+Tube\+Width}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ab71ee62a272cdea11422fabbd3d08e3f}\label{class_o_m_sim_p_m_t_construction_ab71ee62a272cdea11422fabbd3d08e3f}} 
+G4double {\bfseries m\+\_\+tube\+Width}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ab5642c24fbf6f05d163a1ceecda4ac61}\label{class_o_m_sim_p_m_t_construction_ab5642c24fbf6f05d163a1ceecda4ac61}} 
-G4double {\bfseries m\+Out\+Rad}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ac13f07c216ea23eb1cc009f6a8fbbe12}\label{class_o_m_sim_p_m_t_construction_ac13f07c216ea23eb1cc009f6a8fbbe12}} 
+G4double {\bfseries m\+\_\+out\+Rad}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a6b62f7345d468f6926f5e46ebc2f68af}\label{class_o_m_sim_p_m_t_construction_a6b62f7345d468f6926f5e46ebc2f68af}} 
-G4double {\bfseries m\+Ellipse\+XYaxis}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ab2e3f07a87c6c45902232d03d17a693c}\label{class_o_m_sim_p_m_t_construction_ab2e3f07a87c6c45902232d03d17a693c}} 
+G4double {\bfseries m\+\_\+ellipse\+XYaxis}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a5da57550a373b2b30cf435df494e3ee7}\label{class_o_m_sim_p_m_t_construction_a5da57550a373b2b30cf435df494e3ee7}} 
-G4double {\bfseries m\+Ellipse\+Zaxis}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a3b580967d05c5cb9ae676979e1c34053}\label{class_o_m_sim_p_m_t_construction_a3b580967d05c5cb9ae676979e1c34053}} 
+G4double {\bfseries m\+\_\+ellipse\+Zaxis}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a33c6ba521a4da0128f9b96146717ccd3}\label{class_o_m_sim_p_m_t_construction_a33c6ba521a4da0128f9b96146717ccd3}} 
-G4double {\bfseries m\+Sphere\+Ellipse\+Transition\+\_\+r}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_aaf668ddeeadd15368651176ee9fb4e11}\label{class_o_m_sim_p_m_t_construction_aaf668ddeeadd15368651176ee9fb4e11}} 
+G4double {\bfseries m\+\_\+sphere\+Ellipse\+Transition\+\_\+r}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a036a77af4330044e09eb21bca2c6ba30}\label{class_o_m_sim_p_m_t_construction_a036a77af4330044e09eb21bca2c6ba30}} 
-G4double {\bfseries m\+Sphere\+Pos\+\_\+y}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ad049bc86675978f28a073ff36f7eceec}\label{class_o_m_sim_p_m_t_construction_ad049bc86675978f28a073ff36f7eceec}} 
+G4double {\bfseries m\+\_\+sphere\+PosY}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a1b423922ceb61e5a5042d14f24f098c9}\label{class_o_m_sim_p_m_t_construction_a1b423922ceb61e5a5042d14f24f098c9}} 
-G4double {\bfseries m\+Ellipse\+Pos\+\_\+y}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a3f4c399f0f5fc2601c0562b8dbc93733}\label{class_o_m_sim_p_m_t_construction_a3f4c399f0f5fc2601c0562b8dbc93733}} 
+G4double {\bfseries m\+\_\+ellipse\+PosY}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a961bf82e229e26d5ae6ae835e58acf24}\label{class_o_m_sim_p_m_t_construction_a961bf82e229e26d5ae6ae835e58acf24}} 
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_aa54a3c69f09d875e1c1891d35517d9e8}\label{class_o_m_sim_p_m_t_construction_aa54a3c69f09d875e1c1891d35517d9e8}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!constructCADdynodeSystem@{constructCADdynodeSystem}}
 \index{constructCADdynodeSystem@{constructCADdynodeSystem}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{constructCADdynodeSystem()}{constructCADdynodeSystem()}}
-{\footnotesize\ttfamily void OMSim\+PMTConstruction\+::construct\+CADdynode\+System (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{p\+Mother }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void OMSim\+PMTConstruction\+::construct\+CADdynode\+System (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{p\+\_\+mother }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Construction \& placement of the dynode system entrance for internal reflections. Currently only geometry for Hamamatsu R15458. 
 \begin{DoxyParams}{Parameters}
-{\em p\+Mother} & Logical\+Volume of the mother, where the dynode system entrance is placed (vacuum volume) \\
+{\em p\+\_\+mother} & Logical\+Volume of the mother, where the dynode system entrance is placed (vacuum volume) \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a07f99802d73ddd8d9a9f838725cc0354}\label{class_o_m_sim_p_m_t_construction_a07f99802d73ddd8d9a9f838725cc0354}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!constructCathodeBackshield@{constructCathodeBackshield}}
 \index{constructCathodeBackshield@{constructCathodeBackshield}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{constructCathodeBackshield()}{constructCathodeBackshield()}}
-{\footnotesize\ttfamily void OMSim\+PMTConstruction\+::construct\+Cathode\+Backshield (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{p\+PMTinner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void OMSim\+PMTConstruction\+::construct\+Cathode\+Backshield (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{p\+\_\+\+PMTinner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Creates and positions a thin disk behind the photocathode volume in order to shield photons coming from behind the PMT. Only used when internal reflections are turned off. \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a0e08b1af0e16f19f16569af2a7cfa8fc}\label{class_o_m_sim_p_m_t_construction_a0e08b1af0e16f19f16569af2a7cfa8fc}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!constructPhotocathodeLayer@{constructPhotocathodeLayer}}
@@ -191,16 +185,16 @@ G4\+Subtraction\+Solid
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!doubleEllipsePhotocathode@{doubleEllipsePhotocathode}}
 \index{doubleEllipsePhotocathode@{doubleEllipsePhotocathode}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{doubleEllipsePhotocathode()}{doubleEllipsePhotocathode()}}
-{\footnotesize\ttfamily G4\+Union\+Solid $\ast$ OMSim\+PMTConstruction\+::double\+Ellipse\+Photocathode (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4\+Union\+Solid $\ast$ OMSim\+PMTConstruction\+::double\+Ellipse\+Photocathode (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with double\+Ellipse\+Photocathode were fitted with two ellipses. \begin{DoxyReturn}{Returns}
-G4\+Union\+Solid l\+Bulb\+Solid the frontal solid of the PMT 
+G4\+Union\+Solid bulb\+Solid the frontal solid of the PMT 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a6b84182c7a5b45461160c954e9a384f0}\label{class_o_m_sim_p_m_t_construction_a6b84182c7a5b45461160c954e9a384f0}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!fullBulbConstruction@{fullBulbConstruction}}
 \index{fullBulbConstruction@{fullBulbConstruction}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{fullBulbConstruction()}{fullBulbConstruction()}}
-{\footnotesize\ttfamily std\+::tuple$<$ G4\+VSolid $\ast$, G4\+VSolid $\ast$ $>$ OMSim\+PMTConstruction\+::full\+Bulb\+Construction (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::tuple$<$ G4\+VSolid $\ast$, G4\+VSolid $\ast$ $>$ OMSim\+PMTConstruction\+::full\+Bulb\+Construction (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Construction of the basic shape of the PMT for a full paramterised PMT. This is needed if internal reflections are simulated. \begin{DoxyReturn}{Returns}
 tuple of G4\+Union\+Solid (the outer shape) and G4\+Subtraction\+Solid (the photocathode volume part) 
@@ -209,7 +203,7 @@ tuple of G4\+Union\+Solid (the outer shape) and G4\+Subtraction\+Solid (the phot
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!getBulbSolid@{getBulbSolid}}
 \index{getBulbSolid@{getBulbSolid}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{getBulbSolid()}{getBulbSolid()}}
-{\footnotesize\ttfamily std\+::tuple$<$ G4\+VSolid $\ast$, G4\+VSolid $\ast$ $>$ OMSim\+PMTConstruction\+::get\+Bulb\+Solid (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::tuple$<$ G4\+VSolid $\ast$, G4\+VSolid $\ast$ $>$ OMSim\+PMTConstruction\+::get\+Bulb\+Solid (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 The basic shape of the PMT is constructed twice, once for the external solid and once for the internal. A subtraction of these two shapes would yield the glass envelope of the PMT. The function calls either simple\+Bulb\+Construction or full\+Bulb\+Construction, depending on the data provided and simulation type. In case only the frontal curvate of the photocathode has to be well constructed, it calls simple\+Bulb\+Construction. full\+Bulb\+Construction constructs the neck of the PMT precisely, but it needs to have the fit data of the PMT type and is only needed if internal reflections are simulated. \begin{DoxySeeAlso}{See also}
 \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a3faaf0d512f9a3fe15c6f33efe6d062c}{simple\+Bulb\+Construction}} 
@@ -256,49 +250,49 @@ the solid of the constructed PMT.
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!placeIt@{placeIt}}
 \index{placeIt@{placeIt}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{placeIt()}{placeIt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void OMSim\+PMTConstruction\+::place\+It (\begin{DoxyParamCaption}\item[{G4\+Three\+Vector}]{p\+Position,  }\item[{G4\+Rotation\+Matrix}]{p\+Rotation,  }\item[{G4\+Logical\+Volume $\ast$\&}]{p\+Mother,  }\item[{G4\+String}]{p\+Name\+Extension = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+PMTConstruction\+::place\+It (\begin{DoxyParamCaption}\item[{G4\+Three\+Vector}]{p\+\_\+position,  }\item[{G4\+Rotation\+Matrix}]{p\+\_\+rotation,  }\item[{G4\+Logical\+Volume $\ast$\&}]{p\+\_\+mother,  }\item[{G4\+String}]{p\+\_\+name\+Extension = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
 
 Placement of the PMT and definition of Logical\+Border\+Surfaces in case internal reflections are needed. 
 \begin{DoxyParams}{Parameters}
-{\em p\+Position} & G4\+Three\+Vector with position of the module (as in G4\+PVPlacement()) \\
+{\em p\+\_\+position} & G4\+Three\+Vector with position of the module (as in G4\+PVPlacement()) \\
 \hline
-{\em p\+Rotation} & G4\+Rotation\+Matrix with rotation of the module (as in G4\+PVPlacement()) \\
+{\em p\+\_\+rotation} & G4\+Rotation\+Matrix with rotation of the module (as in G4\+PVPlacement()) \\
 \hline
-{\em p\+Mother} & G4\+Logical\+Volume where the module is going to be placed (as in G4\+PVPlacement()) \\
+{\em p\+\_\+mother} & G4\+Logical\+Volume where the module is going to be placed (as in G4\+PVPlacement()) \\
 \hline
-{\em p\+Name\+Extension} & G4\+String name of the physical volume. You should not have two physicals with the same name \\
+{\em p\+\_\+name\+Extension} & G4\+String name of the physical volume. You should not have two physicals with the same name \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a4960a7f095c1948985bf48bc3c0ae6f9}\label{class_o_m_sim_p_m_t_construction_a4960a7f095c1948985bf48bc3c0ae6f9}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!placeIt@{placeIt}}
 \index{placeIt@{placeIt}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{placeIt()}{placeIt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void OMSim\+PMTConstruction\+::place\+It (\begin{DoxyParamCaption}\item[{G4\+Transform3D}]{p\+Transform,  }\item[{G4\+Logical\+Volume $\ast$\&}]{p\+Mother,  }\item[{G4\+String}]{p\+Name\+Extension = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+PMTConstruction\+::place\+It (\begin{DoxyParamCaption}\item[{G4\+Transform3D}]{p\+\_\+transform,  }\item[{G4\+Logical\+Volume $\ast$\&}]{p\+\_\+mother,  }\item[{G4\+String}]{p\+\_\+name\+Extension = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
 
 \begin{DoxySeeAlso}{See also}
 PMT\+::place\+It 
 \end{DoxySeeAlso}
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Transform} & G4\+Transform3D with position \& rotation of PMT \\
+{\em p\+\_\+transform} & G4\+Transform3D with position \& rotation of PMT \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a1a8373e9ae3095062edb477245133a9e}\label{class_o_m_sim_p_m_t_construction_a1a8373e9ae3095062edb477245133a9e}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!selectPMT@{selectPMT}}
 \index{selectPMT@{selectPMT}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{selectPMT()}{selectPMT()}}
-{\footnotesize\ttfamily void OMSim\+PMTConstruction\+::select\+PMT (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+PMTto\+Select }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+PMTConstruction\+::select\+PMT (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+selected\+PMT }\end{DoxyParamCaption})}
 
 Select PMT model to use and assigns m\+PMT class. 
 \begin{DoxyParams}{Parameters}
-{\em G4\+String} & p\+PMTto\+Select string with the name of the PMT model \\
+{\em p\+\_\+selected\+PMT} & string with the name of the PMT model \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a3faaf0d512f9a3fe15c6f33efe6d062c}\label{class_o_m_sim_p_m_t_construction_a3faaf0d512f9a3fe15c6f33efe6d062c}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!simpleBulbConstruction@{simpleBulbConstruction}}
 \index{simpleBulbConstruction@{simpleBulbConstruction}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{simpleBulbConstruction()}{simpleBulbConstruction()}}
-{\footnotesize\ttfamily std\+::tuple$<$ G4\+VSolid $\ast$, G4\+VSolid $\ast$ $>$ OMSim\+PMTConstruction\+::simple\+Bulb\+Construction (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::tuple$<$ G4\+VSolid $\ast$, G4\+VSolid $\ast$ $>$ OMSim\+PMTConstruction\+::simple\+Bulb\+Construction (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Construction of the basic shape of the PMT. \begin{DoxyReturn}{Returns}
 tuple of G4\+Union\+Solid (the outer shape) and G4\+Subtraction\+Solid (the photocathode volume part) 
@@ -307,10 +301,10 @@ tuple of G4\+Union\+Solid (the outer shape) and G4\+Subtraction\+Solid (the phot
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!sphereDoubleEllipsePhotocathode@{sphereDoubleEllipsePhotocathode}}
 \index{sphereDoubleEllipsePhotocathode@{sphereDoubleEllipsePhotocathode}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{sphereDoubleEllipsePhotocathode()}{sphereDoubleEllipsePhotocathode()}}
-{\footnotesize\ttfamily G4\+Union\+Solid $\ast$ OMSim\+PMTConstruction\+::sphere\+Double\+Ellipse\+Photocathode (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4\+Union\+Solid $\ast$ OMSim\+PMTConstruction\+::sphere\+Double\+Ellipse\+Photocathode (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphere\+Double\+Ellipse\+Photocathode were fitted with a sphere and two ellipses. \begin{DoxyReturn}{Returns}
-G4\+Union\+Solid l\+Bulb\+Solid the frontal solid of the PMT 
+G4\+Union\+Solid bulb\+Solid the frontal solid of the PMT 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a6724e1b0920884b77cd6401da6588ca9}\label{class_o_m_sim_p_m_t_construction_a6724e1b0920884b77cd6401da6588ca9}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!sphereEllipsePhotocathode@{sphereEllipsePhotocathode}}
@@ -319,7 +313,7 @@ G4\+Union\+Solid l\+Bulb\+Solid the frontal solid of the PMT
 {\footnotesize\ttfamily G4\+Union\+Solid $\ast$ OMSim\+PMTConstruction\+::sphere\+Ellipse\+Photocathode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphere\+Ellipse\+Photocathode were fitted with a sphere and an ellipse. \begin{DoxyReturn}{Returns}
-G4\+Union\+Solid l\+Bulb\+Solid the frontal solid of the PMT 
+G4\+Union\+Solid bulb\+Solid the frontal solid of the PMT 
 \end{DoxyReturn}
 
 

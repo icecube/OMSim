@@ -116,7 +116,7 @@ $(document).ready(function(){initNavTree('classabc_detector_component.html','');
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="classabc_detector_component-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">abcDetectorComponent Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span><div class="ingroups"><a class="el" href="group__common.html">Common framework</a></div></div>  </div>
@@ -185,84 +185,84 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aaba7a5849794363a99313fd9765860b5"><td class="memItemLeft" align="right" valign="top"><a id="aaba7a5849794363a99313fd9765860b5"></a>
-<a class="el" href="class_o_m_sim_input_data.html">OMSimInputData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#aaba7a5849794363a99313fd9765860b5">mData</a></td></tr>
-<tr class="memdesc:aaba7a5849794363a99313fd9765860b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance of OMSimInputdata, which should be started only once. <br /></td></tr>
-<tr class="separator:aaba7a5849794363a99313fd9765860b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c7b2be94d93696561d0302c3edb74ca"><td class="memItemLeft" align="right" valign="top"><a id="a1c7b2be94d93696561d0302c3edb74ca"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>mCheckOverlaps</b> = false</td></tr>
-<tr class="separator:a1c7b2be94d93696561d0302c3edb74ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63d18669991ab4f35e24e7a80144f0a4"><td class="memItemLeft" align="right" valign="top"><a id="a63d18669991ab4f35e24e7a80144f0a4"></a>
-std::vector&lt; G4ThreeVector &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#a63d18669991ab4f35e24e7a80144f0a4">mPlacedPositions</a></td></tr>
-<tr class="memdesc:a63d18669991ab4f35e24e7a80144f0a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">store the positions each time the components are placed <br /></td></tr>
-<tr class="separator:a63d18669991ab4f35e24e7a80144f0a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0adfb8cac9a37b214e3da5b31b3d5277"><td class="memItemLeft" align="right" valign="top"><a id="a0adfb8cac9a37b214e3da5b31b3d5277"></a>
-std::vector&lt; G4RotationMatrix &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#a0adfb8cac9a37b214e3da5b31b3d5277">mPlacedOrientations</a></td></tr>
-<tr class="memdesc:a0adfb8cac9a37b214e3da5b31b3d5277"><td class="mdescLeft">&#160;</td><td class="mdescRight">store the orientations each time the components are placed <br /></td></tr>
-<tr class="separator:a0adfb8cac9a37b214e3da5b31b3d5277"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af063f48df26d1189fc6e908555397823"><td class="memItemLeft" align="right" valign="top"><a id="af063f48df26d1189fc6e908555397823"></a>
-std::vector&lt; G4Transform3D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#af063f48df26d1189fc6e908555397823">mPlacedTranslations</a></td></tr>
-<tr class="memdesc:af063f48df26d1189fc6e908555397823"><td class="mdescLeft">&#160;</td><td class="mdescRight">store the translation each time the components are placed <br /></td></tr>
-<tr class="separator:af063f48df26d1189fc6e908555397823"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa830916e7f5f8ae31eb31e3c37c9841e"><td class="memItemLeft" align="right" valign="top"><a id="aa830916e7f5f8ae31eb31e3c37c9841e"></a>
-std::map&lt; G4String, <a class="el" href="structabc_detector_component_1_1_component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#aa830916e7f5f8ae31eb31e3c37c9841e">mComponents</a></td></tr>
-<tr class="memdesc:aa830916e7f5f8ae31eb31e3c37c9841e"><td class="mdescLeft">&#160;</td><td class="mdescRight">dictionary with each component <br /></td></tr>
-<tr class="separator:aa830916e7f5f8ae31eb31e3c37c9841e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87f97f72739f905f6c9d23a75849d15f"><td class="memItemLeft" align="right" valign="top"><a id="a87f97f72739f905f6c9d23a75849d15f"></a>
-std::map&lt; G4String, G4PVPlacement * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#a87f97f72739f905f6c9d23a75849d15f">mLastPhysicals</a></td></tr>
-<tr class="memdesc:a87f97f72739f905f6c9d23a75849d15f"><td class="mdescLeft">&#160;</td><td class="mdescRight">dictionary with the (last) G4PVPlacement of each component mComponents produced after calling placeIt <br /></td></tr>
-<tr class="separator:a87f97f72739f905f6c9d23a75849d15f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42e2a653f3d322b1b781c111cc530f81"><td class="memItemLeft" align="right" valign="top"><a id="a42e2a653f3d322b1b781c111cc530f81"></a>
+<a class="el" href="class_o_m_sim_input_data.html">OMSimInputData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#a42e2a653f3d322b1b781c111cc530f81">m_data</a></td></tr>
+<tr class="memdesc:a42e2a653f3d322b1b781c111cc530f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance of OMSimInputdata, which should be started only once. <br /></td></tr>
+<tr class="separator:a42e2a653f3d322b1b781c111cc530f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30790806e2ef4455c5ad9685c5d7897d"><td class="memItemLeft" align="right" valign="top"><a id="a30790806e2ef4455c5ad9685c5d7897d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_checkOverlaps</b> = false</td></tr>
+<tr class="separator:a30790806e2ef4455c5ad9685c5d7897d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7695c2e9940a292334cd73afca055597"><td class="memItemLeft" align="right" valign="top"><a id="a7695c2e9940a292334cd73afca055597"></a>
+std::vector&lt; G4ThreeVector &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#a7695c2e9940a292334cd73afca055597">m_placedPositions</a></td></tr>
+<tr class="memdesc:a7695c2e9940a292334cd73afca055597"><td class="mdescLeft">&#160;</td><td class="mdescRight">store the positions each time the components are placed <br /></td></tr>
+<tr class="separator:a7695c2e9940a292334cd73afca055597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ffb84c2186a4f6a1dca37556a1375da"><td class="memItemLeft" align="right" valign="top"><a id="a7ffb84c2186a4f6a1dca37556a1375da"></a>
+std::vector&lt; G4RotationMatrix &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#a7ffb84c2186a4f6a1dca37556a1375da">m_placedOrientations</a></td></tr>
+<tr class="memdesc:a7ffb84c2186a4f6a1dca37556a1375da"><td class="mdescLeft">&#160;</td><td class="mdescRight">store the orientations each time the components are placed <br /></td></tr>
+<tr class="separator:a7ffb84c2186a4f6a1dca37556a1375da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac41133f2ca8dc3eade385b581d6638c9"><td class="memItemLeft" align="right" valign="top"><a id="ac41133f2ca8dc3eade385b581d6638c9"></a>
+std::vector&lt; G4Transform3D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#ac41133f2ca8dc3eade385b581d6638c9">m_placedTranslations</a></td></tr>
+<tr class="memdesc:ac41133f2ca8dc3eade385b581d6638c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">store the translation each time the components are placed <br /></td></tr>
+<tr class="separator:ac41133f2ca8dc3eade385b581d6638c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a025e03f72b3d8a33eced24706de00ded"><td class="memItemLeft" align="right" valign="top"><a id="a025e03f72b3d8a33eced24706de00ded"></a>
+std::map&lt; G4String, <a class="el" href="structabc_detector_component_1_1_component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#a025e03f72b3d8a33eced24706de00ded">m_components</a></td></tr>
+<tr class="memdesc:a025e03f72b3d8a33eced24706de00ded"><td class="mdescLeft">&#160;</td><td class="mdescRight">dictionary with each component <br /></td></tr>
+<tr class="separator:a025e03f72b3d8a33eced24706de00ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3afe1054dd47ac33b408b966f1c644f0"><td class="memItemLeft" align="right" valign="top"><a id="a3afe1054dd47ac33b408b966f1c644f0"></a>
+std::map&lt; G4String, G4PVPlacement * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_detector_component.html#a3afe1054dd47ac33b408b966f1c644f0">m_lastPhysicals</a></td></tr>
+<tr class="memdesc:a3afe1054dd47ac33b408b966f1c644f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">dictionary with the (last) G4PVPlacement of each component mComponents produced after calling placeIt <br /></td></tr>
+<tr class="separator:a3afe1054dd47ac33b408b966f1c644f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:ac1148f128706991ad6c1aac7a3c1fda2"><td class="memItemLeft" align="right" valign="top"><a id="ac1148f128706991ad6c1aac7a3c1fda2"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mGlassVis</b> = new G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.25))</td></tr>
-<tr class="separator:ac1148f128706991ad6c1aac7a3c1fda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a926b2004c884fe3405f6cc53be98a6e4"><td class="memItemLeft" align="right" valign="top"><a id="a926b2004c884fe3405f6cc53be98a6e4"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mGelVis</b> = new G4VisAttributes(G4Colour(0.45, 0.5, 0.35, 0.2))</td></tr>
-<tr class="separator:a926b2004c884fe3405f6cc53be98a6e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad57eb4a0be4c50d570d436d559178ba3"><td class="memItemLeft" align="right" valign="top"><a id="ad57eb4a0be4c50d570d436d559178ba3"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mSteelVis</b> = new G4VisAttributes(G4Colour(0.6, 0.6, 0.7, 1.0))</td></tr>
-<tr class="separator:ad57eb4a0be4c50d570d436d559178ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebcb11aa66774e0019331eda054282d0"><td class="memItemLeft" align="right" valign="top"><a id="aebcb11aa66774e0019331eda054282d0"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mAluVis</b> = new G4VisAttributes(G4Colour(0.8, 0.8, 0.9, 1.0))</td></tr>
-<tr class="separator:aebcb11aa66774e0019331eda054282d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad57a37961439b26587d55ba4e3c6603b"><td class="memItemLeft" align="right" valign="top"><a id="ad57a37961439b26587d55ba4e3c6603b"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mWhite</b> = new G4VisAttributes(G4Colour(1, 1, 1, 1.0))</td></tr>
-<tr class="separator:ad57a37961439b26587d55ba4e3c6603b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ccf01b688807fca37fbca6a99d94dc3"><td class="memItemLeft" align="right" valign="top"><a id="a0ccf01b688807fca37fbca6a99d94dc3"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mAbsorberSemiTransparentVis</b> = new G4VisAttributes(G4Colour(0.2, 0.2, 0.2, 0.5))</td></tr>
-<tr class="separator:a0ccf01b688807fca37fbca6a99d94dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82128d0db519cef757cca31487e64cc1"><td class="memItemLeft" align="right" valign="top"><a id="a82128d0db519cef757cca31487e64cc1"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mAbsorberVis</b> = new G4VisAttributes(G4Colour(0.2, 0.2, 0.2, 1.0))</td></tr>
-<tr class="separator:a82128d0db519cef757cca31487e64cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7a9c9a60d06356614e2756447d02ed6"><td class="memItemLeft" align="right" valign="top"><a id="ac7a9c9a60d06356614e2756447d02ed6"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mBoardVis</b> = new G4VisAttributes(G4Colour(0, 1, 0, 1))</td></tr>
-<tr class="separator:ac7a9c9a60d06356614e2756447d02ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a1743aa6036e78109afba814f657536"><td class="memItemLeft" align="right" valign="top"><a id="a6a1743aa6036e78109afba814f657536"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mBlueVis</b> = new G4VisAttributes(G4Colour(0, 0, 1, 1))</td></tr>
-<tr class="separator:a6a1743aa6036e78109afba814f657536"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadeab169c130a27e360e8c951b8db14b"><td class="memItemLeft" align="right" valign="top"><a id="aadeab169c130a27e360e8c951b8db14b"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mAirVis</b> = new G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.2))</td></tr>
-<tr class="separator:aadeab169c130a27e360e8c951b8db14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95ccc462a72ea0e52c31e2179e51ede1"><td class="memItemLeft" align="right" valign="top"><a id="a95ccc462a72ea0e52c31e2179e51ede1"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mAirVis2</b> = new G4VisAttributes(G4Colour(0.0, 0, 1., 0.5))</td></tr>
-<tr class="separator:a95ccc462a72ea0e52c31e2179e51ede1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe7ebded0a06d419ced9ba97ba344c44"><td class="memItemLeft" align="right" valign="top"><a id="afe7ebded0a06d419ced9ba97ba344c44"></a>
-const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>mInvisibleVis</b> = G4VisAttributes::GetInvisible()</td></tr>
-<tr class="separator:afe7ebded0a06d419ced9ba97ba344c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad11572a6790aec6251f863a3899452af"><td class="memItemLeft" align="right" valign="top"><a id="ad11572a6790aec6251f863a3899452af"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mRedVis</b> = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0, 1))</td></tr>
-<tr class="separator:ad11572a6790aec6251f863a3899452af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a710417860ff83235e3b85b7e730b1bc3"><td class="memItemLeft" align="right" valign="top"><a id="a710417860ff83235e3b85b7e730b1bc3"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mBlackVis</b> = new G4VisAttributes(G4Colour(0.0, 0.0, 0.0, 1.0))</td></tr>
-<tr class="separator:a710417860ff83235e3b85b7e730b1bc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00db18700c93dd29e65da15dbbdd12d6"><td class="memItemLeft" align="right" valign="top"><a id="a00db18700c93dd29e65da15dbbdd12d6"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mLEDvis</b> = new G4VisAttributes(G4Colour(0.2, 0.6, 0.8, 0.5))</td></tr>
-<tr class="separator:a00db18700c93dd29e65da15dbbdd12d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc9920a01de42789db760463a06d16d7"><td class="memItemLeft" align="right" valign="top"><a id="acc9920a01de42789db760463a06d16d7"></a>
-const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mPhotocathodeVis</b> = new G4VisAttributes(G4Colour(1.0, 1.0, 0.0, 0.1))</td></tr>
-<tr class="separator:acc9920a01de42789db760463a06d16d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:ac7f28a23cc0aa34ad38c2a88c1a2fa8c"><td class="memItemLeft" align="right" valign="top"><a id="ac7f28a23cc0aa34ad38c2a88c1a2fa8c"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_glassVis</b> = G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.25))</td></tr>
+<tr class="separator:ac7f28a23cc0aa34ad38c2a88c1a2fa8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4704f97646770837b81f2100652720fc"><td class="memItemLeft" align="right" valign="top"><a id="a4704f97646770837b81f2100652720fc"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_gelVis</b> = G4VisAttributes(G4Colour(0.45, 0.5, 0.35, 0.2))</td></tr>
+<tr class="separator:a4704f97646770837b81f2100652720fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34eace9e9ffde2650192a9390a3c4d97"><td class="memItemLeft" align="right" valign="top"><a id="a34eace9e9ffde2650192a9390a3c4d97"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_steelVis</b> = G4VisAttributes(G4Colour(0.6, 0.6, 0.7, 1.0))</td></tr>
+<tr class="separator:a34eace9e9ffde2650192a9390a3c4d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedf27098441a043e182450fb5fc913f3"><td class="memItemLeft" align="right" valign="top"><a id="aedf27098441a043e182450fb5fc913f3"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_aluVis</b> = G4VisAttributes(G4Colour(0.8, 0.8, 0.9, 1.0))</td></tr>
+<tr class="separator:aedf27098441a043e182450fb5fc913f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c6b36e06f8e48fc345aac496e764e9f"><td class="memItemLeft" align="right" valign="top"><a id="a7c6b36e06f8e48fc345aac496e764e9f"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_whiteVis</b> = G4VisAttributes(G4Colour(1, 1, 1, 1.0))</td></tr>
+<tr class="separator:a7c6b36e06f8e48fc345aac496e764e9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bc514b7d59ddc001958207ae724fd4f"><td class="memItemLeft" align="right" valign="top"><a id="a8bc514b7d59ddc001958207ae724fd4f"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_absorberSemiTransparentVis</b> = G4VisAttributes(G4Colour(0.2, 0.2, 0.2, 0.5))</td></tr>
+<tr class="separator:a8bc514b7d59ddc001958207ae724fd4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a833b49372c8cb98789535fb1a0f2a707"><td class="memItemLeft" align="right" valign="top"><a id="a833b49372c8cb98789535fb1a0f2a707"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_absorberVis</b> = G4VisAttributes(G4Colour(0.2, 0.2, 0.2, 1.0))</td></tr>
+<tr class="separator:a833b49372c8cb98789535fb1a0f2a707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac16db534b14d817af1546e1690cd0710"><td class="memItemLeft" align="right" valign="top"><a id="ac16db534b14d817af1546e1690cd0710"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_boardVis</b> = G4VisAttributes(G4Colour(0, 1, 0, 1))</td></tr>
+<tr class="separator:ac16db534b14d817af1546e1690cd0710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39e923f719a39a12231ae8584f74ee4b"><td class="memItemLeft" align="right" valign="top"><a id="a39e923f719a39a12231ae8584f74ee4b"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_blueVis</b> = G4VisAttributes(G4Colour(0, 0, 1, 1))</td></tr>
+<tr class="separator:a39e923f719a39a12231ae8584f74ee4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4f0c563d87827f81c9b0fee3e292a19"><td class="memItemLeft" align="right" valign="top"><a id="ad4f0c563d87827f81c9b0fee3e292a19"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_airVis</b> = G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.2))</td></tr>
+<tr class="separator:ad4f0c563d87827f81c9b0fee3e292a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a050320b7eca8e239bab922a122f3e61e"><td class="memItemLeft" align="right" valign="top"><a id="a050320b7eca8e239bab922a122f3e61e"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_airVis2</b> = G4VisAttributes(G4Colour(0.0, 0, 1., 0.5))</td></tr>
+<tr class="separator:a050320b7eca8e239bab922a122f3e61e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64b225541337c16e3181ce0bfd35ddc3"><td class="memItemLeft" align="right" valign="top"><a id="a64b225541337c16e3181ce0bfd35ddc3"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_redVis</b> = G4VisAttributes(G4Colour(1.0, 0.0, 0.0, 1))</td></tr>
+<tr class="separator:a64b225541337c16e3181ce0bfd35ddc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4642d599b88a30a06133aeebf1456827"><td class="memItemLeft" align="right" valign="top"><a id="a4642d599b88a30a06133aeebf1456827"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_blackVis</b> = G4VisAttributes(G4Colour(0.0, 0.0, 0.0, 1.0))</td></tr>
+<tr class="separator:a4642d599b88a30a06133aeebf1456827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1ccef1444d74e8be72a3273b6baa3b2"><td class="memItemLeft" align="right" valign="top"><a id="ad1ccef1444d74e8be72a3273b6baa3b2"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_LEDvis</b> = G4VisAttributes(G4Colour(0.2, 0.6, 0.8, 0.5))</td></tr>
+<tr class="separator:ad1ccef1444d74e8be72a3273b6baa3b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32917c0e6825fc1662b9991ad658993a"><td class="memItemLeft" align="right" valign="top"><a id="a32917c0e6825fc1662b9991ad658993a"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_photocathodeVis</b> = G4VisAttributes(G4Colour(1.0, 1.0, 0.0, 0.1))</td></tr>
+<tr class="separator:a32917c0e6825fc1662b9991ad658993a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae14ddfcb373788ed35f6c7db5ac582e3"><td class="memItemLeft" align="right" valign="top"><a id="ae14ddfcb373788ed35f6c7db5ac582e3"></a>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_invisibleVis</b> = G4VisAttributes::GetInvisible()</td></tr>
+<tr class="separator:ae14ddfcb373788ed35f6c7db5ac582e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a467235840a313b6481569ae9ea9d2673"></a>
@@ -275,31 +275,31 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
           <td class="memname">void abcDetectorComponent::appendComponent </td>
           <td>(</td>
           <td class="paramtype">G4VSolid *&#160;</td>
-          <td class="paramname"><em>pSolid</em>, </td>
+          <td class="paramname"><em>p_solid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4LogicalVolume *&#160;</td>
-          <td class="paramname"><em>pLogical</em>, </td>
+          <td class="paramname"><em>p_logical</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4ThreeVector&#160;</td>
-          <td class="paramname"><em>pVector</em>, </td>
+          <td class="paramname"><em>p_vector</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4RotationMatrix&#160;</td>
-          <td class="paramname"><em>pRotation</em>, </td>
+          <td class="paramname"><em>p_rotation</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pName</em>&#160;</td>
+          <td class="paramname"><em>p_name</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -311,11 +311,11 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
 <p>This function is used to add a new component to the 'Components' vector. Each component contains the solid volume, logical volume, position, rotation, and a unique name. It checks first if a component with the same name already exists. If it does, a warning message is generated and the name of the new component is appended with a unique suffix to avoid conflicts. The new component is then added to the 'Components' vector.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pSolid</td><td>A pointer to a G4VSolid object representing the solid volume of the component. </td></tr>
-    <tr><td class="paramname">pLogical</td><td>A pointer to a G4LogicalVolume object representing the logical volume of the component. </td></tr>
-    <tr><td class="paramname">pVector</td><td>A G4ThreeVector object representing the position of the component with respect to the origin. </td></tr>
-    <tr><td class="paramname">pRotation</td><td>A G4RotationMatrix object representing the rotation of the component with respect to the origin. </td></tr>
-    <tr><td class="paramname">pName</td><td>A G4String object representing the unique name of the component. </td></tr>
+    <tr><td class="paramname">p_solid</td><td>A pointer to a G4VSolid object representing the solid volume of the component. </td></tr>
+    <tr><td class="paramname">p_logical</td><td>A pointer to a G4LogicalVolume object representing the logical volume of the component. </td></tr>
+    <tr><td class="paramname">p_vector</td><td>A G4ThreeVector object representing the position of the component with respect to the origin. </td></tr>
+    <tr><td class="paramname">p_rotation</td><td>A G4RotationMatrix object representing the rotation of the component with respect to the origin. </td></tr>
+    <tr><td class="paramname">p_name</td><td>A G4String object representing the unique name of the component. </td></tr>
   </table>
   </dd>
 </dl>
@@ -332,14 +332,14 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
           <td class="memname">G4bool abcDetectorComponent::checkIfExists </td>
           <td>(</td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pName</em></td><td>)</td>
+          <td class="paramname"><em>p_name</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pName</td><td>A G4String object representing the unique name of the component to check. </td></tr>
+    <tr><td class="paramname">p_name</td><td>A G4String object representing the unique name of the component to check. </td></tr>
   </table>
   </dd>
 </dl>
@@ -357,14 +357,14 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
           <td class="memname">void abcDetectorComponent::deleteComponent </td>
           <td>(</td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pName</em></td><td>)</td>
+          <td class="paramname"><em>p_name</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pName</td><td>A G4String representing the name of the component to delete. The component must exist in the 'Components' map. </td></tr>
+    <tr><td class="paramname">p_name</td><td>A G4String representing the name of the component to delete. The component must exist in the 'Components' map. </td></tr>
   </table>
   </dd>
 </dl>
@@ -381,14 +381,14 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
           <td class="memname"><a class="el" href="structabc_detector_component_1_1_component.html">abcDetectorComponent::Component</a> abcDetectorComponent::getComponent </td>
           <td>(</td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pName</em></td><td>)</td>
+          <td class="paramname"><em>p_name</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pName</td><td>A G4String name of the component to fetch. The component must exist in the 'Components' map. </td></tr>
+    <tr><td class="paramname">p_name</td><td>A G4String name of the component to fetch. The component must exist in the 'Components' map. </td></tr>
   </table>
   </dd>
 </dl>
@@ -406,13 +406,13 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
           <td class="memname">G4Transform3D abcDetectorComponent::getNewPosition </td>
           <td>(</td>
           <td class="paramtype">G4ThreeVector&#160;</td>
-          <td class="paramname"><em>pPosition</em>, </td>
+          <td class="paramname"><em>p_position</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4RotationMatrix&#160;</td>
-          <td class="paramname"><em>pRotation</em>, </td>
+          <td class="paramname"><em>p_rotation</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -435,8 +435,8 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pPosition</td><td>The initial position (a G4ThreeVector) of the sub-component </td></tr>
-    <tr><td class="paramname">pRotation</td><td>The initial orientation (a G4RotationMatrix) of the sub-component </td></tr>
+    <tr><td class="paramname">p_position</td><td>The initial position (a G4ThreeVector) of the sub-component </td></tr>
+    <tr><td class="paramname">p_rotation</td><td>The initial orientation (a G4RotationMatrix) of the sub-component </td></tr>
     <tr><td class="paramname">pObjectPosition</td><td>The position (a G4ThreeVector) of the object with respect to the original position </td></tr>
     <tr><td class="paramname">pObjectRotation</td><td>The orientation (a G4RotationMatrix) of the object with respect to the original orientation </td></tr>
   </table>
@@ -456,25 +456,25 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
           <td class="memname">void abcDetectorComponent::integrateDetectorComponent </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classabc_detector_component.html">abcDetectorComponent</a> *&#160;</td>
-          <td class="paramname"><em>pToIntegrate</em>, </td>
+          <td class="paramname"><em>p_toIntegrate</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4ThreeVector&#160;</td>
-          <td class="paramname"><em>pPosition</em>, </td>
+          <td class="paramname"><em>p_position</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4RotationMatrix&#160;</td>
-          <td class="paramname"><em>pRotation</em>, </td>
+          <td class="paramname"><em>p_rotation</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pNameExtension</em>&#160;</td>
+          <td class="paramname"><em>p_nameExtension</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -486,10 +486,10 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
 <p>This function is used to incorporate the components of another instance of <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a> into the current instance. The provided position and rotation parameters are used to transform the components from the input <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a> instance before integrating. Each transformed component from the input instance is then appended to the current instance using the <a class="el" href="classabc_detector_component.html#a467235840a313b6481569ae9ea9d2673" title="Append component to Components vector.">appendComponent()</a> function. A name extension is applied to the original component names for distinction after integration.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pToIntegrate</td><td>The <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a> instance whose components are to be integrated. </td></tr>
-    <tr><td class="paramname">pPosition</td><td>The G4ThreeVector representing the position where the new <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a> instance will be integrated. </td></tr>
-    <tr><td class="paramname">pRotation</td><td>The G4RotationMatrix representing the rotation of the new <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a> instance. </td></tr>
-    <tr><td class="paramname">pNameExtension</td><td>A G4String used to extend the original name of the component. </td></tr>
+    <tr><td class="paramname">p_toIntegrate</td><td>The <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a> instance whose components are to be integrated. </td></tr>
+    <tr><td class="paramname">p_position</td><td>The G4ThreeVector representing the position where the new <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a> instance will be integrated. </td></tr>
+    <tr><td class="paramname">p_rotation</td><td>The G4RotationMatrix representing the rotation of the new <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a> instance. </td></tr>
+    <tr><td class="paramname">p_nameExtension</td><td>A G4String used to extend the original name of the component. </td></tr>
   </table>
   </dd>
 </dl>
@@ -506,25 +506,25 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
           <td class="memname">void abcDetectorComponent::placeIt </td>
           <td>(</td>
           <td class="paramtype">G4ThreeVector&#160;</td>
-          <td class="paramname"><em>pPosition</em>, </td>
+          <td class="paramname"><em>p_position</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4RotationMatrix&#160;</td>
-          <td class="paramname"><em>pRotation</em>, </td>
+          <td class="paramname"><em>p_rotation</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4LogicalVolume *&amp;&#160;</td>
-          <td class="paramname"><em>pMother</em>, </td>
+          <td class="paramname"><em>p_mother</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pNameExtension</em> = <code>&quot;&quot;</code>&#160;</td>
+          <td class="paramname"><em>p_nameExtension</em> = <code>&quot;&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -535,10 +535,10 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pPosition</td><td>G4ThreeVector with position of the components (as in G4PVPlacement()). </td></tr>
-    <tr><td class="paramname">pRotation</td><td>G4RotationMatrix with rotation of the components (as in G4PVPlacement()). </td></tr>
-    <tr><td class="paramname">pMother</td><td>G4LogicalVolume where the components is going to be placed (as in G4PVPlacement()). </td></tr>
-    <tr><td class="paramname">pNameExtension</td><td>G4String name of the physical volume. You should not have two physicals with the same name. </td></tr>
+    <tr><td class="paramname">p_position</td><td>G4ThreeVector with position of the components (as in G4PVPlacement()). </td></tr>
+    <tr><td class="paramname">p_rotation</td><td>G4RotationMatrix with rotation of the components (as in G4PVPlacement()). </td></tr>
+    <tr><td class="paramname">p_mother</td><td>G4LogicalVolume where the components is going to be placed (as in G4PVPlacement()). </td></tr>
+    <tr><td class="paramname">p_nameExtension</td><td>G4String name of the physical volume. You should not have two physicals with the same name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -555,19 +555,19 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
           <td class="memname">void abcDetectorComponent::placeIt </td>
           <td>(</td>
           <td class="paramtype">G4Transform3D&#160;</td>
-          <td class="paramname"><em>pTrans</em>, </td>
+          <td class="paramname"><em>p_trans</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4LogicalVolume *&amp;&#160;</td>
-          <td class="paramname"><em>pMother</em>, </td>
+          <td class="paramname"><em>p_mother</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pNameExtension</em> = <code>&quot;&quot;</code>&#160;</td>
+          <td class="paramname"><em>p_nameExtension</em> = <code>&quot;&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -578,9 +578,9 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pTrans</td><td>The G4Transform3D object representing the transformation to be applied to the components. </td></tr>
-    <tr><td class="paramname">pMother</td><td>G4LogicalVolume where the components is going to be placed (as in G4PVPlacement()). </td></tr>
-    <tr><td class="paramname">pNameExtension</td><td>G4String name of the physical volume. You should not have two physicals with the same name. </td></tr>
+    <tr><td class="paramname">p_trans</td><td>The G4Transform3D object representing the transformation to be applied to the components. </td></tr>
+    <tr><td class="paramname">p_mother</td><td>G4LogicalVolume where the components is going to be placed (as in G4PVPlacement()). </td></tr>
+    <tr><td class="paramname">p_nameExtension</td><td>G4String name of the physical volume. You should not have two physicals with the same name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -597,25 +597,25 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
           <td class="memname">G4SubtractionSolid * abcDetectorComponent::substractToVolume </td>
           <td>(</td>
           <td class="paramtype">G4VSolid *&#160;</td>
-          <td class="paramname"><em>pInputVolume</em>, </td>
+          <td class="paramname"><em>p_inputVolume</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4ThreeVector&#160;</td>
-          <td class="paramname"><em>pSubstractionPos</em>, </td>
+          <td class="paramname"><em>p_substractionPos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4RotationMatrix&#160;</td>
-          <td class="paramname"><em>pSubstractionRot</em>, </td>
+          <td class="paramname"><em>p_substractionRot</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pNewVolumeName</em>&#160;</td>
+          <td class="paramname"><em>p_newVolumeName</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -626,14 +626,14 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pInputVolume</td><td>The G4VSolid volume that components will be subtracted from. </td></tr>
-    <tr><td class="paramname">pSubstractionPos</td><td>The G4ThreeVector representing the position that will be used in the transformation of each component before it is subtracted from pInputVolume. </td></tr>
-    <tr><td class="paramname">pSubstractionRot</td><td>The G4RotationMatrix representing the rotation that will be used in the transformation of each component before it is subtracted from pInputVolume. </td></tr>
-    <tr><td class="paramname">pNewVolumeName</td><td>The G4String name for the new volume that results from the subtraction.</td></tr>
+    <tr><td class="paramname">p_inputVolume</td><td>The G4VSolid volume that components will be subtracted from. </td></tr>
+    <tr><td class="paramname">p_substractionPos</td><td>The G4ThreeVector representing the position that will be used in the transformation of each component before it is subtracted from p_inputVolume. </td></tr>
+    <tr><td class="paramname">p_substractionRot</td><td>The G4RotationMatrix representing the rotation that will be used in the transformation of each component before it is subtracted from p_inputVolume. </td></tr>
+    <tr><td class="paramname">p_newVolumeName</td><td>The G4String name for the new volume that results from the subtraction.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns a G4SubtractionSolid which is the result of subtracting the <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a>'s components from pInputVolume. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns a G4SubtractionSolid which is the result of subtracting the <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a>'s components from p_inputVolume. </dd></dl>
 
 </div>
 </div>
@@ -647,19 +647,19 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
           <td class="memname">G4SubtractionSolid * abcDetectorComponent::substractToVolume </td>
           <td>(</td>
           <td class="paramtype">G4VSolid *&#160;</td>
-          <td class="paramname"><em>pInputVolume</em>, </td>
+          <td class="paramname"><em>p_inputVolume</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4Transform3D&#160;</td>
-          <td class="paramname"><em>pTrans</em>, </td>
+          <td class="paramname"><em>p_trans</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pNewVolumeName</em>&#160;</td>
+          <td class="paramname"><em>p_newVolumeName</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -671,13 +671,13 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
 <p>This function enables you to subtract the shape defined by components of the <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a> instance from a specified input volume. This can be useful for modeling complex geometries where a solid needs to have some parts "cut out" from it. The method goes through each component of the <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a>, computes the transformation needed, and subtracts it from the input volume. The resulting subtracted solid is returned.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pInputVolume</td><td>The G4VSolid volume that components will be subtracted from. </td></tr>
-    <tr><td class="paramname">pTrans</td><td>The G4Transform3D representing the transformation that will be applied to each component before it is subtracted from pInputVolume. </td></tr>
-    <tr><td class="paramname">pNewVolumeName</td><td>The G4String name for the new volume that results from the subtraction.</td></tr>
+    <tr><td class="paramname">p_inputVolume</td><td>The G4VSolid volume that components will be subtracted from. </td></tr>
+    <tr><td class="paramname">p_trans</td><td>The G4Transform3D representing the transformation that will be applied to each component before it is subtracted from p_inputVolume. </td></tr>
+    <tr><td class="paramname">p_newVolumeName</td><td>The G4String name for the new volume that results from the subtraction.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns a G4SubtractionSolid which is the result of subtracting the <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a>'s components from pInputVolume. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns a G4SubtractionSolid which is the result of subtracting the <a class="el" href="classabc_detector_component.html" title="Abstract base class used for constructing detector components.">abcDetectorComponent</a>'s components from p_inputVolume. </dd></dl>
 
 </div>
 </div>
@@ -691,7 +691,7 @@ const G4VisAttributes *&#160;</td><td class="memItemRight" valign="bottom"><b>mP
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classabc_detector_component.html">abcDetectorComponent</a></li>
-    <li class="footer">Generated on Wed Aug 28 2024 14:27:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 17:32:17 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

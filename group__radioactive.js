@@ -27,8 +27,8 @@ var group__radioactive =
       [ "writeMultiplicity", "class_o_m_sim_decays_analysis.html#af747109a424e5878d2a4e42b6308f3cb", null ],
       [ "writeThreadDecayInformation", "class_o_m_sim_decays_analysis.html#abf3b99f2998f27c9ad1f792dfc716e0c", null ],
       [ "writeThreadHitInformation", "class_o_m_sim_decays_analysis.html#a78449c898f237d5a40c75042123c19af", null ],
-      [ "mInstance", "class_o_m_sim_decays_analysis.html#a2df6ba1c18fb3087ceb2aeb5cfe1cd7c", null ],
-      [ "mMutex", "class_o_m_sim_decays_analysis.html#a9e1f6266a5d299b7b694e334f4e15e13", null ],
+      [ "m_instance", "class_o_m_sim_decays_analysis.html#a2eaf6dfdd1fad2f8a829db97ea5f8c9b", null ],
+      [ "m_mutex", "class_o_m_sim_decays_analysis.html#ab08bcf92e1751dfd749c6eabd91a9f27", null ],
       [ "mThreadDecayStats", "class_o_m_sim_decays_analysis.html#ab4a0cbaeebe1c1d49f829d735d237b9a", null ]
     ] ],
     [ "OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html", [
@@ -45,9 +45,9 @@ var group__radioactive =
       [ "setProductionRadius", "class_o_m_sim_decays_g_p_s.html#a0fd01732515dd1175fe5434a9cb3d0c5", null ],
       [ "simulateDecaysInPMTs", "class_o_m_sim_decays_g_p_s.html#a2bba4e779b0200d277e01053c521587b", null ],
       [ "simulateDecaysInPressureVessel", "class_o_m_sim_decays_g_p_s.html#ae43dceede1c8f2c332964fb43242cc76", null ],
+      [ "m_opticalModule", "class_o_m_sim_decays_g_p_s.html#a2bb99830dc7b0204f85d0c9242425ab1", null ],
       [ "mIsotopeCommands", "class_o_m_sim_decays_g_p_s.html#af4f9a615b6d1e9fa7d3b2104af3c2f3e", null ],
       [ "mNuclideStopName", "class_o_m_sim_decays_g_p_s.html#adcbc2275cda8196cfdbd5b1c3477f7ad", null ],
-      [ "mOM", "class_o_m_sim_decays_g_p_s.html#a90b43354885ed69034c48df4f89326b3", null ],
       [ "mProductionRadius", "class_o_m_sim_decays_g_p_s.html#a70c8a1985e53392c67247e6334eaaa17", null ],
       [ "mTerminationIsotopes", "class_o_m_sim_decays_g_p_s.html#a363ea9066f59222ba1d3e3cd5f4a42d1", null ]
     ] ],

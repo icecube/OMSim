@@ -142,7 +142,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>configureLogger</b> (
 <tr class="separator:a07759a6885ca398dd1e7c3a9954ceded"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42d86958aba31a17fb0c8a39fbc9c9b5"><td class="memItemLeft" align="right" valign="top"><a id="a42d86958aba31a17fb0c8a39fbc9c9b5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim.html#a42d86958aba31a17fb0c8a39fbc9c9b5">startVisualisation</a> ()</td></tr>
-<tr class="memdesc:a42d86958aba31a17fb0c8a39fbc9c9b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">UIEx session is started for visualisation. <br /></td></tr>
+<tr class="memdesc:a42d86958aba31a17fb0c8a39fbc9c9b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">uiEx session is started for visualisation. <br /></td></tr>
 <tr class="separator:a42d86958aba31a17fb0c8a39fbc9c9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acae00a5a9eef0b872175474315e7a657"><td class="memItemLeft" align="right" valign="top"><a id="acae00a5a9eef0b872175474315e7a657"></a>
 G4Navigator *&#160;</td><td class="memItemRight" valign="bottom"><b>getNavigator</b> ()</td></tr>
@@ -154,9 +154,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:adc89f2fa01d3958389e86c36e8064805"><td class="memItemLeft" align="right" valign="top"><a id="adc89f2fa01d3958389e86c36e8064805"></a>
-po::options_description&#160;</td><td class="memItemRight" valign="bottom"><b>mGeneralOptions</b></td></tr>
-<tr class="separator:adc89f2fa01d3958389e86c36e8064805"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37942c09b1cc0fa7192e2ed391d89d84"><td class="memItemLeft" align="right" valign="top"><a id="a37942c09b1cc0fa7192e2ed391d89d84"></a>
+po::options_description&#160;</td><td class="memItemRight" valign="bottom"><b>m_generalOptions</b></td></tr>
+<tr class="separator:a37942c09b1cc0fa7192e2ed391d89d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -180,24 +180,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setGeneralOptions</b>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a86515923f2071d37d4496880b5db5c22"><td class="memItemLeft" align="right" valign="top"><a id="a86515923f2071d37d4496880b5db5c22"></a>
-std::unique_ptr&lt; G4MTRunManager &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mRunManager</b></td></tr>
-<tr class="separator:a86515923f2071d37d4496880b5db5c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a111387fc99c82da9d87512638019727f"><td class="memItemLeft" align="right" valign="top"><a id="a111387fc99c82da9d87512638019727f"></a>
-std::unique_ptr&lt; G4VisExecutive &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mVisManager</b></td></tr>
-<tr class="separator:a111387fc99c82da9d87512638019727f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55c93ccf9b192c5cf3ff1b862e14fdeb"><td class="memItemLeft" align="right" valign="top"><a id="a55c93ccf9b192c5cf3ff1b862e14fdeb"></a>
-std::unique_ptr&lt; G4VUserPhysicsList &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mPhysics</b></td></tr>
-<tr class="separator:a55c93ccf9b192c5cf3ff1b862e14fdeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af006e5676aeca6dfc63a7ab0f0e11cae"><td class="memItemLeft" align="right" valign="top"><a id="af006e5676aeca6dfc63a7ab0f0e11cae"></a>
-std::unique_ptr&lt; G4TouchableHistory &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mHistory</b></td></tr>
-<tr class="separator:af006e5676aeca6dfc63a7ab0f0e11cae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47d7d0c83e0290c37b1cd4d6e29ddfec"><td class="memItemLeft" align="right" valign="top"><a id="a47d7d0c83e0290c37b1cd4d6e29ddfec"></a>
-std::unique_ptr&lt; G4Navigator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mNavigator</b></td></tr>
-<tr class="separator:a47d7d0c83e0290c37b1cd4d6e29ddfec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9458e7ab12abb7c94a08f27366f15836"><td class="memItemLeft" align="right" valign="top"><a id="a9458e7ab12abb7c94a08f27366f15836"></a>
-std::chrono::high_resolution_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><b>mStartingTime</b></td></tr>
-<tr class="separator:a9458e7ab12abb7c94a08f27366f15836"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabe99410f111fd0ff35eea27e564f78f"><td class="memItemLeft" align="right" valign="top"><a id="aabe99410f111fd0ff35eea27e564f78f"></a>
+std::unique_ptr&lt; G4MTRunManager &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_runManager</b></td></tr>
+<tr class="separator:aabe99410f111fd0ff35eea27e564f78f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab25805dc0c8e359b2171bc99249b035b"><td class="memItemLeft" align="right" valign="top"><a id="ab25805dc0c8e359b2171bc99249b035b"></a>
+std::unique_ptr&lt; G4VisExecutive &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_visManager</b></td></tr>
+<tr class="separator:ab25805dc0c8e359b2171bc99249b035b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1de824bad56567e9d5ecc8049424c89"><td class="memItemLeft" align="right" valign="top"><a id="ae1de824bad56567e9d5ecc8049424c89"></a>
+std::unique_ptr&lt; G4VUserPhysicsList &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_physics</b></td></tr>
+<tr class="separator:ae1de824bad56567e9d5ecc8049424c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a916ab22940d9db8e02d116469ebaf39b"><td class="memItemLeft" align="right" valign="top"><a id="a916ab22940d9db8e02d116469ebaf39b"></a>
+std::unique_ptr&lt; G4TouchableHistory &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_history</b></td></tr>
+<tr class="separator:a916ab22940d9db8e02d116469ebaf39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a871e818b44ca781ddc2568610efa80a8"><td class="memItemLeft" align="right" valign="top"><a id="a871e818b44ca781ddc2568610efa80a8"></a>
+std::unique_ptr&lt; G4Navigator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_navigator</b></td></tr>
+<tr class="separator:a871e818b44ca781ddc2568610efa80a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9050699744a3317493736b44ffc248d6"><td class="memItemLeft" align="right" valign="top"><a id="a9050699744a3317493736b44ffc248d6"></a>
+std::chrono::high_resolution_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><b>m_startingTime</b></td></tr>
+<tr class="separator:a9050699744a3317493736b44ffc248d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a07759a6885ca398dd1e7c3a9954ceded"></a>
@@ -210,13 +210,13 @@ std::chrono::high_resolution_clock::time_point&#160;</td><td class="memItemRight
           <td class="memname">bool OMSim::handleArguments </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pArgumentCount</em>, </td>
+          <td class="paramname"><em>p_argumentCount</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>pArgumentVector</em>[]&#160;</td>
+          <td class="paramname"><em>p_argumentVector</em>[]&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -239,7 +239,7 @@ std::chrono::high_resolution_clock::time_point&#160;</td><td class="memItemRight
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim.html">OMSim</a></li>
-    <li class="footer">Generated on Wed Aug 28 2024 14:27:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 17:32:17 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

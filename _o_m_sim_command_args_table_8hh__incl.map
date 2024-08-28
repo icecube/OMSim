@@ -1,9 +1,10 @@
 <map id="OMSimCommandArgsTable.hh" name="OMSimCommandArgsTable.hh">
-<area shape="rect" id="node1" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="371,5,590,32"/>
+<area shape="rect" id="node1" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="430,5,649,32"/>
 <area shape="rect" id="node2" href="$_o_m_sim_logger_8hh_source.html" title=" " alt="" coords="229,80,361,107"/>
 <area shape="rect" id="node7" title=" " alt="" coords="385,80,459,107"/>
 <area shape="rect" id="node8" title=" " alt="" coords="483,80,595,107"/>
 <area shape="rect" id="node9" title=" " alt="" coords="619,80,710,107"/>
+<area shape="rect" id="node10" title=" " alt="" coords="734,80,785,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,162,129,189"/>
 <area shape="rect" id="node4" title=" " alt="" coords="153,155,301,196"/>
 <area shape="rect" id="node5" title=" " alt="" coords="326,162,403,189"/>

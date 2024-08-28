@@ -46,7 +46,7 @@
 <title>Node3&#45;&gt;Node2</title>
 <path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M67,-114.04C67,-101.67 67,-86.12 67,-76.63"/>
 <polygon fill="#9a32cd" stroke="#9a32cd" points="63.5,-114.23 67,-124.23 70.5,-114.23 63.5,-114.23"/>
-<text text-anchor="middle" x="85.5" y="-98" font-family="Helvetica,sans-Serif" font-size="10.00"> mData</text>
+<text text-anchor="middle" x="87" y="-98" font-family="Helvetica,sans-Serif" font-size="10.00"> m_data</text>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">

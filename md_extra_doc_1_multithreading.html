@@ -193,7 +193,7 @@ Thread-Safe Global Instance Implementation</h1>
 <div class="line">    assert(gHitManager);</div>
 <div class="line">    <span class="keywordflow">return</span> *gHitManager;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_o_m_sim_hit_manager_html"><div class="ttname"><a href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div><div class="ttdoc">Manages detected photon information.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.hh:57</div></div>
+<div class="ttc" id="aclass_o_m_sim_hit_manager_html"><div class="ttname"><a href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div><div class="ttdoc">Manages detected photon information.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.hh:56</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_aaa3e7a28d658d8e2e6db704b910cc35c"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a></div><div class="ttdeci">static OMSimHitManager &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:44</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_ac26f7ad778584ece58f86d60192ef671"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671">OMSimHitManager::init</a></div><div class="ttdeci">static void init()</div><div class="ttdoc">Initializes the global instance of OMSimHitManager.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:23</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_ad8a139a9068c92b7babf471c9ec23ecf"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf">OMSimHitManager::shutdown</a></div><div class="ttdeci">static void shutdown()</div><div class="ttdoc">Deletes the global instance of OMSimHitManager.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:33</div></div>
@@ -284,7 +284,7 @@ Example: Saving Data Per Thread</h2>
 <div class="fragment"><div class="line"><span class="comment">//from radioactive_decays/src/OMSimDecaysAnalysis.cc</span></div>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_decays_analysis.html#abf3b99f2998f27c9ad1f792dfc716e0c">OMSimDecaysAnalysis::writeThreadDecayInformation</a>()</div>
 <div class="line">{</div>
-<div class="line">    G4String lOutputSuffix = <a class="code" href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">OMSimCommandArgsTable::getInstance</a>().<a class="code" href="class_o_m_sim_command_args_table.html#a98ca3b003cebba64f357e342d16ea968">get</a>&lt;std::string&gt;(<span class="stringliteral">&quot;output_file&quot;</span>);</div>
+<div class="line">    G4String lOutputSuffix = <a class="code" href="class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214">OMSimCommandArgsTable::getInstance</a>().<a class="code" href="class_o_m_sim_command_args_table.html#a6a455736ab058037381fd786c52ca86f">get</a>&lt;std::string&gt;(<span class="stringliteral">&quot;output_file&quot;</span>);</div>
 <div class="line">    G4String lDecaysFileName = lOutputSuffix + <span class="stringliteral">&quot;_&quot;</span> + <a class="code" href="namespace_tools.html#aee9fb48a4947040e59508fd02baa6b4f">Tools::getThreadIDStr</a>() + <span class="stringliteral">&quot;_decays.dat&quot;</span>; <span class="comment">// one file per thread, appending thread id to file name</span></div>
 <div class="line"> </div>
 <div class="line">    std::fstream lDatafile;</div>
@@ -295,15 +295,15 @@ Example: Saving Data Per Thread</h2>
 <div class="line">    }</div>
 <div class="line">    lDatafile.close();</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a2a6179839e4ed5f503e52fca917c84c2"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">OMSimCommandArgsTable::getInstance</a></div><div class="ttdeci">static OMSimCommandArgsTable &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:88</div></div>
-<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a98ca3b003cebba64f357e342d16ea968"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a98ca3b003cebba64f357e342d16ea968">OMSimCommandArgsTable::get</a></div><div class="ttdeci">T get(const std::string &amp;pKey)</div><div class="ttdoc">Retrieves a parameter from the table.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:117</div></div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html_a6a455736ab058037381fd786c52ca86f"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a6a455736ab058037381fd786c52ca86f">OMSimCommandArgsTable::get</a></div><div class="ttdeci">T get(const std::string &amp;p_key)</div><div class="ttdoc">Retrieves a parameter from the table.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:82</div></div>
+<div class="ttc" id="aclass_o_m_sim_command_args_table_html_ac6f8ed95981671d5df9b029bcef93214"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214">OMSimCommandArgsTable::getInstance</a></div><div class="ttdeci">static OMSimCommandArgsTable &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.cc:7</div></div>
 <div class="ttc" id="aclass_o_m_sim_decays_analysis_html_abf3b99f2998f27c9ad1f792dfc716e0c"><div class="ttname"><a href="class_o_m_sim_decays_analysis.html#abf3b99f2998f27c9ad1f792dfc716e0c">OMSimDecaysAnalysis::writeThreadDecayInformation</a></div><div class="ttdeci">void writeThreadDecayInformation()</div><div class="ttdoc">Write isotoped related data to the output file.</div><div class="ttdef"><b>Definition:</b> OMSimDecaysAnalysis.cc:75</div></div>
 <div class="ttc" id="anamespace_tools_html_aee9fb48a4947040e59508fd02baa6b4f"><div class="ttname"><a href="namespace_tools.html#aee9fb48a4947040e59508fd02baa6b4f">Tools::getThreadIDStr</a></div><div class="ttdeci">G4String getThreadIDStr()</div><div class="ttdef"><b>Definition:</b> OMSimTools.cc:439</div></div>
 </div><!-- fragment --><p>Data is saved after each event in the <code>EndOfEventAction</code> method to handle large volumes of data:</p>
 <div class="fragment"><div class="line"><span class="comment">//from radioactive_decays/src/OMSimEventAction.cc</span></div>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_event_action.html#a10298c7dff0337cec4ee06a25ca9c116">OMSimEventAction::EndOfEventAction</a>(<span class="keyword">const</span> G4Event *evt)</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordflow">if</span> (!<a class="code" href="class_o_m_sim_command_args_table.html#a2a6179839e4ed5f503e52fca917c84c2">OMSimCommandArgsTable::getInstance</a>().get&lt;bool&gt;(<span class="stringliteral">&quot;multiplicity_study&quot;</span>))</div>
+<div class="line">    <span class="keywordflow">if</span> (!<a class="code" href="class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214">OMSimCommandArgsTable::getInstance</a>().get&lt;bool&gt;(<span class="stringliteral">&quot;multiplicity_study&quot;</span>))</div>
 <div class="line">    {</div>
 <div class="line">        <a class="code" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a> &amp;lAnalysisManager = <a class="code" href="class_o_m_sim_decays_analysis.html#a4aea9bd04b3f168cfcae98808b33f90c">OMSimDecaysAnalysis::getInstance</a>();</div>
 <div class="line">        lAnalysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#a78449c898f237d5a40c75042123c19af">writeThreadHitInformation</a>();</div>
@@ -385,7 +385,7 @@ Troubleshooting Multi-threading Issues</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Aug 28 2024 14:27:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 17:32:17 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

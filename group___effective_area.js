@@ -17,11 +17,11 @@ var group___effective_area =
       [ "ConstructSDandField", "class_o_m_sim_detector_construction.html#a7396d4c4a761b9d79104ce1459f77468", null ],
       [ "constructWorld", "class_o_m_sim_detector_construction.html#a0bab6798cb1c5dab85ecf8dbec6b2fb3", null ],
       [ "registerSensitiveDetector", "class_o_m_sim_detector_construction.html#a5bc12d4354f99ecb63606d0be2db301c", null ],
-      [ "mData", "class_o_m_sim_detector_construction.html#af44676a349237c2c22f78db4d3393f44", null ],
-      [ "mSensitiveDetectors", "class_o_m_sim_detector_construction.html#a348c1e39b07d7d63c5566aa456fb2115", null ],
-      [ "mWorldLogical", "class_o_m_sim_detector_construction.html#ad38baf42d9d13f7be6dc579fc6521917", null ],
-      [ "mWorldPhysical", "class_o_m_sim_detector_construction.html#a722f99cef9e9bb4bef2307521bb00b9a", null ],
-      [ "mWorldSolid", "class_o_m_sim_detector_construction.html#a8143cb9595c67863d498bd4787cc6448", null ]
+      [ "m_data", "class_o_m_sim_detector_construction.html#a2de0f66475afd78dfe310db2a5ffac72", null ],
+      [ "m_sensitiveDetectors", "class_o_m_sim_detector_construction.html#af7e8aab0f90ac2be81b329a71d65df0e", null ],
+      [ "m_worldLogical", "class_o_m_sim_detector_construction.html#ab19cb6aa2dfc62722d96acd9f1d78cf5", null ],
+      [ "m_worldSolid", "class_o_m_sim_detector_construction.html#a6e034bd9ffa79e95589d147f920d2bc0", null ],
+      [ "mWorldPhysical", "class_o_m_sim_detector_construction.html#a722f99cef9e9bb4bef2307521bb00b9a", null ]
     ] ],
     [ "AngularScan", "class_angular_scan.html", [
       [ "AngularScan", "class_angular_scan.html#af7d054657e56a97db60274f30ff737e6", null ],
@@ -30,11 +30,11 @@ var group___effective_area =
       [ "configurePosCoordinates", "class_angular_scan.html#a40b9d1151eeae2f86694554867883be8", null ],
       [ "configureScan", "class_angular_scan.html#a0603ef7f2b297de98ad466145ff122e4", null ],
       [ "runSingleAngularScan", "class_angular_scan.html#a465f642ebbe30fc94f9ed8ec6e554ef4", null ],
+      [ "m_wavelength", "class_angular_scan.html#aacb861f1748a9ed427b2b188f2586396", null ],
       [ "mBeamDistance", "class_angular_scan.html#a47b54254367c907ce232e4595fb6a260", null ],
       [ "mBeamRadius", "class_angular_scan.html#ad2f9c752116c94abd1406536048eebbd", null ],
       [ "mPhi", "class_angular_scan.html#a46382d1226ef1f4a4851128fcff0fda2", null ],
-      [ "mTheta", "class_angular_scan.html#a2f0af1e0e1e50be36a520236cdcb9f33", null ],
-      [ "mWavelength", "class_angular_scan.html#abeae73a1f4a2473af636291c458d272f", null ]
+      [ "mTheta", "class_angular_scan.html#a2f0af1e0e1e50be36a520236cdcb9f33", null ]
     ] ],
     [ "OMSimEffectiveAreaAnalyisis", "class_o_m_sim_effective_area_analyisis.html", [
       [ "OMSimEffectiveAreaAnalyisis", "class_o_m_sim_effective_area_analyisis.html#abed7b6d51b06cc75d4110db740734776", null ],
