@@ -13,23 +13,23 @@ namespace Tools
 	/**
 	 * @brief Generates a sequence of numbers.
 	 *
-	 * @param start The start of the interval. The interval includes this value.
-	 * @param stop The end of the interval. The interval does not include this value.
-	 * @param step The spacing between values. For any output out, this is the distance between two adjacent values, out[i+1] - out[i].
+	 * @param p_start The p_start of the interval. The interval includes this value.
+	 * @param p_stop The end of the interval. The interval does not include this value.
+	 * @param p_step The spacing between values. For any output out, this is the distance between two adjacent values, out[i+1] - out[i].
 	 * @return A vector of evenly spaced values.
-	 * @throws std::invalid_argument if step is zero.
+	 * @throws std::invalid_argument if p_step is zero.
 	 */
-	std::vector<double> arange(double start, double stop, double step)
+	std::vector<double> arange(double p_start, double p_stop, double p_step)
 	{
 
-		if (step == 0.0)
+		if (p_step == 0.0)
 		{
 			throw std::invalid_argument("Step cannot be zero.");
 		}
 
 		std::vector<double> result;
 		// Calculate the number of elements
-		double n = std::ceil((stop - start) / step);
+		double n = std::ceil((p_stop - p_start) / p_step);
 
 		if (n <= 0)
 		{
@@ -40,15 +40,15 @@ namespace Tools
 
 		for (int i = 0; i < n; ++i)
 		{
-			result.push_back(start + i * step);
+			result.push_back(p_start + i * p_step);
 		}
 
 		// Handle potential floating point issues
-		if (!result.empty() && step > 0 && result.back() >= stop)
+		if (!result.empty() && p_step > 0 && result.back() >= p_stop)
 		{
 			result.pop_back();
 		}
-		else if (!result.empty() && step < 0 && result.back() <= stop)
+		else if (!result.empty() && p_step < 0 && result.back() <= p_stop)
 		{
 			result.pop_back();
 		}
@@ -59,87 +59,86 @@ namespace Tools
 	/**
 	 * @brief Creates a TGraph interpolator from x and y data points.
 	 *
-	 * @param pX Vector of x-coordinates.
-	 * @param pY Vector of y-coordinates.
-	 * @param pName Optional name for the TGraph. It should be unique!
+	 * @param p_X Vector of x-coordinates.
+	 * @param p_y Vector of y-coordinates.
+	 * @param p_name Optional name for the TGraph. It should be unique!
 	 * @return Pointer to the new TGraph object.
 	 * @note Caller is responsible for deleting the returned TGraph!
 	 */
-	TGraph *create1dInterpolator(const std::vector<double> &pX, const std::vector<double> &pY, const std::string &pName)
+	TGraph *create1dInterpolator(const std::vector<double> &p_X, const std::vector<double> &p_y, const std::string &p_name)
 	{
-		auto lInterpolator = new TGraph(pX.size(), pX.data(), pY.data());
-		if (!pName.empty())
+		auto interpolator = new TGraph(p_X.size(), p_X.data(), p_y.data());
+		if (!p_name.empty())
 		{
-			lInterpolator->SetName(pName.c_str());
+			interpolator->SetName(p_name.c_str());
 		}
-		return lInterpolator;
+		return interpolator;
 	}
 
 	/**
 	 * @brief Creates a TGraph interpolator from x and y in file.
-	 * @param pFileName 
+	 * @param p_filename
 	 * @return Pointer to the new TGraph object.
 	 * @note Caller is responsible for deleting the returned TGraph!
 	 */
-	TGraph *create1dInterpolator(const std::string &pFileName)
+	TGraph *create1dInterpolator(const std::string &p_filename)
 	{
-		auto lInterpolator = new TGraph(pFileName.c_str());
-		lInterpolator->SetName(pFileName.c_str());
-		return lInterpolator;
+		auto interpolator = new TGraph(p_filename.c_str());
+		interpolator->SetName(p_filename.c_str());
+		return interpolator;
 	}
 
 	/**
- * @brief Create a histogram from provided data.
- *
- * Loads the data from a given path and constructs a histogram based on the data.
- *
- * @param pFilePath Path to the data file.
- * @param pTH2DName Name of the histogram.
- * @return Pointer to the created histogram.
- * @note Caller is responsible for deleting the returned TH2D!
- */
-TH2D *create2DHistogramFromDataFile(const std::string &pFilePath)
-{
-    // Load the data
-    std::vector<std::vector<double>> lData = Tools::loadtxt(pFilePath, true, 0, '\t');
+	 * @brief Create a histogram from provided data.
+	 *
+	 * Loads the data from a given path and constructs a histogram based on the data.
+	 *
+	 * @param p_filePath Path to the data file.
+	 * @param pTH2DName Name of the histogram.
+	 * @return Pointer to the created histogram.
+	 * @note Caller is responsible for deleting the returned TH2D!
+	 */
+	TH2D *create2DHistogramFromDataFile(const std::string &p_filePath)
+	{
+		// Load the data
+		std::vector<std::vector<double>> data = Tools::loadtxt(p_filePath, true, 0, '\t');
 
-    // Deduce the number of bins and the bin widths
-    double lBinWidthX, lBinWidthY;
-    for (size_t i = 1; i < lData[0].size(); i++)
-    {
-        if (lData[0][i] - lData[0][i - 1] > 0)
-        {
-            lBinWidthX = lData[0][i] - lData[0][i - 1];
-            break;
-        }
-    }
-    for (size_t i = 1; i < lData[1].size(); i++)
-    {
-        if (lData[1][i] - lData[1][i - 1] > 0)
-        {
-            lBinWidthY = lData[1][i] - lData[1][i - 1];
-            break;
-        }
-    }
-    double lMinX = *std::min_element(lData[0].begin(), lData[0].end()) - lBinWidthX / 2.0;
-    double lMaxX = *std::max_element(lData[0].begin(), lData[0].end()) + lBinWidthX / 2.0;
-    double lMinY = *std::min_element(lData[1].begin(), lData[1].end()) - lBinWidthY / 2.0;
-    double lMaxY = *std::max_element(lData[1].begin(), lData[1].end()) + lBinWidthY / 2.0;
-    int lNbinsX = (int)((lMaxX - lMinX) / lBinWidthX);
-    int lNbinsY = (int)((lMaxY - lMinY) / lBinWidthY);
+		// Deduce the number of bins and the bin widths
+		double lBinWidthX, lBinWidthY;
+		for (size_t i = 1; i < data[0].size(); i++)
+		{
+			if (data[0][i] - data[0][i - 1] > 0)
+			{
+				lBinWidthX = data[0][i] - data[0][i - 1];
+				break;
+			}
+		}
+		for (size_t i = 1; i < data[1].size(); i++)
+		{
+			if (data[1][i] - data[1][i - 1] > 0)
+			{
+				lBinWidthY = data[1][i] - data[1][i - 1];
+				break;
+			}
+		}
+		double minX = *std::min_element(data[0].begin(), data[0].end()) - lBinWidthX / 2.0;
+		double maxX = *std::max_element(data[0].begin(), data[0].end()) + lBinWidthX / 2.0;
+		double minY = *std::min_element(data[1].begin(), data[1].end()) - lBinWidthY / 2.0;
+		double maxY = *std::max_element(data[1].begin(), data[1].end()) + lBinWidthY / 2.0;
+		int numberBinsX = (int)((maxX - minX) / lBinWidthX);
+		int numberBinsY = (int)((maxY - minY) / lBinWidthY);
 
-    // Create histogram
-    TH2D *lTH2Dhistogram = new TH2D(pFilePath.c_str(), "title", lNbinsX, lMinX, lMaxX, lNbinsY, lMinY, lMaxY);
+		// Create histogram
+		TH2D *histogramTH2D = new TH2D(p_filePath.c_str(), "title", numberBinsX, minX, maxX, numberBinsY, minY, maxY);
 
-    // Fill the histogram
-    for (size_t i = 0; i < lData[0].size(); i++)
-    {
-        lTH2Dhistogram->Fill(lData[0][i], lData[1][i], lData[2][i]);
-    }
+		// Fill the histogram
+		for (size_t i = 0; i < data[0].size(); i++)
+		{
+			histogramTH2D->Fill(data[0][i], data[1][i], data[2][i]);
+		}
 
-    return lTH2Dhistogram;
-}
-
+		return histogramTH2D;
+	}
 
 	/**
 	 * @brief Compute the histogram of a dataset.
@@ -161,8 +160,8 @@ TH2D *create2DHistogramFromDataFile(const std::string &pFilePath)
 	 */
 	std::pair<std::vector<double>, std::vector<double>> histogram(const std::vector<double> &data,
 																  const std::variant<int, std::vector<double>> &bins,
-																  const std::optional<std::pair<double, double>> &range,
-																  const std::vector<double> &weights)
+																  const std::optional<std::pair<double, double>> &p_range,
+																  const std::vector<double> &p_weights)
 	{
 
 		// Handle empty input
@@ -179,14 +178,14 @@ TH2D *create2DHistogramFromDataFile(const std::string &pFilePath)
 				return {std::vector<double>(bin_edges.size() - 1, 0.0), bin_edges};
 			}
 		}
-		std::vector<double> actual_weights = (weights.empty() || weights.size() != data.size())
+		std::vector<double> actual_weights = (p_weights.empty() || p_weights.size() != data.size())
 												 ? std::vector<double>(data.size(), 1.0)
-												 : weights;
+												 : p_weights;
 		double data_min, data_max;
-		if (range)
+		if (p_range)
 		{
-			data_min = range->first;
-			data_max = range->second;
+			data_min = p_range->first;
+			data_max = p_range->second;
 		}
 		else
 		{
@@ -206,10 +205,10 @@ TH2D *create2DHistogramFromDataFile(const std::string &pFilePath)
 		{
 			int nbins = std::get<int>(bins);
 			bin_edges.resize(nbins + 1);
-			double step = (data_max - data_min) / nbins;
+			double p_step = (data_max - data_min) / nbins;
 			for (int i = 0; i <= nbins; ++i)
 			{
-				bin_edges[i] = data_min + i * step;
+				bin_edges[i] = data_min + i * p_step;
 			}
 		}
 		else
@@ -248,97 +247,97 @@ TH2D *create2DHistogramFromDataFile(const std::string &pFilePath)
 	 * @brief Reads numerical data from a file and returns it as a 2D vector.
 	 * Similar to numpy.loadtxt.
 	 *
-	 * @param pFilePath The path to the input file.
-	 * @param pUnpack Optional. If true, the returned data is transposed, i.e.,
+	 * @param p_filePath The path to the input file.
+	 * @param p_unpack Optional. If true, the returned data is transposed, i.e.,
 	 * unpacked into columns. Default is true.
-	 * @param pSkipRows Optional. The number of lines to skip at the beginning of
+	 * @param p_skipRows Optional. The number of lines to skip at the beginning of
 	 * the file. Default is 0.
-	 * @param pDelimiter The character used to separate values in each line of the
+	 * @param p_delimiter The character used to separate values in each line of the
 	 * input file.
-	 * @param pComments Optional. The character used to indicate the start of a
+	 * @param p_comments Optional. The character used to indicate the p_start of a
 	 * comment. Default is '#'.
 	 * @return A 2D vector of doubles. The outer vector groups all columns (or
 	 * rows if 'unpack' is false), and each inner vector represents one of the
 	 * columns (or one of the rows if 'unpack' is false) of data file.
 	 * @throws std::runtime_error if the file cannot be opened.
 	 */
-	std::vector<std::vector<double>> loadtxt(const std::string &pFilePath, bool pUnpack,
-											 size_t pSkipRows, char pDelimiter, char pComments)
+	std::vector<std::vector<double>> loadtxt(const std::string &p_filePath, bool p_unpack,
+											 size_t p_skipRows, char p_delimiter, char p_comments)
 	{
-		std::vector<std::vector<double>> lData;
-		std::ifstream lInFile(pFilePath);
+		std::vector<std::vector<double>> data;
+		std::ifstream inFile(p_filePath);
 
-		if (!lInFile.is_open())
+		if (!inFile.is_open())
 		{
-			log_error("Could not open file {}", pFilePath);
-			throw std::runtime_error("Could not open file " + pFilePath);
+			log_error("Could not open file {}", p_filePath);
+			throw std::runtime_error("Could not open file " + p_filePath);
 		}
 
-		std::string lLine;
-		size_t lRowCounter = 0;
+		std::string line;
+		size_t rowCounter = 0;
 
-		while (getline(lInFile, lLine))
+		while (getline(inFile, line))
 		{
-			if (lRowCounter++ < pSkipRows)
+			if (rowCounter++ < p_skipRows)
 				continue;
-			if (!lLine.empty() && lLine[0] == pComments)
+			if (!line.empty() && line[0] == p_comments)
 				continue;
-			std::vector<double> lRow;
-			std::stringstream lSs(lLine);
-			std::string lItem;
-			while (getline(lSs, lItem, pDelimiter))
+			std::vector<double> row;
+			std::stringstream ss(line);
+			std::string item;
+			while (getline(ss, item, p_delimiter))
 			{
-				lRow.push_back(stod(lItem));
+				row.push_back(stod(item));
 			}
-			lData.push_back(lRow);
+			data.push_back(row);
 		}
 
-		if (pUnpack)
+		if (p_unpack)
 		{
-			size_t lNumCols = lData[0].size();
-			std::vector<std::vector<double>> lTransposedData(
-				lNumCols, std::vector<double>(lData.size()));
+			size_t numCols = data[0].size();
+			std::vector<std::vector<double>> transposedData(
+				numCols, std::vector<double>(data.size()));
 
-			for (size_t i = 0; i < lData.size(); ++i)
+			for (size_t i = 0; i < data.size(); ++i)
 			{
-				for (size_t j = 0; j < lNumCols; ++j)
+				for (size_t j = 0; j < numCols; ++j)
 				{
-					lTransposedData[j][i] = lData[i][j];
+					transposedData[j][i] = data[i][j];
 				}
 			}
-			return lTransposedData;
+			return transposedData;
 		}
 		else
 		{
-			return lData;
+			return data;
 		}
 	}
 
 	/**
 	 * @brief Generates a linearly spaced vector.
 	 *
-	 * Creates a vector of equally spaced values between `start` and `end`.
+	 * Creates a vector of equally spaced values between `p_start` and `end`.
 	 *
-	 * @param start The starting value of the sequence.
-	 * @param stop The end value of the sequence, unless endpoint is False.
-	 *             In that case, the sequence consists of all but the last of num + 1 evenly spaced samples,
-	 *             so that stop is excluded. Note that the step size changes when endpoint is False.
-	 * @param num The number of points to generate in the sequence.
-	 * @param endpoint If True (default), stop is the last sample. Otherwise, it is not included.
+	 * @param p_start The starting value of the sequence.
+	 * @param p_stop The end value of the sequence, unless p_endpoint is False.
+	 *             In that case, the sequence consists of all but the last of p_num + 1 evenly spaced samples,
+	 *             so that p_stop is excluded. Note that the p_step size changes when p_endpoint is False.
+	 * @param p_num The number of points to generate in the sequence.
+	 * @param p_endpoint If True (default), p_stop is the last sample. Otherwise, it is not included.
 	 * @return A vector of linearly spaced values.
-	 * @throws std::invalid_argument if `num` is less than 2.
+	 * @throws std::invalid_argument if `p_num` is less than 2.
 	 */
-	std::vector<double> linspace(double start, double stop, int num, bool endpoint)
+	std::vector<double> linspace(double p_start, double p_stop, int p_num, bool p_endpoint)
 	{
-		if (num < 2)
+		if (p_num < 2)
 		{
 			throw std::invalid_argument("Number of points must be at least 2.");
 		}
 		std::vector<double> vector;
-		double step = (stop - start) / (endpoint ? (num - 1) : num);
-		for (int i = 0; i < num; ++i)
+		double p_step = (p_stop - p_start) / (p_endpoint ? (p_num - 1) : p_num);
+		for (int i = 0; i < p_num; ++i)
 		{
-			vector.push_back(start + i * step);
+			vector.push_back(p_start + i * p_step);
 		}
 		return vector;
 	}
@@ -346,45 +345,45 @@ TH2D *create2DHistogramFromDataFile(const std::string &pFilePath)
 	/**
 	 * @brief Generates a logarithmically spaced vector.
 	 *
-	 * Creates a vector of values that are logarithmically spaced. The sequence starts at base^start
-	 * and ends at base^stop.
+	 * Creates a vector of values that are logarithmically spaced. The sequence starts at base^p_start
+	 * and ends at base^p_stop.
 	 *
-	 * @param start The starting value of the sequence (as a power of base).
-	 * @param stop The ending value of the sequence (as a power of base).
-	 * @param num The number of points to generate in the sequence. Default is 50.
+	 * @param p_start The starting value of the sequence (as a power of base).
+	 * @param p_stop The ending value of the sequence (as a power of base).
+	 * @param p_num The number of points to generate in the sequence. Default is 50.
 	 * @param base The base of the log space. Default is 10.0.
-	 * @param endpoint Whether to include the stop value in the output. Default is true.
+	 * @param p_endpoint Whether to include the p_stop value in the output. Default is true.
 	 * @return A vector of logarithmically spaced values.
-	 * @throws std::invalid_argument if `num` is negative.
+	 * @throws std::invalid_argument if `p_num` is negative.
 	 *
 	 * @note This function behaves similarly to NumPy's np.logspace:
-	 *       - If num is 0, returns an empty vector.
-	 *       - start and stop are used as powers of base.
-	 *       - The sequence includes base^start and base^stop if endpoint is true.
+	 *       - If p_num is 0, returns an empty vector.
+	 *       - p_start and p_stop are used as powers of base.
+	 *       - The sequence includes base^p_start and base^p_stop if p_endpoint is true.
 	 */
-	std::vector<double> logspace(double start, double stop, int num, double base, bool endpoint)
+	std::vector<double> logspace(double p_start, double p_stop, int p_num, double base, bool p_endpoint)
 	{
-		if (num < 0)
+		if (p_num < 0)
 		{
 			throw std::invalid_argument("Number of samples must be non-negative.");
 		}
 
 		std::vector<double> result;
-		result.reserve(num);
+		result.reserve(p_num);
 
-		if (num == 0)
+		if (p_num == 0)
 		{
 			return result;
 		}
 
-		double start_log = start;
-		double stop_log = stop;
+		double start_log = p_start;
+		double stop_log = p_stop;
 
-		double step = (stop_log - start_log) / (endpoint ? (num - 1) : num);
+		double p_step = (stop_log - start_log) / (p_endpoint ? (p_num - 1) : p_num);
 
-		for (int i = 0; i < num; ++i)
+		for (int i = 0; i < p_num; ++i)
 		{
-			double value = std::pow(base, start_log + i * step);
+			double value = std::pow(base, start_log + i * p_step);
 			result.push_back(value);
 		}
 
@@ -392,46 +391,46 @@ TH2D *create2DHistogramFromDataFile(const std::string &pFilePath)
 	}
 
 	/**
-	 *  @brief Sorts two vectors (pSortVector & pReferenceVector) based on the order of values in pReferenceVector.
+	 *  @brief Sorts two vectors (p_sortVector & p_referenceVector) based on the order of values in p_referenceVector.
 	 *
-	 *  @param pReferenceVector The ordering of these values will determine the final order of both vectors.
-	 *  @param pSortVector The vector to be sorted according to the pReferenceVector.
+	 *  @param p_referenceVector The ordering of these values will determine the final order of both vectors.
+	 *  @param p_sortVector The vector to be sorted according to the p_referenceVector.
 	 *
 	 *  @throws std::invalid_argument if the vectors do not have the same size.
 	 */
-	void sortVectorByReference(std::vector<G4double> &pReferenceVector, std::vector<G4double> &pSortVector)
+	void sortVectorByReference(std::vector<G4double> &p_referenceVector, std::vector<G4double> &p_sortVector)
 	{
 		log_trace("Sorting vector");
 		// Check if the vectors have the same size
-		if (pReferenceVector.size() != pSortVector.size())
+		if (p_referenceVector.size() != p_sortVector.size())
 		{
 			// Handle error
 			throw std::invalid_argument("The two vectors must have the same size.");
 		}
 
 		// Create a vector of indices
-		std::vector<std::size_t> lIndices(pReferenceVector.size());
-		std::iota(lIndices.begin(), lIndices.end(), 0);
+		std::vector<std::size_t> indices(p_referenceVector.size());
+		std::iota(indices.begin(), indices.end(), 0);
 
-		// Sort the indices based on the values in pReferenceVector
-		std::sort(lIndices.begin(), lIndices.end(),
-				  [&pReferenceVector](std::size_t i1, std::size_t i2)
-				  { return pReferenceVector[i1] < pReferenceVector[i2]; });
+		// Sort the indices based on the values in p_referenceVector
+		std::sort(indices.begin(), indices.end(),
+				  [&p_referenceVector](std::size_t i1, std::size_t i2)
+				  { return p_referenceVector[i1] < p_referenceVector[i2]; });
 
 		// Create temporary vectors to hold the sorted data
-		std::vector<G4double> lSortedSortVector(pSortVector.size());
-		std::vector<G4double> lSortedReferenceVector(pReferenceVector.size());
+		std::vector<G4double> sortedSortVector(p_sortVector.size());
+		std::vector<G4double> sortedReferenceVector(p_referenceVector.size());
 
 		// Apply the sorted indices to the vectors
-		for (std::size_t i = 0; i < lIndices.size(); ++i)
+		for (std::size_t i = 0; i < indices.size(); ++i)
 		{
-			lSortedSortVector[i] = pSortVector[lIndices[i]];
-			lSortedReferenceVector[i] = pReferenceVector[lIndices[i]];
+			sortedSortVector[i] = p_sortVector[indices[i]];
+			sortedReferenceVector[i] = p_referenceVector[indices[i]];
 		}
 
 		// Replace the original vectors with the sorted ones
-		pSortVector = std::move(lSortedSortVector);
-		pReferenceVector = std::move(lSortedReferenceVector);
+		p_sortVector = std::move(sortedSortVector);
+		p_referenceVector = std::move(sortedReferenceVector);
 	}
 
 	/**
@@ -447,11 +446,11 @@ TH2D *create2DHistogramFromDataFile(const std::string &pFilePath)
 
 	/**
 	 * @brief Ensure that the directory of a file to be created exists
-	 * @param pFilePath The path of file.
+	 * @param p_filePath The path of file.
 	 */
-	void ensureDirectoryExists(const std::string &pFilePath)
+	void ensureDirectoryExists(const std::string &p_filePath)
 	{
-		std::filesystem::path full_path(pFilePath);
+		std::filesystem::path full_path(p_filePath);
 		std::filesystem::path dir = full_path.parent_path();
 		if (!dir.empty() && !std::filesystem::exists(dir))
 		{
@@ -459,4 +458,9 @@ TH2D *create2DHistogramFromDataFile(const std::string &pFilePath)
 		}
 	}
 
+	void throwError(const G4String &p_message)
+	{
+		log_error(p_message);
+		throw std::runtime_error(p_message);
+	}
 }

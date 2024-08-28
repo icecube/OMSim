@@ -1,6 +1,5 @@
 {
    "jName": "Ri_Air",
-   "jDataType": "Ri",
    "jComponents": {
       "G4_AIR": 1.0
    },
@@ -9,12 +8,16 @@
       "jUnit": "mg/cm3"
    },
    "jState": "kStateGas",
-   "jRefractiveIdx": [
-      1.0003,
-      1.0003
-   ],
-   "jRefractiveIdxWavelength": [
-      150,
-      730
-   ]
+   "jProperties": {
+      "RINDEX": {
+         "jValue": [
+            1.0003,
+            1.0003
+         ],
+         "jWavelength": [
+            150,
+            730
+         ]
+      }
+   }
 }

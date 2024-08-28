@@ -1,6 +1,5 @@
 {
    "jName": "NoOptic_Absorber",
-   "jDataType": "NoOptic",
    "jComponents": {
       "G4_C": 1.0
    },

@@ -1,6 +1,5 @@
 {
    "jName": "NoOptic_Photocathode",
-   "jDataType": "NoOptic",
    "jComponentName": [
       "G4_Sb",
       "G4_K",

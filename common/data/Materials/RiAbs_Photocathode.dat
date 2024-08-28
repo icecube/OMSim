@@ -1,6 +1,5 @@
 {
    "jName": "RiAbs_Photocathode_",
-   "jDataType": "RiAbs",
    "jComponentName": [
       "G4_Sb",
       "G4_K",
@@ -16,20 +15,26 @@
       "jUnit": "g/cm3"
    },
    "jState": "kStateSolid",
-   "jRefractiveIdx": [
-      4.0,
-      4.0
-   ],
-   "jRefractiveIdxWavelength": [
-      150,
-      730
-   ],
-   "jAbsLength": [
-      1,
-      1
-   ],
-   "jAbsLengthWavelength": [
-      150,
-      730
-   ]
+   "jProperties": {
+      "RINDEX": {
+         "jValue": [
+            4.0,
+            4.0
+         ],
+         "jWavelength": [
+            150,
+            730
+         ]
+      },
+      "ABSLENGTH": {
+         "jValue": [
+            1,
+            1
+         ],
+         "jWavelength": [
+            150,
+            730
+         ]
+      }
+   }
 }

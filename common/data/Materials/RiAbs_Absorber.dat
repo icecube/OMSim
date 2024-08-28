@@ -1,6 +1,5 @@
 {
    "jName": "RiAbs_Absorber",
-   "jDataType": "RiAbs",
    "jComponents": {
       "G4_AIR": 1.0
    },
@@ -9,20 +8,26 @@
       "jUnit": "mg/cm3"
    },
    "jState": "kStateGas",
-   "jRefractiveIdx": [
-      1.0003,
-      1.0003
-   ],
-   "jRefractiveIdxWavelength": [
-      150,
-      730
-   ],
-      "jAbsLength": [
-      0.0000000000000000000000000001,
-      0.0000000000000000000000000001
-   ],
-   "jAbsLengthWavelength": [
-      150,
-      730
-   ]
+   "jProperties": {
+      "RINDEX": {
+         "jValue": [
+            1.0003,
+            1.0003
+         ],
+         "jWavelength": [
+            150,
+            730
+         ]
+      },
+      "ABSLENGTH": {
+         "jValue": [
+            1e-28,
+            1e-28
+         ],
+         "jWavelength": [
+            150,
+            730
+         ]
+      }
+   }
 }

@@ -1,4 +1,5 @@
 /** @file
+ * @brief Definition of Tools namespace, a collection of helper methods.
  * @ingroup common
  */
 
@@ -43,6 +44,7 @@ namespace Tools
     std::vector<double> linspace(double start, double end, int num_points, bool endpoint = true);
     std::vector<double> logspace(double start, double end, int num_points, double base = 10.0, bool endpoint = true);
     void sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector);
+    void throwError(const G4String& message);
 };
 
 #endif

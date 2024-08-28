@@ -1,6 +1,6 @@
 #include "OMSimInputData.hh"
 #include "OMSimCommandArgsTable.hh"
-#include "OMSimDataFileTypes.hh"
+#include "OMSimMaterialHandler.hh"
 
 #include <G4UnitsTable.hh>
 #include <dirent.h>
@@ -16,16 +16,16 @@ namespace pt = boost::property_tree;
 /**
  * Appends information of json-file containing PMT/OM parameters to a dictionary
  * of ptrees
- * @param pFileName Name of file containing json
+ * @param p_fileName Name of file containing json
  */
-pt::ptree ParameterTable::appendAndReturnTree(G4String pFileName)
+pt::ptree ParameterTable::appendAndReturnTree(G4String p_fileName)
 {
     pt::ptree lJsonTree;
-    pt::read_json(pFileName, lJsonTree);
+    pt::read_json(p_fileName, lJsonTree);
     const G4String lName = lJsonTree.get<G4String>("jName");
     mTable[lName] = lJsonTree;
-    mKeyFileOrigin[lName] = pFileName;
-    log_trace("Key {} added to dictionary from file {}.", lName, pFileName);
+    mKeyFileOrigin[lName] = p_fileName;
+    log_trace("Key {} added to dictionary from file {}.", lName, p_fileName);
     return lJsonTree;
 }
 
@@ -38,7 +38,7 @@ pt::ptree ParameterTable::appendAndReturnTree(G4String pFileName)
  */
 G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
 {
-    if (!checkIfKeyInTable(pKey))
+    if (!checkIfTreeNameInTable(pKey))
     {
         log_error("Key {} not found in parameter table!", pKey);
         throw std::runtime_error("Key not found in parameter table!");
@@ -86,11 +86,11 @@ G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
  */
 pt::ptree ParameterTable::getJSONTree(G4String pKey)
 {
-    if (checkIfKeyInTable(pKey))
+    if (checkIfTreeNameInTable(pKey))
         return mTable.at(pKey);
     else
         log_critical("Key not found in table");
-        return boost::property_tree::ptree(); // Return an empty ptree
+    return boost::property_tree::ptree(); // Return an empty ptree
 }
 
 /**
@@ -99,15 +99,36 @@ pt::ptree ParameterTable::getJSONTree(G4String pKey)
  * @param pKey The key to check.
  * @return true if the key exists, false otherwise.
  */
-G4bool ParameterTable::checkIfKeyInTable(G4String pKey)
+G4bool ParameterTable::checkIfTreeNameInTable(G4String pKey)
 {
-    log_trace("Checking if key {} is in table...", pKey);
+    log_trace("Checking if tree {} is in table...", pKey);
     const G4int lFound = mTable.count(pKey);
     if (lFound > 0)
         return true;
     else
         log_trace("Key {} was not found...", pKey);
+    return false;
+}
+
+/**
+ * @brief Checks if a specific key exists in a given JSON tree.
+ * @param p_treeName Name of the JSON tree to search in.
+ * @param p_key Key to look for in the tree.
+ * @return true if the key exists in the tree, false otherwise.
+ */
+G4bool ParameterTable::checkIfKeyInTree(G4String p_treeName, G4String p_key)
+{
+    log_trace("Checking if key {} is in tree {}...", p_key, p_treeName);
+    pt::ptree tree = getJSONTree(p_treeName);
+    try
+    {
+        tree.get<std::string>(p_key);
+        return true;
+    }
+    catch (boost::property_tree::ptree_bad_path &)
+    {
         return false;
+    }
 }
 
 /*
@@ -116,106 +137,107 @@ G4bool ParameterTable::checkIfKeyInTable(G4String pKey)
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
-
 /**
  * @brief Initializes the global instance of OMSimInputData and calls OMSimInputData::searchFolders to load data
- * 
+ *
  * This method is normally called during construction of the base class OMSimDetectorConstruction.
  */
 void OMSimInputData::init()
 {
-    if (!gOMSimInputData){
-        gOMSimInputData = new OMSimInputData();
-        gOMSimInputData->searchFolders();
+    if (!g_OMSimInputData)
+    {
+        g_OMSimInputData = new OMSimInputData();
+        g_OMSimInputData->searchFolders();
     }
-        
 }
 
 /**
  * @brief Deletes the global instance of OMSimInputData.
- * 
+ *
  * This method is normally called in the destructor ~OMSimDetectorConstruction.
  */
 void OMSimInputData::shutdown()
 {
-    delete gOMSimInputData;
-    gOMSimInputData = nullptr;
+    delete g_OMSimInputData;
+    g_OMSimInputData = nullptr;
 }
 
 /**
  * @return A reference to the OMSimInputData instance.
  * @throw std::runtime_error if accessed before initialization or after shutdown.
  */
-OMSimInputData& OMSimInputData::getInstance()
+OMSimInputData &OMSimInputData::getInstance()
 {
-    if (!gOMSimInputData)
+    if (!g_OMSimInputData)
         throw std::runtime_error("OMSimInputData accessed before initialization or after shutdown!");
-    return *gOMSimInputData;
+    return *g_OMSimInputData;
 }
 
-
 /**
- * Get a G4Material. In order to get custom built materials, method
- * searchFolders() should have already been called. Standard materials from
- * Geant4 are also transfered directly (if found through
- * FindOrBuildMaterial()). Materials defined by arguments of the main should
- * start with "arg" and then we get the material name from the arrays
- * depending on the global integers (gGel, gGlass, gEnvironment..) .
- * @param pName name of the (custom) material or "argVesselGlass", "argGel",
- * "argWorld" for argument materials
- * @return G4Material
+ * @brief Retrieves a G4Material based on the given name.
+ *
+ * Handles both predefined and argument-based materials. For argument materials 
+ * (prefixed with "arg"), it selects materials based on user-defined indices 
+ * for glass, gel, and environment. For standard materials, it retrieves from 
+ * Geant4's material database or NIST manager.
+ *
+ * @param pName Material name or argument material key ("argVesselGlass", "argGel", "argWorld").
+ * @return Pointer to the requested G4Material, or nullptr if not found.
+ *
+ * @note Uses OMSimCommandArgsTable for argument-based material selection.
+ * @warning May cause undefined behavior if argument indices are out of bounds.
  */
-G4Material *OMSimInputData::getMaterial(G4String pName)
+G4Material *OMSimInputData::getMaterial(G4String p_name)
 {
 
     // Check if requested material is an argument material
-    if (pName.substr(0, 3) == "arg")
+    if (p_name.substr(0, 3) == "arg")
     {
 
-        G4String lGlass[] = {"RiAbs_Glass_Vitrovex", "RiAbs_Glass_Chiba",
+        G4String glass[] = {"RiAbs_Glass_Vitrovex", "RiAbs_Glass_Chiba",
                              "RiAbs_Glass_Benthos", "RiAbs_Glass_myVitrovex",
                              "RiAbs_Glass_myChiba", "RiAbs_Glass_WOMQuartz"};
-        G4String lGel[] = {"RiAbs_Gel_Wacker612Measured", "RiAbs_Gel_Shin-Etsu",
+        G4String gel[] = {"RiAbs_Gel_Wacker612Measured", "RiAbs_Gel_Shin-Etsu",
                            "RiAbs_Gel_QGel900", "RiAbs_Gel_Wacker612Company",
                            "Ri_Vacuum"};
-        G4String lWorld[] = {"Ri_Air", "IceCubeICE", "IceCubeICE_SPICE"};
+        G4String world[] = {"Ri_Air", "IceCubeICE", "IceCubeICE_SPICE"};
 
         // Get user argument parameters
-        OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-        G4int lGlassIndex = lArgs.get<G4int>("glass");
-        G4int lGelIndex = lArgs.get<G4int>("gel");
-        G4int lEnvironmentIndex = lArgs.get<G4int>("environment");
+        OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
+        G4int glassIndex = args.get<G4int>("glass");
+        G4int gelIndex = args.get<G4int>("gel");
+        G4int environmentIndex = args.get<G4int>("environment");
 
-        if (pName == "argVesselGlass")
-            return getMaterial(lGlass[lGlassIndex]);
+        if (p_name == "argVesselGlass")
+            return getMaterial(glass[glassIndex]);
 
-        else if (pName == "argGel")
-            return getMaterial(lGel[lGelIndex]);
+        else if (p_name == "argGel")
+            return getMaterial(gel[gelIndex]);
 
-        else if (pName == "argWorld")
-            return getMaterial(lWorld[lEnvironmentIndex]);
+        else if (p_name == "argWorld")
+            return getMaterial(world[environmentIndex]);
     }
 
     // If it is not an argument material, the material is looked up.
-    G4Material *lReturn = G4Material::GetMaterial(pName);
+    G4Material *toReturn = G4Material::GetMaterial(p_name);
 
-    if (!lReturn)
-        lReturn = G4NistManager::Instance()->FindOrBuildMaterial(pName);
-    return lReturn;
+    if (!toReturn)
+        toReturn = G4NistManager::Instance()->FindOrBuildMaterial(p_name);
+    return toReturn;
 }
 
 /**
  * Get a G4OpticalSurface. In order to get custom built materials, method
  * searchFolders() should have already been called.
- * @param pName name of the optical surface or argument reflectors
+ * @param p_name name of the optical surface or argument reflectors
  * "argReflector"
  * @return G4OpticalSurface
  */
-G4OpticalSurface *OMSimInputData::getOpticalSurface(G4String pName)
+G4OpticalSurface *OMSimInputData::getOpticalSurface(G4String p_name)
 {
 
     // Check if requested material is an argument surface
-    if (pName.substr(0, 12) == "argReflector")
+    if (p_name.substr(0, 12) == "argReflector")
     {
         G4String lRefCones[] = {"Surf_V95Gel", "Surf_V98Gel", "Surf_Aluminium",
                                 "Surf_Total98"};
@@ -226,15 +248,15 @@ G4OpticalSurface *OMSimInputData::getOpticalSurface(G4String pName)
     // If not, we look in the dictionary
     else
     {
-        G4int lFound = mOpticalSurfaceMap.count(pName);
+        G4int lFound = m_opticalSurfaceMap.count(p_name);
         if (lFound > 0)
         {
-            return mOpticalSurfaceMap.at(pName);
+            return m_opticalSurfaceMap.at(p_name);
         }
         else
         {
-            log_critical("Requested Optical Surface {} not found. Please check the name for typos!!", pName);
-            throw std::runtime_error("Requested Optical Surface not found: " + pName);
+            log_critical("Requested Optical Surface {} not found. Please check the name for typos!!", p_name);
+            throw std::runtime_error("Requested Optical Surface not found: " + p_name);
         }
     }
 }
@@ -252,7 +274,7 @@ void OMSimInputData::searchFolders()
 
     for (const auto &directory : directories)
     {
-        mDataDirectory = directory;
+        m_dataDirectory = directory;
         scannDataDirectory();
     }
 }
@@ -260,90 +282,86 @@ void OMSimInputData::searchFolders()
 /**
  * @brief Processes a data file based on its name prefix.
  *
- * The function identifies the type of data file (RefractionAndAbsorption,
- * RefractionOnly, NoOptics, IceCubeIce, Surface or others) based on
- * the prefix of the filename. It then constructs an object of the appropriate
- * class and invokes its information extraction method. For 'Surf' prefixed
- * files, it also updates the mOpticalSurfaceMap. For 'pmt_', 'om_', and
+ * The function identifies the type of data file based on
+ * the prefix of the filename. It then calls the correct extraction method. For 'Surf' prefixed
+ * files, it also updates the m_opticalSurfaceMap. For 'pmt_', 'om_', and
  * 'usr_' prefixed files, it invokes directly appendAndReturnTree without any
  * extra parsing into Geant4 objects.
  *
- * @param pFilePath Full path to the file.
- * @param pFileName Name of the file (without the path).
+ * @param p_filePath Full path to the file.
+ * @param p_fileName Name of the file (without the path).
  */
-void OMSimInputData::processFile(const std::string &pFilePath,
-                                   const std::string &pFileName)
+void OMSimInputData::processFile(const std::string &p_filePath,
+                                 const std::string &p_fileName)
 {
-    log_trace("Processing file {}", pFileName);
-
-    if (pFileName.substr(0, 5) == "RiAbs")
+    log_trace("Processing file {}", p_fileName);
+    OMSimMaterialHandler dataFile(p_filePath);
+    switch (getFileType(p_fileName))
     {
-        RefractionAndAbsorption lDataFile(pFilePath);
-        lDataFile.extractInformation();
-    }
-    else if (pFileName.substr(0, 2) == "Ri")
-    {
-        RefractionOnly lDataFile(pFilePath);
-        lDataFile.extractInformation();
-    }
-    else if (pFileName.substr(0, 7) == "NoOptic")
-    {
-        NoOptics lDataFile(pFilePath);
-        lDataFile.extractInformation();
-    }
-    else if (pFileName.substr(0, 10) == "IceCubeICE")
-    {
-        IceCubeIce lDataFile(pFilePath);
-        lDataFile.extractInformation();
-    }
-    else if ((pFileName.substr(0, 4) == "Surf"))
-    {
-        Surface lDataFile(pFilePath);
-        lDataFile.extractInformation();
-        mOpticalSurfaceMap[lDataFile.mObjectName] = lDataFile.mOpticalSurface;
-    }
-    else if ((pFileName.substr(0, 5) == "Scint"))
-    {
-        ScintillationProperties lDataFile(pFilePath);
-        lDataFile.extractInformation();
-    }
-    else if ((pFileName.substr(0, 6) == "Custom"))
-    {
-        CustomProperties lDataFile(pFilePath);
-        lDataFile.extractInformation();
-    }
-    else if (pFileName.substr(0, 4) == "pmt_" ||
-             pFileName.substr(0, 4) == "usr_")
-    {
-        appendAndReturnTree(pFilePath);
+    case FileType::IceCubeICE:
+        dataFile.processMaterial();
+        dataFile.processSpecial(IceProcessor::process);
+        break;
+    case FileType::Scintillator:
+        dataFile.processSpecial(ScintillationProcessor::process);
+        break;
+    case FileType::Custom:
+        dataFile.processExtraProperties();
+        break;
+    case FileType::Table:
+        appendAndReturnTree(p_filePath);
+        break;
+    case FileType::Surface:
+        m_opticalSurfaceMap[dataFile.GetName()] = dataFile.processSurface();
+        break;
+    case FileType::Material:
+        dataFile.processMaterial();
+        break;
     }
 }
-/**
- * Scann for data files inside mDataDirectory and process files.
- * @param pName name of the material
- */
+
 void OMSimInputData::scannDataDirectory()
 {
-    log_trace("Loading files in {}", mDataDirectory);
-    DIR *lDirectory = opendir(mDataDirectory.data());
-    if (lDirectory == NULL)
+    log_trace("Loading files in {}", m_dataDirectory);
+    DIR *directory = opendir(m_dataDirectory.data());
+    if (directory == NULL)
     {
-        G4cerr << "Couldn't open directory" << mDataDirectory << G4endl;
+        G4cerr << "Couldn't open directory" << m_dataDirectory << G4endl;
         return;
     }
 
-    dirent *lFile;
-    while ((lFile = readdir(lDirectory)))
+    dirent *file;
+    while ((file = readdir(directory)))
     {
-        if (lFile->d_type != DT_REG) // ignore if not a regular file
+        if (file->d_type != DT_REG) // ignore if not a regular file
         {
             continue;
         }
 
-        const std::string pFileName = lFile->d_name;
-        std::string filePath = mDataDirectory + "/" + pFileName;
+        const std::string p_fileName = file->d_name;
+        std::string filePath = m_dataDirectory + "/" + p_fileName;
 
-        processFile(filePath, pFileName);
+        processFile(filePath, p_fileName);
     }
-    closedir(lDirectory);
+    closedir(directory);
+}
+
+const std::unordered_map<std::string, OMSimInputData::FileType> OMSimInputData::fileTypePrefixes = {
+    {"IceCubeICE", FileType::IceCubeICE},
+    {"Scint", FileType::Scintillator},
+    {"Custom", FileType::Custom},
+    {"pmt_", FileType::Table},
+    {"usr_", FileType::Table},
+    {"Surf", FileType::Surface}};
+
+OMSimInputData::FileType OMSimInputData::getFileType(const std::string &p_fileName) const
+{
+    for (const auto &[prefix, type] : fileTypePrefixes)
+    {
+        if (p_fileName.substr(0, prefix.length()) == prefix)
+        {
+            return type;
+        }
+    }
+    return FileType::Material; // Default type if no prefix matches
 }

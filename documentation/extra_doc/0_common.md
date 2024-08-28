@@ -137,8 +137,8 @@ This approach ensures a smooth integration of the photosensitive volume within t
 ```cpp
 #include "OMSimSensitiveDetector.hh"
 //... Assume the logical volume of your detector has been defined and is referred to as "lDetectorLV"
-OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector("myDetector", DetectorType::GeneralPhotonDetector); 
-OMSimHitManager lHitManager =  OMSimHitManager::getInstance();
+OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector("myDetector", DetectorType::VolumePhotonDetector); 
+OMSimHitManager &lHitManager =  OMSimHitManager::getInstance();
 lHitManager.setNumberOfPMTs(1, lHitManager.getNextDetectorIndex());
 registerSensitiveDetector(lDetectorLV, lSensitiveDetector);
 ```

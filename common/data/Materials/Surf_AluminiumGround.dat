@@ -1,29 +1,30 @@
 {
    "jName": "Surf_AluminiumGround",
-   "jProperties": [
-      "REFLECTIVITY"
-   ],
-   "jWavelength_REFLECTIVITY": [
-      705.81,
-      580.69,
-      500.49,
-      446.45,
-      400.4,
-      352.31,
-      300.06,
-      251.58
-   ],
-   "jValues_REFLECTIVITY": [
-      0.5885,
-      0.5645,
-      0.5179,
-      0.463,
-      0.3897,
-      0.3215,
-      0.255,
-      0.2433
-   ],
    "jModel": "unified",
    "jFinish": "ground",
-   "jType": "dielectric_metal"
+   "jType": "dielectric_metal",
+   "jProperties": {
+      "REFLECTIVITY": {
+         "jWavelength": [
+            705.81,
+            580.69,
+            500.49,
+            446.45,
+            400.4,
+            352.31,
+            300.06,
+            251.58
+         ],
+         "jValue": [
+            0.5885,
+            0.5645,
+            0.5179,
+            0.463,
+            0.3897,
+            0.3215,
+            0.255,
+            0.2433
+         ]
+      }
+   }
 }

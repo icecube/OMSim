@@ -1,15 +1,18 @@
 {
    "jName": "Ri_Glass_LED",
-   "jDataType": "Ri",
    "jComponents": {
       "G4_SILICON_DIOXIDE": 1.0
    },
    "jDensity": 2.32,
    "jState": "kStateSolid",
-   "jRefractiveIdx": [
-      1.536
-   ],
-   "jRefractiveIdxWavelength": [
-      400.0
-   ]
+   "jProperties": {
+      "RINDEX": {
+         "jValue": [
+            1.536
+         ],
+         "jWavelength": [
+            400.0
+         ]
+      }
+   }
 }

@@ -3,8 +3,7 @@
  * @ingroup common
  */
 
-#ifndef OMSimInputData_h
-#define OMSimInputData_h 1
+#pragma once
 
 #include "OMSimLogger.hh"
 #include "OMSimOpBoundaryProcess.hh"
@@ -66,7 +65,8 @@ public:
         }
     }
 
-    G4bool checkIfKeyInTable(G4String pKey);
+    G4bool checkIfTreeNameInTable(G4String pKey);
+    G4bool checkIfKeyInTree(G4String p_treeName, G4String p_key);
     G4double getValueWithUnit(G4String pKey, G4String pParameter);
     pt::ptree appendAndReturnTree(G4String pFileName);
     pt::ptree getJSONTree(G4String pKey);
@@ -181,8 +181,7 @@ private:
  * @endcode
  *
  * (see also @ref ExampleUsageParameterTable)
- * This class assumes certain conventions in naming and structuring the input files, which aids in automatically identifying and processing them. 
- * For example, files with names starting with "RiAbs" are treated as describing refractive and absorption properties.
+ * This class assumes certain conventions in naming and structuring the input files, which aids in automatically identifying and processing them.
  *
  * @ingroup common
  */
@@ -195,19 +194,29 @@ public:
     G4Material *getMaterial(G4String pName);
     G4OpticalSurface *getOpticalSurface(G4String pName);
     void searchFolders();
-    std::map<G4String, G4OpticalSurface *> mOpticalSurfaceMap; ///< Map that links names with optical surfaces.
+    std::map<G4String, G4OpticalSurface *> m_opticalSurfaceMap; ///< Map that links names with optical surfaces.
 
 private:
+    enum class FileType {
+        IceCubeICE,
+        Scintillator,
+        Custom,
+        Table,
+        Surface,
+        Material
+    };
+
+    static const std::unordered_map<std::string, FileType> fileTypePrefixes;
+    FileType getFileType(const std::string& fileName) const;
+
     OMSimInputData() = default;
     ~OMSimInputData() = default;
     OMSimInputData(const OMSimInputData&) = delete;
     OMSimInputData& operator=(const OMSimInputData&) = delete;
     void scannDataDirectory();
     void processFile(const std::string &filePath, const std::string &fileName);
-    G4String mDataDirectory; ///< The current directory being scanned for data.
+    G4String m_dataDirectory; ///< The current directory being scanned for data.
 };
 
-inline OMSimInputData* gOMSimInputData = nullptr;
+inline OMSimInputData* g_OMSimInputData = nullptr;
 
-#endif
-//

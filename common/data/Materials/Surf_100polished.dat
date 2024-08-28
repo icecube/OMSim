@@ -1,17 +1,18 @@
 {
    "jName": "Surf_100polished",
-   "jProperties": [
-      "REFLECTIVITY"
-   ],
-   "jWavelength_REFLECTIVITY": [
-      150.0,
-      730.0
-   ],
-   "jValues_REFLECTIVITY": [
-      1.0,
-      1.0
-   ],
    "jModel": "unified",
    "jFinish": "polished",
-   "jType": "dielectric_metal"
+   "jType": "dielectric_metal",
+   "jProperties": {
+      "REFLECTIVITY": {
+         "jWavelength": [
+            150.0,
+            730.0
+         ],
+         "jValue": [
+            1.0,
+            1.0
+         ]
+      }
+   }
 }

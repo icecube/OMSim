@@ -1,6 +1,5 @@
 {
    "jName": "NoOptic_Reflector",
-   "jDataType": "NoOptic",
    "jComponents": {
       "G4_Al": 1.0
    },

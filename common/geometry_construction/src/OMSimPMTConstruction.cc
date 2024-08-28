@@ -600,7 +600,7 @@ void OMSimPMTConstruction::selectPMT(G4String pPMTtoSelect)
     mSelectedPMT = pPMTtoSelect;
 
     // Check if requested PMT is in the table of PMTs
-    if (mData->checkIfKeyInTable(pPMTtoSelect))
+    if (mData->checkIfTreeNameInTable(pPMTtoSelect))
     { // if found
         log_info("PMT type {} selected", pPMTtoSelect);
     }
