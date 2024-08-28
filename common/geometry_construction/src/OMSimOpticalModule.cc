@@ -2,30 +2,30 @@
 #include "OMSimHitManager.hh"
 #include "OMSimPMTConstruction.hh"
 
-OMSimOpticalModule::OMSimOpticalModule(OMSimPMTConstruction *pPMTManager) : abcDetectorComponent(), mPMTManager(pPMTManager)
+OMSimOpticalModule::OMSimOpticalModule(OMSimPMTConstruction *p_PMTManager) : abcDetectorComponent(), m_managerPMT(p_PMTManager)
 {
     log_trace("Constructor of OMSimOpticalModule");
 }
 
 OMSimOpticalModule::~OMSimOpticalModule()
 {
-    if (mPMTManager != nullptr)
+    if (m_managerPMT != nullptr)
     {
-        delete mPMTManager;
-        mPMTManager = nullptr;
+        delete m_managerPMT;
+        m_managerPMT = nullptr;
     }
 }
 
 OMSimPMTConstruction *OMSimOpticalModule::getPMTmanager()
 {
     log_trace("Getting PMT instance used in optical module instance");
-    return mPMTManager;
+    return m_managerPMT;
 }
 
 void OMSimOpticalModule::configureSensitiveVolume(OMSimDetectorConstruction *pDetConst)
 {   
-    mIndex = OMSimHitManager::getInstance().getNextDetectorIndex();
+    m_index = OMSimHitManager::getInstance().getNextDetectorIndex();
     log_debug("Configuring {} as sensitive detector", getName());
-    OMSimHitManager::getInstance().setNumberOfPMTs(getNumberOfPMTs(), mIndex);
-    mPMTManager->configureSensitiveVolume(pDetConst, getName());
+    OMSimHitManager::getInstance().setNumberOfPMTs(getNumberOfPMTs(), m_index);
+    m_managerPMT->configureSensitiveVolume(pDetConst, getName());
 }

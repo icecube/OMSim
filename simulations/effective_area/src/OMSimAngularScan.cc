@@ -11,7 +11,7 @@ AngularScan::AngularScan(G4double pBeamRadius, G4double pBeamDistance, G4double 
 {
     mBeamRadius = pBeamRadius;
     mBeamDistance = pBeamDistance;
-    mWavelength = pWavelength;
+    m_wavelength = pWavelength;
 }
 
 /**
@@ -63,7 +63,7 @@ void AngularScan::configureScan()
     lUIinterface.applyCommand("/control/verbose 0");
     lUIinterface.applyCommand("/run/verbose 0");
     lUIinterface.applyCommand("/gps/particle opticalphoton");
-    lUIinterface.applyCommand("/gps/energy", 1239.84193 / mWavelength, "eV");
+    lUIinterface.applyCommand("/gps/energy", 1239.84193 / m_wavelength, "eV");
     lUIinterface.applyCommand("/gps/pos/type Plane");
     lUIinterface.applyCommand("/gps/pos/shape Circle");
     lUIinterface.applyCommand("/gps/pos/centre 0 0 30 cm");

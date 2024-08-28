@@ -6,12 +6,12 @@
 #include "G4Event.hh"
 #include <numeric>
 
-G4Mutex OMSimHitManager::mMutex = G4Mutex();
-OMSimHitManager *OMSimHitManager::mInstance = nullptr;
-G4ThreadLocal OMSimHitManager::ThreadLocalData *OMSimHitManager::mThreadData = nullptr;
+G4Mutex OMSimHitManager::m_mutex = G4Mutex();
+OMSimHitManager *OMSimHitManager::m_instance = nullptr;
+G4ThreadLocal OMSimHitManager::ThreadLocalData *OMSimHitManager::m_threadData = nullptr;
 
 
-OMSimHitManager::OMSimHitManager(): mCurrentIndex(-1)
+OMSimHitManager::OMSimHitManager(): m_currentIndex(-1)
 {
 };
 
@@ -22,7 +22,7 @@ OMSimHitManager::OMSimHitManager(): mCurrentIndex(-1)
  */
 void OMSimHitManager::init()
 {
-	if (!gHitManager) gHitManager = new OMSimHitManager();
+	if (!g_hitManager) g_hitManager = new OMSimHitManager();
 }
 
 /**
@@ -32,8 +32,8 @@ void OMSimHitManager::init()
  */
 void OMSimHitManager::shutdown()
 {
-	delete gHitManager;
-	gHitManager = nullptr;
+	delete g_hitManager;
+	g_hitManager = nullptr;
 }
 
 
@@ -43,9 +43,9 @@ void OMSimHitManager::shutdown()
  */
 OMSimHitManager &OMSimHitManager::getInstance()
 {
-    if (!gHitManager)
+    if (!g_hitManager)
         throw std::runtime_error("OMSimHitManager accessed before initialization or after shutdown!");
-	return *gHitManager;
+	return *g_hitManager;
 }
 
 /**
@@ -53,27 +53,27 @@ OMSimHitManager &OMSimHitManager::getInstance()
  *
  * This function rearranges the elements of a vector according to a given permutation.
  * It achieves this using cycles to minimize the number of moves. The function assumes that
- * `pPermutation` holds a permutation of indices into `pVec`.
- * @param pVec The vector to which the permutation will be applied.
- * @param pPermutation A permutation represented as a vector of indices.
+ * `p_permutation` holds a permutation of indices into `p_vector`.
+ * @param p_vector The vector to which the permutation will be applied.
+ * @param p_permutation A permutation represented as a vector of indices.
  */
 template <typename T>
-void applyPermutation(std::vector<T> &pVec, const std::vector<std::size_t> &pPermutation)
+void applyPermutation(std::vector<T> &p_vector, const std::vector<std::size_t> &p_permutation)
 {
-	std::vector<bool> lDone(pVec.size()); // Vector to keep track of which positions have been fixed.
-	for (std::size_t i = 0; i < pVec.size(); ++i)
+	std::vector<bool> done(p_vector.size()); // Vector to keep track of which positions have been fixed.
+	for (std::size_t i = 0; i < p_vector.size(); ++i)
 	{
-		if (lDone[i])
+		if (done[i])
 			continue;	 // Skip the item if it's already in place.
-		lDone[i] = true; // Mark the item as placed.
+		done[i] = true; // Mark the item as placed.
 		std::size_t prev_j = i;
-		std::size_t j = pPermutation[i];
+		std::size_t j = p_permutation[i];
 		while (i != j)
 		{ // Continue moving items in the cycle until the entire cycle is complete.
-			std::swap(pVec[prev_j], pVec[j]);
-			lDone[j] = true;
+			std::swap(p_vector[prev_j], p_vector[j]);
+			done[j] = true;
 			prev_j = j;
-			j = pPermutation[j];
+			j = p_permutation[j];
 		}
 	}
 }
@@ -84,81 +84,81 @@ void applyPermutation(std::vector<T> &pVec, const std::vector<std::size_t> &pPer
  * This method appends hit information to the corresponding module's `HitStats` structure in the manager.
  * If the specified module number is not yet in the manager, a new `HitStats` structure is created for it.
  *
- * @param pGlobalTime Time of detection.
- * @param pLocalTime Photon flight time.
- * @param pTrackLength Length of the photon's path before hitting.
- * @param pEnergy Energy of the detected photon.
- * @param pPMTHitNumber ID of the PMT that detected the photon.
- * @param pMomentumDirection Momentum direction of the photon at the time of detection.
- * @param pGlobalPos Global position of the detected photon.
- * @param pLocalPos Local position of the detected photon within the PMT.
- * @param pDistance Distance between generation and detection of photon.
- * @param pResponse PMT's pResponse to the detected photon, encapsulated as a `PMTPulse`.
- * @param pModuleNumber ID of the module in which the photon was detected.
+ * @param p_globalTime Time of detection.
+ * @param p_localTime Photon flight time.
+ * @param p_trackLength Length of the photon's path before hitting.
+ * @param p_energy Energy of the detected photon.
+ * @param p_PMTHitNumber ID of the PMT that detected the photon.
+ * @param p_momentumDirection Momentum direction of the photon at the time of detection.
+ * @param p_globalPos Global position of the detected photon.
+ * @param p_localPos Local position of the detected photon within the PMT.
+ * @param p_distance Distance between generation and detection of photon.
+ * @param p_response PMT's p_response to the detected photon, encapsulated as a `PMTPulse`.
+ * @param p_moduleNumber ID of the module in which the photon was detected.
  */
 void OMSimHitManager::appendHitInfo(
-	G4double pGlobalTime,
-	G4double pLocalTime,
-	G4double pTrackLength,
-	G4double pEnergy,
-	G4int pPMTHitNumber,
-	G4ThreeVector pMomentumDirection,
-	G4ThreeVector pGlobalPos,
-	G4ThreeVector pLocalPos,
-	G4double pDistance,
-	OMSimPMTResponse::PMTPulse pResponse,
-	G4int pModuleNumber)
+	G4double p_globalTime,
+	G4double p_localTime,
+	G4double p_trackLength,
+	G4double p_energy,
+	G4int p_PMTHitNumber,
+	G4ThreeVector p_momentumDirection,
+	G4ThreeVector p_globalPos,
+	G4ThreeVector p_localPos,
+	G4double p_distance,
+	OMSimPMTResponse::PMTPulse p_response,
+	G4int p_moduleNumber)
 {
 
-	if (!mThreadData)
+	if (!m_threadData)
 	{
-		log_debug("Initialized mThreadData for thread {} seed {}", G4Threading::G4GetThreadId(),  G4Random::getTheSeed());
-		mThreadData = new ThreadLocalData();
+		log_debug("Initialized m_threadData for thread {} seed {}", G4Threading::G4GetThreadId(),  G4Random::getTheSeed());
+		m_threadData = new ThreadLocalData();
 	}
 
 	// Check if the module exists in the thread-local map
-	if (mThreadData->moduleHits.find(pModuleNumber) == mThreadData->moduleHits.end())
+	if (m_threadData->moduleHits.find(p_moduleNumber) == m_threadData->moduleHits.end())
 	{
 		// Create a new HitStats for this module
-		mThreadData->moduleHits[pModuleNumber] = HitStats();
+		m_threadData->moduleHits[p_moduleNumber] = HitStats();
 	}
 	
-	auto &moduleHits = mThreadData->moduleHits[pModuleNumber];
+	auto &moduleHits = m_threadData->moduleHits[p_moduleNumber];
 	G4int eventID = G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetEventID();
 	//log_debug("Thread {} Seed {} event {} size {}", G4Threading::G4GetThreadId(),  G4Random::getTheSeed(), eventID, moduleHits.eventId.size());
 	moduleHits.eventId.push_back(eventID);
-	moduleHits.hitTime.push_back(pGlobalTime);
-	moduleHits.flightTime.push_back(pLocalTime);
-	moduleHits.pathLenght.push_back(pTrackLength);
-	moduleHits.energy.push_back(pEnergy);
-	moduleHits.PMTnr.push_back(pPMTHitNumber);
-	moduleHits.direction.push_back(pMomentumDirection);
-	moduleHits.globalPosition.push_back(pGlobalPos);
-	moduleHits.localPosition.push_back(pLocalPos);
-	moduleHits.generationDetectionDistance.push_back(pDistance);
-	moduleHits.PMTresponse.push_back(pResponse);
-	log_trace("Saved hit nr {} on module {} sensor {} (thread {})", moduleHits.eventId.size(), pModuleNumber, pPMTHitNumber, G4Threading::G4GetThreadId());
+	moduleHits.hitTime.push_back(p_globalTime);
+	moduleHits.flightTime.push_back(p_localTime);
+	moduleHits.pathLenght.push_back(p_trackLength);
+	moduleHits.energy.push_back(p_energy);
+	moduleHits.PMTnr.push_back(p_PMTHitNumber);
+	moduleHits.direction.push_back(p_momentumDirection);
+	moduleHits.globalPosition.push_back(p_globalPos);
+	moduleHits.localPosition.push_back(p_localPos);
+	moduleHits.generationDetectionDistance.push_back(p_distance);
+	moduleHits.PMTresponse.push_back(p_response);
+	log_trace("Saved hit nr {} on module {} sensor {} (thread {})", moduleHits.eventId.size(), p_moduleNumber, p_PMTHitNumber, G4Threading::G4GetThreadId());
 }
 
 /**
  * @brief Stores the number of PMTs in a module for correct data handling
- * @param pNumberOfPMTs Nr of PMTs in OM
- * @param pModuleIndex Module index for which we are getting the information (default 0)
+ * @param p_numberOfPMTs Nr of PMTs in OM
+ * @param p_moduleIndex Module index for which we are getting the information (default 0)
  */
-void OMSimHitManager::setNumberOfPMTs(int pNumberOfPMTs, int pModuleIndex)
+void OMSimHitManager::setNumberOfPMTs(int p_numberOfPMTs, int p_moduleIndex)
 {
-	log_trace("Setting number of PMTs to {} in module with index {}", pNumberOfPMTs, pModuleIndex);
-	mNumPMTs[pModuleIndex] = pNumberOfPMTs;
+	log_trace("Setting number of PMTs to {} in module with index {}", p_numberOfPMTs, p_moduleIndex);
+	m_numberOfPMTs[p_moduleIndex] = p_numberOfPMTs;
 }
 
 /**
  * @brief Retrieves the HitStats structure for the specified module, should be called after data between threads was merged. @see mergeThreadData
- * @param moduleIndex Index of the module for which to retrieve hit statistics. Default is 0.
+ * @param p_moduleIndex Index of the module for which to retrieve hit statistics. Default is 0.
  * @return A HitStats structure containing hit information of specified module.
  */
-HitStats OMSimHitManager::getMergedHitsOfModule(int pModuleIndex)
+HitStats OMSimHitManager::getMergedHitsOfModule(int p_moduleIndex)
 {
-	return mModuleHits[pModuleIndex];
+	return m_moduleHits[p_moduleIndex];
 }
 
 
@@ -166,20 +166,20 @@ HitStats OMSimHitManager::getMergedHitsOfModule(int pModuleIndex)
 
 /**
  * @brief Retrieves the HitStats structure for the specified module of single thread.
- * @param moduleIndex Index of the module for which to retrieve hit statistics. Default is 0.
+ * @param p_moduleIndex Index of the module for which to retrieve hit statistics. Default is 0.
  * @return A HitStats structure containing hit information of specified module.
  */
-HitStats OMSimHitManager::getSingleThreadHitsOfModule(int pModuleIndex)
+HitStats OMSimHitManager::getSingleThreadHitsOfModule(int p_moduleIndex)
 {
-	log_debug("Getting mThreadData of module {} (thread {})", pModuleIndex, G4Threading::G4GetThreadId());
-	return mThreadData->moduleHits[pModuleIndex];
+	log_debug("Getting m_threadData of module {} (thread {})", p_moduleIndex, G4Threading::G4GetThreadId());
+	return m_threadData->moduleHits[p_moduleIndex];
 }
 
 
-bool OMSimHitManager::areThereHitsInModuleSingleThread(int pModuleIndex)
+bool OMSimHitManager::areThereHitsInModuleSingleThread(int p_moduleIndex)
 {
-	if (!mThreadData) {return false;};
-	return mThreadData->moduleHits.find(pModuleIndex) != mThreadData->moduleHits.end();
+	if (!m_threadData) {return false;};
+	return m_threadData->moduleHits.find(p_moduleIndex) != m_threadData->moduleHits.end();
 }
 
 /**
@@ -188,70 +188,70 @@ bool OMSimHitManager::areThereHitsInModuleSingleThread(int pModuleIndex)
 void OMSimHitManager::reset()
 {
 	log_trace("Reseting hit manager");
-	//mModuleHits.clear();
-	if (mThreadData)
+	//m_moduleHits.clear();
+	if (m_threadData)
 	{
-		log_trace("Deleting mThreadData of Thread ID {}", G4Threading::G4GetThreadId());
-		mThreadData->moduleHits.clear();
-		delete mThreadData;
-		mThreadData = nullptr;
+		log_trace("Deleting m_threadData of Thread ID {}", G4Threading::G4GetThreadId());
+		m_threadData->moduleHits.clear();
+		delete m_threadData;
+		m_threadData = nullptr;
 	}
-	mModuleHits.clear();
+	m_moduleHits.clear();
 	log_trace("Finished reseting hit manager");
 }
 
 /**
  * @brief Counts hits for a specified module.
- * @param pModuleIndex Index of the module for which to count hits. Default is 0.
- * @param pDEweighted If true, the counts are weighted with detection probability
+ * @param p_moduleIndex Index of the module for which to count hits. Default is 0.
+ * @param p_getWeightedDE If true, the counts are weighted with detection probability
  * @return A vector containing the hit count for each PMT in the specified module.
  */
-std::vector<double> OMSimHitManager::countMergedHits(int pModuleIndex, bool pDEweighted)
+std::vector<double> OMSimHitManager::countMergedHits(int p_moduleIndex, bool p_getWeightedDE)
 {
-	log_trace("Counting number of detected photons in module with index {}", pModuleIndex);
-	HitStats lHitsOfModule = mModuleHits[pModuleIndex];
-	G4int lNumberPMTs = mNumPMTs[pModuleIndex];
+	log_trace("Counting number of detected photons in module with index {}", p_moduleIndex);
+	HitStats hitsOfModule = m_moduleHits[p_moduleIndex];
+	G4int numberOfPMTs = m_numberOfPMTs[p_moduleIndex];
 
-	std::vector<double> lHits(lNumberPMTs + 1, 0.0);
-	for (int i = 0; i < (int)lHitsOfModule.PMTnr.size(); i++)
+	std::vector<double> hits(numberOfPMTs + 1, 0.0);
+	for (int i = 0; i < (int)hitsOfModule.PMTnr.size(); i++)
 	{
-		double lNewcount = (pDEweighted) ?  lHitsOfModule.PMTresponse.at(i).detectionProbability : 1;
-		lHits[lHitsOfModule.PMTnr.at(i)] += lNewcount;
-		lHits[lNumberPMTs] += lNewcount;
+		double newcount = (p_getWeightedDE) ?  hitsOfModule.PMTresponse.at(i).detectionProbability : 1;
+		hits[hitsOfModule.PMTnr.at(i)] += newcount;
+		hits[numberOfPMTs] += newcount;
 	}
 
-	return lHits;
+	return hits;
 }
 
 /**
  * @brief Sorts the hit statistics by the hit time.
- * @param lHits The hit statistics to be sorted.
+ * @param p_hits The hit statistics to be sorted.
  */
-void OMSimHitManager::sortHitStatsByTime(HitStats &lHits)
+void OMSimHitManager::sortHitStatsByTime(HitStats &p_hits)
 {
 	// Create a vector of indices
-	std::vector<std::size_t> indices(lHits.hitTime.size());
+	std::vector<std::size_t> indices(p_hits.hitTime.size());
 	std::iota(indices.begin(), indices.end(), 0); // Fill it with 0, 1, ... N-1
 
 	// Sort the indices vector according to hitTime
 	std::sort(indices.begin(), indices.end(),
-			  [&lHits](std::size_t a, std::size_t b)
+			  [&p_hits](std::size_t a, std::size_t b)
 			  {
-				  return lHits.hitTime[a] < lHits.hitTime[b];
+				  return p_hits.hitTime[a] < p_hits.hitTime[b];
 			  });
 
 	// Now, apply the permutation function to every vector in the struct
-	applyPermutation(lHits.eventId, indices);
-	applyPermutation(lHits.hitTime, indices);
-	applyPermutation(lHits.flightTime, indices);
-	applyPermutation(lHits.pathLenght, indices);
-	applyPermutation(lHits.energy, indices);
-	applyPermutation(lHits.PMTnr, indices);
-	applyPermutation(lHits.direction, indices);
-	applyPermutation(lHits.localPosition, indices);
-	applyPermutation(lHits.globalPosition, indices);
-	applyPermutation(lHits.generationDetectionDistance, indices);
-	applyPermutation(lHits.PMTresponse, indices);
+	applyPermutation(p_hits.eventId, indices);
+	applyPermutation(p_hits.hitTime, indices);
+	applyPermutation(p_hits.flightTime, indices);
+	applyPermutation(p_hits.pathLenght, indices);
+	applyPermutation(p_hits.energy, indices);
+	applyPermutation(p_hits.PMTnr, indices);
+	applyPermutation(p_hits.direction, indices);
+	applyPermutation(p_hits.localPosition, indices);
+	applyPermutation(p_hits.globalPosition, indices);
+	applyPermutation(p_hits.generationDetectionDistance, indices);
+	applyPermutation(p_hits.PMTresponse, indices);
 }
 
 /**
@@ -267,69 +267,69 @@ void OMSimHitManager::sortHitStatsByTime(HitStats &lHits)
  * - 3 occurrences of 2 PMTs detecting hits within the same window.
  * - 2 occurrences of 3 PMTs detecting hits within the window.
  *
- * @param pTimeWindow The time window within which to calculate the multiplicity (in seconds).
- * @param pModuleIndex The index of the module for which to calculate the multiplicity. Default is 0.
+ * @param p_timeWindow The time window within which to calculate the multiplicity (in seconds).
+ * @param p_moduleIndex The index of the module for which to calculate the multiplicity. Default is 0.
  * @return A vector containing the multiplicity data.
  */
-std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double pTimeWindow, int pModuleIndex)
+std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double p_timeWindow, int p_moduleIndex)
 {
-	log_trace("Calculating multiplicity in time window {} for module with index", pTimeWindow, pModuleIndex);
+	log_trace("Calculating multiplicity in time window {} for module with index", p_timeWindow, p_moduleIndex);
 
-	HitStats lHitsOfModule = mModuleHits[pModuleIndex];
-	G4int lNumberPMTs = mNumPMTs[pModuleIndex];
+	HitStats hitsOfModule = m_moduleHits[p_moduleIndex];
+	G4int numberOfPMTs = m_numberOfPMTs[p_moduleIndex];
 
-	sortHitStatsByTime(lHitsOfModule);
+	sortHitStatsByTime(hitsOfModule);
 
-	std::vector<int> lMultiplicity(lNumberPMTs, 0); // Initialize with zeros and size pPMTCount
+	std::vector<int> multiplicity(numberOfPMTs, 0); // Initialize with zeros and size pPMTCount
 
-	std::size_t lSkiptUntil = 0; // Index up to which we should skip in outer loop
-	int lVectorSize = lHitsOfModule.hitTime.size();
+	std::size_t skipUntil = 0; // Index up to which we should skip in outer loop
+	int vectorSize = hitsOfModule.hitTime.size();
 
-	for (std::size_t i = 0; i < lVectorSize - 1; ++i)
+	for (std::size_t i = 0; i < vectorSize - 1; ++i)
 	{
-		if (i < lSkiptUntil)
+		if (i < skipUntil)
 		{
 			continue;
 		}
 
-		int lPMTHits[lNumberPMTs] = {0};
-		lPMTHits[lHitsOfModule.PMTnr.at(i)] = 1;
-		int lCurrentSum = 0;
+		int hitPMT[numberOfPMTs] = {0};
+		hitPMT[hitsOfModule.PMTnr.at(i)] = 1;
+		int currentSum = 0;
 
 		// Loop through the next hits to see if they're within the time window
-		for (std::size_t j = i + 1; j < lVectorSize; ++j)
+		for (std::size_t j = i + 1; j < vectorSize; ++j)
 		{
-			if ((lHitsOfModule.hitTime.at(j) - lHitsOfModule.hitTime.at(i)) > pTimeWindow)
+			if ((hitsOfModule.hitTime.at(j) - hitsOfModule.hitTime.at(i)) > p_timeWindow)
 			{
-				lSkiptUntil = j;
+				skipUntil = j;
 				break;
 			}
 			else
 			{
-				lPMTHits[lHitsOfModule.PMTnr.at(j)] = 1;
+				hitPMT[hitsOfModule.PMTnr.at(j)] = 1;
 			}
 		}
 
 		// Calculate the multiplicity
-		for (std::size_t k = 0; k < lNumberPMTs; ++k)
+		for (std::size_t k = 0; k < numberOfPMTs; ++k)
 		{
-			lCurrentSum += lPMTHits[k];
+			currentSum += hitPMT[k];
 		}
-		lMultiplicity[lCurrentSum - 1] += 1;
+		multiplicity[currentSum - 1] += 1;
 	}
-	return lMultiplicity;
+	return multiplicity;
 }
 
 void OMSimHitManager::mergeThreadData()
 {
 	log_trace("Merge thread data was called");
-	G4AutoLock lock(&mMutex);
-	if (mThreadData)
+	G4AutoLock lock(&m_mutex);
+	if (m_threadData)
 	{
 		log_debug("Merging data for thread {}", G4Threading::G4GetThreadId());
-		for (const auto &[moduleIndex, hits] : mThreadData->moduleHits)
+		for (const auto &[moduleIndex, hits] : m_threadData->moduleHits)
 		{
-			auto &globalHits = mModuleHits[moduleIndex];
+			auto &globalHits = m_moduleHits[moduleIndex];
 
 			log_debug("Thread ID: {} - Module Index: {} - Hit vector sizes: ={} - Merged size prior {}",
 					  G4Threading::G4GetThreadId(), moduleIndex, hits.eventId.size(), globalHits.eventId.size());
@@ -346,7 +346,7 @@ void OMSimHitManager::mergeThreadData()
 			globalHits.generationDetectionDistance.insert(globalHits.generationDetectionDistance.end(), hits.generationDetectionDistance.begin(), hits.generationDetectionDistance.end());
 			globalHits.PMTresponse.insert(globalHits.PMTresponse.end(), hits.PMTresponse.begin(), hits.PMTresponse.end());
 		}
-		delete mThreadData;
-		mThreadData = nullptr;
+		delete m_threadData;
+		m_threadData = nullptr;
 	}
 }

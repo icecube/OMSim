@@ -11,7 +11,7 @@
 #include "G4Navigator.hh"
 #include "OMSimSNdetector.hh"
 
-std::shared_ptr<spdlog::logger> globalLogger;
+std::shared_ptr<spdlog::logger> g_logger;
 
 namespace po = boost::program_options;
 

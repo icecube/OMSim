@@ -2,8 +2,7 @@
  *  @brief Construction of mDOM harness.
  *  @ingroup common
  */
-#ifndef OMSimMDOMHarness_h
-#define OMSimMDOMHarness_h 1
+#pragma once
 
 #include "abcDetectorComponent.hh"
 #include <G4IntersectionSolid.hh>
@@ -17,7 +16,7 @@ public:
     void construction();
     
 private:
-    mDOM* mOM;
+    mDOM* m_opticalModule;
     void bandsAndClamps();
     void bridgeRopesSolid();
     void mainDataCable();
@@ -26,19 +25,16 @@ private:
     void plug();
     void teraBelt();
 
-    const G4double mHarnessRotAngle = 45*deg; //rotation of harness with respect to the module. Valid values are 45, 45+90, 45+180.. etc, otherwise the ropes would go over the PMTs
-    const G4double mPlugAngle = 49.0 * deg;
-    const G4double mPadThickness = 2.0 * mm;
-    const G4double mTeraThickness = 1.0 * mm;
-    const G4double mRopeRMax = 3.0 * mm;
-    const G4double mBridgeAddedThickness = 14.6 * mm;
-    const G4double mRopeRotationAngleX = 11.245557 * deg;
-    const G4double mRopeDz = 509.5 * mm;
-    const G4double lBridgeCorrection =  7.85*mm * tan(mRopeRotationAngleX);  //  
-    const G4double mRopeStartingPoint = mTotalWidth + lBridgeCorrection + mRopeRMax / cos(mRopeRotationAngleX); // this is the actual starting point of the rope, i.e. the distance to the z-axis, which has to be larger than lBridgeROuter[2] in order for the rope not to cut the bridge.
+    const G4double m_harnessRotAngle = 45*deg; //rotation of harness with respect to the module. Valid values are 45, 45+90, 45+180.. etc, otherwise the ropes would go over the PMTs
+    const G4double m_plugAngle = 49.0 * deg;
+    const G4double m_padThickness = 2.0 * mm;
+    const G4double m_teraThickness = 1.0 * mm;
+    const G4double m_ropeRMax = 3.0 * mm;
+    const G4double m_bridgeAddedThickness = 14.6 * mm;
+    const G4double m_ropeRotationAngleX = 11.245557 * deg;
+    const G4double m_ropeDz = 509.5 * mm;
+    const G4double m_bridgeCorrection =  7.85*mm * tan(m_ropeRotationAngleX);  //  
+    const G4double m_ropeStartingPoint = m_totalWidth + m_bridgeCorrection + m_ropeRMax / cos(m_ropeRotationAngleX); // this is the actual starting point of the rope, i.e. the distance to the z-axis, which has to be larger than lBridgeROuter[2] in order for the rope not to cut the bridge.
 
-    G4double mTotalWidth;
+    G4double m_totalWidth;
 };
-
-#endif
-//

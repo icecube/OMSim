@@ -3,8 +3,7 @@
  * @brief Defines OMSimSteppingAction.Currently it only checks for trapped photons
  * @ingroup common
  */
-#ifndef OMSimSteppingAction_h
-#define OMSimSteppingAction_h 1
+#pragma once
 
 #include <G4UserSteppingAction.hh>
 
@@ -24,5 +23,3 @@ class OMSimSteppingAction : public G4UserSteppingAction
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-#endif

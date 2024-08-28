@@ -17,7 +17,7 @@
 
 OMSimPMTConstruction::OMSimPMTConstruction() : abcDetectorComponent()
 {
-    mInternalReflections = OMSimCommandArgsTable::getInstance().get<bool>("detail_pmt");
+    m_internalReflections = OMSimCommandArgsTable::getInstance().get<bool>("detail_pmt");
 }
 
 /**
@@ -26,157 +26,96 @@ OMSimPMTConstruction::OMSimPMTConstruction() : abcDetectorComponent()
 void OMSimPMTConstruction::construction()
 {
     log_trace("Starting construction of PMT");
-    //definePhotocathodeProperties();
-     mPhotocathodeOpticalSurface = mData->getOpticalSurface("Surf_Generic_Photocathode_20nm");
-    mComponents.clear();
-    G4VSolid *lPMTSolid;
-    G4VSolid *lVacuumPhotocathodeSolid;
-    G4VSolid *lGlassInside;
+    // definePhotocathodeProperties();
+    m_photocathodeOpticalSurface = m_data->getOpticalSurface("Surf_Generic_Photocathode_20nm");
+    m_components.clear();
+    G4VSolid *solidPMT;
+    G4VSolid *vacuumPhotocathodeSolid;
+    G4VSolid *glassInside;
 
-    std::tie(lPMTSolid, lVacuumPhotocathodeSolid) = getBulbSolid("jOuterShape");
-    std::tie(lGlassInside, lVacuumPhotocathodeSolid) = getBulbSolid("jInnerShape");
-    G4SubtractionSolid *lVacuumBack = new G4SubtractionSolid("Vacuum Tube solid", lGlassInside, lVacuumPhotocathodeSolid, 0, G4ThreeVector(0, 0, 0));
+    std::tie(solidPMT, vacuumPhotocathodeSolid) = getBulbSolid("jOuterShape");
+    std::tie(glassInside, vacuumPhotocathodeSolid) = getBulbSolid("jInnerShape");
+    G4SubtractionSolid *vacuumBack = new G4SubtractionSolid("Vacuum Tube solid", glassInside, vacuumPhotocathodeSolid, 0, G4ThreeVector(0, 0, 0));
 
-    G4LogicalVolume *lPMTlogical;
+    G4LogicalVolume *logicalPMT;
 
     // The ? of the following two lines are ternary operators that replace if-else-statements
-    lPMTlogical = new G4LogicalVolume(lPMTSolid, mData->getMaterial(mInternalReflections ? "RiAbs_Glass_Tube" : "Ri_Glass_Tube"), "PMT tube logical");
-    // mPhotocathodeLV = new G4LogicalVolume(mInternalReflections ? constructPhotocathodeLayer() : lVacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
-    mPhotocathodeLV = new G4LogicalVolume(lVacuumPhotocathodeSolid, mData->getMaterial("Ri_Vacuum"), "PhotocathodeRegionVacuum");
+    logicalPMT = new G4LogicalVolume(solidPMT, m_data->getMaterial(m_internalReflections ? "RiAbs_Glass_Tube" : "Ri_Glass_Tube"), "PMT tube logical");
+    // m_photocathodeLV = new G4LogicalVolume(m_internalReflections ? constructPhotocathodeLayer() : vacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
+    m_photocathodeLV = new G4LogicalVolume(vacuumPhotocathodeSolid, m_data->getMaterial("Ri_Vacuum"), "PhotocathodeRegionVacuum");
 
-    G4LogicalVolume *lTubeVacuum = new G4LogicalVolume(lGlassInside, mData->getMaterial("Ri_Vacuum"), "PMTvacuum");
-    G4LogicalVolume *lVacuumBackLogical = new G4LogicalVolume(lVacuumBack, mData->getMaterial("Ri_Vacuum"), "PMTvacuum");
+    G4LogicalVolume *tubeVacuum = new G4LogicalVolume(glassInside, m_data->getMaterial("Ri_Vacuum"), "PMTvacuum");
+    G4LogicalVolume *vacuumBackLogical = new G4LogicalVolume(vacuumBack, m_data->getMaterial("Ri_Vacuum"), "PMTvacuum");
 
-    mPhotocathodeRegionVacuumPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), mPhotocathodeLV, "PhotocathodeRegionVacuum", lTubeVacuum, false, 0, mCheckOverlaps);
+    m_photocathodeRegionVacuumPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), m_photocathodeLV, "PhotocathodeRegionVacuum", tubeVacuum, false, 0, m_checkOverlaps);
 
-    if (mInternalReflections)
+    if (m_internalReflections)
     {
-        mVacuumBackPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lVacuumBackLogical, "VacuumTubeBack", lTubeVacuum, false, 0, mCheckOverlaps);
-        constructCADdynodeSystem(lVacuumBackLogical);
+        m_vacuumBackPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), vacuumBackLogical, "VacuumTubeBack", tubeVacuum, false, 0, m_checkOverlaps);
+        constructCADdynodeSystem(vacuumBackLogical);
     }
     else
     {
-        constructCathodeBackshield(lTubeVacuum);
+        constructCathodeBackshield(tubeVacuum);
     }
-    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lTubeVacuum, "VacuumTube", lPMTlogical, false, 0, mCheckOverlaps);
+    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), tubeVacuum, "VacuumTube", logicalPMT, false, 0, m_checkOverlaps);
 
-    appendComponent(lPMTSolid, lPMTlogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PMT");
-    if (mHACoatingBool)
+    appendComponent(solidPMT, logicalPMT, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PMT");
+    if (m_HACoatingBool)
         constructHAcoating();
 
-    mPhotocathodeLV->SetVisAttributes(mPhotocathodeVis);
-    lPMTlogical->SetVisAttributes(mGlassVis);
-    lTubeVacuum->SetVisAttributes(mAirVis);
-    lVacuumBackLogical->SetVisAttributes(mAirVis);
-    mConstructionFinished = true;
+    m_photocathodeLV->SetVisAttributes(m_photocathodeVis);
+    logicalPMT->SetVisAttributes(m_glassVis);
+    tubeVacuum->SetVisAttributes(m_airVis);
+    vacuumBackLogical->SetVisAttributes(m_airVis);
+    m_constructionFinished = true;
     log_trace("Construction of PMT finished");
 }
 
-void OMSimPMTConstruction::definePhotocathodeProperties()
-{
-    mPhotocathodeOpticalSurface = mData->getOpticalSurface("Surf_Generic_Photocathode_20nm");
-
-    std::vector<std::vector<double>> lQEData, lQEMatchingParameters;
-    std::string lCustomQEFileName = OMSimCommandArgsTable::getInstance().get<std::string>("QE_file");
-    if (lCustomQEFileName != "default")
-    {
-        lQEData = Tools::loadtxt(lCustomQEFileName, true, 0, '\t');
-    }
-    else
-    {
-        lQEData = Tools::loadtxt(mData->getValue<G4String>(mSelectedPMT, "jQEfile"), true, 0, '\t');
-    }
-    // lQEData = Tools::loadtxt(mData->getValue<G4String>(mSelectedPMT, "jQEfile"), true, 0, '\t');
-
-    std::vector<double> lWavelengths = lQEData[0];
-    std::vector<double> lQEs = lQEData[1];
-    double lMaxWavelength = *std::max_element(lWavelengths.begin(), lWavelengths.end()) + 2.0;
-    double lMinWavelength = *std::min_element(lWavelengths.begin(), lWavelengths.end()) - 2.0;
-
-    lWavelengths.push_back(lMaxWavelength);
-    lWavelengths.push_back(lMinWavelength);
-    lQEs.push_back(1e-5);
-    lQEs.push_back(1e-5);
-    Tools::sortVectorByReference(lWavelengths, lQEs);
-
-    TGraph *lQEgraph = new TGraph(lWavelengths.size(), lWavelengths.data(), lQEs.data());
-
-    lQEMatchingParameters = Tools::loadtxt(mData->getValue<G4String>(mSelectedPMT, "jQEMatchingfile"), true, 0, '\t');
-    std::vector<double> lWavelengthMatching = lQEMatchingParameters[0];
-    std::vector<double> lAmplitude = lQEMatchingParameters[1];
-    std::vector<double> lEffectiveThickness = lQEMatchingParameters[2];
-
-    std::vector<double> lNeededAbs;
-    std::vector<double> lEnergy;
-    for (size_t i = 0; i < lWavelengthMatching.size(); ++i)
-    {
-
-        double wavelength = lWavelengthMatching[i];
-        if (wavelength < lMaxWavelength && wavelength > lMinWavelength)
-        {
-            double interpolatedQE = lQEgraph->Eval(wavelength);
-            double amp = lAmplitude[i];
-            double t_eff = lEffectiveThickness[i];
-            double log_term = std::log(1 - interpolatedQE / amp);
-            double needed_abs = -t_eff / log_term;
-            lNeededAbs.push_back(needed_abs * nm);
-            lEnergy.push_back((CLHEP::h_Planck * CLHEP::c_light) / (wavelength * CLHEP::nanometer));
-            G4cout << wavelength << " " << needed_abs << " " << ((CLHEP::h_Planck * CLHEP::c_light) / (wavelength * CLHEP::nanometer)) / eV << G4endl;
-        }
-    }
-    lEnergy.push_back((CLHEP::h_Planck * CLHEP::c_light) / (lMinWavelength * CLHEP::nanometer));
-    lEnergy.push_back((CLHEP::h_Planck * CLHEP::c_light) / (lMaxWavelength * CLHEP::nanometer));
-    lNeededAbs.push_back(1*m); // very large number, to get QE ~0.
-    lNeededAbs.push_back(1*m); // very large number, to get QE ~0.
-
-    Tools::sortVectorByReference(lEnergy, lNeededAbs);
-    G4MaterialPropertiesTable *lMPT = mPhotocathodeOpticalSurface->GetMaterialPropertiesTable();
-    lMPT->AddProperty("ABSLENGTH", &lEnergy[0], &lNeededAbs[0], static_cast<int>(lNeededAbs.size()));
-}
 
 OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 {
-    G4String jResponseData;
+    G4String responseData;
     try
     {
-        jResponseData = mData->getValue<G4String>(mSelectedPMT, "jResponseData");
+        responseData = m_data->getValue<G4String>(m_selectedPMT, "jResponseData");
     }
     catch (const boost::property_tree::ptree_bad_path &e)
     {
-        log_warning("Selected PMT {} has no 'jResponseData' key in json-file. No PMT response will be simulated...", mSelectedPMT);
+        log_warning("Selected PMT {} has no 'jResponseData' key in json-file. No PMT response will be simulated...", m_selectedPMT);
         return &NoResponse::getInstance();
     }
 
-    if (jResponseData == "R15458")
+    if (responseData == "R15458")
     {
         return &mDOMPMTResponse::getInstance();
     }
-    else if (jResponseData == "R7081")
+    else if (responseData == "R7081")
     {
         return &Gen1PMTResponse::getInstance();
     }
-    else if (jResponseData == "R5912")
+    else if (responseData == "R5912")
     {
         return &DEGGPMTResponse::getInstance();
     }
-    else if (jResponseData == "LOMHama")
+    else if (responseData == "LOMHama")
     {
         return &LOMHamamatsuResponse::getInstance();
     }
     else
     {
-        log_warning("Selected jResponseData '{}' in PMT json-file '{}' has no response class associated. No PMT response will be simulated...", jResponseData, mSelectedPMT);
+        log_warning("Selected jResponseData '{}' in PMT json-file '{}' has no response class associated. No PMT response will be simulated...", responseData, m_selectedPMT);
         return &NoResponse::getInstance();
     }
 }
 
-void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *pDetConst, G4String pName)
+void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *p_detectorConstruction, G4String p_name)
 {
-    log_debug("Configuring PMTs of {} as sensitive detector", pName);
-    OMSimSensitiveDetector *lSensitiveDetector = new OMSimSensitiveDetector(pName, DetectorType::PMT);
-    lSensitiveDetector->setPMTResponse(getPMTResponseInstance());
-    // pDetConst->registerSensitiveDetector(getComponent("PMT").VLogical, lSensitiveDetector); //only one otherwise you get double hits!
-    pDetConst->registerSensitiveDetector(mPhotocathodeLV, lSensitiveDetector);
+    log_debug("Configuring PMTs of {} as sensitive detector", p_name);
+    OMSimSensitiveDetector *sensitiveDetector = new OMSimSensitiveDetector(p_name, DetectorType::PMT);
+    sensitiveDetector->setPMTResponse(getPMTResponseInstance());
+    // p_detectorConstruction->registerSensitiveDetector(getComponent("PMT").VLogical, sensitiveDetector); //only one otherwise you get double hits!
+    p_detectorConstruction->registerSensitiveDetector(m_photocathodeLV, sensitiveDetector);
 }
 
 void OMSimPMTConstruction::constructHAcoating()
@@ -185,47 +124,47 @@ void OMSimPMTConstruction::constructHAcoating()
     readGlobalParameters("jOuterShape");
     // G4double lVisualCorr = 0.0*mm;
     // if (gVisual) lVisualCorr = 0.01*mm;
-    G4Tubs *lHACoatingUncut = new G4Tubs("HACoatingUncut", 0, 0.5 * mTubeWidth + 0.1 * mm, mMissingTubeLength - 0.1 * mm, 0, 2 * CLHEP::pi);
-    G4SubtractionSolid *lHACoatingCut = new G4SubtractionSolid("Bulb tube solid", lHACoatingUncut, mComponents.at("PMT").VSolid, 0, G4ThreeVector(0, 0, mMissingTubeLength));
-    G4LogicalVolume *lHACoatingLogical = new G4LogicalVolume(lHACoatingCut, mData->getMaterial("NoOptic_Absorber"), "HACoating");
-    lHACoatingLogical->SetVisAttributes(mAbsorberSemiTransparentVis);
-    appendComponent(lHACoatingCut, lHACoatingLogical, G4ThreeVector(0, 0, -mMissingTubeLength), G4RotationMatrix(), "HACoating");
+    G4Tubs *coatingUncut = new G4Tubs("HACoatingUncut", 0, 0.5 * m_tubeWidth + 0.1 * mm, m_missingTubeLength - 0.1 * mm, 0, 2 * CLHEP::pi);
+    G4SubtractionSolid *coatingCut = new G4SubtractionSolid("Bulb tube solid", coatingUncut, m_components.at("PMT").VSolid, 0, G4ThreeVector(0, 0, m_missingTubeLength));
+    G4LogicalVolume *coatingLogical = new G4LogicalVolume(coatingCut, m_data->getMaterial("NoOptic_Absorber"), "HACoating");
+    coatingLogical->SetVisAttributes(m_absorberSemiTransparentVis);
+    appendComponent(coatingCut, coatingLogical, G4ThreeVector(0, 0, -m_missingTubeLength), G4RotationMatrix(), "HACoating");
 }
 
 /**
  * Placement of the PMT and definition of LogicalBorderSurfaces in case internal reflections are needed.
- * @param pPosition G4ThreeVector with position of the module (as in G4PVPlacement())
- * @param pRotation G4RotationMatrix with rotation of the module (as in G4PVPlacement())
- * @param pMother G4LogicalVolume where the module is going to be placed (as in G4PVPlacement())
- * @param pNameExtension G4String name of the physical volume. You should not have two physicals with the same name
+ * @param p_position G4ThreeVector with position of the module (as in G4PVPlacement())
+ * @param p_rotation G4RotationMatrix with rotation of the module (as in G4PVPlacement())
+ * @param p_mother G4LogicalVolume where the module is going to be placed (as in G4PVPlacement())
+ * @param p_nameExtension G4String name of the physical volume. You should not have two physicals with the same name
  */
-void OMSimPMTConstruction::placeIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume *&pMother, G4String pNameExtension)
+void OMSimPMTConstruction::placeIt(G4ThreeVector p_position, G4RotationMatrix p_rotation, G4LogicalVolume *&p_mother, G4String p_nameExtension)
 {
-    abcDetectorComponent::placeIt(pPosition, pRotation, pMother, pNameExtension);
+    abcDetectorComponent::placeIt(p_position, p_rotation, p_mother, p_nameExtension);
 
-    new G4LogicalBorderSurface("PhotoGlassToVacuum", mLastPhysicals["PMT"], mPhotocathodeRegionVacuumPhysical, mPhotocathodeOpticalSurface);
-    new G4LogicalBorderSurface("PhotoVacuumToGlass", mPhotocathodeRegionVacuumPhysical, mLastPhysicals["PMT"], mPhotocathodeOpticalSurface);
+    new G4LogicalBorderSurface("PhotoGlassToVacuum", m_lastPhysicals["PMT"], m_photocathodeRegionVacuumPhysical, m_photocathodeOpticalSurface);
+    new G4LogicalBorderSurface("PhotoVacuumToGlass", m_photocathodeRegionVacuumPhysical, m_lastPhysicals["PMT"], m_photocathodeOpticalSurface);
 
-    if (mInternalReflections)
+    if (m_internalReflections)
     {
-        new G4LogicalBorderSurface("PMT_mirrorglass", mVacuumBackPhysical, mLastPhysicals["PMT"], mData->getOpticalSurface("Surf_PMTSideMirror"));
-        new G4LogicalBorderSurface("PMT_mirrorglass", mLastPhysicals["PMT"], mVacuumBackPhysical, mData->getOpticalSurface("Surf_PMTSideMirror"));
+        new G4LogicalBorderSurface("PMT_mirrorglass", m_vacuumBackPhysical, m_lastPhysicals["PMT"], m_data->getOpticalSurface("Surf_PMTSideMirror"));
+        new G4LogicalBorderSurface("PMT_mirrorglass", m_lastPhysicals["PMT"], m_vacuumBackPhysical, m_data->getOpticalSurface("Surf_PMTSideMirror"));
     }
 }
 
 /**
  * @see PMT::placeIt
- * @param pTransform G4Transform3D with position & rotation of PMT
+ * @param p_transform G4Transform3D with position & rotation of PMT
  */
-void OMSimPMTConstruction::placeIt(G4Transform3D pTransform, G4LogicalVolume *&pMother, G4String pNameExtension)
+void OMSimPMTConstruction::placeIt(G4Transform3D p_transform, G4LogicalVolume *&p_mother, G4String p_nameExtension)
 {
-    abcDetectorComponent::placeIt(pTransform, pMother, pNameExtension);
-    new G4LogicalBorderSurface("PhotoGlassToVacuum", mLastPhysicals["PMT"], mPhotocathodeRegionVacuumPhysical, mPhotocathodeOpticalSurface);
-    new G4LogicalBorderSurface("PhotoVacuumToGlass", mPhotocathodeRegionVacuumPhysical, mLastPhysicals["PMT"], mPhotocathodeOpticalSurface);
-    if (mInternalReflections)
+    abcDetectorComponent::placeIt(p_transform, p_mother, p_nameExtension);
+    new G4LogicalBorderSurface("PhotoGlassToVacuum", m_lastPhysicals["PMT"], m_photocathodeRegionVacuumPhysical, m_photocathodeOpticalSurface);
+    new G4LogicalBorderSurface("PhotoVacuumToGlass", m_photocathodeRegionVacuumPhysical, m_lastPhysicals["PMT"], m_photocathodeOpticalSurface);
+    if (m_internalReflections)
     {
-        new G4LogicalBorderSurface("PMT_mirrorglass", mVacuumBackPhysical, mLastPhysicals["PMT"], mData->getOpticalSurface("Surf_PMTSideMirror"));
-        new G4LogicalBorderSurface("PMT_mirrorglass", mLastPhysicals["PMT"], mVacuumBackPhysical, mData->getOpticalSurface("Surf_PMTSideMirror"));
+        new G4LogicalBorderSurface("PMT_mirrorglass", m_vacuumBackPhysical, m_lastPhysicals["PMT"], m_data->getOpticalSurface("Surf_PMTSideMirror"));
+        new G4LogicalBorderSurface("PMT_mirrorglass", m_lastPhysicals["PMT"], m_vacuumBackPhysical, m_data->getOpticalSurface("Surf_PMTSideMirror"));
     }
 }
 
@@ -234,21 +173,21 @@ void OMSimPMTConstruction::placeIt(G4Transform3D pTransform, G4LogicalVolume *&p
  * @see simpleBulbConstruction
  * @see fullBulbConstruction
  */
-std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::getBulbSolid(G4String pSide)
+std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::getBulbSolid(G4String p_side)
 {
-    G4SubtractionSolid *lVacuumPhotocathodeSolid;
-    G4String lBulbBackShape = mData->getValue<G4String>(mSelectedPMT, "jBulbBackShape");
+    G4SubtractionSolid *vacuumPhotocathodeSolid;
+    G4String bulbBackShape = m_data->getValue<G4String>(m_selectedPMT, "jBulbBackShape");
 
-    if (lBulbBackShape == "Simple")
-        mSimpleBulb = true;
+    if (bulbBackShape == "Simple")
+        m_simpleBulb = true;
 
-    if (mSimpleBulb || !mInternalReflections)
+    if (m_simpleBulb || !m_internalReflections)
     {
-        return simpleBulbConstruction(pSide);
+        return simpleBulbConstruction(p_side);
     }
     else
     {
-        return fullBulbConstruction(pSide);
+        return fullBulbConstruction(p_side);
     }
 }
 
@@ -256,180 +195,180 @@ std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::getBulbSolid(G4String p
  * Construction of the basic shape of the PMT.
  * @return tuple of G4UnionSolid (the outer shape) and G4SubtractionSolid (the photocathode volume part)
  */
-std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::simpleBulbConstruction(G4String pSide)
+std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::simpleBulbConstruction(G4String p_side)
 {
     log_trace("Constructing simple PMT bulb geometry");
 
-    G4VSolid *lBulbSolid = frontalBulbConstruction(pSide);
+    G4VSolid *bulbSolid = frontalBulbConstruction(p_side);
     // Defining volume with boundaries of photocathode volume
-    G4Tubs *lLargeTube = new G4Tubs("LargeTube", 0, mEllipseXYaxis, 50 * cm, 0, 2 * CLHEP::pi);
-    G4SubtractionSolid *lPhotocathodeSide = new G4SubtractionSolid("SubstractionPhotocathodeSide", lBulbSolid, lLargeTube, 0, G4ThreeVector(0, 0, -50 * cm));
+    G4Tubs *largeTube = new G4Tubs("LargeTube", 0, m_ellipseXYaxis, 50 * cm, 0, 2 * CLHEP::pi);
+    G4SubtractionSolid *photocathodeSide = new G4SubtractionSolid("SubstractionPhotocathodeSide", bulbSolid, largeTube, 0, G4ThreeVector(0, 0, -50 * cm));
 
-    G4Tubs *lBulkSolid = new G4Tubs("Bulb bulk solid", 0.0, 0.5 * mTubeWidth, mMissingTubeLength, 0, 2 * CLHEP::pi);
-    lBulbSolid = new G4UnionSolid("Bulb tube solid", lBulbSolid, lBulkSolid, 0, G4ThreeVector(0, 0, -mMissingTubeLength));
-    return std::make_tuple(lBulbSolid, lPhotocathodeSide);
+    G4Tubs *bulkSolid = new G4Tubs("Bulb bulk solid", 0.0, 0.5 * m_tubeWidth, m_missingTubeLength, 0, 2 * CLHEP::pi);
+    bulbSolid = new G4UnionSolid("Bulb tube solid", bulbSolid, bulkSolid, 0, G4ThreeVector(0, 0, -m_missingTubeLength));
+    return std::make_tuple(bulbSolid, photocathodeSide);
 }
 
 /**
  * Construction of the basic shape of the PMT for a full paramterised PMT. This is needed if internal reflections are simulated.
  * @return tuple of G4UnionSolid (the outer shape) and G4SubtractionSolid (the photocathode volume part)
  */
-std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::fullBulbConstruction(G4String pSide)
+std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::fullBulbConstruction(G4String p_side)
 {
     log_trace("Constructing full PMT bulb geometry");
 
-    G4double lLineFitSlope = mData->getValueWithUnit(mSelectedPMT, pSide + ".jLineFitSlope");
-    G4double lEllipseConeTransition_x = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseConeTransition_x");
-    G4double lEllipseConeTransition_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseConeTransition_y");
-    G4double lConeTorusTransition_x = mData->getValueWithUnit(mSelectedPMT, pSide + ".jConeTorusTransition_x");
-    G4double lTorusCircleR = mData->getValueWithUnit(mSelectedPMT, pSide + ".jTorusCircleR");
-    G4double lTorusCirclePos_x = mData->getValueWithUnit(mSelectedPMT, pSide + ".jTorusCirclePos_x");
-    G4double lTorusCirclePos_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jTorusCirclePos_y");
-    G4double lTorusTubeTransition_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jTorusTubeTransition_y");
+    G4double lineFitSlope = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jLineFitSlope");
+    G4double xEllipseConeTransition = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseConeTransition_x");
+    G4double yEllipseConeTransition = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseConeTransition_y");
+    G4double xConeTorusTransition = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jConeTorusTransition_x");
+    G4double rTorusCircle = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jTorusCircleR");
+    G4double torusCirclePosX = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jTorusCirclePos_x");
+    G4double torusCirclePosY = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jTorusCirclePos_y");
+    G4double torusTubeTransitionY = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jTorusTubeTransition_y");
 
-    G4VSolid *lBulbSolid = frontalBulbConstruction(pSide);
+    G4VSolid *bulbSolid = frontalBulbConstruction(p_side);
     // Defining volume with boundaries of photocathode volume
-    G4Tubs *lLargeTube = new G4Tubs("LargeTube", 0, mEllipseXYaxis, 50 * cm, 0, 2 * CLHEP::pi);
-    G4SubtractionSolid *lPhotocathodeSide = new G4SubtractionSolid("SubstractionPhotocathodeSide", lBulbSolid, lLargeTube, 0, G4ThreeVector(0, 0, -50 * cm));
+    G4Tubs *largeTube = new G4Tubs("LargeTube", 0, m_ellipseXYaxis, 50 * cm, 0, 2 * CLHEP::pi);
+    G4SubtractionSolid *photocathodeSide = new G4SubtractionSolid("SubstractionPhotocathodeSide", bulbSolid, largeTube, 0, G4ThreeVector(0, 0, -50 * cm));
 
     // Rest of tube
-    G4Tubs *lBulkSolid = new G4Tubs("Bulb bulk solid", 0.0, 0.5 * mTubeWidth, mMissingTubeLength, 0, 2 * CLHEP::pi);
+    G4Tubs *bulkSolid = new G4Tubs("Bulb bulk solid", 0.0, 0.5 * m_tubeWidth, m_missingTubeLength, 0, 2 * CLHEP::pi);
 
     // Creating Cone
-    G4double lConeLength_x = lEllipseConeTransition_x - lConeTorusTransition_x;
-    G4double lConeHalfHeight = lLineFitSlope * lConeLength_x * 0.5;
-    G4Cons *lCone = new G4Cons("Solid substraction cone", lConeTorusTransition_x, lConeTorusTransition_x + mTubeWidth, lEllipseConeTransition_x, lEllipseConeTransition_x + mTubeWidth, lConeHalfHeight, 0, 2 * CLHEP::pi);
+    G4double coneLengthX = xEllipseConeTransition - xConeTorusTransition;
+    G4double coneHalfHeight = lineFitSlope * coneLengthX * 0.5;
+    G4Cons *cone = new G4Cons("Solid substraction cone", xConeTorusTransition, xConeTorusTransition + m_tubeWidth, xEllipseConeTransition, xEllipseConeTransition + m_tubeWidth, coneHalfHeight, 0, 2 * CLHEP::pi);
 
     // Cone is substracted from frontal volume
-    G4double lConeEllipse_y = lEllipseConeTransition_y - mEllipsePos_y - lConeHalfHeight;
-    G4SubtractionSolid *lBulbSolidSubstractions = new G4SubtractionSolid("Substracted solid bulb", lBulbSolid,
-                                                                         lCone, 0, G4ThreeVector(0, 0, lConeEllipse_y));
+    G4double coneEllipseY = yEllipseConeTransition - m_ellipsePosY - coneHalfHeight;
+    G4SubtractionSolid *bulbSolidSubstraction = new G4SubtractionSolid("Substracted solid bulb", bulbSolid,
+                                                                         cone, 0, G4ThreeVector(0, 0, coneEllipseY));
 
     // Creating Torus
-    G4Torus *lTorus = new G4Torus("Solid substraction torus", 0.0, lTorusCircleR, lTorusCirclePos_x, 0, 2 * CLHEP::pi);
-    G4double lTorusToEllipse = lTorusCirclePos_y - mEllipsePos_y;
-    G4Tubs *lTubeEdge = new G4Tubs("Solid edge of torus", lTorusCirclePos_x, lEllipseConeTransition_x + mTubeWidth, lTorusCirclePos_x * 0.5, 0, 2 * CLHEP::pi);
+    G4Torus *torus = new G4Torus("Solid substraction torus", 0.0, rTorusCircle, torusCirclePosX, 0, 2 * CLHEP::pi);
+    G4double torusToEllipse = torusCirclePosY - m_ellipsePosY;
+    G4Tubs *tubeEdge = new G4Tubs("Solid edge of torus", torusCirclePosX, xEllipseConeTransition + m_tubeWidth, torusCirclePosX * 0.5, 0, 2 * CLHEP::pi);
 
-    G4UnionSolid *lTorusTubeEdge = new G4UnionSolid("Solid torus with cylindrical edges", lTorus, lTubeEdge, 0, G4ThreeVector(0, 0, 0));
+    G4UnionSolid *torusTubeEdge = new G4UnionSolid("Solid torus with cylindrical edges", torus, tubeEdge, 0, G4ThreeVector(0, 0, 0));
 
     // Create Tube for substracting cone and torus
-    G4double lSubstractionTubeLength = lEllipseConeTransition_y - lTorusTubeTransition_y;
-    G4Tubs *lSubstractionTube = new G4Tubs("substracion_tube", 0.0, lEllipseConeTransition_x, 0.5 * lSubstractionTubeLength, 0, 2 * CLHEP::pi);
+    G4double substractionTubeLength = yEllipseConeTransition - torusTubeTransitionY;
+    G4Tubs *substractionTube = new G4Tubs("substracion_tube", 0.0, xEllipseConeTransition, 0.5 * substractionTubeLength, 0, 2 * CLHEP::pi);
 
-    G4double lSTubeEllipse_y = lEllipseConeTransition_y - mEllipsePos_y - lSubstractionTubeLength * 0.5;
+    G4double tubeEllipeY = yEllipseConeTransition - m_ellipsePosY - substractionTubeLength * 0.5;
 
-    G4SubtractionSolid *lBulbBack = new G4SubtractionSolid("Solid back of PMT", lSubstractionTube, lCone, 0, G4ThreeVector(0, 0, lConeEllipse_y - lSTubeEllipse_y));
-    lBulbBack = new G4SubtractionSolid("Solid back of PMT", lBulbBack, lTorusTubeEdge, 0, G4ThreeVector(0, 0, lTorusToEllipse - lSTubeEllipse_y));
+    G4SubtractionSolid *bulbBack = new G4SubtractionSolid("Solid back of PMT", substractionTube, cone, 0, G4ThreeVector(0, 0, coneEllipseY - tubeEllipeY));
+    bulbBack = new G4SubtractionSolid("Solid back of PMT", bulbBack, torusTubeEdge, 0, G4ThreeVector(0, 0, torusToEllipse - tubeEllipeY));
 
-    lBulbSolid = new G4UnionSolid("Bulb tube solid", lBulbSolidSubstractions, lBulbBack, 0, G4ThreeVector(0, 0, lSTubeEllipse_y));
-    lBulbSolid = new G4UnionSolid("Bulb tube solid", lBulbSolid, lBulkSolid, 0, G4ThreeVector(0, 0, -mMissingTubeLength));
+    bulbSolid = new G4UnionSolid("Bulb tube solid", bulbSolidSubstraction, bulbBack, 0, G4ThreeVector(0, 0, tubeEllipeY));
+    bulbSolid = new G4UnionSolid("Bulb tube solid", bulbSolid, bulkSolid, 0, G4ThreeVector(0, 0, -m_missingTubeLength));
 
-    return std::make_tuple(lBulbSolid, lPhotocathodeSide);
+    return std::make_tuple(bulbSolid, photocathodeSide);
 }
 
 /**
  * Creates and positions a thin disk behind the photocathode volume in order to shield photons coming from behind the PMT. Only used when internal reflections are turned off.
  */
-void OMSimPMTConstruction::constructCathodeBackshield(G4LogicalVolume *pPMTinner)
+void OMSimPMTConstruction::constructCathodeBackshield(G4LogicalVolume *p_PMTinner)
 {
     log_trace("Constructing cathode back shield");
     readGlobalParameters("jInnerShape");
-    G4double lShieldWidth = 0.5 * mm;
-    G4double lShieldZPos = lShieldWidth / 2;
-    G4double lFurthestZ = lShieldWidth + lShieldZPos;
-    G4double lShieldRad = mEllipseXYaxis * std::sqrt(1 - std::pow(lFurthestZ, 2.) / std::pow(mEllipseZaxis, 2.));
-    G4Tubs *lShieldSolid = new G4Tubs("Shield solid", 0, lShieldRad - 0.05 * mm, lShieldWidth / 2, 0, 2 * CLHEP::pi);
-    G4LogicalVolume *lShieldLogical = new G4LogicalVolume(lShieldSolid, mData->getMaterial("NoOptic_Absorber"), "Shield logical");
-    new G4PVPlacement(0, G4ThreeVector(0, 0, -lShieldWidth / 2), lShieldLogical, "Shield physical", pPMTinner, false, 0, mCheckOverlaps);
-    lShieldLogical->SetVisAttributes(mBlackVis);
+    G4double shieldWidth = 0.5 * mm;
+    G4double shieldZPos = shieldWidth / 2;
+    G4double furthestZ = shieldWidth + shieldZPos;
+    G4double shieldRad = m_ellipseXYaxis * std::sqrt(1 - std::pow(furthestZ, 2.) / std::pow(m_ellipseZaxis, 2.));
+    G4Tubs *shieldSolid = new G4Tubs("Shield solid", 0, shieldRad - 0.05 * mm, shieldWidth / 2, 0, 2 * CLHEP::pi);
+    G4LogicalVolume *shieldLogical = new G4LogicalVolume(shieldSolid, m_data->getMaterial("NoOptic_Absorber"), "Shield logical");
+    new G4PVPlacement(0, G4ThreeVector(0, 0, -shieldWidth / 2), shieldLogical, "Shield physical", p_PMTinner, false, 0, m_checkOverlaps);
+    shieldLogical->SetVisAttributes(m_blackVis);
 }
 
 /**
  * Construction & placement of the dynode system entrance for internal reflections. Currently only geometry for Hamamatsu R15458.
- * @param pMother LogicalVolume of the mother, where the dynode system entrance is placed (vacuum volume)
+ * @param p_mother LogicalVolume of the mother, where the dynode system entrance is placed (vacuum volume)
  */
-void OMSimPMTConstruction::constructCADdynodeSystem(G4LogicalVolume *pMother)
+void OMSimPMTConstruction::constructCADdynodeSystem(G4LogicalVolume *p_mother)
 {
     log_trace("Constructing CAD dynode system");
-    auto lSupportStructureMesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/PMT/streifen.obj");
-    auto lFrontalPlateMesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/PMT/frontalPlateonly.obj");
-    auto lDynodesMesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/PMT/dynodes.obj");
+    auto supportStructureMesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/PMT/streifen.obj");
+    auto frontalPanelMesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/PMT/frontalPlateonly.obj");
+    auto dynodeMesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/PMT/dynodes.obj");
 
-    G4double lDynodeOffset = mData->getValueWithUnit(mSelectedPMT, "jDynodeCADOffsetFromTip");
-    G4double lDynodeZ0 = mData->getValueWithUnit(mSelectedPMT, "jDynodeCADZ0");
-    G4double lScale = mData->getValueWithUnit(mSelectedPMT, "jDynodeCADscale");
-    G4ThreeVector lCADoffset = G4ThreeVector(0, 0, getDistancePMTCenterToTip()-lDynodeZ0-lDynodeOffset); 
-    lSupportStructureMesh->SetOffset(lCADoffset);
-    lFrontalPlateMesh->SetOffset(lCADoffset);
-    lDynodesMesh->SetOffset(lCADoffset);
-    lSupportStructureMesh->SetScale(lScale);
-    lFrontalPlateMesh->SetScale(lScale);
-    lDynodesMesh->SetScale(lScale);
+    G4double dynodeOffset = m_data->getValueWithUnit(m_selectedPMT, "jDynodeCADOffsetFromTip");
+    G4double dynodeZ0 = m_data->getValueWithUnit(m_selectedPMT, "jDynodeCADZ0");
+    G4double scale = m_data->getValueWithUnit(m_selectedPMT, "jDynodeCADscale");
+    G4ThreeVector lCADoffset = G4ThreeVector(0, 0, getDistancePMTCenterToTip() - dynodeZ0 - dynodeOffset);
+    supportStructureMesh->SetOffset(lCADoffset);
+    frontalPanelMesh->SetOffset(lCADoffset);
+    dynodeMesh->SetOffset(lCADoffset);
+    supportStructureMesh->SetScale(scale);
+    frontalPanelMesh->SetScale(scale);
+    dynodeMesh->SetScale(scale);
 
-    G4RotationMatrix *lRot = new G4RotationMatrix();
-    lRot->rotateZ(90 * deg);
+    G4RotationMatrix *rot = new G4RotationMatrix();
+    rot->rotateZ(90 * deg);
 
-    G4LogicalVolume *lSupportStructure = new G4LogicalVolume(lSupportStructureMesh->GetSolid(), mData->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
-    G4LogicalVolume *lFrontalPlate = new G4LogicalVolume(lFrontalPlateMesh->GetSolid(), mData->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
-    G4LogicalVolume *lDynodes = new G4LogicalVolume(lDynodesMesh->GetSolid(), mData->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
+    G4LogicalVolume *supportStructure = new G4LogicalVolume(supportStructureMesh->GetSolid(), m_data->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
+    G4LogicalVolume *frontalPlate = new G4LogicalVolume(frontalPanelMesh->GetSolid(), m_data->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
+    G4LogicalVolume *dynodes = new G4LogicalVolume(dynodeMesh->GetSolid(), m_data->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
 
-    new G4LogicalSkinSurface("SkinFrontalPlate", lFrontalPlate, mData->getOpticalSurface("Surf_PMTFrontPlate"));
-    new G4LogicalSkinSurface("SkinSupportStructure", lSupportStructure, mData->getOpticalSurface("Surf_AluminiumGround"));
-    new G4LogicalSkinSurface("SkinDynodes", lDynodes, mData->getOpticalSurface("Surf_Dynode"));
+    new G4LogicalSkinSurface("SkinFrontalPlate", frontalPlate, m_data->getOpticalSurface("Surf_PMTFrontPlate"));
+    new G4LogicalSkinSurface("SkinSupportStructure", supportStructure, m_data->getOpticalSurface("Surf_AluminiumGround"));
+    new G4LogicalSkinSurface("SkinDynodes", dynodes, m_data->getOpticalSurface("Surf_Dynode"));
 
-    // lAbsorbers->SetVisAttributes(mAbsorberVis);
-    // new G4PVPlacement( lRot , G4ThreeVector(0, 0, 0) , lAbsorbers, "DynodeSystemAbsorbers" , pMother, false, 0, mCheckOverlaps);
-    lFrontalPlate->SetVisAttributes(mBlueVis);
-    new G4PVPlacement(lRot, G4ThreeVector(0, 0, 0), lFrontalPlate, "frontalPlate", pMother, false, 0, mCheckOverlaps);
+    // lAbsorbers->SetVisAttributes(m_absorberVis);
+    // new G4PVPlacement( rot , G4ThreeVector(0, 0, 0) , lAbsorbers, "DynodeSystemAbsorbers" , p_mother, false, 0, m_checkOverlaps);
+    frontalPlate->SetVisAttributes(m_blueVis);
+    new G4PVPlacement(rot, G4ThreeVector(0, 0, 0), frontalPlate, "frontalPlate", p_mother, false, 0, m_checkOverlaps);
 
-    lSupportStructure->SetVisAttributes(mBoardVis);
-    new G4PVPlacement(lRot, G4ThreeVector(0, 0, 0), lSupportStructure, "DynodeSupportStructure", pMother, false, 0, mCheckOverlaps);
+    supportStructure->SetVisAttributes(m_boardVis);
+    new G4PVPlacement(rot, G4ThreeVector(0, 0, 0), supportStructure, "DynodeSupportStructure", p_mother, false, 0, m_checkOverlaps);
 
-    lDynodes->SetVisAttributes(mRedVis);
-    new G4PVPlacement(lRot, G4ThreeVector(0, 0, 0), lDynodes, "Dynodes", pMother, false, 0, mCheckOverlaps);
+    dynodes->SetVisAttributes(m_redVis);
+    new G4PVPlacement(rot, G4ThreeVector(0, 0, 0), dynodes, "Dynodes", p_mother, false, 0, m_checkOverlaps);
 
     readGlobalParameters("jInnerShape");
-    G4Tubs *lShieldSolid = new G4Tubs("Shield solid", 0, 0.5 * mTubeWidth - 0.05 * mm, 0.05 * mm / 2, 0, 2 * CLHEP::pi);
-    G4LogicalVolume *lShieldLogical = new G4LogicalVolume(lShieldSolid, mData->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
-    lShieldLogical->SetVisAttributes(mAbsorberVis);
-    new G4PVPlacement(lRot, G4ThreeVector(0, 0, -0.6 * 2 * mMissingTubeLength), lShieldLogical, "BackShield", pMother, false, 0, mCheckOverlaps);
+    G4Tubs *shieldSolid = new G4Tubs("Shield solid", 0, 0.5 * m_tubeWidth - 0.05 * mm, 0.05 * mm / 2, 0, 2 * CLHEP::pi);
+    G4LogicalVolume *shieldLogical = new G4LogicalVolume(shieldSolid, m_data->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
+    shieldLogical->SetVisAttributes(m_absorberVis);
+    new G4PVPlacement(rot, G4ThreeVector(0, 0, -0.6 * 2 * m_missingTubeLength), shieldLogical, "BackShield", p_mother, false, 0, m_checkOverlaps);
 }
 
 /**
  * @brief Reads the parameter table and assigns the value and dimension of member variables.
  */
-void OMSimPMTConstruction::readGlobalParameters(G4String pSide)
+void OMSimPMTConstruction::readGlobalParameters(G4String p_side)
 {
-    mOutRad = mData->getValueWithUnit(mSelectedPMT, pSide + ".jOutRad");
-    mEllipseXYaxis = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseXYaxis");
-    mEllipseZaxis = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis");
-    mSpherePos_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jSpherePos_y");
-    mEllipsePos_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y");
-    mSphereEllipseTransition_r = mData->getValueWithUnit(mSelectedPMT, pSide + ".jSphereEllipseTransition_r");
-    if (pSide != "jPhotocathodeInnerSide")
+    m_outRad = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jOutRad");
+    m_ellipseXYaxis = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseXYaxis");
+    m_ellipseZaxis = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseZaxis");
+    m_spherePosY = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jSpherePos_y");
+    m_ellipsePosY = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipsePos_y");
+    m_sphereEllipseTransition_r = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jSphereEllipseTransition_r");
+    if (p_side != "jPhotocathodeInnerSide")
     {
-        mTotalLenght = mData->getValueWithUnit(mSelectedPMT, pSide + ".jTotalLenght");
-        mTubeWidth = mData->getValueWithUnit(mSelectedPMT, pSide + ".jTubeWidth");
-        G4double lFrontToEllipse_y = mOutRad + mSpherePos_y - mEllipsePos_y;
-        mMissingTubeLength = (mTotalLenght - lFrontToEllipse_y) * 0.5 * mm;
+        m_totalLenght = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jTotalLenght");
+        m_tubeWidth = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jTubeWidth");
+        G4double lFrontToEllipse_y = m_outRad + m_spherePosY - m_ellipsePosY;
+        m_missingTubeLength = (m_totalLenght - lFrontToEllipse_y) * 0.5 * mm;
     }
 }
 
-G4VSolid *OMSimPMTConstruction::frontalBulbConstruction(G4String pSide)
+G4VSolid *OMSimPMTConstruction::frontalBulbConstruction(G4String p_side)
 {
-    G4String lFrontalShape = mData->getValue<G4String>(mSelectedPMT, "jFrontalShape");
-    readGlobalParameters(pSide);
-    if (lFrontalShape == "SphereEllipse")
+    G4String frontalShape = m_data->getValue<G4String>(m_selectedPMT, "jFrontalShape");
+    readGlobalParameters(p_side);
+    if (frontalShape == "SphereEllipse")
         return sphereEllipsePhotocathode();
-    else if (lFrontalShape == "Sphere2Ellipses")
-        return sphereDoubleEllipsePhotocathode(pSide);
-    else if (lFrontalShape == "TwoEllipses")
-        return doubleEllipsePhotocathode(pSide);
-    else if (lFrontalShape == "SingleEllipse")
+    else if (frontalShape == "Sphere2Ellipses")
+        return sphereDoubleEllipsePhotocathode(p_side);
+    else if (frontalShape == "TwoEllipses")
+        return doubleEllipsePhotocathode(p_side);
+    else if (frontalShape == "SingleEllipse")
         return ellipsePhotocathode();
     else
     {
-        log_critical("Type of PMT frontal shape {} type not known!", lFrontalShape);
+        log_critical("Type of PMT frontal shape {} type not known!", frontalShape);
         throw std::runtime_error("Type of PMT frontal shape type not known!");
     }
 }
@@ -441,108 +380,96 @@ G4VSolid *OMSimPMTConstruction::frontalBulbConstruction(G4String pSide)
 G4SubtractionSolid *OMSimPMTConstruction::constructPhotocathodeLayer()
 {
     log_trace("Constructing photocathode layer");
-    checkPhotocathodeThickness();
 
-    G4VSolid *lInnerBoundarySolid = frontalBulbConstruction("jPhotocathodeInnerSide");
-    G4VSolid *lOutBoundarySolid = frontalBulbConstruction("jInnerShape");
+    G4VSolid *innerBoundarySolid = frontalBulbConstruction("jPhotocathodeInnerSide");
+    G4VSolid *outBoundarySolid = frontalBulbConstruction("jInnerShape");
 
-    G4SubtractionSolid *lShellSolid = new G4SubtractionSolid("ShellOfFrontalBulb", lOutBoundarySolid, lInnerBoundarySolid, 0, G4ThreeVector(0, 0, 0));
+    G4SubtractionSolid *shellSolid = new G4SubtractionSolid("ShellOfFrontalBulb", outBoundarySolid, innerBoundarySolid, 0, G4ThreeVector(0, 0, 0));
 
-    G4Ellipsoid *lBorderCut = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis - 220 * nm);
+    G4Ellipsoid *borderCut = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis - 220 * nm);
 
-    G4Tubs *lLargeTube = new G4Tubs("LargeTube", 0, 2 * mEllipseXYaxis, 50 * cm, 0, 2 * CLHEP::pi);
+    G4Tubs *largeTube = new G4Tubs("LargeTube", 0, 2 * m_ellipseXYaxis, 50 * cm, 0, 2 * CLHEP::pi);
 
-    G4SubtractionSolid *lNoBorderSolid = new G4SubtractionSolid("SubstractionPhotocathodeSide", lShellSolid, lBorderCut, 0, G4ThreeVector(0, 0, 0));
-    // appendComponent(lHACoatingCut, lHACoatingLogical, G4ThreeVector(0, 0, -mMissingTubeLength), G4RotationMatrix(), "HACoating");
+    G4SubtractionSolid *noBorderSolid = new G4SubtractionSolid("SubstractionPhotocathodeSide", shellSolid, borderCut, 0, G4ThreeVector(0, 0, 0));
+    // appendComponent(coatingCut, coatingLogical, G4ThreeVector(0, 0, -m_missingTubeLength), G4RotationMatrix(), "HACoating");
 
-    return new G4SubtractionSolid("SubstractionPhotocathodeSide", lNoBorderSolid, lLargeTube, 0, G4ThreeVector(0, 0, -50 * cm));
-    // return new G4SubtractionSolid("SubstractionPhotocathodeSide", lOutBoundarySolid, lLargeTube, 0, G4ThreeVector(0, 0, -50 * cm));
+    return new G4SubtractionSolid("SubstractionPhotocathodeSide", noBorderSolid, largeTube, 0, G4ThreeVector(0, 0, -50 * cm));
+    // return new G4SubtractionSolid("SubstractionPhotocathodeSide", outBoundarySolid, largeTube, 0, G4ThreeVector(0, 0, -50 * cm));
 }
 
-void OMSimPMTConstruction::checkPhotocathodeThickness()
-{
-    G4String lSide = "jPhotocathodeInnerSide";
-    G4double lOutRad = mData->getValueWithUnit(mSelectedPMT, lSide + ".jOutRad");
-    G4double lEllipseXYaxis = mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipseXYaxis");
-    G4double lEllipseZaxis = mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipseZaxis");
-    G4double lSpherePos_y = mData->getValueWithUnit(mSelectedPMT, lSide + ".jSpherePos_y");
-    G4double lEllipsePos_y = mData->getValueWithUnit(mSelectedPMT, lSide + ".jEllipsePos_y");
-
-    lSide = "jInnerShape";
-}
 
 /**
  * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphereEllipsePhotocathode were fitted with a sphere and an ellipse.
- * @return G4UnionSolid lBulbSolid the frontal solid of the PMT
+ * @return G4UnionSolid bulbSolid the frontal solid of the PMT
  */
 G4UnionSolid *OMSimPMTConstruction::sphereEllipsePhotocathode()
 {
     log_trace("Constructing photocathode with one ellipsoid and a sphere");
-    G4double lSphereAngle = asin(mSphereEllipseTransition_r / mOutRad);
+    G4double sphereAngle = asin(m_sphereEllipseTransition_r / m_outRad);
     // PMT frontal glass envelope as union of sphere and ellipse
-    G4Ellipsoid *lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
-    G4Sphere *lBulbSphere = new G4Sphere("Solid Bulb Ellipsoid", 0.0, mOutRad, 0, 2 * CLHEP::pi, 0, lSphereAngle);
-    G4UnionSolid *lBulbSolid = new G4UnionSolid("Solid Bulb", lBulbEllipsoid, lBulbSphere, 0, G4ThreeVector(0, 0, mSpherePos_y - mEllipsePos_y));
-    return lBulbSolid;
+    G4Ellipsoid *bulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis);
+    G4Sphere *bulbSphere = new G4Sphere("Solid Bulb Ellipsoid", 0.0, m_outRad, 0, 2 * CLHEP::pi, 0, sphereAngle);
+    G4UnionSolid *bulbSolid = new G4UnionSolid("Solid Bulb", bulbEllipsoid, bulbSphere, 0, G4ThreeVector(0, 0, m_spherePosY - m_ellipsePosY));
+    return bulbSolid;
 }
 
 G4UnionSolid *OMSimPMTConstruction::ellipsePhotocathode()
 {
     log_trace("Constructing photocathode with one ellipsoid");
-    G4double lSphereAngle = asin(mSphereEllipseTransition_r / mOutRad);
+    G4double sphereAngle = asin(m_sphereEllipseTransition_r / m_outRad);
     // PMT frontal glass envelope as union of sphere and ellipse
-    G4Ellipsoid *lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
-    G4Sphere *lBulbSphere = new G4Sphere("Solid Bulb Ellipsoid", 0.0, 0.1, 0, 2 * CLHEP::pi, 0, lSphereAngle);
-    G4UnionSolid *lBulbSolid = new G4UnionSolid("Solid Bulb", lBulbEllipsoid, lBulbSphere, 0, G4ThreeVector(0, 0, mSpherePos_y - mEllipsePos_y));
-    return lBulbSolid;
+    G4Ellipsoid *bulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis);
+    G4Sphere *bulbSphere = new G4Sphere("Solid Bulb Ellipsoid", 0.0, 0.1, 0, 2 * CLHEP::pi, 0, sphereAngle);
+    G4UnionSolid *bulbSolid = new G4UnionSolid("Solid Bulb", bulbEllipsoid, bulbSphere, 0, G4ThreeVector(0, 0, m_spherePosY - m_ellipsePosY));
+    return bulbSolid;
 }
 
 /**
  * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphereDoubleEllipsePhotocathode were fitted with a sphere and two ellipses.
- * @return G4UnionSolid lBulbSolid the frontal solid of the PMT
+ * @return G4UnionSolid bulbSolid the frontal solid of the PMT
  */
-G4UnionSolid *OMSimPMTConstruction::sphereDoubleEllipsePhotocathode(G4String pSide)
+G4UnionSolid *OMSimPMTConstruction::sphereDoubleEllipsePhotocathode(G4String p_side)
 {
     log_trace("Constructing photocathode with two ellipses and a sphere");
-    G4double lEllipseXYaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseXYaxis_2");
-    G4double lEllipseZaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis_2");
-    G4double lEllipsePos_y_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y_2");
+    G4double ellipseXYAxis2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseXYaxis_2");
+    G4double ellipseZAxis2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseZaxis_2");
+    G4double ellipseYpos2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipsePos_y_2");
 
-    G4double lSphereAngle = asin(mSphereEllipseTransition_r / mOutRad);
+    G4double sphereAngle = asin(m_sphereEllipseTransition_r / m_outRad);
     // PMT frontal glass envelope as union of sphere and ellipse
-    G4Ellipsoid *lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
-    G4Sphere *lBulbSphere = new G4Sphere("Solid Bulb Ellipsoid", 0.0, mOutRad, 0, 2 * CLHEP::pi, 0, lSphereAngle);
-    G4UnionSolid *lBulbSolid = new G4UnionSolid("Solid Bulb", lBulbEllipsoid, lBulbSphere, 0, G4ThreeVector(0, 0, mSpherePos_y - mEllipsePos_y));
-    G4Ellipsoid *lBulbEllipsoid_2 = new G4Ellipsoid("Solid Bulb Ellipsoid 2", lEllipseXYaxis_2, lEllipseXYaxis_2, lEllipseZaxis_2);
-    G4double lExcess = mEllipsePos_y - lEllipsePos_y_2;
-    G4Tubs *lSubtractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, lEllipseXYaxis_2 * 2, 0.5 * mTotalLenght, 0, 2 * CLHEP::pi);
-    G4SubtractionSolid *lSubstractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", lBulbEllipsoid_2, lSubtractionTube, 0, G4ThreeVector(0, 0, lExcess - mTotalLenght * 0.5));
-    lBulbSolid = new G4UnionSolid("Solid Bulb", lBulbSolid, lSubstractedLargeEllipsoid, 0, G4ThreeVector(0, 0, lEllipsePos_y_2 - mEllipsePos_y));
-    return lBulbSolid;
+    G4Ellipsoid *bulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis);
+    G4Sphere *bulbSphere = new G4Sphere("Solid Bulb Ellipsoid", 0.0, m_outRad, 0, 2 * CLHEP::pi, 0, sphereAngle);
+    G4UnionSolid *bulbSolid = new G4UnionSolid("Solid Bulb", bulbEllipsoid, bulbSphere, 0, G4ThreeVector(0, 0, m_spherePosY - m_ellipsePosY));
+    G4Ellipsoid *bulbEllipsoid2 = new G4Ellipsoid("Solid Bulb Ellipsoid 2", ellipseXYAxis2, ellipseXYAxis2, ellipseZAxis2);
+    G4double excess = m_ellipsePosY - ellipseYpos2;
+    G4Tubs *substractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, ellipseXYAxis2 * 2, 0.5 * m_totalLenght, 0, 2 * CLHEP::pi);
+    G4SubtractionSolid *substractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", bulbEllipsoid2, substractionTube, 0, G4ThreeVector(0, 0, excess - m_totalLenght * 0.5));
+    bulbSolid = new G4UnionSolid("Solid Bulb", bulbSolid, substractedLargeEllipsoid, 0, G4ThreeVector(0, 0, ellipseYpos2 - m_ellipsePosY));
+    return bulbSolid;
 }
 
 /**
  * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with doubleEllipsePhotocathode were fitted with two ellipses.
- * @return G4UnionSolid lBulbSolid the frontal solid of the PMT
+ * @return G4UnionSolid bulbSolid the frontal solid of the PMT
  */
-G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String pSide)
+G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String p_side)
 {
     log_trace("Constructing photocathode with two ellipses");
-    G4double lEllipseXYaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseXYaxis_2");
-    G4double lEllipseZaxis_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseZaxis_2");
-    G4double lEllipsePos_y_2 = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipsePos_y_2");
+    G4double ellipseXYAxis2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseXYaxis_2");
+    G4double ellipseZAxis2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseZaxis_2");
+    G4double ellipseYpos2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipsePos_y_2");
 
-    G4double lEllipseEllipseTransition_y = mData->getValueWithUnit(mSelectedPMT, pSide + ".jEllipseEllipseTransition_y");
+    G4double ellipseEllipseTransitionY = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseEllipseTransition_y");
 
-    G4Ellipsoid *lBulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", mEllipseXYaxis, mEllipseXYaxis, mEllipseZaxis);
-    G4Ellipsoid *lBulbEllipsoid_2 = new G4Ellipsoid("Solid Bulb Ellipsoid 2", lEllipseXYaxis_2, lEllipseXYaxis_2, lEllipseZaxis_2);
+    G4Ellipsoid *bulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis);
+    G4Ellipsoid *bulbEllipsoid2 = new G4Ellipsoid("Solid Bulb Ellipsoid 2", ellipseXYAxis2, ellipseXYAxis2, ellipseZAxis2);
 
-    G4double lExcess = lEllipseZaxis_2 - (lEllipseEllipseTransition_y-lEllipsePos_y_2);
-    G4Tubs *lSubtractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, lEllipseXYaxis_2 * 3, lEllipseZaxis_2, 0, 2 * CLHEP::pi);
-    G4SubtractionSolid *lSubstractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", lBulbEllipsoid_2,
-                                                                            lSubtractionTube, 0, G4ThreeVector(0, 0, -lExcess));
-    G4UnionSolid *lBulbSolid = new G4UnionSolid("Solid Bulb", lBulbEllipsoid, lSubstractedLargeEllipsoid, 0, G4ThreeVector(0, 0, -mEllipsePos_y + lEllipsePos_y_2));
-    return lBulbSolid;
+    G4double excess = ellipseZAxis2 - (ellipseEllipseTransitionY - ellipseYpos2);
+    G4Tubs *substractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, ellipseXYAxis2 * 3, ellipseZAxis2, 0, 2 * CLHEP::pi);
+    G4SubtractionSolid *substractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", bulbEllipsoid2,
+                                                                            substractionTube, 0, G4ThreeVector(0, 0, -excess));
+    G4UnionSolid *bulbSolid = new G4UnionSolid("Solid Bulb", bulbEllipsoid, substractedLargeEllipsoid, 0, G4ThreeVector(0, 0, -m_ellipsePosY + ellipseYpos2));
+    return bulbSolid;
 }
 
 /*
@@ -557,7 +484,7 @@ G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String pSide)
 G4double OMSimPMTConstruction::getDistancePMTCenterToTip()
 {
     readGlobalParameters("jOuterShape");
-    return mOutRad + mSpherePos_y - mEllipsePos_y;
+    return m_outRad + m_spherePosY - m_ellipsePosY;
 }
 
 /**
@@ -566,7 +493,7 @@ G4double OMSimPMTConstruction::getDistancePMTCenterToTip()
 G4double OMSimPMTConstruction::getMaxPMTRadius()
 {
     readGlobalParameters("jOuterShape");
-    return mEllipseXYaxis;
+    return m_ellipseXYaxis;
 }
 
 /**
@@ -574,7 +501,7 @@ G4double OMSimPMTConstruction::getMaxPMTRadius()
  */
 G4VSolid *OMSimPMTConstruction::getPMTSolid()
 {
-    return mComponents.at("PMT").VSolid;
+    return m_components.at("PMT").VSolid;
 }
 
 /**
@@ -582,27 +509,27 @@ G4VSolid *OMSimPMTConstruction::getPMTSolid()
  */
 G4LogicalVolume *OMSimPMTConstruction::getLogicalVolume()
 {
-    return mComponents.at("PMT").VLogical;
+    return m_components.at("PMT").VLogical;
 }
 
 /**
  * Select PMT model to use and assigns mPMT class.
- * @param G4String pPMTtoSelect string with the name of the PMT model
+ * @param p_selectedPMT string with the name of the PMT model
  */
-void OMSimPMTConstruction::selectPMT(G4String pPMTtoSelect)
+void OMSimPMTConstruction::selectPMT(G4String p_selectedPMT)
 {
-    if (pPMTtoSelect.substr(0, 6) == "argPMT")
+    if (p_selectedPMT.substr(0, 6) == "argPMT")
     {
-        const G4String lPMTTypes[] = {"pmt_Hamamatsu_R15458_CAT", "pmt_Hamamatsu_R7081", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100"};
-        pPMTtoSelect = lPMTTypes[OMSimCommandArgsTable::getInstance().get<G4int>("pmt_model")];
+        const G4String listPMT[] = {"pmt_Hamamatsu_R15458_CAT", "pmt_Hamamatsu_R7081", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100"};
+        p_selectedPMT = listPMT[OMSimCommandArgsTable::getInstance().get<G4int>("pmt_model")];
     }
 
-    mSelectedPMT = pPMTtoSelect;
+    m_selectedPMT = p_selectedPMT;
 
     // Check if requested PMT is in the table of PMTs
-    if (mData->checkIfTreeNameInTable(pPMTtoSelect))
+    if (m_data->checkIfTreeNameInTable(p_selectedPMT))
     { // if found
-        log_info("PMT type {} selected", pPMTtoSelect);
+        log_info("PMT type {} selected", p_selectedPMT);
     }
     else
     {
@@ -612,8 +539,8 @@ void OMSimPMTConstruction::selectPMT(G4String pPMTtoSelect)
 
 void OMSimPMTConstruction::includeHAcoating()
 {
-    mHACoatingBool = true;
-    if (mConstructionFinished)
+    m_HACoatingBool = true;
+    if (m_constructionFinished)
     {
         log_warning("You should call this function before Construction(), otherwise we have to construct everything twice...");
         construction();
@@ -625,7 +552,7 @@ G4double OMSimPMTConstruction::getPMTGlassWeight()
     log_trace("Getting PMT bulb weight");
     try
     {
-        return mData->getValue<double>(mSelectedPMT, "jBulbWeight");
+        return m_data->getValue<double>(m_selectedPMT, "jBulbWeight");
     }
     catch (const std::exception &e)
     {

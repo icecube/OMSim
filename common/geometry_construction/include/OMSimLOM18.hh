@@ -2,8 +2,7 @@
  *  @brief Construction of LOM18.
  *  @ingroup common
  */
-#ifndef OMSimLOM18_h
-#define OMSimLOM18_h 1
+#pragma once
 
 #include "OMSimPMTConstruction.hh"
 #include "OMSimOpticalModule.hh"
@@ -18,11 +17,11 @@ public:
     ~LOM18();
     void construction();
     double getPressureVesselWeight() {return 17.0*kg;};
-    int getNumberOfPMTs() { return mTotalNrPMTs;};
+    int getNumberOfPMTs() { return m_totalNumberPMTs;};
     G4String getName()
     {
         std::stringstream ss;
-        ss << "LOM18/" << mIndex;
+        ss << "LOM18/" << m_index;
         return ss.str();
     }
 private:
@@ -32,7 +31,6 @@ private:
 
     void appendEquatorBand();
     void placeCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical);
-    G4LogicalVolume* mSupportStructureLogical;
     void placeCADPenetrator(G4LogicalVolume* lInnerVolumeLogical);
     
     
@@ -43,64 +41,60 @@ private:
     void placeGelpads(G4LogicalVolume* lInnerVolumeLogical);
 
     //selection variables
-    G4bool mPlaceHarness = true;
-    G4bool mHarnessUnion = true; //it should be true for the first module that you build, and then false
+    G4bool m_placeHarness = true;
+    G4bool m_harnessUnion = true; //it should be true for the first module that you build, and then false
 
     //vectors for positions and rotations
-    std::vector<G4ThreeVector> mPMTPositions;
-    std::vector<G4ThreeVector> mGelpadPositions;
-    std::vector<G4double> mPMT_theta;
-    std::vector<G4double> mPMT_phi;
+    std::vector<G4ThreeVector> m_positionsPMT;
+    std::vector<G4ThreeVector> m_positionsGelpad;
+    std::vector<G4double> m_thetaPMT;
+    std::vector<G4double> m_phiPMT;
 
 
 
 
     //from PMTConstruction class (not readable directly...needs to be changed)
-    G4double mTotalLenght;
-    G4double mOutRad;
-    G4double mSpherePos_y; 
-    G4double mEllipsePos_y; 
-    G4double mEllipseZaxis;
+    G4double m_totalLenght;
+    G4double m_outRad;
+    G4double m_spherePosY; 
+    G4double m_ellipsePosY; 
+    G4double m_ellipseZaxis;
 
     //helper variables
-    std::stringstream mConv;
-    std::stringstream converter2;
-    G4Transform3D lTransformers;
-    G4RotationMatrix* lRot = new G4RotationMatrix();
+    std::stringstream m_conv;
+    std::stringstream m_converter2;
 
     //logical of gelpads
-    std::vector<G4LogicalVolume*> mGelPad_logical;
+    std::vector<G4LogicalVolume*> m_gelPadLogical;
 
-    G4double mGlassEquatorWidth = 159*mm;
-    G4double mGlassPoleLength = 270*mm;
-    G4double mGlassThickPole = 12.5*mm;
-    G4double mGlassThickEquator = 16.5*mm;
+    G4double m_GlassEquatorWidth = 159*mm;
+    G4double m_GlassPoleLength = 270*mm;
+    G4double m_GlassThickPole = 12.5*mm;
+    G4double m_GlassThickEquator = 16.5*mm;
     
-    G4double mThetaCenter = 48.0*deg;
-    G4double mThetaEquatorial = 60.0*deg;
-    G4int mNrPolarPMTs = 1;
-    G4int mNrCenterPMTs = 4;
-    G4int mNrEquatorialPMTs = 4;
-    G4double mEqPMTPhiPhase = 45.0*deg;
+    G4double m_thetaCenter = 48.0*deg;
+    G4double m_thetaEquatorial = 60.0*deg;
+    G4int m_numberPolarPMTs = 1;
+    G4int m_NrCenterPMTs = 4;
+    G4int m_NrEquatorialPMTs = 4;
+    G4double m_EqPMTPhiPhase = 45.0*deg;
 
     //gelpad specific
-    G4double mPolarPadOpeningAngle = 30.0*deg;
-    G4double mCenterPadOpeningAngle = 10.0*deg;
-    G4double mEqPadOpeningAngle = 5.0*deg;
-    G4double mGelThicknessFrontPolarPMT = 3.5*mm;
-    G4double mGelThicknessFrontCenterPMT = 12.93*mm;
-    G4double mGelThicknessFrontEqPMT = 14.52*mm;
+    G4double m_polarPadOpeningAngle = 30.0*deg;
+    G4double m_centerPadOpeningAngle = 10.0*deg;
+    G4double m_equatorialPadOpeningAngle = 5.0*deg;
+    G4double m_GelThicknessFrontPolarPMT = 3.5*mm;
+    G4double m_gelThicknessFrontCenterPMT = 12.93*mm;
+    G4double m_gelThicknessFrontEquatorialPMT = 14.52*mm;
 
-    G4int mNrPMTsPerHalf = mNrPolarPMTs + mNrCenterPMTs + mNrEquatorialPMTs;
-    G4int mTotalNrPMTs = (mNrPolarPMTs + mNrCenterPMTs + mNrEquatorialPMTs) * 2;
+    G4int m_numberPMTsPerHalf = m_numberPolarPMTs + m_NrCenterPMTs + m_NrEquatorialPMTs;
+    G4int m_totalNumberPMTs = (m_numberPolarPMTs + m_NrCenterPMTs + m_NrEquatorialPMTs) * 2;
     //from PMT manager
-    G4double mPMToffset;
-    G4double mMaxPMTRadius;   
+    G4double m_PMToffset;
+    G4double m_maxPMTRadius;   
 
     public:
-    G4double mCylinderAngle = 1.5*deg;
-    G4double mGlassOutRad;
+    G4double m_cylinderAngle = 1.5*deg;
+    G4double m_glassOutRad;
 };
 
-#endif
-//

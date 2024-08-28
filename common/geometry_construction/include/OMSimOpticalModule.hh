@@ -8,8 +8,7 @@
  * It also maintains a reference to a PMT manager, which is responsible for PMT-related functionalities.
  * @ingroup common
  */
-#ifndef OpticalModule_h
-#define OpticalModule_h 1
+#pragma once
 #include "abcDetectorComponent.hh"
 #include "OMSimHitManager.hh"
 #include "OMSimPMTConstruction.hh"
@@ -47,10 +46,9 @@ public:
     virtual G4String getName() = 0;
 
     OMSimPMTConstruction *getPMTmanager();
-    G4int mIndex;
+    G4int m_index;
 
 protected:
-    OMSimPMTConstruction *mPMTManager;
+    OMSimPMTConstruction *m_managerPMT;
 };
 
-#endif

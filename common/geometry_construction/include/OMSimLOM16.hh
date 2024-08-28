@@ -3,8 +3,7 @@
  *  @ingroup common
  */
 
-#ifndef OMSimLOM16_h
-#define OMSimLOM16_h 1
+#pragma once
 
 #include "OMSimPMTConstruction.hh"
 #include "OMSimOpticalModule.hh"
@@ -16,12 +15,12 @@ public:
     ~LOM16();
     void construction();
     double getPressureVesselWeight() {return (5.38+5.35)*kg;};
-    int getNumberOfPMTs() { return mTotalNrPMTs;};
+    int getNumberOfPMTs() { return m_totalNumberPMTs;};
     
     G4String getName()
     {
         std::stringstream ss;
-        ss << "LOM16/" << mIndex;
+        ss << "LOM16/" << m_index;
         return ss.str();
     }
 private:
@@ -40,56 +39,53 @@ private:
     void placeGelpads(G4LogicalVolume* lInnerVolumeLogical);
 
     //selection variables
-    G4bool mPlaceHarness = true;
-    G4bool mHarnessUnion = true; //it should be true for the first module that you build, and then false
+    G4bool m_placeHarness = true;
+    G4bool m_harnessUnion = true; //it should be true for the first module that you build, and then false
 
     //vectors for positions and rotations
-    std::vector<G4ThreeVector> mPMTPositions;
-    std::vector<G4ThreeVector> mGelpadPositions;
-    std::vector<G4double> mPMT_theta;
-    std::vector<G4double> mPMT_phi;
+    std::vector<G4ThreeVector> m_positionsPMT;
+    std::vector<G4ThreeVector> m_positionsGelpad;
+    std::vector<G4double> m_thetaPMT;
+    std::vector<G4double> m_phiPMT;
 
     //helper variables
-    std::stringstream mConverter;
-    std::stringstream mConverter2;
+    std::stringstream m_converter;
+    std::stringstream m_converter2;
 
     //logical of gelpads
-    std::vector<G4LogicalVolume*> mGelPad_logical;
+    std::vector<G4LogicalVolume*> m_gelPadLogical;
 
-    G4String mPMTModel =  "pmt_Hamamatsu_4inch";
+    G4String m_PMTModel =  "pmt_Hamamatsu_4inch";
 
-    const G4double mInternalCAD_x = 68.248*mm;
-    const G4double mInternalCAD_y = 0*mm;
-    const G4double mInternalCAD_z = -124.218*mm;
-    const G4double mGelPadDZ = 30.0*mm;
-    const G4double mGlassOutRad = 153.2*mm;
-    const G4double mGlassThick = 12.0*mm;
-    const G4double mGlassInRad = mGlassOutRad - mGlassThick;
-    const G4double mCylHigh = 68.8*mm;
-    const G4double mCylinderAngle = 2.5*deg;
-    const G4double mGelThicknessFrontPMT = 3.6*mm;
-    const G4double mGelThickness = 4.5*mm;
-    const G4double mEqPMTrOffset = 2.6*mm;
-    const G4double mEqPMTzOffset = 62.5*mm;
-    const G4double mRefConeHalfZ = 15*mm;
-    const G4double mRefConeSheetThickness = 0.5*mm;
-    const G4double mRefConeToHolder = 1.55*mm;
-    const G4double mThetaPolar = 36.0*deg;
-    const G4double mThetaEquatorial = 62.0*deg;
-    const G4int mNrPolarPMTs = 4;
-    const G4int mNrEqPMTs = 4;
-    const G4double mPolEqPMTPhiPhase = 45.0*deg;
-    const G4double mEqTiltAngle = 15.0*deg;
-    const G4double mPolPadOpeningAngle = 30.0*deg;
-    const G4double mEqPadOpeningAngle = 22.0*deg;
-    const G4int mTotalNrPMTs = (mNrPolarPMTs + mNrEqPMTs) * 2;
+    const G4double m_xInternalCAD = 68.248*mm;
+    const G4double m_yInternalCAD = 0*mm;
+    const G4double m_zInternalCAD = -124.218*mm;
+    const G4double m_gelPadDZ = 30.0*mm;
+    const G4double m_glassOutRad = 153.2*mm;
+    const G4double m_glassThick = 12.0*mm;
+    const G4double m_glassInRad = m_glassOutRad - m_glassThick;
+    const G4double m_cylinderHeight = 68.8*mm;
+    const G4double m_cylinderAngle = 2.5*deg;
+    const G4double m_gelThicknessFrontPMT = 3.6*mm;
+    const G4double m_gelThickness = 4.5*mm;
+    const G4double m_EqPMTrOffset = 2.6*mm;
+    const G4double m_EqPMTzOffset = 62.5*mm;
+    const G4double m_reflectorHalfZ = 15*mm;
+    const G4double m_reflectorConeSheetThickness = 0.5*mm;
+    const G4double m_reflectorConeToHolder = 1.55*mm;
+    const G4double m_thetaPolar = 36.0*deg;
+    const G4double m_thetaEquatorial = 62.0*deg;
+    const G4int m_numberPolarPMTs = 4;
+    const G4int m_numberEqPMTs = 4;
+    const G4double m_polarEquatorialPMTphiPhase = 45.0*deg;
+    const G4double m_equatorialTiltAngle = 15.0*deg;
+    const G4double m_polarPadOpeningAngle = 30.0*deg;
+    const G4double m_equatorialPadOpeningAngle = 22.0*deg;
+    const G4int m_totalNumberPMTs = (m_numberPolarPMTs + m_numberEqPMTs) * 2;
 
-    G4double mPMToffset;
-    G4double mMaxPMTRadius;
+    G4double m_PMToffset;
+    G4double m_maxPMTRadius;
 
-    const G4double mEqBandWidth = 45 * mm; //Total width (both halves)
-    const G4double mEqBandThickness = 1 * mm; //Thickness since its a 3D object
+    const G4double m_equatorialBandWidth = 45 * mm; //Total width (both halves)
+    const G4double m_equatorialBandThickness = 1 * mm; //Thickness since its a 3D object
 };
-
-#endif
-//

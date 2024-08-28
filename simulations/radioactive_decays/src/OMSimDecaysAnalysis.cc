@@ -8,23 +8,23 @@
 #include "G4AutoLock.hh"
 #include "OMSimTools.hh"
 
-G4Mutex OMSimDecaysAnalysis::mMutex = G4Mutex();
-OMSimDecaysAnalysis *OMSimDecaysAnalysis::mInstance = nullptr;
+G4Mutex OMSimDecaysAnalysis::m_mutex = G4Mutex();
+OMSimDecaysAnalysis *OMSimDecaysAnalysis::m_instance = nullptr;
 G4ThreadLocal DecayStats *OMSimDecaysAnalysis::mThreadDecayStats = nullptr;
 
 OMSimDecaysAnalysis &OMSimDecaysAnalysis::getInstance()
 {
 
-	if (!mInstance)
+	if (!m_instance)
 	{
-		G4AutoLock lock(&mMutex);
-		if (!mInstance)
+		G4AutoLock lock(&m_mutex);
+		if (!m_instance)
 		{
-			mInstance = new OMSimDecaysAnalysis();
+			m_instance = new OMSimDecaysAnalysis();
 		}
 	}
 
-	return *mInstance;
+	return *m_instance;
 }
 
 /**
@@ -37,7 +37,7 @@ void OMSimDecaysAnalysis::appendDecay(G4String pParticleName, G4double pDecayTim
 {
 	if (!mThreadDecayStats)
 	{
-		log_debug("Initialized mThreadData for thread {}", G4Threading::G4GetThreadId());
+		log_debug("Initialized m_threadData for thread {}", G4Threading::G4GetThreadId());
 		mThreadDecayStats = new DecayStats();
 	}
 	G4int lEventID = G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetEventID();

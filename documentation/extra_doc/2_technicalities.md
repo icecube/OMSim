@@ -37,6 +37,10 @@ Classes:
 - Core framework classes should start with `OMSim`
 - Example: `OMSimDetectorConstruction`
 
+Namespaces
+- Written in PascalCase
+- Example: `ToolsNamespace`
+
 Member Variables:
 - Prefix: `m_`
 - Written in camelCase after the prefix
@@ -53,13 +57,8 @@ Function Parameters:
 - Example: `p_initialPosition`
 
 Local Variables
-- Start with a lowercase letter
-- Written in camelCase
+- No prefix, written in camelCase
 - Example: `localParticle`
-
-Namespaces
-- Written in PascalCase
-- Example: `ToolsNamespace`
 
 By adhering to these conventions, we aim to:
 1. Clearly distinguish OMSim code from Geant4 code (so we can for example find+replace code without worries)

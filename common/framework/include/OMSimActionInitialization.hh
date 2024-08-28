@@ -1,6 +1,4 @@
-#ifndef OMSimActionInitialization_h
-#define OMSimActionInitialization_h 1
-
+#pragma once
 #include "G4VUserActionInitialization.hh"
 
 class OMSimActionInitialization : public G4VUserActionInitialization
@@ -12,5 +10,3 @@ public:
     virtual void BuildForMaster() const;
     virtual void Build() const;
 };
-
-#endif

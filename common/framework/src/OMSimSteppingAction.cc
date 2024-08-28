@@ -18,14 +18,14 @@
 * @note This should not happen if you have an absorption length defined for all materials (in case of photons)
 * @param aStep Pointer to the current tracking step.
 */
-void OMSimSteppingAction::UserSteppingAction(const G4Step* pStep)
-{    G4Track* aTrack = pStep->GetTrack();
+void OMSimSteppingAction::UserSteppingAction(const G4Step* p_step)
+{    G4Track* track = p_step->GetTrack();
     
     //kill particles that are stuck... e.g. doing a loop in the pressure vessel
-    if ( aTrack-> GetCurrentStepNumber() > 100000) {
-        log_info("Particle {} with energy {} eV stuck, will be killed!", aTrack->GetDefinition()->GetParticleName(), 1239.84193/(aTrack->GetKineticEnergy()/eV));
-        if ( aTrack->GetTrackStatus() != fStopAndKill ) {
-            aTrack->SetTrackStatus(fStopAndKill);
+    if ( track-> GetCurrentStepNumber() > 100000) {
+        log_info("Particle {} with energy {} eV stuck, will be killed!", track->GetDefinition()->GetParticleName(), 1239.84193/(track->GetKineticEnergy()/eV));
+        if ( track->GetTrackStatus() != fStopAndKill ) {
+            track->SetTrackStatus(fStopAndKill);
         }
     }    
 

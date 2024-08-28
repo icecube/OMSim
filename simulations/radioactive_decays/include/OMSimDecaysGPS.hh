@@ -30,7 +30,7 @@ public:
    * @brief Set the optical module to be used.
    * @param pOpticalModule Pointer to the optical module.
    */
-  void setOpticalModule(OMSimOpticalModule *pOpticalModule) { mOM = pOpticalModule; };
+  void setOpticalModule(OMSimOpticalModule *pOpticalModule) { m_opticalModule = pOpticalModule; };
   void setProductionRadius(G4double pProductionRadius);
   G4String getDecayTerminationNuclide();
 
@@ -57,7 +57,7 @@ private:
   void generalGPS();
   void configureIsotopeGPS(G4String Isotope, G4String location);
   std::map<G4String, G4int> calculateNumberOfDecays(G4MaterialPropertiesTable *pMPT, G4double pTimeWindow, G4double pMass);
-  OMSimOpticalModule *mOM;
+  OMSimOpticalModule *m_opticalModule;
   G4double mProductionRadius;
   G4String mNuclideStopName;
 

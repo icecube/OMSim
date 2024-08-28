@@ -16,7 +16,7 @@ public:
 
 private:
     static thread_local std::unique_ptr<G4GeneralParticleSource> mParticleSource;
-	static G4Mutex mMutex;
+	static G4Mutex m_mutex;
 };
 
 #endif

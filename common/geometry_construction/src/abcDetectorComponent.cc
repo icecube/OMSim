@@ -10,9 +10,9 @@
 
 
 
-abcDetectorComponent::abcDetectorComponent() : mData(&OMSimInputData::getInstance())
+abcDetectorComponent::abcDetectorComponent() : m_data(&OMSimInputData::getInstance())
 {
-    mCheckOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
+    m_checkOverlaps = OMSimCommandArgsTable::getInstance().get<bool>("check_overlaps");
 }
 
 
@@ -22,128 +22,128 @@ abcDetectorComponent::abcDetectorComponent() : mData(&OMSimInputData::getInstanc
  * It checks first if a component with the same name already exists. If it does, a warning message is generated and the name of the new component is appended with a unique suffix to avoid conflicts.
  * The new component is then added to the 'Components' vector.
  *
- * @param pSolid A pointer to a G4VSolid object representing the solid volume of the component.
- * @param pLogical A pointer to a G4LogicalVolume object representing the logical volume of the component.
- * @param pVector A G4ThreeVector object representing the position of the component with respect to the origin.
- * @param pRotation A G4RotationMatrix object representing the rotation of the component with respect to the origin.
- * @param pName A G4String object representing the unique name of the component.
+ * @param p_solid A pointer to a G4VSolid object representing the solid volume of the component.
+ * @param p_logical A pointer to a G4LogicalVolume object representing the logical volume of the component.
+ * @param p_vector A G4ThreeVector object representing the position of the component with respect to the origin.
+ * @param p_rotation A G4RotationMatrix object representing the rotation of the component with respect to the origin.
+ * @param p_name A G4String object representing the unique name of the component.
  */
-void abcDetectorComponent::appendComponent(G4VSolid *pSolid, G4LogicalVolume *pLogical, G4ThreeVector pVector, G4RotationMatrix pRotation, G4String pName)
+void abcDetectorComponent::appendComponent(G4VSolid *p_solid, G4LogicalVolume *p_logical, G4ThreeVector p_vector, G4RotationMatrix p_rotation, G4String p_name)
 {
-    if (checkIfExists(pName))
+    if (checkIfExists(p_name))
     {
-        log_critical("{} already exists in the Components map. I will expand with a suffix, but this is bad!", pName);
-        pName = pName + "_" + std::to_string(mComponents.size());
+        log_critical("{} already exists in the Components map. I will expand with a suffix, but this is bad!", p_name);
+        p_name = p_name + "_" + std::to_string(m_components.size());
     }
-    mComponents[pName] = {
-        pSolid,
-        pLogical,
-        pVector,
-        pRotation,
-        pName,
+    m_components[p_name] = {
+        p_solid,
+        p_logical,
+        p_vector,
+        p_rotation,
+        p_name,
     };
 }
 
 /**
  * @brief Check if a component with a certain name exists in the Components map.
- * @param pName A G4String object representing the unique name of the component to check.
+ * @param p_name A G4String object representing the unique name of the component to check.
  * @return G4bool True if the component exists in the map, false otherwise.
  */
-G4bool abcDetectorComponent::checkIfExists(G4String pName)
+G4bool abcDetectorComponent::checkIfExists(G4String p_name)
 {
-    if (mComponents.find(pName) == mComponents.end())
+    if (m_components.find(p_name) == m_components.end())
     {
-        log_trace("Component {} is not in component dictionary", pName);
+        log_trace("Component {} is not in component dictionary", p_name);
         return false;
     }
     return true;
 }
 /**
  * @brief Deletes a specified component from the Components map.
- * @param pName A G4String representing the name of the component to delete. The component must exist in the 'Components' map.
+ * @param p_name A G4String representing the name of the component to delete. The component must exist in the 'Components' map.
  */
-void abcDetectorComponent::deleteComponent(G4String pName)
+void abcDetectorComponent::deleteComponent(G4String p_name)
 {
-    log_trace("Deleting component {} from component dictionary", pName);
-    if (checkIfExists(pName))
+    log_trace("Deleting component {} from component dictionary", p_name);
+    if (checkIfExists(p_name))
     {
-        mComponents.erase(pName);
+        m_components.erase(p_name);
     }
     else
     {
-        log_critical("You are trying to delete {} from a Components dictionary, but it does not exist.", pName);
+        log_critical("You are trying to delete {} from a Components dictionary, but it does not exist.", p_name);
     }
 }
 /**
  * @brief Retrieves a specified component from the Components map.
- * @param pName A G4String name of the component to fetch. The component must exist in the 'Components' map.
+ * @param p_name A G4String name of the component to fetch. The component must exist in the 'Components' map.
  * @return abcDetectorComponent::Component structure containing the solid volume, logical volume, position, rotation, and name of component.
  */
-abcDetectorComponent::Component abcDetectorComponent::getComponent(G4String pName)
+abcDetectorComponent::Component abcDetectorComponent::getComponent(G4String p_name)
 {
-    log_trace("Getting component {} from component dictionary", pName);
-    if (checkIfExists(pName))
+    log_trace("Getting component {} from component dictionary", p_name);
+    if (checkIfExists(p_name))
     {
-        return mComponents.at(pName);
+        return m_components.at(p_name);
     }
     else
     {
-        log_error("Getting component {} failed!, not found in component dictionary!", pName);
-        return mComponents.at(pName); // It will always try to get the component, even if it does not exist, since we want to stop the program if it happens.
+        log_error("Getting component {} failed!, not found in component dictionary!", p_name);
+        return m_components.at(p_name); // It will always try to get the component, even if it does not exist, since we want to stop the program if it happens.
     }
 }
 
 /**
  * @brief Computes a new position for a sub-component, based on a given global position and rotation.
- * @param pPosition The initial position (a G4ThreeVector) of the sub-component
- * @param pRotation The initial orientation (a G4RotationMatrix) of the sub-component
+ * @param p_position The initial position (a G4ThreeVector) of the sub-component
+ * @param p_rotation The initial orientation (a G4RotationMatrix) of the sub-component
  * @param pObjectPosition The position (a G4ThreeVector) of the object with respect to the original position
  * @param pObjectRotation The orientation (a G4RotationMatrix) of the object with respect to the original orientation
  * @return G4Transform3D representing the new position and orientation of the component
  */
-G4Transform3D abcDetectorComponent::getNewPosition(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4ThreeVector pObjectPosition, G4RotationMatrix pObjectRotation)
+G4Transform3D abcDetectorComponent::getNewPosition(G4ThreeVector p_position, G4RotationMatrix p_rotation, G4ThreeVector pObjectPosition, G4RotationMatrix pObjectRotation)
 {
-    return G4Transform3D(pObjectRotation.transform(pRotation), pPosition + pObjectPosition.transform(pRotation));
+    return G4Transform3D(pObjectRotation.transform(p_rotation), p_position + pObjectPosition.transform(p_rotation));
 }
 
 /**
  * @brief Placement of the DetectorComponent. Each Component is placed in the same mother.
- * @param pPosition G4ThreeVector with position of the components (as in G4PVPlacement()).
- * @param pRotation G4RotationMatrix with rotation of the components (as in G4PVPlacement()).
- * @param pMother G4LogicalVolume where the components is going to be placed (as in G4PVPlacement()).
- * @param pNameExtension G4String name of the physical volume. You should not have two physicals with the same name.
+ * @param p_position G4ThreeVector with position of the components (as in G4PVPlacement()).
+ * @param p_rotation G4RotationMatrix with rotation of the components (as in G4PVPlacement()).
+ * @param p_mother G4LogicalVolume where the components is going to be placed (as in G4PVPlacement()).
+ * @param p_nameExtension G4String name of the physical volume. You should not have two physicals with the same name.
  */
-void abcDetectorComponent::placeIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume *&pMother, G4String pNameExtension)
+void abcDetectorComponent::placeIt(G4ThreeVector p_position, G4RotationMatrix p_rotation, G4LogicalVolume *&p_mother, G4String p_nameExtension)
 {
-    mPlacedTranslations.push_back(G4Transform3D(pRotation, pPosition));
-    mPlacedPositions.push_back(pPosition);
-    mPlacedOrientations.push_back(pRotation);
-    G4Transform3D lTrans;
-    for (auto const &[key, Component] : mComponents)
+    m_placedTranslations.push_back(G4Transform3D(p_rotation, p_position));
+    m_placedPositions.push_back(p_position);
+    m_placedOrientations.push_back(p_rotation);
+    G4Transform3D trans;
+    for (auto const &[key, Component] : m_components)
     {
-        G4String mssg = "Placing " + key + " in " + pMother->GetName() + ".";
+        G4String mssg = "Placing " + key + " in " + p_mother->GetName() + ".";
         log_trace(mssg);
-        lTrans = getNewPosition(pPosition, pRotation, Component.Position, Component.Rotation);
-        mLastPhysicals[key] = new G4PVPlacement(lTrans, Component.VLogical, Component.Name + pNameExtension, pMother, false, 0, mCheckOverlaps);
+        trans = getNewPosition(p_position, p_rotation, Component.Position, Component.Rotation);
+        m_lastPhysicals[key] = new G4PVPlacement(trans, Component.VLogical, Component.Name + p_nameExtension, p_mother, false, 0, m_checkOverlaps);
     }
 }
 /**
  * @brief Places the components in a specified mother volume using a provided transformation.
- * @param pTrans The G4Transform3D object representing the transformation to be applied to the components.
- * @param pMother G4LogicalVolume where the components is going to be placed (as in G4PVPlacement()).
- * @param pNameExtension G4String name of the physical volume. You should not have two physicals with the same name.
+ * @param p_trans The G4Transform3D object representing the transformation to be applied to the components.
+ * @param p_mother G4LogicalVolume where the components is going to be placed (as in G4PVPlacement()).
+ * @param p_nameExtension G4String name of the physical volume. You should not have two physicals with the same name.
  */
-void abcDetectorComponent::placeIt(G4Transform3D pTrans, G4LogicalVolume *&pMother, G4String pNameExtension)
+void abcDetectorComponent::placeIt(G4Transform3D p_trans, G4LogicalVolume *&p_mother, G4String p_nameExtension)
 {
-    mPlacedTranslations.push_back(pTrans);
-    mPlacedPositions.push_back(pTrans.getTranslation());
-    mPlacedOrientations.push_back(pTrans.getRotation());
-    G4Transform3D lTrans;
-    for (auto const &[key, Component] : mComponents)
+    m_placedTranslations.push_back(p_trans);
+    m_placedPositions.push_back(p_trans.getTranslation());
+    m_placedOrientations.push_back(p_trans.getRotation());
+    G4Transform3D trans;
+    for (auto const &[key, Component] : m_components)
     {
-        log_trace("Placing {} in {}.", key, pMother->GetName());
-        lTrans = getNewPosition(pTrans.getTranslation(), pTrans.getRotation(), Component.Position, Component.Rotation);
-        mLastPhysicals[key] = new G4PVPlacement(lTrans, Component.VLogical, Component.Name + pNameExtension, pMother, false, 0, mCheckOverlaps);
+        log_trace("Placing {} in {}.", key, p_mother->GetName());
+        trans = getNewPosition(p_trans.getTranslation(), p_trans.getRotation(), Component.Position, Component.Rotation);
+        m_lastPhysicals[key] = new G4PVPlacement(trans, Component.VLogical, Component.Name + p_nameExtension, p_mother, false, 0, m_checkOverlaps);
     }
 }
 /**
@@ -153,80 +153,99 @@ void abcDetectorComponent::placeIt(G4Transform3D pTrans, G4LogicalVolume *&pMoth
  * Each transformed component from the input instance is then appended to the current instance using the appendComponent() function.
  * A name extension is applied to the original component names for distinction after integration.
  *
- * @param pToIntegrate The abcDetectorComponent instance whose components are to be integrated.
- * @param pPosition The G4ThreeVector representing the position where the new abcDetectorComponent instance will be integrated.
- * @param pRotation The G4RotationMatrix representing the rotation of the new abcDetectorComponent instance.
- * @param pNameExtension A G4String used to extend the original name of the component.
+ * @param p_toIntegrate The abcDetectorComponent instance whose components are to be integrated.
+ * @param p_position The G4ThreeVector representing the position where the new abcDetectorComponent instance will be integrated.
+ * @param p_rotation The G4RotationMatrix representing the rotation of the new abcDetectorComponent instance.
+ * @param p_nameExtension A G4String used to extend the original name of the component.
  */
-void abcDetectorComponent::integrateDetectorComponent(abcDetectorComponent *pToIntegrate, G4ThreeVector pPosition, G4RotationMatrix pRotation, G4String pNameExtension)
+void abcDetectorComponent::integrateDetectorComponent(abcDetectorComponent *p_toIntegrate, G4ThreeVector p_position, G4RotationMatrix p_rotation, G4String p_nameExtension)
 {
-    G4Transform3D lTrans;
-    for (auto const &[key, Component] : pToIntegrate->mComponents)
+    G4Transform3D trans;
+    for (auto const &[key, Component] : p_toIntegrate->m_components)
     {
-        lTrans = getNewPosition(pPosition, pRotation, Component.Position, Component.Rotation);
-        appendComponent(Component.VSolid, Component.VLogical, lTrans.getTranslation(), lTrans.getRotation(), Component.Name + pNameExtension);
+        trans = getNewPosition(p_position, p_rotation, Component.Position, Component.Rotation);
+        appendComponent(Component.VSolid, Component.VLogical, trans.getTranslation(), trans.getRotation(), Component.Name + p_nameExtension);
     }
 }
 
 /**
  * @brief Subtracts components from a given solid volume using position and rotation.
- * @param pInputVolume The G4VSolid volume that components will be subtracted from.
- * @param pSubstractionPos The G4ThreeVector representing the position that will be used in the transformation of each component before it is subtracted from pInputVolume.
- * @param pSubstractionRot The G4RotationMatrix representing the rotation that will be used in the transformation of each component before it is subtracted from pInputVolume.
- * @param pNewVolumeName The G4String name for the new volume that results from the subtraction.
+ * @param p_inputVolume The G4VSolid volume that components will be subtracted from.
+ * @param p_substractionPos The G4ThreeVector representing the position that will be used in the transformation of each component before it is subtracted from p_inputVolume.
+ * @param p_substractionRot The G4RotationMatrix representing the rotation that will be used in the transformation of each component before it is subtracted from p_inputVolume.
+ * @param p_newVolumeName The G4String name for the new volume that results from the subtraction.
  *
- * @return Returns a G4SubtractionSolid which is the result of subtracting the abcDetectorComponent's components from pInputVolume.
+ * @return Returns a G4SubtractionSolid which is the result of subtracting the abcDetectorComponent's components from p_inputVolume.
  */
-G4SubtractionSolid *abcDetectorComponent::substractToVolume(G4VSolid *pInputVolume, G4ThreeVector pSubstractionPos, G4RotationMatrix pSubstractionRot, G4String pNewVolumeName)
+G4SubtractionSolid *abcDetectorComponent::substractToVolume(G4VSolid *p_inputVolume, G4ThreeVector p_substractionPos, G4RotationMatrix p_substractionRot, G4String p_newVolumeName)
 {
-    G4SubtractionSolid *lSubstractedVolume;
-    G4Transform3D lTrans;
-    G4int lCounter = 0;
-    for (auto const &[key, Component] : mComponents)
+    G4SubtractionSolid *substractedVolume;
+    G4Transform3D trans;
+    G4int counter = 0;
+    for (auto const &[key, Component] : m_components)
     {
-        lTrans = getNewPosition(pSubstractionPos, pSubstractionRot, Component.Position, Component.Rotation);
-        G4String mssg = "Substracting " + key + " from " + pInputVolume->GetName() + ".";
+        trans = getNewPosition(p_substractionPos, p_substractionRot, Component.Position, Component.Rotation);
+        G4String mssg = "Substracting " + key + " from " + p_inputVolume->GetName() + ".";
         log_trace(mssg);
-        if (lCounter == 0)
+        if (counter == 0)
         {
-            lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", pInputVolume, Component.VSolid, lTrans);
+            substractedVolume = new G4SubtractionSolid("SubstractedVolume", p_inputVolume, Component.VSolid, trans);
         }
         else
         {
-            lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", lSubstractedVolume, Component.VSolid, lTrans);
+            substractedVolume = new G4SubtractionSolid("SubstractedVolume", substractedVolume, Component.VSolid, trans);
         }
-        lCounter++;
+        counter++;
     }
-    return lSubstractedVolume;
+    return substractedVolume;
 }
 
 /**
  * @brief Subtracts components from a given solid volume.
  * @details This function enables you to subtract the shape defined by components of the abcDetectorComponent instance from a specified input volume. This can be useful for modeling complex geometries where a solid needs to have some parts "cut out" from it. The method goes through each component of the abcDetectorComponent, computes the transformation needed, and subtracts it from the input volume. The resulting subtracted solid is returned.
  *
- * @param pInputVolume The G4VSolid volume that components will be subtracted from.
- * @param pTrans The G4Transform3D representing the transformation that will be applied to each component before it is subtracted from pInputVolume.
- * @param pNewVolumeName The G4String name for the new volume that results from the subtraction.
+ * @param p_inputVolume The G4VSolid volume that components will be subtracted from.
+ * @param p_trans The G4Transform3D representing the transformation that will be applied to each component before it is subtracted from p_inputVolume.
+ * @param p_newVolumeName The G4String name for the new volume that results from the subtraction.
  *
- * @return Returns a G4SubtractionSolid which is the result of subtracting the abcDetectorComponent's components from pInputVolume.
+ * @return Returns a G4SubtractionSolid which is the result of subtracting the abcDetectorComponent's components from p_inputVolume.
  */
-G4SubtractionSolid *abcDetectorComponent::substractToVolume(G4VSolid *pInputVolume, G4Transform3D pTrans, G4String pNewVolumeName)
+G4SubtractionSolid *abcDetectorComponent::substractToVolume(G4VSolid *p_inputVolume, G4Transform3D p_trans, G4String p_newVolumeName)
 {
-    G4SubtractionSolid *lSubstractedVolume;
-    G4int lCounter = 0;
-    for (auto const &[key, Component] : mComponents)
+    G4SubtractionSolid *substractedVolume;
+    G4int counter = 0;
+    for (auto const &[key, Component] : m_components)
     {
-        G4String mssg = "Substracting " + key + " from " + pInputVolume->GetName() + ".";
+        G4String mssg = "Substracting " + key + " from " + p_inputVolume->GetName() + ".";
         log_trace(mssg);
-        if (lCounter == 0)
+        if (counter == 0)
         {
-            lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", pInputVolume, Component.VSolid, pTrans);
+            substractedVolume = new G4SubtractionSolid("SubstractedVolume", p_inputVolume, Component.VSolid, p_trans);
         }
         else
         {
-            lSubstractedVolume = new G4SubtractionSolid("SubstractedVolume", lSubstractedVolume, Component.VSolid, pTrans);
+            substractedVolume = new G4SubtractionSolid("SubstractedVolume", substractedVolume, Component.VSolid, p_trans);
         }
-        lCounter++;
+        counter++;
     }
-    return lSubstractedVolume;
+    return substractedVolume;
 }
+
+
+
+const G4VisAttributes abcDetectorComponent::m_glassVis = G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.25));
+const G4VisAttributes abcDetectorComponent::m_gelVis = G4VisAttributes(G4Colour(0.45, 0.5, 0.35, 0.2));
+const G4VisAttributes abcDetectorComponent::m_steelVis = G4VisAttributes(G4Colour(0.6, 0.6, 0.7, 1.0));
+const G4VisAttributes abcDetectorComponent::m_aluVis = G4VisAttributes(G4Colour(0.8, 0.8, 0.9, 1.0));
+const G4VisAttributes abcDetectorComponent::m_whiteVis = G4VisAttributes(G4Colour(1, 1, 1, 1.0));
+const G4VisAttributes abcDetectorComponent::m_absorberSemiTransparentVis = G4VisAttributes(G4Colour(0.2, 0.2, 0.2, 0.5));
+const G4VisAttributes abcDetectorComponent::m_absorberVis = G4VisAttributes(G4Colour(0.2, 0.2, 0.2, 1.0));
+const G4VisAttributes abcDetectorComponent::m_boardVis = G4VisAttributes(G4Colour(0, 1, 0, 1));
+const G4VisAttributes abcDetectorComponent::m_blueVis = G4VisAttributes(G4Colour(0, 0, 1, 1));
+const G4VisAttributes abcDetectorComponent::m_airVis = G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.2));
+const G4VisAttributes abcDetectorComponent::m_airVis2 = G4VisAttributes(G4Colour(0.0, 0, 1., 0.5));
+const G4VisAttributes abcDetectorComponent::m_redVis = G4VisAttributes(G4Colour(1.0, 0.0, 0.0, 1));
+const G4VisAttributes abcDetectorComponent::m_blackVis = G4VisAttributes(G4Colour(0.0, 0.0, 0.0, 1.0));
+const G4VisAttributes abcDetectorComponent::m_LEDvis = G4VisAttributes(G4Colour(0.2, 0.6, 0.8, 0.5));
+const G4VisAttributes abcDetectorComponent::m_photocathodeVis = G4VisAttributes(G4Colour(1.0, 1.0, 0.0, 0.1));
+const G4VisAttributes abcDetectorComponent::m_invisibleVis = G4VisAttributes::GetInvisible();

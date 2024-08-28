@@ -14,17 +14,17 @@
  * Construct the world volume
  */
 void OMSimSNdetector::constructWorld(){
-    mWorldSolid = new G4Tubs("World",
+    m_worldSolid = new G4Tubs("World",
                  0.*cm, 
                  OMSimCommandArgsTable::getInstance().get<G4double>("wradius") * m,
                  OMSimCommandArgsTable::getInstance().get<G4double>("wheight") * m,
                  0.*deg, 
                  360.*deg); 
   
-    mWorldLogical = new G4LogicalVolume(mWorldSolid, mData->getMaterial("argWorld"), "World_log", 0, 0, 0);
-    mWorldPhysical = new G4PVPlacement (0, G4ThreeVector(0.,0.,0.), mWorldLogical, "World_phys", 0, false, 0);
+    m_worldLogical = new G4LogicalVolume(m_worldSolid, m_data->getMaterial("argWorld"), "World_log", 0, 0, 0);
+    mWorldPhysical = new G4PVPlacement (0, G4ThreeVector(0.,0.,0.), m_worldLogical, "World_phys", 0, false, 0);
     G4VisAttributes* World_vis= new G4VisAttributes(G4Colour(0.45,0.5,0.35,0.2));
-    mWorldLogical->SetVisAttributes(World_vis);
+    m_worldLogical->SetVisAttributes(World_vis);
 }
 
 void OMSimSNdetector::constructDetector() {
@@ -49,7 +49,7 @@ void OMSimSNdetector::constructDetector() {
         OMSimPMTConstruction *lPMTManager = new OMSimPMTConstruction();
         lPMTManager->selectPMT("argPMT");
         lPMTManager->construction();
-        lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "_0");
+        lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), m_worldLogical, "_0");
         lHitManager.setNumberOfPMTs(1, 0);
         lPMTManager->configureSensitiveVolume(this, "/PMT/0");
         break;
@@ -87,7 +87,7 @@ void OMSimSNdetector::constructDetector() {
 
     if (lOpticalModule)
     {
-        lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), mWorldLogical, "");
+        lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), m_worldLogical, "");
         lOpticalModule->configureSensitiveVolume(this);
     }
 }

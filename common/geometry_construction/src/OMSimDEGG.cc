@@ -17,13 +17,13 @@
 DEGG::DEGG(G4bool pPlaceHarness): OMSimOpticalModule(new OMSimPMTConstruction())
 {
    log_info("Constructing DEGG");
-   mPMTManager->selectPMT("pmt_Hamamatsu_R5912_20_100");
-   mPMTManager->construction();
+   m_managerPMT->selectPMT("pmt_Hamamatsu_R5912_20_100");
+   m_managerPMT->construction();
    construction(); // always before harness, otherwise harness will be deleted :(
    /*
       if (pPlaceHarness) {
-         mHarness = new DEggHarness(this, mData);
-         integrateDetectorComponent(mHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
+         m_harness = new DEggHarness(this, m_data);
+         integrateDetectorComponent(m_harness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
       }*/
 }
 
@@ -32,84 +32,84 @@ DEGG::DEGG(G4bool pPlaceHarness): OMSimOpticalModule(new OMSimPMTConstruction())
  */
 void DEGG::construction()
 {
-   // Variables used for creating the outer glass
-   G4double lOutSegments1 = 30;
-   G4double lOutSphereRadiusMax = 156.0 * mm;
-   G4double lOutSphereDtheta = 45.7191 * deg;
-   G4double lOutTransformZ = 110.0 * mm;
-   G4double lOutTorusRadius1 = 85.0 * mm;
-   G4double lOutCenterOfTorusRadius1 = 50.8307 * mm;
-   G4int lOutSegments2 = 40;
-   G4double lOutTorusRadius2 = 1000.0 * mm;
-   G4double lOutCenterOfTorusRadius2 = -850.0 * mm;
-   G4double lOutCenterOfTorusZ2 = 0.1676 * mm;
-   G4double lOutTorusZmin2 = 24.9334 * mm;
-   G4double lOutTorusZmax2 = 175.4714 * mm;
-   G4double lOutTorusZ0 = 151.0 * mm;
-   G4double lOutTorusTransformZ = 160.5706 * mm;
+// Variables used for creating the outer glass
+const G4double outSegment1 = 30;
+const G4double outSphereRadiusMax = 156.0 * mm;
+const G4double outSphereDtheta = 45.7191 * deg;
+const G4double outTransformZ = 110.0 * mm;
+const G4double outTorusRadius1 = 85.0 * mm;
+const G4double outCenterOfTorusRadius1 = 50.8307 * mm;
+const G4int outSegments2 = 40;
+const G4double outTorusRadius2 = 1000.0 * mm;
+const G4double outCenterOfTorusRadius2 = -850.0 * mm;
+const G4double outCenterOfTorusZ2 = 0.1676 * mm;
+const G4double outTorusZmin2 = 24.9334 * mm;
+const G4double outTorusZmax2 = 175.4714 * mm;
+const G4double outTorusZ0 = 151.0 * mm;
+const G4double outTorusTransformZ = 160.5706 * mm;
 
-   // Variables used for creating the internal volume
-   G4int lInnSegments1 = 300;
-   G4double lInnSphereRadiusMax = 136.0 * mm;
-   G4double lInnSphereDtheta = 46.7281 * deg;
-   G4double lInnTransformZ = 121.0 * mm;
-   G4double lInnTorusRadius1 = 65.0 * mm;
-   G4double lInnCenterOfTorusRadius1 = 51.3850 * mm;
-   G4int lInnSegments2 = 200;
-   G4double lInnTorusRadius2 = 1150.0 * mm;
-   G4double lInnCenterOfTorusRadius2 = -1019.9992 * mm;
-   G4double lInnCenterOfTorusZ2 = -1.3972 * mm;
-   G4double lInnTorusZmin2 = 6.00909 * mm;
-   G4double lInnTorusZmax2 = 180.2726 * mm;
-   G4double lInnTorusZ0 = 130.0 * mm;
-   G4double lInnTorusTransformZ = 170.7198 * mm;
+// Variables used for creating the internal volume
+const G4int innSegments1 = 300;
+const G4double innSphereRadiusMax = 136.0 * mm;
+const G4double innSphereDtheta = 46.7281 * deg;
+const G4double innTransformZ = 121.0 * mm;
+const G4double innTorusRadius1 = 65.0 * mm;
+const G4double innCenterOfTorusRadius1 = 51.3850 * mm;
+const G4int innSegments2 = 200;
+const G4double innTorusRadius2 = 1150.0 * mm;
+const G4double innCenterOfTorusRadius2 = -1019.9992 * mm;
+const G4double innCenterOfTorusZ2 = -1.3972 * mm;
+const G4double innTorusZmin2 = 6.00909 * mm;
+const G4double innTorusZmax2 = 180.2726 * mm;
+const G4double innTorusZ0 = 130.0 * mm;
+const G4double innTorusTransformZ = 170.7198 * mm;
 
-   // Variable used for creating the subtraction box
-   G4double lGelHeight = 180.5 * mm;
+// Variable used for creating the subtraction box
+const G4double gelHeight = 180.5 * mm;
 
    // Create pressure vessel and inner volume
-   G4VSolid *lOuterGlass = createEggSolid(lOutSegments1,
-                                          lOutSphereRadiusMax,
-                                          lOutSphereDtheta,
-                                          lOutTransformZ,
-                                          lOutTorusRadius1,
-                                          lOutCenterOfTorusRadius1,
-                                          lOutSegments2,
-                                          lOutTorusRadius2,
-                                          lOutCenterOfTorusRadius2,
-                                          lOutCenterOfTorusZ2,
-                                          lOutTorusZmin2,
-                                          lOutTorusZmax2,
-                                          lOutTorusZ0,
-                                          lOutTorusTransformZ);
+G4VSolid *outerGlass = createEggSolid(outSegment1,
+                                      outSphereRadiusMax,
+                                      outSphereDtheta,
+                                      outTransformZ,
+                                      outTorusRadius1,
+                                      outCenterOfTorusRadius1,
+                                      outSegments2,
+                                      outTorusRadius2,
+                                      outCenterOfTorusRadius2,
+                                      outCenterOfTorusZ2,
+                                      outTorusZmin2,
+                                      outTorusZmax2,
+                                      outTorusZ0,
+                                      outTorusTransformZ);
 
-   G4VSolid *lInternalVolume = createEggSolid(lInnSegments1,
-                                              lInnSphereRadiusMax,
-                                              lInnSphereDtheta,
-                                              lInnTransformZ,
-                                              lInnTorusRadius1,
-                                              lInnCenterOfTorusRadius1,
-                                              lInnSegments2,
-                                              lInnTorusRadius2,
-                                              lInnCenterOfTorusRadius2,
-                                              lInnCenterOfTorusZ2,
-                                              lInnTorusZmin2,
-                                              lInnTorusZmax2,
-                                              lInnTorusZ0,
-                                              lInnTorusTransformZ);
+G4VSolid *internalVolume = createEggSolid(innSegments1,
+                                          innSphereRadiusMax,
+                                          innSphereDtheta,
+                                          innTransformZ,
+                                          innTorusRadius1,
+                                          innCenterOfTorusRadius1,
+                                          innSegments2,
+                                          innTorusRadius2,
+                                          innCenterOfTorusRadius2,
+                                          innCenterOfTorusZ2,
+                                          innTorusZmin2,
+                                          innTorusZmax2,
+                                          innTorusZ0,
+                                          innTorusTransformZ);
 
    // Make box to substract empty space
 
-   G4Box *lSubstractionBox = new G4Box("SubstractionBox", 20 * cm, 20 * cm, lGelHeight);
-   G4LogicalVolume *lLogicalDummy = new G4LogicalVolume(lSubstractionBox, mData->getMaterial("Ri_Air"), "Temp");
+   G4Box *lSubstractionBox = new G4Box("SubstractionBox", 20 * cm, 20 * cm, gelHeight);
+   G4LogicalVolume *lLogicalDummy = new G4LogicalVolume(lSubstractionBox, m_data->getMaterial("Ri_Air"), "Temp");
 
    // Append all internal components
    appendComponent(lSubstractionBox, lLogicalDummy, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SubstractionBox");
    appendPMTs();
 
    // Substract all internal components to internal volume to obtain gel and append it
-   G4VSolid *lGelLayers = substractToVolume(lInternalVolume, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "DeggGelLayersSolid");
-   G4LogicalVolume *lGelLogical = new G4LogicalVolume(lGelLayers, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), "DeggGelLayersLogical");
+   G4VSolid *lGelLayers = substractToVolume(internalVolume, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "DeggGelLayersSolid");
+   G4LogicalVolume *lGelLogical = new G4LogicalVolume(lGelLayers, m_data->getMaterial("RiAbs_Gel_Shin-Etsu"), "DeggGelLayersLogical");
    appendComponent(lGelLayers, lGelLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "DeggGelLayers");
 
    // Delete dummy box from internal components
@@ -117,189 +117,189 @@ void DEGG::construction()
    // appendInternalComponentsFromCAD();
 
    // Logicals
-   G4LogicalVolume *lDEggGlassLogical = new G4LogicalVolume(lOuterGlass, mData->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "Glass_phys");
-   G4LogicalVolume *lInnerVolumeLogical = new G4LogicalVolume(lInternalVolume, mData->getMaterial("Ri_Air"), "InnerVolume");
+   G4LogicalVolume *lDEggGlassLogical = new G4LogicalVolume(outerGlass, m_data->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "Glass_phys");
+   G4LogicalVolume *lInnerVolumeLogical = new G4LogicalVolume(internalVolume, m_data->getMaterial("Ri_Air"), "InnerVolume");
 
    // Placements
    // place all internal components in internal volume
    placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), lInnerVolumeLogical, "");
 
    // place internal volume in glass
-   new G4PVPlacement(new G4RotationMatrix(), G4ThreeVector(0, 0, 0), lInnerVolumeLogical, "VacuumGlass", lDEggGlassLogical, false, 0, mCheckOverlaps);
+   new G4PVPlacement(new G4RotationMatrix(), G4ThreeVector(0, 0, 0), lInnerVolumeLogical, "VacuumGlass", lDEggGlassLogical, false, 0, m_checkOverlaps);
 
    // Delete all internal components from dictionary, as they were placed in a volume inside the largest volume.
-   mComponents.clear();
+   m_components.clear();
 
    // Add glass volume to component map
    // appendComponent(lInternalVolume, lInnerVolumeLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Internal");
-   appendComponent(lOuterGlass, lDEggGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
+   appendComponent(outerGlass, lDEggGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
    // appendPressureVesselFromCAD();
 
    // ---------------- visualisation attributes --------------------------------------------------------------------------------
-   lDEggGlassLogical->SetVisAttributes(mGlassVis);
+   lDEggGlassLogical->SetVisAttributes(m_glassVis);
    lInnerVolumeLogical->SetVisAttributes(G4VisAttributes::GetInvisible());
 }
 
 
 void DEGG::appendPMTs()
 {
-   G4double lPMTdistance = 176.7 * mm;
-   G4RotationMatrix lRot = G4RotationMatrix();
-   lRot.rotateY(180 * deg);
+   G4double distancePMT = 176.7 * mm;
+   G4RotationMatrix rot = G4RotationMatrix();
+   rot.rotateY(180 * deg);
 
-   appendComponent(mPMTManager->getPMTSolid(),
-                   mPMTManager->getLogicalVolume(),
-                   G4ThreeVector(0, 0, lPMTdistance),
+   appendComponent(m_managerPMT->getPMTSolid(),
+                   m_managerPMT->getLogicalVolume(),
+                   G4ThreeVector(0, 0, distancePMT),
                    G4RotationMatrix(),
                    "PMT_1");
 
-   appendComponent(mPMTManager->getPMTSolid(),
-                   mPMTManager->getLogicalVolume(),
-                   G4ThreeVector(0, 0, -lPMTdistance),
-                   lRot,
+   appendComponent(m_managerPMT->getPMTSolid(),
+                   m_managerPMT->getLogicalVolume(),
+                   G4ThreeVector(0, 0, -distancePMT),
+                   rot,
                    "PMT_2");
 }
 
 
 void DEGG::appendInternalComponentsFromCAD()
 {
-   G4String lFilePath = "../common/data/CADmeshes/DEGG/Internal_Everything_NoMainboard.obj";
-   G4double lCADScale = 1.0;
-   G4double lInternalCAD_x = -427.6845 * mm;
-   G4double lInternalCAD_y = 318.6396 * mm;
-   G4double lInternalCAD_z = 154 * mm;
+   G4String filePath = "../common/data/CADmeshes/DEGG/Internal_Everything_NoMainboard.obj";
+   G4double scaleCAD = 1.0;
+   G4double xInternalCAD = -427.6845 * mm;
+   G4double yInternalCAD = 318.6396 * mm;
+   G4double zInternalCAD = 154 * mm;
    // load mesh
-   auto lMesh = CADMesh::TessellatedMesh::FromOBJ(lFilePath);
+   auto mesh = CADMesh::TessellatedMesh::FromOBJ(filePath);
 
-   G4ThreeVector lCADoffset = G4ThreeVector(lInternalCAD_x, lInternalCAD_y, lInternalCAD_z); // measured from CAD file since origin =!= Module origin
-   lMesh->SetScale(lCADScale);
-   lMesh->SetOffset(lCADoffset * lCADScale);
+   G4ThreeVector offsetCAD = G4ThreeVector(xInternalCAD, yInternalCAD, zInternalCAD); // measured from CAD file since origin =!= Module origin
+   mesh->SetScale(scaleCAD);
+   mesh->SetOffset(offsetCAD * scaleCAD);
 
    // Place all of the meshes it can find in the file as solids individually.
-   for (auto iSolid : lMesh->GetSolids())
+   for (auto iSolid : mesh->GetSolids())
    {
-      G4LogicalVolume *lSupportStructureLogical = new G4LogicalVolume(iSolid, mData->getMaterial("NoOptic_Absorber"), "SupportStructureCAD_Logical");
-      lSupportStructureLogical->SetVisAttributes(mAluVis);
-      appendComponent(iSolid, lSupportStructureLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SupportStructureCAD");
+      G4LogicalVolume *supportStructureLogical = new G4LogicalVolume(iSolid, m_data->getMaterial("NoOptic_Absorber"), "SupportStructureCAD_Logical");
+      supportStructureLogical->SetVisAttributes(m_aluVis);
+      appendComponent(iSolid, supportStructureLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SupportStructureCAD");
    }
 }
 
 
 void DEGG::appendPressureVesselFromCAD()
 {
-   G4String lFilePath = "../common/data/CADmeshes/DEGG/pressure_vessel_noPenetratorHole.obj";
-   G4double lCADScale = 1.0;
+   G4String filePath = "../common/data/CADmeshes/DEGG/pressure_vessel_noPenetratorHole.obj";
+   G4double scaleCAD = 1.0;
 
-   auto lMesh = CADMesh::TessellatedMesh::FromOBJ(lFilePath);
+   auto mesh = CADMesh::TessellatedMesh::FromOBJ(filePath);
 
-   G4ThreeVector lCADoffset = G4ThreeVector(0, 0, 0); // measured from CAD file since origin =!= Module origin
-   lMesh->SetScale(lCADScale);
-   lMesh->SetOffset(lCADoffset * lCADScale);
+   G4ThreeVector offsetCAD = G4ThreeVector(0, 0, 0); // measured from CAD file since origin =!= Module origin
+   mesh->SetScale(scaleCAD);
+   mesh->SetOffset(offsetCAD * scaleCAD);
 
-   G4RotationMatrix *lRot = new G4RotationMatrix();
-   lRot->rotateX(180 * deg);
+   G4RotationMatrix *rot = new G4RotationMatrix();
+   rot->rotateX(180 * deg);
 
    // Place all of the meshes it can find in the file as solids individually.
-   G4UnionSolid *lPressureVessel = new G4UnionSolid("CADPV", lMesh->GetSolids().at(0), lMesh->GetSolids().at(0), lRot, G4ThreeVector(0, -2 * 111 * mm, 0));
+   G4UnionSolid *pressureVessel = new G4UnionSolid("CADPV", mesh->GetSolids().at(0), mesh->GetSolids().at(0), rot, G4ThreeVector(0, -2 * 111 * mm, 0));
 
-   G4LogicalVolume *lSupportStructureLogical = new G4LogicalVolume(lPressureVessel, mData->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "PressureVessel");
-   lSupportStructureLogical->SetVisAttributes(mAluVis);
+   G4LogicalVolume *supportStructureLogical = new G4LogicalVolume(pressureVessel, m_data->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "PressureVessel");
+   supportStructureLogical->SetVisAttributes(m_aluVis);
 
-   G4RotationMatrix lRotNP = G4RotationMatrix();
-   lRotNP.rotateX(90 * deg);
-   lSupportStructureLogical->SetVisAttributes(mGlassVis);
+   G4RotationMatrix rotNP = G4RotationMatrix();
+   rotNP.rotateX(90 * deg);
+   supportStructureLogical->SetVisAttributes(m_glassVis);
 
-   appendComponent(lPressureVessel, lSupportStructureLogical, G4ThreeVector(0, 0, 111 * mm), lRotNP, "PressureVessel_" + std::to_string(mIndex));
+   appendComponent(pressureVessel, supportStructureLogical, G4ThreeVector(0, 0, 111 * mm), rotNP, "PressureVessel_" + std::to_string(m_index));
 }
 
 /**
  * @brief Creates the solid shape for the DEGG pressure vessel.
- * @param pSegments_1 Number of segments for the G4Sphere representing the outer glass.
- * @param pSphereRmax Outer radius of the G4Sphere representing the outer glass.
- * @param pSpheredTheta Delta theta angle of the G4Sphere segment.
- * @param pSphereTransformZ Shift of the G4Sphere in the z-direction.
- * @param pTorus1R Radius of the small spindle torus sphere.
- * @param pCenterOfTorus1R Distance from the center of torus 1 to the z-axis.
- * @param pSegments_2 Number of segments for the large spindle torus sphere.
- * @param pTorus2R Radius of the large spindle torus sphere.
- * @param pCenterOfTorus2R Distance from the center of torus 2 to the z-axis (signed).
- * @param pCenterOfTorus2_z Distance from the center of torus 2 to the z-axis (signed).
- * @param pTorus2_Zmin Minimum z shift from z=0 in the positive z direction.
- * @param pTorus2_Zmax Maximum z shift from z=0 in the positive z direction.
- * @param pTorus2_Z0 G4double.
- * @param pTorus1TransformZ G4double.
+ * @param p_segments1 Number of segments for the G4Sphere representing the outer glass.
+ * @param p_sphereRmax Outer radius of the G4Sphere representing the outer glass.
+ * @param p_spheredTheta Delta theta angle of the G4Sphere segment.
+ * @param p_sphereTransformZ Shift of the G4Sphere in the z-direction.
+ * @param p_torus1R Radius of the small spindle torus sphere.
+ * @param p_centreOfTorus1R Distance from the center of torus 1 to the z-axis.
+ * @param p_segments2 Number of segments for the large spindle torus sphere.
+ * @param p_torus2R Radius of the large spindle torus sphere.
+ * @param p_centreOfTorus2R Distance from the center of torus 2 to the z-axis (signed).
+ * @param p_centreOfTorus2z Distance from the center of torus 2 to the z-axis (signed).
+ * @param p_torus2Zmin Minimum z shift from z=0 in the positive z direction.
+ * @param p_torus2Zmax Maximum z shift from z=0 in the positive z direction.
+ * @param p_torus2Z0 G4double.
+ * @param p_torus1TransformZ G4double.
  * @return The outer or inner shape of the glass vessel as a G4VSolid.
  */
-G4VSolid *DEGG::createEggSolid(G4int pSegments_1,
-                               G4double pSphereRmax,
-                               G4double pSpheredTheta,
-                               G4double pSphereTransformZ,
-                               G4double pTorus1R,
-                               G4double pCenterOfTorus1R,
-                               G4int pSegments_2,
-                               G4double pTorus2R,
-                               G4double pCenterOfTorus2R,
-                               G4double pCenterOfTorus2_z,
-                               G4double pTorus2_Zmin,
-                               G4double pTorus2_Zmax,
-                               G4double pTorus2_Z0,
-                               G4double pTorus1TransformZ)
+G4VSolid *DEGG::createEggSolid(G4int p_segments1,
+                               G4double p_sphereRmax,
+                               G4double p_spheredTheta,
+                               G4double p_sphereTransformZ,
+                               G4double p_torus1R,
+                               G4double p_centreOfTorus1R,
+                               G4int p_segments2,
+                               G4double p_torus2R,
+                               G4double p_centreOfTorus2R,
+                               G4double p_centreOfTorus2z,
+                               G4double p_torus2Zmin,
+                               G4double p_torus2Zmax,
+                               G4double p_torus2Z0,
+                               G4double p_torus1TransformZ)
 {
 
    // Create Egg sphere
-   G4Sphere *lSphereSolid = new G4Sphere("sphere", 0, pSphereRmax, 0. * degree, 2 * M_PI, 0. * degree, pSpheredTheta);
-   G4ThreeVector lCenterOfSphereUp(0, 0, pSphereTransformZ);
+   G4Sphere *sphereSolid = new G4Sphere("sphere", 0, p_sphereRmax, 0. * degree, 2 * M_PI, 0. * degree, p_spheredTheta);
+   G4ThreeVector centerOfSphereUp(0, 0, p_sphereTransformZ);
 
    // Torus Part 1
    // buidling small polycones, define full size of torus
 
-   G4double lRInner[pSegments_1 + 1], lROuter[pSegments_1 + 1], lZPlane[pSegments_1 + 1];
-   G4double lStep = pTorus1R / pSegments_1;
-   std::vector<G4double> lTempZ, lTempOuter;
+   G4double rInner[p_segments1 + 1], rOuter[p_segments1 + 1], zPlane[p_segments1 + 1];
+   G4double step = p_torus1R / p_segments1;
+   std::vector<G4double> temporalZ, temporalOuter;
 
-   G4double lR;
-   for (G4int j = 0; j <= pSegments_1; ++j)
+   G4double r;
+   for (G4int j = 0; j <= p_segments1; ++j)
    {
-      lR = sqrt((2 * pTorus1R - j * lStep) * j * lStep);
-      lZPlane[j] = pTorus1R - j * lStep;
-      lRInner[j] = 0.;
-      lROuter[j] = pCenterOfTorus1R + lR;
+      r = sqrt((2 * p_torus1R - j * step) * j * step);
+      zPlane[j] = p_torus1R - j * step;
+      rInner[j] = 0.;
+      rOuter[j] = p_centreOfTorus1R + r;
    }
 
-   G4Polycone *lTorusSolid1 = new G4Polycone("torus1", 0, 2 * M_PI, pSegments_1 + 1, lZPlane, lRInner, lROuter);
+   G4Polycone *torusSolid1 = new G4Polycone("torus1", 0, 2 * M_PI, p_segments1 + 1, zPlane, rInner, rOuter);
 
    // Torus Part 2
    // Building large sphere revolution
-   G4double lRInner2[pSegments_2 + 1], lROuter2[pSegments_2 + 1], lZPlane2[pSegments_2 + 1];
+   G4double rInner2[p_segments2 + 1], rOuter2[p_segments2 + 1], zPlane2[p_segments2 + 1];
 
-   G4double lZMinRelative = pTorus2_Zmin - pCenterOfTorus2_z; // minimum z shift from center of torus in positive z direction
-   G4double lZMaxRelative = pTorus2_Zmax - pCenterOfTorus2_z; // maximum z shift from center of torus in positive z direction
-   lStep = (lZMaxRelative - lZMinRelative) / (pSegments_2 - 1);
+   G4double zMinRelative = p_torus2Zmin - p_centreOfTorus2z; // minimum z shift from center of torus in positive z direction
+   G4double zMaxRelative = p_torus2Zmax - p_centreOfTorus2z; // maximum z shift from center of torus in positive z direction
+   step = (zMaxRelative - zMinRelative) / (p_segments2 - 1);
 
-   G4double lRelativeZMax2 = pTorus2_Zmax - pCenterOfTorus2_z;
-   for (G4int j = 0; j <= pSegments_2 - 1; ++j)
+   G4double relativeZMax2 = p_torus2Zmax - p_centreOfTorus2z;
+   for (G4int j = 0; j <= p_segments2 - 1; ++j)
    {
-      lRInner2[j] = 0;
-      lR = sqrt((pTorus2R + lRelativeZMax2 - j * lStep) * (pTorus2R - lRelativeZMax2 + j * lStep));
-      lZPlane2[j] = pTorus2_Zmax - j * lStep;
-      lROuter2[j] = pCenterOfTorus2R + lR;
+      rInner2[j] = 0;
+      r = sqrt((p_torus2R + relativeZMax2 - j * step) * (p_torus2R - relativeZMax2 + j * step));
+      zPlane2[j] = p_torus2Zmax - j * step;
+      rOuter2[j] = p_centreOfTorus2R + r;
    }
-   lRInner2[pSegments_2] = 0;
-   lZPlane2[pSegments_2] = 0.;
-   lROuter2[pSegments_2] = pTorus2_Z0;
+   rInner2[p_segments2] = 0;
+   zPlane2[p_segments2] = 0.;
+   rOuter2[p_segments2] = p_torus2Z0;
 
-   G4Polycone *lTorusSolid2 = new G4Polycone("polycone2", 0, 2 * M_PI, pSegments_2 + 1, lZPlane2, lRInner2, lROuter2);
+   G4Polycone *torusSolid2 = new G4Polycone("polycone2", 0, 2 * M_PI, p_segments2 + 1, zPlane2, rInner2, rOuter2);
 
    // Create Vessel
 
-   G4ThreeVector lCenterOfPolycone(0, 0, pTorus1TransformZ);
+   G4ThreeVector centreOfPolycone(0, 0, p_torus1TransformZ);
 
-   G4UnionSolid *lSolidTemp = new G4UnionSolid("solid1", lTorusSolid2, lTorusSolid1, 0, lCenterOfPolycone);
-   G4UnionSolid *lSolid = new G4UnionSolid("solid", lSolidTemp, lSphereSolid, 0, lCenterOfSphereUp);
+   G4UnionSolid *temporalSolid = new G4UnionSolid("solid1", torusSolid2, torusSolid1, 0, centreOfPolycone);
+   G4UnionSolid *solid = new G4UnionSolid("solid", temporalSolid, sphereSolid, 0, centerOfSphereUp);
 
    G4RotationMatrix *rot = new G4RotationMatrix();
    rot->rotateY(180.0 * deg);
-   G4UnionSolid *lDEggShapeSolid = new G4UnionSolid("degg", lSolid, lSolid, rot, G4ThreeVector(0, 0, 0));
+   G4UnionSolid *shapeSolidDegg = new G4UnionSolid("degg", solid, solid, rot, G4ThreeVector(0, 0, 0));
 
-   return lDEggShapeSolid;
+   return shapeSolidDegg;
 }

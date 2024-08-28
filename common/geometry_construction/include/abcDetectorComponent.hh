@@ -4,8 +4,7 @@
  * @brief Provides helper base class abcDetectorComponent for constructing and managing detector components in OMSim.
  * @ingroup common
  */
-#ifndef abcDetectorComponent_h
-#define abcDetectorComponent_h 1
+#pragma once
 
 #include "OMSimInputData.hh"
 
@@ -29,8 +28,8 @@ public:
     abcDetectorComponent();
     virtual void construction() = 0; ///<  Abstract method you have to define in order to make a derived class from abcDetectorComponent
 
-    OMSimInputData *mData; ///<  Instance of OMSimInputdata, which should be started only once.
-    bool mCheckOverlaps = false;
+    OMSimInputData *m_data; ///<  Instance of OMSimInputdata, which should be started only once.
+    bool m_checkOverlaps = false;
 
     /**
      *  @struct abcDetectorComponent::Component
@@ -47,11 +46,11 @@ public:
         G4String Name; ///<  A G4String object representing the unique name of the component.
     };
 
-    std::vector<G4ThreeVector> mPlacedPositions;       ///<  store the positions each time the components are placed
-    std::vector<G4RotationMatrix> mPlacedOrientations; ///<  store the orientations each time the components are placed
-    std::vector<G4Transform3D> mPlacedTranslations; ///<  store the translation each time the components are placed
-    std::map<G4String, Component> mComponents;  ///<  dictionary with each component
-    std::map<G4String, G4PVPlacement *> mLastPhysicals; ///<  dictionary with the (last) G4PVPlacement of each component mComponents produced after calling placeIt
+    std::vector<G4ThreeVector> m_placedPositions;       ///<  store the positions each time the components are placed
+    std::vector<G4RotationMatrix> m_placedOrientations; ///<  store the orientations each time the components are placed
+    std::vector<G4Transform3D> m_placedTranslations; ///<  store the translation each time the components are placed
+    std::map<G4String, Component> m_components;  ///<  dictionary with each component
+    std::map<G4String, G4PVPlacement *> m_lastPhysicals; ///<  dictionary with the (last) G4PVPlacement of each component mComponents produced after calling placeIt
 
     void appendComponent(G4VSolid *pSolid, G4LogicalVolume *pLogical, G4ThreeVector pVector, G4RotationMatrix pRotation, G4String pName);
     G4bool checkIfExists(G4String pName);
@@ -69,22 +68,22 @@ public:
     G4SubtractionSolid *substractToVolume(G4VSolid *pInputVolume, G4Transform3D pTrans, G4String pNewVolumeName);
 
 protected:
-    const G4VisAttributes *mGlassVis = new G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.25));
-    const G4VisAttributes *mGelVis = new G4VisAttributes(G4Colour(0.45, 0.5, 0.35, 0.2));
-    const G4VisAttributes *mSteelVis = new G4VisAttributes(G4Colour(0.6, 0.6, 0.7, 1.0));
-    const G4VisAttributes *mAluVis = new G4VisAttributes(G4Colour(0.8, 0.8, 0.9, 1.0));
-    const G4VisAttributes *mWhite = new G4VisAttributes(G4Colour(1, 1, 1, 1.0));
-    const G4VisAttributes *mAbsorberSemiTransparentVis = new G4VisAttributes(G4Colour(0.2, 0.2, 0.2, 0.5));
-    const G4VisAttributes *mAbsorberVis = new G4VisAttributes(G4Colour(0.2, 0.2, 0.2, 1.0));
-    const G4VisAttributes *mBoardVis = new G4VisAttributes(G4Colour(0, 1, 0, 1));
-    const G4VisAttributes *mBlueVis = new G4VisAttributes(G4Colour(0, 0, 1, 1));
-    const G4VisAttributes *mAirVis = new G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.2));
-    const G4VisAttributes *mAirVis2 = new G4VisAttributes(G4Colour(0.0, 0, 1., 0.5));
-    const G4VisAttributes mInvisibleVis = G4VisAttributes::GetInvisible();
-    const G4VisAttributes *mRedVis = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0, 1));
-    const G4VisAttributes *mBlackVis = new G4VisAttributes(G4Colour(0.0, 0.0, 0.0, 1.0));
-    const G4VisAttributes *mLEDvis = new G4VisAttributes(G4Colour(0.2, 0.6, 0.8, 0.5));
-    const G4VisAttributes *mPhotocathodeVis = new G4VisAttributes(G4Colour(1.0, 1.0, 0.0, 0.1));
+    // Use static const members for G4VisAttributes
+    static const G4VisAttributes m_glassVis;
+    static const G4VisAttributes m_gelVis;
+    static const G4VisAttributes m_steelVis;
+    static const G4VisAttributes m_aluVis;
+    static const G4VisAttributes m_whiteVis;
+    static const G4VisAttributes m_absorberSemiTransparentVis;
+    static const G4VisAttributes m_absorberVis;
+    static const G4VisAttributes m_boardVis;
+    static const G4VisAttributes m_blueVis;
+    static const G4VisAttributes m_airVis;
+    static const G4VisAttributes m_airVis2;
+    static const G4VisAttributes m_redVis;
+    static const G4VisAttributes m_blackVis;
+    static const G4VisAttributes m_LEDvis;
+    static const G4VisAttributes m_photocathodeVis;
+    static const G4VisAttributes m_invisibleVis;
 };
 
-#endif

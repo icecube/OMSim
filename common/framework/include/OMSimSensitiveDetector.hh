@@ -1,5 +1,4 @@
-#ifndef OMSimSensitiveDetector_h
-#define OMSimSensitiveDetector_h 1
+#pragma once
 
 #include "G4VSensitiveDetector.hh"
 #include "G4ThreeVector.hh"
@@ -66,9 +65,7 @@ private:
     void storePhotonHit(PhotonInfo &pInfo);
     void fetchBoundaryProcess();
 
-    OMSimPMTResponse *mPMTResponse;
-    DetectorType mDetectorType;
-    thread_local static G4OpBoundaryProcess* mBoundaryProcess;
+    OMSimPMTResponse *m_PMTResponse;
+    DetectorType m_detectorType;
+    thread_local static G4OpBoundaryProcess* m_boundaryProcess;
 };
-
-#endif

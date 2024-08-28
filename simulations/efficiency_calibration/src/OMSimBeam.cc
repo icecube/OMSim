@@ -10,7 +10,7 @@ Beam::Beam(G4double pBeamRadius, G4double pBeamDistance) : mBeamRadius(pBeamRadi
 
 
 void Beam::setWavelength(double pWavelength){
-    mWavelength = pWavelength;
+    m_wavelength = pWavelength;
 }
 
 
@@ -50,7 +50,7 @@ void Beam::configureErlangenQESetup()
     lUIinterface.applyCommand("/control/verbose 0");
     lUIinterface.applyCommand("/run/verbose 0");
     lUIinterface.applyCommand("/gps/particle opticalphoton");
-    lUIinterface.applyCommand("/gps/energy", 1239.84193 / mWavelength, "eV");
+    lUIinterface.applyCommand("/gps/energy", 1239.84193 / m_wavelength, "eV");
 
     lUIinterface.applyCommand("/gps/pos/type Plane");
     lUIinterface.applyCommand("/gps/pos/shape Circle");

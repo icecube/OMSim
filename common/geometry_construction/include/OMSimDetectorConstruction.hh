@@ -4,9 +4,7 @@
  * @ingroup EffectiveArea
  */
 
-#ifndef OMSimDetectorConstruction_h
-#define OMSimDetectorConstruction_h 1
-
+#pragma once
 #include "OMSimOpticalModule.hh"
 
 #include <G4Orb.hh>
@@ -22,25 +20,22 @@ class OMSimDetectorConstruction : public G4VUserDetectorConstruction
 public:
     OMSimDetectorConstruction();
     ~OMSimDetectorConstruction();
-
     G4VPhysicalVolume *Construct();
     void ConstructSDandField() override;
     void registerSensitiveDetector(G4LogicalVolume* logVol, G4VSensitiveDetector* aSD);
+
     G4VPhysicalVolume *mWorldPhysical;
 
 protected:
-    G4VSolid *mWorldSolid;
-    G4LogicalVolume *mWorldLogical;
     virtual void constructWorld() = 0;
     virtual void constructDetector() = 0;
-    OMSimInputData *mData;
 
+    G4VSolid *m_worldSolid;
+    G4LogicalVolume *m_worldLogical;
+    OMSimInputData *m_data;
     struct SDInfo {
         G4LogicalVolume* logicalVolume;
         G4VSensitiveDetector* sensitiveDetector;
     };
-    std::vector<SDInfo> mSensitiveDetectors;
+    std::vector<SDInfo> m_sensitiveDetectors;
 };
-
-#endif
-//

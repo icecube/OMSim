@@ -61,9 +61,7 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-#ifndef G4OpBoundaryProcess_h
-#define G4OpBoundaryProcess_h 1
-
+#pragma once
 #include "G4OpticalPhoton.hh"
 #include "G4OpticalSurface.hh"
 #include "G4RandomTools.hh"
@@ -412,4 +410,3 @@ inline void G4OpBoundaryProcess::DoReflection()
       -fOldPolarization + (2. * fOldPolarization * fFacetNormal * fFacetNormal);
 }
 
-#endif /* G4OpBoundaryProcess_h */

@@ -3,8 +3,7 @@
  * @ingroup common
  */
 
-#ifndef OMSimHelper_H
-#define OMSimHelper_H 1
+#pragma once
 
 #include "OMSimLogger.hh"
 #include "globals.hh"
@@ -47,5 +46,3 @@ namespace Tools
     void throwError(const G4String& message);
 };
 
-#endif
-//

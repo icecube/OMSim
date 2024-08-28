@@ -10,8 +10,7 @@
  * @ingroup common
  */
 
-#ifndef OMSimMDOMFlasher_H
-#define OMSimMDOMFlasher_H
+#pragma once
 
 #include "abcDetectorComponent.hh"
 #include <G4UnionSolid.hh>
@@ -58,16 +57,15 @@ private:
     GlobalPosition getFlasherPositionInfo(mDOM *pMDOMInstance, G4int pModuleIndex, G4int pLEDIndex);
     void configureGPS(GlobalPosition flasherInfo);
 
-    G4UnionSolid *mLEDSolid;
-    G4UnionSolid *mFlasherHoleSolid;
-    G4Tubs *mGlassWindowSolid;
+    G4UnionSolid *m_LEDSolid;
+    G4UnionSolid *m_flasherHoleSolid;
+    G4Tubs *m_glassWindowSolid;
 
-    G4LogicalVolume *mFlasherHoleLogical;
-    G4LogicalVolume *mGlassWindowLogical;
-    G4LogicalVolume *mLEDLogical;
-    G4bool mFlasherProfileAvailable = false;
-    std::vector<double> mProfileX;
-    std::vector<double> mProfileY;
+    G4LogicalVolume *m_flasherHoleLogical;
+    G4LogicalVolume *m_glassWindowLogical;
+    G4LogicalVolume *m_LEDLogical;
+    G4bool m_flasherProfileAvailable = false;
+    std::vector<double> m_profileX;
+    std::vector<double> m_profileY;
 };
 
-#endif // OMSimMDOMFlasher_H

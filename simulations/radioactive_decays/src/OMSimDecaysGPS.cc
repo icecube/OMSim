@@ -31,7 +31,7 @@ void OMSimDecaysGPS::generalGPS()
     lUIinterface.applyCommand("/process/em/auger true");
     lUIinterface.applyCommand("/process/em/pixe true");
     lUIinterface.applyCommand("/gps/particle ion");
-    G4ThreeVector lPosition = mOM->mPlacedPositions.at(0);
+    G4ThreeVector lPosition = m_opticalModule->m_placedPositions.at(0);
     lUIinterface.applyCommand("/gps/pos/centre ", lPosition.x()/m, " ", lPosition.y()/m, " ", lPosition.z()/m, " m");
     lUIinterface.applyCommand("/gps/ene/mono 0 eV");
     lUIinterface.applyCommand("/gps/pos/type Volume");
@@ -105,10 +105,10 @@ void OMSimDecaysGPS::simulateDecaysInPressureVessel(G4double pTimeWindow)
 
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
 
-    G4double lMass = mOM->getPressureVesselWeight();
-    G4String lPressureVesselName = "PressureVessel_" + std::to_string(mOM->mIndex);
+    G4double lMass = m_opticalModule->getPressureVesselWeight();
+    G4String lPressureVesselName = "PressureVessel_" + std::to_string(m_opticalModule->m_index);
 
-    G4LogicalVolume *lPVVolume = mOM->getComponent(lPressureVesselName).VLogical;
+    G4LogicalVolume *lPVVolume = m_opticalModule->getComponent(lPressureVesselName).VLogical;
     G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
 
     std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, pTimeWindow, lMass);
@@ -133,11 +133,11 @@ void OMSimDecaysGPS::simulateDecaysInPMTs(G4double pTimeWindow)
 {
     log_trace("Simulating radioactive decays in glass of PMTs in a time window of {} seconds", pTimeWindow);
     OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-    G4double lMass = mOM->getPMTmanager()->getPMTGlassWeight();
-    G4LogicalVolume *lPVVolume = mOM->getPMTmanager()->getLogicalVolume();
+    G4double lMass = m_opticalModule->getPMTmanager()->getPMTGlassWeight();
+    G4LogicalVolume *lPVVolume = m_opticalModule->getPMTmanager()->getLogicalVolume();
     G4MaterialPropertiesTable *lMPT = lPVVolume->GetMaterial()->GetMaterialPropertiesTable();
 
-    for (int pmt = 0; pmt < (int)mOM->getNumberOfPMTs(); pmt++)
+    for (int pmt = 0; pmt < (int)m_opticalModule->getNumberOfPMTs(); pmt++)
     {
         std::map<G4String, G4int> lNumberDecays = calculateNumberOfDecays(lMPT, pTimeWindow, lMass);
 

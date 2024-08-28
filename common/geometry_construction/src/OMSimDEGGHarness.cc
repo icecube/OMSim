@@ -7,7 +7,7 @@
 #include <G4Tubs.hh>
 
 
-DEggHarness::DEggHarness(DEGG *pDEGG): abcDetectorComponent(), mOM(pDEGG)
+DEggHarness::DEggHarness(DEGG *pDEGG): abcDetectorComponent(), m_opticalModule(pDEGG)
 {
     construction();
 }
@@ -27,93 +27,91 @@ void DEggHarness::construction()
     else
     {
         log_warning("Penetrator and harness not implemented for Geant4 native version, use cad implementation if you need them");
-        G4VSolid *EggHarness = buildHarnessSolid(mRmin, mRmax, mSphi, mDphi, mStheta, mDtheta);
-        G4LogicalVolume *lEggHarness = new G4LogicalVolume(EggHarness, mData->getMaterial("NoOptic_Reflector"), "");
-        appendComponent(EggHarness, lEggHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "dEGG_Harness");
+        G4VSolid *solidDEGGHarness = buildHarnessSolid(m_rMin, m_rMax, m_sPhi, m_dPhi, m_sTheta, m_dTheta);
+        G4LogicalVolume *logicalDEGGHarness = new G4LogicalVolume(solidDEGGHarness, m_data->getMaterial("NoOptic_Reflector"), "");
+        appendComponent(solidDEGGHarness, logicalDEGGHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "dEGG_Harness");
     }
 }
 
-G4VSolid *DEggHarness::buildHarnessSolid(G4double rmin, G4double rmax, G4double sphi, G4double dphi, G4double stheta, G4double dtheta)
+G4VSolid *DEggHarness::buildHarnessSolid(G4double p_rMin, G4double p_rMax, G4double p_sPhi, G4double p_dPhi, G4double p_sTheta, G4double p_dTheta)
 {
-    G4Sphere *EggHarnessSolid1 = new G4Sphere("EggHarness", rmin, rmax, sphi, dphi, stheta, dtheta);
-    G4VSolid *EggHarnessSolid = EggHarnessSolid1;
-    return EggHarnessSolid;
+    return new G4Sphere("solidDEGGHarness", p_rMin, p_rMax, p_sPhi, p_dPhi, p_sTheta, p_dTheta);
 }
 
 void DEggHarness::placeCADHarness()
 {
     // select file
-    std::stringstream CADfile;
-    CADfile.str("");
-    CADfile << "Harness.obj";
-    G4cout << "using the following CAD file for Harness: " << CADfile.str() << G4endl;
+    std::stringstream fileCAD;
+    fileCAD.str("");
+    fileCAD << "Harness.obj";
+    G4cout << "using the following CAD file for Harness: " << fileCAD.str() << G4endl;
 
     // load mesh
-    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/DEGG/" + CADfile.str());
-    // G4ThreeVector CADoffset = G4ThreeVector(-427.6845*mm, 318.6396*mm, 152.89*mm); //measured from CAD file since origin =!= Module origin ... for no rotation
-    G4ThreeVector CADoffset = G4ThreeVector(318.6396 * mm, 427.6845 * mm, 152.89 * mm); // measured from CAD file since origin =!= Module origin ... for -90° z rotation
+    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/DEGG/" + fileCAD.str());
+    // G4ThreeVector offsetCAD = G4ThreeVector(-427.6845*mm, 318.6396*mm, 152.89*mm); //measured from CAD file since origin =!= Module origin ... for no rotation
+    G4ThreeVector offsetCAD = G4ThreeVector(318.6396 * mm, 427.6845 * mm, 152.89 * mm); // measured from CAD file since origin =!= Module origin ... for -90° z rotation
 
-    G4RotationMatrix lPenetratorRotation = G4RotationMatrix();
-    lPenetratorRotation.rotateZ(-90 * deg);
+    G4RotationMatrix penetratorRotation = G4RotationMatrix();
+    penetratorRotation.rotateZ(-90 * deg);
 
     // Place all of the meshes it can find in the file as solids individually.
     for (auto solid : mesh->GetSolids())
     {
-        G4LogicalVolume *lCADHarness = new G4LogicalVolume(solid, mData->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
-        lCADHarness->SetVisAttributes(mAluVis);
-        appendComponent(solid, lCADHarness, CADoffset, lPenetratorRotation, "CAD_Harness");
+        G4LogicalVolume *harnessLogical = new G4LogicalVolume(solid, m_data->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
+        harnessLogical->SetVisAttributes(m_aluVis);
+        appendComponent(solid, harnessLogical, offsetCAD, penetratorRotation, "CAD_Harness");
     }
 }
 
 void DEggHarness::placeCADPenetrator()
 {
     // select file
-    std::stringstream CADfile;
-    CADfile.str("");
-    CADfile << "Penetrator.obj";
-    G4cout << "using the following CAD file for Penetrator: " << CADfile.str() << G4endl;
+    std::stringstream fileCAD;
+    fileCAD.str("");
+    fileCAD << "Penetrator.obj";
+    G4cout << "using the following CAD file for Penetrator: " << fileCAD.str() << G4endl;
 
     // load mesh
-    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/DEGG/" + CADfile.str());
+    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/DEGG/" + fileCAD.str());
     G4double xoffset = 110.211 * mm;
     // G4double zoffset = 34.39*mm;
     G4double zoffset = 77.817 * mm;
 
     G4double rotation = 4 * deg;
 
-    G4ThreeVector CADoffset = G4ThreeVector(-xoffset * cos(rotation), 0 * mm, zoffset * cos(rotation)); // measured from CAD file since origin =!= Module origin
-    // G4ThreeVector CADoffset = G4ThreeVector(0,0,0); //measured from CAD file since origin =!= Module origin
-    G4RotationMatrix lPenetratorRotation = G4RotationMatrix();
-    lPenetratorRotation.rotateX(rotation);
-    lPenetratorRotation.rotateZ(90 * deg);
+    G4ThreeVector offsetCAD = G4ThreeVector(-xoffset * cos(rotation), 0 * mm, zoffset * cos(rotation)); // measured from CAD file since origin =!= Module origin
+    // G4ThreeVector offsetCAD = G4ThreeVector(0,0,0); //measured from CAD file since origin =!= Module origin
+    G4RotationMatrix penetratorRotation = G4RotationMatrix();
+    penetratorRotation.rotateX(rotation);
+    penetratorRotation.rotateZ(90 * deg);
 
     mesh->SetScale(25.4); // did a mistake...this ONE file needs inch -> mm -> *2.54 * 10
 
-    // mesh->SetOffset(CADoffset); Don't set the offset here, it is done in appendComponent
+    // mesh->SetOffset(offsetCAD); Don't set the offset here, it is done in appendComponent
 
     // Place all of the meshes it can find in the file as solids individually.
     for (auto solid : mesh->GetSolids())
     {
-        G4LogicalVolume *lCADPenetrator = new G4LogicalVolume(solid, mData->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
-        lCADPenetrator->SetVisAttributes(mAluVis);
-        appendComponent(solid, lCADPenetrator, CADoffset, lPenetratorRotation, "CAD_Penetrator");
+        G4LogicalVolume *logicalCADPenetrator = new G4LogicalVolume(solid, m_data->getMaterial("NoOptic_Absorber"), "logical", 0, 0, 0);
+        logicalCADPenetrator->SetVisAttributes(m_aluVis);
+        appendComponent(solid, logicalCADPenetrator, offsetCAD, penetratorRotation, "CAD_Penetrator");
     }
 }
 
 
 void DEggHarness::mainDataCable()
 {
-    const G4double lDataCableRadius = mData->getValueWithUnit(mDataKey, "jDataCableRadius"); // Radius of the main data cable (according to Prof. Kappes)
-    const G4double lDataCableLength = mData->getValueWithUnit(mDataKey, "jDataCableLength"); // Length of main data cable
+    const G4double dataCableRadius = m_data->getValueWithUnit(mDataKey, "jDataCableRadius"); // Radius of the main data cable (according to Prof. Kappes)
+    const G4double dataCableLength = m_data->getValueWithUnit(mDataKey, "jDataCableLength"); // Length of main data cable
 
-    G4Tubs *lDataCableSolid = new G4Tubs("MainDataCable_solid", 0, lDataCableRadius, lDataCableLength / 2., 0, 2 * CLHEP::pi);
+    G4Tubs *dataCable= new G4Tubs("MainDataCable_solid", 0, dataCableRadius, dataCableLength / 2., 0, 2 * CLHEP::pi);
 
-    G4LogicalVolume *lDataCableLogical = new G4LogicalVolume(lDataCableSolid, mData->getMaterial("NoOptic_Absorber"), "MainDataCable_logical");
-    new G4LogicalSkinSurface("MainDataCable_skin", lDataCableLogical, mData->getOpticalSurface("Surf_BlackDuctTapePolished"));
-    lDataCableLogical->SetVisAttributes(mAbsorberVis);
+    G4LogicalVolume *lDataCableLogical = new G4LogicalVolume(dataCable, m_data->getMaterial("NoOptic_Absorber"), "MainDataCable_logical");
+    new G4LogicalSkinSurface("MainDataCable_skin", lDataCableLogical, m_data->getOpticalSurface("Surf_BlackDuctTapePolished"));
+    lDataCableLogical->SetVisAttributes(m_absorberVis);
 
-    G4ThreeVector lDataCablePosition = G4ThreeVector((mTotalWidth + lDataCableRadius + 0.5 * cm) * sin(mHarnessRotAngle),
-                                                     (mTotalWidth + lDataCableRadius + 0.5 * cm) * cos(mHarnessRotAngle), 0);
+    G4ThreeVector lDataCablePosition = G4ThreeVector((m_totalWidth + dataCableRadius + 0.5 * cm) * sin(m_harnessRotAngle),
+                                                     (m_totalWidth + dataCableRadius + 0.5 * cm) * cos(m_harnessRotAngle), 0);
 
-    appendComponent(lDataCableSolid, lDataCableLogical, lDataCablePosition, G4RotationMatrix(), "mainDataCable");
+    appendComponent(dataCable, lDataCableLogical, lDataCablePosition, G4RotationMatrix(), "mainDataCable");
 }

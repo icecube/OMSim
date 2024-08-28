@@ -7,8 +7,7 @@
  * @ingroup common
  */
 
-#ifndef OMSIM_H
-#define OMSIM_H
+#pragma once
 
 
 #include "OMSimDetectorConstruction.hh"
@@ -51,9 +50,9 @@ public:
     bool handleArguments(int pArgumentCount, char *pArgumentVector[]);
     void startVisualisation();
 
-    G4Navigator *getNavigator() { return mNavigator.get(); };
+    G4Navigator *getNavigator() { return m_navigator.get(); };
     void extendOptions(po::options_description pNewOptions);
-    po::options_description mGeneralOptions;
+    po::options_description m_generalOptions;
 
 private:
     void initialLoggerConfiguration();
@@ -62,13 +61,11 @@ private:
     void setUserArgumentsToArgTable(po::variables_map pVariablesMap);
     void setGeneralOptions();
 
-    std::unique_ptr<G4MTRunManager> mRunManager;
-    std::unique_ptr<G4VisExecutive> mVisManager;
-    std::unique_ptr<G4VUserPhysicsList> mPhysics;
-    std::unique_ptr<G4TouchableHistory> mHistory;
-    std::unique_ptr<G4Navigator> mNavigator;
+    std::unique_ptr<G4MTRunManager> m_runManager;
+    std::unique_ptr<G4VisExecutive> m_visManager;
+    std::unique_ptr<G4VUserPhysicsList> m_physics;
+    std::unique_ptr<G4TouchableHistory> m_history;
+    std::unique_ptr<G4Navigator> m_navigator;
 
-    std::chrono::high_resolution_clock::time_point mStartingTime;
+    std::chrono::high_resolution_clock::time_point m_startingTime;
 };
-
-#endif // OMSIM_H

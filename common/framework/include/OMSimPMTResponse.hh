@@ -3,8 +3,7 @@
  *  @brief Simulation of PMT response.
  *  @ingroup common
  */
-#ifndef OMSimPMTResponse_h
-#define OMSimPMTResponse_h 1
+#pragma once
 
 #include <G4SystemOfUnits.hh>
 #include <G4Types.hh>
@@ -53,20 +52,20 @@ protected:
 
     virtual std::vector<G4double> getScannedWavelengths() = 0;
 
-    bool m_ScansInterpolatorsAvailable = false;
+    bool m_scansInterpolatorsAvailable = false;
     bool m_QEWeightInterpolatorAvailable = false;
     bool m_CEWeightInterpolatorAvailable = false;
     double m_X;
     double m_Y;
 
-    G4double mWavelength;
+    G4double m_wavelength;
 
-    TGraph *m_RelativeDetectionEfficiencyInterpolator;
+    TGraph *m_relativeDetectionEfficiencyInterpolator;
     TGraph *m_QEInterpolator;
-    std::map<G4double, TH2D *> m_GainG2Dmap;
-    std::map<G4double, TH2D *> m_GainResolutionG2Dmap;
-    std::map<G4double, TH2D *> m_TransitTimeG2Dmap;
-    std::map<G4double, TH2D *> m_TransitTimeSpreadG2Dmap;
+    std::map<G4double, TH2D *> m_gainG2Dmap;
+    std::map<G4double, TH2D *> m_gainResolutionG2Dmap;
+    std::map<G4double, TH2D *> m_transitTimeG2Dmap;
+    std::map<G4double, TH2D *> m_transitTimeSpreadG2Dmap;
 };
 
 class mDOMPMTResponse : public OMSimPMTResponse
@@ -164,5 +163,3 @@ private:
     std::vector<G4double> getScannedWavelengths();
 };
 
-#endif
-//

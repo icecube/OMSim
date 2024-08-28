@@ -1,13 +1,11 @@
-#ifndef OMSimLogger_h
-#define OMSimLogger_h 1
-
+#pragma once
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <memory>
 #include "spdlog/fmt/fmt.h" 
 
 // Global logger instance
-extern std::shared_ptr<spdlog::logger> globalLogger;
+extern std::shared_ptr<spdlog::logger> g_logger;
 
 // Custom logging function
 void customLog(spdlog::level::level_enum log_level, const char* file, int line, const char* func, const std::string& message);
@@ -19,6 +17,3 @@ void customLog(spdlog::level::level_enum log_level, const char* file, int line, 
 #define log_warning(...)    customLog(spdlog::level::warn, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))
 #define log_error(...)   customLog(spdlog::level::err, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))
 #define log_critical(...) customLog(spdlog::level::critical, __FILE__, __LINE__, __func__, fmt::format(__VA_ARGS__))
-
-#endif
-//

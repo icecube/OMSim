@@ -30,7 +30,7 @@ private:
   TGraph* mZcorrection;
   G4double mBeamRadius;
   G4double mBeamDistance;
-  G4double mWavelength;
+  G4double m_wavelength;
   G4double mTheta;
   G4double mPhi;
 };

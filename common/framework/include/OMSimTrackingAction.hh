@@ -1,5 +1,4 @@
-#ifndef OMSimTrackingAction_h
-#define OMSimTrackingAction_h 1
+#pragma once
 
 #include <G4UserTrackingAction.hh>
 
@@ -15,4 +14,3 @@ class OMSimTrackingAction : public G4UserTrackingAction
 	private:
 };
 
-#endif

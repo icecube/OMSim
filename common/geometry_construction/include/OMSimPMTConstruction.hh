@@ -4,8 +4,7 @@
  *  This class creates the solids of the PMTs and place them in the detector/OMs.
  */
 
-#ifndef OMSimPMTConstruction_h
-#define OMSimPMTConstruction_h 1
+#pragma once
 #include "abcDetectorComponent.hh"
 #include "OMSimPMTConstruction.hh"
 #include "OMSimPMTResponse.hh"
@@ -29,7 +28,7 @@ public:
     G4double getMaxPMTRadius();
     G4VSolid *getPMTSolid();
     G4LogicalVolume *getLogicalVolume();
-    G4LogicalVolume* getPhotocathodeLV(){return mPhotocathodeLV;};
+    G4LogicalVolume* getPhotocathodeLV(){return m_photocathodeLV;};
     double getPMTGlassWeight();
 
     void placeIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume *&pMother, G4String pNameExtension = "");
@@ -38,14 +37,13 @@ public:
     void includeHAcoating();
 
 private:
-    G4LogicalVolume* mPhotocathodeLV;
-    G4String mSelectedPMT;
-    G4bool mDynodeSystem = false;
-    G4bool mInternalReflections = false;
-    G4bool mHACoatingBool = false;
-    G4bool mConstructionFinished = false;
+    G4LogicalVolume* m_photocathodeLV;
+    G4String m_selectedPMT;
+    G4bool m_dynodeSystem = false;
+    G4bool m_internalReflections = false;
+    G4bool m_HACoatingBool = false;
+    G4bool m_constructionFinished = false;
 
-    void definePhotocathodeProperties();
     std::tuple<G4VSolid *, G4VSolid *> getBulbSolid(G4String pSide);
     std::tuple<G4VSolid *, G4VSolid *> simpleBulbConstruction(G4String pSide);
     std::tuple<G4VSolid *, G4VSolid *> fullBulbConstruction(G4String pSide);
@@ -58,33 +56,30 @@ private:
     G4UnionSolid *doubleEllipsePhotocathode(G4String pSide);
     G4UnionSolid *ellipsePhotocathode();
 
-    void checkPhotocathodeThickness();
 
     void constructHAcoating();
     void constructCathodeBackshield(G4LogicalVolume *pPMTIinner);
-    void constructCADdynodeSystem(G4LogicalVolume *pMother);
+    void constructCADdynodeSystem(G4LogicalVolume *p_mother);
     G4SubtractionSolid *constructPhotocathodeLayer();
     
     OMSimPMTResponse* getPMTResponseInstance();
 
-    G4bool mSimpleBulb = false;
-    G4double mMissingTubeLength;
-    G4PVPlacement *mVacuumBackPhysical;
-    G4PVPlacement* mPhotocathodeRegionVacuumPhysical;
-    G4OpticalSurface* mPhotocathodeOpticalSurface;
+    G4bool m_simpleBulb = false;
+    G4double m_missingTubeLength;
+    G4PVPlacement *m_vacuumBackPhysical;
+    G4PVPlacement* m_photocathodeRegionVacuumPhysical;
+    G4OpticalSurface* m_photocathodeOpticalSurface;
 
-    bool mCheckOverlaps;
+    bool m_checkOverlaps;
 
     // Variables from json files are saved in the following members
-    G4double mTotalLenght;
-    G4double mTubeWidth;
-    G4double mOutRad;
-    G4double mEllipseXYaxis;
-    G4double mEllipseZaxis;
-    G4double mSphereEllipseTransition_r;
-    G4double mSpherePos_y;
-    G4double mEllipsePos_y;
+    G4double m_totalLenght;
+    G4double m_tubeWidth;
+    G4double m_outRad;
+    G4double m_ellipseXYaxis;
+    G4double m_ellipseZaxis;
+    G4double m_sphereEllipseTransition_r;
+    G4double m_spherePosY;
+    G4double m_ellipsePosY;
 };
 
-#endif
-//

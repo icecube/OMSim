@@ -4,8 +4,7 @@
  * @ingroup common
  */
 
-#ifndef DEGG_h
-#define DEGG_h 1
+#pragma once
 
 #include "OMSimPMTConstruction.hh"
 #include "OMSimOpticalModule.hh"
@@ -23,7 +22,7 @@ class DEggHarness;
 class DEGG : public OMSimOpticalModule
 {
 public:
-    DEGG(G4bool pPlaceHarness = true);
+    DEGG(G4bool p_placeHarness = true);
     ~DEGG(){};
 
     void construction();
@@ -33,19 +32,19 @@ public:
     G4String getName()
     {
         std::stringstream ss;
-        ss << "/DEGG/" << mIndex;
+        ss << "/DEGG/" << m_index;
         return ss.str();
     }
 
 private:
-    DEggHarness *mHarness;
+    DEggHarness *m_harness;
 
 
     void appendPMTs();
     void appendInternalComponentsFromCAD();
     void appendPressureVesselFromCAD();
 
-    G4VSolid *createEggSolid(G4int pSegments_1,
+    G4VSolid *createEggSolid(G4int p_segments_1,
                              G4double pSphereRmax,
                              G4double pSpheredTheta,
                              G4double pSphereTransformZ,
@@ -61,4 +60,3 @@ private:
                              G4double pTorus1TransformZ);
 };
 
-#endif

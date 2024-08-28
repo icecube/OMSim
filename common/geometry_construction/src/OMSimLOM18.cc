@@ -18,22 +18,22 @@
 
 LOM18::~LOM18()
 {
-    //delete mHarness;
+    //delete m_harness;
 }
 
-LOM18::LOM18(G4bool pPlaceHarness): OMSimOpticalModule(new OMSimPMTConstruction()), mPlaceHarness(pPlaceHarness)
+LOM18::LOM18(G4bool p_placeHarness): OMSimOpticalModule(new OMSimPMTConstruction()), m_placeHarness(p_placeHarness)
  {
     log_info("Constructing LOM18");
-    mPMTManager->includeHAcoating();
-    mPMTManager->selectPMT("pmt_Hamamatsu_4inch");
-    mPMTManager->construction();
-    mPMToffset = mPMTManager->getDistancePMTCenterToTip();
-    mMaxPMTRadius = mPMTManager->getMaxPMTRadius() + 2 * mm;
+    m_managerPMT->includeHAcoating();
+    m_managerPMT->selectPMT("pmt_Hamamatsu_4inch");
+    m_managerPMT->construction();
+    m_PMToffset = m_managerPMT->getDistancePMTCenterToTip();
+    m_maxPMTRadius = m_managerPMT->getMaxPMTRadius() + 2 * mm;
 
-    mPlaceHarness = pPlaceHarness;
-    if (mPlaceHarness){
-        //mHarness = new mDOMHarness(this, mData);
-        //integrateDetectorComponent(mHarness, G4ThreeVector(0,0,0), G4RotationMatrix(), "");
+    m_placeHarness = p_placeHarness;
+    if (m_placeHarness){
+        //m_harness = new mDOMHarness(this, m_data);
+        //integrateDetectorComponent(m_harness, G4ThreeVector(0,0,0), G4RotationMatrix(), "");
         log_error("LOM18 harness not implemented yet");
     }
     construction();
@@ -46,38 +46,38 @@ LOM18::LOM18(G4bool pPlaceHarness): OMSimOpticalModule(new OMSimPMTConstruction(
 void LOM18::construction()
 {   
     //Create pressure vessel and inner volume
-    G4Polycone* lGlassSolid = createLOM18OuterSolid();
-    G4Polycone* lInnerVolumeSolid = createLOM18InnerSolid();
+    G4Polycone* glassSolid = createLOM18OuterSolid();
+    G4Polycone* innerVolumeSolid = createLOM18InnerSolid();
 
     //Set positions and rotations of PMTs and gelpads
     setPMTPositions();
    
     //Logicals
-    G4LogicalVolume* lInnerVolumeLogical = new G4LogicalVolume(lInnerVolumeSolid, mData->getMaterial("Ri_Air"), "Inner volume logical"); //Inner volume of vessel (mothervolume of all internal components)  
-    G4LogicalVolume* lGlassLogical = new G4LogicalVolume(lGlassSolid, mData->getMaterial("RiAbs_Glass_Vitrovex")," Glass_log"); //Vessel
-    createGelpadLogicalVolumes(lInnerVolumeSolid);
+    G4LogicalVolume* innerVolumeLogical = new G4LogicalVolume(innerVolumeSolid, m_data->getMaterial("Ri_Air"), "Inner volume logical"); //Inner volume of vessel (mothervolume of all internal components)  
+    G4LogicalVolume* glassLogical = new G4LogicalVolume(glassSolid, m_data->getMaterial("RiAbs_Glass_Vitrovex")," Glass_log"); //Vessel
+    createGelpadLogicalVolumes(innerVolumeSolid);
 
 
     //Placements 
-    placePMTs(lInnerVolumeLogical);
-    placeGelpads(lInnerVolumeLogical);
+    placePMTs(innerVolumeLogical);
+    placeGelpads(innerVolumeLogical);
 
-    //if (true) placeCADSupportStructure(lInnerVolumeLogical);
-    //if (gCADImport) placeCADPenetrator(lInnerVolumeLogical);
+    //if (true) placeCADSupportStructure(innerVolumeLogical);
+    //if (gCADImport) placeCADPenetrator(innerVolumeLogical);
 
     //Place InnerVolume (Mother of every other component) into GlassVolume (Mother of all)
-    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), lInnerVolumeLogical, "Gel_physical", lGlassLogical, false, 0, mCheckOverlaps); //Innervolume (mother volume for all components)   
+    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), innerVolumeLogical, "Gel_physical", glassLogical, false, 0, m_checkOverlaps); //Innervolume (mother volume for all components)   
 
 
     // ------------------ Add outer shape solid to MultiUnion in case you need substraction -------------------------------------------
     //Each Component needs to be appended to be places in abcDetectorComponent. Everything is placed in the InnerVolume which is placed in the glass which is the mother volume. This is the reason why not everything is appended on its own
-    appendComponent(lGlassSolid, lGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(mIndex));
+    appendComponent(glassSolid, glassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(m_index));
     appendEquatorBand();
     // ---------------- visualisation attributes --------------------------------------------------------------------------------
-    lGlassLogical->SetVisAttributes(mGlassVis);
-    lInnerVolumeLogical->SetVisAttributes(mInvisibleVis); //Material defined as Ri_Air
-    for (int i = 0; i <= mTotalNrPMTs-1; i++) {
-        mGelPad_logical[i]->SetVisAttributes(mGelVis); //mGelVis
+    glassLogical->SetVisAttributes(m_glassVis);
+    innerVolumeLogical->SetVisAttributes(m_invisibleVis); //Material defined as Ri_Air
+    for (int i = 0; i <= m_totalNumberPMTs-1; i++) {
+        m_gelPadLogical[i]->SetVisAttributes(m_gelVis); //m_gelVis
     }
     
 }
@@ -238,28 +238,28 @@ G4Polycone* LOM18::createLOM18InnerSolid()
 
 void LOM18::appendEquatorBand()
 {
-    G4double tape_width = 45.0 * mm;
+    G4double tapeWidth = 45.0 * mm;
     G4double thicknessTape = 1.0*mm;
 
     G4int nsegments = 3;
     G4double rInner[3], rOuter[3], zPlane[3];
-    zPlane[0] = -tape_width * 0.5;
+    zPlane[0] = -tapeWidth * 0.5;
     zPlane[1] = 0;
-    zPlane[2] = tape_width * 0.5;
+    zPlane[2] = tapeWidth * 0.5;
     rInner[0] = 0;
     rInner[1] = 0;
     rInner[2] = 0;
-    rOuter[0] = mGlassEquatorWidth + thicknessTape;
-    rOuter[1] = mGlassEquatorWidth + thicknessTape;
-    rOuter[2] = mGlassEquatorWidth + thicknessTape;
+    rOuter[0] = m_GlassEquatorWidth + thicknessTape;
+    rOuter[1] = m_GlassEquatorWidth + thicknessTape;
+    rOuter[2] = m_GlassEquatorWidth + thicknessTape;
 
     G4Polycone* polycone = new  G4Polycone("blacktape", 0, 2*M_PI, nsegments, zPlane, rInner, rOuter);
     G4VSolid* solidouter = createLOM18OuterSolid();
-    G4SubtractionSolid* lEquatorbandSolid = new G4SubtractionSolid("BlackTapeLOM18", polycone, solidouter, 0, G4ThreeVector(0,0,0));
-    G4LogicalVolume* lEquatorbandLogical = new G4LogicalVolume(lEquatorbandSolid, mData->getMaterial("NoOptic_Absorber"),"Equatorband_log"); 
-    lEquatorbandLogical->SetVisAttributes(mAbsorberVis);
+    G4SubtractionSolid* equatorBandSolid = new G4SubtractionSolid("BlackTapeLOM18", polycone, solidouter, 0, G4ThreeVector(0,0,0));
+    G4LogicalVolume* equatorBandLogical = new G4LogicalVolume(equatorBandSolid, m_data->getMaterial("NoOptic_Absorber"),"Equatorband_log"); 
+    equatorBandLogical->SetVisAttributes(m_absorberVis);
     
-    appendComponent(lEquatorbandSolid, lEquatorbandLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "TeraTape");
+    appendComponent(equatorBandSolid, equatorBandLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "TeraTape");
 }
 
 
@@ -267,7 +267,7 @@ void LOM18::appendEquatorBand()
 /**
  * Imports inner components of module from CAD file and places them as an absorber (non optical compenents only since the tesselation is strong!)
  */
-void LOM18::placeCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical)
+void LOM18::placeCADSupportStructure(G4LogicalVolume* p_innerVolume)
 {
     //select file
     std::stringstream CADfile;
@@ -285,23 +285,23 @@ void LOM18::placeCADSupportStructure(G4LogicalVolume* lInnerVolumeLogical)
     mesh->SetOffset(CADoffset);
 
     //rotate
-    lRot = new G4RotationMatrix();
-    //lRot->rotateY(mPMT_theta[k]);
-    lRot->rotateZ(45*deg);
+    G4RotationMatrix* rot = new G4RotationMatrix();
+    //rot->rotateY(m_thetaPMT[k]);
+    rot->rotateZ(45*deg);
     
     // Place all of the meshes it can find in the file as solids individually.
     for (auto solid : mesh->GetSolids())
     { 
-        mSupportStructureLogical  = new G4LogicalVolume( solid , mData->getMaterial("NoOptic_Absorber") , "logical" , 0, 0, 0); //should be Surf_AluminiumGround
-        mSupportStructureLogical->SetVisAttributes(mAluVis);
-        new G4PVPlacement( lRot , G4ThreeVector(0, 0, 0) , mSupportStructureLogical, "Support structure" , lInnerVolumeLogical, false, 0, mCheckOverlaps);
+        G4LogicalVolume* supportStructureLogical  = new G4LogicalVolume( solid , m_data->getMaterial("NoOptic_Absorber") , "logical" , 0, 0, 0); //should be Surf_AluminiumGround
+        supportStructureLogical->SetVisAttributes(m_aluVis);
+        new G4PVPlacement( rot , G4ThreeVector(0, 0, 0) , supportStructureLogical, "Support structure" , p_innerVolume, false, 0, m_checkOverlaps);
     }
 }
 
 /**
  * Imports inner Penetrator of module from CAD file and places them as an absorber (non optical compenents only since the tesselation is strong!)
  */
-void LOM18::placeCADPenetrator(G4LogicalVolume* lInnerVolumeLogical)
+void LOM18::placeCADPenetrator(G4LogicalVolume* innerVolumeLogical)
 {
     //select file
     std::stringstream CADfile;
@@ -319,16 +319,16 @@ void LOM18::placeCADPenetrator(G4LogicalVolume* lInnerVolumeLogical)
     mesh->SetOffset(CADoffset);
 
     //rotate
-    lRot = new G4RotationMatrix();
-    //lRot->rotateY(mPMT_theta[k]);
-    lRot->rotateZ(45*deg);
+    G4RotationMatrix* rot = new G4RotationMatrix();
+    //rot->rotateY(m_thetaPMT[k]);
+    rot->rotateZ(45*deg);
     
     // Place all of the meshes it can find in the file as solids individually.
     for (auto solid : mesh->GetSolids())
     { 
-        mSupportStructureLogical  = new G4LogicalVolume( solid , mData->getMaterial("NoOptic_Absorber") , "logical" , 0, 0, 0);
-        mSupportStructureLogical->SetVisAttributes(mAluVis);
-        new G4PVPlacement( lRot , G4ThreeVector(0, 0, 0) , mSupportStructureLogical, "Penetrator" , lInnerVolumeLogical, false, 0, mCheckOverlaps);
+        G4LogicalVolume* supportStructureLogical  = new G4LogicalVolume( solid , m_data->getMaterial("NoOptic_Absorber") , "logical" , 0, 0, 0);
+        supportStructureLogical->SetVisAttributes(m_aluVis);
+        new G4PVPlacement( rot , G4ThreeVector(0, 0, 0) , supportStructureLogical, "Penetrator" , innerVolumeLogical, false, 0, m_checkOverlaps);
     }
 }
 
@@ -340,230 +340,230 @@ void LOM18::placeCADPenetrator(G4LogicalVolume* lInnerVolumeLogical)
 void LOM18::setPMTPositions()
 {
     //PMT offsets must be measured from CAD files
-    G4double lZOffsetCenterPMTAxisOrigin = 180.64*mm; //measure the z-offset from the Equator to PMT tip
-    G4double lZOffsetEquatorialPMTAxisOrigin = 87.76*mm; //measure the z-offset from the Equator to PMT tip
+    G4double zOffsetCenterPMTAxisOrigin = 180.64*mm; //measure the z-offset from the Equator to PMT tip
+    G4double zOffsetEquatorialPMTAxisOrigin = 87.76*mm; //measure the z-offset from the Equator to PMT tip
 
-    G4double lXYZLengthCenterPMTAxisOriginToVesselInnerWall = 166.03*mm; //elongate the symetry axis of the PMT and measure from the central vessel z axis to inner vessel wall
-    G4double lXYZLengthEquatorialPMTAxisOriginToVesselInnerWall = 160.35*mm; //elongate the symetry axis of the PMT and measure from the central vessel z axis to inner vessel wall
+    G4double lengthCenterPMTAxisOriginToVesselInnerWall = 166.03*mm; //elongate the symetry axis of the PMT and measure from the central vessel z axis to inner vessel wall
+    G4double lengthEquatorialPMTAxisOriginToVesselInnerWall = 160.35*mm; //elongate the symetry axis of the PMT and measure from the central vessel z axis to inner vessel wall
 
     //helper variables
-    G4double lPMTTipZOffset;
-    G4double lPMT_theta, lPMT_phi;
-    G4double lPMT_x, lPMT_y, lPMT_z, lPMT_xyz=0;
+    G4double zOffsetTipPMT;
+    G4double thetaPMT, phiPMT;
+    G4double xPMT, yPMT, zPMT, xyzPMT=0;
 
-    for (int i = 0; i <= mTotalNrPMTs-1; i++) {
+    for (int i = 0; i <= m_totalNumberPMTs-1; i++) {
         //upper polar
-        if (i>=0 && i<=mNrPolarPMTs-1){ 
+        if (i>=0 && i<=m_numberPolarPMTs-1){ 
             //rotation
-            lPMT_theta = 0*deg;
-            lPMT_phi = 0*deg;
+            thetaPMT = 0*deg;
+            phiPMT = 0*deg;
 
             //PMT position
-            lPMTTipZOffset = mGlassPoleLength - mGlassThickPole - mGelThicknessFrontPolarPMT;
-            lPMT_z = lPMTTipZOffset - mPMToffset;
-            lPMT_xyz = 0*mm;
+            zOffsetTipPMT = m_GlassPoleLength - m_GlassThickPole - m_GelThicknessFrontPolarPMT;
+            zPMT = zOffsetTipPMT - m_PMToffset;
+            xyzPMT = 0*mm;
         }
 
         //upper center
-        if (i>=mNrPolarPMTs && i<=mNrPolarPMTs + mNrCenterPMTs -1){ 
+        if (i>=m_numberPolarPMTs && i<=m_numberPolarPMTs + m_NrCenterPMTs -1){ 
             //rotation
-            lPMT_theta = mThetaCenter;
-            lPMT_phi = (i - mNrPolarPMTs + 0.5) * 360. * deg / mNrCenterPMTs; //i*90.0*deg; for 4 
+            thetaPMT = m_thetaCenter;
+            phiPMT = (i - m_numberPolarPMTs + 0.5) * 360. * deg / m_NrCenterPMTs; //i*90.0*deg; for 4 
 
             //PMT position
-            lPMTTipZOffset = lZOffsetCenterPMTAxisOrigin;
-            lPMT_z = lPMTTipZOffset - mPMToffset*cos(90*deg-lPMT_theta);
-            lPMT_xyz = lXYZLengthCenterPMTAxisOriginToVesselInnerWall  - mPMToffset - mGelThicknessFrontCenterPMT;            
+            zOffsetTipPMT = zOffsetCenterPMTAxisOrigin;
+            zPMT = zOffsetTipPMT - m_PMToffset*cos(90*deg-thetaPMT);
+            xyzPMT = lengthCenterPMTAxisOriginToVesselInnerWall  - m_PMToffset - m_gelThicknessFrontCenterPMT;            
         }
         
         //upper equatorial
-        if (i>=mNrPolarPMTs + mNrCenterPMTs && i<=mNrPolarPMTs + mNrCenterPMTs + mNrEquatorialPMTs -1){ 
+        if (i>=m_numberPolarPMTs + m_NrCenterPMTs && i<=m_numberPolarPMTs + m_NrCenterPMTs + m_NrEquatorialPMTs -1){ 
             //rotation
-            lPMT_theta = mThetaEquatorial; 
-            lPMT_phi = mEqPMTPhiPhase + (i - mNrPolarPMTs - mNrCenterPMTs + 0.5) * 360. * deg / mNrEquatorialPMTs; //i*90.0*deg; for 4 
+            thetaPMT = m_thetaEquatorial; 
+            phiPMT = m_EqPMTPhiPhase + (i - m_numberPolarPMTs - m_NrCenterPMTs + 0.5) * 360. * deg / m_NrEquatorialPMTs; //i*90.0*deg; for 4 
 
             //PMT position
-            lPMTTipZOffset = lZOffsetEquatorialPMTAxisOrigin;
-            lPMT_z = lPMTTipZOffset - mPMToffset*cos(90*deg-lPMT_theta);
-            lPMT_xyz = lXYZLengthEquatorialPMTAxisOriginToVesselInnerWall  - mPMToffset - mGelThicknessFrontEqPMT;
+            zOffsetTipPMT = zOffsetEquatorialPMTAxisOrigin;
+            zPMT = zOffsetTipPMT - m_PMToffset*cos(90*deg-thetaPMT);
+            xyzPMT = lengthEquatorialPMTAxisOriginToVesselInnerWall  - m_PMToffset - m_gelThicknessFrontEquatorialPMT;
         }
         
         // Other module half
 
         //lower polar
-        if (i>= mNrPMTsPerHalf && i<= mNrPMTsPerHalf + mNrPolarPMTs -1){ 
+        if (i>= m_numberPMTsPerHalf && i<= m_numberPMTsPerHalf + m_numberPolarPMTs -1){ 
             //rotation
-            lPMT_theta = 180*deg;
-            lPMT_phi = 0*deg;
+            thetaPMT = 180*deg;
+            phiPMT = 0*deg;
 
             //PMT position
-            lPMTTipZOffset = mGlassPoleLength - mGlassThickPole - mGelThicknessFrontPolarPMT;
-            lPMT_z = -lPMTTipZOffset + mPMToffset;
-            lPMT_xyz = 0*mm;
+            zOffsetTipPMT = m_GlassPoleLength - m_GlassThickPole - m_GelThicknessFrontPolarPMT;
+            zPMT = -zOffsetTipPMT + m_PMToffset;
+            xyzPMT = 0*mm;
         }
 
         //lower center
-        if (i>= mNrPMTsPerHalf + mNrPolarPMTs && i<= mNrPMTsPerHalf + mNrPolarPMTs + mNrCenterPMTs -1){ 
+        if (i>= m_numberPMTsPerHalf + m_numberPolarPMTs && i<= m_numberPMTsPerHalf + m_numberPolarPMTs + m_NrCenterPMTs -1){ 
             //rotation
-            lPMT_theta = 180*deg -  mThetaCenter;
-            lPMT_phi = (i - mNrPolarPMTs - mNrCenterPMTs + 0.5) * 360. * deg / mNrCenterPMTs; //i*90.0*deg; for 4 
+            thetaPMT = 180*deg -  m_thetaCenter;
+            phiPMT = (i - m_numberPolarPMTs - m_NrCenterPMTs + 0.5) * 360. * deg / m_NrCenterPMTs; //i*90.0*deg; for 4 
 
             //PMT position
-            lPMTTipZOffset = lZOffsetCenterPMTAxisOrigin;
-            lPMT_z = -lPMTTipZOffset + mPMToffset*cos(180*deg-lPMT_theta);
-            lPMT_xyz = lXYZLengthCenterPMTAxisOriginToVesselInnerWall  - mPMToffset - mGelThicknessFrontCenterPMT;
+            zOffsetTipPMT = zOffsetCenterPMTAxisOrigin;
+            zPMT = -zOffsetTipPMT + m_PMToffset*cos(180*deg-thetaPMT);
+            xyzPMT = lengthCenterPMTAxisOriginToVesselInnerWall  - m_PMToffset - m_gelThicknessFrontCenterPMT;
         }
 
         //lower equatorial
-        if (i>=mTotalNrPMTs-mNrEquatorialPMTs && i<=mTotalNrPMTs-1){ 
+        if (i>=m_totalNumberPMTs-m_NrEquatorialPMTs && i<=m_totalNumberPMTs-1){ 
             //rotation
-            lPMT_theta = 180*deg + mThetaEquatorial;
-            lPMT_phi = mEqPMTPhiPhase + (i - mNrPolarPMTs - mNrCenterPMTs + 0.5) * 360. * deg / mNrEquatorialPMTs; //i*90.0*deg; for 4 
+            thetaPMT = 180*deg + m_thetaEquatorial;
+            phiPMT = m_EqPMTPhiPhase + (i - m_numberPolarPMTs - m_NrCenterPMTs + 0.5) * 360. * deg / m_NrEquatorialPMTs; //i*90.0*deg; for 4 
 
             //PMT position
-            lPMTTipZOffset = lZOffsetEquatorialPMTAxisOrigin;
-            lPMT_z = -lPMTTipZOffset + mPMToffset*cos(180*deg-lPMT_theta);
-            lPMT_xyz = lXYZLengthEquatorialPMTAxisOriginToVesselInnerWall  - mPMToffset - mGelThicknessFrontEqPMT;
+            zOffsetTipPMT = zOffsetEquatorialPMTAxisOrigin;
+            zPMT = -zOffsetTipPMT + m_PMToffset*cos(180*deg-thetaPMT);
+            xyzPMT = lengthEquatorialPMTAxisOriginToVesselInnerWall  - m_PMToffset - m_gelThicknessFrontEquatorialPMT;
         }
 
         //PMT positions
-        lPMT_x = lPMT_xyz * sin(lPMT_theta) * cos(lPMT_phi);
-        lPMT_y = lPMT_xyz * sin(lPMT_theta) * sin(lPMT_phi);
-        mPMTPositions.push_back( G4ThreeVector(lPMT_x,lPMT_y,lPMT_z) );
+        xPMT = xyzPMT * sin(thetaPMT) * cos(phiPMT);
+        yPMT = xyzPMT * sin(thetaPMT) * sin(phiPMT);
+        m_positionsPMT.push_back( G4ThreeVector(xPMT,yPMT,zPMT) );
 
         //PMT angles
-        mPMT_theta.push_back(lPMT_theta);
-        mPMT_phi.push_back(lPMT_phi);
+        m_thetaPMT.push_back(thetaPMT);
+        m_phiPMT.push_back(phiPMT);
     }
 }    
 
 /**
  * Creation of LogicalVolume of gel pads
- * @param lGelSolid Solid inner module volume. IntersectionSolid with PMT cones is filled with gel
+ * @param p_gelSolid Solid inner module volume. IntersectionSolid with PMT cones is filled with gel
  */
-void LOM18::createGelpadLogicalVolumes(G4Polycone* lGelSolid) 
+void LOM18::createGelpadLogicalVolumes(G4Polycone* p_gelSolid) 
 {
     //getting the PMT solid
-    G4VSolid* lPMTsolid = mPMTManager->getPMTSolid();
+    G4VSolid* solidPMT = m_managerPMT->getPMTSolid();
 
     //Definition of helper volumes
-    G4Cons* lBasicConeSolid;
-    G4IntersectionSolid* lPrelimaryGelpad;
-    G4LogicalVolume* lGelPad_logical;
-    G4SubtractionSolid* lGelpad;
+    G4Cons* solidBasicCone;
+    G4IntersectionSolid* temporalGelPad;
+    G4LogicalVolume* logicalGelPad;
+    G4SubtractionSolid* solidGelpad;
 
     //Helper variables
-    G4double lGelpadBuffer = 50*mm; //needs to overlap everywhere to be cut later. Without this, the gelpad won't reach the vessel inner wall at all points and have a flat surface. Value can be anything as long as it is long enough
-    G4ThreeVector GelpadShift;
-    G4Transform3D* tra;
+    G4double bufferGelpad = 50*mm; //needs to overlap everywhere to be cut later. Without this, the gelpad won't reach the vessel inner wall at all points and have a flat surface. Value can be anything as long as it is long enough
+    G4ThreeVector shiftGelpad;
+    G4Transform3D* transformer;
 
     //create logical volume for each gelpad    
-    for(int k=0 ; k<=mTotalNrPMTs-1 ; k++){
-            mConv.str("");
-            converter2.str("");
-            mConv << "GelPad_" << k << "_solid";
-            converter2 << "Gelpad_final" << k << "_logical";
+    for(int k=0 ; k<=m_totalNumberPMTs-1 ; k++){
+            m_conv.str("");
+            m_converter2.str("");
+            m_conv << "GelPad_" << k << "_solid";
+            m_converter2 << "Gelpad_final" << k << "_logical";
 
             // polar gel pads
-            if(k<=mNrPolarPMTs-1 or (mNrPMTsPerHalf<=k && k<=mNrPMTsPerHalf)){ 
-                lBasicConeSolid = new G4Cons("GelPadBasic", 0,mMaxPMTRadius , 0, mMaxPMTRadius  + 2*lGelpadBuffer*tan(mPolarPadOpeningAngle), lGelpadBuffer, 0, 2*CLHEP::pi); //creates a very long cone which has two flat sides at an irrelevant position
+            if(k<=m_numberPolarPMTs-1 or (m_numberPMTsPerHalf<=k && k<=m_numberPMTsPerHalf)){ 
+                solidBasicCone = new G4Cons("GelPadBasic", 0,m_maxPMTRadius , 0, m_maxPMTRadius  + 2*bufferGelpad*tan(m_polarPadOpeningAngle), bufferGelpad, 0, 2*CLHEP::pi); //creates a very long cone which has two flat sides at an irrelevant position
                 
                 //rotation and position of gelpad
-                lRot = new G4RotationMatrix();
-                lRot->rotateY(mPMT_theta[k]);
-                lRot->rotateZ(mPMT_phi[k]); 
-                G4Transform3D transformers = G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]));
+                G4RotationMatrix* rot = new G4RotationMatrix();
+                rot->rotateY(m_thetaPMT[k]);
+                rot->rotateZ(m_phiPMT[k]); 
+                G4Transform3D transformers = G4Transform3D(*rot, G4ThreeVector(m_positionsPMT[k]));
 
                 //To shift BasicCone onto photocathode edge
-                GelpadShift = G4ThreeVector(0,0,lGelpadBuffer*cos(mPMT_theta[k]) );
-                tra = new G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]+GelpadShift));
+                shiftGelpad = G4ThreeVector(0,0,bufferGelpad*cos(m_thetaPMT[k]) );
+                transformer = new G4Transform3D(*rot, G4ThreeVector(m_positionsPMT[k]+shiftGelpad));
 
                 //creating volumes ... basic cone, subtract PMT, logical volume of gelpad
-                lPrelimaryGelpad = new G4IntersectionSolid(mConv.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
-                lGelpad = new G4SubtractionSolid(mConv.str(), lPrelimaryGelpad, lPMTsolid, transformers);
+                temporalGelPad = new G4IntersectionSolid(m_conv.str(), p_gelSolid, solidBasicCone, *transformer); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
+                solidGelpad = new G4SubtractionSolid(m_conv.str(), temporalGelPad, solidPMT, transformers);
                 
-                lGelPad_logical = new G4LogicalVolume(lGelpad, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
+                logicalGelPad = new G4LogicalVolume(solidGelpad, m_data->getMaterial("RiAbs_Gel_Shin-Etsu"), m_converter2.str());
             }
             // center gel pads
-            else if( (mNrPolarPMTs<=k && k<=mNrPolarPMTs+mNrCenterPMTs-1) or (k>=mNrPMTsPerHalf+mNrPolarPMTs && k<= mNrPMTsPerHalf+mNrPolarPMTs+mNrCenterPMTs-1) ){ 
-                lBasicConeSolid = new G4Cons("GelPadBasic", 0,mMaxPMTRadius , 0, mMaxPMTRadius  + 2*lGelpadBuffer*tan(mCenterPadOpeningAngle), lGelpadBuffer, 0, 2*CLHEP::pi); //creates a very long cone which has two flat sides at an irrelevant position
+            else if( (m_numberPolarPMTs<=k && k<=m_numberPolarPMTs+m_NrCenterPMTs-1) or (k>=m_numberPMTsPerHalf+m_numberPolarPMTs && k<= m_numberPMTsPerHalf+m_numberPolarPMTs+m_NrCenterPMTs-1) ){ 
+                solidBasicCone = new G4Cons("GelPadBasic", 0,m_maxPMTRadius , 0, m_maxPMTRadius  + 2*bufferGelpad*tan(m_centerPadOpeningAngle), bufferGelpad, 0, 2*CLHEP::pi); //creates a very long cone which has two flat sides at an irrelevant position
                 
                 //rotation and position of gelpad
-                lRot = new G4RotationMatrix();
-                lRot->rotateY(mPMT_theta[k]);
-                lRot->rotateZ(mPMT_phi[k]);
-                G4Transform3D transformers = G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]));
+                G4RotationMatrix* rot = new G4RotationMatrix();
+                rot->rotateY(m_thetaPMT[k]);
+                rot->rotateZ(m_phiPMT[k]);
+                G4Transform3D transformers = G4Transform3D(*rot, G4ThreeVector(m_positionsPMT[k]));
 
                 //To shift BasicCone onto photocathode edge
-                GelpadShift = G4ThreeVector(lGelpadBuffer*sin(mPMT_theta[k]) * cos(mPMT_phi[k]),lGelpadBuffer*sin(mPMT_theta[k]) * sin(mPMT_phi[k]),lGelpadBuffer*cos(mPMT_theta[k]) );
-                tra = new G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]+GelpadShift));
+                shiftGelpad = G4ThreeVector(bufferGelpad*sin(m_thetaPMT[k]) * cos(m_phiPMT[k]),bufferGelpad*sin(m_thetaPMT[k]) * sin(m_phiPMT[k]),bufferGelpad*cos(m_thetaPMT[k]) );
+                transformer = new G4Transform3D(*rot, G4ThreeVector(m_positionsPMT[k]+shiftGelpad));
 
                 //creating volumes ... basic cone, subtract PMT, logical volume of gelpad
-                lPrelimaryGelpad = new G4IntersectionSolid(mConv.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
-                lGelpad = new G4SubtractionSolid(mConv.str(), lPrelimaryGelpad, lPMTsolid, transformers);
-                lGelPad_logical = new G4LogicalVolume(lGelpad, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
+                temporalGelPad = new G4IntersectionSolid(m_conv.str(), p_gelSolid, solidBasicCone, *transformer); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
+                solidGelpad = new G4SubtractionSolid(m_conv.str(), temporalGelPad, solidPMT, transformers);
+                logicalGelPad = new G4LogicalVolume(solidGelpad, m_data->getMaterial("RiAbs_Gel_Shin-Etsu"), m_converter2.str());
             }
             // equatorial gel pads
-            else if(k<=mNrPolarPMTs+mNrCenterPMTs+mNrEquatorialPMTs -1 or k>=mTotalNrPMTs-mNrEquatorialPMTs){ 
-                lBasicConeSolid = new G4Cons("GelPadBasic", 0,mMaxPMTRadius , 0, mMaxPMTRadius  + 2*lGelpadBuffer*tan(mEqPadOpeningAngle), lGelpadBuffer, 0, 2*CLHEP::pi); //creates a very long cone which has two flat sides at an irrelevant position
+            else if(k<=m_numberPolarPMTs+m_NrCenterPMTs+m_NrEquatorialPMTs -1 or k>=m_totalNumberPMTs-m_NrEquatorialPMTs){ 
+                solidBasicCone = new G4Cons("GelPadBasic", 0,m_maxPMTRadius , 0, m_maxPMTRadius  + 2*bufferGelpad*tan(m_equatorialPadOpeningAngle), bufferGelpad, 0, 2*CLHEP::pi); //creates a very long cone which has two flat sides at an irrelevant position
                 
                 //rotation and position of gelpad
-                lRot = new G4RotationMatrix();
-                lRot->rotateY(mPMT_theta[k]);
-                lRot->rotateZ(mPMT_phi[k]);
-                G4Transform3D transformers = G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]));
+                G4RotationMatrix* rot = new G4RotationMatrix();
+                rot->rotateY(m_thetaPMT[k]);
+                rot->rotateZ(m_phiPMT[k]);
+                G4Transform3D transformers = G4Transform3D(*rot, G4ThreeVector(m_positionsPMT[k]));
 
                 //To shift BasicCone onto photocathode edge
-                GelpadShift = G4ThreeVector(lGelpadBuffer*sin(mPMT_theta[k]) * cos(mPMT_phi[k]),lGelpadBuffer*sin(mPMT_theta[k]) * sin(mPMT_phi[k]),lGelpadBuffer*cos(mPMT_theta[k]) );
-                tra = new G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]+GelpadShift));
+                shiftGelpad = G4ThreeVector(bufferGelpad*sin(m_thetaPMT[k]) * cos(m_phiPMT[k]),bufferGelpad*sin(m_thetaPMT[k]) * sin(m_phiPMT[k]),bufferGelpad*cos(m_thetaPMT[k]) );
+                transformer = new G4Transform3D(*rot, G4ThreeVector(m_positionsPMT[k]+shiftGelpad));
 
                 //creating volumes ... basic cone, subtract PMT, logical volume of gelpad
-                lPrelimaryGelpad = new G4IntersectionSolid(mConv.str(), lGelSolid, lBasicConeSolid, *tra); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
-                lGelpad = new G4SubtractionSolid(mConv.str(), lPrelimaryGelpad, lPMTsolid, transformers);
-                lGelPad_logical = new G4LogicalVolume(lGelpad, mData->getMaterial("RiAbs_Gel_Shin-Etsu"), converter2.str());
+                temporalGelPad = new G4IntersectionSolid(m_conv.str(), p_gelSolid, solidBasicCone, *transformer); //Places beginning of cone at the edge of photocathode. Only intersection with inner volume counts.
+                solidGelpad = new G4SubtractionSolid(m_conv.str(), temporalGelPad, solidPMT, transformers);
+                logicalGelPad = new G4LogicalVolume(solidGelpad, m_data->getMaterial("RiAbs_Gel_Shin-Etsu"), m_converter2.str());
             }
 
             
     //save logicalvolume of gelpads in array
-    mGelPad_logical.push_back( lGelPad_logical ); 
+    m_gelPadLogical.push_back( logicalGelPad ); 
     }
 }
 
 /**
  * Placement of PMTs
- * @param lInnerVolumeLogical LogicalVolume of inner module volume in which the PMTs are placed.
+ * @param p_innerVolumeLogical LogicalVolume of inner module volume in which the PMTs are placed.
  */
-void LOM18::placePMTs(G4LogicalVolume* lInnerVolumeLogical)
+void LOM18::placePMTs(G4LogicalVolume* p_innerVolumeLogical)
 {
-    for(int k=0 ; k<=mTotalNrPMTs-1 ; k++){
-        mConv.str("");
-        mConv << "_"<< k;
+    for(int k=0 ; k<=m_totalNumberPMTs-1 ; k++){
+        m_conv.str("");
+        m_conv << "_"<< k;
 
-        lRot = new G4RotationMatrix();
-        lRot->rotateY(mPMT_theta[k]);
-        lRot->rotateZ(mPMT_phi[k]);
-        lTransformers = G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]));
+        G4RotationMatrix* rot = new G4RotationMatrix();
+        rot->rotateY(m_thetaPMT[k]);
+        rot->rotateZ(m_phiPMT[k]);
+        G4Transform3D transformers = G4Transform3D(*rot, G4ThreeVector(m_positionsPMT[k]));
 
-        mPMTManager->placeIt(lTransformers, lInnerVolumeLogical, mConv.str());
+        m_managerPMT->placeIt(transformers, p_innerVolumeLogical, m_conv.str());
     }
 
 }
 
 /**
  * Placement of gel pads
- * @param lInnerVolumeLogical LogicalVolume of inner module volume in which the gel pads are placed.
+ * @param p_innerVolumeLogical LogicalVolume of inner module volume in which the gel pads are placed.
  */
-void LOM18::placeGelpads(G4LogicalVolume* lInnerVolumeLogical)
+void LOM18::placeGelpads(G4LogicalVolume* p_innerVolumeLogical)
 {
-    for(int k=0 ; k<=mTotalNrPMTs-1 ; k++){
-        mConv.str("");
-        mConv << "GelPad_" << k;
+    for(int k=0 ; k<=m_totalNumberPMTs-1 ; k++){
+        m_conv.str("");
+        m_conv << "GelPad_" << k;
 
-        lRot = new G4RotationMatrix();
-        lRot->rotateY(mPMT_theta[k]);
-        lRot->rotateZ(mPMT_phi[k]);
-        lTransformers = G4Transform3D(*lRot, G4ThreeVector(mPMTPositions[k]));
+        G4RotationMatrix* rot = new G4RotationMatrix();
+        rot->rotateY(m_thetaPMT[k]);
+        rot->rotateZ(m_phiPMT[k]);
+        G4Transform3D transformers = G4Transform3D(*rot, G4ThreeVector(m_positionsPMT[k]));
 
-        new G4PVPlacement(0, G4ThreeVector(0,0,0), mGelPad_logical[k], mConv.str(), lInnerVolumeLogical, false, 0, mCheckOverlaps);
+        new G4PVPlacement(0, G4ThreeVector(0,0,0), m_gelPadLogical[k], m_conv.str(), p_innerVolumeLogical, false, 0, m_checkOverlaps);
     }
 }

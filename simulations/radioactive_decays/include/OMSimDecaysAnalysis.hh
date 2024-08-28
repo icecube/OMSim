@@ -44,9 +44,9 @@ public:
 private:
     G4ThreadLocal static DecayStats *mThreadDecayStats;
 
-    static G4Mutex mMutex;
+    static G4Mutex m_mutex;
 
-    static OMSimDecaysAnalysis* mInstance;
+    static OMSimDecaysAnalysis* m_instance;
     OMSimDecaysAnalysis() = default;
     ~OMSimDecaysAnalysis() = default;
     OMSimDecaysAnalysis(const OMSimDecaysAnalysis &) = delete;

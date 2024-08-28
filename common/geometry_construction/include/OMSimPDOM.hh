@@ -3,8 +3,7 @@
  * @brief Implementation of the pDOM/Gen1 DOM class.
  * @ingroup common
  */
-#ifndef OMSimPDOM_h
-#define OMSimPDOM_h 1
+#pragma once
 
 #include "OMSimPMTConstruction.hh"
 #include "OMSimOpticalModule.hh"
@@ -20,15 +19,14 @@ public:
     pDOM(G4bool pPlaceHarness = true);
     ~pDOM(){};
     void construction();
-    G4bool mPlaceHarness;
+    G4bool m_placeHarness;
     G4String getName()
     {
         std::stringstream ss;
-        ss << "/pDOM/" << mIndex;
+        ss << "/pDOM/" << m_index;
         return ss.str();
     }
     double getPressureVesselWeight() {return 9.07*kg;};
     int getNumberOfPMTs() { return 1;};
 };
 
-#endif

@@ -13,30 +13,30 @@
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
-OMSimPMTResponse::OMSimPMTResponse() : m_RelativeDetectionEfficiencyInterpolator(nullptr), m_QEInterpolator(nullptr)
+OMSimPMTResponse::OMSimPMTResponse() : m_relativeDetectionEfficiencyInterpolator(nullptr), m_QEInterpolator(nullptr)
 {
 }
 
 OMSimPMTResponse::~OMSimPMTResponse()
 {
-    delete m_RelativeDetectionEfficiencyInterpolator;
-    m_RelativeDetectionEfficiencyInterpolator = nullptr;
+    delete m_relativeDetectionEfficiencyInterpolator;
+    m_relativeDetectionEfficiencyInterpolator = nullptr;
     delete m_QEInterpolator;
     m_QEInterpolator = nullptr;
 
-    for (const auto &pair : m_GainG2Dmap)
+    for (const auto &pair : m_gainG2Dmap)
     {
         delete pair.second;
     }
-    for (const auto &pair : m_GainResolutionG2Dmap)
+    for (const auto &pair : m_gainResolutionG2Dmap)
     {
         delete pair.second;
     }
-    for (const auto &pair : m_TransitTimeG2Dmap)
+    for (const auto &pair : m_transitTimeG2Dmap)
     {
         delete pair.second;
     }
-    for (const auto &pair : m_TransitTimeSpreadG2Dmap)
+    for (const auto &pair : m_transitTimeSpreadG2Dmap)
     {
         delete pair.second;
     }
@@ -55,8 +55,8 @@ OMSimPMTResponse::~OMSimPMTResponse()
 G4double OMSimPMTResponse::getCharge(G4double p_WavelengthKey)
 {
 
-    G4double lMeanPE = m_GainG2Dmap[p_WavelengthKey]->Interpolate(m_X, m_Y);
-    G4double lSPEResolution = m_GainResolutionG2Dmap[p_WavelengthKey]->Interpolate(m_X, m_Y);
+    G4double lMeanPE = m_gainG2Dmap[p_WavelengthKey]->Interpolate(m_X, m_Y);
+    G4double lSPEResolution = m_gainResolutionG2Dmap[p_WavelengthKey]->Interpolate(m_X, m_Y);
 
     double lToReturn = -1;
     double lCounter = 0;
@@ -85,8 +85,8 @@ G4double OMSimPMTResponse::getCharge(G4double p_WavelengthKey)
 G4double OMSimPMTResponse::getCharge(G4double p_Wavelength1, G4double p_Wavelength2)
 {
 
-    G4double lMeanPE = wavelengthInterpolatedValue(m_GainG2Dmap, p_Wavelength1, p_Wavelength2);
-    G4double lSPEResolution = wavelengthInterpolatedValue(m_GainResolutionG2Dmap, p_Wavelength1, p_Wavelength2);
+    G4double lMeanPE = wavelengthInterpolatedValue(m_gainG2Dmap, p_Wavelength1, p_Wavelength2);
+    G4double lSPEResolution = wavelengthInterpolatedValue(m_gainResolutionG2Dmap, p_Wavelength1, p_Wavelength2);
 
     double lToReturn = -1;
     double lCounter = 0;
@@ -113,8 +113,8 @@ G4double OMSimPMTResponse::getCharge(G4double p_Wavelength1, G4double p_Waveleng
 G4double OMSimPMTResponse::getTransitTime(G4double p_WavelengthKey)
 {
 
-    G4double lMeanTransitTime = m_TransitTimeG2Dmap[p_WavelengthKey]->Interpolate(m_X, m_Y) * ns;
-    G4double lTTS = m_TransitTimeSpreadG2Dmap[p_WavelengthKey]->Interpolate(m_X, m_Y) * ns;
+    G4double lMeanTransitTime = m_transitTimeG2Dmap[p_WavelengthKey]->Interpolate(m_X, m_Y) * ns;
+    G4double lTTS = m_transitTimeSpreadG2Dmap[p_WavelengthKey]->Interpolate(m_X, m_Y) * ns;
 
     return G4RandGauss::shoot(lMeanTransitTime, lTTS);
 }
@@ -133,8 +133,8 @@ G4double OMSimPMTResponse::getTransitTime(G4double p_WavelengthKey)
 G4double OMSimPMTResponse::getTransitTime(G4double p_Wavelength1, G4double p_Wavelength2)
 {
 
-    G4double lMeanTransitTime = wavelengthInterpolatedValue(m_TransitTimeG2Dmap, p_Wavelength1, p_Wavelength2) * ns;
-    G4double lTTS = wavelengthInterpolatedValue(m_TransitTimeSpreadG2Dmap, p_Wavelength1, p_Wavelength2) * ns;
+    G4double lMeanTransitTime = wavelengthInterpolatedValue(m_transitTimeG2Dmap, p_Wavelength1, p_Wavelength2) * ns;
+    G4double lTTS = wavelengthInterpolatedValue(m_transitTimeSpreadG2Dmap, p_Wavelength1, p_Wavelength2) * ns;
 
     return G4RandGauss::shoot(lMeanTransitTime, lTTS);
 }
@@ -151,7 +151,7 @@ G4double OMSimPMTResponse::wavelengthInterpolatedValue(std::map<G4double, TH2D *
 
     G4double lValue1 = p_Map[p_Wavelength1]->Interpolate(m_X, m_Y);
     G4double lValue2 = p_Map[p_Wavelength2]->Interpolate(m_X, m_Y);
-    return lValue1 + (mWavelength - p_Wavelength1) * (lValue2 - lValue1) / (p_Wavelength2 - p_Wavelength1);
+    return lValue1 + (m_wavelength - p_Wavelength1) * (lValue2 - lValue1) / (p_Wavelength2 - p_Wavelength1);
 }
 
 /**
@@ -268,7 +268,7 @@ void OMSimPMTResponse::configureQEweightInterpolator(const std::string &p_FileNa
 void OMSimPMTResponse::configureCEweightInterpolator(const std::string &p_FileName)
 {
     log_trace("Creating CE weight interpolator...");
-    m_RelativeDetectionEfficiencyInterpolator = Tools::create1dInterpolator(p_FileName.c_str());
+    m_relativeDetectionEfficiencyInterpolator = Tools::create1dInterpolator(p_FileName.c_str());
     m_CEWeightInterpolatorAvailable = true;
 }
 
@@ -279,12 +279,12 @@ void OMSimPMTResponse::configureScansInterpolators(const std::string &p_PathToFi
     for (const auto &lKey : getScannedWavelengths())
     {
         std::string lWv = std::to_string((int)(lKey / nm));
-        m_GainG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "Gain_PE_" + lWv + ".dat");
-        m_GainResolutionG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "SPEresolution_" + lWv + ".dat");
-        m_TransitTimeSpreadG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "TransitTimeSpread_" + lWv + ".dat");
-        m_TransitTimeG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "TransitTime_" + lWv + ".dat");
+        m_gainG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "Gain_PE_" + lWv + ".dat");
+        m_gainResolutionG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "SPEresolution_" + lWv + ".dat");
+        m_transitTimeSpreadG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "TransitTimeSpread_" + lWv + ".dat");
+        m_transitTimeG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "TransitTime_" + lWv + ".dat");
     }
-    m_ScansInterpolatorsAvailable = true;
+    m_scansInterpolatorsAvailable = true;
     log_trace("Finished opening photocathode scans data...");
 }
 
@@ -320,15 +320,15 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::processPhotocathodeHit(G4double pX,
     m_X = pX / mm;
     m_Y = pY / mm;
     G4double lR = std::sqrt(m_X * m_X + m_Y * m_Y);
-    mWavelength = pWavelength;
+    m_wavelength = pWavelength;
     double lQEweight = (m_QEWeightInterpolatorAvailable) ? m_QEInterpolator->Eval(pWavelength / nm) : 1;
-    double lCEweight = (m_CEWeightInterpolatorAvailable) ? m_RelativeDetectionEfficiencyInterpolator->Eval(lR) : 1;
+    double lCEweight = (m_CEWeightInterpolatorAvailable) ? m_relativeDetectionEfficiencyInterpolator->Eval(lR) : 1;
 
     lPulse.detectionProbability = lQEweight * lCEweight;
     lPulse.PE = -1;
     lPulse.transitTime = -1;
 
-    if (!m_ScansInterpolatorsAvailable)
+    if (!m_scansInterpolatorsAvailable)
         return lPulse;
 
     std::vector<G4double> lScannedWavelengths = getScannedWavelengths();

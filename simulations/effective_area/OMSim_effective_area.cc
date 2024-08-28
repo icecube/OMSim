@@ -10,7 +10,7 @@
 #include "OMSimEffectiveAreaDetector.hh"
 #include "OMSimTools.hh"
 
-std::shared_ptr<spdlog::logger> globalLogger;
+std::shared_ptr<spdlog::logger> g_logger;
 
 namespace po = boost::program_options;
 

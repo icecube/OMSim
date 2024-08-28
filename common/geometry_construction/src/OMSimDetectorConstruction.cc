@@ -11,16 +11,16 @@
 #include "G4SDManager.hh"
 
 OMSimDetectorConstruction::OMSimDetectorConstruction()
-    : mWorldSolid(0), mWorldLogical(0), mWorldPhysical(0)
+    : m_worldSolid(0), m_worldLogical(0), mWorldPhysical(0)
 {
     OMSimInputData::init();
-    mData = &OMSimInputData::getInstance();
+    m_data = &OMSimInputData::getInstance();
 }
 
 OMSimDetectorConstruction::~OMSimDetectorConstruction()
 {
     log_trace("Clearing sensitive detectors");
-    mSensitiveDetectors.clear();
+    m_sensitiveDetectors.clear();
 
     log_trace("Deleting OMSimInputData");
     OMSimInputData::shutdown();
@@ -42,7 +42,7 @@ void OMSimDetectorConstruction::ConstructSDandField()
 {
     log_trace("ConstructSDandField started");
 
-    for (const auto& sdInfo : mSensitiveDetectors) {
+    for (const auto& sdInfo : m_sensitiveDetectors) {
         G4String sdName = sdInfo.sensitiveDetector->GetName();
         SetSensitiveDetector(sdInfo.logicalVolume, sdInfo.sensitiveDetector);
         log_trace("Set sensitive detector {} for logical volume {}", 
@@ -54,5 +54,5 @@ void OMSimDetectorConstruction::ConstructSDandField()
 void OMSimDetectorConstruction::registerSensitiveDetector(G4LogicalVolume *pLogVol, G4VSensitiveDetector *pSD)
 {
     log_trace("Registering logical volume {} as sensitive detector {}", pLogVol->GetName(), pSD->GetName());
-    mSensitiveDetectors.push_back({pLogVol, pSD});
+    m_sensitiveDetectors.push_back({pLogVol, pSD});
 }

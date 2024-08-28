@@ -5,7 +5,7 @@
 #include <G4RandomTools.hh>
 
 thread_local std::unique_ptr<G4GeneralParticleSource> OMSimPrimaryGeneratorAction::mParticleSource;
-G4Mutex OMSimPrimaryGeneratorAction::mMutex;
+G4Mutex OMSimPrimaryGeneratorAction::m_mutex;
 OMSimPrimaryGeneratorAction::OMSimPrimaryGeneratorAction()
 {
 	if (!mParticleSource)
@@ -23,7 +23,7 @@ void OMSimPrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 {
 	if (mParticleSource)
 	{
-		std::lock_guard<G4Mutex> lock(mMutex);
+		std::lock_guard<G4Mutex> lock(m_mutex);
 		mParticleSource->SetParticlePolarization(G4RandomDirection());
 		mParticleSource->GeneratePrimaryVertex(anEvent);
 	}

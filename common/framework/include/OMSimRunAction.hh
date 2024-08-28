@@ -1,5 +1,4 @@
-#ifndef OMSimRunAction_h
-#define OMSimRunAction_h 1
+#pragma once
 
 #include <G4UserRunAction.hh>
 #include "OMSimHitManager.hh"
@@ -22,5 +21,3 @@ public:
     OMSimHitManager::getInstance().mergeThreadData();
   }
 };
-
-#endif

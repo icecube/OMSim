@@ -15,14 +15,14 @@
 #include <boost/program_options.hpp>
 
 namespace po = boost::program_options;
-extern std::shared_ptr<spdlog::logger> globalLogger;
+extern std::shared_ptr<spdlog::logger> g_logger;
 
 OMSim::OMSim() : 
-mStartingTime(std::chrono::high_resolution_clock::now()), 
-mGeneralOptions("General options"), 
-mRunManager(nullptr),
-mVisManager(nullptr),
-mNavigator(nullptr)
+m_startingTime(std::chrono::high_resolution_clock::now()), 
+m_generalOptions("General options"), 
+m_runManager(nullptr),
+m_visManager(nullptr),
+m_navigator(nullptr)
 {
     OMSimCommandArgsTable::init();
     setGeneralOptions();
@@ -31,7 +31,7 @@ mNavigator(nullptr)
 
 void OMSim::setGeneralOptions()
 {
-    mGeneralOptions.add_options()("help", "produce help message")
+    m_generalOptions.add_options()("help", "produce help message")
     ("log_level", po::value<std::string>()->default_value("info"), "Granularity of logger, defaults to info [trace, debug, info, warn, error, critical, off]")
     ("output_file,o", po::value<std::string>()->default_value("output"), "filename for output")
     ("numevents,n", po::value<G4int>()->default_value(0), "number of events")
@@ -56,16 +56,16 @@ void OMSim::setGeneralOptions()
 
 void OMSim::initialLoggerConfiguration()
 {
-    globalLogger = spdlog::stdout_color_mt("console");
-    globalLogger->set_level(spdlog::level::info); // Set the desired log level
-    globalLogger->set_pattern("%^[%H:%M:%S.%e][t %t][%l][%s:%#]%$ %v");
-    spdlog::set_default_logger(globalLogger); 
+    g_logger = spdlog::stdout_color_mt("console");
+    g_logger->set_level(spdlog::level::info); // Set the desired log level
+    g_logger->set_pattern("%^[%H:%M:%S.%e][t %t][%l][%s:%#]%$ %v");
+    spdlog::set_default_logger(g_logger); 
 }
  
 
-spdlog::level::level_enum getLogLevelFromString(const std::string &pLevelString)
+spdlog::level::level_enum getLogLevelFromString(const std::string &p_levelString)
 {
-    static const std::unordered_map<std::string, spdlog::level::level_enum> lLevelMap = {
+    static const std::unordered_map<std::string, spdlog::level::level_enum> levelMap = {
         {"trace", spdlog::level::trace},
         {"debug", spdlog::level::debug},
         {"info", spdlog::level::info},
@@ -73,8 +73,8 @@ spdlog::level::level_enum getLogLevelFromString(const std::string &pLevelString)
         {"error", spdlog::level::err},
         {"critical", spdlog::level::critical},
         {"off", spdlog::level::off}};
-    auto it = lLevelMap.find(pLevelString);
-    if (it != lLevelMap.end())
+    auto it = levelMap.find(p_levelString);
+    if (it != levelMap.end())
     {
         return it->second;
     }
@@ -84,24 +84,24 @@ spdlog::level::level_enum getLogLevelFromString(const std::string &pLevelString)
 
 void OMSim::configureLogger()
 {
-    std::string lLogLevel = OMSimCommandArgsTable::getInstance().get<std::string>("log_level");
-    globalLogger->set_level(getLogLevelFromString(lLogLevel)); // Set the desired log level
-    spdlog::set_default_logger(globalLogger);  
-    log_trace("Logger configured to level {}", lLogLevel);
+    std::string logLevel = OMSimCommandArgsTable::getInstance().get<std::string>("log_level");
+    g_logger->set_level(getLogLevelFromString(logLevel)); // Set the desired log level
+    spdlog::set_default_logger(g_logger);  
+    log_trace("Logger configured to level {}", logLevel);
 }
 
 /**
- * @brief UIEx session is started for visualisation.
+ * @brief uiEx session is started for visualisation.
  */
 void OMSim::startVisualisation()
 {
-    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-    char lArg0[] = "all";
-    char *lArgv[] = {lArg0, NULL};
-    G4UIExecutive *UIEx = new G4UIExecutive(1, lArgv);
-    lUIinterface.applyCommand("/control/execute ../common/data/vis/init_vis.mac");
-    UIEx->SessionStart();
-    delete UIEx;
+    OMSimUIinterface &uiInterface = OMSimUIinterface::getInstance();
+    char arg0[] = "all";
+    char *argv[] = {arg0, NULL};
+    G4UIExecutive *uiEx = new G4UIExecutive(1, argv);
+    uiInterface.applyCommand("/control/execute ../common/data/vis/init_vis.mac");
+    uiEx->SessionStart();
+    delete uiEx;
 }
 
 int OMSim::determineNumberOfThreads()
@@ -122,73 +122,73 @@ int OMSim::determineNumberOfThreads()
 /**
  * @brief Initialize the simulation constructing all Geant instances.
  */
-void OMSim::initialiseSimulation(OMSimDetectorConstruction* pDetectorConstruction)
+void OMSim::initialiseSimulation(OMSimDetectorConstruction* p_detectorConstruction)
 {
     OMSimHitManager::init();
     configureLogger();
     
-    OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-    Tools::ensureDirectoryExists(lArgs.get<std::string>("output_file"));
+    OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
+    Tools::ensureDirectoryExists(args.get<std::string>("output_file"));
 
-    std::string lFileName = lArgs.get<std::string>("output_file") + "_args.json";
-    if (lArgs.get<bool>("save_args"))
-        lArgs.writeToJson(lFileName);
+    std::string fileName = args.get<std::string>("output_file") + "_args.json";
+    if (args.get<bool>("save_args"))
+        args.writeToJson(fileName);
 
-    //CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(lArgs.get<long>("seed"), 3));
-    //CLHEP::HepRandom::setTheEngine(new CLHEP::MixMaxRng(lArgs.get<long>("seed")));
-    //G4Random::setTheEngine(new CLHEP::MixMaxRng(lArgs.get<long>("seed")));
-    long seed = lArgs.get<long>("seed");
+    //CLHEP::HepRandom::setTheEngine(new CLHEP::RanluxEngine(args.get<long>("seed"), 3));
+    //CLHEP::HepRandom::setTheEngine(new CLHEP::MixMaxRng(args.get<long>("seed")));
+    //G4Random::setTheEngine(new CLHEP::MixMaxRng(args.get<long>("seed")));
+    long seed = args.get<long>("seed");
     G4Random::setTheEngine(new CLHEP::MixMaxRng(seed));
     G4Random::setTheSeed(seed);
 
-    mRunManager = std::make_unique<G4MTRunManager>();
-    //mRunManager->SetVerboseLevel(2);
-    mVisManager = std::make_unique<G4VisExecutive>();
-    mNavigator = std::make_unique<G4Navigator>();
+    m_runManager = std::make_unique<G4MTRunManager>();
+    //m_runManager->SetVerboseLevel(2);
+    m_visManager = std::make_unique<G4VisExecutive>();
+    m_navigator = std::make_unique<G4Navigator>();
 
     int nThreads = determineNumberOfThreads();
-    mRunManager->SetNumberOfThreads(nThreads);
+    m_runManager->SetNumberOfThreads(nThreads);
 
-    mRunManager->SetUserInitialization(pDetectorConstruction);
+    m_runManager->SetUserInitialization(p_detectorConstruction);
 
-    mPhysics = std::make_unique<OMSimPhysicsList>();
-    mRunManager->SetUserInitialization(mPhysics.get());
-    mPhysics.release();
+    m_physics = std::make_unique<OMSimPhysicsList>();
+    m_runManager->SetUserInitialization(m_physics.get());
+    m_physics.release();
 
-    mVisManager->Initialize();
+    m_visManager->Initialize();
 
     OMSimActionInitialization* actionInitialization = new OMSimActionInitialization();
-    mRunManager->SetUserInitialization(actionInitialization);
-    mRunManager->Initialize();
+    m_runManager->SetUserInitialization(actionInitialization);
+    m_runManager->Initialize();
     
+    OMSimUIinterface::init();
+    OMSimUIinterface &uiInterface = OMSimUIinterface::getInstance();
+    uiInterface.setUI(G4UImanager::GetUIpointer());
 
-    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-    lUIinterface.setUI(G4UImanager::GetUIpointer());
+    m_navigator.get()->SetWorldVolume(p_detectorConstruction->mWorldPhysical);
+    m_navigator.get()->LocateGlobalPointAndSetup(G4ThreeVector(0., 0., 0.));
 
-    mNavigator.get()->SetWorldVolume(pDetectorConstruction->mWorldPhysical);
-    mNavigator.get()->LocateGlobalPointAndSetup(G4ThreeVector(0., 0., 0.));
-
-    mHistory = std::unique_ptr<G4TouchableHistory>(mNavigator->CreateTouchableHistory());
+    m_history = std::unique_ptr<G4TouchableHistory>(m_navigator->CreateTouchableHistory());
 
 }
 
 /**
  * @brief Adds options from the different simulation modules to the option description list (what is printed in --help).
  */
-void OMSim::extendOptions(po::options_description pNewOptions)
+void OMSim::extendOptions(po::options_description p_newOptions)
 {
-	mGeneralOptions.add(pNewOptions);
+	m_generalOptions.add(p_newOptions);
 }
 
 
 /**
  * @brief Parses user terminal arguments to a variables map 
  */
-po::variables_map OMSim::parseArguments(int pArgumentCount, char *pArgumentVector[])
+po::variables_map OMSim::parseArguments(int p_argumentCount, char *p_argumentVector[])
 {   
-	po::variables_map lVariablesMap;
+	po::variables_map variableMap;
 	try {
-		po::store(po::parse_command_line(pArgumentCount, pArgumentVector, mGeneralOptions), lVariablesMap);
+		po::store(po::parse_command_line(p_argumentCount, p_argumentVector, m_generalOptions), variableMap);
 	} catch (std::invalid_argument& e) {
 		std::cerr << "Invalid argument: " << e.what() << std::endl;
 	} catch (std::exception& e) {
@@ -196,43 +196,43 @@ po::variables_map OMSim::parseArguments(int pArgumentCount, char *pArgumentVecto
 	} catch (...) {
 		std::cerr << "An unknown exception occurred." << std::endl;
 	}
-	po::notify(lVariablesMap);
+	po::notify(variableMap);
 
-	return lVariablesMap;
+	return variableMap;
 }
 
 /**
  * @brief Sets variables from a variables map to the instance of OMSimCommandArgsTable
  */
-void OMSim::setUserArgumentsToArgTable(po::variables_map pVariablesMap)
+void OMSim::setUserArgumentsToArgTable(po::variables_map p_variablesMap)
 {
-	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-	for (const auto &option : pVariablesMap)
+	OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
+	for (const auto &option : p_variablesMap)
 	{
-		lArgs.setParameter(option.first, option.second.value());
+		args.setParameter(option.first, option.second.value());
 	}
 	// Now that all parameters are set, "finalize" the OMSimCommandArgsTable instance so that the parameters cannot be modified anymore
-	lArgs.finalize();
+	args.finalize();
 }
 
 /**
  * @brief Parses the user arguments into variables that can be accessed in the simulation via OMSimCommandArgsTable. 
  * @return true if simulation should continue, if --help is called it will return false and stop the program
  */
-bool OMSim::handleArguments(int pArgumentCount, char *pArgumentVector[])
+bool OMSim::handleArguments(int p_argumentCount, char *p_argumentVector[])
 {
 	
-	po::variables_map lVariablesMap = parseArguments(pArgumentCount, pArgumentVector);
+	po::variables_map variableMap = parseArguments(p_argumentCount, p_argumentVector);
 
 	//check if user needs help
-	if (lVariablesMap.count("help"))
+	if (variableMap.count("help"))
 	{
-		std::cout << mGeneralOptions << "\n";
+		std::cout << m_generalOptions << "\n";
 		return false;
 	}
 
 	//If no help needed continue and set arguments to arg table
-	setUserArgumentsToArgTable(lVariablesMap);
+	setUserArgumentsToArgTable(variableMap);
 	return true;
 }
 
@@ -241,20 +241,20 @@ bool OMSim::handleArguments(int pArgumentCount, char *pArgumentVector[])
 
 OMSim::~OMSim()
 {
-    log_trace("Resetting mHistory");
-    mHistory.reset();
+    log_trace("Resetting m_history");
+    m_history.reset();
     
-    log_trace("Resetting mNavigator");
-    mNavigator.reset();
+    log_trace("Resetting m_navigator");
+    m_navigator.reset();
     
-    log_trace("Resetting mPhysics");
-    mPhysics.reset();
+    log_trace("Resetting m_physics");
+    m_physics.reset();
     
-    log_trace("Resetting mVisManager");
-    mVisManager.reset();
+    log_trace("Resetting m_visManager");
+    m_visManager.reset();
 
-    log_trace("Resetting mRunManager");
-    mRunManager.reset();
+    log_trace("Resetting m_runManager");
+    m_runManager.reset();
 
     log_trace("Deleting OMSimHitManager");
     OMSimHitManager::shutdown();
@@ -262,8 +262,11 @@ OMSim::~OMSim()
     log_trace("Deleting OMSimCommandArgsTable");
     OMSimCommandArgsTable::shutdown();
 
+    log_trace("Deleting OMSimUIinterface");
+    OMSimUIinterface::shutdown();
+    
     log_trace("OMSim destructor finished");
     std::chrono::high_resolution_clock::time_point lFinishtime = std::chrono::high_resolution_clock::now();
-    const std::chrono::duration<double> lDiff = lFinishtime - mStartingTime;
+    const std::chrono::duration<double> lDiff = lFinishtime - m_startingTime;
     log_info("Computation time: {} {}", lDiff.count(), " seconds.");
 }
