@@ -14,16 +14,16 @@ The `OMSimInputData` class (see `OMSimInputData.hh`) is responsible for processi
 
 The `OMSimMaterialHandler` class is the core component for creating and modifying materials. It provides several key methods:
 
-- `ProcessMaterial()`: Creates a new material or modifies an existing one based on the data in the input file.
-- `ProcessSurface()`: Processes and returns an optical surface defined in the input file.
-- `ProcessExtraProperties()`: Adds additional properties to an existing material.
-- `ProcessSpecial(ProcessorFunction p_processor)`: Handles special material types like IceCube ice or scintillators that require custom processing.
+- `OMSimMaterialHandler::processMaterial()`: Creates a new material or modifies an existing one based on the data in the input file.
+- `OMSimMaterialHandler::processSurface()`: Processes and returns an optical surface defined in the input file.
+- `OMSimMaterialHandler::processExtraProperties()`: Adds additional properties to an existing material.
+- `OMSimMaterialHandler::processSpecial(ProcessorFunction p_processor)`: Handles special material types like IceCube ice or scintillators that require custom processing.
 
-Materials created via this class can be retrieved using Geant4's conventional method `G4Material::GetMaterial`. The `OMSimInputData` class also provides a wrapper method `getMaterial` to handle default parameters and special "argument materials".
+Materials created via this class can be retrieved using Geant4's conventional method `G4Material::GetMaterial`. The `OMSimInputData` class also provides a wrapper method `OMSimInputData::getMaterial` to handle default parameters and special "argument materials".
 
 ### Optical Surfaces
 
-For optical surfaces, `OMSimInputData` provides the method `getOpticalSurface`, which doesn't exist in Geant4 by default.
+For optical surfaces, `OMSimInputData` provides the method `OMSimInputData::getOpticalSurface`, which doesn't exist in Geant4 by default.
 
 ### Special Material Types
 
