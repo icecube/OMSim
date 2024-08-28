@@ -54,7 +54,7 @@ public:
         log_trace("Fetching parameter {} in key {}", pParameter, pKey);
         try
         {
-            const T lValue = mTable.at(pKey).get<T>(pParameter);
+            const T lValue = m_table.at(pKey).get<T>(pParameter);
             return lValue;
         }
 
@@ -160,8 +160,8 @@ public:
     };
 
 private:
-    std::map<G4String, boost::property_tree::ptree> mTable; ///< A table mapping keys to property trees.
-    std::map<G4String, G4String> mKeyFileOrigin;            ///< A table mapping keys to original file name.
+    std::map<G4String, boost::property_tree::ptree> m_table; ///< A table mapping keys to property trees.
+    std::map<G4String, G4String> m_keyToFileName;            ///< A table mapping keys to original file name.
 };
 
 /**

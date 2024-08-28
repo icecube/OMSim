@@ -23,8 +23,8 @@ pt::ptree ParameterTable::appendAndReturnTree(G4String p_fileName)
     pt::ptree lJsonTree;
     pt::read_json(p_fileName, lJsonTree);
     const G4String lName = lJsonTree.get<G4String>("jName");
-    mTable[lName] = lJsonTree;
-    mKeyFileOrigin[lName] = p_fileName;
+    m_table[lName] = lJsonTree;
+    m_keyToFileName[lName] = p_fileName;
     log_trace("Key {} added to dictionary from file {}.", lName, p_fileName);
     return lJsonTree;
 }
@@ -45,11 +45,11 @@ G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
     }
 
     // Get the sub-tree for the provided key
-    const auto &lSubTree = mTable.at(pKey);
+    const auto &lSubTree = m_table.at(pKey);
 
     if (!lSubTree.get_child_optional(pParameter))
     {
-        G4String lErrorLog = "Table in key '" + pKey + "' has no parameter '" + pParameter + "'. Check file '" + mKeyFileOrigin.at(pKey) + "'";
+        G4String lErrorLog = "Table in key '" + pKey + "' has no parameter '" + pParameter + "'. Check file '" + m_keyToFileName.at(pKey) + "'";
         log_error(lErrorLog);
         throw std::runtime_error(lErrorLog);
     }
@@ -87,7 +87,7 @@ G4double ParameterTable::getValueWithUnit(G4String pKey, G4String pParameter)
 pt::ptree ParameterTable::getJSONTree(G4String pKey)
 {
     if (checkIfTreeNameInTable(pKey))
-        return mTable.at(pKey);
+        return m_table.at(pKey);
     else
         log_critical("Key not found in table");
     return boost::property_tree::ptree(); // Return an empty ptree
@@ -102,7 +102,7 @@ pt::ptree ParameterTable::getJSONTree(G4String pKey)
 G4bool ParameterTable::checkIfTreeNameInTable(G4String pKey)
 {
     log_trace("Checking if tree {} is in table...", pKey);
-    const G4int lFound = mTable.count(pKey);
+    const G4int lFound = m_table.count(pKey);
     if (lFound > 0)
         return true;
     else

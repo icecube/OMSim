@@ -7,19 +7,47 @@ This framework offers tools to simplify geometry construction and material defin
 
 ## Materials and User Data
 
-User-defined material data are stored in JSON files under `/common/data` to minimize file length.
+User-defined material data are stored in JSON files under `/common/data` to avoid filling source code with numbers.
+The `OMSimInputData` class (see `OMSimInputData.hh`) is responsible for processing these files and loading the material properties into the Geant4 framework. It uses the `OMSimMaterialHandler` class to handle the specifics of material creation and property setting.
 
-The `OMSimInputData` (see `OMSimInputData.hh`) loads these properties directly into the Geant4 framework. Materials loaded via this class can be retrieved using Geant4's conventional method `G4Material::GetMaterial`, but the framework also provides the wrapper `OMSimInputData::getMaterial` to handle default parameters.
+### Material Handling
 
-The class also provides an analogue method for optical surfaces `OMSimInputData::getOpticalSurface` which does not exist in Geant4.
+The `OMSimMaterialHandler` class is the core component for creating and modifying materials. It provides several key methods:
 
-Since different materials have different types of properties, the data is loaded in multiple ways. These different material types are defined in `OMSimDataFileTypes.hh`.
+- `ProcessMaterial()`: Creates a new material or modifies an existing one based on the data in the input file.
+- `ProcessSurface()`: Processes and returns an optical surface defined in the input file.
+- `ProcessExtraProperties()`: Adds additional properties to an existing material.
+- `ProcessSpecial(ProcessorFunction p_processor)`: Handles special material types like IceCube ice or scintillators that require custom processing.
 
-Additionally, geometry data used during PMT construction are also stored in JSON files (`/common/data/PMTs`). These are saved in a "tree" (essentially a dictionary containing the JSON file's keys and values) in `OMSimInputData::mTable`. 
+Materials created via this class can be retrieved using Geant4's conventional method `G4Material::GetMaterial`. The `OMSimInputData` class also provides a wrapper method `getMaterial` to handle default parameters and special "argument materials".
 
-This approach was adopted because various PMTs are constructed similarly, eliminating the need to define a unique class for each PMT type, as is done for the optical modules. 
+### Optical Surfaces
 
-If you wish to load additional data, you can either define a new type in OMSimDataFileTypes or use a json file to load it into a tree as previously mentioned. For simpler tasks, use the static method `Tools::loadtxt` provided by the [`Tools` namespace](md_extra_doc_2_technicalities.html#autotoc_md20).
+For optical surfaces, `OMSimInputData` provides the method `getOpticalSurface`, which doesn't exist in Geant4 by default.
+
+### Special Material Types
+
+Different materials may require different types of properties and processing. The `OMSimMaterialHandler` class can handle various material types, including:
+
+- Standard materials with refractive index and absorption properties
+- IceCube ice, where the optical properties are calculated by the selected depth (an arg variable)
+- Scintillator materials with complex decay time and yield properties
+
+Special processors for these materials are implemented in separate namespaces (e.g., `IceProcessor`, `ScintillationProcessor`) and can be passed to the `ProcessSpecial` method of `OMSimMaterialHandler`.
+
+### Geometry Data
+
+PMT construction data is also stored in JSON files (`/common/data/PMTs`). This data is loaded into a "tree" (essentially a dictionary containing the JSON file's keys and values) in `OMSimInputData::m_table`. This approach allows for flexible PMT construction without defining a unique class for each PMT type.
+
+### Adding New Data
+
+To add new material data:
+
+1. Create a new JSON file in the appropriate directory under `/common/data`.
+2. If the material requires special processing, you may need to create a new processor function or namespace.
+3. Update `OMSimInputData::processFile` to handle the new file type if necessary.
+
+For simpler tasks, you can use the static method `Tools::loadtxt` provided by the [`Tools` namespace](md_extra_doc_2_technicalities.html#autotoc_md20).
 
 ---
 
