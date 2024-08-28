@@ -23,6 +23,55 @@ auto [counts, edges] = Tools::histogram(data, 5);
 ---
 ---
 
+## Nomenclature
+
+We follow these naming conventions:
+
+Methods:
+- Written in camelCase, starting with a lowercase letter
+- Example: `calculateDistance()`
+- Note: This contrasts with Geant4's methods, which always start with an uppercase letter
+
+Classes:
+- Written in PascalCase (also known as UpperCamelCase)
+- Core framework classes should start with `OMSim`
+- Example: `OMSimDetectorConstruction`
+
+Member Variables:
+- Prefix: `m_`
+- Written in camelCase after the prefix
+- Example: `m_particleEnergy`
+
+Global Variables:
+- Prefix: `g_`
+- Written in camelCase after the prefix
+- Example: `g_worldVolume`
+
+Function Parameters:
+- Prefix: `p_`
+- Written in camelCase after the prefix
+- Example: `p_initialPosition`
+
+Local Variables
+- Start with a lowercase letter
+- Written in camelCase
+- Example: `localParticle`
+
+Namespaces
+- Written in PascalCase
+- Example: `ToolsNamespace`
+
+By adhering to these conventions, we aim to:
+1. Clearly distinguish OMSim code from Geant4 code (so we can for example find+replace code without worries)
+2. Easily identify the scope and purpose of variables and functions
+3. Maintain consistency throughout the codebase, enhancing readability and maintainability
+
+Remember to apply these conventions consistently across all new code and when refactoring existing code.
+
+---
+---
+
+
 ## Matching PMT Efficiency to Measurements
 
 In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability ([click here](md_extra_doc_0_common.html#autotoc_md5) for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module `efficiency_calibration` facilitates this procedure. In the following, the mDOM PMT is used as an example.

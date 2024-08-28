@@ -14,10 +14,10 @@ The `OMSimInputData` class (see `OMSimInputData.hh`) is responsible for processi
 
 The `OMSimMaterialHandler` class is the core component for creating and modifying materials. It provides several key methods:
 
-- `OMSimMaterialHandler::processMaterial()`: Creates a new material or modifies an existing one based on the data in the input file.
-- `OMSimMaterialHandler::processSurface()`: Processes and returns an optical surface defined in the input file.
-- `OMSimMaterialHandler::processExtraProperties()`: Adds additional properties to an existing material.
-- `OMSimMaterialHandler::processSpecial(ProcessorFunction p_processor)`: Handles special material types like IceCube ice or scintillators that require custom processing.
+- `OMSimMaterialHandler::processMaterial`: Creates a new material or modifies an existing one based on the data in the input file.
+- `OMSimMaterialHandler::processSurface`: Processes and returns an optical surface defined in the input file.
+- `OMSimMaterialHandler::processExtraProperties`: Adds additional properties to an existing material.
+- `OMSimMaterialHandler::processSpecial`: Handles special material types like IceCube ice or scintillators that require custom processing.
 
 Materials created via this class can be retrieved using Geant4's conventional method `G4Material::GetMaterial`. The `OMSimInputData` class also provides a wrapper method `OMSimInputData::getMaterial` to handle default parameters and special "argument materials".
 
@@ -33,7 +33,7 @@ Different materials may require different types of properties and processing. Th
 - IceCube ice, where the optical properties are calculated by the selected depth (an arg variable)
 - Scintillator materials with complex decay time and yield properties
 
-Special processors for these materials are implemented in separate namespaces (e.g., `IceProcessor`, `ScintillationProcessor`) and can be passed to the `ProcessSpecial` method of `OMSimMaterialHandler`.
+Special processors for these materials are implemented in separate namespaces (e.g., `IceProcessor`, `ScintillationProcessor`) and can be passed to the `OMSimMaterialHandler::processSpecial` method.
 
 ### Geometry Data
 
