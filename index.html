@@ -117,13 +117,13 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md54">Installation</a><ul><li class="level2"><a href="#autotoc_md55">Installing Geant4</a></li>
-<li class="level2"><a href="#autotoc_md56">Installing Dependencies</a></li>
-<li class="level2"><a href="#autotoc_md57">Installing ROOT</a></li>
-<li class="level2"><a href="#autotoc_md58">Compiling OMSim</a></li>
+<ul><li class="level1"><a href="#autotoc_md56">Installation</a><ul><li class="level2"><a href="#autotoc_md57">Installing Geant4</a></li>
+<li class="level2"><a href="#autotoc_md58">Installing Dependencies</a></li>
+<li class="level2"><a href="#autotoc_md59">Installing ROOT</a></li>
+<li class="level2"><a href="#autotoc_md60">Compiling OMSim</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md59">Available studies</a><ul><li class="level2"><a href="#autotoc_md60">Customising Compilation</a></li>
+<li class="level1"><a href="#autotoc_md61">Available studies</a><ul><li class="level2"><a href="#autotoc_md62">Customising Compilation</a></li>
 </ul>
 </li>
 </ul>
@@ -133,9 +133,9 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p><b><a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a></b> is a Geant4 framework for simulating optical modules of the IceCube Observatory. It comprises multiple modules for different studies such as background investigations with radioactive decays and sensitivity analyses. These modules share common files (in the "common" folder) that define, for example, geometries of modules and PMTs, as well as material properties.</p>
 <p>For more information, please refer to our <a href="https://icecube.github.io/OMSim/">documentation</a>.</p>
 <p>For the latest updates and information, check our <a href="https://github.com/icecube/OMSim">GitHub repository</a>. If you need assistance or want to report problems, please open an issue on our GitHub page or contact the maintainers directly.</p>
-<h1><a class="anchor" id="autotoc_md54"></a>
+<h1><a class="anchor" id="autotoc_md56"></a>
 Installation</h1>
-<h2><a class="anchor" id="autotoc_md55"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 Installing Geant4</h2>
 <ol type="1">
 <li>Install Geant4 following <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html">the guide provided by CERN</a>. <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> is currently optimised for Geant4-11 (last tested with 11.2.2).</li>
@@ -147,12 +147,12 @@ Installing Geant4</h2>
 <li>Source the Geant4 library and add this to your .bashrc, where "YOUR_G4_INSTALL" is the path to the install folder of Geant4 in your system: <div class="fragment"><div class="line">source YOUR_G4_INSTALL_PATH/bin/geant4.sh</div>
 </div><!-- fragment --></li>
 </ol>
-<h2><a class="anchor" id="autotoc_md56"></a>
+<h2><a class="anchor" id="autotoc_md58"></a>
 Installing Dependencies</h2>
 <p>Install the required dependencies using:</p>
 <div class="fragment"><div class="line">sudo apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev qtbase5-dev libmotif-dev libargtable2-0 libboost-all-dev libqt53dextras5 libfmt-dev</div>
 </div><!-- fragment --><p>Note: spdlog will be automatically installed by CMake if not found on your system.</p>
-<h2><a class="anchor" id="autotoc_md57"></a>
+<h2><a class="anchor" id="autotoc_md59"></a>
 Installing ROOT</h2>
 <ol type="1">
 <li>Download the latest ROOT binary from <a href="https://root.cern/releases/">ROOT's official website</a> (e.g., version 6.28/04 at the time of writing), or compile from source.</li>
@@ -160,7 +160,7 @@ Installing ROOT</h2>
 <div class="line">source $ROOTSYS/bin/thisroot.sh</div>
 </div><!-- fragment --></li>
 </ol>
-<h2><a class="anchor" id="autotoc_md58"></a>
+<h2><a class="anchor" id="autotoc_md60"></a>
 Compiling OMSim</h2>
 <ol type="1">
 <li>Clone this repository: <div class="fragment"><div class="line">git clone https://github.com/icecube/OMSim.git</div>
@@ -174,7 +174,7 @@ Compiling OMSim</h2>
 <li>Compile the project: <div class="fragment"><div class="line">make -j$(nproc)</div>
 </div><!-- fragment --></li>
 </ol>
-<h1><a class="anchor" id="autotoc_md59"></a>
+<h1><a class="anchor" id="autotoc_md61"></a>
 Available studies</h1>
 <p><a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> has been utilized in a range of studies, each simulating unique physics, thereby necessitating distinct Physicslist/analysis setups. In this repository, we have compiled a selection of these studies, each contained within its own folder and accompanied by its own main file. Currently available:</p>
 <ul>
@@ -182,7 +182,7 @@ Available studies</h1>
 <li><a href="https://icecube.github.io/OMSim/md_3_radioactive_decays.html">Radioactive decays</a>: simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.</li>
 <li><a href="https://icecube.github.io/OMSim/md_4__s_n.html">Supernova studies</a>: used for the development of an improved SN trigger for IceCube using multi-PMT modules.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md60"></a>
+<h2><a class="anchor" id="autotoc_md62"></a>
 Customising Compilation</h2>
 <p>To exclude certain studies from compilation, edit the <code>simulations/CMakeLists.tx</code> file and comment out the unwanted <code>add_subdirectory()</code> calls before running CMake. </p>
 </div></div><!-- PageDoc -->
@@ -191,7 +191,7 @@ Customising Compilation</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Aug 28 2024 14:14:56 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 14:27:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

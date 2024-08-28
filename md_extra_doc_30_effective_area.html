@@ -117,12 +117,12 @@ $(document).ready(function(){initNavTree('md_extra_doc_30_effective_area.html','
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md38">Introduction to effective areas</a></li>
-<li class="level1"><a href="#autotoc_md39">Example using healpy</a></li>
+<ul><li class="level1"><a href="#autotoc_md40">Introduction to effective areas</a></li>
+<li class="level1"><a href="#autotoc_md41">Example using healpy</a></li>
 </ul>
 </div>
 <div class="textblock"><p>In the folder <code>simulations/effective_area</code> you find the files pertinent to the effective area studies.</p>
-<h1><a class="anchor" id="autotoc_md38"></a>
+<h1><a class="anchor" id="autotoc_md40"></a>
 Introduction to effective areas</h1>
 <blockquote class="doxtable">
 <p><b>Note</b>: In the following, a short introduction of an effective area study is made with the <a class="el" href="classm_d_o_m.html">mDOM</a> as an example. For further details see Chapter 10 of <a href="https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/doktorarbeiten/1702-phd_lclassen.pdf">Lew Classen's thesis</a> or Section 9.3.5 of <a href="https://zenodo.org/record/8121321">Martin Unland's thesis</a>. </p>
@@ -136,7 +136,7 @@ Introduction to effective areas</h1>
 <p>where N_det is the number of photons detected by the module. To optimise the sensitivity over multiple directions, A_eff(θ, φ) is calculated for various angle pairs, and the mean effective area, A_eff_mean, is determined. The n angle pairs are chosen using healpix, which separates a sphere into n pixels of equal area. Thus,</p>
 <p>$$ \overline{A}_{\mathrm{eff}} = \frac{1}{n}\sum_{i=1}^n A_{\mathrm{eff}}(\theta_i, \phi_i). $$</p>
 <p>Since the effective area is wavelength dependent, the calculation must be repeated for different wavelengths. Wavelengths shorter than 300nm are absorbed by the pressure vessel, whereas the QE of the PMT approaches zero at wavelengths longer than 700nm.</p>
-<h1><a class="anchor" id="autotoc_md39"></a>
+<h1><a class="anchor" id="autotoc_md41"></a>
 Example using healpy</h1>
 <p>In the following, an example of the usage of the effective area module is given. Although there are C++ healpix libraries, in my opinion, the easiest way of getting the angle pair coordinates is using Healpy in Python.</p>
 <p>In principle, for short simulations, you could run the program directly from Python using the angles from healpy as input parameters:</p>
@@ -171,7 +171,7 @@ Example using healpy</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Aug 28 2024 14:14:56 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 14:27:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

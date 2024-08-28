@@ -142,10 +142,10 @@ Materials and User Data</h1>
 Material Handling</h2>
 <p>The <code><a class="el" href="class_o_m_sim_material_handler.html" title="Handles the creation and processing of materials from json files.">OMSimMaterialHandler</a></code> class is the core component for creating and modifying materials. It provides several key methods:</p>
 <ul>
-<li><code><a class="el" href="class_o_m_sim_material_handler.html#a719ebf626a19a6e8ff9a0b9e2a262c21" title="Process the material defined in the input file.">OMSimMaterialHandler::processMaterial()</a></code>: Creates a new material or modifies an existing one based on the data in the input file.</li>
-<li><code><a class="el" href="class_o_m_sim_material_handler.html#a1cf8cf3badeaa28c33d4b96973239c71" title="Process and return an optical surface defined in the input file.">OMSimMaterialHandler::processSurface()</a></code>: Processes and returns an optical surface defined in the input file.</li>
-<li><code><a class="el" href="class_o_m_sim_material_handler.html#a2e87189ae05d3d960df85957c799ebf9" title="Process extra properties for an existing material.">OMSimMaterialHandler::processExtraProperties()</a></code>: Adds additional properties to an existing material.</li>
-<li><code>OMSimMaterialHandler::processSpecial(ProcessorFunction p_processor)</code>: Handles special material types like IceCube ice or scintillators that require custom processing.</li>
+<li><code><a class="el" href="class_o_m_sim_material_handler.html#a719ebf626a19a6e8ff9a0b9e2a262c21" title="Process the material defined in the input file.">OMSimMaterialHandler::processMaterial</a></code>: Creates a new material or modifies an existing one based on the data in the input file.</li>
+<li><code><a class="el" href="class_o_m_sim_material_handler.html#a1cf8cf3badeaa28c33d4b96973239c71" title="Process and return an optical surface defined in the input file.">OMSimMaterialHandler::processSurface</a></code>: Processes and returns an optical surface defined in the input file.</li>
+<li><code><a class="el" href="class_o_m_sim_material_handler.html#a2e87189ae05d3d960df85957c799ebf9" title="Process extra properties for an existing material.">OMSimMaterialHandler::processExtraProperties</a></code>: Adds additional properties to an existing material.</li>
+<li><code><a class="el" href="class_o_m_sim_material_handler.html#ad337c539e395d32e708d18a4f5e48264" title="Process special material types using a provided function.">OMSimMaterialHandler::processSpecial</a></code>: Handles special material types like IceCube ice or scintillators that require custom processing.</li>
 </ul>
 <p>Materials created via this class can be retrieved using Geant4's conventional method <code>G4Material::GetMaterial</code>. The <code><a class="el" href="class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties.">OMSimInputData</a></code> class also provides a wrapper method <code><a class="el" href="class_o_m_sim_input_data.html#a12e64f3ec83f33c173da0cd5954dd5b2" title="Retrieves a G4Material based on the given name.">OMSimInputData::getMaterial</a></code> to handle default parameters and special "argument materials".</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
@@ -159,7 +159,7 @@ Special Material Types</h2>
 <li>IceCube ice, where the optical properties are calculated by the selected depth (an arg variable)</li>
 <li>Scintillator materials with complex decay time and yield properties</li>
 </ul>
-<p>Special processors for these materials are implemented in separate namespaces (e.g., <code><a class="el" href="namespace_ice_processor.html" title="Namespace containing functions for processing IceCube ice properties from file.">IceProcessor</a></code>, <code><a class="el" href="namespace_scintillation_processor.html" title="Namespace containing functions for processing files with scintillation properties.">ScintillationProcessor</a></code>) and can be passed to the <code>ProcessSpecial</code> method of <code><a class="el" href="class_o_m_sim_material_handler.html" title="Handles the creation and processing of materials from json files.">OMSimMaterialHandler</a></code>.</p>
+<p>Special processors for these materials are implemented in separate namespaces (e.g., <code><a class="el" href="namespace_ice_processor.html" title="Namespace containing functions for processing IceCube ice properties from file.">IceProcessor</a></code>, <code><a class="el" href="namespace_scintillation_processor.html" title="Namespace containing functions for processing files with scintillation properties.">ScintillationProcessor</a></code>) and can be passed to the <code><a class="el" href="class_o_m_sim_material_handler.html#ad337c539e395d32e708d18a4f5e48264" title="Process special material types using a provided function.">OMSimMaterialHandler::processSpecial</a></code> method.</p>
 <h2><a class="anchor" id="autotoc_md6"></a>
 Geometry Data</h2>
 <p>PMT construction data is also stored in JSON files (<code>/common/data/PMTs</code>). This data is loaded into a "tree" (essentially a dictionary containing the JSON file's keys and values) in <code><a class="el" href="class_parameter_table.html#ae5dba23c394122524bab7cb8f61a2fe4" title="A table mapping keys to property trees.">OMSimInputData::m_table</a></code>. This approach allows for flexible PMT construction without defining a unique class for each PMT type.</p>
@@ -246,7 +246,7 @@ Making other volumes sensitive to photons</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Aug 28 2024 14:14:56 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 14:27:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -21,8 +21,70 @@ The tools namespace provide several methods that could help you. For example, {\
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
-\hypertarget{md_extra_doc_2_technicalities_autotoc_md32}{}\doxysection{Matching PMT Efficiency to Measurements}\label{md_extra_doc_2_technicalities_autotoc_md32}
-In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (\href{md_extra_doc_0_common.html\#autotoc_md5}{\texttt{ click here}} for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module {\ttfamily efficiency\+\_\+calibration} facilitates this procedure. In the following, the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT is used as an example.\hypertarget{md_extra_doc_2_technicalities_autotoc_md33}{}\doxysubsection{Step 1\+: Fraction of absorbed photons}\label{md_extra_doc_2_technicalities_autotoc_md33}
+\hypertarget{md_extra_doc_2_technicalities_autotoc_md32}{}\doxysection{Nomenclature}\label{md_extra_doc_2_technicalities_autotoc_md32}
+We follow these naming conventions\+:
+
+Methods\+:
+\begin{DoxyItemize}
+\item Written in camel\+Case, starting with a lowercase letter
+\item Example\+: {\ttfamily calculate\+Distance()}
+\item Note\+: This contrasts with Geant4\textquotesingle{}s methods, which always start with an uppercase letter
+\end{DoxyItemize}
+
+Classes\+:
+\begin{DoxyItemize}
+\item Written in Pascal\+Case (also known as Upper\+Camel\+Case)
+\item Core framework classes should start with {\ttfamily \mbox{\hyperlink{class_o_m_sim}{OMSim}}}
+\item Example\+: {\ttfamily \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\end{DoxyItemize}
+
+Member Variables\+:
+\begin{DoxyItemize}
+\item Prefix\+: {\ttfamily m\+\_\+}
+\item Written in camel\+Case after the prefix
+\item Example\+: {\ttfamily m\+\_\+particle\+Energy}
+\end{DoxyItemize}
+
+Global Variables\+:
+\begin{DoxyItemize}
+\item Prefix\+: {\ttfamily g\+\_\+}
+\item Written in camel\+Case after the prefix
+\item Example\+: {\ttfamily g\+\_\+world\+Volume}
+\end{DoxyItemize}
+
+Function Parameters\+:
+\begin{DoxyItemize}
+\item Prefix\+: {\ttfamily p\+\_\+}
+\item Written in camel\+Case after the prefix
+\item Example\+: {\ttfamily p\+\_\+initial\+Position}
+\end{DoxyItemize}
+
+Local Variables
+\begin{DoxyItemize}
+\item Start with a lowercase letter
+\item Written in camel\+Case
+\item Example\+: {\ttfamily local\+Particle}
+\end{DoxyItemize}
+
+Namespaces
+\begin{DoxyItemize}
+\item Written in Pascal\+Case
+\item Example\+: {\ttfamily Tools\+Namespace}
+\end{DoxyItemize}
+
+By adhering to these conventions, we aim to\+:
+\begin{DoxyEnumerate}
+\item Clearly distinguish \mbox{\hyperlink{class_o_m_sim}{OMSim}} code from Geant4 code (so we can for example find+replace code without worries)
+\item Easily identify the scope and purpose of variables and functions
+\item Maintain consistency throughout the codebase, enhancing readability and maintainability
+\end{DoxyEnumerate}
+
+Remember to apply these conventions consistently across all new code and when refactoring existing code.
+
+\DoxyHorRuler{0}
+ \DoxyHorRuler{0}
+\hypertarget{md_extra_doc_2_technicalities_autotoc_md34}{}\doxysection{Matching PMT Efficiency to Measurements}\label{md_extra_doc_2_technicalities_autotoc_md34}
+In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (\href{md_extra_doc_0_common.html\#autotoc_md5}{\texttt{ click here}} for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module {\ttfamily efficiency\+\_\+calibration} facilitates this procedure. In the following, the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT is used as an example.\hypertarget{md_extra_doc_2_technicalities_autotoc_md35}{}\doxysubsection{Step 1\+: Fraction of absorbed photons}\label{md_extra_doc_2_technicalities_autotoc_md35}
 The optical properties (refractive index, thickness, and absorption length) of the glass tube and photocathode determine the number of photons absorbed in the photocathode. The optical properties of the photocathode (defined in file {\ttfamily Surf\+\_\+\+Generic\+\_\+\+Photocathode\+\_\+20nm.\+dat}) are from this paper \href{https://arxiv.org/abs/physics/0408075}{\texttt{ https\+://arxiv.\+org/abs/physics/0408075}} .
 
 To calculate the quantum efficiency weight, we have to know how many photons are absorbed in the photocathode in the simulation. For this, go through the following steps\+:
@@ -65,7 +127,7 @@ To obtain the fraction I just run this python code\+:
 
 \begin{quote}
 {\bfseries{Note}}\+: Ensure that the QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! \end{quote}
-If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra_doc_2_technicalities_autotoc_md34}{}\doxysubsection{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}\label{md_extra_doc_2_technicalities_autotoc_md34}
+If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra_doc_2_technicalities_autotoc_md36}{}\doxysubsection{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}\label{md_extra_doc_2_technicalities_autotoc_md36}
 Each PMT has its own derived class in {\ttfamily OMSim\+PMTResponse.\+cc}. If your PMT has not class yet, create one following the other PMTs as example. In its constructor add a call to {\ttfamily configure\+QEweight\+Interpolator()} adding the file that you generated in the last step and a default QE file for this PMT. Make sure you are not creating any CE weight interpolator at this point (this happens in step 3 of this documentation), as otherwise the weights will be smaller than expected from QE only!
 
 Now run the simulation again 
@@ -96,7 +158,7 @@ and check that the weights are being calculated correctly
 
 
    ~\newline
-  \hypertarget{md_extra_doc_2_technicalities_autotoc_md35}{}\doxysubsection{Step 3\+: Matching detection efficiency scan}\label{md_extra_doc_2_technicalities_autotoc_md35}
+  \hypertarget{md_extra_doc_2_technicalities_autotoc_md37}{}\doxysubsection{Step 3\+: Matching detection efficiency scan}\label{md_extra_doc_2_technicalities_autotoc_md37}
 The last step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.
 
 

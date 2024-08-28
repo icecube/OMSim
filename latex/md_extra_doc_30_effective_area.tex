@@ -1,4 +1,4 @@
-In the folder {\ttfamily simulations/effective\+\_\+area} you find the files pertinent to the effective area studies.\hypertarget{md_extra_doc_30_effective_area_autotoc_md38}{}\doxysection{Introduction to effective areas}\label{md_extra_doc_30_effective_area_autotoc_md38}
+In the folder {\ttfamily simulations/effective\+\_\+area} you find the files pertinent to the effective area studies.\hypertarget{md_extra_doc_30_effective_area_autotoc_md40}{}\doxysection{Introduction to effective areas}\label{md_extra_doc_30_effective_area_autotoc_md40}
 \begin{quote}
 {\bfseries{Note}}\+: In the following, a short introduction of an effective area study is made with the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} as an example. For further details see Chapter 10 of \href{https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/doktorarbeiten/1702-phd_lclassen.pdf}{\texttt{ Lew Classen\textquotesingle{}s thesis}} or Section 9.\+3.\+5 of \href{https://zenodo.org/record/8121321}{\texttt{ Martin Unland\textquotesingle{}s thesis}}. \end{quote}
 During the design of a module, its sensitivity is optimised by considering the optical properties of various materials and altering the geometry and positioning of the mechanical components in the Geant4 simulation.
@@ -18,7 +18,7 @@ where N\+\_\+det is the number of photons detected by the module. To optimise th
 
 \$\$ \textbackslash{}overline\{A\}\+\_\+\{\textbackslash{}mathrm\{eff\}\} = \textbackslash{}frac\{1\}\{n\}\textbackslash{}sum\+\_\+\{i=1\}$^\wedge$n A\+\_\+\{\textbackslash{}mathrm\{eff\}\}(\textbackslash{}theta\+\_\+i, \textbackslash{}phi\+\_\+i). \$\$
 
-Since the effective area is wavelength dependent, the calculation must be repeated for different wavelengths. Wavelengths shorter than 300nm are absorbed by the pressure vessel, whereas the QE of the PMT approaches zero at wavelengths longer than 700nm.\hypertarget{md_extra_doc_30_effective_area_autotoc_md39}{}\doxysection{Example using healpy}\label{md_extra_doc_30_effective_area_autotoc_md39}
+Since the effective area is wavelength dependent, the calculation must be repeated for different wavelengths. Wavelengths shorter than 300nm are absorbed by the pressure vessel, whereas the QE of the PMT approaches zero at wavelengths longer than 700nm.\hypertarget{md_extra_doc_30_effective_area_autotoc_md41}{}\doxysection{Example using healpy}\label{md_extra_doc_30_effective_area_autotoc_md41}
 In the following, an example of the usage of the effective area module is given. Although there are C++ healpix libraries, in my opinion, the easiest way of getting the angle pair coordinates is using Healpy in Python.
 
 In principle, for short simulations, you could run the program directly from Python using the angles from healpy as input parameters\+:
