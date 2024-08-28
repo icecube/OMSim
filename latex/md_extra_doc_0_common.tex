@@ -7,14 +7,14 @@ The {\ttfamily \mbox{\hyperlink{class_o_m_sim_material_handler}{OMSim\+Material\
 
 
 \begin{DoxyItemize}
-\item {\ttfamily Process\+Material()}\+: Creates a new material or modifies an existing one based on the data in the input file.
-\item {\ttfamily Process\+Surface()}\+: Processes and returns an optical surface defined in the input file.
-\item {\ttfamily Process\+Extra\+Properties()}\+: Adds additional properties to an existing material.
-\item {\ttfamily Process\+Special(\+Processor\+Function p\+\_\+processor)}\+: Handles special material types like Ice\+Cube ice or scintillators that require custom processing.
+\item {\ttfamily \mbox{\hyperlink{class_o_m_sim_material_handler_a719ebf626a19a6e8ff9a0b9e2a262c21}{OMSim\+Material\+Handler\+::process\+Material()}}}\+: Creates a new material or modifies an existing one based on the data in the input file.
+\item {\ttfamily \mbox{\hyperlink{class_o_m_sim_material_handler_a1cf8cf3badeaa28c33d4b96973239c71}{OMSim\+Material\+Handler\+::process\+Surface()}}}\+: Processes and returns an optical surface defined in the input file.
+\item {\ttfamily \mbox{\hyperlink{class_o_m_sim_material_handler_a2e87189ae05d3d960df85957c799ebf9}{OMSim\+Material\+Handler\+::process\+Extra\+Properties()}}}\+: Adds additional properties to an existing material.
+\item {\ttfamily OMSim\+Material\+Handler\+::process\+Special(\+Processor\+Function p\+\_\+processor)}\+: Handles special material types like Ice\+Cube ice or scintillators that require custom processing.
 \end{DoxyItemize}
 
-Materials created via this class can be retrieved using Geant4\textquotesingle{}s conventional method {\ttfamily G4\+Material\+::\+Get\+Material}. The {\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}}} class also provides a wrapper method {\ttfamily get\+Material} to handle default parameters and special \char`\"{}argument materials\char`\"{}.\hypertarget{md_extra_doc_0_common_autotoc_md4}{}\doxysubsection{Optical Surfaces}\label{md_extra_doc_0_common_autotoc_md4}
-For optical surfaces, {\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}}} provides the method {\ttfamily get\+Optical\+Surface}, which doesn\textquotesingle{}t exist in Geant4 by default.\hypertarget{md_extra_doc_0_common_autotoc_md5}{}\doxysubsection{Special Material Types}\label{md_extra_doc_0_common_autotoc_md5}
+Materials created via this class can be retrieved using Geant4\textquotesingle{}s conventional method {\ttfamily G4\+Material\+::\+Get\+Material}. The {\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}}} class also provides a wrapper method {\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data_a12e64f3ec83f33c173da0cd5954dd5b2}{OMSim\+Input\+Data\+::get\+Material}}} to handle default parameters and special \char`\"{}argument materials\char`\"{}.\hypertarget{md_extra_doc_0_common_autotoc_md4}{}\doxysubsection{Optical Surfaces}\label{md_extra_doc_0_common_autotoc_md4}
+For optical surfaces, {\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}}} provides the method {\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data_aca56b05e268bbb47761dbcc8e487c283}{OMSim\+Input\+Data\+::get\+Optical\+Surface}}}, which doesn\textquotesingle{}t exist in Geant4 by default.\hypertarget{md_extra_doc_0_common_autotoc_md5}{}\doxysubsection{Special Material Types}\label{md_extra_doc_0_common_autotoc_md5}
 Different materials may require different types of properties and processing. The {\ttfamily \mbox{\hyperlink{class_o_m_sim_material_handler}{OMSim\+Material\+Handler}}} class can handle various material types, including\+:
 
 

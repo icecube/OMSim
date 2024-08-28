@@ -142,15 +142,15 @@ Materials and User Data</h1>
 Material Handling</h2>
 <p>The <code><a class="el" href="class_o_m_sim_material_handler.html" title="Handles the creation and processing of materials from json files.">OMSimMaterialHandler</a></code> class is the core component for creating and modifying materials. It provides several key methods:</p>
 <ul>
-<li><code>ProcessMaterial()</code>: Creates a new material or modifies an existing one based on the data in the input file.</li>
-<li><code>ProcessSurface()</code>: Processes and returns an optical surface defined in the input file.</li>
-<li><code>ProcessExtraProperties()</code>: Adds additional properties to an existing material.</li>
-<li><code>ProcessSpecial(ProcessorFunction p_processor)</code>: Handles special material types like IceCube ice or scintillators that require custom processing.</li>
+<li><code><a class="el" href="class_o_m_sim_material_handler.html#a719ebf626a19a6e8ff9a0b9e2a262c21" title="Process the material defined in the input file.">OMSimMaterialHandler::processMaterial()</a></code>: Creates a new material or modifies an existing one based on the data in the input file.</li>
+<li><code><a class="el" href="class_o_m_sim_material_handler.html#a1cf8cf3badeaa28c33d4b96973239c71" title="Process and return an optical surface defined in the input file.">OMSimMaterialHandler::processSurface()</a></code>: Processes and returns an optical surface defined in the input file.</li>
+<li><code><a class="el" href="class_o_m_sim_material_handler.html#a2e87189ae05d3d960df85957c799ebf9" title="Process extra properties for an existing material.">OMSimMaterialHandler::processExtraProperties()</a></code>: Adds additional properties to an existing material.</li>
+<li><code>OMSimMaterialHandler::processSpecial(ProcessorFunction p_processor)</code>: Handles special material types like IceCube ice or scintillators that require custom processing.</li>
 </ul>
-<p>Materials created via this class can be retrieved using Geant4's conventional method <code>G4Material::GetMaterial</code>. The <code><a class="el" href="class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties.">OMSimInputData</a></code> class also provides a wrapper method <code>getMaterial</code> to handle default parameters and special "argument materials".</p>
+<p>Materials created via this class can be retrieved using Geant4's conventional method <code>G4Material::GetMaterial</code>. The <code><a class="el" href="class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties.">OMSimInputData</a></code> class also provides a wrapper method <code><a class="el" href="class_o_m_sim_input_data.html#a12e64f3ec83f33c173da0cd5954dd5b2" title="Retrieves a G4Material based on the given name.">OMSimInputData::getMaterial</a></code> to handle default parameters and special "argument materials".</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Optical Surfaces</h2>
-<p>For optical surfaces, <code><a class="el" href="class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties.">OMSimInputData</a></code> provides the method <code>getOpticalSurface</code>, which doesn't exist in Geant4 by default.</p>
+<p>For optical surfaces, <code><a class="el" href="class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties.">OMSimInputData</a></code> provides the method <code><a class="el" href="class_o_m_sim_input_data.html#aca56b05e268bbb47761dbcc8e487c283">OMSimInputData::getOpticalSurface</a></code>, which doesn't exist in Geant4 by default.</p>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Special Material Types</h2>
 <p>Different materials may require different types of properties and processing. The <code><a class="el" href="class_o_m_sim_material_handler.html" title="Handles the creation and processing of materials from json files.">OMSimMaterialHandler</a></code> class can handle various material types, including:</p>
@@ -246,7 +246,7 @@ Making other volumes sensitive to photons</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Aug 28 2024 14:11:56 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 14:14:56 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
