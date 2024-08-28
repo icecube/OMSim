@@ -1,4 +1,4 @@
-\hypertarget{md_extra_doc_2_technicalities_autotoc_md25}{}\doxysection{The Tools namespace}\label{md_extra_doc_2_technicalities_autotoc_md25}
+\hypertarget{md_extra_doc_2_technicalities_autotoc_md30}{}\doxysection{The Tools namespace}\label{md_extra_doc_2_technicalities_autotoc_md30}
 The tools namespace provide several methods that could help you. For example, {\ttfamily \mbox{\hyperlink{namespace_tools_aefa5ecd8f1fb3d69a65d517494e99669}{Tools\+::loadtxt}}}, {\ttfamily \mbox{\hyperlink{namespace_tools_a052be79128cb3b90b6a4701455307246}{Tools\+::linspace}}} and {\ttfamily \mbox{\hyperlink{namespace_tools_adf257eb5c348836614a3c10de47bcf6e}{Tools\+::logspace}}} operate similarly to their Python\textquotesingle{}s numpy counterparts\+:
 
 
@@ -21,8 +21,8 @@ The tools namespace provide several methods that could help you. For example, {\
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
-\hypertarget{md_extra_doc_2_technicalities_autotoc_md27}{}\doxysection{Matching PMT Efficiency to Measurements}\label{md_extra_doc_2_technicalities_autotoc_md27}
-In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (\href{md_extra_doc_0_common.html\#autotoc_md5}{\texttt{ click here}} for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module {\ttfamily efficiency\+\_\+calibration} facilitates this procedure. In the following, the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT is used as an example.\hypertarget{md_extra_doc_2_technicalities_autotoc_md28}{}\doxysubsection{Step 1\+: Fraction of absorbed photons}\label{md_extra_doc_2_technicalities_autotoc_md28}
+\hypertarget{md_extra_doc_2_technicalities_autotoc_md32}{}\doxysection{Matching PMT Efficiency to Measurements}\label{md_extra_doc_2_technicalities_autotoc_md32}
+In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (\href{md_extra_doc_0_common.html\#autotoc_md5}{\texttt{ click here}} for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module {\ttfamily efficiency\+\_\+calibration} facilitates this procedure. In the following, the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT is used as an example.\hypertarget{md_extra_doc_2_technicalities_autotoc_md33}{}\doxysubsection{Step 1\+: Fraction of absorbed photons}\label{md_extra_doc_2_technicalities_autotoc_md33}
 The optical properties (refractive index, thickness, and absorption length) of the glass tube and photocathode determine the number of photons absorbed in the photocathode. The optical properties of the photocathode (defined in file {\ttfamily Surf\+\_\+\+Generic\+\_\+\+Photocathode\+\_\+20nm.\+dat}) are from this paper \href{https://arxiv.org/abs/physics/0408075}{\texttt{ https\+://arxiv.\+org/abs/physics/0408075}} .
 
 To calculate the quantum efficiency weight, we have to know how many photons are absorbed in the photocathode in the simulation. For this, go through the following steps\+:
@@ -65,7 +65,7 @@ To obtain the fraction I just run this python code\+:
 
 \begin{quote}
 {\bfseries{Note}}\+: Ensure that the QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! \end{quote}
-If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra_doc_2_technicalities_autotoc_md29}{}\doxysubsection{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}\label{md_extra_doc_2_technicalities_autotoc_md29}
+If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra_doc_2_technicalities_autotoc_md34}{}\doxysubsection{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}\label{md_extra_doc_2_technicalities_autotoc_md34}
 Each PMT has its own derived class in {\ttfamily OMSim\+PMTResponse.\+cc}. If your PMT has not class yet, create one following the other PMTs as example. In its constructor add a call to {\ttfamily configure\+QEweight\+Interpolator()} adding the file that you generated in the last step and a default QE file for this PMT. Make sure you are not creating any CE weight interpolator at this point (this happens in step 3 of this documentation), as otherwise the weights will be smaller than expected from QE only!
 
 Now run the simulation again 
@@ -96,7 +96,7 @@ and check that the weights are being calculated correctly
 
 
    ~\newline
-  \hypertarget{md_extra_doc_2_technicalities_autotoc_md30}{}\doxysubsection{Step 3\+: Matching detection efficiency scan}\label{md_extra_doc_2_technicalities_autotoc_md30}
+  \hypertarget{md_extra_doc_2_technicalities_autotoc_md35}{}\doxysubsection{Step 3\+: Matching detection efficiency scan}\label{md_extra_doc_2_technicalities_autotoc_md35}
 The last step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.
 
 

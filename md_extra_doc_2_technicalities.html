@@ -117,15 +117,15 @@ $(document).ready(function(){initNavTree('md_extra_doc_2_technicalities.html',''
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md25">The Tools namespace</a></li>
-<li class="level1"><a href="#autotoc_md27">Matching PMT Efficiency to Measurements</a><ul><li class="level2"><a href="#autotoc_md28">Step 1: Fraction of absorbed photons</a></li>
-<li class="level2"><a href="#autotoc_md29">Step 2: Expand OMSimPMTResponse and Verify QE</a></li>
-<li class="level2"><a href="#autotoc_md30">Step 3: Matching detection efficiency scan</a></li>
+<ul><li class="level1"><a href="#autotoc_md30">The Tools namespace</a></li>
+<li class="level1"><a href="#autotoc_md32">Matching PMT Efficiency to Measurements</a><ul><li class="level2"><a href="#autotoc_md33">Step 1: Fraction of absorbed photons</a></li>
+<li class="level2"><a href="#autotoc_md34">Step 2: Expand OMSimPMTResponse and Verify QE</a></li>
+<li class="level2"><a href="#autotoc_md35">Step 3: Matching detection efficiency scan</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="textblock"><h1><a class="anchor" id="autotoc_md25"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md30"></a>
 The Tools namespace</h1>
 <p>The tools namespace provide several methods that could help you. For example, <code><a class="el" href="namespace_tools.html#aefa5ecd8f1fb3d69a65d517494e99669" title="Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.">Tools::loadtxt</a></code>, <code><a class="el" href="namespace_tools.html#a052be79128cb3b90b6a4701455307246" title="Generates a linearly spaced vector.">Tools::linspace</a></code> and <code><a class="el" href="namespace_tools.html#adf257eb5c348836614a3c10de47bcf6e" title="Generates a logarithmically spaced vector.">Tools::logspace</a></code> operate similarly to their Python's numpy counterparts:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_o_m_sim_tools_8hh.html">OMSimTools.hh</a>&quot;</span></div>
@@ -147,10 +147,10 @@ The Tools namespace</h1>
 <div class="ttc" id="anamespace_tools_html_aefa5ecd8f1fb3d69a65d517494e99669"><div class="ttname"><a href="namespace_tools.html#aefa5ecd8f1fb3d69a65d517494e99669">Tools::loadtxt</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; loadtxt(const std::string &amp;pFilePath, bool pUnpack=true, size_t pSkipRows=0, char pDelimiter=' ', char pComments='#')</div><div class="ttdoc">Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.</div><div class="ttdef"><b>Definition:</b> OMSimTools.cc:264</div></div>
 </div><!-- fragment --><hr  />
  <hr  />
-<h1><a class="anchor" id="autotoc_md27"></a>
+<h1><a class="anchor" id="autotoc_md32"></a>
 Matching PMT Efficiency to Measurements</h1>
 <p>In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (<a href="md_extra_doc_0_common.html#autotoc_md5">click here</a> for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module <code>efficiency_calibration</code> facilitates this procedure. In the following, the <a class="el" href="classm_d_o_m.html">mDOM</a> PMT is used as an example.</p>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md33"></a>
 Step 1: Fraction of absorbed photons</h2>
 <p>The optical properties (refractive index, thickness, and absorption length) of the glass tube and photocathode determine the number of photons absorbed in the photocathode. The optical properties of the photocathode (defined in file <code>Surf_Generic_Photocathode_20nm.dat</code>) are from this paper <a href="https://arxiv.org/abs/physics/0408075">https://arxiv.org/abs/physics/0408075</a> .</p>
 <p>To calculate the quantum efficiency weight, we have to know how many photons are absorbed in the photocathode in the simulation. For this, go through the following steps:</p><ul>
@@ -181,7 +181,7 @@ Step 1: Fraction of absorbed photons</h2>
 <p><b>Note</b>: Ensure that the QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! </p>
 </blockquote>
 <p>If everything looks good, save the file (in the example above <code>mDOM_Hamamatsu_R15458_CAT_intrinsic_QE.dat</code>) in <code>common/data/PMTs/measurement_matching_data/QE/</code> and move to step 2.</p>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 Step 2: Expand OMSimPMTResponse and Verify QE</h2>
 <p>Each PMT has its own derived class in <code>OMSimPMTResponse.cc</code>. If your PMT has not class yet, create one following the other PMTs as example. In its constructor add a call to <code>configureQEweightInterpolator()</code> adding the file that you generated in the last step and a default QE file for this PMT. Make sure you are not creating any CE weight interpolator at this point (this happens in step 3 of this documentation), as otherwise the weights will be smaller than expected from QE only!</p>
 <p>Now run the simulation again </p><div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 2 -n 100000 --threads 4 --detail_pmt --output_file step2</div>
@@ -199,7 +199,7 @@ Step 2: Expand OMSimPMTResponse and Verify QE</h2>
 <div class="line">plt.grid()</div>
 <div class="line">plt.legend()</div>
 </div><!-- fragment --><div style="width: 100%; text-align: center;"> <img src="step2_qe.png" alt="" width="450" height="320" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
- </div> </div><h2><a class="anchor" id="autotoc_md30"></a>
+ </div> </div><h2><a class="anchor" id="autotoc_md35"></a>
 Step 3: Matching detection efficiency scan</h2>
 <p>The last step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.</p>
 <ul>
@@ -221,7 +221,7 @@ Step 3: Matching detection efficiency scan</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Aug 28 2024 13:59:31 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 14:11:56 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
