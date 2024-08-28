@@ -65,7 +65,7 @@
 <!-- Node59 -->
 <g id="node46" class="node">
 <title>Node59</title>
-<g id="a_node46"><a xlink:href="_o_m_sim_tools_8hh.html" target="_top" xlink:title=" ">
+<g id="a_node46"><a xlink:href="_o_m_sim_tools_8hh.html" target="_top" xlink:title="Definition of Tools namespace, a collection of helper methods.">
 <polygon fill="none" stroke="black" points="105.5,-179.5 105.5,-198.5 197.5,-198.5 197.5,-179.5 105.5,-179.5"/>
 <text text-anchor="middle" x="151.5" y="-186.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimTools.hh</text>
 </a>

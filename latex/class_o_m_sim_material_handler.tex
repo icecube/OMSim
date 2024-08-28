@@ -1,0 +1,211 @@
+\hypertarget{class_o_m_sim_material_handler}{}\doxysection{OMSim\+Material\+Handler Class Reference}
+\label{class_o_m_sim_material_handler}\index{OMSimMaterialHandler@{OMSimMaterialHandler}}
+
+
+Handles the creation and processing of materials from json files.  
+
+
+
+
+Collaboration diagram for OMSim\+Material\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{class_o_m_sim_material_handler__coll__graph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Detailed Description}
+This class is responsible for extracting data from json files, creating new materials, processing optical surfaces, and handling special material types such as Ice\+Cube ice and scintillators. \doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_aa9297e3c3a9b78ec2b352c9b97958ca0}\label{class_o_m_sim_material_handler_aa9297e3c3a9b78ec2b352c9b97958ca0}} 
+{\bfseries OMSim\+Material\+Handler} (const G4\+String \&filename)
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_a719ebf626a19a6e8ff9a0b9e2a262c21}\label{class_o_m_sim_material_handler_a719ebf626a19a6e8ff9a0b9e2a262c21}} 
+void \mbox{\hyperlink{class_o_m_sim_material_handler_a719ebf626a19a6e8ff9a0b9e2a262c21}{process\+Material}} ()
+\begin{DoxyCompactList}\small\item\em Process the material defined in the input file. \end{DoxyCompactList}\item 
+G4\+Optical\+Surface $\ast$ \mbox{\hyperlink{class_o_m_sim_material_handler_a1cf8cf3badeaa28c33d4b96973239c71}{process\+Surface}} ()
+\begin{DoxyCompactList}\small\item\em Process and return an optical surface defined in the input file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_material_handler_a2e87189ae05d3d960df85957c799ebf9}{process\+Extra\+Properties}} ()
+\begin{DoxyCompactList}\small\item\em Process extra properties for an existing material. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_material_handler_ad337c539e395d32e708d18a4f5e48264}{process\+Special}} (Processor\+Function $\ast$processor)
+\begin{DoxyCompactList}\small\item\em Process special material types using a provided function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_aa0383250837f73422cb6cfd1872ce029}\label{class_o_m_sim_material_handler_aa0383250837f73422cb6cfd1872ce029}} 
+G4\+String {\bfseries Get\+Name} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_accfcbc6f254ffb9540c7616995f75ef5}\label{class_o_m_sim_material_handler_accfcbc6f254ffb9540c7616995f75ef5}} 
+void {\bfseries read\+Json\+File} ()
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_a6d25aa1ea0cfae2ca9c3ea9d539fdcca}\label{class_o_m_sim_material_handler_a6d25aa1ea0cfae2ca9c3ea9d539fdcca}} 
+void \mbox{\hyperlink{class_o_m_sim_material_handler_a6d25aa1ea0cfae2ca9c3ea9d539fdcca}{create\+Material}} ()
+\begin{DoxyCompactList}\small\item\em Create a new Geant4 material based on the input data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_material_handler_a116e075ea33b846fd722a7e1470072a4}{process\+Properties}} ()
+\begin{DoxyCompactList}\small\item\em Process the properties defined in the input file and add them to the material. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_material_handler_a0f799e0b10b1d0e37eb849b401b0d5e7}{process\+Const\+Properties}} ()
+\begin{DoxyCompactList}\small\item\em Process constant properties defined in the input file and add them to the material. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_material_handler_aa7ebed1dfaffe532d7b1fd878ffd7d27}{find\+Material\+Property\+Table}} (G4\+String p\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Find the material property table for an existing material. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_material_handler_a4205415c818cd65b9121e070179e3f99}{add\+Property}} (const G4\+String \&key, G4double energy\+Unit, G4double value\+Unit, bool invertX, const boost\+::property\+\_\+tree\+::ptree \&property\+Tree)
+\begin{DoxyCompactList}\small\item\em Add a property to the material properties table. \end{DoxyCompactList}\item 
+G4\+Optical\+Surface\+Finish \mbox{\hyperlink{class_o_m_sim_material_handler_aeb612b7e496704e9e5dd8e8bfbf37af0}{get\+Optical\+Surface\+Finish}} (const std\+::string \&finish)
+\begin{DoxyCompactList}\small\item\em Get the G4\+Optical\+Surface\+Finish enum value from a string. \end{DoxyCompactList}\item 
+G4\+Optical\+Surface\+Model \mbox{\hyperlink{class_o_m_sim_material_handler_a2a947dda8ecc28b13bf5fdf93ff0fef4}{get\+Optical\+Surface\+Model}} (const std\+::string \&model)
+\begin{DoxyCompactList}\small\item\em Get the G4\+Optical\+Surface\+Model enum value from a string. \end{DoxyCompactList}\item 
+G4\+Surface\+Type \mbox{\hyperlink{class_o_m_sim_material_handler_abf218ce78a52805add727b92527daec8}{get\+Surface\+Type}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Get the G4\+Surface\+Type enum value from a string. \end{DoxyCompactList}\item 
+G4\+State \mbox{\hyperlink{class_o_m_sim_material_handler_ae25187ca37e6e40b9b1af077c3093523}{get\+State}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Get the G4\+State enum value from a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_abe626039d2555d987b511cb67d4a4c4e}\label{class_o_m_sim_material_handler_abe626039d2555d987b511cb67d4a4c4e}} 
+\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$ {\bfseries m\+\_\+file\+Data}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_a9e1f9ac956d49bfc424463a210491bf0}\label{class_o_m_sim_material_handler_a9e1f9ac956d49bfc424463a210491bf0}} 
+G4double {\bfseries m\+\_\+hc\+\_\+e\+Vnm} = h\+\_\+\+Planck $\ast$ c\+\_\+light / nm
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_a6aad72f724d2a1ec3e8cd347c87889a7}\label{class_o_m_sim_material_handler_a6aad72f724d2a1ec3e8cd347c87889a7}} 
+G4\+String {\bfseries m\+\_\+file\+Path}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_a3a63a30a2459aaa5fac167723a0b8cbf}\label{class_o_m_sim_material_handler_a3a63a30a2459aaa5fac167723a0b8cbf}} 
+G4\+String {\bfseries m\+\_\+object\+Name}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_a24de0381225f033080f863c12642b0d7}\label{class_o_m_sim_material_handler_a24de0381225f033080f863c12642b0d7}} 
+boost\+::property\+\_\+tree\+::ptree {\bfseries m\+\_\+json\+Tree}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_aa42295a37e4fbf653d98e43947573c46}\label{class_o_m_sim_material_handler_aa42295a37e4fbf653d98e43947573c46}} 
+G4\+Material $\ast$ {\bfseries m\+\_\+material}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_a1d1f9666a3ccd108bfe87d30e1973dcc}\label{class_o_m_sim_material_handler_a1d1f9666a3ccd108bfe87d30e1973dcc}} 
+G4\+Material\+Properties\+Table $\ast$ {\bfseries m\+\_\+\+MPT}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_material_handler_a8d61537212c492994519b03abc5bccfa}\label{class_o_m_sim_material_handler_a8d61537212c492994519b03abc5bccfa}} 
+G4\+Optical\+Surface $\ast$ {\bfseries m\+\_\+optical\+Surface}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_o_m_sim_material_handler_a4205415c818cd65b9121e070179e3f99}\label{class_o_m_sim_material_handler_a4205415c818cd65b9121e070179e3f99}} 
+\index{OMSimMaterialHandler@{OMSimMaterialHandler}!addProperty@{addProperty}}
+\index{addProperty@{addProperty}!OMSimMaterialHandler@{OMSimMaterialHandler}}
+\doxysubsubsection{\texorpdfstring{addProperty()}{addProperty()}}
+{\footnotesize\ttfamily void OMSim\+Material\+Handler\+::add\+Property (\begin{DoxyParamCaption}\item[{const G4\+String \&}]{p\+\_\+property\+Name,  }\item[{G4double}]{p\+\_\+x\+Unit,  }\item[{G4double}]{p\+\_\+y\+Unit,  }\item[{bool}]{p\+\_\+invertX,  }\item[{const boost\+::property\+\_\+tree\+::ptree \&}]{p\+\_\+property\+Tree }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+property\+Name} & Name of the property. \\
+\hline
+{\em p\+\_\+x\+Unit} & Unit conversion factor for energy values. \\
+\hline
+{\em p\+\_\+y\+Unit} & Unit conversion factor for property values. \\
+\hline
+{\em p\+\_\+invertX} & Whether to invert the x-\/axis values. \\
+\hline
+{\em p\+\_\+property\+Tree} & Property tree containing the property data. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_material_handler_aa7ebed1dfaffe532d7b1fd878ffd7d27}\label{class_o_m_sim_material_handler_aa7ebed1dfaffe532d7b1fd878ffd7d27}} 
+\index{OMSimMaterialHandler@{OMSimMaterialHandler}!findMaterialPropertyTable@{findMaterialPropertyTable}}
+\index{findMaterialPropertyTable@{findMaterialPropertyTable}!OMSimMaterialHandler@{OMSimMaterialHandler}}
+\doxysubsubsection{\texorpdfstring{findMaterialPropertyTable()}{findMaterialPropertyTable()}}
+{\footnotesize\ttfamily void OMSim\+Material\+Handler\+::find\+Material\+Property\+Table (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+name} & Name of the material whose property table is to be found. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_material_handler_aeb612b7e496704e9e5dd8e8bfbf37af0}\label{class_o_m_sim_material_handler_aeb612b7e496704e9e5dd8e8bfbf37af0}} 
+\index{OMSimMaterialHandler@{OMSimMaterialHandler}!getOpticalSurfaceFinish@{getOpticalSurfaceFinish}}
+\index{getOpticalSurfaceFinish@{getOpticalSurfaceFinish}!OMSimMaterialHandler@{OMSimMaterialHandler}}
+\doxysubsubsection{\texorpdfstring{getOpticalSurfaceFinish()}{getOpticalSurfaceFinish()}}
+{\footnotesize\ttfamily G4\+Optical\+Surface\+Finish OMSim\+Material\+Handler\+::get\+Optical\+Surface\+Finish (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+\_\+finish }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em finish} & String representation of the finish. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_material_handler_a2a947dda8ecc28b13bf5fdf93ff0fef4}\label{class_o_m_sim_material_handler_a2a947dda8ecc28b13bf5fdf93ff0fef4}} 
+\index{OMSimMaterialHandler@{OMSimMaterialHandler}!getOpticalSurfaceModel@{getOpticalSurfaceModel}}
+\index{getOpticalSurfaceModel@{getOpticalSurfaceModel}!OMSimMaterialHandler@{OMSimMaterialHandler}}
+\doxysubsubsection{\texorpdfstring{getOpticalSurfaceModel()}{getOpticalSurfaceModel()}}
+{\footnotesize\ttfamily G4\+Optical\+Surface\+Model OMSim\+Material\+Handler\+::get\+Optical\+Surface\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+\_\+model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+model} & String representation of the model. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_material_handler_ae25187ca37e6e40b9b1af077c3093523}\label{class_o_m_sim_material_handler_ae25187ca37e6e40b9b1af077c3093523}} 
+\index{OMSimMaterialHandler@{OMSimMaterialHandler}!getState@{getState}}
+\index{getState@{getState}!OMSimMaterialHandler@{OMSimMaterialHandler}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily G4\+State OMSim\+Material\+Handler\+::get\+State (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+\_\+state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+state} & String representation of the state. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_material_handler_abf218ce78a52805add727b92527daec8}\label{class_o_m_sim_material_handler_abf218ce78a52805add727b92527daec8}} 
+\index{OMSimMaterialHandler@{OMSimMaterialHandler}!getSurfaceType@{getSurfaceType}}
+\index{getSurfaceType@{getSurfaceType}!OMSimMaterialHandler@{OMSimMaterialHandler}}
+\doxysubsubsection{\texorpdfstring{getSurfaceType()}{getSurfaceType()}}
+{\footnotesize\ttfamily G4\+Surface\+Type OMSim\+Material\+Handler\+::get\+Surface\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+type} & String representation of the surface type. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_o_m_sim_material_handler_a0f799e0b10b1d0e37eb849b401b0d5e7}\label{class_o_m_sim_material_handler_a0f799e0b10b1d0e37eb849b401b0d5e7}} 
+\index{OMSimMaterialHandler@{OMSimMaterialHandler}!processConstProperties@{processConstProperties}}
+\index{processConstProperties@{processConstProperties}!OMSimMaterialHandler@{OMSimMaterialHandler}}
+\doxysubsubsection{\texorpdfstring{processConstProperties()}{processConstProperties()}}
+{\footnotesize\ttfamily void OMSim\+Material\+Handler\+::process\+Const\+Properties (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+The json files that contain a key \char`\"{}j\+Const\+Properties\char`\"{}, will have a list of properties with a constant \mbox{\Hypertarget{class_o_m_sim_material_handler_a2e87189ae05d3d960df85957c799ebf9}\label{class_o_m_sim_material_handler_a2e87189ae05d3d960df85957c799ebf9}} 
+\index{OMSimMaterialHandler@{OMSimMaterialHandler}!processExtraProperties@{processExtraProperties}}
+\index{processExtraProperties@{processExtraProperties}!OMSimMaterialHandler@{OMSimMaterialHandler}}
+\doxysubsubsection{\texorpdfstring{processExtraProperties()}{processExtraProperties()}}
+{\footnotesize\ttfamily void OMSim\+Material\+Handler\+::process\+Extra\+Properties (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This method is used to add additional properties to a material that has already been defined. \mbox{\Hypertarget{class_o_m_sim_material_handler_a116e075ea33b846fd722a7e1470072a4}\label{class_o_m_sim_material_handler_a116e075ea33b846fd722a7e1470072a4}} 
+\index{OMSimMaterialHandler@{OMSimMaterialHandler}!processProperties@{processProperties}}
+\index{processProperties@{processProperties}!OMSimMaterialHandler@{OMSimMaterialHandler}}
+\doxysubsubsection{\texorpdfstring{processProperties()}{processProperties()}}
+{\footnotesize\ttfamily void OMSim\+Material\+Handler\+::process\+Properties (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+In the json file there is a j\+Properties key containing one ore more keys (which will be the name of the property in the material property table). Each of these keys contains two arrays, one in key j\+Wavelength and the other in j\+Values. \mbox{\Hypertarget{class_o_m_sim_material_handler_ad337c539e395d32e708d18a4f5e48264}\label{class_o_m_sim_material_handler_ad337c539e395d32e708d18a4f5e48264}} 
+\index{OMSimMaterialHandler@{OMSimMaterialHandler}!processSpecial@{processSpecial}}
+\index{processSpecial@{processSpecial}!OMSimMaterialHandler@{OMSimMaterialHandler}}
+\doxysubsubsection{\texorpdfstring{processSpecial()}{processSpecial()}}
+{\footnotesize\ttfamily void OMSim\+Material\+Handler\+::process\+Special (\begin{DoxyParamCaption}\item[{Processor\+Function $\ast$}]{p\+\_\+processor }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+processor} & Function pointer to the processor function.\\
+\hline
+\end{DoxyParams}
+This method is used for processing special material types like Ice\+Cube ice or scintillators, which require custom handling. \mbox{\Hypertarget{class_o_m_sim_material_handler_a1cf8cf3badeaa28c33d4b96973239c71}\label{class_o_m_sim_material_handler_a1cf8cf3badeaa28c33d4b96973239c71}} 
+\index{OMSimMaterialHandler@{OMSimMaterialHandler}!processSurface@{processSurface}}
+\index{processSurface@{processSurface}!OMSimMaterialHandler@{OMSimMaterialHandler}}
+\doxysubsubsection{\texorpdfstring{processSurface()}{processSurface()}}
+{\footnotesize\ttfamily G4\+Optical\+Surface $\ast$ OMSim\+Material\+Handler\+::process\+Surface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Pointer to the created G4\+Optical\+Surface. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_material_handler_8hh}{OMSim\+Material\+Handler.\+hh}}\item 
+OMSim\+Material\+Handler.\+cc\end{DoxyCompactItemize}

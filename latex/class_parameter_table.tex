@@ -38,8 +38,10 @@ Its main use is as base class of \mbox{\hyperlink{class_o_m_sim_input_data}{OMSi
 \item 
 {\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{class_parameter_table_adb1234ccb47c9e44ecd7f8c5cb9e0407}{get\+Value}} (G4\+String p\+Key, G4\+String p\+Parameter)
 \begin{DoxyCompactList}\small\item\em Fetches a value from the table based on a key and parameter. \end{DoxyCompactList}\item 
-G4bool \mbox{\hyperlink{class_parameter_table_afd0aa495dfeeb68bf370c3ea8390192d}{check\+If\+Key\+In\+Table}} (G4\+String p\+Key)
+G4bool \mbox{\hyperlink{class_parameter_table_a462edf8d5284908b7c59c851e367b779}{check\+If\+Tree\+Name\+In\+Table}} (G4\+String p\+Key)
 \begin{DoxyCompactList}\small\item\em Checks if a key exists within the table. \end{DoxyCompactList}\item 
+G4bool \mbox{\hyperlink{class_parameter_table_a8181a3c7b97c75eae98e3d6fb5d3e048}{check\+If\+Key\+In\+Tree}} (G4\+String p\+\_\+tree\+Name, G4\+String p\+\_\+key)
+\begin{DoxyCompactList}\small\item\em Checks if a specific key exists in a given JSON tree. \end{DoxyCompactList}\item 
 G4double \mbox{\hyperlink{class_parameter_table_aa7546560723ba3b94c08229266b27307}{get\+Value\+With\+Unit}} (G4\+String p\+Key, G4\+String p\+Parameter)
 \begin{DoxyCompactList}\small\item\em Fetches the value associated with a given key and parameter. \end{DoxyCompactList}\item 
 pt\+::ptree \mbox{\hyperlink{class_parameter_table_a131ddfbbf38d27b59f454a4ec96b2b9e}{append\+And\+Return\+Tree}} (G4\+String p\+File\+Name)
@@ -66,18 +68,34 @@ std\+::map$<$ G4\+String, G4\+String $>$ \mbox{\hyperlink{class_parameter_table_
 \index{ParameterTable@{ParameterTable}!appendAndReturnTree@{appendAndReturnTree}}
 \index{appendAndReturnTree@{appendAndReturnTree}!ParameterTable@{ParameterTable}}
 \doxysubsubsection{\texorpdfstring{appendAndReturnTree()}{appendAndReturnTree()}}
-{\footnotesize\ttfamily pt\+::ptree Parameter\+Table\+::append\+And\+Return\+Tree (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+File\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pt\+::ptree Parameter\+Table\+::append\+And\+Return\+Tree (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+file\+Name }\end{DoxyParamCaption})}
 
 Appends information of json-\/file containing PMT/\+OM parameters to a dictionary of ptrees 
 \begin{DoxyParams}{Parameters}
-{\em p\+File\+Name} & Name of file containing json \\
+{\em p\+\_\+file\+Name} & Name of file containing json \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_parameter_table_afd0aa495dfeeb68bf370c3ea8390192d}\label{class_parameter_table_afd0aa495dfeeb68bf370c3ea8390192d}} 
-\index{ParameterTable@{ParameterTable}!checkIfKeyInTable@{checkIfKeyInTable}}
-\index{checkIfKeyInTable@{checkIfKeyInTable}!ParameterTable@{ParameterTable}}
-\doxysubsubsection{\texorpdfstring{checkIfKeyInTable()}{checkIfKeyInTable()}}
-{\footnotesize\ttfamily G4bool Parameter\+Table\+::check\+If\+Key\+In\+Table (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Key }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_parameter_table_a8181a3c7b97c75eae98e3d6fb5d3e048}\label{class_parameter_table_a8181a3c7b97c75eae98e3d6fb5d3e048}} 
+\index{ParameterTable@{ParameterTable}!checkIfKeyInTree@{checkIfKeyInTree}}
+\index{checkIfKeyInTree@{checkIfKeyInTree}!ParameterTable@{ParameterTable}}
+\doxysubsubsection{\texorpdfstring{checkIfKeyInTree()}{checkIfKeyInTree()}}
+{\footnotesize\ttfamily G4bool Parameter\+Table\+::check\+If\+Key\+In\+Tree (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+tree\+Name,  }\item[{G4\+String}]{p\+\_\+key }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+tree\+Name} & Name of the JSON tree to search in. \\
+\hline
+{\em p\+\_\+key} & Key to look for in the tree. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the key exists in the tree, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_parameter_table_a462edf8d5284908b7c59c851e367b779}\label{class_parameter_table_a462edf8d5284908b7c59c851e367b779}} 
+\index{ParameterTable@{ParameterTable}!checkIfTreeNameInTable@{checkIfTreeNameInTable}}
+\index{checkIfTreeNameInTable@{checkIfTreeNameInTable}!ParameterTable@{ParameterTable}}
+\doxysubsubsection{\texorpdfstring{checkIfTreeNameInTable()}{checkIfTreeNameInTable()}}
+{\footnotesize\ttfamily G4bool Parameter\+Table\+::check\+If\+Tree\+Name\+In\+Table (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Key }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}

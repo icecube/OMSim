@@ -8,13 +8,13 @@ The {\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}}} 
 
 The class also provides an analogue method for optical surfaces {\ttfamily \mbox{\hyperlink{class_o_m_sim_input_data_aca56b05e268bbb47761dbcc8e487c283}{OMSim\+Input\+Data\+::get\+Optical\+Surface}}} which does not exist in Geant4.
 
-Since different materials have different types of properties, the data is loaded in multiple ways. These different material types are defined in {\ttfamily \mbox{\hyperlink{_o_m_sim_data_file_types_8hh}{OMSim\+Data\+File\+Types.\+hh}}}.
+Since different materials have different types of properties, the data is loaded in multiple ways. These different material types are defined in {\ttfamily OMSim\+Data\+File\+Types.\+hh}.
 
 Additionally, geometry data used during PMT construction are also stored in JSON files ({\ttfamily /common/data/\+PMTs}). These are saved in a \char`\"{}tree\char`\"{} (essentially a dictionary containing the JSON file\textquotesingle{}s keys and values) in {\ttfamily \mbox{\hyperlink{class_parameter_table_a749bc840cf2aea18fb5b63da8b68c23c}{OMSim\+Input\+Data\+::m\+Table}}}.
 
 This approach was adopted because various PMTs are constructed similarly, eliminating the need to define a unique class for each PMT type, as is done for the optical modules.
 
-If you wish to load additional data, you can either define a new type in OMSim\+Data\+File\+Types or use a json file to load it into a tree as previously mentioned. For simpler tasks, use the static method {\ttfamily \mbox{\hyperlink{namespace_tools_a6d49cd2d5cb0e03b596870bcb9c12681}{Tools\+::loadtxt}}} provided by the \href{md_extra_doc_2_technicalities.html\#autotoc_md20}{\texttt{ {\ttfamily Tools} namespace}}.
+If you wish to load additional data, you can either define a new type in OMSim\+Data\+File\+Types or use a json file to load it into a tree as previously mentioned. For simpler tasks, use the static method {\ttfamily \mbox{\hyperlink{namespace_tools_aefa5ecd8f1fb3d69a65d517494e99669}{Tools\+::loadtxt}}} provided by the \href{md_extra_doc_2_technicalities.html\#autotoc_md20}{\texttt{ {\ttfamily Tools} namespace}}.
 
 \DoxyHorRuler{0}
 \hypertarget{md_extra_doc_0_common_autotoc_md4}{}\doxysection{Geometry construction}\label{md_extra_doc_0_common_autotoc_md4}
@@ -98,8 +98,8 @@ This approach ensures a smooth integration of the photosensitive volume within t
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}OMSimSensitiveDetector.hh"{}}}
 \DoxyCodeLine{\textcolor{comment}{//... Assume the logical volume of your detector has been defined and is referred to as "{}lDetectorLV"{}}}
-\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}* lSensitiveDetector = \textcolor{keyword}{new} \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}(\textcolor{stringliteral}{"{}myDetector"{}}, DetectorType::GeneralPhotonDetector); }
-\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}} lHitManager =  \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}();}
+\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}* lSensitiveDetector = \textcolor{keyword}{new} \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}(\textcolor{stringliteral}{"{}myDetector"{}}, DetectorType::VolumePhotonDetector); }
+\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}} \&lHitManager =  \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}();}
 \DoxyCodeLine{lHitManager.\mbox{\hyperlink{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}{setNumberOfPMTs}}(1, lHitManager.getNextDetectorIndex());}
 \DoxyCodeLine{registerSensitiveDetector(lDetectorLV, lSensitiveDetector);}
 

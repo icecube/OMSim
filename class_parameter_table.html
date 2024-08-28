@@ -142,11 +142,11 @@ Minimal example</h2>
 <div class="line">std::vector&lt;G4double&gt; lVector;</div>
 <div class="line">pt::ptree lSubtree = lTable.<a class="code" href="class_parameter_table.html#a042ee0eca2c9daa755d7a472608e6d66">getJSONTree</a>(<span class="stringliteral">&quot;SomeKey&quot;</span>); <span class="comment">// Retrieving the subtree of the file</span></div>
 <div class="line">lTable.<a class="code" href="class_parameter_table.html#a3c2a94b50a41341c104b5b1585d15efc">parseKeyContentToVector</a>(lVector, lSubtree, <span class="stringliteral">&quot;keyOfArray&quot;</span>, 1.0, <span class="keyword">false</span>); <span class="comment">// parsing array into vector</span></div>
-<div class="ttc" id="aclass_parameter_table_html"><div class="ttname"><a href="class_parameter_table.html">ParameterTable</a></div><div class="ttdoc">A utility class for managing JSON-based data tables.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.hh:40</div></div>
+<div class="ttc" id="aclass_parameter_table_html"><div class="ttname"><a href="class_parameter_table.html">ParameterTable</a></div><div class="ttdoc">A utility class for managing JSON-based data tables.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.hh:39</div></div>
 <div class="ttc" id="aclass_parameter_table_html_a042ee0eca2c9daa755d7a472608e6d66"><div class="ttname"><a href="class_parameter_table.html#a042ee0eca2c9daa755d7a472608e6d66">ParameterTable::getJSONTree</a></div><div class="ttdeci">pt::ptree getJSONTree(G4String pKey)</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:87</div></div>
 <div class="ttc" id="aclass_parameter_table_html_a131ddfbbf38d27b59f454a4ec96b2b9e"><div class="ttname"><a href="class_parameter_table.html#a131ddfbbf38d27b59f454a4ec96b2b9e">ParameterTable::appendAndReturnTree</a></div><div class="ttdeci">pt::ptree appendAndReturnTree(G4String pFileName)</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:21</div></div>
 <div class="ttc" id="aclass_parameter_table_html_a3c2a94b50a41341c104b5b1585d15efc"><div class="ttname"><a href="class_parameter_table.html#a3c2a94b50a41341c104b5b1585d15efc">ParameterTable::parseKeyContentToVector</a></div><div class="ttdeci">void parseKeyContentToVector(std::vector&lt; T &gt; &amp;pVector, pt::ptree pTree, std::basic_string&lt; char &gt; pKey, G4double pScaling, bool pInverse)</div><div class="ttdoc">Parses the content of a JSON subtree into a vector, scaling values if necessary.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.hh:86</div></div>
-<div class="ttc" id="aclass_parameter_table_html_adb1234ccb47c9e44ecd7f8c5cb9e0407"><div class="ttname"><a href="class_parameter_table.html#adb1234ccb47c9e44ecd7f8c5cb9e0407">ParameterTable::getValue</a></div><div class="ttdeci">T getValue(G4String pKey, G4String pParameter)</div><div class="ttdoc">Fetches a value from the table based on a key and parameter.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.hh:53</div></div>
+<div class="ttc" id="aclass_parameter_table_html_adb1234ccb47c9e44ecd7f8c5cb9e0407"><div class="ttname"><a href="class_parameter_table.html#adb1234ccb47c9e44ecd7f8c5cb9e0407">ParameterTable::getValue</a></div><div class="ttdeci">T getValue(G4String pKey, G4String pParameter)</div><div class="ttdoc">Fetches a value from the table based on a key and parameter.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.hh:52</div></div>
 </div><!-- fragment --> </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -154,9 +154,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adb1234ccb47c9e44ecd7f8c5cb9e0407"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#adb1234ccb47c9e44ecd7f8c5cb9e0407">getValue</a> (G4String pKey, G4String pParameter)</td></tr>
 <tr class="memdesc:adb1234ccb47c9e44ecd7f8c5cb9e0407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches a value from the table based on a key and parameter.  <a href="class_parameter_table.html#adb1234ccb47c9e44ecd7f8c5cb9e0407">More...</a><br /></td></tr>
 <tr class="separator:adb1234ccb47c9e44ecd7f8c5cb9e0407"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd0aa495dfeeb68bf370c3ea8390192d"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#afd0aa495dfeeb68bf370c3ea8390192d">checkIfKeyInTable</a> (G4String pKey)</td></tr>
-<tr class="memdesc:afd0aa495dfeeb68bf370c3ea8390192d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a key exists within the table.  <a href="class_parameter_table.html#afd0aa495dfeeb68bf370c3ea8390192d">More...</a><br /></td></tr>
-<tr class="separator:afd0aa495dfeeb68bf370c3ea8390192d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a462edf8d5284908b7c59c851e367b779"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#a462edf8d5284908b7c59c851e367b779">checkIfTreeNameInTable</a> (G4String pKey)</td></tr>
+<tr class="memdesc:a462edf8d5284908b7c59c851e367b779"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a key exists within the table.  <a href="class_parameter_table.html#a462edf8d5284908b7c59c851e367b779">More...</a><br /></td></tr>
+<tr class="separator:a462edf8d5284908b7c59c851e367b779"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8181a3c7b97c75eae98e3d6fb5d3e048"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#a8181a3c7b97c75eae98e3d6fb5d3e048">checkIfKeyInTree</a> (G4String p_treeName, G4String p_key)</td></tr>
+<tr class="memdesc:a8181a3c7b97c75eae98e3d6fb5d3e048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a specific key exists in a given JSON tree.  <a href="class_parameter_table.html#a8181a3c7b97c75eae98e3d6fb5d3e048">More...</a><br /></td></tr>
+<tr class="separator:a8181a3c7b97c75eae98e3d6fb5d3e048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7546560723ba3b94c08229266b27307"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#aa7546560723ba3b94c08229266b27307">getValueWithUnit</a> (G4String pKey, G4String pParameter)</td></tr>
 <tr class="memdesc:aa7546560723ba3b94c08229266b27307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the value associated with a given key and parameter.  <a href="class_parameter_table.html#aa7546560723ba3b94c08229266b27307">More...</a><br /></td></tr>
 <tr class="separator:aa7546560723ba3b94c08229266b27307"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,28 +198,64 @@ std::map&lt; G4String, G4String &gt;&#160;</td><td class="memItemRight" valign="
           <td class="memname">pt::ptree ParameterTable::appendAndReturnTree </td>
           <td>(</td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pFileName</em></td><td>)</td>
+          <td class="paramname"><em>p_fileName</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Appends information of json-file containing PMT/OM parameters to a dictionary of ptrees </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pFileName</td><td>Name of file containing json </td></tr>
+    <tr><td class="paramname">p_fileName</td><td>Name of file containing json </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="afd0aa495dfeeb68bf370c3ea8390192d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd0aa495dfeeb68bf370c3ea8390192d">&#9670;&nbsp;</a></span>checkIfKeyInTable()</h2>
+<a id="a8181a3c7b97c75eae98e3d6fb5d3e048"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8181a3c7b97c75eae98e3d6fb5d3e048">&#9670;&nbsp;</a></span>checkIfKeyInTree()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">G4bool ParameterTable::checkIfKeyInTable </td>
+          <td class="memname">G4bool ParameterTable::checkIfKeyInTree </td>
+          <td>(</td>
+          <td class="paramtype">G4String&#160;</td>
+          <td class="paramname"><em>p_treeName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">G4String&#160;</td>
+          <td class="paramname"><em>p_key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_treeName</td><td>Name of the JSON tree to search in. </td></tr>
+    <tr><td class="paramname">p_key</td><td>Key to look for in the tree. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the key exists in the tree, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a462edf8d5284908b7c59c851e367b779"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a462edf8d5284908b7c59c851e367b779">&#9670;&nbsp;</a></span>checkIfTreeNameInTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">G4bool ParameterTable::checkIfTreeNameInTable </td>
           <td>(</td>
           <td class="paramtype">G4String&#160;</td>
           <td class="paramname"><em>pKey</em></td><td>)</td>
@@ -502,7 +541,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_parameter_table.html">ParameterTable</a></li>
-    <li class="footer">Generated on Mon Aug 26 2024 09:44:53 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 13:59:31 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

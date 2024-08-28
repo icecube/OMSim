@@ -116,8 +116,10 @@ $(document).ready(function(){initNavTree('class_o_m_sim_input_data.html',''); in
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_o_m_sim_input_data-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">OMSimInputData Class Reference<div class="ingroups"><a class="el" href="group__common.html">Common framework</a></div></div>  </div>
@@ -143,14 +145,15 @@ Collaboration diagram for OMSimInputData:</div>
 <p>This class follows a global instance pattern and its lifecycle is managed by <a class="el" href="class_o_m_sim_detector_construction.html" title="Class for detector construction in the effective area simulation.">OMSimDetectorConstruction</a>. It can be accessed by other classes using <a class="el" href="class_o_m_sim_input_data.html#a810d7ae3b652d05e7b85eb568873eed2">OMSimInputData::getInstance()</a>. For example:</p>
 <div class="fragment"><div class="line">G4Material* lWater = <a class="code" href="class_o_m_sim_input_data.html#a810d7ae3b652d05e7b85eb568873eed2">OMSimInputData::getInstance</a>().<a class="code" href="class_o_m_sim_input_data.html#a12e64f3ec83f33c173da0cd5954dd5b2">getMaterial</a>(<span class="stringliteral">&quot;CustomWater&quot;</span>); <span class="comment">// Retrieve a Geant4 material by name</span></div>
 <div class="line">G4OpticalSurface* lSurface = <a class="code" href="class_o_m_sim_input_data.html#a810d7ae3b652d05e7b85eb568873eed2">OMSimInputData::getInstance</a>().<a class="code" href="class_o_m_sim_input_data.html#aca56b05e268bbb47761dbcc8e487c283">getOpticalSurface</a>(<span class="stringliteral">&quot;SomeSurfaceName&quot;</span>); <span class="comment">// Retrieve an optical surface by name</span></div>
-<div class="ttc" id="aclass_o_m_sim_input_data_html_a12e64f3ec83f33c173da0cd5954dd5b2"><div class="ttname"><a href="class_o_m_sim_input_data.html#a12e64f3ec83f33c173da0cd5954dd5b2">OMSimInputData::getMaterial</a></div><div class="ttdeci">G4Material * getMaterial(G4String pName)</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:168</div></div>
-<div class="ttc" id="aclass_o_m_sim_input_data_html_a810d7ae3b652d05e7b85eb568873eed2"><div class="ttname"><a href="class_o_m_sim_input_data.html#a810d7ae3b652d05e7b85eb568873eed2">OMSimInputData::getInstance</a></div><div class="ttdeci">static OMSimInputData &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:149</div></div>
-<div class="ttc" id="aclass_o_m_sim_input_data_html_aca56b05e268bbb47761dbcc8e487c283"><div class="ttname"><a href="class_o_m_sim_input_data.html#aca56b05e268bbb47761dbcc8e487c283">OMSimInputData::getOpticalSurface</a></div><div class="ttdeci">G4OpticalSurface * getOpticalSurface(G4String pName)</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:214</div></div>
-</div><!-- fragment --><p>(see also <a class="el" href="class_parameter_table.html#ExampleUsageParameterTable">Minimal example</a>) This class assumes certain conventions in naming and structuring the input files, which aids in automatically identifying and processing them. For example, files with names starting with "RiAbs" are treated as describing refractive and absorption properties. </p>
+<div class="ttc" id="aclass_o_m_sim_input_data_html_a12e64f3ec83f33c173da0cd5954dd5b2"><div class="ttname"><a href="class_o_m_sim_input_data.html#a12e64f3ec83f33c173da0cd5954dd5b2">OMSimInputData::getMaterial</a></div><div class="ttdeci">G4Material * getMaterial(G4String pName)</div><div class="ttdoc">Retrieves a G4Material based on the given name.</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:190</div></div>
+<div class="ttc" id="aclass_o_m_sim_input_data_html_a810d7ae3b652d05e7b85eb568873eed2"><div class="ttname"><a href="class_o_m_sim_input_data.html#a810d7ae3b652d05e7b85eb568873eed2">OMSimInputData::getInstance</a></div><div class="ttdeci">static OMSimInputData &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:169</div></div>
+<div class="ttc" id="aclass_o_m_sim_input_data_html_aca56b05e268bbb47761dbcc8e487c283"><div class="ttname"><a href="class_o_m_sim_input_data.html#aca56b05e268bbb47761dbcc8e487c283">OMSimInputData::getOpticalSurface</a></div><div class="ttdeci">G4OpticalSurface * getOpticalSurface(G4String pName)</div><div class="ttdef"><b>Definition:</b> OMSimInputData.cc:236</div></div>
+</div><!-- fragment --><p>(see also <a class="el" href="class_parameter_table.html#ExampleUsageParameterTable">Minimal example</a>) This class assumes certain conventions in naming and structuring the input files, which aids in automatically identifying and processing them. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a12e64f3ec83f33c173da0cd5954dd5b2"><td class="memItemLeft" align="right" valign="top">G4Material *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html#a12e64f3ec83f33c173da0cd5954dd5b2">getMaterial</a> (G4String pName)</td></tr>
+<tr class="memdesc:a12e64f3ec83f33c173da0cd5954dd5b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a G4Material based on the given name.  <a href="class_o_m_sim_input_data.html#a12e64f3ec83f33c173da0cd5954dd5b2">More...</a><br /></td></tr>
 <tr class="separator:a12e64f3ec83f33c173da0cd5954dd5b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca56b05e268bbb47761dbcc8e487c283"><td class="memItemLeft" align="right" valign="top">G4OpticalSurface *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html#aca56b05e268bbb47761dbcc8e487c283">getOpticalSurface</a> (G4String pName)</td></tr>
 <tr class="separator:aca56b05e268bbb47761dbcc8e487c283"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,9 +166,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:adb1234ccb47c9e44ecd7f8c5cb9e0407 inherit pub_methods_class_parameter_table"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#adb1234ccb47c9e44ecd7f8c5cb9e0407">getValue</a> (G4String pKey, G4String pParameter)</td></tr>
 <tr class="memdesc:adb1234ccb47c9e44ecd7f8c5cb9e0407 inherit pub_methods_class_parameter_table"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches a value from the table based on a key and parameter.  <a href="class_parameter_table.html#adb1234ccb47c9e44ecd7f8c5cb9e0407">More...</a><br /></td></tr>
 <tr class="separator:adb1234ccb47c9e44ecd7f8c5cb9e0407 inherit pub_methods_class_parameter_table"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd0aa495dfeeb68bf370c3ea8390192d inherit pub_methods_class_parameter_table"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#afd0aa495dfeeb68bf370c3ea8390192d">checkIfKeyInTable</a> (G4String pKey)</td></tr>
-<tr class="memdesc:afd0aa495dfeeb68bf370c3ea8390192d inherit pub_methods_class_parameter_table"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a key exists within the table.  <a href="class_parameter_table.html#afd0aa495dfeeb68bf370c3ea8390192d">More...</a><br /></td></tr>
-<tr class="separator:afd0aa495dfeeb68bf370c3ea8390192d inherit pub_methods_class_parameter_table"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a462edf8d5284908b7c59c851e367b779 inherit pub_methods_class_parameter_table"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#a462edf8d5284908b7c59c851e367b779">checkIfTreeNameInTable</a> (G4String pKey)</td></tr>
+<tr class="memdesc:a462edf8d5284908b7c59c851e367b779 inherit pub_methods_class_parameter_table"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a key exists within the table.  <a href="class_parameter_table.html#a462edf8d5284908b7c59c851e367b779">More...</a><br /></td></tr>
+<tr class="separator:a462edf8d5284908b7c59c851e367b779 inherit pub_methods_class_parameter_table"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8181a3c7b97c75eae98e3d6fb5d3e048 inherit pub_methods_class_parameter_table"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#a8181a3c7b97c75eae98e3d6fb5d3e048">checkIfKeyInTree</a> (G4String p_treeName, G4String p_key)</td></tr>
+<tr class="memdesc:a8181a3c7b97c75eae98e3d6fb5d3e048 inherit pub_methods_class_parameter_table"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a specific key exists in a given JSON tree.  <a href="class_parameter_table.html#a8181a3c7b97c75eae98e3d6fb5d3e048">More...</a><br /></td></tr>
+<tr class="separator:a8181a3c7b97c75eae98e3d6fb5d3e048 inherit pub_methods_class_parameter_table"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7546560723ba3b94c08229266b27307 inherit pub_methods_class_parameter_table"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parameter_table.html#aa7546560723ba3b94c08229266b27307">getValueWithUnit</a> (G4String pKey, G4String pParameter)</td></tr>
 <tr class="memdesc:aa7546560723ba3b94c08229266b27307 inherit pub_methods_class_parameter_table"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the value associated with a given key and parameter.  <a href="class_parameter_table.html#aa7546560723ba3b94c08229266b27307">More...</a><br /></td></tr>
 <tr class="separator:aa7546560723ba3b94c08229266b27307 inherit pub_methods_class_parameter_table"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,20 +201,38 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:addde153519e7a6884a9583614d6c5f49"><td class="memItemLeft" align="right" valign="top"><a id="addde153519e7a6884a9583614d6c5f49"></a>
-std::map&lt; G4String, G4OpticalSurface * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html#addde153519e7a6884a9583614d6c5f49">mOpticalSurfaceMap</a></td></tr>
-<tr class="memdesc:addde153519e7a6884a9583614d6c5f49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map that links names with optical surfaces. <br /></td></tr>
-<tr class="separator:addde153519e7a6884a9583614d6c5f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a692d89c9fbdd287aa13c3bb5ddba8278"><td class="memItemLeft" align="right" valign="top"><a id="a692d89c9fbdd287aa13c3bb5ddba8278"></a>
+std::map&lt; G4String, G4OpticalSurface * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html#a692d89c9fbdd287aa13c3bb5ddba8278">m_opticalSurfaceMap</a></td></tr>
+<tr class="memdesc:a692d89c9fbdd287aa13c3bb5ddba8278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map that links names with optical surfaces. <br /></td></tr>
+<tr class="separator:a692d89c9fbdd287aa13c3bb5ddba8278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a230292bc2609c1c353d42213b8f5fbf7"><td class="memItemLeft" align="right" valign="top"><a id="a230292bc2609c1c353d42213b8f5fbf7"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>FileType</b> { <br />
+&#160;&#160;<b>IceCubeICE</b>
+, <b>Scintillator</b>
+, <b>Custom</b>
+, <b>Table</b>
+, <br />
+&#160;&#160;<b>Surface</b>
+, <b>Material</b>
+<br />
+ }</td></tr>
+<tr class="separator:a230292bc2609c1c353d42213b8f5fbf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:ae5886651fcc9baae2beb745d4377d756"><td class="memItemLeft" align="right" valign="top"><a id="ae5886651fcc9baae2beb745d4377d756"></a>
+FileType&#160;</td><td class="memItemRight" valign="bottom"><b>getFileType</b> (const std::string &amp;fileName) const</td></tr>
+<tr class="separator:ae5886651fcc9baae2beb745d4377d756"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fe2c68872dc59b3a8fe9e961a28ec94"><td class="memItemLeft" align="right" valign="top"><a id="a2fe2c68872dc59b3a8fe9e961a28ec94"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>OMSimInputData</b> (const <a class="el" href="class_o_m_sim_input_data.html">OMSimInputData</a> &amp;)=delete</td></tr>
 <tr class="separator:a2fe2c68872dc59b3a8fe9e961a28ec94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa697f53e9f26f530c9f463c1c7af9db"><td class="memItemLeft" align="right" valign="top"><a id="aaa697f53e9f26f530c9f463c1c7af9db"></a>
 <a class="el" href="class_o_m_sim_input_data.html">OMSimInputData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_o_m_sim_input_data.html">OMSimInputData</a> &amp;)=delete</td></tr>
 <tr class="separator:aaa697f53e9f26f530c9f463c1c7af9db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6e28e3df96ad7ca980aec5d3b1f8ce6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html#ae6e28e3df96ad7ca980aec5d3b1f8ce6">scannDataDirectory</a> ()</td></tr>
+<tr class="memitem:ae6e28e3df96ad7ca980aec5d3b1f8ce6"><td class="memItemLeft" align="right" valign="top"><a id="ae6e28e3df96ad7ca980aec5d3b1f8ce6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>scannDataDirectory</b> ()</td></tr>
 <tr class="separator:ae6e28e3df96ad7ca980aec5d3b1f8ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85c2bfa74bb3ac64f0e5f628d81bf4be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html#a85c2bfa74bb3ac64f0e5f628d81bf4be">processFile</a> (const std::string &amp;filePath, const std::string &amp;fileName)</td></tr>
 <tr class="memdesc:a85c2bfa74bb3ac64f0e5f628d81bf4be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a data file based on its name prefix.  <a href="class_o_m_sim_input_data.html#a85c2bfa74bb3ac64f0e5f628d81bf4be">More...</a><br /></td></tr>
@@ -216,10 +240,15 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a9b0073c725ef7569e354242545a2912e"><td class="memItemLeft" align="right" valign="top"><a id="a9b0073c725ef7569e354242545a2912e"></a>
-G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html#a9b0073c725ef7569e354242545a2912e">mDataDirectory</a></td></tr>
-<tr class="memdesc:a9b0073c725ef7569e354242545a2912e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current directory being scanned for data. <br /></td></tr>
-<tr class="separator:a9b0073c725ef7569e354242545a2912e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad606b2982529624542cb6cd4184160d3"><td class="memItemLeft" align="right" valign="top"><a id="ad606b2982529624542cb6cd4184160d3"></a>
+G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html#ad606b2982529624542cb6cd4184160d3">m_dataDirectory</a></td></tr>
+<tr class="memdesc:ad606b2982529624542cb6cd4184160d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current directory being scanned for data. <br /></td></tr>
+<tr class="separator:ad606b2982529624542cb6cd4184160d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a405e4a0a5c03a7218b3a91dd2e25de56"><td class="memItemLeft" align="right" valign="top">static const std::unordered_map&lt; std::string, FileType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fileTypePrefixes</b></td></tr>
+<tr class="separator:a405e4a0a5c03a7218b3a91dd2e25de56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a810d7ae3b652d05e7b85eb568873eed2"></a>
@@ -264,18 +293,21 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
           <td class="memname">G4Material * OMSimInputData::getMaterial </td>
           <td>(</td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pName</em></td><td>)</td>
+          <td class="paramname"><em>p_name</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get a G4Material. In order to get custom built materials, method <a class="el" href="class_o_m_sim_input_data.html#a84781faca6d03b8f9f13777c85a1c9dc" title="Searches through predefined folders for input data files.">searchFolders()</a> should have already been called. Standard materials from Geant4 are also transfered directly (if found through FindOrBuildMaterial()). Materials defined by arguments of the main should start with "arg" and then we get the material name from the arrays depending on the global integers (gGel, gGlass, gEnvironment..) . </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Handles both predefined and argument-based materials. For argument materials (prefixed with "arg"), it selects materials based on user-defined indices for glass, gel, and environment. For standard materials, it retrieves from Geant4's material database or NIST manager.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pName</td><td>name of the (custom) material or "argVesselGlass", "argGel", "argWorld" for argument materials </td></tr>
+    <tr><td class="paramname">pName</td><td>Material name or argument material key ("argVesselGlass", "argGel", "argWorld"). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>G4Material </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the requested G4Material, or nullptr if not found.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Uses <a class="el" href="class_o_m_sim_command_args_table.html" title="A class used to hold OMSim command arguments with global instance access.">OMSimCommandArgsTable</a> for argument-based material selection. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>May cause undefined behavior if argument indices are out of bounds. </dd></dl>
 
 </div>
 </div>
@@ -289,14 +321,14 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
           <td class="memname">G4OpticalSurface * OMSimInputData::getOpticalSurface </td>
           <td>(</td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pName</em></td><td>)</td>
+          <td class="paramname"><em>p_name</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Get a G4OpticalSurface. In order to get custom built materials, method <a class="el" href="class_o_m_sim_input_data.html#a84781faca6d03b8f9f13777c85a1c9dc" title="Searches through predefined folders for input data files.">searchFolders()</a> should have already been called. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pName</td><td>name of the optical surface or argument reflectors "argReflector" </td></tr>
+    <tr><td class="paramname">p_name</td><td>name of the optical surface or argument reflectors "argReflector" </td></tr>
   </table>
   </dd>
 </dl>
@@ -343,13 +375,13 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
           <td class="memname">void OMSimInputData::processFile </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>pFilePath</em>, </td>
+          <td class="paramname"><em>p_filePath</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>pFileName</em>&#160;</td>
+          <td class="paramname"><em>p_fileName</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -363,42 +395,11 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The function identifies the type of data file (<a class="el" href="class_refraction_and_absorption.html" title="Materials with defined refractive index and absorption length.">RefractionAndAbsorption</a>, <a class="el" href="class_refraction_only.html" title="Materials only with refractive index defined.">RefractionOnly</a>, <a class="el" href="class_no_optics.html" title="Materials without optical properties defined.">NoOptics</a>, <a class="el" href="class_ice_cube_ice.html" title="Creation and extraction of IceCube&#39;s ice optical properties.">IceCubeIce</a>, <a class="el" href="class_surface.html" title="Reflective surfaces parsed from a JSON file.">Surface</a> or others) based on the prefix of the filename. It then constructs an object of the appropriate class and invokes its information extraction method. For 'Surf' prefixed files, it also updates the mOpticalSurfaceMap. For 'pmt_', 'om_', and 'usr_' prefixed files, it invokes directly appendAndReturnTree without any extra parsing into Geant4 objects.</p>
+<p>The function identifies the type of data file based on the prefix of the filename. It then calls the correct extraction method. For 'Surf' prefixed files, it also updates the m_opticalSurfaceMap. For 'pmt_', 'om_', and 'usr_' prefixed files, it invokes directly appendAndReturnTree without any extra parsing into Geant4 objects.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pFilePath</td><td>Full path to the file. </td></tr>
-    <tr><td class="paramname">pFileName</td><td>Name of the file (without the path). </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ae6e28e3df96ad7ca980aec5d3b1f8ce6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6e28e3df96ad7ca980aec5d3b1f8ce6">&#9670;&nbsp;</a></span>scannDataDirectory()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void OMSimInputData::scannDataDirectory </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Scann for data files inside mDataDirectory and process files. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pName</td><td>name of the material </td></tr>
+    <tr><td class="paramname">p_filePath</td><td>Full path to the file. </td></tr>
+    <tr><td class="paramname">p_fileName</td><td>Name of the file (without the path). </td></tr>
   </table>
   </dd>
 </dl>
@@ -431,6 +432,36 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a405e4a0a5c03a7218b3a91dd2e25de56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a405e4a0a5c03a7218b3a91dd2e25de56">&#9670;&nbsp;</a></span>fileTypePrefixes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::unordered_map&lt; std::string, OMSimInputData::FileType &gt; OMSimInputData::fileTypePrefixes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {<span class="stringliteral">&quot;IceCubeICE&quot;</span>, FileType::IceCubeICE},</div>
+<div class="line">    {<span class="stringliteral">&quot;Scint&quot;</span>, FileType::Scintillator},</div>
+<div class="line">    {<span class="stringliteral">&quot;Custom&quot;</span>, FileType::Custom},</div>
+<div class="line">    {<span class="stringliteral">&quot;pmt_&quot;</span>, FileType::Table},</div>
+<div class="line">    {<span class="stringliteral">&quot;usr_&quot;</span>, FileType::Table},</div>
+<div class="line">    {<span class="stringliteral">&quot;Surf&quot;</span>, FileType::Surface}}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_o_m_sim_input_data_8hh_source.html">OMSimInputData.hh</a></li>
 <li>OMSimInputData.cc</li>
@@ -441,7 +472,7 @@ G4String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_input_data.html">OMSimInputData</a></li>
-    <li class="footer">Generated on Mon Aug 26 2024 09:44:53 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 13:59:31 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -1,5 +1,0 @@
-<map id="ScintillationProperties" name="ScintillationProperties">
-<area shape="rect" id="node1" title="Scintillation properties extraction for existing materials." alt="" coords="5,171,171,197"/>
-<area shape="rect" id="node2" href="$classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation." alt="" coords="39,95,137,121"/>
-<area shape="rect" id="node3" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="27,5,149,32"/>
-</map>

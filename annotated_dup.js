@@ -17,12 +17,9 @@ var annotated_dup =
       [ "CADMeshTemplate", "class_c_a_d_mesh_1_1_c_a_d_mesh_template.html", "class_c_a_d_mesh_1_1_c_a_d_mesh_template" ],
       [ "TessellatedMesh", "class_c_a_d_mesh_1_1_tessellated_mesh.html", "class_c_a_d_mesh_1_1_tessellated_mesh" ]
     ] ],
-    [ "abcDataFile", "classabc_data_file.html", "classabc_data_file" ],
     [ "abcDetectorComponent", "classabc_detector_component.html", "classabc_detector_component" ],
-    [ "abcMaterialData", "classabc_material_data.html", "classabc_material_data" ],
     [ "AngularScan", "class_angular_scan.html", "class_angular_scan" ],
     [ "Beam", "class_beam.html", "class_beam" ],
-    [ "CustomProperties", "class_custom_properties.html", "class_custom_properties" ],
     [ "DecayStats", "struct_decay_stats.html", "struct_decay_stats" ],
     [ "DEGG", "class_d_e_g_g.html", "class_d_e_g_g" ],
     [ "DEggHarness", "class_d_egg_harness.html", "class_d_egg_harness" ],
@@ -36,7 +33,6 @@ var annotated_dup =
     [ "Gen1PMTResponse", "class_gen1_p_m_t_response.html", "class_gen1_p_m_t_response" ],
     [ "GlobalPosition", "struct_global_position.html", "struct_global_position" ],
     [ "HitStats", "struct_hit_stats.html", "struct_hit_stats" ],
-    [ "IceCubeIce", "class_ice_cube_ice.html", "class_ice_cube_ice" ],
     [ "LOM16", "class_l_o_m16.html", "class_l_o_m16" ],
     [ "LOM18", "class_l_o_m18.html", "class_l_o_m18" ],
     [ "LOMHamamatsuResponse", "class_l_o_m_hamamatsu_response.html", "class_l_o_m_hamamatsu_response" ],
@@ -45,7 +41,6 @@ var annotated_dup =
     [ "mDOMFlasher", "classm_d_o_m_flasher.html", "classm_d_o_m_flasher" ],
     [ "mDOMHarness", "classm_d_o_m_harness.html", "classm_d_o_m_harness" ],
     [ "mDOMPMTResponse", "classm_d_o_m_p_m_t_response.html", "classm_d_o_m_p_m_t_response" ],
-    [ "NoOptics", "class_no_optics.html", "class_no_optics" ],
     [ "NoResponse", "class_no_response.html", "class_no_response" ],
     [ "OMSim", "class_o_m_sim.html", "class_o_m_sim" ],
     [ "OMSimActionInitialization", "class_o_m_sim_action_initialization.html", "class_o_m_sim_action_initialization" ],
@@ -62,6 +57,7 @@ var annotated_dup =
     [ "OMSimHitManager", "class_o_m_sim_hit_manager.html", "class_o_m_sim_hit_manager" ],
     [ "OMSimIBD", "class_o_m_sim_i_b_d.html", "class_o_m_sim_i_b_d" ],
     [ "OMSimInputData", "class_o_m_sim_input_data.html", "class_o_m_sim_input_data" ],
+    [ "OMSimMaterialHandler", "class_o_m_sim_material_handler.html", "class_o_m_sim_material_handler" ],
     [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html", "class_o_m_sim_optical_module" ],
     [ "OMSimPhysicsList", "class_o_m_sim_physics_list.html", "class_o_m_sim_physics_list" ],
     [ "OMSimPMTConstruction", "class_o_m_sim_p_m_t_construction.html", "class_o_m_sim_p_m_t_construction" ],
@@ -82,10 +78,6 @@ var annotated_dup =
     [ "pDOM", "classp_d_o_m.html", "classp_d_o_m" ],
     [ "PhotonInfo", "struct_photon_info.html", "struct_photon_info" ],
     [ "PhotonMaterialTracking", "class_photon_material_tracking.html", "class_photon_material_tracking" ],
-    [ "RefractionAndAbsorption", "class_refraction_and_absorption.html", "class_refraction_and_absorption" ],
-    [ "RefractionOnly", "class_refraction_only.html", "class_refraction_only" ],
-    [ "ScintillationProperties", "class_scintillation_properties.html", "class_scintillation_properties" ],
     [ "SNBaseParticleGenerator", "class_s_n_base_particle_generator.html", "class_s_n_base_particle_generator" ],
-    [ "SNEventStats", "struct_s_n_event_stats.html", "struct_s_n_event_stats" ],
-    [ "Surface", "class_surface.html", "class_surface" ]
+    [ "SNEventStats", "struct_s_n_event_stats.html", "struct_s_n_event_stats" ]
 ];

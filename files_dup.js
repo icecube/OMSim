@@ -14,7 +14,6 @@ var files_dup =
     [ "OMSimAngularScan.hh", "_o_m_sim_angular_scan_8hh.html", null ],
     [ "OMSimBeam.hh", "_o_m_sim_beam_8hh_source.html", null ],
     [ "OMSimCommandArgsTable.hh", "_o_m_sim_command_args_table_8hh.html", "_o_m_sim_command_args_table_8hh" ],
-    [ "OMSimDataFileTypes.hh", "_o_m_sim_data_file_types_8hh.html", null ],
     [ "OMSimDecaysAnalysis.hh", "_o_m_sim_decays_analysis_8hh.html", null ],
     [ "OMSimDecaysGPS.hh", "_o_m_sim_decays_g_p_s_8hh.html", null ],
     [ "OMSimDEGG.hh", "_o_m_sim_d_e_g_g_8hh.html", null ],
@@ -44,6 +43,7 @@ var files_dup =
     [ "OMSimLOM18.hh", "_o_m_sim_l_o_m18_8hh.html", [
       [ "LOM18", "class_l_o_m18.html", "class_l_o_m18" ]
     ] ],
+    [ "OMSimMaterialHandler.hh", "_o_m_sim_material_handler_8hh.html", "_o_m_sim_material_handler_8hh" ],
     [ "OMSimMDOM.hh", "_o_m_sim_m_d_o_m_8hh.html", [
       [ "mDOM", "classm_d_o_m.html", "classm_d_o_m" ]
     ] ],

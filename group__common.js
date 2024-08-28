@@ -2,9 +2,9 @@ var group__common =
 [
     [ "OMSim.hh", "_o_m_sim_8hh.html", null ],
     [ "OMSimCommandArgsTable.hh", "_o_m_sim_command_args_table_8hh.html", null ],
-    [ "OMSimDataFileTypes.hh", "_o_m_sim_data_file_types_8hh.html", null ],
     [ "OMSimHitManager.hh", "_o_m_sim_hit_manager_8hh.html", null ],
     [ "OMSimInputData.hh", "_o_m_sim_input_data_8hh.html", null ],
+    [ "OMSimMaterialHandler.hh", "_o_m_sim_material_handler_8hh.html", null ],
     [ "OMSimPMTResponse.hh", "_o_m_sim_p_m_t_response_8hh.html", null ],
     [ "OMSimSteppingAction.hh", "_o_m_sim_stepping_action_8hh.html", null ],
     [ "OMSimTools.hh", "_o_m_sim_tools_8hh.html", null ],
@@ -59,82 +59,6 @@ var group__common =
       [ "mFinalized", "class_o_m_sim_command_args_table.html#a40786683b20f76ce73bde3a5f7b529c1", null ],
       [ "mParameters", "class_o_m_sim_command_args_table.html#ac242e3ba27d82d44ba2937770ffa3761", null ]
     ] ],
-    [ "abcDataFile", "classabc_data_file.html", [
-      [ "abcDataFile", "classabc_data_file.html#afa294a5fd58c6c3911d1a57683f7688a", null ],
-      [ "~abcDataFile", "classabc_data_file.html#a09322347b2356236b06ea16551d5ad31", null ],
-      [ "extractInformation", "classabc_data_file.html#afc01d4904129c5b170f0299f96ec7f8a", null ],
-      [ "mFileData", "classabc_data_file.html#a794403b1f022f0376e4a38e0ac28c281", null ],
-      [ "mFileName", "classabc_data_file.html#ad2a6eb774f0168b51176d745b84c1d9c", null ],
-      [ "mHC_eVnm", "classabc_data_file.html#ac936f1db15895afb06fc9a40e2a77677", null ],
-      [ "mJsonTree", "classabc_data_file.html#acfb2cc94ea37a200d617125538e2271f", null ],
-      [ "mObjectName", "classabc_data_file.html#a50d1fc61db3d6d907c0dcbd541b10e36", null ]
-    ] ],
-    [ "abcMaterialData", "classabc_material_data.html", [
-      [ "abcMaterialData", "classabc_material_data.html#ae30f0dc56953e39e0f5cb711c645d5a5", null ],
-      [ "createMaterial", "classabc_material_data.html#abd444fe5c9bf9ea0ad3629e448bd0d4e", null ],
-      [ "extractAbsorptionLength", "classabc_material_data.html#a0ae68961031fd55ab0356112f49aedd0", null ],
-      [ "extractInformation", "classabc_material_data.html#acca9fc268907f29e89960699cadb0b53", null ],
-      [ "extractRefractionIndex", "classabc_material_data.html#a2a5b07c86c18825c5eca27818ad6268c", null ],
-      [ "getState", "classabc_material_data.html#a8fee96bfd62337bcaefd70ba42b35aa6", null ],
-      [ "mMaterial", "classabc_material_data.html#af94d1f778c1998286f35cae107a3a167", null ],
-      [ "mMPT", "classabc_material_data.html#a598d1d21330a101855229b2fb08357a9", null ]
-    ] ],
-    [ "RefractionAndAbsorption", "class_refraction_and_absorption.html", [
-      [ "RefractionAndAbsorption", "class_refraction_and_absorption.html#a629c719139ebf807133ed1e15867ca02", null ],
-      [ "extractInformation", "class_refraction_and_absorption.html#ac921e76f96cfacad6f3af7c6a8941c51", null ]
-    ] ],
-    [ "RefractionOnly", "class_refraction_only.html", [
-      [ "RefractionOnly", "class_refraction_only.html#a52775dea9ddf5f105c1b42ba1d033446", null ],
-      [ "extractInformation", "class_refraction_only.html#a0c360b4beb97682982ddbe8146708b90", null ]
-    ] ],
-    [ "NoOptics", "class_no_optics.html", [
-      [ "NoOptics", "class_no_optics.html#a72a79cde00793ecf96d400588e906dc9", null ],
-      [ "extractInformation", "class_no_optics.html#ac9d755acccf586cfbc80510bb946e345", null ]
-    ] ],
-    [ "IceCubeIce", "class_ice_cube_ice.html", [
-      [ "IceCubeIce", "class_ice_cube_ice.html#a1720736962e3e3ef2002bc15931f7f8d", null ],
-      [ "extractInformation", "class_ice_cube_ice.html#ac9d7a61c33f41d0025d128d7268d077f", null ],
-      [ "mieScattering", "class_ice_cube_ice.html#ae93c30abe662867d3ecc55dd894c5af2", null ],
-      [ "spiceAbsorption", "class_ice_cube_ice.html#a435568d41c037359ed3425ad4d964312", null ],
-      [ "spiceRefraction", "class_ice_cube_ice.html#ae2f18c457a5b75e3cdb7d8b1dff68acf", null ],
-      [ "spiceTemperature", "class_ice_cube_ice.html#aa11719c4167b5abb115c9ecc9aed08d7", null ],
-      [ "mInnerColumn_b_inv", "class_ice_cube_ice.html#a70ac529445cd531daf9f77754f543288", null ],
-      [ "mMieSpiceConst", "class_ice_cube_ice.html#ad4b33ebde2fda92e90a5e178c3a01b1f", null ],
-      [ "mSpice_a400inv", "class_ice_cube_ice.html#a1d7f8974a17a9f604c56bd535cad96f9", null ],
-      [ "mSpice_be400inv", "class_ice_cube_ice.html#ac100e7b3a092ade6255ac3ff156efebe", null ],
-      [ "mSpiceDepth", "class_ice_cube_ice.html#ab4bb3c52de20e3e2703fc9886338f620", null ],
-      [ "mSpiceDepth_pos", "class_ice_cube_ice.html#a2931d719308ecb6d6bc34733ac6e0f8e", null ]
-    ] ],
-    [ "Surface", "class_surface.html", [
-      [ "Surface", "class_surface.html#a9fb1c942459b05fb216731ef7cc78e52", null ],
-      [ "extractInformation", "class_surface.html#accebb04b0468876b68298b72380c6d37", null ],
-      [ "getOpticalSurfaceFinish", "class_surface.html#ac425ef0a4f51424549eaa541766ea8cf", null ],
-      [ "getOpticalSurfaceModel", "class_surface.html#a81a6d02fd2b3f605673932a34a7bb1bf", null ],
-      [ "getSurfaceType", "class_surface.html#a9c69d5516b6e0544d59efed89d7a4ceb", null ],
-      [ "mOpticalSurface", "class_surface.html#a2e3ad23371b044da46648c991aab3294", null ]
-    ] ],
-    [ "ScintillationProperties", "class_scintillation_properties.html", [
-      [ "ScintillationProperties", "class_scintillation_properties.html#a03dca72bd4861b8500283dc15c0864e0", null ],
-      [ "extractInformation", "class_scintillation_properties.html#a6c16439c71032b0df72dfff7aa776e69", null ],
-      [ "extractLifeTimes", "class_scintillation_properties.html#a3c9fea78ae17e8a52784e4a5fbd09342", null ],
-      [ "extractLifeTimesForTemperature", "class_scintillation_properties.html#afd7145815d2baf2008a755c487d0a613", null ],
-      [ "extractSpectrum", "class_scintillation_properties.html#a2f5e62b56857772f598738907d3ed210", null ],
-      [ "extractYield", "class_scintillation_properties.html#ac8ab70819d1cdb35cc6ce2155f990379", null ],
-      [ "extractYieldAlpha", "class_scintillation_properties.html#a37ebebbb7e81f92499faf54aabd89c6c", null ],
-      [ "extractYieldElectron", "class_scintillation_properties.html#afd81afebbf2a8addf8f2f4c775dc255e", null ],
-      [ "findMPT", "class_scintillation_properties.html#af525e651ef632ab272850c743ea9c76f", null ],
-      [ "getLifeTimeTemperatureRange", "class_scintillation_properties.html#a8b08735d53c1990715c1dc4e84c47c34", null ],
-      [ "weightLifeTimesAmplitudes", "class_scintillation_properties.html#a5e7da3437242c6c025edff017adf2c1b", null ],
-      [ "mMPT", "class_scintillation_properties.html#a63544a170f82e5862fd96180f49551f1", null ]
-    ] ],
-    [ "CustomProperties", "class_custom_properties.html", [
-      [ "CustomProperties", "class_custom_properties.html#a171bc08ac6a90472c91399b6f26830f2", null ],
-      [ "extractConstProperties", "class_custom_properties.html#a8f8afa0c715f51ead8ffc33b6e9e55f5", null ],
-      [ "extractInformation", "class_custom_properties.html#a453e83cc8168f5d141fd41591f28f14e", null ],
-      [ "extractProperties", "class_custom_properties.html#ab45e2d203b1eb3acccf2a8d1b4868e0e", null ],
-      [ "findMPT", "class_custom_properties.html#abca98b6b320fe77b30a9754511ac99fe", null ],
-      [ "mMPT", "class_custom_properties.html#a32e855c4f0a7cf9d0eab91b70d933fe3", null ]
-    ] ],
     [ "HitStats", "struct_hit_stats.html", [
       [ "direction", "struct_hit_stats.html#a383cfeda6e6e515b56aee0a369ec5085", null ],
       [ "energy", "struct_hit_stats.html#a542a1e55040646afe6966f281194117b", null ],
@@ -181,7 +105,8 @@ var group__common =
     [ "ParameterTable", "class_parameter_table.html", [
       [ "ParameterTable", "class_parameter_table.html#a6acdd356fb3153bcc463f29e495c211d", null ],
       [ "appendAndReturnTree", "class_parameter_table.html#a131ddfbbf38d27b59f454a4ec96b2b9e", null ],
-      [ "checkIfKeyInTable", "class_parameter_table.html#afd0aa495dfeeb68bf370c3ea8390192d", null ],
+      [ "checkIfKeyInTree", "class_parameter_table.html#a8181a3c7b97c75eae98e3d6fb5d3e048", null ],
+      [ "checkIfTreeNameInTable", "class_parameter_table.html#a462edf8d5284908b7c59c851e367b779", null ],
       [ "getJSONTree", "class_parameter_table.html#a042ee0eca2c9daa755d7a472608e6d66", null ],
       [ "getValue", "class_parameter_table.html#adb1234ccb47c9e44ecd7f8c5cb9e0407", null ],
       [ "getValueWithUnit", "class_parameter_table.html#aa7546560723ba3b94c08229266b27307", null ],
@@ -191,9 +116,18 @@ var group__common =
       [ "mTable", "class_parameter_table.html#a749bc840cf2aea18fb5b63da8b68c23c", null ]
     ] ],
     [ "OMSimInputData", "class_o_m_sim_input_data.html", [
+      [ "FileType", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7", [
+        [ "IceCubeICE", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7a36320c475aafdd54181e4ff589b70bdb", null ],
+        [ "Scintillator", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7aff706d4ca652ed0b174da1a92cb35501", null ],
+        [ "Custom", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7a90589c47f06eb971d548591f23c285af", null ],
+        [ "Table", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7a51c45b795d5d18a3e4e0c37e8b20a141", null ],
+        [ "Surface", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7aaa0d528ba11ea1485d466dfe1ea40819", null ],
+        [ "Material", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7ad92a8333dd3ccb895cc65f7455b71206", null ]
+      ] ],
       [ "OMSimInputData", "class_o_m_sim_input_data.html#ab6c8d9586fc3f3230298dfa19f892415", null ],
       [ "~OMSimInputData", "class_o_m_sim_input_data.html#ac3b07c03ac42364b340135898dab1f93", null ],
       [ "OMSimInputData", "class_o_m_sim_input_data.html#a2fe2c68872dc59b3a8fe9e961a28ec94", null ],
+      [ "getFileType", "class_o_m_sim_input_data.html#ae5886651fcc9baae2beb745d4377d756", null ],
       [ "getInstance", "class_o_m_sim_input_data.html#a810d7ae3b652d05e7b85eb568873eed2", null ],
       [ "getMaterial", "class_o_m_sim_input_data.html#a12e64f3ec83f33c173da0cd5954dd5b2", null ],
       [ "getOpticalSurface", "class_o_m_sim_input_data.html#aca56b05e268bbb47761dbcc8e487c283", null ],
@@ -203,8 +137,36 @@ var group__common =
       [ "scannDataDirectory", "class_o_m_sim_input_data.html#ae6e28e3df96ad7ca980aec5d3b1f8ce6", null ],
       [ "searchFolders", "class_o_m_sim_input_data.html#a84781faca6d03b8f9f13777c85a1c9dc", null ],
       [ "shutdown", "class_o_m_sim_input_data.html#a9ba12328d251141daeb086ae37f95f98", null ],
-      [ "mDataDirectory", "class_o_m_sim_input_data.html#a9b0073c725ef7569e354242545a2912e", null ],
-      [ "mOpticalSurfaceMap", "class_o_m_sim_input_data.html#addde153519e7a6884a9583614d6c5f49", null ]
+      [ "fileTypePrefixes", "class_o_m_sim_input_data.html#a405e4a0a5c03a7218b3a91dd2e25de56", null ],
+      [ "m_dataDirectory", "class_o_m_sim_input_data.html#ad606b2982529624542cb6cd4184160d3", null ],
+      [ "m_opticalSurfaceMap", "class_o_m_sim_input_data.html#a692d89c9fbdd287aa13c3bb5ddba8278", null ]
+    ] ],
+    [ "OMSimMaterialHandler", "class_o_m_sim_material_handler.html", [
+      [ "OMSimMaterialHandler", "class_o_m_sim_material_handler.html#aa9297e3c3a9b78ec2b352c9b97958ca0", null ],
+      [ "~OMSimMaterialHandler", "class_o_m_sim_material_handler.html#ad63c0782667cf4198d9cd98b23a283f5", null ],
+      [ "addProperty", "class_o_m_sim_material_handler.html#a4205415c818cd65b9121e070179e3f99", null ],
+      [ "createMaterial", "class_o_m_sim_material_handler.html#a6d25aa1ea0cfae2ca9c3ea9d539fdcca", null ],
+      [ "findMaterialPropertyTable", "class_o_m_sim_material_handler.html#aa7ebed1dfaffe532d7b1fd878ffd7d27", null ],
+      [ "GetName", "class_o_m_sim_material_handler.html#aa0383250837f73422cb6cfd1872ce029", null ],
+      [ "getOpticalSurfaceFinish", "class_o_m_sim_material_handler.html#aeb612b7e496704e9e5dd8e8bfbf37af0", null ],
+      [ "getOpticalSurfaceModel", "class_o_m_sim_material_handler.html#a2a947dda8ecc28b13bf5fdf93ff0fef4", null ],
+      [ "getState", "class_o_m_sim_material_handler.html#ae25187ca37e6e40b9b1af077c3093523", null ],
+      [ "getSurfaceType", "class_o_m_sim_material_handler.html#abf218ce78a52805add727b92527daec8", null ],
+      [ "processConstProperties", "class_o_m_sim_material_handler.html#a0f799e0b10b1d0e37eb849b401b0d5e7", null ],
+      [ "processExtraProperties", "class_o_m_sim_material_handler.html#a2e87189ae05d3d960df85957c799ebf9", null ],
+      [ "processMaterial", "class_o_m_sim_material_handler.html#a719ebf626a19a6e8ff9a0b9e2a262c21", null ],
+      [ "processProperties", "class_o_m_sim_material_handler.html#a116e075ea33b846fd722a7e1470072a4", null ],
+      [ "processSpecial", "class_o_m_sim_material_handler.html#ad337c539e395d32e708d18a4f5e48264", null ],
+      [ "processSurface", "class_o_m_sim_material_handler.html#a1cf8cf3badeaa28c33d4b96973239c71", null ],
+      [ "readJsonFile", "class_o_m_sim_material_handler.html#accfcbc6f254ffb9540c7616995f75ef5", null ],
+      [ "m_fileData", "class_o_m_sim_material_handler.html#abe626039d2555d987b511cb67d4a4c4e", null ],
+      [ "m_filePath", "class_o_m_sim_material_handler.html#a6aad72f724d2a1ec3e8cd347c87889a7", null ],
+      [ "m_hc_eVnm", "class_o_m_sim_material_handler.html#a9e1f9ac956d49bfc424463a210491bf0", null ],
+      [ "m_jsonTree", "class_o_m_sim_material_handler.html#a24de0381225f033080f863c12642b0d7", null ],
+      [ "m_material", "class_o_m_sim_material_handler.html#aa42295a37e4fbf653d98e43947573c46", null ],
+      [ "m_MPT", "class_o_m_sim_material_handler.html#a1d1f9666a3ccd108bfe87d30e1973dcc", null ],
+      [ "m_objectName", "class_o_m_sim_material_handler.html#a3a63a30a2459aaa5fac167723a0b8cbf", null ],
+      [ "m_opticalSurface", "class_o_m_sim_material_handler.html#a8d61537212c492994519b03abc5bccfa", null ]
     ] ],
     [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html", [
       [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html#a71034bda00b1648e8368f78431c4e0e9", null ],

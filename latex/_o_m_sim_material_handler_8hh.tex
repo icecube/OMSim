@@ -1,0 +1,64 @@
+\hypertarget{_o_m_sim_material_handler_8hh}{}\doxysection{OMSim\+Material\+Handler.\+hh File Reference}
+\label{_o_m_sim_material_handler_8hh}\index{OMSimMaterialHandler.hh@{OMSimMaterialHandler.hh}}
+
+
+Definition of \mbox{\hyperlink{class_o_m_sim_material_handler}{OMSim\+Material\+Handler}} and the namespaces \mbox{\hyperlink{namespace_ice_processor}{Ice\+Processor}} and \mbox{\hyperlink{namespace_scintillation_processor}{Scintillation\+Processor}}.  
+
+
+Include dependency graph for OMSim\+Material\+Handler.\+hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_o_m_sim_material_handler_8hh__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_o_m_sim_material_handler}{OMSim\+Material\+Handler}}
+\begin{DoxyCompactList}\small\item\em Handles the creation and processing of materials from json files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespace_scintillation_processor}{Scintillation\+Processor}}
+\begin{DoxyCompactList}\small\item\em Namespace containing functions for processing files with scintillation properties. \end{DoxyCompactList}\item 
+ \mbox{\hyperlink{namespace_ice_processor}{Ice\+Processor}}
+\begin{DoxyCompactList}\small\item\em Namespace containing functions for processing Ice\+Cube ice properties from file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_o_m_sim_material_handler_8hh_a030608390bf9859c4fc37aa70788b5a2}\label{_o_m_sim_material_handler_8hh_a030608390bf9859c4fc37aa70788b5a2}} 
+using {\bfseries Processor\+Function} = void(\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$, const boost\+::property\+\_\+tree\+::ptree \&, G4\+Material\+Properties\+Table $\ast$)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_a697d365515e84fa024fa106fc8d2cee7}{Scintillation\+Processor\+::process}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT)
+\begin{DoxyCompactList}\small\item\em Process scintillation properties and add them to the material properties table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_a57a3ea3b51e632208b21dddd6c254b9d}{Scintillation\+Processor\+::extract\+Spectrum}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT)
+\begin{DoxyCompactList}\small\item\em Extracts the scintillation spectrum from the data file and adds it to the material properties table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_ad81d3abfcca6999f8addb34993ed90d5}{Scintillation\+Processor\+::get\+Life\+Time\+Temperature\+Range}} (const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, double \&p\+\_\+min\+Temperature, double \&p\+\_\+max\+Temperature)
+\begin{DoxyCompactList}\small\item\em Retrieves the range of temperatures available for scintillation lifetimes. \end{DoxyCompactList}\item 
+std\+::pair$<$ std\+::vector$<$ G4double $>$, std\+::vector$<$ G4double $>$ $>$ \mbox{\hyperlink{namespace_scintillation_processor_abe0857366dc77cb950049d701a7cd87a}{Scintillation\+Processor\+::extract\+Life\+Times\+For\+Temperature}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+String p\+\_\+temperature)
+\begin{DoxyCompactList}\small\item\em Extracts lifetimes and amplitudes for a given temperature from the data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_a0a5cfdce619f97647f889c05cbb40c52}{Scintillation\+Processor\+::weight\+Life\+Times\+Amplitudes}} (std\+::vector$<$ G4double $>$ \&p\+\_\+amplitude, double p\+\_\+\+T1, double p\+\_\+\+T2)
+\begin{DoxyCompactList}\small\item\em Adjusts amplitudes of lifetimes based on distance to investigated temperature. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_a4b5f070aafaee94ed8cf02d0b48ac622}{Scintillation\+Processor\+::extract\+Life\+Times}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT, G4\+String p\+\_\+temperature)
+\begin{DoxyCompactList}\small\item\em Extracts the scintillation lifetimes from the file and weights them for a specific temperature. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_ada904f9aa8601dee3e721f7eeda88f8c}{Scintillation\+Processor\+::extract\+Yield}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT, G4\+String p\+\_\+temperature, G4\+String p\+\_\+yield\+Property\+Name, G4\+String p\+\_\+arg\+Key, G4\+String p\+\_\+tree\+Key\+Temperature, G4\+String p\+\_\+tree\+Key\+Yield)
+\begin{DoxyCompactList}\small\item\em Extract the yield from json tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_a530a6a3bd1cfc8a949b2c37a818f331d}{Scintillation\+Processor\+::extract\+Yield\+Alpha}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT, G4\+String p\+\_\+temperature)
+\begin{DoxyCompactList}\small\item\em Extracts and interpolates the alpha particle scintillation yield for a given temperature. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_ac9d8bc9a2343d61ce42ef43996523271}{Scintillation\+Processor\+::extract\+Yield\+Electron}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT, G4\+String p\+\_\+temperature)
+\begin{DoxyCompactList}\small\item\em Extracts and interpolates the electron scintillation yield for a given temperature. Uses the alpha yield as fallback if electron yield is not given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_ice_processor_ae62c8b69efbfeaf9eaf3110b52ba9d37}{Ice\+Processor\+::process}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT)
+\begin{DoxyCompactList}\small\item\em Process Ice\+Cube ice properties and create corresponding materials. \end{DoxyCompactList}\item 
+G4double \mbox{\hyperlink{namespace_ice_processor_a1880256fa33d9e645ae86e2057f66297}{Ice\+Processor\+::spice\+Temperature}} (G4double p\+\_\+depth)
+\begin{DoxyCompactList}\small\item\em Calculate temperature of ice depending on the depth. \end{DoxyCompactList}\item 
+G4double \mbox{\hyperlink{namespace_ice_processor_a29002db125bd3d2b67998403db6afc60}{Ice\+Processor\+::spice\+Absorption}} (G4double p\+\_\+lambda, const std\+::vector$<$ G4double $>$ \&p\+\_\+spicea400inv, const std\+::vector$<$ G4double $>$ \&p\+\_\+spice\+Depth)
+\begin{DoxyCompactList}\small\item\em Calculate absorption length of Ice\+Cube\textquotesingle{}s ice for a specific wavelength. \end{DoxyCompactList}\item 
+G4double \mbox{\hyperlink{namespace_ice_processor_ad82640f5524b52f1604c3e19ff819be5}{Ice\+Processor\+::spice\+Refraction}} (G4double p\+\_\+lambda)
+\begin{DoxyCompactList}\small\item\em Calculate refraction index of Ice\+Cube\textquotesingle{}s ice for a specific wavelength. \end{DoxyCompactList}\item 
+G4double \mbox{\hyperlink{namespace_ice_processor_a394c6aa008d203aaeda7c2f28bfa3361}{Ice\+Processor\+::mie\+Scattering}} (G4double p\+\_\+lambda, const std\+::vector$<$ G4double $>$ \&p\+\_\+spicebe400inv)
+\begin{DoxyCompactList}\small\item\em Calculate mie scattering length of Ice\+Cube\textquotesingle{}s ice for a specific wavelength. \end{DoxyCompactList}\end{DoxyCompactItemize}

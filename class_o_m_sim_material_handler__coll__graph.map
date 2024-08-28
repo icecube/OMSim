@@ -1,0 +1,4 @@
+<map id="OMSimMaterialHandler" name="OMSimMaterialHandler">
+<area shape="rect" id="node1" title="Handles the creation and processing of materials from json files." alt="" coords="5,95,180,121"/>
+<area shape="rect" id="node2" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="31,5,154,32"/>
+</map>

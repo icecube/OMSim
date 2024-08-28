@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Definition of Tools namespace, a collection of helper methods.">
 <polygon fill="#bfbfbf" stroke="black" points="354.5,-123.5 354.5,-142.5 446.5,-142.5 446.5,-123.5 354.5,-123.5"/>
 <text text-anchor="middle" x="400.5" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimTools.hh</text>
 </a>

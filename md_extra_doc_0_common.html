@@ -132,12 +132,12 @@ $(document).ready(function(){initNavTree('md_extra_doc_0_common.html',''); initR
 <h1><a class="anchor" id="autotoc_md2"></a>
 Materials and User Data</h1>
 <p>User-defined material data are stored in JSON files under <code>/common/data</code> to minimize file length.</p>
-<p>The <code><a class="el" href="class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties.">OMSimInputData</a></code> (see <code><a class="el" href="_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and OMSimInputData.">OMSimInputData.hh</a></code>) loads these properties directly into the Geant4 framework. Materials loaded via this class can be retrieved using Geant4's conventional method <code>G4Material::GetMaterial</code>, but the framework also provides the wrapper <code><a class="el" href="class_o_m_sim_input_data.html#a12e64f3ec83f33c173da0cd5954dd5b2">OMSimInputData::getMaterial</a></code> to handle default parameters.</p>
+<p>The <code><a class="el" href="class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties.">OMSimInputData</a></code> (see <code><a class="el" href="_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and OMSimInputData.">OMSimInputData.hh</a></code>) loads these properties directly into the Geant4 framework. Materials loaded via this class can be retrieved using Geant4's conventional method <code>G4Material::GetMaterial</code>, but the framework also provides the wrapper <code><a class="el" href="class_o_m_sim_input_data.html#a12e64f3ec83f33c173da0cd5954dd5b2" title="Retrieves a G4Material based on the given name.">OMSimInputData::getMaterial</a></code> to handle default parameters.</p>
 <p>The class also provides an analogue method for optical surfaces <code><a class="el" href="class_o_m_sim_input_data.html#aca56b05e268bbb47761dbcc8e487c283">OMSimInputData::getOpticalSurface</a></code> which does not exist in Geant4.</p>
-<p>Since different materials have different types of properties, the data is loaded in multiple ways. These different material types are defined in <code><a class="el" href="_o_m_sim_data_file_types_8hh.html" title="Collection of classes and methods to handle material creation from user data in json files.">OMSimDataFileTypes.hh</a></code>.</p>
+<p>Since different materials have different types of properties, the data is loaded in multiple ways. These different material types are defined in <code>OMSimDataFileTypes.hh</code>.</p>
 <p>Additionally, geometry data used during PMT construction are also stored in JSON files (<code>/common/data/PMTs</code>). These are saved in a "tree" (essentially a dictionary containing the JSON file's keys and values) in <code><a class="el" href="class_parameter_table.html#a749bc840cf2aea18fb5b63da8b68c23c" title="A table mapping keys to property trees.">OMSimInputData::mTable</a></code>.</p>
 <p>This approach was adopted because various PMTs are constructed similarly, eliminating the need to define a unique class for each PMT type, as is done for the optical modules.</p>
-<p>If you wish to load additional data, you can either define a new type in OMSimDataFileTypes or use a json file to load it into a tree as previously mentioned. For simpler tasks, use the static method <code><a class="el" href="namespace_tools.html#a6d49cd2d5cb0e03b596870bcb9c12681" title="Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.">Tools::loadtxt</a></code> provided by the <a href="md_extra_doc_2_technicalities.html#autotoc_md20"><code>Tools</code> namespace</a>.</p>
+<p>If you wish to load additional data, you can either define a new type in OMSimDataFileTypes or use a json file to load it into a tree as previously mentioned. For simpler tasks, use the static method <code><a class="el" href="namespace_tools.html#aefa5ecd8f1fb3d69a65d517494e99669" title="Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.">Tools::loadtxt</a></code> provided by the <a href="md_extra_doc_2_technicalities.html#autotoc_md20"><code>Tools</code> namespace</a>.</p>
 <hr  />
 <h1><a class="anchor" id="autotoc_md4"></a>
 Geometry construction</h1>
@@ -195,8 +195,8 @@ Making other volumes sensitive to photons</h1>
 <p>This approach ensures a smooth integration of the photosensitive volume within the current system. Below is an example illustrating how this can be incorporated within the detector construction:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;OMSimSensitiveDetector.hh&quot;</span></div>
 <div class="line"><span class="comment">//... Assume the logical volume of your detector has been defined and is referred to as &quot;lDetectorLV&quot;</span></div>
-<div class="line"><a class="code" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a>* lSensitiveDetector = <span class="keyword">new</span> <a class="code" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a>(<span class="stringliteral">&quot;myDetector&quot;</span>, DetectorType::GeneralPhotonDetector); </div>
-<div class="line"><a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> lHitManager =  <a class="code" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a>();</div>
+<div class="line"><a class="code" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a>* lSensitiveDetector = <span class="keyword">new</span> <a class="code" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a>(<span class="stringliteral">&quot;myDetector&quot;</span>, DetectorType::VolumePhotonDetector); </div>
+<div class="line"><a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> &amp;lHitManager =  <a class="code" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a>();</div>
 <div class="line">lHitManager.<a class="code" href="class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8">setNumberOfPMTs</a>(1, lHitManager.getNextDetectorIndex());</div>
 <div class="line">registerSensitiveDetector(lDetectorLV, lSensitiveDetector);</div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html"><div class="ttname"><a href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div><div class="ttdoc">Manages detected photon information.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.hh:57</div></div>
@@ -212,7 +212,7 @@ Making other volumes sensitive to photons</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Aug 26 2024 09:44:53 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 13:59:31 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

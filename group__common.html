@@ -132,14 +132,14 @@ Files</h2></td></tr>
 <tr class="memitem:_o_m_sim_command_args_table_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_command_args_table_8hh.html">OMSimCommandArgsTable.hh</a></td></tr>
 <tr class="memdesc:_o_m_sim_command_args_table_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of the <a class="el" href="class_o_m_sim_command_args_table.html" title="A class used to hold OMSim command arguments with global instance access.">OMSimCommandArgsTable</a> singleton class, which controls user args. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:_o_m_sim_data_file_types_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_data_file_types_8hh.html">OMSimDataFileTypes.hh</a></td></tr>
-<tr class="memdesc:_o_m_sim_data_file_types_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of classes and methods to handle material creation from user data in json files. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:_o_m_sim_hit_manager_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_hit_manager_8hh.html">OMSimHitManager.hh</a></td></tr>
 <tr class="memdesc:_o_m_sim_hit_manager_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines structures and classes related to optical module photon hit management. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:_o_m_sim_input_data_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_input_data_8hh.html">OMSimInputData.hh</a></td></tr>
 <tr class="memdesc:_o_m_sim_input_data_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of <a class="el" href="class_parameter_table.html" title="A utility class for managing JSON-based data tables.">ParameterTable</a> and <a class="el" href="class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties.">OMSimInputData</a>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:_o_m_sim_material_handler_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_material_handler_8hh.html">OMSimMaterialHandler.hh</a></td></tr>
+<tr class="memdesc:_o_m_sim_material_handler_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of <a class="el" href="class_o_m_sim_material_handler.html" title="Handles the creation and processing of materials from json files.">OMSimMaterialHandler</a> and the namespaces <a class="el" href="namespace_ice_processor.html" title="Namespace containing functions for processing IceCube ice properties from file.">IceProcessor</a> and <a class="el" href="namespace_scintillation_processor.html" title="Namespace containing functions for processing files with scintillation properties.">ScintillationProcessor</a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:_o_m_sim_p_m_t_response_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_p_m_t_response_8hh.html">OMSimPMTResponse.hh</a></td></tr>
 <tr class="memdesc:_o_m_sim_p_m_t_response_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulation of PMT response. <br /></td></tr>
@@ -148,6 +148,7 @@ Files</h2></td></tr>
 <tr class="memdesc:_o_m_sim_stepping_action_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines OMSimSteppingAction.Currently it only checks for trapped photons. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:_o_m_sim_tools_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_tools_8hh.html">OMSimTools.hh</a></td></tr>
+<tr class="memdesc:_o_m_sim_tools_8hh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of <a class="el" href="namespace_tools.html" title="A collection of helper functions for numerical operations.">Tools</a> namespace, a collection of helper methods. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:_o_m_sim_u_iinterface_8hh"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_o_m_sim_u_iinterface_8hh.html">OMSimUIinterface.hh</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -190,33 +191,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_command_args_table.html">OMSimCommandArgsTable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class used to hold <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> command arguments with global instance access.  <a href="class_o_m_sim_command_args_table.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_data_file.html">abcDataFile</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is an abstract base class that provides an interface for handling data files in the simulation.  <a href="classabc_data_file.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classabc_material_data.html">abcMaterialData</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class for material data extraction from a json file. <a class="el" href="classabc_material_data.html" title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f...">abcMaterialData</a> class is derived from <a class="el" href="classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation.">abcDataFile</a> class. It is designed to manage the material data, such as refractive index and absorption length.  <a href="classabc_material_data.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_refraction_and_absorption.html">RefractionAndAbsorption</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Materials with defined refractive index and absorption length.  <a href="class_refraction_and_absorption.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_refraction_only.html">RefractionOnly</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Materials only with refractive index defined.  <a href="class_refraction_only.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_no_optics.html">NoOptics</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Materials without optical properties defined.  <a href="class_no_optics.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ice_cube_ice.html">IceCubeIce</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creation and extraction of IceCube's ice optical properties.  <a href="class_ice_cube_ice.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_surface.html">Surface</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reflective surfaces parsed from a JSON file.  <a href="class_surface.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scintillation_properties.html">ScintillationProperties</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scintillation properties extraction for existing materials.  <a href="class_scintillation_properties.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_custom_properties.html">CustomProperties</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds user defined properties to already defined materials.  <a href="class_custom_properties.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_hit_stats.html">HitStats</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure of vectors to store information about detected photons.  <a href="struct_hit_stats.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -228,6 +202,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_input_data.html">OMSimInputData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages the input data, including parsing and storing material properties.  <a href="class_o_m_sim_input_data.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_material_handler.html">OMSimMaterialHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the creation and processing of materials from json files.  <a href="class_o_m_sim_material_handler.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_u_iinterface.html">OMSimUIinterface</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton interface to Geant4's UI manager.  <a href="class_o_m_sim_u_iinterface.html#details">More...</a><br /></td></tr>
@@ -253,7 +230,7 @@ Classes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Aug 26 2024 09:44:53 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 28 2024 13:59:31 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

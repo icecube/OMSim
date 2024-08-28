@@ -1,0 +1,187 @@
+\hypertarget{namespace_scintillation_processor}{}\doxysection{Scintillation\+Processor Namespace Reference}
+\label{namespace_scintillation_processor}\index{ScintillationProcessor@{ScintillationProcessor}}
+
+
+Namespace containing functions for processing files with scintillation properties.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_a697d365515e84fa024fa106fc8d2cee7}{process}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT)
+\begin{DoxyCompactList}\small\item\em Process scintillation properties and add them to the material properties table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_a57a3ea3b51e632208b21dddd6c254b9d}{extract\+Spectrum}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT)
+\begin{DoxyCompactList}\small\item\em Extracts the scintillation spectrum from the data file and adds it to the material properties table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_ad81d3abfcca6999f8addb34993ed90d5}{get\+Life\+Time\+Temperature\+Range}} (const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, double \&p\+\_\+min\+Temperature, double \&p\+\_\+max\+Temperature)
+\begin{DoxyCompactList}\small\item\em Retrieves the range of temperatures available for scintillation lifetimes. \end{DoxyCompactList}\item 
+std\+::pair$<$ std\+::vector$<$ G4double $>$, std\+::vector$<$ G4double $>$ $>$ \mbox{\hyperlink{namespace_scintillation_processor_abe0857366dc77cb950049d701a7cd87a}{extract\+Life\+Times\+For\+Temperature}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+String p\+\_\+temperature)
+\begin{DoxyCompactList}\small\item\em Extracts lifetimes and amplitudes for a given temperature from the data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_a0a5cfdce619f97647f889c05cbb40c52}{weight\+Life\+Times\+Amplitudes}} (std\+::vector$<$ G4double $>$ \&p\+\_\+amplitude, double p\+\_\+\+T1, double p\+\_\+\+T2)
+\begin{DoxyCompactList}\small\item\em Adjusts amplitudes of lifetimes based on distance to investigated temperature. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_a4b5f070aafaee94ed8cf02d0b48ac622}{extract\+Life\+Times}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT, G4\+String p\+\_\+temperature)
+\begin{DoxyCompactList}\small\item\em Extracts the scintillation lifetimes from the file and weights them for a specific temperature. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_ada904f9aa8601dee3e721f7eeda88f8c}{extract\+Yield}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT, G4\+String p\+\_\+temperature, G4\+String p\+\_\+yield\+Property\+Name, G4\+String p\+\_\+arg\+Key, G4\+String p\+\_\+tree\+Key\+Temperature, G4\+String p\+\_\+tree\+Key\+Yield)
+\begin{DoxyCompactList}\small\item\em Extract the yield from json tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_a530a6a3bd1cfc8a949b2c37a818f331d}{extract\+Yield\+Alpha}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT, G4\+String p\+\_\+temperature)
+\begin{DoxyCompactList}\small\item\em Extracts and interpolates the alpha particle scintillation yield for a given temperature. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_scintillation_processor_ac9d8bc9a2343d61ce42ef43996523271}{extract\+Yield\+Electron}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT, G4\+String p\+\_\+temperature)
+\begin{DoxyCompactList}\small\item\em Extracts and interpolates the electron scintillation yield for a given temperature. Uses the alpha yield as fallback if electron yield is not given. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_scintillation_processor_a4b5f070aafaee94ed8cf02d0b48ac622}\label{namespace_scintillation_processor_a4b5f070aafaee94ed8cf02d0b48ac622}} 
+\index{ScintillationProcessor@{ScintillationProcessor}!extractLifeTimes@{extractLifeTimes}}
+\index{extractLifeTimes@{extractLifeTimes}!ScintillationProcessor@{ScintillationProcessor}}
+\doxysubsubsection{\texorpdfstring{extractLifeTimes()}{extractLifeTimes()}}
+{\footnotesize\ttfamily void Scintillation\+Processor\+::extract\+Life\+Times (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$}]{p\+\_\+data\+File,  }\item[{const boost\+::property\+\_\+tree\+::ptree \&}]{p\+\_\+json\+Tree,  }\item[{G4\+Material\+Properties\+Table $\ast$}]{p\+\_\+\+MPT,  }\item[{G4\+String}]{p\+\_\+temperature }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+data\+File} & Pointer to the \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} containing file data. \\
+\hline
+{\em p\+\_\+json\+Tree} & The JSON property tree containing lifetime data. \\
+\hline
+{\em p\+\_\+\+MPT} & Pointer to the G4\+Material\+Properties\+Table to be modified. \\
+\hline
+{\em p\+Temperature} & The temperature for which to extract lifetimes. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_scintillation_processor_abe0857366dc77cb950049d701a7cd87a}\label{namespace_scintillation_processor_abe0857366dc77cb950049d701a7cd87a}} 
+\index{ScintillationProcessor@{ScintillationProcessor}!extractLifeTimesForTemperature@{extractLifeTimesForTemperature}}
+\index{extractLifeTimesForTemperature@{extractLifeTimesForTemperature}!ScintillationProcessor@{ScintillationProcessor}}
+\doxysubsubsection{\texorpdfstring{extractLifeTimesForTemperature()}{extractLifeTimesForTemperature()}}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::vector$<$ G4double $>$, std\+::vector$<$ G4double $>$ $>$ Scintillation\+Processor\+::extract\+Life\+Times\+For\+Temperature (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$}]{p\+\_\+data\+File,  }\item[{const boost\+::property\+\_\+tree\+::ptree \&}]{p\+\_\+json\+Tree,  }\item[{G4\+String}]{p\+\_\+temperature }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+data\+File} & Pointer to the \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} containing file data. \\
+\hline
+{\em p\+\_\+json\+Tree} & The JSON property tree containing scintillation data. \\
+\hline
+{\em p\+\_\+temperature} & The temperature for which to extract lifetimes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pair of vectors containing lifetimes and their corresponding amplitudes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespace_scintillation_processor_a57a3ea3b51e632208b21dddd6c254b9d}\label{namespace_scintillation_processor_a57a3ea3b51e632208b21dddd6c254b9d}} 
+\index{ScintillationProcessor@{ScintillationProcessor}!extractSpectrum@{extractSpectrum}}
+\index{extractSpectrum@{extractSpectrum}!ScintillationProcessor@{ScintillationProcessor}}
+\doxysubsubsection{\texorpdfstring{extractSpectrum()}{extractSpectrum()}}
+{\footnotesize\ttfamily void Scintillation\+Processor\+::extract\+Spectrum (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$}]{p\+\_\+data\+File,  }\item[{const boost\+::property\+\_\+tree\+::ptree \&}]{p\+\_\+json\+Tree,  }\item[{G4\+Material\+Properties\+Table $\ast$}]{p\+\_\+\+MPT }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+data\+File} & Pointer to the \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} containing file data. \\
+\hline
+{\em p\+\_\+json\+Tree} & The JSON property tree containing scintillation data. \\
+\hline
+{\em p\+\_\+\+MPT} & Pointer to the G4\+Material\+Properties\+Table to be modified. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_scintillation_processor_ada904f9aa8601dee3e721f7eeda88f8c}\label{namespace_scintillation_processor_ada904f9aa8601dee3e721f7eeda88f8c}} 
+\index{ScintillationProcessor@{ScintillationProcessor}!extractYield@{extractYield}}
+\index{extractYield@{extractYield}!ScintillationProcessor@{ScintillationProcessor}}
+\doxysubsubsection{\texorpdfstring{extractYield()}{extractYield()}}
+{\footnotesize\ttfamily void Scintillation\+Processor\+::extract\+Yield (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$}]{p\+\_\+data\+File,  }\item[{const boost\+::property\+\_\+tree\+::ptree \&}]{p\+\_\+json\+Tree,  }\item[{G4\+Material\+Properties\+Table $\ast$}]{p\+\_\+\+MPT,  }\item[{G4\+String}]{p\+\_\+temperature,  }\item[{G4\+String}]{p\+\_\+yield\+Property\+Name,  }\item[{G4\+String}]{p\+\_\+arg\+Key,  }\item[{G4\+String}]{p\+\_\+tree\+Key\+Temperature,  }\item[{G4\+String}]{p\+\_\+tree\+Key\+Yield }\end{DoxyParamCaption})}
+
+The data is the yield at different temperatures and is interpolated with a TGraph to the investigated temperature. If a user argument with a yield, it will overwrite the extracted data. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+data\+File} & Pointer to the \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} containing file data. \\
+\hline
+{\em p\+\_\+json\+Tree} & The JSON property tree containing yield data. \\
+\hline
+{\em p\+\_\+\+MPT} & Pointer to the G4\+Material\+Properties\+Table to be modified. \\
+\hline
+{\em p\+\_\+temperature} & Temperature for which the yield is interpolated. \\
+\hline
+{\em p\+\_\+yield\+Property\+Name} & Name of the yield property (Geant4 internal). \\
+\hline
+{\em p\+\_\+arg\+Key} & Command arguments key. \\
+\hline
+{\em p\+\_\+tree\+Key\+Temperature} & Key to access temperature array in the tree. \\
+\hline
+{\em p\+\_\+tree\+Key\+Yield} & Key to access yield array in the tree. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_scintillation_processor_a530a6a3bd1cfc8a949b2c37a818f331d}\label{namespace_scintillation_processor_a530a6a3bd1cfc8a949b2c37a818f331d}} 
+\index{ScintillationProcessor@{ScintillationProcessor}!extractYieldAlpha@{extractYieldAlpha}}
+\index{extractYieldAlpha@{extractYieldAlpha}!ScintillationProcessor@{ScintillationProcessor}}
+\doxysubsubsection{\texorpdfstring{extractYieldAlpha()}{extractYieldAlpha()}}
+{\footnotesize\ttfamily void Scintillation\+Processor\+::extract\+Yield\+Alpha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$}]{p\+\_\+data\+File,  }\item[{const boost\+::property\+\_\+tree\+::ptree \&}]{p\+\_\+json\+Tree,  }\item[{G4\+Material\+Properties\+Table $\ast$}]{p\+\_\+\+MPT,  }\item[{G4\+String}]{p\+\_\+temperature }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+data\+File} & Pointer to the \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} containing file data. \\
+\hline
+{\em p\+\_\+json\+Tree} & The JSON property tree containing yield data. \\
+\hline
+{\em p\+\_\+\+MPT} & Pointer to the G4\+Material\+Properties\+Table to be modified. \\
+\hline
+{\em p\+\_\+temperature} & The temperature for which to extract yield. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_scintillation_processor_ac9d8bc9a2343d61ce42ef43996523271}\label{namespace_scintillation_processor_ac9d8bc9a2343d61ce42ef43996523271}} 
+\index{ScintillationProcessor@{ScintillationProcessor}!extractYieldElectron@{extractYieldElectron}}
+\index{extractYieldElectron@{extractYieldElectron}!ScintillationProcessor@{ScintillationProcessor}}
+\doxysubsubsection{\texorpdfstring{extractYieldElectron()}{extractYieldElectron()}}
+{\footnotesize\ttfamily void Scintillation\+Processor\+::extract\+Yield\+Electron (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$}]{p\+\_\+data\+File,  }\item[{const boost\+::property\+\_\+tree\+::ptree \&}]{p\+\_\+json\+Tree,  }\item[{G4\+Material\+Properties\+Table $\ast$}]{p\+\_\+\+MPT,  }\item[{G4\+String}]{p\+\_\+temperature }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+data\+File} & Pointer to the \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} containing file data. \\
+\hline
+{\em p\+\_\+json\+Tree} & The JSON property tree containing yield data. \\
+\hline
+{\em p\+\_\+\+MPT} & Pointer to the G4\+Material\+Properties\+Table to be modified. \\
+\hline
+{\em p\+\_\+temperature} & The temperature for which to extract yield. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_scintillation_processor_ad81d3abfcca6999f8addb34993ed90d5}\label{namespace_scintillation_processor_ad81d3abfcca6999f8addb34993ed90d5}} 
+\index{ScintillationProcessor@{ScintillationProcessor}!getLifeTimeTemperatureRange@{getLifeTimeTemperatureRange}}
+\index{getLifeTimeTemperatureRange@{getLifeTimeTemperatureRange}!ScintillationProcessor@{ScintillationProcessor}}
+\doxysubsubsection{\texorpdfstring{getLifeTimeTemperatureRange()}{getLifeTimeTemperatureRange()}}
+{\footnotesize\ttfamily void Scintillation\+Processor\+::get\+Life\+Time\+Temperature\+Range (\begin{DoxyParamCaption}\item[{const boost\+::property\+\_\+tree\+::ptree \&}]{p\+\_\+json\+Tree,  }\item[{double \&}]{p\+\_\+min\+Temperature,  }\item[{double \&}]{p\+\_\+max\+Temperature }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+json\+Tree} & The JSON property tree containing scintillation data. \\
+\hline
+{\em p\+\_\+min\+Temperature} & Reference variable to receive the minimum temperature value. \\
+\hline
+{\em p\+\_\+max\+Temperature} & Reference variable to receive the maximum temperature value. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_scintillation_processor_a697d365515e84fa024fa106fc8d2cee7}\label{namespace_scintillation_processor_a697d365515e84fa024fa106fc8d2cee7}} 
+\index{ScintillationProcessor@{ScintillationProcessor}!process@{process}}
+\index{process@{process}!ScintillationProcessor@{ScintillationProcessor}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily void Scintillation\+Processor\+::process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$}]{p\+\_\+data\+File,  }\item[{const boost\+::property\+\_\+tree\+::ptree \&}]{p\+\_\+json\+Tree,  }\item[{G4\+Material\+Properties\+Table $\ast$}]{p\+\_\+\+MPT }\end{DoxyParamCaption})}
+
+This function extracts scintillation properties from the provided data file and sets up the material properties for scintillation simulation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+data\+File} & Pointer to the \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} containing file data. \\
+\hline
+{\em p\+\_\+json\+Tree} & The JSON property tree containing scintillation data. \\
+\hline
+{\em p\+\_\+\+MPT} & Pointer to the G4\+Material\+Properties\+Table to be modified. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_scintillation_processor_a0a5cfdce619f97647f889c05cbb40c52}\label{namespace_scintillation_processor_a0a5cfdce619f97647f889c05cbb40c52}} 
+\index{ScintillationProcessor@{ScintillationProcessor}!weightLifeTimesAmplitudes@{weightLifeTimesAmplitudes}}
+\index{weightLifeTimesAmplitudes@{weightLifeTimesAmplitudes}!ScintillationProcessor@{ScintillationProcessor}}
+\doxysubsubsection{\texorpdfstring{weightLifeTimesAmplitudes()}{weightLifeTimesAmplitudes()}}
+{\footnotesize\ttfamily void Scintillation\+Processor\+::weight\+Life\+Times\+Amplitudes (\begin{DoxyParamCaption}\item[{std\+::vector$<$ G4double $>$ \&}]{p\+\_\+amplitude,  }\item[{double}]{p\+\_\+\+T1,  }\item[{double}]{p\+\_\+\+T2 }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+amplitude} & Reference to the vector of amplitudes to be adjusted. \\
+\hline
+{\em p\+\_\+\+T1} & Investigated temperature. \\
+\hline
+{\em p\+\_\+\+T2} & Actual temperature from the data. \\
+\hline
+\end{DoxyParams}

@@ -105,7 +105,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ]
@@ -115,12 +115,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "5__group__definitions_8h_source.html",
-"class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html#a937882fa2ae2b9f4e571ac89f8eb96ea",
-"class_g4_op_boundary_process.html#afea4ec68181011a124e8cdf57bb2214d",
-"class_o_m_sim_command_args_table.html#a83cfd0564d03cb198f91926cd5c4f731",
-"class_o_m_sim_p_m_t_construction.html#a624aff368c4b01c8c4185808b896584c",
-"class_surface.html#a9c69d5516b6e0544d59efed89d7a4ceb",
-"md_extra_doc_1_multithreading.html#autotoc_md18"
+"class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader.html#a7474396ae5b6c76c630d04f2bf7d5ebe",
+"class_g4_op_boundary_process.html#aeb2c3e89792931041e4a179504cca7fc",
+"class_o_m_sim_command_args_table.html#ac242e3ba27d82d44ba2937770ffa3761",
+"class_o_m_sim_optical_module.html#a7626f60e761d321d1d5af4b8ba174b12",
+"class_s_n_base_particle_generator.html#ab35850680ce8bcf0bef7948784d90ac6",
+"radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

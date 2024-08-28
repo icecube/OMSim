@@ -1,11 +1,13 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classabc_data_file.html" title="This is an abstract base class that provides an interface for handling data files in the simulation." alt="" coords="5,81,104,108"/>
-<area shape="rect" id="node2" href="$class_custom_properties.html" title="Adds user defined properties to already defined materials." alt="" coords="165,5,304,32"/>
-<area shape="rect" id="node3" href="$class_scintillation_properties.html" title="Scintillation properties extraction for existing materials." alt="" coords="152,56,317,83"/>
-<area shape="rect" id="node4" href="$class_surface.html" title="Reflective surfaces parsed from a JSON file." alt="" coords="199,107,270,133"/>
-<area shape="rect" id="node5" href="$classabc_material_data.html" title="Abstract base class for material data extraction from a json file. abcMaterialData class is derived f..." alt="" coords="169,157,300,184"/>
-<area shape="rect" id="node6" href="$class_ice_cube_ice.html" title="Creation and extraction of IceCube&#39;s ice optical properties." alt="" coords="411,81,504,108"/>
-<area shape="rect" id="node7" href="$class_no_optics.html" title="Materials without optical properties defined." alt="" coords="417,132,498,159"/>
-<area shape="rect" id="node8" href="$class_refraction_and_absorption.html" title="Materials with defined refractive index and absorption length." alt="" coords="365,183,549,209"/>
-<area shape="rect" id="node9" href="$class_refraction_only.html" title="Materials only with refractive index defined." alt="" coords="398,233,517,260"/>
+<area shape="rect" id="node1" href="$classabc_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="5,157,181,184"/>
+<area shape="rect" id="node2" href="$class_d_egg_harness.html" title=" " alt="" coords="264,56,373,83"/>
+<area shape="rect" id="node3" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="237,107,400,133"/>
+<area shape="rect" id="node9" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="229,157,408,184"/>
+<area shape="rect" id="node10" href="$classm_d_o_m_flasher.html" title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module." alt="" coords="261,208,376,235"/>
+<area shape="rect" id="node11" href="$classm_d_o_m_harness.html" title=" " alt="" coords="259,259,379,285"/>
+<area shape="rect" id="node4" href="$class_d_e_g_g.html" title="Construction of the DEGG detector geometry." alt="" coords="459,5,519,32"/>
+<area shape="rect" id="node5" href="$class_l_o_m16.html" title=" " alt="" coords="456,56,523,83"/>
+<area shape="rect" id="node6" href="$class_l_o_m18.html" title=" " alt="" coords="456,107,523,133"/>
+<area shape="rect" id="node7" href="$classm_d_o_m.html" title=" " alt="" coords="456,157,523,184"/>
+<area shape="rect" id="node8" href="$classp_d_o_m.html" title="pDOM class represents the construction of pDOM/Gen1 DOM." alt="" coords="458,208,521,235"/>
 </map>

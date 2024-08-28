@@ -1,21 +1,5 @@
 var hierarchy =
 [
-    [ "abcDataFile", "classabc_data_file.html", [
-      [ "CustomProperties", "class_custom_properties.html", null ],
-      [ "ScintillationProperties", "class_scintillation_properties.html", null ],
-      [ "Surface", "class_surface.html", null ],
-      [ "Surface", "class_surface.html", null ],
-      [ "abcMaterialData", "classabc_material_data.html", [
-        [ "IceCubeIce", "class_ice_cube_ice.html", null ],
-        [ "IceCubeIce", "class_ice_cube_ice.html", null ],
-        [ "NoOptics", "class_no_optics.html", null ],
-        [ "NoOptics", "class_no_optics.html", null ],
-        [ "RefractionAndAbsorption", "class_refraction_and_absorption.html", null ],
-        [ "RefractionAndAbsorption", "class_refraction_and_absorption.html", null ],
-        [ "RefractionOnly", "class_refraction_only.html", null ],
-        [ "RefractionOnly", "class_refraction_only.html", null ]
-      ] ]
-    ] ],
     [ "abcDetectorComponent", "classabc_detector_component.html", [
       [ "DEggHarness", "class_d_egg_harness.html", null ],
       [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html", [
@@ -111,6 +95,7 @@ var hierarchy =
     [ "OMSimEffectiveAreaAnalyisis", "class_o_m_sim_effective_area_analyisis.html", null ],
     [ "OMSimEffiCaliAnalyisis", "class_o_m_sim_effi_cali_analyisis.html", null ],
     [ "OMSimHitManager", "class_o_m_sim_hit_manager.html", null ],
+    [ "OMSimMaterialHandler", "class_o_m_sim_material_handler.html", null ],
     [ "OMSimPMTResponse", "class_o_m_sim_p_m_t_response.html", [
       [ "DEGGPMTResponse", "class_d_e_g_g_p_m_t_response.html", null ],
       [ "Gen1PMTResponse", "class_gen1_p_m_t_response.html", null ],
