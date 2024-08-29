@@ -119,10 +119,10 @@ This approach ensures a smooth integration of the photosensitive volume within t
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}OMSimSensitiveDetector.hh"{}}}
 \DoxyCodeLine{\textcolor{comment}{//... Assume the logical volume of your detector has been defined and is referred to as "{}lDetectorLV"{}}}
-\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}* lSensitiveDetector = \textcolor{keyword}{new} \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}(\textcolor{stringliteral}{"{}myDetector"{}}, DetectorType::VolumePhotonDetector); }
-\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}} \&lHitManager =  \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}();}
-\DoxyCodeLine{lHitManager.\mbox{\hyperlink{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}{setNumberOfPMTs}}(1, lHitManager.getNextDetectorIndex());}
-\DoxyCodeLine{registerSensitiveDetector(lDetectorLV, lSensitiveDetector);}
+\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}* sensitiveDetector = \textcolor{keyword}{new} \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}(\textcolor{stringliteral}{"{}myDetector"{}}, DetectorType::VolumePhotonDetector); }
+\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}} \&hitManager =  \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}();}
+\DoxyCodeLine{hitManager.\mbox{\hyperlink{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}{setNumberOfPMTs}}(1, hitManager.getNextDetectorIndex());}
+\DoxyCodeLine{registerSensitiveDetector(lDetectorLV, sensitiveDetector);}
 
 \end{DoxyCode}
 

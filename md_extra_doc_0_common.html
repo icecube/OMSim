@@ -229,10 +229,10 @@ Making other volumes sensitive to photons</h1>
 <p>This approach ensures a smooth integration of the photosensitive volume within the current system. Below is an example illustrating how this can be incorporated within the detector construction:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;OMSimSensitiveDetector.hh&quot;</span></div>
 <div class="line"><span class="comment">//... Assume the logical volume of your detector has been defined and is referred to as &quot;lDetectorLV&quot;</span></div>
-<div class="line"><a class="code" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a>* lSensitiveDetector = <span class="keyword">new</span> <a class="code" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a>(<span class="stringliteral">&quot;myDetector&quot;</span>, DetectorType::VolumePhotonDetector); </div>
-<div class="line"><a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> &amp;lHitManager =  <a class="code" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a>();</div>
-<div class="line">lHitManager.<a class="code" href="class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8">setNumberOfPMTs</a>(1, lHitManager.getNextDetectorIndex());</div>
-<div class="line">registerSensitiveDetector(lDetectorLV, lSensitiveDetector);</div>
+<div class="line"><a class="code" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a>* sensitiveDetector = <span class="keyword">new</span> <a class="code" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a>(<span class="stringliteral">&quot;myDetector&quot;</span>, DetectorType::VolumePhotonDetector); </div>
+<div class="line"><a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> &amp;hitManager =  <a class="code" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a>();</div>
+<div class="line">hitManager.<a class="code" href="class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8">setNumberOfPMTs</a>(1, hitManager.getNextDetectorIndex());</div>
+<div class="line">registerSensitiveDetector(lDetectorLV, sensitiveDetector);</div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html"><div class="ttname"><a href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div><div class="ttdoc">Manages detected photon information.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.hh:56</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_aaa3e7a28d658d8e2e6db704b910cc35c"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a></div><div class="ttdeci">static OMSimHitManager &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:44</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_ab4a1060283a53660e52626d08a77ebc8"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8">OMSimHitManager::setNumberOfPMTs</a></div><div class="ttdeci">void setNumberOfPMTs(int pNumberOfPMTs, int pModuleIndex=0)</div><div class="ttdoc">Stores the number of PMTs in a module for correct data handling.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:148</div></div>
@@ -245,7 +245,7 @@ Making other volumes sensitive to photons</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Aug 29 2024 08:41:47 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 29 2024 08:42:40 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
