@@ -5,14 +5,8 @@
 
 #include <G4RunManager.hh>
 
-/**
- * @brief Custom actions at the beginning of the event.
- * This function sets the current event ID in the EventInfoManager.
- * @param evt Pointer to the current event.
- */
 void OMSimEventAction::BeginOfEventAction(const G4Event *evt)
 {
-	EventInfoManager::getInstance().setCurrentEventID(evt->GetEventID());
 }
 
 /**
@@ -20,16 +14,16 @@ void OMSimEventAction::BeginOfEventAction(const G4Event *evt)
  * 
  * Depending on the arguments set, this function will write hit and decay 
  * information with the analysis manager and reset hit and analysis data for the next event.
- * @param evt Pointer to the current event.
+ * @param p_event Pointer to the current event.
  */
-void OMSimEventAction::EndOfEventAction(const G4Event *evt)
+void OMSimEventAction::EndOfEventAction(const G4Event *p_event)
 {
 	if (!OMSimCommandArgsTable::getInstance().get<bool>("multiplicity_study"))
 	{
 		log_debug("End of event, saving information and reseting (thread {})", G4Threading::G4GetThreadId());
-		OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
-		lAnalysisManager.writeThreadHitInformation();
-		lAnalysisManager.writeThreadDecayInformation();
-		lAnalysisManager.reset();
+		OMSimDecaysAnalysis &analysisManager = OMSimDecaysAnalysis::getInstance();
+		analysisManager.writeThreadHitInformation();
+		analysisManager.writeThreadDecayInformation();
+		analysisManager.reset();
 	}
 }

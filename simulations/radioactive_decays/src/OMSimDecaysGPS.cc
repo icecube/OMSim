@@ -4,8 +4,9 @@
 #include <G4SystemOfUnits.hh>
 #include <G4Poisson.hh>
 
-void OMSimDecaysGPS::setProductionRadius(G4double p_productionRadius) : m_productionRadius(p_productionRadius)
+void OMSimDecaysGPS::setProductionRadius(G4double p_productionRadius)
 {
+    m_productionRadius = p_productionRadius;
 }
 
 G4String OMSimDecaysGPS::getDecayTerminationNuclide()
