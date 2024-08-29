@@ -8,10 +8,12 @@
    "jProperties": {
       "RINDEX": {
          "jValue": [
+            1.536,
             1.536
          ],
          "jWavelength": [
-            400.0
+            200.0,
+            800.0
          ]
       }
    }

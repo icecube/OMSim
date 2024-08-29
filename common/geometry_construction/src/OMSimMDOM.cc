@@ -29,7 +29,7 @@ mDOM::mDOM(G4bool p_placeHarness)
 {
     log_info("Constructing mDOM");
     m_flashers = new mDOMFlasher();
-    m_managerPMT->selectPMT("pmt_Hamamatsu_R15458_20nm");
+    m_managerPMT->selectPMT("pmt_Hamamatsu_R15458_CAT");
     m_managerPMT->construction();
     m_refConeIdealInRad = m_managerPMT->getMaxPMTRadius() + 2 * mm;
     m_PMToffset = m_managerPMT->getDistancePMTCenterToTip();

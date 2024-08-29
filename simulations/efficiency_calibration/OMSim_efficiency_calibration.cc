@@ -39,13 +39,13 @@ void runXYZfrontalScan()
 	analysisManager.m_outputFileName = args.get<std::string>("output_file") + ".dat";
 	scanner->setWavelength(459);
 
-	std::vector<double> x = Tools::arange(-41, 42, 1);
+	std::vector<double> grid = Tools::arange(-41, 42, 1);
 
 	double rLim = 42;
 
-	for (const auto &x : x)
+	for (const auto &x : grid)
 	{
-		for (const auto &y : x)
+		for (const auto &y : grid)
 		{
 			if (std::sqrt(x * x + y * y) < rLim)
 			{

@@ -2,7 +2,9 @@
    "jName": "Surf_Generic_Photocathode_20nm",
    "jFinish": "polished",
    "jType": "coated",
-   "jCoatThicknessNM": 20,
+   "jConstProperties": {
+   "COATEDTHICKNESS": 20
+   },
    "jProperties": {
       "RINDEX": {
          "jWavelength": [
