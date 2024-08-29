@@ -46,24 +46,24 @@ Implementation of the global instance pattern\+:
 \DoxyCodeLine{    \textcolor{comment}{// ... other members ...}}
 \DoxyCodeLine{\};}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keyword}{inline} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}* gHitManager = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\textcolor{keyword}{inline} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}* g\_hitManager = \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{comment}{// In the source file}}
 \DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}{OMSimHitManager::init}}()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    \textcolor{keywordflow}{if} (!gHitManager) gHitManager = \textcolor{keyword}{new} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}();}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (!g\_hitManager) g\_hitManager = \textcolor{keyword}{new} \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}();}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}{OMSimHitManager::shutdown}}()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    \textcolor{keyword}{delete} gHitManager;}
-\DoxyCodeLine{    gHitManager = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{    \textcolor{keyword}{delete} g\_hitManager;}
+\DoxyCodeLine{    g\_hitManager = \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\& \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    assert(gHitManager);}
-\DoxyCodeLine{    \textcolor{keywordflow}{return} *gHitManager;}
+\DoxyCodeLine{    assert(g\_hitManager);}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} *g\_hitManager;}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
@@ -84,13 +84,13 @@ The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}
 \DoxyCodeLine{    \textcolor{comment}{// ... other methods ...}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{private}:}
-\DoxyCodeLine{    \textcolor{keyword}{static} G4Mutex mMutex;  \textcolor{comment}{// Mutex for thread synchronization}}
+\DoxyCodeLine{    \textcolor{keyword}{static} G4Mutex m\_mutex;  \textcolor{comment}{// Mutex for thread synchronization}}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{struct }ThreadLocalData \{}
 \DoxyCodeLine{        std::map<G4int, HitStats> moduleHits;}
 \DoxyCodeLine{    \};}
 \DoxyCodeLine{    \textcolor{comment}{// Thread-\/local storage for hit data}}
-\DoxyCodeLine{    G4ThreadLocal \textcolor{keyword}{static} ThreadLocalData* mThreadData;}
+\DoxyCodeLine{    G4ThreadLocal \textcolor{keyword}{static} ThreadLocalData* m\_threadData;}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{comment}{// ... }}
 \DoxyCodeLine{\};}
@@ -100,23 +100,23 @@ The {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}
 
 Key features\+:
 \begin{DoxyItemize}
-\item Thread-\/local storage for hit data ({\ttfamily m\+Thread\+Data}), each thread will start one
-\item Mutex ({\ttfamily m\+Mutex}) for thread synchronization.
+\item Thread-\/local storage for hit data ({\ttfamily m\+\_\+thread\+Data}), each thread will start one
+\item Mutex ({\ttfamily m\+\_\+mutex}) for thread synchronization.
 \end{DoxyItemize}
 
-The {\ttfamily append\+Hit\+Info} method is used by all threads and uses to the thread-\/local {\ttfamily m\+Thread\+Data}\+:
+The {\ttfamily append\+Hit\+Info} method is used by all threads and uses to the thread-\/local {\ttfamily m\+\_\+thread\+Data}\+:
 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_hit_manager_a8c2dab4767b46f9c2eb16d5173ba527e}{OMSimHitManager::appendHitInfo}}(\textcolor{comment}{/* parameters */})}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    \textcolor{keywordflow}{if} (!mThreadData)}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (!m\_threadData)}
 \DoxyCodeLine{    \{}
 \DoxyCodeLine{        \textcolor{comment}{// Initialize thread-\/local data on first use}}
-\DoxyCodeLine{        mThreadData = \textcolor{keyword}{new} ThreadLocalData();}
+\DoxyCodeLine{        m\_threadData = \textcolor{keyword}{new} ThreadLocalData();}
 \DoxyCodeLine{    \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{    \textcolor{keyword}{auto} \&moduleHits = mThreadData-\/>moduleHits[pModuleNumber];}
+\DoxyCodeLine{    \textcolor{keyword}{auto} \&moduleHits = m\_threadData-\/>moduleHits[p\_moduleNumber];}
 \DoxyCodeLine{    G4int eventID = G4EventManager::GetEventManager()-\/>GetConstCurrentEvent()-\/>GetEventID();}
 \DoxyCodeLine{    moduleHits.eventId.push\_back(eventID);}
 \DoxyCodeLine{    \textcolor{comment}{//...}}
@@ -131,16 +131,16 @@ The {\ttfamily merge\+Thread\+Data} method combines data from all threads into a
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keywordtype}{void} OMSimHitManager::mergeThreadData()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    G4AutoLock lock(\&mMutex);  \textcolor{comment}{// Ensure thread-\/safe access to shared data}}
-\DoxyCodeLine{    \textcolor{keywordflow}{if} (mThreadData)}
+\DoxyCodeLine{    G4AutoLock lock(\&m\_mutex);  \textcolor{comment}{// Ensure thread-\/safe access to shared data}}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (m\_threadData)}
 \DoxyCodeLine{    \{}
 \DoxyCodeLine{        \textcolor{comment}{// Merge thread-\/local data into a single container}}
 \DoxyCodeLine{        \textcolor{comment}{// This is where data from all threads is combined}}
 \DoxyCodeLine{        \textcolor{comment}{// ...}}
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{comment}{// Clean up thread-\/local data after merging}}
-\DoxyCodeLine{        \textcolor{keyword}{delete} mThreadData;}
-\DoxyCodeLine{        mThreadData = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{        \textcolor{keyword}{delete} m\_threadData;}
+\DoxyCodeLine{        m\_threadData = \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{    \}}
 \DoxyCodeLine{\}}
 
@@ -162,12 +162,12 @@ In scenarios where merging data is unnecessary, or the amount of data is too lar
 \DoxyCodeLine{\textcolor{comment}{//from radioactive\_decays/src/OMSimDecaysAnalysis.cc}}
 \DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_decays_analysis_a35aa71b0f55694ab682eb12e33e773d3}{OMSimDecaysAnalysis::appendDecay}}(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition)}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    \textcolor{keywordflow}{if} (!mThreadDecayStats)}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (!m\_threadDecayStats)}
 \DoxyCodeLine{    \{}
-\DoxyCodeLine{        mThreadDecayStats = \textcolor{keyword}{new} \mbox{\hyperlink{struct_decay_stats}{DecayStats}}();}
+\DoxyCodeLine{        m\_threadDecayStats = \textcolor{keyword}{new} \mbox{\hyperlink{struct_decay_stats}{DecayStats}}();}
 \DoxyCodeLine{    \}}
 \DoxyCodeLine{    G4int lEventID = G4EventManager::GetEventManager()-\/>GetConstCurrentEvent()-\/>GetEventID();}
-\DoxyCodeLine{    mThreadDecayStats-\/>\mbox{\hyperlink{struct_decay_stats_a7cead323e226455fe4c847ff5043bd20}{eventId}}.push\_back(lEventID);}
+\DoxyCodeLine{    m\_threadDecayStats-\/>eventId.push\_back(lEventID);}
 \DoxyCodeLine{    (...)}
 \DoxyCodeLine{\}}
 
@@ -184,16 +184,16 @@ In scenarios where merging data is unnecessary, or the amount of data is too lar
 \DoxyCodeLine{\textcolor{comment}{//from radioactive\_decays/src/OMSimDecaysAnalysis.cc}}
 \DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{OMSimDecaysAnalysis::writeThreadDecayInformation}}()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    G4String lOutputSuffix = \mbox{\hyperlink{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}{OMSimCommandArgsTable::getInstance}}().\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{get}}<std::string>(\textcolor{stringliteral}{"{}output\_file"{}});}
-\DoxyCodeLine{    G4String lDecaysFileName = lOutputSuffix + \textcolor{stringliteral}{"{}\_"{}} + \mbox{\hyperlink{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}{Tools::getThreadIDStr}}() + \textcolor{stringliteral}{"{}\_decays.dat"{}}; \textcolor{comment}{// one file per thread, appending thread id to file name}}
+\DoxyCodeLine{    G4String outputSuffix = \mbox{\hyperlink{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}{OMSimCommandArgsTable::getInstance}}().\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{get}}<std::string>(\textcolor{stringliteral}{"{}output\_file"{}});}
+\DoxyCodeLine{    G4String decaysFileName = outputSuffix + \textcolor{stringliteral}{"{}\_"{}} + \mbox{\hyperlink{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}{Tools::getThreadIDStr}}() + \textcolor{stringliteral}{"{}\_decays.dat"{}}; \textcolor{comment}{// one file per thread, appending thread id to file name}}
 \DoxyCodeLine{}
-\DoxyCodeLine{    std::fstream lDatafile;}
-\DoxyCodeLine{    lDatafile.open(lDecaysFileName.c\_str(), std::ios::out | std::ios::app);}
-\DoxyCodeLine{    \textcolor{keywordflow}{if} (mThreadDecayStats-\/>\mbox{\hyperlink{struct_decay_stats_a7cead323e226455fe4c847ff5043bd20}{eventId}}.size() > 0)}
+\DoxyCodeLine{    std::fstream dataFile;}
+\DoxyCodeLine{    dataFile.open(decaysFileName.c\_str(), std::ios::out | std::ios::app);}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (m\_threadDecayStats-\/>eventId.size() > 0)}
 \DoxyCodeLine{    \{}
 \DoxyCodeLine{        (...)}
 \DoxyCodeLine{    \}}
-\DoxyCodeLine{    lDatafile.close();}
+\DoxyCodeLine{    dataFile.close();}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
@@ -204,14 +204,14 @@ Data is saved after each event in the {\ttfamily End\+Of\+Event\+Action} method 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{comment}{//from radioactive\_decays/src/OMSimEventAction.cc}}
-\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_event_action_a10298c7dff0337cec4ee06a25ca9c116}{OMSimEventAction::EndOfEventAction}}(\textcolor{keyword}{const} G4Event *evt)}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{class_o_m_sim_event_action_a10298c7dff0337cec4ee06a25ca9c116}{OMSimEventAction::EndOfEventAction}}(\textcolor{keyword}{const} G4Event *p\_evt)}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{    \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}{OMSimCommandArgsTable::getInstance}}().get<bool>(\textcolor{stringliteral}{"{}multiplicity\_study"{}}))}
 \DoxyCodeLine{    \{}
-\DoxyCodeLine{        \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}} \&lAnalysisManager = \mbox{\hyperlink{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}{OMSimDecaysAnalysis::getInstance}}();}
-\DoxyCodeLine{        lAnalysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}{writeThreadHitInformation}}();}
-\DoxyCodeLine{        lAnalysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{writeThreadDecayInformation}}();}
-\DoxyCodeLine{        lAnalysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}}();}
+\DoxyCodeLine{        \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}} \&analysisManager = \mbox{\hyperlink{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}{OMSimDecaysAnalysis::getInstance}}();}
+\DoxyCodeLine{        analysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}{writeThreadHitInformation}}();}
+\DoxyCodeLine{        analysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{writeThreadDecayInformation}}();}
+\DoxyCodeLine{        analysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}}();}
 \DoxyCodeLine{    \}}
 \DoxyCodeLine{\}}
 
@@ -223,9 +223,9 @@ As you can see, in case of multiplicity study, we need to merge the data, as we 
 \DoxyCodeLine{\textcolor{comment}{//from radioactive\_decays/OMSim\_radioactive\_decays.cc}}
 \DoxyCodeLine{        \textcolor{keywordflow}{if} (lArgs.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"{}multiplicity\_study"{}}))}
 \DoxyCodeLine{        \{}
-\DoxyCodeLine{            G4double lCoincidenceTimeWindow = lArgs.get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"{}multiplicity\_time\_window"{}})*ns;}
-\DoxyCodeLine{            lAnalysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_af747109a424e5878d2a4e42b6308f3cb}{writeMultiplicity}}(lCoincidenceTimeWindow);}
-\DoxyCodeLine{            lAnalysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}}();}
+\DoxyCodeLine{            G4double coincidenceTimeWindow = lArgs.get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"{}multiplicity\_time\_window"{}})*ns;}
+\DoxyCodeLine{            analysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_af747109a424e5878d2a4e42b6308f3cb}{writeMultiplicity}}(coincidenceTimeWindow);}
+\DoxyCodeLine{            analysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}}();}
 \DoxyCodeLine{        \}}
 
 \end{DoxyCode}
@@ -253,7 +253,7 @@ When implementing new thread-\/safe containers in Geant4\+:
 \item {\bfseries{Implement Data Merging (if necessary)}}\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keywordtype}{void} mergeThreadData() \{}
-\DoxyCodeLine{    G4AutoLock lock(\&mMutex);  \textcolor{comment}{// Ensure thread-\/safe access}}
+\DoxyCodeLine{    G4AutoLock lock(\&m\_mutex);  \textcolor{comment}{// Ensure thread-\/safe access}}
 \DoxyCodeLine{    \textcolor{comment}{// Merge threadLocalData into a global container}}
 \DoxyCodeLine{    \textcolor{comment}{// This is where you combine data from all threads}}
 \DoxyCodeLine{\}}
@@ -272,7 +272,7 @@ When implementing new thread-\/safe containers in Geant4\+:
 
 \item {\bfseries{Implement Thread-\/\+Safe Access}}\+: Use mutex locks for shared resource access\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{G4AutoLock lock(\&mMutex);  \textcolor{comment}{// Protect access to shared resources}}
+\DoxyCodeLine{G4AutoLock lock(\&m\_mutex);  \textcolor{comment}{// Protect access to shared resources}}
 \DoxyCodeLine{\textcolor{comment}{// Access or modify shared resources}}
 
 \end{DoxyCode}

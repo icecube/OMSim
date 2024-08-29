@@ -174,24 +174,24 @@ Thread-Safe Global Instance Implementation</h1>
 <div class="line">    <span class="comment">// ... other members ...</span></div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">inline</span> <a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a>* gHitManager = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="keyword">inline</span> <a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a>* g_hitManager = <span class="keyword">nullptr</span>;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// In the source file</span></div>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671">OMSimHitManager::init</a>()</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordflow">if</span> (!gHitManager) gHitManager = <span class="keyword">new</span> <a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a>();</div>
+<div class="line">    <span class="keywordflow">if</span> (!g_hitManager) g_hitManager = <span class="keyword">new</span> <a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a>();</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf">OMSimHitManager::shutdown</a>()</div>
 <div class="line">{</div>
-<div class="line">    <span class="keyword">delete</span> gHitManager;</div>
-<div class="line">    gHitManager = <span class="keyword">nullptr</span>;</div>
+<div class="line">    <span class="keyword">delete</span> g_hitManager;</div>
+<div class="line">    g_hitManager = <span class="keyword">nullptr</span>;</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a>&amp; <a class="code" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a>()</div>
 <div class="line">{</div>
-<div class="line">    assert(gHitManager);</div>
-<div class="line">    <span class="keywordflow">return</span> *gHitManager;</div>
+<div class="line">    assert(g_hitManager);</div>
+<div class="line">    <span class="keywordflow">return</span> *g_hitManager;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html"><div class="ttname"><a href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div><div class="ttdoc">Manages detected photon information.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.hh:56</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_aaa3e7a28d658d8e2e6db704b910cc35c"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a></div><div class="ttdeci">static OMSimHitManager &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:44</div></div>
@@ -211,31 +211,31 @@ Example: OMSimHitManager</h2>
 <div class="line">    <span class="comment">// ... other methods ...</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">private</span>:</div>
-<div class="line">    <span class="keyword">static</span> G4Mutex mMutex;  <span class="comment">// Mutex for thread synchronization</span></div>
+<div class="line">    <span class="keyword">static</span> G4Mutex m_mutex;  <span class="comment">// Mutex for thread synchronization</span></div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">struct </span>ThreadLocalData {</div>
 <div class="line">        std::map&lt;G4int, HitStats&gt; moduleHits;</div>
 <div class="line">    };</div>
 <div class="line">    <span class="comment">// Thread-local storage for hit data</span></div>
-<div class="line">    G4ThreadLocal <span class="keyword">static</span> ThreadLocalData* mThreadData;</div>
+<div class="line">    G4ThreadLocal <span class="keyword">static</span> ThreadLocalData* m_threadData;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// ... </span></div>
 <div class="line">};</div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_a8c2dab4767b46f9c2eb16d5173ba527e"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">OMSimHitManager::appendHitInfo</a></div><div class="ttdeci">void appendHitInfo(G4double pGlobalTime, G4double pLocalTime, G4double pTrackLength, G4double pEnergy, G4int pPMTHitNumber, G4ThreeVector pMomentumDirection, G4ThreeVector pGlobalPos, G4ThreeVector pLocalPos, G4double pDistance, OMSimPMTResponse::PMTPulse pResponse, G4int pModuleIndex=0)</div><div class="ttdoc">Appends hit information for a detected photon to the corresponding module's hit data.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:99</div></div>
 </div><!-- fragment --><p>Key features:</p><ul>
-<li>Thread-local storage for hit data (<code>mThreadData</code>), each thread will start one</li>
-<li>Mutex (<code>mMutex</code>) for thread synchronization.</li>
+<li>Thread-local storage for hit data (<code>m_threadData</code>), each thread will start one</li>
+<li>Mutex (<code>m_mutex</code>) for thread synchronization.</li>
 </ul>
-<p>The <code>appendHitInfo</code> method is used by all threads and uses to the thread-local <code>mThreadData</code>:</p>
+<p>The <code>appendHitInfo</code> method is used by all threads and uses to the thread-local <code>m_threadData</code>:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">OMSimHitManager::appendHitInfo</a>(<span class="comment">/* parameters */</span>)</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordflow">if</span> (!mThreadData)</div>
+<div class="line">    <span class="keywordflow">if</span> (!m_threadData)</div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// Initialize thread-local data on first use</span></div>
-<div class="line">        mThreadData = <span class="keyword">new</span> ThreadLocalData();</div>
+<div class="line">        m_threadData = <span class="keyword">new</span> ThreadLocalData();</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    <span class="keyword">auto</span> &amp;moduleHits = mThreadData-&gt;moduleHits[pModuleNumber];</div>
+<div class="line">    <span class="keyword">auto</span> &amp;moduleHits = m_threadData-&gt;moduleHits[p_moduleNumber];</div>
 <div class="line">    G4int eventID = G4EventManager::GetEventManager()-&gt;GetConstCurrentEvent()-&gt;GetEventID();</div>
 <div class="line">    moduleHits.eventId.push_back(eventID);</div>
 <div class="line">    <span class="comment">//...</span></div>
@@ -243,16 +243,16 @@ Example: OMSimHitManager</h2>
 </div><!-- fragment --><p>The <code>mergeThreadData</code> method combines data from all threads into a single vector:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> OMSimHitManager::mergeThreadData()</div>
 <div class="line">{</div>
-<div class="line">    G4AutoLock lock(&amp;mMutex);  <span class="comment">// Ensure thread-safe access to shared data</span></div>
-<div class="line">    <span class="keywordflow">if</span> (mThreadData)</div>
+<div class="line">    G4AutoLock lock(&amp;m_mutex);  <span class="comment">// Ensure thread-safe access to shared data</span></div>
+<div class="line">    <span class="keywordflow">if</span> (m_threadData)</div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// Merge thread-local data into a single container</span></div>
 <div class="line">        <span class="comment">// This is where data from all threads is combined</span></div>
 <div class="line">        <span class="comment">// ...</span></div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Clean up thread-local data after merging</span></div>
-<div class="line">        <span class="keyword">delete</span> mThreadData;</div>
-<div class="line">        mThreadData = <span class="keyword">nullptr</span>;</div>
+<div class="line">        <span class="keyword">delete</span> m_threadData;</div>
+<div class="line">        m_threadData = <span class="keyword">nullptr</span>;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --><blockquote class="doxtable">
@@ -267,33 +267,32 @@ Example: Saving Data Per Thread</h2>
 <div class="fragment"><div class="line"><span class="comment">//from radioactive_decays/src/OMSimDecaysAnalysis.cc</span></div>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_decays_analysis.html#a35aa71b0f55694ab682eb12e33e773d3">OMSimDecaysAnalysis::appendDecay</a>(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition)</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordflow">if</span> (!mThreadDecayStats)</div>
+<div class="line">    <span class="keywordflow">if</span> (!m_threadDecayStats)</div>
 <div class="line">    {</div>
-<div class="line">        mThreadDecayStats = <span class="keyword">new</span> <a class="code" href="struct_decay_stats.html">DecayStats</a>();</div>
+<div class="line">        m_threadDecayStats = <span class="keyword">new</span> <a class="code" href="struct_decay_stats.html">DecayStats</a>();</div>
 <div class="line">    }</div>
 <div class="line">    G4int lEventID = G4EventManager::GetEventManager()-&gt;GetConstCurrentEvent()-&gt;GetEventID();</div>
-<div class="line">    mThreadDecayStats-&gt;<a class="code" href="struct_decay_stats.html#a7cead323e226455fe4c847ff5043bd20">eventId</a>.push_back(lEventID);</div>
+<div class="line">    m_threadDecayStats-&gt;eventId.push_back(lEventID);</div>
 <div class="line">    (...)</div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_o_m_sim_decays_analysis_html_a35aa71b0f55694ab682eb12e33e773d3"><div class="ttname"><a href="class_o_m_sim_decays_analysis.html#a35aa71b0f55694ab682eb12e33e773d3">OMSimDecaysAnalysis::appendDecay</a></div><div class="ttdeci">void appendDecay(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition)</div><div class="ttdoc">Append decay information to internal data structures.</div><div class="ttdef"><b>Definition:</b> OMSimDecaysAnalysis.cc:36</div></div>
 <div class="ttc" id="astruct_decay_stats_html"><div class="ttname"><a href="struct_decay_stats.html">DecayStats</a></div><div class="ttdoc">A structure to store information about decays.</div><div class="ttdef"><b>Definition:</b> OMSimDecaysAnalysis.hh:19</div></div>
-<div class="ttc" id="astruct_decay_stats_html_a7cead323e226455fe4c847ff5043bd20"><div class="ttname"><a href="struct_decay_stats.html#a7cead323e226455fe4c847ff5043bd20">DecayStats::eventId</a></div><div class="ttdeci">std::vector&lt; G4long &gt; eventId</div><div class="ttdoc">ID of the event.</div><div class="ttdef"><b>Definition:</b> OMSimDecaysAnalysis.hh:20</div></div>
 </div><!-- fragment --><ol type="1">
 <li><b>writeThreadDecayInformation</b>: Writes decay data to a file specific to each thread.</li>
 </ol>
 <div class="fragment"><div class="line"><span class="comment">//from radioactive_decays/src/OMSimDecaysAnalysis.cc</span></div>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_decays_analysis.html#abf3b99f2998f27c9ad1f792dfc716e0c">OMSimDecaysAnalysis::writeThreadDecayInformation</a>()</div>
 <div class="line">{</div>
-<div class="line">    G4String lOutputSuffix = <a class="code" href="class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214">OMSimCommandArgsTable::getInstance</a>().<a class="code" href="class_o_m_sim_command_args_table.html#a6a455736ab058037381fd786c52ca86f">get</a>&lt;std::string&gt;(<span class="stringliteral">&quot;output_file&quot;</span>);</div>
-<div class="line">    G4String lDecaysFileName = lOutputSuffix + <span class="stringliteral">&quot;_&quot;</span> + <a class="code" href="namespace_tools.html#aee9fb48a4947040e59508fd02baa6b4f">Tools::getThreadIDStr</a>() + <span class="stringliteral">&quot;_decays.dat&quot;</span>; <span class="comment">// one file per thread, appending thread id to file name</span></div>
+<div class="line">    G4String outputSuffix = <a class="code" href="class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214">OMSimCommandArgsTable::getInstance</a>().<a class="code" href="class_o_m_sim_command_args_table.html#a6a455736ab058037381fd786c52ca86f">get</a>&lt;std::string&gt;(<span class="stringliteral">&quot;output_file&quot;</span>);</div>
+<div class="line">    G4String decaysFileName = outputSuffix + <span class="stringliteral">&quot;_&quot;</span> + <a class="code" href="namespace_tools.html#aee9fb48a4947040e59508fd02baa6b4f">Tools::getThreadIDStr</a>() + <span class="stringliteral">&quot;_decays.dat&quot;</span>; <span class="comment">// one file per thread, appending thread id to file name</span></div>
 <div class="line"> </div>
-<div class="line">    std::fstream lDatafile;</div>
-<div class="line">    lDatafile.open(lDecaysFileName.c_str(), std::ios::out | std::ios::app);</div>
-<div class="line">    <span class="keywordflow">if</span> (mThreadDecayStats-&gt;<a class="code" href="struct_decay_stats.html#a7cead323e226455fe4c847ff5043bd20">eventId</a>.size() &gt; 0)</div>
+<div class="line">    std::fstream dataFile;</div>
+<div class="line">    dataFile.open(decaysFileName.c_str(), std::ios::out | std::ios::app);</div>
+<div class="line">    <span class="keywordflow">if</span> (m_threadDecayStats-&gt;eventId.size() &gt; 0)</div>
 <div class="line">    {</div>
 <div class="line">        (...)</div>
 <div class="line">    }</div>
-<div class="line">    lDatafile.close();</div>
+<div class="line">    dataFile.close();</div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_o_m_sim_command_args_table_html_a6a455736ab058037381fd786c52ca86f"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#a6a455736ab058037381fd786c52ca86f">OMSimCommandArgsTable::get</a></div><div class="ttdeci">T get(const std::string &amp;p_key)</div><div class="ttdoc">Retrieves a parameter from the table.</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.hh:82</div></div>
 <div class="ttc" id="aclass_o_m_sim_command_args_table_html_ac6f8ed95981671d5df9b029bcef93214"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214">OMSimCommandArgsTable::getInstance</a></div><div class="ttdeci">static OMSimCommandArgsTable &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.cc:7</div></div>
@@ -301,14 +300,14 @@ Example: Saving Data Per Thread</h2>
 <div class="ttc" id="anamespace_tools_html_aee9fb48a4947040e59508fd02baa6b4f"><div class="ttname"><a href="namespace_tools.html#aee9fb48a4947040e59508fd02baa6b4f">Tools::getThreadIDStr</a></div><div class="ttdeci">G4String getThreadIDStr()</div><div class="ttdef"><b>Definition:</b> OMSimTools.cc:439</div></div>
 </div><!-- fragment --><p>Data is saved after each event in the <code>EndOfEventAction</code> method to handle large volumes of data:</p>
 <div class="fragment"><div class="line"><span class="comment">//from radioactive_decays/src/OMSimEventAction.cc</span></div>
-<div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_event_action.html#a10298c7dff0337cec4ee06a25ca9c116">OMSimEventAction::EndOfEventAction</a>(<span class="keyword">const</span> G4Event *evt)</div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_event_action.html#a10298c7dff0337cec4ee06a25ca9c116">OMSimEventAction::EndOfEventAction</a>(<span class="keyword">const</span> G4Event *p_evt)</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordflow">if</span> (!<a class="code" href="class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214">OMSimCommandArgsTable::getInstance</a>().get&lt;bool&gt;(<span class="stringliteral">&quot;multiplicity_study&quot;</span>))</div>
 <div class="line">    {</div>
-<div class="line">        <a class="code" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a> &amp;lAnalysisManager = <a class="code" href="class_o_m_sim_decays_analysis.html#a4aea9bd04b3f168cfcae98808b33f90c">OMSimDecaysAnalysis::getInstance</a>();</div>
-<div class="line">        lAnalysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#a78449c898f237d5a40c75042123c19af">writeThreadHitInformation</a>();</div>
-<div class="line">        lAnalysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#abf3b99f2998f27c9ad1f792dfc716e0c">writeThreadDecayInformation</a>();</div>
-<div class="line">        lAnalysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0">reset</a>();</div>
+<div class="line">        <a class="code" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a> &amp;analysisManager = <a class="code" href="class_o_m_sim_decays_analysis.html#a4aea9bd04b3f168cfcae98808b33f90c">OMSimDecaysAnalysis::getInstance</a>();</div>
+<div class="line">        analysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#a78449c898f237d5a40c75042123c19af">writeThreadHitInformation</a>();</div>
+<div class="line">        analysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#abf3b99f2998f27c9ad1f792dfc716e0c">writeThreadDecayInformation</a>();</div>
+<div class="line">        analysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0">reset</a>();</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_o_m_sim_decays_analysis_html"><div class="ttname"><a href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a></div><div class="ttdoc">Singleton class responsible for managing, analysing, and saving decay-related data.</div><div class="ttdef"><b>Definition:</b> OMSimDecaysAnalysis.hh:31</div></div>
@@ -319,9 +318,9 @@ Example: Saving Data Per Thread</h2>
 </div><!-- fragment --><p>As you can see, in case of multiplicity study, we need to merge the data, as we are looking for coincidences. In that case we have to merge: </p><div class="fragment"><div class="line"><span class="comment">//from radioactive_decays/OMSim_radioactive_decays.cc</span></div>
 <div class="line">        <span class="keywordflow">if</span> (lArgs.get&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;multiplicity_study&quot;</span>))</div>
 <div class="line">        {</div>
-<div class="line">            G4double lCoincidenceTimeWindow = lArgs.get&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;multiplicity_time_window&quot;</span>)*ns;</div>
-<div class="line">            lAnalysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#af747109a424e5878d2a4e42b6308f3cb">writeMultiplicity</a>(lCoincidenceTimeWindow);</div>
-<div class="line">            lAnalysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0">reset</a>();</div>
+<div class="line">            G4double coincidenceTimeWindow = lArgs.get&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;multiplicity_time_window&quot;</span>)*ns;</div>
+<div class="line">            analysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#af747109a424e5878d2a4e42b6308f3cb">writeMultiplicity</a>(coincidenceTimeWindow);</div>
+<div class="line">            analysisManager.<a class="code" href="class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0">reset</a>();</div>
 <div class="line">        }</div>
 <div class="ttc" id="aclass_o_m_sim_decays_analysis_html_af747109a424e5878d2a4e42b6308f3cb"><div class="ttname"><a href="class_o_m_sim_decays_analysis.html#af747109a424e5878d2a4e42b6308f3cb">OMSimDecaysAnalysis::writeMultiplicity</a></div><div class="ttdeci">void writeMultiplicity(G4double pTimeWindow)</div><div class="ttdoc">Calls calculateMultiplicity and writes the results to the output file.</div><div class="ttdef"><b>Definition:</b> OMSimDecaysAnalysis.cc:53</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md24"></a>
@@ -337,7 +336,7 @@ Best Practices for Creating New Thread-Safe Containers</h1>
 <div class="line">}</div>
 </div><!-- fragment --></li>
 <li><b>Implement Data Merging (if necessary)</b>: <div class="fragment"><div class="line"><span class="keywordtype">void</span> mergeThreadData() {</div>
-<div class="line">    G4AutoLock lock(&amp;mMutex);  <span class="comment">// Ensure thread-safe access</span></div>
+<div class="line">    G4AutoLock lock(&amp;m_mutex);  <span class="comment">// Ensure thread-safe access</span></div>
 <div class="line">    <span class="comment">// Merge threadLocalData into a global container</span></div>
 <div class="line">    <span class="comment">// This is where you combine data from all threads</span></div>
 <div class="line">}</div>
@@ -348,7 +347,7 @@ Best Practices for Creating New Thread-Safe Containers</h1>
 <div class="line">    threadLocalData = <span class="keyword">nullptr</span>;</div>
 <div class="line">}</div>
 </div><!-- fragment --></li>
-<li><b>Implement Thread-Safe Access</b>: Use mutex locks for shared resource access: <div class="fragment"><div class="line">G4AutoLock lock(&amp;mMutex);  <span class="comment">// Protect access to shared resources</span></div>
+<li><b>Implement Thread-Safe Access</b>: Use mutex locks for shared resource access: <div class="fragment"><div class="line">G4AutoLock lock(&amp;m_mutex);  <span class="comment">// Protect access to shared resources</span></div>
 <div class="line"><span class="comment">// Access or modify shared resources</span></div>
 </div><!-- fragment --></li>
 </ol>
@@ -385,7 +384,7 @@ Troubleshooting Multi-threading Issues</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Aug 29 2024 08:35:34 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 29 2024 08:41:47 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
