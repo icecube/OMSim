@@ -1,8 +1,7 @@
-#ifndef OMSimPrimaryGeneratorAction_h
-#define OMSimPrimaryGeneratorAction_h 1
+#pragma once
  
 #include <G4VUserPrimaryGeneratorAction.hh>
- 
+#include <G4AutoLock.hh>
 class G4GeneralParticleSource;
 class G4Event;
 class OMSimPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
@@ -12,11 +11,11 @@ public:
 	~OMSimPrimaryGeneratorAction();
 
 public:
-	void GeneratePrimaries(G4Event* anEvent);
+	void GeneratePrimaries(G4Event* anEvent) override;
 
 private:
-	G4GeneralParticleSource* mParticleSource;
-		
+    static thread_local std::unique_ptr<G4GeneralParticleSource> m_particleSource;
+	static G4Mutex m_mutex;
 };
 
-#endif
+

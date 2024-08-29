@@ -3,15 +3,12 @@
 #include <G4SystemOfUnits.hh>
 
 /**
- * @param pBeamRadius The radius of the beam.
- * @param pBeamDistance The distance of the beam from the origin.
- * @param pWavelength The wavelength of the photons to be generated.
+ * @param p_beamRadius The radius of the beam.
+ * @param p_beamDistance The distance of the beam from the origin.
+ * @param p_wavelength The wavelength of the photons to be generated.
  */
-AngularScan::AngularScan(G4double pBeamRadius, G4double pBeamDistance, G4double pWavelength)
+AngularScan::AngularScan(G4double p_beamRadius, G4double p_beamDistance, G4double p_wavelength) : m_beamRadius(p_beamRadius), m_beamDistance(p_beamDistance), m_wavelength(p_wavelength)
 {
-    mBeamRadius = pBeamRadius;
-    mBeamDistance = pBeamDistance;
-    m_wavelength = pWavelength;
 }
 
 /**
@@ -19,35 +16,34 @@ AngularScan::AngularScan(G4double pBeamRadius, G4double pBeamDistance, G4double 
  */
 void AngularScan::configurePosCoordinates()
 {
-    double lRho = mBeamDistance * sin(mTheta);
-    double lPosX = lRho * cos(mPhi);
-    double lPosY = lRho * sin(mPhi);
-    double lPosZ = mBeamDistance * cos(mTheta);
-    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-    lUIinterface.applyCommand("/gps/pos/centre", lPosX, lPosY, lPosZ, "mm");
-    lUIinterface.applyCommand("/gps/pos/radius", mBeamRadius, "mm");
+    double rho = m_beamDistance * sin(m_theta);
+    double x = rho * cos(m_phi);
+    double y = rho * sin(m_phi);
+    double z = m_beamDistance * cos(m_theta);
+    OMSimUIinterface &uiInterface = OMSimUIinterface::getInstance();
+    uiInterface.applyCommand("/gps/pos/centre", x, y, z, "mm");
+    uiInterface.applyCommand("/gps/pos/radius", m_beamRadius, "mm");
 }
-
 
 /**
  * @brief Configures the angular coordinates of the beam based on the polar and azimuthal angles.
  */
 void AngularScan::configureAngCoordinates()
 {
-    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+    OMSimUIinterface &uiInterface = OMSimUIinterface::getInstance();
     double x, y, z;
-    x = -sin(mPhi);
-    y = cos(mPhi);
+    x = -sin(m_phi);
+    y = cos(m_phi);
     z = 0;
-    lUIinterface.applyCommand("/gps/pos/rot1", x, y, z);
-    lUIinterface.applyCommand("/gps/ang/rot1", x, y, z);
+    uiInterface.applyCommand("/gps/pos/rot1", x, y, z);
+    uiInterface.applyCommand("/gps/ang/rot1", x, y, z);
 
-    x = -cos(mPhi) * cos(mTheta);
-    y = -sin(mPhi) * cos(mTheta);
-    z = sin(mTheta);
+    x = -cos(m_phi) * cos(m_theta);
+    y = -sin(m_phi) * cos(m_theta);
+    z = sin(m_theta);
 
-    lUIinterface.applyCommand("/gps/pos/rot2", x, y, z);
-    lUIinterface.applyCommand("/gps/ang/rot2", x, y, z);
+    uiInterface.applyCommand("/gps/pos/rot2", x, y, z);
+    uiInterface.applyCommand("/gps/ang/rot2", x, y, z);
 }
 
 /**
@@ -56,39 +52,39 @@ void AngularScan::configureAngCoordinates()
 void AngularScan::configureScan()
 {
     // Obtain an instance of OMSimUIinterface
-    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
+    OMSimUIinterface &uiInterface = OMSimUIinterface::getInstance();
 
     // Use applyCommand to send commands
-    lUIinterface.applyCommand("/event/verbose 0");
-    lUIinterface.applyCommand("/control/verbose 0");
-    lUIinterface.applyCommand("/run/verbose 0");
-    lUIinterface.applyCommand("/gps/particle opticalphoton");
-    lUIinterface.applyCommand("/gps/energy", 1239.84193 / m_wavelength, "eV");
-    lUIinterface.applyCommand("/gps/pos/type Plane");
-    lUIinterface.applyCommand("/gps/pos/shape Circle");
-    lUIinterface.applyCommand("/gps/pos/centre 0 0 30 cm");
-    lUIinterface.applyCommand("/gps/pos/radius 80 mm");
-    lUIinterface.applyCommand("/gps/pos/rot1 0 1 0");
-    lUIinterface.applyCommand("/gps/pos/rot2 0 0 1");
-    lUIinterface.applyCommand("/gps/ang/rot1 0 1 0");
-    lUIinterface.applyCommand("/gps/ang/rot2 0 0 1");
-    lUIinterface.applyCommand("/gps/ang/type beam2d");
-    lUIinterface.applyCommand("/gps/ang/sigma_x 0");
-    lUIinterface.applyCommand("/gps/ang/sigma_y 0");
+    uiInterface.applyCommand("/event/verbose 0");
+    uiInterface.applyCommand("/control/verbose 0");
+    uiInterface.applyCommand("/run/verbose 0");
+    uiInterface.applyCommand("/gps/particle opticalphoton");
+    uiInterface.applyCommand("/gps/energy", 1239.84193 / m_wavelength, "eV");
+    uiInterface.applyCommand("/gps/pos/type Plane");
+    uiInterface.applyCommand("/gps/pos/shape Circle");
+    uiInterface.applyCommand("/gps/pos/centre 0 0 30 cm");
+    uiInterface.applyCommand("/gps/pos/radius 80 mm");
+    uiInterface.applyCommand("/gps/pos/rot1 0 1 0");
+    uiInterface.applyCommand("/gps/pos/rot2 0 0 1");
+    uiInterface.applyCommand("/gps/ang/rot1 0 1 0");
+    uiInterface.applyCommand("/gps/ang/rot2 0 0 1");
+    uiInterface.applyCommand("/gps/ang/type beam2d");
+    uiInterface.applyCommand("/gps/ang/sigma_x 0");
+    uiInterface.applyCommand("/gps/ang/sigma_y 0");
     configurePosCoordinates();
     configureAngCoordinates();
 }
 
 /**
  * @brief Run a single angular scan with the specified angles.
- * @param pPhi The azimuthal angle in degrees.
- * @param pTheta The polar angle in degrees.
+ * @param p_phi The azimuthal angle in degrees.
+ * @param p_theta The polar angle in degrees.
  */
-void AngularScan::runSingleAngularScan(G4double pPhi, G4double pTheta)
+void AngularScan::runSingleAngularScan(G4double p_phi, G4double p_theta)
 {
-    mTheta = pTheta * deg;
-    mPhi = pPhi * deg;
+    m_theta = p_theta * deg;
+    m_phi = p_phi * deg;
     configureScan();
-    OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-    lUIinterface.runBeamOn();
+    OMSimUIinterface &uiInterface = OMSimUIinterface::getInstance();
+    uiInterface.runBeamOn();
 }

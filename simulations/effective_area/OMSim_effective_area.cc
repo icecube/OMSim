@@ -11,53 +11,52 @@
 #include "OMSimTools.hh"
 
 std::shared_ptr<spdlog::logger> g_logger;
-
 namespace po = boost::program_options;
 
 void runEffectiveAreaSimulation()
 {
-	OMSimEffectiveAreaAnalyisis lAnalysisManager;
-	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
-	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
-	AngularScan *lScanner = new AngularScan(lArgs.get<G4double>("radius"), lArgs.get<G4double>("distance"), lArgs.get<G4double>("wavelength"));
+	OMSimEffectiveAreaAnalyisis analysisManager;
+	OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
+	OMSimHitManager &hitManager = OMSimHitManager::getInstance();
+	AngularScan *scanner = new AngularScan(args.get<G4double>("radius"), args.get<G4double>("distance"), args.get<G4double>("wavelength"));
 
-	lAnalysisManager.mOutputFileName = lArgs.get<std::string>("output_file") + ".dat";
+	analysisManager.m_outputFileName = args.get<std::string>("output_file") + ".dat";
 
-	bool lWriteHeader = !lArgs.get<bool>("no_header");
-	if (lWriteHeader) lAnalysisManager.writeHeader("Phi", "Theta", "Wavelength");
+	bool writeHeader = !args.get<bool>("no_header");
+	if (writeHeader) analysisManager.writeHeader("Phi", "Theta", "Wavelength");
 
 	// If angle file is provided, run over all angle pairs in file
-	if (lArgs.keyExists("angles_file"))
+	if (args.keyExists("angles_file"))
 	{
-		std::vector<G4PV2DDataVector> data = Tools::loadtxt(lArgs.get<std::string>("angles_file"), true);
-		std::vector<G4double> lThetas = data.at(0);
-		std::vector<G4double> lPhis = data.at(1);
+		std::vector<G4PV2DDataVector> data = Tools::loadtxt(args.get<std::string>("angles_file"), true);
+		std::vector<G4double> thetas = data.at(0);
+		std::vector<G4double> phis = data.at(1);
 
-		for (std::vector<int>::size_type i = 0; i != lThetas.size(); i++)
+		for (std::vector<int>::size_type i = 0; i != thetas.size(); i++)
 		{
-			lScanner->runSingleAngularScan(lPhis.at(i), lThetas.at(i));
-			lAnalysisManager.writeScan(lPhis.at(i), lThetas.at(i),  lArgs.get<G4double>("wavelength"));
-			lHitManager.reset();
+			scanner->runSingleAngularScan(phis.at(i), thetas.at(i));
+			analysisManager.writeScan(phis.at(i), thetas.at(i),  args.get<G4double>("wavelength"));
+			hitManager.reset();
 		}
 	}
 	// If file with angle pairs was not provided, use the angle pairs provided through command-line arguments
 	else
 	{
-		lScanner->runSingleAngularScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"));
-		lAnalysisManager.writeScan(lArgs.get<G4double>("phi"), lArgs.get<G4double>("theta"),  lArgs.get<G4double>("wavelength"));
-		lHitManager.reset();
+		scanner->runSingleAngularScan(args.get<G4double>("phi"), args.get<G4double>("theta"));
+		analysisManager.writeScan(args.get<G4double>("phi"), args.get<G4double>("theta"),  args.get<G4double>("wavelength"));
+		hitManager.reset();
 	}
 }
 
 /**
  * @brief Add options for the user input arguments for the effective area module
  */
-void addModuleOptions(OMSim* pSimulation)
+void addModuleOptions(OMSim* p_simulation)
 {
-	po::options_description lSpecific("Effective area specific arguments");
+	po::options_description effectiveAreaOptions("Effective area specific arguments");
 
 	// Do not use G4String as type here...
-	lSpecific.add_options()
+	effectiveAreaOptions.add_options()
 	("world_radius,w", po::value<G4double>()->default_value(3.0), "radius of world sphere in m")
 	("radius,r", po::value<G4double>()->default_value(300.0), "plane wave radius in mm")
 	("distance,d", po::value<G4double>()->default_value(2000), "plane wave distance from origin, in mm")
@@ -67,25 +66,26 @@ void addModuleOptions(OMSim* pSimulation)
 	("angles_file,i", po::value<std::string>(), "The input angle pairs file to be scanned. The file should contain two columns, the first column with the theta (zenith) and the second with phi (azimuth) in degrees.")
 	("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
 
-	pSimulation->extendOptions(lSpecific);
+	p_simulation->extendOptions(effectiveAreaOptions);
 }
 
-int main(int pArgumentCount, char *pArgumentVector[])
+int main(int p_argCount, char *p_argumentVector[])
 {
 
-	OMSim lSimulation;
-	addModuleOptions(&lSimulation);
-	bool lContinue = lSimulation.handleArguments(pArgumentCount, pArgumentVector);
-	if (!lContinue)
+	OMSim simulation;
+	addModuleOptions(&simulation);
+	bool successful = simulation.handleArguments(p_argCount, p_argumentVector);
+	if (!successful)
 		return 0;
 
-	std::unique_ptr<OMSimEffectiveAreaDetector> lDetectorConstruction = std::make_unique<OMSimEffectiveAreaDetector>();
-	lSimulation.initialiseSimulation(lDetectorConstruction.get());
-	lDetectorConstruction.release();
+	std::unique_ptr<OMSimEffectiveAreaDetector> detectorConstruction = std::make_unique<OMSimEffectiveAreaDetector>();
+	simulation.initialiseSimulation(detectorConstruction.get());
+	detectorConstruction.release();
 
 	runEffectiveAreaSimulation();
 
 	if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
-		lSimulation.startVisualisation();
+		simulation.startVisualisation();
+
 	return 0;
 }

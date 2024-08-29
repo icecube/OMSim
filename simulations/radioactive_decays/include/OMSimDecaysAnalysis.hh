@@ -4,9 +4,7 @@
  * @ingroup radioactive
  */
 
-#ifndef OMSimDecaysAnalysis_h
-#define OMSimDecaysAnalysis_h 1
-
+#pragma once
 #include <G4ThreeVector.hh>
 #include <fstream>
 #include "G4AutoLock.hh"
@@ -18,9 +16,9 @@
 struct DecayStats
 {
     std::vector<G4long> eventId;               ///< ID of the event
-    std::vector<G4String> isotope_name;        ///< Isotope name and energy level
-    std::vector<G4double> decay_time;          ///< Time of the decay after (possibly) randomising inside simulation time window
-    std::vector<G4ThreeVector> decay_position; ///< Global position of the decay.
+    std::vector<G4String> isotopeName;        ///< Isotope name and energy level
+    std::vector<G4double> decayTime;          ///< Time of the decay after (possibly) randomising inside simulation time window
+    std::vector<G4ThreeVector> decayPosition; ///< Global position of the decay.
 };
 
 /**
@@ -42,7 +40,7 @@ public:
     void reset();
 
 private:
-    G4ThreadLocal static DecayStats *mThreadDecayStats;
+    G4ThreadLocal static DecayStats *m_threadDecayStats;
 
     static G4Mutex m_mutex;
 
@@ -52,5 +50,3 @@ private:
     OMSimDecaysAnalysis(const OMSimDecaysAnalysis &) = delete;
     OMSimDecaysAnalysis &operator=(const OMSimDecaysAnalysis &) = delete;
 };
-
-#endif

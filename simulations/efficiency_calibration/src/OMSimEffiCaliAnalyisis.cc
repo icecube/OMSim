@@ -26,7 +26,7 @@ void OMSimEffiCaliAnalyisis::writeHitPositionHistogram(double x, double y)
 	auto [lCountsWeighted, lEdgesWeighted] = Tools::histogram(lR, lRange, std::nullopt, lDetectionProbability);
 
 	std::fstream lDatafile;
-	lDatafile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
+	lDatafile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);
 
 	lDatafile << x << "\t" << y << "\t";
 	for (const auto &count : lCounts)
@@ -48,7 +48,7 @@ void OMSimEffiCaliAnalyisis::writeHits(double pWavelength)
     std::vector<double> lHits = OMSimHitManager::getInstance().countMergedHits();
 
     std::fstream lDataFile;
-    lDataFile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
+    lDataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);
 
     lDataFile << pWavelength << "\t";
     lDataFile << lHits.at(0) << "\t";

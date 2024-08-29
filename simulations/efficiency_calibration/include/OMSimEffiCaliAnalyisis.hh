@@ -16,7 +16,7 @@ public:
 
     void writeHits(double pWavelength);
     void writeHitPositionHistogram(double x, double y);
-    G4String mOutputFileName;
+    G4String m_outputFileName;
 };
 
 

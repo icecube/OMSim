@@ -11,7 +11,7 @@
 #include "G4SDManager.hh"
 
 OMSimDetectorConstruction::OMSimDetectorConstruction()
-    : m_worldSolid(0), m_worldLogical(0), mWorldPhysical(0)
+    : m_worldSolid(0), m_worldLogical(0), m_worldPhysical(0)
 {
     OMSimInputData::init();
     m_data = &OMSimInputData::getInstance();
@@ -35,7 +35,7 @@ G4VPhysicalVolume *OMSimDetectorConstruction::Construct()
     log_trace("Starting detector construction");
     constructWorld();
     constructDetector();
-    return mWorldPhysical;
+    return m_worldPhysical;
 }
 
 void OMSimDetectorConstruction::ConstructSDandField()

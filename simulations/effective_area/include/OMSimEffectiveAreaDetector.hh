@@ -4,8 +4,7 @@
  * @ingroup EffectiveArea
  */
 
-#ifndef OMSimEffectiveAreaDetector_h
-#define OMSimEffectiveAreaDetector_h 1
+#pragma once
 
 #include "OMSimDetectorConstruction.hh"
 
@@ -24,6 +23,3 @@ private:
     void constructWorld();
     void constructDetector();
 };
-
-#endif
-//

@@ -7,8 +7,7 @@
  * @ingroup sngroup
  */
 
-#ifndef OMSimSNTools_h
-#define OMSimSNTools_h 1
+#pragma once
 
 #include <globals.hh>
 #include <vector>
@@ -38,10 +37,10 @@ class DistributionSampler
 		G4double m_YUnit;
 		std::vector<G4double> m_X;
 		std::vector<G4double> m_Y;
-		std::vector<G4double> mSlopes;
-		std::vector<G4double> mCDF;
-		G4String mDistName;
-		TGraph *mInterpolator = nullptr;
+		std::vector<G4double> m_slopes;
+		std::vector<G4double> m_CDF;
+		G4String m_distName;
+		TGraph *m_interpolator = nullptr;
 };
 
 /**
@@ -67,9 +66,8 @@ public:
 	G4double calculateWeight(G4double sigma, G4double NTargets);
 	G4double numberOfTargets(G4int targetPerMolecule);
 private:     
-	std::vector <G4double> mdompos;
-	G4double Rmin;
+	std::vector <G4double> m_DOMpos;
+	G4double m_rMin;
 	bool checkVolumeForOMs(G4ThreeVector position);
 };
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef OMSimEventAction_h
-#define OMSimEventAction_h 1
+#pragma once
 
 #include "G4UserEventAction.hh"
 #include <string>
@@ -21,25 +20,3 @@ class OMSimEventAction : public G4UserEventAction
 };
 
 
-class EventInfoManager {
-public:
-    static EventInfoManager& getInstance() {
-        static EventInfoManager instance;
-        return instance;
-    }
-
-    void setCurrentEventID(G4int id) {
-        currentEventID = id;
-    }
-
-    G4int getCurrentEventID() const {
-        return currentEventID;
-    }
-
-private:
-    EventInfoManager() : currentEventID(-1) {}
-
-    G4int currentEventID;
-};
-
-#endif

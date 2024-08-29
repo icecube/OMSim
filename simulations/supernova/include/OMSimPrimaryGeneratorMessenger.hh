@@ -1,5 +1,4 @@
-#ifndef OMSimPrimaryGeneratorMessenger_h
-#define OMSimPrimaryGeneratorMessenger_h 1
+#pragma once
 
 #include "G4UImessenger.hh"
 #include "globals.hh"
@@ -18,12 +17,10 @@ class OMSimPrimaryGeneratorMessenger: public G4UImessenger
     virtual void SetNewValue(G4UIcommand*, G4String);
     
   private:
-    OMSimPrimaryGeneratorAction* Action;
+    OMSimPrimaryGeneratorAction* m_action;
     
-    G4UIdirectory*        fDir;       
-    G4UIcmdWithAnInteger* fSelectActionCmd;
+    G4UIdirectory*        m_directory;       
+    G4UIcmdWithAnInteger* m_selectedActionCmd;
 };
 
-
-#endif
 

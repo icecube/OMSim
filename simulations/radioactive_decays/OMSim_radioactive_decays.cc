@@ -18,38 +18,38 @@ namespace po = boost::program_options;
 
 /**
  * @brief Runs the decay simulation for the specified optical module.
- * @param pDetector Pointer to the OMSimRadDecaysDetector object representing the detector 
+ * @param p_detector Pointer to the OMSimRadDecaysDetector object representing the detector 
  *                  for which the decay simulation is to be performed.
  * @see OMSimDecaysGPS, OMSimDecaysAnalysis
  */
-void runRadioactiveDecays(OMSimRadDecaysDetector *pDetector)
+void runRadioactiveDecays(OMSimRadDecaysDetector *p_detector)
 {
-	OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
-	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+	OMSimDecaysAnalysis &analysisManager = OMSimDecaysAnalysis::getInstance();
+	OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
 
-	OMSimDecaysGPS &lDecays = OMSimDecaysGPS::getInstance();
-	lDecays.setOpticalModule(pDetector->mOpticalModule);
-	lDecays.setProductionRadius(200*mm);
-	const bool lSimulateVesselDecays = !lArgs.get<bool>("no_PV_decays");
-	const bool lSimulatePMTDecays = !lArgs.get<bool>("no_PMT_decays");
+	OMSimDecaysGPS &decaysGPS = OMSimDecaysGPS::getInstance();
+	decaysGPS.setOpticalModule(p_detector->m_opticalModule);
+	decaysGPS.setProductionRadius(200*mm);
+	const bool simulateVesselDecays = !args.get<bool>("no_PV_decays");
+	const bool simulatePMTDecays = !args.get<bool>("no_PMT_decays");
 
-	for (int i = 0; i < (int)lArgs.get<G4int>("numevents"); i++)
+	for (int i = 0; i < (int)args.get<G4int>("numevents"); i++)
 	{
-		if (lSimulateVesselDecays)
+		if (simulateVesselDecays)
 		{
-			lDecays.simulateDecaysInPressureVessel(lArgs.get<G4double>("time_window"));
+			decaysGPS.simulateDecaysInPressureVessel(args.get<G4double>("time_window"));
 		}
 
-		if (lSimulatePMTDecays)
+		if (simulatePMTDecays)
 		{
-			lDecays.simulateDecaysInPMTs(lArgs.get<G4double>("time_window"));
+			decaysGPS.simulateDecaysInPMTs(args.get<G4double>("time_window"));
 		}
 
-		if (lArgs.get<bool>("multiplicity_study"))
+		if (args.get<bool>("multiplicity_study"))
 		{
-			G4double lCoincidenceTimeWindow = lArgs.get<double>("multiplicity_time_window")*ns;
-			lAnalysisManager.writeMultiplicity(lCoincidenceTimeWindow);
-			lAnalysisManager.reset();
+			G4double coincidenceTimeWindow = args.get<double>("multiplicity_time_window")*ns;
+			analysisManager.writeMultiplicity(coincidenceTimeWindow);
+			analysisManager.reset();
 		}
 	}
 }
@@ -58,12 +58,12 @@ void runRadioactiveDecays(OMSimRadDecaysDetector *pDetector)
 /**
  * @brief Add options for the user input arguments for the radioactive decays module
  */
-void addModuleOptions(OMSim* pSimulation)
+void addModuleOptions(OMSim* p_simulation)
 {
-	po::options_description lSpecific("User arguments for radioactive decays simulation");
+	po::options_description moduleOptions("User arguments for radioactive decays simulation");
 
 	// Do not use G4String as type here...
-	lSpecific.add_options()
+	moduleOptions.add_options()
 	("world_radius,w", po::value<G4double>()->default_value(3.0), "radius of world sphere in m")
 	("radius,r", po::value<G4double>()->default_value(300.0), "plane wave radius in mm")
 	("no_PV_decays", po::bool_switch(), "skips the simulation of decays in pressure vessel")
@@ -78,23 +78,23 @@ void addModuleOptions(OMSim* pSimulation)
 	("yield_electrons", po::value<G4double>(), "scintillation yield for electrons. This affects all materials with scintillation properties!")
 	("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
 
-	pSimulation->extendOptions(lSpecific);
+	p_simulation->extendOptions(moduleOptions);
 }
 
-int main(int pArgumentCount, char *pArgumentVector[])
+int main(int p_argumentCount, char *p_argumentVector[])
 {
 
-	OMSim lSimulation;
-	addModuleOptions(&lSimulation);
-	bool lContinue = lSimulation.handleArguments(pArgumentCount, pArgumentVector);
-	if (!lContinue) return 0;
+	OMSim simulation;
+	addModuleOptions(&simulation);
+	bool successful = simulation.handleArguments(p_argumentCount, p_argumentVector);
+	if (!successful) return 0;
 
-	OMSimRadDecaysDetector *lDetectorConstruction = new OMSimRadDecaysDetector();
-	lSimulation.initialiseSimulation(lDetectorConstruction);
+	OMSimRadDecaysDetector *detectorConstruction = new OMSimRadDecaysDetector();
+	simulation.initialiseSimulation(detectorConstruction);
 
-	runRadioactiveDecays(lDetectorConstruction);
+	runRadioactiveDecays(detectorConstruction);
 	
 	if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
-		lSimulation.startVisualisation();
+		simulation.startVisualisation();
 	return 0;
 }

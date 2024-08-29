@@ -3,8 +3,7 @@
  * @brief Defines a simple OMSimPrimaryGeneratorAction class for the radioactive decays simulation using GPS.
  * @ingroup radioactive
  */
-#ifndef OMSimPrimaryGeneratorAction_h
-#define OMSimPrimaryGeneratorAction_h 1
+#pragma once
  
 #include <G4VUserPrimaryGeneratorAction.hh>
  
@@ -26,7 +25,5 @@ public:
 	void GeneratePrimaries(G4Event* anEvent);
 
 private:
-	G4GeneralParticleSource* mParticleSource;
+	G4GeneralParticleSource* m_particleSource;
 };
-
-#endif

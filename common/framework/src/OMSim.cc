@@ -125,7 +125,6 @@ int OMSim::determineNumberOfThreads()
 void OMSim::initialiseSimulation(OMSimDetectorConstruction* p_detectorConstruction)
 {
     OMSimHitManager::init();
-    configureLogger();
     
     OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
     Tools::ensureDirectoryExists(args.get<std::string>("output_file"));
@@ -165,7 +164,7 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* p_detectorConstructi
     OMSimUIinterface &uiInterface = OMSimUIinterface::getInstance();
     uiInterface.setUI(G4UImanager::GetUIpointer());
 
-    m_navigator.get()->SetWorldVolume(p_detectorConstruction->mWorldPhysical);
+    m_navigator.get()->SetWorldVolume(p_detectorConstruction->m_worldPhysical);
     m_navigator.get()->LocateGlobalPointAndSetup(G4ThreeVector(0., 0., 0.));
 
     m_history = std::unique_ptr<G4TouchableHistory>(m_navigator->CreateTouchableHistory());
@@ -233,6 +232,9 @@ bool OMSim::handleArguments(int p_argumentCount, char *p_argumentVector[])
 
 	//If no help needed continue and set arguments to arg table
 	setUserArgumentsToArgTable(variableMap);
+
+    //now we know the log level, lets configure the logger as intended
+    configureLogger();
 	return true;
 }
 
@@ -266,7 +268,7 @@ OMSim::~OMSim()
     OMSimUIinterface::shutdown();
     
     log_trace("OMSim destructor finished");
-    std::chrono::high_resolution_clock::time_point lFinishtime = std::chrono::high_resolution_clock::now();
-    const std::chrono::duration<double> lDiff = lFinishtime - m_startingTime;
-    log_info("Computation time: {} {}", lDiff.count(), " seconds.");
+    std::chrono::high_resolution_clock::time_point finishTime = std::chrono::high_resolution_clock::now();
+    const std::chrono::duration<double> deltaT = finishTime - m_startingTime;
+    log_info("Computation time: {} {}", deltaT.count(), " seconds.");
 }

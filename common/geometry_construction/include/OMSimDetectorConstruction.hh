@@ -24,7 +24,7 @@ public:
     void ConstructSDandField() override;
     void registerSensitiveDetector(G4LogicalVolume* logVol, G4VSensitiveDetector* aSD);
 
-    G4VPhysicalVolume *mWorldPhysical;
+    G4VPhysicalVolume *m_worldPhysical;
 
 protected:
     virtual void constructWorld() = 0;

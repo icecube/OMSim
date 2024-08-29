@@ -13,13 +13,13 @@
  * @brief Retrieves file names for neutrino and antineutrino fluxes based on a specified supernova model.
  *
  * This function provides the corresponding file names for neutrino and antineutrino fluxes
- * depending on the supernova model identified by the input value.
+ * depending on the supernova model identified by the input p_value.
  * Files are located in "supernova/models"
  *
- * @param value The integer identifier representing a specific supernova model.
+ * @param p_value The integer identifier representing a specific supernova model.
  * @return A pair containing the neutrino and antineutrino flux file names.
  */
-std::pair<std::string, std::string> OMSimSNTools::getFileNames(int value)
+std::pair<std::string, std::string> OMSimSNTools::getFileNames(int p_value)
 {
     const std::string basePath = "../supernova/models/";
 
@@ -31,7 +31,7 @@ std::pair<std::string, std::string> OMSimSNTools::getFileNames(int value)
         {4, {basePath + "Flux_Nu_tailSN.cfg", basePath + "Flux_Nubar_tailSN.cfg"}}           // long tailed type II
     };
 
-    auto it = fileMap.find(value);
+    auto it = fileMap.find(p_value);
     if (it != fileMap.end())
     {
       log_debug("Using SN model files {} {}" , it->second.first, it->second.second);
@@ -40,7 +40,7 @@ std::pair<std::string, std::string> OMSimSNTools::getFileNames(int value)
     else
     {
         log_error("ERROR!! Choose a valid SN model");
-        throw std::invalid_argument("Invalid value for SN model");
+        throw std::invalid_argument("Invalid p_value for SN model");
     }
   }
 /**
@@ -49,20 +49,20 @@ std::pair<std::string, std::string> OMSimSNTools::getFileNames(int value)
  * This method determines whether the provided position lies in the generation medium (ice) It evaluates the position
  * in the context of the global environment and examines the history depth to make this determination.
  *
- * @param pPosition The 3D position vector to be checked against module boundaries.
+ * @param p_position The 3D position vector to be checked against module boundaries.
  * @warning This relies on the generation module being a single volume (generally, the ice) and the mother volume of everything else
  * If the ice is modified to be composed of different subvolumes (like, for example, if the bubble column is added)
  * this method would need to be modify!
  *
  * @return True if the position is inside a module; otherwise, false.
  */
-bool OMSimSNTools::checkVolumeForOMs(G4ThreeVector pPosition)
+bool OMSimSNTools::checkVolumeForOMs(G4ThreeVector p_position)
 {
-  G4Navigator* lNavigator = G4TransportationManager::GetTransportationManager()->GetNavigatorForTracking();
-  lNavigator->LocateGlobalPointAndSetup(pPosition);
-  G4TouchableHistoryHandle lTouchable = lNavigator->CreateTouchableHistoryHandle();
-  G4int lHistoryDepth = lTouchable->GetHistoryDepth();
-  return lHistoryDepth > 0;
+  G4Navigator* navigator = G4TransportationManager::GetTransportationManager()->GetNavigatorForTracking();
+  navigator->LocateGlobalPointAndSetup(p_position);
+  G4TouchableHistoryHandle touchable = navigator->CreateTouchableHistoryHandle();
+  G4int historyDepth = touchable->GetHistoryDepth();
+  return historyDepth > 0;
 }
 
 /**
@@ -76,78 +76,78 @@ bool OMSimSNTools::checkVolumeForOMs(G4ThreeVector pPosition)
 G4ThreeVector OMSimSNTools::randomPosition()
 {
   // Assume that the world is a cylinder
-  double lHeight = OMSimCommandArgsTable::getInstance().get<G4double>("wheight") * m;
-  double lRadius = OMSimCommandArgsTable::getInstance().get<G4double>("wradius") * m;
+  double height = OMSimCommandArgsTable::getInstance().get<G4double>("wheight") * m;
+  double radius = OMSimCommandArgsTable::getInstance().get<G4double>("wradius") * m;
 
-  // Maximum length of generation cylinder "lMaxR"
-  G4double lMaxR = lRadius * sqrt(3); // Using sqrt() here
+  // Maximum length of generation cylinder "maxR"
+  G4double maxR = radius * sqrt(3); // Using sqrt() here
 
-  G4double lPos_x, lPos_y, lPos_z;
-  G4ThreeVector lPosition;
-  G4double lDistanceToCentre;
-  G4double lVerticalDistance;
-  bool lPositionInOM = true;
+  G4double xPos, yPos, zPos;
+  G4ThreeVector position;
+  G4double distanceToCentre;
+  G4double verticalDistance;
+  bool positionInOM = true;
 
-  while (lPositionInOM || lDistanceToCentre >= lMaxR || lVerticalDistance >= lRadius)
+  while (positionInOM || distanceToCentre >= maxR || verticalDistance >= radius)
   {
     // Condense random sign generation
-    G4double lSign_x = (G4UniformRand() < 0.5) ? -1 : 1;
-    G4double lSign_y = (G4UniformRand() < 0.5) ? -1 : 1;
-    G4double lSign_z = (G4UniformRand() < 0.5) ? -1 : 1;
+    G4double xSign = (G4UniformRand() < 0.5) ? -1 : 1;
+    G4double ySign = (G4UniformRand() < 0.5) ? -1 : 1;
+    G4double zSign = (G4UniformRand() < 0.5) ? -1 : 1;
 
-    lPos_z = lSign_z * (G4UniformRand() * lHeight);
-    lPos_x = lSign_x * (G4UniformRand() * lRadius);
-    lPos_y = lSign_y * (G4UniformRand() * lRadius);
+    zPos = zSign * (G4UniformRand() * height);
+    xPos = xSign * (G4UniformRand() * radius);
+    yPos = ySign * (G4UniformRand() * radius);
 
-    lPosition.set(lPos_x, lPos_y, lPos_z);
+    position.set(xPos, yPos, zPos);
 
-    lVerticalDistance = sqrt(lPos_x * lPos_x + lPos_y * lPos_y);
-    lDistanceToCentre = sqrt(lPos_x * lPos_x + lPos_y * lPos_y + lPos_z * lPos_z);
+    verticalDistance = sqrt(xPos * xPos + yPos * yPos);
+    distanceToCentre = sqrt(xPos * xPos + yPos * yPos + zPos * zPos);
 
-    lPositionInOM = checkVolumeForOMs(lPosition);
+    positionInOM = checkVolumeForOMs(position);
   }
 
-  return lPosition;
+  return position;
 }
 
 /**
  * @brief Randomly samle the energy depending on the properties of the energy spectrum.
  *
  * Build the energy distribution Fe(E) given the input parameters, and uses the inverse CDF
- * algorithm to sample a value for the neutrino energy from Fe(E).
+ * algorithm to sample a p_value for the neutrino energy from Fe(E).
  *
- * @param pMeanEnergy The primary mean energy value from the supernova model.
- * @param pMeanESquared The primary squared mean energy value from the supernova model.
- * @param pAlpha Pinching parameter of the energy spectrum.
- * @return The sampled energy value based on the given model.
+ * @param p_meanEnergy The primary mean energy p_value from the supernova model.
+ * @param p_meanESquared The primary squared mean energy p_value from the supernova model.
+ * @param p_alpha Pinching parameter of the energy spectrum.
+ * @return The sampled energy p_value based on the given model.
  */
-G4double OMSimSNTools::sampleEnergy(G4double pMeanEnergy, G4double pMeanESquared, G4double &pAlpha)
+G4double OMSimSNTools::sampleEnergy(G4double p_meanEnergy, G4double p_meanESquared, G4double &p_alpha)
 {
-    G4int lNrPoints = 500;
+    G4int numberPoints = 500;
     
     if (OMSimCommandArgsTable::getInstance().get<bool>("SNfixEnergy") == false)
     {
-        pAlpha = getAlpha(pMeanEnergy, pMeanESquared);
+        p_alpha = getAlpha(p_meanEnergy, p_meanESquared);
     }
 
-    const G4double lMin = 0.;
-    const G4double lMax = 80.;
-    const G4double delta = (lMax - lMin) / G4double(lNrPoints - 1);
+    const G4double min = 0.;
+    const G4double max = 80.;
+    const G4double delta = (max - min) / G4double(numberPoints - 1);
 
-    std::vector<G4double> lX(lNrPoints);
-    std::vector<G4double> lY(lNrPoints);
+    std::vector<G4double> x(numberPoints);
+    std::vector<G4double> y(numberPoints);
 
-    for (G4int i = 0; i < lNrPoints; i++)
+    for (G4int i = 0; i < numberPoints; i++)
     {
-        lX[i] = (lMin + i * delta);                                             // Energy
-        lY[i] = pow(lX[i], pAlpha) * exp(-(pAlpha + 1.) * lX[i] / pMeanEnergy); // F(e), energy dist. function
+        x[i] = (min + i * delta);                                             // Energy
+        y[i] = pow(x[i], p_alpha) * exp(-(p_alpha + 1.) * x[i] / p_meanEnergy); // F(e), energy dist. function
     }
     
-    DistributionSampler lEnergyDistributionSampler;
-    lEnergyDistributionSampler.setData(lX, lY, "EnergyDistributionSampler");
-    lEnergyDistributionSampler.setUnits(1 * MeV, 1.);
+    DistributionSampler energyDistributionSampler;
+    energyDistributionSampler.setData(x, y, "EnergyDistributionSampler");
+    energyDistributionSampler.setUnits(1 * MeV, 1.);
 
-    return lEnergyDistributionSampler.sampleFromDistribution();
+    return energyDistributionSampler.sampleFromDistribution();
 }
 /**
  * @brief Calculates pinching parameter of energy spectrum
@@ -157,13 +157,13 @@ G4double OMSimSNTools::sampleEnergy(G4double pMeanEnergy, G4double pMeanESquared
  * Irene Tamborra et al., "High-resolution supernova neutrino spectra represented by a simple fit," PHYSICAL REVIEW D 86, 125031 (2012).
  * https://arxiv.org/abs/1211.3920
  *
- * @param pMeanEnergy The primary mean energy value from the supernova model.
- * @param pMeanESquared The primary squared mean energy value from the supernova model.
+ * @param p_meanEnergy The primary mean energy p_value from the supernova model.
+ * @param p_meanESquared The primary squared mean energy p_value from the supernova model.
  * @return Pinching parameter of the energy spectrum.
  */
-G4double OMSimSNTools::getAlpha(G4double pMeanEnergy, G4double pMeanESquared)
+G4double OMSimSNTools::getAlpha(G4double p_meanEnergy, G4double p_meanESquared)
 {
-  return (2 * pow(pMeanEnergy, 2) - pMeanESquared) / (pMeanESquared - pow(pMeanEnergy, 2));
+  return (2 * pow(p_meanEnergy, 2) - p_meanESquared) / (p_meanESquared - pow(p_meanEnergy, 2));
 }
 
 
@@ -173,17 +173,17 @@ G4double OMSimSNTools::getAlpha(G4double pMeanEnergy, G4double pMeanESquared)
  * This function determines the number of target particles, given the number of targets per molecule,
  * assuming the ice is pure H2O. The density and molar mass values are based on ice at -50°C.
  *
- * @param pNrTargetPerMolecule Number of target particles per H2O molecule.
+ * @param p_numberTargetPerMolecule Number of target particles per H2O molecule.
  * @return Total number of target particles per cubic meter in ice.
  */
-G4double OMSimSNTools::numberOfTargets(G4int pNrTargetPerMolecule)
+G4double OMSimSNTools::numberOfTargets(G4int p_numberTargetPerMolecule)
 {
-  G4double lDensity = 921.6 * kg / m3;    // Density of ice at -50 celsius degrees
-  G4double lMolarMass = 18.01528e-3 * kg; // kg per mol
-  G4double lAvogadroNumber = 6.022140857e23;
-  G4double lNrMolecules = lDensity / lMolarMass * lAvogadroNumber; // molecules/m^3 of ice
-  G4double lNrTargets = lNrMolecules * pNrTargetPerMolecule;
-  return lNrTargets;
+  G4double density = 921.6 * kg / m3;    // Density of ice at -50 celsius degrees
+  G4double molarMass = 18.01528e-3 * kg; // kg per mol
+  G4double avogadroNumber = 6.022140857e23;
+  G4double numberMolecules = density / molarMass * avogadroNumber; // molecules/m^3 of ice
+  G4double numberTargets = numberMolecules * p_numberTargetPerMolecule;
+  return numberTargets;
 }
 
 
@@ -192,22 +192,22 @@ G4double OMSimSNTools::numberOfTargets(G4int pNrTargetPerMolecule)
  * @brief Calculates the interaction weight based on the cross section and number of targets.
  *
  * This method computes the interaction weight of neutrinos in the ice using the formula:
- * `weight = pSigma * Nt * r`,
+ * `weight = p_sigma * Nt * r`,
  * where:
- * - `pSigma` is the cross section,
+ * - `p_sigma` is the cross section,
  * - `Nt` is the number of targets in the ice (considered as electrons),
  * - `r` is the distance the neutrino travels in the ice.
  *
- * @param pSigma The cross section value.
- * @param pNrTargets The number of targets present in the ice for the corresponding interaction.
+ * @param p_sigma The cross section p_value.
+ * @param p_numberTargs The number of targets present in the ice for the corresponding interaction.
  * @warning It's crucial to note that this formulation is specifically valid for SN neutrinos
  * approaching from the Z axis in a world defined as a cylinder. For any other geometry or conditions,
  * a different approach or adjustments might be required.
  * @return The computed interaction weight for the neutrinos based on the provided parameters.
  */
-G4double OMSimSNTools::calculateWeight(G4double pSigma, G4double pNrTargets)
+G4double OMSimSNTools::calculateWeight(G4double p_sigma, G4double p_numberTargs)
 {
-  return pSigma * pNrTargets * (2 * OMSimCommandArgsTable::getInstance().get<G4double>("wheight") * m);
+  return p_sigma * p_numberTargs * (2 * OMSimCommandArgsTable::getInstance().get<G4double>("wheight") * m);
 }
 
 
@@ -219,39 +219,39 @@ G4double OMSimSNTools::calculateWeight(G4double pSigma, G4double pNrTargets)
  * to derive samples from a specified distribution. It's useful for generating random
  * values in accordance with the underlying distribution shape.
  *
- * @return A randomly selected x-value sampled in line with the provided distribution.
+ * @return A randomly selected x-p_value sampled in line with the provided distribution.
  */
 G4double DistributionSampler::sampleFromDistribution()
 {
   // Total number of points
-  G4int pNrPoints = static_cast<G4int>(m_X.size());
+  G4int p_numberPoints = static_cast<G4int>(m_X.size());
 
-  // Randomly choose a y-value from the CDF's range
-  G4double lYrndm = G4UniformRand() * mCDF[pNrPoints - 1];
-  // Find the bin corresponding to the y-value
-  G4int j = pNrPoints - 2;
-  while (mCDF[j] > lYrndm && j > 0)
+  // Randomly choose a y-p_value from the CDF's range
+  G4double yRandom = G4UniformRand() * m_CDF[p_numberPoints - 1];
+  // Find the bin corresponding to the y-p_value
+  G4int j = p_numberPoints - 2;
+  while (m_CDF[j] > yRandom && j > 0)
     j--;
 
-  // Convert random y-value to a random x-value
+  // Convert random y-p_value to a random x-p_value
   // The conversion is based on the fact that the CDF is represented as a second-order polynomial
-  G4double lXrndm = m_X[j];
-  G4double lSlope = mSlopes[j];
+  G4double xRandom = m_X[j];
+  G4double slope = m_slopes[j];
 
-  if (lSlope != 0.)
+  if (slope != 0.)
   {
-    G4double b = m_Y[j] / lSlope;
-    G4double c = 2 * (lYrndm - mCDF[j]) / lSlope;
-    G4double lDelta = b * b + c;
-    G4int lSign = (lSlope < 0.) ? -1 : 1;
-    lXrndm += lSign * std::sqrt(lDelta) - b;
+    G4double b = m_Y[j] / slope;
+    G4double c = 2 * (yRandom - m_CDF[j]) / slope;
+    G4double delta = b * b + c;
+    G4int sign = (slope < 0.) ? -1 : 1;
+    xRandom += sign * std::sqrt(delta) - b;
   }
   else if (m_Y[j] > 0.)
   {
-    lXrndm += (lYrndm - mCDF[j]) / m_Y[j];
+    xRandom += (yRandom - m_CDF[j]) / m_Y[j];
   }
 
-  return lXrndm*m_XUnit;
+  return xRandom*m_XUnit;
 }
 
 /**
@@ -259,15 +259,15 @@ G4double DistributionSampler::sampleFromDistribution()
  * 
  * This method sets the x and y data points for the distribution and assigns a name to it for the TGraph (if used).
  * 
- * @param pX Vector containing x-values of the data.
- * @param pY Vector containing y-values of the data.
- * @param pName Name for the distribution, used for debugging and TGraph name assignment.
+ * @param p_x Vector containing x-values of the data.
+ * @param p_y Vector containing y-values of the data.
+ * @param p_name Name for the distribution, used for debugging and TGraph name assignment.
  */
-void DistributionSampler::setData(const std::vector<G4double> &pX, const std::vector<G4double> &pY, G4String pName)
+void DistributionSampler::setData(const std::vector<G4double> &p_x, const std::vector<G4double> &p_y, G4String p_name)
 {
-  m_X = pX;
-  m_Y = pY;
-  mDistName = pName; // TGraph needs unique name, also good for debugging
+  m_X = p_x;
+  m_Y = p_y;
+  m_distName = p_name; // TGraph needs unique name, also good for debugging
   calculateSlopesAndCDF();
 }
 
@@ -280,8 +280,8 @@ void DistributionSampler::setData(const std::vector<G4double> &pX, const std::ve
  */
 void DistributionSampler::makeInterpolator()
 {
-  mInterpolator = new TGraph(static_cast<int>(m_X.size()), m_X.data(), m_Y.data());
-  mInterpolator->SetName(mDistName);
+  m_interpolator = new TGraph(static_cast<int>(m_X.size()), m_X.data(), m_Y.data());
+  m_interpolator->SetName(m_distName);
 }
 
 
@@ -293,58 +293,58 @@ void DistributionSampler::makeInterpolator()
  */
 void DistributionSampler::calculateSlopesAndCDF()
 {
-  G4int lNrPoints = static_cast<G4int>(m_X.size());
-  mSlopes.resize(lNrPoints, 0.0); // Initialize with zeros
-  mCDF.resize(lNrPoints, 0.0);    // Initialize with zeros
-  for (G4int j = 0; j < lNrPoints; j++)
+  G4int numberPoints = static_cast<G4int>(m_X.size());
+  m_slopes.resize(numberPoints, 0.0); // Initialize with zeros
+  m_CDF.resize(numberPoints, 0.0);    // Initialize with zeros
+  for (G4int j = 0; j < numberPoints; j++)
   {
     // Compute slopes for all except the last point
-    if (j < lNrPoints - 1)
+    if (j < numberPoints - 1)
     {
-      mSlopes[j] = (m_Y[j + 1] - m_Y[j]) / (m_X[j + 1] - m_X[j]);
+      m_slopes[j] = (m_Y[j + 1] - m_Y[j]) / (m_X[j + 1] - m_X[j]);
     }
 
     // Compute cumulative function
     if (j > 0)
     {
-      mCDF[j] = mCDF[j - 1] + 0.5 * (m_Y[j] + m_Y[j - 1]) * (m_X[j] - m_X[j - 1]);
+      m_CDF[j] = m_CDF[j - 1] + 0.5 * (m_Y[j] + m_Y[j - 1]) * (m_X[j] - m_X[j - 1]);
     }
   }
 }
 
 /**
  * @brief Interpolates distribution using TGraph (ROOT)
- * @param x-value
- * @return The interpolated y-value for the given x.
+ * @param x-p_value
+ * @return The interpolated y-p_value for the given x.
  */
-G4double DistributionSampler::interpolate(G4double pX)
+G4double DistributionSampler::interpolate(G4double p_x)
 {
-  if (!mInterpolator)
+  if (!m_interpolator)
   {
-    log_error("Error: mInterpolator not initialized!, make sure running makeInterpolator() before interpolate()");
-    throw("Error: mInterpolator not initialized!");
+    log_error("Error: m_interpolator not initialized!, make sure running makeInterpolator() before interpolate()");
+    throw("Error: m_interpolator not initialized!");
     return 0.0;
   }
-  return mInterpolator->Eval(pX/m_XUnit) * m_YUnit;
+  return m_interpolator->Eval(p_x/m_XUnit) * m_YUnit;
 }
 
 
 /**
  * @brief Sets units for the x and y data points of the distribution.
- * @param pX Unit for x-values.
- * @param pY Unit for y-values.
+ * @param p_x Unit for x-values.
+ * @param p_y Unit for y-values.
  */
-void DistributionSampler::setUnits(G4double pX, G4double pY)
+void DistributionSampler::setUnits(G4double p_x, G4double p_y)
 {
-  m_YUnit = pY;
-  m_XUnit = pX;
+  m_YUnit = p_y;
+  m_XUnit = p_x;
 }
 
 DistributionSampler::~DistributionSampler()
 {
-  if (mInterpolator)
+  if (m_interpolator)
   {
-    delete mInterpolator;
-    mInterpolator = nullptr;
+    delete m_interpolator;
+    m_interpolator = nullptr;
   }
 };

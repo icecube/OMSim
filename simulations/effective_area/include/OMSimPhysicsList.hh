@@ -1,6 +1,4 @@
-#ifndef OMSimPhysicsList_h
-#define OMSimPhysicsList_h 1
-
+#pragma once
 #include <G4VUserPhysicsList.hh>
 
 class G4VPhysicsConstructor;
@@ -29,4 +27,3 @@ class OMSimPhysicsList: public G4VUserPhysicsList
 	private:
 
 };
-#endif

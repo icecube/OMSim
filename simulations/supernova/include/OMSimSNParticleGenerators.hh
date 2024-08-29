@@ -4,9 +4,7 @@
  * @ingroup sngroup
  */
 
-
-#ifndef OMSimSNParticleGenerators_h
-#define OMSimSNParticleGenerators_h 1
+#pragma once
 
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "OMSimPrimaryGeneratorMessenger.hh"
@@ -35,23 +33,23 @@ public:
 	void GeneratePrimaries(G4Event* anEvent);
 
 protected:    
-    G4ParticleGun* mParticleGun;
-    OMSimSNTools mSNToolBox;
+    G4ParticleGun* m_particleGun;
+    OMSimSNTools m_SNToolBox;
 
     void initialiseDistribution(int column, int targets);
     G4double calculateNeutrinoEnergy();
     G4ThreeVector calculateMomentumDirection(G4double pNeutrinoEnergy);
     G4double calculateWeight(G4double pNuEnergy);
 
-    const G4double mGf = 1.166e-5 * 1e-6 / (MeV * MeV);
-    const G4double mConsg = 1.26;
-    const G4double mDeltaMass = neutron_mass_c2 - proton_mass_c2;
-    const G4double mMassSquaredDifference = (pow(mDeltaMass, 2) - pow(electron_mass_c2, 2)) / 2.;
+    const G4double m_Gf = 1.166e-5 * 1e-6 / (MeV * MeV);
+    const G4double m_Consg = 1.26;
+    const G4double m_deltaMass = neutron_mass_c2 - proton_mass_c2;
+    const G4double m_massSquaredDifference = (pow(m_deltaMass, 2) - pow(electron_mass_c2, 2)) / 2.;
 
-    G4double mNrTargets;      
-    DistributionSampler mTimeDistribution;
-	DistributionSampler mMeanEnergyDistribution;
-    DistributionSampler mMeanEnergySquaredDistribution;
+    G4double m_NrTargets;      
+    DistributionSampler m_timeDistribution;
+	DistributionSampler m_meanEnergyDistribution;
+    DistributionSampler m_meanEnergySquaredDistribution;
 
     virtual void initialiseParticle() = 0;
 	virtual DistributionSampler angularDistribution(G4double Enu) = 0;

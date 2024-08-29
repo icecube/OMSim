@@ -17,24 +17,24 @@ namespace po = boost::program_options;
 
 void runSupernovaNeutrinoSimulation()
 {
-	OMSimCommandArgsTable &lArgs = OMSimCommandArgsTable::getInstance();
+	OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
 
 	// TODO: Check whether this is right, since runmanager and primarygenerators are being
 	// called also in OMSim.cc
-	OMSimUIinterface &lUIinterface = OMSimUIinterface::getInstance();
-	lUIinterface.applyCommand("/selectGun", lArgs.getInstance().get<G4int>("SNgun"));
-	lUIinterface.runBeamOn();
+	OMSimUIinterface &ui = OMSimUIinterface::getInstance();
+	ui.applyCommand("/selectGun", args.getInstance().get<G4int>("SNgun"));
+	ui.runBeamOn();
 }
 
 /**
  * @brief Add options for the user input arguments for the SN module
  */
-void addModuleOptions(OMSim* pSimulation)
+void addModuleOptions(OMSim* p_simulation)
 {
-	po::options_description lSpecific("Effective area specific arguments");
+	po::options_description extraOptions("Effective area specific arguments");
 
 	// Do not use G4String as type here...
-	lSpecific.add_options()
+	extraOptions.add_options()
 	("wheight,wh", po::value<G4double>()->default_value(20), "Height of cylindrical world volume, in m")
 	("wradius,wr", po::value<G4double>()->default_value(20), "Radius of cylindrical world volume, in m")
 	("SNtype", po::value<G4int>()->default_value(0), "0=27 solar mass type II (ls220), 1=9.6 solar mass type II (ls220). Models 2,3,4 correspond to old tests with other models.")
@@ -44,23 +44,23 @@ void addModuleOptions(OMSim* pSimulation)
 	("SNalpha", po::value<G4double>()->default_value(2.5), "If --SNfixEnergy, pinching (alpha) parameter of nu/nubar energy spectrum");
 
 
-	pSimulation->extendOptions(lSpecific);
+	p_simulation->extendOptions(extraOptions);
 }
 
-int main(int pArgumentCount, char *pArgumentVector[])
+int main(int p_argumentCount, char *p_argumentVector[])
 {
 
-	OMSim lSimulation;
-	addModuleOptions(&lSimulation);
-	bool lContinue = lSimulation.handleArguments(pArgumentCount, pArgumentVector);
-	if (!lContinue)
+	OMSim simulation;
+	addModuleOptions(&simulation);
+	bool successful = simulation.handleArguments(p_argumentCount, p_argumentVector);
+	if (!successful)
 		return 0;
 
-	OMSimSNdetector *lDetectorConstruction = new OMSimSNdetector();
-	lSimulation.initialiseSimulation(lDetectorConstruction);
+	OMSimSNdetector *detectorConstruction = new OMSimSNdetector();
+	simulation.initialiseSimulation(detectorConstruction);
 	runSupernovaNeutrinoSimulation();
 
 	if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
-		lSimulation.startVisualisation();
+		simulation.startVisualisation();
 	return 0;
 }

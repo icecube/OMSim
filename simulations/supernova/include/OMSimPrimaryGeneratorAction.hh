@@ -1,6 +1,4 @@
-#ifndef OMSimPrimaryGeneratorAction_h
-#define OMSimPrimaryGeneratorAction_h 1
-
+#pragma once
 
 #include "OMSimSNParticleGenerators.hh"
 #include "OMSimPrimaryGeneratorMessenger.hh"
@@ -26,26 +24,24 @@ class OMSimPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     virtual void GeneratePrimaries(G4Event*);
 
   public:
-    G4ParticleGun* GetParticleGun() { return fParticleGun; };
+    G4ParticleGun* GetParticleGun() { return m_particleGun; };
     
-    void SelectAction(G4int i) { fSelectedAction = i; };    
-    G4int GetSelectedAction()  { return fSelectedAction; };
+    void SelectAction(G4int i) { m_selectedAction = i; };    
+    G4int GetSelectedAction()  { return m_selectedAction; };
 
-    OMSimIBD*  GetAction0() { return fAction0; };
-    OMSimENES*  GetAction1() { return fAction1; };
+    OMSimIBD*  GetAction0() { return m_action0; };
+    OMSimENES*  GetAction1() { return m_action1; };
       
     
   private:
-    G4ParticleGun*           fParticleGun;
+    G4ParticleGun*           m_particleGun;
 
 
-    OMSimIBD* fAction0;
-    OMSimENES* fAction1;
-    G4int                    fSelectedAction;
-    OMSimPrimaryGeneratorMessenger* fGunMessenger;     
+    OMSimIBD* m_action0;
+    OMSimENES* m_action1;
+    G4int                    m_selectedAction;
+    OMSimPrimaryGeneratorMessenger* m_gunMessenger;     
        
 };
-
-#endif
 
 

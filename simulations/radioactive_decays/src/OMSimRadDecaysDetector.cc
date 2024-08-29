@@ -17,9 +17,9 @@ void OMSimRadDecaysDetector::constructWorld()
 {
     m_worldSolid = new G4Orb("World", OMSimCommandArgsTable::getInstance().get<G4double>("world_radius") * m);
     m_worldLogical = new G4LogicalVolume(m_worldSolid, m_data->getMaterial("argWorld"), "World_log", 0, 0, 0);
-    mWorldPhysical = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), m_worldLogical, "World_phys", 0, false, 0);
-    G4VisAttributes *World_vis = new G4VisAttributes(G4Colour(0.45, 0.5, 0.35, 0.));
-    m_worldLogical->SetVisAttributes(World_vis);
+    m_worldPhysical = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), m_worldLogical, "World_phys", 0, false, 0);
+    G4VisAttributes *worldVis = new G4VisAttributes(G4Colour(0.45, 0.5, 0.35, 0.));
+    m_worldLogical->SetVisAttributes(worldVis);
 }
 
 /**
@@ -27,10 +27,10 @@ void OMSimRadDecaysDetector::constructWorld()
  */
 void OMSimRadDecaysDetector::constructDetector()
 {
-    OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
-    bool lPlaceHarness = OMSimCommandArgsTable::getInstance().get<bool>("place_harness");
+    OMSimHitManager &hitManager = OMSimHitManager::getInstance();
+    bool placeHarness = OMSimCommandArgsTable::getInstance().get<bool>("place_harness");
 
-    OMSimOpticalModule *lOpticalModule = nullptr;
+    OMSimOpticalModule *opticalModule = nullptr;
 
     switch (OMSimCommandArgsTable::getInstance().get<G4int>("detector_type"))
     {
@@ -43,48 +43,48 @@ void OMSimRadDecaysDetector::constructDetector()
     case 1:
     {
         log_info("Constructing single PMT");
-        OMSimPMTConstruction *lPMTManager = new OMSimPMTConstruction();
-        lPMTManager->selectPMT("argPMT");
-        lPMTManager->construction();
-        lPMTManager->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), m_worldLogical, "_0");
-        lHitManager.setNumberOfPMTs(1, 0);
-        lPMTManager->configureSensitiveVolume(this, "/PMT/0");
+        OMSimPMTConstruction *managerPMT = new OMSimPMTConstruction();
+        managerPMT->selectPMT("argPMT");
+        managerPMT->construction();
+        managerPMT->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), m_worldLogical, "_0");
+        hitManager.setNumberOfPMTs(1, 0);
+        managerPMT->configureSensitiveVolume(this, "/PMT/0");
         break;
     }
     case 2:
     {
-        lOpticalModule = new mDOM(lPlaceHarness);
+        opticalModule = new mDOM(placeHarness);
         break;
     }
     case 3:
     {
 
-        lOpticalModule = new pDOM(lPlaceHarness);
+        opticalModule = new pDOM(placeHarness);
         break;
     }
     case 4:
     {
 
-        lOpticalModule = new LOM16(lPlaceHarness);
+        opticalModule = new LOM16(placeHarness);
         break;
     }
     case 5:
     {
 
-        lOpticalModule = new LOM18(lPlaceHarness);
+        opticalModule = new LOM18(placeHarness);
         break;
     }
     case 6:
     {
-        lOpticalModule = new DEGG(lPlaceHarness);
+        opticalModule = new DEGG(placeHarness);
         break;
     }
     }
 
-    if (lOpticalModule)
+    if (opticalModule)
     {
-        lOpticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), m_worldLogical, "");
-        lOpticalModule->configureSensitiveVolume(this);
-        mOpticalModule = lOpticalModule;
+        opticalModule->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), m_worldLogical, "");
+        opticalModule->configureSensitiveVolume(this);
+        m_opticalModule = opticalModule;
     }
 }

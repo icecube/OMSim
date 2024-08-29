@@ -11,32 +11,32 @@
 OMSimPrimaryGeneratorMessenger::OMSimPrimaryGeneratorMessenger
                                                   (OMSimPrimaryGeneratorAction* Gun)
 :G4UImessenger(),
- Action(Gun),
- fDir(0), 
- fSelectActionCmd(0)
+ m_action(Gun),
+ m_directory(0), 
+ m_selectedActionCmd(0)
 {
-  fDir = new G4UIdirectory("/selectGun/");
+  m_directory = new G4UIdirectory("/selectGun/");
 
-fSelectActionCmd = new G4UIcmdWithAnInteger("/selectGun",this);
-  fSelectActionCmd->SetGuidance("Select primary generator action");
-  fSelectActionCmd->SetGuidance("0 Inverse Beta Decay");
-  //fSelectActionCmd->SetGuidance("1 Elastic Scattering");
-  fSelectActionCmd->SetParameterName("id",false);
-  fSelectActionCmd->SetRange("id>=0 && id<4");
+m_selectedActionCmd = new G4UIcmdWithAnInteger("/selectGun",this);
+  m_selectedActionCmd->SetGuidance("Select primary generator action");
+  m_selectedActionCmd->SetGuidance("0 Inverse Beta Decay");
+  //m_selectedActionCmd->SetGuidance("1 Elastic Scattering");
+  m_selectedActionCmd->SetParameterName("id",false);
+  m_selectedActionCmd->SetRange("id>=0 && id<4");
 }
 
 
 OMSimPrimaryGeneratorMessenger::~OMSimPrimaryGeneratorMessenger()
 {
-  delete fSelectActionCmd;
-  delete fDir;
+  delete m_selectedActionCmd;
+  delete m_directory;
 }
 
 void OMSimPrimaryGeneratorMessenger::SetNewValue(G4UIcommand* command,
                                                G4String newValue)
 { 
-  if (command == fSelectActionCmd)
-    Action->SelectAction(fSelectActionCmd->GetNewIntValue(newValue));      
+  if (command == m_selectedActionCmd)
+    m_action->SelectAction(m_selectedActionCmd->GetNewIntValue(newValue));      
 }
 
 

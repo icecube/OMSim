@@ -3,8 +3,7 @@
  * @brief Defines the OMSimEffectiveAreaAnalyisis class for calculating effective area and writing results to output file.
  * @ingroup EffectiveArea
  */
-#ifndef OMSimAngularAnalysis_h
-#define OMSimAngularAnalysis_h 1
+#pragma once
 
 #include "OMSimPMTResponse.hh"
 #include "OMSimHitManager.hh"
@@ -33,53 +32,53 @@ public:
     ~OMSimEffectiveAreaAnalyisis(){};
 
     template <typename... Args>
-    void writeScan(Args... args);
+    void writeScan(Args... p_args);
     template <typename... Args>
-    void writeHeader(Args... args);
+    void writeHeader(Args... p_args);
 
-    effectiveAreaResult calculateEffectiveArea(double pHits);
-    G4String mOutputFileName;
+    effectiveAreaResult calculateEffectiveArea(double p_hits);
+    G4String m_outputFileName;
 };
 
 /**
  * @brief Writes a scan result to the output file.
- * @param args The values to be written to the output file.
+ * @param p_args The values to be written to the output file.
  */
 template <typename... Args>
-void OMSimEffectiveAreaAnalyisis::writeScan(Args... args)
+void OMSimEffectiveAreaAnalyisis::writeScan(Args... p_args)
 {
-    std::vector<double> lHits = OMSimHitManager::getInstance().countMergedHits();
+    std::vector<double> hits = OMSimHitManager::getInstance().countMergedHits();
 
-    std::fstream lDataFile;
-    lDataFile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
+    std::fstream dataFile;
+    dataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);
 
     // Write all arguments to the file
-    ((lDataFile << args << "\t"), ...);
+    ((dataFile << p_args << "\t"), ...);
 
-    G4double lTotalHits = 0;
-    for (const auto &hit : lHits)
+    G4double totalHits = 0;
+    for (const auto &hit : hits)
     {
-        lDataFile << hit << "\t";
-        lTotalHits = hit; // last element is total nr of hits
+        dataFile << hit << "\t";
+        totalHits = hit; // last element is total nr of hits
     }
 
-    effectiveAreaResult lEffectiveArea = calculateEffectiveArea(lTotalHits);
-    lDataFile << lEffectiveArea.EA << "\t" << lEffectiveArea.EAError << "\t";
-    lDataFile << G4endl;
-    lDataFile.close();
+    effectiveAreaResult effectiveArea = calculateEffectiveArea(totalHits);
+    dataFile << effectiveArea.EA << "\t" << effectiveArea.EAError << "\t";
+    dataFile << G4endl;
+    dataFile.close();
 }
 
 /**
  * @brief Writes the header line to the output file.
  */
 template <typename... Args>
-void OMSimEffectiveAreaAnalyisis::writeHeader(Args... args)
+void OMSimEffectiveAreaAnalyisis::writeHeader(Args... p_args)
 {
-    std::fstream lDataFile;
-    lDataFile.open(mOutputFileName.c_str(), std::ios::out | std::ios::app);
-    lDataFile << "# ";
-    ((lDataFile << args << "\t"), ...);
-    lDataFile << "hits[1perPMT]"
+    std::fstream dataFile;
+    dataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);
+    dataFile << "# ";
+    ((dataFile << p_args << "\t"), ...);
+    dataFile << "hits[1perPMT]"
               << "\t"
               << "total_hits"
               << "\t"
@@ -87,7 +86,5 @@ void OMSimEffectiveAreaAnalyisis::writeHeader(Args... args)
               << "\t"
               << "EA_Total_error(cm^2)"
               << "\t" << G4endl;
-    lDataFile.close();
+    dataFile.close();
 }
-
-#endif

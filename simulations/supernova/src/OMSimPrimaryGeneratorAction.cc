@@ -8,37 +8,37 @@
 
 OMSimPrimaryGeneratorAction::OMSimPrimaryGeneratorAction()
     : G4VUserPrimaryGeneratorAction(),
-      fParticleGun(0),
-      fAction0(0),
-      fAction1(0),
-      fSelectedAction(0), // defaul primary generator
-      fGunMessenger(0)
+      m_particleGun(0),
+      m_action0(0),
+      m_action1(0),
+      m_selectedAction(0), // defaul primary generator
+      m_gunMessenger(0)
 {
     G4int n_particle = 1;
-    fParticleGun = new G4ParticleGun(n_particle);
+    m_particleGun = new G4ParticleGun(n_particle);
 
-    fAction0 = new OMSimIBD(fParticleGun);
-    fAction1 = new OMSimENES(fParticleGun);
-    fGunMessenger = new OMSimPrimaryGeneratorMessenger(this);
+    m_action0 = new OMSimIBD(m_particleGun);
+    m_action1 = new OMSimENES(m_particleGun);
+    m_gunMessenger = new OMSimPrimaryGeneratorMessenger(this);
 }
 
 OMSimPrimaryGeneratorAction::~OMSimPrimaryGeneratorAction()
 {
-    delete fAction0;
-    delete fAction1;
-    delete fParticleGun;
-    delete fGunMessenger;
+    delete m_action0;
+    delete m_action1;
+    delete m_particleGun;
+    delete m_gunMessenger;
 }
 
-void OMSimPrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
+void OMSimPrimaryGeneratorAction::GeneratePrimaries(G4Event *p_event)
 {
-    switch (fSelectedAction)
+    switch (m_selectedAction)
     {
     case 0:
-        fAction0->GeneratePrimaries(anEvent);
+        m_action0->GeneratePrimaries(p_event);
         break;
     case 1:
-        fAction1->GeneratePrimaries(anEvent);
+        m_action1->GeneratePrimaries(p_event);
         break;
     default:
         log_error("Invalid generator fAction");

@@ -13,22 +13,12 @@ OMSimPhysicsList::OMSimPhysicsList():  G4VUserPhysicsList()
 	SetVerboseLevel(0);
 }
 
-/**
- * @brief Constructs particles for the physics list.
- *
- * This method is used to define particles. For EA studies, it initializes only the optical photon.
- */
+
 void OMSimPhysicsList::ConstructParticle()
 {
 	G4OpticalPhoton::OpticalPhotonDefinition();
 }
 
-/**
- * @brief Constructs processes for the physics list.
- *
- * This method initializes the optical photon processes which includes
- * absorption, boundary interactions, Rayleigh scattering, and Mie scattering.
- */
 void OMSimPhysicsList::ConstructProcess()
 {
 	AddTransportation();
@@ -51,9 +41,6 @@ void OMSimPhysicsList::ConstructProcess()
 	
 }
 
-/**
- * @brief Set production cuts with default values.
- */
 void OMSimPhysicsList::SetCuts()
 {
 	SetCutsWithDefault();

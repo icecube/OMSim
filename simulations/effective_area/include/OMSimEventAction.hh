@@ -1,5 +1,4 @@
-#ifndef OMSimEventAction_h
-#define OMSimEventAction_h 1
+#pragma once
 
 #include "G4UserEventAction.hh"
 #include <string>
@@ -7,16 +6,6 @@
 
 class G4Event;
 
-
-/**
- * @class OMSimEventAction
- * @brief Handles custom actions at the beginning and end of each event.
- * 
- * This class defines custom actions that are performed at the start and end
- * of each Geant4 event simulation. It interacts with analysis and hit managers
- * to handle, record, and reset event information.
- * @ingroup EffectiveArea
- */
 class OMSimEventAction : public G4UserEventAction
 {
 	public:
@@ -30,34 +19,3 @@ class OMSimEventAction : public G4UserEventAction
 
 	private:
 };
-
-/**
- * @class EventInfoManager
- * @brief Singleton class for managing event-specific information.
- * @ingroup EffectiveArea
- * 
- * This class provides a mechanism to set and get the current event ID 
- * across different parts of the simulation without having to pass event objects around.
- */
-class EventInfoManager {
-public:
-    static EventInfoManager& getInstance() {
-        static EventInfoManager instance;
-        return instance;
-    }
-
-    void setCurrentEventID(G4int id) {
-        currentEventID = id;
-    }
-
-    G4int getCurrentEventID() const {
-        return currentEventID;
-    }
-
-private:
-    EventInfoManager() : currentEventID(-1) {}
-
-    G4int currentEventID;
-};
-
-#endif

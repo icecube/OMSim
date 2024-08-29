@@ -1,5 +1,4 @@
-#ifndef OMSimSNAnalysis_h
-#define OMSimSNAnalysis_h 1
+#pragma once
 
 #include "G4Types.hh"
 #include "G4String.hh"
@@ -13,11 +12,11 @@
 
 struct SNEventStats
 {
-	G4double neutrino_time;
-	G4double mean_energy;
-	G4double neutrino_energy;
-	G4double cos_theta;
-	G4double primary_energy;
+	G4double neutrinoTime;
+	G4double meanEnergy;
+	G4double neutrinoEnergy;
+	G4double cosTheta;
+	G4double primaryEnergy;
 	G4double weight;
 };
 
@@ -46,11 +45,10 @@ public:
 	void writeInfoFile();
 	void writeDataFile();
 
-	G4ThreadLocal static SNEventStats *mEventStat;
-	G4ThreadLocal static bool mHeaderWasWritten;
+	G4ThreadLocal static SNEventStats *m_eventStat;
+	G4ThreadLocal static bool m_headerWasWritten;
 
 private:
-	G4String mOutputSuffix;
+	G4String m_outputSufix;
 };
 
-#endif

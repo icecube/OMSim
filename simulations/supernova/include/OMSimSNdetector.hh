@@ -1,7 +1,4 @@
-#ifndef OMSimSNdetector_h
-#define OMSimSNdetector_h 1
-
-
+#pragma once
 #include "OMSimDetectorConstruction.hh"
 
 
@@ -24,6 +21,3 @@ private:
     void constructDetector();
 };
 
-
-#endif
-//

@@ -10,7 +10,7 @@
 
 G4Mutex OMSimDecaysAnalysis::m_mutex = G4Mutex();
 OMSimDecaysAnalysis *OMSimDecaysAnalysis::m_instance = nullptr;
-G4ThreadLocal DecayStats *OMSimDecaysAnalysis::mThreadDecayStats = nullptr;
+G4ThreadLocal DecayStats *OMSimDecaysAnalysis::m_threadDecayStats = nullptr;
 
 OMSimDecaysAnalysis &OMSimDecaysAnalysis::getInstance()
 {
@@ -29,44 +29,44 @@ OMSimDecaysAnalysis &OMSimDecaysAnalysis::getInstance()
 
 /**
  * @brief Append decay information to internal data structures.
- * @param pParticleName Name of the particle.
- * @param pDecayTime Time of the decay.
- * @param pDecayPosition Global position of the decay.
+ * @param p_particleName Name of the particle.
+ * @param p_decayTime Time of the decay.
+ * @param p_decayPosition Global position of the decay.
  */
-void OMSimDecaysAnalysis::appendDecay(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition)
+void OMSimDecaysAnalysis::appendDecay(G4String p_particleName, G4double p_decayTime, G4ThreeVector p_decayPosition)
 {
-	if (!mThreadDecayStats)
+	if (!m_threadDecayStats)
 	{
 		log_debug("Initialized m_threadData for thread {}", G4Threading::G4GetThreadId());
-		mThreadDecayStats = new DecayStats();
+		m_threadDecayStats = new DecayStats();
 	}
 	G4int lEventID = G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetEventID();
-	mThreadDecayStats->eventId.push_back(lEventID);
-	mThreadDecayStats->isotope_name.push_back(pParticleName);
-	mThreadDecayStats->decay_time.push_back(pDecayTime);
-	mThreadDecayStats->decay_position.push_back(pDecayPosition);
+	m_threadDecayStats->eventId.push_back(lEventID);
+	m_threadDecayStats->isotopeName.push_back(p_particleName);
+	m_threadDecayStats->decayTime.push_back(p_decayTime);
+	m_threadDecayStats->decayPosition.push_back(p_decayPosition);
 }
 
 /**
  * @brief Calls calculateMultiplicity and writes the results to the output file.
  */
-void OMSimDecaysAnalysis::writeMultiplicity(G4double pTimeWindow)
+void OMSimDecaysAnalysis::writeMultiplicity(G4double p_timeWindow)
 {
-	G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
-	G4String lMultiplicityFileName = lOutputSuffix + "_multiplicity.dat";
+	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
+	G4String fileName = outputSufix + "_multiplicity.dat";
 
 	OMSimHitManager::getInstance().mergeThreadData();
-	std::vector<int> lMultiplicity = OMSimHitManager::getInstance().calculateMultiplicity(pTimeWindow);
+	std::vector<int> multiplicity = OMSimHitManager::getInstance().calculateMultiplicity(p_timeWindow);
 	
-	std::fstream lDatafile;
-	lDatafile.open(lMultiplicityFileName.c_str(), std::ios::out | std::ios::app);
+	std::fstream dataFile;
+	dataFile.open(fileName.c_str(), std::ios::out | std::ios::app);
 
-	for (const auto &value : lMultiplicity)
+	for (const auto &value : multiplicity)
 	{
-		lDatafile << value << "\t";
+		dataFile << value << "\t";
 	}
-	lDatafile << G4endl;
-	lDatafile.close();
+	dataFile << G4endl;
+	dataFile.close();
 }
 
 /**
@@ -74,30 +74,30 @@ void OMSimDecaysAnalysis::writeMultiplicity(G4double pTimeWindow)
  */
 void OMSimDecaysAnalysis::writeThreadDecayInformation()
 {
-	log_trace("Writing decay information of {} decays", mThreadDecayStats->eventId.size());
+	log_trace("Writing decay information of {} decays", m_threadDecayStats->eventId.size());
 
-	G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
+	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
 
-	G4String lDecaysFileName = lOutputSuffix + "_" + Tools::getThreadIDStr() + "_decays.dat";
+	G4String lDecaysFileName = outputSufix + "_" + Tools::getThreadIDStr() + "_decays.dat";
 
-	std::fstream lDatafile;
-	lDatafile.open(lDecaysFileName.c_str(), std::ios::out | std::ios::app);
-	if (mThreadDecayStats->eventId.size() > 0)
+	std::fstream dataFile;
+	dataFile.open(lDecaysFileName.c_str(), std::ios::out | std::ios::app);
+	if (m_threadDecayStats->eventId.size() > 0)
 	{
-		for (int i = 0; i < (int)mThreadDecayStats->eventId.size(); i++)
+		for (int i = 0; i < (int)m_threadDecayStats->eventId.size(); i++)
 		{
-			lDatafile << mThreadDecayStats->eventId.at(i) << "\t";
-			lDatafile << std::setprecision(13);
-			lDatafile << mThreadDecayStats->decay_time.at(i) << "\t";
-			lDatafile << std::setprecision(4);
-			lDatafile << mThreadDecayStats->isotope_name.at(i) << "\t";
-			lDatafile << mThreadDecayStats->decay_position.at(i).x() << "\t";
-			lDatafile << mThreadDecayStats->decay_position.at(i).y() << "\t";
-			lDatafile << mThreadDecayStats->decay_position.at(i).z() << "\t";
-			lDatafile << G4endl;
+			dataFile << m_threadDecayStats->eventId.at(i) << "\t";
+			dataFile << std::setprecision(13);
+			dataFile << m_threadDecayStats->decayTime.at(i) << "\t";
+			dataFile << std::setprecision(4);
+			dataFile << m_threadDecayStats->isotopeName.at(i) << "\t";
+			dataFile << m_threadDecayStats->decayPosition.at(i).x() << "\t";
+			dataFile << m_threadDecayStats->decayPosition.at(i).y() << "\t";
+			dataFile << m_threadDecayStats->decayPosition.at(i).z() << "\t";
+			dataFile << G4endl;
 		}
 	}
-	lDatafile.close();
+	dataFile.close();
 	log_trace("Finished writing decay information");
 }
 
@@ -110,32 +110,32 @@ void OMSimDecaysAnalysis::writeThreadHitInformation()
 	if (!lHitManager.areThereHitsInModuleSingleThread()) return;
 
 	HitStats lHits = lHitManager.getSingleThreadHitsOfModule();
-	G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
-	G4String lHitsFileName = lOutputSuffix + "_" + Tools::getThreadIDStr() + "_hits.dat";
+	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
+	G4String lHitsFileName = outputSufix + "_" + Tools::getThreadIDStr() + "_hits.dat";
 	log_trace("Writing hit information of {} hits", lHits.eventId.size());
 
-	std::fstream lDatafile;
-	lDatafile.open(lHitsFileName.c_str(), std::ios::out | std::ios::app);
+	std::fstream dataFile;
+	dataFile.open(lHitsFileName.c_str(), std::ios::out | std::ios::app);
 	if (lHits.eventId.size() > 0)
 	{
 		for (int i = 0; i < (int)lHits.eventId.size(); i++)
 		{
-			lDatafile << lHits.eventId.at(i) << "\t";
-			lDatafile << std::setprecision(13);
-			lDatafile << lHits.hitTime.at(i) / s << "\t";
-			lDatafile << std::setprecision(4);
-			lDatafile << lHits.PMTnr.at(i) << "\t";
-			lDatafile << lHits.energy.at(i) << "\t";
-			lDatafile << lHits.globalPosition.at(i).x() << "\t";
-			lDatafile << lHits.globalPosition.at(i).y() << "\t";
-			lDatafile << lHits.globalPosition.at(i).z() << "\t";
-			lDatafile << lHits.PMTresponse.at(i).PE << "\t";
-			lDatafile << lHits.PMTresponse.at(i).transitTime << "\t";
-			lDatafile << lHits.PMTresponse.at(i).detectionProbability << "\t";
-			lDatafile << G4endl;
+			dataFile << lHits.eventId.at(i) << "\t";
+			dataFile << std::setprecision(13);
+			dataFile << lHits.hitTime.at(i) / s << "\t";
+			dataFile << std::setprecision(4);
+			dataFile << lHits.PMTnr.at(i) << "\t";
+			dataFile << lHits.energy.at(i) << "\t";
+			dataFile << lHits.globalPosition.at(i).x() << "\t";
+			dataFile << lHits.globalPosition.at(i).y() << "\t";
+			dataFile << lHits.globalPosition.at(i).z() << "\t";
+			dataFile << lHits.PMTresponse.at(i).PE << "\t";
+			dataFile << lHits.PMTresponse.at(i).transitTime << "\t";
+			dataFile << lHits.PMTresponse.at(i).detectionProbability << "\t";
+			dataFile << G4endl;
 		}
 	}
-	lDatafile.close();
+	dataFile.close();
 	log_trace("Finished writing detailed hit information");
 }
 
@@ -144,8 +144,8 @@ void OMSimDecaysAnalysis::writeThreadHitInformation()
  */
 void OMSimDecaysAnalysis::reset()
 {
-	log_trace("Deleting mThreadDecayStats of Thread ID {}", G4Threading::G4GetThreadId());
-	delete mThreadDecayStats;
-	mThreadDecayStats = nullptr;
+	log_trace("Deleting m_threadDecayStats of Thread ID {}", G4Threading::G4GetThreadId());
+	delete m_threadDecayStats;
+	m_threadDecayStats = nullptr;
 	OMSimHitManager::getInstance().reset();
 }

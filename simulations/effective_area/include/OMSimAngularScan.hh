@@ -4,8 +4,7 @@
  * @ingroup EffectiveArea
  */
 
-#ifndef OMSimAngularScan_h
-#define OMSimAngularScan_h 1
+#pragma once
 
 #include "globals.hh"
 /**
@@ -33,11 +32,10 @@ private:
 
   void configurePosCoordinates();
   void configureAngCoordinates();
-  G4double mBeamRadius;
-  G4double mBeamDistance;
+  G4double m_beamRadius;
+  G4double m_beamDistance;
   G4double m_wavelength;
-  G4double mTheta;
-  G4double mPhi;
+  G4double m_theta;
+  G4double m_phi;
 };
 
-#endif
