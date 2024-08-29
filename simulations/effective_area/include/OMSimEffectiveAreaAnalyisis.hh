@@ -36,7 +36,7 @@ public:
     template <typename... Args>
     void writeHeader(Args... p_args);
 
-    effectiveAreaResult calculateEffectiveArea(double p_hits);
+    effectiveAreaResult calculateEffectiveArea(double weightedTotal, double countTotal);
     G4String m_outputFileName;
 };
 
@@ -47,7 +47,7 @@ public:
 template <typename... Args>
 void OMSimEffectiveAreaAnalyisis::writeScan(Args... p_args)
 {
-    std::vector<double> hits = OMSimHitManager::getInstance().countMergedHits();
+    std::vector<double> hits = OMSimHitManager::getInstance().countMergedHits(0, true);
 
     std::fstream dataFile;
     dataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);
@@ -55,14 +55,21 @@ void OMSimEffectiveAreaAnalyisis::writeScan(Args... p_args)
     // Write all arguments to the file
     ((dataFile << p_args << "\t"), ...);
 
-    G4double totalHits = 0;
+    G4double weightedTotal = 0;
     for (const auto &hit : hits)
     {
         dataFile << hit << "\t";
-        totalHits = hit; // last element is total nr of hits
+        weightedTotal = hit;
     }
 
-    effectiveAreaResult effectiveArea = calculateEffectiveArea(totalHits);
+    hits = OMSimHitManager::getInstance().countMergedHits(); //unweighted
+    G4double totalHits = 0;
+    for (const auto &hit : hits)
+    {
+        totalHits = hit; 
+    }
+
+    effectiveAreaResult effectiveArea = calculateEffectiveArea(weightedTotal, totalHits);
     dataFile << effectiveArea.EA << "\t" << effectiveArea.EAError << "\t";
     dataFile << G4endl;
     dataFile.close();
