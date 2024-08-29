@@ -1,30 +1,4 @@
 var searchData=
 [
-  ['sampleenergy_625',['sampleEnergy',['../class_o_m_sim_s_n_tools.html#a48caade81da87bfc2a0ac9da94b57110',1,'OMSimSNTools']]],
-  ['samplefromdistribution_626',['sampleFromDistribution',['../class_distribution_sampler.html#aa3a2ca8ec78298b7c58b3f2af0e549ce',1,'DistributionSampler']]],
-  ['searchfolders_627',['searchFolders',['../class_o_m_sim_input_data.html#a84781faca6d03b8f9f13777c85a1c9dc',1,'OMSimInputData']]],
-  ['selectpmt_628',['selectPMT',['../class_o_m_sim_p_m_t_construction.html#a1a8373e9ae3095062edb477245133a9e',1,'OMSimPMTConstruction']]],
-  ['setcuts_629',['SetCuts',['../class_o_m_sim_physics_list.html#a21a650f31fd33e281cdb144f755875e4',1,'OMSimPhysicsList']]],
-  ['setdata_630',['setData',['../class_distribution_sampler.html#a62407876667af623ba546ef60b9fca3a',1,'DistributionSampler']]],
-  ['setnumberofpmts_631',['setNumberOfPMTs',['../class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8',1,'OMSimHitManager']]],
-  ['setopticalmodule_632',['setOpticalModule',['../class_o_m_sim_decays_g_p_s.html#a351e76b3b115c13a571a700ab03b7a8a',1,'OMSimDecaysGPS']]],
-  ['setparameter_633',['setParameter',['../class_o_m_sim_command_args_table.html#a89368614d0c565dd2687c2560af8c79e',1,'OMSimCommandArgsTable']]],
-  ['setpmtpositions_634',['setPMTPositions',['../class_l_o_m18.html#a07ecf58441de167ca0d41650a14a7190',1,'LOM18']]],
-  ['setui_635',['setUI',['../class_o_m_sim_u_iinterface.html#aebd8bceca0c4d305f6bad38afbf2d70b',1,'OMSimUIinterface']]],
-  ['setunits_636',['setUnits',['../class_distribution_sampler.html#ad5fde5096dabc0cd2cf6fc4e5f2d2dd8',1,'DistributionSampler']]],
-  ['setuserargumentstoargtable_637',['setUserArgumentsToArgTable',['../class_o_m_sim.html#a1428504bbe25b1baeb0976e897a98bcb',1,'OMSim']]],
-  ['shutdown_638',['shutdown',['../class_o_m_sim_input_data.html#a9ba12328d251141daeb086ae37f95f98',1,'OMSimInputData::shutdown()'],['../class_o_m_sim_u_iinterface.html#ae184798f646ff27968fd3cf89904298d',1,'OMSimUIinterface::shutdown()'],['../class_o_m_sim_hit_manager.html#ad8a139a9068c92b7babf471c9ec23ecf',1,'OMSimHitManager::shutdown()'],['../class_o_m_sim_command_args_table.html#ae25665b0429b0bfcfe0aac11ef982290',1,'OMSimCommandArgsTable::shutdown()']]],
-  ['simplebulbconstruction_639',['simpleBulbConstruction',['../class_o_m_sim_p_m_t_construction.html#a3faaf0d512f9a3fe15c6f33efe6d062c',1,'OMSimPMTConstruction']]],
-  ['simulatedecaysinpmts_640',['simulateDecaysInPMTs',['../class_o_m_sim_decays_g_p_s.html#a2bba4e779b0200d277e01053c521587b',1,'OMSimDecaysGPS']]],
-  ['simulatedecaysinpressurevessel_641',['simulateDecaysInPressureVessel',['../class_o_m_sim_decays_g_p_s.html#ae43dceede1c8f2c332964fb43242cc76',1,'OMSimDecaysGPS']]],
-  ['sorthitstatsbytime_642',['sortHitStatsByTime',['../class_o_m_sim_hit_manager.html#a756d2a85121e00d2a2d8b6c04cd0ebd1',1,'OMSimHitManager']]],
-  ['sortvectorbyreference_643',['sortVectorByReference',['../namespace_tools.html#a3269713e8f36608124048bda75a02a49',1,'Tools']]],
-  ['spheredoubleellipsephotocathode_644',['sphereDoubleEllipsePhotocathode',['../class_o_m_sim_p_m_t_construction.html#a7ae6ccb05534002df9e519c5b5cfef14',1,'OMSimPMTConstruction']]],
-  ['sphereellipsephotocathode_645',['sphereEllipsePhotocathode',['../class_o_m_sim_p_m_t_construction.html#a6724e1b0920884b77cd6401da6588ca9',1,'OMSimPMTConstruction']]],
-  ['spiceabsorption_646',['spiceAbsorption',['../namespace_ice_processor.html#a29002db125bd3d2b67998403db6afc60',1,'IceProcessor']]],
-  ['spicerefraction_647',['spiceRefraction',['../namespace_ice_processor.html#ad82640f5524b52f1604c3e19ff819be5',1,'IceProcessor']]],
-  ['spicetemperature_648',['spiceTemperature',['../namespace_ice_processor.html#a1880256fa33d9e645ae86e2057f66297',1,'IceProcessor']]],
-  ['startvisualisation_649',['startVisualisation',['../class_o_m_sim.html#a42d86958aba31a17fb0c8a39fbc9c9b5',1,'OMSim']]],
-  ['storephotonhit_650',['storePhotonHit',['../class_o_m_sim_sensitive_detector.html#a329ead0f229868eaf8ac21132cbc6746',1,'OMSimSensitiveDetector']]],
-  ['substracttovolume_651',['substractToVolume',['../classabc_detector_component.html#aaf0d85ee9a57f6bda0d48c4dad2b6dc5',1,'abcDetectorComponent::substractToVolume(G4VSolid *pInputVolume, G4ThreeVector pSubstractionPos, G4RotationMatrix pSubstractionRot, G4String pNewVolumeName)'],['../classabc_detector_component.html#a53c7979298ef9eda66b44f0a3c4f2e6b',1,'abcDetectorComponent::substractToVolume(G4VSolid *pInputVolume, G4Transform3D pTrans, G4String pNewVolumeName)']]]
+  ['totalcrosssection_650',['totalCrossSection',['../class_o_m_sim_e_n_e_s.html#af2e3aedc5ca2d1006891540c0d038eb7',1,'OMSimENES::totalCrossSection()'],['../class_o_m_sim_i_b_d.html#aad2e0e4a3f6501f4d2c3fb896b032ade',1,'OMSimIBD::totalCrossSection()']]]
 ];

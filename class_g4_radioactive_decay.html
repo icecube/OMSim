@@ -117,7 +117,6 @@ $(document).ready(function(){initNavTree('class_g4_radioactive_decay.html',''); 
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_g4_radioactive_decay-members.html">List of all members</a>  </div>
@@ -140,15 +139,27 @@ Collaboration diagram for G4RadioactiveDecay:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5881ed237406bb95507d8e37a620b266"><td class="memItemLeft" align="right" valign="top"><a id="a5881ed237406bb95507d8e37a620b266"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>G4RadioactiveDecay</b> (const G4String &amp;processName=&quot;RadioactiveDecay&quot;)</td></tr>
-<tr class="separator:a5881ed237406bb95507d8e37a620b266"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac685fc571f21d66875d7b3b60fced621"><td class="memItemLeft" align="right" valign="top"><a id="ac685fc571f21d66875d7b3b60fced621"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>ProcessDescription</b> (std::ostream &amp;outFile) const</td></tr>
-<tr class="separator:ac685fc571f21d66875d7b3b60fced621"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac07ae18824934c56990b7e592b8590f"><td class="memItemLeft" align="right" valign="top"><a id="aac07ae18824934c56990b7e592b8590f"></a>
-G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsApplicable</b> (const G4ParticleDefinition &amp;)</td></tr>
-<tr class="separator:aac07ae18824934c56990b7e592b8590f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe96a7de5161c20b55f8296e3db7f930"><td class="memItemLeft" align="right" valign="top"><a id="afe96a7de5161c20b55f8296e3db7f930"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>G4RadioactiveDecay</b> (const G4String &amp;processName=&quot;RadioactiveDecay&quot;, const G4double timeThreshold=-1.0)</td></tr>
+<tr class="separator:afe96a7de5161c20b55f8296e3db7f930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c5f73943580cefeca9a64ce08d52f9"><td class="memItemLeft" align="right" valign="top"><a id="a22c5f73943580cefeca9a64ce08d52f9"></a>
+G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsApplicable</b> (const G4ParticleDefinition &amp;) override</td></tr>
+<tr class="separator:a22c5f73943580cefeca9a64ce08d52f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3034ef068df8b570f5a9cb2aaf1d7e2f"><td class="memItemLeft" align="right" valign="top"><a id="a3034ef068df8b570f5a9cb2aaf1d7e2f"></a>
+G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>AtRestDoIt</b> (const G4Track &amp;theTrack, const G4Step &amp;theStep) override</td></tr>
+<tr class="separator:a3034ef068df8b570f5a9cb2aaf1d7e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a552ffe8df78412a563b9f778e1521464"><td class="memItemLeft" align="right" valign="top"><a id="a552ffe8df78412a563b9f778e1521464"></a>
+G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>PostStepDoIt</b> (const G4Track &amp;theTrack, const G4Step &amp;theStep) override</td></tr>
+<tr class="separator:a552ffe8df78412a563b9f778e1521464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf41ce4818e4904299e97a3ad46e71b3"><td class="memItemLeft" align="right" valign="top"><a id="acf41ce4818e4904299e97a3ad46e71b3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BuildPhysicsTable</b> (const G4ParticleDefinition &amp;) override</td></tr>
+<tr class="separator:acf41ce4818e4904299e97a3ad46e71b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a467cc2af8b7fb9ce098df6e56146fdd1"><td class="memItemLeft" align="right" valign="top"><a id="a467cc2af8b7fb9ce098df6e56146fdd1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ProcessDescription</b> (std::ostream &amp;outFile) const override</td></tr>
+<tr class="separator:a467cc2af8b7fb9ce098df6e56146fdd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99665f00c3be293c00a1e94108faf7fb"><td class="memItemLeft" align="right" valign="top"><a id="a99665f00c3be293c00a1e94108faf7fb"></a>
+virtual G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>DecayIt</b> (const G4Track &amp;theTrack, const G4Step &amp;theStep)</td></tr>
+<tr class="separator:a99665f00c3be293c00a1e94108faf7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7441d66e1db789dc443ec966db47344d"><td class="memItemLeft" align="right" valign="top"><a id="a7441d66e1db789dc443ec966db47344d"></a>
 G4DecayTable *&#160;</td><td class="memItemRight" valign="bottom"><b>GetDecayTable</b> (const G4ParticleDefinition *)</td></tr>
 <tr class="separator:a7441d66e1db789dc443ec966db47344d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,18 +178,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>DeselectAllVolumes</b
 <tr class="memitem:ab450aa133b96ead6300d65f39564d090"><td class="memItemLeft" align="right" valign="top"><a id="ab450aa133b96ead6300d65f39564d090"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetARM</b> (G4bool arm)</td></tr>
 <tr class="separator:ab450aa133b96ead6300d65f39564d090"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41f60c5043ff45ad31cbcc1b5ad062c6"><td class="memItemLeft" align="right" valign="top"><a id="a41f60c5043ff45ad31cbcc1b5ad062c6"></a>
-G4DecayTable *&#160;</td><td class="memItemRight" valign="bottom"><b>LoadDecayTable</b> (const G4ParticleDefinition &amp;theParentNucleus)</td></tr>
-<tr class="separator:a41f60c5043ff45ad31cbcc1b5ad062c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae61ed159f10454ea8eb4cfd109f47b93"><td class="memItemLeft" align="right" valign="top"><a id="ae61ed159f10454ea8eb4cfd109f47b93"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddUserDecayDataFile</b> (G4int Z, G4int A, G4String filename)</td></tr>
-<tr class="separator:ae61ed159f10454ea8eb4cfd109f47b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a146841b253bc28c691b7023d151b19fd"><td class="memItemLeft" align="right" valign="top"><a id="a146841b253bc28c691b7023d151b19fd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetVerboseLevel</b> (G4int value)</td></tr>
-<tr class="separator:a146841b253bc28c691b7023d151b19fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8471ae9c3bb38cd8aa3188c42483a153"><td class="memItemLeft" align="right" valign="top"><a id="a8471ae9c3bb38cd8aa3188c42483a153"></a>
-G4int&#160;</td><td class="memItemRight" valign="bottom"><b>GetVerboseLevel</b> () const</td></tr>
-<tr class="separator:a8471ae9c3bb38cd8aa3188c42483a153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00a8c16a7c534f0f60ea08e495d17ebf"><td class="memItemLeft" align="right" valign="top"><a id="a00a8c16a7c534f0f60ea08e495d17ebf"></a>
+G4DecayTable *&#160;</td><td class="memItemRight" valign="bottom"><b>LoadDecayTable</b> (const G4Ions *)</td></tr>
+<tr class="separator:a00a8c16a7c534f0f60ea08e495d17ebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a33ce684d41876fe93a74f326551e8c"><td class="memItemLeft" align="right" valign="top"><a id="a0a33ce684d41876fe93a74f326551e8c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddUserDecayDataFile</b> (G4int Z, G4int A, const G4String &amp;filename)</td></tr>
+<tr class="separator:a0a33ce684d41876fe93a74f326551e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfc1885bba313fea9c5974dc280c0115"><td class="memItemLeft" align="right" valign="top"><a id="adfc1885bba313fea9c5974dc280c0115"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetNucleusLimits</b> (G4NucleusLimits theNucleusLimits1)</td></tr>
 <tr class="separator:adfc1885bba313fea9c5974dc280c0115"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,24 +211,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetThresholdForVeryLo
 <tr class="memitem:affbc5fe75a2f1d4053c7c6d11925a419"><td class="memItemLeft" align="right" valign="top"><a id="affbc5fe75a2f1d4053c7c6d11925a419"></a>
 G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetThresholdForVeryLongDecayTime</b> () const</td></tr>
 <tr class="separator:affbc5fe75a2f1d4053c7c6d11925a419"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21ab4cfa243f192552e3129d7634cc76"><td class="memItemLeft" align="right" valign="top"><a id="a21ab4cfa243f192552e3129d7634cc76"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>BuildPhysicsTable</b> (const G4ParticleDefinition &amp;)</td></tr>
-<tr class="separator:a21ab4cfa243f192552e3129d7634cc76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99665f00c3be293c00a1e94108faf7fb"><td class="memItemLeft" align="right" valign="top"><a id="a99665f00c3be293c00a1e94108faf7fb"></a>
-G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>DecayIt</b> (const G4Track &amp;theTrack, const G4Step &amp;theStep)</td></tr>
-<tr class="separator:a99665f00c3be293c00a1e94108faf7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ec560e7f26a5e7f951b141ef2f0b0fd"><td class="memItemLeft" align="right" valign="top"><a id="a1ec560e7f26a5e7f951b141ef2f0b0fd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>StreamInfo</b> (std::ostream &amp;os, const G4String &amp;endline)</td></tr>
+<tr class="separator:a1ec560e7f26a5e7f951b141ef2f0b0fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad51f35cd684d4dc41d2c8e7085a0a753"><td class="memItemLeft" align="right" valign="top"><a id="ad51f35cd684d4dc41d2c8e7085a0a753"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>G4RadioactiveDecay</b> (const <a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a> &amp;right)=delete</td></tr>
+<tr class="separator:ad51f35cd684d4dc41d2c8e7085a0a753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9719540ee05971f388a82f1992263c6"><td class="memItemLeft" align="right" valign="top"><a id="ad9719540ee05971f388a82f1992263c6"></a>
+<a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a> &amp;right)=delete</td></tr>
+<tr class="separator:ad9719540ee05971f388a82f1992263c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a16fd24f0dead06c05d1040a41dbb5234"><td class="memItemLeft" align="right" valign="top"><a id="a16fd24f0dead06c05d1040a41dbb5234"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DecayAnalog</b> (const G4Track &amp;theTrack)</td></tr>
-<tr class="separator:a16fd24f0dead06c05d1040a41dbb5234"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b4603308481a14604ee75cb96dfe5e5"><td class="memItemLeft" align="right" valign="top"><a id="a1b4603308481a14604ee75cb96dfe5e5"></a>
 G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>TerminateDecay</b> ()</td></tr>
 <tr class="separator:a1b4603308481a14604ee75cb96dfe5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fa13b19b1e94ee51007efc1b02d8dfe"><td class="memItemLeft" align="right" valign="top"><a id="a5fa13b19b1e94ee51007efc1b02d8dfe"></a>
-G4DecayProducts *&#160;</td><td class="memItemRight" valign="bottom"><b>DoDecay</b> (const G4ParticleDefinition &amp;theParticleDef)</td></tr>
-<tr class="separator:a5fa13b19b1e94ee51007efc1b02d8dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a089028f5661dacf49e154f2b448b06c4"><td class="memItemLeft" align="right" valign="top"><a id="a089028f5661dacf49e154f2b448b06c4"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMeanFreePath</b> (const G4Track &amp;theTrack, G4double previousStepSize, G4ForceCondition *condition) override</td></tr>
+<tr class="separator:a089028f5661dacf49e154f2b448b06c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3b88e46c9d4ffd3fadcbb39e8b7a3a6"><td class="memItemLeft" align="right" valign="top"><a id="ac3b88e46c9d4ffd3fadcbb39e8b7a3a6"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMeanLifeTime</b> (const G4Track &amp;theTrack, G4ForceCondition *condition) override</td></tr>
+<tr class="separator:ac3b88e46c9d4ffd3fadcbb39e8b7a3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71207bb55371a35fdc6ea36be800dc86"><td class="memItemLeft" align="right" valign="top"><a id="a71207bb55371a35fdc6ea36be800dc86"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>DecayAnalog</b> (const G4Track &amp;theTrack, G4DecayTable *)</td></tr>
+<tr class="separator:a71207bb55371a35fdc6ea36be800dc86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55718516640ece8413e4be22d57cacdb"><td class="memItemLeft" align="right" valign="top"><a id="a55718516640ece8413e4be22d57cacdb"></a>
+G4DecayProducts *&#160;</td><td class="memItemRight" valign="bottom"><b>DoDecay</b> (const G4ParticleDefinition &amp;, G4DecayTable *)</td></tr>
+<tr class="separator:a55718516640ece8413e4be22d57cacdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5927ac94113c1dd369940177877a1d4"><td class="memItemLeft" align="right" valign="top"><a id="af5927ac94113c1dd369940177877a1d4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>CollimateDecay</b> (G4DecayProducts *products)</td></tr>
 <tr class="separator:af5927ac94113c1dd369940177877a1d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -233,12 +247,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>CollimateDecayProduct
 <tr class="memitem:a89d20ee694e4e4d88c465b4c4fc7a027"><td class="memItemLeft" align="right" valign="top"><a id="a89d20ee694e4e4d88c465b4c4fc7a027"></a>
 G4ThreeVector&#160;</td><td class="memItemRight" valign="bottom"><b>ChooseCollimationDirection</b> () const</td></tr>
 <tr class="separator:a89d20ee694e4e4d88c465b4c4fc7a027"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88e7b52b697187c0f897d5b84b0b65d7"><td class="memItemLeft" align="right" valign="top"><a id="a88e7b52b697187c0f897d5b84b0b65d7"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMeanFreePath</b> (const G4Track &amp;theTrack, G4double previousStepSize, G4ForceCondition *condition)</td></tr>
-<tr class="separator:a88e7b52b697187c0f897d5b84b0b65d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f4f839406b4f36c2358efafe10b8549"><td class="memItemLeft" align="right" valign="top"><a id="a5f4f839406b4f36c2358efafe10b8549"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMeanLifeTime</b> (const G4Track &amp;theTrack, G4ForceCondition *condition)</td></tr>
-<tr class="separator:a5f4f839406b4f36c2358efafe10b8549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -251,42 +259,24 @@ G4RadioactiveDecayMessenger *&#160;</td><td class="memItemRight" valign="bottom"
 <tr class="memitem:afcc1ecf157b9115a51d0465aa4d13351"><td class="memItemLeft" align="right" valign="top"><a id="afcc1ecf157b9115a51d0465aa4d13351"></a>
 G4PhotonEvaporation *&#160;</td><td class="memItemRight" valign="bottom"><b>photonEvaporation</b></td></tr>
 <tr class="separator:afcc1ecf157b9115a51d0465aa4d13351"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a767b667309018dd11993d46d77b284d4"><td class="memItemLeft" align="right" valign="top"><a id="a767b667309018dd11993d46d77b284d4"></a>
+G4ITDecay *&#160;</td><td class="memItemRight" valign="bottom"><b>decayIT</b></td></tr>
+<tr class="separator:a767b667309018dd11993d46d77b284d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e7a5e24d24c5d8030b888c56f4e0153"><td class="memItemLeft" align="right" valign="top"><a id="a3e7a5e24d24c5d8030b888c56f4e0153"></a>
 std::vector&lt; G4String &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ValidVolumes</b></td></tr>
 <tr class="separator:a3e7a5e24d24c5d8030b888c56f4e0153"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8ac2ed7df46d38b09ab346703b21ecc"><td class="memItemLeft" align="right" valign="top"><a id="ac8ac2ed7df46d38b09ab346703b21ecc"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isAllVolumesMode</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isAllVolumesMode</b> {true}</td></tr>
 <tr class="separator:ac8ac2ed7df46d38b09ab346703b21ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97a581522bde92d2d2edd037ff3d9261"><td class="memItemLeft" align="right" valign="top"><a id="a97a581522bde92d2d2edd037ff3d9261"></a>
-DecayTableMap *&#160;</td><td class="memItemRight" valign="bottom"><b>dkmap</b></td></tr>
-<tr class="separator:a97a581522bde92d2d2edd037ff3d9261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
 <tr class="memitem:a793bd97ccc35a2bf9949b29fd74590cd"><td class="memItemLeft" align="right" valign="top"><a id="a793bd97ccc35a2bf9949b29fd74590cd"></a>
-static const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>levelTolerance</b> = 10.0 * eV</td></tr>
+static const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>levelTolerance</b> = 10.0*CLHEP::eV</td></tr>
 <tr class="separator:a793bd97ccc35a2bf9949b29fd74590cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a1ec560e7f26a5e7f951b141ef2f0b0fd"><td class="memItemLeft" align="right" valign="top"><a id="a1ec560e7f26a5e7f951b141ef2f0b0fd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>StreamInfo</b> (std::ostream &amp;os, const G4String &amp;endline)</td></tr>
-<tr class="separator:a1ec560e7f26a5e7f951b141ef2f0b0fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc2fb679abdf7e3cecf70f8cc2d2e844"><td class="memItemLeft" align="right" valign="top"><a id="afc2fb679abdf7e3cecf70f8cc2d2e844"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>G4RadioactiveDecay</b> (const <a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a> &amp;right)</td></tr>
-<tr class="separator:afc2fb679abdf7e3cecf70f8cc2d2e844"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d105bd27f5ac73a3c333b58ba511247"><td class="memItemLeft" align="right" valign="top"><a id="a6d105bd27f5ac73a3c333b58ba511247"></a>
-<a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a> &amp;right)</td></tr>
-<tr class="separator:a6d105bd27f5ac73a3c333b58ba511247"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af23392c70746be540ba3b666cdac1114"><td class="memItemLeft" align="right" valign="top"><a id="af23392c70746be540ba3b666cdac1114"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>AtRestGetPhysicalInteractionLength</b> (const G4Track &amp;track, G4ForceCondition *condition)</td></tr>
-<tr class="separator:af23392c70746be540ba3b666cdac1114"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fb4257aca98bf87d751a0021dcf4639"><td class="memItemLeft" align="right" valign="top"><a id="a0fb4257aca98bf87d751a0021dcf4639"></a>
-G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>AtRestDoIt</b> (const G4Track &amp;theTrack, const G4Step &amp;theStep)</td></tr>
-<tr class="separator:a0fb4257aca98bf87d751a0021dcf4639"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff9187bc33e0500c36b77d5fe7ffeb95"><td class="memItemLeft" align="right" valign="top"><a id="aff9187bc33e0500c36b77d5fe7ffeb95"></a>
-G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>PostStepDoIt</b> (const G4Track &amp;theTrack, const G4Step &amp;theStep)</td></tr>
-<tr class="separator:aff9187bc33e0500c36b77d5fe7ffeb95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30975c3a39a6cd48247059048f21a3a6"><td class="memItemLeft" align="right" valign="top"><a id="a30975c3a39a6cd48247059048f21a3a6"></a>
+static DecayTableMap *&#160;</td><td class="memItemRight" valign="bottom"><b>master_dkmap</b> = nullptr</td></tr>
+<tr class="separator:a30975c3a39a6cd48247059048f21a3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -294,32 +284,20 @@ Private Attributes</h2></td></tr>
 G4NucleusLimits&#160;</td><td class="memItemRight" valign="bottom"><b>theNucleusLimits</b></td></tr>
 <tr class="separator:a6e1e33959a2b99584debcc6332fa5941"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfa13bc524b27fd247fc9e0984d124d6"><td class="memItemLeft" align="right" valign="top"><a id="acfa13bc524b27fd247fc9e0984d124d6"></a>
-G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>isInitialised</b></td></tr>
+G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>isInitialised</b> {false}</td></tr>
 <tr class="separator:acfa13bc524b27fd247fc9e0984d124d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed109fef1bc4bec284610743f40bb589"><td class="memItemLeft" align="right" valign="top"><a id="aed109fef1bc4bec284610743f40bb589"></a>
-G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>applyARM</b></td></tr>
+G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>applyARM</b> {true}</td></tr>
 <tr class="separator:aed109fef1bc4bec284610743f40bb589"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b979e5fba50448622226134848311fd"><td class="memItemLeft" align="right" valign="top"><a id="a7b979e5fba50448622226134848311fd"></a>
-G4ThreeVector&#160;</td><td class="memItemRight" valign="bottom"><b>forceDecayDirection</b></td></tr>
+G4ThreeVector&#160;</td><td class="memItemRight" valign="bottom"><b>forceDecayDirection</b> {G4ThreeVector(0., 0., 0.)}</td></tr>
 <tr class="separator:a7b979e5fba50448622226134848311fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7411e879eded8d31c7eb58f7e7e2f7ba"><td class="memItemLeft" align="right" valign="top"><a id="a7411e879eded8d31c7eb58f7e7e2f7ba"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>forceDecayHalfAngle</b></td></tr>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>forceDecayHalfAngle</b> {0.0}</td></tr>
 <tr class="separator:a7411e879eded8d31c7eb58f7e7e2f7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc82499e6f2713a39451c04b19d45322"><td class="memItemLeft" align="right" valign="top"><a id="acc82499e6f2713a39451c04b19d45322"></a>
-G4String&#160;</td><td class="memItemRight" valign="bottom"><b>dirPath</b></td></tr>
-<tr class="separator:acc82499e6f2713a39451c04b19d45322"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a86baa780675d3ac586db4e7a3288e8"><td class="memItemLeft" align="right" valign="top"><a id="a0a86baa780675d3ac586db4e7a3288e8"></a>
-std::map&lt; G4int, G4String &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>theUserRadioactiveDataFiles</b></td></tr>
-<tr class="separator:a0a86baa780675d3ac586db4e7a3288e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1fffcce67590b3cc8b2c4c76894015e"><td class="memItemLeft" align="right" valign="top"><a id="ab1fffcce67590b3cc8b2c4c76894015e"></a>
-G4RadioactiveDecayMode&#160;</td><td class="memItemRight" valign="bottom"><b>theRadDecayMode</b></td></tr>
+G4RadioactiveDecayMode&#160;</td><td class="memItemRight" valign="bottom"><b>theRadDecayMode</b> {G4RadioactiveDecayMode::IT}</td></tr>
 <tr class="separator:ab1fffcce67590b3cc8b2c4c76894015e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd78beccebcff0012d206429b74f33a6"><td class="memItemLeft" align="right" valign="top"><a id="abd78beccebcff0012d206429b74f33a6"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>fRemainderLifeTime</b></td></tr>
-<tr class="separator:abd78beccebcff0012d206429b74f33a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8966941e99b455c87356c9c80e611d6"><td class="memItemLeft" align="right" valign="top"><a id="ac8966941e99b455c87356c9c80e611d6"></a>
-G4int&#160;</td><td class="memItemRight" valign="bottom"><b>verboseLevel</b></td></tr>
-<tr class="separator:ac8966941e99b455c87356c9c80e611d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebe3069dff9f56e964a89708d3518a1b"><td class="memItemLeft" align="right" valign="top"><a id="aebe3069dff9f56e964a89708d3518a1b"></a>
 G4double&#160;</td><td class="memItemRight" valign="bottom"><b>fThresholdForVeryLongDecayTime</b></td></tr>
 <tr class="separator:aebe3069dff9f56e964a89708d3518a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -329,6 +307,12 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a0206ac122b2b996b9e996670f2dc24d2"><td class="memItemLeft" align="right" valign="top"><a id="a0206ac122b2b996b9e996670f2dc24d2"></a>
 static const G4ThreeVector&#160;</td><td class="memItemRight" valign="bottom"><b>origin</b></td></tr>
 <tr class="separator:a0206ac122b2b996b9e996670f2dc24d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc82499e6f2713a39451c04b19d45322"><td class="memItemLeft" align="right" valign="top"><a id="acc82499e6f2713a39451c04b19d45322"></a>
+static G4String&#160;</td><td class="memItemRight" valign="bottom"><b>dirPath</b> = &quot;&quot;</td></tr>
+<tr class="separator:acc82499e6f2713a39451c04b19d45322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae55ec400147e893353907b438c8f2433"><td class="memItemLeft" align="right" valign="top"><a id="ae55ec400147e893353907b438c8f2433"></a>
+static std::map&lt; G4int, G4String &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>theUserRDataFiles</b> = nullptr</td></tr>
+<tr class="separator:ae55ec400147e893353907b438c8f2433"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_o_m_sim_g4_radioactive_decay_8hh_source.html">OMSimG4RadioactiveDecay.hh</a></li>
@@ -340,7 +324,7 @@ static const G4ThreeVector&#160;</td><td class="memItemRight" valign="bottom"><b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a></li>
-    <li class="footer">Generated on Thu Aug 29 2024 15:05:45 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 29 2024 16:09:01 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

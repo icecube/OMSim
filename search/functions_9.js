@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['linspace_588',['linspace',['../namespace_tools.html#a052be79128cb3b90b6a4701455307246',1,'Tools']]],
-  ['loadtxt_589',['loadtxt',['../namespace_tools.html#aefa5ecd8f1fb3d69a65d517494e99669',1,'Tools']]],
-  ['logspace_590',['logspace',['../namespace_tools.html#adf257eb5c348836614a3c10de47bcf6e',1,'Tools']]]
+  ['makeinterpolator_589',['makeInterpolator',['../class_distribution_sampler.html#ae4ab826da2e1b14517fcd38ac3d8e7bd',1,'DistributionSampler']]],
+  ['mdomharness_590',['mDOMHarness',['../classm_d_o_m_harness.html#ad83b869a9aa373be038889f61608d3c6',1,'mDOMHarness']]],
+  ['miescattering_591',['mieScattering',['../namespace_ice_processor.html#a394c6aa008d203aaeda7c2f28bfa3361',1,'IceProcessor']]]
 ];

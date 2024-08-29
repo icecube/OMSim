@@ -139,8 +139,8 @@ Collaboration diagram for OMSimEventAction:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a74d668030a1b6b461c942e87203c90b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_event_action.html#a74d668030a1b6b461c942e87203c90b9">BeginOfEventAction</a> (const G4Event *)</td></tr>
-<tr class="memdesc:a74d668030a1b6b461c942e87203c90b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom actions at the beginning of the event. This function sets the current event ID in the EventInfoManager.  <a href="class_o_m_sim_event_action.html#a74d668030a1b6b461c942e87203c90b9">More...</a><br /></td></tr>
+<tr class="memitem:a74d668030a1b6b461c942e87203c90b9"><td class="memItemLeft" align="right" valign="top"><a id="a74d668030a1b6b461c942e87203c90b9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BeginOfEventAction</b> (const G4Event *)</td></tr>
 <tr class="separator:a74d668030a1b6b461c942e87203c90b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10298c7dff0337cec4ee06a25ca9c116"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_event_action.html#a10298c7dff0337cec4ee06a25ca9c116">EndOfEventAction</a> (const G4Event *)</td></tr>
 <tr class="memdesc:a10298c7dff0337cec4ee06a25ca9c116"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom actions at the end of the event.  <a href="class_o_m_sim_event_action.html#a10298c7dff0337cec4ee06a25ca9c116">More...</a><br /></td></tr>
@@ -165,30 +165,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>EndOfEventAction</b> 
 <tr class="separator:a10298c7dff0337cec4ee06a25ca9c116"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a74d668030a1b6b461c942e87203c90b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74d668030a1b6b461c942e87203c90b9">&#9670;&nbsp;</a></span>BeginOfEventAction()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void OMSimEventAction::BeginOfEventAction </td>
-          <td>(</td>
-          <td class="paramtype">const G4Event *&#160;</td>
-          <td class="paramname"><em>evt</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">evt</td><td>Pointer to the current event. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a10298c7dff0337cec4ee06a25ca9c116"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a10298c7dff0337cec4ee06a25ca9c116">&#9670;&nbsp;</a></span>EndOfEventAction()</h2>
 
@@ -199,14 +175,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>EndOfEventAction</b> 
           <td class="memname">void OMSimEventAction::EndOfEventAction </td>
           <td>(</td>
           <td class="paramtype">const G4Event *&#160;</td>
-          <td class="paramname"><em>evt</em></td><td>)</td>
+          <td class="paramname"><em>p_event</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Depending on the arguments set, this function will write hit and decay information with the analysis manager and reset hit and analysis data for the next event. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">evt</td><td>Pointer to the current event. </td></tr>
+    <tr><td class="paramname">p_event</td><td>Pointer to the current event. </td></tr>
   </table>
   </dd>
 </dl>
@@ -223,7 +199,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>EndOfEventAction</b> 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_event_action.html">OMSimEventAction</a></li>
-    <li class="footer">Generated on Thu Aug 29 2024 15:05:45 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 29 2024 16:09:02 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

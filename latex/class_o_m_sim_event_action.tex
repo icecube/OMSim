@@ -31,8 +31,9 @@ Collaboration diagram for OMSim\+Event\+Action\+:
 This class defines custom actions that are performed at the start and end of each Geant4 event simulation. It interacts with analysis and hit managers to handle, record, and reset event information. \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_o_m_sim_event_action_a74d668030a1b6b461c942e87203c90b9}{Begin\+Of\+Event\+Action}} (const G4\+Event $\ast$)
-\begin{DoxyCompactList}\small\item\em Custom actions at the beginning of the event. This function sets the current event ID in the Event\+Info\+Manager. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_m_sim_event_action_a74d668030a1b6b461c942e87203c90b9}\label{class_o_m_sim_event_action_a74d668030a1b6b461c942e87203c90b9}} 
+void {\bfseries Begin\+Of\+Event\+Action} (const G4\+Event $\ast$)
+\item 
 void \mbox{\hyperlink{class_o_m_sim_event_action_a10298c7dff0337cec4ee06a25ca9c116}{End\+Of\+Event\+Action}} (const G4\+Event $\ast$)
 \begin{DoxyCompactList}\small\item\em Custom actions at the end of the event. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_o_m_sim_event_action_a74d668030a1b6b461c942e87203c90b9}\label{class_o_m_sim_event_action_a74d668030a1b6b461c942e87203c90b9}} 
@@ -56,26 +57,15 @@ void {\bfseries End\+Of\+Event\+Action} (const G4\+Event $\ast$)
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_event_action_a74d668030a1b6b461c942e87203c90b9}\label{class_o_m_sim_event_action_a74d668030a1b6b461c942e87203c90b9}} 
-\index{OMSimEventAction@{OMSimEventAction}!BeginOfEventAction@{BeginOfEventAction}}
-\index{BeginOfEventAction@{BeginOfEventAction}!OMSimEventAction@{OMSimEventAction}}
-\doxysubsubsection{\texorpdfstring{BeginOfEventAction()}{BeginOfEventAction()}}
-{\footnotesize\ttfamily void OMSim\+Event\+Action\+::\+Begin\+Of\+Event\+Action (\begin{DoxyParamCaption}\item[{const G4\+Event $\ast$}]{evt }\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em evt} & Pointer to the current event. \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{class_o_m_sim_event_action_a10298c7dff0337cec4ee06a25ca9c116}\label{class_o_m_sim_event_action_a10298c7dff0337cec4ee06a25ca9c116}} 
 \index{OMSimEventAction@{OMSimEventAction}!EndOfEventAction@{EndOfEventAction}}
 \index{EndOfEventAction@{EndOfEventAction}!OMSimEventAction@{OMSimEventAction}}
 \doxysubsubsection{\texorpdfstring{EndOfEventAction()}{EndOfEventAction()}}
-{\footnotesize\ttfamily void OMSim\+Event\+Action\+::\+End\+Of\+Event\+Action (\begin{DoxyParamCaption}\item[{const G4\+Event $\ast$}]{evt }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+Event\+Action\+::\+End\+Of\+Event\+Action (\begin{DoxyParamCaption}\item[{const G4\+Event $\ast$}]{p\+\_\+event }\end{DoxyParamCaption})}
 
 Depending on the arguments set, this function will write hit and decay information with the analysis manager and reset hit and analysis data for the next event. 
 \begin{DoxyParams}{Parameters}
-{\em evt} & Pointer to the current event. \\
+{\em p\+\_\+event} & Pointer to the current event. \\
 \hline
 \end{DoxyParams}
 
