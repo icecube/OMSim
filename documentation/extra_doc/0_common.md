@@ -165,10 +165,10 @@ This approach ensures a smooth integration of the photosensitive volume within t
 ```cpp
 #include "OMSimSensitiveDetector.hh"
 //... Assume the logical volume of your detector has been defined and is referred to as "lDetectorLV"
-OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector("myDetector", DetectorType::VolumePhotonDetector); 
-OMSimHitManager &lHitManager =  OMSimHitManager::getInstance();
-lHitManager.setNumberOfPMTs(1, lHitManager.getNextDetectorIndex());
-registerSensitiveDetector(lDetectorLV, lSensitiveDetector);
+OMSimSensitiveDetector* sensitiveDetector = new OMSimSensitiveDetector("myDetector", DetectorType::VolumePhotonDetector); 
+OMSimHitManager &hitManager =  OMSimHitManager::getInstance();
+hitManager.setNumberOfPMTs(1, hitManager.getNextDetectorIndex());
+registerSensitiveDetector(lDetectorLV, sensitiveDetector);
 ```
 
 In this case, `OMSimSensitiveDetector::ProcessHits` will store all absorbed photons. The number of photons absorbed will depend on the absorption length of the material connected to the logical volume. If you want it to be 100% efficient, use the material `RiAbs_Absorber`.
