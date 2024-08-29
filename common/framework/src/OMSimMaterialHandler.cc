@@ -154,8 +154,8 @@ void OMSimMaterialHandler::processConstProperties()
   for (const auto &property : m_jsonTree.get_child("jConstProperties"))
   {
     G4String key = property.first;
-    G4double value = property.second.get_value<G4double>();
-    m_MPT->AddConstProperty(key.c_str(), value);
+    G4double value = m_fileData->getValueWithUnit(m_jsonTree.get<G4String>("jName"), "jConstProperties." + key);
+    m_MPT->AddConstProperty(key.c_str(), value, true);
   }
 }
 

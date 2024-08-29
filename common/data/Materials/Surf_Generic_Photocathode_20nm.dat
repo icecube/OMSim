@@ -3,7 +3,11 @@
    "jFinish": "polished",
    "jType": "coated",
    "jConstProperties": {
-   "COATEDTHICKNESS": 20
+   "COATEDTHICKNESS":  {
+         "jValue": 20,
+         "jUnit": "nm",
+         "jInvertUnit" : ""
+      }
    },
    "jProperties": {
       "RINDEX": {

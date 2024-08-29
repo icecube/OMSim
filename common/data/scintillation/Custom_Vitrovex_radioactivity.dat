@@ -1,7 +1,7 @@
 {
    "jName": "Radioactivity_Vitrovex",
    "jMaterialName": "RiAbs_Glass_Vitrovex",
-   "ConstProperties": {
+   "jConstProperties": {
       "K40_ACTIVITY": {
          "jValue": 61,
          "jUnit": "kg",
