@@ -53,8 +53,8 @@ static \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}
 \doxysubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_decays_analysis_ab4a0cbaeebe1c1d49f829d735d237b9a}\label{class_o_m_sim_decays_analysis_ab4a0cbaeebe1c1d49f829d735d237b9a}} 
-static G4\+Thread\+Local \mbox{\hyperlink{struct_decay_stats}{Decay\+Stats}} $\ast$ {\bfseries m\+Thread\+Decay\+Stats} = nullptr
+\mbox{\Hypertarget{class_o_m_sim_decays_analysis_af55b12deb4954aace109441782e9e7f6}\label{class_o_m_sim_decays_analysis_af55b12deb4954aace109441782e9e7f6}} 
+static G4\+Thread\+Local \mbox{\hyperlink{struct_decay_stats}{Decay\+Stats}} $\ast$ {\bfseries m\+\_\+thread\+Decay\+Stats} = nullptr
 \item 
 \mbox{\Hypertarget{class_o_m_sim_decays_analysis_ab08bcf92e1751dfd749c6eabd91a9f27}\label{class_o_m_sim_decays_analysis_ab08bcf92e1751dfd749c6eabd91a9f27}} 
 static G4\+Mutex {\bfseries m\+\_\+mutex} = G4\+Mutex()
@@ -69,15 +69,15 @@ static \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}}
 \index{OMSimDecaysAnalysis@{OMSimDecaysAnalysis}!appendDecay@{appendDecay}}
 \index{appendDecay@{appendDecay}!OMSimDecaysAnalysis@{OMSimDecaysAnalysis}}
 \doxysubsubsection{\texorpdfstring{appendDecay()}{appendDecay()}}
-{\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::append\+Decay (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+Particle\+Name,  }\item[{G4double}]{p\+Decay\+Time,  }\item[{G4\+Three\+Vector}]{p\+Decay\+Position }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+Decays\+Analysis\+::append\+Decay (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+particle\+Name,  }\item[{G4double}]{p\+\_\+decay\+Time,  }\item[{G4\+Three\+Vector}]{p\+\_\+decay\+Position }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Particle\+Name} & Name of the particle. \\
+{\em p\+\_\+particle\+Name} & Name of the particle. \\
 \hline
-{\em p\+Decay\+Time} & Time of the decay. \\
+{\em p\+\_\+decay\+Time} & Time of the decay. \\
 \hline
-{\em p\+Decay\+Position} & Global position of the decay. \\
+{\em p\+\_\+decay\+Position} & Global position of the decay. \\
 \hline
 \end{DoxyParams}
 

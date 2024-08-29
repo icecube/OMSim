@@ -11,7 +11,7 @@ var class_o_m_sim_s_n_analysis =
     [ "writeHeaders", "class_o_m_sim_s_n_analysis.html#af2d02134ccf2ad6534bc9b4aabe373e1", null ],
     [ "writeInfoFile", "class_o_m_sim_s_n_analysis.html#a4b5cfc56187616edc57b65ecc103a740", null ],
     [ "writeInfoFileHeader", "class_o_m_sim_s_n_analysis.html#aa5e2fb77768d1884e7ba4068fe430dd6", null ],
-    [ "mEventStat", "class_o_m_sim_s_n_analysis.html#a9d06037da84e30786bc139484719baeb", null ],
-    [ "mHeaderWasWritten", "class_o_m_sim_s_n_analysis.html#a49cb680ee82390aa351b0698bad7f5f5", null ],
-    [ "mOutputSuffix", "class_o_m_sim_s_n_analysis.html#a33f3e4fb352ae398f8013aa4621e31dd", null ]
+    [ "m_eventStat", "class_o_m_sim_s_n_analysis.html#ac35272c488a9bf655d907f80ee2c94a0", null ],
+    [ "m_headerWasWritten", "class_o_m_sim_s_n_analysis.html#a163d52075256303f09cfacac167cb9c3", null ],
+    [ "m_outputSufix", "class_o_m_sim_s_n_analysis.html#a351e217edf942331d5be92dc8b48e29b", null ]
 ];

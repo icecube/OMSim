@@ -175,9 +175,9 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:ab4a0cbaeebe1c1d49f829d735d237b9a"><td class="memItemLeft" align="right" valign="top"><a id="ab4a0cbaeebe1c1d49f829d735d237b9a"></a>
-static G4ThreadLocal <a class="el" href="struct_decay_stats.html">DecayStats</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mThreadDecayStats</b> = nullptr</td></tr>
-<tr class="separator:ab4a0cbaeebe1c1d49f829d735d237b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af55b12deb4954aace109441782e9e7f6"><td class="memItemLeft" align="right" valign="top"><a id="af55b12deb4954aace109441782e9e7f6"></a>
+static G4ThreadLocal <a class="el" href="struct_decay_stats.html">DecayStats</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_threadDecayStats</b> = nullptr</td></tr>
+<tr class="separator:af55b12deb4954aace109441782e9e7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab08bcf92e1751dfd749c6eabd91a9f27"><td class="memItemLeft" align="right" valign="top"><a id="ab08bcf92e1751dfd749c6eabd91a9f27"></a>
 static G4Mutex&#160;</td><td class="memItemRight" valign="bottom"><b>m_mutex</b> = G4Mutex()</td></tr>
 <tr class="separator:ab08bcf92e1751dfd749c6eabd91a9f27"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,19 +196,19 @@ static <a class="el" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalys
           <td class="memname">void OMSimDecaysAnalysis::appendDecay </td>
           <td>(</td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pParticleName</em>, </td>
+          <td class="paramname"><em>p_particleName</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pDecayTime</em>, </td>
+          <td class="paramname"><em>p_decayTime</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4ThreeVector&#160;</td>
-          <td class="paramname"><em>pDecayPosition</em>&#160;</td>
+          <td class="paramname"><em>p_decayPosition</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -219,9 +219,9 @@ static <a class="el" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalys
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pParticleName</td><td>Name of the particle. </td></tr>
-    <tr><td class="paramname">pDecayTime</td><td>Time of the decay. </td></tr>
-    <tr><td class="paramname">pDecayPosition</td><td>Global position of the decay. </td></tr>
+    <tr><td class="paramname">p_particleName</td><td>Name of the particle. </td></tr>
+    <tr><td class="paramname">p_decayTime</td><td>Time of the decay. </td></tr>
+    <tr><td class="paramname">p_decayPosition</td><td>Global position of the decay. </td></tr>
   </table>
   </dd>
 </dl>
@@ -238,7 +238,7 @@ static <a class="el" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalys
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_decays_analysis.html">OMSimDecaysAnalysis</a></li>
-    <li class="footer">Generated on Thu Aug 29 2024 12:01:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 29 2024 13:40:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

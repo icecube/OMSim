@@ -53,11 +53,11 @@ G4double \mbox{\hyperlink{class_o_m_sim_e_n_e_s_af2e3aedc5ca2d1006891540c0d038eb
 \index{OMSimENES@{OMSimENES}!OMSimENES@{OMSimENES}}
 \index{OMSimENES@{OMSimENES}!OMSimENES@{OMSimENES}}
 \doxysubsubsection{\texorpdfstring{OMSimENES()}{OMSimENES()}}
-{\footnotesize\ttfamily OMSim\+ENES\+::\+OMSim\+ENES (\begin{DoxyParamCaption}\item[{G4\+Particle\+Gun $\ast$}]{gun }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily OMSim\+ENES\+::\+OMSim\+ENES (\begin{DoxyParamCaption}\item[{G4\+Particle\+Gun $\ast$}]{p\+\_\+gun }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em gun} & Pointer to the particle gun object used for simulation. \\
+{\em p\+\_\+gun} & Pointer to the particle p\+\_\+gun object used for simulation. \\
 \hline
 \end{DoxyParams}
 
@@ -67,13 +67,13 @@ G4double \mbox{\hyperlink{class_o_m_sim_e_n_e_s_af2e3aedc5ca2d1006891540c0d038eb
 \index{OMSimENES@{OMSimENES}!angularDistribution@{angularDistribution}}
 \index{angularDistribution@{angularDistribution}!OMSimENES@{OMSimENES}}
 \doxysubsubsection{\texorpdfstring{angularDistribution()}{angularDistribution()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} OMSim\+ENES\+::angular\+Distribution (\begin{DoxyParamCaption}\item[{G4double}]{Enu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} OMSim\+ENES\+::angular\+Distribution (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+energy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
 
 This function calculates the angular distribution for electrons scattered by neutrinos. The foundation for this computation is taken from the reference\+: \char`\"{}\+Carlo Giunti and Chung W.\+Kim (2007), Fundamentals of Neutrino Physics and Astrophysics, Oxford University Press, Chapter 5, eq. 5.\+29\char`\"{}.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Enu} & The energy of the incident neutrino. \\
+{\em p\+\_\+energy} & The energy of the incident neutrino. \\
 \hline
 \end{DoxyParams}
 
@@ -84,15 +84,15 @@ Implements \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\
 \index{OMSimENES@{OMSimENES}!calculateSecondaryParticleEnergy@{calculateSecondaryParticleEnergy}}
 \index{calculateSecondaryParticleEnergy@{calculateSecondaryParticleEnergy}!OMSimENES@{OMSimENES}}
 \doxysubsubsection{\texorpdfstring{calculateSecondaryParticleEnergy()}{calculateSecondaryParticleEnergy()}}
-{\footnotesize\ttfamily G4double OMSim\+ENES\+::calculate\+Secondary\+Particle\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{p\+Nu\+Energy,  }\item[{G4double}]{p\+Cos\+Theta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily G4double OMSim\+ENES\+::calculate\+Secondary\+Particle\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+\+Nu\+Energy,  }\item[{G4double}]{p\+\_\+cos\+Theta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
 
 The computation utilizes the formula for the energy of the electron as a function of incident neutrino energy and the scatter angle, based on the formula provided in the reference\+: \char`\"{}\+Carlo Giunti and Chung W.\+Kim (2007), Fundamentals of Neutrino Physics and Astrophysics, Oxford University Press, Chapter 5, eq. 5.\+27\char`\"{}.
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Nu\+Energy} & The energy of the incident neutrino. \\
+{\em p\+\_\+\+Nu\+Energy} & The energy of the incident neutrino. \\
 \hline
-{\em p\+Cos\+Theta} & The cosine of the scattering angle. \\
+{\em p\+\_\+cos\+Theta} & The cosine of the scattering angle. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -106,13 +106,13 @@ Implements \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\
 \index{OMSimENES@{OMSimENES}!totalCrossSection@{totalCrossSection}}
 \index{totalCrossSection@{totalCrossSection}!OMSimENES@{OMSimENES}}
 \doxysubsubsection{\texorpdfstring{totalCrossSection()}{totalCrossSection()}}
-{\footnotesize\ttfamily G4double OMSim\+ENES\+::total\+Cross\+Section (\begin{DoxyParamCaption}\item[{G4double}]{p\+Energy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily G4double OMSim\+ENES\+::total\+Cross\+Section (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+energy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
 
 This function determines the total cross-\/section for the scattering of neutrinos with electrons given a specific incident neutrino energy. The computational foundation is derived from\+: \char`\"{}\+M. Buchkremer, Electroweak Interactions\+: Neutral currents in neutrino-\/lepton elastic scattering experiments, \+Université Catholique de Louvain /\+CP3, 2011.\char`\"{}
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Energy} & The energy of the incident neutrino. \\
+{\em p\+\_\+energy} & The energy of the incident neutrino. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

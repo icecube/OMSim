@@ -152,21 +152,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ad2f9c752116c94abd1406536048eebbd"><td class="memItemLeft" align="right" valign="top"><a id="ad2f9c752116c94abd1406536048eebbd"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>mBeamRadius</b></td></tr>
-<tr class="separator:ad2f9c752116c94abd1406536048eebbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47b54254367c907ce232e4595fb6a260"><td class="memItemLeft" align="right" valign="top"><a id="a47b54254367c907ce232e4595fb6a260"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>mBeamDistance</b></td></tr>
-<tr class="separator:a47b54254367c907ce232e4595fb6a260"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0d63277853da4b35b925661f1dbc8f5"><td class="memItemLeft" align="right" valign="top"><a id="ad0d63277853da4b35b925661f1dbc8f5"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_beamRadius</b></td></tr>
+<tr class="separator:ad0d63277853da4b35b925661f1dbc8f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed01fa23804279177b31c201e27d2f91"><td class="memItemLeft" align="right" valign="top"><a id="aed01fa23804279177b31c201e27d2f91"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_beamDistance</b></td></tr>
+<tr class="separator:aed01fa23804279177b31c201e27d2f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacb861f1748a9ed427b2b188f2586396"><td class="memItemLeft" align="right" valign="top"><a id="aacb861f1748a9ed427b2b188f2586396"></a>
 G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_wavelength</b></td></tr>
 <tr class="separator:aacb861f1748a9ed427b2b188f2586396"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f0af1e0e1e50be36a520236cdcb9f33"><td class="memItemLeft" align="right" valign="top"><a id="a2f0af1e0e1e50be36a520236cdcb9f33"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>mTheta</b></td></tr>
-<tr class="separator:a2f0af1e0e1e50be36a520236cdcb9f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46382d1226ef1f4a4851128fcff0fda2"><td class="memItemLeft" align="right" valign="top"><a id="a46382d1226ef1f4a4851128fcff0fda2"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>mPhi</b></td></tr>
-<tr class="separator:a46382d1226ef1f4a4851128fcff0fda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d459dc652401144fb978053fbf1248e"><td class="memItemLeft" align="right" valign="top"><a id="a9d459dc652401144fb978053fbf1248e"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_theta</b></td></tr>
+<tr class="separator:a9d459dc652401144fb978053fbf1248e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20cb58d446f121237f8270310995c01b"><td class="memItemLeft" align="right" valign="top"><a id="a20cb58d446f121237f8270310995c01b"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_phi</b></td></tr>
+<tr class="separator:a20cb58d446f121237f8270310995c01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af7d054657e56a97db60274f30ff737e6"></a>
@@ -179,19 +179,19 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>mPhi</b></td></tr
           <td class="memname">AngularScan::AngularScan </td>
           <td>(</td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pBeamRadius</em>, </td>
+          <td class="paramname"><em>p_beamRadius</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pBeamDistance</em>, </td>
+          <td class="paramname"><em>p_beamDistance</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pWavelength</em>&#160;</td>
+          <td class="paramname"><em>p_wavelength</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -202,9 +202,9 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>mPhi</b></td></tr
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pBeamRadius</td><td>The radius of the beam. </td></tr>
-    <tr><td class="paramname">pBeamDistance</td><td>The distance of the beam from the origin. </td></tr>
-    <tr><td class="paramname">pWavelength</td><td>The wavelength of the photons to be generated. </td></tr>
+    <tr><td class="paramname">p_beamRadius</td><td>The radius of the beam. </td></tr>
+    <tr><td class="paramname">p_beamDistance</td><td>The distance of the beam from the origin. </td></tr>
+    <tr><td class="paramname">p_wavelength</td><td>The wavelength of the photons to be generated. </td></tr>
   </table>
   </dd>
 </dl>
@@ -222,13 +222,13 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>mPhi</b></td></tr
           <td class="memname">void AngularScan::runSingleAngularScan </td>
           <td>(</td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pPhi</em>, </td>
+          <td class="paramname"><em>p_phi</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pTheta</em>&#160;</td>
+          <td class="paramname"><em>p_theta</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -239,8 +239,8 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>mPhi</b></td></tr
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pPhi</td><td>The azimuthal angle in degrees. </td></tr>
-    <tr><td class="paramname">pTheta</td><td>The polar angle in degrees. </td></tr>
+    <tr><td class="paramname">p_phi</td><td>The azimuthal angle in degrees. </td></tr>
+    <tr><td class="paramname">p_theta</td><td>The polar angle in degrees. </td></tr>
   </table>
   </dd>
 </dl>
@@ -257,7 +257,7 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>mPhi</b></td></tr
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_angular_scan.html">AngularScan</a></li>
-    <li class="footer">Generated on Thu Aug 29 2024 12:01:15 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 29 2024 13:40:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -7,5 +7,5 @@
 <area shape="rect" id="node5" href="$class_o_m_sim_i_b_d.html" title="Class in charge of generating positrons from IBD of supernova antineutrino interactions." alt="" coords="197,200,289,227"/>
 <area shape="rect" id="node9" href="$class_o_m_sim_e_n_e_s.html" title="Class in charge of generating electrons from Electron&#45;electron_Neutrino Elastic Scattering (ENES) nu_..." alt="" coords="313,200,416,227"/>
 <area shape="rect" id="node7" href="$class_distribution_sampler.html" title="Utility class for sampling from a given distribution using the inverse cumulative function and interp..." alt="" coords="266,5,418,32"/>
-<area shape="rect" id="node8" href="$class_o_m_sim_s_n_tools.html" title="Provides utility methods for generating ENES and IBD interactions." alt="" coords="537,5,657,32"/>
+<area shape="rect" id="node8" href="$class_o_m_sim_s_n_tools.html" title="Provides utility methods for generating ENES and IBD interactions." alt="" coords="545,5,665,32"/>
 </map>

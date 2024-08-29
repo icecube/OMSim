@@ -9,7 +9,7 @@ var searchData=
   ['setcuts_313',['SetCuts',['../class_o_m_sim_physics_list.html#a21a650f31fd33e281cdb144f755875e4',1,'OMSimPhysicsList']]],
   ['setdata_314',['setData',['../class_distribution_sampler.html#a62407876667af623ba546ef60b9fca3a',1,'DistributionSampler']]],
   ['setnumberofpmts_315',['setNumberOfPMTs',['../class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8',1,'OMSimHitManager']]],
-  ['setopticalmodule_316',['setOpticalModule',['../class_o_m_sim_decays_g_p_s.html#ac4abdcbf291642b9b0d8e4dfe3aaab64',1,'OMSimDecaysGPS']]],
+  ['setopticalmodule_316',['setOpticalModule',['../class_o_m_sim_decays_g_p_s.html#a351e76b3b115c13a571a700ab03b7a8a',1,'OMSimDecaysGPS']]],
   ['setparameter_317',['setParameter',['../class_o_m_sim_command_args_table.html#a89368614d0c565dd2687c2560af8c79e',1,'OMSimCommandArgsTable']]],
   ['setpmtpositions_318',['setPMTPositions',['../class_l_o_m18.html#a07ecf58441de167ca0d41650a14a7190',1,'LOM18']]],
   ['setui_319',['setUI',['../class_o_m_sim_u_iinterface.html#aebd8bceca0c4d305f6bad38afbf2d70b',1,'OMSimUIinterface']]],

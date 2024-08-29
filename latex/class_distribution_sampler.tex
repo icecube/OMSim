@@ -38,17 +38,17 @@ std\+::vector$<$ G4double $>$ {\bfseries m\+\_\+X}
 \mbox{\Hypertarget{class_distribution_sampler_a74f747e595883d2d438a0a83b6d13cd4}\label{class_distribution_sampler_a74f747e595883d2d438a0a83b6d13cd4}} 
 std\+::vector$<$ G4double $>$ {\bfseries m\+\_\+Y}
 \item 
-\mbox{\Hypertarget{class_distribution_sampler_a0e5a3b5d614d0d0c8599ea0f2e470a33}\label{class_distribution_sampler_a0e5a3b5d614d0d0c8599ea0f2e470a33}} 
-std\+::vector$<$ G4double $>$ {\bfseries m\+Slopes}
+\mbox{\Hypertarget{class_distribution_sampler_afafaaeee9bd139b59c202c78e67ca237}\label{class_distribution_sampler_afafaaeee9bd139b59c202c78e67ca237}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+\_\+slopes}
 \item 
-\mbox{\Hypertarget{class_distribution_sampler_a8c589167286b401aba541dcee1f5872b}\label{class_distribution_sampler_a8c589167286b401aba541dcee1f5872b}} 
-std\+::vector$<$ G4double $>$ {\bfseries m\+CDF}
+\mbox{\Hypertarget{class_distribution_sampler_a0cd5e0b305bdfc3cef1a7cb1d7fee054}\label{class_distribution_sampler_a0cd5e0b305bdfc3cef1a7cb1d7fee054}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+\_\+\+CDF}
 \item 
-\mbox{\Hypertarget{class_distribution_sampler_a11d6ba97005fca66c123f6bf21fa342e}\label{class_distribution_sampler_a11d6ba97005fca66c123f6bf21fa342e}} 
-G4\+String {\bfseries m\+Dist\+Name}
+\mbox{\Hypertarget{class_distribution_sampler_a02ef50769671a5a9e933a82b977a915e}\label{class_distribution_sampler_a02ef50769671a5a9e933a82b977a915e}} 
+G4\+String {\bfseries m\+\_\+dist\+Name}
 \item 
-\mbox{\Hypertarget{class_distribution_sampler_a236177102b7383642247b5f04355179a}\label{class_distribution_sampler_a236177102b7383642247b5f04355179a}} 
-TGraph $\ast$ {\bfseries m\+Interpolator} = nullptr
+\mbox{\Hypertarget{class_distribution_sampler_a82bb62033ee83592f5a65619a639792a}\label{class_distribution_sampler_a82bb62033ee83592f5a65619a639792a}} 
+TGraph $\ast$ {\bfseries m\+\_\+interpolator} = nullptr
 \end{DoxyCompactItemize}
 
 
@@ -63,15 +63,15 @@ This function computes the slopes and cumulative function values for the given d
 \index{DistributionSampler@{DistributionSampler}!interpolate@{interpolate}}
 \index{interpolate@{interpolate}!DistributionSampler@{DistributionSampler}}
 \doxysubsubsection{\texorpdfstring{interpolate()}{interpolate()}}
-{\footnotesize\ttfamily G4double Distribution\+Sampler\+::interpolate (\begin{DoxyParamCaption}\item[{G4double}]{pX }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4double Distribution\+Sampler\+::interpolate (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+x }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em x-\/value} & \\
+{\em x-\/p\+\_\+value} & \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The interpolated y-\/value for the given x. 
+The interpolated y-\/p\+\_\+value for the given x. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_distribution_sampler_ae4ab826da2e1b14517fcd38ac3d8e7bd}\label{class_distribution_sampler_ae4ab826da2e1b14517fcd38ac3d8e7bd}} 
 \index{DistributionSampler@{DistributionSampler}!makeInterpolator@{makeInterpolator}}
@@ -88,36 +88,36 @@ This method creates a new TGraph instance with the stored data points and sets i
 This method employs the inverse cumulative distribution function (Inverse CDF) technique to derive samples from a specified distribution. It\textquotesingle{}s useful for generating random values in accordance with the underlying distribution shape.
 
 \begin{DoxyReturn}{Returns}
-A randomly selected x-\/value sampled in line with the provided distribution. 
+A randomly selected x-\/p\+\_\+value sampled in line with the provided distribution. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_distribution_sampler_a62407876667af623ba546ef60b9fca3a}\label{class_distribution_sampler_a62407876667af623ba546ef60b9fca3a}} 
 \index{DistributionSampler@{DistributionSampler}!setData@{setData}}
 \index{setData@{setData}!DistributionSampler@{DistributionSampler}}
 \doxysubsubsection{\texorpdfstring{setData()}{setData()}}
-{\footnotesize\ttfamily void Distribution\+Sampler\+::set\+Data (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ G4double $>$ \&}]{pX,  }\item[{const std\+::vector$<$ G4double $>$ \&}]{pY,  }\item[{G4\+String}]{p\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Distribution\+Sampler\+::set\+Data (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ G4double $>$ \&}]{p\+\_\+x,  }\item[{const std\+::vector$<$ G4double $>$ \&}]{p\+\_\+y,  }\item[{G4\+String}]{p\+\_\+name }\end{DoxyParamCaption})}
 
 This method sets the x and y data points for the distribution and assigns a name to it for the TGraph (if used).
 
 
 \begin{DoxyParams}{Parameters}
-{\em pX} & Vector containing x-\/values of the data. \\
+{\em p\+\_\+x} & Vector containing x-\/values of the data. \\
 \hline
-{\em pY} & Vector containing y-\/values of the data. \\
+{\em p\+\_\+y} & Vector containing y-\/values of the data. \\
 \hline
-{\em p\+Name} & Name for the distribution, used for debugging and TGraph name assignment. \\
+{\em p\+\_\+name} & Name for the distribution, used for debugging and TGraph name assignment. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_distribution_sampler_ad5fde5096dabc0cd2cf6fc4e5f2d2dd8}\label{class_distribution_sampler_ad5fde5096dabc0cd2cf6fc4e5f2d2dd8}} 
 \index{DistributionSampler@{DistributionSampler}!setUnits@{setUnits}}
 \index{setUnits@{setUnits}!DistributionSampler@{DistributionSampler}}
 \doxysubsubsection{\texorpdfstring{setUnits()}{setUnits()}}
-{\footnotesize\ttfamily void Distribution\+Sampler\+::set\+Units (\begin{DoxyParamCaption}\item[{G4double}]{pX,  }\item[{G4double}]{pY }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Distribution\+Sampler\+::set\+Units (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+x,  }\item[{G4double}]{p\+\_\+y }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em pX} & Unit for x-\/values. \\
+{\em p\+\_\+x} & Unit for x-\/values. \\
 \hline
-{\em pY} & Unit for y-\/values. \\
+{\em p\+\_\+y} & Unit for y-\/values. \\
 \hline
 \end{DoxyParams}
 

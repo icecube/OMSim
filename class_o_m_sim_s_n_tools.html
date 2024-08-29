@@ -156,12 +156,12 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a9b417d3b2e85de4f1b20e09497a63922"><td class="memItemLeft" align="right" valign="top"><a id="a9b417d3b2e85de4f1b20e09497a63922"></a>
-std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mdompos</b></td></tr>
-<tr class="separator:a9b417d3b2e85de4f1b20e09497a63922"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af908be289d086253893f327f7463d793"><td class="memItemLeft" align="right" valign="top"><a id="af908be289d086253893f327f7463d793"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr>
-<tr class="separator:af908be289d086253893f327f7463d793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a881e60c1171bea2baa7e013ece00f59c"><td class="memItemLeft" align="right" valign="top"><a id="a881e60c1171bea2baa7e013ece00f59c"></a>
+std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_DOMpos</b></td></tr>
+<tr class="separator:a881e60c1171bea2baa7e013ece00f59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1132b3ef54ae99ec5a8d1d48aa02dbb4"><td class="memItemLeft" align="right" valign="top"><a id="a1132b3ef54ae99ec5a8d1d48aa02dbb4"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_rMin</b></td></tr>
+<tr class="separator:a1132b3ef54ae99ec5a8d1d48aa02dbb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7b3c3433f4c60bd5a48d97600b1e8496"></a>
@@ -174,13 +174,13 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
           <td class="memname">G4double OMSimSNTools::calculateWeight </td>
           <td>(</td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pSigma</em>, </td>
+          <td class="paramname"><em>p_sigma</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pNrTargets</em>&#160;</td>
+          <td class="paramname"><em>p_numberTargs</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -189,15 +189,15 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This method computes the interaction weight of neutrinos in the ice using the formula: <code>weight = pSigma * Nt * r</code>, where:</p><ul>
-<li><code>pSigma</code> is the cross section,</li>
+<p>This method computes the interaction weight of neutrinos in the ice using the formula: <code>weight = p_sigma * Nt * r</code>, where:</p><ul>
+<li><code>p_sigma</code> is the cross section,</li>
 <li><code>Nt</code> is the number of targets in the ice (considered as electrons),</li>
 <li><code>r</code> is the distance the neutrino travels in the ice.</li>
 </ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pSigma</td><td>The cross section value. </td></tr>
-    <tr><td class="paramname">pNrTargets</td><td>The number of targets present in the ice for the corresponding interaction. </td></tr>
+    <tr><td class="paramname">p_sigma</td><td>The cross section p_value. </td></tr>
+    <tr><td class="paramname">p_numberTargs</td><td>The number of targets present in the ice for the corresponding interaction. </td></tr>
   </table>
   </dd>
 </dl>
@@ -219,7 +219,7 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
           <td class="memname">bool OMSimSNTools::checkVolumeForOMs </td>
           <td>(</td>
           <td class="paramtype">G4ThreeVector&#160;</td>
-          <td class="paramname"><em>pPosition</em></td><td>)</td>
+          <td class="paramname"><em>p_position</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -232,7 +232,7 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
 <p>This method determines whether the provided position lies in the generation medium (ice) It evaluates the position in the context of the global environment and examines the history depth to make this determination.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pPosition</td><td>The 3D position vector to be checked against module boundaries. </td></tr>
+    <tr><td class="paramname">p_position</td><td>The 3D position vector to be checked against module boundaries. </td></tr>
   </table>
   </dd>
 </dl>
@@ -251,13 +251,13 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
           <td class="memname">G4double OMSimSNTools::getAlpha </td>
           <td>(</td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pMeanEnergy</em>, </td>
+          <td class="paramname"><em>p_meanEnergy</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pMeanESquared</em>&#160;</td>
+          <td class="paramname"><em>p_meanESquared</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -269,8 +269,8 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
 <p>Given the mean energy and squared mean energy of the neutrino event, calculates the pinching parameter following equation 3 in Irene Tamborra et al., "High-resolution supernova neutrino spectra represented by a simple fit," PHYSICAL REVIEW D 86, 125031 (2012). <a href="https://arxiv.org/abs/1211.3920">https://arxiv.org/abs/1211.3920</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pMeanEnergy</td><td>The primary mean energy value from the supernova model. </td></tr>
-    <tr><td class="paramname">pMeanESquared</td><td>The primary squared mean energy value from the supernova model. </td></tr>
+    <tr><td class="paramname">p_meanEnergy</td><td>The primary mean energy p_value from the supernova model. </td></tr>
+    <tr><td class="paramname">p_meanESquared</td><td>The primary squared mean energy p_value from the supernova model. </td></tr>
   </table>
   </dd>
 </dl>
@@ -288,15 +288,15 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
           <td class="memname">std::pair&lt; std::string, std::string &gt; OMSimSNTools::getFileNames </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
+          <td class="paramname"><em>p_value</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This function provides the corresponding file names for neutrino and antineutrino fluxes depending on the supernova model identified by the input value. Files are located in "supernova/models"</p>
+<p>This function provides the corresponding file names for neutrino and antineutrino fluxes depending on the supernova model identified by the input p_value. Files are located in "supernova/models"</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>The integer identifier representing a specific supernova model. </td></tr>
+    <tr><td class="paramname">p_value</td><td>The integer identifier representing a specific supernova model. </td></tr>
   </table>
   </dd>
 </dl>
@@ -314,7 +314,7 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
           <td class="memname">G4double OMSimSNTools::numberOfTargets </td>
           <td>(</td>
           <td class="paramtype">G4int&#160;</td>
-          <td class="paramname"><em>pNrTargetPerMolecule</em></td><td>)</td>
+          <td class="paramname"><em>p_numberTargetPerMolecule</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -322,7 +322,7 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
 <p>This function determines the number of target particles, given the number of targets per molecule, assuming the ice is pure H2O. The density and molar mass values are based on ice at -50°C.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pNrTargetPerMolecule</td><td>Number of target particles per H2O molecule. </td></tr>
+    <tr><td class="paramname">p_numberTargetPerMolecule</td><td>Number of target particles per H2O molecule. </td></tr>
   </table>
   </dd>
 </dl>
@@ -359,19 +359,19 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
           <td class="memname">G4double OMSimSNTools::sampleEnergy </td>
           <td>(</td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pMeanEnergy</em>, </td>
+          <td class="paramname"><em>p_meanEnergy</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pMeanESquared</em>, </td>
+          <td class="paramname"><em>p_meanESquared</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4double &amp;&#160;</td>
-          <td class="paramname"><em>pAlpha</em>&#160;</td>
+          <td class="paramname"><em>p_alpha</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -380,16 +380,16 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Build the energy distribution Fe(E) given the input parameters, and uses the inverse CDF algorithm to sample a value for the neutrino energy from Fe(E).</p>
+<p>Build the energy distribution Fe(E) given the input parameters, and uses the inverse CDF algorithm to sample a p_value for the neutrino energy from Fe(E).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pMeanEnergy</td><td>The primary mean energy value from the supernova model. </td></tr>
-    <tr><td class="paramname">pMeanESquared</td><td>The primary squared mean energy value from the supernova model. </td></tr>
-    <tr><td class="paramname">pAlpha</td><td>Pinching parameter of the energy spectrum. </td></tr>
+    <tr><td class="paramname">p_meanEnergy</td><td>The primary mean energy p_value from the supernova model. </td></tr>
+    <tr><td class="paramname">p_meanESquared</td><td>The primary squared mean energy p_value from the supernova model. </td></tr>
+    <tr><td class="paramname">p_alpha</td><td>Pinching parameter of the energy spectrum. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The sampled energy value based on the given model. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The sampled energy p_value based on the given model. </dd></dl>
 
 </div>
 </div>
@@ -403,7 +403,7 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>Rmin</b></td></tr
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a></li>
-    <li class="footer">Generated on Thu Aug 29 2024 12:01:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 29 2024 13:40:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

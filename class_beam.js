@@ -9,10 +9,10 @@ var class_beam =
     [ "runBeamPicoQuantSetup", "class_beam.html#a406f53329dfffbb74e584c3c7917729f", null ],
     [ "runErlangenQEBeam", "class_beam.html#ad3e7bbf1d93522f534c59364b49dfe52", null ],
     [ "setWavelength", "class_beam.html#ac7f21d2869f244634e2e803246b84dba", null ],
+    [ "m_beamDistance", "class_beam.html#aa0f14034d4104b144172a6e41087a6b4", null ],
+    [ "m_beamRadius", "class_beam.html#a5e0b05dc9360578426682d3ed03fa37b", null ],
+    [ "m_phi", "class_beam.html#a8526eb087a53db949a870659cae49b2e", null ],
+    [ "m_theta", "class_beam.html#a032d3d5a563af843db0ac474050478a4", null ],
     [ "m_wavelength", "class_beam.html#ab0f51c7580287bbd3dda1efce2d8c142", null ],
-    [ "mBeamDistance", "class_beam.html#ad2ac5d0b1660ce2082aac09fdf3e00c4", null ],
-    [ "mBeamRadius", "class_beam.html#aee482f11676e10ad57688bf2b787da54", null ],
-    [ "mPhi", "class_beam.html#ae76cc6736821cccb79fea1b5e67a59f2", null ],
-    [ "mTheta", "class_beam.html#a055f77817cff0c82d126225e300f2ec9", null ],
-    [ "mZcorrection", "class_beam.html#a3444de2329f009a2c71a8355a8b6bd67", null ]
+    [ "m_zCorrection", "class_beam.html#a28e92d2c8b1d56860de80e32b617a7a6", null ]
 ];

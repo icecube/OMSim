@@ -53,11 +53,11 @@ G4double \mbox{\hyperlink{class_o_m_sim_i_b_d_aad2e0e4a3f6501f4d2c3fb896b032ade}
 \index{OMSimIBD@{OMSimIBD}!OMSimIBD@{OMSimIBD}}
 \index{OMSimIBD@{OMSimIBD}!OMSimIBD@{OMSimIBD}}
 \doxysubsubsection{\texorpdfstring{OMSimIBD()}{OMSimIBD()}}
-{\footnotesize\ttfamily OMSim\+IBD\+::\+OMSim\+IBD (\begin{DoxyParamCaption}\item[{G4\+Particle\+Gun $\ast$}]{gun }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily OMSim\+IBD\+::\+OMSim\+IBD (\begin{DoxyParamCaption}\item[{G4\+Particle\+Gun $\ast$}]{p\+\_\+gun }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em gun} & Pointer to the particle gun object used for simulation. \\
+{\em p\+\_\+gun} & Pointer to the particle p\+\_\+gun object used for simulation. \\
 \hline
 \end{DoxyParams}
 
@@ -67,17 +67,17 @@ G4double \mbox{\hyperlink{class_o_m_sim_i_b_d_aad2e0e4a3f6501f4d2c3fb896b032ade}
 \index{OMSimIBD@{OMSimIBD}!angularDistribution@{angularDistribution}}
 \index{angularDistribution@{angularDistribution}!OMSimIBD@{OMSimIBD}}
 \doxysubsubsection{\texorpdfstring{angularDistribution()}{angularDistribution()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} OMSim\+IBD\+::angular\+Distribution (\begin{DoxyParamCaption}\item[{G4double}]{Enubar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} OMSim\+IBD\+::angular\+Distribution (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+energy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
 
 This function evaluates the angular distribution of the positron based on the energy of the incident electronic antineutrino. The calculation follows the theoretical approach outlined in \char`\"{}\+The angular distribution of the reaction \textbackslash{}( \textbackslash{}bar\{\textbackslash{}nu\}\+\_\+e + p \textbackslash{}rightarrow e$^\wedge$+ + n \textbackslash{})\char`\"{} by P. Vogel and J. F. Beacom (1999), specifically referencing Eq. 14.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Enubar} & Energy of the incoming electronic antineutrino. \\
+{\em p\+\_\+energy} & Energy of the incoming electronic antineutrino. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyNote}{Note}
-This function populates the l\+Angular\+Distribution\+\_\+x and l\+Angular\+Distribution\+\_\+y vectors, which later can be used in other parts of the simulation. 
+This function populates the x\+Angular\+Distribution and y\+Angular\+Distribution vectors, which later can be used in other parts of the simulation. 
 \end{DoxyNote}
 
 
@@ -87,15 +87,15 @@ Implements \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\
 \index{OMSimIBD@{OMSimIBD}!calculateSecondaryParticleEnergy@{calculateSecondaryParticleEnergy}}
 \index{calculateSecondaryParticleEnergy@{calculateSecondaryParticleEnergy}!OMSimIBD@{OMSimIBD}}
 \doxysubsubsection{\texorpdfstring{calculateSecondaryParticleEnergy()}{calculateSecondaryParticleEnergy()}}
-{\footnotesize\ttfamily G4double OMSim\+IBD\+::calculate\+Secondary\+Particle\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{p\+Enubar,  }\item[{G4double}]{p\+Costheta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily G4double OMSim\+IBD\+::calculate\+Secondary\+Particle\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+energy,  }\item[{G4double}]{p\+\_\+cos\+Theta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
 
 Given the energy of the incident electronic antineutrino and the scatter angle, this function calculates the energy of the emitted positron following inverse beta decay. The theoretical basis for this calculation is given in \char`\"{}\+The angular distribution of the reaction \textbackslash{}( \textbackslash{}nu\+\_\+e + p \textbackslash{}rightarrow e$^\wedge$+ + n \textbackslash{})\char`\"{} by P. Vogel and J. F. Beacom (1999), specifically referencing Eq. 13.
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Enubar} & Energy of the incoming electronic antineutrino. \\
+{\em p\+\_\+energy} & Energy of the incoming electronic antineutrino. \\
 \hline
-{\em p\+Costheta} & Cosine of the scatter angle between the direction of the antineutrino\textquotesingle{}s momentum and the positron\textquotesingle{}s momentum.\\
+{\em p\+\_\+cos\+Theta} & Cosine of the scatter angle between the direction of the antineutrino\textquotesingle{}s momentum and the positron\textquotesingle{}s momentum.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -109,13 +109,13 @@ Implements \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\
 \index{OMSimIBD@{OMSimIBD}!totalCrossSection@{totalCrossSection}}
 \index{totalCrossSection@{totalCrossSection}!OMSimIBD@{OMSimIBD}}
 \doxysubsubsection{\texorpdfstring{totalCrossSection()}{totalCrossSection()}}
-{\footnotesize\ttfamily G4double OMSim\+IBD\+::total\+Cross\+Section (\begin{DoxyParamCaption}\item[{G4double}]{p\+Energy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily G4double OMSim\+IBD\+::total\+Cross\+Section (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+energy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
 
 This function estimates the total cross-\/section of the inverse beta decay, which can be used to weigh each event. The theoretical basis for this calculation is presented in \char`\"{}\+Future detection of supernova neutrino burst and explosion mechanism\char`\"{} by T. Totani, K. Sato, H. E. Dalhed, and J. R. Wilson (1998), specifically referencing Equation 9.
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Energy} & Energy of the incoming electronic antineutrino.\\
+{\em p\+\_\+energy} & Energy of the incoming electronic antineutrino.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

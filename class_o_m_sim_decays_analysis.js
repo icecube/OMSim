@@ -13,5 +13,5 @@ var class_o_m_sim_decays_analysis =
     [ "writeThreadHitInformation", "class_o_m_sim_decays_analysis.html#a78449c898f237d5a40c75042123c19af", null ],
     [ "m_instance", "class_o_m_sim_decays_analysis.html#a2eaf6dfdd1fad2f8a829db97ea5f8c9b", null ],
     [ "m_mutex", "class_o_m_sim_decays_analysis.html#ab08bcf92e1751dfd749c6eabd91a9f27", null ],
-    [ "mThreadDecayStats", "class_o_m_sim_decays_analysis.html#ab4a0cbaeebe1c1d49f829d735d237b9a", null ]
+    [ "m_threadDecayStats", "class_o_m_sim_decays_analysis.html#af55b12deb4954aace109441782e9e7f6", null ]
 ];

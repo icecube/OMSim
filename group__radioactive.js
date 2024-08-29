@@ -10,10 +10,10 @@ var group__radioactive =
     [ "OMSimRadDecaysDetector.hh", "_o_m_sim_rad_decays_detector_8hh.html", null ],
     [ "OMSim_radioactive_decays.cc", "_o_m_sim__radioactive__decays_8cc.html", null ],
     [ "DecayStats", "struct_decay_stats.html", [
-      [ "decay_position", "struct_decay_stats.html#ac359be5448828a37fed75a9de0537cdd", null ],
-      [ "decay_time", "struct_decay_stats.html#a0d8b961cbbf2f5944a703593356736c8", null ],
+      [ "decayPosition", "struct_decay_stats.html#a3d934d996a2a63bba0f60d645e09699a", null ],
+      [ "decayTime", "struct_decay_stats.html#ab7c94792694ba2d65611f6617b6dbd2e", null ],
       [ "eventId", "struct_decay_stats.html#a7cead323e226455fe4c847ff5043bd20", null ],
-      [ "isotope_name", "struct_decay_stats.html#adba1fdb7b55d8dc823560dca49d30730", null ]
+      [ "isotopeName", "struct_decay_stats.html#a6f7354ad3352ede3a5cebe79de8da4b4", null ]
     ] ],
     [ "OMSimDecaysAnalysis", "class_o_m_sim_decays_analysis.html", [
       [ "OMSimDecaysAnalysis", "class_o_m_sim_decays_analysis.html#a69166537ec42005ec45a793106810114", null ],
@@ -29,7 +29,7 @@ var group__radioactive =
       [ "writeThreadHitInformation", "class_o_m_sim_decays_analysis.html#a78449c898f237d5a40c75042123c19af", null ],
       [ "m_instance", "class_o_m_sim_decays_analysis.html#a2eaf6dfdd1fad2f8a829db97ea5f8c9b", null ],
       [ "m_mutex", "class_o_m_sim_decays_analysis.html#ab08bcf92e1751dfd749c6eabd91a9f27", null ],
-      [ "mThreadDecayStats", "class_o_m_sim_decays_analysis.html#ab4a0cbaeebe1c1d49f829d735d237b9a", null ]
+      [ "m_threadDecayStats", "class_o_m_sim_decays_analysis.html#af55b12deb4954aace109441782e9e7f6", null ]
     ] ],
     [ "OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html", [
       [ "OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html#a4556f2be9ad6593f835bd17c075480cf", null ],
@@ -41,15 +41,15 @@ var group__radioactive =
       [ "getDecayTerminationNuclide", "class_o_m_sim_decays_g_p_s.html#a1e3f12bd7b3d1d92e9ce080bcb5b52be", null ],
       [ "getInstance", "class_o_m_sim_decays_g_p_s.html#aa0f3b3dcf8f49e13b4319a31b5025a9e", null ],
       [ "operator=", "class_o_m_sim_decays_g_p_s.html#a7f8cd22b4d5bd7f08ba126014fafe788", null ],
-      [ "setOpticalModule", "class_o_m_sim_decays_g_p_s.html#ac4abdcbf291642b9b0d8e4dfe3aaab64", null ],
+      [ "setOpticalModule", "class_o_m_sim_decays_g_p_s.html#a351e76b3b115c13a571a700ab03b7a8a", null ],
       [ "setProductionRadius", "class_o_m_sim_decays_g_p_s.html#a0fd01732515dd1175fe5434a9cb3d0c5", null ],
       [ "simulateDecaysInPMTs", "class_o_m_sim_decays_g_p_s.html#a2bba4e779b0200d277e01053c521587b", null ],
       [ "simulateDecaysInPressureVessel", "class_o_m_sim_decays_g_p_s.html#ae43dceede1c8f2c332964fb43242cc76", null ],
+      [ "m_isotopeCommands", "class_o_m_sim_decays_g_p_s.html#a4cecd98013f977fa4092dfded7907b95", null ],
+      [ "m_nuclideStopName", "class_o_m_sim_decays_g_p_s.html#aa5bf83bea325d8cfbf7e81fe7b1fe2ba", null ],
       [ "m_opticalModule", "class_o_m_sim_decays_g_p_s.html#a2bb99830dc7b0204f85d0c9242425ab1", null ],
-      [ "mIsotopeCommands", "class_o_m_sim_decays_g_p_s.html#af4f9a615b6d1e9fa7d3b2104af3c2f3e", null ],
-      [ "mNuclideStopName", "class_o_m_sim_decays_g_p_s.html#adcbc2275cda8196cfdbd5b1c3477f7ad", null ],
-      [ "mProductionRadius", "class_o_m_sim_decays_g_p_s.html#a70c8a1985e53392c67247e6334eaaa17", null ],
-      [ "mTerminationIsotopes", "class_o_m_sim_decays_g_p_s.html#a363ea9066f59222ba1d3e3cd5f4a42d1", null ]
+      [ "m_productionRadius", "class_o_m_sim_decays_g_p_s.html#ad9e13fa3689fb5af2198b04625441dc8", null ],
+      [ "m_terminationIsotopes", "class_o_m_sim_decays_g_p_s.html#aa63ff61ec05a1c15a77883dd9e69151e", null ]
     ] ],
     [ "OMSimEventAction", "class_o_m_sim_event_action.html", [
       [ "OMSimEventAction", "class_o_m_sim_event_action.html#ab8aaaeecc185bbaef63665f673356506", null ],
@@ -69,26 +69,11 @@ var group__radioactive =
       [ "EndOfEventAction", "class_o_m_sim_event_action.html#a10298c7dff0337cec4ee06a25ca9c116", null ],
       [ "EndOfEventAction", "class_o_m_sim_event_action.html#a10298c7dff0337cec4ee06a25ca9c116", null ]
     ] ],
-    [ "EventInfoManager", "class_event_info_manager.html", [
-      [ "EventInfoManager", "class_event_info_manager.html#aaae2a42eb414ea5fbde3deff5cffc0b2", null ],
-      [ "EventInfoManager", "class_event_info_manager.html#aaae2a42eb414ea5fbde3deff5cffc0b2", null ],
-      [ "EventInfoManager", "class_event_info_manager.html#aaae2a42eb414ea5fbde3deff5cffc0b2", null ],
-      [ "getCurrentEventID", "class_event_info_manager.html#ab55b547cd98a9ae44b909dd4e03f0d0d", null ],
-      [ "getCurrentEventID", "class_event_info_manager.html#ab55b547cd98a9ae44b909dd4e03f0d0d", null ],
-      [ "getCurrentEventID", "class_event_info_manager.html#ab55b547cd98a9ae44b909dd4e03f0d0d", null ],
-      [ "getInstance", "class_event_info_manager.html#a3f20e93e5648ed8361ac6919e261b2ca", null ],
-      [ "getInstance", "class_event_info_manager.html#a3f20e93e5648ed8361ac6919e261b2ca", null ],
-      [ "getInstance", "class_event_info_manager.html#a3f20e93e5648ed8361ac6919e261b2ca", null ],
-      [ "setCurrentEventID", "class_event_info_manager.html#a6196a992f70988bea9efb7c1e77eb358", null ],
-      [ "setCurrentEventID", "class_event_info_manager.html#a6196a992f70988bea9efb7c1e77eb358", null ],
-      [ "setCurrentEventID", "class_event_info_manager.html#a6196a992f70988bea9efb7c1e77eb358", null ],
-      [ "currentEventID", "class_event_info_manager.html#aa12794088e655821d47bedbacd179296", null ]
-    ] ],
     [ "OMSimRadDecaysDetector", "class_o_m_sim_rad_decays_detector.html", [
       [ "OMSimRadDecaysDetector", "class_o_m_sim_rad_decays_detector.html#a59201df237ea453596fb84b93b91c426", null ],
       [ "~OMSimRadDecaysDetector", "class_o_m_sim_rad_decays_detector.html#a1d241f3d0a276b96bfda9fee5307eec6", null ],
       [ "constructDetector", "class_o_m_sim_rad_decays_detector.html#a57f6a622e962ea5217caabd9d2161af8", null ],
       [ "constructWorld", "class_o_m_sim_rad_decays_detector.html#a7616ce083479e613cd3d9dfa9ac8b1fa", null ],
-      [ "mOpticalModule", "class_o_m_sim_rad_decays_detector.html#ade8a9df06d1cb5a133efaba1f78b0b4e", null ]
+      [ "m_opticalModule", "class_o_m_sim_rad_decays_detector.html#a4175ec91c00118f33aeed20f2a2c72df", null ]
     ] ]
 ];

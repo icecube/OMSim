@@ -9,7 +9,6 @@ var files_dup =
     [ "OMSim.hh", "_o_m_sim_8hh.html", null ],
     [ "OMSim_effective_area.cc", "_o_m_sim__effective__area_8cc.html", "_o_m_sim__effective__area_8cc" ],
     [ "OMSim_radioactive_decays.cc", "_o_m_sim__radioactive__decays_8cc.html", "_o_m_sim__radioactive__decays_8cc" ],
-    [ "OMSim_supernova.cc", "_o_m_sim__supernova_8cc.html", "_o_m_sim__supernova_8cc" ],
     [ "OMSimActionInitialization.hh", "_o_m_sim_action_initialization_8hh_source.html", null ],
     [ "OMSimAngularScan.hh", "_o_m_sim_angular_scan_8hh.html", null ],
     [ "OMSimBeam.hh", "_o_m_sim_beam_8hh_source.html", null ],
@@ -22,9 +21,9 @@ var files_dup =
     ] ],
     [ "OMSimDetectorConstruction.hh", "_o_m_sim_detector_construction_8hh_source.html", null ],
     [ "OMSimEffectiveAreaAnalyisis.hh", "_o_m_sim_effective_area_analyisis_8hh_source.html", null ],
-    [ "effective_area/include/OMSimEffectiveAreaDetector.hh", "effective__area_2include_2_o_m_sim_effective_area_detector_8hh.html", null ],
-    [ "efficiency_calibration/include/OMSimEffectiveAreaDetector.hh", "efficiency__calibration_2include_2_o_m_sim_effective_area_detector_8hh.html", null ],
+    [ "OMSimEffectiveAreaDetector.hh", "_o_m_sim_effective_area_detector_8hh.html", null ],
     [ "OMSimEffiCaliAnalyisis.hh", "_o_m_sim_effi_cali_analyisis_8hh_source.html", null ],
+    [ "OMSimEffiCaliDetector.hh", "_o_m_sim_effi_cali_detector_8hh_source.html", null ],
     [ "effective_area/include/OMSimEventAction.hh", "effective__area_2include_2_o_m_sim_event_action_8hh_source.html", null ],
     [ "efficiency_calibration/include/OMSimEventAction.hh", "efficiency__calibration_2include_2_o_m_sim_event_action_8hh_source.html", null ],
     [ "radioactive_decays/include/OMSimEventAction.hh", "radioactive__decays_2include_2_o_m_sim_event_action_8hh.html", null ],
@@ -94,6 +93,7 @@ var files_dup =
     [ "OMSimSteppingAction.hh", "_o_m_sim_stepping_action_8hh.html", [
       [ "OMSimSteppingAction", "class_o_m_sim_stepping_action.html", "class_o_m_sim_stepping_action" ]
     ] ],
+    [ "OMSimSupernova.cc", "_o_m_sim_supernova_8cc.html", "_o_m_sim_supernova_8cc" ],
     [ "OMSimTools.hh", "_o_m_sim_tools_8hh.html", "_o_m_sim_tools_8hh" ],
     [ "OMSimTrackingAction.hh", "_o_m_sim_tracking_action_8hh_source.html", null ],
     [ "OMSimUIinterface.hh", "_o_m_sim_u_iinterface_8hh.html", "_o_m_sim_u_iinterface_8hh" ]

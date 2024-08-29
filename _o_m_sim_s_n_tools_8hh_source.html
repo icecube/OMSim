@@ -117,66 +117,64 @@ $(document).ready(function(){initNavTree('_o_m_sim_s_n_tools_8hh_source.html',''
 </div><!--header-->
 <div class="contents">
 <a href="_o_m_sim_s_n_tools_8hh.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef OMSimSNTools_h</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define OMSimSNTools_h 1</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;globals.hh&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;G4ThreeVector.hh&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;TGraph.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;globals.hh&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;G4ThreeVector.hh&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;TGraph.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_distribution_sampler.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_distribution_sampler.html">DistributionSampler</a></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{   </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="class_distribution_sampler.html">DistributionSampler</a>(){};</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        ~<a class="code" href="class_distribution_sampler.html">DistributionSampler</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        G4double <a class="code" href="class_distribution_sampler.html#aa3a2ca8ec78298b7c58b3f2af0e549ce">sampleFromDistribution</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_distribution_sampler.html#a62407876667af623ba546ef60b9fca3a">setData</a>(<span class="keyword">const</span> std::vector&lt;G4double&gt;&amp; pX, <span class="keyword">const</span> std::vector&lt;G4double&gt;&amp; pY, G4String pName);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_distribution_sampler.html#ae4ab826da2e1b14517fcd38ac3d8e7bd">makeInterpolator</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_distribution_sampler.html#ad5fde5096dabc0cd2cf6fc4e5f2d2dd8">setUnits</a>(G4double pX, G4double pY);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        G4double <a class="code" href="class_distribution_sampler.html#a2e254930c735ca208b6d1b6c330cf64e">interpolate</a>(G4double pX);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_distribution_sampler.html#aa0b62effce220e28d3a08c8904c6ee76">calculateSlopesAndCDF</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        G4double m_XUnit;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        G4double m_YUnit;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        std::vector&lt;G4double&gt; m_X;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        std::vector&lt;G4double&gt; m_Y;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::vector&lt;G4double&gt; mSlopes;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        std::vector&lt;G4double&gt; mCDF;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        G4String mDistName;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        TGraph *mInterpolator = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_o_m_sim_s_n_tools.html">   56</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a>(){};   </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    ~<a class="code" href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a>(){};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    G4ThreeVector <a class="code" href="class_o_m_sim_s_n_tools.html#a7e746f08979e8ead130088b7396871a1">randomPosition</a>();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::pair&lt;std::string, std::string&gt; <a class="code" href="class_o_m_sim_s_n_tools.html#a89a22f20d0aff91704cf6cab1b48d266">getFileNames</a>(<span class="keywordtype">int</span> value);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    G4double <a class="code" href="class_o_m_sim_s_n_tools.html#a48caade81da87bfc2a0ac9da94b57110">sampleEnergy</a>(G4double Emean, G4double Emean2, G4double&amp; alpha);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    G4double <a class="code" href="class_o_m_sim_s_n_tools.html#aeb59462c439834b0bb9c5a5be3ad612c">getAlpha</a>(G4double Emean,G4double Emean2);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    G4double <a class="code" href="class_o_m_sim_s_n_tools.html#a7b3c3433f4c60bd5a48d97600b1e8496">calculateWeight</a>(G4double sigma, G4double NTargets);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    G4double <a class="code" href="class_o_m_sim_s_n_tools.html#a34d75fd490a03c6c6131c5ea8fbec3f2">numberOfTargets</a>(G4int targetPerMolecule);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">private</span>:     </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::vector &lt;G4double&gt; mdompos;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    G4double Rmin;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_o_m_sim_s_n_tools.html#a0b663ee3b96216ee943a681a496dffc5">checkVolumeForOMs</a>(G4ThreeVector position);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_distribution_sampler_html"><div class="ttname"><a href="class_distribution_sampler.html">DistributionSampler</a></div><div class="ttdoc">Utility class for sampling from a given distribution using the inverse cumulative function and interp...</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.hh:25</div></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_distribution_sampler.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_distribution_sampler.html">DistributionSampler</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{   </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="class_distribution_sampler.html">DistributionSampler</a>(){};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        ~<a class="code" href="class_distribution_sampler.html">DistributionSampler</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        G4double <a class="code" href="class_distribution_sampler.html#aa3a2ca8ec78298b7c58b3f2af0e549ce">sampleFromDistribution</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_distribution_sampler.html#a62407876667af623ba546ef60b9fca3a">setData</a>(<span class="keyword">const</span> std::vector&lt;G4double&gt;&amp; pX, <span class="keyword">const</span> std::vector&lt;G4double&gt;&amp; pY, G4String pName);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_distribution_sampler.html#ae4ab826da2e1b14517fcd38ac3d8e7bd">makeInterpolator</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_distribution_sampler.html#ad5fde5096dabc0cd2cf6fc4e5f2d2dd8">setUnits</a>(G4double pX, G4double pY);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        G4double <a class="code" href="class_distribution_sampler.html#a2e254930c735ca208b6d1b6c330cf64e">interpolate</a>(G4double pX);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_distribution_sampler.html#aa0b62effce220e28d3a08c8904c6ee76">calculateSlopesAndCDF</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        G4double m_XUnit;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        G4double m_YUnit;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        std::vector&lt;G4double&gt; m_X;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        std::vector&lt;G4double&gt; m_Y;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        std::vector&lt;G4double&gt; m_slopes;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::vector&lt;G4double&gt; m_CDF;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        G4String m_distName;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        TGraph *m_interpolator = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_o_m_sim_s_n_tools.html">   55</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a>(){};   </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    ~<a class="code" href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a>(){};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    G4ThreeVector <a class="code" href="class_o_m_sim_s_n_tools.html#a7e746f08979e8ead130088b7396871a1">randomPosition</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::pair&lt;std::string, std::string&gt; <a class="code" href="class_o_m_sim_s_n_tools.html#a89a22f20d0aff91704cf6cab1b48d266">getFileNames</a>(<span class="keywordtype">int</span> value);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    G4double <a class="code" href="class_o_m_sim_s_n_tools.html#a48caade81da87bfc2a0ac9da94b57110">sampleEnergy</a>(G4double Emean, G4double Emean2, G4double&amp; alpha);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    G4double <a class="code" href="class_o_m_sim_s_n_tools.html#aeb59462c439834b0bb9c5a5be3ad612c">getAlpha</a>(G4double Emean,G4double Emean2);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    G4double <a class="code" href="class_o_m_sim_s_n_tools.html#a7b3c3433f4c60bd5a48d97600b1e8496">calculateWeight</a>(G4double sigma, G4double NTargets);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    G4double <a class="code" href="class_o_m_sim_s_n_tools.html#a34d75fd490a03c6c6131c5ea8fbec3f2">numberOfTargets</a>(G4int targetPerMolecule);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">private</span>:     </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::vector &lt;G4double&gt; m_DOMpos;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    G4double m_rMin;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_o_m_sim_s_n_tools.html#a0b663ee3b96216ee943a681a496dffc5">checkVolumeForOMs</a>(G4ThreeVector position);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="ttc" id="aclass_distribution_sampler_html"><div class="ttname"><a href="class_distribution_sampler.html">DistributionSampler</a></div><div class="ttdoc">Utility class for sampling from a given distribution using the inverse cumulative function and interp...</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.hh:24</div></div>
 <div class="ttc" id="aclass_distribution_sampler_html_a2e254930c735ca208b6d1b6c330cf64e"><div class="ttname"><a href="class_distribution_sampler.html#a2e254930c735ca208b6d1b6c330cf64e">DistributionSampler::interpolate</a></div><div class="ttdeci">G4double interpolate(G4double pX)</div><div class="ttdoc">Interpolates distribution using TGraph (ROOT)</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.cc:320</div></div>
 <div class="ttc" id="aclass_distribution_sampler_html_a62407876667af623ba546ef60b9fca3a"><div class="ttname"><a href="class_distribution_sampler.html#a62407876667af623ba546ef60b9fca3a">DistributionSampler::setData</a></div><div class="ttdeci">void setData(const std::vector&lt; G4double &gt; &amp;pX, const std::vector&lt; G4double &gt; &amp;pY, G4String pName)</div><div class="ttdoc">Sets data for the distribution.</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.cc:266</div></div>
 <div class="ttc" id="aclass_distribution_sampler_html_aa0b62effce220e28d3a08c8904c6ee76"><div class="ttname"><a href="class_distribution_sampler.html#aa0b62effce220e28d3a08c8904c6ee76">DistributionSampler::calculateSlopesAndCDF</a></div><div class="ttdeci">void calculateSlopesAndCDF()</div><div class="ttdoc">Calculates the slopes and cumulative function of a dataset for the inverse cumulative algorithm.</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.cc:294</div></div>
 <div class="ttc" id="aclass_distribution_sampler_html_aa3a2ca8ec78298b7c58b3f2af0e549ce"><div class="ttname"><a href="class_distribution_sampler.html#aa3a2ca8ec78298b7c58b3f2af0e549ce">DistributionSampler::sampleFromDistribution</a></div><div class="ttdeci">G4double sampleFromDistribution()</div><div class="ttdoc">Samples values from a given distribution using the Inverse CDF algorithm.</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.cc:224</div></div>
 <div class="ttc" id="aclass_distribution_sampler_html_ad5fde5096dabc0cd2cf6fc4e5f2d2dd8"><div class="ttname"><a href="class_distribution_sampler.html#ad5fde5096dabc0cd2cf6fc4e5f2d2dd8">DistributionSampler::setUnits</a></div><div class="ttdeci">void setUnits(G4double pX, G4double pY)</div><div class="ttdoc">Sets units for the x and y data points of the distribution.</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.cc:337</div></div>
 <div class="ttc" id="aclass_distribution_sampler_html_ae4ab826da2e1b14517fcd38ac3d8e7bd"><div class="ttname"><a href="class_distribution_sampler.html#ae4ab826da2e1b14517fcd38ac3d8e7bd">DistributionSampler::makeInterpolator</a></div><div class="ttdeci">void makeInterpolator()</div><div class="ttdoc">Initializes the interpolator using TGraph.</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.cc:281</div></div>
-<div class="ttc" id="aclass_o_m_sim_s_n_tools_html"><div class="ttname"><a href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a></div><div class="ttdoc">Provides utility methods for generating ENES and IBD interactions.</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.hh:57</div></div>
+<div class="ttc" id="aclass_o_m_sim_s_n_tools_html"><div class="ttname"><a href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a></div><div class="ttdoc">Provides utility methods for generating ENES and IBD interactions.</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.hh:56</div></div>
 <div class="ttc" id="aclass_o_m_sim_s_n_tools_html_a0b663ee3b96216ee943a681a496dffc5"><div class="ttname"><a href="class_o_m_sim_s_n_tools.html#a0b663ee3b96216ee943a681a496dffc5">OMSimSNTools::checkVolumeForOMs</a></div><div class="ttdeci">bool checkVolumeForOMs(G4ThreeVector position)</div><div class="ttdoc">Checks if a given position is within any of the modules.</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.cc:59</div></div>
 <div class="ttc" id="aclass_o_m_sim_s_n_tools_html_a34d75fd490a03c6c6131c5ea8fbec3f2"><div class="ttname"><a href="class_o_m_sim_s_n_tools.html#a34d75fd490a03c6c6131c5ea8fbec3f2">OMSimSNTools::numberOfTargets</a></div><div class="ttdeci">G4double numberOfTargets(G4int targetPerMolecule)</div><div class="ttdoc">Calculates the number of target particles in ice per cubic meter.</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.cc:179</div></div>
 <div class="ttc" id="aclass_o_m_sim_s_n_tools_html_a48caade81da87bfc2a0ac9da94b57110"><div class="ttname"><a href="class_o_m_sim_s_n_tools.html#a48caade81da87bfc2a0ac9da94b57110">OMSimSNTools::sampleEnergy</a></div><div class="ttdeci">G4double sampleEnergy(G4double Emean, G4double Emean2, G4double &amp;alpha)</div><div class="ttdoc">Randomly samle the energy depending on the properties of the energy spectrum.</div><div class="ttdef"><b>Definition:</b> OMSimSNTools.cc:124</div></div>
@@ -190,7 +188,7 @@ $(document).ready(function(){initNavTree('_o_m_sim_s_n_tools_8hh_source.html',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_83271c016684bff04ce022d17a2ba8ac.html">simulations</a></li><li class="navelem"><a class="el" href="dir_553094e69e8206429061833255d80122.html">supernova</a></li><li class="navelem"><a class="el" href="dir_a50532433148dd6238491228bd0c578b.html">include</a></li><li class="navelem"><a class="el" href="_o_m_sim_s_n_tools_8hh.html">OMSimSNTools.hh</a></li>
-    <li class="footer">Generated on Thu Aug 29 2024 12:01:15 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 29 2024 13:40:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

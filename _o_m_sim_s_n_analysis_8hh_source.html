@@ -116,69 +116,67 @@ $(document).ready(function(){initNavTree('_o_m_sim_s_n_analysis_8hh_source.html'
 <div class="title">OMSimSNAnalysis.hh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef OMSimSNAnalysis_h</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define OMSimSNAnalysis_h 1</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;G4Types.hh&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;G4String.hh&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;G4ThreeVector.hh&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_o_m_sim_hit_manager_8hh.html">OMSimHitManager.hh</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;tuple&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="struct_s_n_event_stats.html">   14</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_s_n_event_stats.html">SNEventStats</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    G4double neutrino_time;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    G4double mean_energy;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    G4double neutrino_energy;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    G4double cos_theta;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    G4double primary_energy;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    G4double weight;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_o_m_sim_s_n_analysis.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a>();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    ~<a class="code" href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a>(){};</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_o_m_sim_s_n_analysis.html#a104b6afd769a07cdfc7b1583e4804fef">   34</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a> &amp;<a class="code" href="class_o_m_sim_s_n_analysis.html#a104b6afd769a07cdfc7b1583e4804fef">getInstance</a>()</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a> instance;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">return</span> instance;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> analyseEvent();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> initEventStat();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> processEvent();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> writeHeaders();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> writeInfoFileHeader();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> writeDataFileHeader();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> writeInfoFile();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> writeDataFile();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    G4ThreadLocal <span class="keyword">static</span> <a class="code" href="struct_s_n_event_stats.html">SNEventStats</a> *mEventStat;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    G4ThreadLocal <span class="keyword">static</span> <span class="keywordtype">bool</span> mHeaderWasWritten;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    G4String mOutputSuffix;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;G4Types.hh&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;G4String.hh&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;G4ThreeVector.hh&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_o_m_sim_hit_manager_8hh.html">OMSimHitManager.hh</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="struct_s_n_event_stats.html">   13</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_s_n_event_stats.html">SNEventStats</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    G4double neutrinoTime;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    G4double meanEnergy;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    G4double neutrinoEnergy;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    G4double cosTheta;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    G4double primaryEnergy;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    G4double weight;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_o_m_sim_s_n_analysis.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    ~<a class="code" href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a>(){};</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_o_m_sim_s_n_analysis.html#a104b6afd769a07cdfc7b1583e4804fef">   33</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a> &amp;<a class="code" href="class_o_m_sim_s_n_analysis.html#a104b6afd769a07cdfc7b1583e4804fef">getInstance</a>()</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a> instance;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">return</span> instance;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> analyseEvent();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> initEventStat();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> processEvent();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> writeHeaders();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> writeInfoFileHeader();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> writeDataFileHeader();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> writeInfoFile();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> writeDataFile();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    G4ThreadLocal <span class="keyword">static</span> <a class="code" href="struct_s_n_event_stats.html">SNEventStats</a> *m_eventStat;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    G4ThreadLocal <span class="keyword">static</span> <span class="keywordtype">bool</span> m_headerWasWritten;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    G4String m_outputSufix;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="ttc" id="a_o_m_sim_hit_manager_8hh_html"><div class="ttname"><a href="_o_m_sim_hit_manager_8hh.html">OMSimHitManager.hh</a></div><div class="ttdoc">Defines structures and classes related to optical module photon hit management.</div></div>
-<div class="ttc" id="aclass_o_m_sim_s_n_analysis_html"><div class="ttname"><a href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a></div><div class="ttdef"><b>Definition:</b> OMSimSNAnalysis.hh:25</div></div>
-<div class="ttc" id="aclass_o_m_sim_s_n_analysis_html_a104b6afd769a07cdfc7b1583e4804fef"><div class="ttname"><a href="class_o_m_sim_s_n_analysis.html#a104b6afd769a07cdfc7b1583e4804fef">OMSimSNAnalysis::getInstance</a></div><div class="ttdeci">static OMSimSNAnalysis &amp; getInstance()</div><div class="ttdoc">Returns the singleton instance of the OMSimSNAnalysis.</div><div class="ttdef"><b>Definition:</b> OMSimSNAnalysis.hh:34</div></div>
-<div class="ttc" id="astruct_s_n_event_stats_html"><div class="ttname"><a href="struct_s_n_event_stats.html">SNEventStats</a></div><div class="ttdef"><b>Definition:</b> OMSimSNAnalysis.hh:15</div></div>
+<div class="ttc" id="aclass_o_m_sim_s_n_analysis_html"><div class="ttname"><a href="class_o_m_sim_s_n_analysis.html">OMSimSNAnalysis</a></div><div class="ttdef"><b>Definition:</b> OMSimSNAnalysis.hh:24</div></div>
+<div class="ttc" id="aclass_o_m_sim_s_n_analysis_html_a104b6afd769a07cdfc7b1583e4804fef"><div class="ttname"><a href="class_o_m_sim_s_n_analysis.html#a104b6afd769a07cdfc7b1583e4804fef">OMSimSNAnalysis::getInstance</a></div><div class="ttdeci">static OMSimSNAnalysis &amp; getInstance()</div><div class="ttdoc">Returns the singleton instance of the OMSimSNAnalysis.</div><div class="ttdef"><b>Definition:</b> OMSimSNAnalysis.hh:33</div></div>
+<div class="ttc" id="astruct_s_n_event_stats_html"><div class="ttname"><a href="struct_s_n_event_stats.html">SNEventStats</a></div><div class="ttdef"><b>Definition:</b> OMSimSNAnalysis.hh:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_83271c016684bff04ce022d17a2ba8ac.html">simulations</a></li><li class="navelem"><a class="el" href="dir_553094e69e8206429061833255d80122.html">supernova</a></li><li class="navelem"><a class="el" href="dir_a50532433148dd6238491228bd0c578b.html">include</a></li><li class="navelem"><b>OMSimSNAnalysis.hh</b></li>
-    <li class="footer">Generated on Thu Aug 29 2024 12:01:15 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 29 2024 13:40:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

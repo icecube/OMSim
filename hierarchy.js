@@ -23,7 +23,6 @@ var hierarchy =
     [ "DecayStats", "struct_decay_stats.html", null ],
     [ "DistributionSampler", "class_distribution_sampler.html", null ],
     [ "effectiveAreaResult", "structeffective_area_result.html", null ],
-    [ "EventInfoManager", "class_event_info_manager.html", null ],
     [ "FresnelCoefficients", "struct_fresnel_coefficients.html", null ],
     [ "G4UImessenger", null, [
       [ "OMSimPrimaryGeneratorMessenger", "class_o_m_sim_primary_generator_messenger.html", null ]
@@ -59,7 +58,7 @@ var hierarchy =
     [ "G4VUserDetectorConstruction", null, [
       [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html", [
         [ "OMSimEffectiveAreaDetector", "class_o_m_sim_effective_area_detector.html", null ],
-        [ "OMSimEffectiveAreaDetector", "class_o_m_sim_effective_area_detector.html", null ],
+        [ "OMSimEffiCaliDetector", "class_o_m_sim_effi_cali_detector.html", null ],
         [ "OMSimRadDecaysDetector", "class_o_m_sim_rad_decays_detector.html", null ],
         [ "OMSimSNdetector", "class_o_m_sim_s_ndetector.html", null ]
       ] ]

@@ -6,9 +6,9 @@ var class_angular_scan =
     [ "configurePosCoordinates", "class_angular_scan.html#a40b9d1151eeae2f86694554867883be8", null ],
     [ "configureScan", "class_angular_scan.html#a0603ef7f2b297de98ad466145ff122e4", null ],
     [ "runSingleAngularScan", "class_angular_scan.html#a465f642ebbe30fc94f9ed8ec6e554ef4", null ],
-    [ "m_wavelength", "class_angular_scan.html#aacb861f1748a9ed427b2b188f2586396", null ],
-    [ "mBeamDistance", "class_angular_scan.html#a47b54254367c907ce232e4595fb6a260", null ],
-    [ "mBeamRadius", "class_angular_scan.html#ad2f9c752116c94abd1406536048eebbd", null ],
-    [ "mPhi", "class_angular_scan.html#a46382d1226ef1f4a4851128fcff0fda2", null ],
-    [ "mTheta", "class_angular_scan.html#a2f0af1e0e1e50be36a520236cdcb9f33", null ]
+    [ "m_beamDistance", "class_angular_scan.html#aed01fa23804279177b31c201e27d2f91", null ],
+    [ "m_beamRadius", "class_angular_scan.html#ad0d63277853da4b35b925661f1dbc8f5", null ],
+    [ "m_phi", "class_angular_scan.html#a20cb58d446f121237f8270310995c01b", null ],
+    [ "m_theta", "class_angular_scan.html#a9d459dc652401144fb978053fbf1248e", null ],
+    [ "m_wavelength", "class_angular_scan.html#aacb861f1748a9ed427b2b188f2586396", null ]
 ];

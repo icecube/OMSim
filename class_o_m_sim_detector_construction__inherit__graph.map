@@ -1,7 +1,8 @@
 <map id="OMSimDetectorConstruction" name="OMSimDetectorConstruction">
-<area shape="rect" id="node1" title="Class for detector construction in the effective area simulation." alt="" coords="123,80,329,107"/>
-<area shape="rect" id="node3" href="$class_o_m_sim_effective_area_detector.html" title="Class for detector construction in the effective area simulation." alt="" coords="5,155,217,181"/>
-<area shape="rect" id="node4" href="$class_o_m_sim_rad_decays_detector.html" title="Detector construction of radioactive decays simulation." alt="" coords="241,155,440,181"/>
-<area shape="rect" id="node5" href="$class_o_m_sim_s_ndetector.html" title="Class for detector construction in the SN neutrino simulation." alt="" coords="463,155,605,181"/>
-<area shape="rect" id="node2" title=" " alt="" coords="117,5,335,32"/>
+<area shape="rect" id="node1" title="Class for detector construction in the effective area simulation." alt="" coords="271,81,477,108"/>
+<area shape="rect" id="node3" href="$class_o_m_sim_effective_area_detector.html" title="Class for detector construction in the effective area simulation." alt="" coords="525,5,737,32"/>
+<area shape="rect" id="node4" href="$class_o_m_sim_effi_cali_detector.html" title=" " alt="" coords="546,56,717,83"/>
+<area shape="rect" id="node5" href="$class_o_m_sim_rad_decays_detector.html" title="Detector construction of radioactive decays simulation." alt="" coords="532,107,731,133"/>
+<area shape="rect" id="node6" href="$class_o_m_sim_s_ndetector.html" title="Class for detector construction in the SN neutrino simulation." alt="" coords="561,157,702,184"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,81,223,108"/>
 </map>

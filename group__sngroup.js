@@ -2,7 +2,7 @@ var group__sngroup =
 [
     [ "OMSimSNParticleGenerators.hh", "_o_m_sim_s_n_particle_generators_8hh.html", null ],
     [ "OMSimSNTools.hh", "_o_m_sim_s_n_tools_8hh.html", null ],
-    [ "OMSim_supernova.cc", "_o_m_sim__supernova_8cc.html", null ],
+    [ "OMSimSupernova.cc", "_o_m_sim_supernova_8cc.html", null ],
     [ "OMSimSNdetector", "class_o_m_sim_s_ndetector.html", [
       [ "OMSimSNdetector", "class_o_m_sim_s_ndetector.html#a7808e0e579678e40fab0114f27224346", null ],
       [ "~OMSimSNdetector", "class_o_m_sim_s_ndetector.html#ac47ceb33243087b5c5f726c097c8ef20", null ],
@@ -34,14 +34,14 @@ var group__sngroup =
       [ "sampleFromDistribution", "class_distribution_sampler.html#aa3a2ca8ec78298b7c58b3f2af0e549ce", null ],
       [ "setData", "class_distribution_sampler.html#a62407876667af623ba546ef60b9fca3a", null ],
       [ "setUnits", "class_distribution_sampler.html#ad5fde5096dabc0cd2cf6fc4e5f2d2dd8", null ],
+      [ "m_CDF", "class_distribution_sampler.html#a0cd5e0b305bdfc3cef1a7cb1d7fee054", null ],
+      [ "m_distName", "class_distribution_sampler.html#a02ef50769671a5a9e933a82b977a915e", null ],
+      [ "m_interpolator", "class_distribution_sampler.html#a82bb62033ee83592f5a65619a639792a", null ],
+      [ "m_slopes", "class_distribution_sampler.html#afafaaeee9bd139b59c202c78e67ca237", null ],
       [ "m_X", "class_distribution_sampler.html#a61902886ae5fd6f278b693e7bb392267", null ],
       [ "m_XUnit", "class_distribution_sampler.html#a2f9f856cd5692afb9818e4154be034dc", null ],
       [ "m_Y", "class_distribution_sampler.html#a74f747e595883d2d438a0a83b6d13cd4", null ],
-      [ "m_YUnit", "class_distribution_sampler.html#a29d1ea54eb818701bbc4013325d0eb23", null ],
-      [ "mCDF", "class_distribution_sampler.html#a8c589167286b401aba541dcee1f5872b", null ],
-      [ "mDistName", "class_distribution_sampler.html#a11d6ba97005fca66c123f6bf21fa342e", null ],
-      [ "mInterpolator", "class_distribution_sampler.html#a236177102b7383642247b5f04355179a", null ],
-      [ "mSlopes", "class_distribution_sampler.html#a0e5a3b5d614d0d0c8599ea0f2e470a33", null ]
+      [ "m_YUnit", "class_distribution_sampler.html#a29d1ea54eb818701bbc4013325d0eb23", null ]
     ] ],
     [ "OMSimSNTools", "class_o_m_sim_s_n_tools.html", [
       [ "OMSimSNTools", "class_o_m_sim_s_n_tools.html#ab44ce4494361d6352987b74c252af450", null ],
@@ -53,7 +53,7 @@ var group__sngroup =
       [ "numberOfTargets", "class_o_m_sim_s_n_tools.html#a34d75fd490a03c6c6131c5ea8fbec3f2", null ],
       [ "randomPosition", "class_o_m_sim_s_n_tools.html#a7e746f08979e8ead130088b7396871a1", null ],
       [ "sampleEnergy", "class_o_m_sim_s_n_tools.html#a48caade81da87bfc2a0ac9da94b57110", null ],
-      [ "mdompos", "class_o_m_sim_s_n_tools.html#a9b417d3b2e85de4f1b20e09497a63922", null ],
-      [ "Rmin", "class_o_m_sim_s_n_tools.html#af908be289d086253893f327f7463d793", null ]
+      [ "m_DOMpos", "class_o_m_sim_s_n_tools.html#a881e60c1171bea2baa7e013ece00f59c", null ],
+      [ "m_rMin", "class_o_m_sim_s_n_tools.html#a1132b3ef54ae99ec5a8d1d48aa02dbb4", null ]
     ] ]
 ];

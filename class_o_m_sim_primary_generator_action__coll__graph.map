@@ -1,11 +1,11 @@
 <map id="OMSimPrimaryGeneratorAction" name="OMSimPrimaryGeneratorAction">
 <area shape="rect" id="node1" title=" " alt="" coords="157,289,383,316"/>
-<area shape="rect" id="node7" href="$class_o_m_sim_primary_generator_messenger.html" title=" " alt="" coords="66,379,322,405"/>
+<area shape="rect" id="node7" href="$class_o_m_sim_primary_generator_messenger.html" title=" " alt="" coords="46,379,302,405"/>
 <area shape="rect" id="node2" title=" " alt="" coords="152,5,388,32"/>
 <area shape="rect" id="node4" href="$class_s_n_base_particle_generator.html" title=" " alt="" coords="396,124,581,151"/>
 <area shape="rect" id="node3" href="$class_o_m_sim_i_b_d.html" title="Class in charge of generating positrons from IBD of supernova antineutrino interactions." alt="" coords="344,200,436,227"/>
 <area shape="rect" id="node9" href="$class_o_m_sim_e_n_e_s.html" title="Class in charge of generating electrons from Electron&#45;electron_Neutrino Elastic Scattering (ENES) nu_..." alt="" coords="460,200,563,227"/>
 <area shape="rect" id="node5" href="$class_distribution_sampler.html" title="Utility class for sampling from a given distribution using the inverse cumulative function and interp..." alt="" coords="413,5,565,32"/>
-<area shape="rect" id="node6" href="$class_o_m_sim_s_n_tools.html" title="Provides utility methods for generating ENES and IBD interactions." alt="" coords="683,5,803,32"/>
+<area shape="rect" id="node6" href="$class_o_m_sim_s_n_tools.html" title="Provides utility methods for generating ENES and IBD interactions." alt="" coords="691,5,811,32"/>
 <area shape="rect" id="node8" title=" " alt="" coords="5,289,132,316"/>
 </map>

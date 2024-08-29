@@ -9,6 +9,6 @@ var class_o_m_sim_s_n_tools =
     [ "numberOfTargets", "class_o_m_sim_s_n_tools.html#a34d75fd490a03c6c6131c5ea8fbec3f2", null ],
     [ "randomPosition", "class_o_m_sim_s_n_tools.html#a7e746f08979e8ead130088b7396871a1", null ],
     [ "sampleEnergy", "class_o_m_sim_s_n_tools.html#a48caade81da87bfc2a0ac9da94b57110", null ],
-    [ "mdompos", "class_o_m_sim_s_n_tools.html#a9b417d3b2e85de4f1b20e09497a63922", null ],
-    [ "Rmin", "class_o_m_sim_s_n_tools.html#af908be289d086253893f327f7463d793", null ]
+    [ "m_DOMpos", "class_o_m_sim_s_n_tools.html#a881e60c1171bea2baa7e013ece00f59c", null ],
+    [ "m_rMin", "class_o_m_sim_s_n_tools.html#a1132b3ef54ae99ec5a8d1d48aa02dbb4", null ]
 ];

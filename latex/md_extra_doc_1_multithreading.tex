@@ -167,7 +167,7 @@ In scenarios where merging data is unnecessary, or the amount of data is too lar
 \DoxyCodeLine{        m\_threadDecayStats = \textcolor{keyword}{new} \mbox{\hyperlink{struct_decay_stats}{DecayStats}}();}
 \DoxyCodeLine{    \}}
 \DoxyCodeLine{    G4int lEventID = G4EventManager::GetEventManager()-\/>GetConstCurrentEvent()-\/>GetEventID();}
-\DoxyCodeLine{    m\_threadDecayStats-\/>eventId.push\_back(lEventID);}
+\DoxyCodeLine{    m\_threadDecayStats-\/>\mbox{\hyperlink{struct_decay_stats_a7cead323e226455fe4c847ff5043bd20}{eventId}}.push\_back(lEventID);}
 \DoxyCodeLine{    (...)}
 \DoxyCodeLine{\}}
 
@@ -189,7 +189,7 @@ In scenarios where merging data is unnecessary, or the amount of data is too lar
 \DoxyCodeLine{}
 \DoxyCodeLine{    std::fstream dataFile;}
 \DoxyCodeLine{    dataFile.open(decaysFileName.c\_str(), std::ios::out | std::ios::app);}
-\DoxyCodeLine{    \textcolor{keywordflow}{if} (m\_threadDecayStats-\/>eventId.size() > 0)}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (m\_threadDecayStats-\/>\mbox{\hyperlink{struct_decay_stats_a7cead323e226455fe4c847ff5043bd20}{eventId}}.size() > 0)}
 \DoxyCodeLine{    \{}
 \DoxyCodeLine{        (...)}
 \DoxyCodeLine{    \}}

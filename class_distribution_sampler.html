@@ -163,18 +163,18 @@ std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"
 <tr class="memitem:a74f747e595883d2d438a0a83b6d13cd4"><td class="memItemLeft" align="right" valign="top"><a id="a74f747e595883d2d438a0a83b6d13cd4"></a>
 std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_Y</b></td></tr>
 <tr class="separator:a74f747e595883d2d438a0a83b6d13cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e5a3b5d614d0d0c8599ea0f2e470a33"><td class="memItemLeft" align="right" valign="top"><a id="a0e5a3b5d614d0d0c8599ea0f2e470a33"></a>
-std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mSlopes</b></td></tr>
-<tr class="separator:a0e5a3b5d614d0d0c8599ea0f2e470a33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c589167286b401aba541dcee1f5872b"><td class="memItemLeft" align="right" valign="top"><a id="a8c589167286b401aba541dcee1f5872b"></a>
-std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mCDF</b></td></tr>
-<tr class="separator:a8c589167286b401aba541dcee1f5872b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11d6ba97005fca66c123f6bf21fa342e"><td class="memItemLeft" align="right" valign="top"><a id="a11d6ba97005fca66c123f6bf21fa342e"></a>
-G4String&#160;</td><td class="memItemRight" valign="bottom"><b>mDistName</b></td></tr>
-<tr class="separator:a11d6ba97005fca66c123f6bf21fa342e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a236177102b7383642247b5f04355179a"><td class="memItemLeft" align="right" valign="top"><a id="a236177102b7383642247b5f04355179a"></a>
-TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>mInterpolator</b> = nullptr</td></tr>
-<tr class="separator:a236177102b7383642247b5f04355179a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afafaaeee9bd139b59c202c78e67ca237"><td class="memItemLeft" align="right" valign="top"><a id="afafaaeee9bd139b59c202c78e67ca237"></a>
+std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_slopes</b></td></tr>
+<tr class="separator:afafaaeee9bd139b59c202c78e67ca237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cd5e0b305bdfc3cef1a7cb1d7fee054"><td class="memItemLeft" align="right" valign="top"><a id="a0cd5e0b305bdfc3cef1a7cb1d7fee054"></a>
+std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_CDF</b></td></tr>
+<tr class="separator:a0cd5e0b305bdfc3cef1a7cb1d7fee054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02ef50769671a5a9e933a82b977a915e"><td class="memItemLeft" align="right" valign="top"><a id="a02ef50769671a5a9e933a82b977a915e"></a>
+G4String&#160;</td><td class="memItemRight" valign="bottom"><b>m_distName</b></td></tr>
+<tr class="separator:a02ef50769671a5a9e933a82b977a915e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82bb62033ee83592f5a65619a639792a"><td class="memItemLeft" align="right" valign="top"><a id="a82bb62033ee83592f5a65619a639792a"></a>
+TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>m_interpolator</b> = nullptr</td></tr>
+<tr class="separator:a82bb62033ee83592f5a65619a639792a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="aa0b62effce220e28d3a08c8904c6ee76"></a>
@@ -213,18 +213,18 @@ TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>mInterpolator</b>
           <td class="memname">G4double DistributionSampler::interpolate </td>
           <td>(</td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pX</em></td><td>)</td>
+          <td class="paramname"><em>p_x</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x-value</td><td></td></tr>
+    <tr><td class="paramname">x-p_value</td><td></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The interpolated y-value for the given x. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The interpolated y-p_value for the given x. </dd></dl>
 
 </div>
 </div>
@@ -261,7 +261,7 @@ TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>mInterpolator</b>
       </table>
 </div><div class="memdoc">
 <p>This method employs the inverse cumulative distribution function (Inverse CDF) technique to derive samples from a specified distribution. It's useful for generating random values in accordance with the underlying distribution shape.</p>
-<dl class="section return"><dt>Returns</dt><dd>A randomly selected x-value sampled in line with the provided distribution. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A randomly selected x-p_value sampled in line with the provided distribution. </dd></dl>
 
 </div>
 </div>
@@ -275,19 +275,19 @@ TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>mInterpolator</b>
           <td class="memname">void DistributionSampler::setData </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; G4double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>pX</em>, </td>
+          <td class="paramname"><em>p_x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::vector&lt; G4double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>pY</em>, </td>
+          <td class="paramname"><em>p_y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4String&#160;</td>
-          <td class="paramname"><em>pName</em>&#160;</td>
+          <td class="paramname"><em>p_name</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -299,9 +299,9 @@ TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>mInterpolator</b>
 <p>This method sets the x and y data points for the distribution and assigns a name to it for the TGraph (if used).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pX</td><td>Vector containing x-values of the data. </td></tr>
-    <tr><td class="paramname">pY</td><td>Vector containing y-values of the data. </td></tr>
-    <tr><td class="paramname">pName</td><td>Name for the distribution, used for debugging and TGraph name assignment. </td></tr>
+    <tr><td class="paramname">p_x</td><td>Vector containing x-values of the data. </td></tr>
+    <tr><td class="paramname">p_y</td><td>Vector containing y-values of the data. </td></tr>
+    <tr><td class="paramname">p_name</td><td>Name for the distribution, used for debugging and TGraph name assignment. </td></tr>
   </table>
   </dd>
 </dl>
@@ -318,13 +318,13 @@ TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>mInterpolator</b>
           <td class="memname">void DistributionSampler::setUnits </td>
           <td>(</td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pX</em>, </td>
+          <td class="paramname"><em>p_x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">G4double&#160;</td>
-          <td class="paramname"><em>pY</em>&#160;</td>
+          <td class="paramname"><em>p_y</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -335,8 +335,8 @@ TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>mInterpolator</b>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pX</td><td>Unit for x-values. </td></tr>
-    <tr><td class="paramname">pY</td><td>Unit for y-values. </td></tr>
+    <tr><td class="paramname">p_x</td><td>Unit for x-values. </td></tr>
+    <tr><td class="paramname">p_y</td><td>Unit for y-values. </td></tr>
   </table>
   </dd>
 </dl>
@@ -353,7 +353,7 @@ TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>mInterpolator</b>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_distribution_sampler.html">DistributionSampler</a></li>
-    <li class="footer">Generated on Thu Aug 29 2024 12:01:15 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 29 2024 13:40:16 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

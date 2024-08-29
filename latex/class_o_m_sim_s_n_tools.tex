@@ -31,11 +31,11 @@ bool \mbox{\hyperlink{class_o_m_sim_s_n_tools_a0b663ee3b96216ee943a681a496dffc5}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_s_n_tools_a9b417d3b2e85de4f1b20e09497a63922}\label{class_o_m_sim_s_n_tools_a9b417d3b2e85de4f1b20e09497a63922}} 
-std\+::vector$<$ G4double $>$ {\bfseries mdompos}
+\mbox{\Hypertarget{class_o_m_sim_s_n_tools_a881e60c1171bea2baa7e013ece00f59c}\label{class_o_m_sim_s_n_tools_a881e60c1171bea2baa7e013ece00f59c}} 
+std\+::vector$<$ G4double $>$ {\bfseries m\+\_\+\+DOMpos}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_s_n_tools_af908be289d086253893f327f7463d793}\label{class_o_m_sim_s_n_tools_af908be289d086253893f327f7463d793}} 
-G4double {\bfseries Rmin}
+\mbox{\Hypertarget{class_o_m_sim_s_n_tools_a1132b3ef54ae99ec5a8d1d48aa02dbb4}\label{class_o_m_sim_s_n_tools_a1132b3ef54ae99ec5a8d1d48aa02dbb4}} 
+G4double {\bfseries m\+\_\+r\+Min}
 \end{DoxyCompactItemize}
 
 
@@ -44,20 +44,20 @@ G4double {\bfseries Rmin}
 \index{OMSimSNTools@{OMSimSNTools}!calculateWeight@{calculateWeight}}
 \index{calculateWeight@{calculateWeight}!OMSimSNTools@{OMSimSNTools}}
 \doxysubsubsection{\texorpdfstring{calculateWeight()}{calculateWeight()}}
-{\footnotesize\ttfamily G4double OMSim\+SNTools\+::calculate\+Weight (\begin{DoxyParamCaption}\item[{G4double}]{p\+Sigma,  }\item[{G4double}]{p\+Nr\+Targets }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4double OMSim\+SNTools\+::calculate\+Weight (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+sigma,  }\item[{G4double}]{p\+\_\+number\+Targs }\end{DoxyParamCaption})}
 
-This method computes the interaction weight of neutrinos in the ice using the formula\+: {\ttfamily weight = p\+Sigma $\ast$ Nt $\ast$ r}, where\+:
+This method computes the interaction weight of neutrinos in the ice using the formula\+: {\ttfamily weight = p\+\_\+sigma $\ast$ Nt $\ast$ r}, where\+:
 \begin{DoxyItemize}
-\item {\ttfamily p\+Sigma} is the cross section,
+\item {\ttfamily p\+\_\+sigma} is the cross section,
 \item {\ttfamily Nt} is the number of targets in the ice (considered as electrons),
 \item {\ttfamily r} is the distance the neutrino travels in the ice.
 \end{DoxyItemize}
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Sigma} & The cross section value. \\
+{\em p\+\_\+sigma} & The cross section p\+\_\+value. \\
 \hline
-{\em p\+Nr\+Targets} & The number of targets present in the ice for the corresponding interaction. \\
+{\em p\+\_\+number\+Targs} & The number of targets present in the ice for the corresponding interaction. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyWarning}{Warning}
@@ -70,13 +70,13 @@ The computed interaction weight for the neutrinos based on the provided paramete
 \index{OMSimSNTools@{OMSimSNTools}!checkVolumeForOMs@{checkVolumeForOMs}}
 \index{checkVolumeForOMs@{checkVolumeForOMs}!OMSimSNTools@{OMSimSNTools}}
 \doxysubsubsection{\texorpdfstring{checkVolumeForOMs()}{checkVolumeForOMs()}}
-{\footnotesize\ttfamily bool OMSim\+SNTools\+::check\+Volume\+For\+OMs (\begin{DoxyParamCaption}\item[{G4\+Three\+Vector}]{p\+Position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily bool OMSim\+SNTools\+::check\+Volume\+For\+OMs (\begin{DoxyParamCaption}\item[{G4\+Three\+Vector}]{p\+\_\+position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 This method determines whether the provided position lies in the generation medium (ice) It evaluates the position in the context of the global environment and examines the history depth to make this determination.
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Position} & The 3D position vector to be checked against module boundaries. \\
+{\em p\+\_\+position} & The 3D position vector to be checked against module boundaries. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyWarning}{Warning}
@@ -89,15 +89,15 @@ True if the position is inside a module; otherwise, false.
 \index{OMSimSNTools@{OMSimSNTools}!getAlpha@{getAlpha}}
 \index{getAlpha@{getAlpha}!OMSimSNTools@{OMSimSNTools}}
 \doxysubsubsection{\texorpdfstring{getAlpha()}{getAlpha()}}
-{\footnotesize\ttfamily G4double OMSim\+SNTools\+::get\+Alpha (\begin{DoxyParamCaption}\item[{G4double}]{p\+Mean\+Energy,  }\item[{G4double}]{p\+Mean\+ESquared }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4double OMSim\+SNTools\+::get\+Alpha (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+mean\+Energy,  }\item[{G4double}]{p\+\_\+mean\+ESquared }\end{DoxyParamCaption})}
 
 Given the mean energy and squared mean energy of the neutrino event, calculates the pinching parameter following equation 3 in Irene Tamborra et al., \char`\"{}\+High-\/resolution supernova neutrino spectra represented by a simple fit,\char`\"{} PHYSICAL REVIEW D 86, 125031 (2012). \href{https://arxiv.org/abs/1211.3920}{\texttt{ https\+://arxiv.\+org/abs/1211.\+3920}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Mean\+Energy} & The primary mean energy value from the supernova model. \\
+{\em p\+\_\+mean\+Energy} & The primary mean energy p\+\_\+value from the supernova model. \\
 \hline
-{\em p\+Mean\+ESquared} & The primary squared mean energy value from the supernova model. \\
+{\em p\+\_\+mean\+ESquared} & The primary squared mean energy p\+\_\+value from the supernova model. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -107,13 +107,13 @@ Pinching parameter of the energy spectrum.
 \index{OMSimSNTools@{OMSimSNTools}!getFileNames@{getFileNames}}
 \index{getFileNames@{getFileNames}!OMSimSNTools@{OMSimSNTools}}
 \doxysubsubsection{\texorpdfstring{getFileNames()}{getFileNames()}}
-{\footnotesize\ttfamily std\+::pair$<$ std\+::string, std\+::string $>$ OMSim\+SNTools\+::get\+File\+Names (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::string, std\+::string $>$ OMSim\+SNTools\+::get\+File\+Names (\begin{DoxyParamCaption}\item[{int}]{p\+\_\+value }\end{DoxyParamCaption})}
 
-This function provides the corresponding file names for neutrino and antineutrino fluxes depending on the supernova model identified by the input value. Files are located in \char`\"{}supernova/models\char`\"{}
+This function provides the corresponding file names for neutrino and antineutrino fluxes depending on the supernova model identified by the input p\+\_\+value. Files are located in \char`\"{}supernova/models\char`\"{}
 
 
 \begin{DoxyParams}{Parameters}
-{\em value} & The integer identifier representing a specific supernova model. \\
+{\em p\+\_\+value} & The integer identifier representing a specific supernova model. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -123,13 +123,13 @@ A pair containing the neutrino and antineutrino flux file names.
 \index{OMSimSNTools@{OMSimSNTools}!numberOfTargets@{numberOfTargets}}
 \index{numberOfTargets@{numberOfTargets}!OMSimSNTools@{OMSimSNTools}}
 \doxysubsubsection{\texorpdfstring{numberOfTargets()}{numberOfTargets()}}
-{\footnotesize\ttfamily G4double OMSim\+SNTools\+::number\+Of\+Targets (\begin{DoxyParamCaption}\item[{G4int}]{p\+Nr\+Target\+Per\+Molecule }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4double OMSim\+SNTools\+::number\+Of\+Targets (\begin{DoxyParamCaption}\item[{G4int}]{p\+\_\+number\+Target\+Per\+Molecule }\end{DoxyParamCaption})}
 
 This function determines the number of target particles, given the number of targets per molecule, assuming the ice is pure H2O. The density and molar mass values are based on ice at -\/50°C.
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Nr\+Target\+Per\+Molecule} & Number of target particles per H2O molecule. \\
+{\em p\+\_\+number\+Target\+Per\+Molecule} & Number of target particles per H2O molecule. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -150,21 +150,21 @@ A valid vertex position within the ice.
 \index{OMSimSNTools@{OMSimSNTools}!sampleEnergy@{sampleEnergy}}
 \index{sampleEnergy@{sampleEnergy}!OMSimSNTools@{OMSimSNTools}}
 \doxysubsubsection{\texorpdfstring{sampleEnergy()}{sampleEnergy()}}
-{\footnotesize\ttfamily G4double OMSim\+SNTools\+::sample\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{p\+Mean\+Energy,  }\item[{G4double}]{p\+Mean\+ESquared,  }\item[{G4double \&}]{p\+Alpha }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4double OMSim\+SNTools\+::sample\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+mean\+Energy,  }\item[{G4double}]{p\+\_\+mean\+ESquared,  }\item[{G4double \&}]{p\+\_\+alpha }\end{DoxyParamCaption})}
 
-Build the energy distribution Fe(\+E) given the input parameters, and uses the inverse CDF algorithm to sample a value for the neutrino energy from Fe(\+E).
+Build the energy distribution Fe(\+E) given the input parameters, and uses the inverse CDF algorithm to sample a p\+\_\+value for the neutrino energy from Fe(\+E).
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+Mean\+Energy} & The primary mean energy value from the supernova model. \\
+{\em p\+\_\+mean\+Energy} & The primary mean energy p\+\_\+value from the supernova model. \\
 \hline
-{\em p\+Mean\+ESquared} & The primary squared mean energy value from the supernova model. \\
+{\em p\+\_\+mean\+ESquared} & The primary squared mean energy p\+\_\+value from the supernova model. \\
 \hline
-{\em p\+Alpha} & Pinching parameter of the energy spectrum. \\
+{\em p\+\_\+alpha} & Pinching parameter of the energy spectrum. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The sampled energy value based on the given model. 
+The sampled energy p\+\_\+value based on the given model. 
 \end{DoxyReturn}
 
 
