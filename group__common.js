@@ -119,7 +119,7 @@ var group__common =
       [ "FileType", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7", [
         [ "IceCubeICE", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7a36320c475aafdd54181e4ff589b70bdb", null ],
         [ "Scintillator", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7aff706d4ca652ed0b174da1a92cb35501", null ],
-        [ "Custom", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7a90589c47f06eb971d548591f23c285af", null ],
+        [ "Extra", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7a8a398abbb120a35320a3d669ae71d92e", null ],
         [ "Table", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7a51c45b795d5d18a3e4e0c37e8b20a141", null ],
         [ "Surface", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7aaa0d528ba11ea1485d466dfe1ea40819", null ],
         [ "Material", "class_o_m_sim_input_data.html#a230292bc2609c1c353d42213b8f5fbf7ad92a8333dd3ccb895cc65f7455b71206", null ]
