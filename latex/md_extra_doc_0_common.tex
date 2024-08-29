@@ -71,8 +71,8 @@ Here\textquotesingle{}s an example of how to properly create and configure sensi
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < numberOfModules; ++i) \{}
 \DoxyCodeLine{    \mbox{\hyperlink{classm_d_o_m}{mDOM}}* module = \textcolor{keyword}{new} \mbox{\hyperlink{classm_d_o_m}{mDOM}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{    G4String lExtension = \textcolor{stringliteral}{"{}\_"{}} + std::to\_string(i);}
-\DoxyCodeLine{    module-\/>\mbox{\hyperlink{classabc_detector_component_a2915a5d0b8278207ff5dd53eac9c4b9a}{placeIt}}(G4ThreeVector(0, 0, i*3*m), G4RotationMatrix(), mWorldLogical, lExtension); \textcolor{comment}{//you have to have unique names}}
+\DoxyCodeLine{    G4String nameExtension = \textcolor{stringliteral}{"{}\_"{}} + std::to\_string(i);}
+\DoxyCodeLine{    module-\/>\mbox{\hyperlink{classabc_detector_component_a2915a5d0b8278207ff5dd53eac9c4b9a}{placeIt}}(G4ThreeVector(0, 0, i*3*m), G4RotationMatrix(), m\_worldLogical, nameExtension); \textcolor{comment}{//you have to have unique names}}
 \DoxyCodeLine{    module-\/>configureSensitiveVolume(\textcolor{keyword}{this});}
 \DoxyCodeLine{\}}
 
@@ -127,8 +127,6 @@ This approach ensures a smooth integration of the photosensitive volume within t
 \end{DoxyCode}
 
 
-In this case, {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} will store all absorbed photons. The number of photons absorbed will depend on the absorption length of the material connected to the logical volume.
+In this case, {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} will store all absorbed photons. The number of photons absorbed will depend on the absorption length of the material connected to the logical volume. If you want it to be 100\% efficient, use the material {\ttfamily Ri\+Abs\+\_\+\+Absorber}.
 
-If there\textquotesingle{}s a need to make a volume sensitive to particles other than photons, add a new entry to the {\ttfamily Detector\+Type} enum (in {\ttfamily \mbox{\hyperlink{_o_m_sim_sensitive_detector_8hh_source}{OMSim\+Sensitive\+Detector.\+hh}}}) and incorporate a new method that handles this scenario in {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}}.
-
-You might also track these particles in {\ttfamily \mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSim\+Tracking\+Action}}} or {\ttfamily \mbox{\hyperlink{class_o_m_sim_stepping_action}{OMSim\+Stepping\+Action}}}, but using a class derived from {\ttfamily G4\+VSensitive\+Detector} aligns with the philosophy of Geant4. 
+If there\textquotesingle{}s a need to make a volume sensitive to particles other than photons, add a new entry to the {\ttfamily Detector\+Type} enum (in {\ttfamily \mbox{\hyperlink{_o_m_sim_sensitive_detector_8hh_source}{OMSim\+Sensitive\+Detector.\+hh}}}) and incorporate a new method that handles this scenario in {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}}. You might also track these particles in {\ttfamily \mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSim\+Tracking\+Action}}} or {\ttfamily \mbox{\hyperlink{class_o_m_sim_stepping_action}{OMSim\+Stepping\+Action}}}, but using a class derived from {\ttfamily G4\+VSensitive\+Detector} aligns with the philosophy of Geant4. 
