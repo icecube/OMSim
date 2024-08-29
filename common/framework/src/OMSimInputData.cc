@@ -305,7 +305,7 @@ void OMSimInputData::processFile(const std::string &p_filePath,
     case FileType::Scintillator:
         dataFile.processSpecial(ScintillationProcessor::process);
         break;
-    case FileType::Custom:
+    case FileType::Extra:
         dataFile.processExtraProperties();
         break;
     case FileType::Table:
@@ -349,7 +349,7 @@ void OMSimInputData::scannDataDirectory()
 const std::unordered_map<std::string, OMSimInputData::FileType> OMSimInputData::fileTypePrefixes = {
     {"IceCubeICE", FileType::IceCubeICE},
     {"Scint", FileType::Scintillator},
-    {"Custom", FileType::Custom},
+    {"Extra", FileType::Extra},
     {"pmt_", FileType::Table},
     {"usr_", FileType::Table},
     {"Surf", FileType::Surface}};

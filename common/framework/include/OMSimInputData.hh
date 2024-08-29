@@ -200,7 +200,7 @@ private:
     enum class FileType {
         IceCubeICE,
         Scintillator,
-        Custom,
+        Extra,
         Table,
         Surface,
         Material
