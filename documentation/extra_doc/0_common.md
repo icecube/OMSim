@@ -96,8 +96,8 @@ Here's an example of how to properly create and configure sensitive detectors fo
 ```cpp
 for (int i = 0; i < numberOfModules; ++i) {
     mDOM* module = new mDOM(false);
-    G4String lExtension = "_" + std::to_string(i);
-    module->placeIt(G4ThreeVector(0, 0, i*3*m), G4RotationMatrix(), mWorldLogical, lExtension); //you have to have unique names
+    G4String nameExtension = "_" + std::to_string(i);
+    module->placeIt(G4ThreeVector(0, 0, i*3*m), G4RotationMatrix(), m_worldLogical, nameExtension); //you have to have unique names
     module->configureSensitiveVolume(this);
 }
 ```
@@ -171,8 +171,6 @@ lHitManager.setNumberOfPMTs(1, lHitManager.getNextDetectorIndex());
 registerSensitiveDetector(lDetectorLV, lSensitiveDetector);
 ```
 
-In this case, `OMSimSensitiveDetector::ProcessHits` will store all absorbed photons. The number of photons absorbed will depend on the absorption length of the material connected to the logical volume. 
+In this case, `OMSimSensitiveDetector::ProcessHits` will store all absorbed photons. The number of photons absorbed will depend on the absorption length of the material connected to the logical volume. If you want it to be 100% efficient, use the material `RiAbs_Absorber`.
 
-If there's a need to make a volume sensitive to particles other than photons, add a new entry to the `DetectorType` enum (in `OMSimSensitiveDetector.hh`) and incorporate a new method that handles this scenario in `OMSimSensitiveDetector::ProcessHits`. 
-
-You might also track these particles in `OMSimTrackingAction` or `OMSimSteppingAction`, but using a class derived from `G4VSensitiveDetector` aligns with the philosophy of Geant4.
+If there's a need to make a volume sensitive to particles other than photons, add a new entry to the `DetectorType` enum (in `OMSimSensitiveDetector.hh`) and incorporate a new method that handles this scenario in `OMSimSensitiveDetector::ProcessHits`. You might also track these particles in `OMSimTrackingAction` or `OMSimSteppingAction`, but using a class derived from `G4VSensitiveDetector` aligns with the philosophy of Geant4.
