@@ -13,7 +13,7 @@ Responsible for calculating the effective area of optical hits and saving the re
 \mbox{\Hypertarget{class_o_m_sim_effective_area_analyisis_a3a5a82cceb0c27238801e0b3108e09a8}\label{class_o_m_sim_effective_area_analyisis_a3a5a82cceb0c27238801e0b3108e09a8}} 
 {\footnotesize template$<$typename... Args$>$ }\\void \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a3a5a82cceb0c27238801e0b3108e09a8}{write\+Header}} (Args... p\+\_\+args)
 \begin{DoxyCompactList}\small\item\em Writes the header line to the output file. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structeffective_area_result}{effective\+Area\+Result}} \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_ae18fdbcb91df516003eac59ec83786ab}{calculate\+Effective\+Area}} (double p\+\_\+hits)
+\mbox{\hyperlink{structeffective_area_result}{effective\+Area\+Result}} \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a1f36e6517ffd998ead38348faf906455}{calculate\+Effective\+Area}} (double weighted\+Total, double count\+Total)
 \begin{DoxyCompactList}\small\item\em Calculates the effective area based on the number of hits and beam properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -24,15 +24,17 @@ G4\+String {\bfseries m\+\_\+output\+File\+Name}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_effective_area_analyisis_ae18fdbcb91df516003eac59ec83786ab}\label{class_o_m_sim_effective_area_analyisis_ae18fdbcb91df516003eac59ec83786ab}} 
+\mbox{\Hypertarget{class_o_m_sim_effective_area_analyisis_a1f36e6517ffd998ead38348faf906455}\label{class_o_m_sim_effective_area_analyisis_a1f36e6517ffd998ead38348faf906455}} 
 \index{OMSimEffectiveAreaAnalyisis@{OMSimEffectiveAreaAnalyisis}!calculateEffectiveArea@{calculateEffectiveArea}}
 \index{calculateEffectiveArea@{calculateEffectiveArea}!OMSimEffectiveAreaAnalyisis@{OMSimEffectiveAreaAnalyisis}}
 \doxysubsubsection{\texorpdfstring{calculateEffectiveArea()}{calculateEffectiveArea()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structeffective_area_result}{effective\+Area\+Result}} OMSim\+Effective\+Area\+Analyisis\+::calculate\+Effective\+Area (\begin{DoxyParamCaption}\item[{double}]{p\+\_\+hits }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structeffective_area_result}{effective\+Area\+Result}} OMSim\+Effective\+Area\+Analyisis\+::calculate\+Effective\+Area (\begin{DoxyParamCaption}\item[{double}]{p\+\_\+weight\+Total,  }\item[{double}]{p\+\_\+total\+Count }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+\_\+hits} & The number of hits. \\
+{\em p\+\_\+weight\+Total} & The number of hits weighted. \\
+\hline
+{\em p\+\_\+total\+Count} & The number of hits \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

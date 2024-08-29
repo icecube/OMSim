@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['calculateeffectivearea_499',['calculateEffectiveArea',['../class_o_m_sim_effective_area_analyisis.html#ae18fdbcb91df516003eac59ec83786ab',1,'OMSimEffectiveAreaAnalyisis']]],
+  ['calculateeffectivearea_499',['calculateEffectiveArea',['../class_o_m_sim_effective_area_analyisis.html#a1f36e6517ffd998ead38348faf906455',1,'OMSimEffectiveAreaAnalyisis']]],
   ['calculatemultiplicity_500',['calculateMultiplicity',['../class_o_m_sim_hit_manager.html#a01638ba2c16fcde1244b90e9672425c0',1,'OMSimHitManager']]],
   ['calculatenumberofdecays_501',['calculateNumberOfDecays',['../class_o_m_sim_decays_g_p_s.html#a61c910b065587f27f3e08b2e1e897cb2',1,'OMSimDecaysGPS']]],
   ['calculatesecondaryparticleenergy_502',['calculateSecondaryParticleEnergy',['../class_o_m_sim_e_n_e_s.html#afdc34f3f9559919c54f29804c337481a',1,'OMSimENES::calculateSecondaryParticleEnergy()'],['../class_o_m_sim_i_b_d.html#af04e93cf44abe395e2b65cad4b385d1f',1,'OMSimIBD::calculateSecondaryParticleEnergy()']]],

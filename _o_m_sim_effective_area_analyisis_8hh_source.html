@@ -142,14 +142,14 @@ $(document).ready(function(){initNavTree('_o_m_sim_effective_area_analyisis_8hh_
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_effective_area_analyisis.html#a3a5a82cceb0c27238801e0b3108e09a8">writeHeader</a>(Args... p_args);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="structeffective_area_result.html">effectiveAreaResult</a> <a class="code" href="class_o_m_sim_effective_area_analyisis.html#ae18fdbcb91df516003eac59ec83786ab">calculateEffectiveArea</a>(<span class="keywordtype">double</span> p_hits);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="structeffective_area_result.html">effectiveAreaResult</a> <a class="code" href="class_o_m_sim_effective_area_analyisis.html#a1f36e6517ffd998ead38348faf906455">calculateEffectiveArea</a>(<span class="keywordtype">double</span> weightedTotal, <span class="keywordtype">double</span> countTotal);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    G4String m_outputFileName;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
 <div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_o_m_sim_effective_area_analyisis.html#a7ef0a66e08c129142dc841ed2f51c43a">   48</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_effective_area_analyisis.html#a7ef0a66e08c129142dc841ed2f51c43a">OMSimEffectiveAreaAnalyisis::writeScan</a>(Args... p_args)</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::vector&lt;double&gt; hits = <a class="code" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a>().<a class="code" href="class_o_m_sim_hit_manager.html#a954b4f28a89275da58d4e2e3328d1467">countMergedHits</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::vector&lt;double&gt; hits = <a class="code" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a>().<a class="code" href="class_o_m_sim_hit_manager.html#a954b4f28a89275da58d4e2e3328d1467">countMergedHits</a>(0, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::fstream dataFile;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    dataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);</div>
@@ -157,42 +157,49 @@ $(document).ready(function(){initNavTree('_o_m_sim_effective_area_analyisis_8hh_
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// Write all arguments to the file</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    ((dataFile &lt;&lt; p_args &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>), ...);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    G4double totalHits = 0;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    G4double weightedTotal = 0;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;hit : hits)</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        dataFile &lt;&lt; hit &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        totalHits = hit; <span class="comment">// last element is total nr of hits</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        weightedTotal = hit;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="structeffective_area_result.html">effectiveAreaResult</a> effectiveArea = <a class="code" href="class_o_m_sim_effective_area_analyisis.html#ae18fdbcb91df516003eac59ec83786ab">calculateEffectiveArea</a>(totalHits);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    dataFile &lt;&lt; effectiveArea.<a class="code" href="structeffective_area_result.html#a3acf96bff88a577c68bff29f1ec3ad05">EA</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; effectiveArea.<a class="code" href="structeffective_area_result.html#ae691bfd6fd88abed6217d739ed8ca36a">EAError</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    dataFile &lt;&lt; G4endl;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    dataFile.close();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_o_m_sim_effective_area_analyisis.html#a3a5a82cceb0c27238801e0b3108e09a8">   75</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_effective_area_analyisis.html#a3a5a82cceb0c27238801e0b3108e09a8">OMSimEffectiveAreaAnalyisis::writeHeader</a>(Args... p_args)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::fstream dataFile;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    dataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    dataFile &lt;&lt; <span class="stringliteral">&quot;# &quot;</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    ((dataFile &lt;&lt; p_args &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>), ...);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    dataFile &lt;&lt; <span class="stringliteral">&quot;hits[1perPMT]&quot;</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;total_hits&quot;</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;EA_Total(cm^2)&quot;</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;EA_Total_error(cm^2)&quot;</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; G4endl;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    dataFile.close();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    hits = <a class="code" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a>().<a class="code" href="class_o_m_sim_hit_manager.html#a954b4f28a89275da58d4e2e3328d1467">countMergedHits</a>(); <span class="comment">//unweighted</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    G4double totalHits = 0;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;hit : hits)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        totalHits = hit; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="structeffective_area_result.html">effectiveAreaResult</a> effectiveArea = <a class="code" href="class_o_m_sim_effective_area_analyisis.html#a1f36e6517ffd998ead38348faf906455">calculateEffectiveArea</a>(weightedTotal, totalHits);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    dataFile &lt;&lt; effectiveArea.<a class="code" href="structeffective_area_result.html#a3acf96bff88a577c68bff29f1ec3ad05">EA</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; effectiveArea.<a class="code" href="structeffective_area_result.html#ae691bfd6fd88abed6217d739ed8ca36a">EAError</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    dataFile &lt;&lt; G4endl;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    dataFile.close();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_o_m_sim_effective_area_analyisis.html#a3a5a82cceb0c27238801e0b3108e09a8">   82</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_effective_area_analyisis.html#a3a5a82cceb0c27238801e0b3108e09a8">OMSimEffectiveAreaAnalyisis::writeHeader</a>(Args... p_args)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::fstream dataFile;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    dataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    dataFile &lt;&lt; <span class="stringliteral">&quot;# &quot;</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    ((dataFile &lt;&lt; p_args &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>), ...);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    dataFile &lt;&lt; <span class="stringliteral">&quot;hits[1perPMT]&quot;</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;total_hits&quot;</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;EA_Total(cm^2)&quot;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;EA_Total_error(cm^2)&quot;</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; G4endl;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    dataFile.close();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
 <div class="ttc" id="a_o_m_sim_hit_manager_8hh_html"><div class="ttname"><a href="_o_m_sim_hit_manager_8hh.html">OMSimHitManager.hh</a></div><div class="ttdoc">Defines structures and classes related to optical module photon hit management.</div></div>
 <div class="ttc" id="a_o_m_sim_p_m_t_response_8hh_html"><div class="ttname"><a href="_o_m_sim_p_m_t_response_8hh.html">OMSimPMTResponse.hh</a></div><div class="ttdoc">Simulation of PMT response.</div></div>
 <div class="ttc" id="aclass_o_m_sim_effective_area_analyisis_html"><div class="ttname"><a href="class_o_m_sim_effective_area_analyisis.html">OMSimEffectiveAreaAnalyisis</a></div><div class="ttdoc">Responsible for calculating the effective area of optical hits and saving the results.</div><div class="ttdef"><b>Definition:</b> OMSimEffectiveAreaAnalyisis.hh:29</div></div>
-<div class="ttc" id="aclass_o_m_sim_effective_area_analyisis_html_a3a5a82cceb0c27238801e0b3108e09a8"><div class="ttname"><a href="class_o_m_sim_effective_area_analyisis.html#a3a5a82cceb0c27238801e0b3108e09a8">OMSimEffectiveAreaAnalyisis::writeHeader</a></div><div class="ttdeci">void writeHeader(Args... p_args)</div><div class="ttdoc">Writes the header line to the output file.</div><div class="ttdef"><b>Definition:</b> OMSimEffectiveAreaAnalyisis.hh:75</div></div>
+<div class="ttc" id="aclass_o_m_sim_effective_area_analyisis_html_a1f36e6517ffd998ead38348faf906455"><div class="ttname"><a href="class_o_m_sim_effective_area_analyisis.html#a1f36e6517ffd998ead38348faf906455">OMSimEffectiveAreaAnalyisis::calculateEffectiveArea</a></div><div class="ttdeci">effectiveAreaResult calculateEffectiveArea(double weightedTotal, double countTotal)</div><div class="ttdoc">Calculates the effective area based on the number of hits and beam properties.</div><div class="ttdef"><b>Definition:</b> OMSimEffectiveAreaAnalyisis.cc:14</div></div>
+<div class="ttc" id="aclass_o_m_sim_effective_area_analyisis_html_a3a5a82cceb0c27238801e0b3108e09a8"><div class="ttname"><a href="class_o_m_sim_effective_area_analyisis.html#a3a5a82cceb0c27238801e0b3108e09a8">OMSimEffectiveAreaAnalyisis::writeHeader</a></div><div class="ttdeci">void writeHeader(Args... p_args)</div><div class="ttdoc">Writes the header line to the output file.</div><div class="ttdef"><b>Definition:</b> OMSimEffectiveAreaAnalyisis.hh:82</div></div>
 <div class="ttc" id="aclass_o_m_sim_effective_area_analyisis_html_a7ef0a66e08c129142dc841ed2f51c43a"><div class="ttname"><a href="class_o_m_sim_effective_area_analyisis.html#a7ef0a66e08c129142dc841ed2f51c43a">OMSimEffectiveAreaAnalyisis::writeScan</a></div><div class="ttdeci">void writeScan(Args... p_args)</div><div class="ttdoc">Writes a scan result to the output file.</div><div class="ttdef"><b>Definition:</b> OMSimEffectiveAreaAnalyisis.hh:48</div></div>
-<div class="ttc" id="aclass_o_m_sim_effective_area_analyisis_html_ae18fdbcb91df516003eac59ec83786ab"><div class="ttname"><a href="class_o_m_sim_effective_area_analyisis.html#ae18fdbcb91df516003eac59ec83786ab">OMSimEffectiveAreaAnalyisis::calculateEffectiveArea</a></div><div class="ttdeci">effectiveAreaResult calculateEffectiveArea(double p_hits)</div><div class="ttdoc">Calculates the effective area based on the number of hits and beam properties.</div><div class="ttdef"><b>Definition:</b> OMSimEffectiveAreaAnalyisis.cc:13</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_a954b4f28a89275da58d4e2e3328d1467"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#a954b4f28a89275da58d4e2e3328d1467">OMSimHitManager::countMergedHits</a></div><div class="ttdeci">std::vector&lt; double &gt; countMergedHits(int pModuleIndex=0, bool pDEweight=false)</div><div class="ttdoc">Counts hits for a specified module.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:209</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_aaa3e7a28d658d8e2e6db704b910cc35c"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a></div><div class="ttdeci">static OMSimHitManager &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:44</div></div>
 <div class="ttc" id="astructeffective_area_result_html"><div class="ttname"><a href="structeffective_area_result.html">effectiveAreaResult</a></div><div class="ttdoc">Struct to hold results of effective area calculations.</div><div class="ttdef"><b>Definition:</b> OMSimEffectiveAreaAnalyisis.hh:18</div></div>
@@ -204,7 +211,7 @@ $(document).ready(function(){initNavTree('_o_m_sim_effective_area_analyisis_8hh_
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_83271c016684bff04ce022d17a2ba8ac.html">simulations</a></li><li class="navelem"><a class="el" href="dir_8dfe1e0a882227ede81fe824e3144913.html">effective_area</a></li><li class="navelem"><a class="el" href="dir_f9b02cdf76a5a3d3c8b8a33fd60e2526.html">include</a></li><li class="navelem"><b>OMSimEffectiveAreaAnalyisis.hh</b></li>
-    <li class="footer">Generated on Thu Aug 29 2024 14:17:21 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 29 2024 14:25:24 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
