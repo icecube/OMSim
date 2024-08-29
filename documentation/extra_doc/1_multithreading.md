@@ -46,24 +46,24 @@ private:
     // ... other members ...
 };
 
-inline OMSimHitManager* gHitManager = nullptr;
+inline OMSimHitManager* g_hitManager = nullptr;
 
 // In the source file
 void OMSimHitManager::init()
 {
-    if (!gHitManager) gHitManager = new OMSimHitManager();
+    if (!g_hitManager) g_hitManager = new OMSimHitManager();
 }
 
 void OMSimHitManager::shutdown()
 {
-    delete gHitManager;
-    gHitManager = nullptr;
+    delete g_hitManager;
+    g_hitManager = nullptr;
 }
 
 OMSimHitManager& OMSimHitManager::getInstance()
 {
-    assert(gHitManager);
-    return *gHitManager;
+    assert(g_hitManager);
+    return *g_hitManager;
 }
 ```
 
@@ -82,35 +82,35 @@ public:
     // ... other methods ...
 
 private:
-    static G4Mutex mMutex;  // Mutex for thread synchronization
+    static G4Mutex m_mutex;  // Mutex for thread synchronization
 
     struct ThreadLocalData {
         std::map<G4int, HitStats> moduleHits;
     };
     // Thread-local storage for hit data
-    G4ThreadLocal static ThreadLocalData* mThreadData;
+    G4ThreadLocal static ThreadLocalData* m_threadData;
 
     // ... 
 };
 ```
 
 Key features:
-- Thread-local storage for hit data (`mThreadData`), each thread will start one
-- Mutex (`mMutex`) for thread synchronization.
+- Thread-local storage for hit data (`m_threadData`), each thread will start one
+- Mutex (`m_mutex`) for thread synchronization.
 
 
-The `appendHitInfo` method is used by all threads and uses to the thread-local `mThreadData`:
+The `appendHitInfo` method is used by all threads and uses to the thread-local `m_threadData`:
 
 ```cpp
 void OMSimHitManager::appendHitInfo(/* parameters */)
 {
-    if (!mThreadData)
+    if (!m_threadData)
     {
         // Initialize thread-local data on first use
-        mThreadData = new ThreadLocalData();
+        m_threadData = new ThreadLocalData();
     }
 
-	auto &moduleHits = mThreadData->moduleHits[pModuleNumber];
+	auto &moduleHits = m_threadData->moduleHits[p_moduleNumber];
 	G4int eventID = G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetEventID();
 	moduleHits.eventId.push_back(eventID);
     //...
@@ -122,16 +122,16 @@ The `mergeThreadData` method combines data from all threads into a single vector
 ```cpp
 void OMSimHitManager::mergeThreadData()
 {
-    G4AutoLock lock(&mMutex);  // Ensure thread-safe access to shared data
-    if (mThreadData)
+    G4AutoLock lock(&m_mutex);  // Ensure thread-safe access to shared data
+    if (m_threadData)
     {
         // Merge thread-local data into a single container
         // This is where data from all threads is combined
         // ...
 
         // Clean up thread-local data after merging
-        delete mThreadData;
-        mThreadData = nullptr;
+        delete m_threadData;
+        m_threadData = nullptr;
     }
 }
 ```
@@ -149,12 +149,12 @@ In scenarios where merging data is unnecessary, or the amount of data is too lar
 //from radioactive_decays/src/OMSimDecaysAnalysis.cc
 void OMSimDecaysAnalysis::appendDecay(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition)
 {
-    if (!mThreadDecayStats)
+    if (!m_threadDecayStats)
     {
-        mThreadDecayStats = new DecayStats();
+        m_threadDecayStats = new DecayStats();
     }
     G4int lEventID = G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetEventID();
-    mThreadDecayStats->eventId.push_back(lEventID);
+    m_threadDecayStats->eventId.push_back(lEventID);
     (...)
 }
 ```
@@ -165,16 +165,16 @@ void OMSimDecaysAnalysis::appendDecay(G4String pParticleName, G4double pDecayTim
 //from radioactive_decays/src/OMSimDecaysAnalysis.cc
 void OMSimDecaysAnalysis::writeThreadDecayInformation()
 {
-    G4String lOutputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
-    G4String lDecaysFileName = lOutputSuffix + "_" + Tools::getThreadIDStr() + "_decays.dat"; // one file per thread, appending thread id to file name
+    G4String outputSuffix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
+    G4String decaysFileName = outputSuffix + "_" + Tools::getThreadIDStr() + "_decays.dat"; // one file per thread, appending thread id to file name
 
-    std::fstream lDatafile;
-    lDatafile.open(lDecaysFileName.c_str(), std::ios::out | std::ios::app);
-    if (mThreadDecayStats->eventId.size() > 0)
+    std::fstream dataFile;
+    dataFile.open(decaysFileName.c_str(), std::ios::out | std::ios::app);
+    if (m_threadDecayStats->eventId.size() > 0)
     {
         (...)
     }
-    lDatafile.close();
+    dataFile.close();
 }
 ```
 
@@ -182,14 +182,14 @@ Data is saved after each event in the `EndOfEventAction` method to handle large 
 
 ```cpp 
 //from radioactive_decays/src/OMSimEventAction.cc
-void OMSimEventAction::EndOfEventAction(const G4Event *evt)
+void OMSimEventAction::EndOfEventAction(const G4Event *p_evt)
 {
     if (!OMSimCommandArgsTable::getInstance().get<bool>("multiplicity_study"))
     {
-        OMSimDecaysAnalysis &lAnalysisManager = OMSimDecaysAnalysis::getInstance();
-        lAnalysisManager.writeThreadHitInformation();
-        lAnalysisManager.writeThreadDecayInformation();
-        lAnalysisManager.reset();
+        OMSimDecaysAnalysis &analysisManager = OMSimDecaysAnalysis::getInstance();
+        analysisManager.writeThreadHitInformation();
+        analysisManager.writeThreadDecayInformation();
+        analysisManager.reset();
     }
 }
 ```
@@ -199,9 +199,9 @@ As you can see, in case of multiplicity study, we need to merge the data, as we 
 //from radioactive_decays/OMSim_radioactive_decays.cc
 		if (lArgs.get<bool>("multiplicity_study"))
 		{
-			G4double lCoincidenceTimeWindow = lArgs.get<double>("multiplicity_time_window")*ns;
-			lAnalysisManager.writeMultiplicity(lCoincidenceTimeWindow);
-			lAnalysisManager.reset();
+			G4double coincidenceTimeWindow = lArgs.get<double>("multiplicity_time_window")*ns;
+			analysisManager.writeMultiplicity(coincidenceTimeWindow);
+			analysisManager.reset();
 		}
 ```        
 
@@ -227,7 +227,7 @@ When implementing new thread-safe containers in Geant4:
 3. **Implement Data Merging (if necessary)**: 
    ```cpp
    void mergeThreadData() {
-       G4AutoLock lock(&mMutex);  // Ensure thread-safe access
+       G4AutoLock lock(&m_mutex);  // Ensure thread-safe access
        // Merge threadLocalData into a global container
        // This is where you combine data from all threads
    }
@@ -245,7 +245,7 @@ When implementing new thread-safe containers in Geant4:
 5. **Implement Thread-Safe Access**:
    Use mutex locks for shared resource access:
    ```cpp
-   G4AutoLock lock(&mMutex);  // Protect access to shared resources
+   G4AutoLock lock(&m_mutex);  // Protect access to shared resources
    // Access or modify shared resources
    ```
 
