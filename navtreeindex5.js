@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"classabc_detector_component.html#a53c7979298ef9eda66b44f0a3c4f2e6b":[8,0,27,12],
 "classabc_detector_component.html#a64b225541337c16e3181ce0bfd35ddc3":[8,0,27,33],
 "classabc_detector_component.html#a7695c2e9940a292334cd73afca055597":[8,0,27,31],
 "classabc_detector_component.html#a7a68cb95fa0c6b6bcd97f5640b0500b4":[8,0,27,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "pages.html":[],
 "radioactive__decays_2include_2_o_m_sim_event_action_8hh.html":[9,0,22],
 "radioactive__decays_2include_2_o_m_sim_event_action_8hh_source.html":[9,0,22],
-"radioactive__decays_2include_2_o_m_sim_physics_list_8hh.html":[9,0,41],
-"radioactive__decays_2include_2_o_m_sim_physics_list_8hh_source.html":[9,0,41]
+"radioactive__decays_2include_2_o_m_sim_physics_list_8hh.html":[9,0,41]
 };

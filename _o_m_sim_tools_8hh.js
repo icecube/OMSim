@@ -13,5 +13,6 @@ var _o_m_sim_tools_8hh =
     [ "sortVectorByReference", "_o_m_sim_tools_8hh.html#a3269713e8f36608124048bda75a02a49", null ],
     [ "splitStringByDelimiter", "_o_m_sim_tools_8hh.html#a25cdf291245515edee1db8cc54a0b4eb", null ],
     [ "splitStringByDelimiter", "_o_m_sim_tools_8hh.html#ae68674997cfff7a2f3be9afe673b6e57", null ],
-    [ "throwError", "_o_m_sim_tools_8hh.html#a643113251f480a06563725426fc25adf", null ]
+    [ "throwError", "_o_m_sim_tools_8hh.html#a643113251f480a06563725426fc25adf", null ],
+    [ "visualisationURL", "_o_m_sim_tools_8hh.html#a4ee77f675e34ef6252e59c21b5ca6499", null ]
 ];

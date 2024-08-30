@@ -132,7 +132,7 @@ $(document).ready(function(){initNavTree('md_extra_doc_2_technicalities.html',''
 Visualization of Complex Objects</h1>
 <p>The complex shapes of PMTs and other intricate objects may not render correctly with the default OpenGL (OGL) visualization engine. To ensure the visualizer remains functional, these objects are set to invisible by default.</p>
 <p>For a more detailed visualization that can handle complex geometries, you can use the RayTracer engine. While slower and more complex to use, RayTracer can visualize all volumes, regardless of their complexity. Here's how to set it up:</p>
-<ol type="1">
+<ul>
 <li><b>Enable RayTracer:</b><ul>
 <li>Open <code>common/data/vis/init_vis.mac</code></li>
 <li>Comment out the line that loads <code>vis.mac</code></li>
@@ -146,7 +146,7 @@ Visualization of Complex Objects</h1>
 </ul>
 <p class="startli">Example for PMT glass visibility:</p>
 </li>
-</ol>
+</ul>
 <div class="fragment"><div class="line"><span class="comment">// Original code</span></div>
 <div class="line"><span class="keywordflow">if</span> (m_internalReflections &amp;&amp; <a class="code" href="class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214">OMSimCommandArgsTable::getInstance</a>().get&lt;bool&gt;(<span class="stringliteral">&quot;visual&quot;</span>))</div>
 <div class="line">{</div>
@@ -172,7 +172,7 @@ Visualization of Complex Objects</h1>
 <div class="line">    <span class="comment">// ... other visible settings ...</span></div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_o_m_sim_command_args_table_html_ac6f8ed95981671d5df9b029bcef93214"><div class="ttname"><a href="class_o_m_sim_command_args_table.html#ac6f8ed95981671d5df9b029bcef93214">OMSimCommandArgsTable::getInstance</a></div><div class="ttdeci">static OMSimCommandArgsTable &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> OMSimCommandArgsTable.cc:7</div></div>
-</div><!-- fragment --><ol type="1">
+</div><!-- fragment --><ul>
 <li><b>Customize RayTracer Settings:</b><ul>
 <li>Open <code>common/data/vis/vis_raytracer.mac</code></li>
 <li>Adjust parameters such as:<ul>
@@ -184,7 +184,7 @@ Visualization of Complex Objects</h1>
 </li>
 </ul>
 </li>
-</ol>
+</ul>
 <h1><a class="anchor" id="autotoc_md31"></a>
 The Tools namespace</h1>
 <p>The tools namespace provide several methods that could help you. For example, <code><a class="el" href="namespace_tools.html#aefa5ecd8f1fb3d69a65d517494e99669" title="Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.">Tools::loadtxt</a></code>, <code><a class="el" href="namespace_tools.html#a052be79128cb3b90b6a4701455307246" title="Generates a linearly spaced vector.">Tools::linspace</a></code> and <code><a class="el" href="namespace_tools.html#adf257eb5c348836614a3c10de47bcf6e" title="Generates a logarithmically spaced vector.">Tools::logspace</a></code> operate similarly to their Python's numpy counterparts:</p>
@@ -331,7 +331,7 @@ Step 4: Matching gain / transit time scans</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Aug 30 2024 10:47:33 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 30 2024 11:05:05 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

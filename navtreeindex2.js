@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"class_g4_radioactive_decay.html#a0206ac122b2b996b9e996670f2dc24d2":[10,0,12,47],
 "class_g4_radioactive_decay.html#a089028f5661dacf49e154f2b448b06c4":[10,0,12,17],
 "class_g4_radioactive_decay.html#a0a33ce684d41876fe93a74f326551e8c":[10,0,12,3],
 "class_g4_radioactive_decay.html#a0f9b4f68bd0edeecbab09ecd6e21eaa8":[10,0,12,27],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "class_o_m_sim_decays_analysis.html#a715d4897705da383ce1a1d93b68def9b":[8,2,10,5],
 "class_o_m_sim_decays_analysis.html#a78449c898f237d5a40c75042123c19af":[8,2,10,10],
 "class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0":[8,2,10,7],
-"class_o_m_sim_decays_analysis.html#ab08bcf92e1751dfd749c6eabd91a9f27":[8,2,10,12],
-"class_o_m_sim_decays_analysis.html#abf3b99f2998f27c9ad1f792dfc716e0c":[8,2,10,9]
+"class_o_m_sim_decays_analysis.html#ab08bcf92e1751dfd749c6eabd91a9f27":[8,2,10,12]
 };
