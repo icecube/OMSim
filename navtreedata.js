@@ -26,14 +26,14 @@ var NAVTREE =
 [
   [ "OMSim", "index.html", [
     [ "OMSim Geant4 Framework", "index.html", [
-      [ "Installation", "index.html#autotoc_md56", [
-        [ "Installing Geant4", "index.html#autotoc_md57", null ],
-        [ "Installing Dependencies", "index.html#autotoc_md58", null ],
-        [ "Installing ROOT", "index.html#autotoc_md59", null ],
-        [ "Compiling OMSim", "index.html#autotoc_md60", null ]
+      [ "Installation", "index.html#autotoc_md58", [
+        [ "Installing Geant4", "index.html#autotoc_md59", null ],
+        [ "Installing Dependencies", "index.html#autotoc_md60", null ],
+        [ "Installing ROOT", "index.html#autotoc_md61", null ],
+        [ "Compiling OMSim", "index.html#autotoc_md62", null ]
       ] ],
-      [ "Available studies", "index.html#autotoc_md61", [
-        [ "Customising Compilation", "index.html#autotoc_md62", null ]
+      [ "Available studies", "index.html#autotoc_md63", [
+        [ "Customising Compilation", "index.html#autotoc_md64", null ]
       ] ]
     ] ],
     [ "Framework functionality", "md_extra_doc_0_common.html", [
@@ -67,33 +67,35 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Technicalities for Developers", "md_extra_doc_2_technicalities.html", [
-      [ "The Tools namespace", "md_extra_doc_2_technicalities.html#autotoc_md30", null ],
-      [ "Nomenclature", "md_extra_doc_2_technicalities.html#autotoc_md32", null ],
-      [ "Matching PMT Efficiency to Measurements", "md_extra_doc_2_technicalities.html#autotoc_md34", [
-        [ "Step 1: Fraction of absorbed photons", "md_extra_doc_2_technicalities.html#autotoc_md35", null ],
-        [ "Step 2: Expand OMSimPMTResponse and Verify QE", "md_extra_doc_2_technicalities.html#autotoc_md36", null ],
-        [ "Step 3: Matching detection efficiency scan", "md_extra_doc_2_technicalities.html#autotoc_md37", null ]
+      [ "Visualization of Complex Objects", "md_extra_doc_2_technicalities.html#autotoc_md30", null ],
+      [ "The Tools namespace", "md_extra_doc_2_technicalities.html#autotoc_md31", null ],
+      [ "Nomenclature", "md_extra_doc_2_technicalities.html#autotoc_md33", null ],
+      [ "Matching PMT to Measurements", "md_extra_doc_2_technicalities.html#autotoc_md35", [
+        [ "Step 1: Fraction of absorbed photons", "md_extra_doc_2_technicalities.html#autotoc_md36", null ],
+        [ "Step 2: Expand OMSimPMTResponse and Verify QE", "md_extra_doc_2_technicalities.html#autotoc_md37", null ],
+        [ "Step 3: Matching detection efficiency scan", "md_extra_doc_2_technicalities.html#autotoc_md38", null ],
+        [ "Step 4: Matching gain / transit time scans", "md_extra_doc_2_technicalities.html#autotoc_md39", null ]
       ] ]
     ] ],
     [ "> Effective Area Studies", "md_extra_doc_30_effective_area.html", [
-      [ "Introduction to effective areas", "md_extra_doc_30_effective_area.html#autotoc_md40", null ],
-      [ "Example using healpy", "md_extra_doc_30_effective_area.html#autotoc_md41", null ]
+      [ "Introduction to effective areas", "md_extra_doc_30_effective_area.html#autotoc_md42", null ],
+      [ "Example using healpy", "md_extra_doc_30_effective_area.html#autotoc_md43", null ]
     ] ],
     [ "> Radioactive Decays Studies", "md_extra_doc_31_radioactive_decays.html", null ],
     [ "> Supernova Studies", "md_extra_doc_32__s_n.html", [
-      [ "Input Parameters", "md_extra_doc_32__s_n.html#autotoc_md44", [
-        [ "General Parameters", "md_extra_doc_32__s_n.html#autotoc_md45", null ],
-        [ "SN Framework Parameters", "md_extra_doc_32__s_n.html#autotoc_md46", null ],
-        [ "Fixed Energy Studies", "md_extra_doc_32__s_n.html#autotoc_md47", null ]
+      [ "Input Parameters", "md_extra_doc_32__s_n.html#autotoc_md46", [
+        [ "General Parameters", "md_extra_doc_32__s_n.html#autotoc_md47", null ],
+        [ "SN Framework Parameters", "md_extra_doc_32__s_n.html#autotoc_md48", null ],
+        [ "Fixed Energy Studies", "md_extra_doc_32__s_n.html#autotoc_md49", null ]
       ] ],
-      [ "Output Files", "md_extra_doc_32__s_n.html#autotoc_md48", [
-        [ "*_info.dat", "md_extra_doc_32__s_n.html#autotoc_md49", null ],
-        [ "*_data.dat", "md_extra_doc_32__s_n.html#autotoc_md50", null ]
+      [ "Output Files", "md_extra_doc_32__s_n.html#autotoc_md50", [
+        [ "*_info.dat", "md_extra_doc_32__s_n.html#autotoc_md51", null ],
+        [ "*_data.dat", "md_extra_doc_32__s_n.html#autotoc_md52", null ]
       ] ],
-      [ "Weights", "md_extra_doc_32__s_n.html#autotoc_md51", [
-        [ "Interaction Probability Weight:", "md_extra_doc_32__s_n.html#autotoc_md52", null ],
-        [ "Flux Weight:", "md_extra_doc_32__s_n.html#autotoc_md53", null ],
-        [ "Effective Weight:", "md_extra_doc_32__s_n.html#autotoc_md54", null ]
+      [ "Weights", "md_extra_doc_32__s_n.html#autotoc_md53", [
+        [ "Interaction Probability Weight:", "md_extra_doc_32__s_n.html#autotoc_md54", null ],
+        [ "Flux Weight:", "md_extra_doc_32__s_n.html#autotoc_md55", null ],
+        [ "Effective Weight:", "md_extra_doc_32__s_n.html#autotoc_md56", null ]
       ] ]
     ] ],
     [ "Todo List", "todo.html", null ],
@@ -112,7 +114,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ]
@@ -122,12 +124,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "5__group__definitions_8h_source.html",
-"class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader.html#a1a79c905172419920261d5e3814b1654",
-"class_g4_radioactive_decay.html#a3f101a0632308483d80dbe133de916b5",
-"class_o_m_sim_decays_g_p_s.html#abc1684c40b022ef35aa1c4eea6a7e557",
-"class_o_m_sim_p_m_t_construction.html#adcf95adc7d522883934e592e3c551617",
-"classm_d_o_m.html#a0aa3cb3e2037050bd77ffae6699cf134",
-"struct_o_m_sim_detector_construction_1_1_s_d_info.html"
+"class_c_a_d_mesh_1_1_file_1_1_lexer.html#ae90126d2ace8d3790133fd3373863267",
+"class_g4_radioactive_decay.html#a089028f5661dacf49e154f2b448b06c4",
+"class_o_m_sim_decays_analysis.html#af4b8d2cd736ede06f4dcf7258fb46090",
+"class_o_m_sim_p_m_t_construction.html#a7e93cf3d4db824a1bef18505fad6cb66",
+"classabc_detector_component.html#a64b225541337c16e3181ce0bfd35ddc3",
+"radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

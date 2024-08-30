@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['usersteppingaction_651',['UserSteppingAction',['../class_o_m_sim_stepping_action.html#ade0aef1899f7923ca171b3919ed636d1',1,'OMSimSteppingAction']]]
+  ['totalcrosssection_663',['totalCrossSection',['../class_o_m_sim_e_n_e_s.html#af2e3aedc5ca2d1006891540c0d038eb7',1,'OMSimENES::totalCrossSection()'],['../class_o_m_sim_i_b_d.html#aad2e0e4a3f6501f4d2c3fb896b032ade',1,'OMSimIBD::totalCrossSection()']]]
 ];

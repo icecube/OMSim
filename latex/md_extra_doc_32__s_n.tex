@@ -26,7 +26,7 @@ The detailed procedure for this simulation is comprehensively described in \href
 \item From {\ttfamily E\+\_\+ν}, the angular cross section is devised. This informs the sampling of the angle {\ttfamily θ} between the incoming neutrino and the resulting {\ttfamily e⁻/e⁺}. The {\ttfamily φ} direction is randomly generated within the range of {\ttfamily 0} to {\ttfamily 2π}.
 \item The energy of {\ttfamily e⁻/e⁺} is deduced from {\ttfamily θ} and {\ttfamily E\+\_\+ν}. The interaction probability for such an event is ascertained using the total cross section, facilitating the computation of the interaction weight, as further described below.
 \item The {\ttfamily e⁻/e⁺} is manifested at a random position within the ice volume.
-\end{DoxyEnumerate}\hypertarget{md_extra_doc_32__s_n_autotoc_md44}{}\doxysection{Input Parameters}\label{md_extra_doc_32__s_n_autotoc_md44}
+\end{DoxyEnumerate}\hypertarget{md_extra_doc_32__s_n_autotoc_md46}{}\doxysection{Input Parameters}\label{md_extra_doc_32__s_n_autotoc_md46}
 Execute {\ttfamily ./\+OMSim\+\_\+supernova -\/-\/help} to display all possible input parameters.
 
 A typical command to run the simulation is\+:
@@ -36,19 +36,19 @@ A typical command to run the simulation is\+:
 \DoxyCodeLine{./OMSim\_supernova -\/n 100 -\/-\/wheight 20 -\/-\/wradius 20 -\/-\/depth\_pos 75 -\/-\/SNgun 0 -\/-\/SNtype 0}
 
 \end{DoxyCode}
-\hypertarget{md_extra_doc_32__s_n_autotoc_md45}{}\doxysubsection{General Parameters}\label{md_extra_doc_32__s_n_autotoc_md45}
+\hypertarget{md_extra_doc_32__s_n_autotoc_md47}{}\doxysubsection{General Parameters}\label{md_extra_doc_32__s_n_autotoc_md47}
 
 \begin{DoxyItemize}
 \item {\ttfamily -\/-\/depth\+\_\+pos}\+: Index of the vector determining the depth of the simulated modules. Notable values include the dust layer (65), mean ice properties (approx) 75, and the cleanes ice (88). This selection affects the effective scattering and absorption lengths of the ice at the specified depth.
 \item {\ttfamily -\/o}\+: Output file name. By default, two output files are created\+: one containing the simulated event information, and another with detection data.
-\end{DoxyItemize}\hypertarget{md_extra_doc_32__s_n_autotoc_md46}{}\doxysubsection{SN Framework Parameters}\label{md_extra_doc_32__s_n_autotoc_md46}
+\end{DoxyItemize}\hypertarget{md_extra_doc_32__s_n_autotoc_md48}{}\doxysubsection{SN Framework Parameters}\label{md_extra_doc_32__s_n_autotoc_md48}
 
 \begin{DoxyItemize}
 \item {\ttfamily -\/-\/wheight}\+: Height of the ice\textquotesingle{}s simulated world cylinder.
 \item {\ttfamily -\/-\/wradius}\+: Radius of the ice\textquotesingle{}s simulated world cylinder.
 \item {\ttfamily -\/-\/SNgun}\+: Chooses the interaction type (0 for IBD, 1 for ENES).
 \item {\ttfamily -\/-\/SNtype}\+: Selects the CCSN model. Two models are currently available, provided by the Garching group. These models represent the expected fluxes from two CCSNs resulting in neutron stars, with different progenitor masses (27 and 9.\+6 solar masses). Simulations yielding this data can be found at \href{https://arxiv.org/abs/1510.04643}{\texttt{ https\+://arxiv.\+org/abs/1510.\+04643}}
-\end{DoxyItemize}\hypertarget{md_extra_doc_32__s_n_autotoc_md47}{}\doxysubsection{Fixed Energy Studies}\label{md_extra_doc_32__s_n_autotoc_md47}
+\end{DoxyItemize}\hypertarget{md_extra_doc_32__s_n_autotoc_md49}{}\doxysubsection{Fixed Energy Studies}\label{md_extra_doc_32__s_n_autotoc_md49}
 The user can also manually set the mean energy of generated events by providing specific input parameters. For instance\+:
 
 
@@ -65,8 +65,8 @@ The user can also manually set the mean energy of generated events by providing 
 \item {\ttfamily -\/-\/SNalpha}\+: Defines the pinching parameter of the energy distribution (see \href{https://arxiv.org/pdf/1211.3920.pdf}{\texttt{ this paper}}).
 \end{DoxyItemize}
 
-Consequently, the neutrinos\textquotesingle{} energy is sampled from the distribution, derived from these two parameters and the previously mentioned model.\hypertarget{md_extra_doc_32__s_n_autotoc_md48}{}\doxysection{Output Files}\label{md_extra_doc_32__s_n_autotoc_md48}
-Two files are produced\+:\hypertarget{md_extra_doc_32__s_n_autotoc_md49}{}\doxysubsection{$\ast$\+\_\+info.\+dat}\label{md_extra_doc_32__s_n_autotoc_md49}
+Consequently, the neutrinos\textquotesingle{} energy is sampled from the distribution, derived from these two parameters and the previously mentioned model.\hypertarget{md_extra_doc_32__s_n_autotoc_md50}{}\doxysection{Output Files}\label{md_extra_doc_32__s_n_autotoc_md50}
+Two files are produced\+:\hypertarget{md_extra_doc_32__s_n_autotoc_md51}{}\doxysubsection{$\ast$\+\_\+info.\+dat}\label{md_extra_doc_32__s_n_autotoc_md51}
 This file encapsulates data concerning each generated neutrino event. Each entry contains\+:
 
 
@@ -91,7 +91,7 @@ where\+:
 \item {\ttfamily σ(\+E)} is the total cross section for the interaction,
 \item {\ttfamily n\+\_\+target} is the number of targets available for the interaction in the ice,
 \item {\ttfamily l} is the length of the simulated cylindrical world.
-\end{DoxyItemize}\hypertarget{md_extra_doc_32__s_n_autotoc_md50}{}\doxysubsection{$\ast$\+\_\+data.\+dat}\label{md_extra_doc_32__s_n_autotoc_md50}
+\end{DoxyItemize}\hypertarget{md_extra_doc_32__s_n_autotoc_md52}{}\doxysubsection{$\ast$\+\_\+data.\+dat}\label{md_extra_doc_32__s_n_autotoc_md52}
 This file contains the detection information. Its structure is designed to facilitate various trigger studies, allowing the examination of different time windows. Users might evaluate its structure for convenience, particularly if the trigger check is integrated within the simulation (requiring a predefined time window).
 
 The default content structure is as follows\+:
@@ -103,7 +103,7 @@ The default content structure is as follows\+:
 \end{DoxyCode}
 
 
-Note that the number of columns varies per line, contingent on the number of photons detected for the simulated neutrinos.\hypertarget{md_extra_doc_32__s_n_autotoc_md51}{}\doxysection{Weights}\label{md_extra_doc_32__s_n_autotoc_md51}
+Note that the number of columns varies per line, contingent on the number of photons detected for the simulated neutrinos.\hypertarget{md_extra_doc_32__s_n_autotoc_md53}{}\doxysection{Weights}\label{md_extra_doc_32__s_n_autotoc_md53}
 The output files contain the interaction weight. However, users should also consider a weight factor depending on the total flux and the number of simulated events. In the most general case of simulating a single depth and then extrapolating the results to the entire detector, another weight factor is needed. This factor accounts for the ice properties of the simulated depth with respect to the whole detector. This last factor decreases in importance when using high multiplicity conditions, since these events generally interact closer to the module, making the photons less sensitive to changes in the optical properties.
 
 These weight factors can be added similarly as explained in \href{https://zenodo.org/record/8107177}{\texttt{ this thesis, section 6.\+4.\+2}}.
@@ -117,19 +117,19 @@ The total weight is composed of 3 components\+: the interaction probability, the
 \end{DoxyCode}
 
 
-Each component is explained as follows\+:\hypertarget{md_extra_doc_32__s_n_autotoc_md52}{}\doxysubsection{Interaction Probability Weight\+:}\label{md_extra_doc_32__s_n_autotoc_md52}
+Each component is explained as follows\+:\hypertarget{md_extra_doc_32__s_n_autotoc_md54}{}\doxysubsection{Interaction Probability Weight\+:}\label{md_extra_doc_32__s_n_autotoc_md54}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{W\_int(E\_ν) = σ(E) · n\_target · l,}
 
 \end{DoxyCode}
- where {\ttfamily σ(E\+\_\+ν)} is the total cross section for the interaction, {\ttfamily n\+\_\+target} is the number of targets per unit of volume for such interaction, and {\ttfamily l=40 m} is the length of the generation volume along the neutrino direction axis. This is the length of the cylinder facing the CCSN.\hypertarget{md_extra_doc_32__s_n_autotoc_md53}{}\doxysubsection{Flux Weight\+:}\label{md_extra_doc_32__s_n_autotoc_md53}
+ where {\ttfamily σ(E\+\_\+ν)} is the total cross section for the interaction, {\ttfamily n\+\_\+target} is the number of targets per unit of volume for such interaction, and {\ttfamily l=40 m} is the length of the generation volume along the neutrino direction axis. This is the length of the cylinder facing the CCSN.\hypertarget{md_extra_doc_32__s_n_autotoc_md55}{}\doxysubsection{Flux Weight\+:}\label{md_extra_doc_32__s_n_autotoc_md55}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{W\_flux(d) = (1 / N\_gen) · (r² / d²) · ∫ (L(t) / <E(t)>) dt,}
 
 \end{DoxyCode}
- where {\ttfamily r} is the cylindrical generation volume\textquotesingle{}s radius, {\ttfamily d} is the distance from Earth where the CCSN is assumed to occur, and {\ttfamily N\+\_\+gen} is the number of generated events.\hypertarget{md_extra_doc_32__s_n_autotoc_md54}{}\doxysubsection{Effective Weight\+:}\label{md_extra_doc_32__s_n_autotoc_md54}
+ where {\ttfamily r} is the cylindrical generation volume\textquotesingle{}s radius, {\ttfamily d} is the distance from Earth where the CCSN is assumed to occur, and {\ttfamily N\+\_\+gen} is the number of generated events.\hypertarget{md_extra_doc_32__s_n_autotoc_md56}{}\doxysubsection{Effective Weight\+:}\label{md_extra_doc_32__s_n_autotoc_md56}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{W\_eff = N\_modules · (<V\_eff(m)> / V\_eff(m,z\_sim)),}

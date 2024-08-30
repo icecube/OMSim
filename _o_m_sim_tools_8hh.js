@@ -11,5 +11,7 @@ var _o_m_sim_tools_8hh =
     [ "loadtxt", "_o_m_sim_tools_8hh.html#aefa5ecd8f1fb3d69a65d517494e99669", null ],
     [ "logspace", "_o_m_sim_tools_8hh.html#adf257eb5c348836614a3c10de47bcf6e", null ],
     [ "sortVectorByReference", "_o_m_sim_tools_8hh.html#a3269713e8f36608124048bda75a02a49", null ],
+    [ "splitStringByDelimiter", "_o_m_sim_tools_8hh.html#a25cdf291245515edee1db8cc54a0b4eb", null ],
+    [ "splitStringByDelimiter", "_o_m_sim_tools_8hh.html#ae68674997cfff7a2f3be9afe673b6e57", null ],
     [ "throwError", "_o_m_sim_tools_8hh.html#a643113251f480a06563725426fc25adf", null ]
 ];

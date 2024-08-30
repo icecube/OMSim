@@ -1,4 +1,70 @@
-\hypertarget{md_extra_doc_2_technicalities_autotoc_md30}{}\doxysection{The Tools namespace}\label{md_extra_doc_2_technicalities_autotoc_md30}
+\hypertarget{md_extra_doc_2_technicalities_autotoc_md30}{}\doxysection{Visualization of Complex Objects}\label{md_extra_doc_2_technicalities_autotoc_md30}
+The complex shapes of PMTs and other intricate objects may not render correctly with the default Open\+GL (OGL) visualization engine. To ensure the visualizer remains functional, these objects are set to invisible by default.
+
+For a more detailed visualization that can handle complex geometries, you can use the Ray\+Tracer engine. While slower and more complex to use, Ray\+Tracer can visualize all volumes, regardless of their complexity. Here\textquotesingle{}s how to set it up\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Enable Ray\+Tracer\+:}}
+\begin{DoxyItemize}
+\item Open {\ttfamily common/data/vis/init\+\_\+vis.\+mac}
+\item Comment out the line that loads {\ttfamily vis.\+mac}
+\item Uncomment the line that loads {\ttfamily vis\+\_\+raytracer.\+mac}
+\end{DoxyItemize}
+\item {\bfseries{Make Objects Visible\+:}}
+\begin{DoxyItemize}
+\item Locate the visibility settings for the object you want to visualize
+\item Change the condition that sets objects to invisible
+\item Set the desired visibility attributes
+\end{DoxyItemize}
+
+Example for PMT glass visibility\+:
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{// Original code}}
+\DoxyCodeLine{\textcolor{keywordflow}{if} (m\_internalReflections \&\& \mbox{\hyperlink{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}{OMSimCommandArgsTable::getInstance}}().get<bool>(\textcolor{stringliteral}{"{}visual"{}}))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    logicalPMT-\/>SetVisAttributes(m\_invisibleVis);}
+\DoxyCodeLine{    \textcolor{comment}{// ... other invisible settings ...}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keywordflow}{else}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    logicalPMT-\/>SetVisAttributes(m\_glassVis);}
+\DoxyCodeLine{    \textcolor{comment}{// ... other visible settings ...}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// Modified code}}
+\DoxyCodeLine{\textcolor{keywordflow}{if} (\textcolor{keyword}{false}) \textcolor{comment}{// This condition will never be true, ensuring objects are always visible}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{comment}{// ... invisible settings ...}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keywordflow}{else}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    logicalPMT-\/>SetVisAttributes(m\_glassVis);}
+\DoxyCodeLine{    tubeVacuum-\/>SetVisAttributes(m\_airVis);}
+\DoxyCodeLine{    vacuumBackLogical-\/>SetVisAttributes(m\_airVis);}
+\DoxyCodeLine{    \textcolor{comment}{// ... other visible settings ...}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Customize Ray\+Tracer Settings\+:}}
+\begin{DoxyItemize}
+\item Open {\ttfamily common/data/vis/vis\+\_\+raytracer.\+mac}
+\item Adjust parameters such as\+:
+\begin{DoxyItemize}
+\item Viewing angle
+\item Lighting conditions
+\item Resolution
+\item Background color
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{md_extra_doc_2_technicalities_autotoc_md31}{}\doxysection{The Tools namespace}\label{md_extra_doc_2_technicalities_autotoc_md31}
 The tools namespace provide several methods that could help you. For example, {\ttfamily \mbox{\hyperlink{namespace_tools_aefa5ecd8f1fb3d69a65d517494e99669}{Tools\+::loadtxt}}}, {\ttfamily \mbox{\hyperlink{namespace_tools_a052be79128cb3b90b6a4701455307246}{Tools\+::linspace}}} and {\ttfamily \mbox{\hyperlink{namespace_tools_adf257eb5c348836614a3c10de47bcf6e}{Tools\+::logspace}}} operate similarly to their Python\textquotesingle{}s numpy counterparts\+:
 
 
@@ -21,7 +87,7 @@ The tools namespace provide several methods that could help you. For example, {\
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
-\hypertarget{md_extra_doc_2_technicalities_autotoc_md32}{}\doxysection{Nomenclature}\label{md_extra_doc_2_technicalities_autotoc_md32}
+\hypertarget{md_extra_doc_2_technicalities_autotoc_md33}{}\doxysection{Nomenclature}\label{md_extra_doc_2_technicalities_autotoc_md33}
 We follow these naming conventions\+:
 
 Methods\+:
@@ -82,8 +148,8 @@ Remember to apply these conventions consistently across all new code and when re
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
-\hypertarget{md_extra_doc_2_technicalities_autotoc_md34}{}\doxysection{Matching PMT Efficiency to Measurements}\label{md_extra_doc_2_technicalities_autotoc_md34}
-In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (\href{md_extra_doc_0_common.html\#autotoc_md5}{\texttt{ click here}} for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module {\ttfamily efficiency\+\_\+calibration} facilitates this procedure. In the following, the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT is used as an example.\hypertarget{md_extra_doc_2_technicalities_autotoc_md35}{}\doxysubsection{Step 1\+: Fraction of absorbed photons}\label{md_extra_doc_2_technicalities_autotoc_md35}
+\hypertarget{md_extra_doc_2_technicalities_autotoc_md35}{}\doxysection{Matching PMT to Measurements}\label{md_extra_doc_2_technicalities_autotoc_md35}
+In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (\href{md_extra_doc_0_common.html\#autotoc_md5}{\texttt{ click here}} for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module {\ttfamily efficiency\+\_\+calibration} facilitates this procedure. In the following, the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT is used as an example.\hypertarget{md_extra_doc_2_technicalities_autotoc_md36}{}\doxysubsection{Step 1\+: Fraction of absorbed photons}\label{md_extra_doc_2_technicalities_autotoc_md36}
 The optical properties (refractive index, thickness, and absorption length) of the glass tube and photocathode determine the number of photons absorbed in the photocathode. The optical properties of the photocathode (defined in file {\ttfamily Surf\+\_\+\+Generic\+\_\+\+Photocathode\+\_\+20nm.\+dat}) are from this paper \href{https://arxiv.org/abs/physics/0408075}{\texttt{ https\+://arxiv.\+org/abs/physics/0408075}} .
 
 To calculate the quantum efficiency weight, we have to know how many photons are absorbed in the photocathode in the simulation. For this, go through the following steps\+:
@@ -92,7 +158,7 @@ To calculate the quantum efficiency weight, we have to know how many photons are
 \item In {\ttfamily OMSim\+\_\+efficiency\+\_\+calibration.\+cc} change the method {\ttfamily run\+QEbeam\+Simulation()} to use the newly defined beam instead of {\ttfamily run\+Erlangen\+QEBeam}. Define there also the wavelength range to be simulated.
 \item Run the simulation with the following command, changing the PMT number to the one you want to simulate (make sure that your PMT is in the list in {\ttfamily \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a1a8373e9ae3095062edb477245133a9e}{OMSim\+PMTConstruction\+::select\+PMT}}}, or hard code it in {\ttfamily OMSim\+Eff\+Cali\+Detector.\+cc}) 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/pmt\_model 0 -\/-\/simulation\_step 1 -\/n 500000 -\/-\/threads 4 -\/-\/detail\_pmt -\/-\/output\_file step1}
+\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/pmt\_model 0 -\/-\/simulation\_step 1 -\/n 500000 -\/-\/threads 4 -\/-\/output\_file step1}
 
 \end{DoxyCode}
 
@@ -126,12 +192,12 @@ To obtain the fraction I just run this python code\+:
 
 \begin{quote}
 {\bfseries{Note}}\+: Ensure that the QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! \end{quote}
-If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra_doc_2_technicalities_autotoc_md36}{}\doxysubsection{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}\label{md_extra_doc_2_technicalities_autotoc_md36}
+If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra_doc_2_technicalities_autotoc_md37}{}\doxysubsection{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}\label{md_extra_doc_2_technicalities_autotoc_md37}
 Each PMT has its own derived class in {\ttfamily OMSim\+PMTResponse.\+cc}. If your PMT has not class yet, create one following the other PMTs as example. In its constructor add a call to {\ttfamily configure\+QEweight\+Interpolator()} adding the file that you generated in the last step and a default QE file for this PMT. Make sure you are not creating any CE weight interpolator at this point (this happens in step 3 of this documentation), as otherwise the weights will be smaller than expected from QE only!
 
 Now run the simulation again 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/pmt\_model 0 -\/-\/simulation\_step 2 -\/n 100000 -\/-\/threads 4 -\/-\/detail\_pmt -\/-\/output\_file step2}
+\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/pmt\_model 0 -\/-\/simulation\_step 2 -\/n 100000 -\/-\/threads 4 -\/-\/output\_file step2}
 
 \end{DoxyCode}
 
@@ -157,7 +223,7 @@ and check that the weights are being calculated correctly
 
 
    ~\newline
-  \hypertarget{md_extra_doc_2_technicalities_autotoc_md37}{}\doxysubsection{Step 3\+: Matching detection efficiency scan}\label{md_extra_doc_2_technicalities_autotoc_md37}
+  \hypertarget{md_extra_doc_2_technicalities_autotoc_md38}{}\doxysubsection{Step 3\+: Matching detection efficiency scan}\label{md_extra_doc_2_technicalities_autotoc_md38}
 The last step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.
 
 
@@ -167,7 +233,7 @@ The last step is to create the collection efficiency weights to match the relati
 \item Also adjust the binning of the output histogram in {\ttfamily OMSim\+Effi\+Cali\+Analyisis\+::write\+Hit\+Position\+Histogram}
 \item Run the XY grid simulation. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/pmt\_model 0 -\/-\/simulation\_step 3 -\/n 10000 -\/-\/threads 4 -\/-\/detail\_pmt -\/-\/output\_file step3}
+\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/pmt\_model 0 -\/-\/simulation\_step 3 -\/n 10000 -\/-\/threads 4 -\/-\/output\_file step3}
 
 \end{DoxyCode}
 
@@ -175,6 +241,12 @@ The last step is to create the collection efficiency weights to match the relati
 \item Save the weights in a file and store it in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+CE\+\_\+weight/}
 \item Add the {\ttfamily configure\+CEweight\+Interpolator()} in the constructor of your PMT class using the new file as input
 \item Run the simulation again and check if the weights are correct.
+\end{DoxyItemize}\hypertarget{md_extra_doc_2_technicalities_autotoc_md39}{}\doxysubsection{Step 4\+: Matching gain / transit time scans}\label{md_extra_doc_2_technicalities_autotoc_md39}
+The scan data must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-\/glass boundary refracts the beam.
+
+
+\begin{DoxyItemize}
+\item Set the photocathode as a 100\% efficient by
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}

@@ -62,16 +62,7 @@ var files_dup =
     [ "OMSimPMTConstruction.hh", "_o_m_sim_p_m_t_construction_8hh.html", [
       [ "OMSimPMTConstruction", "class_o_m_sim_p_m_t_construction.html", "class_o_m_sim_p_m_t_construction" ]
     ] ],
-    [ "OMSimPMTResponse.hh", "_o_m_sim_p_m_t_response_8hh.html", [
-      [ "OMSimPMTResponse", "class_o_m_sim_p_m_t_response.html", "class_o_m_sim_p_m_t_response" ],
-      [ "PMTPulse", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse" ],
-      [ "mDOMPMTResponse", "classm_d_o_m_p_m_t_response.html", "classm_d_o_m_p_m_t_response" ],
-      [ "Gen1PMTResponse", "class_gen1_p_m_t_response.html", "class_gen1_p_m_t_response" ],
-      [ "DEGGPMTResponse", "class_d_e_g_g_p_m_t_response.html", "class_d_e_g_g_p_m_t_response" ],
-      [ "LOMHamamatsuResponse", "class_l_o_m_hamamatsu_response.html", "class_l_o_m_hamamatsu_response" ],
-      [ "LOMNNVTResponse", "class_l_o_m_n_n_v_t_response.html", "class_l_o_m_n_n_v_t_response" ],
-      [ "NoResponse", "class_no_response.html", "class_no_response" ]
-    ] ],
+    [ "OMSimPMTResponse.hh", "_o_m_sim_p_m_t_response_8hh.html", "_o_m_sim_p_m_t_response_8hh" ],
     [ "effective_area/include/OMSimPrimaryGeneratorAction.hh", "effective__area_2include_2_o_m_sim_primary_generator_action_8hh_source.html", null ],
     [ "efficiency_calibration/include/OMSimPrimaryGeneratorAction.hh", "efficiency__calibration_2include_2_o_m_sim_primary_generator_action_8hh_source.html", null ],
     [ "radioactive_decays/include/OMSimPrimaryGeneratorAction.hh", "radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh.html", [

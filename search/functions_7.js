@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['init_582',['init',['../class_o_m_sim_command_args_table.html#a6b23f4e37663c7cf07a7f4d3f44ffdab',1,'OMSimCommandArgsTable::init()'],['../class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671',1,'OMSimHitManager::init()'],['../class_o_m_sim_input_data.html#ae785a4cec814dcf95b2a4c0c0f2119db',1,'OMSimInputData::init()'],['../class_o_m_sim_u_iinterface.html#ad5517f9564cb68e02a1f4efabf852b61',1,'OMSimUIinterface::init()']]],
-  ['initialisesimulation_583',['initialiseSimulation',['../class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2',1,'OMSim']]],
-  ['integratedetectorcomponent_584',['integrateDetectorComponent',['../classabc_detector_component.html#a822f4ef34db80d5bd78d4d2a9e904297',1,'abcDetectorComponent']]],
-  ['interpolate_585',['interpolate',['../class_distribution_sampler.html#a2e254930c735ca208b6d1b6c330cf64e',1,'DistributionSampler']]]
+  ['init_593',['init',['../class_o_m_sim_command_args_table.html#a6b23f4e37663c7cf07a7f4d3f44ffdab',1,'OMSimCommandArgsTable::init()'],['../class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671',1,'OMSimHitManager::init()'],['../class_o_m_sim_input_data.html#ae785a4cec814dcf95b2a4c0c0f2119db',1,'OMSimInputData::init()'],['../class_o_m_sim_u_iinterface.html#ad5517f9564cb68e02a1f4efabf852b61',1,'OMSimUIinterface::init()']]],
+  ['initialisesimulation_594',['initialiseSimulation',['../class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2',1,'OMSim']]],
+  ['integratedetectorcomponent_595',['integrateDetectorComponent',['../classabc_detector_component.html#a822f4ef34db80d5bd78d4d2a9e904297',1,'abcDetectorComponent']]],
+  ['interpolate_596',['interpolate',['../class_distribution_sampler.html#a2e254930c735ca208b6d1b6c330cf64e',1,'DistributionSampler']]],
+  ['isphotondetected_597',['isPhotonDetected',['../class_o_m_sim_sensitive_detector.html#a8e4a324ae342e9e91ddc33fcc0be8789',1,'OMSimSensitiveDetector']]]
 ];

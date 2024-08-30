@@ -148,15 +148,22 @@ std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"
 <tr class="memitem:a55aabd8f8fd9be58eca3ba0753974d08 inherit pub_methods_class_o_m_sim_p_m_t_response"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html">PMTPulse</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08">processPhotocathodeHit</a> (G4double pX, G4double pY, G4double pWavelength)</td></tr>
 <tr class="memdesc:a55aabd8f8fd9be58eca3ba0753974d08 inherit pub_methods_class_o_m_sim_p_m_t_response"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a hit on the photocathode into a PMT pulse.  <a href="class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08">More...</a><br /></td></tr>
 <tr class="separator:a55aabd8f8fd9be58eca3ba0753974d08 inherit pub_methods_class_o_m_sim_p_m_t_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2447b2f9eb62a1e99f410bfeda917d5c inherit pub_methods_class_o_m_sim_p_m_t_response"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a2447b2f9eb62a1e99f410bfeda917d5c">passQE</a> (G4double pWavelength)</td></tr>
-<tr class="memdesc:a2447b2f9eb62a1e99f410bfeda917d5c inherit pub_methods_class_o_m_sim_p_m_t_response"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if photon with given wavelength passes QE check.  <a href="class_o_m_sim_p_m_t_response.html#a2447b2f9eb62a1e99f410bfeda917d5c">More...</a><br /></td></tr>
-<tr class="separator:a2447b2f9eb62a1e99f410bfeda917d5c inherit pub_methods_class_o_m_sim_p_m_t_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a9bdfcac090d48531abd594559cdcd372"><td class="memItemLeft" align="right" valign="top"><a id="a9bdfcac090d48531abd594559cdcd372"></a>
+<tr class="memitem:a831f5ca91c76a211b2ce550cbb12d88a"><td class="memItemLeft" align="right" valign="top"><a id="a831f5ca91c76a211b2ce550cbb12d88a"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+<tr class="separator:a831f5ca91c76a211b2ce550cbb12d88a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a664f844aa925ea3122a913747774f7f9"><td class="memItemLeft" align="right" valign="top"><a id="a664f844aa925ea3122a913747774f7f9"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> ()</td></tr>
+<tr class="separator:a664f844aa925ea3122a913747774f7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2be4508a14ad4f2be577ce59f72bed4e"><td class="memItemLeft" align="right" valign="top"><a id="a2be4508a14ad4f2be577ce59f72bed4e"></a>
 static <a class="el" href="class_l_o_m_n_n_v_t_response.html">LOMNNVTResponse</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getInstance</b> ()</td></tr>
-<tr class="separator:a9bdfcac090d48531abd594559cdcd372"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a2be4508a14ad4f2be577ce59f72bed4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_methods_class_o_m_sim_p_m_t_response"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_o_m_sim_p_m_t_response')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a></td></tr>
+<tr class="memitem:afacb6a3231c8a54be999da0cf5d439fd inherit pub_static_methods_class_o_m_sim_p_m_t_response"><td class="memItemLeft" align="right" valign="top"><a id="afacb6a3231c8a54be999da0cf5d439fd"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> ()</td></tr>
+<tr class="separator:afacb6a3231c8a54be999da0cf5d439fd inherit pub_static_methods_class_o_m_sim_p_m_t_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -200,6 +207,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_QEWeightInterpolato
 <tr class="memitem:a33b18dcf8df94bfeb9395c7e9d1af161 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memItemLeft" align="right" valign="top"><a id="a33b18dcf8df94bfeb9395c7e9d1af161"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_CEWeightInterpolatorAvailable</b> = false</td></tr>
 <tr class="separator:a33b18dcf8df94bfeb9395c7e9d1af161 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a17bd6a21de317618bef1c93da00c0 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memItemLeft" align="right" valign="top"><a id="a64a17bd6a21de317618bef1c93da00c0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_simplePMT</b></td></tr>
+<tr class="separator:a64a17bd6a21de317618bef1c93da00c0 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac84dd0315406dc73d58e67eab1aec63f inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memItemLeft" align="right" valign="top"><a id="ac84dd0315406dc73d58e67eab1aec63f"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>m_X</b></td></tr>
 <tr class="separator:ac84dd0315406dc73d58e67eab1aec63f inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,9 +222,12 @@ G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_wavelength</b><
 <tr class="memitem:afd87146bce051d8658cf142fa23545b8 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memItemLeft" align="right" valign="top"><a id="afd87146bce051d8658cf142fa23545b8"></a>
 TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>m_relativeDetectionEfficiencyInterpolator</b></td></tr>
 <tr class="separator:afd87146bce051d8658cf142fa23545b8 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2c810ee8a78820150745512aeb4fab5 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memItemLeft" align="right" valign="top"><a id="ac2c810ee8a78820150745512aeb4fab5"></a>
-TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>m_QEInterpolator</b></td></tr>
-<tr class="separator:ac2c810ee8a78820150745512aeb4fab5 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a289ecfd6e5fe8bab924c46e6b6da20b9 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memItemLeft" align="right" valign="top"><a id="a289ecfd6e5fe8bab924c46e6b6da20b9"></a>
+TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>m_QEfileInterpolator</b></td></tr>
+<tr class="separator:a289ecfd6e5fe8bab924c46e6b6da20b9 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e8c581d9be3f619d4eb6c47b029ee5a inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memItemLeft" align="right" valign="top"><a id="a2e8c581d9be3f619d4eb6c47b029ee5a"></a>
+TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>m_weightAbsorbedToQEInterpolator</b></td></tr>
+<tr class="separator:a2e8c581d9be3f619d4eb6c47b029ee5a inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01fead7ccbae6bdd4ae4894fb7737139 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memItemLeft" align="right" valign="top"><a id="a01fead7ccbae6bdd4ae4894fb7737139"></a>
 std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_gainG2Dmap</b></td></tr>
 <tr class="separator:a01fead7ccbae6bdd4ae4894fb7737139 inherit pro_attribs_class_o_m_sim_p_m_t_response"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,7 +251,7 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_l_o_m_n_n_v_t_response.html">LOMNNVTResponse</a></li>
-    <li class="footer">Generated on Thu Aug 29 2024 16:09:01 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 30 2024 10:47:33 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

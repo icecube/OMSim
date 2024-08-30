@@ -27,9 +27,13 @@ struct \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}
 \begin{DoxyCompactItemize}
 \item 
 virtual \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}} \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}{process\+Photocathode\+Hit}} (G4double pX, G4double pY, G4double p\+Wavelength)
-\begin{DoxyCompactList}\small\item\em Process a hit on the photocathode into a PMT pulse. \end{DoxyCompactList}\item 
-virtual bool \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2447b2f9eb62a1e99f410bfeda917d5c}{pass\+QE}} (G4double p\+Wavelength)
-\begin{DoxyCompactList}\small\item\em Checks if photon with given wavelength passes QE check. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Process a hit on the photocathode into a PMT pulse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_afacb6a3231c8a54be999da0cf5d439fd}\label{class_o_m_sim_p_m_t_response_afacb6a3231c8a54be999da0cf5d439fd}} 
+static void {\bfseries shutdown} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -71,6 +75,9 @@ bool {\bfseries m\+\_\+\+QEWeight\+Interpolator\+Available} = false
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a33b18dcf8df94bfeb9395c7e9d1af161}\label{class_o_m_sim_p_m_t_response_a33b18dcf8df94bfeb9395c7e9d1af161}} 
 bool {\bfseries m\+\_\+\+CEWeight\+Interpolator\+Available} = false
 \item 
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a64a17bd6a21de317618bef1c93da00c0}\label{class_o_m_sim_p_m_t_response_a64a17bd6a21de317618bef1c93da00c0}} 
+bool {\bfseries m\+\_\+simple\+PMT}
+\item 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_ac84dd0315406dc73d58e67eab1aec63f}\label{class_o_m_sim_p_m_t_response_ac84dd0315406dc73d58e67eab1aec63f}} 
 double {\bfseries m\+\_\+X}
 \item 
@@ -83,8 +90,11 @@ G4double {\bfseries m\+\_\+wavelength}
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_afd87146bce051d8658cf142fa23545b8}\label{class_o_m_sim_p_m_t_response_afd87146bce051d8658cf142fa23545b8}} 
 TGraph $\ast$ {\bfseries m\+\_\+relative\+Detection\+Efficiency\+Interpolator}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_ac2c810ee8a78820150745512aeb4fab5}\label{class_o_m_sim_p_m_t_response_ac2c810ee8a78820150745512aeb4fab5}} 
-TGraph $\ast$ {\bfseries m\+\_\+\+QEInterpolator}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a289ecfd6e5fe8bab924c46e6b6da20b9}\label{class_o_m_sim_p_m_t_response_a289ecfd6e5fe8bab924c46e6b6da20b9}} 
+TGraph $\ast$ {\bfseries m\+\_\+\+QEfile\+Interpolator}
+\item 
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a2e8c581d9be3f619d4eb6c47b029ee5a}\label{class_o_m_sim_p_m_t_response_a2e8c581d9be3f619d4eb6c47b029ee5a}} 
+TGraph $\ast$ {\bfseries m\+\_\+weight\+Absorbed\+To\+QEInterpolator}
 \item 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a01fead7ccbae6bdd4ae4894fb7737139}\label{class_o_m_sim_p_m_t_response_a01fead7ccbae6bdd4ae4894fb7737139}} 
 std\+::map$<$ G4double, TH2D $\ast$ $>$ {\bfseries m\+\_\+gain\+G2\+Dmap}
@@ -234,42 +244,21 @@ This method interpolates the transit time between the two provided wavelengths a
 \begin{DoxyReturn}{Returns}
 G4double The interpolated transit time in ns. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a2447b2f9eb62a1e99f410bfeda917d5c}\label{class_o_m_sim_p_m_t_response_a2447b2f9eb62a1e99f410bfeda917d5c}} 
-\index{OMSimPMTResponse@{OMSimPMTResponse}!passQE@{passQE}}
-\index{passQE@{passQE}!OMSimPMTResponse@{OMSimPMTResponse}}
-\doxysubsubsection{\texorpdfstring{passQE()}{passQE()}}
-{\footnotesize\ttfamily bool OMSim\+PMTResponse\+::pass\+QE (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-\begin{DoxyParams}{Parameters}
-{\em p\+Wavelength} & Photon wavelength to be checked in nm. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True if the photon passes the QE check, false otherwise.
-\end{DoxyReturn}
-\begin{DoxySeeAlso}{See also}
-configure\+QEinterpolator 
-\end{DoxySeeAlso}
-
-
-Reimplemented in \mbox{\hyperlink{class_no_response_a87d46b2cf6fcf1e32e3aa4c62b614c7b}{No\+Response}}.
-
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}\label{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}} 
 \index{OMSimPMTResponse@{OMSimPMTResponse}!processPhotocathodeHit@{processPhotocathodeHit}}
 \index{processPhotocathodeHit@{processPhotocathodeHit}!OMSimPMTResponse@{OMSimPMTResponse}}
 \doxysubsubsection{\texorpdfstring{processPhotocathodeHit()}{processPhotocathodeHit()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} OMSim\+PMTResponse\+::process\+Photocathode\+Hit (\begin{DoxyParamCaption}\item[{G4double}]{pX,  }\item[{G4double}]{pY,  }\item[{G4double}]{p\+Wavelength }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} OMSim\+PMTResponse\+::process\+Photocathode\+Hit (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+x,  }\item[{G4double}]{p\+\_\+y,  }\item[{G4double}]{p\+\_\+wavelength }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Transform a hit based on its location and photon wavelength to a PMT pulse, considering the transit time, charge, and detection probability.
 
 
 \begin{DoxyParams}{Parameters}
-{\em pX} & x position on photocathode \\
+{\em p\+\_\+x} & x position on photocathode \\
 \hline
-{\em pY} & y position on photocathode \\
+{\em p\+\_\+y} & y position on photocathode \\
 \hline
-{\em p\+Wavelength} & Wavelength of the hitting photon \\
+{\em p\+\_\+wavelength} & Wavelength of the hitting photon \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

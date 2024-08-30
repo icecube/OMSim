@@ -141,41 +141,55 @@ Collaboration diagram for OMSimSensitiveDetector:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac8df596a75c482bafb3b83d1ed011316"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#ac8df596a75c482bafb3b83d1ed011316">OMSimSensitiveDetector</a> (G4String pName, DetectorType pDetectorType)</td></tr>
-<tr class="memdesc:ac8df596a75c482bafb3b83d1ed011316"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_o_m_sim_sensitive_detector.html#ac8df596a75c482bafb3b83d1ed011316">More...</a><br /></td></tr>
+<tr class="memdesc:ac8df596a75c482bafb3b83d1ed011316"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="class_o_m_sim_sensitive_detector.html" title="Represents a sensitive detector.">OMSimSensitiveDetector</a>.  <a href="class_o_m_sim_sensitive_detector.html#ac8df596a75c482bafb3b83d1ed011316">More...</a><br /></td></tr>
 <tr class="separator:ac8df596a75c482bafb3b83d1ed011316"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86abb731f3b352ee3609b6f844380862"><td class="memItemLeft" align="right" valign="top"><a id="a86abb731f3b352ee3609b6f844380862"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a86abb731f3b352ee3609b6f844380862">~OMSimSensitiveDetector</a> ()</td></tr>
+<tr class="memdesc:a86abb731f3b352ee3609b6f844380862"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for <a class="el" href="class_o_m_sim_sensitive_detector.html" title="Represents a sensitive detector.">OMSimSensitiveDetector</a>. <br /></td></tr>
+<tr class="separator:a86abb731f3b352ee3609b6f844380862"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d12fa5869b30eee35a85793522e98f4"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4">ProcessHits</a> (G4Step *pStep, G4TouchableHistory *pTouchableHistory) override</td></tr>
-<tr class="memdesc:a2d12fa5869b30eee35a85793522e98f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes particles that go through detector.  <a href="class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4">More...</a><br /></td></tr>
+<tr class="memdesc:a2d12fa5869b30eee35a85793522e98f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes hits for optical photons in the detector.  <a href="class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4">More...</a><br /></td></tr>
 <tr class="separator:a2d12fa5869b30eee35a85793522e98f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a345025c68ea4ff0d4a0f7ad017f06778"><td class="memItemLeft" align="right" valign="top"><a id="a345025c68ea4ff0d4a0f7ad017f06778"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPMTResponse</b> (<a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> *pResponse)</td></tr>
+<tr class="memitem:a345025c68ea4ff0d4a0f7ad017f06778"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a345025c68ea4ff0d4a0f7ad017f06778">setPMTResponse</a> (<a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> *pResponse)</td></tr>
+<tr class="memdesc:a345025c68ea4ff0d4a0f7ad017f06778"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PMT response model.  <a href="class_o_m_sim_sensitive_detector.html#a345025c68ea4ff0d4a0f7ad017f06778">More...</a><br /></td></tr>
 <tr class="separator:a345025c68ea4ff0d4a0f7ad017f06778"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a9d70226340ca6ca44a09efebd7acb1e0"><td class="memItemLeft" align="right" valign="top"><a id="a9d70226340ca6ca44a09efebd7acb1e0"></a>
-G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkVolumeAbsorption</b> (G4Step *pStep)</td></tr>
+<tr class="memitem:a9d70226340ca6ca44a09efebd7acb1e0"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a9d70226340ca6ca44a09efebd7acb1e0">checkVolumeAbsorption</a> (G4Step *pStep)</td></tr>
+<tr class="memdesc:a9d70226340ca6ca44a09efebd7acb1e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the photon was absorbed in the volume.  <a href="class_o_m_sim_sensitive_detector.html#a9d70226340ca6ca44a09efebd7acb1e0">More...</a><br /></td></tr>
 <tr class="separator:a9d70226340ca6ca44a09efebd7acb1e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee2e914dd514bf5c949d45e12def5447"><td class="memItemLeft" align="right" valign="top"><a id="aee2e914dd514bf5c949d45e12def5447"></a>
-G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkBoundaryAbsorption</b> (G4Step *pStep)</td></tr>
+<tr class="memitem:aee2e914dd514bf5c949d45e12def5447"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#aee2e914dd514bf5c949d45e12def5447">checkBoundaryAbsorption</a> (G4Step *pStep)</td></tr>
+<tr class="memdesc:aee2e914dd514bf5c949d45e12def5447"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the photon was detected at a boundary.  <a href="class_o_m_sim_sensitive_detector.html#aee2e914dd514bf5c949d45e12def5447">More...</a><br /></td></tr>
 <tr class="separator:aee2e914dd514bf5c949d45e12def5447"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4312e760ce38246d09e2933aa37b8725"><td class="memItemLeft" align="right" valign="top"><a id="a4312e760ce38246d09e2933aa37b8725"></a>
-<a class="el" href="struct_photon_info.html">PhotonInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getPhotonInfo</b> (G4Step *pStep)</td></tr>
+<tr class="memitem:a4312e760ce38246d09e2933aa37b8725"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_photon_info.html">PhotonInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a4312e760ce38246d09e2933aa37b8725">getPhotonInfo</a> (G4Step *pStep)</td></tr>
+<tr class="memdesc:a4312e760ce38246d09e2933aa37b8725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves photon information from a given step.  <a href="class_o_m_sim_sensitive_detector.html#a4312e760ce38246d09e2933aa37b8725">More...</a><br /></td></tr>
 <tr class="separator:a4312e760ce38246d09e2933aa37b8725"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e8d0c59cdefec63a33c443ff903d2cf"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a0e8d0c59cdefec63a33c443ff903d2cf">handlePMT</a> (G4Step *pStep, G4TouchableHistory *pTouchableHistory)</td></tr>
-<tr class="memdesc:a0e8d0c59cdefec63a33c443ff903d2cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles hits for PMTs.  <a href="class_o_m_sim_sensitive_detector.html#a0e8d0c59cdefec63a33c443ff903d2cf">More...</a><br /></td></tr>
+<tr class="memdesc:a0e8d0c59cdefec63a33c443ff903d2cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles hits for PMT detectors.  <a href="class_o_m_sim_sensitive_detector.html#a0e8d0c59cdefec63a33c443ff903d2cf">More...</a><br /></td></tr>
 <tr class="separator:a0e8d0c59cdefec63a33c443ff903d2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b3d72f7aa132ea975541843a30a2f22"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a4b3d72f7aa132ea975541843a30a2f22">handleGeneralPhotonDetector</a> (G4Step *pStep, G4TouchableHistory *pTouchableHistory)</td></tr>
-<tr class="memdesc:a4b3d72f7aa132ea975541843a30a2f22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles hits for general photon detectors. This is the same as handlePMT, but sets PMT number to 0, as otherwise the retrieval of the PMT number from the volume name would results in an error.  <a href="class_o_m_sim_sensitive_detector.html#a4b3d72f7aa132ea975541843a30a2f22">More...</a><br /></td></tr>
+<tr class="memdesc:a4b3d72f7aa132ea975541843a30a2f22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles hits for general photon detectors.  <a href="class_o_m_sim_sensitive_detector.html#a4b3d72f7aa132ea975541843a30a2f22">More...</a><br /></td></tr>
 <tr class="separator:a4b3d72f7aa132ea975541843a30a2f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e4a324ae342e9e91ddc33fcc0be8789"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a8e4a324ae342e9e91ddc33fcc0be8789">isPhotonDetected</a> (double p_efficiency)</td></tr>
+<tr class="memdesc:a8e4a324ae342e9e91ddc33fcc0be8789"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monte carlo if the photon was detected based on the detection probability.  <a href="class_o_m_sim_sensitive_detector.html#a8e4a324ae342e9e91ddc33fcc0be8789">More...</a><br /></td></tr>
+<tr class="separator:a8e4a324ae342e9e91ddc33fcc0be8789"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a329ead0f229868eaf8ac21132cbc6746"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a329ead0f229868eaf8ac21132cbc6746">storePhotonHit</a> (<a class="el" href="struct_photon_info.html">PhotonInfo</a> &amp;pInfo)</td></tr>
 <tr class="memdesc:a329ead0f229868eaf8ac21132cbc6746"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores photon hit information into the HitManager.  <a href="class_o_m_sim_sensitive_detector.html#a329ead0f229868eaf8ac21132cbc6746">More...</a><br /></td></tr>
 <tr class="separator:a329ead0f229868eaf8ac21132cbc6746"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9086dbe47568c71cba08feef8b665146"><td class="memItemLeft" align="right" valign="top"><a id="a9086dbe47568c71cba08feef8b665146"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>fetchBoundaryProcess</b> ()</td></tr>
+<tr class="memitem:a9086dbe47568c71cba08feef8b665146"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a9086dbe47568c71cba08feef8b665146">fetchBoundaryProcess</a> ()</td></tr>
+<tr class="memdesc:a9086dbe47568c71cba08feef8b665146"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the boundary process for detecting boundary absorptions.  <a href="class_o_m_sim_sensitive_detector.html#a9086dbe47568c71cba08feef8b665146">More...</a><br /></td></tr>
 <tr class="separator:a9086dbe47568c71cba08feef8b665146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad0ef54caf4fd1505aed2959d59b1e3d"><td class="memItemLeft" align="right" valign="top"><a id="aad0ef54caf4fd1505aed2959d59b1e3d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#aad0ef54caf4fd1505aed2959d59b1e3d">killParticle</a> (G4Track *pTrack)</td></tr>
+<tr class="memdesc:aad0ef54caf4fd1505aed2959d59b1e3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the particle from propagating further. Necessary for 100% efficient detectors. <br /></td></tr>
+<tr class="separator:aad0ef54caf4fd1505aed2959d59b1e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a932114d6733b2e8d89f286e1ea485b77"><td class="memItemLeft" align="right" valign="top"><a id="a932114d6733b2e8d89f286e1ea485b77"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_QEcut</b></td></tr>
+<tr class="separator:a932114d6733b2e8d89f286e1ea485b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbc50976a0dc1b3b9fa9dfa48ab59612"><td class="memItemLeft" align="right" valign="top"><a id="afbc50976a0dc1b3b9fa9dfa48ab59612"></a>
 <a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_PMTResponse</b></td></tr>
 <tr class="separator:afbc50976a0dc1b3b9fa9dfa48ab59612"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -225,6 +239,131 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aee2e914dd514bf5c949d45e12def5447"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee2e914dd514bf5c949d45e12def5447">&#9670;&nbsp;</a></span>checkBoundaryAbsorption()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">G4bool OMSimSensitiveDetector::checkBoundaryAbsorption </td>
+          <td>(</td>
+          <td class="paramtype">G4Step *&#160;</td>
+          <td class="paramname"><em>p_step</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_step</td><td>The current step information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the photon was detected at the boundary, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a9d70226340ca6ca44a09efebd7acb1e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d70226340ca6ca44a09efebd7acb1e0">&#9670;&nbsp;</a></span>checkVolumeAbsorption()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">G4bool OMSimSensitiveDetector::checkVolumeAbsorption </td>
+          <td>(</td>
+          <td class="paramtype">G4Step *&#160;</td>
+          <td class="paramname"><em>p_step</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_step</td><td>The current step information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the photon was absorbed, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a9086dbe47568c71cba08feef8b665146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9086dbe47568c71cba08feef8b665146">&#9670;&nbsp;</a></span>fetchBoundaryProcess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimSensitiveDetector::fetchBoundaryProcess </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Retrieves and stores the <code><a class="el" href="class_g4_op_boundary_process.html">G4OpBoundaryProcess</a></code> to check for photon detection at boundaries. Logs an error if the process is not found. </p>
+
+</div>
+</div>
+<a id="a4312e760ce38246d09e2933aa37b8725"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4312e760ce38246d09e2933aa37b8725">&#9670;&nbsp;</a></span>getPhotonInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_photon_info.html">PhotonInfo</a> OMSimSensitiveDetector::getPhotonInfo </td>
+          <td>(</td>
+          <td class="paramtype">G4Step *&#160;</td>
+          <td class="paramname"><em>p_step</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_step</td><td>The current step information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_photon_info.html" title="Contains information about a detected photon which will be appended in HitManager.">PhotonInfo</a> struct containing the photon details. </dd></dl>
+
+</div>
+</div>
 <a id="a4b3d72f7aa132ea975541843a30a2f22"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4b3d72f7aa132ea975541843a30a2f22">&#9670;&nbsp;</a></span>handleGeneralPhotonDetector()</h2>
 
@@ -265,7 +404,7 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the hit was stored (always) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the hit was stored, always true for general photon detectors. </dd></dl>
 
 </div>
 </div>
@@ -309,7 +448,40 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the hit was stored </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the hit was stored, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a8e4a324ae342e9e91ddc33fcc0be8789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e4a324ae342e9e91ddc33fcc0be8789">&#9670;&nbsp;</a></span>isPhotonDetected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool OMSimSensitiveDetector::isPhotonDetected </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>p_efficiency</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_efficiency</td><td>The detection probability. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the photon was detected, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -346,6 +518,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>If the detector type is one of the perfect detectors (100% efficient), the photon hit is registered directly. Otherwise, it checks for volume or boundary absorption based on the detector type.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p_step</td><td>The current step information. </td></tr>
@@ -353,7 +526,31 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the particle was stored as hit, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the photon hit was stored, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a345025c68ea4ff0d4a0f7ad017f06778"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a345025c68ea4ff0d4a0f7ad017f06778">&#9670;&nbsp;</a></span>setPMTResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimSensitiveDetector::setPMTResponse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a> *&#160;</td>
+          <td class="paramname"><em>p_response</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_response</td><td>Pointer to the PMT response object. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -423,7 +620,7 @@ Static Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a></li>
-    <li class="footer">Generated on Thu Aug 29 2024 16:09:02 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 30 2024 10:47:33 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

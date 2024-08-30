@@ -30,13 +30,17 @@ Collaboration diagram for No\+Response\+:
 \mbox{\hyperlink{class_no_response}{No\+Response}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_no_response}{No\+Response}} \&)=delete
 \item 
 \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}} \mbox{\hyperlink{class_no_response_aa904db4023917812120742e949d1fd88}{process\+Photocathode\+Hit}} (G4double pX, G4double pY, G4double p\+Wavelength) override
-\begin{DoxyCompactList}\small\item\em Process a hit on the photocathode into a PMT pulse. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{class_no_response_a87d46b2cf6fcf1e32e3aa4c62b614c7b}{pass\+QE}} (G4double p\+Wavelength) override
-\begin{DoxyCompactList}\small\item\em Checks if photon with given wavelength passes QE check. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Process a hit on the photocathode into a PMT pulse. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_no_response_a7f08958dab9ff1582e46bf5b8bda215e}\label{class_no_response_a7f08958dab9ff1582e46bf5b8bda215e}} 
+\mbox{\Hypertarget{class_no_response_abb76243b3aa92ef193e3588e930a29cc}\label{class_no_response_abb76243b3aa92ef193e3588e930a29cc}} 
+static void {\bfseries init} ()
+\item 
+\mbox{\Hypertarget{class_no_response_afb2bc1e48cdfefd5513865847802da32}\label{class_no_response_afb2bc1e48cdfefd5513865847802da32}} 
+static void {\bfseries shutdown} ()
+\item 
+\mbox{\Hypertarget{class_no_response_a607ca5756ab9bd43812daa846802a8ac}\label{class_no_response_a607ca5756ab9bd43812daa846802a8ac}} 
 static \mbox{\hyperlink{class_no_response}{No\+Response}} \& {\bfseries get\+Instance} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
@@ -49,42 +53,21 @@ std\+::vector$<$ G4double $>$ {\bfseries get\+Scanned\+Wavelengths} ()
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_no_response_a87d46b2cf6fcf1e32e3aa4c62b614c7b}\label{class_no_response_a87d46b2cf6fcf1e32e3aa4c62b614c7b}} 
-\index{NoResponse@{NoResponse}!passQE@{passQE}}
-\index{passQE@{passQE}!NoResponse@{NoResponse}}
-\doxysubsubsection{\texorpdfstring{passQE()}{passQE()}}
-{\footnotesize\ttfamily bool No\+Response\+::pass\+QE (\begin{DoxyParamCaption}\item[{G4double}]{p\+Wavelength }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-\begin{DoxyParams}{Parameters}
-{\em p\+Wavelength} & Photon wavelength to be checked in nm. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True if the photon passes the QE check, false otherwise.
-\end{DoxyReturn}
-\begin{DoxySeeAlso}{See also}
-configure\+QEinterpolator 
-\end{DoxySeeAlso}
-
-
-Reimplemented from \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2447b2f9eb62a1e99f410bfeda917d5c}{OMSim\+PMTResponse}}.
-
 \mbox{\Hypertarget{class_no_response_aa904db4023917812120742e949d1fd88}\label{class_no_response_aa904db4023917812120742e949d1fd88}} 
 \index{NoResponse@{NoResponse}!processPhotocathodeHit@{processPhotocathodeHit}}
 \index{processPhotocathodeHit@{processPhotocathodeHit}!NoResponse@{NoResponse}}
 \doxysubsubsection{\texorpdfstring{processPhotocathodeHit()}{processPhotocathodeHit()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} No\+Response\+::process\+Photocathode\+Hit (\begin{DoxyParamCaption}\item[{G4double}]{pX,  }\item[{G4double}]{pY,  }\item[{G4double}]{p\+Wavelength }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} No\+Response\+::process\+Photocathode\+Hit (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+x,  }\item[{G4double}]{p\+\_\+y,  }\item[{G4double}]{p\+\_\+wavelength }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 Transform a hit based on its location and photon wavelength to a PMT pulse, considering the transit time, charge, and detection probability.
 
 
 \begin{DoxyParams}{Parameters}
-{\em pX} & x position on photocathode \\
+{\em p\+\_\+x} & x position on photocathode \\
 \hline
-{\em pY} & y position on photocathode \\
+{\em p\+\_\+y} & y position on photocathode \\
 \hline
-{\em p\+Wavelength} & Wavelength of the hitting photon \\
+{\em p\+\_\+wavelength} & Wavelength of the hitting photon \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
