@@ -6,6 +6,7 @@ var class_beam =
     [ "configureXYZScan_NKTLaser", "class_beam.html#ad5d4b1279c5acf477093963b1283404d", null ],
     [ "configureXYZScan_PicoQuantSetup", "class_beam.html#a236c12ef4484680978d2c4a549349b88", null ],
     [ "configureZCorrection_PicoQuant", "class_beam.html#a301a2dbe8aec71b2c2ac6dbe04f26d0e", null ],
+    [ "runBeamNKTSetup", "class_beam.html#a4281be85eb677d3f7ffe3206a4485f71", null ],
     [ "runBeamPicoQuantSetup", "class_beam.html#a406f53329dfffbb74e584c3c7917729f", null ],
     [ "runErlangenQEBeam", "class_beam.html#ad3e7bbf1d93522f534c59364b49dfe52", null ],
     [ "setWavelength", "class_beam.html#ac7f21d2869f244634e2e803246b84dba", null ],

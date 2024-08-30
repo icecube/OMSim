@@ -1,5 +1,9 @@
 var NAVTREEINDEX2 =
 {
+"class_g4_op_boundary_process.html#afea4ec68181011a124e8cdf57bb2214d":[10,0,11,27],
+"class_g4_op_boundary_process.html#aff47b07f56ef0a8d6c9b492ba72dc5fa":[10,0,11,84],
+"class_g4_radioactive_decay.html":[10,0,12],
+"class_g4_radioactive_decay.html#a00a8c16a7c534f0f60ea08e495d17ebf":[10,0,12,22],
 "class_g4_radioactive_decay.html#a0206ac122b2b996b9e996670f2dc24d2":[10,0,12,47],
 "class_g4_radioactive_decay.html#a089028f5661dacf49e154f2b448b06c4":[10,0,12,17],
 "class_g4_radioactive_decay.html#a0a33ce684d41876fe93a74f326551e8c":[10,0,12,3],
@@ -245,9 +249,5 @@ var NAVTREEINDEX2 =
 "class_o_m_sim_decays_analysis.html#a35aa71b0f55694ab682eb12e33e773d3":[8,2,10,3],
 "class_o_m_sim_decays_analysis.html#a4aea9bd04b3f168cfcae98808b33f90c":[8,2,10,4],
 "class_o_m_sim_decays_analysis.html#a5a809421faa0dd4ad201891f58850af5":[8,2,10,2],
-"class_o_m_sim_decays_analysis.html#a69166537ec42005ec45a793106810114":[8,2,10,0],
-"class_o_m_sim_decays_analysis.html#a715d4897705da383ce1a1d93b68def9b":[8,2,10,5],
-"class_o_m_sim_decays_analysis.html#a78449c898f237d5a40c75042123c19af":[8,2,10,10],
-"class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0":[8,2,10,7],
-"class_o_m_sim_decays_analysis.html#ab08bcf92e1751dfd749c6eabd91a9f27":[8,2,10,12]
+"class_o_m_sim_decays_analysis.html#a69166537ec42005ec45a793106810114":[8,2,10,0]
 };

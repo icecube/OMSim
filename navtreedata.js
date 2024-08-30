@@ -75,7 +75,8 @@ var NAVTREE =
         [ "Step 2: Expand OMSimPMTResponse and Verify QE", "md_extra_doc_2_technicalities.html#autotoc_md37", null ],
         [ "Step 3: Matching detection efficiency scan", "md_extra_doc_2_technicalities.html#autotoc_md38", null ],
         [ "Step 4: Matching gain / transit time scans", "md_extra_doc_2_technicalities.html#autotoc_md39", null ]
-      ] ]
+      ] ],
+      [ "@code{bash}", "md_extra_doc_2_technicalities.html#autotoc_md40", null ]
     ] ],
     [ "> Effective Area Studies", "md_extra_doc_30_effective_area.html", [
       [ "Introduction to effective areas", "md_extra_doc_30_effective_area.html#autotoc_md42", null ],
@@ -124,12 +125,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "5__group__definitions_8h_source.html",
-"class_c_a_d_mesh_1_1_file_1_1_lexer.html#ae2ead868ae6786a061659e710ce64e5d",
-"class_g4_radioactive_decay.html#a0206ac122b2b996b9e996670f2dc24d2",
-"class_o_m_sim_decays_analysis.html#abf3b99f2998f27c9ad1f792dfc716e0c",
-"class_o_m_sim_p_m_t_construction.html#a7ae6ccb05534002df9e519c5b5cfef14",
-"classabc_detector_component.html#a53c7979298ef9eda66b44f0a3c4f2e6b",
-"radioactive__decays_2include_2_o_m_sim_physics_list_8hh_source.html"
+"class_c_a_d_mesh_1_1_file_1_1_lexer.html#ad37669514d188f511c011065ac21a985",
+"class_g4_op_boundary_process.html#afea4ec68181011a124e8cdf57bb2214d",
+"class_o_m_sim_decays_analysis.html#a715d4897705da383ce1a1d93b68def9b",
+"class_o_m_sim_p_m_t_construction.html#a4b59217e8d9ffcae6ffa95ffab8af10f",
+"classabc_detector_component.html#a3d796bd0c3a6e22e8bbd11765b98d2e8",
+"md_extra_doc_32__s_n.html#autotoc_md55"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

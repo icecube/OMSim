@@ -10,9 +10,12 @@ var _o_m_sim_tools_8hh =
     [ "linspace", "_o_m_sim_tools_8hh.html#a052be79128cb3b90b6a4701455307246", null ],
     [ "loadtxt", "_o_m_sim_tools_8hh.html#aefa5ecd8f1fb3d69a65d517494e99669", null ],
     [ "logspace", "_o_m_sim_tools_8hh.html#adf257eb5c348836614a3c10de47bcf6e", null ],
+    [ "mean", "_o_m_sim_tools_8hh.html#a02d22a3d187b9c60a29a904f27eeae01", null ],
+    [ "median", "_o_m_sim_tools_8hh.html#ae5e9dd629de363e6059b3f563a37845a", null ],
     [ "sortVectorByReference", "_o_m_sim_tools_8hh.html#a3269713e8f36608124048bda75a02a49", null ],
     [ "splitStringByDelimiter", "_o_m_sim_tools_8hh.html#a25cdf291245515edee1db8cc54a0b4eb", null ],
     [ "splitStringByDelimiter", "_o_m_sim_tools_8hh.html#ae68674997cfff7a2f3be9afe673b6e57", null ],
+    [ "std", "_o_m_sim_tools_8hh.html#a8daf7345e55256e178b3cc523fbeffca", null ],
     [ "throwError", "_o_m_sim_tools_8hh.html#a643113251f480a06563725426fc25adf", null ],
     [ "visualisationURL", "_o_m_sim_tools_8hh.html#a4ee77f675e34ef6252e59c21b5ca6499", null ]
 ];

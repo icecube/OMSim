@@ -126,6 +126,7 @@ $(document).ready(function(){initNavTree('md_extra_doc_2_technicalities.html',''
 <li class="level2"><a href="#autotoc_md39">Step 4: Matching gain / transit time scans</a></li>
 </ul>
 </li>
+<li class="level1"><a href="#autotoc_md40">@code{bash}</a></li>
 </ul>
 </div>
 <div class="textblock"><h1><a class="anchor" id="autotoc_md30"></a>
@@ -260,7 +261,7 @@ Step 1: Fraction of absorbed photons</h2>
 <p>To calculate the quantum efficiency weight, we have to know how many photons are absorbed in the photocathode in the simulation. For this, go through the following steps:</p><ul>
 <li>The most precise procedure is to simulate the beam used during the QE measurement (see for example <code>Beam::configureErlangenQESetup</code> and <code>Beam::runErlangenQEBeam</code> for the beam used in Erlangen). If you don't know the divergence / beam size of the setup, you may use the one from Erlangen first.</li>
 <li>In <code>OMSim_efficiency_calibration.cc</code> change the method <code>runQEbeamSimulation()</code> to use the newly defined beam instead of <code>runErlangenQEBeam</code>. Define there also the wavelength range to be simulated.</li>
-<li>Run the simulation with the following command, changing the PMT number to the one you want to simulate (make sure that your PMT is in the list in <code><a class="el" href="class_o_m_sim_p_m_t_construction.html#a1a8373e9ae3095062edb477245133a9e">OMSimPMTConstruction::selectPMT</a></code>, or hard code it in <code>OMSimEffCaliDetector.cc</code>) <div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 1 -n 500000 --threads 4 --output_file step1</div>
+<li>Run the simulation with the following command, changing the PMT number to the one you want to simulate (make sure that your PMT is in the list in <code><a class="el" href="class_o_m_sim_p_m_t_construction.html#a1a8373e9ae3095062edb477245133a9e">OMSimPMTConstruction::selectPMT</a></code>, or hard code it in <code>OMSimEffCaliDetector.cc</code>) <div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 1 -n 500000 --threads 4 --output_file step1 --detector_type 1</div>
 </div><!-- fragment --></li>
 <li>Check results and uncertainty. You want to determine the fraction pretty accurately, you may repeat the simulation at the UV region with higher statistics (change wavelength range in <code>runQEbeamSimulation()</code>).</li>
 </ul>
@@ -288,7 +289,7 @@ Step 1: Fraction of absorbed photons</h2>
 <h2><a class="anchor" id="autotoc_md37"></a>
 Step 2: Expand OMSimPMTResponse and Verify QE</h2>
 <p>Each PMT has its own derived class in <code>OMSimPMTResponse.cc</code>. If your PMT has not class yet, create one following the other PMTs as example. In its constructor add a call to <code>configureQEweightInterpolator()</code> adding the file that you generated in the last step and a default QE file for this PMT. Make sure you are not creating any CE weight interpolator at this point (this happens in step 3 of this documentation), as otherwise the weights will be smaller than expected from QE only!</p>
-<p>Now run the simulation again </p><div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 2 -n 100000 --threads 4 --output_file step2</div>
+<p>Now run the simulation again </p><div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 2 -n 100000 --threads 4 --output_file step2 --detector_type 1</div>
 </div><!-- fragment --><p>and check that the weights are being calculated correctly</p>
 <div class="fragment"><div class="line">wvs, h, w =np.loadtxt(<span class="stringliteral">&quot;step2.dat&quot;</span>, unpack=1)</div>
 <div class="line">N=100000</div>
@@ -308,9 +309,9 @@ Step 3: Matching detection efficiency scan</h2>
 <p>The last step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.</p>
 <ul>
 <li>As before, we have to simulate the beam used during the scan measurement (see for example <code>Beam::configureXYZScan_PicoQuantSetup</code> and <code>Beam::runBeamPicoQuantSetup</code> for the beam used in Münster)</li>
-<li>In in <code>runXYZfrontalScan()</code> of <code>OMSim_efficiency_calibration.cc</code> change the scan range (<code>lX</code> vector) and radius limit (<code>lRlim</code>) according to the diameter of your PMT</li>
+<li>In in <code>runXYZfrontalScan()</code> of <code>OMSim_efficiency_calibration.cc</code> change the scan range (<code>grid</code> vector) and radius limit (<code>rLim</code>) according to the diameter of your PMT</li>
 <li>Also adjust the binning of the output histogram in <code>OMSimEffiCaliAnalyisis::writeHitPositionHistogram</code></li>
-<li>Run the XY grid simulation. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want <div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 3 -n 10000 --threads 4 --output_file step3</div>
+<li>Run the XY grid simulation. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want <div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 3 -n 10000 --threads 4 --output_file step3 --detector_type 1</div>
 </div><!-- fragment --></li>
 <li>Fit the weights using simulation data. The analysis done for the <a class="el" href="classm_d_o_m.html">mDOM</a> can be found in the notebook located in <code>documentation/notebooks/detection_efficiency_matching/</code>.</li>
 <li>Save the weights in a file and store it in <code>common/data/PMTs/measurement_matching_data/CE_weight/</code></li>
@@ -319,19 +320,31 @@ Step 3: Matching detection efficiency scan</h2>
 </ul>
 <h2><a class="anchor" id="autotoc_md39"></a>
 Step 4: Matching gain / transit time scans</h2>
-<p>The scan data must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-glass boundary refracts the beam.</p>
+<p>The scan data of transit time / gain must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-glass boundary refracts the beam.</p>
 <ul>
-<li>Set the photocathode as a 100% efficient by</li>
+<li>As before, we have to simulate the beam used during the scan measurement (see for example <code>Beam::configureXYZScan_PicoQuantSetup</code> and <code>Beam::runBeamPicoQuantSetup</code> for the beam used in Münster)</li>
+<li>In in <code>runXYZfrontalScan()</code> of <code>OMSim_efficiency_calibration.cc</code> change the scan range (<code>grid</code> vector) and radius limit (<code>rLim</code>) according to the diameter of your PMT</li>
+<li>Adjust the binning of the output histogram in <code>OMSimEffiCaliAnalyisis::writeHitPositionHistogram</code> to a finner binning as before</li>
+<li>Run the XY grid simulation <b>using the simple PMT</b>. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want</li>
 </ul>
+<div class="fragment"><div class="line">./OMSim_efficiency_calibration --simple_PMT --pmt_model 0 --simulation_step 4 -n 10000 --threads 4 --output_file step4 --detector_type 1</div>
+</div><!-- fragment --><ul>
+<li>Follow the analysis in the notebook <code>documentation/notebooks/scans_matching/</code> and save the created files in <code>common/data/PMTs/measurement_matching_data/scans/</code>. Note that <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> expects a naming convention for these files (see <code>OMSimPMTResponse::configureScansInterpolator</code>).</li>
+<li>Modify <code>getScannedWavelength</code> of your PMT response class for the wavelengths you scanned and add the <code>configureScansInterpolator</code> in the constructor. <br  />
+</li>
+<li>Run the simulation in step 5 to check the output with the newly introduced files </li>
+</ul>
+<h1><a class="anchor" id="autotoc_md40"></a>
+@code{bash}</h1>
+<p>./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 5 -n 10000 --threads 4 --output_file step5 --detector_type 1 </p>
 <hr  />
- <hr  />
  </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Aug 30 2024 11:05:05 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 30 2024 13:07:40 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
