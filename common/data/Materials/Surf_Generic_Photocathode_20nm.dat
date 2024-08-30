@@ -5,8 +5,7 @@
    "jConstProperties": {
    "COATEDTHICKNESS":  {
          "jValue": 20,
-         "jUnit": "nm",
-         "jInvertUnit" : ""
+         "jUnit": "nm"
       }
    },
    "jProperties": {

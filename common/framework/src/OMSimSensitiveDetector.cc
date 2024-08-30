@@ -45,8 +45,8 @@ OMSimSensitiveDetector::~OMSimSensitiveDetector()
 
 /**
  * @brief Fetches the boundary process for detecting boundary absorptions.
- * 
- * Retrieves and stores the `G4OpBoundaryProcess` to check for photon detection 
+ *
+ * Retrieves and stores the `G4OpBoundaryProcess` to check for photon detection
  * at boundaries. Logs an error if the process is not found.
  */
 void OMSimSensitiveDetector::fetchBoundaryProcess()
@@ -78,58 +78,50 @@ void OMSimSensitiveDetector::setPMTResponse(OMSimPMTResponse *p_response)
 
 /**
  * @brief Processes hits for optical photons in the detector.
- * 
- * If the detector type is one of the perfect detectors (100% efficient), 
- * the photon hit is registered directly. Otherwise, it checks for volume 
+ *
+ * If the detector type is one of the perfect detectors (100% efficient),
+ * the photon hit is registered directly. Otherwise, it checks for volume
  * or boundary absorption based on the detector type.
- * 
+ *
  * @param p_step The current step information.
  * @param p_touchableHistory The history of touchable objects.
  * @return True if the photon hit was stored, false otherwise.
  */
 G4bool OMSimSensitiveDetector::ProcessHits(G4Step *p_step, G4TouchableHistory *p_touchableHistory)
 {
-  if (p_step->GetTrack()->GetDefinition() == G4OpticalPhoton::Definition()) // check if particle is a photon
+  if (p_step->GetTrack()->GetDefinition() != G4OpticalPhoton::Definition())
+    return false;
+
+  if (DetectorType::PerfectVolumePhotonDetector == m_detectorType || DetectorType::PerfectBoundaryPhotonDetector == m_detectorType || DetectorType::PerfectPMT == m_detectorType)
   {
+    if (m_detectorType == DetectorType::PerfectPMT) return handlePMT(p_step, p_touchableHistory);
+    return handleGeneralPhotonDetector(p_step, p_touchableHistory);
+  }
 
-    switch (m_detectorType)
-    {
-    case DetectorType::PerfectVolumePhotonDetector: // 100% efficient VolumePhotonDetector
-      return handleGeneralPhotonDetector(p_step, p_touchableHistory);
-
-    case DetectorType::PerfectBoundaryPhotonDetector: // 100% efficient BoundaryPhotonDetector
-      return handleGeneralPhotonDetector(p_step, p_touchableHistory);
-
-    case DetectorType::PerfectPMT: // 100% efficient PMT
-      return handlePMT(p_step, p_touchableHistory);
-    }
+  if (m_detectorType == DetectorType::VolumePhotonDetector)
+  {
     if (checkVolumeAbsorption(p_step))
     {
-      switch (m_detectorType)
-      {
-      case DetectorType::VolumePhotonDetector:
-        return handleGeneralPhotonDetector(p_step, p_touchableHistory);
-      }
-    }
-    else if (checkBoundaryAbsorption(p_step))
-    {
-      switch (m_detectorType)
-      {
-      case DetectorType::BoundaryPhotonDetector:
-        return handleGeneralPhotonDetector(p_step, p_touchableHistory);
-      case DetectorType::PMT:
-        return handlePMT(p_step, p_touchableHistory);
-      }
+      return handleGeneralPhotonDetector(p_step, p_touchableHistory);
     }
   }
 
+  else if (checkBoundaryAbsorption(p_step)) //if none of the above, it is a boundary photon detector
+  {
+    switch (m_detectorType)
+    {
+    case DetectorType::PMT:
+      return handlePMT(p_step, p_touchableHistory);
+    case DetectorType::BoundaryPhotonDetector:
+      return handleGeneralPhotonDetector(p_step, p_touchableHistory);    
+    }
+  }
   return false;
 }
 
-
 /**
  * @brief Retrieves photon information from a given step.
- * 
+ *
  * @param p_step The current step information.
  * @return PhotonInfo struct containing the photon details.
  */
@@ -156,10 +148,9 @@ PhotonInfo OMSimSensitiveDetector::getPhotonInfo(G4Step *p_step)
   return info;
 }
 
-
 /**
  * @brief Checks if the photon was absorbed in the volume.
- * 
+ *
  * @param p_step The current step information.
  * @return True if the photon was absorbed, false otherwise.
  */
@@ -167,7 +158,6 @@ G4bool OMSimSensitiveDetector::checkVolumeAbsorption(G4Step *p_step)
 {
   return p_step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "OpAbsorption";
 }
-
 
 /**
  * @brief Checks if the photon was detected at a boundary.
@@ -200,9 +190,8 @@ G4bool OMSimSensitiveDetector::checkBoundaryAbsorption(G4Step *p_step)
  */
 bool OMSimSensitiveDetector::isPhotonDetected(double p_efficiency)
 {
-    return G4UniformRand() < p_efficiency;
+  return G4UniformRand() < p_efficiency;
 }
-
 
 /**
  * @brief Handles hits for PMT detectors.
@@ -215,7 +204,7 @@ G4bool OMSimSensitiveDetector::handlePMT(G4Step *p_step, G4TouchableHistory *p_t
   PhotonInfo info = getPhotonInfo(p_step);
 
   // if QE cut is enabled, check if photon is detected (using detection probability, if detail PMT is enabled)
-  if (m_QEcut && !isPhotonDetected(info.PMTResponse.detectionProbability)) 
+  if (m_QEcut && !isPhotonDetected(info.PMTResponse.detectionProbability))
     return false;
   else if (m_QEcut)
     info.PMTResponse.detectionProbability = 1; // if QE cut is enabled, detection probability is 1 as photon was detected
@@ -282,4 +271,3 @@ void OMSimSensitiveDetector::killParticle(G4Track *p_track)
     p_track->SetTrackStatus(fStopAndKill);
   }
 }
-
