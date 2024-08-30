@@ -229,16 +229,19 @@ The scan data of transit time / gain must be corrected before use, as the coordi
  - As before, we have to simulate the beam used during the scan measurement. 
  - Run the XY grid simulation **using the simple PMT**, check the function being used under step 4
 
- ```bash
+```bash
 ./OMSim_efficiency_calibration --simple_PMT --pmt_model 0 --simulation_step 4 -n 100000 --threads 4 --output_file step4 --detector_type 1
 ```
  - Follow the analysis in the notebook `documentation/notebooks/scans_matching/` and save the created files in `common/data/PMTs/measurement_matching_data/scans/`.  Note that OMSim expects a naming convention for these files (see `OMSimPMTResponse::configureScansInterpolator`).
  - Modify `getScannedWavelength` of your PMT response class for the wavelengths you scanned and add the `configureScansInterpolator` in the constructor.  
  - Run the simulation in step 5 (modify method before accordingly) to check the output with the newly introduced files
 
-  ```bash
+```bash
 ./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 5 -n 10000 --threads 4 --output_file step5 --detector_type 1
 ```
+
+If you need to add more parameters (for example low gain probability, which is also photocathode position dependent and yet to be implemented), you will have to add a new interpolator map and `OMSimPMTResponse::configureScansInterpolator` accordingly.
+
 ---
 ---
 
