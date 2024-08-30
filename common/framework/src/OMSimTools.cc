@@ -481,4 +481,6 @@ namespace Tools
 	{
 		return splitStringByDelimiter(G4String(p_char), p_delim);
 	}
+
+	std::string visualisationURL = "https://icecube.github.io/OMSim/md_extra_doc_2_technicalities.html#autotoc_md30";
 }

@@ -7,12 +7,12 @@ The complex shapes of PMTs and other intricate objects may not render correctly 
 
 For a more detailed visualization that can handle complex geometries, you can use the RayTracer engine. While slower and more complex to use, RayTracer can visualize all volumes, regardless of their complexity. Here's how to set it up:
 
-1. **Enable RayTracer:**
+- **Enable RayTracer:**
    - Open `common/data/vis/init_vis.mac`
    - Comment out the line that loads `vis.mac`
    - Uncomment the line that loads `vis_raytracer.mac`
 
-2. **Make Objects Visible:**
+- **Make Objects Visible:**
    - Locate the visibility settings for the object you want to visualize
    - Change the condition that sets objects to invisible
    - Set the desired visibility attributes
@@ -46,7 +46,7 @@ For a more detailed visualization that can handle complex geometries, you can us
    }
    ```
 
-3. **Customize RayTracer Settings:**
+- **Customize RayTracer Settings:**
    - Open `common/data/vis/vis_raytracer.mac`
    - Adjust parameters such as:
      - Viewing angle

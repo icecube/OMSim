@@ -66,7 +66,7 @@ void OMSimPMTConstruction::construction()
     m_photocathodeLV->SetVisAttributes(m_photocathodeVis);
     if (m_internalReflections && OMSimCommandArgsTable::getInstance().get<bool>("visual"))
     {
-        log_warning("PMT shape too complicated for visualiser, and tube can't be visualised. Use simple_PMT or check https://icecube.github.io/OMSim/md_extra_doc_2_technicalities.html if you want to try with another visualiser!");
+        log_warning("PMT shape too complicated for visualiser, and tube can't be visualised. Use simple_PMT or check {} if you want to try with another visualiser!", Tools::visualisationURL);
         logicalPMT->SetVisAttributes(m_invisibleVis);
         tubeVacuum->SetVisAttributes(m_invisibleVis);
         vacuumBackLogical->SetVisAttributes(m_invisibleVis);
@@ -143,7 +143,7 @@ void OMSimPMTConstruction::constructHAcoating()
     G4LogicalVolume *coatingLogical = new G4LogicalVolume(coatingCut, m_data->getMaterial("NoOptic_Absorber"), "HACoating");
     if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
     {
-        log_warning("Visualization of HA coating is not possible. Check https://icecube.github.io/OMSim/md_extra_doc_2_technicalities.html if you want to see the HA coating with another visualiser!");
+        log_warning("Visualization of HA coating is not possible. Check {} if you want to see the HA coating with another visualiser!", Tools::visualisationURL);
         coatingLogical->SetVisAttributes(m_invisibleVis);
     }
     appendComponent(coatingCut, coatingLogical, G4ThreeVector(0, 0, -m_missingTubeLength), G4RotationMatrix(), "HACoating");

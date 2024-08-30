@@ -6,6 +6,7 @@
 #include "OMSimMDOMHarness.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimLogger.hh"
+#include "OMSimTools.hh"
 
 #include <G4Ellipsoid.hh>
 #include <G4LogicalSkinSurface.hh>
@@ -170,7 +171,7 @@ void mDOM::construction()
 
     if (!OMSimCommandArgsTable::getInstance().get<bool>("simple_PMT") && OMSimCommandArgsTable::getInstance().get<bool>("visual"))
     {
-        log_warning("PMT shape too complicated for visualiser, and support structure can't be visualised. Use simple_PMT or check https://icecube.github.io/OMSim/md_extra_doc_2_technicalities.html if you want to try with another visualiser!");
+        log_warning("PMT shape too complicated for visualiser, and support structure can't be visualised. Use simple_PMT or check {} if you want to try with another visualiser!", Tools::visualisationURL);
         supportStructureLogical->SetVisAttributes(m_invisibleVis);
     }
     else

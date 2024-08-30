@@ -46,5 +46,6 @@ namespace Tools
     void throwError(const G4String& message);
     std::vector<G4String> splitStringByDelimiter(G4String const &p_string, char p_delim);
     std::vector<G4String> splitStringByDelimiter(char *p_char, char p_delim);
+    extern std::string visualisationURL;
 };
 
