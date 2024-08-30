@@ -18,7 +18,10 @@ class G4TouchableHistory;
 enum class DetectorType {
     PMT,                           ///< Photomultiplier tube detector.
     VolumePhotonDetector,          ///< Photon detector based on absorption in volume.
-    BoundaryPhotonDetector         ///< Photon detector based on absorption in boundary.
+    BoundaryPhotonDetector,         ///< Photon detector based on absorption in boundary.
+    PerfectPMT,                           ///< Photomultiplier tube detector.
+    PerfectVolumePhotonDetector,          ///< Photon detector based on absorption in volume 100% efficient.
+    PerfectBoundaryPhotonDetector         ///< Photon detector based on absorption in boundary 100% efficient.
 };
 
 /**
@@ -50,22 +53,24 @@ class OMSimSensitiveDetector : public G4VSensitiveDetector
 {
 public:
     OMSimSensitiveDetector(G4String pName, DetectorType pDetectorType);
-    ~OMSimSensitiveDetector() {};
+    ~OMSimSensitiveDetector();
 
     G4bool ProcessHits(G4Step *pStep, G4TouchableHistory *pTouchableHistory) override;
     void setPMTResponse(OMSimPMTResponse *pResponse);
 
 private:
+    bool m_QEcut;
+    OMSimPMTResponse *m_PMTResponse;
+    DetectorType m_detectorType;
+    thread_local static G4OpBoundaryProcess* m_boundaryProcess;
 
     G4bool checkVolumeAbsorption(G4Step *pStep);
     G4bool checkBoundaryAbsorption(G4Step *pStep);
     PhotonInfo getPhotonInfo(G4Step *pStep);
     G4bool handlePMT(G4Step *pStep, G4TouchableHistory *pTouchableHistory);
     G4bool handleGeneralPhotonDetector(G4Step *pStep, G4TouchableHistory *pTouchableHistory);
+    bool isPhotonDetected(double p_efficiency);
     void storePhotonHit(PhotonInfo &pInfo);
     void fetchBoundaryProcess();
-
-    OMSimPMTResponse *m_PMTResponse;
-    DetectorType m_detectorType;
-    thread_local static G4OpBoundaryProcess* m_boundaryProcess;
+    void killParticle(G4Track *pTrack);
 };

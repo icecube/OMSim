@@ -1,6 +1,59 @@
 # Technicalities for Developers
 [TOC]
 
+## Visualization of Complex Objects
+
+The complex shapes of PMTs and other intricate objects may not render correctly with the default OpenGL (OGL) visualization engine. To ensure the visualizer remains functional, these objects are set to invisible by default.
+
+For a more detailed visualization that can handle complex geometries, you can use the RayTracer engine. While slower and more complex to use, RayTracer can visualize all volumes, regardless of their complexity. Here's how to set it up:
+
+1. **Enable RayTracer:**
+   - Open `common/data/vis/init_vis.mac`
+   - Comment out the line that loads `vis.mac`
+   - Uncomment the line that loads `vis_raytracer.mac`
+
+2. **Make Objects Visible:**
+   - Locate the visibility settings for the object you want to visualize
+   - Change the condition that sets objects to invisible
+   - Set the desired visibility attributes
+
+   Example for PMT glass visibility:
+
+   ```cpp
+   // Original code
+   if (m_internalReflections && OMSimCommandArgsTable::getInstance().get<bool>("visual"))
+   {
+       logicalPMT->SetVisAttributes(m_invisibleVis);
+       // ... other invisible settings ...
+   }
+   else
+   {
+       logicalPMT->SetVisAttributes(m_glassVis);
+       // ... other visible settings ...
+   }
+
+   // Modified code
+   if (false) // This condition will never be true, ensuring objects are always visible
+   {
+       // ... invisible settings ...
+   }
+   else
+   {
+       logicalPMT->SetVisAttributes(m_glassVis);
+       tubeVacuum->SetVisAttributes(m_airVis);
+       vacuumBackLogical->SetVisAttributes(m_airVis);
+       // ... other visible settings ...
+   }
+   ```
+
+3. **Customize RayTracer Settings:**
+   - Open `common/data/vis/vis_raytracer.mac`
+   - Adjust parameters such as:
+     - Viewing angle
+     - Lighting conditions
+     - Resolution
+     - Background color
+
 ## The Tools namespace
  
 The tools namespace provide several methods that could help you. For example, `Tools::loadtxt`, `Tools::linspace` and `Tools::logspace` operate similarly to their Python's numpy counterparts:
@@ -71,7 +124,7 @@ Remember to apply these conventions consistently across all new code and when re
 ---
 
 
-## Matching PMT Efficiency to Measurements
+## Matching PMT to Measurements
 
 In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability ([click here](md_extra_doc_0_common.html#autotoc_md5) for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module `efficiency_calibration` facilitates this procedure. In the following, the mDOM PMT is used as an example.
 
@@ -84,7 +137,7 @@ To calculate the quantum efficiency weight, we have to know how many photons are
  - In `OMSim_efficiency_calibration.cc` change the method `runQEbeamSimulation()` to use the newly defined beam instead of `runErlangenQEBeam`. Define there also the wavelength range to be simulated.
  - Run the simulation with the following command, changing the PMT number to the one you want to simulate (make sure that your PMT is in the list in `OMSimPMTConstruction::selectPMT`, or hard code it in `OMSimEffCaliDetector.cc`)
 ```bash
-./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 1 -n 500000 --threads 4 --detail_pmt --output_file step1
+./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 1 -n 500000 --threads 4 --output_file step1
 ```
  - Check results and uncertainty. You want to determine the fraction pretty accurately, you may repeat the simulation at the UV region with higher statistics (change wavelength range in `runQEbeamSimulation()`).
 
@@ -125,7 +178,7 @@ Each PMT has its own derived class in `OMSimPMTResponse.cc`. If your PMT has not
 
 Now run the simulation again 
 ```bash
-./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 2 -n 100000 --threads 4 --detail_pmt --output_file step2
+./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 2 -n 100000 --threads 4 --output_file step2
 ```
 
 and check that the weights are being calculated correctly
@@ -161,7 +214,7 @@ The last step is to create the collection efficiency weights to match the relati
  - Also adjust the binning of the output histogram in `OMSimEffiCaliAnalyisis::writeHitPositionHistogram`
  - Run the XY grid simulation. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want
  ```bash
-./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 3 -n 10000 --threads 4 --detail_pmt --output_file step3
+./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 3 -n 10000 --threads 4 --output_file step3
 ```
  - Fit the weights using simulation data. The analysis done for the mDOM can be found in the notebook located in `documentation/notebooks/detection_efficiency_matching/`.
 
@@ -169,6 +222,14 @@ The last step is to create the collection efficiency weights to match the relati
  - Add the `configureCEweightInterpolator()` in the constructor of your PMT class using the new file as input
  - Run the simulation again and check if the weights are correct.
 
- 
+ ### Step 4: Matching gain / transit time scans
+
+The scan data must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-glass boundary refracts the beam.
+
+ - Set the photocathode as a 100% efficient by 
+
 ---
 ---
+
+
+

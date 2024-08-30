@@ -76,39 +76,39 @@ void mDOM::construction()
 
     // Logicals
     G4LogicalVolume *gelLogical = new G4LogicalVolume(gelSolid,
-                                                       m_data->getMaterial("RiAbs_Gel_Shin-Etsu"),
-                                                       "Gelcorpus logical");
+                                                      m_data->getMaterial("RiAbs_Gel_Shin-Etsu"),
+                                                      "Gelcorpus logical");
 
     G4LogicalVolume *supportStructureLogical = new G4LogicalVolume(supStructureSolid,
-                                                                m_data->getMaterial("NoOptic_Absorber"),
-                                                                "TubeHolder logical");
+                                                                   m_data->getMaterial("NoOptic_Absorber"),
+                                                                   "TubeHolder logical");
 
     G4LogicalVolume *glassLogical = new G4LogicalVolume(glassSolid,
-                                                         m_data->getMaterial("RiAbs_Glass_Vitrovex"),
-                                                         "Glass_log");
+                                                        m_data->getMaterial("RiAbs_Glass_Vitrovex"),
+                                                        "Glass_log");
     if (m_placeHarness)
     {
         gelLogical = new G4LogicalVolume(substractHarnessPlug(gelSolid),
-                                          m_data->getMaterial("RiAbs_Gel_Shin-Etsu"),
-                                          "Gelcorpus logical");
+                                         m_data->getMaterial("RiAbs_Gel_Shin-Etsu"),
+                                         "Gelcorpus logical");
         supportStructureLogical = new G4LogicalVolume(substractHarnessPlug(supStructureSolid),
-                                                   m_data->getMaterial("NoOptic_Absorber"),
-                                                   "TubeHolder logical");
+                                                      m_data->getMaterial("NoOptic_Absorber"),
+                                                      "TubeHolder logical");
         glassLogical = new G4LogicalVolume(substractHarnessPlug(glassSolid),
-                                            m_data->getMaterial("RiAbs_Glass_Vitrovex"),
-                                            "Glass_log");
+                                           m_data->getMaterial("RiAbs_Glass_Vitrovex"),
+                                           "Glass_log");
     }
     G4LogicalVolume *reflectorPolarLogical = new G4LogicalVolume(reflectorPolarSolid,
-                                                                m_data->getMaterial("NoOptic_Reflector"),
-                                                                "RefConeType1 logical");
+                                                                 m_data->getMaterial("NoOptic_Reflector"),
+                                                                 "RefConeType1 logical");
 
     G4LogicalVolume *reflectorEqUpCutLogical = new G4LogicalVolume(reflectorEqUpCutSolid,
-                                                                  m_data->getMaterial("NoOptic_Reflector"),
-                                                                  "RefConeType2 ETEL logical");
+                                                                   m_data->getMaterial("NoOptic_Reflector"),
+                                                                   "RefConeType2 ETEL logical");
 
     G4LogicalVolume *reflectorEqLowCutLogical = new G4LogicalVolume(reflectorEqLowCutSolid,
-                                                                  m_data->getMaterial("NoOptic_Reflector"),
-                                                                  "RefConeType3 ETEL logical");
+                                                                    m_data->getMaterial("NoOptic_Reflector"),
+                                                                    "RefConeType3 ETEL logical");
 
     // Placements
     new G4PVPlacement(0, G4ThreeVector(0, 0, 0), supportStructureLogical, "SupportStructure_physical", gelLogical, false, 0, m_checkOverlaps);
@@ -167,8 +167,16 @@ void mDOM::construction()
     //     // ---------------- visualisation attributes --------------------------------------------------------------------------------
     glassLogical->SetVisAttributes(m_glassVis);
     gelLogical->SetVisAttributes(m_gelVis);
-    supportStructureLogical->SetVisAttributes(m_absorberVis);
-    // supportStructureLogical->SetVisAttributes(m_invisibleVis);
+
+    if (!OMSimCommandArgsTable::getInstance().get<bool>("simple_PMT") && OMSimCommandArgsTable::getInstance().get<bool>("visual"))
+    {
+        log_warning("PMT shape too complicated for visualiser, and support structure can't be visualised. Use simple_PMT or check https://icecube.github.io/OMSim/md_extra_doc_2_technicalities.html if you want to try with another visualiser!");
+        supportStructureLogical->SetVisAttributes(m_invisibleVis);
+    }
+    else
+    {
+        supportStructureLogical->SetVisAttributes(m_absorberVis);
+    }
     reflectorPolarLogical->SetVisAttributes(m_aluVis);
     reflectorEqUpCutLogical->SetVisAttributes(m_aluVis);
     reflectorEqLowCutLogical->SetVisAttributes(m_aluVis);
@@ -240,9 +248,9 @@ G4SubtractionSolid *mDOM::equatorialReflector(G4VSolid *p_supportStructure, G4Co
 
     // Start cutting process
     G4Cons *reflectorCutterSolid = new G4Cons("RefConeCutter" + p_sufix,
-                                            0, m_refConeIdealInRad + m_reflectorConeSheetThickness * std::sqrt(2.) + 2 * mm,
-                                            0, m_refConeIdealInRad + m_reflectorConeSheetThickness * std::sqrt(2.) + 2 * m_reflectorHalfZ + 2 * mm,
-                                            m_reflectorHalfZ, 0, 2 * CLHEP::pi);
+                                              0, m_refConeIdealInRad + m_reflectorConeSheetThickness * std::sqrt(2.) + 2 * mm,
+                                              0, m_refConeIdealInRad + m_reflectorConeSheetThickness * std::sqrt(2.) + 2 * m_reflectorHalfZ + 2 * mm,
+                                              m_reflectorHalfZ, 0, 2 * CLHEP::pi);
 
     G4double xCut = rho * cos(360. * deg / m_numberEqPMTs);
     G4double yCut = rho * sin(360. * deg / m_numberEqPMTs);
@@ -252,9 +260,9 @@ G4SubtractionSolid *mDOM::equatorialReflector(G4VSolid *p_supportStructure, G4Co
     rot->rotateZ(360. * deg / m_numberEqPMTs);
     transformers = G4Transform3D(*rot, G4ThreeVector(xCut, yCut, z));
     G4SubtractionSolid *reflectorCutSolid = new G4SubtractionSolid("RefConeEqUpCut" + p_sufix,
-                                                             uncutReflector,
-                                                             reflectorCutterSolid,
-                                                             transformers);
+                                                                   uncutReflector,
+                                                                   reflectorCutterSolid,
+                                                                   transformers);
 
     rot = new G4RotationMatrix();
     rot->rotateY(p_angle);
@@ -280,8 +288,8 @@ G4SubtractionSolid *mDOM::substractFlashers(G4VSolid *p_supStructureSolid)
 
     // cut in holding structure to place afterwards LEDs inside
     // NOTE: This should not be necessary (substraction with lAirSolid should be enough), but somehow a visual glitch is visible otherwise
-    G4Cons *cutTubeHolderInnerSolid = new G4Cons("cut inner solid", 0, 2.65 * mm, 0, 4.288 * mm, 4.4 * mm, 0, 2 * CLHEP::pi);                                            // inner cone
-    G4Tubs *cutTubeHolderOuterSolid = new G4Tubs("cut outer solid", 0, 7.25 * mm, 2 * 0.667 * mm, 0, 2 * CLHEP::pi);                                                     // outer cone
+    G4Cons *cutTubeHolderInnerSolid = new G4Cons("cut inner solid", 0, 2.65 * mm, 0, 4.288 * mm, 4.4 * mm, 0, 2 * CLHEP::pi);                                          // inner cone
+    G4Tubs *cutTubeHolderOuterSolid = new G4Tubs("cut outer solid", 0, 7.25 * mm, 2 * 0.667 * mm, 0, 2 * CLHEP::pi);                                                   // outer cone
     G4UnionSolid *cutTubeHolderSolid = new G4UnionSolid("cut solid", cutTubeHolderInnerSolid, cutTubeHolderOuterSolid, 0, G4ThreeVector(0, 0, 4.4 * mm + 0.667 * mm)); // union
 
     // subtraction holding structure
@@ -302,7 +310,7 @@ G4SubtractionSolid *mDOM::substractFlashers(G4VSolid *p_supStructureSolid)
 
 void mDOM::setPMTPositions()
 {
-    G4double rPMT;     // radius for PMT positioning
+    G4double rPMT;       // radius for PMT positioning
     G4double rReflector; // radius for RefCone positioning
     G4double zOffsetPMT;
     G4RotationMatrix rot;

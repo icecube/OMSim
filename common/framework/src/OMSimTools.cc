@@ -463,4 +463,22 @@ namespace Tools
 		log_error(p_message);
 		throw std::runtime_error(p_message);
 	}
+
+	std::vector<G4String> splitStringByDelimiter(G4String const &p_string, char p_delim)
+	{
+		std::vector<G4String> result;
+		std::istringstream iss(p_string);
+
+		for (G4String token; std::getline(iss, token, p_delim);)
+		{
+			result.push_back(std::move(token));
+		}
+
+		return result;
+	}
+
+	std::vector<G4String> splitStringByDelimiter(char *p_char, char p_delim)
+	{
+		return splitStringByDelimiter(G4String(p_char), p_delim);
+	}
 }

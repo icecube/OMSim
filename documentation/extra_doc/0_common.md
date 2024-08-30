@@ -59,7 +59,7 @@ This inheritance ensures the definition of functions to retrieve the pressure ve
 
 ![Inheritance diagram](classabc_detector_component__inherit__graph.svg)
 
-The `OMSimPMTConstruction` class constructs PMTs. There are two PMT construction approaches. The first is simple, with a solid photocathode where all entering photons are recorded. The second type simulates the photocathode as a thin layer, also representing the internal components accounting for internal reflections. For more information, refer to Chapter 9 of [Martin Unland's thesis](https://zenodo.org/record/8121321).
+The `OMSimPMTConstruction` class constructs PMTs. There are two PMT construction approaches. The first is simple, with a solid photocathode where all entering photons are recorded. This mode can be activated using the argument `--simple_PMT`. The second, default, approach simulates the photocathode as a thin layer, also representing the internal components accounting for internal reflections. For more information, refer to Chapter 9 of [this thesis](https://zenodo.org/record/8121321). 
 
 In the complex PMT model, the photocathodes are not real volumes, but are defined as a boundary condition between the glass and internal vacuum. The original `G4OpBoundaryProcess` of Geant4 was modified in `OMSimOpBoundaryProcess.cc` in order to simulate the optical propierties of thin layers (see [Nicolai Krybus's thesis]()).
 
@@ -111,11 +111,10 @@ Every step of a particle through the photocathode triggers the `OMSimSensitiveDe
 ## Storing hits and PMT response
 
 ### PMTs Charge, transit time and detection probability 
-> **Warning**: Only the mDOM PMT currently supports a detailed PMT response.
 
-In `OMSimPMTConstruction::configureSensitiveVolume`, PMTs are associated with an instance of `OMSimPMTResponse`, contingent on the PMT under simulation. This class offers a precise PMT simulation by sampling from real measurements, obtaining the relative transit time, charge (in PE), and detection probability (using the measured scans from [M. Unland's thesis](https://zenodo.org/record/8121321)). For details, refer to Section 9.3.4 of the linked thesis.
+In `OMSimPMTConstruction::configureSensitiveVolume`, PMTs are associated with an instance of `OMSimPMTResponse`, contingent on the PMT under simulation. This class offers a precise PMT simulation by sampling from real measurements, obtaining the relative transit time, charge (in PE), and detection probability (using the measured scans from [this thesis](https://zenodo.org/record/8121321)). For details, refer to Section 9.3.4 of the linked thesis.
 
-This sampling is performed for every absorbed photon in `OMSimSensitiveDetector::ProcessHits` invoking `OMSimPMTResponse::processPhotocathodeHit`. The position of the photon on the photocathode is retrieved, the 2D-histograms of the gain, SPE resolution, transit time and TTS are interpolated for that position and the charge / transit time of the photon is sampled from a Gaussian using the interpolated values as mean (in case of gain / transit time) and standard deviation (in case of SPE resolution / TTS). The detection probability is the product of the QE (dependent on the wavelength of the photon) and the collection efficiency weight (dependent on absorption position).
+This sampling is performed for every absorbed photon in `OMSimSensitiveDetector::ProcessHits` invoking `OMSimPMTResponse::processPhotocathodeHit`. The position of the photon on the photocathode is retrieved, the 2D-histograms of the gain, SPE resolution, transit time and TTS are interpolated for that position and the charge / transit time of the photon is sampled from a Gaussian using the interpolated values as mean (in case of gain / transit time) and standard deviation (in case of SPE resolution / TTS). 
 
 <div style="width: 100%; text-align: center;">
 <img src="PW_beam_geant4_TT.png" width="256" height="440" alt="PMT response compared to measurement" />
@@ -125,13 +124,15 @@ Figure 3: <i>PMT response compared to measurement for different light sources. I
 </div>
 </div>
 
-The QE and collection efficiency weights are calculated to match measurements. See the section [Matching PMT Efficiency to Measurements](md_extra_doc_2_technicalities.html#autotoc_md21) for further technicalities.
+If you use the complex PMT model, you will obtain detection probability weights, which are the product of quantum efficiency (QE)—which varies with photon wavelength—and collection efficiency weight (which depends on absorption position). These weights are calibrated to match measurements. For more technical details, see the section [Matching PMT Efficiency to Measurements](md_extra_doc_2_technicalities.html#autotoc_md21).
+
+In contrast, with the simple PMT model, the detection probability weight is solely the QE. Since the measured QE is reduced due to absorption in the PMT glass, the simulated tube glass will have no defined absorption length.
 
 <div style="width: 100%; text-align: center;">
 <img src="QE_meas_VS_simulation.png" width="360" height="308" alt="QE of simulation compared to measurements" />
 <div style="width: 80%; margin: auto;">
 <br/>
-Figure 4: <i>QE of simulation with the absorption length currently used compared to measurements. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</i>
+Figure 4: <i>QE of simulation with the absorption length currently used compared to measurements. Image from <a href="https://zenodo.org/record/8121321"> this thesis</a>.</i>
 </div>
 </div>
 
@@ -148,7 +149,7 @@ Figure 5: <i>Detection efficiency simulation (left) compared to measurement (rig
 
 The absorbed photon data is managed by the `OMSimHitManager` global instance. It maintains a vector of hit information (`HitStats` struct) for each sensitive detector. To analyze and export this data, use the `OMSimHitManager::getSingleThreadHitsOfModule` method to retrieve data for the current thread, or `OMSimHitManager::getMergedHitsOfModule` to obtain merged data from all threads. Note that `OMSimHitManager::getMergedHitsOfModule` works only if `OMSimHitManager::mergeThreadData` has been called (happens at the end of the run when `OMSimRunActio::EndOfRunAction` is called). For analysis or storage at the end of an event, handle each thread separately as events end asynchronously. For practical examples, refer to the methods in `OMSimEffectiveAreaAnalysis` and `OMSimSNAnalysis::writeDataFile`.
 
-An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in `OMSimHitManager`. To enable this feature, provide the "QE_cut" argument via the command line. In this case `OMSimSensitiveDetector::ProcessHits` will call `OMSimPMTResponse::passQE` and break early if it returns false, without storing the photon information. In most scenarios, it's not recommended to use --QE_cut since it reduces your statistics. Its presence in OMSim is primarily for testing purposes. It's generally better to perform post-analysis using the saved `OMSimPMTResponse::PMTPulse::detectionProbability` for each absorbed photon.
+An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in `OMSimHitManager`. To enable this feature, provide the "efficiency_cut" argument via the command line. In this case `OMSimSensitiveDetector::ProcessHits` will call `OMSimSensitiveDetector::isPhotonDetected` and break early if it returns false, without storing the photon information. In most scenarios, it's not recommended to use --efficiency_cut since it reduces your statistics. It's generally better to perform post-analysis using the saved `OMSimPMTResponse::PMTPulse::detectionProbability` for each absorbed photon. In case that efficiency_cut is active and the photon is stored, its `OMSimPMTResponse::PMTPulse::detectionProbability` will change to 1, since it was detected.
 
 ---
 

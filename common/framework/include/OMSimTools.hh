@@ -44,5 +44,7 @@ namespace Tools
     std::vector<double> logspace(double start, double end, int num_points, double base = 10.0, bool endpoint = true);
     void sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector);
     void throwError(const G4String& message);
+    std::vector<G4String> splitStringByDelimiter(G4String const &p_string, char p_delim);
+    std::vector<G4String> splitStringByDelimiter(char *p_char, char p_delim);
 };
 

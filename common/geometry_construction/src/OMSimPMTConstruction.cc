@@ -17,7 +17,7 @@
 
 OMSimPMTConstruction::OMSimPMTConstruction() : abcDetectorComponent()
 {
-    m_internalReflections = OMSimCommandArgsTable::getInstance().get<bool>("detail_pmt");
+    m_internalReflections = !OMSimCommandArgsTable::getInstance().get<bool>("simple_PMT");
 }
 
 /**
@@ -41,7 +41,6 @@ void OMSimPMTConstruction::construction()
 
     // The ? of the following two lines are ternary operators that replace if-else-statements
     logicalPMT = new G4LogicalVolume(solidPMT, m_data->getMaterial(m_internalReflections ? "RiAbs_Glass_Tube" : "Ri_Glass_Tube"), "PMT tube logical");
-    // m_photocathodeLV = new G4LogicalVolume(m_internalReflections ? constructPhotocathodeLayer() : vacuumPhotocathodeSolid, mData->getMaterial("RiAbs_Photocathode"), "Photocathode");
     m_photocathodeLV = new G4LogicalVolume(vacuumPhotocathodeSolid, m_data->getMaterial("Ri_Vacuum"), "PhotocathodeRegionVacuum");
 
     G4LogicalVolume *tubeVacuum = new G4LogicalVolume(glassInside, m_data->getMaterial("Ri_Vacuum"), "PMTvacuum");
@@ -65,13 +64,22 @@ void OMSimPMTConstruction::construction()
         constructHAcoating();
 
     m_photocathodeLV->SetVisAttributes(m_photocathodeVis);
-    logicalPMT->SetVisAttributes(m_glassVis);
-    tubeVacuum->SetVisAttributes(m_airVis);
-    vacuumBackLogical->SetVisAttributes(m_airVis);
+    if (m_internalReflections && OMSimCommandArgsTable::getInstance().get<bool>("visual"))
+    {
+        log_warning("PMT shape too complicated for visualiser, and tube can't be visualised. Use simple_PMT or check https://icecube.github.io/OMSim/md_extra_doc_2_technicalities.html if you want to try with another visualiser!");
+        logicalPMT->SetVisAttributes(m_invisibleVis);
+        tubeVacuum->SetVisAttributes(m_invisibleVis);
+        vacuumBackLogical->SetVisAttributes(m_invisibleVis);
+    }
+    else
+    {
+        logicalPMT->SetVisAttributes(m_glassVis);
+        tubeVacuum->SetVisAttributes(m_airVis);
+        vacuumBackLogical->SetVisAttributes(m_airVis);
+    }
     m_constructionFinished = true;
     log_trace("Construction of PMT finished");
 }
-
 
 OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 {
@@ -83,28 +91,34 @@ OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
     catch (const boost::property_tree::ptree_bad_path &e)
     {
         log_warning("Selected PMT {} has no 'jResponseData' key in json-file. No PMT response will be simulated...", m_selectedPMT);
+        NoResponse::init();
         return &NoResponse::getInstance();
     }
 
     if (responseData == "R15458")
     {
+        mDOMPMTResponse::init();
         return &mDOMPMTResponse::getInstance();
     }
     else if (responseData == "R7081")
     {
+        Gen1PMTResponse::init();
         return &Gen1PMTResponse::getInstance();
     }
     else if (responseData == "R5912")
     {
+        DEGGPMTResponse::init();
         return &DEGGPMTResponse::getInstance();
     }
     else if (responseData == "LOMHama")
     {
+        LOMHamamatsuResponse::init();
         return &LOMHamamatsuResponse::getInstance();
     }
     else
     {
         log_warning("Selected jResponseData '{}' in PMT json-file '{}' has no response class associated. No PMT response will be simulated...", responseData, m_selectedPMT);
+        NoResponse::init();
         return &NoResponse::getInstance();
     }
 }
@@ -112,9 +126,9 @@ OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
 void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *p_detectorConstruction, G4String p_name)
 {
     log_debug("Configuring PMTs of {} as sensitive detector", p_name);
-    OMSimSensitiveDetector *sensitiveDetector = new OMSimSensitiveDetector(p_name, DetectorType::PMT);
+    DetectorType detectorType = OMSimCommandArgsTable::getInstance().get<bool>("simple_PMT") ? DetectorType::PerfectPMT : DetectorType::PMT;
+    OMSimSensitiveDetector *sensitiveDetector = new OMSimSensitiveDetector(p_name, detectorType);
     sensitiveDetector->setPMTResponse(getPMTResponseInstance());
-    // p_detectorConstruction->registerSensitiveDetector(getComponent("PMT").VLogical, sensitiveDetector); //only one otherwise you get double hits!
     p_detectorConstruction->registerSensitiveDetector(m_photocathodeLV, sensitiveDetector);
 }
 
@@ -127,7 +141,11 @@ void OMSimPMTConstruction::constructHAcoating()
     G4Tubs *coatingUncut = new G4Tubs("HACoatingUncut", 0, 0.5 * m_tubeWidth + 0.1 * mm, m_missingTubeLength - 0.1 * mm, 0, 2 * CLHEP::pi);
     G4SubtractionSolid *coatingCut = new G4SubtractionSolid("Bulb tube solid", coatingUncut, m_components.at("PMT").VSolid, 0, G4ThreeVector(0, 0, m_missingTubeLength));
     G4LogicalVolume *coatingLogical = new G4LogicalVolume(coatingCut, m_data->getMaterial("NoOptic_Absorber"), "HACoating");
-    coatingLogical->SetVisAttributes(m_absorberSemiTransparentVis);
+    if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
+    {
+        log_warning("Visualization of HA coating is not possible. Check https://icecube.github.io/OMSim/md_extra_doc_2_technicalities.html if you want to see the HA coating with another visualiser!");
+        coatingLogical->SetVisAttributes(m_invisibleVis);
+    }
     appendComponent(coatingCut, coatingLogical, G4ThreeVector(0, 0, -m_missingTubeLength), G4RotationMatrix(), "HACoating");
 }
 
@@ -242,7 +260,7 @@ std::tuple<G4VSolid *, G4VSolid *> OMSimPMTConstruction::fullBulbConstruction(G4
     // Cone is substracted from frontal volume
     G4double coneEllipseY = yEllipseConeTransition - m_ellipsePosY - coneHalfHeight;
     G4SubtractionSolid *bulbSolidSubstraction = new G4SubtractionSolid("Substracted solid bulb", bulbSolid,
-                                                                         cone, 0, G4ThreeVector(0, 0, coneEllipseY));
+                                                                       cone, 0, G4ThreeVector(0, 0, coneEllipseY));
 
     // Creating Torus
     G4Torus *torus = new G4Torus("Solid substraction torus", 0.0, rTorusCircle, torusCirclePosX, 0, 2 * CLHEP::pi);
@@ -397,7 +415,6 @@ G4SubtractionSolid *OMSimPMTConstruction::constructPhotocathodeLayer()
     // return new G4SubtractionSolid("SubstractionPhotocathodeSide", outBoundarySolid, largeTube, 0, G4ThreeVector(0, 0, -50 * cm));
 }
 
-
 /**
  * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphereEllipsePhotocathode were fitted with a sphere and an ellipse.
  * @return G4UnionSolid bulbSolid the frontal solid of the PMT
@@ -467,7 +484,7 @@ G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String p_side)
     G4double excess = ellipseZAxis2 - (ellipseEllipseTransitionY - ellipseYpos2);
     G4Tubs *substractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, ellipseXYAxis2 * 3, ellipseZAxis2, 0, 2 * CLHEP::pi);
     G4SubtractionSolid *substractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", bulbEllipsoid2,
-                                                                            substractionTube, 0, G4ThreeVector(0, 0, -excess));
+                                                                           substractionTube, 0, G4ThreeVector(0, 0, -excess));
     G4UnionSolid *bulbSolid = new G4UnionSolid("Solid Bulb", bulbEllipsoid, substractedLargeEllipsoid, 0, G4ThreeVector(0, 0, -m_ellipsePosY + ellipseYpos2));
     return bulbSolid;
 }

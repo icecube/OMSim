@@ -18,39 +18,37 @@
 #include "G4VProcess.hh"
 #include "G4ProcessVector.hh"
 #include "G4ProcessManager.hh"
+#include "OMSimTools.hh"
 
-
-thread_local G4OpBoundaryProcess* OMSimSensitiveDetector::m_boundaryProcess = nullptr;
-
-
-std::vector<G4String> splitStringByDelimiter(G4String const &p_string, char p_delim)
-{
-  std::vector<G4String> result;
-  std::istringstream iss(p_string);
-
-  for (G4String token; std::getline(iss, token, p_delim);)
-  {
-    result.push_back(std::move(token));
-  }
-
-  return result;
-}
-
-std::vector<G4String> splitStringByDelimiter(char *p_char, char p_delim)
-{
-  return splitStringByDelimiter(G4String(p_char), p_delim);
-}
+thread_local G4OpBoundaryProcess *OMSimSensitiveDetector::m_boundaryProcess = nullptr;
 
 /**
- * @brief Constructor.
+ * @brief Constructor for OMSimSensitiveDetector.
  * @param p_name Name of the sensitive detector.
  * @param p_detectorType Type of the detector (e.g., PMT, VolumePhotonDetector).
  */
 OMSimSensitiveDetector::OMSimSensitiveDetector(G4String p_name, DetectorType p_detectorType)
-    : G4VSensitiveDetector(p_name), m_detectorType(p_detectorType), m_PMTResponse(&NoResponse::getInstance())
+    : G4VSensitiveDetector(p_name), m_detectorType(p_detectorType), m_PMTResponse(nullptr), m_QEcut(OMSimCommandArgsTable::getInstance().get<bool>("efficiency_cut"))
 {
+  NoResponse::init();
+  m_PMTResponse = &NoResponse::getInstance();
 }
 
+/**
+ * @brief Destructor for OMSimSensitiveDetector.
+ */
+
+OMSimSensitiveDetector::~OMSimSensitiveDetector()
+{
+  m_PMTResponse->shutdown();
+}
+
+/**
+ * @brief Fetches the boundary process for detecting boundary absorptions.
+ * 
+ * Retrieves and stores the `G4OpBoundaryProcess` to check for photon detection 
+ * at boundaries. Logs an error if the process is not found.
+ */
 void OMSimSensitiveDetector::fetchBoundaryProcess()
 {
   G4ProcessManager *processManager = G4OpticalPhoton::OpticalPhoton()->GetProcessManager();
@@ -69,21 +67,42 @@ void OMSimSensitiveDetector::fetchBoundaryProcess()
   }
 }
 
+/**
+ * @brief Sets the PMT response model.
+ * @param p_response Pointer to the PMT response object.
+ */
 void OMSimSensitiveDetector::setPMTResponse(OMSimPMTResponse *p_response)
 {
   m_PMTResponse = p_response;
 }
 
 /**
- * @brief Processes particles that go through detector.
+ * @brief Processes hits for optical photons in the detector.
+ * 
+ * If the detector type is one of the perfect detectors (100% efficient), 
+ * the photon hit is registered directly. Otherwise, it checks for volume 
+ * or boundary absorption based on the detector type.
+ * 
  * @param p_step The current step information.
  * @param p_touchableHistory The history of touchable objects.
- * @return True if the particle was stored as hit, false otherwise.
+ * @return True if the photon hit was stored, false otherwise.
  */
 G4bool OMSimSensitiveDetector::ProcessHits(G4Step *p_step, G4TouchableHistory *p_touchableHistory)
 {
   if (p_step->GetTrack()->GetDefinition() == G4OpticalPhoton::Definition()) // check if particle is a photon
   {
+
+    switch (m_detectorType)
+    {
+    case DetectorType::PerfectVolumePhotonDetector: // 100% efficient VolumePhotonDetector
+      return handleGeneralPhotonDetector(p_step, p_touchableHistory);
+
+    case DetectorType::PerfectBoundaryPhotonDetector: // 100% efficient BoundaryPhotonDetector
+      return handleGeneralPhotonDetector(p_step, p_touchableHistory);
+
+    case DetectorType::PerfectPMT: // 100% efficient PMT
+      return handlePMT(p_step, p_touchableHistory);
+    }
     if (checkVolumeAbsorption(p_step))
     {
       switch (m_detectorType)
@@ -107,6 +126,13 @@ G4bool OMSimSensitiveDetector::ProcessHits(G4Step *p_step, G4TouchableHistory *p
   return false;
 }
 
+
+/**
+ * @brief Retrieves photon information from a given step.
+ * 
+ * @param p_step The current step information.
+ * @return PhotonInfo struct containing the photon details.
+ */
 PhotonInfo OMSimSensitiveDetector::getPhotonInfo(G4Step *p_step)
 {
   PhotonInfo info;
@@ -130,14 +156,28 @@ PhotonInfo OMSimSensitiveDetector::getPhotonInfo(G4Step *p_step)
   return info;
 }
 
+
+/**
+ * @brief Checks if the photon was absorbed in the volume.
+ * 
+ * @param p_step The current step information.
+ * @return True if the photon was absorbed, false otherwise.
+ */
 G4bool OMSimSensitiveDetector::checkVolumeAbsorption(G4Step *p_step)
 {
   return p_step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "OpAbsorption";
 }
 
+
+/**
+ * @brief Checks if the photon was detected at a boundary.
+ * @param p_step The current step information.
+ * @return True if the photon was detected at the boundary, false otherwise.
+ */
 G4bool OMSimSensitiveDetector::checkBoundaryAbsorption(G4Step *p_step)
 {
-  if (m_boundaryProcess == nullptr) fetchBoundaryProcess();
+  if (m_boundaryProcess == nullptr)
+    fetchBoundaryProcess();
 
   if (p_step->GetPostStepPoint()->GetStepStatus() == fGeomBoundary)
   {
@@ -154,16 +194,32 @@ G4bool OMSimSensitiveDetector::checkBoundaryAbsorption(G4Step *p_step)
 }
 
 /**
- * @brief Handles hits for PMTs.
+ * @brief Monte carlo if the photon was detected based on the detection probability.
+ * @param p_efficiency The detection probability.
+ * @return True if the photon was detected, false otherwise.
+ */
+bool OMSimSensitiveDetector::isPhotonDetected(double p_efficiency)
+{
+    return G4UniformRand() < p_efficiency;
+}
+
+
+/**
+ * @brief Handles hits for PMT detectors.
  * @param p_step The current step information.
  * @param p_touchableHistory The history of touchable objects.
- * @return True if the hit was stored
+ * @return True if the hit was stored, false otherwise.
  */
 G4bool OMSimSensitiveDetector::handlePMT(G4Step *p_step, G4TouchableHistory *p_touchableHistory)
 {
   PhotonInfo info = getPhotonInfo(p_step);
-  if (OMSimCommandArgsTable::getInstance().get<bool>("QE_cut") && !m_PMTResponse->passQE(info.wavelength))
+
+  // if QE cut is enabled, check if photon is detected (using detection probability, if detail PMT is enabled)
+  if (m_QEcut && !isPhotonDetected(info.PMTResponse.detectionProbability)) 
     return false;
+  else if (m_QEcut)
+    info.PMTResponse.detectionProbability = 1; // if QE cut is enabled, detection probability is 1 as photon was detected
+
   G4TouchableHandle touchable = p_step->GetPreStepPoint()->GetTouchableHandle();
   G4String name;
   int i = 0;
@@ -172,25 +228,26 @@ G4bool OMSimSensitiveDetector::handlePMT(G4Step *p_step, G4TouchableHistory *p_t
     name = touchable->GetVolume(i)->GetName();
     i++;
   } while (name.substr(0, 3) != "PMT");
-  
-  std::vector<G4String> numberPMTstring = splitStringByDelimiter(name, '_');
+
+  std::vector<G4String> numberPMTstring = Tools::splitStringByDelimiter(name, '_');
   info.pmtNumber = atoi(numberPMTstring.at(1));
   storePhotonHit(info);
+  killParticle(p_step->GetTrack());
   return true;
 }
 
 /**
  * @brief Handles hits for general photon detectors.
- * This is the same as handlePMT, but sets PMT number to 0, as otherwise the retrieval of the PMT number from the volume name would results in an error.
  * @param p_step The current step information.
  * @param p_touchableHistory The history of touchable objects.
- * @return True if the hit was stored (always)
+ * @return True if the hit was stored, always true for general photon detectors.
  */
 G4bool OMSimSensitiveDetector::handleGeneralPhotonDetector(G4Step *p_step, G4TouchableHistory *p_touchableHistory)
 {
   PhotonInfo info = getPhotonInfo(p_step);
   info.pmtNumber = 0; // placeholder
   storePhotonHit(info);
+  killParticle(p_step->GetTrack());
   return true;
 }
 
@@ -214,3 +271,15 @@ void OMSimSensitiveDetector::storePhotonHit(PhotonInfo &p_info)
       p_info.PMTResponse,
       p_info.detectorID);
 }
+
+/**
+ * @brief Stop the particle from propagating further. Necessary for 100% efficient detectors.
+ */
+void OMSimSensitiveDetector::killParticle(G4Track *p_track)
+{
+  if (p_track->GetTrackStatus() != fStopAndKill)
+  {
+    p_track->SetTrackStatus(fStopAndKill);
+  }
+}
+

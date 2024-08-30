@@ -49,6 +49,7 @@ void OMSimEffectiveAreaDetector::constructDetector()
         log_info("Constructing single PMT");
         OMSimPMTConstruction *managerPMT = new OMSimPMTConstruction();
         managerPMT->selectPMT("argPMT");
+        managerPMT->includeHAcoating();
         managerPMT->construction();
         managerPMT->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), m_worldLogical, "_0");
         hitManager.setNumberOfPMTs(1, 0);
