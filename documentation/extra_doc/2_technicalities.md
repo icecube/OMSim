@@ -137,7 +137,7 @@ To calculate the quantum efficiency weight, we have to know how many photons are
  - In `OMSim_efficiency_calibration.cc` change the method `runQEbeamSimulation()` to use the newly defined beam instead of `runErlangenQEBeam`. Define there also the wavelength range to be simulated.
  - Run the simulation with the following command, changing the PMT number to the one you want to simulate (make sure that your PMT is in the list in `OMSimPMTConstruction::selectPMT`, or hard code it in `OMSimEffCaliDetector.cc`)
 ```bash
-./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 1 -n 500000 --threads 4 --output_file step1
+./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 1 -n 500000 --threads 4 --output_file step1 --detector_type 1
 ```
  - Check results and uncertainty. You want to determine the fraction pretty accurately, you may repeat the simulation at the UV region with higher statistics (change wavelength range in `runQEbeamSimulation()`).
 
@@ -178,7 +178,7 @@ Each PMT has its own derived class in `OMSimPMTResponse.cc`. If your PMT has not
 
 Now run the simulation again 
 ```bash
-./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 2 -n 100000 --threads 4 --output_file step2
+./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 2 -n 100000 --threads 4 --output_file step2 --detector_type 1
 ```
 
 and check that the weights are being calculated correctly
@@ -210,11 +210,11 @@ plt.legend()
 The last step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.
 
  - As before, we have to simulate the beam used during the scan measurement (see for example `Beam::configureXYZScan_PicoQuantSetup` and `Beam::runBeamPicoQuantSetup` for the beam used in Münster)
- - In in `runXYZfrontalScan()` of `OMSim_efficiency_calibration.cc` change the scan range (`lX` vector) and radius limit (`lRlim`) according to the diameter of your PMT
+ - In in `runXYZfrontalScan()` of `OMSim_efficiency_calibration.cc` change the scan range (`grid` vector) and radius limit (`rLim`) according to the diameter of your PMT
  - Also adjust the binning of the output histogram in `OMSimEffiCaliAnalyisis::writeHitPositionHistogram`
  - Run the XY grid simulation. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want
  ```bash
-./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 3 -n 10000 --threads 4 --output_file step3
+./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 3 -n 10000 --threads 4 --output_file step3 --detector_type 1
 ```
  - Fit the weights using simulation data. The analysis done for the mDOM can be found in the notebook located in `documentation/notebooks/detection_efficiency_matching/`.
 
@@ -224,10 +224,22 @@ The last step is to create the collection efficiency weights to match the relati
 
  ### Step 4: Matching gain / transit time scans
 
-The scan data must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-glass boundary refracts the beam.
+The scan data of transit time / gain must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-glass boundary refracts the beam. 
 
- - Set the photocathode as a 100% efficient by 
+ - As before, we have to simulate the beam used during the scan measurement (see for example `Beam::configureXYZScan_PicoQuantSetup` and `Beam::runBeamPicoQuantSetup` for the beam used in Münster)
+ - In in `runXYZfrontalScan()` of `OMSim_efficiency_calibration.cc` change the scan range (`grid` vector) and radius limit (`rLim`) according to the diameter of your PMT
+ - Adjust the binning of the output histogram in `OMSimEffiCaliAnalyisis::writeHitPositionHistogram` to a finner binning as before
+ - Run the XY grid simulation **using the simple PMT**. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want
 
+ ```bash
+./OMSim_efficiency_calibration --simple_PMT --pmt_model 0 --simulation_step 4 -n 10000 --threads 4 --output_file step4 --detector_type 1
+```
+ - Follow the analysis in the notebook `documentation/notebooks/scans_matching/` and save the created files in `common/data/PMTs/measurement_matching_data/scans/`.  Note that OMSim expects a naming convention for these files (see `OMSimPMTResponse::configureScansInterpolator`).
+ - Modify `getScannedWavelength` of your PMT response class for the wavelengths you scanned and add the `configureScansInterpolator` in the constructor.  
+ - Run the simulation in step 5 to check the output with the newly introduced files
+  ```bash
+./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 5 -n 10000 --threads 4 --output_file step5 --detector_type 1
+```
 ---
 ---
 

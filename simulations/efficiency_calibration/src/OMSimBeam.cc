@@ -40,6 +40,18 @@ void Beam::configureXYZScan_NKTLaser()
 
 }
 
+void Beam::runBeamNKTSetup(G4double p_x, G4double p_y)
+{
+    double z = m_zCorrection->Eval(std::sqrt(p_x*p_x+p_y*p_y));
+    if (z<4.8) { z = 4.8;}
+    configureXYZScan_NKTLaser();
+
+    OMSimUIinterface &ui = OMSimUIinterface::getInstance();
+    ui.applyCommand("/gps/pos/centre", p_x, p_y, z, "mm");
+    ui.runBeamOn();
+}
+
+
 
 /* For Erlangens QE measurement setup*/
 
@@ -112,7 +124,6 @@ void Beam::runBeamPicoQuantSetup(G4double p_x, G4double p_y)
 {
     double z = m_zCorrection->Eval(std::sqrt(p_x*p_x+p_y*p_y));
     if (z<4.8) { z = 4.8;}
-    G4cout << std::sqrt(p_x*p_x+p_y*p_y) <<" " << z << G4endl;
     configureXYZScan_PicoQuantSetup();
 
     OMSimUIinterface &ui = OMSimUIinterface::getInstance();

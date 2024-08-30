@@ -482,5 +482,96 @@ namespace Tools
 		return splitStringByDelimiter(G4String(p_char), p_delim);
 	}
 
+	double median(std::vector<double> p_vec)
+	{
+		if (p_vec.empty())
+		{
+			throwError("Vector is empty");
+		}
+		auto n = p_vec.size() / 2;
+		std::nth_element(p_vec.begin(), p_vec.begin() + n, p_vec.end());
+		if (p_vec.size() % 2 == 0)
+		{
+			return (p_vec[n - 1] + p_vec[n]) / 2.0;
+		}
+		else
+		{
+			return p_vec[n];
+		}
+	}
+	double mean(const std::vector<double> &p_vec, const std::vector<double> &p_weights)
+	{
+		if (p_vec.empty())
+		{
+			throwError("Vector is empty");
+		}
+		if (!p_weights.empty() && p_vec.size() != p_weights.size())
+		{
+			throwError("Vectors and weights must have the same size");
+		}
+
+		if (p_weights.empty())
+		{
+			// Calculate the mean of p_vec without weights
+			return std::accumulate(p_vec.begin(), p_vec.end(), 0.0) / p_vec.size();
+		}
+		else
+		{
+			// Calculate the weighted mean
+			double weighted_sum = 0.0;
+			double weight_sum = 0.0;
+			for (size_t i = 0; i < p_vec.size(); ++i)
+			{
+				weighted_sum += p_vec[i] * p_weights[i];
+				weight_sum += p_weights[i];
+			}
+			return weighted_sum / weight_sum;
+		}
+	}
+
+	double std(const std::vector<double> &p_vec, const std::vector<double> &p_weights)
+	{
+		if (p_vec.size() < 2)
+		{
+			throwError("Vector must have at least two elements");
+		}
+
+		double meanV = mean(p_vec, p_weights);
+
+		if (p_weights.empty())
+		{
+			// Unweighted case
+			double sum_sq_diff = 0.0;
+			for (const auto &value : p_vec)
+			{
+				double diff = value - meanV;
+				sum_sq_diff += diff * diff;
+			}
+			return std::sqrt(sum_sq_diff / (p_vec.size() - 1));
+		}
+		else
+		{
+			// Weighted case
+			if (p_vec.size() != p_weights.size())
+			{
+				throwError("Vectors and weights must have the same size");
+			}
+
+			double sum_sq_diff = 0.0;
+			double sum_weights = 0.0;
+			double sum_weights_squared = 0.0;
+
+			for (size_t i = 0; i < p_vec.size(); ++i)
+			{
+				double diff = p_vec[i] - meanV;
+				sum_sq_diff += p_weights[i] * diff * diff;
+				sum_weights += p_weights[i];
+				sum_weights_squared += p_weights[i] * p_weights[i];
+			}
+
+			return std::sqrt(sum_sq_diff * sum_weights / (sum_weights * sum_weights - sum_weights_squared));
+		}
+	}
+
 	std::string visualisationURL = "https://icecube.github.io/OMSim/md_extra_doc_2_technicalities.html#autotoc_md30";
 }

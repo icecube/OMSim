@@ -56,17 +56,72 @@ void runXYZfrontalScan()
 		}
 	}
 
-	// x = Tools::arange(-7, 7, 0.3);
+	grid = Tools::arange(-7, 7, 0.3); // so more data at centre
 
-	// for (const auto &x : x)
-	// {
-	// 	for (const auto &y : x)
-	// 	{
-	// 		scanner->runBeamPicoQuantSetup(x, y);
-	// 		analysisManager.writeHitPositionHistogram(x, y);
-	// 		hitManager.reset();
-	// 	}
-	// }
+	for (const auto &x : grid)
+	{
+		for (const auto &y : grid)
+		{
+			scanner->runBeamPicoQuantSetup(x, y);
+			analysisManager.writeHitPositionHistogram(x, y);
+			hitManager.reset();
+		}
+	}
+}
+
+
+void runfrontalXYScannNKT()
+{
+	OMSimEffiCaliAnalyisis analysisManager;
+	OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
+	OMSimHitManager &hitManager = OMSimHitManager::getInstance();
+
+	Beam *scanner = new Beam(0.3, args.get<G4double>("distance"));
+	scanner->configureZCorrection_PicoQuant();
+	analysisManager.m_outputFileName = args.get<std::string>("output_file") + ".dat";
+	double wavelength = 459;
+	scanner->setWavelength(wavelength);
+
+	std::vector<double> grid = Tools::arange(-41, 42, 1);
+
+	double rLim = 42;
+
+	for (const auto &x : grid)
+	{
+		for (const auto &y : grid)
+		{
+			if (std::sqrt(x * x + y * y) < rLim)
+			{
+				scanner->runBeamNKTSetup(x, y);
+				analysisManager.writePositionPulseStatistics(x, y, wavelength);
+				hitManager.reset();
+			}
+		}
+	}
+}
+
+void runfrontalProfileScannNKT()
+{
+	OMSimEffiCaliAnalyisis analysisManager;
+	OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
+	OMSimHitManager &hitManager = OMSimHitManager::getInstance();
+
+	Beam *scanner = new Beam(0.3, args.get<G4double>("distance"));
+	scanner->configureZCorrection_PicoQuant();
+	analysisManager.m_outputFileName = args.get<std::string>("output_file") + ".dat";
+	double wavelength = 459;
+	scanner->setWavelength(wavelength);
+
+	std::vector<double> profile = Tools::arange(0, 42, 0.05);
+
+	double rLim = 42;
+
+	for (const auto &x : profile)
+	{
+		scanner->runBeamNKTSetup(x, 0);
+		analysisManager.writePositionStatistics(x, wavelength);
+		hitManager.reset();
+	}
 }
 
 /**
@@ -119,8 +174,17 @@ int main(int p_argumentCount, char *p_argumentVector[])
 		runXYZfrontalScan();
 		break;
 	}
+	case 4:
+	{
+		runfrontalProfileScannNKT();
+		break;
 	}
-
+	case 5:
+	{
+		runfrontalXYScannNKT();
+		break;
+	}
+	}
 	if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
 		simulation.startVisualisation();
 	return 0;

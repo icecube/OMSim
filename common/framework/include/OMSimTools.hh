@@ -43,6 +43,10 @@ namespace Tools
     std::vector<double> linspace(double start, double end, int num_points, bool endpoint = true);
     std::vector<double> logspace(double start, double end, int num_points, double base = 10.0, bool endpoint = true);
     void sortVectorByReference(std::vector<G4double> &referenceVector, std::vector<G4double> &sortVector);
+    double median(std::vector<double> p_vec);
+    double mean(const std::vector<double> &p_vec, const std::vector<double> &p_weights = {});
+    double std(const std::vector<double>& vec,  const std::vector<double> &p_weights = {});
+    
     void throwError(const G4String& message);
     std::vector<G4String> splitStringByDelimiter(G4String const &p_string, char p_delim);
     std::vector<G4String> splitStringByDelimiter(char *p_char, char p_delim);

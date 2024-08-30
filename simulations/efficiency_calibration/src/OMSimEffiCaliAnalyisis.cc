@@ -7,56 +7,122 @@
 void OMSimEffiCaliAnalyisis::writeHitPositionHistogram(double x, double y)
 {
 	log_trace("Writing histogram");
-	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
-	HitStats lHits = lHitManager.getMergedHitsOfModule();
+	OMSimHitManager &hitManager = OMSimHitManager::getInstance();
+	HitStats hits = hitManager.getMergedHitsOfModule();
 
-	std::vector<double> lR;
-	std::vector<double> lDetectionProbability;
+	std::vector<double> r;
+	std::vector<double> detectionProbability;
 
-	for (int i = 0; i < (int)lHits.eventId.size(); i++)
+	for (int i = 0; i < (int)hits.eventId.size(); i++)
 	{
-		double lX = lHits.localPosition.at(i).x() / mm;
-		double lY = lHits.localPosition.at(i).y() / mm;
-		lR.push_back(std::sqrt(lX * lX + lY * lY));
-		lDetectionProbability.push_back(lHits.PMTresponse.at(i).detectionProbability);
+		double X = hits.localPosition.at(i).x() / mm;
+		double Y = hits.localPosition.at(i).y() / mm;
+		r.push_back(std::sqrt(X * X + Y * Y));
+		detectionProbability.push_back(hits.PMTresponse.at(i).detectionProbability);
 	}
 
 	auto lRange = Tools::arange(0, 41.25, 0.25);
-	auto [lCounts, lEdges] = Tools::histogram(lR, lRange);
-	auto [lCountsWeighted, lEdgesWeighted] = Tools::histogram(lR, lRange, std::nullopt, lDetectionProbability);
+	auto [lCounts, lEdges] = Tools::histogram(r, lRange);
+	auto [lCountsWeighted, lEdgesWeighted] = Tools::histogram(r, lRange, std::nullopt, detectionProbability);
 
-	std::fstream lDatafile;
-	lDatafile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);
+	std::fstream dataFile;
+	dataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);
 
-	lDatafile << x << "\t" << y << "\t";
+	dataFile << x << "\t" << y << "\t";
 	for (const auto &count : lCounts)
 	{ 
-		lDatafile << count << "\t";
+		dataFile << count << "\t";
 	}
 	for (const auto &count : lCountsWeighted)
 	{ 
-		lDatafile << count << "\t";
+		dataFile << count << "\t";
 	}
-	lDatafile << "\n";
-	lDatafile.close();
+	dataFile << "\n";
+	dataFile.close();
 	log_trace("Finished writing histogram");
 }
 
 
-void OMSimEffiCaliAnalyisis::writeHits(double pWavelength)
+
+void OMSimEffiCaliAnalyisis::writePositionStatistics(double x, double wavelength)
 {
-    std::vector<double> lHits = OMSimHitManager::getInstance().countMergedHits();
+	OMSimHitManager &hitManager = OMSimHitManager::getInstance();
+	HitStats hits = hitManager.getMergedHitsOfModule();
 
-    std::fstream lDataFile;
-    lDataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);
+	std::vector<double> r;
 
-    lDataFile << pWavelength << "\t";
-    lDataFile << lHits.at(0) << "\t";
+	for (int i = 0; i < (int)hits.eventId.size(); i++)
+	{
+		double X = hits.localPosition.at(i).x() / mm;
+		double Y = hits.localPosition.at(i).y() / mm;
+		r.push_back(std::sqrt(X * X + Y * Y));
+	}
+
+	std::fstream dataFile;
+	dataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);
+
+	dataFile << x << "\t" << wavelength << "\t";
+	if (r.size()>2){
+		dataFile << Tools::mean(r) << "\t";
+		dataFile << Tools::median(r) << "\t";
+		dataFile << Tools::std(r) << "\t";
+		dataFile << r.size()<< "\t";
+	}
+	else{
+		dataFile << "0\t0\t0\t0\t";
+	}
+	dataFile << "\n";
+	dataFile.close();
+}
+
+
+void OMSimEffiCaliAnalyisis::writePositionPulseStatistics(double x, double y, double wavelength)
+{
+	OMSimHitManager &hitManager = OMSimHitManager::getInstance();
+	HitStats hits = hitManager.getMergedHitsOfModule();
+
+	std::vector<double> gain, transit_time, weigth;
+
+	for (int i = 0; i < (int)hits.eventId.size(); i++)
+	{
+		gain.push_back(hits.PMTresponse.at(i).PE);
+		weigth.push_back(1/(hits.PMTresponse.at(i).detectionProbability*hits.PMTresponse.at(i).detectionProbability));
+		transit_time.push_back(hits.PMTresponse.at(i).transitTime);
+	}
+
+	std::fstream dataFile;
+	dataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);
+
+	dataFile << x << "\t" << y << "\t" <<  wavelength << "\t";
+	if (transit_time.size()>2){
+		dataFile << Tools::mean(gain, weigth) << "\t";
+		dataFile << Tools::std(gain, weigth) << "\t";
+		dataFile << Tools::mean(transit_time, weigth)  << "\t";
+		dataFile << Tools::std(transit_time, weigth)  << "\t";
+		dataFile << transit_time.size()<< "\t";
+	}
+	else{
+		dataFile << "0\t0\t0\t0\t0\t";
+	}
+	dataFile << "\n";
+	dataFile.close();
+}
+
+
+void OMSimEffiCaliAnalyisis::writeHits(double p_wavelength)
+{
+    std::vector<double> hits = OMSimHitManager::getInstance().countMergedHits();
+
+    std::fstream dataFile;
+    dataFile.open(m_outputFileName.c_str(), std::ios::out | std::ios::app);
+
+    dataFile << p_wavelength << "\t";
+    dataFile << hits.at(0) << "\t";
 
 	//weighted
-    lHits = OMSimHitManager::getInstance().countMergedHits(0, true); 
-	lDataFile << lHits.at(0) << "\t";
+    hits = OMSimHitManager::getInstance().countMergedHits(0, true); 
+	dataFile << hits.at(0) << "\t";
 
-    lDataFile << G4endl;
-    lDataFile.close();
+    dataFile << G4endl;
+    dataFile.close();
 }

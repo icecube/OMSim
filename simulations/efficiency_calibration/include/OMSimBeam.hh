@@ -16,6 +16,7 @@ public:
 
   void runErlangenQEBeam();
   void runBeamPicoQuantSetup(double pX, double pY);
+  void runBeamNKTSetup(G4double p_x, G4double p_y);
   void setWavelength(double pWavelength);
   void configureZCorrection_PicoQuant();
 private:
