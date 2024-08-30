@@ -67,6 +67,7 @@ void runXYZfrontalScan()
 			hitManager.reset();
 		}
 	}
+	
 }
 
 
@@ -98,6 +99,7 @@ void runfrontalXYScannNKT()
 			}
 		}
 	}
+	
 }
 
 void runfrontalProfileScannNKT()
