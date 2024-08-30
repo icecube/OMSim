@@ -126,7 +126,6 @@ $(document).ready(function(){initNavTree('md_extra_doc_2_technicalities.html',''
 <li class="level2"><a href="#autotoc_md39">Step 4: Matching gain / transit time scans</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md40">@code{bash}</a></li>
 </ul>
 </div>
 <div class="textblock"><h1><a class="anchor" id="autotoc_md30"></a>
@@ -332,17 +331,17 @@ Step 4: Matching gain / transit time scans</h2>
 </li>
 <li>Run the simulation in step 5 (modify method before accordingly) to check the output with the newly introduced files</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md40"></a>
-@code{bash}</h1>
-<p>./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 5 -n 10000 --threads 4 --output_file step5 --detector_type 1 </p>
+<div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 5 -n 10000 --threads 4 --output_file step5 --detector_type 1</div>
+</div><!-- fragment --><p>If you need to add more parameters (for example low gain probability, which is also photocathode position dependent and yet to be implemented), you will have to add a new interpolator map and <code>OMSimPMTResponse::configureScansInterpolator</code> accordingly.</p>
 <hr  />
+ <hr  />
  </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Aug 30 2024 13:15:39 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 30 2024 13:22:20 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

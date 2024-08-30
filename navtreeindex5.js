@@ -148,8 +148,8 @@ var NAVTREEINDEX5 =
 "functions_d.html":[10,3,0,2],
 "functions_e.html":[10,3,0,3],
 "functions_f.html":[10,3,0,4],
-"functions_func.html":[10,3,1],
 "functions_func.html":[10,3,1,0],
+"functions_func.html":[10,3,1],
 "functions_func_c.html":[10,3,1,1],
 "functions_func_d.html":[10,3,1,2],
 "functions_func_e.html":[10,3,1,3],
@@ -193,8 +193,8 @@ var NAVTREEINDEX5 =
 "group__radioactive.html":[8,2],
 "group__sngroup.html":[8,3],
 "hierarchy.html":[10,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#autotoc_md58":[0,0],
 "index.html#autotoc_md59":[0,0,0],
 "index.html#autotoc_md60":[0,0,1],
@@ -235,7 +235,6 @@ var NAVTREEINDEX5 =
 "md_extra_doc_2_technicalities.html#autotoc_md37":[3,3,1],
 "md_extra_doc_2_technicalities.html#autotoc_md38":[3,3,2],
 "md_extra_doc_2_technicalities.html#autotoc_md39":[3,3,3],
-"md_extra_doc_2_technicalities.html#autotoc_md40":[3,4],
 "md_extra_doc_30_effective_area.html":[4],
 "md_extra_doc_30_effective_area.html#autotoc_md42":[4,0],
 "md_extra_doc_30_effective_area.html#autotoc_md43":[4,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX5 =
 "md_extra_doc_32__s_n.html#autotoc_md51":[6,1,0],
 "md_extra_doc_32__s_n.html#autotoc_md52":[6,1,1],
 "md_extra_doc_32__s_n.html#autotoc_md53":[6,2],
-"md_extra_doc_32__s_n.html#autotoc_md54":[6,2,0]
+"md_extra_doc_32__s_n.html#autotoc_md54":[6,2,0],
+"md_extra_doc_32__s_n.html#autotoc_md55":[6,2,1]
 };
