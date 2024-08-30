@@ -322,17 +322,15 @@ Step 3: Matching detection efficiency scan</h2>
 Step 4: Matching gain / transit time scans</h2>
 <p>The scan data of transit time / gain must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-glass boundary refracts the beam.</p>
 <ul>
-<li>As before, we have to simulate the beam used during the scan measurement (see for example <code>Beam::configureXYZScan_PicoQuantSetup</code> and <code>Beam::runBeamPicoQuantSetup</code> for the beam used in Münster)</li>
-<li>In in <code>runXYZfrontalScan()</code> of <code>OMSim_efficiency_calibration.cc</code> change the scan range (<code>grid</code> vector) and radius limit (<code>rLim</code>) according to the diameter of your PMT</li>
-<li>Adjust the binning of the output histogram in <code>OMSimEffiCaliAnalyisis::writeHitPositionHistogram</code> to a finner binning as before</li>
-<li>Run the XY grid simulation <b>using the simple PMT</b>. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want</li>
+<li>As before, we have to simulate the beam used during the scan measurement.</li>
+<li>Run the XY grid simulation <b>using the simple PMT</b>, check the function being used under step 4</li>
 </ul>
-<div class="fragment"><div class="line">./OMSim_efficiency_calibration --simple_PMT --pmt_model 0 --simulation_step 4 -n 10000 --threads 4 --output_file step4 --detector_type 1</div>
+<div class="fragment"><div class="line">./OMSim_efficiency_calibration --simple_PMT --pmt_model 0 --simulation_step 4 -n 100000 --threads 4 --output_file step4 --detector_type 1</div>
 </div><!-- fragment --><ul>
 <li>Follow the analysis in the notebook <code>documentation/notebooks/scans_matching/</code> and save the created files in <code>common/data/PMTs/measurement_matching_data/scans/</code>. Note that <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> expects a naming convention for these files (see <code>OMSimPMTResponse::configureScansInterpolator</code>).</li>
 <li>Modify <code>getScannedWavelength</code> of your PMT response class for the wavelengths you scanned and add the <code>configureScansInterpolator</code> in the constructor. <br  />
 </li>
-<li>Run the simulation in step 5 to check the output with the newly introduced files </li>
+<li>Run the simulation in step 5 (modify method before accordingly) to check the output with the newly introduced files</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md40"></a>
 @code{bash}</h1>
@@ -344,7 +342,7 @@ Step 4: Matching gain / transit time scans</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Aug 30 2024 13:07:40 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 30 2024 13:15:39 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

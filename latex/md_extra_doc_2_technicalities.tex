@@ -246,15 +246,13 @@ The scan data of transit time / gain must be corrected before use, as the coordi
 
 
 \begin{DoxyItemize}
-\item As before, we have to simulate the beam used during the scan measurement (see for example {\ttfamily Beam\+::configure\+XYZScan\+\_\+\+Pico\+Quant\+Setup} and {\ttfamily Beam\+::run\+Beam\+Pico\+Quant\+Setup} for the beam used in Münster)
-\item In in {\ttfamily run\+XYZfrontal\+Scan()} of {\ttfamily OMSim\+\_\+efficiency\+\_\+calibration.\+cc} change the scan range ({\ttfamily grid} vector) and radius limit ({\ttfamily r\+Lim}) according to the diameter of your PMT
-\item Adjust the binning of the output histogram in {\ttfamily OMSim\+Effi\+Cali\+Analyisis\+::write\+Hit\+Position\+Histogram} to a finner binning as before
-\item Run the XY grid simulation {\bfseries{using the simple PMT}}. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want
+\item As before, we have to simulate the beam used during the scan measurement.
+\item Run the XY grid simulation {\bfseries{using the simple PMT}}, check the function being used under step 4
 \end{DoxyItemize}
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/simple\_PMT -\/-\/pmt\_model 0 -\/-\/simulation\_step 4 -\/n 10000 -\/-\/threads 4 -\/-\/output\_file step4 -\/-\/detector\_type 1}
+\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/simple\_PMT -\/-\/pmt\_model 0 -\/-\/simulation\_step 4 -\/n 100000 -\/-\/threads 4 -\/-\/output\_file step4 -\/-\/detector\_type 1}
 
 \end{DoxyCode}
 
@@ -262,7 +260,7 @@ The scan data of transit time / gain must be corrected before use, as the coordi
 \item Follow the analysis in the notebook {\ttfamily documentation/notebooks/scans\+\_\+matching/} and save the created files in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/scans/}. Note that \mbox{\hyperlink{class_o_m_sim}{OMSim}} expects a naming convention for these files (see {\ttfamily OMSim\+PMTResponse\+::configure\+Scans\+Interpolator}).
 \item Modify {\ttfamily get\+Scanned\+Wavelength} of your PMT response class for the wavelengths you scanned and add the {\ttfamily configure\+Scans\+Interpolator} in the constructor. ~\newline
 
-\item Run the simulation in step 5 to check the output with the newly introduced files 
+\item Run the simulation in step 5 (modify method before accordingly) to check the output with the newly introduced files
 \end{DoxyItemize}\hypertarget{md_extra_doc_2_technicalities_autotoc_md40}{}\doxysection{@code\{bash\}}\label{md_extra_doc_2_technicalities_autotoc_md40}
 ./\+OMSim\+\_\+efficiency\+\_\+calibration -\/-\/pmt\+\_\+model 0 -\/-\/simulation\+\_\+step 5 -\/n 10000 -\/-\/threads 4 -\/-\/output\+\_\+file step5 -\/-\/detector\+\_\+type 1 
 
