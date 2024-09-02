@@ -36,9 +36,9 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="classabc_detector_component.html" target="_top" xlink:title="Abstract base class used for constructing detector components.">
-<polygon fill="none" stroke="black" points="69.31,-181.5 69.31,-200.5 201.31,-200.5 201.31,-181.5 69.31,-181.5"/>
-<text text-anchor="middle" x="135.31" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcDetectorComponent</text>
+<g id="a_node2"><a xlink:href="class_o_m_sim_detector_component.html" target="_top" xlink:title="Abstract base class used for constructing detector components.">
+<polygon fill="none" stroke="black" points="60.31,-181.5 60.31,-200.5 210.31,-200.5 210.31,-181.5 60.31,-181.5"/>
+<text text-anchor="middle" x="135.31" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDetectorComponent</text>
 </a>
 </g>
 </g>

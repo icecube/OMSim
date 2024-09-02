@@ -1,9 +1,6 @@
 var files_dup =
 [
     [ "5_group_definitions.h", "5__group__definitions_8h_source.html", null ],
-    [ "abcDetectorComponent.hh", "abc_detector_component_8hh.html", [
-      [ "Component", "structabc_detector_component_1_1_component.html", "structabc_detector_component_1_1_component" ]
-    ] ],
     [ "CADMesh.hh", "_c_a_d_mesh_8hh_source.html", null ],
     [ "OMSim.cc", "_o_m_sim_8cc.html", "_o_m_sim_8cc" ],
     [ "OMSim.hh", "_o_m_sim_8hh.html", null ],
@@ -18,6 +15,9 @@ var files_dup =
     [ "OMSimDEGG.hh", "_o_m_sim_d_e_g_g_8hh.html", null ],
     [ "OMSimDEGGHarness.hh", "_o_m_sim_d_e_g_g_harness_8hh.html", [
       [ "DEggHarness", "class_d_egg_harness.html", "class_d_egg_harness" ]
+    ] ],
+    [ "OMSimDetectorComponent.hh", "_o_m_sim_detector_component_8hh.html", [
+      [ "Component", "struct_o_m_sim_detector_component_1_1_component.html", "struct_o_m_sim_detector_component_1_1_component" ]
     ] ],
     [ "OMSimDetectorConstruction.hh", "_o_m_sim_detector_construction_8hh_source.html", null ],
     [ "OMSimEffectiveAreaAnalyisis.hh", "_o_m_sim_effective_area_analyisis_8hh_source.html", null ],

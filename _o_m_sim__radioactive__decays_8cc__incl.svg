@@ -320,9 +320,9 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="abc_detector_component_8hh.html" target="_top" xlink:title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ...">
-<polygon fill="none" stroke="black" points="351.5,-179.5 351.5,-198.5 498.5,-198.5 498.5,-179.5 351.5,-179.5"/>
-<text text-anchor="middle" x="425" y="-186.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcDetectorComponent.hh</text>
+<g id="a_node5"><a xlink:href="_o_m_sim_detector_component_8hh.html" target="_top" xlink:title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i...">
+<polygon fill="none" stroke="black" points="342.5,-179.5 342.5,-198.5 507.5,-198.5 507.5,-179.5 342.5,-179.5"/>
+<text text-anchor="middle" x="425" y="-186.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDetectorComponent.hh</text>
 </a>
 </g>
 </g>

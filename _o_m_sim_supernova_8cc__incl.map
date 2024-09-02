@@ -20,7 +20,7 @@
 <area shape="rect" id="node4" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="403,229,585,256"/>
 <area shape="rect" id="node18" title=" " alt="" coords="610,229,693,256"/>
 <area shape="rect" id="node19" title=" " alt="" coords="717,229,954,256"/>
-<area shape="rect" id="node5" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="784,386,980,413"/>
+<area shape="rect" id="node5" href="$_o_m_sim_detector_component_8hh.html" title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i..." alt="" coords="784,386,1004,413"/>
 <area shape="rect" id="node17" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="600,304,799,331"/>
 <area shape="rect" id="node7" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="580,386,760,413"/>
 <area shape="rect" id="node13" title=" " alt="" coords="24,386,161,413"/>

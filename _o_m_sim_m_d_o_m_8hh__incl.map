@@ -3,7 +3,7 @@
 <area shape="rect" id="node2" href="$_o_m_sim_m_d_o_m_flasher_8hh.html" title="Defines the mDOMFlasher class for simulating the 10 flashers in an mDOM optical module." alt="" coords="1299,155,1479,181"/>
 <area shape="rect" id="node26" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="1503,155,1701,181"/>
 <area shape="rect" id="node33" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="1511,80,1693,107"/>
-<area shape="rect" id="node3" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="1107,229,1303,256"/>
+<area shape="rect" id="node3" href="$_o_m_sim_detector_component_8hh.html" title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i..." alt="" coords="1083,229,1303,256"/>
 <area shape="rect" id="node24" title=" " alt="" coords="1474,229,1605,256"/>
 <area shape="rect" id="node25" title=" " alt="" coords="1327,229,1450,256"/>
 <area shape="rect" id="node4" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and OMSimInputData." alt="" coords="708,304,861,331"/>

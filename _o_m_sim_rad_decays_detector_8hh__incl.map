@@ -1,9 +1,9 @@
 <map id="OMSimRadDecaysDetector.hh" name="OMSimRadDecaysDetector.hh">
-<area shape="rect" id="node1" title="Defines the OMSimRadDecaysDetector class for the radioactive decays simulation." alt="" coords="1046,5,1263,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="970,155,1153,181"/>
-<area shape="rect" id="node3" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="805,304,1001,331"/>
-<area shape="rect" id="node35" href="$_o_m_sim_detector_construction_8hh_source.html" title=" " alt="" coords="1159,80,1385,107"/>
-<area shape="rect" id="node36" title=" " alt="" coords="1439,155,1521,181"/>
+<area shape="rect" id="node1" title="Defines the OMSimRadDecaysDetector class for the radioactive decays simulation." alt="" coords="1042,5,1259,32"/>
+<area shape="rect" id="node2" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="966,155,1149,181"/>
+<area shape="rect" id="node3" href="$_o_m_sim_detector_component_8hh.html" title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i..." alt="" coords="781,304,1001,331"/>
+<area shape="rect" id="node35" href="$_o_m_sim_detector_construction_8hh_source.html" title=" " alt="" coords="1155,80,1381,107"/>
+<area shape="rect" id="node36" title=" " alt="" coords="1435,155,1517,181"/>
 <area shape="rect" id="node24" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="1473,304,1637,331"/>
 <area shape="rect" id="node32" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="991,229,1190,256"/>
 <area shape="rect" id="node4" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and OMSimInputData." alt="" coords="342,379,495,405"/>
@@ -35,5 +35,5 @@
 <area shape="rect" id="node29" title=" " alt="" coords="1513,461,1583,487"/>
 <area shape="rect" id="node33" title=" " alt="" coords="1025,304,1156,331"/>
 <area shape="rect" id="node34" title=" " alt="" coords="1181,304,1270,331"/>
-<area shape="rect" id="node37" title=" " alt="" coords="1177,155,1415,181"/>
+<area shape="rect" id="node37" title=" " alt="" coords="1173,155,1411,181"/>
 </map>

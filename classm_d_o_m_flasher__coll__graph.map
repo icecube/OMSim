@@ -1,6 +1,6 @@
 <map id="mDOMFlasher" name="mDOMFlasher">
-<area shape="rect" id="node1" title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module." alt="" coords="36,247,151,273"/>
-<area shape="rect" id="node2" href="$classabc_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="5,171,181,197"/>
-<area shape="rect" id="node3" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="27,81,160,108"/>
-<area shape="rect" id="node4" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="32,5,155,32"/>
+<area shape="rect" id="node1" title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module." alt="" coords="48,247,163,273"/>
+<area shape="rect" id="node2" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="5,171,205,197"/>
+<area shape="rect" id="node3" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="39,81,172,108"/>
+<area shape="rect" id="node4" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="44,5,167,32"/>
 </map>

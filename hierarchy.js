@@ -1,25 +1,12 @@
 var hierarchy =
 [
-    [ "abcDetectorComponent", "classabc_detector_component.html", [
-      [ "DEggHarness", "class_d_egg_harness.html", null ],
-      [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html", [
-        [ "DEGG", "class_d_e_g_g.html", null ],
-        [ "LOM16", "class_l_o_m16.html", null ],
-        [ "LOM18", "class_l_o_m18.html", null ],
-        [ "mDOM", "classm_d_o_m.html", null ],
-        [ "pDOM", "classp_d_o_m.html", null ]
-      ] ],
-      [ "OMSimPMTConstruction", "class_o_m_sim_p_m_t_construction.html", null ],
-      [ "mDOMFlasher", "classm_d_o_m_flasher.html", null ],
-      [ "mDOMHarness", "classm_d_o_m_harness.html", null ]
-    ] ],
     [ "AngularScan", "class_angular_scan.html", null ],
     [ "Beam", "class_beam.html", null ],
     [ "CADMesh::CADMeshTemplate< T >", "class_c_a_d_mesh_1_1_c_a_d_mesh_template.html", null ],
     [ "CADMesh::CADMeshTemplate< TessellatedMesh >", "class_c_a_d_mesh_1_1_c_a_d_mesh_template.html", [
       [ "CADMesh::TessellatedMesh", "class_c_a_d_mesh_1_1_tessellated_mesh.html", null ]
     ] ],
-    [ "abcDetectorComponent::Component", "structabc_detector_component_1_1_component.html", null ],
+    [ "OMSimDetectorComponent::Component", "struct_o_m_sim_detector_component_1_1_component.html", null ],
     [ "DecayStats", "struct_decay_stats.html", null ],
     [ "DistributionSampler", "class_distribution_sampler.html", null ],
     [ "effectiveAreaResult", "structeffective_area_result.html", null ],
@@ -91,6 +78,19 @@ var hierarchy =
     [ "OMSimCommandArgsTable", "class_o_m_sim_command_args_table.html", null ],
     [ "OMSimDecaysAnalysis", "class_o_m_sim_decays_analysis.html", null ],
     [ "OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html", null ],
+    [ "OMSimDetectorComponent", "class_o_m_sim_detector_component.html", [
+      [ "DEggHarness", "class_d_egg_harness.html", null ],
+      [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html", [
+        [ "DEGG", "class_d_e_g_g.html", null ],
+        [ "LOM16", "class_l_o_m16.html", null ],
+        [ "LOM18", "class_l_o_m18.html", null ],
+        [ "mDOM", "classm_d_o_m.html", null ],
+        [ "pDOM", "classp_d_o_m.html", null ]
+      ] ],
+      [ "OMSimPMTConstruction", "class_o_m_sim_p_m_t_construction.html", null ],
+      [ "mDOMFlasher", "classm_d_o_m_flasher.html", null ],
+      [ "mDOMHarness", "classm_d_o_m_harness.html", null ]
+    ] ],
     [ "OMSimEffectiveAreaAnalyisis", "class_o_m_sim_effective_area_analyisis.html", null ],
     [ "OMSimEffiCaliAnalyisis", "class_o_m_sim_effi_cali_analyisis.html", null ],
     [ "OMSimHitManager", "class_o_m_sim_hit_manager.html", null ],

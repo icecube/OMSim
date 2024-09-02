@@ -1,6 +1,6 @@
 <map id="OMSimPMTConstruction.hh" name="OMSimPMTConstruction.hh">
 <area shape="rect" id="node1" title="Construction of the PMTs." alt="" coords="2040,7,2239,33"/>
-<area shape="rect" id="node2" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="1435,81,1631,108"/>
+<area shape="rect" id="node2" href="$_o_m_sim_detector_component_8hh.html" title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i..." alt="" coords="1423,81,1643,108"/>
 <area shape="rect" id="node23" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="1960,81,2140,108"/>
 <area shape="rect" id="node28" title=" " alt="" coords="2165,81,2295,108"/>
 <area shape="rect" id="node29" title=" " alt="" coords="2320,81,2409,108"/>

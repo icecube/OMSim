@@ -1,6 +1,6 @@
 var searchData=
 [
   ['degg_528',['DEGG',['../class_d_e_g_g.html#a6af6697e49866ad1c9c15a8182b86cbf',1,'DEGG']]],
-  ['deletecomponent_529',['deleteComponent',['../classabc_detector_component.html#aba216e0e619ddc3810ab66700e05a04c',1,'abcDetectorComponent']]],
+  ['deletecomponent_529',['deleteComponent',['../class_o_m_sim_detector_component.html#a83ef8679b7ca74b7b2bc8c8417e32f26',1,'OMSimDetectorComponent']]],
   ['doubleellipsephotocathode_530',['doubleEllipsePhotocathode',['../class_o_m_sim_p_m_t_construction.html#ae3063f4ced2750fc98e74a2daf3bfc2b',1,'OMSimPMTConstruction']]]
 ];

@@ -17,7 +17,6 @@ var annotated_dup =
       [ "CADMeshTemplate", "class_c_a_d_mesh_1_1_c_a_d_mesh_template.html", "class_c_a_d_mesh_1_1_c_a_d_mesh_template" ],
       [ "TessellatedMesh", "class_c_a_d_mesh_1_1_tessellated_mesh.html", "class_c_a_d_mesh_1_1_tessellated_mesh" ]
     ] ],
-    [ "abcDetectorComponent", "classabc_detector_component.html", "classabc_detector_component" ],
     [ "AngularScan", "class_angular_scan.html", "class_angular_scan" ],
     [ "Beam", "class_beam.html", "class_beam" ],
     [ "DecayStats", "struct_decay_stats.html", "struct_decay_stats" ],
@@ -40,6 +39,7 @@ var annotated_dup =
     [ "OMSimCommandArgsTable", "class_o_m_sim_command_args_table.html", "class_o_m_sim_command_args_table" ],
     [ "OMSimDecaysAnalysis", "class_o_m_sim_decays_analysis.html", "class_o_m_sim_decays_analysis" ],
     [ "OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html", "class_o_m_sim_decays_g_p_s" ],
+    [ "OMSimDetectorComponent", "class_o_m_sim_detector_component.html", "class_o_m_sim_detector_component" ],
     [ "OMSimDetectorConstruction", "class_o_m_sim_detector_construction.html", "class_o_m_sim_detector_construction" ],
     [ "OMSimEffectiveAreaAnalyisis", "class_o_m_sim_effective_area_analyisis.html", "class_o_m_sim_effective_area_analyisis" ],
     [ "OMSimEffectiveAreaDetector", "class_o_m_sim_effective_area_detector.html", "class_o_m_sim_effective_area_detector" ],

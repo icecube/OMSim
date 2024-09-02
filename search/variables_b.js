@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rotation_724',['Rotation',['../structabc_detector_component_1_1_component.html#ac8e9b52627b619a0eb2cc3d7b6256156',1,'abcDetectorComponent::Component']]]
+  ['rotation_724',['Rotation',['../struct_o_m_sim_detector_component_1_1_component.html#a365bc794fb0489168e7f325734b3d9eb',1,'OMSimDetectorComponent::Component']]]
 ];

@@ -1,5 +1,0 @@
-<map id="abcDetectorComponent" name="abcDetectorComponent">
-<area shape="rect" id="node1" title="Abstract base class used for constructing detector components." alt="" coords="5,171,181,197"/>
-<area shape="rect" id="node2" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="27,81,160,108"/>
-<area shape="rect" id="node3" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="32,5,155,32"/>
-</map>

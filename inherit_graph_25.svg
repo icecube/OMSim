@@ -8,9 +8,9 @@
  viewBox="0.00 0.00 557.00 142.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 138)">
 <title>Graphical Class Hierarchy</title>
-<!-- Node41 -->
+<!-- Node30 -->
 <g id="node1" class="node">
-<title>Node41</title>
+<title>Node30</title>
 <g id="a_node1"><a xlink:title=" ">
 <polygon fill="none" stroke="#bfbfbf" points="0,-57.5 0,-76.5 163,-76.5 163,-57.5 0,-57.5"/>
 <text text-anchor="middle" x="81.5" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4VUserDetectorConstruction</text>
@@ -26,9 +26,9 @@
 </a>
 </g>
 </g>
-<!-- Node41&#45;&gt;Node0 -->
+<!-- Node30&#45;&gt;Node0 -->
 <g id="edge1" class="edge">
-<title>Node41&#45;&gt;Node0</title>
+<title>Node30&#45;&gt;Node0</title>
 <path fill="none" stroke="midnightblue" d="M173.51,-67C181.97,-67 190.48,-67 198.8,-67"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="173.23,-63.5 163.23,-67 173.23,-70.5 173.23,-63.5"/>
 </g>

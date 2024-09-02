@@ -51,9 +51,9 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="classabc_detector_component.html" target="_top" xlink:title="Abstract base class used for constructing detector components.">
-<polygon fill="none" stroke="black" points="41,-248.5 41,-267.5 173,-267.5 173,-248.5 41,-248.5"/>
-<text text-anchor="middle" x="107" y="-255.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcDetectorComponent</text>
+<g id="a_node3"><a xlink:href="class_o_m_sim_detector_component.html" target="_top" xlink:title="Abstract base class used for constructing detector components.">
+<polygon fill="none" stroke="black" points="32,-248.5 32,-267.5 182,-267.5 182,-248.5 32,-248.5"/>
+<text text-anchor="middle" x="107" y="-255.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDetectorComponent</text>
 </a>
 </g>
 </g>

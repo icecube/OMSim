@@ -50,9 +50,9 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="abc_detector_component_8hh.html" target="_top" xlink:title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ...">
-<polygon fill="none" stroke="black" points="975,-190.5 975,-209.5 1122,-209.5 1122,-190.5 975,-190.5"/>
-<text text-anchor="middle" x="1048.5" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcDetectorComponent.hh</text>
+<g id="a_node3"><a xlink:href="_o_m_sim_detector_component_8hh.html" target="_top" xlink:title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i...">
+<polygon fill="none" stroke="black" points="966,-190.5 966,-209.5 1131,-209.5 1131,-190.5 966,-190.5"/>
+<text text-anchor="middle" x="1048.5" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDetectorComponent.hh</text>
 </a>
 </g>
 </g>

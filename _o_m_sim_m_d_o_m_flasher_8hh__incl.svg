@@ -12,55 +12,55 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="Defines the mDOMFlasher class for simulating the 10 flashers in an mDOM optical module.">
-<polygon fill="#bfbfbf" stroke="black" points="1231,-246.5 1231,-265.5 1366,-265.5 1366,-246.5 1231,-246.5"/>
-<text text-anchor="middle" x="1298.5" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimMDOMFlasher.hh</text>
+<polygon fill="#bfbfbf" stroke="black" points="1240,-246.5 1240,-265.5 1375,-265.5 1375,-246.5 1240,-246.5"/>
+<text text-anchor="middle" x="1307.5" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimMDOMFlasher.hh</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="abc_detector_component_8hh.html" target="_top" xlink:title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ...">
-<polygon fill="none" stroke="black" points="1084,-190.5 1084,-209.5 1231,-209.5 1231,-190.5 1084,-190.5"/>
-<text text-anchor="middle" x="1157.5" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">abcDetectorComponent.hh</text>
+<g id="a_node2"><a xlink:href="_o_m_sim_detector_component_8hh.html" target="_top" xlink:title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i...">
+<polygon fill="none" stroke="black" points="1075,-190.5 1075,-209.5 1240,-209.5 1240,-190.5 1075,-190.5"/>
+<text text-anchor="middle" x="1157.5" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDetectorComponent.hh</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M1276.16,-246.44C1252.75,-237.48 1215.76,-223.31 1189.31,-213.18"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1190.33,-209.82 1179.74,-209.52 1187.82,-216.36 1190.33,-209.82"/>
+<path fill="none" stroke="midnightblue" d="M1283.73,-246.44C1258.61,-237.4 1218.79,-223.06 1190.6,-212.92"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1191.75,-209.61 1181.16,-209.52 1189.38,-216.2 1191.75,-209.61"/>
 </g>
 <!-- Node23 -->
 <g id="node23" class="node">
 <title>Node23</title>
 <g id="a_node23"><a xlink:title=" ">
-<polygon fill="none" stroke="#bfbfbf" points="1249.5,-190.5 1249.5,-209.5 1347.5,-209.5 1347.5,-190.5 1249.5,-190.5"/>
-<text text-anchor="middle" x="1298.5" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4UnionSolid.hh</text>
+<polygon fill="none" stroke="#bfbfbf" points="1258.5,-190.5 1258.5,-209.5 1356.5,-209.5 1356.5,-190.5 1258.5,-190.5"/>
+<text text-anchor="middle" x="1307.5" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4UnionSolid.hh</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node23 -->
 <g id="edge22" class="edge">
 <title>Node1&#45;&gt;Node23</title>
-<path fill="none" stroke="midnightblue" d="M1298.5,-246.08C1298.5,-239.01 1298.5,-228.86 1298.5,-219.99"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1302,-219.75 1298.5,-209.75 1295,-219.75 1302,-219.75"/>
+<path fill="none" stroke="midnightblue" d="M1307.5,-246.08C1307.5,-239.01 1307.5,-228.86 1307.5,-219.99"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1311,-219.75 1307.5,-209.75 1304,-219.75 1311,-219.75"/>
 </g>
 <!-- Node24 -->
 <g id="node24" class="node">
 <title>Node24</title>
 <g id="a_node24"><a xlink:title=" ">
-<polygon fill="none" stroke="#bfbfbf" points="1365.5,-190.5 1365.5,-209.5 1457.5,-209.5 1457.5,-190.5 1365.5,-190.5"/>
-<text text-anchor="middle" x="1411.5" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4Navigator.hh</text>
+<polygon fill="none" stroke="#bfbfbf" points="1374.5,-190.5 1374.5,-209.5 1466.5,-209.5 1466.5,-190.5 1374.5,-190.5"/>
+<text text-anchor="middle" x="1420.5" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">G4Navigator.hh</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node24 -->
 <g id="edge23" class="edge">
 <title>Node1&#45;&gt;Node24</title>
-<path fill="none" stroke="midnightblue" d="M1316.41,-246.44C1334.75,-237.68 1363.51,-223.94 1384.59,-213.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1386.17,-216.99 1393.68,-209.52 1383.15,-210.67 1386.17,-216.99"/>
+<path fill="none" stroke="midnightblue" d="M1325.41,-246.44C1343.75,-237.68 1372.51,-223.94 1393.59,-213.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1395.17,-216.99 1402.68,-209.52 1392.15,-210.67 1395.17,-216.99"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">

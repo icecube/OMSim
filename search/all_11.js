@@ -9,7 +9,7 @@ var searchData=
   ['readflasherprofile_299',['readFlasherProfile',['../classm_d_o_m_flasher.html#a4c7d36af1760026c53a9164bf02dc057',1,'mDOMFlasher']]],
   ['readglobalparameters_300',['readGlobalParameters',['../class_o_m_sim_p_m_t_construction.html#ac869819aa23b922e7cff347cd082b5f4',1,'OMSimPMTConstruction']]],
   ['reset_301',['reset',['../class_o_m_sim_hit_manager.html#a00bb034e7751905f8a8229de3f8a39b1',1,'OMSimHitManager::reset()'],['../class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0',1,'OMSimDecaysAnalysis::reset()']]],
-  ['rotation_302',['Rotation',['../structabc_detector_component_1_1_component.html#ac8e9b52627b619a0eb2cc3d7b6256156',1,'abcDetectorComponent::Component']]],
+  ['rotation_302',['Rotation',['../struct_o_m_sim_detector_component_1_1_component.html#a365bc794fb0489168e7f325734b3d9eb',1,'OMSimDetectorComponent::Component']]],
   ['runbeamon_303',['runBeamOn',['../class_o_m_sim_u_iinterface.html#a880d9879e9373b6af3bc0c3b691160f8',1,'OMSimUIinterface']]],
   ['runbeamonflasher_304',['runBeamOnFlasher',['../classm_d_o_m.html#adf748d77a8bae2516db1ba79b805841b',1,'mDOM::runBeamOnFlasher()'],['../classm_d_o_m_flasher.html#a268494f8d27175e1ae391789e1d66faf',1,'mDOMFlasher::runBeamOnFlasher()']]],
   ['runradioactivedecays_305',['runRadioactiveDecays',['../_o_m_sim__radioactive__decays_8cc.html#ae7458996c9e984b0c9c1aa948df35d09',1,'OMSim_radioactive_decays.cc']]],

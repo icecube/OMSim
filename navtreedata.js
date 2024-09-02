@@ -126,10 +126,10 @@ var NAVTREEINDEX =
 "5__group__definitions_8h_source.html",
 "class_c_a_d_mesh_1_1_file_1_1_lexer.html#aec6203909599ab834d39fe4246f1c60d",
 "class_g4_radioactive_decay.html#a3f101a0632308483d80dbe133de916b5",
-"class_o_m_sim_effective_area_analyisis.html#ab78b9554981b4506b396810b808601b8",
-"class_o_m_sim_p_m_t_response.html#ac84dd0315406dc73d58e67eab1aec63f",
+"class_o_m_sim_detector_component.html#abb917266382de7d87270ce7b7a3fdbfd",
+"class_o_m_sim_p_m_t_construction.html#ab2e3f07a87c6c45902232d03d17a693c",
 "classm_d_o_m.html#a88532c5e90e2565003b4a2087c027caf",
-"struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html#a842337fbd6979ff70f1b5ab67ca52493"
+"struct_o_m_sim_detector_construction_1_1_s_d_info.html#a9cb3965aea3d3f5b9f6bf6ec7a34e3bf"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -326,17 +326,17 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="abc_detector_component_8hh.html" target="_top" xlink:title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ...">
-<polygon fill="none" stroke="red" points="583.96,-62 583.96,-81 730.96,-81 730.96,-62 583.96,-62"/>
-<text text-anchor="middle" x="657.46" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">abcDetectorComponent.hh</text>
+<g id="a_node5"><a xlink:href="_o_m_sim_detector_component_8hh.html" target="_top" xlink:title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i...">
+<polygon fill="none" stroke="red" points="583.96,-62 583.96,-81 748.96,-81 748.96,-62 583.96,-62"/>
+<text text-anchor="middle" x="666.46" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDetectorComponent.hh</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node4&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M432.34,-179.47C502.76,-169.86 606.39,-154.14 621.46,-143 638.52,-130.39 648.1,-107.35 653.01,-91.05"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="656.48,-91.61 655.7,-81.05 649.72,-89.79 656.48,-91.61"/>
+<path fill="none" stroke="midnightblue" d="M430.26,-179.46C500.53,-169.64 605.74,-153.5 621.46,-143 640.28,-130.43 652.87,-107.04 659.83,-90.65"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="663.19,-91.67 663.61,-81.09 656.68,-89.1 663.19,-91.67"/>
 </g>
 <!-- Node4&#45;&gt;Node26 -->
 <g id="edge5" class="edge">
@@ -512,8 +512,8 @@
 <!-- Node34&#45;&gt;Node5 -->
 <g id="edge17" class="edge">
 <title>Node34&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M540.09,-123.48C563.29,-113.4 602.08,-96.55 628.67,-85"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="630.09,-88.2 637.87,-81.01 627.3,-81.78 630.09,-88.2"/>
+<path fill="none" stroke="midnightblue" d="M541.38,-123.48C566.21,-113.36 607.8,-96.4 636.16,-84.85"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="637.64,-88.02 645.58,-81.01 635,-81.54 637.64,-88.02"/>
 </g>
 <!-- Node34&#45;&gt;Node27 -->
 <g id="edge19" class="edge">

@@ -4,7 +4,7 @@
 <area shape="rect" id="node3" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="1704,155,1887,181"/>
 <area shape="rect" id="node36" title=" " alt="" coords="1911,155,1994,181"/>
 <area shape="rect" id="node37" title=" " alt="" coords="2018,155,2255,181"/>
-<area shape="rect" id="node4" href="$abc_detector_component_8hh.html" title="Provides helper base class abcDetectorComponent for constructing and managing detector components in ..." alt="" coords="1305,304,1501,331"/>
+<area shape="rect" id="node4" href="$_o_m_sim_detector_component_8hh.html" title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i..." alt="" coords="1293,304,1513,331"/>
 <area shape="rect" id="node25" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="1717,304,1881,331"/>
 <area shape="rect" id="node33" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="1832,229,2031,256"/>
 <area shape="rect" id="node5" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and OMSimInputData." alt="" coords="807,379,960,405"/>
