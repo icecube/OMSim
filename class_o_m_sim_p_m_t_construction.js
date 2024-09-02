@@ -6,7 +6,6 @@ var class_o_m_sim_p_m_t_construction =
     [ "constructCathodeBackshield", "class_o_m_sim_p_m_t_construction.html#a07f99802d73ddd8d9a9f838725cc0354", null ],
     [ "constructHAcoating", "class_o_m_sim_p_m_t_construction.html#a136c7f4862d780eb2a874428715bfcb8", null ],
     [ "construction", "class_o_m_sim_p_m_t_construction.html#a5ab3a93d9e44fb38004cfd9d30c6d6aa", null ],
-    [ "constructPhotocathodeLayer", "class_o_m_sim_p_m_t_construction.html#a0e08b1af0e16f19f16569af2a7cfa8fc", null ],
     [ "doubleEllipsePhotocathode", "class_o_m_sim_p_m_t_construction.html#ae3063f4ced2750fc98e74a2daf3bfc2b", null ],
     [ "ellipsePhotocathode", "class_o_m_sim_p_m_t_construction.html#a05b6a96a4339d555cfb6c727a23d999d", null ],
     [ "frontalBulbConstruction", "class_o_m_sim_p_m_t_construction.html#a1a07b518f5591dd80dafb9154cdd3a5d", null ],

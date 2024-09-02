@@ -62,7 +62,10 @@ var files_dup =
     [ "OMSimPMTConstruction.hh", "_o_m_sim_p_m_t_construction_8hh.html", [
       [ "OMSimPMTConstruction", "class_o_m_sim_p_m_t_construction.html", "class_o_m_sim_p_m_t_construction" ]
     ] ],
-    [ "OMSimPMTResponse.hh", "_o_m_sim_p_m_t_response_8hh.html", "_o_m_sim_p_m_t_response_8hh" ],
+    [ "OMSimPMTResponse.hh", "_o_m_sim_p_m_t_response_8hh.html", [
+      [ "OMSimPMTResponse", "class_o_m_sim_p_m_t_response.html", "class_o_m_sim_p_m_t_response" ],
+      [ "PMTPulse", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse" ]
+    ] ],
     [ "effective_area/include/OMSimPrimaryGeneratorAction.hh", "effective__area_2include_2_o_m_sim_primary_generator_action_8hh_source.html", null ],
     [ "efficiency_calibration/include/OMSimPrimaryGeneratorAction.hh", "efficiency__calibration_2include_2_o_m_sim_primary_generator_action_8hh_source.html", null ],
     [ "radioactive_decays/include/OMSimPrimaryGeneratorAction.hh", "radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh.html", [

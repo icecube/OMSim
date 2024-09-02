@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fresnelcoefficients_385',['FresnelCoefficients',['../struct_fresnel_coefficients.html',1,'']]]
+  ['fresnelcoefficients_381',['FresnelCoefficients',['../struct_fresnel_coefficients.html',1,'']]]
 ];

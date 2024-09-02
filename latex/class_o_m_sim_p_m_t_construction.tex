@@ -83,11 +83,9 @@ void \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a07f99802d73ddd8d9a9f8387
 \item 
 void \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_aa54a3c69f09d875e1c1891d35517d9e8}{construct\+CADdynode\+System}} (G4\+Logical\+Volume $\ast$p\+\_\+mother)
 \item 
-G4\+Subtraction\+Solid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a0e08b1af0e16f19f16569af2a7cfa8fc}{construct\+Photocathode\+Layer}} ()
-\item 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a4b59217e8d9ffcae6ffa95ffab8af10f}\label{class_o_m_sim_p_m_t_construction_a4b59217e8d9ffcae6ffa95ffab8af10f}} 
-\mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} $\ast$ {\bfseries get\+PMTResponse\+Instance} ()
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a4b59217e8d9ffcae6ffa95ffab8af10f}{get\+PMTResponse\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Creates and configures an instance of \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}} based on PMT model selected. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -172,16 +170,7 @@ Construction \& placement of the dynode system entrance for internal reflections
 \doxysubsubsection{\texorpdfstring{constructCathodeBackshield()}{constructCathodeBackshield()}}
 {\footnotesize\ttfamily void OMSim\+PMTConstruction\+::construct\+Cathode\+Backshield (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{p\+\_\+\+PMTinner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Creates and positions a thin disk behind the photocathode volume in order to shield photons coming from behind the PMT. Only used when internal reflections are turned off. \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a0e08b1af0e16f19f16569af2a7cfa8fc}\label{class_o_m_sim_p_m_t_construction_a0e08b1af0e16f19f16569af2a7cfa8fc}} 
-\index{OMSimPMTConstruction@{OMSimPMTConstruction}!constructPhotocathodeLayer@{constructPhotocathodeLayer}}
-\index{constructPhotocathodeLayer@{constructPhotocathodeLayer}!OMSimPMTConstruction@{OMSimPMTConstruction}}
-\doxysubsubsection{\texorpdfstring{constructPhotocathodeLayer()}{constructPhotocathodeLayer()}}
-{\footnotesize\ttfamily G4\+Subtraction\+Solid $\ast$ OMSim\+PMTConstruction\+::construct\+Photocathode\+Layer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-Construction of the photocathode layer. \begin{DoxyReturn}{Returns}
-G4\+Subtraction\+Solid 
-\end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ae3063f4ced2750fc98e74a2daf3bfc2b}\label{class_o_m_sim_p_m_t_construction_ae3063f4ced2750fc98e74a2daf3bfc2b}} 
+Creates and positions a thin disk behind the photocathode volume in order to shield photons coming from behind the PMT. Only used when internal reflections are turned off. \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ae3063f4ced2750fc98e74a2daf3bfc2b}\label{class_o_m_sim_p_m_t_construction_ae3063f4ced2750fc98e74a2daf3bfc2b}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!doubleEllipsePhotocathode@{doubleEllipsePhotocathode}}
 \index{doubleEllipsePhotocathode@{doubleEllipsePhotocathode}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{doubleEllipsePhotocathode()}{doubleEllipsePhotocathode()}}

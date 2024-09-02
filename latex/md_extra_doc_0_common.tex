@@ -108,7 +108,7 @@ An additional feature allows for the direct application of a QE cut. This ensure
 \hypertarget{md_extra_doc_0_common_autotoc_md17}{}\doxysection{Making other volumes sensitive to photons}\label{md_extra_doc_0_common_autotoc_md17}
 For some studies, you might want a volume to detect photons, without this necessarily being a PMT. For such cases, the framework has a provision in place\+: use the {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSim\+Sensitive\+Detector}}} and pass {\ttfamily Detector\+Type\+::\+General\+Photon\+Detector} as its constructor argument.
 
-In this case, the {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} will use an instance {\ttfamily \mbox{\hyperlink{class_no_response}{No\+Response}}} as PMT response, which is just a dummy placeholder. ~\newline
+In this case, the {\ttfamily \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}} will use an instance {\ttfamily No\+Response} as PMT response, which is just a dummy placeholder. ~\newline
 
 
 Remember to inform the {\ttfamily \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}} that this detector is equivalent to \char`\"{}a single PMT\char`\"{}, ensuring internal vector sizes adjust accordingly.

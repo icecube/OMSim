@@ -276,7 +276,7 @@ Step 1: Fraction of absorbed photons</h2>
 <div class="line">plt.xlabel(<span class="stringliteral">&quot;Wavelength (nm)&quot;</span>)</div>
 <div class="line">plt.grid()</div>
 <div class="line">plt.legend()</div>
-<div class="line">np.savetxt(<span class="stringliteral">&quot;mDOM_Hamamatsu_R15458_CAT_intrinsic_QE.dat&quot;</span>,</div>
+<div class="line">np.savetxt(<span class="stringliteral">&quot;mDOM_Hamamatsu_R15458_CT_intrinsic_QE.dat&quot;</span>,</div>
 <div class="line">           np.array([wvs, h, err]).T,</div>
 <div class="line">           delimiter=<span class="stringliteral">&quot;\t&quot;</span>, header=<span class="stringliteral">&quot;Wavelength(nm) \t QE \t error&quot;</span>)</div>
 </div><!-- fragment --><p> Here the results of the <a class="el" href="classm_d_o_m.html">mDOM</a> PMT including its mean QE as comparison:</p>
@@ -284,10 +284,10 @@ Step 1: Fraction of absorbed photons</h2>
  </div> </div><blockquote class="doxtable">
 <p><b>Note</b>: Ensure that the QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! </p>
 </blockquote>
-<p>If everything looks good, save the file (in the example above <code>mDOM_Hamamatsu_R15458_CAT_intrinsic_QE.dat</code>) in <code>common/data/PMTs/measurement_matching_data/QE/</code> and move to step 2.</p>
+<p>If everything looks good, save the file (in the example above <code>mDOM_Hamamatsu_R15458_CT_intrinsic_QE.dat</code>) in <code>common/data/PMTs/measurement_matching_data/QE/</code> and move to step 2.</p>
 <h2><a class="anchor" id="autotoc_md37"></a>
 Step 2: Expand OMSimPMTResponse and Verify QE</h2>
-<p>Each PMT has its own derived class in <code>OMSimPMTResponse.cc</code>. If your PMT has not class yet, create one following the other PMTs as example. In its constructor add a call to <code>configureQEweightInterpolator()</code> adding the file that you generated in the last step and a default QE file for this PMT. Make sure you are not creating any CE weight interpolator at this point (this happens in step 3 of this documentation), as otherwise the weights will be smaller than expected from QE only!</p>
+<p>Add the path to the created file in your PMT file under the key <code>jAbsorbedFractionFileName</code> and also a default QE file under the key <code>jDefaultQEFileName</code> (check <code>pmt_Hamamatsu_R15458_CAT.dat</code> for guidance).</p>
 <p>Now run the simulation again </p><div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 2 -n 100000 --threads 4 --output_file step2 --detector_type 1</div>
 </div><!-- fragment --><p>and check that the weights are being calculated correctly</p>
 <div class="fragment"><div class="line">wvs, h, w =np.loadtxt(<span class="stringliteral">&quot;step2.dat&quot;</span>, unpack=1)</div>
@@ -305,7 +305,7 @@ Step 2: Expand OMSimPMTResponse and Verify QE</h2>
 </div><!-- fragment --><div style="width: 100%; text-align: center;"> <img src="step2_qe.png" alt="" width="450" height="320" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
  </div> </div><h2><a class="anchor" id="autotoc_md38"></a>
 Step 3: Matching detection efficiency scan</h2>
-<p>The last step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.</p>
+<p>The next step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.</p>
 <ul>
 <li>As before, we have to simulate the beam used during the scan measurement (see for example <code>Beam::configureXYZScan_PicoQuantSetup</code> and <code>Beam::runBeamPicoQuantSetup</code> for the beam used in Münster)</li>
 <li>In in <code>runXYZfrontalScan()</code> of <code>OMSim_efficiency_calibration.cc</code> change the scan range (<code>grid</code> vector) and radius limit (<code>rLim</code>) according to the diameter of your PMT</li>
@@ -314,7 +314,7 @@ Step 3: Matching detection efficiency scan</h2>
 </div><!-- fragment --></li>
 <li>Fit the weights using simulation data. The analysis done for the <a class="el" href="classm_d_o_m.html">mDOM</a> can be found in the notebook located in <code>documentation/notebooks/detection_efficiency_matching/</code>.</li>
 <li>Save the weights in a file and store it in <code>common/data/PMTs/measurement_matching_data/CE_weight/</code></li>
-<li>Add the <code>configureCEweightInterpolator()</code> in the constructor of your PMT class using the new file as input</li>
+<li>Add to this file in the PMT data file under the key <code>jCEweightsFileName</code>.</li>
 <li>Run the simulation again and check if the weights are correct.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md39"></a>
@@ -327,8 +327,7 @@ Step 4: Matching gain / transit time scans</h2>
 <div class="fragment"><div class="line">./OMSim_efficiency_calibration --simple_PMT --pmt_model 0 --simulation_step 4 -n 100000 --threads 4 --output_file step4 --detector_type 1</div>
 </div><!-- fragment --><ul>
 <li>Follow the analysis in the notebook <code>documentation/notebooks/scans_matching/</code> and save the created files in <code>common/data/PMTs/measurement_matching_data/scans/</code>. Note that <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> expects a naming convention for these files (see <code>OMSimPMTResponse::configureScansInterpolator</code>).</li>
-<li>Modify <code>getScannedWavelength</code> of your PMT response class for the wavelengths you scanned and add the <code>configureScansInterpolator</code> in the constructor. <br  />
-</li>
+<li>Add the vector with scanned wavelengths in PMT file with the key <code>jScannedWavelengths</code> and add the path with the newly created scan files under the key <code>jScanDataPath</code> (check <code>pmt_Hamamatsu_R15458_CAT.dat</code> for guidance).</li>
 <li>Run the simulation in step 5 (modify method before accordingly) to check the output with the newly introduced files</li>
 </ul>
 <div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 5 -n 10000 --threads 4 --output_file step5 --detector_type 1</div>
@@ -341,7 +340,7 @@ Step 4: Matching gain / transit time scans</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Aug 30 2024 16:23:28 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Sep 2 2024 10:31:54 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

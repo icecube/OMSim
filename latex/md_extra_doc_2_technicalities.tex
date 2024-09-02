@@ -180,7 +180,7 @@ To obtain the fraction I just run this python code\+:
 \DoxyCodeLine{plt.xlabel(\textcolor{stringliteral}{"{}Wavelength (nm)"{}})}
 \DoxyCodeLine{plt.grid()}
 \DoxyCodeLine{plt.legend()}
-\DoxyCodeLine{np.savetxt(\textcolor{stringliteral}{"{}mDOM\_Hamamatsu\_R15458\_CAT\_intrinsic\_QE.dat"{}},}
+\DoxyCodeLine{np.savetxt(\textcolor{stringliteral}{"{}mDOM\_Hamamatsu\_R15458\_CT\_intrinsic\_QE.dat"{}},}
 \DoxyCodeLine{           np.array([wvs, h, err]).T,}
 \DoxyCodeLine{           delimiter=\textcolor{stringliteral}{"{}\(\backslash\)t"{}}, header=\textcolor{stringliteral}{"{}Wavelength(nm) \(\backslash\)t QE \(\backslash\)t error"{}})}
 
@@ -192,8 +192,8 @@ To obtain the fraction I just run this python code\+:
 
 \begin{quote}
 {\bfseries{Note}}\+: Ensure that the QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! \end{quote}
-If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra_doc_2_technicalities_autotoc_md37}{}\doxysubsection{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}\label{md_extra_doc_2_technicalities_autotoc_md37}
-Each PMT has its own derived class in {\ttfamily OMSim\+PMTResponse.\+cc}. If your PMT has not class yet, create one following the other PMTs as example. In its constructor add a call to {\ttfamily configure\+QEweight\+Interpolator()} adding the file that you generated in the last step and a default QE file for this PMT. Make sure you are not creating any CE weight interpolator at this point (this happens in step 3 of this documentation), as otherwise the weights will be smaller than expected from QE only!
+If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra_doc_2_technicalities_autotoc_md37}{}\doxysubsection{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}\label{md_extra_doc_2_technicalities_autotoc_md37}
+Add the path to the created file in your PMT file under the key {\ttfamily j\+Absorbed\+Fraction\+File\+Name} and also a default QE file under the key {\ttfamily j\+Default\+QEFile\+Name} (check {\ttfamily pmt\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT.\+dat} for guidance).
 
 Now run the simulation again 
 \begin{DoxyCode}{0}
@@ -224,7 +224,7 @@ and check that the weights are being calculated correctly
 
    ~\newline
   \hypertarget{md_extra_doc_2_technicalities_autotoc_md38}{}\doxysubsection{Step 3\+: Matching detection efficiency scan}\label{md_extra_doc_2_technicalities_autotoc_md38}
-The last step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.
+The next step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.
 
 
 \begin{DoxyItemize}
@@ -239,7 +239,7 @@ The last step is to create the collection efficiency weights to match the relati
 
 \item Fit the weights using simulation data. The analysis done for the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} can be found in the notebook located in {\ttfamily documentation/notebooks/detection\+\_\+efficiency\+\_\+matching/}.
 \item Save the weights in a file and store it in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+CE\+\_\+weight/}
-\item Add the {\ttfamily configure\+CEweight\+Interpolator()} in the constructor of your PMT class using the new file as input
+\item Add to this file in the PMT data file under the key {\ttfamily j\+CEweights\+File\+Name}.
 \item Run the simulation again and check if the weights are correct.
 \end{DoxyItemize}\hypertarget{md_extra_doc_2_technicalities_autotoc_md39}{}\doxysubsection{Step 4\+: Matching gain / transit time scans}\label{md_extra_doc_2_technicalities_autotoc_md39}
 The scan data of transit time / gain must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-\/glass boundary refracts the beam.
@@ -258,8 +258,7 @@ The scan data of transit time / gain must be corrected before use, as the coordi
 
 \begin{DoxyItemize}
 \item Follow the analysis in the notebook {\ttfamily documentation/notebooks/scans\+\_\+matching/} and save the created files in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/scans/}. Note that \mbox{\hyperlink{class_o_m_sim}{OMSim}} expects a naming convention for these files (see {\ttfamily OMSim\+PMTResponse\+::configure\+Scans\+Interpolator}).
-\item Modify {\ttfamily get\+Scanned\+Wavelength} of your PMT response class for the wavelengths you scanned and add the {\ttfamily configure\+Scans\+Interpolator} in the constructor. ~\newline
-
+\item Add the vector with scanned wavelengths in PMT file with the key {\ttfamily j\+Scanned\+Wavelengths} and add the path with the newly created scan files under the key {\ttfamily j\+Scan\+Data\+Path} (check {\ttfamily pmt\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT.\+dat} for guidance).
 \item Run the simulation in step 5 (modify method before accordingly) to check the output with the newly introduced files
 \end{DoxyItemize}
 

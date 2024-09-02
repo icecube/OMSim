@@ -115,23 +115,16 @@ $(document).ready(function(){initNavTree('class_o_m_sim_p_m_t_response.html','')
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_o_m_sim_p_m_t_response-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">OMSimPMTResponse Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">OMSimPMTResponse Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Singleton class to simulate PMT response.  
+<p>Class to simulate PMT response.  
  <a href="class_o_m_sim_p_m_t_response.html#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for OMSimPMTResponse:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_o_m_sim_p_m_t_response__inherit__graph.svg" width="414" height="291"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Process hits on a photocathode and get resulting pulse properties based on lab. measurement data. </p>
 </div><table class="memberdecls">
@@ -143,29 +136,29 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a55aabd8f8fd9be58eca3ba0753974d08"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html">PMTPulse</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08">processPhotocathodeHit</a> (G4double pX, G4double pY, G4double pWavelength)</td></tr>
-<tr class="memdesc:a55aabd8f8fd9be58eca3ba0753974d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a hit on the photocathode into a PMT pulse.  <a href="class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08">More...</a><br /></td></tr>
-<tr class="separator:a55aabd8f8fd9be58eca3ba0753974d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:afacb6a3231c8a54be999da0cf5d439fd"><td class="memItemLeft" align="right" valign="top"><a id="afacb6a3231c8a54be999da0cf5d439fd"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> ()</td></tr>
-<tr class="separator:afacb6a3231c8a54be999da0cf5d439fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
 <tr class="memitem:a80b379bc78ca06d23011703aae3341d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a80b379bc78ca06d23011703aae3341d7">OMSimPMTResponse</a> ()</td></tr>
 <tr class="separator:a80b379bc78ca06d23011703aae3341d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62df783f8d6a583098485db573963b76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a62df783f8d6a583098485db573963b76">configureQEweightInterpolator</a> (const std::string &amp;p_FileNameAbsorbedFraction, const std::string &amp;p_FileNameTargetQE)</td></tr>
-<tr class="memdesc:a62df783f8d6a583098485db573963b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the QE weight interpolator for PMT response.  <a href="class_o_m_sim_p_m_t_response.html#a62df783f8d6a583098485db573963b76">More...</a><br /></td></tr>
-<tr class="separator:a62df783f8d6a583098485db573963b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3501655f097276c6bee8300de61a4cb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a3501655f097276c6bee8300de61a4cb3">configureCEweightInterpolator</a> (const std::string &amp;p_FileName)</td></tr>
-<tr class="memdesc:a3501655f097276c6bee8300de61a4cb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the CE weight interpolator for PMT response.  <a href="class_o_m_sim_p_m_t_response.html#a3501655f097276c6bee8300de61a4cb3">More...</a><br /></td></tr>
-<tr class="separator:a3501655f097276c6bee8300de61a4cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78fc70b670bbffa4e06fa5b87844f4ce"><td class="memItemLeft" align="right" valign="top"><a id="a78fc70b670bbffa4e06fa5b87844f4ce"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>configureScansInterpolators</b> (const std::string &amp;p_PathToFiles)</td></tr>
-<tr class="separator:a78fc70b670bbffa4e06fa5b87844f4ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55aabd8f8fd9be58eca3ba0753974d08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html">PMTPulse</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08">processPhotocathodeHit</a> (G4double pX, G4double pY, G4double pWavelength)</td></tr>
+<tr class="memdesc:a55aabd8f8fd9be58eca3ba0753974d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a hit on the photocathode into a PMT pulse.  <a href="class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08">More...</a><br /></td></tr>
+<tr class="separator:a55aabd8f8fd9be58eca3ba0753974d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac921d86b7d02d3b4a3a4e3710147420d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#ac921d86b7d02d3b4a3a4e3710147420d">makeQEweightInterpolator</a> (const std::string &amp;p_FileNameAbsorbedFraction)</td></tr>
+<tr class="memdesc:ac921d86b7d02d3b4a3a4e3710147420d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the QE weight interpolator for PMT response.  <a href="class_o_m_sim_p_m_t_response.html#ac921d86b7d02d3b4a3a4e3710147420d">More...</a><br /></td></tr>
+<tr class="separator:ac921d86b7d02d3b4a3a4e3710147420d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0b6a91aa1bbac5c1f02a6e29ce9b34b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#aa0b6a91aa1bbac5c1f02a6e29ce9b34b">makeQEInterpolator</a> (const std::string &amp;p_FileName)</td></tr>
+<tr class="memdesc:aa0b6a91aa1bbac5c1f02a6e29ce9b34b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the QE interpolator from the target QE file.  <a href="class_o_m_sim_p_m_t_response.html#aa0b6a91aa1bbac5c1f02a6e29ce9b34b">More...</a><br /></td></tr>
+<tr class="separator:aa0b6a91aa1bbac5c1f02a6e29ce9b34b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d82672908050add72cb0f7af15808b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a0d82672908050add72cb0f7af15808b4">makeCEweightInterpolator</a> (const std::string &amp;p_FileName)</td></tr>
+<tr class="memdesc:a0d82672908050add72cb0f7af15808b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the CE weight interpolator for PMT response.  <a href="class_o_m_sim_p_m_t_response.html#a0d82672908050add72cb0f7af15808b4">More...</a><br /></td></tr>
+<tr class="separator:a0d82672908050add72cb0f7af15808b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfac8d3195a8a155d0602a9005a99d0f"><td class="memItemLeft" align="right" valign="top"><a id="abfac8d3195a8a155d0602a9005a99d0f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>makeScansInterpolators</b> (const std::string &amp;p_PathToFiles)</td></tr>
+<tr class="separator:abfac8d3195a8a155d0602a9005a99d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2036bbe888ac1d7ac89295ef78621f11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#a2036bbe888ac1d7ac89295ef78621f11">setScannedWavelengths</a> (std::vector&lt; double &gt; p_wavelengths)</td></tr>
+<tr class="memdesc:a2036bbe888ac1d7ac89295ef78621f11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the scanned wavelengths for the PMT response.  <a href="class_o_m_sim_p_m_t_response.html#a2036bbe888ac1d7ac89295ef78621f11">More...</a><br /></td></tr>
+<tr class="separator:a2036bbe888ac1d7ac89295ef78621f11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
 <tr class="memitem:ad175b3ea4665684d2891c7107e12abeb"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#ad175b3ea4665684d2891c7107e12abeb">getCharge</a> (G4double p_WavelengthKey)</td></tr>
 <tr class="memdesc:ad175b3ea4665684d2891c7107e12abeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the charge in PE from measurements for a given wavelength.  <a href="class_o_m_sim_p_m_t_response.html#ad175b3ea4665684d2891c7107e12abeb">More...</a><br /></td></tr>
 <tr class="separator:ad175b3ea4665684d2891c7107e12abeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,18 +177,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>configureScansInterpo
 <tr class="separator:a0cbb8567eb918314ecf42b0f724a80c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac206cd005e6b634472ff6eb0da1f1100"><td class="memItemLeft" align="right" valign="top">G4double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#ac206cd005e6b634472ff6eb0da1f1100">wavelengthInterpolatedValue</a> (std::map&lt; G4double, TH2D * &gt; p_Map, G4double p_WavelengthKey1, G4double p_WavelengthKey2)</td></tr>
 <tr class="separator:ac206cd005e6b634472ff6eb0da1f1100"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e0f0ab6b76976909e12fcc50729ae49"><td class="memItemLeft" align="right" valign="top"><a id="a2e0f0ab6b76976909e12fcc50729ae49"></a>
-virtual std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getScannedWavelengths</b> ()=0</td></tr>
-<tr class="separator:a2e0f0ab6b76976909e12fcc50729ae49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abccaeb61ad40513e580f4f3369d8f70c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_response.html#abccaeb61ad40513e580f4f3369d8f70c">getScannedWavelengths</a> ()</td></tr>
+<tr class="memdesc:abccaeb61ad40513e580f4f3369d8f70c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the scanned wavelengths for the PMT response.  <a href="class_o_m_sim_p_m_t_response.html#abccaeb61ad40513e580f4f3369d8f70c">More...</a><br /></td></tr>
+<tr class="separator:abccaeb61ad40513e580f4f3369d8f70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
 <tr class="memitem:afdbcbd18c29043d324049ed917f8d6cb"><td class="memItemLeft" align="right" valign="top"><a id="afdbcbd18c29043d324049ed917f8d6cb"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_scansInterpolatorsAvailable</b> = false</td></tr>
 <tr class="separator:afdbcbd18c29043d324049ed917f8d6cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2273a226d1cf58448b7b5c0bf5c060ff"><td class="memItemLeft" align="right" valign="top"><a id="a2273a226d1cf58448b7b5c0bf5c060ff"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_QEWeightInterpolatorAvailable</b> = false</td></tr>
 <tr class="separator:a2273a226d1cf58448b7b5c0bf5c060ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0f350691668c4f39b83506a11501a12"><td class="memItemLeft" align="right" valign="top"><a id="ac0f350691668c4f39b83506a11501a12"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_QEInterpolatorAvailable</b> = false</td></tr>
+<tr class="separator:ac0f350691668c4f39b83506a11501a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33b18dcf8df94bfeb9395c7e9d1af161"><td class="memItemLeft" align="right" valign="top"><a id="a33b18dcf8df94bfeb9395c7e9d1af161"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_CEWeightInterpolatorAvailable</b> = false</td></tr>
 <tr class="separator:a33b18dcf8df94bfeb9395c7e9d1af161"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,6 +207,9 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>m_Y</b></td></tr>
 <tr class="memitem:a37b89973c07f6b44f9deebb928472d28"><td class="memItemLeft" align="right" valign="top"><a id="a37b89973c07f6b44f9deebb928472d28"></a>
 G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_wavelength</b></td></tr>
 <tr class="separator:a37b89973c07f6b44f9deebb928472d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2df70a09776220dca71fbcfba796e5c"><td class="memItemLeft" align="right" valign="top"><a id="ae2df70a09776220dca71fbcfba796e5c"></a>
+std::vector&lt; G4double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_scannedWavelengths</b></td></tr>
+<tr class="separator:ae2df70a09776220dca71fbcfba796e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd87146bce051d8658cf142fa23545b8"><td class="memItemLeft" align="right" valign="top"><a id="afd87146bce051d8658cf142fa23545b8"></a>
 TGraph *&#160;</td><td class="memItemRight" valign="bottom"><b>m_relativeDetectionEfficiencyInterpolator</b></td></tr>
 <tr class="separator:afd87146bce051d8658cf142fa23545b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -239,9 +238,6 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">OMSimPMTResponse::OMSimPMTResponse </td>
@@ -250,93 +246,12 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Add PMT data of all PMT types </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3501655f097276c6bee8300de61a4cb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3501655f097276c6bee8300de61a4cb3">&#9670;&nbsp;</a></span>configureCEweightInterpolator()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void OMSimPMTResponse::configureCEweightInterpolator </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>p_FileName</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p_FileName</td><td>File name containing CE weights </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a62df783f8d6a583098485db573963b76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62df783f8d6a583098485db573963b76">&#9670;&nbsp;</a></span>configureQEweightInterpolator()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void OMSimPMTResponse::configureQEweightInterpolator </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>p_FileNameAbsorbedFraction</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>p_FileNameTargetQE</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p_FileNameAbsorbedFraction</td><td>File name containing absorbed fraction data </td></tr>
-    <tr><td class="paramname">p_FileNameTargetQE</td><td>File name containing target QE data.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Loads QE and absorbed fraction data, calculates weights based on the ratio of target QE to absorbed fraction, and creates an interpolator for these weights. Handles out-of-range values and extends the wavelength range slightly. </p>
-
-</div>
-</div>
 <a id="ad175b3ea4665684d2891c7107e12abeb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad175b3ea4665684d2891c7107e12abeb">&#9670;&nbsp;</a></span>getCharge() <span class="overload">[1/2]</span></h2>
 
@@ -356,7 +271,7 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -400,7 +315,7 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -445,7 +360,7 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -479,7 +394,7 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -490,6 +405,32 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html" title="Represents the output pulse for a detected photon.">PMTPulse</a> Struct with transit time, charge and detection probability </dd></dl>
+
+</div>
+</div>
+<a id="abccaeb61ad40513e580f4f3369d8f70c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abccaeb61ad40513e580f4f3369d8f70c">&#9670;&nbsp;</a></span>getScannedWavelengths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; G4double &gt; OMSimPMTResponse::getScannedWavelengths </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;double&gt; The scanned wavelengths. </dd></dl>
 
 </div>
 </div>
@@ -512,7 +453,7 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -556,7 +497,7 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -572,14 +513,83 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
 
 </div>
 </div>
+<a id="a0d82672908050add72cb0f7af15808b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d82672908050add72cb0f7af15808b4">&#9670;&nbsp;</a></span>makeCEweightInterpolator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimPMTResponse::makeCEweightInterpolator </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>p_FileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_FileName</td><td>File name containing CE weights </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa0b6a91aa1bbac5c1f02a6e29ce9b34b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0b6a91aa1bbac5c1f02a6e29ce9b34b">&#9670;&nbsp;</a></span>makeQEInterpolator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimPMTResponse::makeQEInterpolator </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>p_FileNameTargetQE</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_FileNameTargetQE</td><td>File name containing target QE data. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac921d86b7d02d3b4a3a4e3710147420d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac921d86b7d02d3b4a3a4e3710147420d">&#9670;&nbsp;</a></span>makeQEweightInterpolator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimPMTResponse::makeQEweightInterpolator </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>p_FileNameAbsorbedFraction</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_FileNameAbsorbedFraction</td><td>File name containing absorbed fraction data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a55aabd8f8fd9be58eca3ba0753974d08"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55aabd8f8fd9be58eca3ba0753974d08">&#9670;&nbsp;</a></span>processPhotocathodeHit()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html">OMSimPMTResponse::PMTPulse</a> OMSimPMTResponse::processPhotocathodeHit </td>
@@ -605,11 +615,6 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Transform a hit based on its location and photon wavelength to a PMT pulse, considering the transit time, charge, and detection probability.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -622,7 +627,29 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html" title="Represents the output pulse for a detected photon.">PMTPulse</a> representing the processed hit. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="class_no_response.html#aa904db4023917812120742e949d1fd88">NoResponse</a>.</p>
+</div>
+</div>
+<a id="a2036bbe888ac1d7ac89295ef78621f11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2036bbe888ac1d7ac89295ef78621f11">&#9670;&nbsp;</a></span>setScannedWavelengths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimPMTResponse::setScannedWavelengths </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; double &gt;&#160;</td>
+          <td class="paramname"><em>p_wavelengths</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_wavelengths</td><td>The scanned wavelengths. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -661,7 +688,7 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -687,7 +714,7 @@ std::map&lt; G4double, TH2D * &gt;&#160;</td><td class="memItemRight" valign="bo
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_p_m_t_response.html">OMSimPMTResponse</a></li>
-    <li class="footer">Generated on Fri Aug 30 2024 16:23:28 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Sep 2 2024 10:31:55 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

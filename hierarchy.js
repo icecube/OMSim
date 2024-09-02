@@ -95,14 +95,7 @@ var hierarchy =
     [ "OMSimEffiCaliAnalyisis", "class_o_m_sim_effi_cali_analyisis.html", null ],
     [ "OMSimHitManager", "class_o_m_sim_hit_manager.html", null ],
     [ "OMSimMaterialHandler", "class_o_m_sim_material_handler.html", null ],
-    [ "OMSimPMTResponse", "class_o_m_sim_p_m_t_response.html", [
-      [ "DEGGPMTResponse", "class_d_e_g_g_p_m_t_response.html", null ],
-      [ "Gen1PMTResponse", "class_gen1_p_m_t_response.html", null ],
-      [ "LOMHamamatsuResponse", "class_l_o_m_hamamatsu_response.html", null ],
-      [ "LOMNNVTResponse", "class_l_o_m_n_n_v_t_response.html", null ],
-      [ "NoResponse", "class_no_response.html", null ],
-      [ "mDOMPMTResponse", "classm_d_o_m_p_m_t_response.html", null ]
-    ] ],
+    [ "OMSimPMTResponse", "class_o_m_sim_p_m_t_response.html", null ],
     [ "OMSimSNAnalysis", "class_o_m_sim_s_n_analysis.html", null ],
     [ "OMSimSNTools", "class_o_m_sim_s_n_tools.html", null ],
     [ "OMSimUIinterface", "class_o_m_sim_u_iinterface.html", null ],
