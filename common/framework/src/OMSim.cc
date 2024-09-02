@@ -186,15 +186,7 @@ void OMSim::extendOptions(po::options_description p_newOptions)
 po::variables_map OMSim::parseArguments(int p_argumentCount, char *p_argumentVector[])
 {   
 	po::variables_map variableMap;
-	try {
-		po::store(po::parse_command_line(p_argumentCount, p_argumentVector, m_generalOptions), variableMap);
-	} catch (std::invalid_argument& e) {
-		std::cerr << "Invalid argument: " << e.what() << std::endl;
-	} catch (std::exception& e) {
-		std::cerr << "An exception occurred: " << e.what() << std::endl;
-	} catch (...) {
-		std::cerr << "An unknown exception occurred." << std::endl;
-	}
+    po::store(po::parse_command_line(p_argumentCount, p_argumentVector, m_generalOptions), variableMap);
 	po::notify(variableMap);
 
 	return variableMap;

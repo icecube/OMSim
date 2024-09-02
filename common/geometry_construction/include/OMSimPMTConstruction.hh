@@ -60,7 +60,6 @@ private:
     void constructHAcoating();
     void constructCathodeBackshield(G4LogicalVolume *pPMTIinner);
     void constructCADdynodeSystem(G4LogicalVolume *p_mother);
-    G4SubtractionSolid *constructPhotocathodeLayer();
     
     OMSimPMTResponse* getPMTResponseInstance();
 

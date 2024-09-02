@@ -13,7 +13,7 @@
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
-OMSimPMTResponse::OMSimPMTResponse() : m_relativeDetectionEfficiencyInterpolator(nullptr), m_QEfileInterpolator(nullptr), m_weightAbsorbedToQEInterpolator(nullptr)
+OMSimPMTResponse::OMSimPMTResponse() : m_relativeDetectionEfficiencyInterpolator(nullptr), m_QEfileInterpolator(nullptr), m_weightAbsorbedToQEInterpolator(nullptr), m_scannedWavelengths(std::vector<G4double>()), m_X(0), m_Y(0)
 {
     m_simplePMT = OMSimCommandArgsTable::getInstance().get<bool>("simple_PMT");
 }
@@ -189,85 +189,92 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::getPulseFromInterpolation(G4double 
 }
 
 /**
- * @brief Configures the QE weight interpolator for PMT response.
+ * @brief Creates the QE interpolator from the target QE file.
  *
- * @param p_FileNameAbsorbedFraction File name containing absorbed fraction data
  * @param p_FileNameTargetQE File name containing target QE data.
- *
- * @details
- * Loads QE and absorbed fraction data, calculates weights based on the ratio
- * of target QE to absorbed fraction, and creates an interpolator for these weights.
- * Handles out-of-range values and extends the wavelength range slightly.
  */
-void OMSimPMTResponse::configureQEweightInterpolator(const std::string &p_FileNameAbsorbedFraction, const std::string &p_FileNameTargetQE)
+void OMSimPMTResponse::makeQEInterpolator(const std::string &p_FileNameTargetQE)
 {
-    log_trace("Creating QE weight interpolator...");
-    // Load QE data
+    log_trace("Creating QE interpolator...");
     auto dataQE = Tools::loadtxt(p_FileNameTargetQE.c_str(), true, 0, '\t');
-    auto absorbedData = Tools::loadtxt(p_FileNameAbsorbedFraction.c_str(), true, 0, '\t');
 
     std::vector<double> wavelengths = dataQE[0];
     std::vector<double> theQEs = dataQE[1];
-    std::vector<double> wavelengthAbsorbedFraction = absorbedData[0];
-    std::vector<double> absorbedFraction = absorbedData[1];
 
-    auto absorbedFractionInterpolator = Tools::create1dInterpolator(wavelengthAbsorbedFraction, absorbedFraction, "absorbed_fraction_interpolator");
+    double maxWavelength = *std::max_element(wavelengths.begin(), wavelengths.end());
+    double minWavelength = *std::min_element(wavelengths.begin(), wavelengths.end());
+
+    // Append points above the maximum
+    for (int i = 1; i <= 3; ++i)
+    {
+        double newWavelength = maxWavelength + i * (maxWavelength - minWavelength) / 3;
+        wavelengths.push_back(newWavelength);
+        theQEs.push_back(0);
+    }
+
+    // Append points below the minimum
+    for (int i = 1; i <= 3; ++i)
+    {
+        double newWavelength = minWavelength - i * minWavelength / 3;
+        wavelengths.push_back(std::max(0.0, newWavelength));
+        theQEs.push_back(0);
+    }
+
+    Tools::sortVectorByReference(wavelengths, theQEs);
+    m_QEfileInterpolator = Tools::create1dInterpolator(wavelengths, theQEs, p_FileNameTargetQE);
+    m_QEInterpolatorAvailable = true;
+}
+
+/**
+ * @brief Configures the QE weight interpolator for PMT response.
+ * @param p_FileNameAbsorbedFraction File name containing absorbed fraction data
+ */
+void OMSimPMTResponse::makeQEweightInterpolator(const std::string &p_FileNameAbsorbedFraction)
+{
+    log_trace("Creating QE weight interpolator...");
+    // Load absorbed fraction data
+    auto absorbedData = Tools::loadtxt(p_FileNameAbsorbedFraction.c_str(), true, 0, '\t');
+
+    std::vector<double> wavelengths = absorbedData[0];
+    std::vector<double> absorbedFraction = absorbedData[1];
 
     // Calculate weights
     std::vector<double> weights;
-    double maxWavelength = *std::max_element(wavelengthAbsorbedFraction.begin(), wavelengthAbsorbedFraction.end());
-    double minWavelength = *std::min_element(wavelengthAbsorbedFraction.begin(), wavelengthAbsorbedFraction.end());
 
     for (size_t i = 0; i < wavelengths.size(); ++i)
     {
         double wavelength = wavelengths[i];
-        if (wavelength >= minWavelength && wavelength <= maxWavelength)
+        double fraction = absorbedFraction[i];
+        double targetQE = m_QEfileInterpolator->Eval(wavelength);
+        if (targetQE > fraction)
         {
-            double lInterpolatedFraction = absorbedFractionInterpolator->Eval(wavelength);
-            if (theQEs[i] > lInterpolatedFraction)
-            {
-                log_error("Requested QE value {} is larger than possible from optical properties of PMT ({})!", theQEs[i], lInterpolatedFraction);
-                throw std::invalid_argument("Requested QE value larger than possible from optical properties of PMT!");
-            }
-            double lToAppend = (lInterpolatedFraction == 0) ? 0 : theQEs[i] / lInterpolatedFraction;
-            weights.push_back(lToAppend);
+            log_error("Requested QE value {} is larger than possible from optical properties of PMT ({})!", targetQE, fraction);
+            throw std::invalid_argument("Requested QE value larger than possible from optical properties of PMT!");
         }
-        else
-        {
-            log_error("Requested QE value at wavelength {} outside wavelength range [{},{}]!",
-                      wavelength, minWavelength, maxWavelength);
-            throw std::invalid_argument("Requested QE value outside wavelength range!");
-        }
+        double toAppend = (fraction == 0) ? 0 : targetQE / fraction;
+        weights.push_back(toAppend);
     }
+    double maxWavelength = *std::max_element(wavelengths.begin(), wavelengths.end());
+    double minWavelength = *std::min_element(wavelengths.begin(), wavelengths.end());
 
-    maxWavelength = *std::max_element(wavelengths.begin(), wavelengths.end());
-    minWavelength = *std::min_element(wavelengths.begin(), wavelengths.end());
-
-    // Add points above the maximum
-    for (int i = 1; i <= 10; ++i)
+    // Append points above the maximum
+    for (int i = 1; i <= 3; ++i)
     {
-        double newWavelength = maxWavelength + i * (maxWavelength - minWavelength) / 10;
+        double newWavelength = maxWavelength + i * (maxWavelength - minWavelength) / 3;
         wavelengths.push_back(newWavelength);
         weights.push_back(0);
-        theQEs.push_back(0);
     }
 
-    // Add points below the minimum
-    for (int i = 1; i <= 10; ++i)
+    // Append points below the minimum
+    for (int i = 1; i <= 3; ++i)
     {
-        double newWavelength = minWavelength - i * minWavelength / 10;
+        double newWavelength = minWavelength - i * minWavelength / 3;
         wavelengths.push_back(std::max(0.0, newWavelength));
         weights.push_back(0);
-        theQEs.push_back(0);
     }
 
-    Tools::sortVectorByReference(wavelengths, weights);
-
+    Tools::sortVectorByReference(const_cast<std::vector<double> &>(wavelengths), weights);
     m_weightAbsorbedToQEInterpolator = Tools::create1dInterpolator(wavelengths, weights, "weights QE interpolator");
-    m_QEfileInterpolator = Tools::create1dInterpolator(wavelengths, theQEs, p_FileNameTargetQE);
-
-    delete absorbedFractionInterpolator;
-
     m_QEWeightInterpolatorAvailable = true;
 }
 
@@ -275,24 +282,24 @@ void OMSimPMTResponse::configureQEweightInterpolator(const std::string &p_FileNa
  * @brief Configures the CE weight interpolator for PMT response.
  * @param p_FileName File name containing CE weights
  */
-void OMSimPMTResponse::configureCEweightInterpolator(const std::string &p_FileName)
+void OMSimPMTResponse::makeCEweightInterpolator(const std::string &p_FileName)
 {
     log_trace("Creating CE weight interpolator...");
     m_relativeDetectionEfficiencyInterpolator = Tools::create1dInterpolator(p_FileName.c_str());
     m_CEWeightInterpolatorAvailable = true;
 }
 
-void OMSimPMTResponse::configureScansInterpolators(const std::string &p_PathToFiles)
+void OMSimPMTResponse::makeScansInterpolators(const std::string &p_PathToFiles)
 {
     log_trace("Creating TH2D interpolators from scan data...");
 
-    for (const auto &lKey : getScannedWavelengths())
+    for (const auto &key : getScannedWavelengths())
     {
-        std::string lWv = std::to_string((int)(lKey / nm));
-        m_gainG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "Gain_PE_" + lWv + ".dat");
-        m_gainResolutionG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "SPEresolution_" + lWv + ".dat");
-        m_transitTimeSpreadG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "TransitTimeSpread_" + lWv + ".dat");
-        m_transitTimeG2Dmap[lKey] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "TransitTime_" + lWv + ".dat");
+        std::string wavelength = std::to_string((int)(key/nm));
+        m_gainG2Dmap[key] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "Gain_PE_" + wavelength + ".dat");
+        m_gainResolutionG2Dmap[key] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "SPEresolution_" + wavelength + ".dat");
+        m_transitTimeSpreadG2Dmap[key] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "TransitTimeSpread_" + wavelength + ".dat");
+        m_transitTimeG2Dmap[key] = Tools::create2DHistogramFromDataFile(p_PathToFiles + "TransitTime_" + wavelength + ".dat");
     }
     m_scansInterpolatorsAvailable = true;
     log_trace("Finished opening photocathode scans data...");
@@ -320,13 +327,13 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::processPhotocathodeHit(G4double p_x
 
     if (m_simplePMT)
     {
-        weightQE = (m_QEWeightInterpolatorAvailable) ? m_QEfileInterpolator->Eval(p_wavelength / nm) : 1;
-        weightCE = 1;
+        weightQE = (m_QEInterpolatorAvailable) ? m_QEfileInterpolator->Eval(p_wavelength / nm) : 1.;
+        weightCE = 1.;
     }
     else
     {
-        weightQE = (m_QEWeightInterpolatorAvailable) ? m_weightAbsorbedToQEInterpolator->Eval(p_wavelength / nm) : 1;
-        weightCE = (m_CEWeightInterpolatorAvailable) ? m_relativeDetectionEfficiencyInterpolator->Eval(r) : 1;
+        weightQE = (m_QEWeightInterpolatorAvailable) ? m_weightAbsorbedToQEInterpolator->Eval(p_wavelength / nm) : 1.;
+        weightCE = (m_CEWeightInterpolatorAvailable) ? m_relativeDetectionEfficiencyInterpolator->Eval(r) : 1.;
     }
 
     pulse.detectionProbability = weightQE * weightCE;
@@ -369,217 +376,22 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::processPhotocathodeHit(G4double p_x
     return pulse;
 }
 
-/*
- * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- *                                 Derived Classes
- * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- */
-
-/*
- * %%%%%%%%%%%%%%%% mDOM %%%%%%%%%%%%%%%%
- */
-void mDOMPMTResponse::init()
+/**
+ * @brief Set the scanned wavelengths for the PMT response.
+ *
+ * @param p_wavelengths The scanned wavelengths.
+ */ 
+void OMSimPMTResponse::setScannedWavelengths(std::vector<double> p_wavelengths)
 {
-    if (!g_mDOMPMTResponse)
-        g_mDOMPMTResponse = new mDOMPMTResponse();
+    m_scannedWavelengths = p_wavelengths;
 }
 
-void mDOMPMTResponse::shutdown()
+/**
+ * @brief Get the scanned wavelengths for the PMT response.
+ *
+ * @return std::vector<double> The scanned wavelengths.
+ */ 
+std::vector<G4double> OMSimPMTResponse::getScannedWavelengths() 
 {
-    delete g_mDOMPMTResponse;
-    g_mDOMPMTResponse = nullptr;
-}
-mDOMPMTResponse &mDOMPMTResponse::getInstance()
-{
-    if (!g_mDOMPMTResponse)
-        Tools::throwError("mDOMPMTResponse accessed before initialization or after shutdown!");
-    return *g_mDOMPMTResponse;
-}
-
-mDOMPMTResponse::mDOMPMTResponse()
-{
-    log_info("Using mDOM PMT response");
-
-    std::string lPath = "../common/data/PMTs/measurement_matching_data/";
-
-    configureCEweightInterpolator(lPath + "CE_weight/240813_mDOM_Hamamatsu_CAT.dat");
-
-    // Get QE file from arguments or use default file
-    std::string lQEFileName = OMSimCommandArgsTable::getInstance().get<std::string>("QE_file");
-    if (lQEFileName == "default")
-        lQEFileName = lPath + "QE/mDOM_Hamamatsu_R15458_mean_QE.dat";
-
-    configureQEweightInterpolator(lPath + "QE/mDOM_Hamamatsu_R15458_CAT_intrinsic_QE.dat",
-                                  lQEFileName);
-
-    configureScansInterpolators("../common/data/PMTs/measurement_matching_data/scans/R15458/");
-}
-
-std::vector<G4double> mDOMPMTResponse::getScannedWavelengths()
-{
-    return {460 * nm, 480 * nm, 500 * nm, 520 * nm, 540 * nm, 560 * nm, 580 * nm, 600 * nm, 620 * nm, 640 * nm};
-}
-
-/*
- * %%%%%%%%%%%%%%%% Gen1 DOM %%%%%%%%%%%%%%%%
- */
-void Gen1PMTResponse::init()
-{
-    if (!g_Gen1PMTResponse)
-        g_Gen1PMTResponse = new Gen1PMTResponse();
-}
-
-void Gen1PMTResponse::shutdown()
-{
-    delete g_Gen1PMTResponse;
-    g_Gen1PMTResponse = nullptr;
-}
-Gen1PMTResponse &Gen1PMTResponse::getInstance()
-{
-    if (!g_Gen1PMTResponse)
-        Tools::throwError("Gen1PMTResponse accessed before initialization or after shutdown!");
-    return *g_Gen1PMTResponse;
-}
-Gen1PMTResponse::Gen1PMTResponse()
-{
-    log_info("Using Gen1 DOM PMT response");
-}
-
-std::vector<G4double> Gen1PMTResponse::getScannedWavelengths()
-{
-    return {};
-}
-
-/*
- * %%%%%%%%%%%%%%%% DEGG %%%%%%%%%%%%%%%%
- */
-void DEGGPMTResponse::init()
-{
-    if (!g_DEGGPMTResponse)
-        g_DEGGPMTResponse = new DEGGPMTResponse();
-}
-
-void DEGGPMTResponse::shutdown()
-{
-    delete g_DEGGPMTResponse;
-    g_DEGGPMTResponse = nullptr;
-}
-DEGGPMTResponse &DEGGPMTResponse::getInstance()
-{
-    if (!g_DEGGPMTResponse)
-        Tools::throwError("DEGGPMTResponse accessed before initialization or after shutdown!");
-    return *g_DEGGPMTResponse;
-}
-DEGGPMTResponse::DEGGPMTResponse()
-{
-    log_info("Using DEGG PMT response");
-}
-
-std::vector<G4double> DEGGPMTResponse::getScannedWavelengths()
-{
-    return {};
-}
-
-/*
- * %%%%%%%%%%%%%%%% LOM Hamamatsu %%%%%%%%%%%%%%%%
- */
-
-void LOMHamamatsuResponse::init()
-{
-    if (!g_LOMHamamatsuResponse)
-        g_LOMHamamatsuResponse = new LOMHamamatsuResponse();
-}
-
-void LOMHamamatsuResponse::shutdown()
-{
-    delete g_LOMHamamatsuResponse;
-    g_LOMHamamatsuResponse = nullptr;
-}
-LOMHamamatsuResponse &LOMHamamatsuResponse::getInstance()
-{
-    if (!g_LOMHamamatsuResponse)
-        Tools::throwError("LOMNNVTResponse accessed before initialization or after shutdown!");
-    return *g_LOMHamamatsuResponse;
-}
-LOMHamamatsuResponse::LOMHamamatsuResponse()
-{
-    log_info("Using Hamamatsu LOM PMT response");
-}
-
-std::vector<G4double> LOMHamamatsuResponse::getScannedWavelengths()
-{
-    return {};
-}
-
-/*
- * %%%%%%%%%%%%%%%% LOM NNVT %%%%%%%%%%%%%%%%
- */
-
-void LOMNNVTResponse::init()
-{
-    if (!g_LOMNNVTResponse)
-        g_LOMNNVTResponse = new LOMNNVTResponse();
-}
-
-void LOMNNVTResponse::shutdown()
-{
-    delete g_LOMNNVTResponse;
-    g_LOMNNVTResponse = nullptr;
-}
-LOMNNVTResponse &LOMNNVTResponse::getInstance()
-{
-    if (!g_LOMNNVTResponse)
-        Tools::throwError("LOMNNVTResponse accessed before initialization or after shutdown!");
-    return *g_LOMNNVTResponse;
-}
-
-LOMNNVTResponse::LOMNNVTResponse()
-{
-    log_info("Using NNVT LOM PMT response");
-}
-
-std::vector<G4double> LOMNNVTResponse::getScannedWavelengths()
-{
-    return {};
-}
-
-/*
- * %%%%%%%%%%%%%%%% No response %%%%%%%%%%%%%%%%
- */
-void NoResponse::init()
-{
-    if (!g_NoResponse)
-        g_NoResponse = new NoResponse();
-}
-
-void NoResponse::shutdown()
-{
-    delete g_NoResponse;
-    g_NoResponse = nullptr;
-}
-NoResponse &NoResponse::getInstance()
-{
-    if (!g_NoResponse)
-        Tools::throwError("NoResponse accessed before initialization or after shutdown!");
-    return *g_NoResponse;
-}
-
-NoResponse::NoResponse()
-{
-    log_trace("OMSimResponse NoResponse initiated");
-}
-
-std::vector<G4double> NoResponse::getScannedWavelengths()
-{
-    return {};
-}
-
-OMSimPMTResponse::PMTPulse NoResponse::processPhotocathodeHit(G4double p_x, G4double p_y, G4double p_wavelength)
-{
-
-    OMSimPMTResponse::PMTPulse pulse;
-    pulse.detectionProbability = 1;
-    pulse.PE = 0;
-    pulse.transitTime = 0;
-    return pulse;
+    return m_scannedWavelengths;
 }

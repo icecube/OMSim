@@ -3,8 +3,12 @@
    "jFrontalShape": "SingleEllipse",
    "jResponseData" : "R5912",
    "jBulbBackShape": "jFullFit",
-   "jDynodeCADOffset": {
-      "jValue": 220,
+   "jDynodeCADZ0": {
+      "jValue": 54.2, 
+      "jUnit": "mm"
+   },
+   "jDynodeCADOffsetFromTip": {
+      "jValue": 166,
       "jUnit": "mm"
    },
    "jDynodeCADscale": {
@@ -74,32 +78,6 @@
       },
       "jTorusTubeTransition_y": {
          "jValue": 28,
-         "jUnit": "mm"
-      }
-   },
-   "jPhotocathodeInnerSide": {
-      "jOutRad": {
-         "jValue": 129.04998,
-         "jUnit": "mm"
-      },
-      "jEllipseXYaxis": {
-         "jValue": 100.38334947030255,
-         "jUnit": "mm"
-      },
-      "jEllipseZaxis": {
-         "jValue": 73.89682198437058,
-         "jUnit": "mm"
-      },
-      "jSphereEllipseTransition_r": {
-         "jValue": 26.582204066415937,
-         "jUnit": "mm"
-      },
-      "jSpherePos_y": {
-         "jValue": 49.29081214651022,
-         "jUnit": "mm"
-      },
-      "jEllipsePos_y": {
-         "jValue": 104.31452256983141,
          "jUnit": "mm"
       }
    },

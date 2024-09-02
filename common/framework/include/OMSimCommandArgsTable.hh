@@ -87,13 +87,13 @@ public:
         }
         catch (const boost::bad_any_cast &e)
         {
-            log_error(("Failed to get parameter " + p_key + " as type " + typeid(T).name()).c_str());
+            log_error(("Failed to get parameter '" + p_key + "' as type " + typeid(T).name()).c_str());
             throw std::invalid_argument("Failed to get parameter " + p_key + " as type " + typeid(T).name());
         }
         catch (const std::out_of_range &e)
         {
-            log_error(("Parameter " + p_key + " does not exist").c_str());
-            throw std::invalid_argument("Parameter " + p_key + " does not exist");
+            log_error(("Parameter '" + p_key + "'does not exist").c_str());
+            throw std::invalid_argument("Parameter '" + p_key + "' does not exist");
         }
     }
 

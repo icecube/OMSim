@@ -30,8 +30,6 @@ thread_local G4OpBoundaryProcess *OMSimSensitiveDetector::m_boundaryProcess = nu
 OMSimSensitiveDetector::OMSimSensitiveDetector(G4String p_name, DetectorType p_detectorType)
     : G4VSensitiveDetector(p_name), m_detectorType(p_detectorType), m_PMTResponse(nullptr), m_QEcut(OMSimCommandArgsTable::getInstance().get<bool>("efficiency_cut"))
 {
-  NoResponse::init();
-  m_PMTResponse = &NoResponse::getInstance();
 }
 
 /**
@@ -40,7 +38,8 @@ OMSimSensitiveDetector::OMSimSensitiveDetector(G4String p_name, DetectorType p_d
 
 OMSimSensitiveDetector::~OMSimSensitiveDetector()
 {
-  m_PMTResponse->shutdown();
+  delete m_PMTResponse;
+  m_PMTResponse = nullptr;
 }
 
 /**
@@ -144,7 +143,10 @@ PhotonInfo OMSimSensitiveDetector::getPhotonInfo(G4Step *p_step)
   info.momentumDirection = track->GetMomentumDirection();
   info.deltaPosition = track->GetVertexPosition() - info.globalPosition;
   info.detectorID = atoi(SensitiveDetectorName);
-  info.PMTResponse = m_PMTResponse->processPhotocathodeHit(info.localPosition.x() / mm, info.localPosition.y() / mm, info.wavelength);
+  if (m_PMTResponse)
+    info.PMTResponse = m_PMTResponse->processPhotocathodeHit(info.localPosition.x(), info.localPosition.y(), info.wavelength);
+  else
+    info.PMTResponse = OMSimPMTResponse::PMTPulse({0, 0, 0});
   return info;
 }
 

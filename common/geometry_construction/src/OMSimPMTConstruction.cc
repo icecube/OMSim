@@ -81,57 +81,6 @@ void OMSimPMTConstruction::construction()
     log_trace("Construction of PMT finished");
 }
 
-OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
-{
-    G4String responseData;
-    try
-    {
-        responseData = m_data->getValue<G4String>(m_selectedPMT, "jResponseData");
-    }
-    catch (const boost::property_tree::ptree_bad_path &e)
-    {
-        log_warning("Selected PMT {} has no 'jResponseData' key in json-file. No PMT response will be simulated...", m_selectedPMT);
-        NoResponse::init();
-        return &NoResponse::getInstance();
-    }
-
-    if (responseData == "R15458")
-    {
-        mDOMPMTResponse::init();
-        return &mDOMPMTResponse::getInstance();
-    }
-    else if (responseData == "R7081")
-    {
-        Gen1PMTResponse::init();
-        return &Gen1PMTResponse::getInstance();
-    }
-    else if (responseData == "R5912")
-    {
-        DEGGPMTResponse::init();
-        return &DEGGPMTResponse::getInstance();
-    }
-    else if (responseData == "LOMHama")
-    {
-        LOMHamamatsuResponse::init();
-        return &LOMHamamatsuResponse::getInstance();
-    }
-    else
-    {
-        log_warning("Selected jResponseData '{}' in PMT json-file '{}' has no response class associated. No PMT response will be simulated...", responseData, m_selectedPMT);
-        NoResponse::init();
-        return &NoResponse::getInstance();
-    }
-}
-
-void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *p_detectorConstruction, G4String p_name)
-{
-    log_debug("Configuring PMTs of {} as sensitive detector", p_name);
-    DetectorType detectorType = OMSimCommandArgsTable::getInstance().get<bool>("simple_PMT") ? DetectorType::PerfectPMT : DetectorType::PMT;
-    OMSimSensitiveDetector *sensitiveDetector = new OMSimSensitiveDetector(p_name, detectorType);
-    sensitiveDetector->setPMTResponse(getPMTResponseInstance());
-    p_detectorConstruction->registerSensitiveDetector(m_photocathodeLV, sensitiveDetector);
-}
-
 void OMSimPMTConstruction::constructHAcoating()
 {
     log_trace("Constructing HA coating");
@@ -363,13 +312,11 @@ void OMSimPMTConstruction::readGlobalParameters(G4String p_side)
     m_spherePosY = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jSpherePos_y");
     m_ellipsePosY = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipsePos_y");
     m_sphereEllipseTransition_r = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jSphereEllipseTransition_r");
-    if (p_side != "jPhotocathodeInnerSide")
-    {
-        m_totalLenght = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jTotalLenght");
-        m_tubeWidth = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jTubeWidth");
-        G4double lFrontToEllipse_y = m_outRad + m_spherePosY - m_ellipsePosY;
-        m_missingTubeLength = (m_totalLenght - lFrontToEllipse_y) * 0.5 * mm;
-    }
+    m_totalLenght = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jTotalLenght");
+    m_tubeWidth = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jTubeWidth");
+    G4double lFrontToEllipse_y = m_outRad + m_spherePosY - m_ellipsePosY;
+    m_missingTubeLength = (m_totalLenght - lFrontToEllipse_y) * 0.5 * mm;
+
 }
 
 G4VSolid *OMSimPMTConstruction::frontalBulbConstruction(G4String p_side)
@@ -391,29 +338,6 @@ G4VSolid *OMSimPMTConstruction::frontalBulbConstruction(G4String p_side)
     }
 }
 
-/**
- * Construction of the photocathode layer.
- * @return G4SubtractionSolid
- */
-G4SubtractionSolid *OMSimPMTConstruction::constructPhotocathodeLayer()
-{
-    log_trace("Constructing photocathode layer");
-
-    G4VSolid *innerBoundarySolid = frontalBulbConstruction("jPhotocathodeInnerSide");
-    G4VSolid *outBoundarySolid = frontalBulbConstruction("jInnerShape");
-
-    G4SubtractionSolid *shellSolid = new G4SubtractionSolid("ShellOfFrontalBulb", outBoundarySolid, innerBoundarySolid, 0, G4ThreeVector(0, 0, 0));
-
-    G4Ellipsoid *borderCut = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis - 220 * nm);
-
-    G4Tubs *largeTube = new G4Tubs("LargeTube", 0, 2 * m_ellipseXYaxis, 50 * cm, 0, 2 * CLHEP::pi);
-
-    G4SubtractionSolid *noBorderSolid = new G4SubtractionSolid("SubstractionPhotocathodeSide", shellSolid, borderCut, 0, G4ThreeVector(0, 0, 0));
-    // appendComponent(coatingCut, coatingLogical, G4ThreeVector(0, 0, -m_missingTubeLength), G4RotationMatrix(), "HACoating");
-
-    return new G4SubtractionSolid("SubstractionPhotocathodeSide", noBorderSolid, largeTube, 0, G4ThreeVector(0, 0, -50 * cm));
-    // return new G4SubtractionSolid("SubstractionPhotocathodeSide", outBoundarySolid, largeTube, 0, G4ThreeVector(0, 0, -50 * cm));
-}
 
 /**
  * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphereEllipsePhotocathode were fitted with a sphere and an ellipse.
@@ -476,15 +400,17 @@ G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String p_side)
     G4double ellipseZAxis2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseZaxis_2");
     G4double ellipseYpos2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipsePos_y_2");
 
-    G4double ellipseEllipseTransitionY = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseEllipseTransition_y");
 
     G4Ellipsoid *bulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis);
     G4Ellipsoid *bulbEllipsoid2 = new G4Ellipsoid("Solid Bulb Ellipsoid 2", ellipseXYAxis2, ellipseXYAxis2, ellipseZAxis2);
+    G4cout << m_ellipsePosY << " " << ellipseYpos2 << G4endl;
 
-    G4double excess = ellipseZAxis2 - (ellipseEllipseTransitionY - ellipseYpos2);
+    G4double excess = m_ellipsePosY-ellipseYpos2;
+
     G4Tubs *substractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, ellipseXYAxis2 * 3, ellipseZAxis2, 0, 2 * CLHEP::pi);
     G4SubtractionSolid *substractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", bulbEllipsoid2,
-                                                                           substractionTube, 0, G4ThreeVector(0, 0, -excess));
+                                                                           substractionTube, 0, G4ThreeVector(0, 0, excess-ellipseZAxis2));
+
     G4UnionSolid *bulbSolid = new G4UnionSolid("Solid Bulb", bulbEllipsoid, substractedLargeEllipsoid, 0, G4ThreeVector(0, 0, -m_ellipsePosY + ellipseYpos2));
     return bulbSolid;
 }
@@ -537,7 +463,7 @@ void OMSimPMTConstruction::selectPMT(G4String p_selectedPMT)
 {
     if (p_selectedPMT.substr(0, 6) == "argPMT")
     {
-        const G4String listPMT[] = {"pmt_Hamamatsu_R15458_CAT", "pmt_Hamamatsu_R7081", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100"};
+        const G4String listPMT[] = {"pmt_Hamamatsu_R15458_CT", "pmt_Hamamatsu_R7081", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100"};
         p_selectedPMT = listPMT[OMSimCommandArgsTable::getInstance().get<G4int>("pmt_model")];
     }
 
@@ -576,4 +502,47 @@ G4double OMSimPMTConstruction::getPMTGlassWeight()
         log_warning("PMT table has no bulb weight defined (key jBulbWeight does not exist). Simulation of PMT scintillation cannot be performed!");
         return 0 * kg;
     }
+}
+
+
+
+/**
+ * @brief Creates and configures an instance of OMSimPMTResponse based on PMT model selected.
+ */
+OMSimPMTResponse *OMSimPMTConstruction::getPMTResponseInstance()
+{
+    std::unique_ptr<OMSimPMTResponse> responsePMT = std::make_unique<OMSimPMTResponse>();
+    std::string fileQE = OMSimCommandArgsTable::getInstance().get<std::string>("QE_file");
+    if (fileQE == "default")
+    {
+        if (m_data->checkIfKeyInTree(m_selectedPMT, "jDefaultQEFileName"))
+            fileQE = m_data->getValue<std::string>(m_selectedPMT, "jDefaultQEFileName");
+    }
+    if (fileQE != "default")
+        responsePMT->makeQEInterpolator(fileQE);
+
+    if (m_data->checkIfKeyInTree(m_selectedPMT, "jAbsorbedFractionFileName"))
+        responsePMT->makeQEweightInterpolator(m_data->getValue<std::string>(m_selectedPMT, "jAbsorbedFractionFileName"));
+    if (m_data->checkIfKeyInTree(m_selectedPMT, "jCEweightsFileName"))
+        responsePMT->makeCEweightInterpolator(m_data->getValue<std::string>(m_selectedPMT, "jCEweightsFileName"));
+
+    if (m_data->checkIfKeyInTree(m_selectedPMT, "jScannedWavelengths"))
+    {
+        std::vector<G4double> scannedWavelengths;
+        m_data->parseKeyContentToVector(scannedWavelengths, m_selectedPMT, "jScannedWavelengths", 1.*nm, false);
+        responsePMT->setScannedWavelengths(scannedWavelengths);
+        if ((m_data->checkIfKeyInTree(m_selectedPMT, "jScanDataPath")))
+            responsePMT->makeScansInterpolators(m_data->getValue<std::string>(m_selectedPMT, "jScanDataPath"));
+    }
+
+    return responsePMT.release();
+}
+
+void OMSimPMTConstruction::configureSensitiveVolume(OMSimDetectorConstruction *p_detectorConstruction, G4String p_name)
+{
+    log_debug("Configuring PMTs of {} as sensitive detector", p_name);
+    DetectorType detectorType = OMSimCommandArgsTable::getInstance().get<bool>("simple_PMT") ? DetectorType::PerfectPMT : DetectorType::PMT;
+    OMSimSensitiveDetector *sensitiveDetector = new OMSimSensitiveDetector(p_name, detectorType);
+    sensitiveDetector->setPMTResponse(getPMTResponseInstance());
+    p_detectorConstruction->registerSensitiveDetector(m_photocathodeLV, sensitiveDetector);
 }

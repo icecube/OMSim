@@ -1,9 +1,11 @@
 {
-   "jName": "pmt_Hamamatsu_R15458_CAT",
+   "jName": "pmt_Hamamatsu_R15458_CT",
    "jFrontalShape": "TwoEllipses",
-   "jQEfile": "../common/data/PMTs/QE/mDOM_Hamamatsu_R15458_mean_QE.dat",
-   "jQEMatchingfile": "../common/data/PMTs/QE/mDOM_Hamamatsu_R15458_QE_matching_parameters.dat",
-   "jResponseData" : "R15458",
+   "jDefaultQEFileName": "../common/data/PMTs/measurement_matching_data/QE/mDOM_Hamamatsu_R15458_mean_QE.dat",
+   "jAbsorbedFractionFileName": "../common/data/PMTs/measurement_matching_data/QE/mDOM_Hamamatsu_R15458_CT_intrinsic_QE.dat",
+   "jCEweightsFileName": "../common/data/PMTs/measurement_matching_data/CE_weight/240813_mDOM_Hamamatsu_CAT.dat",
+   "jScanDataPath" : "../common/data/PMTs/measurement_matching_data/scans/R15458/",
+   "jScannedWavelengths": [460, 480, 500, 520, 540, 560, 580, 600, 620, 640],
    "jBulbBackShape": "FullFit",
    "jDynodeCADZ0": {
       "jValue": 54.2, 
@@ -178,48 +180,6 @@
       },
       "jEllipseEllipseTransition_y": {
          "jValue": 43.15546600733366,
-         "jUnit": "mm"
-      }
-   },
-   "jPhotocathodeInnerSide": {
-      "jOutRad": {
-         "jValue": 50.74998,
-         "jUnit": "mm"
-      },
-      "jEllipseXYaxis": {
-         "jValue": 37.87047960594932,
-         "jUnit": "mm"
-      },
-      "jEllipseZaxis": {
-         "jValue": 18.016285135798817,
-         "jUnit": "mm"
-      },
-      "jSphereEllipseTransition_r": {
-         "jValue": 27.723650768764383,
-         "jUnit": "mm"
-      },
-      "jSpherePos_y": {
-         "jValue": -0.010783645107885846,
-         "jUnit": "mm"
-      },
-      "jEllipsePos_y": {
-         "jValue": 32.70727527269426,
-         "jUnit": "mm"
-      },
-      "jEllipseXYaxis_2": {
-         "jValue": 89.37457755820488,
-         "jUnit": "mm"
-      },
-      "jEllipseZaxis_2": {
-         "jValue": 179.687132489712,
-         "jUnit": "mm"
-      },
-      "jEllipsePos_y_2": {
-         "jValue": -125.48879245450442,
-         "jUnit": "mm"
-      },
-      "jEllipseEllipseTransition_y": {
-         "jValue": 46.17334413145984,
          "jUnit": "mm"
       }
    }
