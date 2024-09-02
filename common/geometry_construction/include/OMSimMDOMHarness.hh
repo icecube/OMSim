@@ -4,12 +4,12 @@
  */
 #pragma once
 
-#include "abcDetectorComponent.hh"
+#include "OMSimDetectorComponent.hh"
 #include <G4IntersectionSolid.hh>
 #include <G4Cons.hh>
 
 class mDOM;
-class mDOMHarness : public abcDetectorComponent
+class mDOMHarness : public OMSimDetectorComponent
 {
 public:
     mDOMHarness(mDOM* pMDOM);

@@ -13,7 +13,7 @@
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  */
 
-mDOMFlasher::mDOMFlasher(): abcDetectorComponent() 
+mDOMFlasher::mDOMFlasher(): OMSimDetectorComponent() 
 {
 	construction();
 }

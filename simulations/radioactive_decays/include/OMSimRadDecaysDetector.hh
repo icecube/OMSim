@@ -6,7 +6,7 @@
 #pragma once
 
 #include "OMSimOpticalModule.hh"
-#include "abcDetectorComponent.hh"
+#include "OMSimDetectorComponent.hh"
 #include "OMSimDetectorConstruction.hh"
 
 #include <G4Orb.hh>

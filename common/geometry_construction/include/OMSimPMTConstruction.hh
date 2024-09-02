@@ -5,7 +5,7 @@
  */
 
 #pragma once
-#include "abcDetectorComponent.hh"
+#include "OMSimDetectorComponent.hh"
 #include "OMSimPMTConstruction.hh"
 #include "OMSimPMTResponse.hh"
 //#include "OMSimDetectorConstruction.hh"
@@ -15,7 +15,7 @@
 class OMSimDetectorConstruction;
 
 
-class OMSimPMTConstruction : public abcDetectorComponent
+class OMSimPMTConstruction : public OMSimDetectorComponent
 {
 
 public:

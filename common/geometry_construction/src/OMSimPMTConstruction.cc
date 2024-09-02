@@ -15,7 +15,7 @@
 #include <cmath>
 #include "G4SystemOfUnits.hh"
 
-OMSimPMTConstruction::OMSimPMTConstruction() : abcDetectorComponent()
+OMSimPMTConstruction::OMSimPMTConstruction() : OMSimDetectorComponent()
 {
     m_internalReflections = !OMSimCommandArgsTable::getInstance().get<bool>("simple_PMT");
 }
@@ -107,7 +107,7 @@ void OMSimPMTConstruction::constructHAcoating()
  */
 void OMSimPMTConstruction::placeIt(G4ThreeVector p_position, G4RotationMatrix p_rotation, G4LogicalVolume *&p_mother, G4String p_nameExtension)
 {
-    abcDetectorComponent::placeIt(p_position, p_rotation, p_mother, p_nameExtension);
+    OMSimDetectorComponent::placeIt(p_position, p_rotation, p_mother, p_nameExtension);
 
     new G4LogicalBorderSurface("PhotoGlassToVacuum", m_lastPhysicals["PMT"], m_photocathodeRegionVacuumPhysical, m_photocathodeOpticalSurface);
     new G4LogicalBorderSurface("PhotoVacuumToGlass", m_photocathodeRegionVacuumPhysical, m_lastPhysicals["PMT"], m_photocathodeOpticalSurface);
@@ -125,7 +125,7 @@ void OMSimPMTConstruction::placeIt(G4ThreeVector p_position, G4RotationMatrix p_
  */
 void OMSimPMTConstruction::placeIt(G4Transform3D p_transform, G4LogicalVolume *&p_mother, G4String p_nameExtension)
 {
-    abcDetectorComponent::placeIt(p_transform, p_mother, p_nameExtension);
+    OMSimDetectorComponent::placeIt(p_transform, p_mother, p_nameExtension);
     new G4LogicalBorderSurface("PhotoGlassToVacuum", m_lastPhysicals["PMT"], m_photocathodeRegionVacuumPhysical, m_photocathodeOpticalSurface);
     new G4LogicalBorderSurface("PhotoVacuumToGlass", m_photocathodeRegionVacuumPhysical, m_lastPhysicals["PMT"], m_photocathodeOpticalSurface);
     if (m_internalReflections)

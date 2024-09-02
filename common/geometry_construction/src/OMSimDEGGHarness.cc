@@ -7,7 +7,7 @@
 #include <G4Tubs.hh>
 
 
-DEggHarness::DEggHarness(DEGG *pDEGG): abcDetectorComponent(), m_opticalModule(pDEGG)
+DEggHarness::DEggHarness(DEGG *pDEGG): OMSimDetectorComponent(), m_opticalModule(pDEGG)
 {
     construction();
 }

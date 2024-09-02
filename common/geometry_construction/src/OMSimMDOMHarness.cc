@@ -11,7 +11,7 @@
 #include <G4Polycone.hh>
 #include <G4Torus.hh>
 
-mDOMHarness::mDOMHarness(mDOM *p_MDOM): abcDetectorComponent(), m_opticalModule(p_MDOM)
+mDOMHarness::mDOMHarness(mDOM *p_MDOM): OMSimDetectorComponent(), m_opticalModule(p_MDOM)
 {
     m_totalWidth = m_opticalModule->m_glassOutRad + m_teraThickness + m_padThickness + m_bridgeAddedThickness;
     construction();

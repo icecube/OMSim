@@ -16,7 +16,7 @@ class DEggHarness;
  *
  * The DEGG class is responsible for constructing the D-Egg detector geometry. It creates the pressure
  * vessel, the inner volume, and places the PMTs inside the logical volume of the gel. The class is derived
- * from the `abcDetectorComponent` base class.
+ * from the `OMSimDetectorComponent` base class.
  * @ingroup common
  */
 class DEGG : public OMSimOpticalModule

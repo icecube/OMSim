@@ -2,7 +2,7 @@
 #include "OMSimHitManager.hh"
 #include "OMSimPMTConstruction.hh"
 
-OMSimOpticalModule::OMSimOpticalModule(OMSimPMTConstruction *p_PMTManager) : abcDetectorComponent(), m_managerPMT(p_PMTManager)
+OMSimOpticalModule::OMSimOpticalModule(OMSimPMTConstruction *p_PMTManager) : OMSimDetectorComponent(), m_managerPMT(p_PMTManager)
 {
     log_trace("Constructor of OMSimOpticalModule");
 }

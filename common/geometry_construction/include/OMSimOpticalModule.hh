@@ -9,7 +9,7 @@
  * @ingroup common
  */
 #pragma once
-#include "abcDetectorComponent.hh"
+#include "OMSimDetectorComponent.hh"
 #include "OMSimHitManager.hh"
 #include "OMSimPMTConstruction.hh"
 class OMSimDetectorConstruction;
@@ -19,7 +19,7 @@ class OMSimDetectorConstruction;
  *  @brief Base class for OMs works as interface
  *  @ingroup common
  */
-class OMSimOpticalModule : public abcDetectorComponent
+class OMSimOpticalModule : public OMSimDetectorComponent
 {
 public:
     OMSimOpticalModule(OMSimPMTConstruction* pPMTManager);

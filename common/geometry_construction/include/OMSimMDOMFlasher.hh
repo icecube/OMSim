@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include "abcDetectorComponent.hh"
+#include "OMSimDetectorComponent.hh"
 #include <G4UnionSolid.hh>
 #include <G4Navigator.hh>
 
@@ -41,7 +41,7 @@ struct GlobalPosition
  * activating a specific flasher in a particular module, and configuring the GPS for flasher simulations.
  * @ingroup common
  */
-class mDOMFlasher : public abcDetectorComponent
+class mDOMFlasher : public OMSimDetectorComponent
 {
 public:
     mDOMFlasher();

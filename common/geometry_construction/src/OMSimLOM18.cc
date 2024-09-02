@@ -41,7 +41,7 @@ LOM18::LOM18(G4bool p_placeHarness): OMSimOpticalModule(new OMSimPMTConstruction
 
 
 /**
- * Placement function which appends all components into an abcDetectorComponent to be constructed in DetectorConstruction
+ * Placement function which appends all components into an OMSimDetectorComponent to be constructed in DetectorConstruction
  */
 void LOM18::construction()
 {   
@@ -70,7 +70,7 @@ void LOM18::construction()
 
 
     // ------------------ Add outer shape solid to MultiUnion in case you need substraction -------------------------------------------
-    //Each Component needs to be appended to be places in abcDetectorComponent. Everything is placed in the InnerVolume which is placed in the glass which is the mother volume. This is the reason why not everything is appended on its own
+    //Each Component needs to be appended to be places in OMSimDetectorComponent. Everything is placed in the InnerVolume which is placed in the glass which is the mother volume. This is the reason why not everything is appended on its own
     appendComponent(glassSolid, glassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(m_index));
     appendEquatorBand();
     // ---------------- visualisation attributes --------------------------------------------------------------------------------

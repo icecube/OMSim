@@ -6,10 +6,10 @@
  */
 
 #pragma once
-#include "abcDetectorComponent.hh"
+#include "OMSimDetectorComponent.hh"
 
 class DEGG;
-class DEggHarness : public abcDetectorComponent
+class DEggHarness : public OMSimDetectorComponent
 {
 public:
     DEggHarness(DEGG *pDEGG);

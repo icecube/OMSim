@@ -1,7 +1,7 @@
 
 /**
- * @file abcDetectorComponent.hh
- * @brief Provides helper base class abcDetectorComponent for constructing and managing detector components in OMSim.
+ * @file OMSimDetectorComponent.hh
+ * @brief Provides helper base class OMSimDetectorComponent for constructing and managing detector components in OMSim.
  * @ingroup common
  */
 #pragma once
@@ -14,28 +14,28 @@
 #include <G4PVPlacement.hh>
 
 /**
- *  @class abcDetectorComponent
+ *  @class OMSimDetectorComponent
  *  @brief Abstract base class used for constructing detector components.
  *
  *  @details This class serves as a base class for constructing and manipulating detector components in OMSim. It provides a set of helper functions for creating and arranging components within a detector, as well as methods for altering the geometry, such as subtracting one component from another.  The class maintains an internal list of components, allowing for operations to be performed on all components simultaneously.
- *  The `placeIt` methods allow for the placement of components within a specified logical volume, either via individual positioning and rotation parameters, or via a Geant4 transformation. Furthermore, components from one `abcDetectorComponent` instance can be integrated into another, with user-specified position, rotation, and name extension. This makes it possible to build complex geometrical structures in a modular fashion in cases where a single mother volume cannot be used.
+ *  The `placeIt` methods allow for the placement of components within a specified logical volume, either via individual positioning and rotation parameters, or via a Geant4 transformation. Furthermore, components from one `OMSimDetectorComponent` instance can be integrated into another, with user-specified position, rotation, and name extension. This makes it possible to build complex geometrical structures in a modular fashion in cases where a single mother volume cannot be used.
  *
  *  @ingroup common
  */
-class abcDetectorComponent
+class OMSimDetectorComponent
 {
 public:
-    abcDetectorComponent();
-    virtual void construction() = 0; ///<  Abstract method you have to define in order to make a derived class from abcDetectorComponent
+    OMSimDetectorComponent();
+    virtual void construction() = 0; ///<  Abstract method you have to define in order to make a derived class from OMSimDetectorComponent
 
     OMSimInputData *m_data; ///<  Instance of OMSimInputdata, which should be started only once.
     bool m_checkOverlaps = false;
 
     /**
-     *  @struct abcDetectorComponent::Component
-     *  @brief This struct represents a single detector component within an abcDetectorComponent instance.
+     *  @struct OMSimDetectorComponent::Component
+     *  @brief This struct represents a single detector component within an OMSimDetectorComponent instance.
      *  @details A Component is defined by several properties which specify its physical properties and location within the detector. 
-     *  All operations available in abcDetectorComponent utilize this struct to perform changes to handle all components.
+     *  All operations available in OMSimDetectorComponent utilize this struct to perform changes to handle all components.
      */
     struct Component
     {
@@ -58,7 +58,7 @@ public:
     Component getComponent(G4String pName);
     G4Transform3D getNewPosition(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4ThreeVector pObjectPosition, G4RotationMatrix pObjectRotation);
     
-    void integrateDetectorComponent(abcDetectorComponent *pToIntegrate, G4ThreeVector pPosition, G4RotationMatrix pRotation, G4String pNameExtension);
+    void integrateDetectorComponent(OMSimDetectorComponent *pToIntegrate, G4ThreeVector pPosition, G4RotationMatrix pRotation, G4String pNameExtension);
     void deleteComponent(G4String pName);
 
     void placeIt(G4ThreeVector pPosition, G4RotationMatrix pRotation, G4LogicalVolume *&pMother, G4String pNameExtension = "");
