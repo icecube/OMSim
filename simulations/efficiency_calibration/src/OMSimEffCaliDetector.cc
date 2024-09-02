@@ -54,6 +54,7 @@ void OMSimEffiCaliDetector::constructDetector()
         managerPMT->placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), m_worldLogical, "_0");
         hitManager.setNumberOfPMTs(1, 0);
         managerPMT->configureSensitiveVolume(this, "/PMT/0");
+        log_info("aijdpoijdspogijrdspog {}", managerPMT->getDistancePMTCenterToTip());
         break;
     }
     case 2:

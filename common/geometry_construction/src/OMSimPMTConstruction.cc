@@ -400,12 +400,17 @@ G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String p_side)
     G4double ellipseZAxis2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseZaxis_2");
     G4double ellipseYpos2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipsePos_y_2");
 
+    G4double ellipseEllipseTransitionY = m_ellipsePosY;
+    if(m_data->checkIfKeyInTree(m_selectedPMT, p_side + ".jEllipseEllipseTransition_y"))
+    {
+        ellipseEllipseTransitionY = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseEllipseTransition_y");
+    }
+     
 
     G4Ellipsoid *bulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis);
     G4Ellipsoid *bulbEllipsoid2 = new G4Ellipsoid("Solid Bulb Ellipsoid 2", ellipseXYAxis2, ellipseXYAxis2, ellipseZAxis2);
-    G4cout << m_ellipsePosY << " " << ellipseYpos2 << G4endl;
 
-    G4double excess = m_ellipsePosY-ellipseYpos2;
+    G4double excess = ellipseEllipseTransitionY-ellipseYpos2;
 
     G4Tubs *substractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, ellipseXYAxis2 * 3, ellipseZAxis2, 0, 2 * CLHEP::pi);
     G4SubtractionSolid *substractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", bulbEllipsoid2,
