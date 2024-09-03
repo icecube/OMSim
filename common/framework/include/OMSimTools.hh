@@ -10,6 +10,7 @@
 #include <TGraph.h>
 #include <TH2D.h>
 #include <variant>
+#include <optional>
 /**
  * @namespace Tools
  * @brief A collection of helper functions for numerical operations.
