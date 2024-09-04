@@ -18,6 +18,8 @@ void runQEbeamSimulation()
 	analysisManager.m_outputFileName = args.get<std::string>("output_file") + ".dat";
 
 	std::vector<double> wavelengths = Tools::arange(250, 800, 5);
+	//std::vector<double> wavelengths = Tools::arange(250, 305, 5); //UV range for higher statistics
+
 
 	for (const auto &wavelength : wavelengths)
 	{
@@ -39,9 +41,11 @@ void runXYZfrontalScan()
 	analysisManager.m_outputFileName = args.get<std::string>("output_file") + ".dat";
 	scanner->setWavelength(459);
 
-	std::vector<double> grid = Tools::arange(-41, 42, 1);
+	//std::vector<double> grid = Tools::arange(-41, 42, 1); //mDOM
+    std::vector<double> grid = Tools::arange(-52.8, 52.8, 1.25); //LOM...1.6 in scan but causes two 0 values
 
-	double rLim = 42;
+	//double rLim = 42; //mDOM
+	double rLim = 53; //LOM
 
 	for (const auto &x : grid)
 	{
@@ -67,7 +71,6 @@ void runXYZfrontalScan()
 			hitManager.reset();
 		}
 	}
-
 }
 
 
@@ -83,9 +86,11 @@ void runfrontalXYScannNKT()
 	double wavelength = 459;
 	scanner->setWavelength(wavelength);
 
-	std::vector<double> grid = Tools::arange(-41, 42, 1);
+	//std::vector<double> grid = Tools::arange(-41, 42, 1); //mDOM
+    std::vector<double> grid = Tools::arange(-52.8, 52.8, 1.25); //LOM...1.6 in scan but causes two 0 values
 
-	double rLim = 42;
+	//double rLim = 42; //mDOM
+	double rLim = 53; //LOM
 
 	for (const auto &x : grid)
 	{
@@ -94,6 +99,7 @@ void runfrontalXYScannNKT()
 			if (std::sqrt(x * x + y * y) < rLim)
 			{
 				scanner->runBeamNKTSetup(x, y);
+				//scanner->runBeamPicoQuantSetup(x, y);
 				analysisManager.writePositionPulseStatistics(x, y, wavelength);
 				hitManager.reset();
 			}
@@ -114,13 +120,16 @@ void runfrontalProfileScannNKT()
 	double wavelength = 459;
 	scanner->setWavelength(wavelength);
 
-	std::vector<double> profile = Tools::arange(0, 42, 0.05);
+	//std::vector<double> profile = Tools::arange(0, 42, 0.05); //mDOM
+    std::vector<double> profile = Tools::arange(0, 52.8, 0.1); //LOM...1.6 in scan but causes two 0 values
 
-	double rLim = 42;
+	//double rLim = 42; //mDOM
+	double rLim = 53; //LOM
 
 	for (const auto &x : profile)
 	{
 		scanner->runBeamNKTSetup(x, 0);
+		//scanner->runBeamPicoQuantSetup(x, 0);
 		analysisManager.writePositionStatistics(x, wavelength);
 		hitManager.reset();
 	}

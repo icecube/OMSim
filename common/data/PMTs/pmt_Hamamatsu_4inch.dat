@@ -1,6 +1,11 @@
 {
    "jName": "pmt_Hamamatsu_4inch",
    "jFrontalShape": "SphereEllipse",
+   "jDefaultQEFileName": "../common/data/PMTs/measurement_matching_data/QE/LOM_Hamamatsu_4inch_mean_QE.dat",
+   "jAbsorbedFractionFileName": "../common/data/PMTs/measurement_matching_data/QE/LOM_Hamamatsu_4inch_intrinsic_QE.dat",
+   "jCEweightsFileName": "../common/data/PMTs/measurement_matching_data/CE_weight/240903_LOM_Hamamatsu_4inch.dat",
+   "jScanDataPath" : "../common/data/PMTs/measurement_matching_data/scans/4inch/",
+   "jScannedWavelengths": [459],
    "jResponseData" : "LOMHama",
    "jBulbBackShape": "jFullFit",
    "jDynodeCADZ0": {

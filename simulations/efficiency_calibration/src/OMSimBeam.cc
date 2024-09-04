@@ -43,7 +43,8 @@ void Beam::configureXYZScan_NKTLaser()
 void Beam::runBeamNKTSetup(G4double p_x, G4double p_y)
 {
     double z = m_zCorrection->Eval(std::sqrt(p_x*p_x+p_y*p_y));
-    if (z<4.8) { z = 4.8;}
+    //if (z<4.8) { z = 4.8;} //mDOM
+    if (z<6.9) { z = 6.9;} //LOM
     configureXYZScan_NKTLaser();
 
     OMSimUIinterface &ui = OMSimUIinterface::getInstance();
@@ -69,6 +70,7 @@ void Beam::configureErlangenQESetup()
     ui.applyCommand("/gps/pos/radius 5 mm");
     ui.applyCommand("/gps/ang/type focused");
     ui.applyCommand("/gps/ang/focuspoint 0 0 279.5 mm");
+    //ui.applyCommand("/gps/ang/focuspoint 0 0 480 mm"); //Rough Münster QE setup
     
 
     ui.applyCommand("/gps/pos/rot1 0 1 0");
@@ -92,7 +94,8 @@ void Beam::runErlangenQEBeam()
 
 void Beam::configureZCorrection_PicoQuant()
 {
-    m_zCorrection = new TGraph("../common/data/PMTs/measurement_matching_data/setup_stuff/mDOMPMT_PicoQuant_Scan_Zcorrection.txt");
+    //m_zCorrection = new TGraph("../common/data/PMTs/measurement_matching_data/setup_stuff/mDOMPMT_PicoQuant_Scan_Zcorrection.txt");
+    m_zCorrection = new TGraph("../common/data/PMTs/measurement_matching_data/setup_stuff/LOMPMT_PicoQuant_Scan_Zcorrection.txt");
     m_zCorrection->SetName("Zcorrection");
 }
 
@@ -123,7 +126,9 @@ void Beam::configureXYZScan_PicoQuantSetup()
 void Beam::runBeamPicoQuantSetup(G4double p_x, G4double p_y)
 {
     double z = m_zCorrection->Eval(std::sqrt(p_x*p_x+p_y*p_y));
-    if (z<4.8) { z = 4.8;}
+    //if (z<4.8) { z = 4.8;} //mDOM
+    if (z<6.9) { z = 6.9;} //LOM
+    
     configureXYZScan_PicoQuantSetup();
 
     OMSimUIinterface &ui = OMSimUIinterface::getInstance();

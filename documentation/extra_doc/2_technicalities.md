@@ -168,7 +168,7 @@ Here the results of the mDOM PMT including its mean QE as comparison:
 </div>
 </div>
 
-> **Note**: Ensure that the QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass!
+> **Note**: Ensure that the (interpolated) QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass!
 
 If everything looks good, save the file (in the example above `mDOM_Hamamatsu_R15458_CT_intrinsic_QE.dat`) in `common/data/PMTs/measurement_matching_data/QE/` and move to step 2.
 
@@ -210,8 +210,15 @@ plt.legend()
 The next step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.
 
  - As before, we have to simulate the beam used during the scan measurement (see for example `Beam::configureXYZScan_PicoQuantSetup` and `Beam::runBeamPicoQuantSetup` for the beam used in Münster)
+ - In common/data/PMTs/measurement_matching_data/setup_stuff you will find the radius vs distance file from the measurement which you might need to adjust (e.g. newz = z[-1] - z + getDistancePMTCenterToTip() your PMT - getDistancePMTCenterToTip() mDOM PMT) - see mDOM PMT file for reference. Make sure to use this file in 'configureZCorrection_PicoQuant' under 'simulations/efficiency_calibration/src/OMSimBeam.cc'. Under 'Beam::runBeamPicoQuantSetup' change the minimal distance (if (z<4.8) { z = 4.8;}).
  - In in `runXYZfrontalScan()` of `OMSim_efficiency_calibration.cc` change the scan range (`grid` vector) and radius limit (`rLim`) according to the diameter of your PMT
  - Also adjust the binning of the output histogram in `OMSimEffiCaliAnalyisis::writeHitPositionHistogram`
+ - You can check if the distance is correct by running the following command and including e.g. scanner->runBeamPicoQuantSetup(0, 0); in 'runXYZfrontalScan()'
+ ```bash
+./OMSim_efficiency_calibration --detector_type 1 --pmt_model 0 -v --simulation_step 3 --simple_PMT
+/vis/scene/add/axes 0 0 0 30 mm #example
+/run/beamOn 10
+```
  - Run the XY grid simulation. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want
  ```bash
 ./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 3 -n 10000 --threads 4 --output_file step3 --detector_type 1
@@ -227,12 +234,13 @@ The next step is to create the collection efficiency weights to match the relati
 The scan data of transit time / gain must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-glass boundary refracts the beam. 
 
  - As before, we have to simulate the beam used during the scan measurement. 
+ - Change the profile vector and rLim in `runfrontalProfileScannNKT()` under `simulations/efficiency_calibration/OMSim_efficiency_calibration.cc`
  - Run the XY grid simulation **using the simple PMT**, check the function being used under step 4
 
 ```bash
 ./OMSim_efficiency_calibration --simple_PMT --pmt_model 0 --simulation_step 4 -n 100000 --threads 4 --output_file step4 --detector_type 1
 ```
- - Follow the analysis in the notebook `documentation/notebooks/scans_matching/` and save the created files in `common/data/PMTs/measurement_matching_data/scans/`.  Note that OMSim expects a naming convention for these files (see `OMSimPMTResponse::configureScansInterpolator`).
+ - Follow the analysis in the notebook `documentation/notebooks/scans_matching/` and save the created files in `common/data/PMTs/measurement_matching_data/scans/`.  Note that OMSim expects a naming convention for these files (see `OMSimPMTResponse::makeScansInterpolators`).
  - Add the vector with scanned wavelengths in PMT file with the key `jScannedWavelengths` and add the path with the newly created scan files under the key `jScanDataPath` (check  `pmt_Hamamatsu_R15458_CAT.dat` for guidance).
  - Run the simulation in step 5 (modify method before accordingly) to check the output with the newly introduced files
 
@@ -240,7 +248,7 @@ The scan data of transit time / gain must be corrected before use, as the coordi
 ./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 5 -n 10000 --threads 4 --output_file step5 --detector_type 1
 ```
 
-If you need to add more parameters (for example low gain probability, which is also photocathode position dependent and yet to be implemented), you will have to add a new interpolator map and `OMSimPMTResponse::configureScansInterpolator` accordingly.
+If you need to add more parameters (for example low gain probability, which is also photocathode position dependent and yet to be implemented), you will have to add a new interpolator map and `OMSimPMTResponse::makeScansInterpolators` accordingly.
 
 ---
 ---
