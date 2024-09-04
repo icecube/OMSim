@@ -20,7 +20,7 @@ Collaboration diagram for OMSim\+Hit\+Manager\+:
 \doxysubsection{Detailed Description}
 Stores, manages, and provides access information related to detected photons across multiple optical modules. The manager uses a global instance pattern, ensuring a unified access point for photon hit data. Its lifecycle is managed by the \mbox{\hyperlink{class_o_m_sim}{OMSim}} class.
 
-The hits are stored using \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_hit_manager_a8c2dab4767b46f9c2eb16d5173ba527e}{OMSim\+Hit\+Manager\+::append\+Hit\+Info}}\textquotesingle{}. The analysis manager of each study is in charge of writing the stored information into a file (see for example \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a7ef0a66e08c129142dc841ed2f51c43a}{OMSim\+Effective\+Area\+Analyisis\+::write\+Scan}}\textquotesingle{} or \textquotesingle{}OMSim\+Decays\+Analysis\+::write\+Hit\+Information\textquotesingle{}). If the simulation will continue after the data is written, do not forget calling \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}{OMSim\+Hit\+Manager\+::reset}}\textquotesingle{}!. \doxysubsection*{Classes}
+The hits are stored using \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_hit_manager_aaf4ca3c29c6dbe8721aaafd4fd39d436}{OMSim\+Hit\+Manager\+::append\+Hit\+Info}}\textquotesingle{}. The analysis manager of each study is in charge of writing the stored information into a file (see for example \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a7ef0a66e08c129142dc841ed2f51c43a}{OMSim\+Effective\+Area\+Analyisis\+::write\+Scan}}\textquotesingle{} or \textquotesingle{}OMSim\+Decays\+Analysis\+::write\+Hit\+Information\textquotesingle{}). If the simulation will continue after the data is written, do not forget calling \textquotesingle{}\mbox{\hyperlink{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}{OMSim\+Hit\+Manager\+::reset}}\textquotesingle{}!. \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_o_m_sim_hit_manager_1_1_thread_local_data}{Thread\+Local\+Data}}
@@ -28,7 +28,7 @@ struct \mbox{\hyperlink{struct_o_m_sim_hit_manager_1_1_thread_local_data}{Thread
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_o_m_sim_hit_manager_a8c2dab4767b46f9c2eb16d5173ba527e}{append\+Hit\+Info}} (G4double p\+Global\+Time, G4double p\+Local\+Time, G4double p\+Track\+Length, G4double p\+Energy, G4int p\+PMTHit\+Number, G4\+Three\+Vector p\+Momentum\+Direction, G4\+Three\+Vector p\+Global\+Pos, G4\+Three\+Vector p\+Local\+Pos, G4double p\+Distance, \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} p\+Response, G4int p\+Module\+Index=0)
+void \mbox{\hyperlink{class_o_m_sim_hit_manager_aaf4ca3c29c6dbe8721aaafd4fd39d436}{append\+Hit\+Info}} (G4int p\+\_\+eventid, G4double p\+Global\+Time, G4double p\+Local\+Time, G4double p\+Track\+Length, G4double p\+Energy, G4int p\+PMTHit\+Number, G4\+Three\+Vector p\+Momentum\+Direction, G4\+Three\+Vector p\+Global\+Pos, G4\+Three\+Vector p\+Local\+Pos, G4double p\+Distance, \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} p\+Response, G4int p\+Module\+Index=0)
 \begin{DoxyCompactList}\small\item\em Appends hit information for a detected photon to the corresponding module\textquotesingle{}s hit data. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}\label{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}} 
 void \mbox{\hyperlink{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}{reset}} ()
@@ -105,11 +105,11 @@ static G4\+Thread\+Local \mbox{\hyperlink{struct_o_m_sim_hit_manager_1_1_thread_
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_hit_manager_a8c2dab4767b46f9c2eb16d5173ba527e}\label{class_o_m_sim_hit_manager_a8c2dab4767b46f9c2eb16d5173ba527e}} 
+\mbox{\Hypertarget{class_o_m_sim_hit_manager_aaf4ca3c29c6dbe8721aaafd4fd39d436}\label{class_o_m_sim_hit_manager_aaf4ca3c29c6dbe8721aaafd4fd39d436}} 
 \index{OMSimHitManager@{OMSimHitManager}!appendHitInfo@{appendHitInfo}}
 \index{appendHitInfo@{appendHitInfo}!OMSimHitManager@{OMSimHitManager}}
 \doxysubsubsection{\texorpdfstring{appendHitInfo()}{appendHitInfo()}}
-{\footnotesize\ttfamily void OMSim\+Hit\+Manager\+::append\+Hit\+Info (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+global\+Time,  }\item[{G4double}]{p\+\_\+local\+Time,  }\item[{G4double}]{p\+\_\+track\+Length,  }\item[{G4double}]{p\+\_\+energy,  }\item[{G4int}]{p\+\_\+\+PMTHit\+Number,  }\item[{G4\+Three\+Vector}]{p\+\_\+momentum\+Direction,  }\item[{G4\+Three\+Vector}]{p\+\_\+global\+Pos,  }\item[{G4\+Three\+Vector}]{p\+\_\+local\+Pos,  }\item[{G4double}]{p\+\_\+distance,  }\item[{\mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}}}]{p\+\_\+response,  }\item[{G4int}]{p\+\_\+module\+Number = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+Hit\+Manager\+::append\+Hit\+Info (\begin{DoxyParamCaption}\item[{G4int}]{p\+\_\+eventid,  }\item[{G4double}]{p\+\_\+global\+Time,  }\item[{G4double}]{p\+\_\+local\+Time,  }\item[{G4double}]{p\+\_\+track\+Length,  }\item[{G4double}]{p\+\_\+energy,  }\item[{G4int}]{p\+\_\+\+PMTHit\+Number,  }\item[{G4\+Three\+Vector}]{p\+\_\+momentum\+Direction,  }\item[{G4\+Three\+Vector}]{p\+\_\+global\+Pos,  }\item[{G4\+Three\+Vector}]{p\+\_\+local\+Pos,  }\item[{G4double}]{p\+\_\+distance,  }\item[{\mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}}}]{p\+\_\+response,  }\item[{G4int}]{p\+\_\+module\+Number = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 This method appends hit information to the corresponding module\textquotesingle{}s {\ttfamily \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}}} structure in the manager. If the specified module number is not yet in the manager, a new {\ttfamily \mbox{\hyperlink{struct_hit_stats}{Hit\+Stats}}} structure is created for it.
 

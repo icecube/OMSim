@@ -2,6 +2,7 @@ var struct_photon_info =
 [
     [ "deltaPosition", "struct_photon_info.html#a1bbbf9b8b9f55898a98f6da0cb8972f0", null ],
     [ "detectorID", "struct_photon_info.html#ad6ed8e117168b3f741793572bde83b18", null ],
+    [ "eventID", "struct_photon_info.html#a44bce76bf7aad156523f10d4aa58ee5e", null ],
     [ "globalPosition", "struct_photon_info.html#a54890230d7b73b50210ae32d3d3f8785", null ],
     [ "globalTime", "struct_photon_info.html#a046d8a141ff4cadbafba5b077adf205e", null ],
     [ "kineticEnergy", "struct_photon_info.html#a20a8691860c91f4dcd139524c3f262e8", null ],

@@ -136,7 +136,7 @@ Collaboration diagram for OMSimHitManager:</div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stores, manages, and provides access information related to detected photons across multiple optical modules. The manager uses a global instance pattern, ensuring a unified access point for photon hit data. Its lifecycle is managed by the <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> class.</p>
-<p>The hits are stored using '<a class="el" href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e" title="Appends hit information for a detected photon to the corresponding module&#39;s hit data.">OMSimHitManager::appendHitInfo</a>'. The analysis manager of each study is in charge of writing the stored information into a file (see for example '<a class="el" href="class_o_m_sim_effective_area_analyisis.html#a7ef0a66e08c129142dc841ed2f51c43a" title="Writes a scan result to the output file.">OMSimEffectiveAreaAnalyisis::writeScan</a>' or 'OMSimDecaysAnalysis::writeHitInformation'). If the simulation will continue after the data is written, do not forget calling '<a class="el" href="class_o_m_sim_hit_manager.html#a00bb034e7751905f8a8229de3f8a39b1" title="Deletes hit information in memory for all modules.">OMSimHitManager::reset</a>'!. </p>
+<p>The hits are stored using '<a class="el" href="class_o_m_sim_hit_manager.html#aaf4ca3c29c6dbe8721aaafd4fd39d436" title="Appends hit information for a detected photon to the corresponding module&#39;s hit data.">OMSimHitManager::appendHitInfo</a>'. The analysis manager of each study is in charge of writing the stored information into a file (see for example '<a class="el" href="class_o_m_sim_effective_area_analyisis.html#a7ef0a66e08c129142dc841ed2f51c43a" title="Writes a scan result to the output file.">OMSimEffectiveAreaAnalyisis::writeScan</a>' or 'OMSimDecaysAnalysis::writeHitInformation'). If the simulation will continue after the data is written, do not forget calling '<a class="el" href="class_o_m_sim_hit_manager.html#a00bb034e7751905f8a8229de3f8a39b1" title="Deletes hit information in memory for all modules.">OMSimHitManager::reset</a>'!. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -145,9 +145,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8c2dab4767b46f9c2eb16d5173ba527e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">appendHitInfo</a> (G4double pGlobalTime, G4double pLocalTime, G4double pTrackLength, G4double pEnergy, G4int pPMTHitNumber, G4ThreeVector pMomentumDirection, G4ThreeVector pGlobalPos, G4ThreeVector pLocalPos, G4double pDistance, <a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html">OMSimPMTResponse::PMTPulse</a> pResponse, G4int pModuleIndex=0)</td></tr>
-<tr class="memdesc:a8c2dab4767b46f9c2eb16d5173ba527e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends hit information for a detected photon to the corresponding module's hit data.  <a href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">More...</a><br /></td></tr>
-<tr class="separator:a8c2dab4767b46f9c2eb16d5173ba527e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf4ca3c29c6dbe8721aaafd4fd39d436"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#aaf4ca3c29c6dbe8721aaafd4fd39d436">appendHitInfo</a> (G4int p_eventid, G4double pGlobalTime, G4double pLocalTime, G4double pTrackLength, G4double pEnergy, G4int pPMTHitNumber, G4ThreeVector pMomentumDirection, G4ThreeVector pGlobalPos, G4ThreeVector pLocalPos, G4double pDistance, <a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html">OMSimPMTResponse::PMTPulse</a> pResponse, G4int pModuleIndex=0)</td></tr>
+<tr class="memdesc:aaf4ca3c29c6dbe8721aaafd4fd39d436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends hit information for a detected photon to the corresponding module's hit data.  <a href="class_o_m_sim_hit_manager.html#aaf4ca3c29c6dbe8721aaafd4fd39d436">More...</a><br /></td></tr>
+<tr class="separator:aaf4ca3c29c6dbe8721aaafd4fd39d436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00bb034e7751905f8a8229de3f8a39b1"><td class="memItemLeft" align="right" valign="top"><a id="a00bb034e7751905f8a8229de3f8a39b1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a00bb034e7751905f8a8229de3f8a39b1">reset</a> ()</td></tr>
 <tr class="memdesc:a00bb034e7751905f8a8229de3f8a39b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes hit information in memory for all modules. <br /></td></tr>
@@ -233,8 +233,8 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 <tr class="separator:a1316fe3b0b60dbb1e4b06ef336f2ba41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8c2dab4767b46f9c2eb16d5173ba527e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c2dab4767b46f9c2eb16d5173ba527e">&#9670;&nbsp;</a></span>appendHitInfo()</h2>
+<a id="aaf4ca3c29c6dbe8721aaafd4fd39d436"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf4ca3c29c6dbe8721aaafd4fd39d436">&#9670;&nbsp;</a></span>appendHitInfo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -242,6 +242,12 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
         <tr>
           <td class="memname">void OMSimHitManager::appendHitInfo </td>
           <td>(</td>
+          <td class="paramtype">G4int&#160;</td>
+          <td class="paramname"><em>p_eventid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">G4double&#160;</td>
           <td class="paramname"><em>p_globalTime</em>, </td>
         </tr>
@@ -614,7 +620,7 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></li>
-    <li class="footer">Generated on Tue Sep 3 2024 12:07:51 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Sep 4 2024 10:13:19 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

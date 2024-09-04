@@ -4,7 +4,7 @@ var class_o_m_sim_hit_manager =
     [ "OMSimHitManager", "class_o_m_sim_hit_manager.html#a5cec10e41685343e1549768995f137e6", null ],
     [ "~OMSimHitManager", "class_o_m_sim_hit_manager.html#ab65c1cbe54f5bdd1261635428dc3f9cf", null ],
     [ "OMSimHitManager", "class_o_m_sim_hit_manager.html#a588ee2ee380c68a3a4904e2bab762268", null ],
-    [ "appendHitInfo", "class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e", null ],
+    [ "appendHitInfo", "class_o_m_sim_hit_manager.html#aaf4ca3c29c6dbe8721aaafd4fd39d436", null ],
     [ "areThereHitsInModuleSingleThread", "class_o_m_sim_hit_manager.html#a80e97d87c4e35e25870523939e458817", null ],
     [ "calculateMultiplicity", "class_o_m_sim_hit_manager.html#a01638ba2c16fcde1244b90e9672425c0", null ],
     [ "countMergedHits", "class_o_m_sim_hit_manager.html#a954b4f28a89275da58d4e2e3328d1467", null ],

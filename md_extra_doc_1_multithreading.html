@@ -206,7 +206,7 @@ Example: OMSimHitManager</h2>
 <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div>
 <div class="line">{</div>
 <div class="line"><span class="keyword">public</span>:</div>
-<div class="line">    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">appendHitInfo</a>(<span class="comment">/* parameters */</span>);</div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_hit_manager.html#aaf4ca3c29c6dbe8721aaafd4fd39d436">appendHitInfo</a>(<span class="comment">/* parameters */</span>);</div>
 <div class="line">    <span class="keywordtype">void</span> mergeThreadData();</div>
 <div class="line">    <span class="comment">// ... other methods ...</span></div>
 <div class="line"> </div>
@@ -221,13 +221,13 @@ Example: OMSimHitManager</h2>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// ... </span></div>
 <div class="line">};</div>
-<div class="ttc" id="aclass_o_m_sim_hit_manager_html_a8c2dab4767b46f9c2eb16d5173ba527e"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">OMSimHitManager::appendHitInfo</a></div><div class="ttdeci">void appendHitInfo(G4double pGlobalTime, G4double pLocalTime, G4double pTrackLength, G4double pEnergy, G4int pPMTHitNumber, G4ThreeVector pMomentumDirection, G4ThreeVector pGlobalPos, G4ThreeVector pLocalPos, G4double pDistance, OMSimPMTResponse::PMTPulse pResponse, G4int pModuleIndex=0)</div><div class="ttdoc">Appends hit information for a detected photon to the corresponding module's hit data.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:99</div></div>
+<div class="ttc" id="aclass_o_m_sim_hit_manager_html_aaf4ca3c29c6dbe8721aaafd4fd39d436"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#aaf4ca3c29c6dbe8721aaafd4fd39d436">OMSimHitManager::appendHitInfo</a></div><div class="ttdeci">void appendHitInfo(G4int p_eventid, G4double pGlobalTime, G4double pLocalTime, G4double pTrackLength, G4double pEnergy, G4int pPMTHitNumber, G4ThreeVector pMomentumDirection, G4ThreeVector pGlobalPos, G4ThreeVector pLocalPos, G4double pDistance, OMSimPMTResponse::PMTPulse pResponse, G4int pModuleIndex=0)</div><div class="ttdoc">Appends hit information for a detected photon to the corresponding module's hit data.</div><div class="ttdef"><b>Definition:</b> OMSimHitManager.cc:99</div></div>
 </div><!-- fragment --><p>Key features:</p><ul>
 <li>Thread-local storage for hit data (<code>m_threadData</code>), each thread will start one</li>
 <li>Mutex (<code>m_mutex</code>) for thread synchronization.</li>
 </ul>
 <p>The <code>appendHitInfo</code> method is used by all threads and uses to the thread-local <code>m_threadData</code>:</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_hit_manager.html#a8c2dab4767b46f9c2eb16d5173ba527e">OMSimHitManager::appendHitInfo</a>(<span class="comment">/* parameters */</span>)</div>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code" href="class_o_m_sim_hit_manager.html#aaf4ca3c29c6dbe8721aaafd4fd39d436">OMSimHitManager::appendHitInfo</a>(<span class="comment">/* parameters */</span>)</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordflow">if</span> (!m_threadData)</div>
 <div class="line">    {</div>
@@ -385,7 +385,7 @@ Troubleshooting Multi-threading Issues</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Sep 3 2024 12:07:51 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Sep 4 2024 10:13:19 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
