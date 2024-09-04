@@ -191,7 +191,7 @@ To obtain the fraction I just run this python code\+:
   
 
 \begin{quote}
-{\bfseries{Note}}\+: Ensure that the QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! \end{quote}
+{\bfseries{Note}}\+: Ensure that the (interpolated) QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! \end{quote}
 If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra_doc_2_technicalities_autotoc_md37}{}\doxysubsection{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}\label{md_extra_doc_2_technicalities_autotoc_md37}
 Add the path to the created file in your PMT file under the key {\ttfamily j\+Absorbed\+Fraction\+File\+Name} and also a default QE file under the key {\ttfamily j\+Default\+QEFile\+Name} (check {\ttfamily pmt\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT.\+dat} for guidance).
 
@@ -229,8 +229,17 @@ The next step is to create the collection efficiency weights to match the relati
 
 \begin{DoxyItemize}
 \item As before, we have to simulate the beam used during the scan measurement (see for example {\ttfamily Beam\+::configure\+XYZScan\+\_\+\+Pico\+Quant\+Setup} and {\ttfamily Beam\+::run\+Beam\+Pico\+Quant\+Setup} for the beam used in Münster)
+\item In common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/setup\+\_\+stuff you will find the radius vs distance file from the measurement which you might need to adjust (e.\+g. newz = z\mbox{[}-\/1\mbox{]} -\/ z + get\+Distance\+PMTCenter\+To\+Tip() your PMT -\/ get\+Distance\+PMTCenter\+To\+Tip() \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT) -\/ see \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT file for reference. Make sure to use this file in \textquotesingle{}configure\+ZCorrection\+\_\+\+Pico\+Quant\textquotesingle{} under \textquotesingle{}simulations/efficiency\+\_\+calibration/src/\+OMSim\+Beam.\+cc\textquotesingle{}. Under \textquotesingle{}Beam\+::run\+Beam\+Pico\+Quant\+Setup\textquotesingle{} change the minimal distance (if (z$<$4.\+8) \{ z = 4.\+8;\}).
 \item In in {\ttfamily run\+XYZfrontal\+Scan()} of {\ttfamily OMSim\+\_\+efficiency\+\_\+calibration.\+cc} change the scan range ({\ttfamily grid} vector) and radius limit ({\ttfamily r\+Lim}) according to the diameter of your PMT
 \item Also adjust the binning of the output histogram in {\ttfamily OMSim\+Effi\+Cali\+Analyisis\+::write\+Hit\+Position\+Histogram}
+\item You can check if the distance is correct by running the following command and including e.\+g. scanner-\/$>$run\+Beam\+Pico\+Quant\+Setup(0, 0); in \textquotesingle{}run\+XYZfrontal\+Scan()\textquotesingle{} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/detector\_type 1 -\/-\/pmt\_model 0 -\/v -\/-\/simulation\_step 3 -\/-\/simple\_PMT}
+\DoxyCodeLine{/vis/scene/add/axes 0 0 0 30 mm \#example}
+\DoxyCodeLine{/run/beamOn 10}
+
+\end{DoxyCode}
+
 \item Run the XY grid simulation. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{./OMSim\_efficiency\_calibration -\/-\/pmt\_model 0 -\/-\/simulation\_step 3 -\/n 10000 -\/-\/threads 4 -\/-\/output\_file step3 -\/-\/detector\_type 1}
@@ -247,6 +256,7 @@ The scan data of transit time / gain must be corrected before use, as the coordi
 
 \begin{DoxyItemize}
 \item As before, we have to simulate the beam used during the scan measurement.
+\item Change the profile vector and r\+Lim in {\ttfamily runfrontal\+Profile\+Scann\+NKT()} under {\ttfamily simulations/efficiency\+\_\+calibration/\+OMSim\+\_\+efficiency\+\_\+calibration.\+cc}
 \item Run the XY grid simulation {\bfseries{using the simple PMT}}, check the function being used under step 4
 \end{DoxyItemize}
 
@@ -257,7 +267,7 @@ The scan data of transit time / gain must be corrected before use, as the coordi
 \end{DoxyCode}
 
 \begin{DoxyItemize}
-\item Follow the analysis in the notebook {\ttfamily documentation/notebooks/scans\+\_\+matching/} and save the created files in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/scans/}. Note that \mbox{\hyperlink{class_o_m_sim}{OMSim}} expects a naming convention for these files (see {\ttfamily OMSim\+PMTResponse\+::configure\+Scans\+Interpolator}).
+\item Follow the analysis in the notebook {\ttfamily documentation/notebooks/scans\+\_\+matching/} and save the created files in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/scans/}. Note that \mbox{\hyperlink{class_o_m_sim}{OMSim}} expects a naming convention for these files (see {\ttfamily OMSim\+PMTResponse\+::make\+Scans\+Interpolators}).
 \item Add the vector with scanned wavelengths in PMT file with the key {\ttfamily j\+Scanned\+Wavelengths} and add the path with the newly created scan files under the key {\ttfamily j\+Scan\+Data\+Path} (check {\ttfamily pmt\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT.\+dat} for guidance).
 \item Run the simulation in step 5 (modify method before accordingly) to check the output with the newly introduced files
 \end{DoxyItemize}
@@ -269,7 +279,7 @@ The scan data of transit time / gain must be corrected before use, as the coordi
 \end{DoxyCode}
 
 
-If you need to add more parameters (for example low gain probability, which is also photocathode position dependent and yet to be implemented), you will have to add a new interpolator map and {\ttfamily OMSim\+PMTResponse\+::configure\+Scans\+Interpolator} accordingly.
+If you need to add more parameters (for example low gain probability, which is also photocathode position dependent and yet to be implemented), you will have to add a new interpolator map and {\ttfamily OMSim\+PMTResponse\+::make\+Scans\+Interpolators} accordingly.
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}

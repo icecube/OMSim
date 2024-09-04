@@ -282,7 +282,7 @@ Step 1: Fraction of absorbed photons</h2>
 </div><!-- fragment --><p> Here the results of the <a class="el" href="classm_d_o_m.html">mDOM</a> PMT including its mean QE as comparison:</p>
 <div style="width: 100%; text-align: center;"> <img src="step1_results_mdom.png" alt="" width="450" height="320" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
  </div> </div><blockquote class="doxtable">
-<p><b>Note</b>: Ensure that the QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! </p>
+<p><b>Note</b>: Ensure that the (interpolated) QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! </p>
 </blockquote>
 <p>If everything looks good, save the file (in the example above <code>mDOM_Hamamatsu_R15458_CT_intrinsic_QE.dat</code>) in <code>common/data/PMTs/measurement_matching_data/QE/</code> and move to step 2.</p>
 <h2><a class="anchor" id="autotoc_md37"></a>
@@ -308,8 +308,13 @@ Step 3: Matching detection efficiency scan</h2>
 <p>The next step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.</p>
 <ul>
 <li>As before, we have to simulate the beam used during the scan measurement (see for example <code>Beam::configureXYZScan_PicoQuantSetup</code> and <code>Beam::runBeamPicoQuantSetup</code> for the beam used in Münster)</li>
+<li>In common/data/PMTs/measurement_matching_data/setup_stuff you will find the radius vs distance file from the measurement which you might need to adjust (e.g. newz = z[-1] - z + getDistancePMTCenterToTip() your PMT - getDistancePMTCenterToTip() <a class="el" href="classm_d_o_m.html">mDOM</a> PMT) - see <a class="el" href="classm_d_o_m.html">mDOM</a> PMT file for reference. Make sure to use this file in 'configureZCorrection_PicoQuant' under 'simulations/efficiency_calibration/src/OMSimBeam.cc'. Under 'Beam::runBeamPicoQuantSetup' change the minimal distance (if (z&lt;4.8) { z = 4.8;}).</li>
 <li>In in <code>runXYZfrontalScan()</code> of <code>OMSim_efficiency_calibration.cc</code> change the scan range (<code>grid</code> vector) and radius limit (<code>rLim</code>) according to the diameter of your PMT</li>
 <li>Also adjust the binning of the output histogram in <code>OMSimEffiCaliAnalyisis::writeHitPositionHistogram</code></li>
+<li>You can check if the distance is correct by running the following command and including e.g. scanner-&gt;runBeamPicoQuantSetup(0, 0); in 'runXYZfrontalScan()' <div class="fragment"><div class="line">./OMSim_efficiency_calibration --detector_type 1 --pmt_model 0 -v --simulation_step 3 --simple_PMT</div>
+<div class="line">/vis/scene/add/axes 0 0 0 30 mm #example</div>
+<div class="line">/run/beamOn 10</div>
+</div><!-- fragment --></li>
 <li>Run the XY grid simulation. 10000 photons per grid position should be enough, but you may increase / decrease statistics as you want <div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 3 -n 10000 --threads 4 --output_file step3 --detector_type 1</div>
 </div><!-- fragment --></li>
 <li>Fit the weights using simulation data. The analysis done for the <a class="el" href="classm_d_o_m.html">mDOM</a> can be found in the notebook located in <code>documentation/notebooks/detection_efficiency_matching/</code>.</li>
@@ -322,16 +327,17 @@ Step 4: Matching gain / transit time scans</h2>
 <p>The scan data of transit time / gain must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-glass boundary refracts the beam.</p>
 <ul>
 <li>As before, we have to simulate the beam used during the scan measurement.</li>
+<li>Change the profile vector and rLim in <code>runfrontalProfileScannNKT()</code> under <code>simulations/efficiency_calibration/OMSim_efficiency_calibration.cc</code></li>
 <li>Run the XY grid simulation <b>using the simple PMT</b>, check the function being used under step 4</li>
 </ul>
 <div class="fragment"><div class="line">./OMSim_efficiency_calibration --simple_PMT --pmt_model 0 --simulation_step 4 -n 100000 --threads 4 --output_file step4 --detector_type 1</div>
 </div><!-- fragment --><ul>
-<li>Follow the analysis in the notebook <code>documentation/notebooks/scans_matching/</code> and save the created files in <code>common/data/PMTs/measurement_matching_data/scans/</code>. Note that <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> expects a naming convention for these files (see <code>OMSimPMTResponse::configureScansInterpolator</code>).</li>
+<li>Follow the analysis in the notebook <code>documentation/notebooks/scans_matching/</code> and save the created files in <code>common/data/PMTs/measurement_matching_data/scans/</code>. Note that <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> expects a naming convention for these files (see <code>OMSimPMTResponse::makeScansInterpolators</code>).</li>
 <li>Add the vector with scanned wavelengths in PMT file with the key <code>jScannedWavelengths</code> and add the path with the newly created scan files under the key <code>jScanDataPath</code> (check <code>pmt_Hamamatsu_R15458_CAT.dat</code> for guidance).</li>
 <li>Run the simulation in step 5 (modify method before accordingly) to check the output with the newly introduced files</li>
 </ul>
 <div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 5 -n 10000 --threads 4 --output_file step5 --detector_type 1</div>
-</div><!-- fragment --><p>If you need to add more parameters (for example low gain probability, which is also photocathode position dependent and yet to be implemented), you will have to add a new interpolator map and <code>OMSimPMTResponse::configureScansInterpolator</code> accordingly.</p>
+</div><!-- fragment --><p>If you need to add more parameters (for example low gain probability, which is also photocathode position dependent and yet to be implemented), you will have to add a new interpolator map and <code>OMSimPMTResponse::makeScansInterpolators</code> accordingly.</p>
 <hr  />
  <hr  />
  </div></div><!-- contents -->
@@ -340,7 +346,7 @@ Step 4: Matching gain / transit time scans</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Sep 4 2024 10:13:19 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Sep 4 2024 16:38:47 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
