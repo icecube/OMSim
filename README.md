@@ -33,10 +33,8 @@ For the latest updates and information, check our [GitHub repository](https://gi
 Install the required dependencies using:
 
 ```bash
-sudo apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev qtbase5-dev libmotif-dev libargtable2-0 libboost-all-dev libqt53dextras5 libfmt-dev
+sudo apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev qtbase5-dev libmotif-dev libargtable2-0 libboost-all-dev libqt53dextras5 libfmt-dev spdlog-dev
 ``` 
-
-Note: spdlog will be automatically installed by CMake if not found on your system.
 
 ### Installing ROOT
 
