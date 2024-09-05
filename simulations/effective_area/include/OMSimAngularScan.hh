@@ -26,12 +26,14 @@ public:
 
 
   void configureScan();
+  void configureDiffuserScan();
   void runSingleAngularScan(G4double pPhi, G4double pTheta);
 
 private:
 
   void configurePosCoordinates();
   void configureAngCoordinates();
+
   G4double m_beamRadius;
   G4double m_beamDistance;
   G4double m_wavelength;

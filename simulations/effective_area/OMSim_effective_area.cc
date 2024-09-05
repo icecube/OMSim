@@ -25,26 +25,17 @@ void runEffectiveAreaSimulation()
 	bool writeHeader = !args.get<bool>("no_header");
 	if (writeHeader) analysisManager.writeHeader("Phi", "Theta", "Wavelength");
 
-	// If angle file is provided, run over all angle pairs in file
-	if (args.keyExists("angles_file"))
-	{
-		std::vector<G4PV2DDataVector> data = Tools::loadtxt(args.get<std::string>("angles_file"), true);
-		std::vector<G4double> thetas = data.at(0);
-		std::vector<G4double> phis = data.at(1);
+	std::vector<double> wavelengths = Tools::arange(480, 680, 20);
+	std::vector<double> phis = Tools::arange(0, 180, 5);
 
-		for (std::vector<int>::size_type i = 0; i != thetas.size(); i++)
+	for (const auto &wavelength : wavelengths)
+	{
+		for (const auto &phi : phis)
 		{
-			scanner->runSingleAngularScan(phis.at(i), thetas.at(i));
-			analysisManager.writeScan(phis.at(i), thetas.at(i),  args.get<G4double>("wavelength"));
+			scanner->runSingleAngularScan(phi, args.get<G4double>("theta"));
+			analysisManager.writeScan(phi, args.get<G4double>("theta"), wavelength);
 			hitManager.reset();
 		}
-	}
-	// If file with angle pairs was not provided, use the angle pairs provided through command-line arguments
-	else
-	{
-		scanner->runSingleAngularScan(args.get<G4double>("phi"), args.get<G4double>("theta"));
-		analysisManager.writeScan(args.get<G4double>("phi"), args.get<G4double>("theta"),  args.get<G4double>("wavelength"));
-		hitManager.reset();
 	}
 }
 

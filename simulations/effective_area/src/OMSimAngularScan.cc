@@ -1,6 +1,7 @@
 #include "OMSimAngularScan.hh"
 #include "OMSimUIinterface.hh"
 #include <G4SystemOfUnits.hh>
+#include <OMSimTools.hh>
 
 /**
  * @param p_beamRadius The radius of the beam.
@@ -75,6 +76,36 @@ void AngularScan::configureScan()
     configureAngCoordinates();
 }
 
+
+void AngularScan::configureDiffuserScan()
+{
+    auto lData = Tools::loadtxt("../common/data/UserInputData/DVT09_diffuser_light.dat", true, 0, '\t');
+	std::vector<double> profileX = lData.at(0);
+	std::vector<double> profileY = lData.at(1);
+
+    OMSimUIinterface &uiInterface = OMSimUIinterface::getInstance();
+
+	uiInterface.applyCommand("/gps/pos/type Point");
+	uiInterface.applyCommand("/gps/ang/type user");   // biast = theta
+	uiInterface.applyCommand("/gps/hist/type theta"); // biast = theta
+
+	for (unsigned int u = 0; u < profileX.size(); u++)
+	{
+		uiInterface.applyCommand("/gps/hist/point", profileX.at(u), profileY.at(u)); // biast = theta
+	}
+
+	uiInterface.applyCommand("/gps/ang/surfnorm");
+    uiInterface.applyCommand("/gps/particle opticalphoton");
+    uiInterface.applyCommand("/gps/energy", 1239.84193 / m_wavelength, "eV");
+    uiInterface.applyCommand("/gps/pos/rot1 0 1 0");
+    uiInterface.applyCommand("/gps/pos/rot2 0 0 1");
+    uiInterface.applyCommand("/gps/ang/rot1 0 1 0");
+    uiInterface.applyCommand("/gps/ang/rot2 0 0 1");
+    configurePosCoordinates();
+    configureAngCoordinates();
+}
+
+
 /**
  * @brief Run a single angular scan with the specified angles.
  * @param p_phi The azimuthal angle in degrees.
@@ -84,7 +115,7 @@ void AngularScan::runSingleAngularScan(G4double p_phi, G4double p_theta)
 {
     m_theta = p_theta * deg;
     m_phi = p_phi * deg;
-    configureScan();
+    configureDiffuserScan();
     OMSimUIinterface &uiInterface = OMSimUIinterface::getInstance();
     uiInterface.runBeamOn();
 }

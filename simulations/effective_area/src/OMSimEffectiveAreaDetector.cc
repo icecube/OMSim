@@ -29,7 +29,15 @@ void OMSimEffectiveAreaDetector::constructWorld()
  */
 void OMSimEffectiveAreaDetector::constructDetector()
 {
+    // G4Box *lDetectorSolid = new G4Box("Detector", 0.00001 * m, 2 * m, 2 * m);
+    // G4LogicalVolume *lDetectorLV = new G4LogicalVolume(lDetectorSolid, mData->getMaterial("RiAbs_Absorber"), "Detector_log", 0, 0, 0);
+    
 
+    // OMSimSensitiveDetector* lSensitiveDetector = new OMSimSensitiveDetector("myDetector", DetectorType::VolumePhotonDetector); 
+    // lHitManager.setNumberOfPMTs(1, lHitManager.getNextDetectorIndex());
+    // registerSensitiveDetector(lDetectorLV, lSensitiveDetector);
+
+    // G4VPhysicalVolume *lDetectorPV = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), lDetectorLV, "Detector_phys", mWorldLogical, false, 0);
     OMSimHitManager &hitManager = OMSimHitManager::getInstance();
 
     bool placeHarness = OMSimCommandArgsTable::getInstance().get<bool>("place_harness");
