@@ -28,6 +28,7 @@ public:
   void configureScan();
   void configureDiffuserScan();
   void runSingleAngularScan(G4double pPhi, G4double pTheta);
+  void setWaveLength(G4double pWavelength){m_wavelength = pWavelength;};
 
 private:
 

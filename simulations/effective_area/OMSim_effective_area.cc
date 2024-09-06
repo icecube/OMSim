@@ -29,9 +29,9 @@ void runEffectiveAreaSimulation()
 	std::vector<double> phis = Tools::arange(0, 180, 5);
 
 	for (const auto &wavelength : wavelengths)
-	{
+	{	scanner->setWaveLength(wavelength);
 		for (const auto &phi : phis)
-		{
+		{	
 			scanner->runSingleAngularScan(phi, args.get<G4double>("theta"));
 			analysisManager.writeScan(phi, args.get<G4double>("theta"), wavelength);
 			hitManager.reset();

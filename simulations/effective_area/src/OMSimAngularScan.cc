@@ -79,7 +79,7 @@ void AngularScan::configureScan()
 
 void AngularScan::configureDiffuserScan()
 {
-    auto lData = Tools::loadtxt("../common/data/UserInputData/DVT09_diffuser_light.dat", true, 0, '\t');
+    auto lData = Tools::loadtxt("../common/data/UserInputData/DVT09_diffuser_light_extrapolated_weird.txt", true, 0, '\t');
 	std::vector<double> profileX = lData.at(0);
 	std::vector<double> profileY = lData.at(1);
 
