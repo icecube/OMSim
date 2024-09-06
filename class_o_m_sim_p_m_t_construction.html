@@ -213,15 +213,12 @@ G4VSolid *&#160;</td><td class="memItemRight" valign="bottom"><b>frontalBulbCons
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_construction.html#ac869819aa23b922e7cff347cd082b5f4">readGlobalParameters</a> (G4String pSide)</td></tr>
 <tr class="memdesc:ac869819aa23b922e7cff347cd082b5f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the parameter table and assigns the value and dimension of member variables. <br /></td></tr>
 <tr class="separator:ac869819aa23b922e7cff347cd082b5f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6724e1b0920884b77cd6401da6588ca9"><td class="memItemLeft" align="right" valign="top">G4UnionSolid *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_construction.html#a6724e1b0920884b77cd6401da6588ca9">sphereEllipsePhotocathode</a> ()</td></tr>
-<tr class="separator:a6724e1b0920884b77cd6401da6588ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ae6ccb05534002df9e519c5b5cfef14"><td class="memItemLeft" align="right" valign="top">G4UnionSolid *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_construction.html#a7ae6ccb05534002df9e519c5b5cfef14">sphereDoubleEllipsePhotocathode</a> (G4String pSide)</td></tr>
-<tr class="separator:a7ae6ccb05534002df9e519c5b5cfef14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3063f4ced2750fc98e74a2daf3bfc2b"><td class="memItemLeft" align="right" valign="top">G4UnionSolid *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_construction.html#ae3063f4ced2750fc98e74a2daf3bfc2b">doubleEllipsePhotocathode</a> (G4String pSide)</td></tr>
-<tr class="separator:ae3063f4ced2750fc98e74a2daf3bfc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05b6a96a4339d555cfb6c727a23d999d"><td class="memItemLeft" align="right" valign="top"><a id="a05b6a96a4339d555cfb6c727a23d999d"></a>
-G4UnionSolid *&#160;</td><td class="memItemRight" valign="bottom"><b>ellipsePhotocathode</b> ()</td></tr>
-<tr class="separator:a05b6a96a4339d555cfb6c727a23d999d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63cdaa281909c9bd7fa3e50f1fdda932"><td class="memItemLeft" align="right" valign="top">G4VSolid *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_construction.html#a63cdaa281909c9bd7fa3e50f1fdda932">sphereEllipsePhotocathode</a> (G4String p_side)</td></tr>
+<tr class="separator:a63cdaa281909c9bd7fa3e50f1fdda932"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35928d2a8eba920e768c64baedd3432f"><td class="memItemLeft" align="right" valign="top">G4VSolid *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_construction.html#a35928d2a8eba920e768c64baedd3432f">doubleEllipsePhotocathode</a> (G4String pSide)</td></tr>
+<tr class="separator:a35928d2a8eba920e768c64baedd3432f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae05f2a608436cc3001a7ee09ed34ddaa"><td class="memItemLeft" align="right" valign="top">G4VSolid *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_p_m_t_construction.html#ae05f2a608436cc3001a7ee09ed34ddaa">ellipsePhotocathode</a> (G4String p_side)</td></tr>
+<tr class="separator:ae05f2a608436cc3001a7ee09ed34ddaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a136c7f4862d780eb2a874428715bfcb8"><td class="memItemLeft" align="right" valign="top"><a id="a136c7f4862d780eb2a874428715bfcb8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>constructHAcoating</b> ()</td></tr>
 <tr class="separator:a136c7f4862d780eb2a874428715bfcb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -254,6 +251,9 @@ G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_HACoatingBool</b>
 <tr class="memitem:ae635940cdc35d6b8f2278bb01c96e145"><td class="memItemLeft" align="right" valign="top"><a id="ae635940cdc35d6b8f2278bb01c96e145"></a>
 G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_constructionFinished</b> = false</td></tr>
 <tr class="separator:ae635940cdc35d6b8f2278bb01c96e145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6161da7a0cf772c84ed224e4b2e7edfd"><td class="memItemLeft" align="right" valign="top"><a id="a6161da7a0cf772c84ed224e4b2e7edfd"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_centreToTipDistance</b></td></tr>
+<tr class="separator:a6161da7a0cf772c84ed224e4b2e7edfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5eb1c4fa16ed5f7c39e241df13828983"><td class="memItemLeft" align="right" valign="top"><a id="a5eb1c4fa16ed5f7c39e241df13828983"></a>
 G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_simpleBulb</b> = false</td></tr>
 <tr class="separator:a5eb1c4fa16ed5f7c39e241df13828983"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -437,8 +437,8 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
 
 </div>
 </div>
-<a id="ae3063f4ced2750fc98e74a2daf3bfc2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3063f4ced2750fc98e74a2daf3bfc2b">&#9670;&nbsp;</a></span>doubleEllipsePhotocathode()</h2>
+<a id="a35928d2a8eba920e768c64baedd3432f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35928d2a8eba920e768c64baedd3432f">&#9670;&nbsp;</a></span>doubleEllipsePhotocathode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -447,7 +447,7 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4UnionSolid * OMSimPMTConstruction::doubleEllipsePhotocathode </td>
+          <td class="memname">G4VSolid * OMSimPMTConstruction::doubleEllipsePhotocathode </td>
           <td>(</td>
           <td class="paramtype">G4String&#160;</td>
           <td class="paramname"><em>p_side</em></td><td>)</td>
@@ -460,7 +460,34 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with doubleEllipsePhotocathode were fitted with two ellipses. </p><dl class="section return"><dt>Returns</dt><dd>G4UnionSolid bulbSolid the frontal solid of the PMT </dd></dl>
+<p>Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with doubleEllipsePhotocathode were fitted with two ellipses. </p><dl class="section return"><dt>Returns</dt><dd>bulbSolid the frontal solid of the PMT </dd></dl>
+
+</div>
+</div>
+<a id="ae05f2a608436cc3001a7ee09ed34ddaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae05f2a608436cc3001a7ee09ed34ddaa">&#9670;&nbsp;</a></span>ellipsePhotocathode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">G4VSolid * OMSimPMTConstruction::ellipsePhotocathode </td>
+          <td>(</td>
+          <td class="paramtype">G4String&#160;</td>
+          <td class="paramname"><em>p_side</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with ellipsePhotocathode were fitted with an ellipse. </p><dl class="section return"><dt>Returns</dt><dd>bulbSolid the frontal solid of the PMT </dd></dl>
 
 </div>
 </div>
@@ -733,8 +760,8 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
 
 </div>
 </div>
-<a id="a7ae6ccb05534002df9e519c5b5cfef14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ae6ccb05534002df9e519c5b5cfef14">&#9670;&nbsp;</a></span>sphereDoubleEllipsePhotocathode()</h2>
+<a id="a63cdaa281909c9bd7fa3e50f1fdda932"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63cdaa281909c9bd7fa3e50f1fdda932">&#9670;&nbsp;</a></span>sphereEllipsePhotocathode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -743,7 +770,7 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">G4UnionSolid * OMSimPMTConstruction::sphereDoubleEllipsePhotocathode </td>
+          <td class="memname">G4VSolid * OMSimPMTConstruction::sphereEllipsePhotocathode </td>
           <td>(</td>
           <td class="paramtype">G4String&#160;</td>
           <td class="paramname"><em>p_side</em></td><td>)</td>
@@ -756,33 +783,7 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphereDoubleEllipsePhotocathode were fitted with a sphere and two ellipses. </p><dl class="section return"><dt>Returns</dt><dd>G4UnionSolid bulbSolid the frontal solid of the PMT </dd></dl>
-
-</div>
-</div>
-<a id="a6724e1b0920884b77cd6401da6588ca9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6724e1b0920884b77cd6401da6588ca9">&#9670;&nbsp;</a></span>sphereEllipsePhotocathode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">G4UnionSolid * OMSimPMTConstruction::sphereEllipsePhotocathode </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphereEllipsePhotocathode were fitted with a sphere and an ellipse. </p><dl class="section return"><dt>Returns</dt><dd>G4UnionSolid bulbSolid the frontal solid of the PMT </dd></dl>
+<p>Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphereEllipsePhotocathode were fitted with a sphere and an ellipse. </p><dl class="section return"><dt>Returns</dt><dd>bulbSolid the frontal solid of the PMT </dd></dl>
 
 </div>
 </div>
@@ -796,7 +797,7 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_p_m_t_construction.html">OMSimPMTConstruction</a></li>
-    <li class="footer">Generated on Thu Sep 5 2024 15:03:41 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Sep 6 2024 13:25:14 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

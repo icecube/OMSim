@@ -67,14 +67,11 @@ G4\+VSolid $\ast$ {\bfseries frontal\+Bulb\+Construction} (G4\+String p\+Side)
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ac869819aa23b922e7cff347cd082b5f4}\label{class_o_m_sim_p_m_t_construction_ac869819aa23b922e7cff347cd082b5f4}} 
 void \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_ac869819aa23b922e7cff347cd082b5f4}{read\+Global\+Parameters}} (G4\+String p\+Side)
 \begin{DoxyCompactList}\small\item\em Reads the parameter table and assigns the value and dimension of member variables. \end{DoxyCompactList}\item 
-G4\+Union\+Solid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a6724e1b0920884b77cd6401da6588ca9}{sphere\+Ellipse\+Photocathode}} ()
+G4\+VSolid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a63cdaa281909c9bd7fa3e50f1fdda932}{sphere\+Ellipse\+Photocathode}} (G4\+String p\+\_\+side)
 \item 
-G4\+Union\+Solid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a7ae6ccb05534002df9e519c5b5cfef14}{sphere\+Double\+Ellipse\+Photocathode}} (G4\+String p\+Side)
+G4\+VSolid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a35928d2a8eba920e768c64baedd3432f}{double\+Ellipse\+Photocathode}} (G4\+String p\+Side)
 \item 
-G4\+Union\+Solid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_ae3063f4ced2750fc98e74a2daf3bfc2b}{double\+Ellipse\+Photocathode}} (G4\+String p\+Side)
-\item 
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a05b6a96a4339d555cfb6c727a23d999d}\label{class_o_m_sim_p_m_t_construction_a05b6a96a4339d555cfb6c727a23d999d}} 
-G4\+Union\+Solid $\ast$ {\bfseries ellipse\+Photocathode} ()
+G4\+VSolid $\ast$ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_ae05f2a608436cc3001a7ee09ed34ddaa}{ellipse\+Photocathode}} (G4\+String p\+\_\+side)
 \item 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a136c7f4862d780eb2a874428715bfcb8}\label{class_o_m_sim_p_m_t_construction_a136c7f4862d780eb2a874428715bfcb8}} 
 void {\bfseries construct\+HAcoating} ()
@@ -106,6 +103,9 @@ G4bool {\bfseries m\+\_\+\+HACoating\+Bool} = false
 \item 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ae635940cdc35d6b8f2278bb01c96e145}\label{class_o_m_sim_p_m_t_construction_ae635940cdc35d6b8f2278bb01c96e145}} 
 G4bool {\bfseries m\+\_\+construction\+Finished} = false
+\item 
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a6161da7a0cf772c84ed224e4b2e7edfd}\label{class_o_m_sim_p_m_t_construction_a6161da7a0cf772c84ed224e4b2e7edfd}} 
+G4double {\bfseries m\+\_\+centre\+To\+Tip\+Distance}
 \item 
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a5eb1c4fa16ed5f7c39e241df13828983}\label{class_o_m_sim_p_m_t_construction_a5eb1c4fa16ed5f7c39e241df13828983}} 
 G4bool {\bfseries m\+\_\+simple\+Bulb} = false
@@ -170,14 +170,23 @@ Construction \& placement of the dynode system entrance for internal reflections
 \doxysubsubsection{\texorpdfstring{constructCathodeBackshield()}{constructCathodeBackshield()}}
 {\footnotesize\ttfamily void OMSim\+PMTConstruction\+::construct\+Cathode\+Backshield (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{p\+\_\+\+PMTinner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Creates and positions a thin disk behind the photocathode volume in order to shield photons coming from behind the PMT. Only used when internal reflections are turned off. \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ae3063f4ced2750fc98e74a2daf3bfc2b}\label{class_o_m_sim_p_m_t_construction_ae3063f4ced2750fc98e74a2daf3bfc2b}} 
+Creates and positions a thin disk behind the photocathode volume in order to shield photons coming from behind the PMT. Only used when internal reflections are turned off. \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a35928d2a8eba920e768c64baedd3432f}\label{class_o_m_sim_p_m_t_construction_a35928d2a8eba920e768c64baedd3432f}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!doubleEllipsePhotocathode@{doubleEllipsePhotocathode}}
 \index{doubleEllipsePhotocathode@{doubleEllipsePhotocathode}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{doubleEllipsePhotocathode()}{doubleEllipsePhotocathode()}}
-{\footnotesize\ttfamily G4\+Union\+Solid $\ast$ OMSim\+PMTConstruction\+::double\+Ellipse\+Photocathode (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4\+VSolid $\ast$ OMSim\+PMTConstruction\+::double\+Ellipse\+Photocathode (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with double\+Ellipse\+Photocathode were fitted with two ellipses. \begin{DoxyReturn}{Returns}
-G4\+Union\+Solid bulb\+Solid the frontal solid of the PMT 
+bulb\+Solid the frontal solid of the PMT 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_ae05f2a608436cc3001a7ee09ed34ddaa}\label{class_o_m_sim_p_m_t_construction_ae05f2a608436cc3001a7ee09ed34ddaa}} 
+\index{OMSimPMTConstruction@{OMSimPMTConstruction}!ellipsePhotocathode@{ellipsePhotocathode}}
+\index{ellipsePhotocathode@{ellipsePhotocathode}!OMSimPMTConstruction@{OMSimPMTConstruction}}
+\doxysubsubsection{\texorpdfstring{ellipsePhotocathode()}{ellipsePhotocathode()}}
+{\footnotesize\ttfamily G4\+VSolid $\ast$ OMSim\+PMTConstruction\+::ellipse\+Photocathode (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with ellipse\+Photocathode were fitted with an ellipse. \begin{DoxyReturn}{Returns}
+bulb\+Solid the frontal solid of the PMT 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a6b84182c7a5b45461160c954e9a384f0}\label{class_o_m_sim_p_m_t_construction_a6b84182c7a5b45461160c954e9a384f0}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!fullBulbConstruction@{fullBulbConstruction}}
@@ -286,23 +295,14 @@ Select PMT model to use and assigns m\+PMT class.
 Construction of the basic shape of the PMT. \begin{DoxyReturn}{Returns}
 tuple of G4\+Union\+Solid (the outer shape) and G4\+Subtraction\+Solid (the photocathode volume part) 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a7ae6ccb05534002df9e519c5b5cfef14}\label{class_o_m_sim_p_m_t_construction_a7ae6ccb05534002df9e519c5b5cfef14}} 
-\index{OMSimPMTConstruction@{OMSimPMTConstruction}!sphereDoubleEllipsePhotocathode@{sphereDoubleEllipsePhotocathode}}
-\index{sphereDoubleEllipsePhotocathode@{sphereDoubleEllipsePhotocathode}!OMSimPMTConstruction@{OMSimPMTConstruction}}
-\doxysubsubsection{\texorpdfstring{sphereDoubleEllipsePhotocathode()}{sphereDoubleEllipsePhotocathode()}}
-{\footnotesize\ttfamily G4\+Union\+Solid $\ast$ OMSim\+PMTConstruction\+::sphere\+Double\+Ellipse\+Photocathode (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphere\+Double\+Ellipse\+Photocathode were fitted with a sphere and two ellipses. \begin{DoxyReturn}{Returns}
-G4\+Union\+Solid bulb\+Solid the frontal solid of the PMT 
-\end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a6724e1b0920884b77cd6401da6588ca9}\label{class_o_m_sim_p_m_t_construction_a6724e1b0920884b77cd6401da6588ca9}} 
+\mbox{\Hypertarget{class_o_m_sim_p_m_t_construction_a63cdaa281909c9bd7fa3e50f1fdda932}\label{class_o_m_sim_p_m_t_construction_a63cdaa281909c9bd7fa3e50f1fdda932}} 
 \index{OMSimPMTConstruction@{OMSimPMTConstruction}!sphereEllipsePhotocathode@{sphereEllipsePhotocathode}}
 \index{sphereEllipsePhotocathode@{sphereEllipsePhotocathode}!OMSimPMTConstruction@{OMSimPMTConstruction}}
 \doxysubsubsection{\texorpdfstring{sphereEllipsePhotocathode()}{sphereEllipsePhotocathode()}}
-{\footnotesize\ttfamily G4\+Union\+Solid $\ast$ OMSim\+PMTConstruction\+::sphere\+Ellipse\+Photocathode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4\+VSolid $\ast$ OMSim\+PMTConstruction\+::sphere\+Ellipse\+Photocathode (\begin{DoxyParamCaption}\item[{G4\+String}]{p\+\_\+side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphere\+Ellipse\+Photocathode were fitted with a sphere and an ellipse. \begin{DoxyReturn}{Returns}
-G4\+Union\+Solid bulb\+Solid the frontal solid of the PMT 
+bulb\+Solid the frontal solid of the PMT 
 \end{DoxyReturn}
 
 
