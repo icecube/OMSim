@@ -21,8 +21,8 @@ void OMSimEffiCaliAnalyisis::writeHitPositionHistogram(double x, double y)
 		detectionProbability.push_back(hits.PMTresponse.at(i).detectionProbability);
 	}
 
-	//auto lRange = Tools::arange(0, 41.25, 0.25); //mDOM
-	auto lRange = Tools::arange(0, 52.4, 0.275); //LOM
+	auto lRange = Tools::arange(0, 41.25, 0.25); //mDOM
+	//auto lRange = Tools::arange(0, 52.4, 0.275); //LOM
 	auto [lCounts, lEdges] = Tools::histogram(r, lRange);
 	auto [lCountsWeighted, lEdgesWeighted] = Tools::histogram(r, lRange, std::nullopt, detectionProbability);
 
