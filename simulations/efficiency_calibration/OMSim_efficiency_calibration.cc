@@ -71,6 +71,7 @@ void runXYZfrontalScan()
 			hitManager.reset();
 		}
 	}
+	scanner->runBeamPicoQuantSetup(0,0);
 }
 
 
