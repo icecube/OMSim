@@ -31,34 +31,6 @@ find_package(OpenSSL REQUIRED)
 
 # For logging with spdlog
 find_package(spdlog REQUIRED)
-if(NOT spdlog_FOUND)
-    message(STATUS "spdlog not found. Will download and build it.")
-    
-    set(SPDLOG_INSTALL_DIR ${CMAKE_BINARY_DIR}/spdlog-install)
-    
-    ExternalProject_Add(
-        spdlog_external
-        GIT_REPOSITORY https://github.com/gabime/spdlog.git
-        GIT_TAG v1.11.0  # Specify the version you want
-        CMAKE_ARGS
-            -DCMAKE_INSTALL_PREFIX=${SPDLOG_INSTALL_DIR}
-            -DSPDLOG_BUILD_EXAMPLES=OFF
-            -DSPDLOG_BUILD_TESTS=OFF
-        )
-    
-    set(spdlog_INCLUDE_DIRS ${SPDLOG_INSTALL_DIR}/include)
-    set(spdlog_LIBRARIES ${SPDLOG_INSTALL_DIR}/lib/libspdlog.a)
-    
-    add_library(spdlog::spdlog STATIC IMPORTED)
-    set_target_properties(spdlog::spdlog PROPERTIES
-        IMPORTED_LOCATION ${spdlog_LIBRARIES}
-        INTERFACE_INCLUDE_DIRECTORIES ${spdlog_INCLUDE_DIRS}
-    )
-    add_dependencies(spdlog::spdlog spdlog_external)
-else()
-    message(STATUS "Found spdlog: ${spdlog_VERSION}")
-endif()
-
 
 # Include OpenSSL's headers in the project
 include_directories(${OPENSSL_INCLUDE_DIR})

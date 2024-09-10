@@ -65,6 +65,7 @@ public:
     static OMSimHitManager &getInstance();
 
     void appendHitInfo(
+        G4int p_eventid,
         G4double pGlobalTime,
         G4double pLocalTime,
         G4double pTrackLength,

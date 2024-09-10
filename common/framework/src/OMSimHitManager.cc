@@ -97,6 +97,7 @@ void applyPermutation(std::vector<T> &p_vector, const std::vector<std::size_t> &
  * @param p_moduleNumber ID of the module in which the photon was detected.
  */
 void OMSimHitManager::appendHitInfo(
+	G4int p_eventid,
 	G4double p_globalTime,
 	G4double p_localTime,
 	G4double p_trackLength,
@@ -124,9 +125,8 @@ void OMSimHitManager::appendHitInfo(
 	}
 	
 	auto &moduleHits = m_threadData->moduleHits[p_moduleNumber];
-	G4int eventID = G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetEventID();
 	//log_debug("Thread {} Seed {} event {} size {}", G4Threading::G4GetThreadId(),  G4Random::getTheSeed(), eventID, moduleHits.eventId.size());
-	moduleHits.eventId.push_back(eventID);
+	moduleHits.eventId.push_back(p_eventid);
 	moduleHits.hitTime.push_back(p_globalTime);
 	moduleHits.flightTime.push_back(p_localTime);
 	moduleHits.pathLenght.push_back(p_trackLength);

@@ -19,6 +19,7 @@
 #include "G4ProcessVector.hh"
 #include "G4ProcessManager.hh"
 #include "OMSimTools.hh"
+#include <G4EventManager.hh>
 
 thread_local G4OpBoundaryProcess *OMSimSensitiveDetector::m_boundaryProcess = nullptr;
 
@@ -88,33 +89,35 @@ void OMSimSensitiveDetector::setPMTResponse(OMSimPMTResponse *p_response)
  */
 G4bool OMSimSensitiveDetector::ProcessHits(G4Step *p_step, G4TouchableHistory *p_touchableHistory)
 {
+  // Return false if the track is not an optical photon
   if (p_step->GetTrack()->GetDefinition() != G4OpticalPhoton::Definition())
     return false;
 
-  if (DetectorType::PerfectVolumePhotonDetector == m_detectorType || DetectorType::PerfectBoundaryPhotonDetector == m_detectorType || DetectorType::PerfectPMT == m_detectorType)
+  // Switch based on the detector type
+  switch (m_detectorType)
   {
-    if (m_detectorType == DetectorType::PerfectPMT) return handlePMT(p_step, p_touchableHistory);
-    return handleGeneralPhotonDetector(p_step, p_touchableHistory);
-  }
-
-  if (m_detectorType == DetectorType::VolumePhotonDetector)
-  {
-    if (checkVolumeAbsorption(p_step))
-    {
-      return handleGeneralPhotonDetector(p_step, p_touchableHistory);
-    }
-  }
-
-  else if (checkBoundaryAbsorption(p_step)) //if none of the above, it is a boundary photon detector
-  {
-    switch (m_detectorType)
-    {
-    case DetectorType::PMT:
+  case DetectorType::PMT:
+    if (checkBoundaryAbsorption(p_step))
       return handlePMT(p_step, p_touchableHistory);
-    case DetectorType::BoundaryPhotonDetector:
-      return handleGeneralPhotonDetector(p_step, p_touchableHistory);    
-    }
+    return false;
+
+  case DetectorType::PerfectPMT:
+    return handlePMT(p_step, p_touchableHistory);
+
+  case DetectorType::BoundaryPhotonDetector:
+    if (checkBoundaryAbsorption(p_step))
+      return handleGeneralPhotonDetector(p_step, p_touchableHistory);
+    return false;
+
+  case DetectorType::VolumePhotonDetector:
+    if (checkVolumeAbsorption(p_step))
+      return handleGeneralPhotonDetector(p_step, p_touchableHistory);
+    return false;
+    
+  default:
+    return false;
   }
+
   return false;
 }
 
@@ -132,7 +135,7 @@ PhotonInfo OMSimSensitiveDetector::getPhotonInfo(G4Step *p_step)
   G4double h = 4.135667696E-15 * eV * s;
   G4double c = 2.99792458E17 * nm / s;
   G4double lEkin = track->GetKineticEnergy();
-
+  info.eventID = G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetEventID();
   info.globalTime = track->GetGlobalTime();
   info.localTime = track->GetLocalTime();
   info.trackLength = track->GetTrackLength() / m;
@@ -250,6 +253,7 @@ void OMSimSensitiveDetector::storePhotonHit(PhotonInfo &p_info)
 {
   OMSimHitManager &hitManager = OMSimHitManager::getInstance();
   hitManager.appendHitInfo(
+      p_info.eventID,
       p_info.globalTime,
       p_info.localTime,
       p_info.trackLength,

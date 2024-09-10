@@ -43,7 +43,7 @@ private:
     G4bool m_internalReflections = false;
     G4bool m_HACoatingBool = false;
     G4bool m_constructionFinished = false;
-
+    G4double m_centreToTipDistance;
     std::tuple<G4VSolid *, G4VSolid *> getBulbSolid(G4String pSide);
     std::tuple<G4VSolid *, G4VSolid *> simpleBulbConstruction(G4String pSide);
     std::tuple<G4VSolid *, G4VSolid *> fullBulbConstruction(G4String pSide);
@@ -51,10 +51,9 @@ private:
 
     void readGlobalParameters(G4String pSide);
 
-    G4UnionSolid *sphereEllipsePhotocathode();
-    G4UnionSolid *sphereDoubleEllipsePhotocathode(G4String pSide);
-    G4UnionSolid *doubleEllipsePhotocathode(G4String pSide);
-    G4UnionSolid *ellipsePhotocathode();
+    G4VSolid *sphereEllipsePhotocathode(G4String p_side);
+    G4VSolid *doubleEllipsePhotocathode(G4String pSide);
+    G4VSolid *ellipsePhotocathode(G4String p_side);
 
 
     void constructHAcoating();

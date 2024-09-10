@@ -19,9 +19,7 @@ enum class DetectorType {
     PMT,                           ///< Photomultiplier tube detector.
     VolumePhotonDetector,          ///< Photon detector based on absorption in volume.
     BoundaryPhotonDetector,         ///< Photon detector based on absorption in boundary.
-    PerfectPMT,                           ///< Photomultiplier tube detector.
-    PerfectVolumePhotonDetector,          ///< Photon detector based on absorption in volume 100% efficient.
-    PerfectBoundaryPhotonDetector         ///< Photon detector based on absorption in boundary 100% efficient.
+    PerfectPMT                           ///< Photomultiplier tube detector.
 };
 
 /**
@@ -29,6 +27,7 @@ enum class DetectorType {
  * @brief Contains information about a detected photon which will be appended in HitManager.
  */
 struct PhotonInfo {
+    G4int eventID;                  ///< Event ID of the photon hit.
     G4double globalTime;            ///< Global time of the photon hit.
     G4double localTime;             ///< Local time of the photon hit.
     G4double trackLength;           ///< Length of the photon's track.

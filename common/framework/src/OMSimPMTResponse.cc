@@ -372,7 +372,6 @@ OMSimPMTResponse::PMTPulse OMSimPMTResponse::processPhotocathodeHit(G4double p_x
         pulse = getPulseFromInterpolation(lW1, lW2);
     }
     pulse.detectionProbability = weightQE * weightCE;
-
     return pulse;
 }
 

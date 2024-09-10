@@ -48,7 +48,7 @@ void OMSimPMTConstruction::construction()
 
     m_photocathodeRegionVacuumPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), m_photocathodeLV, "PhotocathodeRegionVacuum", tubeVacuum, false, 0, m_checkOverlaps);
 
-    if (m_internalReflections)
+    if (true)
     {
         m_vacuumBackPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), vacuumBackLogical, "VacuumTubeBack", tubeVacuum, false, 0, m_checkOverlaps);
         constructCADdynodeSystem(vacuumBackLogical);
@@ -324,13 +324,11 @@ G4VSolid *OMSimPMTConstruction::frontalBulbConstruction(G4String p_side)
     G4String frontalShape = m_data->getValue<G4String>(m_selectedPMT, "jFrontalShape");
     readGlobalParameters(p_side);
     if (frontalShape == "SphereEllipse")
-        return sphereEllipsePhotocathode();
-    else if (frontalShape == "Sphere2Ellipses")
-        return sphereDoubleEllipsePhotocathode(p_side);
+        return sphereEllipsePhotocathode(p_side);
     else if (frontalShape == "TwoEllipses")
         return doubleEllipsePhotocathode(p_side);
     else if (frontalShape == "SingleEllipse")
-        return ellipsePhotocathode();
+        return ellipsePhotocathode(p_side);
     else
     {
         log_critical("Type of PMT frontal shape {} type not known!", frontalShape);
@@ -341,9 +339,9 @@ G4VSolid *OMSimPMTConstruction::frontalBulbConstruction(G4String p_side)
 
 /**
  * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphereEllipsePhotocathode were fitted with a sphere and an ellipse.
- * @return G4UnionSolid bulbSolid the frontal solid of the PMT
+ * @return bulbSolid the frontal solid of the PMT
  */
-G4UnionSolid *OMSimPMTConstruction::sphereEllipsePhotocathode()
+G4VSolid *OMSimPMTConstruction::sphereEllipsePhotocathode(G4String p_side)
 {
     log_trace("Constructing photocathode with one ellipsoid and a sphere");
     G4double sphereAngle = asin(m_sphereEllipseTransition_r / m_outRad);
@@ -351,49 +349,37 @@ G4UnionSolid *OMSimPMTConstruction::sphereEllipsePhotocathode()
     G4Ellipsoid *bulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis);
     G4Sphere *bulbSphere = new G4Sphere("Solid Bulb Ellipsoid", 0.0, m_outRad, 0, 2 * CLHEP::pi, 0, sphereAngle);
     G4UnionSolid *bulbSolid = new G4UnionSolid("Solid Bulb", bulbEllipsoid, bulbSphere, 0, G4ThreeVector(0, 0, m_spherePosY - m_ellipsePosY));
-    return bulbSolid;
-}
-
-G4UnionSolid *OMSimPMTConstruction::ellipsePhotocathode()
-{
-    log_trace("Constructing photocathode with one ellipsoid");
-    G4double sphereAngle = asin(m_sphereEllipseTransition_r / m_outRad);
-    // PMT frontal glass envelope as union of sphere and ellipse
-    G4Ellipsoid *bulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis);
-    G4Sphere *bulbSphere = new G4Sphere("Solid Bulb Ellipsoid", 0.0, 0.1, 0, 2 * CLHEP::pi, 0, sphereAngle);
-    G4UnionSolid *bulbSolid = new G4UnionSolid("Solid Bulb", bulbEllipsoid, bulbSphere, 0, G4ThreeVector(0, 0, m_spherePosY - m_ellipsePosY));
+    if (p_side=="jOuterShape")
+    {
+        m_centreToTipDistance = m_outRad + m_spherePosY - m_ellipsePosY;
+    }
+    
     return bulbSolid;
 }
 
 /**
- * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with sphereDoubleEllipsePhotocathode were fitted with a sphere and two ellipses.
- * @return G4UnionSolid bulbSolid the frontal solid of the PMT
+ * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with ellipsePhotocathode were fitted with an ellipse.
+ * @return bulbSolid the frontal solid of the PMT
  */
-G4UnionSolid *OMSimPMTConstruction::sphereDoubleEllipsePhotocathode(G4String p_side)
+G4VSolid *OMSimPMTConstruction::ellipsePhotocathode(G4String p_side)
 {
-    log_trace("Constructing photocathode with two ellipses and a sphere");
-    G4double ellipseXYAxis2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseXYaxis_2");
-    G4double ellipseZAxis2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseZaxis_2");
-    G4double ellipseYpos2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipsePos_y_2");
+    log_trace("Constructing photocathode with one ellipsoid");
+    G4Ellipsoid *bulbSolid = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis);
 
-    G4double sphereAngle = asin(m_sphereEllipseTransition_r / m_outRad);
-    // PMT frontal glass envelope as union of sphere and ellipse
-    G4Ellipsoid *bulbEllipsoid = new G4Ellipsoid("Solid Bulb Ellipsoid", m_ellipseXYaxis, m_ellipseXYaxis, m_ellipseZaxis);
-    G4Sphere *bulbSphere = new G4Sphere("Solid Bulb Ellipsoid", 0.0, m_outRad, 0, 2 * CLHEP::pi, 0, sphereAngle);
-    G4UnionSolid *bulbSolid = new G4UnionSolid("Solid Bulb", bulbEllipsoid, bulbSphere, 0, G4ThreeVector(0, 0, m_spherePosY - m_ellipsePosY));
-    G4Ellipsoid *bulbEllipsoid2 = new G4Ellipsoid("Solid Bulb Ellipsoid 2", ellipseXYAxis2, ellipseXYAxis2, ellipseZAxis2);
-    G4double excess = m_ellipsePosY - ellipseYpos2;
-    G4Tubs *substractionTube = new G4Tubs("substracion_tube_large_ellipsoid", 0.0, ellipseXYAxis2 * 2, 0.5 * m_totalLenght, 0, 2 * CLHEP::pi);
-    G4SubtractionSolid *substractedLargeEllipsoid = new G4SubtractionSolid("Substracted Bulb Ellipsoid 2", bulbEllipsoid2, substractionTube, 0, G4ThreeVector(0, 0, excess - m_totalLenght * 0.5));
-    bulbSolid = new G4UnionSolid("Solid Bulb", bulbSolid, substractedLargeEllipsoid, 0, G4ThreeVector(0, 0, ellipseYpos2 - m_ellipsePosY));
+    if (p_side=="jOuterShape")
+    {
+        m_centreToTipDistance = m_ellipseZaxis;
+    }
+    
     return bulbSolid;
 }
+
 
 /**
  * Construction of the frontal part of the PMT following the fits of the technical drawings. PMTs constructed with doubleEllipsePhotocathode were fitted with two ellipses.
- * @return G4UnionSolid bulbSolid the frontal solid of the PMT
+ * @return bulbSolid the frontal solid of the PMT
  */
-G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String p_side)
+G4VSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String p_side)
 {
     log_trace("Constructing photocathode with two ellipses");
     G4double ellipseXYAxis2 = m_data->getValueWithUnit(m_selectedPMT, p_side + ".jEllipseXYaxis_2");
@@ -417,6 +403,12 @@ G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String p_side)
                                                                            substractionTube, 0, G4ThreeVector(0, 0, excess-ellipseZAxis2));
 
     G4UnionSolid *bulbSolid = new G4UnionSolid("Solid Bulb", bulbEllipsoid, substractedLargeEllipsoid, 0, G4ThreeVector(0, 0, -m_ellipsePosY + ellipseYpos2));
+    
+    if (p_side=="jOuterShape")
+    {
+        m_centreToTipDistance = ellipseYpos2 +ellipseZAxis2 - m_ellipsePosY;
+    }
+    
     return bulbSolid;
 }
 
@@ -431,8 +423,8 @@ G4UnionSolid *OMSimPMTConstruction::doubleEllipsePhotocathode(G4String p_side)
  */
 G4double OMSimPMTConstruction::getDistancePMTCenterToTip()
 {
-    readGlobalParameters("jOuterShape");
-    return m_outRad + m_spherePosY - m_ellipsePosY;
+    log_trace("Distance from PMT center to tip {}", m_centreToTipDistance);
+    return m_centreToTipDistance;
 }
 
 /**
