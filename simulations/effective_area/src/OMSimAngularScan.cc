@@ -79,7 +79,7 @@ void AngularScan::configureScan()
 
 void AngularScan::configureDiffuserScan()
 {
-    auto lData = Tools::loadtxt("../common/data/UserInputData/DVT09_diffuser_light_extrapolated_weird.txt", true, 0, '\t');
+    auto lData = Tools::loadtxt("../common/data/UserInputData/241004_DVT09_diffuser_light_mean.txt", true, 0, '\t');
 	std::vector<double> profileX = lData.at(0);
 	std::vector<double> profileY = lData.at(1);
 
@@ -93,7 +93,7 @@ void AngularScan::configureDiffuserScan()
 	{
 		uiInterface.applyCommand("/gps/hist/point", profileX.at(u), profileY.at(u)); // biast = theta
 	}
-
+    uiInterface.applyCommand("/gps/ang/maxtheta 12 deg");
 	uiInterface.applyCommand("/gps/ang/surfnorm");
     uiInterface.applyCommand("/gps/particle opticalphoton");
     uiInterface.applyCommand("/gps/energy", 1239.84193 / m_wavelength, "eV");

@@ -40,7 +40,7 @@ void OMSimEffectiveAreaDetector::constructDetector()
     // G4VPhysicalVolume *lDetectorPV = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), lDetectorLV, "Detector_phys", mWorldLogical, false, 0);
     OMSimHitManager &hitManager = OMSimHitManager::getInstance();
 
-    bool placeHarness = OMSimCommandArgsTable::getInstance().get<bool>("place_harness");
+    bool placeHarness = true;//OMSimCommandArgsTable::getInstance().get<bool>("place_harness");
 
     OMSimOpticalModule *opticalModule = nullptr;
 
