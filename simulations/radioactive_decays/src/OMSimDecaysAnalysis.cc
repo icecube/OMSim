@@ -74,6 +74,7 @@ void OMSimDecaysAnalysis::writeMultiplicity(G4double p_timeWindow)
  */
 void OMSimDecaysAnalysis::writeThreadDecayInformation()
 {
+	if (!m_threadDecayStats) return;
 	log_trace("Writing decay information of {} decays", m_threadDecayStats->eventId.size());
 
 	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");

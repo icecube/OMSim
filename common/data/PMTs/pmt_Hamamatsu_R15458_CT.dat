@@ -3,7 +3,7 @@
    "jFrontalShape": "TwoEllipses",
    "jDefaultQEFileName": "../common/data/PMTs/measurement_matching_data/QE/mDOM_Hamamatsu_R15458_mean_QE.dat",
    "jAbsorbedFractionFileName": "../common/data/PMTs/measurement_matching_data/QE/mDOM_Hamamatsu_R15458_CT_intrinsic_QE.dat",
-   "jCEweightsFileName": "../common/data/PMTs/measurement_matching_data/CE_weight/240813_mDOM_Hamamatsu_CAT.dat",
+   "jCEweightsFileName": "../common/data/PMTs/measurement_matching_data/CE_weight/240813_mDOM_Hamamatsu_CT.dat",
    "jScanDataPath" : "../common/data/PMTs/measurement_matching_data/scans/R15458/",
    "jScannedWavelengths": [460, 480, 500, 520, 540, 560, 580, 600, 620, 640],
    "jBulbBackShape": "FullFit",
