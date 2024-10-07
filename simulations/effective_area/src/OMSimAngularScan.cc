@@ -93,7 +93,7 @@ void AngularScan::configureDiffuserScan()
 	{
 		uiInterface.applyCommand("/gps/hist/point", profileX.at(u), profileY.at(u)); // biast = theta
 	}
-    uiInterface.applyCommand("/gps/ang/maxtheta 12 deg");
+    //uiInterface.applyCommand("/gps/ang/maxtheta 12 deg");
 	uiInterface.applyCommand("/gps/ang/surfnorm");
     uiInterface.applyCommand("/gps/particle opticalphoton");
     uiInterface.applyCommand("/gps/energy", 1239.84193 / m_wavelength, "eV");
