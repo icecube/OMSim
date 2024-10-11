@@ -71,7 +71,7 @@ void runXYZfrontalScan()
 			hitManager.reset();
 		}
 	}
-	scanner->runBeamPicoQuantSetup(0,0);
+	//scanner->runBeamPicoQuantSetup(20,0); //for visualisation checking
 }
 
 
@@ -87,11 +87,11 @@ void runfrontalXYScannNKT()
 	double wavelength = 459;
 	scanner->setWavelength(wavelength);
 
-	//std::vector<double> grid = Tools::arange(-41, 42, 1); //mDOM
-    std::vector<double> grid = Tools::arange(-52.8, 52.8, 1.25); //LOM...1.6 in scan but causes two 0 values
+	std::vector<double> grid = Tools::arange(-41, 42, 1); //mDOM
+    //std::vector<double> grid = Tools::arange(-52.8, 52.8, 1.25); //LOM...1.6 in scan but causes two 0 values
 
-	//double rLim = 42; //mDOM
-	double rLim = 53; //LOM
+	double rLim = 42; //mDOM
+	//double rLim = 53; //LOM
 
 	for (const auto &x : grid)
 	{
@@ -121,11 +121,11 @@ void runfrontalProfileScannNKT()
 	double wavelength = 459;
 	scanner->setWavelength(wavelength);
 
-	//std::vector<double> profile = Tools::arange(0, 42, 0.05); //mDOM
-    std::vector<double> profile = Tools::arange(0, 52.8, 0.1); //LOM...1.6 in scan but causes two 0 values
+	std::vector<double> profile = Tools::arange(0, 42, 0.05); //mDOM
+    //std::vector<double> profile = Tools::arange(0, 52.8, 0.1); //LOM.
 
-	//double rLim = 42; //mDOM
-	double rLim = 53; //LOM
+	double rLim = 42; //mDOM
+	//double rLim = 53; //LOM
 
 	for (const auto &x : profile)
 	{
