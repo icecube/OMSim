@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"struct_o_m_sim_detector_component_1_1_component.html#ad3689b6bce4aa913f2024bd4b6c49448":[8,0,28,0,4],
+"struct_o_m_sim_detector_construction_1_1_s_d_info.html":[8,1,4,0],
 "struct_o_m_sim_detector_construction_1_1_s_d_info.html#a9cb3965aea3d3f5b9f6bf6ec7a34e3bf":[8,1,4,0,1],
 "struct_o_m_sim_detector_construction_1_1_s_d_info.html#af1b4f5b5ed4bae09e894af566828569b":[8,1,4,0,0],
 "struct_o_m_sim_hit_manager_1_1_thread_local_data.html":[8,0,22,0],

@@ -195,6 +195,8 @@ var group__common =
       [ "getName", "class_d_e_g_g.html#aee6b58c1a0c6247e896e27e4bf5e2342", null ],
       [ "getNumberOfPMTs", "class_d_e_g_g.html#a322fe20cae9cfce1b05817c0ac3f1393", null ],
       [ "getPressureVesselWeight", "class_d_e_g_g.html#affbc4905f52992f3d1f206f26466c076", null ],
+      [ "placePMTs", "class_d_e_g_g.html#acce04489b180b5c5cd7d971cb73a9b43", null ],
+      [ "m_converter", "class_d_e_g_g.html#a6449659b20818345cbb25eea0322af5e", null ],
       [ "m_harness", "class_d_e_g_g.html#a5670706998ff6df38c37a7df7564f339", null ]
     ] ],
     [ "OMSimDetectorComponent", "class_o_m_sim_detector_component.html", [

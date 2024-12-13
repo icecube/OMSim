@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"class_g4_radioactive_decay.html#a30975c3a39a6cd48247059048f21a3a6":[10,0,10,46],
+"class_g4_radioactive_decay.html#a3e7a5e24d24c5d8030b888c56f4e0153":[10,0,10,53],
 "class_g4_radioactive_decay.html#a3f101a0632308483d80dbe133de916b5":[10,0,10,15],
 "class_g4_radioactive_decay.html#a3f5ab236b5d57a48fc1b3caa788a8470":[10,0,10,1],
 "class_g4_radioactive_decay.html#a467cc2af8b7fb9ce098df6e56146fdd1":[10,0,10,25],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "class_o_m_sim_detector_component.html#aa05817323ffde3c38118e3efb58d2a8c":[8,0,28,33],
 "class_o_m_sim_detector_component.html#aa402e21997ac5003d9582e405b649f7c":[8,0,28,24],
 "class_o_m_sim_detector_component.html#aa4a3ef0899866c61c3e6185946e04985":[8,0,28,7],
-"class_o_m_sim_detector_component.html#aab89fa5b6e7633c2d6fd47085b63081f":[8,0,28,13],
-"class_o_m_sim_detector_component.html#ab1fcabce0f13a0cd57051ae816b81802":[8,0,28,19],
-"class_o_m_sim_detector_component.html#ab7ae14075f3a5bffc3518ef45d684081":[8,0,28,35]
+"class_o_m_sim_detector_component.html#aab89fa5b6e7633c2d6fd47085b63081f":[8,0,28,13]
 };
