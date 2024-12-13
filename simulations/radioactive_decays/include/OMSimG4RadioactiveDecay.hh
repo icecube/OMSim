@@ -31,6 +31,8 @@
 #include "G4ThreeVector.hh"
 #include "G4RadioactiveDecayMode.hh"
 
+#include "OMSimLogger.hh"
+
 class G4Fragment;
 class G4RadioactiveDecayMessenger;
 class G4PhotonEvaporation;

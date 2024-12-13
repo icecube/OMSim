@@ -29,7 +29,7 @@ void runRadioactiveDecays(OMSimRadDecaysDetector *p_detector)
 
 	OMSimDecaysGPS &decaysGPS = OMSimDecaysGPS::getInstance();
 	decaysGPS.setOpticalModule(p_detector->m_opticalModule);
-	decaysGPS.setProductionRadius(200*mm);
+	decaysGPS.setProductionRadius(280*mm);
 	const bool simulateVesselDecays = !args.get<bool>("no_PV_decays");
 	const bool simulatePMTDecays = !args.get<bool>("no_PMT_decays");
 

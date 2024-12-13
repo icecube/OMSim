@@ -41,8 +41,12 @@ private:
 
 
     void appendPMTs();
+    void placePMTs(G4LogicalVolume* lInnerVolumeLogical);
     void appendInternalComponentsFromCAD();
     void appendPressureVesselFromCAD();
+
+    //helper variables
+    std::stringstream m_converter;
 
     G4VSolid *createEggSolid(G4int p_segments_1,
                              G4double pSphereRmax,

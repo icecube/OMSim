@@ -105,7 +105,6 @@ G4VSolid *internalVolume = createEggSolid(innSegments1,
 
    // Append all internal components
    appendComponent(lSubstractionBox, lLogicalDummy, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SubstractionBox");
-   appendPMTs();
 
    // Substract all internal components to internal volume to obtain gel and append it
    G4VSolid *lGelLayers = substractToVolume(internalVolume, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "DeggGelLayersSolid");
@@ -117,7 +116,7 @@ G4VSolid *internalVolume = createEggSolid(innSegments1,
    // appendInternalComponentsFromCAD();
 
    // Logicals
-   G4LogicalVolume *lDEggGlassLogical = new G4LogicalVolume(outerGlass, m_data->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "Glass_phys");
+   G4LogicalVolume *lDEggGlassLogical = new G4LogicalVolume(outerGlass, m_data->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "Glass_log");
    G4LogicalVolume *lInnerVolumeLogical = new G4LogicalVolume(internalVolume, m_data->getMaterial("Ri_Air"), "InnerVolume");
 
    // Placements
@@ -127,12 +126,15 @@ G4VSolid *internalVolume = createEggSolid(innSegments1,
    // place internal volume in glass
    new G4PVPlacement(new G4RotationMatrix(), G4ThreeVector(0, 0, 0), lInnerVolumeLogical, "VacuumGlass", lDEggGlassLogical, false, 0, m_checkOverlaps);
 
+   //Place PMTs into that volume
+   placePMTs(lInnerVolumeLogical);
+
    // Delete all internal components from dictionary, as they were placed in a volume inside the largest volume.
    m_components.clear();
 
    // Add glass volume to component map
    // appendComponent(lInternalVolume, lInnerVolumeLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Internal");
-   appendComponent(outerGlass, lDEggGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel");
+   appendComponent(outerGlass, lDEggGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(m_index));
    // appendPressureVesselFromCAD();
 
    // ---------------- visualisation attributes --------------------------------------------------------------------------------
@@ -141,23 +143,22 @@ G4VSolid *internalVolume = createEggSolid(innSegments1,
 }
 
 
-void DEGG::appendPMTs()
-{
-   G4double distancePMT = 176.7 * mm;
-   G4RotationMatrix rot = G4RotationMatrix();
-   rot.rotateY(180 * deg);
+void DEGG::placePMTs(G4LogicalVolume *p_innerVolume)
+{  G4double distancePMT = 176.7 * mm;
+   for (int k = 0; k <= 2 - 1; k++)
+    {
+        m_converter.str("");
+        m_converter << "_" << k;
 
-   appendComponent(m_managerPMT->getPMTSolid(),
-                   m_managerPMT->getLogicalVolume(),
-                   G4ThreeVector(0, 0, distancePMT),
-                   G4RotationMatrix(),
-                   "PMT_1");
+        G4RotationMatrix *rot2 = new G4RotationMatrix();
+   
+         if (k == 1) {
+            rot2->rotateY(180 * deg);
+         }
 
-   appendComponent(m_managerPMT->getPMTSolid(),
-                   m_managerPMT->getLogicalVolume(),
-                   G4ThreeVector(0, 0, -distancePMT),
-                   rot,
-                   "PMT_2");
+        G4Transform3D transformers = G4Transform3D(*rot2, G4ThreeVector(0, 0, distancePMT * std::pow(-1, k)));
+        m_managerPMT->placeIt(transformers, p_innerVolume, m_converter.str());
+    }
 }
 
 
@@ -202,14 +203,14 @@ void DEGG::appendPressureVesselFromCAD()
    // Place all of the meshes it can find in the file as solids individually.
    G4UnionSolid *pressureVessel = new G4UnionSolid("CADPV", mesh->GetSolids().at(0), mesh->GetSolids().at(0), rot, G4ThreeVector(0, -2 * 111 * mm, 0));
 
-   G4LogicalVolume *supportStructureLogical = new G4LogicalVolume(pressureVessel, m_data->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "PressureVessel");
-   supportStructureLogical->SetVisAttributes(m_aluVis);
+   G4LogicalVolume *CADPressureVesselLogical = new G4LogicalVolume(pressureVessel, m_data->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "Glass_log");
+   CADPressureVesselLogical->SetVisAttributes(m_aluVis);
 
    G4RotationMatrix rotNP = G4RotationMatrix();
    rotNP.rotateX(90 * deg);
-   supportStructureLogical->SetVisAttributes(m_glassVis);
+   CADPressureVesselLogical->SetVisAttributes(m_glassVis);
 
-   appendComponent(pressureVessel, supportStructureLogical, G4ThreeVector(0, 0, 111 * mm), rotNP, "PressureVessel_" + std::to_string(m_index));
+   appendComponent(pressureVessel, CADPressureVesselLogical, G4ThreeVector(0, 0, 111 * mm), rotNP, "PressureVessel_" + std::to_string(m_index));
 }
 
 /**

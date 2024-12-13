@@ -1,0 +1,36 @@
+{
+    "jName": "Radioactivity_Okamoto",
+    "jMaterialName": "RiAbs_Glass_Okamoto_DOUMEKI",
+    "jConstProperties": {
+        "K40_ACTIVITY": {
+            "jValue": 2.548,
+            "jUnit": "kg",
+            "jInvertUnit": ""
+        },
+        "U238_ACTIVITY": {
+            "jValue": 0.21459999999999999,
+            "jUnit": "kg",
+            "jInvertUnit": ""
+        },
+        "U235_ACTIVITY": {
+            "jValue": 0.02746507592190889,
+            "jUnit": "kg",
+            "jInvertUnit": ""
+        },
+        "Th232_ACTIVITY": {
+            "jValue": 0.1373,
+            "jUnit": "kg",
+            "jInvertUnit": ""
+        },
+        "Ra226_ACTIVITY": {
+            "jValue": 0.1361,
+            "jUnit": "kg",
+            "jInvertUnit": ""
+        },
+        "Ra224_ACTIVITY": {
+            "jValue": 0.135,
+            "jUnit": "kg",
+            "jInvertUnit": ""
+        }
+    }
+}

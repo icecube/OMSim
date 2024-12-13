@@ -121,7 +121,7 @@ namespace
 G4RadioactiveDecay::G4RadioactiveDecay(const G4String& processName, 
                                        const G4double timeThreshold)
  : G4VRestDiscreteProcess(processName, fDecay),
-   fThresholdForVeryLongDecayTime( 1.0*CLHEP::year )
+   fThresholdForVeryLongDecayTime(1.0e+27 * CLHEP::nanosecond) // Longer than twice Universe's age
 {
   if (GetVerboseLevel() > 1) {
     G4cout << "G4RadioactiveDecay constructor: processName = " << processName
@@ -181,6 +181,7 @@ G4RadioactiveDecay::G4RadioactiveDecay(const G4String& processName,
     if ( timeThreshold > timeThresholdBis ) timeThresholdBis = timeThreshold;
     fThresholdForVeryLongDecayTime = timeThresholdBis;
   }
+  //log_trace("fThresholdForVeryLongDecayTime is set to {}", fThresholdForVeryLongDecayTime); //very long
 }
 
 
@@ -233,6 +234,13 @@ G4RadioactiveDecay::~G4RadioactiveDecay()
 G4bool G4RadioactiveDecay::IsApplicable(const G4ParticleDefinition& aParticle)
 {
   const G4String& pname = aParticle.GetParticleName();
+
+  	// Check for "alpha", "GenericIon", or "Ion" contained in particleName
+		if (particleName == "alpha" || particleName == "GenericIon" || particleName.find("Ion") != std::string::npos) {
+			log_trace("HERE: I am this particle: {}", particle);
+		}
+
+
   if (pname == "GenericIon" || pname == "triton") { return true; }
   // All particles other than G4Ions, are rejected by default
   const G4Ions* p = dynamic_cast<const G4Ions*>(&aParticle);
@@ -971,6 +979,18 @@ G4RadioactiveDecay::DecayIt(const G4Track& theTrack, const G4Step&)
     }
   }
 
+
+  // Check if the current nucleus is the target stop nucleus
+  if (theParticleDef->GetParticleName() == OMSimDecaysGPS::getInstance().getDecayTerminationNuclide()) {
+#ifdef G4VERBOSE
+    if (GetVerboseLevel() >= 1) {
+      G4cout << "Stopping decay chain, as current isotope " << theParticleDef->GetParticleName()
+             << " is the set termination isotope." << G4endl;
+    }
+#endif
+    return TerminateDecay();
+  }
+
   // Now check if particle is valid for RDM
   G4DecayTable* theDecayTable = GetDecayTable(theParticleDef);
   if ( theDecayTable == nullptr || theDecayTable->entries() == 0) { 
@@ -1047,7 +1067,6 @@ void G4RadioactiveDecay::DecayAnalog(const G4Track& theTrack,
     }
     else
     {
-
     if (temptime < 0.) temptime = 0.;
     finalGlobalTime += temptime;
     finalLocalTime += temptime;
@@ -1067,6 +1086,7 @@ void G4RadioactiveDecay::DecayAnalog(const G4Track& theTrack,
     // Note that the cut is not on the average, mean lifetime, but on the actual
     // sampled global decay time.
     if ( finalGlobalTime > fThresholdForVeryLongDecayTime ) {
+      log_trace("HERE Decay has been killed"); //it is not this, however events are still killed/empty/not simulated somewhere else
       fParticleChangeForRadDecay.SetNumberOfSecondaries(0);
       fParticleChangeForRadDecay.ProposeTrackStatus(fStopAndKill) ;
       fParticleChangeForRadDecay.ProposeLocalEnergyDeposit(0.0);
