@@ -87,7 +87,7 @@ void OMSimEffiCaliAnalyisis::writePositionPulseStatistics(double x, double y, do
 	for (int i = 0; i < (int)hits.eventId.size(); i++)
 	{
 		gain.push_back(hits.PMTresponse.at(i).PE);
-		weigth.push_back(1/(hits.PMTresponse.at(i).detectionProbability*hits.PMTresponse.at(i).detectionProbability));
+		weigth.push_back(hits.PMTresponse.at(i).detectionProbability);
 		transit_time.push_back(hits.PMTresponse.at(i).transitTime);
 	}
 
