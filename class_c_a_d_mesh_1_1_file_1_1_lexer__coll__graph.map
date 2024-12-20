@@ -1,6 +1,10 @@
 <map id="CADMesh::File::Lexer" name="CADMesh::File::Lexer">
-<area shape="rect" id="node1" title=" " alt="" coords="132,184,291,211"/>
-<area shape="rect" id="node2" href="$struct_c_a_d_mesh_1_1_file_1_1_item.html" title=" " alt="" coords="9,95,163,121"/>
-<area shape="rect" id="node3" href="$struct_c_a_d_mesh_1_1_file_1_1_token.html" title=" " alt="" coords="5,5,167,32"/>
-<area shape="rect" id="node4" href="$struct_c_a_d_mesh_1_1_file_1_1_state.html" title=" " alt="" coords="259,95,417,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="43,181,201,207"/>
+<area shape="rect" id="Node000002" href="$struct_c_a_d_mesh_1_1_file_1_1_state.html" title=" " alt="" coords="5,93,164,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,130,119,180,114,182,93,132"/>
+<area shape="rect" id="Node000003" href="$struct_c_a_d_mesh_1_1_file_1_1_item.html" title=" " alt="" coords="189,93,343,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="236,128,143,183,140,179,234,123"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="359,98,370,106,362,113,344,116,343,111,360,108,365,106,356,103"/>
+<area shape="rect" id="Node000004" href="$struct_c_a_d_mesh_1_1_file_1_1_token.html" title=" " alt="" coords="185,5,347,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="269,45,269,93,263,93,263,45"/>
 </map>

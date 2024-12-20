@@ -1,5 +1,5 @@
-\hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader}{}\doxysection{CADMesh\+::File\+::PLYReader Class Reference}
-\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader}\index{CADMesh::File::PLYReader@{CADMesh::File::PLYReader}}
+\doxysection{CADMesh\+::File\+::PLYReader Class Reference}
+\hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader}{}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader}\index{CADMesh::File::PLYReader@{CADMesh::File::PLYReader}}
 
 
 Inheritance diagram for CADMesh\+::File\+::PLYReader\+:
@@ -20,72 +20,117 @@ Collaboration diagram for CADMesh\+::File\+::PLYReader\+:
 \includegraphics[width=224pt]{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a843a3aa083a194e39a9a891b7af1b0a4}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a843a3aa083a194e39a9a891b7af1b0a4}} 
-G4bool {\bfseries Read} (G4\+String filepath)
+G4bool \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a843a3aa083a194e39a9a891b7af1b0a4}{Read}} (G4\+String filepath)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa2ff1882c1672ad8b973099dd6c8d425}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa2ff1882c1672ad8b973099dd6c8d425}} 
-G4bool {\bfseries Can\+Read} (Type file\+\_\+type)
+G4bool \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa2ff1882c1672ad8b973099dd6c8d425}{Can\+Read}} (Type file\+\_\+type)
 \end{DoxyCompactItemize}
-\doxysubsection*{Protected Member Functions}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{CADMesh\+::\+File\+::\+Reader}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa74457fd69103d299ea29bd17be501bc}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa74457fd69103d299ea29bd17be501bc}} 
+{\bfseries Reader} (G4\+String reader\+\_\+name)
+\item 
+G4\+String {\bfseries Get\+Name} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ {\bfseries Get\+Mesh} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ {\bfseries Get\+Mesh} (size\+\_\+t index)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ {\bfseries Get\+Mesh} (G4\+String name, G4bool exact=true)
+\item 
+size\+\_\+t {\bfseries Get\+Number\+Of\+Meshes} ()
+\item 
+Meshes {\bfseries Get\+Meshes} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa74457fd69103d299ea29bd17be501bc}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa74457fd69103d299ea29bd17be501bc} 
 {\bfseries CADMesh\+Lexer\+State\+Definition} (Start\+Header)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac9932a5d6dc478de9ebffdd08225bd48}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac9932a5d6dc478de9ebffdd08225bd48}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac9932a5d6dc478de9ebffdd08225bd48}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac9932a5d6dc478de9ebffdd08225bd48} 
 {\bfseries CADMesh\+Lexer\+State\+Definition} (End\+Header)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa5af0e773e56da358d8b74fad9213464}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa5af0e773e56da358d8b74fad9213464}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa5af0e773e56da358d8b74fad9213464}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa5af0e773e56da358d8b74fad9213464} 
 {\bfseries CADMesh\+Lexer\+State\+Definition} (Element)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac37285bd8347d518025522c157768905}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac37285bd8347d518025522c157768905}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac37285bd8347d518025522c157768905}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac37285bd8347d518025522c157768905} 
 {\bfseries CADMesh\+Lexer\+State\+Definition} (Property)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a5f4448a45ea83263f1d7b3f93289ce0d}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a5f4448a45ea83263f1d7b3f93289ce0d}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a5f4448a45ea83263f1d7b3f93289ce0d}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a5f4448a45ea83263f1d7b3f93289ce0d} 
 {\bfseries CADMesh\+Lexer\+State\+Definition} (Ignore)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ab272170af03c0744228a7c73b48eb716}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ab272170af03c0744228a7c73b48eb716}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ab272170af03c0744228a7c73b48eb716}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ab272170af03c0744228a7c73b48eb716} 
 {\bfseries CADMesh\+Lexer\+State\+Definition} (Vertex)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a6b764b7c8fddefe3868aab6b063f367f}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a6b764b7c8fddefe3868aab6b063f367f}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a6b764b7c8fddefe3868aab6b063f367f}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a6b764b7c8fddefe3868aab6b063f367f} 
 {\bfseries CADMesh\+Lexer\+State\+Definition} (Facet)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a512595786056f8dc2b36bb0b624e95b6}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a512595786056f8dc2b36bb0b624e95b6}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a512595786056f8dc2b36bb0b624e95b6}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a512595786056f8dc2b36bb0b624e95b6} 
 void {\bfseries Parse\+Header} (Items items)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a88d0abd6a20e3922bf9b0d8857da45a9}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a88d0abd6a20e3922bf9b0d8857da45a9}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a88d0abd6a20e3922bf9b0d8857da45a9}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a88d0abd6a20e3922bf9b0d8857da45a9} 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ {\bfseries Parse\+Mesh} (Items vertex\+\_\+items, Items face\+\_\+items)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a57a742ca4627e52335d0a2693e697a9f}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a57a742ca4627e52335d0a2693e697a9f}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a57a742ca4627e52335d0a2693e697a9f}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a57a742ca4627e52335d0a2693e697a9f} 
 G4\+Three\+Vector {\bfseries Parse\+Vertex} (Items items)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_af9b9e887ef4970fa8ce4c81b44d61425}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_af9b9e887ef4970fa8ce4c81b44d61425}} 
-G4\+Triangular\+Facet $\ast$ {\bfseries Parse\+Facet} (Items items, Points vertices)
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_af9b9e887ef4970fa8ce4c81b44d61425}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_af9b9e887ef4970fa8ce4c81b44d61425} 
+G4\+Triangular\+Facet \texorpdfstring{$\ast$}{*} {\bfseries Parse\+Facet} (Items items, Points vertices)
 \end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{CADMesh\+::\+File\+::\+Reader}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a2d448bbdd6f4c8a729e3c5412c86a8e8}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a2d448bbdd6f4c8a729e3c5412c86a8e8}} 
+size\+\_\+t {\bfseries Add\+Mesh} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ mesh)
+\item 
+void {\bfseries Set\+Meshes} (Meshes meshs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a2d448bbdd6f4c8a729e3c5412c86a8e8}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a2d448bbdd6f4c8a729e3c5412c86a8e8} 
 size\+\_\+t {\bfseries vertex\+\_\+count\+\_\+} = 0
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a97a79b1113b089a587f6dfd32e99525f}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a97a79b1113b089a587f6dfd32e99525f}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a97a79b1113b089a587f6dfd32e99525f}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a97a79b1113b089a587f6dfd32e99525f} 
 size\+\_\+t {\bfseries facet\+\_\+count\+\_\+} = 0
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac919bbc7f753327c9d34fcd39e3dcf2b}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac919bbc7f753327c9d34fcd39e3dcf2b}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac919bbc7f753327c9d34fcd39e3dcf2b}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac919bbc7f753327c9d34fcd39e3dcf2b} 
 size\+\_\+t {\bfseries x\+\_\+index\+\_\+} = 0
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a8b96675c49628775ab77c0e4d048f675}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a8b96675c49628775ab77c0e4d048f675}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a8b96675c49628775ab77c0e4d048f675}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a8b96675c49628775ab77c0e4d048f675} 
 size\+\_\+t {\bfseries y\+\_\+index\+\_\+} = 0
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac210d2595546b4cf5bc165fa0d038362}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac210d2595546b4cf5bc165fa0d038362}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac210d2595546b4cf5bc165fa0d038362}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_ac210d2595546b4cf5bc165fa0d038362} 
 size\+\_\+t {\bfseries z\+\_\+index\+\_\+} = 0
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a937882fa2ae2b9f4e571ac89f8eb96ea}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a937882fa2ae2b9f4e571ac89f8eb96ea}} 
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a937882fa2ae2b9f4e571ac89f8eb96ea}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a937882fa2ae2b9f4e571ac89f8eb96ea} 
 size\+\_\+t {\bfseries facet\+\_\+index\+\_\+} = 0
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa2ff1882c1672ad8b973099dd6c8d425}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_aa2ff1882c1672ad8b973099dd6c8d425} 
+\index{CADMesh::File::PLYReader@{CADMesh::File::PLYReader}!CanRead@{CanRead}}
+\index{CanRead@{CanRead}!CADMesh::File::PLYReader@{CADMesh::File::PLYReader}}
+\doxysubsubsection{\texorpdfstring{CanRead()}{CanRead()}}
+{\footnotesize\ttfamily G4bool CADMesh\+::\+File\+::\+PLYReader\+::\+Can\+Read (\begin{DoxyParamCaption}\item[{Type}]{file\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{CADMesh\+::\+File\+::\+Reader}}.
+
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a843a3aa083a194e39a9a891b7af1b0a4}\label{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader_a843a3aa083a194e39a9a891b7af1b0a4} 
+\index{CADMesh::File::PLYReader@{CADMesh::File::PLYReader}!Read@{Read}}
+\index{Read@{Read}!CADMesh::File::PLYReader@{CADMesh::File::PLYReader}}
+\doxysubsubsection{\texorpdfstring{Read()}{Read()}}
+{\footnotesize\ttfamily G4bool CADMesh\+::\+File\+::\+PLYReader\+::\+Read (\begin{DoxyParamCaption}\item[{G4\+String}]{filepath }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{CADMesh\+::\+File\+::\+Reader}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

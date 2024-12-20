@@ -1,12 +1,21 @@
 <map id="OMSimCommandArgsTable.hh" name="OMSimCommandArgsTable.hh">
-<area shape="rect" id="node1" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="430,5,649,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_logger_8hh_source.html" title=" " alt="" coords="229,80,361,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="385,80,459,107"/>
-<area shape="rect" id="node8" title=" " alt="" coords="483,80,595,107"/>
-<area shape="rect" id="node9" title=" " alt="" coords="619,80,710,107"/>
-<area shape="rect" id="node10" title=" " alt="" coords="734,80,785,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,162,129,189"/>
-<area shape="rect" id="node4" title=" " alt="" coords="153,155,301,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="326,162,403,189"/>
-<area shape="rect" id="node6" title=" " alt="" coords="427,162,558,189"/>
+<area shape="rect" id="Node000001" title="Definition of the OMSimCommandArgsTable singleton class, which controls user args." alt="" coords="430,5,649,31"/>
+<area shape="rect" id="Node000002" href="$_o_m_sim_logger_8hh_source.html" title=" " alt="" coords="229,79,361,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="501,33,349,77,347,72,499,28"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="385,79,459,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="522,33,454,74,452,69,519,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="483,79,595,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="542,31,542,65,537,65,537,31"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="619,79,710,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="561,28,634,69,631,74,558,33"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="734,79,785,104"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="575,28,721,75,720,80,574,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,159,129,185"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="263,107,114,157,113,152,261,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="153,152,301,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="287,106,255,143,251,140,283,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="326,159,403,185"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="308,102,347,147,343,151,304,106"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="427,159,558,185"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="325,102,452,152,450,157,323,106"/>
 </map>

@@ -1,4 +1,6 @@
 <map id="CADMesh::File::Item" name="CADMesh::File::Item">
-<area shape="rect" id="node1" title=" " alt="" coords="9,95,163,121"/>
-<area shape="rect" id="node2" href="$struct_c_a_d_mesh_1_1_file_1_1_token.html" title=" " alt="" coords="5,5,167,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="9,93,163,119"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="179,98,190,106,182,113,164,116,163,111,180,108,185,106,176,103"/>
+<area shape="rect" id="Node000002" href="$struct_c_a_d_mesh_1_1_file_1_1_token.html" title=" " alt="" coords="5,5,167,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,45,89,93,83,93,83,45"/>
 </map>

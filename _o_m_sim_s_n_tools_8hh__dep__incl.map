@@ -1,5 +1,8 @@
 <map id="OMSimSNTools.hh" name="OMSimSNTools.hh">
-<area shape="rect" id="node1" title="Provides the definition for the OMSimSNTools class, centralizing utility methods for Supernova (SN) n..." alt="" coords="59,5,199,32"/>
-<area shape="rect" id="node2" href="$supernova_2include_2_o_m_sim_primary_generator_action_8hh_source.html" title=" " alt="" coords="5,155,252,181"/>
-<area shape="rect" id="node3" href="$_o_m_sim_s_n_particle_generators_8hh.html" title="This file contains the classes in charge of particle generation." alt="" coords="91,80,318,107"/>
+<area shape="rect" id="Node000001" title="Provides the definition for the OMSimSNTools class, centralizing utility methods for Supernova (SN) n..." alt="" coords="59,5,199,31"/>
+<area shape="rect" id="Node000002" href="$supernova_2include_2_o_m_sim_primary_generator_action_8hh_source.html" title=" " alt="" coords="5,152,252,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,42,93,59,82,79,81,99,89,119,116,150,112,154,84,121,75,100,77,78,88,56,103,38"/>
+<area shape="rect" id="Node000003" href="$_o_m_sim_s_n_particle_generators_8hh.html" title="This file contains the classes in charge of particle generation." alt="" coords="91,79,318,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,38,194,76,190,80,149,42"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="184,115,143,154,139,150,181,111"/>
 </map>

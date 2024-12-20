@@ -1,0 +1,43 @@
+\doxysection{OMSim\+MDOMHarness.\+hh}
+\hypertarget{_o_m_sim_m_d_o_m_harness_8hh_source}{}\label{_o_m_sim_m_d_o_m_harness_8hh_source}\index{OMSimMDOMHarness.hh@{OMSimMDOMHarness.hh}}
+\mbox{\hyperlink{_o_m_sim_m_d_o_m_harness_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_detector_component_8hh}{OMSimDetectorComponent.hh}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <G4IntersectionSolid.hh>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <G4Cons.hh>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classm_d_o_m}{mDOM}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classm_d_o_m_harness}{mDOMHarness}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSimDetectorComponent}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{classm_d_o_m_harness}{mDOMHarness}}(\mbox{\hyperlink{classm_d_o_m}{mDOM}}*\ pMDOM);}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm_d_o_m_harness_ab87b8f216298817923b91063fee12b3b}{construction}}();}
+\DoxyCodeLine{00017\ \ \ \ \ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classm_d_o_m}{mDOM}}*\ m\_opticalModule;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ bandsAndClamps();}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ bridgeRopesSolid();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ mainDataCable();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ pads();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ PCA();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ plug();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ teraBelt();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_harnessRotAngle\ =\ 45*deg;\ \textcolor{comment}{//rotation\ of\ harness\ with\ respect\ to\ the\ module.\ Valid\ values\ are\ 45,\ 45+90,\ 45+180..\ etc,\ otherwise\ the\ ropes\ would\ go\ over\ the\ PMTs}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_plugAngle\ =\ 49.0\ *\ deg;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_padThickness\ =\ 2.0\ *\ mm;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_teraThickness\ =\ 1.0\ *\ mm;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_ropeRMax\ =\ 3.0\ *\ mm;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_bridgeAddedThickness\ =\ 14.6\ *\ mm;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_ropeRotationAngleX\ =\ 11.245557\ *\ deg;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_ropeDz\ =\ 509.5\ *\ mm;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_bridgeCorrection\ =\ \ 7.85*mm\ *\ tan(m\_ropeRotationAngleX);\ \ \textcolor{comment}{//\ \ }}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_ropeStartingPoint\ =\ m\_totalWidth\ +\ m\_bridgeCorrection\ +\ m\_ropeRMax\ /\ cos(m\_ropeRotationAngleX);\ \textcolor{comment}{//\ this\ is\ the\ actual\ starting\ point\ of\ the\ rope,\ i.e.\ the\ distance\ to\ the\ z-\/axis,\ which\ has\ to\ be\ larger\ than\ lBridgeROuter[2]\ in\ order\ for\ the\ rope\ not\ to\ cut\ the\ bridge.}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ G4double\ m\_totalWidth;}
+\DoxyCodeLine{00040\ \};}
+
+\end{DoxyCode}

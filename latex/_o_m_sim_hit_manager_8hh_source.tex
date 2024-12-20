@@ -1,0 +1,86 @@
+\doxysection{OMSim\+Hit\+Manager.\+hh}
+\hypertarget{_o_m_sim_hit_manager_8hh_source}{}\label{_o_m_sim_hit_manager_8hh_source}\index{OMSimHitManager.hh@{OMSimHitManager.hh}}
+\mbox{\hyperlink{_o_m_sim_hit_manager_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_p_m_t_response_8hh}{OMSimPMTResponse.hh}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <G4ThreeVector.hh>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <G4AutoLock.hh>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <G4Threading.hh>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_hit_stats}{HitStats}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<G4long>\ \mbox{\hyperlink{struct_hit_stats_a5b5b61f1096a1e02d495d7bab1fff259}{eventId}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<G4double>\ \mbox{\hyperlink{struct_hit_stats_ae0c5192a6db7a2fc8dec37e62a6a1e76}{hitTime}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<G4double>\ \mbox{\hyperlink{struct_hit_stats_a254bd94585df0605a6e2e863e3e00851}{flightTime}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ std::vector<G4double>\ \mbox{\hyperlink{struct_hit_stats_ae7c3d380f7f961927f73fef4ee20fe4d}{pathLenght}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ std::vector<G4double>\ \mbox{\hyperlink{struct_hit_stats_a542a1e55040646afe6966f281194117b}{energy}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ std::vector<G4int>\ \mbox{\hyperlink{struct_hit_stats_af603afdc7e643ea0246cb0b642ae8bb5}{PMTnr}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ std::vector<G4ThreeVector>\ \mbox{\hyperlink{struct_hit_stats_a383cfeda6e6e515b56aee0a369ec5085}{direction}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ std::vector<G4ThreeVector>\ \mbox{\hyperlink{struct_hit_stats_a82333e4544d85c231e0aab2660f99cda}{localPosition}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ std::vector<G4ThreeVector>\ \mbox{\hyperlink{struct_hit_stats_a6a80e0ae23f39c939f1e46737cc80dd4}{globalPosition}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ std::vector<G4double>\ \mbox{\hyperlink{struct_hit_stats_ae73c03f4d9024845eb1bfd5de71eb653}{generationDetectionDistance}};\ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ std::vector<OMSimPMTResponse::PMTPulse>\ \mbox{\hyperlink{struct_hit_stats_a3c8b0736ba6927c644ee1b9e62e02e64}{PMTresponse}};\ }
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}}
+\DoxyCodeLine{00056\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_hit_manager}{\string~OMSimHitManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}{init}}();}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}{shutdown}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\ \&\mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{getInstance}}();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_aaf4ca3c29c6dbe8721aaafd4fd39d436}{appendHitInfo}}(}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ G4int\ p\_eventid,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ G4double\ pGlobalTime,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ G4double\ pLocalTime,}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ G4double\ pTrackLength,}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ G4double\ pEnergy,}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ G4int\ pPMTHitNumber,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ G4ThreeVector\ pMomentumDirection,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ G4ThreeVector\ pGlobalPos,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ G4ThreeVector\ pLocalPos,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ G4double\ pDistance,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSimPMTResponse::PMTPulse}}\ pResponse,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ G4int\ pModuleIndex\ =\ 0);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_a00bb034e7751905f8a8229de3f8a39b1}{reset}}();}
+\DoxyCodeLine{00082\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_o_m_sim_hit_manager_a954b4f28a89275da58d4e2e3328d1467}{countMergedHits}}(\textcolor{keywordtype}{int}\ pModuleIndex\ =\ 0,\ \textcolor{keywordtype}{bool}\ pDEweight\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_ab4a1060283a53660e52626d08a77ebc8}{setNumberOfPMTs}}(\textcolor{keywordtype}{int}\ pNumberOfPMTs,\ \textcolor{keywordtype}{int}\ pModuleIndex\ =\ 0);}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{struct_hit_stats}{HitStats}}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}{getMergedHitsOfModule}}(\textcolor{keywordtype}{int}\ pModuleIndex\ =\ 0);}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{struct_hit_stats}{HitStats}}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_a45a63dbb6cdb3815db3cfde00ae36f70}{getSingleThreadHitsOfModule}}(\textcolor{keywordtype}{int}\ pModuleIndex\ =\ 0);}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{bool}\ areThereHitsInModuleSingleThread(\textcolor{keywordtype}{int}\ pModuleIndex\ =\ 0);}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_a756d2a85121e00d2a2d8b6c04cd0ebd1}{sortHitStatsByTime}}(\mbox{\hyperlink{struct_hit_stats}{HitStats}}\ \&pHits);}
+\DoxyCodeLine{00088\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{class_o_m_sim_hit_manager_a01638ba2c16fcde1244b90e9672425c0}{calculateMultiplicity}}(\textcolor{keyword}{const}\ G4double\ pTimeWindow,\ \textcolor{keywordtype}{int}\ pModuleNumber\ =\ 0);}
+\DoxyCodeLine{00089\ \ \ \ \ G4int\ getNextDetectorIndex()\ \{\ \textcolor{keywordflow}{return}\ ++m\_currentIndex;\ \}}
+\DoxyCodeLine{00090\ \ \ \ \ G4int\ getNumberOfModules()\ \{\ \textcolor{keywordflow}{return}\ m\_currentIndex\ +\ 1;\ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ mergeThreadData();}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ std::map<G4int,\ HitStats>\ \mbox{\hyperlink{class_o_m_sim_hit_manager_a0fc9285c7ecc4cc283e883ceebbe423e}{m\_moduleHits}};\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00097\ \ \ \ \ std::map<G4int,\ G4int>\ \mbox{\hyperlink{class_o_m_sim_hit_manager_a8f1ac71e89bfb8d4f0db4b56c7152e50}{m\_numberOfPMTs}};\ }
+\DoxyCodeLine{00098\ \ \ \ \ G4int\ m\_currentIndex;}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{static}\ G4Mutex\ m\_mutex;}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\ *m\_instance;}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_o_m_sim_hit_manager_1_1_thread_local_data}{ThreadLocalData}}}
+\DoxyCodeLine{00102\ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ std::map<G4int,\ HitStats>\ moduleHits;}
+\DoxyCodeLine{00104\ \ \ \ \ \};}
+\DoxyCodeLine{00105\ \ \ \ \ G4ThreadLocal\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_o_m_sim_hit_manager_1_1_thread_local_data}{ThreadLocalData}}\ *m\_threadData;}
+\DoxyCodeLine{00106\ \};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\ *g\_hitManager\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00109\ }
+
+\end{DoxyCode}

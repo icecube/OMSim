@@ -1,0 +1,64 @@
+\doxysection{OMSim\+UIinterface.\+hh}
+\hypertarget{_o_m_sim_u_iinterface_8hh_source}{}\label{_o_m_sim_u_iinterface_8hh_source}\index{OMSimUIinterface.hh@{OMSimUIinterface.hh}}
+\mbox{\hyperlink{_o_m_sim_u_iinterface_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_command_args_table_8hh}{OMSimCommandArgsTable.hh}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <G4UImanager.hh>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSimUIinterface}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Public\ static\ access\ for\ the\ singleton\ instance}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSimUIinterface}}\ \&getInstance()}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSimUIinterface}}\ instance;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface_ad5517f9564cb68e02a1f4efabf852b61}{init}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface_ae184798f646ff27968fd3cf89904298d}{shutdown}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface_a795e5290544dc4bcc879388816d69a12}{applyCommand}}(\textcolor{keyword}{const}\ std::string\ \&p\_command,\ \textcolor{keyword}{const}\ Args\ \&...p\_args)}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::stringstream\ stream;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ stream\ <<\ p\_command;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ appendToStream(stream,\ p\_args...);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ log\_trace(stream.str().c\_str());}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ m\_uiManager-\/>ApplyCommand(stream.str());}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface_aebd8bceca0c4d305f6bad38afbf2d70b}{setUI}}(G4UImanager\ *p\_ui);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface_a880d9879e9373b6af3bc0c3b691160f8}{runBeamOn}}(G4int\ p\_numberOfEvents\ =\ -\/1);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \ G4UImanager\ *m\_uiManager;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSimUIinterface}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_u_iinterface}{\string~OMSimUIinterface}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSimUIinterface}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSimUIinterface}}\ \&)\ =\ \textcolor{keyword}{delete};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ disable\ copying}}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSimUIinterface}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSimUIinterface}}\ \&)\ =\ \textcolor{keyword}{delete};\ \textcolor{comment}{//\ disable\ assignment}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ appendToStream(std::stringstream\ \&p\_stream)}
+\DoxyCodeLine{00056\ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ no\ additional\ arguments,\ do\ nothing}}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface_a3762f6dcd5d107958ee90f1a68edb26e}{appendToStream}}(std::stringstream\ \&p\_stream,\ \textcolor{keyword}{const}\ T\ \&p\_val)}
+\DoxyCodeLine{00068\ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ p\_stream\ <<\ \textcolor{charliteral}{'\ '}\ <<\ p\_val;}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface_a3fa29b24b1df7d09d8852ca276f3375e}{appendToStream}}(std::stringstream\ \&p\_stream,\ \textcolor{keyword}{const}\ T\ \&p\_val,\ \textcolor{keyword}{const}\ Args\ \&...p\_args)}
+\DoxyCodeLine{00082\ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ p\_stream\ <<\ \textcolor{charliteral}{'\ '}\ <<\ p\_val;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ appendToStream(p\_stream,\ p\_args...);}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSimUIinterface}}\ *g\_OMSimUIinterface\ =\ \textcolor{keyword}{nullptr};}
+
+\end{DoxyCode}

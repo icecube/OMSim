@@ -1,13 +1,13 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="5,157,205,184"/>
-<area shape="rect" id="node2" href="$class_d_egg_harness.html" title=" " alt="" coords="288,56,397,83"/>
-<area shape="rect" id="node3" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="261,107,424,133"/>
-<area shape="rect" id="node9" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="253,157,432,184"/>
-<area shape="rect" id="node10" href="$classm_d_o_m_flasher.html" title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module." alt="" coords="285,208,400,235"/>
-<area shape="rect" id="node11" href="$classm_d_o_m_harness.html" title=" " alt="" coords="283,259,403,285"/>
-<area shape="rect" id="node4" href="$class_d_e_g_g.html" title="Construction of the DEGG detector geometry." alt="" coords="483,5,543,32"/>
-<area shape="rect" id="node5" href="$class_l_o_m16.html" title=" " alt="" coords="480,56,547,83"/>
-<area shape="rect" id="node6" href="$class_l_o_m18.html" title=" " alt="" coords="480,107,547,133"/>
-<area shape="rect" id="node7" href="$classm_d_o_m.html" title=" " alt="" coords="480,157,547,184"/>
-<area shape="rect" id="node8" href="$classp_d_o_m.html" title="pDOM class represents the construction of pDOM/Gen1 DOM." alt="" coords="482,208,545,235"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,80,223,105"/>
+<area shape="rect" id="Node000001" href="$class_o_m_sim_detector_construction.html" title="Class for detector construction in the effective area simulation." alt="" coords="271,80,477,105"/>
+<area shape="poly" id="edge17_Node000000_Node000001" title=" " alt="" coords="237,90,270,90,270,95,237,95"/>
+<area shape="rect" id="Node000002" href="$class_o_m_sim_effective_area_detector.html" title="Class for detector construction in the effective area simulation." alt="" coords="525,5,737,31"/>
+<area shape="poly" id="edge18_Node000001_Node000002" title=" " alt="" coords="422,73,525,39,569,28,571,33,526,45,424,78"/>
+<area shape="rect" id="Node000003" href="$class_o_m_sim_effi_cali_detector.html" title=" " alt="" coords="546,55,717,80"/>
+<area shape="poly" id="edge19_Node000001_Node000003" title=" " alt="" coords="491,79,546,73,546,78,491,84"/>
+<area shape="rect" id="Node000004" href="$class_o_m_sim_rad_decays_detector.html" title="Detector construction of radioactive decays simulation." alt="" coords="532,104,731,129"/>
+<area shape="poly" id="edge20_Node000001_Node000004" title=" " alt="" coords="491,101,532,105,531,110,491,106"/>
+<area shape="rect" id="Node000005" href="$class_o_m_sim_s_ndetector.html" title="Class for detector construction in the SN neutrino simulation." alt="" coords="561,153,702,179"/>
+<area shape="poly" id="edge21_Node000001_Node000005" title=" " alt="" coords="426,107,526,138,575,151,574,156,525,143,425,112"/>
 </map>

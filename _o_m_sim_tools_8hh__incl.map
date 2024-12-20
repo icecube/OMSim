@@ -1,13 +1,23 @@
 <map id="OMSimTools.hh" name="OMSimTools.hh">
-<area shape="rect" id="node1" title="Definition of Tools namespace, a collection of helper methods." alt="" coords="527,5,650,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_logger_8hh_source.html" title=" " alt="" coords="229,80,361,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="385,80,475,107"/>
-<area shape="rect" id="node8" title=" " alt="" coords="499,80,580,107"/>
-<area shape="rect" id="node9" title=" " alt="" coords="604,80,675,107"/>
-<area shape="rect" id="node10" title=" " alt="" coords="699,80,767,107"/>
-<area shape="rect" id="node11" title=" " alt="" coords="791,80,866,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,162,129,189"/>
-<area shape="rect" id="node4" title=" " alt="" coords="153,155,301,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="326,162,403,189"/>
-<area shape="rect" id="node6" title=" " alt="" coords="427,162,558,189"/>
+<area shape="rect" id="Node000001" title="Definition of Tools namespace, a collection of helper methods." alt="" coords="527,5,650,31"/>
+<area shape="rect" id="Node000002" href="$_o_m_sim_logger_8hh_source.html" title=" " alt="" coords="229,79,361,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="542,33,357,78,355,73,541,28"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="385,79,475,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="564,33,469,75,467,71,562,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="499,79,580,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="583,33,557,69,553,66,578,29"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="604,79,675,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="599,29,625,66,621,69,595,33"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="699,79,767,104"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="613,28,698,70,696,75,611,33"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="791,79,866,104"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="628,28,778,72,777,78,626,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,159,129,185"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="263,107,114,157,113,152,261,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="153,152,301,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="287,106,255,143,251,140,283,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="326,159,403,185"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="308,102,347,147,343,151,304,106"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="427,159,558,185"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="325,102,452,152,450,157,323,106"/>
 </map>

@@ -1,0 +1,36 @@
+\doxysection{OMSim\+Beam.\+hh}
+\hypertarget{_o_m_sim_beam_8hh_source}{}\label{_o_m_sim_beam_8hh_source}\index{OMSimBeam.hh@{OMSimBeam.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}TGraph.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_beam}{Beam}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \mbox{\hyperlink{class_beam}{Beam}}(G4double\ pBeamRadius,\ G4double\ pBeamDistance);}
+\DoxyCodeLine{00015\ \ \ \mbox{\hyperlink{class_beam}{\string~Beam}}();}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{void}\ runErlangenQEBeam();}
+\DoxyCodeLine{00018\ \ \ \textcolor{keywordtype}{void}\ runBeamPicoQuantSetup(\textcolor{keywordtype}{double}\ pX,\ \textcolor{keywordtype}{double}\ pY);}
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{void}\ runBeamNKTSetup(G4double\ p\_x,\ G4double\ p\_y);}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{void}\ setWavelength(\textcolor{keywordtype}{double}\ pWavelength);}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{void}\ configureZCorrection\_PicoQuant();}
+\DoxyCodeLine{00022\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ configureErlangenQESetup();}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ configureXYZScan\_NKTLaser();}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{void}\ configureXYZScan\_PicoQuantSetup();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ TGraph*\ m\_zCorrection;}
+\DoxyCodeLine{00030\ \ \ G4double\ m\_beamRadius;}
+\DoxyCodeLine{00031\ \ \ G4double\ m\_beamDistance;}
+\DoxyCodeLine{00032\ \ \ G4double\ m\_wavelength;}
+\DoxyCodeLine{00033\ \ \ G4double\ m\_theta;}
+\DoxyCodeLine{00034\ \ \ G4double\ m\_phi;}
+\DoxyCodeLine{00035\ \};}
+
+\end{DoxyCode}

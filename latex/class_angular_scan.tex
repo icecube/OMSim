@@ -1,5 +1,5 @@
-\hypertarget{class_angular_scan}{}\doxysection{Angular\+Scan Class Reference}
-\label{class_angular_scan}\index{AngularScan@{AngularScan}}
+\doxysection{Angular\+Scan Class Reference}
+\hypertarget{class_angular_scan}{}\label{class_angular_scan}\index{AngularScan@{AngularScan}}
 
 
 Class for defining and running simple GPS beam configurations with angular scans.  
@@ -8,47 +8,47 @@ Class for defining and running simple GPS beam configurations with angular scans
 
 
 \doxysubsection{Detailed Description}
-The \mbox{\hyperlink{class_angular_scan}{Angular\+Scan}} class provides functionalities to configure and run simple GPS beam configurations with angular scans. It allows setting the beam radius, beam distance, and wavelength of the photons to be generated. It also supports specifying the angle of incidence with respect to the target and performs the simulation for each angular configuration. \doxysubsection*{Public Member Functions}
+The \doxylink{class_angular_scan}{Angular\+Scan} class provides functionalities to configure and run simple GPS beam configurations with angular scans. It allows setting the beam radius, beam distance, and wavelength of the photons to be generated. It also supports specifying the angle of incidence with respect to the target and performs the simulation for each angular configuration. \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_angular_scan_af7d054657e56a97db60274f30ff737e6}{Angular\+Scan}} (G4double p\+Beam\+Radius, G4double p\+Beam\+Distance, G4double p\+Wavelength)
 \item 
-\mbox{\Hypertarget{class_angular_scan_a0603ef7f2b297de98ad466145ff122e4}\label{class_angular_scan_a0603ef7f2b297de98ad466145ff122e4}} 
-void \mbox{\hyperlink{class_angular_scan_a0603ef7f2b297de98ad466145ff122e4}{configure\+Scan}} ()
+\Hypertarget{class_angular_scan_a0603ef7f2b297de98ad466145ff122e4}\label{class_angular_scan_a0603ef7f2b297de98ad466145ff122e4} 
+void {\bfseries configure\+Scan} ()
 \begin{DoxyCompactList}\small\item\em Configure the GPS settings, such as the particle properties, beam position and direction. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_angular_scan_a465f642ebbe30fc94f9ed8ec6e554ef4}{run\+Single\+Angular\+Scan}} (G4double p\+Phi, G4double p\+Theta)
 \begin{DoxyCompactList}\small\item\em Run a single angular scan with the specified angles. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_angular_scan_a40b9d1151eeae2f86694554867883be8}\label{class_angular_scan_a40b9d1151eeae2f86694554867883be8}} 
-void \mbox{\hyperlink{class_angular_scan_a40b9d1151eeae2f86694554867883be8}{configure\+Pos\+Coordinates}} ()
+\Hypertarget{class_angular_scan_a40b9d1151eeae2f86694554867883be8}\label{class_angular_scan_a40b9d1151eeae2f86694554867883be8} 
+void {\bfseries configure\+Pos\+Coordinates} ()
 \begin{DoxyCompactList}\small\item\em Configures the position coordinates of the beam based on the polar and azimuthal angles. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_angular_scan_a9c3d30d0e4f7dfb200ae7dd5fca68c4f}\label{class_angular_scan_a9c3d30d0e4f7dfb200ae7dd5fca68c4f}} 
-void \mbox{\hyperlink{class_angular_scan_a9c3d30d0e4f7dfb200ae7dd5fca68c4f}{configure\+Ang\+Coordinates}} ()
+\Hypertarget{class_angular_scan_a9c3d30d0e4f7dfb200ae7dd5fca68c4f}\label{class_angular_scan_a9c3d30d0e4f7dfb200ae7dd5fca68c4f} 
+void {\bfseries configure\+Ang\+Coordinates} ()
 \begin{DoxyCompactList}\small\item\em Configures the angular coordinates of the beam based on the polar and azimuthal angles. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_angular_scan_ad0d63277853da4b35b925661f1dbc8f5}\label{class_angular_scan_ad0d63277853da4b35b925661f1dbc8f5}} 
+\Hypertarget{class_angular_scan_ad0d63277853da4b35b925661f1dbc8f5}\label{class_angular_scan_ad0d63277853da4b35b925661f1dbc8f5} 
 G4double {\bfseries m\+\_\+beam\+Radius}
 \item 
-\mbox{\Hypertarget{class_angular_scan_aed01fa23804279177b31c201e27d2f91}\label{class_angular_scan_aed01fa23804279177b31c201e27d2f91}} 
+\Hypertarget{class_angular_scan_aed01fa23804279177b31c201e27d2f91}\label{class_angular_scan_aed01fa23804279177b31c201e27d2f91} 
 G4double {\bfseries m\+\_\+beam\+Distance}
 \item 
-\mbox{\Hypertarget{class_angular_scan_aacb861f1748a9ed427b2b188f2586396}\label{class_angular_scan_aacb861f1748a9ed427b2b188f2586396}} 
+\Hypertarget{class_angular_scan_aacb861f1748a9ed427b2b188f2586396}\label{class_angular_scan_aacb861f1748a9ed427b2b188f2586396} 
 G4double {\bfseries m\+\_\+wavelength}
 \item 
-\mbox{\Hypertarget{class_angular_scan_a9d459dc652401144fb978053fbf1248e}\label{class_angular_scan_a9d459dc652401144fb978053fbf1248e}} 
+\Hypertarget{class_angular_scan_a9d459dc652401144fb978053fbf1248e}\label{class_angular_scan_a9d459dc652401144fb978053fbf1248e} 
 G4double {\bfseries m\+\_\+theta}
 \item 
-\mbox{\Hypertarget{class_angular_scan_a20cb58d446f121237f8270310995c01b}\label{class_angular_scan_a20cb58d446f121237f8270310995c01b}} 
+\Hypertarget{class_angular_scan_a20cb58d446f121237f8270310995c01b}\label{class_angular_scan_a20cb58d446f121237f8270310995c01b} 
 G4double {\bfseries m\+\_\+phi}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_angular_scan_af7d054657e56a97db60274f30ff737e6}\label{class_angular_scan_af7d054657e56a97db60274f30ff737e6}} 
+\Hypertarget{class_angular_scan_af7d054657e56a97db60274f30ff737e6}\label{class_angular_scan_af7d054657e56a97db60274f30ff737e6} 
 \index{AngularScan@{AngularScan}!AngularScan@{AngularScan}}
 \index{AngularScan@{AngularScan}!AngularScan@{AngularScan}}
 \doxysubsubsection{\texorpdfstring{AngularScan()}{AngularScan()}}
@@ -66,7 +66,7 @@ G4double {\bfseries m\+\_\+phi}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_angular_scan_a465f642ebbe30fc94f9ed8ec6e554ef4}\label{class_angular_scan_a465f642ebbe30fc94f9ed8ec6e554ef4}} 
+\Hypertarget{class_angular_scan_a465f642ebbe30fc94f9ed8ec6e554ef4}\label{class_angular_scan_a465f642ebbe30fc94f9ed8ec6e554ef4} 
 \index{AngularScan@{AngularScan}!runSingleAngularScan@{runSingleAngularScan}}
 \index{runSingleAngularScan@{runSingleAngularScan}!AngularScan@{AngularScan}}
 \doxysubsubsection{\texorpdfstring{runSingleAngularScan()}{runSingleAngularScan()}}

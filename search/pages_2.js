@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['multi_2dthreading_20mode_741',['Multi-threading mode',['../md_extra_doc_1_multithreading.html',1,'']]]
+  ['effective_20area_20studies_0',['&gt; Effective Area Studies',['../md_extra__doc_230__effective__area.html',1,'']]]
 ];

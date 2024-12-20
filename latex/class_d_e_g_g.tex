@@ -1,8 +1,8 @@
-\hypertarget{class_d_e_g_g}{}\doxysection{DEGG Class Reference}
-\label{class_d_e_g_g}\index{DEGG@{DEGG}}
+\doxysection{DEGG Class Reference}
+\hypertarget{class_d_e_g_g}{}\label{class_d_e_g_g}\index{DEGG@{DEGG}}
 
 
-Construction of the \mbox{\hyperlink{class_d_e_g_g}{DEGG}} detector geometry.  
+Construction of the \doxylink{class_d_e_g_g}{DEGG} detector geometry.  
 
 
 
@@ -28,52 +28,144 @@ Collaboration diagram for DEGG\+:
 
 
 \doxysubsection{Detailed Description}
-The \mbox{\hyperlink{class_d_e_g_g}{DEGG}} class is responsible for constructing the D-\/\+Egg detector geometry. It creates the pressure vessel, the inner volume, and places the PMTs inside the logical volume of the gel. The class is derived from the {\ttfamily \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}} base class. \doxysubsection*{Public Member Functions}
+The \doxylink{class_d_e_g_g}{DEGG} class is responsible for constructing the D-\/\+Egg detector geometry. It creates the pressure vessel, the inner volume, and places the PMTs inside the logical volume of the gel. The class is derived from the {\ttfamily \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} base class. \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_d_e_g_g_a6af6697e49866ad1c9c15a8182b86cbf}{DEGG}} (G4bool p\+\_\+place\+Harness=true)
 \item 
-\mbox{\Hypertarget{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}\label{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}} 
 void \mbox{\hyperlink{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}{construction}} ()
-\begin{DoxyCompactList}\small\item\em Construction of the whole \mbox{\hyperlink{class_d_e_g_g}{DEGG}}. If you want to change any component, you have to change it at the specific function. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Construction of the whole \doxylink{class_d_e_g_g}{DEGG}. If you want to change any component, you have to change it at the specific function. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076}{get\+Pressure\+Vessel\+Weight}} ()
 \begin{DoxyCompactList}\small\item\em Virtual method to get the weight of the pressure vessel. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}{get\+Number\+Of\+PMTs}} ()
 \begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}\label{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}} 
-G4\+String {\bfseries get\+Name} ()
+G4\+String \mbox{\hyperlink{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}{get\+Name}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954}\label{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954}} 
+{\bfseries OMSim\+Optical\+Module} (\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} \texorpdfstring{$\ast$}{*}p\+PMTManager)
+\item 
+void {\bfseries configure\+Sensitive\+Volume} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} \texorpdfstring{$\ast$}{*}p\+Det\+Const)
+\item 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} \texorpdfstring{$\ast$}{*} {\bfseries get\+PMTmanager} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}{append\+Component}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Solid, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}p\+Logical, G4\+Three\+Vector p\+Vector, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Append component to Components vector. \end{DoxyCompactList}\item 
+G4bool \mbox{\hyperlink{class_o_m_sim_detector_component_a698a458599ff1d3045010636717e4da8}{check\+If\+Exists}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Check if a component with a certain name exists in the Components map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}} \mbox{\hyperlink{class_o_m_sim_detector_component_afe9d1fa2893a0ae67ab6f9afb6d377f4}{get\+Component}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Retrieves a specified component from the Components map. \end{DoxyCompactList}\item 
+G4\+Transform3D \mbox{\hyperlink{class_o_m_sim_detector_component_aa4a3ef0899866c61c3e6185946e04985}{get\+New\+Position}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Three\+Vector p\+Object\+Position, G4\+Rotation\+Matrix p\+Object\+Rotation)
+\begin{DoxyCompactList}\small\item\em Computes a new position for a sub-\/component, based on a given global position and rotation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a60b149056e8998772582544271288189}{integrate\+Detector\+Component}} (\mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} \texorpdfstring{$\ast$}{*}p\+To\+Integrate, G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name\+Extension)
+\begin{DoxyCompactList}\small\item\em Integrates the components of another \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26}{delete\+Component}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Deletes a specified component from the Components map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{place\+It}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&p\+Mother, G4\+String p\+Name\+Extension="{}"{})
+\begin{DoxyCompactList}\small\item\em Placement of the Detector\+Component. Each \doxylink{struct_o_m_sim_detector_component_1_1_component}{Component} is placed in the same mother. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a4b2ca76a8864a82cd9717f75577188d7}{place\+It}} (G4\+Transform3D p\+Trans, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&p\+Mother, G4\+String p\+Name\+Extension="{}"{})
+\begin{DoxyCompactList}\small\item\em Places the components in a specified mother volume using a provided transformation. \end{DoxyCompactList}\item 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d}{substract\+To\+Volume}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Input\+Volume, G4\+Three\+Vector p\+Substraction\+Pos, G4\+Rotation\+Matrix p\+Substraction\+Rot, G4\+String p\+New\+Volume\+Name)
+\begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume using position and rotation. \end{DoxyCompactList}\item 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_component_a6b09340b9d4a93f5a269cfc116acf8c3}{substract\+To\+Volume}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Input\+Volume, G4\+Transform3D p\+Trans, G4\+String p\+New\+Volume\+Name)
+\begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954}\label{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954} 
 void {\bfseries append\+PMTs} ()
 \item 
-\mbox{\Hypertarget{class_d_e_g_g_acce04489b180b5c5cd7d971cb73a9b43}\label{class_d_e_g_g_acce04489b180b5c5cd7d971cb73a9b43}} 
-void {\bfseries place\+PMTs} (G4\+Logical\+Volume $\ast$l\+Inner\+Volume\+Logical)
+\Hypertarget{class_d_e_g_g_acce04489b180b5c5cd7d971cb73a9b43}\label{class_d_e_g_g_acce04489b180b5c5cd7d971cb73a9b43} 
+void {\bfseries place\+PMTs} (G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}l\+Inner\+Volume\+Logical)
 \item 
-\mbox{\Hypertarget{class_d_e_g_g_ab670e114ce175ce302631a49d8518236}\label{class_d_e_g_g_ab670e114ce175ce302631a49d8518236}} 
+\Hypertarget{class_d_e_g_g_ab670e114ce175ce302631a49d8518236}\label{class_d_e_g_g_ab670e114ce175ce302631a49d8518236} 
 void {\bfseries append\+Internal\+Components\+From\+CAD} ()
 \item 
-\mbox{\Hypertarget{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}\label{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}} 
+\Hypertarget{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}\label{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f} 
 void {\bfseries append\+Pressure\+Vessel\+From\+CAD} ()
 \item 
-G4\+VSolid $\ast$ \mbox{\hyperlink{class_d_e_g_g_a2c81a45df01d703ed34559a514880220}{create\+Egg\+Solid}} (G4int p\+\_\+segments\+\_\+1, G4double p\+Sphere\+Rmax, G4double p\+Sphered\+Theta, G4double p\+Sphere\+TransformZ, G4double p\+Torus1R, G4double p\+Center\+Of\+Torus1R, G4int p\+Segments\+\_\+2, G4double p\+Torus2R, G4double p\+Center\+Of\+Torus2R, G4double p\+Center\+Of\+Torus2\+\_\+z, G4double p\+Torus2\+\_\+\+Zmin, G4double p\+Torus2\+\_\+\+Zmax, G4double p\+Torus2\+\_\+\+Z0, G4double p\+Torus1\+TransformZ)
-\begin{DoxyCompactList}\small\item\em Creates the solid shape for the \mbox{\hyperlink{class_d_e_g_g}{DEGG}} pressure vessel. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+G4\+VSolid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_d_e_g_g_a2c81a45df01d703ed34559a514880220}{create\+Egg\+Solid}} (G4int p\+\_\+segments\+\_\+1, G4double p\+Sphere\+Rmax, G4double p\+Sphered\+Theta, G4double p\+Sphere\+TransformZ, G4double p\+Torus1R, G4double p\+Center\+Of\+Torus1R, G4int p\+Segments\+\_\+2, G4double p\+Torus2R, G4double p\+Center\+Of\+Torus2R, G4double p\+Center\+Of\+Torus2\+\_\+z, G4double p\+Torus2\+\_\+\+Zmin, G4double p\+Torus2\+\_\+\+Zmax, G4double p\+Torus2\+\_\+\+Z0, G4double p\+Torus1\+TransformZ)
+\begin{DoxyCompactList}\small\item\em Creates the solid shape for the \doxylink{class_d_e_g_g}{DEGG} pressure vessel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_d_e_g_g_a5670706998ff6df38c37a7df7564f339}\label{class_d_e_g_g_a5670706998ff6df38c37a7df7564f339}} 
-\mbox{\hyperlink{class_d_egg_harness}{DEgg\+Harness}} $\ast$ {\bfseries m\+\_\+harness}
+\Hypertarget{class_d_e_g_g_a5670706998ff6df38c37a7df7564f339}\label{class_d_e_g_g_a5670706998ff6df38c37a7df7564f339} 
+\mbox{\hyperlink{class_d_egg_harness}{DEgg\+Harness}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+harness}
 \item 
-\mbox{\Hypertarget{class_d_e_g_g_a6449659b20818345cbb25eea0322af5e}\label{class_d_e_g_g_a6449659b20818345cbb25eea0322af5e}} 
+\Hypertarget{class_d_e_g_g_a6449659b20818345cbb25eea0322af5e}\label{class_d_e_g_g_a6449659b20818345cbb25eea0322af5e} 
 std\+::stringstream {\bfseries m\+\_\+converter}
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}}
+\begin{DoxyCompactItemize}
+\item 
+G4int {\bfseries m\+\_\+index}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+data}
+\begin{DoxyCompactList}\small\item\em Instance of OMSim\+Inputdata, which should be started only once. \end{DoxyCompactList}\item 
+bool {\bfseries m\+\_\+check\+Overlaps} = false
+\item 
+std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+\_\+placed\+Positions}
+\begin{DoxyCompactList}\small\item\em store the positions each time the components are placed \end{DoxyCompactList}\item 
+std\+::vector$<$ G4\+Rotation\+Matrix $>$ {\bfseries m\+\_\+placed\+Orientations}
+\begin{DoxyCompactList}\small\item\em store the orientations each time the components are placed \end{DoxyCompactList}\item 
+std\+::vector$<$ G4\+Transform3D $>$ {\bfseries m\+\_\+placed\+Translations}
+\begin{DoxyCompactList}\small\item\em store the translation each time the components are placed \end{DoxyCompactList}\item 
+std\+::map$<$ G4\+String, \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}} $>$ {\bfseries m\+\_\+components}
+\begin{DoxyCompactList}\small\item\em dictionary with each component \end{DoxyCompactList}\item 
+std\+::map$<$ G4\+String, G4\+PVPlacement \texorpdfstring{$\ast$}{*} $>$ {\bfseries m\+\_\+last\+Physicals}
+\begin{DoxyCompactList}\small\item\em dictionary with the (last) G4\+PVPlacement of each component m\+Components produced after calling place\+It \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+manager\+PMT}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+glass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+gel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+steel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+alu\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+8, 0.\+8, 0.\+9, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+white\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1, 1, 1, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Semi\+Transparent\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 1, 0, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+blue\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+air\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+air\+Vis2} = G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0, 1., 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+red\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+0, 0.\+0, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+black\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0.\+0, 0.\+0, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+LEDvis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 1.\+0, 0.\+0, 0.\+1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_d_e_g_g_a6af6697e49866ad1c9c15a8182b86cbf}\label{class_d_e_g_g_a6af6697e49866ad1c9c15a8182b86cbf}} 
+\Hypertarget{class_d_e_g_g_a6af6697e49866ad1c9c15a8182b86cbf}\label{class_d_e_g_g_a6af6697e49866ad1c9c15a8182b86cbf} 
 \index{DEGG@{DEGG}!DEGG@{DEGG}}
 \index{DEGG@{DEGG}!DEGG@{DEGG}}
 \doxysubsubsection{\texorpdfstring{DEGG()}{DEGG()}}
@@ -90,11 +182,21 @@ std\+::stringstream {\bfseries m\+\_\+converter}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_d_e_g_g_a2c81a45df01d703ed34559a514880220}\label{class_d_e_g_g_a2c81a45df01d703ed34559a514880220}} 
+\Hypertarget{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}\label{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904} 
+\index{DEGG@{DEGG}!construction@{construction}}
+\index{construction@{construction}!DEGG@{DEGG}}
+\doxysubsubsection{\texorpdfstring{construction()}{construction()}}
+{\footnotesize\ttfamily void DEGG\+::construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_detector_component_a82774227bd10e2fe94f1612f12929004}{OMSim\+Detector\+Component}}.
+
+\Hypertarget{class_d_e_g_g_a2c81a45df01d703ed34559a514880220}\label{class_d_e_g_g_a2c81a45df01d703ed34559a514880220} 
 \index{DEGG@{DEGG}!createEggSolid@{createEggSolid}}
 \index{createEggSolid@{createEggSolid}!DEGG@{DEGG}}
 \doxysubsubsection{\texorpdfstring{createEggSolid()}{createEggSolid()}}
-{\footnotesize\ttfamily G4\+VSolid $\ast$ DEGG\+::create\+Egg\+Solid (\begin{DoxyParamCaption}\item[{G4int}]{p\+\_\+segments1,  }\item[{G4double}]{p\+\_\+sphere\+Rmax,  }\item[{G4double}]{p\+\_\+sphered\+Theta,  }\item[{G4double}]{p\+\_\+sphere\+TransformZ,  }\item[{G4double}]{p\+\_\+torus1R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus1R,  }\item[{G4int}]{p\+\_\+segments2,  }\item[{G4double}]{p\+\_\+torus2R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus2R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus2z,  }\item[{G4double}]{p\+\_\+torus2\+Zmin,  }\item[{G4double}]{p\+\_\+torus2\+Zmax,  }\item[{G4double}]{p\+\_\+torus2\+Z0,  }\item[{G4double}]{p\+\_\+torus1\+TransformZ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily G4\+VSolid \texorpdfstring{$\ast$}{*} DEGG\+::create\+Egg\+Solid (\begin{DoxyParamCaption}\item[{G4int}]{p\+\_\+segments1,  }\item[{G4double}]{p\+\_\+sphere\+Rmax,  }\item[{G4double}]{p\+\_\+sphered\+Theta,  }\item[{G4double}]{p\+\_\+sphere\+TransformZ,  }\item[{G4double}]{p\+\_\+torus1R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus1R,  }\item[{G4int}]{p\+\_\+segments2,  }\item[{G4double}]{p\+\_\+torus2R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus2R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus2z,  }\item[{G4double}]{p\+\_\+torus2\+Zmin,  }\item[{G4double}]{p\+\_\+torus2\+Zmax,  }\item[{G4double}]{p\+\_\+torus2\+Z0,  }\item[{G4double}]{p\+\_\+torus1\+TransformZ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -130,7 +232,17 @@ std\+::stringstream {\bfseries m\+\_\+converter}
 \begin{DoxyReturn}{Returns}
 The outer or inner shape of the glass vessel as a G4\+VSolid. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}\label{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}} 
+\Hypertarget{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342}\label{class_d_e_g_g_aee6b58c1a0c6247e896e27e4bf5e2342} 
+\index{DEGG@{DEGG}!getName@{getName}}
+\index{getName@{getName}!DEGG@{DEGG}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily G4\+String DEGG\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}.
+
+\Hypertarget{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}\label{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393} 
 \index{DEGG@{DEGG}!getNumberOfPMTs@{getNumberOfPMTs}}
 \index{getNumberOfPMTs@{getNumberOfPMTs}!DEGG@{DEGG}}
 \doxysubsubsection{\texorpdfstring{getNumberOfPMTs()}{getNumberOfPMTs()}}
@@ -143,7 +255,7 @@ Number of PMTs in the optical module.
 
 Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}{OMSim\+Optical\+Module}}.
 
-\mbox{\Hypertarget{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076}\label{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076}} 
+\Hypertarget{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076}\label{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076} 
 \index{DEGG@{DEGG}!getPressureVesselWeight@{getPressureVesselWeight}}
 \index{getPressureVesselWeight@{getPressureVesselWeight}!DEGG@{DEGG}}
 \doxysubsubsection{\texorpdfstring{getPressureVesselWeight()}{getPressureVesselWeight()}}

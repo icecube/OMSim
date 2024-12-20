@@ -1,0 +1,75 @@
+\doxysection{OMSim\+Detector\+Component.\+hh}
+\hypertarget{_o_m_sim_detector_component_8hh_source}{}\label{_o_m_sim_detector_component_8hh_source}\index{OMSimDetectorComponent.hh@{OMSimDetectorComponent.hh}}
+\mbox{\hyperlink{_o_m_sim_detector_component_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_input_data_8hh}{OMSimInputData.hh}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <G4Transform3D.hh>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <G4VisAttributes.hh>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <G4SubtractionSolid.hh>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <G4PVPlacement.hh>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_detector_component}{OMSimDetectorComponent}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSimDetectorComponent}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_detector_component_a82774227bd10e2fe94f1612f12929004}{construction}}()\ =\ 0;\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_input_data}{OMSimInputData}}\ *\mbox{\hyperlink{class_o_m_sim_detector_component_a0e483a65980f76c4b691a17c21c9ee0e}{m\_data}};\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_checkOverlaps\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}}}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ G4VSolid\ *\mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component_ad3689b6bce4aa913f2024bd4b6c49448}{VSolid}};\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ G4LogicalVolume\ *\mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component_a8388459f7a27cb597dc3f8ad4049fb75}{VLogical}};\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ G4ThreeVector\ \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component_acb8ab651f8f834f1926ef2b4e571db19}{Position}};\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ G4RotationMatrix\ \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component_a365bc794fb0489168e7f325734b3d9eb}{Rotation}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ G4String\ \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component_abcfbd55801684b5cb8ab20de0fe78ed9}{Name}};\ }
+\DoxyCodeLine{00047\ \ \ \ \ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ std::vector<G4ThreeVector>\ \mbox{\hyperlink{class_o_m_sim_detector_component_a08d6710ee0ac4dd277e7993459c612ca}{m\_placedPositions}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ std::vector<G4RotationMatrix>\ \mbox{\hyperlink{class_o_m_sim_detector_component_a083b71621fcf32eee318c2c73165ee5c}{m\_placedOrientations}};\ }
+\DoxyCodeLine{00051\ \ \ \ \ std::vector<G4Transform3D>\ \mbox{\hyperlink{class_o_m_sim_detector_component_af581e8054f6efb960137898a30132664}{m\_placedTranslations}};\ }
+\DoxyCodeLine{00052\ \ \ \ \ std::map<G4String,\ Component>\ \mbox{\hyperlink{class_o_m_sim_detector_component_a3482ee7c6cddb8576977787671c7cbf5}{m\_components}};\ \ }
+\DoxyCodeLine{00053\ \ \ \ \ std::map<G4String,\ G4PVPlacement\ *>\ \mbox{\hyperlink{class_o_m_sim_detector_component_af332b816b5d4fb603c237b4967fc6388}{m\_lastPhysicals}};\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}{appendComponent}}(G4VSolid\ *pSolid,\ G4LogicalVolume\ *pLogical,\ G4ThreeVector\ pVector,\ G4RotationMatrix\ pRotation,\ G4String\ pName);}
+\DoxyCodeLine{00056\ \ \ \ \ G4bool\ \mbox{\hyperlink{class_o_m_sim_detector_component_a698a458599ff1d3045010636717e4da8}{checkIfExists}}(G4String\ pName);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}}\ \mbox{\hyperlink{class_o_m_sim_detector_component_afe9d1fa2893a0ae67ab6f9afb6d377f4}{getComponent}}(G4String\ pName);}
+\DoxyCodeLine{00059\ \ \ \ \ G4Transform3D\ \mbox{\hyperlink{class_o_m_sim_detector_component_aa4a3ef0899866c61c3e6185946e04985}{getNewPosition}}(G4ThreeVector\ pPosition,\ G4RotationMatrix\ pRotation,\ G4ThreeVector\ pObjectPosition,\ G4RotationMatrix\ pObjectRotation);}
+\DoxyCodeLine{00060\ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_detector_component_a60b149056e8998772582544271288189}{integrateDetectorComponent}}(\mbox{\hyperlink{class_o_m_sim_detector_component}{OMSimDetectorComponent}}\ *pToIntegrate,\ G4ThreeVector\ pPosition,\ G4RotationMatrix\ pRotation,\ G4String\ pNameExtension);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26}{deleteComponent}}(G4String\ pName);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{placeIt}}(G4ThreeVector\ pPosition,\ G4RotationMatrix\ pRotation,\ G4LogicalVolume\ *\&pMother,\ G4String\ pNameExtension\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{placeIt}}(G4Transform3D\ pTrans,\ G4LogicalVolume\ *\&pMother,\ G4String\ pNameExtension\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ G4SubtractionSolid\ *\mbox{\hyperlink{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d}{substractToVolume}}(G4VSolid\ *pInputVolume,\ G4ThreeVector\ pSubstractionPos,\ G4RotationMatrix\ pSubstractionRot,\ G4String\ pNewVolumeName);}
+\DoxyCodeLine{00068\ \ \ \ \ G4SubtractionSolid\ *\mbox{\hyperlink{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d}{substractToVolume}}(G4VSolid\ *pInputVolume,\ G4Transform3D\ pTrans,\ G4String\ pNewVolumeName);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ Use\ static\ const\ members\ for\ G4VisAttributes}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_glassVis;}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_gelVis;}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_steelVis;}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_aluVis;}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_whiteVis;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_absorberSemiTransparentVis;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_absorberVis;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_boardVis;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_blueVis;}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_airVis;}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_airVis2;}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_redVis;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_blackVis;}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_LEDvis;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_photocathodeVis;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4VisAttributes\ m\_invisibleVis;}
+\DoxyCodeLine{00088\ \};}
+\DoxyCodeLine{00089\ }
+
+\end{DoxyCode}

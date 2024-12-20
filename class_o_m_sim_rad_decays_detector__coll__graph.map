@@ -1,10 +1,19 @@
 <map id="OMSimRadDecaysDetector" name="OMSimRadDecaysDetector">
-<area shape="rect" id="node1" title="Detector construction of radioactive decays simulation." alt="" coords="1417,45,1616,72"/>
-<area shape="rect" id="node2" href="$class_o_m_sim_detector_construction.html" title="Class for detector construction in the effective area simulation." alt="" coords="496,20,703,47"/>
-<area shape="rect" id="node3" title=" " alt="" coords="177,5,395,32"/>
-<area shape="rect" id="node4" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="219,71,353,97"/>
-<area shape="rect" id="node7" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="499,85,699,112"/>
-<area shape="rect" id="node5" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="5,71,128,97"/>
-<area shape="rect" id="node6" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="1089,71,1252,97"/>
-<area shape="rect" id="node8" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="752,121,931,148"/>
+<area shape="rect" id="Node000001" title="Detector construction of radioactive decays simulation." alt="" coords="1417,45,1616,71"/>
+<area shape="rect" id="Node000002" href="$class_o_m_sim_detector_construction.html" title="Class for detector construction in the effective area simulation." alt="" coords="496,20,703,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="716,32,1023,38,1393,49,1417,50,1417,55,1393,54,1022,43,716,37"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="177,5,395,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="408,21,496,25,496,31,408,26"/>
+<area shape="rect" id="Node000004" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="219,69,353,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="366,67,517,43,518,48,367,72"/>
+<area shape="rect" id="Node000007" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="499,85,699,111"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="367,90,419,94,499,96,499,102,419,99,366,95"/>
+<area shape="rect" id="Node000005" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="5,69,128,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="142,79,219,79,219,85,142,85"/>
+<area shape="rect" id="Node000006" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="1089,71,1252,96"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1265,74,1417,63,1417,68,1266,79"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="713,92,1089,83,1089,88,713,98"/>
+<area shape="rect" id="Node000008" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="752,121,931,147"/>
+<area shape="poly" id="edge9_Node000008_Node000007" title=" " alt="" coords="699,110,756,119,755,124,698,115"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="945,128,1004,123,1065,114,1135,94,1137,99,1066,119,1005,128,945,134"/>
 </map>

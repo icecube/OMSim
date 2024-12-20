@@ -1,6 +1,9 @@
 <map id="OMSimTools.hh" name="OMSimTools.hh">
-<area shape="rect" id="node1" title="Definition of Tools namespace, a collection of helper methods." alt="" coords="149,5,271,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_8cc.html" title="Implementation of the OMSim class." alt="" coords="5,80,92,107"/>
-<area shape="rect" id="node3" href="$_o_m_sim__effective__area_8cc.html" title="Main for the calculation of effective areas." alt="" coords="117,80,303,107"/>
-<area shape="rect" id="node4" href="$_o_m_sim_s_n_analysis_8cc.html" title="Analyze data and write output files." alt="" coords="327,80,487,107"/>
+<area shape="rect" id="Node000001" title="Definition of Tools namespace, a collection of helper methods." alt="" coords="135,5,258,31"/>
+<area shape="rect" id="Node000002" href="$_o_m_sim_8cc.html" title="Implementation of the OMSim class." alt="" coords="5,79,92,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,39,74,81,72,76,160,34"/>
+<area shape="rect" id="Node000003" href="$_o_m_sim_s_n_analysis_8cc.html" title="Analyze data and write output files." alt="" coords="117,79,277,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,44,199,79,194,79,194,44"/>
+<area shape="rect" id="Node000004" href="$_o_m_sim__effective__area_8cc.html" title="Main for the calculation of effective areas." alt="" coords="301,79,487,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="242,33,363,76,361,81,240,38"/>
 </map>

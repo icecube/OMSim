@@ -1,0 +1,42 @@
+\doxysection{OMSim\+Decays\+Analysis.\+hh}
+\hypertarget{_o_m_sim_decays_analysis_8hh_source}{}\label{_o_m_sim_decays_analysis_8hh_source}\index{OMSimDecaysAnalysis.hh@{OMSimDecaysAnalysis.hh}}
+\mbox{\hyperlink{_o_m_sim_decays_analysis_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <G4ThreeVector.hh>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}G4AutoLock.hh"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_decay_stats}{DecayStats}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ std::vector<G4long>\ \mbox{\hyperlink{struct_decay_stats_a7cead323e226455fe4c847ff5043bd20}{eventId}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<G4String>\ \mbox{\hyperlink{struct_decay_stats_a6f7354ad3352ede3a5cebe79de8da4b4}{isotopeName}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ std::vector<G4double>\ \mbox{\hyperlink{struct_decay_stats_ab7c94792694ba2d65611f6617b6dbd2e}{decayTime}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ std::vector<G4ThreeVector>\ \mbox{\hyperlink{struct_decay_stats_a3d934d996a2a63bba0f60d645e09699a}{decayPosition}};\ }
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&\mbox{\hyperlink{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}{getInstance}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_a35aa71b0f55694ab682eb12e33e773d3}{appendDecay}}(G4String\ pParticleName,\ G4double\ pDecayTime,\ G4ThreeVector\ pDecayPosition);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ mergeDecayData();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_af747109a424e5878d2a4e42b6308f3cb}{writeMultiplicity}}(G4double\ pTimeWindow);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{writeThreadDecayInformation}}();}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}{writeThreadHitInformation}}();}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ \ \ \ \ G4ThreadLocal\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_decay_stats}{DecayStats}}\ *m\_threadDecayStats;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ G4Mutex\ m\_mutex;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}*\ m\_instance;}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{\string~OMSimDecaysAnalysis}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00052\ \};}
+
+\end{DoxyCode}

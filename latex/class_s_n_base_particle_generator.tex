@@ -1,5 +1,5 @@
-\hypertarget{class_s_n_base_particle_generator}{}\doxysection{SNBase\+Particle\+Generator Class Reference}
-\label{class_s_n_base_particle_generator}\index{SNBaseParticleGenerator@{SNBaseParticleGenerator}}
+\doxysection{SNBase\+Particle\+Generator Class Reference}
+\hypertarget{class_s_n_base_particle_generator}{}\label{class_s_n_base_particle_generator}\index{SNBaseParticleGenerator@{SNBaseParticleGenerator}}
 
 
 Inheritance diagram for SNBase\+Particle\+Generator\+:
@@ -20,75 +20,105 @@ Collaboration diagram for SNBase\+Particle\+Generator\+:
 \includegraphics[width=350pt]{class_s_n_base_particle_generator__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_ab0d0ee63c617404dbb96d72efa8c6e6f}\label{class_s_n_base_particle_generator_ab0d0ee63c617404dbb96d72efa8c6e6f}} 
-{\bfseries SNBase\+Particle\+Generator} (G4\+Particle\+Gun $\ast$)
+\Hypertarget{class_s_n_base_particle_generator_ab0d0ee63c617404dbb96d72efa8c6e6f}\label{class_s_n_base_particle_generator_ab0d0ee63c617404dbb96d72efa8c6e6f} 
+{\bfseries SNBase\+Particle\+Generator} (G4\+Particle\+Gun \texorpdfstring{$\ast$}{*})
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_a7282597cb960d4bf79ed0acb3f1039f8}\label{class_s_n_base_particle_generator_a7282597cb960d4bf79ed0acb3f1039f8}} 
-void {\bfseries Generate\+Primaries} (G4\+Event $\ast$an\+Event)
+\Hypertarget{class_s_n_base_particle_generator_a7282597cb960d4bf79ed0acb3f1039f8}\label{class_s_n_base_particle_generator_a7282597cb960d4bf79ed0acb3f1039f8} 
+void {\bfseries Generate\+Primaries} (G4\+Event \texorpdfstring{$\ast$}{*}an\+Event)
 \end{DoxyCompactItemize}
-\doxysubsection*{Protected Member Functions}
+\doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_a376ce5bcc5404d08c1fe99088e26f0de}\label{class_s_n_base_particle_generator_a376ce5bcc5404d08c1fe99088e26f0de}} 
+\Hypertarget{class_s_n_base_particle_generator_a376ce5bcc5404d08c1fe99088e26f0de}\label{class_s_n_base_particle_generator_a376ce5bcc5404d08c1fe99088e26f0de} 
 void {\bfseries initialise\+Distribution} (int column, int targets)
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_a0ce85426728c9c1fea5cd711e537f25e}\label{class_s_n_base_particle_generator_a0ce85426728c9c1fea5cd711e537f25e}} 
+\Hypertarget{class_s_n_base_particle_generator_a0ce85426728c9c1fea5cd711e537f25e}\label{class_s_n_base_particle_generator_a0ce85426728c9c1fea5cd711e537f25e} 
 G4double {\bfseries calculate\+Neutrino\+Energy} ()
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_ade13b26883a1e0349895057fce012729}\label{class_s_n_base_particle_generator_ade13b26883a1e0349895057fce012729}} 
+\Hypertarget{class_s_n_base_particle_generator_ade13b26883a1e0349895057fce012729}\label{class_s_n_base_particle_generator_ade13b26883a1e0349895057fce012729} 
 G4\+Three\+Vector {\bfseries calculate\+Momentum\+Direction} (G4double p\+Neutrino\+Energy)
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_af978419fed92461baf6895aaa7b2f70a}\label{class_s_n_base_particle_generator_af978419fed92461baf6895aaa7b2f70a}} 
+\Hypertarget{class_s_n_base_particle_generator_af978419fed92461baf6895aaa7b2f70a}\label{class_s_n_base_particle_generator_af978419fed92461baf6895aaa7b2f70a} 
 G4double {\bfseries calculate\+Weight} (G4double p\+Nu\+Energy)
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_a4d854c081bb9c6301afc3fdfd6d30609}\label{class_s_n_base_particle_generator_a4d854c081bb9c6301afc3fdfd6d30609}} 
+\Hypertarget{class_s_n_base_particle_generator_a4d854c081bb9c6301afc3fdfd6d30609}\label{class_s_n_base_particle_generator_a4d854c081bb9c6301afc3fdfd6d30609} 
 virtual void {\bfseries initialise\+Particle} ()=0
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_ac0357a030e33ca274826668e596c9667}\label{class_s_n_base_particle_generator_ac0357a030e33ca274826668e596c9667}} 
-virtual \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} {\bfseries angular\+Distribution} (G4double Enu)=0
+virtual \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} \mbox{\hyperlink{class_s_n_base_particle_generator_ac0357a030e33ca274826668e596c9667}{angular\+Distribution}} (G4double Enu)=0
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_a392037639419db88c10a5ba50707fee0}\label{class_s_n_base_particle_generator_a392037639419db88c10a5ba50707fee0}} 
-virtual G4double {\bfseries calculate\+Secondary\+Particle\+Energy} (G4double nu\+\_\+energy, G4double costheta)=0
+virtual G4double \mbox{\hyperlink{class_s_n_base_particle_generator_a392037639419db88c10a5ba50707fee0}{calculate\+Secondary\+Particle\+Energy}} (G4double nu\+\_\+energy, G4double costheta)=0
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_a07fec2091432f15e3b6087435bc665fb}\label{class_s_n_base_particle_generator_a07fec2091432f15e3b6087435bc665fb}} 
-virtual G4double {\bfseries total\+Cross\+Section} (G4double energy)=0
+virtual G4double \mbox{\hyperlink{class_s_n_base_particle_generator_a07fec2091432f15e3b6087435bc665fb}{total\+Cross\+Section}} (G4double energy)=0
 \end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
+\doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_a146f73ee5c9047d717a5359e5bf3b8de}\label{class_s_n_base_particle_generator_a146f73ee5c9047d717a5359e5bf3b8de}} 
-G4\+Particle\+Gun $\ast$ {\bfseries m\+\_\+particle\+Gun}
+\Hypertarget{class_s_n_base_particle_generator_a146f73ee5c9047d717a5359e5bf3b8de}\label{class_s_n_base_particle_generator_a146f73ee5c9047d717a5359e5bf3b8de} 
+G4\+Particle\+Gun \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+particle\+Gun}
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_ab85051b6016d1317084030c23b38188b}\label{class_s_n_base_particle_generator_ab85051b6016d1317084030c23b38188b}} 
+\Hypertarget{class_s_n_base_particle_generator_ab85051b6016d1317084030c23b38188b}\label{class_s_n_base_particle_generator_ab85051b6016d1317084030c23b38188b} 
 \mbox{\hyperlink{class_o_m_sim_s_n_tools}{OMSim\+SNTools}} {\bfseries m\+\_\+\+SNTool\+Box}
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_abf31133a16abc21d63af6002deecd279}\label{class_s_n_base_particle_generator_abf31133a16abc21d63af6002deecd279}} 
-const G4double {\bfseries m\+\_\+\+Gf} = 1.\+166e-\/5 $\ast$ 1e-\/6 / (MeV $\ast$ MeV)
+\Hypertarget{class_s_n_base_particle_generator_abf31133a16abc21d63af6002deecd279}\label{class_s_n_base_particle_generator_abf31133a16abc21d63af6002deecd279} 
+const G4double {\bfseries m\+\_\+\+Gf} = 1.\+166e-\/5 \texorpdfstring{$\ast$}{*} 1e-\/6 / (MeV \texorpdfstring{$\ast$}{*} MeV)
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_aa86994e3c51be2c408e26ae76c00d7c0}\label{class_s_n_base_particle_generator_aa86994e3c51be2c408e26ae76c00d7c0}} 
+\Hypertarget{class_s_n_base_particle_generator_aa86994e3c51be2c408e26ae76c00d7c0}\label{class_s_n_base_particle_generator_aa86994e3c51be2c408e26ae76c00d7c0} 
 const G4double {\bfseries m\+\_\+\+Consg} = 1.\+26
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_ac390536468cbaa6a7fef12a2535fb435}\label{class_s_n_base_particle_generator_ac390536468cbaa6a7fef12a2535fb435}} 
+\Hypertarget{class_s_n_base_particle_generator_ac390536468cbaa6a7fef12a2535fb435}\label{class_s_n_base_particle_generator_ac390536468cbaa6a7fef12a2535fb435} 
 const G4double {\bfseries m\+\_\+delta\+Mass} = neutron\+\_\+mass\+\_\+c2 -\/ proton\+\_\+mass\+\_\+c2
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_a8f1d1ab7ab857929f283dcc1128999b1}\label{class_s_n_base_particle_generator_a8f1d1ab7ab857929f283dcc1128999b1}} 
+\Hypertarget{class_s_n_base_particle_generator_a8f1d1ab7ab857929f283dcc1128999b1}\label{class_s_n_base_particle_generator_a8f1d1ab7ab857929f283dcc1128999b1} 
 const G4double {\bfseries m\+\_\+mass\+Squared\+Difference} = (pow(m\+\_\+delta\+Mass, 2) -\/ pow(electron\+\_\+mass\+\_\+c2, 2)) / 2.
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_a8b5151cf14f725055435f31960e99f16}\label{class_s_n_base_particle_generator_a8b5151cf14f725055435f31960e99f16}} 
+\Hypertarget{class_s_n_base_particle_generator_a8b5151cf14f725055435f31960e99f16}\label{class_s_n_base_particle_generator_a8b5151cf14f725055435f31960e99f16} 
 G4double {\bfseries m\+\_\+\+Nr\+Targets}
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_ac06e61676c8f98b3524d0eec7ee30bf5}\label{class_s_n_base_particle_generator_ac06e61676c8f98b3524d0eec7ee30bf5}} 
+\Hypertarget{class_s_n_base_particle_generator_ac06e61676c8f98b3524d0eec7ee30bf5}\label{class_s_n_base_particle_generator_ac06e61676c8f98b3524d0eec7ee30bf5} 
 \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} {\bfseries m\+\_\+time\+Distribution}
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_ac2109776af566ff514ac34ea5ed91367}\label{class_s_n_base_particle_generator_ac2109776af566ff514ac34ea5ed91367}} 
+\Hypertarget{class_s_n_base_particle_generator_ac2109776af566ff514ac34ea5ed91367}\label{class_s_n_base_particle_generator_ac2109776af566ff514ac34ea5ed91367} 
 \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} {\bfseries m\+\_\+mean\+Energy\+Distribution}
 \item 
-\mbox{\Hypertarget{class_s_n_base_particle_generator_a388a70831e504c30c75562fed3111c6f}\label{class_s_n_base_particle_generator_a388a70831e504c30c75562fed3111c6f}} 
+\Hypertarget{class_s_n_base_particle_generator_a388a70831e504c30c75562fed3111c6f}\label{class_s_n_base_particle_generator_a388a70831e504c30c75562fed3111c6f} 
 \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} {\bfseries m\+\_\+mean\+Energy\+Squared\+Distribution}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_s_n_base_particle_generator_ac0357a030e33ca274826668e596c9667}\label{class_s_n_base_particle_generator_ac0357a030e33ca274826668e596c9667} 
+\index{SNBaseParticleGenerator@{SNBaseParticleGenerator}!angularDistribution@{angularDistribution}}
+\index{angularDistribution@{angularDistribution}!SNBaseParticleGenerator@{SNBaseParticleGenerator}}
+\doxysubsubsection{\texorpdfstring{angularDistribution()}{angularDistribution()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} SNBase\+Particle\+Generator\+::angular\+Distribution (\begin{DoxyParamCaption}\item[{G4double}]{Enu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_o_m_sim_e_n_e_s_aa8f2d71f822873410a9f6816fd00786b}{OMSim\+ENES}}, and \mbox{\hyperlink{class_o_m_sim_i_b_d_a99e9ba505d7c148ea66c63f9c31ed952}{OMSim\+IBD}}.
+
+\Hypertarget{class_s_n_base_particle_generator_a392037639419db88c10a5ba50707fee0}\label{class_s_n_base_particle_generator_a392037639419db88c10a5ba50707fee0} 
+\index{SNBaseParticleGenerator@{SNBaseParticleGenerator}!calculateSecondaryParticleEnergy@{calculateSecondaryParticleEnergy}}
+\index{calculateSecondaryParticleEnergy@{calculateSecondaryParticleEnergy}!SNBaseParticleGenerator@{SNBaseParticleGenerator}}
+\doxysubsubsection{\texorpdfstring{calculateSecondaryParticleEnergy()}{calculateSecondaryParticleEnergy()}}
+{\footnotesize\ttfamily virtual G4double SNBase\+Particle\+Generator\+::calculate\+Secondary\+Particle\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{nu\+\_\+energy,  }\item[{G4double}]{costheta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_o_m_sim_e_n_e_s_afdc34f3f9559919c54f29804c337481a}{OMSim\+ENES}}, and \mbox{\hyperlink{class_o_m_sim_i_b_d_af04e93cf44abe395e2b65cad4b385d1f}{OMSim\+IBD}}.
+
+\Hypertarget{class_s_n_base_particle_generator_a07fec2091432f15e3b6087435bc665fb}\label{class_s_n_base_particle_generator_a07fec2091432f15e3b6087435bc665fb} 
+\index{SNBaseParticleGenerator@{SNBaseParticleGenerator}!totalCrossSection@{totalCrossSection}}
+\index{totalCrossSection@{totalCrossSection}!SNBaseParticleGenerator@{SNBaseParticleGenerator}}
+\doxysubsubsection{\texorpdfstring{totalCrossSection()}{totalCrossSection()}}
+{\footnotesize\ttfamily virtual G4double SNBase\+Particle\+Generator\+::total\+Cross\+Section (\begin{DoxyParamCaption}\item[{G4double}]{energy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_o_m_sim_e_n_e_s_af2e3aedc5ca2d1006891540c0d038eb7}{OMSim\+ENES}}, and \mbox{\hyperlink{class_o_m_sim_i_b_d_aad2e0e4a3f6501f4d2c3fb896b032ade}{OMSim\+IBD}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

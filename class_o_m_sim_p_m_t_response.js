@@ -2,7 +2,6 @@ var class_o_m_sim_p_m_t_response =
 [
     [ "PMTPulse", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse" ],
     [ "OMSimPMTResponse", "class_o_m_sim_p_m_t_response.html#a80b379bc78ca06d23011703aae3341d7", null ],
-    [ "~OMSimPMTResponse", "class_o_m_sim_p_m_t_response.html#aca0bba84fbd6a5c121467e44b1b758f9", null ],
     [ "getCharge", "class_o_m_sim_p_m_t_response.html#ad175b3ea4665684d2891c7107e12abeb", null ],
     [ "getCharge", "class_o_m_sim_p_m_t_response.html#ad615e6ae60587d8619b737f5c8d59c8b", null ],
     [ "getPulseFromInterpolation", "class_o_m_sim_p_m_t_response.html#ad26fd3db4c3455618291da85e9c1f73e", null ],
@@ -13,24 +12,7 @@ var class_o_m_sim_p_m_t_response =
     [ "makeCEweightInterpolator", "class_o_m_sim_p_m_t_response.html#a0d82672908050add72cb0f7af15808b4", null ],
     [ "makeQEInterpolator", "class_o_m_sim_p_m_t_response.html#aa0b6a91aa1bbac5c1f02a6e29ce9b34b", null ],
     [ "makeQEweightInterpolator", "class_o_m_sim_p_m_t_response.html#ac921d86b7d02d3b4a3a4e3710147420d", null ],
-    [ "makeScansInterpolators", "class_o_m_sim_p_m_t_response.html#abfac8d3195a8a155d0602a9005a99d0f", null ],
     [ "processPhotocathodeHit", "class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08", null ],
     [ "setScannedWavelengths", "class_o_m_sim_p_m_t_response.html#a2036bbe888ac1d7ac89295ef78621f11", null ],
-    [ "wavelengthInterpolatedValue", "class_o_m_sim_p_m_t_response.html#ac206cd005e6b634472ff6eb0da1f1100", null ],
-    [ "m_CEWeightInterpolatorAvailable", "class_o_m_sim_p_m_t_response.html#a33b18dcf8df94bfeb9395c7e9d1af161", null ],
-    [ "m_gainG2Dmap", "class_o_m_sim_p_m_t_response.html#a01fead7ccbae6bdd4ae4894fb7737139", null ],
-    [ "m_gainResolutionG2Dmap", "class_o_m_sim_p_m_t_response.html#a739dc710c9dcdf0c5ca1c730a42f031a", null ],
-    [ "m_QEfileInterpolator", "class_o_m_sim_p_m_t_response.html#a289ecfd6e5fe8bab924c46e6b6da20b9", null ],
-    [ "m_QEInterpolatorAvailable", "class_o_m_sim_p_m_t_response.html#ac0f350691668c4f39b83506a11501a12", null ],
-    [ "m_QEWeightInterpolatorAvailable", "class_o_m_sim_p_m_t_response.html#a2273a226d1cf58448b7b5c0bf5c060ff", null ],
-    [ "m_relativeDetectionEfficiencyInterpolator", "class_o_m_sim_p_m_t_response.html#afd87146bce051d8658cf142fa23545b8", null ],
-    [ "m_scannedWavelengths", "class_o_m_sim_p_m_t_response.html#ae2df70a09776220dca71fbcfba796e5c", null ],
-    [ "m_scansInterpolatorsAvailable", "class_o_m_sim_p_m_t_response.html#afdbcbd18c29043d324049ed917f8d6cb", null ],
-    [ "m_simplePMT", "class_o_m_sim_p_m_t_response.html#a64a17bd6a21de317618bef1c93da00c0", null ],
-    [ "m_transitTimeG2Dmap", "class_o_m_sim_p_m_t_response.html#a9ab455488566153026dc9fd5d6cf213d", null ],
-    [ "m_transitTimeSpreadG2Dmap", "class_o_m_sim_p_m_t_response.html#aef262cb9e94bca86d9d29f33c72e7ee2", null ],
-    [ "m_wavelength", "class_o_m_sim_p_m_t_response.html#a37b89973c07f6b44f9deebb928472d28", null ],
-    [ "m_weightAbsorbedToQEInterpolator", "class_o_m_sim_p_m_t_response.html#a2e8c581d9be3f619d4eb6c47b029ee5a", null ],
-    [ "m_X", "class_o_m_sim_p_m_t_response.html#ac84dd0315406dc73d58e67eab1aec63f", null ],
-    [ "m_Y", "class_o_m_sim_p_m_t_response.html#a5f4ce711f849315b05e720d23052042c", null ]
+    [ "wavelengthInterpolatedValue", "class_o_m_sim_p_m_t_response.html#ac206cd005e6b634472ff6eb0da1f1100", null ]
 ];

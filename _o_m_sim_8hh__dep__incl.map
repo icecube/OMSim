@@ -1,7 +1,11 @@
 <map id="OMSim.hh" name="OMSim.hh">
-<area shape="rect" id="node1" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="279,5,368,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_8cc.html" title="Implementation of the OMSim class." alt="" coords="5,80,92,107"/>
-<area shape="rect" id="node3" href="$_o_m_sim__effective__area_8cc.html" title="Main for the calculation of effective areas." alt="" coords="117,80,303,107"/>
-<area shape="rect" id="node4" href="$_o_m_sim__radioactive__decays_8cc.html" title="Main of the radioactive decay study." alt="" coords="328,80,548,107"/>
-<area shape="rect" id="node5" href="$_o_m_sim_supernova_8cc.html" title="Main of the supernova study." alt="" coords="572,80,728,107"/>
+<area shape="rect" id="Node000001" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="247,5,336,31"/>
+<area shape="rect" id="Node000002" href="$_o_m_sim_8cc.html" title="Implementation of the OMSim class." alt="" coords="5,79,92,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="240,37,89,81,87,76,239,32"/>
+<area shape="rect" id="Node000003" href="$_o_m_sim_supernova_8cc.html" title="Main of the supernova study." alt="" coords="116,79,272,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="266,41,211,81,208,76,263,37"/>
+<area shape="rect" id="Node000004" href="$_o_m_sim__effective__area_8cc.html" title="Main for the calculation of effective areas." alt="" coords="297,79,483,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="320,36,375,76,372,81,316,41"/>
+<area shape="rect" id="Node000005" href="$_o_m_sim__radioactive__decays_8cc.html" title="Main of the radioactive decay study." alt="" coords="508,79,728,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="350,29,566,76,565,81,349,34"/>
 </map>

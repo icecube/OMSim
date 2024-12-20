@@ -1,11 +1,19 @@
 var searchData=
 [
-  ['iceprocessor_137',['IceProcessor',['../namespace_ice_processor.html',1,'']]],
-  ['init_138',['init',['../class_o_m_sim_command_args_table.html#a6b23f4e37663c7cf07a7f4d3f44ffdab',1,'OMSimCommandArgsTable::init()'],['../class_o_m_sim_hit_manager.html#ac26f7ad778584ece58f86d60192ef671',1,'OMSimHitManager::init()'],['../class_o_m_sim_input_data.html#ae785a4cec814dcf95b2a4c0c0f2119db',1,'OMSimInputData::init()'],['../class_o_m_sim_u_iinterface.html#ad5517f9564cb68e02a1f4efabf852b61',1,'OMSimUIinterface::init()']]],
-  ['initialisesimulation_139',['initialiseSimulation',['../class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2',1,'OMSim']]],
-  ['integratedetectorcomponent_140',['integrateDetectorComponent',['../class_o_m_sim_detector_component.html#a60b149056e8998772582544271288189',1,'OMSimDetectorComponent']]],
-  ['interpolate_141',['interpolate',['../class_distribution_sampler.html#a2e254930c735ca208b6d1b6c330cf64e',1,'DistributionSampler']]],
-  ['isotopename_142',['isotopeName',['../struct_decay_stats.html#a6f7354ad3352ede3a5cebe79de8da4b4',1,'DecayStats']]],
-  ['isphotondetected_143',['isPhotonDetected',['../class_o_m_sim_sensitive_detector.html#a8e4a324ae342e9e91ddc33fcc0be8789',1,'OMSimSensitiveDetector']]],
-  ['item_144',['Item',['../struct_c_a_d_mesh_1_1_file_1_1_item.html',1,'CADMesh::File']]]
+  ['fetchboundaryprocess_0',['fetchBoundaryProcess',['../class_o_m_sim_sensitive_detector.html#a9086dbe47568c71cba08feef8b665146',1,'OMSimSensitiveDetector']]],
+  ['files_1',['Output Files',['../md_extra__doc_232___s_n.html#autotoc_md50',1,'']]],
+  ['finalize_2',['finalize',['../class_o_m_sim_command_args_table.html#acd0700b601ac3b3279657ad1bc1363e8',1,'OMSimCommandArgsTable']]],
+  ['findmaterialpropertytable_3',['findMaterialPropertyTable',['../class_o_m_sim_material_handler.html#aa7ebed1dfaffe532d7b1fd878ffd7d27',1,'OMSimMaterialHandler']]],
+  ['fixed_20energy_20studies_4',['Fixed Energy Studies',['../md_extra__doc_232___s_n.html#autotoc_md49',1,'']]],
+  ['flighttime_5',['flightTime',['../struct_hit_stats.html#a254bd94585df0605a6e2e863e3e00851',1,'HitStats']]],
+  ['flux_20weight_3a_6',['Flux Weight:',['../md_extra__doc_232___s_n.html#autotoc_md55',1,'']]],
+  ['for_20creating_20new_20thread_20safe_20containers_7',['Best Practices for Creating New Thread-Safe Containers',['../md_extra__doc_21__multithreading.html#autotoc_md24',1,'']]],
+  ['for_20developers_8',['Technicalities for Developers',['../md_extra__doc_22__technicalities.html',1,'']]],
+  ['fraction_20of_20absorbed_20photons_9',['Step 1: Fraction of absorbed photons',['../md_extra__doc_22__technicalities.html#autotoc_md36',1,'']]],
+  ['framework_10',['framework',['../group__common.html',1,'Common framework'],['../index.html',1,'OMSim Geant4 Framework']]],
+  ['framework_20functionality_11',['Framework functionality',['../md_extra__doc_20__common.html',1,'']]],
+  ['framework_20parameters_12',['SN Framework Parameters',['../md_extra__doc_232___s_n.html#autotoc_md48',1,'']]],
+  ['fresnelcoefficients_13',['FresnelCoefficients',['../struct_fresnel_coefficients.html',1,'']]],
+  ['fullbulbconstruction_14',['fullBulbConstruction',['../class_o_m_sim_p_m_t_construction.html#a6b84182c7a5b45461160c954e9a384f0',1,'OMSimPMTConstruction']]],
+  ['functionality_15',['Framework functionality',['../md_extra__doc_20__common.html',1,'']]]
 ];

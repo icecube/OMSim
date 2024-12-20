@@ -1,0 +1,26 @@
+\doxysection{radioactive\+\_\+decays/include/\+OMSim\+Primary\+Generator\+Action.hh}
+\hypertarget{radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh_source}{}\label{radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh_source}\index{OMSimPrimaryGeneratorAction.hh@{OMSimPrimaryGeneratorAction.hh}}
+\mbox{\hyperlink{radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <G4VUserPrimaryGeneratorAction.hh>}}
+\DoxyCodeLine{00009\ \ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }G4GeneralParticleSource;}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }G4Event;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_primary_generator_action}{OMSimPrimaryGeneratorAction}}\ :\ \textcolor{keyword}{public}\ G4VUserPrimaryGeneratorAction}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_action}{OMSimPrimaryGeneratorAction}}();}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_action}{\string~OMSimPrimaryGeneratorAction}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ GeneratePrimaries(G4Event*\ anEvent);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ G4GeneralParticleSource*\ m\_particleSource;}
+\DoxyCodeLine{00029\ \};}
+
+\end{DoxyCode}

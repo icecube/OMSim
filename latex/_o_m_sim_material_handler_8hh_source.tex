@@ -1,0 +1,77 @@
+\doxysection{OMSim\+Material\+Handler.\+hh}
+\hypertarget{_o_m_sim_material_handler_8hh_source}{}\label{_o_m_sim_material_handler_8hh_source}\index{OMSimMaterialHandler.hh@{OMSimMaterialHandler.hh}}
+\mbox{\hyperlink{_o_m_sim_material_handler_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <G4NistManager.hh>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <G4SystemOfUnits.hh>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <G4OpticalSurface.hh>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <G4PhysicalConstants.hh>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <boost/property\_tree/json\_parser.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{_o_m_sim_command_args_table_8hh}{OMSimCommandArgsTable.hh}}>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_parameter_table}{ParameterTable}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{using\ }ProcessorFunction\ =\ void(\mbox{\hyperlink{class_parameter_table}{ParameterTable}}\ *,\ \textcolor{keyword}{const}\ boost::property\_tree::ptree\ \&,\ G4MaterialPropertiesTable\ *);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_material_handler}{OMSimMaterialHandler}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_material_handler}{OMSimMaterialHandler}}(\textcolor{keyword}{const}\ G4String\ \&filename);}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_material_handler}{\string~OMSimMaterialHandler}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_material_handler_a719ebf626a19a6e8ff9a0b9e2a262c21}{processMaterial}}();}
+\DoxyCodeLine{00034\ \ \ \ \ G4OpticalSurface\ *\mbox{\hyperlink{class_o_m_sim_material_handler_a1cf8cf3badeaa28c33d4b96973239c71}{processSurface}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_material_handler_a2e87189ae05d3d960df85957c799ebf9}{processExtraProperties}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_material_handler_ad337c539e395d32e708d18a4f5e48264}{processSpecial}}(ProcessorFunction\ *processor);}
+\DoxyCodeLine{00037\ \ \ \ \ G4String\ GetName()\ \{\ \textcolor{keywordflow}{return}\ m\_objectName;\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_parameter_table}{ParameterTable}}\ *m\_fileData;}
+\DoxyCodeLine{00041\ \ \ \ \ G4double\ m\_hc\_eVnm\ =\ h\_Planck\ *\ c\_light\ /\ nm;}
+\DoxyCodeLine{00042\ \ \ \ \ G4String\ m\_filePath;}
+\DoxyCodeLine{00043\ \ \ \ \ G4String\ m\_objectName;}
+\DoxyCodeLine{00044\ \ \ \ \ boost::property\_tree::ptree\ m\_jsonTree;}
+\DoxyCodeLine{00045\ \ \ \ \ G4Material\ *m\_material;}
+\DoxyCodeLine{00046\ \ \ \ \ G4MaterialPropertiesTable\ *m\_MPT;}
+\DoxyCodeLine{00047\ \ \ \ \ G4OpticalSurface\ *m\_opticalSurface;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ readJsonFile();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_material_handler_a6d25aa1ea0cfae2ca9c3ea9d539fdcca}{createMaterial}}();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_material_handler_a116e075ea33b846fd722a7e1470072a4}{processProperties}}();}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_material_handler_a0f799e0b10b1d0e37eb849b401b0d5e7}{processConstProperties}}();}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_material_handler_aa7ebed1dfaffe532d7b1fd878ffd7d27}{findMaterialPropertyTable}}(G4String\ p\_name);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_material_handler_a4205415c818cd65b9121e070179e3f99}{addProperty}}(\textcolor{keyword}{const}\ G4String\ \&key,\ G4double\ energyUnit,\ G4double\ valueUnit,\ \textcolor{keywordtype}{bool}\ invertX,\ \textcolor{keyword}{const}\ boost::property\_tree::ptree\ \&propertyTree);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Helper\ functions\ for\ optical\ surface}}
+\DoxyCodeLine{00057\ \ \ \ \ G4OpticalSurfaceFinish\ \mbox{\hyperlink{class_o_m_sim_material_handler_aeb612b7e496704e9e5dd8e8bfbf37af0}{getOpticalSurfaceFinish}}(\textcolor{keyword}{const}\ std::string\ \&finish);}
+\DoxyCodeLine{00058\ \ \ \ \ G4OpticalSurfaceModel\ \mbox{\hyperlink{class_o_m_sim_material_handler_a2a947dda8ecc28b13bf5fdf93ff0fef4}{getOpticalSurfaceModel}}(\textcolor{keyword}{const}\ std::string\ \&model);}
+\DoxyCodeLine{00059\ \ \ \ \ G4SurfaceType\ \mbox{\hyperlink{class_o_m_sim_material_handler_abf218ce78a52805add727b92527daec8}{getSurfaceType}}(\textcolor{keyword}{const}\ std::string\ \&type);}
+\DoxyCodeLine{00060\ \ \ \ \ G4State\ \mbox{\hyperlink{class_o_m_sim_material_handler_ae25187ca37e6e40b9b1af077c3093523}{getState}}(\textcolor{keyword}{const}\ std::string\ \&type);}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_scintillation_processor}{ScintillationProcessor}}}
+\DoxyCodeLine{00064\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_scintillation_processor_a697d365515e84fa024fa106fc8d2cee7}{process}}(\mbox{\hyperlink{class_parameter_table}{ParameterTable}}\ *p\_dataFile,\ \textcolor{keyword}{const}\ boost::property\_tree::ptree\ \&p\_jsonTree,\ G4MaterialPropertiesTable\ *p\_MPT);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_scintillation_processor_a57a3ea3b51e632208b21dddd6c254b9d}{extractSpectrum}}(\mbox{\hyperlink{class_parameter_table}{ParameterTable}}\ *p\_dataFile,\ \textcolor{keyword}{const}\ boost::property\_tree::ptree\ \&p\_jsonTree,\ G4MaterialPropertiesTable\ *p\_MPT);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_scintillation_processor_ad81d3abfcca6999f8addb34993ed90d5}{getLifeTimeTemperatureRange}}(\textcolor{keyword}{const}\ boost::property\_tree::ptree\ \&p\_jsonTree,\ \textcolor{keywordtype}{double}\ \&pMinTemp,\ \textcolor{keywordtype}{double}\ \&pMaxTemp);}
+\DoxyCodeLine{00068\ \ \ \ \ std::pair<std::vector<G4double>,\ std::vector<G4double>>\ \mbox{\hyperlink{namespace_scintillation_processor_abe0857366dc77cb950049d701a7cd87a}{extractLifeTimesForTemperature}}(\mbox{\hyperlink{class_parameter_table}{ParameterTable}}\ *p\_dataFile,\ \textcolor{keyword}{const}\ boost::property\_tree::ptree\ \&p\_jsonTree,\ G4String\ pTemperature);}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_scintillation_processor_a0a5cfdce619f97647f889c05cbb40c52}{weightLifeTimesAmplitudes}}(std::vector<G4double>\ \&pAmp,\ \textcolor{keywordtype}{double}\ pT1,\ \textcolor{keywordtype}{double}\ pT2);}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_scintillation_processor_a4b5f070aafaee94ed8cf02d0b48ac622}{extractLifeTimes}}(\mbox{\hyperlink{class_parameter_table}{ParameterTable}}\ *p\_dataFile,\ \textcolor{keyword}{const}\ boost::property\_tree::ptree\ \&p\_jsonTree,\ G4MaterialPropertiesTable\ *p\_MPT,\ G4String\ pTemperature);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_scintillation_processor_ada904f9aa8601dee3e721f7eeda88f8c}{extractYield}}(\mbox{\hyperlink{class_parameter_table}{ParameterTable}}\ *p\_dataFile,\ \textcolor{keyword}{const}\ boost::property\_tree::ptree\ \&p\_jsonTree,\ G4MaterialPropertiesTable\ *p\_MPT,}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4String\ pTemperature,\ G4String\ pYieldPropertyName,\ G4String\ pArgKey,\ G4String\ pTreeKeyTemperature,\ G4String\ pTreeKeyYield);}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_scintillation_processor_a530a6a3bd1cfc8a949b2c37a818f331d}{extractYieldAlpha}}(\mbox{\hyperlink{class_parameter_table}{ParameterTable}}\ *p\_dataFile,\ \textcolor{keyword}{const}\ boost::property\_tree::ptree\ \&p\_jsonTree,\ G4MaterialPropertiesTable\ *p\_MPT,\ G4String\ pTemperature);}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_scintillation_processor_ac9d8bc9a2343d61ce42ef43996523271}{extractYieldElectron}}(\mbox{\hyperlink{class_parameter_table}{ParameterTable}}\ *p\_dataFile,\ \textcolor{keyword}{const}\ boost::property\_tree::ptree\ \&p\_jsonTree,\ G4MaterialPropertiesTable\ *p\_MPT,\ G4String\ pTemperature);}
+\DoxyCodeLine{00075\ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ice_processor}{IceProcessor}}}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_ice_processor_ae62c8b69efbfeaf9eaf3110b52ba9d37}{process}}(\mbox{\hyperlink{class_parameter_table}{ParameterTable}}\ *p\_dataFile,\ \textcolor{keyword}{const}\ boost::property\_tree::ptree\ \&p\_jsonTree,\ G4MaterialPropertiesTable\ *p\_MPT);}
+\DoxyCodeLine{00080\ \ \ \ \ G4double\ \mbox{\hyperlink{namespace_ice_processor_a1880256fa33d9e645ae86e2057f66297}{spiceTemperature}}(G4double\ p\_depth);}
+\DoxyCodeLine{00081\ \ \ \ \ G4double\ \mbox{\hyperlink{namespace_ice_processor_a29002db125bd3d2b67998403db6afc60}{spiceAbsorption}}(G4double\ p\_lambda,\ \textcolor{keyword}{const}\ std::vector<G4double>\ \&p\_spicea400inv,\ \textcolor{keyword}{const}\ std::vector<G4double>\ \&p\_spiceDepth);}
+\DoxyCodeLine{00082\ \ \ \ \ G4double\ \mbox{\hyperlink{namespace_ice_processor_ad82640f5524b52f1604c3e19ff819be5}{spiceRefraction}}(G4double\ p\_lambda);}
+\DoxyCodeLine{00083\ \ \ \ \ G4double\ \mbox{\hyperlink{namespace_ice_processor_a394c6aa008d203aaeda7c2f28bfa3361}{mieScattering}}(G4double\ p\_lambda,\ \textcolor{keyword}{const}\ std::vector<G4double>\ \&p\_spicebe400inv);}
+\DoxyCodeLine{00084\ \}}
+
+\end{DoxyCode}

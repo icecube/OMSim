@@ -1,0 +1,56 @@
+\doxysection{OMSim\+SNAnalysis.\+hh}
+\hypertarget{_o_m_sim_s_n_analysis_8hh_source}{}\label{_o_m_sim_s_n_analysis_8hh_source}\index{OMSimSNAnalysis.hh@{OMSimSNAnalysis.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}G4Types.hh"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}G4String.hh"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}G4ThreeVector.hh"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_hit_manager_8hh}{OMSimHitManager.hh}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_n_event_stats}{SNEventStats}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ G4double\ neutrinoTime;}
+\DoxyCodeLine{00016\ \ \ \ \ G4double\ meanEnergy;}
+\DoxyCodeLine{00017\ \ \ \ \ G4double\ neutrinoEnergy;}
+\DoxyCodeLine{00018\ \ \ \ \ G4double\ cosTheta;}
+\DoxyCodeLine{00019\ \ \ \ \ G4double\ primaryEnergy;}
+\DoxyCodeLine{00020\ \ \ \ \ G4double\ weight;}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_s_n_analysis}{OMSimSNAnalysis}}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_s_n_analysis}{OMSimSNAnalysis}}();}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_s_n_analysis}{\string~OMSimSNAnalysis}}()\{\};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_s_n_analysis}{OMSimSNAnalysis}}\ \&\mbox{\hyperlink{class_o_m_sim_s_n_analysis_aca43bcd5698ec4a2474244c5646a5457}{getInstance}}()}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_s_n_analysis}{OMSimSNAnalysis}}\ instance;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ analyseEvent();}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ initEventStat();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ processEvent();}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ writeHeaders();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ writeInfoFileHeader();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ writeDataFileHeader();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ writeInfoFile();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ writeDataFile();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ G4ThreadLocal\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_s_n_event_stats}{SNEventStats}}\ *m\_eventStat;}
+\DoxyCodeLine{00049\ \ \ \ \ G4ThreadLocal\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ m\_headerWasWritten;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00052\ \ \ \ \ G4String\ m\_outputSufix;}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+
+\end{DoxyCode}

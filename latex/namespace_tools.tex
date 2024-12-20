@@ -1,24 +1,24 @@
-\hypertarget{namespace_tools}{}\doxysection{Tools Namespace Reference}
-\label{namespace_tools}\index{Tools@{Tools}}
+\doxysection{Tools Namespace Reference}
+\hypertarget{namespace_tools}{}\label{namespace_tools}\index{Tools@{Tools}}
 
 
 A collection of helper functions for numerical operations.  
 
 
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_afc07e23ed8113c72927202c1762c91a4}{arange}} (double p\+\_\+start, double p\+\_\+stop, double p\+\_\+step)
 \begin{DoxyCompactList}\small\item\em Generates a sequence of numbers. \end{DoxyCompactList}\item 
-TGraph $\ast$ \mbox{\hyperlink{namespace_tools_a71949435269d3e8f0671dc8be431b939}{create1d\+Interpolator}} (const std\+::vector$<$ double $>$ \&p\+\_\+X, const std\+::vector$<$ double $>$ \&p\+\_\+y, const std\+::string \&p\+\_\+name)
+TGraph \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_tools_a71949435269d3e8f0671dc8be431b939}{create1d\+Interpolator}} (const std\+::vector$<$ double $>$ \&p\+\_\+X, const std\+::vector$<$ double $>$ \&p\+\_\+y, const std\+::string \&p\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Creates a TGraph interpolator from x and y data points. \end{DoxyCompactList}\item 
-TGraph $\ast$ \mbox{\hyperlink{namespace_tools_a09abd2f325d0bef58f108c277cda429e}{create1d\+Interpolator}} (const std\+::string \&p\+\_\+filename)
+TGraph \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_tools_a09abd2f325d0bef58f108c277cda429e}{create1d\+Interpolator}} (const std\+::string \&p\+\_\+filename)
 \begin{DoxyCompactList}\small\item\em Creates a TGraph interpolator from x and y in file. \end{DoxyCompactList}\item 
-TH2D $\ast$ \mbox{\hyperlink{namespace_tools_ac7412f9ce8a57a3efde80e4fdbb0b364}{create2\+DHistogram\+From\+Data\+File}} (const std\+::string \&p\+\_\+file\+Path)
+TH2D \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_tools_ac7412f9ce8a57a3efde80e4fdbb0b364}{create2\+DHistogram\+From\+Data\+File}} (const std\+::string \&p\+\_\+file\+Path)
 \begin{DoxyCompactList}\small\item\em Create a histogram from provided data. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_tools_a79deeeb2ed49181f097d55b88f6831f9}{ensure\+Directory\+Exists}} (const std\+::string \&p\+\_\+file\+Path)
 \begin{DoxyCompactList}\small\item\em Ensure that the directory of a file to be created exists. \end{DoxyCompactList}\item 
-std\+::pair$<$ std\+::vector$<$ double $>$, std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{namespace_tools_a6ed3b046c3661b17f758d3f8f7f784de}{histogram}} (const std\+::vector$<$ double $>$ \&data, const std\+::variant$<$ int, std\+::vector$<$ double $>$$>$ \&bins, const std\+::optional$<$ std\+::pair$<$ double, double $>$$>$ \&p\+\_\+range, const std\+::vector$<$ double $>$ \&p\+\_\+weights)
+std\+::pair$<$ std\+::vector$<$ double $>$, std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{namespace_tools_ab58e9ef8ed3fc6fe3cd85e26136f5be7}{histogram}} (const std\+::vector$<$ double $>$ \&data, const std\+::variant$<$ int, std\+::vector$<$ double $>$ $>$ \&bins, const std\+::optional$<$ std\+::pair$<$ double, double $>$ $>$ \&p\+\_\+range, const std\+::vector$<$ double $>$ \&p\+\_\+weights)
 \begin{DoxyCompactList}\small\item\em Compute the histogram of a dataset. \end{DoxyCompactList}\item 
 G4\+String \mbox{\hyperlink{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}{get\+Thread\+IDStr}} ()
 \item 
@@ -30,29 +30,29 @@ std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_adf257eb5c348836614
 \begin{DoxyCompactList}\small\item\em Generates a logarithmically spaced vector. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_tools_a3269713e8f36608124048bda75a02a49}{sort\+Vector\+By\+Reference}} (std\+::vector$<$ G4double $>$ \&p\+\_\+reference\+Vector, std\+::vector$<$ G4double $>$ \&p\+\_\+sort\+Vector)
 \begin{DoxyCompactList}\small\item\em Sorts two vectors (p\+\_\+sort\+Vector \& p\+\_\+reference\+Vector) based on the order of values in p\+\_\+reference\+Vector. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{namespace_tools_ae5e9dd629de363e6059b3f563a37845a}\label{namespace_tools_ae5e9dd629de363e6059b3f563a37845a}} 
+\Hypertarget{namespace_tools_ae5e9dd629de363e6059b3f563a37845a}\label{namespace_tools_ae5e9dd629de363e6059b3f563a37845a} 
 double {\bfseries median} (std\+::vector$<$ double $>$ p\+\_\+vec)
 \item 
-\mbox{\Hypertarget{namespace_tools_a02d22a3d187b9c60a29a904f27eeae01}\label{namespace_tools_a02d22a3d187b9c60a29a904f27eeae01}} 
+\Hypertarget{namespace_tools_a02d22a3d187b9c60a29a904f27eeae01}\label{namespace_tools_a02d22a3d187b9c60a29a904f27eeae01} 
 double {\bfseries mean} (const std\+::vector$<$ double $>$ \&p\+\_\+vec, const std\+::vector$<$ double $>$ \&p\+\_\+weights=\{\})
 \item 
-\mbox{\Hypertarget{namespace_tools_a8daf7345e55256e178b3cc523fbeffca}\label{namespace_tools_a8daf7345e55256e178b3cc523fbeffca}} 
+\Hypertarget{namespace_tools_a8daf7345e55256e178b3cc523fbeffca}\label{namespace_tools_a8daf7345e55256e178b3cc523fbeffca} 
 double {\bfseries std} (const std\+::vector$<$ double $>$ \&vec, const std\+::vector$<$ double $>$ \&p\+\_\+weights=\{\})
 \item 
-\mbox{\Hypertarget{namespace_tools_a643113251f480a06563725426fc25adf}\label{namespace_tools_a643113251f480a06563725426fc25adf}} 
+\Hypertarget{namespace_tools_a643113251f480a06563725426fc25adf}\label{namespace_tools_a643113251f480a06563725426fc25adf} 
 void {\bfseries throw\+Error} (const G4\+String \&message)
 \item 
-\mbox{\Hypertarget{namespace_tools_ae68674997cfff7a2f3be9afe673b6e57}\label{namespace_tools_ae68674997cfff7a2f3be9afe673b6e57}} 
+\Hypertarget{namespace_tools_ae68674997cfff7a2f3be9afe673b6e57}\label{namespace_tools_ae68674997cfff7a2f3be9afe673b6e57} 
 std\+::vector$<$ G4\+String $>$ {\bfseries split\+String\+By\+Delimiter} (G4\+String const \&p\+\_\+string, char p\+\_\+delim)
 \item 
-\mbox{\Hypertarget{namespace_tools_a25cdf291245515edee1db8cc54a0b4eb}\label{namespace_tools_a25cdf291245515edee1db8cc54a0b4eb}} 
-std\+::vector$<$ G4\+String $>$ {\bfseries split\+String\+By\+Delimiter} (char $\ast$p\+\_\+char, char p\+\_\+delim)
+\Hypertarget{namespace_tools_a25cdf291245515edee1db8cc54a0b4eb}\label{namespace_tools_a25cdf291245515edee1db8cc54a0b4eb} 
+std\+::vector$<$ G4\+String $>$ {\bfseries split\+String\+By\+Delimiter} (char \texorpdfstring{$\ast$}{*}p\+\_\+char, char p\+\_\+delim)
 \end{DoxyCompactItemize}
-\doxysubsection*{Variables}
+\doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{namespace_tools_a4ee77f675e34ef6252e59c21b5ca6499}\label{namespace_tools_a4ee77f675e34ef6252e59c21b5ca6499}} 
-std\+::string {\bfseries visualisation\+URL} = \char`\"{}https\+://icecube.\+github.\+io/\mbox{\hyperlink{class_o_m_sim}{OMSim}}/md\+\_\+extra\+\_\+doc\+\_\+2\+\_\+technicalities.\+html\#autotoc\+\_\+md30\char`\"{}
+\Hypertarget{namespace_tools_a4ee77f675e34ef6252e59c21b5ca6499}\label{namespace_tools_a4ee77f675e34ef6252e59c21b5ca6499} 
+std\+::string {\bfseries visualisation\+URL} = "{}https\+://icecube.\+github.\+io/\mbox{\hyperlink{class_o_m_sim}{OMSim}}/md\+\_\+extra\+\_\+doc\+\_\+2\+\_\+technicalities.\+html\#autotoc\+\_\+md30"{}
 \end{DoxyCompactItemize}
 
 
@@ -60,7 +60,7 @@ std\+::string {\bfseries visualisation\+URL} = \char`\"{}https\+://icecube.\+git
 This namespace provides static methods for common numerical tasks such as loading data from a file, and generating linearly and logarithmically spaced sequences. 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{namespace_tools_afc07e23ed8113c72927202c1762c91a4}\label{namespace_tools_afc07e23ed8113c72927202c1762c91a4}} 
+\Hypertarget{namespace_tools_afc07e23ed8113c72927202c1762c91a4}\label{namespace_tools_afc07e23ed8113c72927202c1762c91a4} 
 \index{Tools@{Tools}!arange@{arange}}
 \index{arange@{arange}!Tools@{Tools}}
 \doxysubsubsection{\texorpdfstring{arange()}{arange()}}
@@ -83,11 +83,11 @@ A vector of evenly spaced values.
 {\em std\+::invalid\+\_\+argument} & if p\+\_\+step is zero. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{namespace_tools_a09abd2f325d0bef58f108c277cda429e}\label{namespace_tools_a09abd2f325d0bef58f108c277cda429e}} 
+\Hypertarget{namespace_tools_a09abd2f325d0bef58f108c277cda429e}\label{namespace_tools_a09abd2f325d0bef58f108c277cda429e} 
 \index{Tools@{Tools}!create1dInterpolator@{create1dInterpolator}}
 \index{create1dInterpolator@{create1dInterpolator}!Tools@{Tools}}
 \doxysubsubsection{\texorpdfstring{create1dInterpolator()}{create1dInterpolator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily TGraph $\ast$ Tools\+::create1d\+Interpolator (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+\_\+filename }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily TGraph \texorpdfstring{$\ast$}{*} Tools\+::create1d\+Interpolator (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+\_\+filename }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -100,11 +100,11 @@ Pointer to the new TGraph object.
 \begin{DoxyNote}{Note}
 Caller is responsible for deleting the returned TGraph! 
 \end{DoxyNote}
-\mbox{\Hypertarget{namespace_tools_a71949435269d3e8f0671dc8be431b939}\label{namespace_tools_a71949435269d3e8f0671dc8be431b939}} 
+\Hypertarget{namespace_tools_a71949435269d3e8f0671dc8be431b939}\label{namespace_tools_a71949435269d3e8f0671dc8be431b939} 
 \index{Tools@{Tools}!create1dInterpolator@{create1dInterpolator}}
 \index{create1dInterpolator@{create1dInterpolator}!Tools@{Tools}}
 \doxysubsubsection{\texorpdfstring{create1dInterpolator()}{create1dInterpolator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily TGraph $\ast$ Tools\+::create1d\+Interpolator (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{p\+\_\+X,  }\item[{const std\+::vector$<$ double $>$ \&}]{p\+\_\+y,  }\item[{const std\+::string \&}]{p\+\_\+name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily TGraph \texorpdfstring{$\ast$}{*} Tools\+::create1d\+Interpolator (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{p\+\_\+X,  }\item[{const std\+::vector$<$ double $>$ \&}]{p\+\_\+y,  }\item[{const std\+::string \&}]{p\+\_\+name }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -121,11 +121,11 @@ Pointer to the new TGraph object.
 \begin{DoxyNote}{Note}
 Caller is responsible for deleting the returned TGraph! 
 \end{DoxyNote}
-\mbox{\Hypertarget{namespace_tools_ac7412f9ce8a57a3efde80e4fdbb0b364}\label{namespace_tools_ac7412f9ce8a57a3efde80e4fdbb0b364}} 
+\Hypertarget{namespace_tools_ac7412f9ce8a57a3efde80e4fdbb0b364}\label{namespace_tools_ac7412f9ce8a57a3efde80e4fdbb0b364} 
 \index{Tools@{Tools}!create2DHistogramFromDataFile@{create2DHistogramFromDataFile}}
 \index{create2DHistogramFromDataFile@{create2DHistogramFromDataFile}!Tools@{Tools}}
 \doxysubsubsection{\texorpdfstring{create2DHistogramFromDataFile()}{create2DHistogramFromDataFile()}}
-{\footnotesize\ttfamily TH2D $\ast$ Tools\+::create2\+DHistogram\+From\+Data\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+\_\+file\+Path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily TH2D \texorpdfstring{$\ast$}{*} Tools\+::create2\+DHistogram\+From\+Data\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+\_\+file\+Path }\end{DoxyParamCaption})}
 
 Loads the data from a given path and constructs a histogram based on the data.
 
@@ -142,7 +142,7 @@ Pointer to the created histogram.
 \begin{DoxyNote}{Note}
 Caller is responsible for deleting the returned TH2\+D! 
 \end{DoxyNote}
-\mbox{\Hypertarget{namespace_tools_a79deeeb2ed49181f097d55b88f6831f9}\label{namespace_tools_a79deeeb2ed49181f097d55b88f6831f9}} 
+\Hypertarget{namespace_tools_a79deeeb2ed49181f097d55b88f6831f9}\label{namespace_tools_a79deeeb2ed49181f097d55b88f6831f9} 
 \index{Tools@{Tools}!ensureDirectoryExists@{ensureDirectoryExists}}
 \index{ensureDirectoryExists@{ensureDirectoryExists}!Tools@{Tools}}
 \doxysubsubsection{\texorpdfstring{ensureDirectoryExists()}{ensureDirectoryExists()}}
@@ -153,7 +153,7 @@ Caller is responsible for deleting the returned TH2\+D!
 {\em p\+\_\+file\+Path} & The path of file. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}\label{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}} 
+\Hypertarget{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}\label{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f} 
 \index{Tools@{Tools}!getThreadIDStr@{getThreadIDStr}}
 \index{getThreadIDStr@{getThreadIDStr}!Tools@{Tools}}
 \doxysubsubsection{\texorpdfstring{getThreadIDStr()}{getThreadIDStr()}}
@@ -162,11 +162,11 @@ Caller is responsible for deleting the returned TH2\+D!
 \begin{DoxyReturn}{Returns}
 Thread id which called method as string 
 \end{DoxyReturn}
-\mbox{\Hypertarget{namespace_tools_a6ed3b046c3661b17f758d3f8f7f784de}\label{namespace_tools_a6ed3b046c3661b17f758d3f8f7f784de}} 
+\Hypertarget{namespace_tools_ab58e9ef8ed3fc6fe3cd85e26136f5be7}\label{namespace_tools_ab58e9ef8ed3fc6fe3cd85e26136f5be7} 
 \index{Tools@{Tools}!histogram@{histogram}}
 \index{histogram@{histogram}!Tools@{Tools}}
 \doxysubsubsection{\texorpdfstring{histogram()}{histogram()}}
-{\footnotesize\ttfamily std\+::pair$<$ std\+::vector$<$ double $>$, std\+::vector$<$ double $>$ $>$ Tools\+::histogram (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{data,  }\item[{const std\+::variant$<$ int, std\+::vector$<$ double $>$$>$ \&}]{bins,  }\item[{const std\+::optional$<$ std\+::pair$<$ double, double $>$$>$ \&}]{p\+\_\+range,  }\item[{const std\+::vector$<$ double $>$ \&}]{p\+\_\+weights }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::vector$<$ double $>$, std\+::vector$<$ double $>$ $>$ Tools\+::histogram (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{data,  }\item[{const std\+::variant$<$ int, std\+::vector$<$ double $>$ $>$ \&}]{bins,  }\item[{const std\+::optional$<$ std\+::pair$<$ double, double $>$ $>$ \&}]{p\+\_\+range,  }\item[{const std\+::vector$<$ double $>$ \&}]{p\+\_\+weights }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -193,7 +193,7 @@ This function behaves similarly to Num\+Py\textquotesingle{}s numpy.\+histogram\
 \item If bins is an integer, it represents the number of bins. If it\textquotesingle{}s a vector, it represents the bin edges. 
 \end{DoxyItemize}
 \end{DoxyNote}
-\mbox{\Hypertarget{namespace_tools_a052be79128cb3b90b6a4701455307246}\label{namespace_tools_a052be79128cb3b90b6a4701455307246}} 
+\Hypertarget{namespace_tools_a052be79128cb3b90b6a4701455307246}\label{namespace_tools_a052be79128cb3b90b6a4701455307246} 
 \index{Tools@{Tools}!linspace@{linspace}}
 \index{linspace@{linspace}!Tools@{Tools}}
 \doxysubsubsection{\texorpdfstring{linspace()}{linspace()}}
@@ -220,7 +220,7 @@ A vector of linearly spaced values.
 {\em std\+::invalid\+\_\+argument} & if {\ttfamily p\+\_\+num} is less than 2. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{namespace_tools_aefa5ecd8f1fb3d69a65d517494e99669}\label{namespace_tools_aefa5ecd8f1fb3d69a65d517494e99669}} 
+\Hypertarget{namespace_tools_aefa5ecd8f1fb3d69a65d517494e99669}\label{namespace_tools_aefa5ecd8f1fb3d69a65d517494e99669} 
 \index{Tools@{Tools}!loadtxt@{loadtxt}}
 \index{loadtxt@{loadtxt}!Tools@{Tools}}
 \doxysubsubsection{\texorpdfstring{loadtxt()}{loadtxt()}}
@@ -247,13 +247,13 @@ A 2D vector of doubles. The outer vector groups all columns (or rows if \textquo
 {\em std\+::runtime\+\_\+error} & if the file cannot be opened. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{namespace_tools_adf257eb5c348836614a3c10de47bcf6e}\label{namespace_tools_adf257eb5c348836614a3c10de47bcf6e}} 
+\Hypertarget{namespace_tools_adf257eb5c348836614a3c10de47bcf6e}\label{namespace_tools_adf257eb5c348836614a3c10de47bcf6e} 
 \index{Tools@{Tools}!logspace@{logspace}}
 \index{logspace@{logspace}!Tools@{Tools}}
 \doxysubsubsection{\texorpdfstring{logspace()}{logspace()}}
 {\footnotesize\ttfamily std\+::vector$<$ double $>$ Tools\+::logspace (\begin{DoxyParamCaption}\item[{double}]{p\+\_\+start,  }\item[{double}]{p\+\_\+stop,  }\item[{int}]{p\+\_\+num,  }\item[{double}]{base,  }\item[{bool}]{p\+\_\+endpoint }\end{DoxyParamCaption})}
 
-Creates a vector of values that are logarithmically spaced. The sequence starts at base$^\wedge$p\+\_\+start and ends at base$^\wedge$p\+\_\+stop.
+Creates a vector of values that are logarithmically spaced. The sequence starts at base\texorpdfstring{$^\wedge$}{\string^}p\+\_\+start and ends at base\texorpdfstring{$^\wedge$}{\string^}p\+\_\+stop.
 
 
 \begin{DoxyParams}{Parameters}
@@ -281,10 +281,10 @@ This function behaves similarly to Num\+Py\textquotesingle{}s np.\+logspace\+:
 \begin{DoxyItemize}
 \item If p\+\_\+num is 0, returns an empty vector.
 \item p\+\_\+start and p\+\_\+stop are used as powers of base.
-\item The sequence includes base$^\wedge$p\+\_\+start and base$^\wedge$p\+\_\+stop if p\+\_\+endpoint is true. 
+\item The sequence includes base\texorpdfstring{$^\wedge$}{\string^}p\+\_\+start and base\texorpdfstring{$^\wedge$}{\string^}p\+\_\+stop if p\+\_\+endpoint is true. 
 \end{DoxyItemize}
 \end{DoxyNote}
-\mbox{\Hypertarget{namespace_tools_a3269713e8f36608124048bda75a02a49}\label{namespace_tools_a3269713e8f36608124048bda75a02a49}} 
+\Hypertarget{namespace_tools_a3269713e8f36608124048bda75a02a49}\label{namespace_tools_a3269713e8f36608124048bda75a02a49} 
 \index{Tools@{Tools}!sortVectorByReference@{sortVectorByReference}}
 \index{sortVectorByReference@{sortVectorByReference}!Tools@{Tools}}
 \doxysubsubsection{\texorpdfstring{sortVectorByReference()}{sortVectorByReference()}}

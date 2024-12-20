@@ -1,0 +1,2710 @@
+\doxysection{CADMesh.\+hh}
+\hypertarget{_c_a_d_mesh_8hh_source}{}\label{_c_a_d_mesh_8hh_source}\index{CADMesh.hh@{CADMesh.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ The\ MIT\ License\ (MIT)}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Copyright\ (c)\ 2011-\/2020\ Christopher\ M.\ Poole\ <mail@christopherpoole.net>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ THE\ SOFTWARE.}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ CADMESH\ -\/\ Load\ CAD\ files\ into\ Geant4\ quickly\ and\ easily.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ Read\ all\ about\ it\ at:\ https://github.com/christopherpoole/CADMesh}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ Basic\ usage:}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ \ \ \ \ \#include\ "{}CADMesh.hh"{}\ //\ This\ file.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ \ \ \ \ ...}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ \ \ \ \ auto\ mesh\ =\ CADMesh::TessellatedMesh::FromSTL("{}mesh.stl"{});}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ \ \ \ \ G4VSolid*\ solid\ =\ mesh-\/>GetSolid();}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ \ \ \ \ ...}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ !!\ THIS\ FILE\ HAS\ BEEN\ AUTOMATICALLY\ GENERATED.\ DON'T\ EDIT\ IT\ DIRECTLY.\ !!}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{class\ }BuiltInReader;}
+\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }CADMeshTemplate;}
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }Mesh;}
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }STLReader;}
+\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }ASSIMPReader;}
+\DoxyCodeLine{00045\ \textcolor{keyword}{class\ }PLYReader;}
+\DoxyCodeLine{00046\ \textcolor{keyword}{class\ }FileTypes;}
+\DoxyCodeLine{00047\ \textcolor{keyword}{class\ }OBJReader;}
+\DoxyCodeLine{00048\ \textcolor{keyword}{class\ }Exceptions;}
+\DoxyCodeLine{00049\ \textcolor{keyword}{class\ }TetrahedralMesh;}
+\DoxyCodeLine{00050\ \textcolor{keyword}{class\ }Reader;}
+\DoxyCodeLine{00051\ \textcolor{keyword}{class\ }Lexer;}
+\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }LexerMacros;}
+\DoxyCodeLine{00053\ \textcolor{keyword}{class\ }TessellatedMesh;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}G4String.hh"{}}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{enum}\ Type\ \{}
+\DoxyCodeLine{00065\ \ \ Unknown,}
+\DoxyCodeLine{00066\ \ \ PLY,}
+\DoxyCodeLine{00067\ \ \ STL,}
+\DoxyCodeLine{00068\ \ \ DAE,}
+\DoxyCodeLine{00069\ \ \ OBJ,}
+\DoxyCodeLine{00070\ \ \ TET,}
+\DoxyCodeLine{00071\ \ \ OFF,}
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{static}\ std::map<Type,\ G4String>\ Extension\ =\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \{Unknown,\ \textcolor{stringliteral}{"{}unknown"{}}\},\ \{PLY,\ \textcolor{stringliteral}{"{}ply"{}}\},\ \{STL,\ \textcolor{stringliteral}{"{}stl"{}}\},\ \{DAE,\ \textcolor{stringliteral}{"{}dae"{}}\},}
+\DoxyCodeLine{00076\ \ \ \ \ \{OBJ,\ \textcolor{stringliteral}{"{}obj"{}}\},\ \ \ \ \ \ \ \ \ \{TET,\ \textcolor{stringliteral}{"{}tet"{}}\},\ \{OFF,\ \textcolor{stringliteral}{"{}off"{}}\}\};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{static}\ std::map<Type,\ G4String>\ TypeString\ =\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \{Unknown,\ \textcolor{stringliteral}{"{}UNKNOWN"{}}\},\ \{PLY,\ \textcolor{stringliteral}{"{}PLY"{}}\},\ \{STL,\ \textcolor{stringliteral}{"{}STL"{}}\},\ \{DAE,\ \textcolor{stringliteral}{"{}DAE"{}}\},}
+\DoxyCodeLine{00080\ \ \ \ \ \{OBJ,\ \textcolor{stringliteral}{"{}OBJ"{}}\},\ \ \ \ \ \ \ \ \ \{TET,\ \textcolor{stringliteral}{"{}TET"{}}\},\ \{OFF,\ \textcolor{stringliteral}{"{}OFF"{}}\}\};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{static}\ std::map<Type,\ G4String>\ TypeName\ =\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \{Unknown,\ \textcolor{stringliteral}{"{}Unknown\ File\ Format"{}}\},\ \{PLY,\ \textcolor{stringliteral}{"{}Stanford\ Triangle\ Format\ (PLY)"{}}\},}
+\DoxyCodeLine{00084\ \ \ \ \ \{STL,\ \textcolor{stringliteral}{"{}Stereolithography\ (STL)"{}}\},\ \{DAE,\ \textcolor{stringliteral}{"{}COLLADA\ (DAE)"{}}\},}
+\DoxyCodeLine{00085\ \ \ \ \ \{OBJ,\ \textcolor{stringliteral}{"{}Wavefront\ (OBJ)"{}}\},\ \ \ \ \ \ \ \ \ \{TET,\ \textcolor{stringliteral}{"{}TetGet\ (TET)"{}}\},}
+\DoxyCodeLine{00086\ \ \ \ \ \{OFF,\ \textcolor{stringliteral}{"{}Object\ File\ Format\ (OFF)"{}}\}\};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ Type\ TypeFromExtension(G4String\ extension);}
+\DoxyCodeLine{00089\ Type\ TypeFromName(G4String\ name);}
+\DoxyCodeLine{00090\ \}}
+\DoxyCodeLine{00091\ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#include\ "{}G4ThreeVector.hh"{}}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#include\ "{}G4TriangularFacet.hh"{}}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{keyword}{typedef}\ std::vector<G4ThreeVector>\ Points;}
+\DoxyCodeLine{00102\ \textcolor{keyword}{typedef}\ std::vector<G4TriangularFacet\ *>\ Triangles;}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}}\ \{}
+\DoxyCodeLine{00105\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00106\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}}(Points\ points,\ Triangles\ triangles,\ G4String\ name\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Mesh>\ New(Points\ points,\ Triangles\ triangles,}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4String\ name\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Mesh>\ New(Triangles\ triangles,\ G4String\ name\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Mesh>\ New(std::shared\_ptr<Mesh>\ mesh,}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4String\ name\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00117\ \ \ G4String\ GetName();}
+\DoxyCodeLine{00118\ \ \ Points\ GetPoints();}
+\DoxyCodeLine{00119\ \ \ Triangles\ GetTriangles();}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ G4bool\ IsValidForNavigation();}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00124\ \ \ G4String\ name\_\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ Points\ points\_;}
+\DoxyCodeLine{00127\ \ \ Triangles\ triangles\_;}
+\DoxyCodeLine{00128\ \};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{keyword}{typedef}\ std::vector<std::shared\_ptr<Mesh>>\ Meshes;}
+\DoxyCodeLine{00131\ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{Reader}}\ \{}
+\DoxyCodeLine{00138\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00139\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{Reader}}(G4String\ reader\_name);}
+\DoxyCodeLine{00140\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{\string~Reader}}();}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \textcolor{keyword}{virtual}\ G4bool\ Read(G4String\ filepath)\ =\ 0;}
+\DoxyCodeLine{00143\ \ \ \textcolor{keyword}{virtual}\ G4bool\ CanRead(Type\ file\_type)\ =\ 0;}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00146\ \ \ G4String\ GetName();}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ std::shared\_ptr<Mesh>\ GetMesh();}
+\DoxyCodeLine{00149\ \ \ std::shared\_ptr<Mesh>\ GetMesh(\textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00150\ \ \ std::shared\_ptr<Mesh>\ GetMesh(G4String\ name,\ G4bool\ exact\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \textcolor{keywordtype}{size\_t}\ GetNumberOfMeshes();}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ Meshes\ GetMeshes();}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00157\ \ \ \textcolor{keywordtype}{size\_t}\ AddMesh(std::shared\_ptr<Mesh>\ mesh);}
+\DoxyCodeLine{00158\ \ \ \textcolor{keywordtype}{void}\ SetMeshes(Meshes\ meshs);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00161\ \ \ Meshes\ meshes\_;}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ G4String\ name\_\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00164\ \};}
+\DoxyCodeLine{00165\ \}}
+\DoxyCodeLine{00166\ \}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_token}{Token}}\ \{}
+\DoxyCodeLine{00176\ \ \ std::string\ name;}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \textcolor{keywordtype}{bool}\ operator==(\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_token}{Token}}\ other)\ \{\ \textcolor{keywordflow}{return}\ name\ ==\ other.name;\ \};}
+\DoxyCodeLine{00179\ \ \ \textcolor{keywordtype}{bool}\ operator!=(\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_token}{Token}}\ other)\ \{\ \textcolor{keywordflow}{return}\ name\ !=\ other.name;\ \};}
+\DoxyCodeLine{00180\ \};}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_token}{Token}}\ ErrorToken\{\textcolor{stringliteral}{"{}ErrorToken"{}}\};}
+\DoxyCodeLine{00183\ \textcolor{keyword}{static}\ Token\ EnfOfFileToken\{\textcolor{stringliteral}{"{}EndOfFileToken"{}}\};}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \textcolor{keyword}{static}\ Token\ ParentToken\{\textcolor{stringliteral}{"{}Parent"{}}\};}
+\DoxyCodeLine{00186\ \textcolor{keyword}{static}\ Token\ WordToken\{\textcolor{stringliteral}{"{}Word"{}}\};}
+\DoxyCodeLine{00187\ \textcolor{keyword}{static}\ Token\ NumberToken\{\textcolor{stringliteral}{"{}Number"{}}\};}
+\DoxyCodeLine{00188\ \textcolor{keyword}{static}\ Token\ ThreeVectorToken\{\textcolor{stringliteral}{"{}ThreeVector"{}}\};}
+\DoxyCodeLine{00189\ \textcolor{keyword}{static}\ Token\ VertexToken\{\textcolor{stringliteral}{"{}Vertex"{}}\};}
+\DoxyCodeLine{00190\ \textcolor{keyword}{static}\ Token\ VerticesToken\{\textcolor{stringliteral}{"{}Vertices"{}}\};}
+\DoxyCodeLine{00191\ \textcolor{keyword}{static}\ Token\ FacetToken\{\textcolor{stringliteral}{"{}Facet"{}}\};}
+\DoxyCodeLine{00192\ \textcolor{keyword}{static}\ Token\ LineToken\{\textcolor{stringliteral}{"{}Line"{}}\};}
+\DoxyCodeLine{00193\ \textcolor{keyword}{static}\ Token\ NormalToken\{\textcolor{stringliteral}{"{}Normal"{}}\};}
+\DoxyCodeLine{00194\ \textcolor{keyword}{static}\ Token\ TextureToken\{\textcolor{stringliteral}{"{}Texture"{}}\};}
+\DoxyCodeLine{00195\ \textcolor{keyword}{static}\ Token\ SolidToken\{\textcolor{stringliteral}{"{}Solid"{}}\};}
+\DoxyCodeLine{00196\ \textcolor{keyword}{static}\ Token\ ObjectToken\{\textcolor{stringliteral}{"{}Object"{}}\};}
+\DoxyCodeLine{00197\ \textcolor{keyword}{static}\ Token\ CommentToken\{\textcolor{stringliteral}{"{}Comment"{}}\};}
+\DoxyCodeLine{00198\ \textcolor{keyword}{static}\ Token\ BlankLineToken\{\textcolor{stringliteral}{"{}BlankLine"{}}\};}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_item}{Item}}\ \{}
+\DoxyCodeLine{00201\ \ \ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_token}{Token}}\ token;}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \textcolor{keywordtype}{size\_t}\ position;}
+\DoxyCodeLine{00204\ \ \ \textcolor{keywordtype}{size\_t}\ line;}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ std::string\ value;}
+\DoxyCodeLine{00207\ \ \ std::string\ error;}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_item}{Item}}\ *parent;}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ std::vector<Item>\ children;}
+\DoxyCodeLine{00212\ \};}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \textcolor{keyword}{typedef}\ std::vector<Item>\ Items;}
+\DoxyCodeLine{00215\ \textcolor{keyword}{typedef}\ Items::iterator\ ItemsIterator;}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_lexer}{Lexer}};}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_state}{State}}\ \{}
+\DoxyCodeLine{00220\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_state}{State}}\ *operator()(\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_lexer}{Lexer}}\ *)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00221\ \};}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_____final_state}{\_\_FinalState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_state}{State}}\ \{}
+\DoxyCodeLine{00224\ \ \ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_state}{State}}\ *operator()(\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_lexer}{Lexer}}\ *)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00225\ \};}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_lexer}{Lexer}}\ \{}
+\DoxyCodeLine{00228\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00229\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_lexer}{Lexer}}(std::string\ filepath,\ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_state}{State}}\ *initial\_state\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00232\ \ \ std::string\ String();}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \textcolor{keywordtype}{void}\ Run(\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_state}{State}}\ *initial\_state,\ \textcolor{keywordtype}{size\_t}\ lines\ =\ 0);}
+\DoxyCodeLine{00235\ \ \ Items\ GetItems();}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \ \ \textcolor{keywordtype}{void}\ Backup();}
+\DoxyCodeLine{00238\ \ \ \textcolor{keywordtype}{void}\ BackupTo(\textcolor{keywordtype}{int}\ position);}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ std::string\ Next();}
+\DoxyCodeLine{00241\ \ \ std::string\ Peek();}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \textcolor{keywordtype}{void}\ Skip();}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_item}{Item}}\ *ThisIsA(\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_token}{Token}}\ token,\ std::string\ error\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00246\ \ \ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_item}{Item}}\ *StartOfA(\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_token}{Token}}\ token,\ std::string\ error\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00247\ \ \ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_item}{Item}}\ *EndOfA(\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_token}{Token}}\ token,\ std::string\ error\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00248\ \ \ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_item}{Item}}\ *MaybeEndOfA(\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_token}{Token}}\ token,\ std::string\ error\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \textcolor{keywordtype}{bool}\ OneOf(std::string\ possibles);}
+\DoxyCodeLine{00251\ \ \ \textcolor{keywordtype}{bool}\ ManyOf(std::string\ possibles);}
+\DoxyCodeLine{00252\ \ \ \textcolor{keywordtype}{bool}\ Until(std::string\ match);}
+\DoxyCodeLine{00253\ \ \ \textcolor{keywordtype}{bool}\ MatchExactly(std::string\ match);}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \textcolor{keywordtype}{bool}\ OneDigit();}
+\DoxyCodeLine{00256\ \ \ \textcolor{keywordtype}{bool}\ ManyDigits();}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \textcolor{keywordtype}{bool}\ OneLetter();}
+\DoxyCodeLine{00259\ \ \ \textcolor{keywordtype}{bool}\ ManyLetters();}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \ \ \textcolor{keywordtype}{bool}\ ManyCharacters();}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ \textcolor{keywordtype}{bool}\ Integer();}
+\DoxyCodeLine{00264\ \ \ \textcolor{keywordtype}{bool}\ Float();}
+\DoxyCodeLine{00265\ \ \ \textcolor{keywordtype}{bool}\ Number();}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \textcolor{keywordtype}{bool}\ SkipWhiteSpace();}
+\DoxyCodeLine{00268\ \ \ \textcolor{keywordtype}{bool}\ SkipLineBreak();}
+\DoxyCodeLine{00269\ \ \ \textcolor{keywordtype}{bool}\ SkipLineBreaks();}
+\DoxyCodeLine{00270\ \ \ \textcolor{keywordtype}{bool}\ SkipLine();}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_state}{State}}\ *Error(std::string\ message);}
+\DoxyCodeLine{00273\ \ \ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_state}{State}}\ *LastError();}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ \textcolor{keywordtype}{bool}\ TestState(\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_state}{State}}\ *state);}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \textcolor{keywordtype}{bool}\ IsDryRun();}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \ \ \textcolor{keywordtype}{void}\ PrintMessage(std::string\ name,\ std::string\ message);}
+\DoxyCodeLine{00280\ \ \ \textcolor{keywordtype}{void}\ PrintItem(\mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_item}{Item}}\ item);}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \ \ \textcolor{keywordtype}{size\_t}\ LineNumber();}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00285\ \ \ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_state}{State}}\ *state\_;}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \ \ \mbox{\hyperlink{struct_c_a_d_mesh_1_1_file_1_1_item}{Item}}\ *parent\_item\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00288\ \ \ Items\ items\_;}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ std::string\ input\_;}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \textcolor{keywordtype}{size\_t}\ position\_\ =\ 0;}
+\DoxyCodeLine{00293\ \ \ \textcolor{keywordtype}{size\_t}\ start\_\ =\ 0;}
+\DoxyCodeLine{00294\ \ \ \textcolor{keywordtype}{size\_t}\ width\_\ =\ 1;}
+\DoxyCodeLine{00295\ \ \ \textcolor{keywordtype}{size\_t}\ line\_\ =\ 1;}
+\DoxyCodeLine{00296\ \ \ \textcolor{keywordtype}{size\_t}\ end\_line\_\ =\ 0;}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \textcolor{keywordtype}{bool}\ dry\_run\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \ \ \textcolor{keywordtype}{int}\ depth\_\ =\ 0;}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \ \ std::string\ last\_error\_\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00303\ \};}
+\DoxyCodeLine{00304\ \}}
+\DoxyCodeLine{00305\ \}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \textcolor{preprocessor}{\#ifdef\ USE\_CADMESH\_ASSIMP\_READER}}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00309\ \textcolor{preprocessor}{\#include\ "{}assimp/Importer.hpp"{}}}
+\DoxyCodeLine{00310\ \textcolor{preprocessor}{\#include\ "{}assimp/postprocess.h"{}}}
+\DoxyCodeLine{00311\ \textcolor{preprocessor}{\#include\ "{}assimp/scene.h"{}}}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00317\ \textcolor{keyword}{class\ }ASSIMPReader\ :\ \textcolor{keyword}{public}\ File::Reader\ \{}
+\DoxyCodeLine{00318\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00319\ \ \ ASSIMPReader();}
+\DoxyCodeLine{00320\ \ \ \string~ASSIMPReader();}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00323\ \ \ G4bool\ Read(G4String\ filepath);}
+\DoxyCodeLine{00324\ \ \ G4bool\ CanRead(Type\ file\_type);}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00327\ \ \ Assimp::Importer\ *importer\_;}
+\DoxyCodeLine{00328\ \};}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ std::shared\_ptr<ASSIMPReader>\ ASSIMP();}
+\DoxyCodeLine{00331\ \}}
+\DoxyCodeLine{00332\ \}}
+\DoxyCodeLine{00333\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00337\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{00338\ }
+\DoxyCodeLine{00339\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_built_in_reader}{BuiltInReader}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{Reader}}\ \{}
+\DoxyCodeLine{00340\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00341\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_built_in_reader}{BuiltInReader}}()\ :\ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{Reader}}(\textcolor{stringliteral}{"{}BuiltInReader"{}})\{\};}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00344\ \ \ G4bool\ Read(G4String\ filepath);}
+\DoxyCodeLine{00345\ \ \ G4bool\ CanRead(File::Type\ file\_type);}
+\DoxyCodeLine{00346\ \};}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00348\ std::shared\_ptr<BuiltInReader>\ BuiltIn();}
+\DoxyCodeLine{00349\ \}}
+\DoxyCodeLine{00350\ \}}
+\DoxyCodeLine{00351\ \textcolor{preprocessor}{\#ifndef\ CADMESH\_DEFAULT\_READER}}
+\DoxyCodeLine{00352\ \textcolor{preprocessor}{\#define\ CADMESH\_DEFAULT\_READER\ BuiltIn}}
+\DoxyCodeLine{00353\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \textcolor{preprocessor}{\#include\ "{}G4AssemblyVolume.hh"{}}}
+\DoxyCodeLine{00356\ \textcolor{preprocessor}{\#include\ "{}G4LogicalVolume.hh"{}}}
+\DoxyCodeLine{00357\ \textcolor{preprocessor}{\#include\ "{}G4Material.hh"{}}}
+\DoxyCodeLine{00358\ \textcolor{preprocessor}{\#include\ "{}G4TessellatedSolid.hh"{}}}
+\DoxyCodeLine{00359\ \textcolor{preprocessor}{\#include\ "{}G4Tet.hh"{}}}
+\DoxyCodeLine{00360\ \textcolor{preprocessor}{\#include\ "{}G4UIcommand.hh"{}}}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d_mesh_1_1_c_a_d_mesh_template}{CADMeshTemplate}}\ \{}
+\DoxyCodeLine{00365\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00366\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_c_a_d_mesh_template}{CADMeshTemplate}}();}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_c_a_d_mesh_template}{CADMeshTemplate}}(G4String\ file\_name);}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_c_a_d_mesh_template}{CADMeshTemplate}}(G4String\ file\_name,\ File::Type\ file\_type);}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_c_a_d_mesh_template}{CADMeshTemplate}}(std::shared\_ptr<File::Reader>\ reader);}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_c_a_d_mesh_template}{CADMeshTemplate}}(G4String\ file\_name,\ std::shared\_ptr<File::Reader>\ reader);}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_c_a_d_mesh_template}{CADMeshTemplate}}(G4String\ file\_name,\ File::Type\ file\_type,}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<File::Reader>\ reader);}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<T>\ From(G4String\ file\_name);}
+\DoxyCodeLine{00380\ }
+\DoxyCodeLine{00381\ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<T>\ From(G4String\ file\_name,}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<File::Reader>\ reader);}
+\DoxyCodeLine{00383\ }
+\DoxyCodeLine{00384\ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<T>\ FromPLY(G4String\ file\_name);}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00386\ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<T>\ FromPLY(G4String\ file\_name,}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<File::Reader>\ reader);}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00389\ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<T>\ FromSTL(G4String\ file\_name);}
+\DoxyCodeLine{00390\ }
+\DoxyCodeLine{00391\ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<T>\ FromSTL(G4String\ file\_name,}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<File::Reader>\ reader);}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<T>\ FromOBJ(G4String\ file\_name);}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00396\ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<T>\ FromOBJ(G4String\ file\_name,}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<File::Reader>\ reader);}
+\DoxyCodeLine{00398\ }
+\DoxyCodeLine{00399\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_c_a_d_mesh_template}{\string~CADMeshTemplate}}();}
+\DoxyCodeLine{00400\ }
+\DoxyCodeLine{00401\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00402\ \ \ \textcolor{keyword}{virtual}\ G4VSolid\ *GetSolid()\ =\ 0;}
+\DoxyCodeLine{00403\ \ \ \textcolor{keyword}{virtual}\ G4VSolid\ *GetSolid(G4int\ index)\ =\ 0;}
+\DoxyCodeLine{00404\ \ \ \textcolor{keyword}{virtual}\ G4VSolid\ *GetSolid(G4String\ name,\ G4bool\ exact\ =\ \textcolor{keyword}{true})\ =\ 0;}
+\DoxyCodeLine{00405\ }
+\DoxyCodeLine{00406\ \ \ \textcolor{keyword}{virtual}\ std::vector<G4VSolid\ *>\ GetSolids()\ =\ 0;}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00408\ \ \ \textcolor{keyword}{virtual}\ G4AssemblyVolume\ *GetAssembly()\ =\ 0;}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00410\ \ \ \textcolor{keywordtype}{bool}\ IsValidForNavigation();}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00412\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00413\ \ \ G4String\ GetFileName();}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ \ \ File::Type\ GetFileType();}
+\DoxyCodeLine{00416\ }
+\DoxyCodeLine{00417\ \ \ \textcolor{keywordtype}{void}\ SetVerbose(G4int\ verbose);}
+\DoxyCodeLine{00418\ \ \ G4int\ GetVerbose();}
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00420\ \ \ \textcolor{keywordtype}{void}\ SetScale(G4double\ scale);}
+\DoxyCodeLine{00421\ \ \ G4double\ GetScale();}
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00423\ \ \ \textcolor{keywordtype}{void}\ SetOffset(G4double\ x,\ G4double\ y,\ G4double\ z);}
+\DoxyCodeLine{00424\ \ \ \textcolor{keywordtype}{void}\ SetOffset(G4ThreeVector\ offset);}
+\DoxyCodeLine{00425\ \ \ G4ThreeVector\ GetOffset();}
+\DoxyCodeLine{00426\ }
+\DoxyCodeLine{00427\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00428\ \ \ G4String\ file\_name\_;}
+\DoxyCodeLine{00429\ \ \ File::Type\ file\_type\_;}
+\DoxyCodeLine{00430\ \ \ G4int\ verbose\_;}
+\DoxyCodeLine{00431\ \ \ G4double\ scale\_;}
+\DoxyCodeLine{00432\ \ \ G4ThreeVector\ offset\_;}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00434\ \ \ G4AssemblyVolume\ *assembly\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00435\ }
+\DoxyCodeLine{00436\ \ \ std::shared\_ptr<File::Reader>\ reader\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00437\ \};}
+\DoxyCodeLine{00438\ \}}
+\DoxyCodeLine{00439\ }
+\DoxyCodeLine{00440\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00442\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \textcolor{keyword}{namespace\ }Exceptions\ \{}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00446\ \textcolor{keywordtype}{void}\ FileNotFound(G4String\ origin,\ G4String\ filepath);}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00448\ \textcolor{keywordtype}{void}\ LexerError(G4String\ origin,\ G4String\ message);}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00450\ \textcolor{keywordtype}{void}\ ParserError(G4String\ origin,\ G4String\ message);}
+\DoxyCodeLine{00451\ }
+\DoxyCodeLine{00452\ \textcolor{keywordtype}{void}\ ReaderCantReadError(G4String\ origin,\ File::Type\ file\_type,}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4String\ filepath);}
+\DoxyCodeLine{00454\ }
+\DoxyCodeLine{00455\ \textcolor{keywordtype}{void}\ MeshNotFound(G4String\ origin,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00456\ \textcolor{keywordtype}{void}\ MeshNotFound(G4String\ origin,\ G4String\ name);}
+\DoxyCodeLine{00457\ \}}
+\DoxyCodeLine{00458\ \}}
+\DoxyCodeLine{00459\ }
+\DoxyCodeLine{00460\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00462\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d_mesh_1_1_tessellated_mesh}{TessellatedMesh}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_a_d_mesh_1_1_c_a_d_mesh_template}{CADMeshTemplate}}<TessellatedMesh>\ \{}
+\DoxyCodeLine{00463\ \ \ \textcolor{keyword}{using\ }CADMeshTemplate::CADMeshTemplate;}
+\DoxyCodeLine{00464\ }
+\DoxyCodeLine{00465\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00466\ \ \ G4VSolid\ *GetSolid();}
+\DoxyCodeLine{00467\ \ \ G4VSolid\ *GetSolid(G4int\ index);}
+\DoxyCodeLine{00468\ \ \ G4VSolid\ *GetSolid(G4String\ name,\ G4bool\ exact\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00469\ }
+\DoxyCodeLine{00470\ \ \ std::vector<G4VSolid\ *>\ GetSolids();}
+\DoxyCodeLine{00471\ }
+\DoxyCodeLine{00472\ \ \ G4TessellatedSolid\ *GetTessellatedSolid();}
+\DoxyCodeLine{00473\ \ \ G4TessellatedSolid\ *GetTessellatedSolid(G4int\ index);}
+\DoxyCodeLine{00474\ \ \ G4TessellatedSolid\ *GetTessellatedSolid(G4String\ name,\ G4bool\ exact\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00475\ \ \ G4TessellatedSolid\ *GetTessellatedSolid(std::shared\_ptr<Mesh>\ mesh);}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00477\ \ \ G4AssemblyVolume\ *GetAssembly();}
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00479\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00480\ \ \ \textcolor{keywordtype}{void}\ SetReverse(G4bool\ reverse)\ \{\ this-\/>reverse\_\ =\ reverse;\ \};}
+\DoxyCodeLine{00481\ }
+\DoxyCodeLine{00482\ \ \ G4bool\ GetReverse()\ \{\ \textcolor{keywordflow}{return}\ this-\/>reverse\_;\ \};}
+\DoxyCodeLine{00483\ }
+\DoxyCodeLine{00484\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00485\ \ \ G4bool\ reverse\_;}
+\DoxyCodeLine{00486\ \};}
+\DoxyCodeLine{00487\ \}}
+\DoxyCodeLine{00488\ }
+\DoxyCodeLine{00489\ \textcolor{preprocessor}{\#ifdef\ USE\_CADMESH\_TETGEN}}
+\DoxyCodeLine{00490\ }
+\DoxyCodeLine{00491\ \textcolor{preprocessor}{\#include\ "{}tetgen.h"{}}}
+\DoxyCodeLine{00492\ }
+\DoxyCodeLine{00493\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00494\ }
+\DoxyCodeLine{00495\ \textcolor{keyword}{class\ }TetrahedralMesh\ :\ \textcolor{keyword}{public}\ CADMeshTemplate<TetrahedralMesh>\ \{}
+\DoxyCodeLine{00496\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00497\ \ \ \textcolor{keyword}{using\ }CADMeshTemplate::CADMeshTemplate;}
+\DoxyCodeLine{00498\ }
+\DoxyCodeLine{00499\ \ \ TetrahedralMesh();}
+\DoxyCodeLine{00500\ \ \ \string~TetrahedralMesh();}
+\DoxyCodeLine{00501\ }
+\DoxyCodeLine{00502\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00503\ \ \ G4VSolid\ *GetSolid();}
+\DoxyCodeLine{00504\ \ \ G4VSolid\ *GetSolid(G4int\ index);}
+\DoxyCodeLine{00505\ \ \ G4VSolid\ *GetSolid(G4String\ name,\ G4bool\ exact\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00506\ }
+\DoxyCodeLine{00507\ \ \ std::vector<G4VSolid\ *>\ GetSolids();}
+\DoxyCodeLine{00508\ }
+\DoxyCodeLine{00509\ \ \ G4AssemblyVolume\ *GetAssembly();}
+\DoxyCodeLine{00510\ }
+\DoxyCodeLine{00511\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00512\ \ \ \textcolor{keywordtype}{void}\ SetMaterial(G4Material\ *material)\ \{\ this-\/>material\_\ =\ material;\ \};}
+\DoxyCodeLine{00513\ }
+\DoxyCodeLine{00514\ \ \ G4Material\ *GetMaterial()\ \{\ \textcolor{keywordflow}{return}\ this-\/>material\_;\ \};}
+\DoxyCodeLine{00515\ }
+\DoxyCodeLine{00516\ \ \ \textcolor{keywordtype}{void}\ SetQuality(G4double\ quality)\ \{\ this-\/>quality\_\ =\ quality;\ \};}
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00518\ \ \ G4double\ GetQuality()\ \{\ \textcolor{keywordflow}{return}\ this-\/>quality\_;\ \};}
+\DoxyCodeLine{00519\ }
+\DoxyCodeLine{00520\ \ \ std::shared\_ptr<tetgenio>\ GetTetgenInput()\ \{\ \textcolor{keywordflow}{return}\ in\_;\ \};}
+\DoxyCodeLine{00521\ }
+\DoxyCodeLine{00522\ \ \ std::shared\_ptr<tetgenio>\ GetTetgenOutput()\ \{\ \textcolor{keywordflow}{return}\ out\_;\ \};}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00524\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00525\ \ \ G4ThreeVector\ GetTetPoint(G4int\ index\_offset);}
+\DoxyCodeLine{00526\ }
+\DoxyCodeLine{00527\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00528\ \ \ std::shared\_ptr<tetgenio>\ in\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00529\ \ \ std::shared\_ptr<tetgenio>\ out\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00530\ }
+\DoxyCodeLine{00531\ \ \ G4double\ quality\_;}
+\DoxyCodeLine{00532\ }
+\DoxyCodeLine{00533\ \ \ G4Material\ *material\_;}
+\DoxyCodeLine{00534\ \};}
+\DoxyCodeLine{00535\ \}}
+\DoxyCodeLine{00536\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00537\ }
+\DoxyCodeLine{00538\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00539\ }
+\DoxyCodeLine{00540\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{00541\ }
+\DoxyCodeLine{00542\ \textcolor{keyword}{inline}\ Type\ TypeFromExtension(G4String\ extension)\ \{}
+\DoxyCodeLine{00543\ \ \ std::for\_each(extension.begin(),\ extension.end(),}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [](\textcolor{keywordtype}{char}\ \&e)\ \{\ e\ =\ ::tolower(e);\ \});}
+\DoxyCodeLine{00545\ }
+\DoxyCodeLine{00546\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ e\ =\ Extension.begin();\ e\ !=\ Extension.end();\ ++e)\ \{}
+\DoxyCodeLine{00547\ \ \ \ \ \textcolor{keywordflow}{if}\ (e-\/>second\ ==\ extension)\ \{}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ e-\/>first;}
+\DoxyCodeLine{00549\ \ \ \ \ \}}
+\DoxyCodeLine{00550\ \ \ \}}
+\DoxyCodeLine{00551\ }
+\DoxyCodeLine{00552\ \ \ \textcolor{keywordflow}{return}\ Unknown;}
+\DoxyCodeLine{00553\ \}}
+\DoxyCodeLine{00554\ }
+\DoxyCodeLine{00555\ \textcolor{keyword}{inline}\ Type\ TypeFromName(G4String\ name)\ \{}
+\DoxyCodeLine{00556\ \ \ \textcolor{keyword}{auto}\ extension\ =\ name.substr(name.find\_last\_of(\textcolor{stringliteral}{"{}."{}})\ +\ 1);}
+\DoxyCodeLine{00557\ }
+\DoxyCodeLine{00558\ \ \ \textcolor{keywordflow}{return}\ TypeFromExtension(extension);}
+\DoxyCodeLine{00559\ \}}
+\DoxyCodeLine{00560\ \}}
+\DoxyCodeLine{00561\ \}}
+\DoxyCodeLine{00562\ }
+\DoxyCodeLine{00563\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00564\ }
+\DoxyCodeLine{00565\ \textcolor{keyword}{inline}\ Mesh::Mesh(Points\ points,\ Triangles\ triangles,\ G4String\ name)}
+\DoxyCodeLine{00566\ \ \ \ \ :\ name\_(name),\ points\_(points),\ triangles\_(triangles)\ \{\}}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00568\ \textcolor{keyword}{inline}\ std::shared\_ptr<Mesh>\ Mesh::New(Points\ points,\ Triangles\ triangles,}
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4String\ name)\ \{}
+\DoxyCodeLine{00570\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<Mesh>(points,\ triangles,\ name);}
+\DoxyCodeLine{00571\ \}}
+\DoxyCodeLine{00572\ }
+\DoxyCodeLine{00573\ \textcolor{keyword}{inline}\ std::shared\_ptr<Mesh>\ Mesh::New(Triangles\ triangles,\ G4String\ name)\ \{}
+\DoxyCodeLine{00574\ \ \ Points\ points;}
+\DoxyCodeLine{00575\ }
+\DoxyCodeLine{00576\ \ \ \textcolor{keywordflow}{return}\ New(points,\ triangles,\ name);}
+\DoxyCodeLine{00577\ \}}
+\DoxyCodeLine{00578\ }
+\DoxyCodeLine{00579\ \textcolor{keyword}{inline}\ std::shared\_ptr<Mesh>\ Mesh::New(std::shared\_ptr<Mesh>\ mesh,}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4String\ name)\ \{}
+\DoxyCodeLine{00581\ \ \ \textcolor{keywordflow}{return}\ New(mesh-\/>GetPoints(),\ mesh-\/>GetTriangles(),\ name);}
+\DoxyCodeLine{00582\ \}}
+\DoxyCodeLine{00583\ }
+\DoxyCodeLine{00584\ \textcolor{keyword}{inline}\ G4String\ Mesh::GetName()\ \{\ \textcolor{keywordflow}{return}\ name\_;\ \}}
+\DoxyCodeLine{00585\ }
+\DoxyCodeLine{00586\ \textcolor{keyword}{inline}\ Points\ Mesh::GetPoints()\ \{\ \textcolor{keywordflow}{return}\ points\_;\ \}}
+\DoxyCodeLine{00587\ }
+\DoxyCodeLine{00588\ \textcolor{keyword}{inline}\ Triangles\ Mesh::GetTriangles()\ \{\ \textcolor{keywordflow}{return}\ triangles\_;\ \}}
+\DoxyCodeLine{00589\ }
+\DoxyCodeLine{00590\ \textcolor{keyword}{inline}\ G4bool\ Mesh::IsValidForNavigation()\ \{}
+\DoxyCodeLine{00591\ \ \ std::map<G4ThreeVector,\ size\_t>\ point\_index;}
+\DoxyCodeLine{00592\ }
+\DoxyCodeLine{00593\ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
+\DoxyCodeLine{00594\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ point\ :\ points\_)\ \{}
+\DoxyCodeLine{00595\ \ \ \ \ point\_index[point]\ =\ index;}
+\DoxyCodeLine{00596\ \ \ \ \ index++;}
+\DoxyCodeLine{00597\ \ \ \}}
+\DoxyCodeLine{00598\ }
+\DoxyCodeLine{00599\ \ \ \textcolor{keyword}{typedef}\ std::pair<size\_t,\ size\_t>\ Edge;}
+\DoxyCodeLine{00600\ \ \ std::map<Edge,\ G4int>\ edge\_use\_count;}
+\DoxyCodeLine{00601\ }
+\DoxyCodeLine{00602\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ triangles\_.size();\ i++)\ \{}
+\DoxyCodeLine{00603\ \ \ \ \ \textcolor{keyword}{auto}\ triangle\ =\ triangles\_[i];}
+\DoxyCodeLine{00604\ }
+\DoxyCodeLine{00605\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ a\ =\ point\_index[triangle-\/>GetVertex(0)];}
+\DoxyCodeLine{00606\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ b\ =\ point\_index[triangle-\/>GetVertex(1)];}
+\DoxyCodeLine{00607\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ c\ =\ point\_index[triangle-\/>GetVertex(2)];}
+\DoxyCodeLine{00608\ }
+\DoxyCodeLine{00609\ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ <\ b)\ \{}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ edge\_use\_count[Edge(a,\ b)]\ +=\ 1;}
+\DoxyCodeLine{00611\ \ \ \ \ \}}
+\DoxyCodeLine{00612\ }
+\DoxyCodeLine{00613\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (a\ >\ b)\ \{}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ edge\_use\_count[Edge(b,\ a)]\ +=\ 1;}
+\DoxyCodeLine{00615\ \ \ \ \ \}}
+\DoxyCodeLine{00616\ }
+\DoxyCodeLine{00617\ \ \ \ \ \textcolor{keywordflow}{if}\ (b\ <\ c)\ \{}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ edge\_use\_count[Edge(b,\ c)]\ +=\ 1;}
+\DoxyCodeLine{00619\ \ \ \ \ \}}
+\DoxyCodeLine{00620\ }
+\DoxyCodeLine{00621\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (b\ >\ c)\ \{}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ edge\_use\_count[Edge(c,\ b)]\ +=\ 1;}
+\DoxyCodeLine{00623\ \ \ \ \ \}}
+\DoxyCodeLine{00624\ }
+\DoxyCodeLine{00625\ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ <\ a)\ \{}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ edge\_use\_count[Edge(c,\ a)]\ +=\ 1;}
+\DoxyCodeLine{00627\ \ \ \ \ \}}
+\DoxyCodeLine{00628\ }
+\DoxyCodeLine{00629\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (c\ >\ a)\ \{}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ edge\_use\_count[Edge(a,\ c)]\ +=\ 1;}
+\DoxyCodeLine{00631\ \ \ \ \ \}}
+\DoxyCodeLine{00632\ \ \ \}}
+\DoxyCodeLine{00633\ }
+\DoxyCodeLine{00634\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ count\ :\ edge\_use\_count)\ \{}
+\DoxyCodeLine{00635\ \ \ \ \ \textcolor{keywordflow}{if}\ (count.second\ !=\ 2)\ \{}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00637\ \ \ \ \ \}}
+\DoxyCodeLine{00638\ \ \ \}}
+\DoxyCodeLine{00639\ }
+\DoxyCodeLine{00640\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00641\ \}}
+\DoxyCodeLine{00642\ \}}
+\DoxyCodeLine{00643\ }
+\DoxyCodeLine{00644\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00645\ }
+\DoxyCodeLine{00646\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{00647\ }
+\DoxyCodeLine{00648\ \textcolor{keyword}{inline}\ Reader::Reader(G4String\ reader\_name)\ :\ name\_(reader\_name)\ \{\}}
+\DoxyCodeLine{00649\ }
+\DoxyCodeLine{00650\ \textcolor{keyword}{inline}\ Reader::\string~Reader()\ \{\}}
+\DoxyCodeLine{00651\ }
+\DoxyCodeLine{00652\ \textcolor{keyword}{inline}\ G4String\ Reader::GetName()\ \{\ \textcolor{keywordflow}{return}\ name\_;\ \}}
+\DoxyCodeLine{00653\ }
+\DoxyCodeLine{00654\ \textcolor{keyword}{inline}\ std::shared\_ptr<Mesh>\ Reader::GetMesh()\ \{}
+\DoxyCodeLine{00655\ \ \ \textcolor{keywordflow}{if}\ (meshes\_.size()\ >\ 0)\ \{}
+\DoxyCodeLine{00656\ \ \ \ \ \textcolor{keywordflow}{return}\ meshes\_[0];}
+\DoxyCodeLine{00657\ \ \ \}}
+\DoxyCodeLine{00658\ }
+\DoxyCodeLine{00659\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00660\ \}}
+\DoxyCodeLine{00661\ }
+\DoxyCodeLine{00662\ \textcolor{keyword}{inline}\ std::shared\_ptr<Mesh>\ Reader::GetMesh(\textcolor{keywordtype}{size\_t}\ index)\ \{}
+\DoxyCodeLine{00663\ \ \ \textcolor{keywordflow}{if}\ (index\ <\ meshes\_.size())\ \{}
+\DoxyCodeLine{00664\ \ \ \ \ \textcolor{keywordflow}{return}\ meshes\_[index];}
+\DoxyCodeLine{00665\ \ \ \}}
+\DoxyCodeLine{00666\ }
+\DoxyCodeLine{00667\ \ \ Exceptions::MeshNotFound(\textcolor{stringliteral}{"{}Reader::GetMesh"{}},\ index);}
+\DoxyCodeLine{00668\ }
+\DoxyCodeLine{00669\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00670\ \}}
+\DoxyCodeLine{00671\ }
+\DoxyCodeLine{00672\ \textcolor{keyword}{inline}\ std::shared\_ptr<Mesh>\ Reader::GetMesh(G4String\ name,\ G4bool\ exact)\ \{}
+\DoxyCodeLine{00673\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ mesh\ :\ meshes\_)\ \{}
+\DoxyCodeLine{00674\ \ \ \ \ \textcolor{keywordflow}{if}\ (exact)\ \{}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mesh-\/>GetName()\ ==\ name)}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mesh;}
+\DoxyCodeLine{00677\ \ \ \ \ \}}
+\DoxyCodeLine{00678\ }
+\DoxyCodeLine{00679\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mesh-\/>GetName().find(name)\ !=\ std::string::npos)}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mesh;}
+\DoxyCodeLine{00682\ \ \ \ \ \}}
+\DoxyCodeLine{00683\ \ \ \}}
+\DoxyCodeLine{00684\ }
+\DoxyCodeLine{00685\ \ \ Exceptions::MeshNotFound(\textcolor{stringliteral}{"{}Reader::GetMesh"{}},\ name);}
+\DoxyCodeLine{00686\ }
+\DoxyCodeLine{00687\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00688\ \}}
+\DoxyCodeLine{00689\ }
+\DoxyCodeLine{00690\ \textcolor{keyword}{inline}\ Meshes\ Reader::GetMeshes()\ \{\ \textcolor{keywordflow}{return}\ meshes\_;\ \}}
+\DoxyCodeLine{00691\ }
+\DoxyCodeLine{00692\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ Reader::GetNumberOfMeshes()\ \{\ \textcolor{keywordflow}{return}\ meshes\_.size();\ \}}
+\DoxyCodeLine{00693\ }
+\DoxyCodeLine{00694\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ Reader::AddMesh(std::shared\_ptr<Mesh>\ mesh)\ \{}
+\DoxyCodeLine{00695\ \ \ meshes\_.push\_back(mesh);}
+\DoxyCodeLine{00696\ }
+\DoxyCodeLine{00697\ \ \ \textcolor{keywordflow}{return}\ meshes\_.size();}
+\DoxyCodeLine{00698\ \}}
+\DoxyCodeLine{00699\ }
+\DoxyCodeLine{00700\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Reader::SetMeshes(Meshes\ meshes)\ \{\ meshes\_\ =\ meshes;\ \}}
+\DoxyCodeLine{00701\ \}}
+\DoxyCodeLine{00702\ \}}
+\DoxyCodeLine{00703\ }
+\DoxyCodeLine{00704\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00705\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00706\ \textcolor{preprocessor}{\#include\ <streambuf>}}
+\DoxyCodeLine{00707\ }
+\DoxyCodeLine{00708\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{00709\ }
+\DoxyCodeLine{00710\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{00711\ }
+\DoxyCodeLine{00712\ \textcolor{keyword}{inline}\ Lexer::Lexer(std::string\ filepath,\ State\ *initial\_state)\ \{}
+\DoxyCodeLine{00713\ \ \ std::ifstream\ file(filepath);}
+\DoxyCodeLine{00714\ \ \ input\_\ =\ std::string((std::istreambuf\_iterator<char>(file)),}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::istreambuf\_iterator<char>());}
+\DoxyCodeLine{00716\ }
+\DoxyCodeLine{00717\ \ \ \textcolor{keywordflow}{if}\ (initial\_state)\ \{}
+\DoxyCodeLine{00718\ \ \ \ \ Run(initial\_state);}
+\DoxyCodeLine{00719\ \ \ \}}
+\DoxyCodeLine{00720\ \}}
+\DoxyCodeLine{00721\ }
+\DoxyCodeLine{00722\ \textcolor{keyword}{inline}\ std::string\ Lexer::String()\ \{}
+\DoxyCodeLine{00723\ \ \ \textcolor{keywordflow}{return}\ input\_.substr(start\_,\ position\_\ -\/\ start\_);}
+\DoxyCodeLine{00724\ \}}
+\DoxyCodeLine{00725\ }
+\DoxyCodeLine{00726\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Lexer::Run(State\ *initial\_state,\ \textcolor{keywordtype}{size\_t}\ lines)\ \{}
+\DoxyCodeLine{00727\ \ \ parent\_item\_\ =\ \textcolor{keyword}{new}\ Item\{ParentToken,\ position\_,\ \ \ \ \ \ \ \ \ \ line\_,\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr},\ \ \ \ \ std::vector<Item>()\};}
+\DoxyCodeLine{00729\ }
+\DoxyCodeLine{00730\ \ \ state\_\ =\ initial\_state;}
+\DoxyCodeLine{00731\ }
+\DoxyCodeLine{00732\ \ \ end\_line\_\ =\ 0;}
+\DoxyCodeLine{00733\ }
+\DoxyCodeLine{00734\ \ \ \textcolor{keywordflow}{if}\ (lines\ >\ 0)}
+\DoxyCodeLine{00735\ \ \ \ \ end\_line\_\ =\ line\_\ +\ lines;}
+\DoxyCodeLine{00736\ }
+\DoxyCodeLine{00737\ \ \ \textcolor{keywordflow}{while}\ (state\_)\ \{}
+\DoxyCodeLine{00738\ \ \ \ \ state\_\ =\ (*state\_)(\textcolor{keyword}{this});}
+\DoxyCodeLine{00739\ \ \ \}}
+\DoxyCodeLine{00740\ \}}
+\DoxyCodeLine{00741\ }
+\DoxyCodeLine{00742\ \textcolor{keyword}{inline}\ Items\ Lexer::GetItems()\ \{\ \textcolor{keywordflow}{return}\ parent\_item\_-\/>children;\ \}}
+\DoxyCodeLine{00743\ }
+\DoxyCodeLine{00744\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Lexer::Backup()\ \{}
+\DoxyCodeLine{00745\ \ \ position\_\ -\/=\ width\_;}
+\DoxyCodeLine{00746\ }
+\DoxyCodeLine{00747\ \ \ \textcolor{keyword}{auto}\ next\ =\ input\_.substr(position\_,\ 1);}
+\DoxyCodeLine{00748\ }
+\DoxyCodeLine{00749\ \ \ \textcolor{keywordflow}{if}\ (next\ ==\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}})\ \{}
+\DoxyCodeLine{00750\ \ \ \ \ line\_-\/-\/;}
+\DoxyCodeLine{00751\ \ \ \}}
+\DoxyCodeLine{00752\ \}}
+\DoxyCodeLine{00753\ }
+\DoxyCodeLine{00754\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Lexer::BackupTo(\textcolor{keywordtype}{int}\ position)\ \{}
+\DoxyCodeLine{00755\ \ \ \textcolor{keyword}{auto}\ s\ =\ input\_.substr(position,\ position\_\ -\/\ position);}
+\DoxyCodeLine{00756\ \ \ line\_\ -\/=\ std::count(s.begin(),\ s.end(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00757\ }
+\DoxyCodeLine{00758\ \ \ position\_\ =\ position;}
+\DoxyCodeLine{00759\ \}}
+\DoxyCodeLine{00760\ }
+\DoxyCodeLine{00761\ \textcolor{keyword}{inline}\ std::string\ Lexer::Next()\ \{}
+\DoxyCodeLine{00762\ \ \ \textcolor{keywordflow}{if}\ (position\_\ >=\ input\_.length())\ \{}
+\DoxyCodeLine{00763\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00764\ \ \ \}}
+\DoxyCodeLine{00765\ }
+\DoxyCodeLine{00766\ \ \ \textcolor{keyword}{auto}\ next\ =\ input\_.substr(position\_,\ 1);}
+\DoxyCodeLine{00767\ }
+\DoxyCodeLine{00768\ \ \ width\_\ =\ 1;}
+\DoxyCodeLine{00769\ \ \ position\_\ +=\ width\_;}
+\DoxyCodeLine{00770\ }
+\DoxyCodeLine{00771\ \ \ \textcolor{keywordflow}{if}\ (next\ ==\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}})}
+\DoxyCodeLine{00772\ \ \ \ \ line\_++;}
+\DoxyCodeLine{00773\ }
+\DoxyCodeLine{00774\ \ \ \textcolor{keywordflow}{return}\ next;}
+\DoxyCodeLine{00775\ \}}
+\DoxyCodeLine{00776\ }
+\DoxyCodeLine{00777\ \textcolor{keyword}{inline}\ std::string\ Lexer::Peek()\ \{}
+\DoxyCodeLine{00778\ \ \ \textcolor{keyword}{auto}\ next\ =\ Next();}
+\DoxyCodeLine{00779\ }
+\DoxyCodeLine{00780\ \ \ \textcolor{keywordflow}{if}\ (next\ !=\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{00781\ \ \ \ \ Backup();}
+\DoxyCodeLine{00782\ }
+\DoxyCodeLine{00783\ \ \ \textcolor{keywordflow}{return}\ next;}
+\DoxyCodeLine{00784\ \}}
+\DoxyCodeLine{00785\ }
+\DoxyCodeLine{00786\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Lexer::Skip()\ \{\ start\_\ =\ position\_;\ \}}
+\DoxyCodeLine{00787\ }
+\DoxyCodeLine{00788\ \textcolor{keyword}{inline}\ Item\ *Lexer::ThisIsA(Token\ token,\ std::string\ error)\ \{}
+\DoxyCodeLine{00789\ \ \ \textcolor{keywordflow}{if}\ (dry\_run\_)}
+\DoxyCodeLine{00790\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00791\ }
+\DoxyCodeLine{00792\ \ \ \textcolor{keyword}{auto}\ item\ =}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ Item\{token,\ position\_,\ line\_,\ String(),\ error,\ parent\_item\_,\ Items()\};}
+\DoxyCodeLine{00794\ \ \ Skip();}
+\DoxyCodeLine{00795\ }
+\DoxyCodeLine{00796\ \ \ \textcolor{keywordflow}{if}\ (parent\_item\_)\ \{}
+\DoxyCodeLine{00797\ \ \ \ \ PrintItem(item);}
+\DoxyCodeLine{00798\ }
+\DoxyCodeLine{00799\ \ \ \ \ parent\_item\_-\/>children.push\_back(item);}
+\DoxyCodeLine{00800\ \ \ \ \ \textcolor{keywordflow}{return}\ \&(parent\_item\_-\/>children.back());}
+\DoxyCodeLine{00801\ \ \ \}}
+\DoxyCodeLine{00802\ }
+\DoxyCodeLine{00803\ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00804\ \ \ \ \ depth\_++;}
+\DoxyCodeLine{00805\ \ \ \ \ PrintItem(item);}
+\DoxyCodeLine{00806\ }
+\DoxyCodeLine{00807\ \ \ \ \ items\_.push\_back(item);}
+\DoxyCodeLine{00808\ \ \ \ \ \textcolor{keywordflow}{return}\ \&(items\_.back());}
+\DoxyCodeLine{00809\ \ \ \}}
+\DoxyCodeLine{00810\ \}}
+\DoxyCodeLine{00811\ }
+\DoxyCodeLine{00812\ \textcolor{keyword}{inline}\ Item\ *Lexer::StartOfA(Token\ token,\ std::string\ error)\ \{}
+\DoxyCodeLine{00813\ \ \ \textcolor{keywordflow}{if}\ (dry\_run\_)}
+\DoxyCodeLine{00814\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00815\ }
+\DoxyCodeLine{00816\ \ \ parent\_item\_\ =\ ThisIsA(token,\ error);}
+\DoxyCodeLine{00817\ }
+\DoxyCodeLine{00818\ \ \ depth\_++;}
+\DoxyCodeLine{00819\ }
+\DoxyCodeLine{00820\ \ \ \textcolor{keywordflow}{return}\ parent\_item\_;}
+\DoxyCodeLine{00821\ \}}
+\DoxyCodeLine{00822\ }
+\DoxyCodeLine{00823\ \textcolor{keyword}{inline}\ Item\ *Lexer::EndOfA(Token\ token,\ std::string\ \textcolor{comment}{/*error*/})\ \{}
+\DoxyCodeLine{00824\ \ \ \textcolor{keywordflow}{if}\ (dry\_run\_)}
+\DoxyCodeLine{00825\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00826\ }
+\DoxyCodeLine{00827\ \ \ depth\_-\/-\/;}
+\DoxyCodeLine{00828\ }
+\DoxyCodeLine{00829\ \ \ PrintItem(*parent\_item\_);}
+\DoxyCodeLine{00830\ }
+\DoxyCodeLine{00831\ \ \ \textcolor{keywordflow}{if}\ (parent\_item\_-\/>token.name\ !=\ token.name)\ \{}
+\DoxyCodeLine{00832\ \ \ \ \ Exceptions::LexerError(\textcolor{stringliteral}{"{}Lexer::EndOfA"{}},}
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Trying\ to\ end\ a\ '"{}}\ +\ parent\_item\_-\/>token.name\ +}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}'\ with\ a\ '"{}}\ +\ token.name\ +\ \textcolor{stringliteral}{"{}'\ token."{}});}
+\DoxyCodeLine{00835\ \ \ \}}
+\DoxyCodeLine{00836\ }
+\DoxyCodeLine{00837\ \ \ \textcolor{keywordflow}{if}\ (parent\_item\_)\ \{}
+\DoxyCodeLine{00838\ \ \ \ \ parent\_item\_\ =\ parent\_item\_-\/>parent;}
+\DoxyCodeLine{00839\ \ \ \}}
+\DoxyCodeLine{00840\ }
+\DoxyCodeLine{00841\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00842\ \}}
+\DoxyCodeLine{00843\ }
+\DoxyCodeLine{00844\ \textcolor{keyword}{inline}\ Item\ *Lexer::MaybeEndOfA(Token\ token,\ std::string\ error)\ \{}
+\DoxyCodeLine{00845\ \ \ \textcolor{keywordflow}{if}\ (parent\_item\_-\/>token.name\ ==\ token.name)\ \{}
+\DoxyCodeLine{00846\ \ \ \ \ \textcolor{keywordflow}{return}\ EndOfA(token,\ error);}
+\DoxyCodeLine{00847\ \ \ \}}
+\DoxyCodeLine{00848\ }
+\DoxyCodeLine{00849\ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00850\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00851\ \ \ \}}
+\DoxyCodeLine{00852\ \}}
+\DoxyCodeLine{00853\ }
+\DoxyCodeLine{00854\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::OneOf(std::string\ possibles)\ \{}
+\DoxyCodeLine{00855\ \ \ \textcolor{keyword}{auto}\ peek\ =\ Peek();}
+\DoxyCodeLine{00856\ }
+\DoxyCodeLine{00857\ \ \ \textcolor{keywordtype}{size\_t}\ position\ =\ possibles.find(Peek());}
+\DoxyCodeLine{00858\ }
+\DoxyCodeLine{00859\ \ \ \textcolor{keywordflow}{if}\ (position\ !=\ std::string::npos)\ \{}
+\DoxyCodeLine{00860\ \ \ \ \ \textcolor{keyword}{auto}\ next\ =\ Next();}
+\DoxyCodeLine{00861\ \ \ \ \ \textcolor{keywordflow}{return}\ next\ !=\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00862\ \ \ \}}
+\DoxyCodeLine{00863\ }
+\DoxyCodeLine{00864\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00865\ \}}
+\DoxyCodeLine{00866\ }
+\DoxyCodeLine{00867\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::ManyOf(std::string\ possibles)\ \{}
+\DoxyCodeLine{00868\ \ \ \textcolor{keywordtype}{bool}\ has\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00869\ }
+\DoxyCodeLine{00870\ \ \ \textcolor{keywordflow}{while}\ (OneOf(possibles))\ \{}
+\DoxyCodeLine{00871\ \ \ \ \ has\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00872\ \ \ \}}
+\DoxyCodeLine{00873\ }
+\DoxyCodeLine{00874\ \ \ \textcolor{keywordflow}{return}\ has;}
+\DoxyCodeLine{00875\ \}}
+\DoxyCodeLine{00876\ }
+\DoxyCodeLine{00877\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::Until(std::string\ match)\ \{}
+\DoxyCodeLine{00878\ \ \ \textcolor{keywordflow}{while}\ (!OneOf(match))\ \{}
+\DoxyCodeLine{00879\ \ \ \ \ \textcolor{keywordflow}{if}\ (Next()\ ==\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{00880\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00881\ \ \ \}}
+\DoxyCodeLine{00882\ }
+\DoxyCodeLine{00883\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00884\ \}}
+\DoxyCodeLine{00885\ }
+\DoxyCodeLine{00886\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::MatchExactly(std::string\ match)\ \{}
+\DoxyCodeLine{00887\ \ \ \textcolor{keyword}{auto}\ start\_position\ =\ position\_;}
+\DoxyCodeLine{00888\ }
+\DoxyCodeLine{00889\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ m\ :\ match)\ \{}
+\DoxyCodeLine{00890\ \ \ \ \ \textcolor{keywordflow}{if}\ (!OneOf(std::string(1,\ m)))\ \{}
+\DoxyCodeLine{00891\ \ \ \ \ \ \ BackupTo(start\_position);}
+\DoxyCodeLine{00892\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00893\ \ \ \ \ \}}
+\DoxyCodeLine{00894\ \ \ \}}
+\DoxyCodeLine{00895\ }
+\DoxyCodeLine{00896\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00897\ \}}
+\DoxyCodeLine{00898\ }
+\DoxyCodeLine{00899\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::OneDigit()\ \{\ \textcolor{keywordflow}{return}\ OneOf(\textcolor{stringliteral}{"{}0123456789"{}});\ \}}
+\DoxyCodeLine{00900\ }
+\DoxyCodeLine{00901\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::ManyDigits()\ \{\ \textcolor{keywordflow}{return}\ ManyOf(\textcolor{stringliteral}{"{}0123456789"{}});\ \}}
+\DoxyCodeLine{00902\ }
+\DoxyCodeLine{00903\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::OneLetter()\ \{}
+\DoxyCodeLine{00904\ \ \ \textcolor{keywordflow}{return}\ OneOf(\textcolor{stringliteral}{"{}abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"{}});}
+\DoxyCodeLine{00905\ \}}
+\DoxyCodeLine{00906\ }
+\DoxyCodeLine{00907\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::ManyLetters()\ \{}
+\DoxyCodeLine{00908\ \ \ \textcolor{keywordflow}{return}\ ManyOf(\textcolor{stringliteral}{"{}abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"{}});}
+\DoxyCodeLine{00909\ \}}
+\DoxyCodeLine{00910\ }
+\DoxyCodeLine{00911\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::ManyCharacters()\ \{}
+\DoxyCodeLine{00912\ \ \ \textcolor{keywordflow}{return}\ ManyOf(\textcolor{stringliteral}{"{}!\(\backslash\)"{}\#\$\%\&\(\backslash\)\(\backslash\)\(\backslash\)'()*+,-\/./"{}}}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[|]\string^\_`"{}}}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}abcdefghijklmnopqrstuvwxyz\{\}\string~"{}});}
+\DoxyCodeLine{00915\ \}}
+\DoxyCodeLine{00916\ }
+\DoxyCodeLine{00917\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::Integer()\ \{}
+\DoxyCodeLine{00918\ \ \ \textcolor{keyword}{auto}\ start\_position\ =\ position\_;}
+\DoxyCodeLine{00919\ }
+\DoxyCodeLine{00920\ \ \ OneOf(\textcolor{stringliteral}{"{}+-\/"{}});}
+\DoxyCodeLine{00921\ }
+\DoxyCodeLine{00922\ \ \ \textcolor{keywordflow}{if}\ (!ManyDigits())\ \{}
+\DoxyCodeLine{00923\ \ \ \ \ BackupTo(start\_position);}
+\DoxyCodeLine{00924\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00925\ \ \ \}}
+\DoxyCodeLine{00926\ }
+\DoxyCodeLine{00927\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00928\ \}}
+\DoxyCodeLine{00929\ }
+\DoxyCodeLine{00930\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::Float()\ \{}
+\DoxyCodeLine{00931\ \ \ \textcolor{keyword}{auto}\ start\_position\ =\ position\_;}
+\DoxyCodeLine{00932\ }
+\DoxyCodeLine{00933\ \ \ OneOf(\textcolor{stringliteral}{"{}+-\/"{}});}
+\DoxyCodeLine{00934\ }
+\DoxyCodeLine{00935\ \ \ \textcolor{keywordtype}{bool}\ has\_integer\ =\ Integer();}
+\DoxyCodeLine{00936\ }
+\DoxyCodeLine{00937\ \ \ \textcolor{keywordflow}{if}\ (!OneOf(\textcolor{stringliteral}{"{}."{}}))\ \{}
+\DoxyCodeLine{00938\ \ \ \ \ BackupTo(start\_position);}
+\DoxyCodeLine{00939\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00940\ \ \ \}}
+\DoxyCodeLine{00941\ }
+\DoxyCodeLine{00942\ \ \ \textcolor{keywordtype}{bool}\ has\_decimal\ =\ ManyDigits();}
+\DoxyCodeLine{00943\ }
+\DoxyCodeLine{00944\ \ \ \textcolor{keywordflow}{if}\ (!has\_integer\ ||\ !has\_decimal)\ \{}
+\DoxyCodeLine{00945\ \ \ \ \ BackupTo(start\_position);}
+\DoxyCodeLine{00946\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00947\ \ \ \}}
+\DoxyCodeLine{00948\ }
+\DoxyCodeLine{00949\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00950\ \}}
+\DoxyCodeLine{00951\ }
+\DoxyCodeLine{00952\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::Number()\ \{}
+\DoxyCodeLine{00953\ \ \ \textcolor{keywordflow}{if}\ (!Float())\ \{}
+\DoxyCodeLine{00954\ \ \ \ \ \textcolor{keywordflow}{if}\ (!Integer())\ \{}
+\DoxyCodeLine{00955\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00956\ \ \ \ \ \}}
+\DoxyCodeLine{00957\ \ \ \}}
+\DoxyCodeLine{00958\ }
+\DoxyCodeLine{00959\ \ \ \textcolor{keyword}{auto}\ start\_position\ =\ position\_;}
+\DoxyCodeLine{00960\ }
+\DoxyCodeLine{00961\ \ \ \textcolor{keywordflow}{if}\ (OneOf(\textcolor{stringliteral}{"{}eE"{}}))\ \{}
+\DoxyCodeLine{00962\ \ \ \ \ \textcolor{keywordflow}{if}\ (!Float())\ \{}
+\DoxyCodeLine{00963\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Integer())\ \{}
+\DoxyCodeLine{00964\ \ \ \ \ \ \ \ \ BackupTo(start\_position);}
+\DoxyCodeLine{00965\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00966\ \ \ \ \ \}}
+\DoxyCodeLine{00967\ \ \ \}}
+\DoxyCodeLine{00968\ }
+\DoxyCodeLine{00969\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00970\ \}}
+\DoxyCodeLine{00971\ }
+\DoxyCodeLine{00972\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::SkipWhiteSpace()\ \{}
+\DoxyCodeLine{00973\ \ \ \textcolor{keywordflow}{if}\ (!ManyOf(\textcolor{stringliteral}{"{}\ \(\backslash\)t\(\backslash\)r"{}}))\ \{}
+\DoxyCodeLine{00974\ \ \ \ \ Skip();}
+\DoxyCodeLine{00975\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00976\ \ \ \}}
+\DoxyCodeLine{00977\ }
+\DoxyCodeLine{00978\ \ \ Skip();}
+\DoxyCodeLine{00979\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00980\ \}}
+\DoxyCodeLine{00981\ }
+\DoxyCodeLine{00982\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::SkipLineBreak()\ \{}
+\DoxyCodeLine{00983\ \ \ \textcolor{keywordflow}{if}\ (!OneOf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}))\ \{}
+\DoxyCodeLine{00984\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00985\ \ \ \}}
+\DoxyCodeLine{00986\ }
+\DoxyCodeLine{00987\ \ \ Skip();}
+\DoxyCodeLine{00988\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00989\ \}}
+\DoxyCodeLine{00990\ }
+\DoxyCodeLine{00991\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::SkipLineBreaks()\ \{}
+\DoxyCodeLine{00992\ \ \ \textcolor{keywordflow}{if}\ (!ManyOf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}))\ \{}
+\DoxyCodeLine{00993\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00994\ \ \ \}}
+\DoxyCodeLine{00995\ }
+\DoxyCodeLine{00996\ \ \ Skip();}
+\DoxyCodeLine{00997\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00998\ \}}
+\DoxyCodeLine{00999\ }
+\DoxyCodeLine{01000\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::SkipLine()\ \{}
+\DoxyCodeLine{01001\ \ \ \textcolor{keywordflow}{if}\ (!Until(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}))\ \{}
+\DoxyCodeLine{01002\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01003\ \ \ \}}
+\DoxyCodeLine{01004\ }
+\DoxyCodeLine{01005\ \ \ Skip();}
+\DoxyCodeLine{01006\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01007\ \}}
+\DoxyCodeLine{01008\ }
+\DoxyCodeLine{01009\ \textcolor{keyword}{inline}\ State\ *Lexer::Error(std::string\ message)\ \{}
+\DoxyCodeLine{01010\ }
+\DoxyCodeLine{01011\ \ \ std::stringstream\ error;}
+\DoxyCodeLine{01012\ \ \ error\ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ line\_\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ message\ <<\ std::endl;}
+\DoxyCodeLine{01013\ }
+\DoxyCodeLine{01014\ \ \ last\_error\_\ =\ error.str();}
+\DoxyCodeLine{01015\ }
+\DoxyCodeLine{01016\ \ \ \textcolor{keywordflow}{if}\ (dry\_run\_)}
+\DoxyCodeLine{01017\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{01018\ }
+\DoxyCodeLine{01019\ \ \ Item\ item\{ErrorToken,\ \ position\_,\ \ \ \ line\_,\ \ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{01020\ \ \ \ \ \ \ \ \ \ \ \ \ error.str(),\ parent\_item\_,\ Items()\};}
+\DoxyCodeLine{01021\ \ \ items\_.push\_back(item);}
+\DoxyCodeLine{01022\ }
+\DoxyCodeLine{01023\ \ \ Exceptions::LexerError(\textcolor{stringliteral}{"{}Lexer"{}},\ error.str());}
+\DoxyCodeLine{01024\ }
+\DoxyCodeLine{01025\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{01026\ \}}
+\DoxyCodeLine{01027\ }
+\DoxyCodeLine{01028\ \textcolor{keyword}{inline}\ State\ *Lexer::LastError()\ \{}
+\DoxyCodeLine{01029\ \ \ \textcolor{keywordflow}{if}\ (last\_error\_\ ==\ \textcolor{stringliteral}{"{}"{}})\ \{}
+\DoxyCodeLine{01030\ \ \ \ \ Exceptions::LexerError(\textcolor{stringliteral}{"{}Lexer"{}},\ \textcolor{stringliteral}{"{}Something\ went\ wrong."{}});}
+\DoxyCodeLine{01031\ \ \ \}}
+\DoxyCodeLine{01032\ }
+\DoxyCodeLine{01033\ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01034\ \ \ \ \ Exceptions::LexerError(\textcolor{stringliteral}{"{}Lexer"{}},\ last\_error\_);}
+\DoxyCodeLine{01035\ \ \ \}}
+\DoxyCodeLine{01036\ }
+\DoxyCodeLine{01037\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{01038\ \}}
+\DoxyCodeLine{01039\ }
+\DoxyCodeLine{01040\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::TestState(State\ *state)\ \{}
+\DoxyCodeLine{01041\ \ \ \textcolor{keywordflow}{if}\ (dry\_run\_)}
+\DoxyCodeLine{01042\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01043\ }
+\DoxyCodeLine{01044\ \ \ \textcolor{keywordflow}{if}\ (end\_line\_\ >\ 0\ \&\&\ line\_\ >\ end\_line\_)}
+\DoxyCodeLine{01045\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01046\ }
+\DoxyCodeLine{01047\ \ \ \textcolor{keyword}{auto}\ start\_position\ =\ position\_;}
+\DoxyCodeLine{01048\ }
+\DoxyCodeLine{01049\ \ \ dry\_run\_\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01050\ }
+\DoxyCodeLine{01051\ \ \ \textcolor{keywordtype}{bool}\ state\_transition\ =\ ((*state)(\textcolor{keyword}{this})\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{01052\ }
+\DoxyCodeLine{01053\ \ \ dry\_run\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01054\ }
+\DoxyCodeLine{01055\ \ \ BackupTo(start\_position);}
+\DoxyCodeLine{01056\ }
+\DoxyCodeLine{01057\ \ \ \textcolor{keywordflow}{return}\ state\_transition;}
+\DoxyCodeLine{01058\ \}}
+\DoxyCodeLine{01059\ }
+\DoxyCodeLine{01060\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Lexer::IsDryRun()\ \{\ \textcolor{keywordflow}{return}\ dry\_run\_;\ \}}
+\DoxyCodeLine{01061\ }
+\DoxyCodeLine{01062\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ Lexer::LineNumber()\ \{\ \textcolor{keywordflow}{return}\ line\_;\ \}}
+\DoxyCodeLine{01063\ }
+\DoxyCodeLine{01064\ \textcolor{preprocessor}{\#ifdef\ CADMESH\_LEXER\_VERBOSE}}
+\DoxyCodeLine{01065\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Lexer::PrintMessage(std::string\ name,\ std::string\ message)\ \{}
+\DoxyCodeLine{01066\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Lexer::"{}}\ <<\ name\ <<\ \textcolor{stringliteral}{"{}\ :\ "{}}\ <<\ message\ <<\ std::endl;}
+\DoxyCodeLine{01067\ \}}
+\DoxyCodeLine{01068\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{01069\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Lexer::PrintMessage(std::string,\ std::string)\ \{\}}
+\DoxyCodeLine{01070\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01071\ }
+\DoxyCodeLine{01072\ \textcolor{preprocessor}{\#ifdef\ CADMESH\_LEXER\_VERBOSE}}
+\DoxyCodeLine{01073\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Lexer::PrintItem(Item\ item)\ \{}
+\DoxyCodeLine{01074\ \ \ \textcolor{keyword}{auto}\ depth\ =\ std::max(0,\ depth\_)\ *\ 2;}
+\DoxyCodeLine{01075\ \ \ std::cout\ <<\ std::string(depth,\ \textcolor{charliteral}{'\ '})\ <<\ item.token.name\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ item.value}
+\DoxyCodeLine{01076\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{01077\ \}}
+\DoxyCodeLine{01078\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{01079\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Lexer::PrintItem(Item)\ \{\}}
+\DoxyCodeLine{01080\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01081\ \}}
+\DoxyCodeLine{01082\ \}}
+\DoxyCodeLine{01083\ }
+\DoxyCodeLine{01084\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{01085\ }
+\DoxyCodeLine{01086\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01087\ CADMeshTemplate<T>::CADMeshTemplate()\ :\ CADMeshTemplate<T>(\textcolor{stringliteral}{"{}"{}})\ \{\}}
+\DoxyCodeLine{01088\ }
+\DoxyCodeLine{01089\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01090\ CADMeshTemplate<T>::CADMeshTemplate(G4String\ file\_name)}
+\DoxyCodeLine{01091\ \ \ \ \ :\ CADMeshTemplate<T>(file\_name,\ File::Unknown)\ \{\}}
+\DoxyCodeLine{01092\ }
+\DoxyCodeLine{01093\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01094\ CADMeshTemplate<T>::CADMeshTemplate(G4String\ file\_name,\ File::Type\ file\_type)}
+\DoxyCodeLine{01095\ \ \ \ \ :\ CADMeshTemplate<T>(file\_name,\ file\_type,\ File::CADMESH\_DEFAULT\_READER())\ \{}
+\DoxyCodeLine{01096\ \}}
+\DoxyCodeLine{01097\ }
+\DoxyCodeLine{01098\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01099\ CADMeshTemplate<T>::CADMeshTemplate(std::shared\_ptr<File::Reader>\ reader)}
+\DoxyCodeLine{01100\ \ \ \ \ :\ CADMeshTemplate<T>(\textcolor{stringliteral}{"{}"{}},\ reader)\ \{\}}
+\DoxyCodeLine{01101\ }
+\DoxyCodeLine{01102\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01103\ CADMeshTemplate<T>::CADMeshTemplate(G4String\ file\_name,}
+\DoxyCodeLine{01104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<File::Reader>\ reader)}
+\DoxyCodeLine{01105\ \ \ \ \ :\ CADMeshTemplate<T>(file\_name,\ File::Unknown,\ reader)\ \{\}}
+\DoxyCodeLine{01106\ }
+\DoxyCodeLine{01107\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01108\ CADMeshTemplate<T>::CADMeshTemplate(G4String\ file\_name,\ File::Type\ file\_type,}
+\DoxyCodeLine{01109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<File::Reader>\ reader)\ \{}
+\DoxyCodeLine{01110\ \ \ \textcolor{keywordflow}{if}\ (!reader-\/>CanRead(file\_type))\ \{}
+\DoxyCodeLine{01111\ \ \ \ \ Exceptions::ReaderCantReadError(reader-\/>GetName(),\ file\_type,\ file\_name);}
+\DoxyCodeLine{01112\ \ \ \}}
+\DoxyCodeLine{01113\ }
+\DoxyCodeLine{01114\ \ \ file\_name\_\ =\ file\_name;}
+\DoxyCodeLine{01115\ \ \ file\_type\_\ =\ file\_type;}
+\DoxyCodeLine{01116\ }
+\DoxyCodeLine{01117\ \ \ scale\_\ =\ 1.0;}
+\DoxyCodeLine{01118\ }
+\DoxyCodeLine{01119\ \ \ offset\_\ =\ G4ThreeVector();}
+\DoxyCodeLine{01120\ }
+\DoxyCodeLine{01121\ \ \ verbose\_\ =\ 0;}
+\DoxyCodeLine{01122\ }
+\DoxyCodeLine{01123\ \ \ reader\_\ =\ reader;}
+\DoxyCodeLine{01124\ }
+\DoxyCodeLine{01125\ \ \ reader\_-\/>Read(file\_name\_);}
+\DoxyCodeLine{01126\ \}}
+\DoxyCodeLine{01127\ }
+\DoxyCodeLine{01128\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01129\ std::shared\_ptr<T>\ CADMeshTemplate<T>::From(G4String\ file\_name)\ \{}
+\DoxyCodeLine{01130\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<T>(file\_name);}
+\DoxyCodeLine{01131\ \}}
+\DoxyCodeLine{01132\ }
+\DoxyCodeLine{01133\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01134\ std::shared\_ptr<T>}
+\DoxyCodeLine{01135\ CADMeshTemplate<T>::From(G4String\ file\_name,}
+\DoxyCodeLine{01136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<File::Reader>\ reader)\ \{}
+\DoxyCodeLine{01137\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<T>(file\_name,\ reader);}
+\DoxyCodeLine{01138\ \}}
+\DoxyCodeLine{01139\ }
+\DoxyCodeLine{01140\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01141\ std::shared\_ptr<T>\ CADMeshTemplate<T>::FromPLY(G4String\ file\_name)\ \{}
+\DoxyCodeLine{01142\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<T>(file\_name,\ File::PLY);}
+\DoxyCodeLine{01143\ \}}
+\DoxyCodeLine{01144\ }
+\DoxyCodeLine{01145\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01146\ std::shared\_ptr<T>}
+\DoxyCodeLine{01147\ CADMeshTemplate<T>::FromPLY(G4String\ file\_name,}
+\DoxyCodeLine{01148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<File::Reader>\ reader)\ \{}
+\DoxyCodeLine{01149\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<T>(file\_name,\ File::PLY,\ reader);}
+\DoxyCodeLine{01150\ \}}
+\DoxyCodeLine{01151\ }
+\DoxyCodeLine{01152\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01153\ std::shared\_ptr<T>\ CADMeshTemplate<T>::FromSTL(G4String\ file\_name)\ \{}
+\DoxyCodeLine{01154\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<T>(file\_name,\ File::STL);}
+\DoxyCodeLine{01155\ \}}
+\DoxyCodeLine{01156\ }
+\DoxyCodeLine{01157\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01158\ std::shared\_ptr<T>}
+\DoxyCodeLine{01159\ CADMeshTemplate<T>::FromSTL(G4String\ file\_name,}
+\DoxyCodeLine{01160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<File::Reader>\ reader)\ \{}
+\DoxyCodeLine{01161\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<T>(file\_name,\ File::STL,\ reader);}
+\DoxyCodeLine{01162\ \}}
+\DoxyCodeLine{01163\ }
+\DoxyCodeLine{01164\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01165\ std::shared\_ptr<T>\ CADMeshTemplate<T>::FromOBJ(G4String\ file\_name)\ \{}
+\DoxyCodeLine{01166\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<T>(file\_name,\ File::OBJ);}
+\DoxyCodeLine{01167\ \}}
+\DoxyCodeLine{01168\ }
+\DoxyCodeLine{01169\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01170\ std::shared\_ptr<T>}
+\DoxyCodeLine{01171\ CADMeshTemplate<T>::FromOBJ(G4String\ file\_name,}
+\DoxyCodeLine{01172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<File::Reader>\ reader)\ \{}
+\DoxyCodeLine{01173\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<T>(file\_name,\ File::OBJ,\ reader);}
+\DoxyCodeLine{01174\ \}}
+\DoxyCodeLine{01175\ }
+\DoxyCodeLine{01176\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ CADMeshTemplate<T>::\string~CADMeshTemplate()\ \{\}}
+\DoxyCodeLine{01177\ }
+\DoxyCodeLine{01178\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keywordtype}{bool}\ CADMeshTemplate<T>::IsValidForNavigation()\ \{}
+\DoxyCodeLine{01179\ \ \ \textcolor{keywordflow}{return}\ reader\_-\/>GetMesh()-\/>IsValidForNavigation();}
+\DoxyCodeLine{01180\ \}}
+\DoxyCodeLine{01181\ }
+\DoxyCodeLine{01182\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ G4String\ CADMeshTemplate<T>::GetFileName()\ \{}
+\DoxyCodeLine{01183\ \ \ \textcolor{keywordflow}{return}\ file\_name\_;}
+\DoxyCodeLine{01184\ \}}
+\DoxyCodeLine{01185\ }
+\DoxyCodeLine{01186\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ File::Type\ CADMeshTemplate<T>::GetFileType()\ \{}
+\DoxyCodeLine{01187\ \ \ \textcolor{keywordflow}{return}\ file\_type\_;}
+\DoxyCodeLine{01188\ \}}
+\DoxyCodeLine{01189\ }
+\DoxyCodeLine{01190\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keywordtype}{void}\ CADMeshTemplate<T>::SetVerbose(G4int\ verbose)\ \{}
+\DoxyCodeLine{01191\ \ \ verbose\_\ =\ verbose;}
+\DoxyCodeLine{01192\ \}}
+\DoxyCodeLine{01193\ }
+\DoxyCodeLine{01194\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ G4int\ CADMeshTemplate<T>::GetVerbose()\ \{}
+\DoxyCodeLine{01195\ \ \ \textcolor{keywordflow}{return}\ verbose\_;}
+\DoxyCodeLine{01196\ \}}
+\DoxyCodeLine{01197\ }
+\DoxyCodeLine{01198\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keywordtype}{void}\ CADMeshTemplate<T>::SetScale(G4double\ scale)\ \{}
+\DoxyCodeLine{01199\ \ \ scale\_\ =\ scale;}
+\DoxyCodeLine{01200\ \}}
+\DoxyCodeLine{01201\ }
+\DoxyCodeLine{01202\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ G4double\ CADMeshTemplate<T>::GetScale()\ \{\ \textcolor{keywordflow}{return}\ scale\_;\ \}}
+\DoxyCodeLine{01203\ }
+\DoxyCodeLine{01204\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01205\ \textcolor{keywordtype}{void}\ CADMeshTemplate<T>::SetOffset(G4double\ x,\ G4double\ y,\ G4double\ z)\ \{}
+\DoxyCodeLine{01206\ \ \ SetOffset(G4ThreeVector(x,\ y,\ z));}
+\DoxyCodeLine{01207\ \}}
+\DoxyCodeLine{01208\ }
+\DoxyCodeLine{01209\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keywordtype}{void}\ CADMeshTemplate<T>::SetOffset(G4ThreeVector\ offset)\ \{}
+\DoxyCodeLine{01210\ \ \ offset\_\ =\ offset;}
+\DoxyCodeLine{01211\ \}}
+\DoxyCodeLine{01212\ }
+\DoxyCodeLine{01213\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ G4ThreeVector\ CADMeshTemplate<T>::GetOffset()\ \{}
+\DoxyCodeLine{01214\ \ \ \textcolor{keywordflow}{return}\ offset\_;}
+\DoxyCodeLine{01215\ \}}
+\DoxyCodeLine{01216\ \}}
+\DoxyCodeLine{01217\ }
+\DoxyCodeLine{01218\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{01219\ }
+\DoxyCodeLine{01220\ \textcolor{keyword}{namespace\ }Exceptions\ \{}
+\DoxyCodeLine{01221\ }
+\DoxyCodeLine{01222\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ FileNotFound(G4String\ origin,\ G4String\ filepath)\ \{}
+\DoxyCodeLine{01223\ \ \ G4Exception(}
+\DoxyCodeLine{01224\ \ \ \ \ \ \ (\textcolor{stringliteral}{"{}CADMesh\ in\ "{}}\ +\ origin).c\_str(),\ \textcolor{stringliteral}{"{}FileNotFound"{}},\ FatalException,}
+\DoxyCodeLine{01225\ \ \ \ \ \ \ (\textcolor{stringliteral}{"{}\(\backslash\)nThe\ file:\ \(\backslash\)n\(\backslash\)t"{}}\ +\ filepath\ +\ \textcolor{stringliteral}{"{}\(\backslash\)ncould\ not\ be\ found."{}}).c\_str());}
+\DoxyCodeLine{01226\ \}}
+\DoxyCodeLine{01227\ }
+\DoxyCodeLine{01228\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ LexerError(G4String\ origin,\ G4String\ message)\ \{}
+\DoxyCodeLine{01229\ \ \ G4Exception(}
+\DoxyCodeLine{01230\ \ \ \ \ \ \ (\textcolor{stringliteral}{"{}CADMesh\ in\ "{}}\ +\ origin).c\_str(),\ \textcolor{stringliteral}{"{}LexerError"{}},\ FatalException,}
+\DoxyCodeLine{01231\ \ \ \ \ \ \ (\textcolor{stringliteral}{"{}\(\backslash\)nThe\ CAD\ file\ appears\ to\ contain\ incorrect\ syntax:\(\backslash\)n\(\backslash\)t"{}}\ +\ message)}
+\DoxyCodeLine{01232\ \ \ \ \ \ \ \ \ \ \ .c\_str());}
+\DoxyCodeLine{01233\ \}}
+\DoxyCodeLine{01234\ }
+\DoxyCodeLine{01235\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ ParserError(G4String\ origin,\ G4String\ message)\ \{}
+\DoxyCodeLine{01236\ \ \ G4Exception((\textcolor{stringliteral}{"{}CADMesh\ in\ "{}}\ +\ origin).c\_str(),\ \textcolor{stringliteral}{"{}ParserError"{}},\ FatalException,}
+\DoxyCodeLine{01237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{stringliteral}{"{}\(\backslash\)nThe\ CAD\ file\ appears\ to\ contain\ invalid\ data:\(\backslash\)n\(\backslash\)t"{}}\ +\ message)}
+\DoxyCodeLine{01238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .c\_str());}
+\DoxyCodeLine{01239\ \}}
+\DoxyCodeLine{01240\ }
+\DoxyCodeLine{01241\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ ReaderCantReadError(G4String\ origin,\ File::Type\ file\_type,}
+\DoxyCodeLine{01242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4String\ filepath)\ \{}
+\DoxyCodeLine{01243\ \ \ G4Exception(}
+\DoxyCodeLine{01244\ \ \ \ \ \ \ (\textcolor{stringliteral}{"{}CADMesh\ in\ "{}}\ +\ origin).c\_str(),\ \textcolor{stringliteral}{"{}ReaderCantReadError"{}},\ FatalException,}
+\DoxyCodeLine{01245\ \ \ \ \ \ \ (G4String(\textcolor{stringliteral}{"{}\(\backslash\)nThe\ the\ reader\ can't\ read\ files\ of\ type\ '"{}})\ +}
+\DoxyCodeLine{01246\ \ \ \ \ \ \ \ File::TypeString[file\_type]\ +}
+\DoxyCodeLine{01247\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}.'\(\backslash\)n\(\backslash\)tSpecified\ the\ incorrect\ file\ type\ (?)\ for\ file:\(\backslash\)n\(\backslash\)t\(\backslash\)t"{}}\ +\ filepath)}
+\DoxyCodeLine{01248\ \ \ \ \ \ \ \ \ \ \ .c\_str());}
+\DoxyCodeLine{01249\ \}}
+\DoxyCodeLine{01250\ }
+\DoxyCodeLine{01251\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ MeshNotFound(G4String\ origin,\ \textcolor{keywordtype}{size\_t}\ index)\ \{}
+\DoxyCodeLine{01252\ \ \ std::stringstream\ message;}
+\DoxyCodeLine{01253\ \ \ message\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nThe\ mesh\ with\ index\ '"{}}\ <<\ index\ <<\ \textcolor{stringliteral}{"{}'\ could\ not\ be\ found."{}};}
+\DoxyCodeLine{01254\ }
+\DoxyCodeLine{01255\ \ \ G4Exception((\textcolor{stringliteral}{"{}CADMesh\ in\ "{}}\ +\ origin).c\_str(),\ \textcolor{stringliteral}{"{}MeshNotFound"{}},\ FatalException,}
+\DoxyCodeLine{01256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ message.str().c\_str());}
+\DoxyCodeLine{01257\ \}}
+\DoxyCodeLine{01258\ }
+\DoxyCodeLine{01259\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ MeshNotFound(G4String\ origin,\ G4String\ name)\ \{}
+\DoxyCodeLine{01260\ \ \ G4Exception(}
+\DoxyCodeLine{01261\ \ \ \ \ \ \ (\textcolor{stringliteral}{"{}CADMesh\ in\ "{}}\ +\ origin).c\_str(),\ \textcolor{stringliteral}{"{}MeshNotFound"{}},\ FatalException,}
+\DoxyCodeLine{01262\ \ \ \ \ \ \ (\textcolor{stringliteral}{"{}\(\backslash\)nThe\ mesh\ with\ name\ '"{}}\ +\ name\ +\ \textcolor{stringliteral}{"{}'\ could\ not\ be\ found."{}}).c\_str());}
+\DoxyCodeLine{01263\ \}}
+\DoxyCodeLine{01264\ \}}
+\DoxyCodeLine{01265\ \}}
+\DoxyCodeLine{01266\ }
+\DoxyCodeLine{01267\ \textcolor{preprocessor}{\#include\ "{}Randomize.hh"{}}}
+\DoxyCodeLine{01268\ }
+\DoxyCodeLine{01269\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{01270\ }
+\DoxyCodeLine{01271\ \textcolor{keyword}{inline}\ G4VSolid\ *TessellatedMesh::GetSolid()\ \{}
+\DoxyCodeLine{01272\ \ \ \textcolor{keywordflow}{return}\ (G4VSolid\ *)GetTessellatedSolid();}
+\DoxyCodeLine{01273\ \}}
+\DoxyCodeLine{01274\ }
+\DoxyCodeLine{01275\ \textcolor{keyword}{inline}\ G4VSolid\ *TessellatedMesh::GetSolid(G4int\ index)\ \{}
+\DoxyCodeLine{01276\ \ \ \textcolor{keywordflow}{return}\ (G4VSolid\ *)GetTessellatedSolid(index);}
+\DoxyCodeLine{01277\ \}}
+\DoxyCodeLine{01278\ }
+\DoxyCodeLine{01279\ \textcolor{keyword}{inline}\ G4VSolid\ *TessellatedMesh::GetSolid(G4String\ name,\ G4bool\ exact)\ \{}
+\DoxyCodeLine{01280\ \ \ \textcolor{keywordflow}{return}\ (G4VSolid\ *)GetTessellatedSolid(name,\ exact);}
+\DoxyCodeLine{01281\ \}}
+\DoxyCodeLine{01282\ }
+\DoxyCodeLine{01283\ \textcolor{keyword}{inline}\ std::vector<G4VSolid\ *>\ TessellatedMesh::GetSolids()\ \{}
+\DoxyCodeLine{01284\ \ \ std::vector<G4VSolid\ *>\ solids;}
+\DoxyCodeLine{01285\ }
+\DoxyCodeLine{01286\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ mesh\ :\ reader\_-\/>GetMeshes())\ \{}
+\DoxyCodeLine{01287\ \ \ \ \ solids.push\_back(GetTessellatedSolid(mesh));}
+\DoxyCodeLine{01288\ \ \ \}}
+\DoxyCodeLine{01289\ }
+\DoxyCodeLine{01290\ \ \ \textcolor{keywordflow}{return}\ solids;}
+\DoxyCodeLine{01291\ \}}
+\DoxyCodeLine{01292\ }
+\DoxyCodeLine{01293\ \textcolor{keyword}{inline}\ G4AssemblyVolume\ *TessellatedMesh::GetAssembly()\ \{}
+\DoxyCodeLine{01294\ \ \ \textcolor{keywordflow}{if}\ (assembly\_)\ \{}
+\DoxyCodeLine{01295\ \ \ \ \ \textcolor{keywordflow}{return}\ assembly\_;}
+\DoxyCodeLine{01296\ \ \ \}}
+\DoxyCodeLine{01297\ }
+\DoxyCodeLine{01298\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ mesh\ :\ reader\_-\/>GetMeshes())\ \{}
+\DoxyCodeLine{01299\ \ \ \ \ \textcolor{keyword}{auto}\ solid\ =\ GetTessellatedSolid(mesh);}
+\DoxyCodeLine{01300\ }
+\DoxyCodeLine{01301\ \ \ \ \ G4Material\ *material\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{01302\ }
+\DoxyCodeLine{01303\ \ \ \ \ \textcolor{keyword}{auto}\ logical\ =}
+\DoxyCodeLine{01304\ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ G4LogicalVolume(solid,\ material,\ mesh-\/>GetName()\ +\ \textcolor{stringliteral}{"{}\_logical"{}});}
+\DoxyCodeLine{01305\ }
+\DoxyCodeLine{01306\ \ \ \ \ G4ThreeVector\ position\ =\ G4ThreeVector();}
+\DoxyCodeLine{01307\ \ \ \ \ G4RotationMatrix\ *rotation\ =\ \textcolor{keyword}{new}\ G4RotationMatrix();}
+\DoxyCodeLine{01308\ }
+\DoxyCodeLine{01309\ \ \ \ \ assembly\_-\/>AddPlacedVolume(logical,\ position,\ rotation);}
+\DoxyCodeLine{01310\ \ \ \}}
+\DoxyCodeLine{01311\ }
+\DoxyCodeLine{01312\ \ \ \textcolor{keywordflow}{return}\ assembly\_;}
+\DoxyCodeLine{01313\ \}}
+\DoxyCodeLine{01314\ }
+\DoxyCodeLine{01315\ \textcolor{keyword}{inline}\ G4TessellatedSolid\ *TessellatedMesh::GetTessellatedSolid()\ \{}
+\DoxyCodeLine{01316\ \ \ \textcolor{keywordflow}{return}\ GetTessellatedSolid(0);}
+\DoxyCodeLine{01317\ \}}
+\DoxyCodeLine{01318\ }
+\DoxyCodeLine{01319\ \textcolor{keyword}{inline}\ G4TessellatedSolid\ *TessellatedMesh::GetTessellatedSolid(G4int\ index)\ \{}
+\DoxyCodeLine{01320\ \ \ \textcolor{keywordflow}{return}\ GetTessellatedSolid(reader\_-\/>GetMesh(index));}
+\DoxyCodeLine{01321\ \}}
+\DoxyCodeLine{01322\ }
+\DoxyCodeLine{01323\ \textcolor{keyword}{inline}\ G4TessellatedSolid\ *TessellatedMesh::GetTessellatedSolid(G4String\ name,}
+\DoxyCodeLine{01324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4bool\ exact)\ \{}
+\DoxyCodeLine{01325\ \ \ \textcolor{keywordflow}{return}\ GetTessellatedSolid(reader\_-\/>GetMesh(name,\ exact));}
+\DoxyCodeLine{01326\ \}}
+\DoxyCodeLine{01327\ }
+\DoxyCodeLine{01328\ \textcolor{keyword}{inline}\ G4TessellatedSolid\ *}
+\DoxyCodeLine{01329\ TessellatedMesh::GetTessellatedSolid(std::shared\_ptr<Mesh>\ mesh)\ \{}
+\DoxyCodeLine{01330\ \ \ \textcolor{keyword}{auto}\ volume\_solid\ =\ \textcolor{keyword}{new}\ G4TessellatedSolid(mesh-\/>GetName());}
+\DoxyCodeLine{01331\ }
+\DoxyCodeLine{01332\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ triangle\ :\ mesh-\/>GetTriangles())\ \{}
+\DoxyCodeLine{01333\ \ \ \ \ \textcolor{keyword}{auto}\ a\ =\ triangle-\/>GetVertex(0)\ *\ scale\_\ +\ offset\_;}
+\DoxyCodeLine{01334\ \ \ \ \ \textcolor{keyword}{auto}\ b\ =\ triangle-\/>GetVertex(1)\ *\ scale\_\ +\ offset\_;}
+\DoxyCodeLine{01335\ \ \ \ \ \textcolor{keyword}{auto}\ c\ =\ triangle-\/>GetVertex(2)\ *\ scale\_\ +\ offset\_;}
+\DoxyCodeLine{01336\ }
+\DoxyCodeLine{01337\ \ \ \ \ \textcolor{keyword}{auto}\ t\ =\ \textcolor{keyword}{new}\ G4TriangularFacet(a,\ b,\ c,\ ABSOLUTE);}
+\DoxyCodeLine{01338\ }
+\DoxyCodeLine{01339\ \ \ \ \ \textcolor{keywordflow}{if}\ (reverse\_)\ \{}
+\DoxyCodeLine{01340\ \ \ \ \ \ \ volume\_solid-\/>AddFacet((G4VFacet\ *)t-\/>GetFlippedFacet());}
+\DoxyCodeLine{01341\ \ \ \ \ \}}
+\DoxyCodeLine{01342\ }
+\DoxyCodeLine{01343\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01344\ \ \ \ \ \ \ volume\_solid-\/>AddFacet((G4VFacet\ *)t);}
+\DoxyCodeLine{01345\ \ \ \ \ \}}
+\DoxyCodeLine{01346\ \ \ \}}
+\DoxyCodeLine{01347\ }
+\DoxyCodeLine{01348\ \ \ volume\_solid-\/>SetSolidClosed(\textcolor{keyword}{true});}
+\DoxyCodeLine{01349\ \ \ \textcolor{keywordflow}{if}\ (volume\_solid-\/>GetNumberOfFacets()\ ==\ 0)\ \{}
+\DoxyCodeLine{01350\ \ \ \ \ G4Exception(\textcolor{stringliteral}{"{}TessellatedMesh::GetTessellatedSolid"{}},}
+\DoxyCodeLine{01351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}The\ loaded\ mesh\ has\ 0\ faces."{}},\ FatalException,}
+\DoxyCodeLine{01352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}The\ file\ may\ be\ empty."{}});}
+\DoxyCodeLine{01353\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{01354\ \ \ \}}
+\DoxyCodeLine{01355\ \ \ \textcolor{keywordflow}{return}\ volume\_solid;}
+\DoxyCodeLine{01356\ \}}
+\DoxyCodeLine{01357\ \}}
+\DoxyCodeLine{01358\ }
+\DoxyCodeLine{01359\ \textcolor{preprocessor}{\#ifdef\ USE\_CADMESH\_TETGEN}}
+\DoxyCodeLine{01360\ }
+\DoxyCodeLine{01361\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{01362\ }
+\DoxyCodeLine{01363\ \textcolor{keyword}{inline}\ TetrahedralMesh::TetrahedralMesh()\ \{\}}
+\DoxyCodeLine{01364\ }
+\DoxyCodeLine{01365\ \textcolor{keyword}{inline}\ TetrahedralMesh::\string~TetrahedralMesh()\ \{\}}
+\DoxyCodeLine{01366\ }
+\DoxyCodeLine{01367\ \textcolor{keyword}{inline}\ G4VSolid\ *TetrahedralMesh::GetSolid()\ \{\ \textcolor{keywordflow}{return}\ GetSolid(0);\ \}}
+\DoxyCodeLine{01368\ }
+\DoxyCodeLine{01369\ \textcolor{keyword}{inline}\ G4VSolid\ *TetrahedralMesh::GetSolid(G4int\ \textcolor{comment}{/*index*/})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{01370\ }
+\DoxyCodeLine{01371\ \textcolor{keyword}{inline}\ G4VSolid\ *TetrahedralMesh::GetSolid(G4String\ \textcolor{comment}{/*name*/},}
+\DoxyCodeLine{01372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4bool\ \textcolor{comment}{/*exact*/})\ \{}
+\DoxyCodeLine{01373\ }
+\DoxyCodeLine{01374\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{01375\ \}}
+\DoxyCodeLine{01376\ }
+\DoxyCodeLine{01377\ \textcolor{keyword}{inline}\ std::vector<G4VSolid\ *>\ TetrahedralMesh::GetSolids()\ \{}
+\DoxyCodeLine{01378\ }
+\DoxyCodeLine{01379\ \ \ \textcolor{keywordflow}{return}\ std::vector<G4VSolid\ *>();}
+\DoxyCodeLine{01380\ \}}
+\DoxyCodeLine{01381\ }
+\DoxyCodeLine{01382\ \textcolor{keyword}{inline}\ G4AssemblyVolume\ *TetrahedralMesh::GetAssembly()\ \{}
+\DoxyCodeLine{01383\ \ \ \textcolor{keywordflow}{if}\ (assembly\_)\ \{}
+\DoxyCodeLine{01384\ \ \ \ \ \textcolor{keywordflow}{return}\ assembly\_;}
+\DoxyCodeLine{01385\ \ \ \}}
+\DoxyCodeLine{01386\ }
+\DoxyCodeLine{01387\ \ \ assembly\_\ =\ \textcolor{keyword}{new}\ G4AssemblyVolume();}
+\DoxyCodeLine{01388\ }
+\DoxyCodeLine{01389\ \ \ in\_\ =\ std::make\_shared<tetgenio>();}
+\DoxyCodeLine{01390\ \ \ out\_\ =\ std::make\_shared<tetgenio>();}
+\DoxyCodeLine{01391\ }
+\DoxyCodeLine{01392\ \ \ \textcolor{keywordtype}{char}\ *fn\ =\ (\textcolor{keywordtype}{char}\ *)file\_name\_.c\_str();}
+\DoxyCodeLine{01393\ }
+\DoxyCodeLine{01394\ \ \ G4bool\ do\_tet\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01395\ }
+\DoxyCodeLine{01396\ \ \ \textcolor{keywordflow}{if}\ (file\_type\_\ ==\ File::STL)\ \{}
+\DoxyCodeLine{01397\ \ \ \ \ in\_-\/>load\_stl(fn);}
+\DoxyCodeLine{01398\ \ \ \}}
+\DoxyCodeLine{01399\ }
+\DoxyCodeLine{01400\ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (file\_type\_\ ==\ File::PLY)\ \{}
+\DoxyCodeLine{01401\ \ \ \ \ in\_-\/>load\_ply(fn);}
+\DoxyCodeLine{01402\ \ \ \}}
+\DoxyCodeLine{01403\ }
+\DoxyCodeLine{01404\ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (file\_type\_\ ==\ File::TET)\ \{}
+\DoxyCodeLine{01405\ \ \ \ \ out\_-\/>load\_tetmesh(fn,\ 0);}
+\DoxyCodeLine{01406\ \ \ \ \ do\_tet\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01407\ \ \ \}}
+\DoxyCodeLine{01408\ }
+\DoxyCodeLine{01409\ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (file\_type\_\ ==\ File::OFF)\ \{}
+\DoxyCodeLine{01410\ \ \ \ \ out\_-\/>load\_off(fn);}
+\DoxyCodeLine{01411\ \ \ \ \ do\_tet\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01412\ \ \ \}}
+\DoxyCodeLine{01413\ }
+\DoxyCodeLine{01414\ \ \ \textcolor{keywordflow}{if}\ (do\_tet)\ \{}
+\DoxyCodeLine{01415\ \ \ \ \ tetgenbehavior\ *behavior\ =\ \textcolor{keyword}{new}\ tetgenbehavior();}
+\DoxyCodeLine{01416\ \ \ \ \ behavior-\/>nobisect\ =\ 1;}
+\DoxyCodeLine{01417\ \ \ \ \ behavior-\/>plc\ =\ 1;}
+\DoxyCodeLine{01418\ \ \ \ \ behavior-\/>quality\ =\ quality\_;}
+\DoxyCodeLine{01419\ }
+\DoxyCodeLine{01420\ \ \ \ \ tetrahedralize(behavior,\ in\_.get(),\ out\_.get());}
+\DoxyCodeLine{01421\ \ \ \}}
+\DoxyCodeLine{01422\ }
+\DoxyCodeLine{01423\ \ \ G4RotationMatrix\ *element\_rotation\ =\ \textcolor{keyword}{new}\ G4RotationMatrix();}
+\DoxyCodeLine{01424\ \ \ G4ThreeVector\ element\_position\ =\ G4ThreeVector();}
+\DoxyCodeLine{01425\ \ \ G4Transform3D\ assembly\_transform\ =\ G4Translate3D();}
+\DoxyCodeLine{01426\ }
+\DoxyCodeLine{01427\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ out\_-\/>numberoftetrahedra;\ i++)\ \{}
+\DoxyCodeLine{01428\ \ \ \ \ \textcolor{keywordtype}{int}\ index\_offset\ =\ i\ *\ 4;}
+\DoxyCodeLine{01429\ }
+\DoxyCodeLine{01430\ \ \ \ \ G4ThreeVector\ p1\ =\ GetTetPoint(index\_offset);}
+\DoxyCodeLine{01431\ \ \ \ \ G4ThreeVector\ p2\ =\ GetTetPoint(index\_offset\ +\ 1);}
+\DoxyCodeLine{01432\ \ \ \ \ G4ThreeVector\ p3\ =\ GetTetPoint(index\_offset\ +\ 2);}
+\DoxyCodeLine{01433\ \ \ \ \ G4ThreeVector\ p4\ =\ GetTetPoint(index\_offset\ +\ 3);}
+\DoxyCodeLine{01434\ }
+\DoxyCodeLine{01435\ \ \ \ \ G4String\ tet\_name\ =}
+\DoxyCodeLine{01436\ \ \ \ \ \ \ \ \ file\_name\_\ +\ G4String(\textcolor{stringliteral}{"{}\_tet\_"{}})\ +\ G4UIcommand::ConvertToString(i);}
+\DoxyCodeLine{01437\ }
+\DoxyCodeLine{01438\ \ \ \ \ \textcolor{keyword}{auto}\ tet\_solid\ =}
+\DoxyCodeLine{01439\ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ G4Tet(tet\_name\ +\ G4String(\textcolor{stringliteral}{"{}\_solid"{}}),\ p1,\ p2,\ p3,\ p4,\ 0);}
+\DoxyCodeLine{01440\ }
+\DoxyCodeLine{01441\ \ \ \ \ \textcolor{keyword}{auto}\ tet\_logical\ =\ \textcolor{keyword}{new}\ G4LogicalVolume(}
+\DoxyCodeLine{01442\ \ \ \ \ \ \ \ \ tet\_solid,\ material\_,\ tet\_name\ +\ G4String(\textcolor{stringliteral}{"{}\_logical"{}}),\ 0,\ 0,\ 0);}
+\DoxyCodeLine{01443\ }
+\DoxyCodeLine{01444\ \ \ \ \ assembly\_-\/>AddPlacedVolume(tet\_logical,\ element\_position,\ element\_rotation);}
+\DoxyCodeLine{01445\ \ \ \}}
+\DoxyCodeLine{01446\ }
+\DoxyCodeLine{01447\ \ \ \textcolor{keywordflow}{return}\ assembly\_;}
+\DoxyCodeLine{01448\ \}}
+\DoxyCodeLine{01449\ }
+\DoxyCodeLine{01450\ \textcolor{keyword}{inline}\ G4ThreeVector\ TetrahedralMesh::GetTetPoint(G4int\ index\_offset)\ \{}
+\DoxyCodeLine{01451\ \ \ \textcolor{keywordflow}{return}\ G4ThreeVector(}
+\DoxyCodeLine{01452\ \ \ \ \ \ \ out\_-\/>pointlist[out\_-\/>tetrahedronlist[index\_offset]\ *\ 3]\ *\ scale\_\ -\/}
+\DoxyCodeLine{01453\ \ \ \ \ \ \ \ \ \ \ offset\_.x(),}
+\DoxyCodeLine{01454\ \ \ \ \ \ \ out\_-\/>pointlist[out\_-\/>tetrahedronlist[index\_offset]\ *\ 3\ +\ 1]\ *\ scale\_\ -\/}
+\DoxyCodeLine{01455\ \ \ \ \ \ \ \ \ \ \ offset\_.y(),}
+\DoxyCodeLine{01456\ \ \ \ \ \ \ out\_-\/>pointlist[out\_-\/>tetrahedronlist[index\_offset]\ *\ 3\ +\ 2]\ *\ scale\_\ -\/}
+\DoxyCodeLine{01457\ \ \ \ \ \ \ \ \ \ \ offset\_.z());}
+\DoxyCodeLine{01458\ \}}
+\DoxyCodeLine{01459\ \}}
+\DoxyCodeLine{01460\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01461\ }
+\DoxyCodeLine{01462\ \textcolor{preprocessor}{\#define\ CADMeshLexerToken(name)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01463\ \textcolor{preprocessor}{\ \ static\ Token\ name\#\#Token\ \{\ \#name\ \}}}
+\DoxyCodeLine{01464\ }
+\DoxyCodeLine{01465\ \textcolor{preprocessor}{\#define\ CADMeshLexerStateDefinition(name)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01466\ \textcolor{preprocessor}{\ \ struct\ name\#\#State\ :\ public\ State\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01467\ \textcolor{preprocessor}{\ \ \ \ State\ *operator()(Lexer\ *lexer)\ const;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01468\ \textcolor{preprocessor}{\ \ \}}}
+\DoxyCodeLine{01469\ }
+\DoxyCodeLine{01470\ \textcolor{preprocessor}{\#define\ CADMeshLexerState(name)\ name\#\#State::operator()(Lexer\ *lexer)\ const}}
+\DoxyCodeLine{01471\ }
+\DoxyCodeLine{01472\ \textcolor{preprocessor}{\#define\ ThisIsA(name)\ lexer-\/>ThisIsA(name\#\#Token)}}
+\DoxyCodeLine{01473\ \textcolor{preprocessor}{\#define\ StartOfA(name)\ lexer-\/>StartOfA(name\#\#Token)}}
+\DoxyCodeLine{01474\ \textcolor{preprocessor}{\#define\ EndOfA(name)\ lexer-\/>EndOfA(name\#\#Token)}}
+\DoxyCodeLine{01475\ \textcolor{preprocessor}{\#define\ MaybeEndOfA(name)\ lexer-\/>MaybeEndOfA(name\#\#Token)}}
+\DoxyCodeLine{01476\ }
+\DoxyCodeLine{01477\ \textcolor{preprocessor}{\#define\ Skip()\ lexer-\/>Skip()}}
+\DoxyCodeLine{01478\ }
+\DoxyCodeLine{01479\ \textcolor{preprocessor}{\#define\ Next()\ lexer-\/>Peek()}}
+\DoxyCodeLine{01480\ \textcolor{preprocessor}{\#define\ PrintNext()\ std::cout\ <<\ lexer-\/>Peek()\ <<\ std::endl;}}
+\DoxyCodeLine{01481\ }
+\DoxyCodeLine{01482\ \textcolor{preprocessor}{\#define\ OneOf(possibles)\ lexer-\/>OneOf(possibles)}}
+\DoxyCodeLine{01483\ \textcolor{preprocessor}{\#define\ NotOneOf(possibles)\ !OneOf(possibles)}}
+\DoxyCodeLine{01484\ }
+\DoxyCodeLine{01485\ \textcolor{preprocessor}{\#define\ ManyOf(possibles)\ lexer-\/>ManyOf(possibles)}}
+\DoxyCodeLine{01486\ \textcolor{preprocessor}{\#define\ NotManyOf(possibles)\ !ManyOf(possibles)}}
+\DoxyCodeLine{01487\ }
+\DoxyCodeLine{01488\ \textcolor{preprocessor}{\#define\ Until(match)\ lexer-\/>Until(match)}}
+\DoxyCodeLine{01489\ }
+\DoxyCodeLine{01490\ \textcolor{preprocessor}{\#define\ RestOfLine()\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01491\ \textcolor{preprocessor}{\ \ if\ (Until("{}\(\backslash\)n\(\backslash\)r"{}))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01492\ \textcolor{preprocessor}{\ \ lexer-\/>Backup()}}
+\DoxyCodeLine{01493\ }
+\DoxyCodeLine{01494\ \textcolor{preprocessor}{\#define\ MatchExactly(match)\ lexer-\/>MatchExactly(match)}}
+\DoxyCodeLine{01495\ \textcolor{preprocessor}{\#define\ DoesNotMatchExactly(match)\ !MatchExactly(match)}}
+\DoxyCodeLine{01496\ }
+\DoxyCodeLine{01497\ \textcolor{preprocessor}{\#define\ OneDigit()\ lexer-\/>OneDigit()}}
+\DoxyCodeLine{01498\ \textcolor{preprocessor}{\#define\ NotOneDigit()\ !OneDigit()}}
+\DoxyCodeLine{01499\ }
+\DoxyCodeLine{01500\ \textcolor{preprocessor}{\#define\ ManyDigits()\ lexer-\/>ManyDigits()}}
+\DoxyCodeLine{01501\ \textcolor{preprocessor}{\#define\ NotManyDigits()\ !ManyDigits()}}
+\DoxyCodeLine{01502\ }
+\DoxyCodeLine{01503\ \textcolor{preprocessor}{\#define\ OneLetter()\ lexer-\/>OneLetter()}}
+\DoxyCodeLine{01504\ \textcolor{preprocessor}{\#define\ NotOneLetter()\ !OneLetter()}}
+\DoxyCodeLine{01505\ }
+\DoxyCodeLine{01506\ \textcolor{preprocessor}{\#define\ ManyLetters()\ lexer-\/>ManyLetters()}}
+\DoxyCodeLine{01507\ \textcolor{preprocessor}{\#define\ NotManyLetters()\ !ManyLetters()}}
+\DoxyCodeLine{01508\ }
+\DoxyCodeLine{01509\ \textcolor{preprocessor}{\#define\ ManyCharacters()\ lexer-\/>ManyCharacters()}}
+\DoxyCodeLine{01510\ \textcolor{preprocessor}{\#define\ NotManyCharacters()\ !ManyCharacters()}}
+\DoxyCodeLine{01511\ }
+\DoxyCodeLine{01512\ \textcolor{preprocessor}{\#define\ Integer()\ lexer-\/>Integer()}}
+\DoxyCodeLine{01513\ \textcolor{preprocessor}{\#define\ NotAnInteger()\ !Integer()}}
+\DoxyCodeLine{01514\ }
+\DoxyCodeLine{01515\ \textcolor{preprocessor}{\#define\ Float()\ lexer-\/>Float()}}
+\DoxyCodeLine{01516\ \textcolor{preprocessor}{\#define\ NotAFloat()\ !Float()}}
+\DoxyCodeLine{01517\ }
+\DoxyCodeLine{01518\ \textcolor{preprocessor}{\#define\ Number()\ lexer-\/>Number()}}
+\DoxyCodeLine{01519\ \textcolor{preprocessor}{\#define\ NotANumber()\ !Number()}}
+\DoxyCodeLine{01520\ }
+\DoxyCodeLine{01521\ \textcolor{preprocessor}{\#define\ SkipWhiteSpace()\ lexer-\/>SkipWhiteSpace()}}
+\DoxyCodeLine{01522\ \textcolor{preprocessor}{\#define\ DidNotSkipWhiteSpace()\ !SkipWhiteSpace()}}
+\DoxyCodeLine{01523\ }
+\DoxyCodeLine{01524\ \textcolor{preprocessor}{\#define\ SkipLineBreak()\ lexer-\/>SkipLineBreak()}}
+\DoxyCodeLine{01525\ \textcolor{preprocessor}{\#define\ DidNotSkipLineBreak()\ !SkipLineBreak()}}
+\DoxyCodeLine{01526\ }
+\DoxyCodeLine{01527\ \textcolor{preprocessor}{\#define\ SkipLineBreaks()\ lexer-\/>SkipLineBreaks()}}
+\DoxyCodeLine{01528\ \textcolor{preprocessor}{\#define\ DidNotSkipLineBreaks()\ !SkipLineBreaks()}}
+\DoxyCodeLine{01529\ }
+\DoxyCodeLine{01530\ \textcolor{preprocessor}{\#define\ SkipLine()\ lexer-\/>SkipLine()}}
+\DoxyCodeLine{01531\ \textcolor{preprocessor}{\#define\ DidNotSkipLine()\ !SkipLine()}}
+\DoxyCodeLine{01532\ }
+\DoxyCodeLine{01533\ \textcolor{preprocessor}{\#define\ AtEndOfLine()\ Next()\ ==\ "{}\(\backslash\)n"{}\ ||\ Next()\ ==\ "{}\(\backslash\)r"{}}}
+\DoxyCodeLine{01534\ }
+\DoxyCodeLine{01535\ \textcolor{preprocessor}{\#define\ Error(message)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01536\ \textcolor{preprocessor}{\ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01537\ \textcolor{preprocessor}{\ \ \ \ lexer-\/>Error(message);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01538\ \textcolor{preprocessor}{\ \ \ \ return\ nullptr;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01539\ \textcolor{preprocessor}{\ \ \}}}
+\DoxyCodeLine{01540\ }
+\DoxyCodeLine{01541\ \textcolor{preprocessor}{\#define\ NextState(next)\ return\ new\ next\#\#State()}}
+\DoxyCodeLine{01542\ \textcolor{preprocessor}{\#define\ TestState(next)\ lexer-\/>TestState(new\ next\#\#State())}}
+\DoxyCodeLine{01543\ \textcolor{preprocessor}{\#define\ TryState(next)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01544\ \textcolor{preprocessor}{\ \ if\ (TestState(next))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{01545\ \textcolor{preprocessor}{\ \ NextState(next)}}
+\DoxyCodeLine{01546\ \textcolor{preprocessor}{\#define\ FinalState()\ return\ new\ \_\_FinalState();}}
+\DoxyCodeLine{01547\ }
+\DoxyCodeLine{01548\ \textcolor{preprocessor}{\#define\ RunLexer(filepath,\ start)\ Lexer(filepath,\ new\ start\#\#State).GetItems()}}
+\DoxyCodeLine{01549\ }
+\DoxyCodeLine{01550\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{01551\ }
+\DoxyCodeLine{01552\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{01553\ }
+\DoxyCodeLine{01554\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader}{STLReader}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{Reader}}\ \{}
+\DoxyCodeLine{01555\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{01556\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader}{STLReader}}()\ :\ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{Reader}}(\textcolor{stringliteral}{"{}STLReader"{}})\{\};}
+\DoxyCodeLine{01557\ }
+\DoxyCodeLine{01558\ \ \ G4bool\ Read(G4String\ filepath);}
+\DoxyCodeLine{01559\ \ \ G4bool\ CanRead(Type\ file\_type);}
+\DoxyCodeLine{01560\ }
+\DoxyCodeLine{01561\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{01562\ \ \ CADMeshLexerStateDefinition(StartSolid);}
+\DoxyCodeLine{01563\ \ \ CADMeshLexerStateDefinition(EndSolid);}
+\DoxyCodeLine{01564\ }
+\DoxyCodeLine{01565\ \ \ CADMeshLexerStateDefinition(StartFacet);}
+\DoxyCodeLine{01566\ \ \ CADMeshLexerStateDefinition(EndFacet);}
+\DoxyCodeLine{01567\ }
+\DoxyCodeLine{01568\ \ \ CADMeshLexerStateDefinition(StartVertices);}
+\DoxyCodeLine{01569\ \ \ CADMeshLexerStateDefinition(EndVertices);}
+\DoxyCodeLine{01570\ }
+\DoxyCodeLine{01571\ \ \ CADMeshLexerStateDefinition(Vertex);}
+\DoxyCodeLine{01572\ }
+\DoxyCodeLine{01573\ \ \ CADMeshLexerStateDefinition(ThreeVector);}
+\DoxyCodeLine{01574\ }
+\DoxyCodeLine{01575\ \ \ std::shared\_ptr<Mesh>\ ParseMesh(Items\ items);}
+\DoxyCodeLine{01576\ \ \ G4TriangularFacet\ *ParseFacet(Items\ items);}
+\DoxyCodeLine{01577\ \ \ G4TriangularFacet\ *ParseVertices(Items\ items);}
+\DoxyCodeLine{01578\ \ \ G4ThreeVector\ ParseThreeVector(Items\ items);}
+\DoxyCodeLine{01579\ \};}
+\DoxyCodeLine{01580\ \}}
+\DoxyCodeLine{01581\ \}}
+\DoxyCodeLine{01582\ }
+\DoxyCodeLine{01583\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{01584\ }
+\DoxyCodeLine{01585\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{01586\ }
+\DoxyCodeLine{01587\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader}{OBJReader}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{Reader}}\ \{}
+\DoxyCodeLine{01588\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{01589\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader}{OBJReader}}()\ :\ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{Reader}}(\textcolor{stringliteral}{"{}OBJReader"{}})\{\};}
+\DoxyCodeLine{01590\ }
+\DoxyCodeLine{01591\ \ \ G4bool\ Read(G4String\ filepath);}
+\DoxyCodeLine{01592\ \ \ G4bool\ CanRead(Type\ file\_type);}
+\DoxyCodeLine{01593\ }
+\DoxyCodeLine{01594\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{01595\ \ \ CADMeshLexerStateDefinition(StartSolid);}
+\DoxyCodeLine{01596\ \ \ CADMeshLexerStateDefinition(EndSolid);}
+\DoxyCodeLine{01597\ }
+\DoxyCodeLine{01598\ \ \ CADMeshLexerStateDefinition(Ignore);}
+\DoxyCodeLine{01599\ \ \ CADMeshLexerStateDefinition(Vertex);}
+\DoxyCodeLine{01600\ \ \ CADMeshLexerStateDefinition(Facet);}
+\DoxyCodeLine{01601\ \ \ CADMeshLexerStateDefinition(Object);}
+\DoxyCodeLine{01602\ }
+\DoxyCodeLine{01603\ \ \ std::shared\_ptr<Mesh>\ ParseMesh(Items\ items);}
+\DoxyCodeLine{01604\ \ \ G4ThreeVector\ ParseVertex(Items\ items);}
+\DoxyCodeLine{01605\ \ \ G4TriangularFacet\ *ParseFacet(Items\ items,\ G4bool\ quad);}
+\DoxyCodeLine{01606\ }
+\DoxyCodeLine{01607\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{01608\ \ \ Points\ vertices\_;}
+\DoxyCodeLine{01609\ \};}
+\DoxyCodeLine{01610\ \}}
+\DoxyCodeLine{01611\ \}}
+\DoxyCodeLine{01612\ }
+\DoxyCodeLine{01613\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{01614\ }
+\DoxyCodeLine{01615\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{01616\ }
+\DoxyCodeLine{01617\ CADMeshLexerToken(Header);}
+\DoxyCodeLine{01618\ CADMeshLexerToken(Element);}
+\DoxyCodeLine{01619\ CADMeshLexerToken(Property);}
+\DoxyCodeLine{01620\ }
+\DoxyCodeLine{01621\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader}{PLYReader}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{Reader}}\ \{}
+\DoxyCodeLine{01622\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{01623\ \ \ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader}{PLYReader}}()\ :\ \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{Reader}}(\textcolor{stringliteral}{"{}PLYReader"{}})\{\};}
+\DoxyCodeLine{01624\ }
+\DoxyCodeLine{01625\ \ \ G4bool\ Read(G4String\ filepath);}
+\DoxyCodeLine{01626\ \ \ G4bool\ CanRead(Type\ file\_type);}
+\DoxyCodeLine{01627\ }
+\DoxyCodeLine{01628\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{01629\ \ \ CADMeshLexerStateDefinition(StartHeader);}
+\DoxyCodeLine{01630\ \ \ CADMeshLexerStateDefinition(EndHeader);}
+\DoxyCodeLine{01631\ }
+\DoxyCodeLine{01632\ \ \ CADMeshLexerStateDefinition(Element);}
+\DoxyCodeLine{01633\ \ \ CADMeshLexerStateDefinition(Property);}
+\DoxyCodeLine{01634\ \ \ CADMeshLexerStateDefinition(Ignore);}
+\DoxyCodeLine{01635\ }
+\DoxyCodeLine{01636\ \ \ CADMeshLexerStateDefinition(Vertex);}
+\DoxyCodeLine{01637\ \ \ CADMeshLexerStateDefinition(Facet);}
+\DoxyCodeLine{01638\ }
+\DoxyCodeLine{01639\ \ \ \textcolor{keywordtype}{void}\ ParseHeader(Items\ items);}
+\DoxyCodeLine{01640\ }
+\DoxyCodeLine{01641\ \ \ std::shared\_ptr<Mesh>\ ParseMesh(Items\ vertex\_items,\ Items\ face\_items);}
+\DoxyCodeLine{01642\ \ \ G4ThreeVector\ ParseVertex(Items\ items);}
+\DoxyCodeLine{01643\ \ \ G4TriangularFacet\ *ParseFacet(Items\ items,\ Points\ vertices);}
+\DoxyCodeLine{01644\ }
+\DoxyCodeLine{01645\ \ \ \textcolor{keywordtype}{size\_t}\ vertex\_count\_\ =\ 0;}
+\DoxyCodeLine{01646\ \ \ \textcolor{keywordtype}{size\_t}\ facet\_count\_\ =\ 0;}
+\DoxyCodeLine{01647\ }
+\DoxyCodeLine{01648\ \ \ \textcolor{keywordtype}{size\_t}\ x\_index\_\ =\ 0;}
+\DoxyCodeLine{01649\ \ \ \textcolor{keywordtype}{size\_t}\ y\_index\_\ =\ 0;}
+\DoxyCodeLine{01650\ \ \ \textcolor{keywordtype}{size\_t}\ z\_index\_\ =\ 0;}
+\DoxyCodeLine{01651\ }
+\DoxyCodeLine{01652\ \ \ \textcolor{keywordtype}{size\_t}\ facet\_index\_\ =\ 0;}
+\DoxyCodeLine{01653\ \};}
+\DoxyCodeLine{01654\ \}}
+\DoxyCodeLine{01655\ \}}
+\DoxyCodeLine{01656\ }
+\DoxyCodeLine{01657\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{01658\ }
+\DoxyCodeLine{01659\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{01660\ }
+\DoxyCodeLine{01661\ \textcolor{keyword}{inline}\ State\ *STLReader::CADMeshLexerState(StartSolid)\ \{}
+\DoxyCodeLine{01662\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}solid"{}}))}
+\DoxyCodeLine{01663\ \ \ \ \ Error(\textcolor{stringliteral}{"{}STL\ files\ start\ with\ 'solid'.\ Make\ sure\ you\ are\ using\ an\ ASCII\ STL\ "{}}}
+\DoxyCodeLine{01664\ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}file."{}});}
+\DoxyCodeLine{01665\ }
+\DoxyCodeLine{01666\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01667\ }
+\DoxyCodeLine{01668\ \ \ RestOfLine();}
+\DoxyCodeLine{01669\ }
+\DoxyCodeLine{01670\ \ \ StartOfA(Solid);}
+\DoxyCodeLine{01671\ }
+\DoxyCodeLine{01672\ \ \ SkipLineBreak();}
+\DoxyCodeLine{01673\ \ \ NextState(StartFacet);}
+\DoxyCodeLine{01674\ \}}
+\DoxyCodeLine{01675\ }
+\DoxyCodeLine{01676\ \textcolor{keyword}{inline}\ State\ *STLReader::CADMeshLexerState(EndSolid)\ \{}
+\DoxyCodeLine{01677\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01678\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{01679\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01680\ }
+\DoxyCodeLine{01681\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}endsolid"{}}))}
+\DoxyCodeLine{01682\ \ \ \ \ Error(\textcolor{stringliteral}{"{}STL\ files\ end\ with\ 'endsolid'."{}});}
+\DoxyCodeLine{01683\ }
+\DoxyCodeLine{01684\ \ \ Skip();}
+\DoxyCodeLine{01685\ \ \ EndOfA(Solid);}
+\DoxyCodeLine{01686\ }
+\DoxyCodeLine{01687\ \ \ FinalState();}
+\DoxyCodeLine{01688\ \}}
+\DoxyCodeLine{01689\ }
+\DoxyCodeLine{01690\ \textcolor{keyword}{inline}\ State\ *STLReader::CADMeshLexerState(StartFacet)\ \{}
+\DoxyCodeLine{01691\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01692\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{01693\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01694\ }
+\DoxyCodeLine{01695\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}facet\ normal"{}}))}
+\DoxyCodeLine{01696\ \ \ \ \ Error(\textcolor{stringliteral}{"{}Facets\ are\ indicated\ by\ the\ tag\ 'facet\ normal'."{}});}
+\DoxyCodeLine{01697\ }
+\DoxyCodeLine{01698\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01699\ }
+\DoxyCodeLine{01700\ \ \ StartOfA(Facet);}
+\DoxyCodeLine{01701\ }
+\DoxyCodeLine{01702\ \ \ SkipLine();}
+\DoxyCodeLine{01703\ }
+\DoxyCodeLine{01704\ \ \ NextState(StartVertices);}
+\DoxyCodeLine{01705\ \}}
+\DoxyCodeLine{01706\ }
+\DoxyCodeLine{01707\ \textcolor{keyword}{inline}\ State\ *STLReader::CADMeshLexerState(EndFacet)\ \{}
+\DoxyCodeLine{01708\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01709\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{01710\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01711\ }
+\DoxyCodeLine{01712\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}endfacet"{}}))}
+\DoxyCodeLine{01713\ \ \ \ \ Error(\textcolor{stringliteral}{"{}The\ end\ of\ a\ facets\ is\ indicated\ by\ the\ tag\ 'endfacet'."{}});}
+\DoxyCodeLine{01714\ }
+\DoxyCodeLine{01715\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01716\ \ \ SkipLineBreak();}
+\DoxyCodeLine{01717\ }
+\DoxyCodeLine{01718\ \ \ EndOfA(Facet);}
+\DoxyCodeLine{01719\ }
+\DoxyCodeLine{01720\ \ \ TryState(StartFacet);}
+\DoxyCodeLine{01721\ }
+\DoxyCodeLine{01722\ \ \ NextState(EndSolid);}
+\DoxyCodeLine{01723\ \}}
+\DoxyCodeLine{01724\ }
+\DoxyCodeLine{01725\ \textcolor{keyword}{inline}\ State\ *STLReader::CADMeshLexerState(StartVertices)\ \{}
+\DoxyCodeLine{01726\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01727\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{01728\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01729\ }
+\DoxyCodeLine{01730\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}outer\ loop"{}}))}
+\DoxyCodeLine{01731\ \ \ \ \ Error(\textcolor{stringliteral}{"{}The\ start\ of\ the\ vertices\ is\ indicated\ by\ the\ tag\ 'outer\ loop'."{}});}
+\DoxyCodeLine{01732\ }
+\DoxyCodeLine{01733\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01734\ \ \ SkipLineBreak();}
+\DoxyCodeLine{01735\ }
+\DoxyCodeLine{01736\ \ \ StartOfA(Vertices);}
+\DoxyCodeLine{01737\ }
+\DoxyCodeLine{01738\ \ \ NextState(Vertex);}
+\DoxyCodeLine{01739\ \}}
+\DoxyCodeLine{01740\ }
+\DoxyCodeLine{01741\ \textcolor{keyword}{inline}\ State\ *STLReader::CADMeshLexerState(EndVertices)\ \{}
+\DoxyCodeLine{01742\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01743\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{01744\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01745\ }
+\DoxyCodeLine{01746\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}endloop"{}}))}
+\DoxyCodeLine{01747\ \ \ \ \ Error(\textcolor{stringliteral}{"{}The\ end\ of\ the\ vertices\ is\ indicated\ by\ the\ tag\ 'endloop'."{}});}
+\DoxyCodeLine{01748\ }
+\DoxyCodeLine{01749\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01750\ \ \ SkipLineBreak();}
+\DoxyCodeLine{01751\ }
+\DoxyCodeLine{01752\ \ \ EndOfA(Vertices);}
+\DoxyCodeLine{01753\ }
+\DoxyCodeLine{01754\ \ \ NextState(EndFacet);}
+\DoxyCodeLine{01755\ \}}
+\DoxyCodeLine{01756\ }
+\DoxyCodeLine{01757\ \textcolor{keyword}{inline}\ State\ *STLReader::CADMeshLexerState(Vertex)\ \{}
+\DoxyCodeLine{01758\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01759\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{01760\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01761\ }
+\DoxyCodeLine{01762\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}vertex"{}}))}
+\DoxyCodeLine{01763\ \ \ \ \ Error(\textcolor{stringliteral}{"{}A\ vertex\ is\ indicated\ by\ the\ tag\ 'vertex'."{}});}
+\DoxyCodeLine{01764\ }
+\DoxyCodeLine{01765\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01766\ }
+\DoxyCodeLine{01767\ \ \ NextState(ThreeVector);}
+\DoxyCodeLine{01768\ \}}
+\DoxyCodeLine{01769\ }
+\DoxyCodeLine{01770\ \textcolor{keyword}{inline}\ State\ *STLReader::CADMeshLexerState(ThreeVector)\ \{}
+\DoxyCodeLine{01771\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01772\ }
+\DoxyCodeLine{01773\ \ \ StartOfA(ThreeVector);}
+\DoxyCodeLine{01774\ }
+\DoxyCodeLine{01775\ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{01776\ \ \ \ \ Error(\textcolor{stringliteral}{"{}First\ number\ in\ three\ vector\ not\ found."{}});}
+\DoxyCodeLine{01777\ }
+\DoxyCodeLine{01778\ \ \ ThisIsA(Number);}
+\DoxyCodeLine{01779\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01780\ }
+\DoxyCodeLine{01781\ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{01782\ \ \ \ \ Error(\textcolor{stringliteral}{"{}Second\ number\ in\ three\ vector\ not\ found."{}});}
+\DoxyCodeLine{01783\ }
+\DoxyCodeLine{01784\ \ \ ThisIsA(Number);}
+\DoxyCodeLine{01785\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01786\ }
+\DoxyCodeLine{01787\ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{01788\ \ \ \ \ Error(\textcolor{stringliteral}{"{}Third\ number\ in\ three\ vector\ not\ found."{}});}
+\DoxyCodeLine{01789\ }
+\DoxyCodeLine{01790\ \ \ ThisIsA(Number);}
+\DoxyCodeLine{01791\ \ \ EndOfA(ThreeVector);}
+\DoxyCodeLine{01792\ }
+\DoxyCodeLine{01793\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01794\ }
+\DoxyCodeLine{01795\ \ \ \textcolor{keywordflow}{if}\ (DidNotSkipLineBreak())}
+\DoxyCodeLine{01796\ \ \ \ \ Error(\textcolor{stringliteral}{"{}Expecting\ a\ new\ line\ at\ the\ end\ of\ a\ three\ vector."{}});}
+\DoxyCodeLine{01797\ }
+\DoxyCodeLine{01798\ \ \ TryState(StartVertices);}
+\DoxyCodeLine{01799\ }
+\DoxyCodeLine{01800\ \ \ TryState(Vertex);}
+\DoxyCodeLine{01801\ }
+\DoxyCodeLine{01802\ \ \ NextState(EndVertices);}
+\DoxyCodeLine{01803\ \}}
+\DoxyCodeLine{01804\ }
+\DoxyCodeLine{01805\ \textcolor{keyword}{inline}\ G4bool\ STLReader::Read(G4String\ filepath)\ \{}
+\DoxyCodeLine{01806\ \ \ \textcolor{keyword}{auto}\ items\ =\ RunLexer(filepath,\ StartSolid);}
+\DoxyCodeLine{01807\ }
+\DoxyCodeLine{01808\ \ \ \textcolor{keywordflow}{if}\ (items.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{01809\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}STLReader::Read"{}},}
+\DoxyCodeLine{01810\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}The\ STL\ file\ appears\ to\ be\ empty."{}});}
+\DoxyCodeLine{01811\ \ \ \}}
+\DoxyCodeLine{01812\ }
+\DoxyCodeLine{01813\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{01814\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{01815\ \ \ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{01816\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ mesh\ appears\ to\ be\ empty."{}}}
+\DoxyCodeLine{01817\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ item.line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{01818\ }
+\DoxyCodeLine{01819\ \ \ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}STLReader::Read"{}},\ error.str());}
+\DoxyCodeLine{01820\ \ \ \ \ \}}
+\DoxyCodeLine{01821\ }
+\DoxyCodeLine{01822\ \ \ \ \ \textcolor{keyword}{auto}\ mesh\ =\ ParseMesh(item.children);}
+\DoxyCodeLine{01823\ }
+\DoxyCodeLine{01824\ \ \ \ \ \textcolor{keyword}{auto}\ name\ =\ G4String(item.value);}
+\DoxyCodeLine{01825\ \ \ \ \ AddMesh(Mesh::New(mesh,\ name));}
+\DoxyCodeLine{01826\ \ \ \}}
+\DoxyCodeLine{01827\ }
+\DoxyCodeLine{01828\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01829\ \}}
+\DoxyCodeLine{01830\ }
+\DoxyCodeLine{01831\ \textcolor{keyword}{inline}\ G4bool\ STLReader::CanRead(Type\ file\_type)\ \{\ \textcolor{keywordflow}{return}\ (file\_type\ ==\ STL);\ \}}
+\DoxyCodeLine{01832\ }
+\DoxyCodeLine{01833\ \textcolor{keyword}{inline}\ std::shared\_ptr<Mesh>\ STLReader::ParseMesh(Items\ items)\ \{}
+\DoxyCodeLine{01834\ \ \ Triangles\ triangles;}
+\DoxyCodeLine{01835\ }
+\DoxyCodeLine{01836\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{01837\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{01838\ \ \ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{01839\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ facet\ appears\ to\ be\ empty."{}}}
+\DoxyCodeLine{01840\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ item.line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{01841\ }
+\DoxyCodeLine{01842\ \ \ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}STLReader::Mesh"{}},\ error.str());}
+\DoxyCodeLine{01843\ \ \ \ \ \}}
+\DoxyCodeLine{01844\ }
+\DoxyCodeLine{01845\ \ \ \ \ triangles.push\_back(ParseFacet(item.children));}
+\DoxyCodeLine{01846\ \ \ \}}
+\DoxyCodeLine{01847\ }
+\DoxyCodeLine{01848\ \ \ \textcolor{keywordflow}{return}\ Mesh::New(triangles);}
+\DoxyCodeLine{01849\ \}}
+\DoxyCodeLine{01850\ }
+\DoxyCodeLine{01851\ \textcolor{keyword}{inline}\ G4TriangularFacet\ *STLReader::ParseFacet(Items\ items)\ \{}
+\DoxyCodeLine{01852\ \ \ Triangles\ triangles;}
+\DoxyCodeLine{01853\ }
+\DoxyCodeLine{01854\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{01855\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{01856\ \ \ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{01857\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ vertex\ appears\ to\ be\ empty."{}}}
+\DoxyCodeLine{01858\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ item.line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{01859\ }
+\DoxyCodeLine{01860\ \ \ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}STLReader::ParseFacet"{}},\ error.str());}
+\DoxyCodeLine{01861\ \ \ \ \ \}}
+\DoxyCodeLine{01862\ }
+\DoxyCodeLine{01863\ \ \ \ \ triangles.push\_back(ParseVertices(item.children));}
+\DoxyCodeLine{01864\ \ \ \}}
+\DoxyCodeLine{01865\ }
+\DoxyCodeLine{01866\ \ \ \textcolor{keywordflow}{if}\ (triangles.size()\ !=\ 1)\ \{}
+\DoxyCodeLine{01867\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{01868\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}STL\ files\ expect\ exactly\ 1\ triangle\ per\ facet."{}};}
+\DoxyCodeLine{01869\ }
+\DoxyCodeLine{01870\ \ \ \ \ \textcolor{keywordflow}{if}\ (items.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{01871\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ items[0].line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{01872\ \ \ \ \ \}}
+\DoxyCodeLine{01873\ }
+\DoxyCodeLine{01874\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}STLReader::ParseFacet"{}},\ error.str());}
+\DoxyCodeLine{01875\ \ \ \}}
+\DoxyCodeLine{01876\ }
+\DoxyCodeLine{01877\ \ \ \textcolor{keywordflow}{return}\ triangles[0];}
+\DoxyCodeLine{01878\ \}}
+\DoxyCodeLine{01879\ }
+\DoxyCodeLine{01880\ \textcolor{keyword}{inline}\ G4TriangularFacet\ *STLReader::ParseVertices(Items\ items)\ \{}
+\DoxyCodeLine{01881\ \ \ std::vector<G4ThreeVector>\ vertices;}
+\DoxyCodeLine{01882\ }
+\DoxyCodeLine{01883\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{01884\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{01885\ \ \ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{01886\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ vertex\ appears\ to\ be\ empty."{}}}
+\DoxyCodeLine{01887\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ item.line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{01888\ }
+\DoxyCodeLine{01889\ \ \ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}STLReader::ParseVertices"{}},\ error.str());}
+\DoxyCodeLine{01890\ \ \ \ \ \}}
+\DoxyCodeLine{01891\ }
+\DoxyCodeLine{01892\ \ \ \ \ vertices.push\_back(ParseThreeVector(item.children));}
+\DoxyCodeLine{01893\ \ \ \}}
+\DoxyCodeLine{01894\ }
+\DoxyCodeLine{01895\ \ \ \textcolor{keywordflow}{if}\ (vertices.size()\ !=\ 3)\ \{}
+\DoxyCodeLine{01896\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{01897\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}STL\ files\ expect\ exactly\ 3\ vertices\ for\ a\ triangular\ facet.\ "{}};}
+\DoxyCodeLine{01898\ }
+\DoxyCodeLine{01899\ \ \ \ \ \textcolor{keywordflow}{if}\ (items.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{01900\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ items[0].line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{01901\ \ \ \ \ \}}
+\DoxyCodeLine{01902\ }
+\DoxyCodeLine{01903\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}STLReader::ParseVertices"{}},\ error.str());}
+\DoxyCodeLine{01904\ \ \ \}}
+\DoxyCodeLine{01905\ }
+\DoxyCodeLine{01906\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ G4TriangularFacet(vertices[0],\ vertices[1],\ vertices[2],\ ABSOLUTE);}
+\DoxyCodeLine{01907\ \}}
+\DoxyCodeLine{01908\ }
+\DoxyCodeLine{01909\ \textcolor{keyword}{inline}\ G4ThreeVector\ STLReader::ParseThreeVector(Items\ items)\ \{}
+\DoxyCodeLine{01910\ \ \ std::vector<double>\ numbers;}
+\DoxyCodeLine{01911\ }
+\DoxyCodeLine{01912\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{01913\ \ \ \ \ numbers.push\_back((\textcolor{keywordtype}{double})atof(item.value.c\_str()));}
+\DoxyCodeLine{01914\ \ \ \}}
+\DoxyCodeLine{01915\ }
+\DoxyCodeLine{01916\ \ \ \textcolor{keywordflow}{if}\ (numbers.size()\ !=\ 3)\ \{}
+\DoxyCodeLine{01917\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{01918\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Three\ vectors\ in\ STL\ files\ require\ exactly\ 3\ numbers"{}};}
+\DoxyCodeLine{01919\ }
+\DoxyCodeLine{01920\ \ \ \ \ \textcolor{keywordflow}{if}\ (items.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{01921\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ items[0].line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{01922\ \ \ \ \ \}}
+\DoxyCodeLine{01923\ }
+\DoxyCodeLine{01924\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}STLReader::ParseThreeVector"{}},\ error.str());}
+\DoxyCodeLine{01925\ \ \ \}}
+\DoxyCodeLine{01926\ }
+\DoxyCodeLine{01927\ \ \ \textcolor{keywordflow}{return}\ G4ThreeVector(numbers[0],\ numbers[1],\ numbers[2]);}
+\DoxyCodeLine{01928\ \}}
+\DoxyCodeLine{01929\ \}}
+\DoxyCodeLine{01930\ \}}
+\DoxyCodeLine{01931\ }
+\DoxyCodeLine{01932\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{01933\ }
+\DoxyCodeLine{01934\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{01935\ }
+\DoxyCodeLine{01936\ \textcolor{keyword}{inline}\ State\ *OBJReader::CADMeshLexerState(StartSolid)\ \{}
+\DoxyCodeLine{01937\ \ \ StartOfA(Solid);}
+\DoxyCodeLine{01938\ }
+\DoxyCodeLine{01939\ \ \ TryState(Object);}
+\DoxyCodeLine{01940\ \ \ TryState(Vertex);}
+\DoxyCodeLine{01941\ \ \ TryState(Ignore);}
+\DoxyCodeLine{01942\ }
+\DoxyCodeLine{01943\ \ \ Error(\textcolor{stringliteral}{"{}Invalid\ element\ tag."{}});}
+\DoxyCodeLine{01944\ \}}
+\DoxyCodeLine{01945\ }
+\DoxyCodeLine{01946\ \textcolor{keyword}{inline}\ State\ *OBJReader::CADMeshLexerState(EndSolid)\ \{}
+\DoxyCodeLine{01947\ \ \ \textcolor{keywordflow}{if}\ (Next()\ !=\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{01948\ \ \ \ \ lexer-\/>LastError();}
+\DoxyCodeLine{01949\ }
+\DoxyCodeLine{01950\ \ \ EndOfA(Solid);}
+\DoxyCodeLine{01951\ \ \ FinalState();}
+\DoxyCodeLine{01952\ \}}
+\DoxyCodeLine{01953\ }
+\DoxyCodeLine{01954\ \textcolor{keyword}{inline}\ State\ *OBJReader::CADMeshLexerState(Ignore)\ \{}
+\DoxyCodeLine{01955\ \ \ \textcolor{keywordflow}{if}\ (DidNotSkipLine())}
+\DoxyCodeLine{01956\ \ \ \ \ NextState(EndSolid);}
+\DoxyCodeLine{01957\ }
+\DoxyCodeLine{01958\ \ \ TryState(Object);}
+\DoxyCodeLine{01959\ \ \ TryState(Vertex);}
+\DoxyCodeLine{01960\ \ \ TryState(Facet);}
+\DoxyCodeLine{01961\ \ \ TryState(Ignore);}
+\DoxyCodeLine{01962\ }
+\DoxyCodeLine{01963\ \ \ NextState(EndSolid);}
+\DoxyCodeLine{01964\ \}}
+\DoxyCodeLine{01965\ }
+\DoxyCodeLine{01966\ \textcolor{keyword}{inline}\ State\ *OBJReader::CADMeshLexerState(Vertex)\ \{}
+\DoxyCodeLine{01967\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{01968\ }
+\DoxyCodeLine{01969\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}v\ "{}}))}
+\DoxyCodeLine{01970\ \ \ \ \ Error(\textcolor{stringliteral}{"{}A\ vertex\ is\ indicated\ by\ the\ tag\ 'v'."{}});}
+\DoxyCodeLine{01971\ }
+\DoxyCodeLine{01972\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01973\ \ \ StartOfA(Vertex);}
+\DoxyCodeLine{01974\ }
+\DoxyCodeLine{01975\ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{01976\ \ \ \ \ Error(\textcolor{stringliteral}{"{}First\ number\ in\ three\ vector\ not\ found."{}});}
+\DoxyCodeLine{01977\ }
+\DoxyCodeLine{01978\ \ \ ThisIsA(Number);}
+\DoxyCodeLine{01979\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01980\ }
+\DoxyCodeLine{01981\ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{01982\ \ \ \ \ Error(\textcolor{stringliteral}{"{}Second\ number\ in\ three\ vector\ not\ found."{}});}
+\DoxyCodeLine{01983\ }
+\DoxyCodeLine{01984\ \ \ ThisIsA(Number);}
+\DoxyCodeLine{01985\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{01986\ }
+\DoxyCodeLine{01987\ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{01988\ \ \ \ \ Error(\textcolor{stringliteral}{"{}Third\ number\ in\ three\ vector\ not\ found."{}});}
+\DoxyCodeLine{01989\ }
+\DoxyCodeLine{01990\ \ \ ThisIsA(Number);}
+\DoxyCodeLine{01991\ }
+\DoxyCodeLine{01992\ \ \ EndOfA(Vertex);}
+\DoxyCodeLine{01993\ }
+\DoxyCodeLine{01994\ \ \ SkipLine();}
+\DoxyCodeLine{01995\ }
+\DoxyCodeLine{01996\ \ \ TryState(Vertex);}
+\DoxyCodeLine{01997\ \ \ TryState(Object);}
+\DoxyCodeLine{01998\ \ \ TryState(Facet);}
+\DoxyCodeLine{01999\ \ \ TryState(Ignore);}
+\DoxyCodeLine{02000\ }
+\DoxyCodeLine{02001\ \ \ NextState(EndSolid);}
+\DoxyCodeLine{02002\ \}}
+\DoxyCodeLine{02003\ }
+\DoxyCodeLine{02004\ \textcolor{keyword}{inline}\ State\ *OBJReader::CADMeshLexerState(Facet)\ \{}
+\DoxyCodeLine{02005\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{02006\ }
+\DoxyCodeLine{02007\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}f\ "{}}))}
+\DoxyCodeLine{02008\ \ \ \ \ Error(\textcolor{stringliteral}{"{}A\ facet\ is\ indicated\ by\ the\ tag\ 'f'."{}});}
+\DoxyCodeLine{02009\ }
+\DoxyCodeLine{02010\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02011\ \ \ StartOfA(Facet);}
+\DoxyCodeLine{02012\ }
+\DoxyCodeLine{02013\ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{02014\ \ \ \ \ Error(\textcolor{stringliteral}{"{}First\ number\ in\ three\ vector\ not\ found."{}});}
+\DoxyCodeLine{02015\ }
+\DoxyCodeLine{02016\ \ \ ThisIsA(Number);}
+\DoxyCodeLine{02017\ }
+\DoxyCodeLine{02018\ \ \ OneOf(\textcolor{stringliteral}{"{}/"{}});}
+\DoxyCodeLine{02019\ \ \ Number();}
+\DoxyCodeLine{02020\ \ \ OneOf(\textcolor{stringliteral}{"{}/"{}});}
+\DoxyCodeLine{02021\ \ \ Number();}
+\DoxyCodeLine{02022\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02023\ }
+\DoxyCodeLine{02024\ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{02025\ \ \ \ \ Error(\textcolor{stringliteral}{"{}Second\ number\ in\ three\ vector\ not\ found."{}});}
+\DoxyCodeLine{02026\ }
+\DoxyCodeLine{02027\ \ \ ThisIsA(Number);}
+\DoxyCodeLine{02028\ }
+\DoxyCodeLine{02029\ \ \ OneOf(\textcolor{stringliteral}{"{}/"{}});}
+\DoxyCodeLine{02030\ \ \ Number();}
+\DoxyCodeLine{02031\ \ \ OneOf(\textcolor{stringliteral}{"{}/"{}});}
+\DoxyCodeLine{02032\ \ \ Number();}
+\DoxyCodeLine{02033\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02034\ }
+\DoxyCodeLine{02035\ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{02036\ \ \ \ \ Error(\textcolor{stringliteral}{"{}Third\ number\ in\ three\ vector\ not\ found."{}});}
+\DoxyCodeLine{02037\ }
+\DoxyCodeLine{02038\ \ \ ThisIsA(Number);}
+\DoxyCodeLine{02039\ }
+\DoxyCodeLine{02040\ \ \ OneOf(\textcolor{stringliteral}{"{}/"{}});}
+\DoxyCodeLine{02041\ \ \ Number();}
+\DoxyCodeLine{02042\ \ \ OneOf(\textcolor{stringliteral}{"{}/"{}});}
+\DoxyCodeLine{02043\ \ \ Number();}
+\DoxyCodeLine{02044\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02045\ }
+\DoxyCodeLine{02046\ \ \ \textcolor{keywordflow}{if}\ (Number())}
+\DoxyCodeLine{02047\ \ \ \ \ ThisIsA(Number);}
+\DoxyCodeLine{02048\ }
+\DoxyCodeLine{02049\ \ \ EndOfA(Facet);}
+\DoxyCodeLine{02050\ }
+\DoxyCodeLine{02051\ \ \ SkipLine();}
+\DoxyCodeLine{02052\ }
+\DoxyCodeLine{02053\ \ \ TryState(Facet);}
+\DoxyCodeLine{02054\ \ \ TryState(Vertex);}
+\DoxyCodeLine{02055\ \ \ TryState(Object);}
+\DoxyCodeLine{02056\ \ \ TryState(Ignore);}
+\DoxyCodeLine{02057\ }
+\DoxyCodeLine{02058\ \ \ NextState(EndSolid);}
+\DoxyCodeLine{02059\ \}}
+\DoxyCodeLine{02060\ }
+\DoxyCodeLine{02061\ \textcolor{keyword}{inline}\ State\ *OBJReader::CADMeshLexerState(Object)\ \{}
+\DoxyCodeLine{02062\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{02063\ }
+\DoxyCodeLine{02064\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}o\ "{}}))}
+\DoxyCodeLine{02065\ \ \ \ \ Error(\textcolor{stringliteral}{"{}An\ object\ is\ indicated\ by\ the\ tag\ 'o'."{}});}
+\DoxyCodeLine{02066\ }
+\DoxyCodeLine{02067\ \ \ EndOfA(Solid);}
+\DoxyCodeLine{02068\ }
+\DoxyCodeLine{02069\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02070\ \ \ StartOfA(Solid);}
+\DoxyCodeLine{02071\ }
+\DoxyCodeLine{02072\ \ \ ManyCharacters();}
+\DoxyCodeLine{02073\ \ \ ThisIsA(Word);}
+\DoxyCodeLine{02074\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02075\ }
+\DoxyCodeLine{02076\ \ \ TryState(Vertex);}
+\DoxyCodeLine{02077\ \ \ TryState(Facet);}
+\DoxyCodeLine{02078\ \ \ TryState(Object);}
+\DoxyCodeLine{02079\ \ \ TryState(Ignore);}
+\DoxyCodeLine{02080\ }
+\DoxyCodeLine{02081\ \ \ NextState(EndSolid);}
+\DoxyCodeLine{02082\ \}}
+\DoxyCodeLine{02083\ }
+\DoxyCodeLine{02084\ \textcolor{keyword}{inline}\ G4bool\ OBJReader::Read(G4String\ filepath)\ \{}
+\DoxyCodeLine{02085\ \ \ \textcolor{keyword}{auto}\ items\ =\ RunLexer(filepath,\ StartSolid);}
+\DoxyCodeLine{02086\ }
+\DoxyCodeLine{02087\ \ \ \textcolor{keywordflow}{if}\ (items.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{02088\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}OBJReader::Read"{}},}
+\DoxyCodeLine{02089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}The\ OBJ\ file\ appears\ to\ be\ empty."{}});}
+\DoxyCodeLine{02090\ \ \ \}}
+\DoxyCodeLine{02091\ }
+\DoxyCodeLine{02092\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{02093\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{02094\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{02095\ \ \ \ \ \}}
+\DoxyCodeLine{02096\ }
+\DoxyCodeLine{02097\ \ \ \ \ \textcolor{keyword}{auto}\ mesh\ =\ ParseMesh(item.children);}
+\DoxyCodeLine{02098\ }
+\DoxyCodeLine{02099\ \ \ \ \ \textcolor{keywordflow}{if}\ (mesh-\/>GetTriangles().size()\ ==\ 0)\ \{}
+\DoxyCodeLine{02100\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{02101\ \ \ \ \ \}}
+\DoxyCodeLine{02102\ }
+\DoxyCodeLine{02103\ \ \ \ \ G4String\ name;}
+\DoxyCodeLine{02104\ }
+\DoxyCodeLine{02105\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children[0].token\ ==\ WordToken)\ \{}
+\DoxyCodeLine{02106\ \ \ \ \ \ \ name\ =\ item.children[0].value;}
+\DoxyCodeLine{02107\ \ \ \ \ \}}
+\DoxyCodeLine{02108\ }
+\DoxyCodeLine{02109\ \ \ \ \ AddMesh(Mesh::New(mesh,\ name));}
+\DoxyCodeLine{02110\ \ \ \}}
+\DoxyCodeLine{02111\ }
+\DoxyCodeLine{02112\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{02113\ \}}
+\DoxyCodeLine{02114\ }
+\DoxyCodeLine{02115\ \textcolor{keyword}{inline}\ G4bool\ OBJReader::CanRead(Type\ file\_type)\ \{\ \textcolor{keywordflow}{return}\ (file\_type\ ==\ OBJ);\ \}}
+\DoxyCodeLine{02116\ }
+\DoxyCodeLine{02117\ \textcolor{keyword}{inline}\ std::shared\_ptr<Mesh>\ OBJReader::ParseMesh(Items\ items)\ \{}
+\DoxyCodeLine{02118\ \ \ Triangles\ facets;}
+\DoxyCodeLine{02119\ }
+\DoxyCodeLine{02120\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{02121\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.token\ !=\ VertexToken)\ \{}
+\DoxyCodeLine{02122\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{02123\ \ \ \ \ \}}
+\DoxyCodeLine{02124\ }
+\DoxyCodeLine{02125\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{02126\ \ \ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02127\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ vertex\ appears\ to\ be\ empty."{}}}
+\DoxyCodeLine{02128\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ item.line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{02129\ }
+\DoxyCodeLine{02130\ \ \ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}OBJReader::Mesh"{}},\ error.str());}
+\DoxyCodeLine{02131\ \ \ \ \ \}}
+\DoxyCodeLine{02132\ }
+\DoxyCodeLine{02133\ \ \ \ \ vertices\_.push\_back(ParseVertex(item.children));}
+\DoxyCodeLine{02134\ \ \ \}}
+\DoxyCodeLine{02135\ }
+\DoxyCodeLine{02136\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{02137\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.token\ !=\ FacetToken)\ \{}
+\DoxyCodeLine{02138\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{02139\ \ \ \ \ \}}
+\DoxyCodeLine{02140\ }
+\DoxyCodeLine{02141\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{02142\ \ \ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02143\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ facet\ appears\ to\ be\ empty."{}}}
+\DoxyCodeLine{02144\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ item.line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{02145\ }
+\DoxyCodeLine{02146\ \ \ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}OBJReader::Mesh"{}},\ error.str());}
+\DoxyCodeLine{02147\ \ \ \ \ \}}
+\DoxyCodeLine{02148\ }
+\DoxyCodeLine{02149\ \ \ \ \ facets.push\_back(ParseFacet(item.children,\ \textcolor{keyword}{false}));}
+\DoxyCodeLine{02150\ }
+\DoxyCodeLine{02151\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children.size()\ ==\ 4)\ \{}
+\DoxyCodeLine{02152\ \ \ \ \ \ \ facets.push\_back(ParseFacet(item.children,\ \textcolor{keyword}{true}));}
+\DoxyCodeLine{02153\ \ \ \ \ \}}
+\DoxyCodeLine{02154\ \ \ \}}
+\DoxyCodeLine{02155\ }
+\DoxyCodeLine{02156\ \ \ \textcolor{keywordflow}{return}\ Mesh::New(facets);}
+\DoxyCodeLine{02157\ \}}
+\DoxyCodeLine{02158\ }
+\DoxyCodeLine{02159\ \textcolor{keyword}{inline}\ G4ThreeVector\ OBJReader::ParseVertex(Items\ items)\ \{}
+\DoxyCodeLine{02160\ \ \ std::vector<double>\ numbers;}
+\DoxyCodeLine{02161\ }
+\DoxyCodeLine{02162\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{02163\ \ \ \ \ numbers.push\_back((\textcolor{keywordtype}{double})atof(item.value.c\_str()));}
+\DoxyCodeLine{02164\ \ \ \}}
+\DoxyCodeLine{02165\ }
+\DoxyCodeLine{02166\ \ \ \textcolor{keywordflow}{if}\ (numbers.size()\ !=\ 3)\ \{}
+\DoxyCodeLine{02167\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02168\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Three\ vectors\ in\ OBJ\ files\ require\ exactly\ 3\ numbers"{}};}
+\DoxyCodeLine{02169\ }
+\DoxyCodeLine{02170\ \ \ \ \ \textcolor{keywordflow}{if}\ (items.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{02171\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ items[0].line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{02172\ \ \ \ \ \}}
+\DoxyCodeLine{02173\ }
+\DoxyCodeLine{02174\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}OBJReader::ParseThreeVector"{}},\ error.str());}
+\DoxyCodeLine{02175\ \ \ \}}
+\DoxyCodeLine{02176\ }
+\DoxyCodeLine{02177\ \ \ \textcolor{keywordflow}{return}\ G4ThreeVector(numbers[0],\ numbers[1],\ numbers[2]);}
+\DoxyCodeLine{02178\ \}}
+\DoxyCodeLine{02179\ }
+\DoxyCodeLine{02180\ \textcolor{keyword}{inline}\ G4TriangularFacet\ *OBJReader::ParseFacet(Items\ items,\ G4bool\ quad)\ \{}
+\DoxyCodeLine{02181\ \ \ std::vector<int>\ indices;}
+\DoxyCodeLine{02182\ }
+\DoxyCodeLine{02183\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{02184\ \ \ \ \ indices.push\_back((\textcolor{keywordtype}{int})atoi(item.value.c\_str()));}
+\DoxyCodeLine{02185\ \ \ \}}
+\DoxyCodeLine{02186\ }
+\DoxyCodeLine{02187\ \ \ \textcolor{keywordflow}{if}\ (indices.size()\ <\ 3)\ \{}
+\DoxyCodeLine{02188\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02189\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Facets\ in\ OBJ\ files\ require\ at\ least\ 3\ indicies"{}};}
+\DoxyCodeLine{02190\ }
+\DoxyCodeLine{02191\ \ \ \ \ \textcolor{keywordflow}{if}\ (items.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{02192\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ items[0].line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{02193\ \ \ \ \ \}}
+\DoxyCodeLine{02194\ }
+\DoxyCodeLine{02195\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}OBJReader::ParseFacet"{}},\ error.str());}
+\DoxyCodeLine{02196\ \ \ \}}
+\DoxyCodeLine{02197\ }
+\DoxyCodeLine{02198\ \ \ \textcolor{keywordflow}{if}\ (quad\ \&\&\ indices.size()\ !=\ 4)\ \{}
+\DoxyCodeLine{02199\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02200\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Trying\ to\ triangle-\/ify\ a\ facet\ that\ isn't\ a\ quad"{}};}
+\DoxyCodeLine{02201\ }
+\DoxyCodeLine{02202\ \ \ \ \ \textcolor{keywordflow}{if}\ (items.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{02203\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ items[0].line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{02204\ \ \ \ \ \}}
+\DoxyCodeLine{02205\ }
+\DoxyCodeLine{02206\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}OBJReader::ParseFacet"{}},\ error.str());}
+\DoxyCodeLine{02207\ \ \ \}}
+\DoxyCodeLine{02208\ }
+\DoxyCodeLine{02209\ \ \ \textcolor{keywordflow}{if}\ (quad)\ \{}
+\DoxyCodeLine{02210\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ G4TriangularFacet(vertices\_[indices[0]\ -\/\ 1],}
+\DoxyCodeLine{02211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vertices\_[indices[2]\ -\/\ 1],}
+\DoxyCodeLine{02212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vertices\_[indices[3]\ -\/\ 1],\ ABSOLUTE);}
+\DoxyCodeLine{02213\ \ \ \}}
+\DoxyCodeLine{02214\ }
+\DoxyCodeLine{02215\ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{02216\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ G4TriangularFacet(vertices\_[indices[0]\ -\/\ 1],}
+\DoxyCodeLine{02217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vertices\_[indices[1]\ -\/\ 1],}
+\DoxyCodeLine{02218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vertices\_[indices[2]\ -\/\ 1],\ ABSOLUTE);}
+\DoxyCodeLine{02219\ \ \ \}}
+\DoxyCodeLine{02220\ \}}
+\DoxyCodeLine{02221\ \}}
+\DoxyCodeLine{02222\ \}}
+\DoxyCodeLine{02223\ }
+\DoxyCodeLine{02224\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{02225\ }
+\DoxyCodeLine{02226\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{02227\ }
+\DoxyCodeLine{02228\ \textcolor{keyword}{inline}\ State\ *PLYReader::CADMeshLexerState(StartHeader)\ \{}
+\DoxyCodeLine{02229\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}ply"{}}))}
+\DoxyCodeLine{02230\ \ \ \ \ Error(\textcolor{stringliteral}{"{}PLY\ files\ start\ with\ 'ply'."{}});}
+\DoxyCodeLine{02231\ }
+\DoxyCodeLine{02232\ \ \ StartOfA(Header);}
+\DoxyCodeLine{02233\ }
+\DoxyCodeLine{02234\ \ \ SkipLine();}
+\DoxyCodeLine{02235\ }
+\DoxyCodeLine{02236\ \ \ TryState(Element);}
+\DoxyCodeLine{02237\ \ \ TryState(Ignore);}
+\DoxyCodeLine{02238\ }
+\DoxyCodeLine{02239\ \ \ Error(\textcolor{stringliteral}{"{}Invalid\ header\ tag."{}});}
+\DoxyCodeLine{02240\ \}}
+\DoxyCodeLine{02241\ }
+\DoxyCodeLine{02242\ \textcolor{keyword}{inline}\ State\ *PLYReader::CADMeshLexerState(EndHeader)\ \{}
+\DoxyCodeLine{02243\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}end\_header"{}}))}
+\DoxyCodeLine{02244\ \ \ \ \ Error(\textcolor{stringliteral}{"{}PLY\ file\ headers\ end\ with\ 'end\_header'."{}});}
+\DoxyCodeLine{02245\ }
+\DoxyCodeLine{02246\ \ \ MaybeEndOfA(Element);}
+\DoxyCodeLine{02247\ }
+\DoxyCodeLine{02248\ \ \ EndOfA(Header);}
+\DoxyCodeLine{02249\ \ \ FinalState();}
+\DoxyCodeLine{02250\ \}}
+\DoxyCodeLine{02251\ }
+\DoxyCodeLine{02252\ \textcolor{keyword}{inline}\ State\ *PLYReader::CADMeshLexerState(Element)\ \{}
+\DoxyCodeLine{02253\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}element\ "{}}))}
+\DoxyCodeLine{02254\ \ \ \ \ Error(\textcolor{stringliteral}{"{}An\ element\ is\ indicated\ by\ the\ tag\ 'element'."{}});}
+\DoxyCodeLine{02255\ }
+\DoxyCodeLine{02256\ \ \ MaybeEndOfA(Element);}
+\DoxyCodeLine{02257\ }
+\DoxyCodeLine{02258\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02259\ \ \ StartOfA(Element);}
+\DoxyCodeLine{02260\ }
+\DoxyCodeLine{02261\ \ \ \textcolor{keywordflow}{if}\ (NotManyCharacters())}
+\DoxyCodeLine{02262\ \ \ \ \ Error(\textcolor{stringliteral}{"{}Element\ type\ not\ found."{}});}
+\DoxyCodeLine{02263\ }
+\DoxyCodeLine{02264\ \ \ ThisIsA(Word);}
+\DoxyCodeLine{02265\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02266\ }
+\DoxyCodeLine{02267\ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{02268\ \ \ \ \ Error(\textcolor{stringliteral}{"{}Element\ count\ not\ found."{}});}
+\DoxyCodeLine{02269\ }
+\DoxyCodeLine{02270\ \ \ ThisIsA(Number);}
+\DoxyCodeLine{02271\ \ \ SkipLine();}
+\DoxyCodeLine{02272\ }
+\DoxyCodeLine{02273\ \ \ TryState(Property);}
+\DoxyCodeLine{02274\ \ \ TryState(Ignore);}
+\DoxyCodeLine{02275\ }
+\DoxyCodeLine{02276\ \ \ NextState(EndHeader);}
+\DoxyCodeLine{02277\ \}}
+\DoxyCodeLine{02278\ }
+\DoxyCodeLine{02279\ \textcolor{keyword}{inline}\ State\ *PLYReader::CADMeshLexerState(Property)\ \{}
+\DoxyCodeLine{02280\ \ \ \textcolor{keywordflow}{if}\ (DoesNotMatchExactly(\textcolor{stringliteral}{"{}property\ "{}}))}
+\DoxyCodeLine{02281\ \ \ \ \ Error(\textcolor{stringliteral}{"{}An\ property\ is\ indicated\ by\ the\ tag\ 'property'."{}});}
+\DoxyCodeLine{02282\ }
+\DoxyCodeLine{02283\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02284\ \ \ StartOfA(Property);}
+\DoxyCodeLine{02285\ }
+\DoxyCodeLine{02286\ \ \ \textcolor{keywordflow}{if}\ (NotManyCharacters())}
+\DoxyCodeLine{02287\ \ \ \ \ Error(\textcolor{stringliteral}{"{}Element\ type\ not\ found."{}});}
+\DoxyCodeLine{02288\ }
+\DoxyCodeLine{02289\ \ \ ThisIsA(Word);}
+\DoxyCodeLine{02290\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02291\ }
+\DoxyCodeLine{02292\ \ \ RestOfLine();}
+\DoxyCodeLine{02293\ \ \ ThisIsA(Word);}
+\DoxyCodeLine{02294\ }
+\DoxyCodeLine{02295\ \ \ EndOfA(Property);}
+\DoxyCodeLine{02296\ }
+\DoxyCodeLine{02297\ \ \ SkipLineBreak();}
+\DoxyCodeLine{02298\ }
+\DoxyCodeLine{02299\ \ \ TryState(Property);}
+\DoxyCodeLine{02300\ \ \ TryState(Element);}
+\DoxyCodeLine{02301\ \ \ TryState(EndHeader);}
+\DoxyCodeLine{02302\ \ \ TryState(Ignore);}
+\DoxyCodeLine{02303\ }
+\DoxyCodeLine{02304\ \ \ NextState(EndHeader);}
+\DoxyCodeLine{02305\ \}}
+\DoxyCodeLine{02306\ }
+\DoxyCodeLine{02307\ \textcolor{keyword}{inline}\ State\ *PLYReader::CADMeshLexerState(Ignore)\ \{}
+\DoxyCodeLine{02308\ \ \ \textcolor{keywordflow}{if}\ (DidNotSkipLine())}
+\DoxyCodeLine{02309\ \ \ \ \ NextState(EndHeader);}
+\DoxyCodeLine{02310\ }
+\DoxyCodeLine{02311\ \ \ TryState(Element);}
+\DoxyCodeLine{02312\ \ \ TryState(Property);}
+\DoxyCodeLine{02313\ \ \ TryState(EndHeader);}
+\DoxyCodeLine{02314\ }
+\DoxyCodeLine{02315\ \ \ NextState(Ignore);}
+\DoxyCodeLine{02316\ \}}
+\DoxyCodeLine{02317\ }
+\DoxyCodeLine{02318\ \textcolor{keyword}{inline}\ State\ *PLYReader::CADMeshLexerState(Vertex)\ \{}
+\DoxyCodeLine{02319\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{02320\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02321\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{02322\ }
+\DoxyCodeLine{02323\ \ \ StartOfA(Vertex);}
+\DoxyCodeLine{02324\ }
+\DoxyCodeLine{02325\ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
+\DoxyCodeLine{02326\ }
+\DoxyCodeLine{02327\ \ \ \textcolor{keywordflow}{while}\ (i\ <\ 32)\ \{}
+\DoxyCodeLine{02328\ \ \ \ \ \textcolor{keywordflow}{if}\ (AtEndOfLine())}
+\DoxyCodeLine{02329\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{02330\ }
+\DoxyCodeLine{02331\ \ \ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02332\ }
+\DoxyCodeLine{02333\ \ \ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{02334\ \ \ \ \ \ \ Error(\textcolor{stringliteral}{"{}Expecting\ only\ numbers\ in\ the\ vertex\ specification."{}});}
+\DoxyCodeLine{02335\ }
+\DoxyCodeLine{02336\ \ \ \ \ ThisIsA(Number);}
+\DoxyCodeLine{02337\ \ \ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02338\ }
+\DoxyCodeLine{02339\ \ \ \ \ i++;}
+\DoxyCodeLine{02340\ \ \ \}}
+\DoxyCodeLine{02341\ }
+\DoxyCodeLine{02342\ \ \ EndOfA(Vertex);}
+\DoxyCodeLine{02343\ }
+\DoxyCodeLine{02344\ \ \ SkipLine();}
+\DoxyCodeLine{02345\ }
+\DoxyCodeLine{02346\ \ \ TryState(Vertex);}
+\DoxyCodeLine{02347\ }
+\DoxyCodeLine{02348\ \ \ FinalState();}
+\DoxyCodeLine{02349\ \}}
+\DoxyCodeLine{02350\ }
+\DoxyCodeLine{02351\ \textcolor{keyword}{inline}\ State\ *PLYReader::CADMeshLexerState(Facet)\ \{}
+\DoxyCodeLine{02352\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{02353\ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02354\ \ \ SkipLineBreaks();}
+\DoxyCodeLine{02355\ }
+\DoxyCodeLine{02356\ \ \ StartOfA(Facet);}
+\DoxyCodeLine{02357\ }
+\DoxyCodeLine{02358\ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
+\DoxyCodeLine{02359\ }
+\DoxyCodeLine{02360\ \ \ \textcolor{keywordflow}{while}\ (i\ <\ 32)\ \{}
+\DoxyCodeLine{02361\ \ \ \ \ \textcolor{keywordflow}{if}\ (AtEndOfLine())}
+\DoxyCodeLine{02362\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{02363\ }
+\DoxyCodeLine{02364\ \ \ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02365\ }
+\DoxyCodeLine{02366\ \ \ \ \ \textcolor{keywordflow}{if}\ (NotANumber())}
+\DoxyCodeLine{02367\ \ \ \ \ \ \ Error(\textcolor{stringliteral}{"{}Expecting\ only\ numbers\ in\ the\ facet\ specification."{}});}
+\DoxyCodeLine{02368\ }
+\DoxyCodeLine{02369\ \ \ \ \ ThisIsA(Number);}
+\DoxyCodeLine{02370\ \ \ \ \ SkipWhiteSpace();}
+\DoxyCodeLine{02371\ }
+\DoxyCodeLine{02372\ \ \ \ \ i++;}
+\DoxyCodeLine{02373\ \ \ \}}
+\DoxyCodeLine{02374\ }
+\DoxyCodeLine{02375\ \ \ EndOfA(Facet);}
+\DoxyCodeLine{02376\ }
+\DoxyCodeLine{02377\ \ \ SkipLine();}
+\DoxyCodeLine{02378\ }
+\DoxyCodeLine{02379\ \ \ TryState(Facet);}
+\DoxyCodeLine{02380\ }
+\DoxyCodeLine{02381\ \ \ FinalState();}
+\DoxyCodeLine{02382\ \}}
+\DoxyCodeLine{02383\ }
+\DoxyCodeLine{02384\ \textcolor{keyword}{inline}\ G4bool\ PLYReader::Read(G4String\ filepath)\ \{}
+\DoxyCodeLine{02385\ \ \ \textcolor{keyword}{auto}\ lexer\ =\ Lexer(filepath,\ \textcolor{keyword}{new}\ StartHeaderState);}
+\DoxyCodeLine{02386\ \ \ \textcolor{keyword}{auto}\ items\ =\ lexer.GetItems();}
+\DoxyCodeLine{02387\ }
+\DoxyCodeLine{02388\ \ \ \textcolor{keywordflow}{if}\ (items.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{02389\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02390\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ header\ appears\ to\ be\ empty."{}};}
+\DoxyCodeLine{02391\ }
+\DoxyCodeLine{02392\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::Read"{}},\ error.str());}
+\DoxyCodeLine{02393\ \ \ \}}
+\DoxyCodeLine{02394\ }
+\DoxyCodeLine{02395\ \ \ ParseHeader(items);}
+\DoxyCodeLine{02396\ }
+\DoxyCodeLine{02397\ \ \ lexer.Run(\textcolor{keyword}{new}\ VertexState,\ vertex\_count\_);}
+\DoxyCodeLine{02398\ \ \ \textcolor{keyword}{auto}\ vertex\_items\ =\ lexer.GetItems();}
+\DoxyCodeLine{02399\ }
+\DoxyCodeLine{02400\ \ \ \textcolor{keywordflow}{if}\ (vertex\_items.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{02401\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::Read"{}},}
+\DoxyCodeLine{02402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}The\ PLY\ file\ appears\ to\ have\ no\ vertices."{}});}
+\DoxyCodeLine{02403\ \ \ \}}
+\DoxyCodeLine{02404\ }
+\DoxyCodeLine{02405\ \ \ \textcolor{keywordflow}{if}\ (vertex\_items.size()\ !=\ vertex\_count\_)\ \{}
+\DoxyCodeLine{02406\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::Read"{}},}
+\DoxyCodeLine{02407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}The\ PLY\ file\ appears\ to\ be\ missing\ vertices."{}});}
+\DoxyCodeLine{02408\ \ \ \}}
+\DoxyCodeLine{02409\ }
+\DoxyCodeLine{02410\ \ \ lexer.Run(\textcolor{keyword}{new}\ FacetState,\ facet\_count\_);}
+\DoxyCodeLine{02411\ \ \ \textcolor{keyword}{auto}\ face\_items\ =\ lexer.GetItems();}
+\DoxyCodeLine{02412\ }
+\DoxyCodeLine{02413\ \ \ \textcolor{keywordflow}{if}\ (face\_items.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{02414\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::Read"{}},}
+\DoxyCodeLine{02415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}The\ PLY\ file\ appears\ to\ have\ no\ facets."{}});}
+\DoxyCodeLine{02416\ \ \ \}}
+\DoxyCodeLine{02417\ }
+\DoxyCodeLine{02418\ \ \ \textcolor{keywordflow}{if}\ (face\_items.size()\ !=\ facet\_count\_)\ \{}
+\DoxyCodeLine{02419\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::Read"{}},}
+\DoxyCodeLine{02420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}The\ PLY\ file\ appears\ to\ be\ missing\ facets"{}});}
+\DoxyCodeLine{02421\ \ \ \}}
+\DoxyCodeLine{02422\ }
+\DoxyCodeLine{02423\ \ \ \textcolor{keyword}{auto}\ mesh\ =\ ParseMesh(vertex\_items,\ face\_items);}
+\DoxyCodeLine{02424\ \ \ AddMesh(Mesh::New(mesh));}
+\DoxyCodeLine{02425\ }
+\DoxyCodeLine{02426\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{02427\ \}}
+\DoxyCodeLine{02428\ }
+\DoxyCodeLine{02429\ \textcolor{keyword}{inline}\ G4bool\ PLYReader::CanRead(Type\ file\_type)\ \{\ \textcolor{keywordflow}{return}\ (file\_type\ ==\ PLY);\ \}}
+\DoxyCodeLine{02430\ }
+\DoxyCodeLine{02431\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ PLYReader::ParseHeader(Items\ items)\ \{}
+\DoxyCodeLine{02432\ \ \ \textcolor{keywordflow}{if}\ (items.size()\ !=\ 1)\ \{}
+\DoxyCodeLine{02433\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02434\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ header\ appears\ to\ be\ invalid\ or\ missing."{}}}
+\DoxyCodeLine{02435\ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ 1."{}};}
+\DoxyCodeLine{02436\ }
+\DoxyCodeLine{02437\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::ParseHeader"{}},\ error.str());}
+\DoxyCodeLine{02438\ \ \ \}}
+\DoxyCodeLine{02439\ }
+\DoxyCodeLine{02440\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items[0].children)\ \{}
+\DoxyCodeLine{02441\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.token\ ==\ ElementToken)\ \{}
+\DoxyCodeLine{02442\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children.size()\ <\ 2)\ \{}
+\DoxyCodeLine{02443\ \ \ \ \ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02444\ \ \ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Invalid\ element\ information\ in\ header.\ Expecting\ 'vertex'\ or\ "{}}}
+\DoxyCodeLine{02445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}'face'\ and\ a\ number."{}}}
+\DoxyCodeLine{02446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ item.line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{02447\ }
+\DoxyCodeLine{02448\ \ \ \ \ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::ParseHeader"{}},\ error.str());}
+\DoxyCodeLine{02449\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02450\ }
+\DoxyCodeLine{02451\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children[0].token\ ==\ WordToken\ \&\&}
+\DoxyCodeLine{02452\ \ \ \ \ \ \ \ \ \ \ item.children[1].token\ ==\ NumberToken)\ \{}
+\DoxyCodeLine{02453\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children[0].value\ ==\ \textcolor{stringliteral}{"{}vertex"{}})\ \{}
+\DoxyCodeLine{02454\ \ \ \ \ \ \ \ \ \ \ vertex\_count\_\ =\ atoi(item.children[1].value.c\_str());}
+\DoxyCodeLine{02455\ }
+\DoxyCodeLine{02456\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 2;\ i\ <\ item.children.size();\ i++)\ \{}
+\DoxyCodeLine{02457\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \textcolor{keyword}{property}\ =\ item.children[i];}
+\DoxyCodeLine{02458\ }
+\DoxyCodeLine{02459\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (property.children.size()\ >\ 1)\ \{}
+\DoxyCodeLine{02460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (property.children[1].token\ ==\ WordToken)\ \{}
+\DoxyCodeLine{02461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (property.children[1].value\ ==\ \textcolor{stringliteral}{"{}x"{}})\ \{}
+\DoxyCodeLine{02462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\_index\_\ =\ i\ -\/\ 2;}
+\DoxyCodeLine{02463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02464\ }
+\DoxyCodeLine{02465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (property.children[1].value\ ==\ \textcolor{stringliteral}{"{}y"{}})\ \{}
+\DoxyCodeLine{02466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\_index\_\ =\ i\ -\/\ 2;}
+\DoxyCodeLine{02467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02468\ }
+\DoxyCodeLine{02469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (property.children[1].value\ ==\ \textcolor{stringliteral}{"{}z"{}})\ \{}
+\DoxyCodeLine{02470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\_index\_\ =\ i\ -\/\ 2;}
+\DoxyCodeLine{02471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02473\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02474\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02475\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02476\ }
+\DoxyCodeLine{02477\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (item.children[0].value\ ==\ \textcolor{stringliteral}{"{}face"{}})\ \{}
+\DoxyCodeLine{02478\ \ \ \ \ \ \ \ \ \ \ facet\_count\_\ =\ atoi(item.children[1].value.c\_str());}
+\DoxyCodeLine{02479\ }
+\DoxyCodeLine{02480\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 2;\ i\ <\ item.children.size();\ i++)\ \{}
+\DoxyCodeLine{02481\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \textcolor{keyword}{property}\ =\ item.children[i];}
+\DoxyCodeLine{02482\ }
+\DoxyCodeLine{02483\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (property.children.size()\ >\ 1)\ \{}
+\DoxyCodeLine{02484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (property.children[1].token\ ==\ WordToken)\ \{}
+\DoxyCodeLine{02485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (property.children[1].value\ ==\ \textcolor{stringliteral}{"{}uchar\ int\ vertex\_indices"{}})\ \{}
+\DoxyCodeLine{02486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ facet\_index\_\ =\ i\ -\/\ 2;}
+\DoxyCodeLine{02487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02489\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02490\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02491\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02492\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{02493\ \ \ \ \ \}}
+\DoxyCodeLine{02494\ \ \ \}}
+\DoxyCodeLine{02495\ }
+\DoxyCodeLine{02496\ \ \ \textcolor{keywordflow}{if}\ (vertex\_count\_\ ==\ 0)\ \{}
+\DoxyCodeLine{02497\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02498\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ number\ of\ vertices\ was\ not\ found\ in\ the\ header."{}};}
+\DoxyCodeLine{02499\ }
+\DoxyCodeLine{02500\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::ParseHeader"{}},\ error.str());}
+\DoxyCodeLine{02501\ \ \ \}}
+\DoxyCodeLine{02502\ }
+\DoxyCodeLine{02503\ \ \ \textcolor{keywordflow}{if}\ (facet\_count\_\ ==\ 0)\ \{}
+\DoxyCodeLine{02504\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02505\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ number\ of\ faces\ was\ not\ found\ in\ the\ header."{}};}
+\DoxyCodeLine{02506\ }
+\DoxyCodeLine{02507\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::ParseHeader"{}},\ error.str());}
+\DoxyCodeLine{02508\ \ \ \}}
+\DoxyCodeLine{02509\ }
+\DoxyCodeLine{02510\ \ \ \textcolor{keywordflow}{if}\ ((x\_index\_\ ==\ y\_index\_)\ ||\ (y\_index\_\ ==\ z\_index\_)\ ||}
+\DoxyCodeLine{02511\ \ \ \ \ \ \ (x\_index\_\ ==\ z\_index\_))\ \{}
+\DoxyCodeLine{02512\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02513\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ vertex\ x,\ y,\ z\ indices\ were\ not\ found\ in\ the\ header."{}};}
+\DoxyCodeLine{02514\ }
+\DoxyCodeLine{02515\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::ParseHeader"{}},\ error.str());}
+\DoxyCodeLine{02516\ \ \ \}}
+\DoxyCodeLine{02517\ \}}
+\DoxyCodeLine{02518\ }
+\DoxyCodeLine{02519\ \textcolor{keyword}{inline}\ std::shared\_ptr<Mesh>\ PLYReader::ParseMesh(Items\ vertex\_items,}
+\DoxyCodeLine{02520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Items\ face\_items)\ \{}
+\DoxyCodeLine{02521\ \ \ Points\ vertices;}
+\DoxyCodeLine{02522\ \ \ Triangles\ facets;}
+\DoxyCodeLine{02523\ }
+\DoxyCodeLine{02524\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ vertex\_items)\ \{}
+\DoxyCodeLine{02525\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{02526\ \ \ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02527\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ vertex\ appears\ to\ be\ empty."{}}}
+\DoxyCodeLine{02528\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ item.line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{02529\ }
+\DoxyCodeLine{02530\ \ \ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::ParseMesh"{}},\ error.str());}
+\DoxyCodeLine{02531\ \ \ \ \ \}}
+\DoxyCodeLine{02532\ }
+\DoxyCodeLine{02533\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.token\ ==\ VertexToken)\ \{}
+\DoxyCodeLine{02534\ \ \ \ \ \ \ vertices.push\_back(ParseVertex(item.children));}
+\DoxyCodeLine{02535\ \ \ \ \ \}}
+\DoxyCodeLine{02536\ \ \ \}}
+\DoxyCodeLine{02537\ }
+\DoxyCodeLine{02538\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ face\_items)\ \{}
+\DoxyCodeLine{02539\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.children.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{02540\ \ \ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02541\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}The\ facet\ appears\ to\ be\ empty."{}}}
+\DoxyCodeLine{02542\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ item.line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{02543\ }
+\DoxyCodeLine{02544\ \ \ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::Mesh"{}},\ error.str());}
+\DoxyCodeLine{02545\ \ \ \ \ \}}
+\DoxyCodeLine{02546\ }
+\DoxyCodeLine{02547\ \ \ \ \ \textcolor{keywordflow}{if}\ (item.token\ ==\ FacetToken)\ \{}
+\DoxyCodeLine{02548\ \ \ \ \ \ \ facets.push\_back(ParseFacet(item.children,\ vertices));}
+\DoxyCodeLine{02549\ \ \ \ \ \}}
+\DoxyCodeLine{02550\ \ \ \}}
+\DoxyCodeLine{02551\ }
+\DoxyCodeLine{02552\ \ \ \textcolor{keywordflow}{return}\ Mesh::New(facets);}
+\DoxyCodeLine{02553\ \}}
+\DoxyCodeLine{02554\ }
+\DoxyCodeLine{02555\ \textcolor{keyword}{inline}\ G4ThreeVector\ PLYReader::ParseVertex(Items\ items)\ \{}
+\DoxyCodeLine{02556\ \ \ std::vector<double>\ numbers;}
+\DoxyCodeLine{02557\ }
+\DoxyCodeLine{02558\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{02559\ \ \ \ \ numbers.push\_back((\textcolor{keywordtype}{double})atof(item.value.c\_str()));}
+\DoxyCodeLine{02560\ \ \ \}}
+\DoxyCodeLine{02561\ }
+\DoxyCodeLine{02562\ \ \ \textcolor{keywordflow}{if}\ (numbers.size()\ <\ 3)\ \{}
+\DoxyCodeLine{02563\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02564\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Vertices\ in\ PLY\ files\ require\ atleast\ 3\ numbers.\ "{}};}
+\DoxyCodeLine{02565\ }
+\DoxyCodeLine{02566\ \ \ \ \ \textcolor{keywordflow}{if}\ (items.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{02567\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ items[0].line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{02568\ \ \ \ \ \}}
+\DoxyCodeLine{02569\ }
+\DoxyCodeLine{02570\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::ParseVertex"{}},\ error.str());}
+\DoxyCodeLine{02571\ \ \ \}}
+\DoxyCodeLine{02572\ }
+\DoxyCodeLine{02573\ \ \ \textcolor{keywordflow}{return}\ G4ThreeVector(numbers[x\_index\_],\ numbers[y\_index\_],\ numbers[z\_index\_]);}
+\DoxyCodeLine{02574\ \}}
+\DoxyCodeLine{02575\ }
+\DoxyCodeLine{02576\ \textcolor{keyword}{inline}\ G4TriangularFacet\ *PLYReader::ParseFacet(Items\ items,\ Points\ vertices)\ \{}
+\DoxyCodeLine{02577\ \ \ std::vector<int>\ indices;}
+\DoxyCodeLine{02578\ }
+\DoxyCodeLine{02579\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ items)\ \{}
+\DoxyCodeLine{02580\ \ \ \ \ indices.push\_back((\textcolor{keywordtype}{int})atoi(item.value.c\_str()));}
+\DoxyCodeLine{02581\ \ \ \}}
+\DoxyCodeLine{02582\ }
+\DoxyCodeLine{02583\ \ \ \textcolor{keywordflow}{if}\ (indices.size()\ <\ 4)\ \{}
+\DoxyCodeLine{02584\ \ \ \ \ std::stringstream\ error;}
+\DoxyCodeLine{02585\ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Facets\ in\ PLY\ files\ require\ 3\ indicies"{}};}
+\DoxyCodeLine{02586\ }
+\DoxyCodeLine{02587\ \ \ \ \ \textcolor{keywordflow}{if}\ (items.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{02588\ \ \ \ \ \ \ error\ <<\ \textcolor{stringliteral}{"{}Error\ around\ line\ "{}}\ <<\ items[0].line\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{02589\ \ \ \ \ \}}
+\DoxyCodeLine{02590\ }
+\DoxyCodeLine{02591\ \ \ \ \ Exceptions::ParserError(\textcolor{stringliteral}{"{}PLYReader::ParseFacet"{}},\ error.str());}
+\DoxyCodeLine{02592\ \ \ \}}
+\DoxyCodeLine{02593\ }
+\DoxyCodeLine{02594\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ G4TriangularFacet(vertices[indices[1\ +\ facet\_index\_]],}
+\DoxyCodeLine{02595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vertices[indices[2\ +\ facet\_index\_]],}
+\DoxyCodeLine{02596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vertices[indices[3\ +\ facet\_index\_]],\ ABSOLUTE);}
+\DoxyCodeLine{02597\ \}}
+\DoxyCodeLine{02598\ \}}
+\DoxyCodeLine{02599\ \}}
+\DoxyCodeLine{02600\ }
+\DoxyCodeLine{02601\ \textcolor{preprocessor}{\#ifdef\ USE\_CADMESH\_ASSIMP\_READER}}
+\DoxyCodeLine{02602\ }
+\DoxyCodeLine{02603\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{02604\ }
+\DoxyCodeLine{02605\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{02606\ }
+\DoxyCodeLine{02607\ \textcolor{keyword}{inline}\ ASSIMPReader::ASSIMPReader()\ :\ Reader(\textcolor{stringliteral}{"{}ASSIMPReader"{}})\ \{}
+\DoxyCodeLine{02608\ \ \ importer\_\ =\ \textcolor{keyword}{new}\ Assimp::Importer();}
+\DoxyCodeLine{02609\ \}}
+\DoxyCodeLine{02610\ }
+\DoxyCodeLine{02611\ \textcolor{keyword}{inline}\ ASSIMPReader::\string~ASSIMPReader()\ \{\ \textcolor{keyword}{delete}\ importer\_;\ \}}
+\DoxyCodeLine{02612\ }
+\DoxyCodeLine{02613\ \textcolor{keyword}{inline}\ G4bool\ ASSIMPReader::Read(G4String\ filepath)\ \{}
+\DoxyCodeLine{02614\ \ \ \textcolor{keyword}{auto}\ scene\ =\ importer\_-\/>ReadFile(filepath.c\_str(),}
+\DoxyCodeLine{02615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aiProcess\_Triangulate\ |}
+\DoxyCodeLine{02616\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aiProcess\_JoinIdenticalVertices\ |}
+\DoxyCodeLine{02617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aiProcess\_CalcTangentSpace);}
+\DoxyCodeLine{02618\ }
+\DoxyCodeLine{02619\ \ \ \textcolor{keywordflow}{if}\ (!scene)\ \{}
+\DoxyCodeLine{02620\ \ \ \ \ Exceptions::FileNotFound(\textcolor{stringliteral}{"{}ASSIMP::Read"{}},\ filepath);}
+\DoxyCodeLine{02621\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{02622\ \ \ \}}
+\DoxyCodeLine{02623\ }
+\DoxyCodeLine{02624\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index\ =\ 0;\ index\ <\ scene-\/>mNumMeshes;\ index++)\ \{}
+\DoxyCodeLine{02625\ \ \ \ \ aiMesh\ *mesh\ =\ scene-\/>mMeshes[index];}
+\DoxyCodeLine{02626\ \ \ \ \ \textcolor{keyword}{auto}\ name\ =\ mesh-\/>mName.C\_Str();}
+\DoxyCodeLine{02627\ }
+\DoxyCodeLine{02628\ \ \ \ \ Triangles\ triangles;}
+\DoxyCodeLine{02629\ }
+\DoxyCodeLine{02630\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ mesh-\/>mNumFaces;\ i++)\ \{}
+\DoxyCodeLine{02631\ \ \ \ \ \ \ \textcolor{keyword}{const}\ aiFace\ \&face\ =\ mesh-\/>mFaces[i];}
+\DoxyCodeLine{02632\ }
+\DoxyCodeLine{02633\ \ \ \ \ \ \ G4ThreeVector\ a(mesh-\/>mVertices[face.mIndices[0]].x,}
+\DoxyCodeLine{02634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>mVertices[face.mIndices[0]].y,}
+\DoxyCodeLine{02635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>mVertices[face.mIndices[0]].z);}
+\DoxyCodeLine{02636\ }
+\DoxyCodeLine{02637\ \ \ \ \ \ \ G4ThreeVector\ b(mesh-\/>mVertices[face.mIndices[1]].x,}
+\DoxyCodeLine{02638\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>mVertices[face.mIndices[1]].y,}
+\DoxyCodeLine{02639\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>mVertices[face.mIndices[1]].z);}
+\DoxyCodeLine{02640\ }
+\DoxyCodeLine{02641\ \ \ \ \ \ \ G4ThreeVector\ c(mesh-\/>mVertices[face.mIndices[2]].x,}
+\DoxyCodeLine{02642\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>mVertices[face.mIndices[2]].y,}
+\DoxyCodeLine{02643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mesh-\/>mVertices[face.mIndices[2]].z);}
+\DoxyCodeLine{02644\ }
+\DoxyCodeLine{02645\ \ \ \ \ \ \ triangles.push\_back(\textcolor{keyword}{new}\ G4TriangularFacet(a,\ b,\ c,\ ABSOLUTE));}
+\DoxyCodeLine{02646\ \ \ \ \ \}}
+\DoxyCodeLine{02647\ }
+\DoxyCodeLine{02648\ \ \ \ \ AddMesh(Mesh::New(triangles,\ name));}
+\DoxyCodeLine{02649\ \ \ \}}
+\DoxyCodeLine{02650\ }
+\DoxyCodeLine{02651\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{02652\ \}}
+\DoxyCodeLine{02653\ }
+\DoxyCodeLine{02654\ \textcolor{keyword}{inline}\ G4bool\ ASSIMPReader::CanRead(Type\ \textcolor{comment}{/*file\_type*/})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{02655\ }
+\DoxyCodeLine{02656\ std::shared\_ptr<ASSIMPReader>\ ASSIMP()\ \{}
+\DoxyCodeLine{02657\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<ASSIMPReader>();}
+\DoxyCodeLine{02658\ \}}
+\DoxyCodeLine{02659\ \}}
+\DoxyCodeLine{02660\ \}}
+\DoxyCodeLine{02661\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{02662\ }
+\DoxyCodeLine{02663\ \textcolor{keyword}{namespace\ }CADMesh\ \{}
+\DoxyCodeLine{02664\ }
+\DoxyCodeLine{02665\ \textcolor{keyword}{namespace\ }File\ \{}
+\DoxyCodeLine{02666\ }
+\DoxyCodeLine{02667\ \textcolor{keyword}{inline}\ G4bool\ BuiltInReader::Read(G4String\ filepath)\ \{}
+\DoxyCodeLine{02668\ \ \ File::Reader\ *reader\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{02669\ }
+\DoxyCodeLine{02670\ \ \ \textcolor{keyword}{auto}\ type\ =\ TypeFromName(filepath);}
+\DoxyCodeLine{02671\ }
+\DoxyCodeLine{02672\ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ STL)\ \{}
+\DoxyCodeLine{02673\ \ \ \ \ reader\ =\ \textcolor{keyword}{new}\ File::STLReader();}
+\DoxyCodeLine{02674\ \ \ \}}
+\DoxyCodeLine{02675\ }
+\DoxyCodeLine{02676\ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ OBJ)\ \{}
+\DoxyCodeLine{02677\ \ \ \ \ reader\ =\ \textcolor{keyword}{new}\ File::OBJReader();}
+\DoxyCodeLine{02678\ \ \ \}}
+\DoxyCodeLine{02679\ }
+\DoxyCodeLine{02680\ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ PLY)\ \{}
+\DoxyCodeLine{02681\ \ \ \ \ reader\ =\ \textcolor{keyword}{new}\ File::PLYReader();}
+\DoxyCodeLine{02682\ \ \ \}}
+\DoxyCodeLine{02683\ }
+\DoxyCodeLine{02684\ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{02685\ \ \ \ \ Exceptions::ReaderCantReadError(\textcolor{stringliteral}{"{}BuildInReader::Read"{}},\ type,\ filepath);}
+\DoxyCodeLine{02686\ \ \ \}}
+\DoxyCodeLine{02687\ }
+\DoxyCodeLine{02688\ \ \ \textcolor{keywordflow}{if}\ (!reader-\/>Read(filepath))\ \{}
+\DoxyCodeLine{02689\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{02690\ \ \ \}}
+\DoxyCodeLine{02691\ }
+\DoxyCodeLine{02692\ \ \ SetMeshes(reader-\/>GetMeshes());}
+\DoxyCodeLine{02693\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{02694\ \}}
+\DoxyCodeLine{02695\ }
+\DoxyCodeLine{02696\ \textcolor{keyword}{inline}\ G4bool\ BuiltInReader::CanRead(Type\ type)\ \{}
+\DoxyCodeLine{02697\ \ \ \textcolor{keywordflow}{return}\ type\ ==\ STL\ ||\ type\ ==\ OBJ\ ||\ type\ ==\ PLY;}
+\DoxyCodeLine{02698\ \}}
+\DoxyCodeLine{02699\ }
+\DoxyCodeLine{02700\ \textcolor{keyword}{inline}\ std::shared\_ptr<BuiltInReader>\ BuiltIn()\ \{}
+\DoxyCodeLine{02701\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<BuiltInReader>();}
+\DoxyCodeLine{02702\ \}}
+\DoxyCodeLine{02703\ \}}
+\DoxyCodeLine{02704\ \}}
+
+\end{DoxyCode}

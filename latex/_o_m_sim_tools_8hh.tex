@@ -1,8 +1,8 @@
-\hypertarget{_o_m_sim_tools_8hh}{}\doxysection{OMSim\+Tools.\+hh File Reference}
-\label{_o_m_sim_tools_8hh}\index{OMSimTools.hh@{OMSimTools.hh}}
+\doxysection{OMSim\+Tools.\+hh File Reference}
+\hypertarget{_o_m_sim_tools_8hh}{}\label{_o_m_sim_tools_8hh}\index{OMSimTools.hh@{OMSimTools.hh}}
 
 
-Definition of \mbox{\hyperlink{namespace_tools}{Tools}} namespace, a collection of helper methods.  
+Definition of \doxylink{namespace_tools}{Tools} namespace, a collection of helper methods.  
 
 
 Include dependency graph for OMSim\+Tools.\+hh\+:
@@ -21,25 +21,25 @@ This graph shows which files directly or indirectly include this file\+:
 \includegraphics[width=350pt]{_o_m_sim_tools_8hh__dep__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Namespaces}
+\doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
- \mbox{\hyperlink{namespace_tools}{Tools}}
+namespace \mbox{\hyperlink{namespace_tools}{Tools}}
 \begin{DoxyCompactList}\small\item\em A collection of helper functions for numerical operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_afc07e23ed8113c72927202c1762c91a4}{Tools\+::arange}} (double p\+\_\+start, double p\+\_\+stop, double p\+\_\+step)
 \begin{DoxyCompactList}\small\item\em Generates a sequence of numbers. \end{DoxyCompactList}\item 
-TGraph $\ast$ \mbox{\hyperlink{namespace_tools_a71949435269d3e8f0671dc8be431b939}{Tools\+::create1d\+Interpolator}} (const std\+::vector$<$ double $>$ \&p\+\_\+X, const std\+::vector$<$ double $>$ \&p\+\_\+y, const std\+::string \&p\+\_\+name)
+TGraph \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_tools_a71949435269d3e8f0671dc8be431b939}{Tools\+::create1d\+Interpolator}} (const std\+::vector$<$ double $>$ \&p\+\_\+X, const std\+::vector$<$ double $>$ \&p\+\_\+y, const std\+::string \&p\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Creates a TGraph interpolator from x and y data points. \end{DoxyCompactList}\item 
-TGraph $\ast$ \mbox{\hyperlink{namespace_tools_a09abd2f325d0bef58f108c277cda429e}{Tools\+::create1d\+Interpolator}} (const std\+::string \&p\+\_\+filename)
+TGraph \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_tools_a09abd2f325d0bef58f108c277cda429e}{Tools\+::create1d\+Interpolator}} (const std\+::string \&p\+\_\+filename)
 \begin{DoxyCompactList}\small\item\em Creates a TGraph interpolator from x and y in file. \end{DoxyCompactList}\item 
-TH2D $\ast$ \mbox{\hyperlink{namespace_tools_ac7412f9ce8a57a3efde80e4fdbb0b364}{Tools\+::create2\+DHistogram\+From\+Data\+File}} (const std\+::string \&p\+\_\+file\+Path)
+TH2D \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_tools_ac7412f9ce8a57a3efde80e4fdbb0b364}{Tools\+::create2\+DHistogram\+From\+Data\+File}} (const std\+::string \&p\+\_\+file\+Path)
 \begin{DoxyCompactList}\small\item\em Create a histogram from provided data. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_tools_a79deeeb2ed49181f097d55b88f6831f9}{Tools\+::ensure\+Directory\+Exists}} (const std\+::string \&p\+\_\+file\+Path)
 \begin{DoxyCompactList}\small\item\em Ensure that the directory of a file to be created exists. \end{DoxyCompactList}\item 
-std\+::pair$<$ std\+::vector$<$ double $>$, std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{namespace_tools_a6ed3b046c3661b17f758d3f8f7f784de}{Tools\+::histogram}} (const std\+::vector$<$ double $>$ \&data, const std\+::variant$<$ int, std\+::vector$<$ double $>$$>$ \&bins, const std\+::optional$<$ std\+::pair$<$ double, double $>$$>$ \&p\+\_\+range, const std\+::vector$<$ double $>$ \&p\+\_\+weights)
+std\+::pair$<$ std\+::vector$<$ double $>$, std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{namespace_tools_ab58e9ef8ed3fc6fe3cd85e26136f5be7}{Tools\+::histogram}} (const std\+::vector$<$ double $>$ \&data, const std\+::variant$<$ int, std\+::vector$<$ double $>$ $>$ \&bins, const std\+::optional$<$ std\+::pair$<$ double, double $>$ $>$ \&p\+\_\+range, const std\+::vector$<$ double $>$ \&p\+\_\+weights)
 \begin{DoxyCompactList}\small\item\em Compute the histogram of a dataset. \end{DoxyCompactList}\item 
 G4\+String \mbox{\hyperlink{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}{Tools\+::get\+Thread\+IDStr}} ()
 \item 
@@ -51,27 +51,27 @@ std\+::vector$<$ double $>$ \mbox{\hyperlink{namespace_tools_adf257eb5c348836614
 \begin{DoxyCompactList}\small\item\em Generates a logarithmically spaced vector. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_tools_a3269713e8f36608124048bda75a02a49}{Tools\+::sort\+Vector\+By\+Reference}} (std\+::vector$<$ G4double $>$ \&p\+\_\+reference\+Vector, std\+::vector$<$ G4double $>$ \&p\+\_\+sort\+Vector)
 \begin{DoxyCompactList}\small\item\em Sorts two vectors (p\+\_\+sort\+Vector \& p\+\_\+reference\+Vector) based on the order of values in p\+\_\+reference\+Vector. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{namespace_tools_ae5e9dd629de363e6059b3f563a37845a}\label{namespace_tools_ae5e9dd629de363e6059b3f563a37845a}} 
+\Hypertarget{namespace_tools_ae5e9dd629de363e6059b3f563a37845a}\label{namespace_tools_ae5e9dd629de363e6059b3f563a37845a} 
 double {\bfseries Tools\+::median} (std\+::vector$<$ double $>$ p\+\_\+vec)
 \item 
-\mbox{\Hypertarget{namespace_tools_a02d22a3d187b9c60a29a904f27eeae01}\label{namespace_tools_a02d22a3d187b9c60a29a904f27eeae01}} 
+\Hypertarget{namespace_tools_a02d22a3d187b9c60a29a904f27eeae01}\label{namespace_tools_a02d22a3d187b9c60a29a904f27eeae01} 
 double {\bfseries Tools\+::mean} (const std\+::vector$<$ double $>$ \&p\+\_\+vec, const std\+::vector$<$ double $>$ \&p\+\_\+weights=\{\})
 \item 
-\mbox{\Hypertarget{namespace_tools_a8daf7345e55256e178b3cc523fbeffca}\label{namespace_tools_a8daf7345e55256e178b3cc523fbeffca}} 
+\Hypertarget{namespace_tools_a8daf7345e55256e178b3cc523fbeffca}\label{namespace_tools_a8daf7345e55256e178b3cc523fbeffca} 
 double {\bfseries Tools\+::std} (const std\+::vector$<$ double $>$ \&vec, const std\+::vector$<$ double $>$ \&p\+\_\+weights=\{\})
 \item 
-\mbox{\Hypertarget{namespace_tools_a643113251f480a06563725426fc25adf}\label{namespace_tools_a643113251f480a06563725426fc25adf}} 
+\Hypertarget{namespace_tools_a643113251f480a06563725426fc25adf}\label{namespace_tools_a643113251f480a06563725426fc25adf} 
 void {\bfseries Tools\+::throw\+Error} (const G4\+String \&message)
 \item 
-\mbox{\Hypertarget{namespace_tools_ae68674997cfff7a2f3be9afe673b6e57}\label{namespace_tools_ae68674997cfff7a2f3be9afe673b6e57}} 
+\Hypertarget{namespace_tools_ae68674997cfff7a2f3be9afe673b6e57}\label{namespace_tools_ae68674997cfff7a2f3be9afe673b6e57} 
 std\+::vector$<$ G4\+String $>$ {\bfseries Tools\+::split\+String\+By\+Delimiter} (G4\+String const \&p\+\_\+string, char p\+\_\+delim)
 \item 
-\mbox{\Hypertarget{namespace_tools_a25cdf291245515edee1db8cc54a0b4eb}\label{namespace_tools_a25cdf291245515edee1db8cc54a0b4eb}} 
-std\+::vector$<$ G4\+String $>$ {\bfseries Tools\+::split\+String\+By\+Delimiter} (char $\ast$p\+\_\+char, char p\+\_\+delim)
+\Hypertarget{namespace_tools_a25cdf291245515edee1db8cc54a0b4eb}\label{namespace_tools_a25cdf291245515edee1db8cc54a0b4eb} 
+std\+::vector$<$ G4\+String $>$ {\bfseries Tools\+::split\+String\+By\+Delimiter} (char \texorpdfstring{$\ast$}{*}p\+\_\+char, char p\+\_\+delim)
 \end{DoxyCompactItemize}
-\doxysubsection*{Variables}
+\doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{namespace_tools_a4ee77f675e34ef6252e59c21b5ca6499}\label{namespace_tools_a4ee77f675e34ef6252e59c21b5ca6499}} 
-std\+::string {\bfseries Tools\+::visualisation\+URL} = \char`\"{}https\+://icecube.\+github.\+io/\mbox{\hyperlink{class_o_m_sim}{OMSim}}/md\+\_\+extra\+\_\+doc\+\_\+2\+\_\+technicalities.\+html\#autotoc\+\_\+md30\char`\"{}
+\Hypertarget{namespace_tools_a4ee77f675e34ef6252e59c21b5ca6499}\label{namespace_tools_a4ee77f675e34ef6252e59c21b5ca6499} 
+std\+::string {\bfseries Tools\+::visualisation\+URL} = "{}https\+://icecube.\+github.\+io/\mbox{\hyperlink{class_o_m_sim}{OMSim}}/md\+\_\+extra\+\_\+doc\+\_\+2\+\_\+technicalities.\+html\#autotoc\+\_\+md30"{}
 \end{DoxyCompactItemize}

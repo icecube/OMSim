@@ -1,0 +1,103 @@
+\doxysection{OMSim\+LOM18.\+hh}
+\hypertarget{_o_m_sim_l_o_m18_8hh_source}{}\label{_o_m_sim_l_o_m18_8hh_source}\index{OMSimLOM18.hh@{OMSimLOM18.hh}}
+\mbox{\hyperlink{_o_m_sim_l_o_m18_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_p_m_t_construction_8hh}{OMSimPMTConstruction.hh}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}OMSimOpticalModule.hh"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <G4LogicalVolume.hh>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <G4Polycone.hh>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_l_o_m18}{LOM18}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSimOpticalModule}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_l_o_m18}{LOM18}}(G4bool\ pPlaceHarness\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_l_o_m18}{\string~LOM18}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_l_o_m18_a0744107f29517a84a06b2544e81b00e0}{construction}}();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_l_o_m18_a6e42615d2a84e6b94ec28a32ede7ec25}{getPressureVesselWeight}}()\ \{\textcolor{keywordflow}{return}\ 17.0*kg;\};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_l_o_m18_ac61b9f417138d26d168abbf48f0c0379}{getNumberOfPMTs}}()\ \{\ \textcolor{keywordflow}{return}\ m\_totalNumberPMTs;\};}
+\DoxyCodeLine{00021\ \ \ \ \ G4String\ getName()}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}LOM18/"{}}\ <<\ m\_index;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ss.str();}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ G4Polycone*\ \mbox{\hyperlink{class_l_o_m18_a0c6423e526bb3c38904cde7ef6673ec2}{createLOM18OuterSolid}}();}
+\DoxyCodeLine{00030\ \ \ \ \ G4Polycone*\ \mbox{\hyperlink{class_l_o_m18_a45b2c68239eac03aaf1b76225dc377f1}{createLOM18InnerSolid}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ appendEquatorBand();}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_l_o_m18_ab12d337504e3ec8be903b391acd6bef2}{placeCADSupportStructure}}(G4LogicalVolume*\ lInnerVolumeLogical);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_l_o_m18_a6f6f50683c9c78ded2c92ca1b9177446}{placeCADPenetrator}}(G4LogicalVolume*\ lInnerVolumeLogical);}
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_l_o_m18_a07ecf58441de167ca0d41650a14a7190}{setPMTPositions}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_l_o_m18_ab5292cecae375e7f04caf7b995ccc8ae}{createGelpadLogicalVolumes}}(G4Polycone*\ lGelSolid);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_l_o_m18_a2d136add4da3246223c611155412321a}{placePMTs}}(G4LogicalVolume*\ lInnerVolumeLogical);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_l_o_m18_a1275540bdcd8b359b7332690e7c8da4b}{placeGelpads}}(G4LogicalVolume*\ lInnerVolumeLogical);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//selection\ variables}}
+\DoxyCodeLine{00044\ \ \ \ \ G4bool\ m\_placeHarness\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00045\ \ \ \ \ G4bool\ m\_harnessUnion\ =\ \textcolor{keyword}{true};\ \textcolor{comment}{//it\ should\ be\ true\ for\ the\ first\ module\ that\ you\ build,\ and\ then\ false}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//vectors\ for\ positions\ and\ rotations}}
+\DoxyCodeLine{00048\ \ \ \ \ std::vector<G4ThreeVector>\ m\_positionsPMT;}
+\DoxyCodeLine{00049\ \ \ \ \ std::vector<G4ThreeVector>\ m\_positionsGelpad;}
+\DoxyCodeLine{00050\ \ \ \ \ std::vector<G4double>\ m\_thetaPMT;}
+\DoxyCodeLine{00051\ \ \ \ \ std::vector<G4double>\ m\_phiPMT;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//from\ PMTConstruction\ class\ (not\ readable\ directly...needs\ to\ be\ changed)}}
+\DoxyCodeLine{00057\ \ \ \ \ G4double\ m\_totalLenght;}
+\DoxyCodeLine{00058\ \ \ \ \ G4double\ m\_outRad;}
+\DoxyCodeLine{00059\ \ \ \ \ G4double\ m\_spherePosY;\ }
+\DoxyCodeLine{00060\ \ \ \ \ G4double\ m\_ellipsePosY;\ }
+\DoxyCodeLine{00061\ \ \ \ \ G4double\ m\_ellipseZaxis;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//helper\ variables}}
+\DoxyCodeLine{00064\ \ \ \ \ std::stringstream\ m\_conv;}
+\DoxyCodeLine{00065\ \ \ \ \ std::stringstream\ m\_converter2;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//logical\ of\ gelpads}}
+\DoxyCodeLine{00068\ \ \ \ \ std::vector<G4LogicalVolume*>\ m\_gelPadLogical;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ G4double\ m\_GlassEquatorWidth\ =\ 159*mm;}
+\DoxyCodeLine{00071\ \ \ \ \ G4double\ m\_GlassPoleLength\ =\ 270*mm;}
+\DoxyCodeLine{00072\ \ \ \ \ G4double\ m\_GlassThickPole\ =\ 12.5*mm;}
+\DoxyCodeLine{00073\ \ \ \ \ G4double\ m\_GlassThickEquator\ =\ 16.5*mm;}
+\DoxyCodeLine{00074\ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ G4double\ m\_thetaCenter\ =\ 48.0*deg;}
+\DoxyCodeLine{00076\ \ \ \ \ G4double\ m\_thetaEquatorial\ =\ 60.0*deg;}
+\DoxyCodeLine{00077\ \ \ \ \ G4int\ m\_numberPolarPMTs\ =\ 1;}
+\DoxyCodeLine{00078\ \ \ \ \ G4int\ m\_NrCenterPMTs\ =\ 4;}
+\DoxyCodeLine{00079\ \ \ \ \ G4int\ m\_NrEquatorialPMTs\ =\ 4;}
+\DoxyCodeLine{00080\ \ \ \ \ G4double\ m\_EqPMTPhiPhase\ =\ 45.0*deg;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//gelpad\ specific}}
+\DoxyCodeLine{00083\ \ \ \ \ G4double\ m\_polarPadOpeningAngle\ =\ 30.0*deg;}
+\DoxyCodeLine{00084\ \ \ \ \ G4double\ m\_centerPadOpeningAngle\ =\ 10.0*deg;}
+\DoxyCodeLine{00085\ \ \ \ \ G4double\ m\_equatorialPadOpeningAngle\ =\ 5.0*deg;}
+\DoxyCodeLine{00086\ \ \ \ \ G4double\ m\_GelThicknessFrontPolarPMT\ =\ 3.5*mm;}
+\DoxyCodeLine{00087\ \ \ \ \ G4double\ m\_gelThicknessFrontCenterPMT\ =\ 12.93*mm;}
+\DoxyCodeLine{00088\ \ \ \ \ G4double\ m\_gelThicknessFrontEquatorialPMT\ =\ 14.52*mm;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ G4int\ m\_numberPMTsPerHalf\ =\ m\_numberPolarPMTs\ +\ m\_NrCenterPMTs\ +\ m\_NrEquatorialPMTs;}
+\DoxyCodeLine{00091\ \ \ \ \ G4int\ m\_totalNumberPMTs\ =\ (m\_numberPolarPMTs\ +\ m\_NrCenterPMTs\ +\ m\_NrEquatorialPMTs)\ *\ 2;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//from\ PMT\ manager}}
+\DoxyCodeLine{00093\ \ \ \ \ G4double\ m\_PMToffset;}
+\DoxyCodeLine{00094\ \ \ \ \ G4double\ m\_maxPMTRadius;\ \ \ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00097\ \ \ \ \ G4double\ m\_cylinderAngle\ =\ 1.5*deg;}
+\DoxyCodeLine{00098\ \ \ \ \ G4double\ m\_glassOutRad;}
+\DoxyCodeLine{00099\ \};}
+\DoxyCodeLine{00100\ }
+
+\end{DoxyCode}

@@ -1,0 +1,52 @@
+\doxysection{OMSim\+MDOMFlasher.\+hh}
+\hypertarget{_o_m_sim_m_d_o_m_flasher_8hh_source}{}\label{_o_m_sim_m_d_o_m_flasher_8hh_source}\index{OMSimMDOMFlasher.hh@{OMSimMDOMFlasher.hh}}
+\mbox{\hyperlink{_o_m_sim_m_d_o_m_flasher_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_detector_component_8hh}{OMSimDetectorComponent.hh}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <G4UnionSolid.hh>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <G4Navigator.hh>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classm_d_o_m}{mDOM}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_global_position}{GlobalPosition}}}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ CLHEP::HepRotation\ rotation;}
+\DoxyCodeLine{00029\ \ \ \ \ G4double\ x;}
+\DoxyCodeLine{00030\ \ \ \ \ G4double\ y;}
+\DoxyCodeLine{00031\ \ \ \ \ G4double\ z;}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classm_d_o_m_flasher}{mDOMFlasher}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSimDetectorComponent}}}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{classm_d_o_m_flasher}{mDOMFlasher}}();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm_d_o_m_flasher_aac8c466bbcc6d952ad82fbd29daa675f}{construction}}();}
+\DoxyCodeLine{00049\ \ \ \ \ std::tuple<G4UnionSolid\ *,\ G4UnionSolid\ *,\ G4Tubs\ *>\ getSolids();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm_d_o_m_flasher_a268494f8d27175e1ae391789e1d66faf}{runBeamOnFlasher}}(\mbox{\hyperlink{classm_d_o_m}{mDOM}}\ *pMDOMInstance,\ G4int\ pModuleIndex,\ G4int\ pLEDIndex);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ makeSolids();}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ makeLogicalVolumes();}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm_d_o_m_flasher_a4c7d36af1760026c53a9164bf02dc057}{readFlasherProfile}}();}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{struct_global_position}{GlobalPosition}}\ \mbox{\hyperlink{classm_d_o_m_flasher_aa74e2bfee6f21cb652e7dd9929e8e688}{getFlasherPositionInfo}}(\mbox{\hyperlink{classm_d_o_m}{mDOM}}\ *pMDOMInstance,\ G4int\ pModuleIndex,\ G4int\ pLEDIndex);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm_d_o_m_flasher_a364e96471e231b5b7838cc8df92529fc}{configureGPS}}(\mbox{\hyperlink{struct_global_position}{GlobalPosition}}\ flasherInfo);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ G4UnionSolid\ *m\_LEDSolid;}
+\DoxyCodeLine{00061\ \ \ \ \ G4UnionSolid\ *m\_flasherHoleSolid;}
+\DoxyCodeLine{00062\ \ \ \ \ G4Tubs\ *m\_glassWindowSolid;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ G4LogicalVolume\ *m\_flasherHoleLogical;}
+\DoxyCodeLine{00065\ \ \ \ \ G4LogicalVolume\ *m\_glassWindowLogical;}
+\DoxyCodeLine{00066\ \ \ \ \ G4LogicalVolume\ *m\_LEDLogical;}
+\DoxyCodeLine{00067\ \ \ \ \ G4bool\ m\_flasherProfileAvailable\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00068\ \ \ \ \ std::vector<double>\ m\_profileX;}
+\DoxyCodeLine{00069\ \ \ \ \ std::vector<double>\ m\_profileY;}
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+
+\end{DoxyCode}

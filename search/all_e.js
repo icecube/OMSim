@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['name_192',['Name',['../struct_o_m_sim_detector_component_1_1_component.html#abcfbd55801684b5cb8ab20de0fe78ed9',1,'OMSimDetectorComponent::Component']]],
-  ['numberoftargets_193',['numberOfTargets',['../class_o_m_sim_s_n_tools.html#a34d75fd490a03c6c6131c5ea8fbec3f2',1,'OMSimSNTools']]]
+  ['killparticle_0',['killParticle',['../class_o_m_sim_sensitive_detector.html#aad0ef54caf4fd1505aed2959d59b1e3d',1,'OMSimSensitiveDetector']]],
+  ['kineticenergy_1',['kineticEnergy',['../struct_photon_info.html#a20a8691860c91f4dcd139524c3f262e8',1,'PhotonInfo']]]
 ];

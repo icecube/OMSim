@@ -1,8 +1,8 @@
-\hypertarget{class_o_m_sim_e_n_e_s}{}\doxysection{OMSim\+ENES Class Reference}
-\label{class_o_m_sim_e_n_e_s}\index{OMSimENES@{OMSimENES}}
+\doxysection{OMSim\+ENES Class Reference}
+\hypertarget{class_o_m_sim_e_n_e_s}{}\label{class_o_m_sim_e_n_e_s}\index{OMSimENES@{OMSimENES}}
 
 
-Class in charge of generating electrons from Electron-\/electron\+\_\+\+Neutrino Elastic Scattering (ENES) nu\+\_\+e+e -\/$>$ nu\+\_\+e+e of supernova antineutrino interactions.  
+Class in charge of generating electrons from Electron-\/electron\+\_\+\+Neutrino Elastic Scattering (ENES) nu\+\_\+e+e -\/\texorpdfstring{$>$}{>} nu\+\_\+e+e of supernova antineutrino interactions.  
 
 
 
@@ -28,16 +28,22 @@ Collaboration diagram for OMSim\+ENES\+:
 
 
 \doxysubsection{Detailed Description}
-Supported by \mbox{\hyperlink{class_o_m_sim_s_n_tools}{OMSim\+SNTools}}, this class generates the corresponding electrons after the ENES and weights the interactions corresponding to the cross section and the generated volume \doxysubsection*{Public Member Functions}
+Supported by \doxylink{class_o_m_sim_s_n_tools}{OMSim\+SNTools}, this class generates the corresponding electrons after the ENES and weights the interactions corresponding to the cross section and the generated volume \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_o_m_sim_e_n_e_s_a3fdc804dd8a106680b902c792512ceb5}{OMSim\+ENES}} (G4\+Particle\+Gun $\ast$)
-\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{class_o_m_sim_e_n_e_s}{OMSim\+ENES}} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\mbox{\hyperlink{class_o_m_sim_e_n_e_s_a3fdc804dd8a106680b902c792512ceb5}{OMSim\+ENES}} (G4\+Particle\+Gun \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Constructor of \doxylink{class_o_m_sim_e_n_e_s}{OMSim\+ENES} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\+Generator}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_e_n_e_s_af55498a2a7606096ec2de63c867a8095}\label{class_o_m_sim_e_n_e_s_af55498a2a7606096ec2de63c867a8095}} 
-void {\bfseries initialise\+Particle} ()
+{\bfseries SNBase\+Particle\+Generator} (G4\+Particle\+Gun \texorpdfstring{$\ast$}{*})
+\item 
+void {\bfseries Generate\+Primaries} (G4\+Event \texorpdfstring{$\ast$}{*}an\+Event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_o_m_sim_e_n_e_s_af55498a2a7606096ec2de63c867a8095}{initialise\+Particle}} ()
 \item 
 \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} \mbox{\hyperlink{class_o_m_sim_e_n_e_s_aa8f2d71f822873410a9f6816fd00786b}{angular\+Distribution}} (G4double Enu)
 \begin{DoxyCompactList}\small\item\em Computes the angular distribution for electron scattering based on incident neutrino energy. \end{DoxyCompactList}\item 
@@ -45,15 +51,49 @@ G4double \mbox{\hyperlink{class_o_m_sim_e_n_e_s_afdc34f3f9559919c54f29804c337481
 \begin{DoxyCompactList}\small\item\em Computes the electron energy from elastic scattering based on incident neutrino energy and scatter angle. \end{DoxyCompactList}\item 
 G4double \mbox{\hyperlink{class_o_m_sim_e_n_e_s_af2e3aedc5ca2d1006891540c0d038eb7}{total\+Cross\+Section}} (G4double energy)
 \begin{DoxyCompactList}\small\item\em Computes the total cross section for ENES based on incident neutrino energy. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\+Generator}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries initialise\+Distribution} (int column, int targets)
+\item 
+G4double {\bfseries calculate\+Neutrino\+Energy} ()
+\item 
+G4\+Three\+Vector {\bfseries calculate\+Momentum\+Direction} (G4double p\+Neutrino\+Energy)
+\item 
+G4double {\bfseries calculate\+Weight} (G4double p\+Nu\+Energy)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\+Generator}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+Particle\+Gun \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+particle\+Gun}
+\item 
+\mbox{\hyperlink{class_o_m_sim_s_n_tools}{OMSim\+SNTools}} {\bfseries m\+\_\+\+SNTool\+Box}
+\item 
+const G4double {\bfseries m\+\_\+\+Gf} = 1.\+166e-\/5 \texorpdfstring{$\ast$}{*} 1e-\/6 / (MeV \texorpdfstring{$\ast$}{*} MeV)
+\item 
+const G4double {\bfseries m\+\_\+\+Consg} = 1.\+26
+\item 
+const G4double {\bfseries m\+\_\+delta\+Mass} = neutron\+\_\+mass\+\_\+c2 -\/ proton\+\_\+mass\+\_\+c2
+\item 
+const G4double {\bfseries m\+\_\+mass\+Squared\+Difference} = (pow(m\+\_\+delta\+Mass, 2) -\/ pow(electron\+\_\+mass\+\_\+c2, 2)) / 2.
+\item 
+G4double {\bfseries m\+\_\+\+Nr\+Targets}
+\item 
+\mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} {\bfseries m\+\_\+time\+Distribution}
+\item 
+\mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} {\bfseries m\+\_\+mean\+Energy\+Distribution}
+\item 
+\mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} {\bfseries m\+\_\+mean\+Energy\+Squared\+Distribution}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_o_m_sim_e_n_e_s_a3fdc804dd8a106680b902c792512ceb5}\label{class_o_m_sim_e_n_e_s_a3fdc804dd8a106680b902c792512ceb5}} 
+\Hypertarget{class_o_m_sim_e_n_e_s_a3fdc804dd8a106680b902c792512ceb5}\label{class_o_m_sim_e_n_e_s_a3fdc804dd8a106680b902c792512ceb5} 
 \index{OMSimENES@{OMSimENES}!OMSimENES@{OMSimENES}}
 \index{OMSimENES@{OMSimENES}!OMSimENES@{OMSimENES}}
 \doxysubsubsection{\texorpdfstring{OMSimENES()}{OMSimENES()}}
-{\footnotesize\ttfamily OMSim\+ENES\+::\+OMSim\+ENES (\begin{DoxyParamCaption}\item[{G4\+Particle\+Gun $\ast$}]{p\+\_\+gun }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily OMSim\+ENES\+::\+OMSim\+ENES (\begin{DoxyParamCaption}\item[{G4\+Particle\+Gun \texorpdfstring{$\ast$}{*}}]{p\+\_\+gun }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -63,13 +103,13 @@ G4double \mbox{\hyperlink{class_o_m_sim_e_n_e_s_af2e3aedc5ca2d1006891540c0d038eb
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_e_n_e_s_aa8f2d71f822873410a9f6816fd00786b}\label{class_o_m_sim_e_n_e_s_aa8f2d71f822873410a9f6816fd00786b}} 
+\Hypertarget{class_o_m_sim_e_n_e_s_aa8f2d71f822873410a9f6816fd00786b}\label{class_o_m_sim_e_n_e_s_aa8f2d71f822873410a9f6816fd00786b} 
 \index{OMSimENES@{OMSimENES}!angularDistribution@{angularDistribution}}
 \index{angularDistribution@{angularDistribution}!OMSimENES@{OMSimENES}}
 \doxysubsubsection{\texorpdfstring{angularDistribution()}{angularDistribution()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_distribution_sampler}{Distribution\+Sampler}} OMSim\+ENES\+::angular\+Distribution (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+energy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
 
-This function calculates the angular distribution for electrons scattered by neutrinos. The foundation for this computation is taken from the reference\+: \char`\"{}\+Carlo Giunti and Chung W.\+Kim (2007), Fundamentals of Neutrino Physics and Astrophysics, Oxford University Press, Chapter 5, eq. 5.\+29\char`\"{}.
+This function calculates the angular distribution for electrons scattered by neutrinos. The foundation for this computation is taken from the reference\+: "{}\+Carlo Giunti and Chung W.\+Kim (2007), Fundamentals of Neutrino Physics and Astrophysics, Oxford University Press, Chapter 5, eq. 5.\+29"{}.
 
 
 \begin{DoxyParams}{Parameters}
@@ -80,13 +120,13 @@ This function calculates the angular distribution for electrons scattered by neu
 
 Implements \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\+Generator}}.
 
-\mbox{\Hypertarget{class_o_m_sim_e_n_e_s_afdc34f3f9559919c54f29804c337481a}\label{class_o_m_sim_e_n_e_s_afdc34f3f9559919c54f29804c337481a}} 
+\Hypertarget{class_o_m_sim_e_n_e_s_afdc34f3f9559919c54f29804c337481a}\label{class_o_m_sim_e_n_e_s_afdc34f3f9559919c54f29804c337481a} 
 \index{OMSimENES@{OMSimENES}!calculateSecondaryParticleEnergy@{calculateSecondaryParticleEnergy}}
 \index{calculateSecondaryParticleEnergy@{calculateSecondaryParticleEnergy}!OMSimENES@{OMSimENES}}
 \doxysubsubsection{\texorpdfstring{calculateSecondaryParticleEnergy()}{calculateSecondaryParticleEnergy()}}
 {\footnotesize\ttfamily G4double OMSim\+ENES\+::calculate\+Secondary\+Particle\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+\+Nu\+Energy,  }\item[{G4double}]{p\+\_\+cos\+Theta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
 
-The computation utilizes the formula for the energy of the electron as a function of incident neutrino energy and the scatter angle, based on the formula provided in the reference\+: \char`\"{}\+Carlo Giunti and Chung W.\+Kim (2007), Fundamentals of Neutrino Physics and Astrophysics, Oxford University Press, Chapter 5, eq. 5.\+27\char`\"{}.
+The computation utilizes the formula for the energy of the electron as a function of incident neutrino energy and the scatter angle, based on the formula provided in the reference\+: "{}\+Carlo Giunti and Chung W.\+Kim (2007), Fundamentals of Neutrino Physics and Astrophysics, Oxford University Press, Chapter 5, eq. 5.\+27"{}.
 
 
 \begin{DoxyParams}{Parameters}
@@ -102,13 +142,23 @@ Calculated energy value of the electron post scattering.
 
 Implements \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\+Generator}}.
 
-\mbox{\Hypertarget{class_o_m_sim_e_n_e_s_af2e3aedc5ca2d1006891540c0d038eb7}\label{class_o_m_sim_e_n_e_s_af2e3aedc5ca2d1006891540c0d038eb7}} 
+\Hypertarget{class_o_m_sim_e_n_e_s_af55498a2a7606096ec2de63c867a8095}\label{class_o_m_sim_e_n_e_s_af55498a2a7606096ec2de63c867a8095} 
+\index{OMSimENES@{OMSimENES}!initialiseParticle@{initialiseParticle}}
+\index{initialiseParticle@{initialiseParticle}!OMSimENES@{OMSimENES}}
+\doxysubsubsection{\texorpdfstring{initialiseParticle()}{initialiseParticle()}}
+{\footnotesize\ttfamily void OMSim\+ENES\+::initialise\+Particle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBase\+Particle\+Generator}}.
+
+\Hypertarget{class_o_m_sim_e_n_e_s_af2e3aedc5ca2d1006891540c0d038eb7}\label{class_o_m_sim_e_n_e_s_af2e3aedc5ca2d1006891540c0d038eb7} 
 \index{OMSimENES@{OMSimENES}!totalCrossSection@{totalCrossSection}}
 \index{totalCrossSection@{totalCrossSection}!OMSimENES@{OMSimENES}}
 \doxysubsubsection{\texorpdfstring{totalCrossSection()}{totalCrossSection()}}
 {\footnotesize\ttfamily G4double OMSim\+ENES\+::total\+Cross\+Section (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+energy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
 
-This function determines the total cross-\/section for the scattering of neutrinos with electrons given a specific incident neutrino energy. The computational foundation is derived from\+: \char`\"{}\+M. Buchkremer, Electroweak Interactions\+: Neutral currents in neutrino-\/lepton elastic scattering experiments, \+Université Catholique de Louvain /\+CP3, 2011.\char`\"{}
+This function determines the total cross-\/section for the scattering of neutrinos with electrons given a specific incident neutrino energy. The computational foundation is derived from\+: "{}\+M. Buchkremer, Electroweak Interactions\+: Neutral currents in neutrino-\/lepton elastic scattering experiments, \+Université Catholique de Louvain /\+CP3, 2011."{}
 
 
 \begin{DoxyParams}{Parameters}

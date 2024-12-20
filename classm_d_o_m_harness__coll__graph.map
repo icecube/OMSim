@@ -1,10 +1,21 @@
 <map id="mDOMHarness" name="mDOMHarness">
-<area shape="rect" id="node1" title=" " alt="" coords="33,247,153,273"/>
-<area shape="rect" id="node5" href="$classm_d_o_m.html" title=" " alt="" coords="170,424,237,451"/>
-<area shape="rect" id="node2" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="147,171,347,197"/>
-<area shape="rect" id="node6" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="234,348,397,375"/>
-<area shape="rect" id="node7" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="245,247,423,273"/>
-<area shape="rect" id="node8" href="$classm_d_o_m_flasher.html" title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module." alt="" coords="421,297,535,324"/>
-<area shape="rect" id="node3" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="181,81,314,108"/>
-<area shape="rect" id="node4" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="186,5,309,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="31,243,151,268"/>
+<area shape="rect" id="Node000005" href="$classm_d_o_m.html" title=" " alt="" coords="168,416,235,441"/>
+<area shape="poly" id="edge11_Node000005_Node000001" title=" " alt="" coords="62,278,39,297,18,319,8,343,9,354,15,365,29,381,47,394,88,412,131,422,169,425,168,430,130,427,86,417,44,399,26,385,10,368,4,355,3,342,14,316,35,293,59,274"/>
+<area shape="rect" id="Node000002" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="146,168,346,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,202,117,245,114,240,208,197"/>
+<area shape="rect" id="Node000006" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="232,341,395,367"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="237,207,230,237,230,252,234,267,246,289,263,309,298,339,294,343,259,313,242,292,229,269,225,253,225,236,232,205"/>
+<area shape="rect" id="Node000007" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="243,243,422,268"/>
+<area shape="poly" id="edge8_Node000007_Node000002" title=" " alt="" coords="272,200,320,240,317,244,268,204"/>
+<area shape="rect" id="Node000008" href="$classm_d_o_m_flasher.html" title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module." alt="" coords="419,292,534,317"/>
+<area shape="poly" id="edge10_Node000008_Node000002" title=" " alt="" coords="330,194,384,212,435,241,459,265,473,290,469,293,454,269,432,245,382,217,328,199"/>
+<area shape="rect" id="Node000003" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="179,80,312,105"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="248,119,248,167,243,167,243,119"/>
+<area shape="rect" id="Node000004" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="184,5,307,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="248,45,248,80,243,80,243,45"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="155,412,125,394,101,368,90,342,85,314,87,268,92,268,90,313,95,340,105,365,129,390,157,408"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="286,376,221,418,218,414,283,372"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="308,279,299,293,297,305,298,317,308,340,303,342,293,319,291,305,294,291,304,276"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="459,329,436,350,408,369,363,390,317,406,236,425,234,419,315,401,361,385,406,364,433,346,455,325"/>
 </map>

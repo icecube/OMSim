@@ -1,5 +1,5 @@
-\hypertarget{class_o_m_sim_detector_construction}{}\doxysection{OMSim\+Detector\+Construction Class Reference}
-\label{class_o_m_sim_detector_construction}\index{OMSimDetectorConstruction@{OMSimDetectorConstruction}}
+\doxysection{OMSim\+Detector\+Construction Class Reference}
+\hypertarget{class_o_m_sim_detector_construction}{}\label{class_o_m_sim_detector_construction}\index{OMSimDetectorConstruction@{OMSimDetectorConstruction}}
 
 
 Class for detector construction in the effective area simulation.  
@@ -25,64 +25,82 @@ Collaboration diagram for OMSim\+Detector\+Construction\+:
 \includegraphics[width=350pt]{class_o_m_sim_detector_construction__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Classes}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_o_m_sim_detector_construction_1_1_s_d_info}{SDInfo}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-G4\+VPhysical\+Volume $\ast$ \mbox{\hyperlink{class_o_m_sim_detector_construction_a9e16ad5da3921b502473b303609caad0}{Construct}} ()
+G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_construction_a9e16ad5da3921b502473b303609caad0}{Construct}} ()
 \begin{DoxyCompactList}\small\item\em Constructs the selected detector from the command line argument and returns the physical world volume. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_detector_construction_a7396d4c4a761b9d79104ce1459f77468}\label{class_o_m_sim_detector_construction_a7396d4c4a761b9d79104ce1459f77468}} 
+\Hypertarget{class_o_m_sim_detector_construction_a7396d4c4a761b9d79104ce1459f77468}\label{class_o_m_sim_detector_construction_a7396d4c4a761b9d79104ce1459f77468} 
 void {\bfseries Construct\+SDand\+Field} () override
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_construction_a5bc12d4354f99ecb63606d0be2db301c}\label{class_o_m_sim_detector_construction_a5bc12d4354f99ecb63606d0be2db301c}} 
-void {\bfseries register\+Sensitive\+Detector} (G4\+Logical\+Volume $\ast$log\+Vol, G4\+VSensitive\+Detector $\ast$a\+SD)
+\Hypertarget{class_o_m_sim_detector_construction_a5bc12d4354f99ecb63606d0be2db301c}\label{class_o_m_sim_detector_construction_a5bc12d4354f99ecb63606d0be2db301c} 
+void {\bfseries register\+Sensitive\+Detector} (G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}log\+Vol, G4\+VSensitive\+Detector \texorpdfstring{$\ast$}{*}a\+SD)
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_construction_acee1c3740b849208611282fab13a2985}\label{class_o_m_sim_detector_construction_acee1c3740b849208611282fab13a2985}} 
-G4\+VPhysical\+Volume $\ast$ {\bfseries m\+\_\+world\+Physical}
+\Hypertarget{class_o_m_sim_detector_construction_acee1c3740b849208611282fab13a2985}\label{class_o_m_sim_detector_construction_acee1c3740b849208611282fab13a2985} 
+G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Physical}
 \end{DoxyCompactItemize}
-\doxysubsection*{Protected Member Functions}
+\doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_construction_a0bab6798cb1c5dab85ecf8dbec6b2fb3}\label{class_o_m_sim_detector_construction_a0bab6798cb1c5dab85ecf8dbec6b2fb3}} 
-virtual void {\bfseries construct\+World} ()=0
+virtual void \mbox{\hyperlink{class_o_m_sim_detector_construction_a0bab6798cb1c5dab85ecf8dbec6b2fb3}{construct\+World}} ()=0
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_construction_acf70d9779d2a0d7556c314ae53c41546}\label{class_o_m_sim_detector_construction_acf70d9779d2a0d7556c314ae53c41546}} 
-virtual void {\bfseries construct\+Detector} ()=0
+virtual void \mbox{\hyperlink{class_o_m_sim_detector_construction_acf70d9779d2a0d7556c314ae53c41546}{construct\+Detector}} ()=0
 \end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
+\doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_construction_a6e034bd9ffa79e95589d147f920d2bc0}\label{class_o_m_sim_detector_construction_a6e034bd9ffa79e95589d147f920d2bc0}} 
-G4\+VSolid $\ast$ {\bfseries m\+\_\+world\+Solid}
+\Hypertarget{class_o_m_sim_detector_construction_a6e034bd9ffa79e95589d147f920d2bc0}\label{class_o_m_sim_detector_construction_a6e034bd9ffa79e95589d147f920d2bc0} 
+G4\+VSolid \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Solid}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_construction_ab19cb6aa2dfc62722d96acd9f1d78cf5}\label{class_o_m_sim_detector_construction_ab19cb6aa2dfc62722d96acd9f1d78cf5}} 
-G4\+Logical\+Volume $\ast$ {\bfseries m\+\_\+world\+Logical}
+\Hypertarget{class_o_m_sim_detector_construction_ab19cb6aa2dfc62722d96acd9f1d78cf5}\label{class_o_m_sim_detector_construction_ab19cb6aa2dfc62722d96acd9f1d78cf5} 
+G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Logical}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_construction_a2de0f66475afd78dfe310db2a5ffac72}\label{class_o_m_sim_detector_construction_a2de0f66475afd78dfe310db2a5ffac72}} 
-\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} $\ast$ {\bfseries m\+\_\+data}
+\Hypertarget{class_o_m_sim_detector_construction_a2de0f66475afd78dfe310db2a5ffac72}\label{class_o_m_sim_detector_construction_a2de0f66475afd78dfe310db2a5ffac72} 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+data}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_construction_af7e8aab0f90ac2be81b329a71d65df0e}\label{class_o_m_sim_detector_construction_af7e8aab0f90ac2be81b329a71d65df0e}} 
+\Hypertarget{class_o_m_sim_detector_construction_af7e8aab0f90ac2be81b329a71d65df0e}\label{class_o_m_sim_detector_construction_af7e8aab0f90ac2be81b329a71d65df0e} 
 std\+::vector$<$ \mbox{\hyperlink{struct_o_m_sim_detector_construction_1_1_s_d_info}{SDInfo}} $>$ {\bfseries m\+\_\+sensitive\+Detectors}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_detector_construction_a9e16ad5da3921b502473b303609caad0}\label{class_o_m_sim_detector_construction_a9e16ad5da3921b502473b303609caad0}} 
+\Hypertarget{class_o_m_sim_detector_construction_a9e16ad5da3921b502473b303609caad0}\label{class_o_m_sim_detector_construction_a9e16ad5da3921b502473b303609caad0} 
 \index{OMSimDetectorConstruction@{OMSimDetectorConstruction}!Construct@{Construct}}
 \index{Construct@{Construct}!OMSimDetectorConstruction@{OMSimDetectorConstruction}}
 \doxysubsubsection{\texorpdfstring{Construct()}{Construct()}}
-{\footnotesize\ttfamily G4\+VPhysical\+Volume $\ast$ OMSim\+Detector\+Construction\+::\+Construct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} OMSim\+Detector\+Construction\+::\+Construct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyReturn}{Returns}
 Pointer to the physical world volume 
 \end{DoxyReturn}
+\Hypertarget{class_o_m_sim_detector_construction_acf70d9779d2a0d7556c314ae53c41546}\label{class_o_m_sim_detector_construction_acf70d9779d2a0d7556c314ae53c41546} 
+\index{OMSimDetectorConstruction@{OMSimDetectorConstruction}!constructDetector@{constructDetector}}
+\index{constructDetector@{constructDetector}!OMSimDetectorConstruction@{OMSimDetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{constructDetector()}{constructDetector()}}
+{\footnotesize\ttfamily virtual void OMSim\+Detector\+Construction\+::construct\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_o_m_sim_effective_area_detector_a9bf2d906954805cea5fb5008af710d13}{OMSim\+Effective\+Area\+Detector}}, \mbox{\hyperlink{class_o_m_sim_effi_cali_detector_aa12821e2b147fab3e4eafd3a396a7158}{OMSim\+Effi\+Cali\+Detector}}, and \mbox{\hyperlink{class_o_m_sim_rad_decays_detector_a57f6a622e962ea5217caabd9d2161af8}{OMSim\+Rad\+Decays\+Detector}}.
+
+\Hypertarget{class_o_m_sim_detector_construction_a0bab6798cb1c5dab85ecf8dbec6b2fb3}\label{class_o_m_sim_detector_construction_a0bab6798cb1c5dab85ecf8dbec6b2fb3} 
+\index{OMSimDetectorConstruction@{OMSimDetectorConstruction}!constructWorld@{constructWorld}}
+\index{constructWorld@{constructWorld}!OMSimDetectorConstruction@{OMSimDetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{constructWorld()}{constructWorld()}}
+{\footnotesize\ttfamily virtual void OMSim\+Detector\+Construction\+::construct\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_o_m_sim_effective_area_detector_a6c4ccbdfac66c2820f9480d518614fa3}{OMSim\+Effective\+Area\+Detector}}, \mbox{\hyperlink{class_o_m_sim_effi_cali_detector_a38dbbcd0d08fd25291839ed03b609217}{OMSim\+Effi\+Cali\+Detector}}, \mbox{\hyperlink{class_o_m_sim_rad_decays_detector_a7616ce083479e613cd3d9dfa9ac8b1fa}{OMSim\+Rad\+Decays\+Detector}}, and \mbox{\hyperlink{class_o_m_sim_s_ndetector_aa331476cc1f56d3bee80c954f7a2d793}{OMSim\+SNdetector}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

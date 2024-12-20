@@ -1,6 +1,9 @@
 <map id="SNBaseParticleGenerator" name="SNBaseParticleGenerator">
-<area shape="rect" id="node1" title=" " alt="" coords="31,80,216,107"/>
-<area shape="rect" id="node3" href="$class_o_m_sim_e_n_e_s.html" title="Class in charge of generating electrons from Electron&#45;electron_Neutrino Elastic Scattering (ENES) nu_..." alt="" coords="12,155,115,181"/>
-<area shape="rect" id="node4" href="$class_o_m_sim_i_b_d.html" title="Class in charge of generating positrons from IBD of supernova antineutrino interactions." alt="" coords="139,155,231,181"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,241,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="31,79,216,104"/>
+<area shape="rect" id="Node000003" href="$class_o_m_sim_e_n_e_s.html" title="Class in charge of generating electrons from Electron&#45;electron_Neutrino Elastic Scattering (ENES) nu_..." alt="" coords="12,152,115,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="107,116,75,154,71,150,103,113"/>
+<area shape="rect" id="Node000004" href="$class_o_m_sim_i_b_d.html" title="Class in charge of generating positrons from IBD of supernova antineutrino interactions." alt="" coords="139,152,231,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="144,113,177,150,173,154,140,116"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,241,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,44,126,79,121,79,121,44"/>
 </map>

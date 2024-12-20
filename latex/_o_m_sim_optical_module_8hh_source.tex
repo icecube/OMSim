@@ -1,0 +1,34 @@
+\doxysection{OMSim\+Optical\+Module.\+hh}
+\hypertarget{_o_m_sim_optical_module_8hh_source}{}\label{_o_m_sim_optical_module_8hh_source}\index{OMSimOpticalModule.hh@{OMSimOpticalModule.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_detector_component_8hh}{OMSimDetectorComponent.hh}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_hit_manager_8hh}{OMSimHitManager.hh}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_p_m_t_construction_8hh}{OMSimPMTConstruction.hh}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSimDetectorConstruction}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_optical_module}{OMSimOpticalModule}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSimDetectorComponent}}}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSimOpticalModule}}(\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSimPMTConstruction}}*\ pPMTManager);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_o_m_sim_optical_module}{\string~OMSimOpticalModule}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}{getPressureVesselWeight}}()\ =\ 0;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}{getNumberOfPMTs}}()\ =\ 0;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ configureSensitiveVolume(\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSimDetectorConstruction}}\ *pDetConst);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ G4String\ getName()\ =\ 0;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSimPMTConstruction}}\ *getPMTmanager();}
+\DoxyCodeLine{00049\ \ \ \ \ G4int\ m\_index;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSimPMTConstruction}}\ *m\_managerPMT;}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+
+\end{DoxyCode}

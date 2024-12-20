@@ -1,38 +1,80 @@
 <map id="OMSimLOM18.hh" name="OMSimLOM18.hh">
-<area shape="rect" id="node1" title="Construction of LOM18." alt="" coords="1624,5,1759,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="1432,155,1631,181"/>
-<area shape="rect" id="node31" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="1504,80,1687,107"/>
-<area shape="rect" id="node35" title=" " alt="" coords="1711,80,1866,107"/>
-<area shape="rect" id="node36" title=" " alt="" coords="1891,80,2009,107"/>
-<area shape="rect" id="node3" href="$_o_m_sim_detector_component_8hh.html" title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i..." alt="" coords="1217,229,1437,256"/>
-<area shape="rect" id="node24" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="1607,304,1787,331"/>
-<area shape="rect" id="node29" title=" " alt="" coords="1518,229,1649,256"/>
-<area shape="rect" id="node30" title=" " alt="" coords="1673,229,1763,256"/>
-<area shape="rect" id="node4" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and OMSimInputData." alt="" coords="731,304,884,331"/>
-<area shape="rect" id="node20" title=" " alt="" coords="908,304,1051,331"/>
-<area shape="rect" id="node21" title=" " alt="" coords="1075,304,1219,331"/>
-<area shape="rect" id="node22" title=" " alt="" coords="1244,304,1411,331"/>
-<area shape="rect" id="node23" title=" " alt="" coords="1435,304,1582,331"/>
-<area shape="rect" id="node5" href="$_o_m_sim_logger_8hh_source.html" title=" " alt="" coords="299,386,431,413"/>
-<area shape="rect" id="node10" href="$_o_m_sim_op_boundary_process_8hh_source.html" title=" " alt="" coords="813,386,1031,413"/>
-<area shape="rect" id="node18" title=" " alt="" coords="1231,386,1389,413"/>
-<area shape="rect" id="node19" title=" " alt="" coords="1056,379,1207,420"/>
-<area shape="rect" id="node6" title=" " alt="" coords="5,475,129,502"/>
-<area shape="rect" id="node7" title=" " alt="" coords="153,468,301,509"/>
-<area shape="rect" id="node8" title=" " alt="" coords="326,475,403,502"/>
-<area shape="rect" id="node9" title=" " alt="" coords="427,475,558,502"/>
-<area shape="rect" id="node11" title=" " alt="" coords="583,475,733,502"/>
-<area shape="rect" id="node12" title=" " alt="" coords="758,475,913,502"/>
-<area shape="rect" id="node13" title=" " alt="" coords="937,475,1083,502"/>
-<area shape="rect" id="node14" title=" " alt="" coords="1107,475,1281,502"/>
-<area shape="rect" id="node15" title=" " alt="" coords="1305,475,1515,502"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1594,475,1714,502"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1759,475,1885,502"/>
-<area shape="rect" id="node25" title=" " alt="" coords="1413,386,1511,413"/>
-<area shape="rect" id="node26" title=" " alt="" coords="1535,386,1586,413"/>
-<area shape="rect" id="node27" title=" " alt="" coords="1611,386,1692,413"/>
-<area shape="rect" id="node28" title=" " alt="" coords="1716,386,1787,413"/>
-<area shape="rect" id="node32" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="1789,229,1953,256"/>
-<area shape="rect" id="node33" title=" " alt="" coords="1913,304,2051,331"/>
-<area shape="rect" id="node34" title=" " alt="" coords="2075,304,2148,331"/>
+<area shape="rect" id="Node000001" title="Construction of LOM18." alt="" coords="1624,5,1759,31"/>
+<area shape="rect" id="Node000002" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="1432,152,1631,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1624,23,1589,28,1554,38,1521,55,1495,80,1490,94,1492,110,1511,140,1507,143,1487,112,1484,94,1490,77,1518,51,1552,33,1588,23,1624,17"/>
+<area shape="rect" id="Node000031" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="1504,79,1687,104"/>
+<area shape="poly" id="edge32_Node000001_Node000031" title=" " alt="" coords="1677,33,1624,72,1621,68,1674,29"/>
+<area shape="rect" id="Node000035" title=" " alt="" coords="1711,79,1866,104"/>
+<area shape="poly" id="edge41_Node000001_Node000035" title=" " alt="" coords="1709,29,1763,68,1760,72,1705,33"/>
+<area shape="rect" id="Node000036" title=" " alt="" coords="1891,79,2009,104"/>
+<area shape="poly" id="edge42_Node000001_Node000036" title=" " alt="" coords="1734,28,1896,72,1894,78,1732,33"/>
+<area shape="poly" id="edge23_Node000002_Node000002" title=" " alt="" coords="1589,149,1635,150,1651,155,1657,165,1652,173,1640,178,1603,181,1602,175,1639,173,1649,169,1652,165,1648,160,1634,156,1589,155"/>
+<area shape="rect" id="Node000003" href="$_o_m_sim_detector_component_8hh.html" title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i..." alt="" coords="1217,225,1437,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1499,180,1374,223,1372,218,1498,175"/>
+<area shape="rect" id="Node000024" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="1607,299,1787,324"/>
+<area shape="poly" id="edge24_Node000002_Node000024" title=" " alt="" coords="1524,179,1506,213,1502,232,1508,249,1524,262,1551,274,1620,293,1619,298,1550,279,1522,267,1504,252,1497,232,1500,211,1520,176"/>
+<area shape="rect" id="Node000029" title=" " alt="" coords="1518,225,1649,251"/>
+<area shape="poly" id="edge30_Node000002_Node000029" title=" " alt="" coords="1542,176,1569,213,1565,216,1538,179"/>
+<area shape="rect" id="Node000030" title=" " alt="" coords="1673,225,1763,251"/>
+<area shape="poly" id="edge31_Node000002_Node000030" title=" " alt="" coords="1562,175,1676,218,1674,223,1560,180"/>
+<area shape="rect" id="Node000004" href="$_o_m_sim_input_data_8hh.html" title="Definition of ParameterTable and OMSimInputData." alt="" coords="731,299,884,324"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1244,253,898,300,897,295,1243,248"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="908,299,1051,324"/>
+<area shape="poly" id="edge19_Node000003_Node000020" title=" " alt="" coords="1272,253,1050,298,1049,293,1271,248"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="1075,299,1219,324"/>
+<area shape="poly" id="edge20_Node000003_Node000021" title=" " alt="" coords="1299,253,1190,296,1188,291,1297,248"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="1244,299,1411,324"/>
+<area shape="poly" id="edge21_Node000003_Node000022" title=" " alt="" coords="1330,251,1330,285,1325,285,1325,251"/>
+<area shape="rect" id="Node000023" title=" " alt="" coords="1435,299,1582,324"/>
+<area shape="poly" id="edge22_Node000003_Node000023" title=" " alt="" coords="1357,248,1467,291,1465,296,1355,253"/>
+<area shape="rect" id="Node000005" href="$_o_m_sim_logger_8hh_source.html" title=" " alt="" coords="299,379,431,405"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="743,327,443,380,442,374,743,321"/>
+<area shape="rect" id="Node000010" href="$_o_m_sim_op_boundary_process_8hh_source.html" title=" " alt="" coords="813,379,1031,405"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="826,322,895,369,892,374,823,326"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="1231,379,1389,405"/>
+<area shape="poly" id="edge17_Node000004_Node000018" title=" " alt="" coords="885,321,1218,369,1244,374,1243,379,1218,375,884,326"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="1056,372,1207,412"/>
+<area shape="poly" id="edge18_Node000004_Node000019" title=" " alt="" coords="855,321,1043,367,1042,372,854,327"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,467,129,493"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="325,407,121,466,120,461,324,402"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="153,460,301,500"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="348,407,270,455,268,451,345,403"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="326,467,403,493"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="367,405,367,453,362,453,362,405"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="427,467,558,493"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="383,403,465,457,462,462,380,407"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="583,467,733,493"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="887,407,707,465,706,460,886,402"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="758,467,913,493"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="912,407,859,459,855,455,908,403"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="937,467,1083,493"/>
+<area shape="poly" id="edge12_Node000010_Node000013" title=" " alt="" coords="936,403,990,455,986,459,932,407"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="1107,467,1281,493"/>
+<area shape="poly" id="edge13_Node000010_Node000014" title=" " alt="" coords="959,402,1145,461,1144,466,958,407"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1305,467,1515,493"/>
+<area shape="poly" id="edge14_Node000010_Node000015" title=" " alt="" coords="988,402,1332,462,1331,468,987,407"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1594,467,1714,493"/>
+<area shape="poly" id="edge15_Node000010_Node000016" title=" " alt="" coords="992,402,1044,409,1180,425,1286,434,1392,443,1528,457,1580,465,1580,470,1527,463,1391,448,1285,439,1179,430,1043,415,991,407"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="1759,467,1885,493"/>
+<area shape="poly" id="edge16_Node000010_Node000017" title=" " alt="" coords="990,402,1044,409,1235,426,1385,431,1535,438,1726,457,1757,462,1756,467,1726,463,1534,443,1385,436,1235,431,1043,415,989,407"/>
+<area shape="poly" id="edge25_Node000024_Node000018" title=" " alt="" coords="1641,327,1403,375,1380,379,1379,374,1401,369,1640,321"/>
+<area shape="rect" id="Node000025" title=" " alt="" coords="1413,379,1511,405"/>
+<area shape="poly" id="edge26_Node000024_Node000025" title=" " alt="" coords="1663,327,1510,378,1508,373,1662,321"/>
+<area shape="rect" id="Node000026" title=" " alt="" coords="1535,379,1586,405"/>
+<area shape="poly" id="edge27_Node000024_Node000026" title=" " alt="" coords="1678,326,1594,375,1591,370,1675,322"/>
+<area shape="rect" id="Node000027" title=" " alt="" coords="1611,379,1692,405"/>
+<area shape="poly" id="edge28_Node000024_Node000027" title=" " alt="" coords="1692,326,1667,369,1663,366,1688,323"/>
+<area shape="rect" id="Node000028" title=" " alt="" coords="1716,379,1787,405"/>
+<area shape="poly" id="edge29_Node000024_Node000028" title=" " alt="" coords="1707,323,1738,367,1733,370,1703,326"/>
+<area shape="poly" id="edge40_Node000031_Node000002" title=" " alt="" coords="1587,106,1553,144,1549,140,1583,103"/>
+<area shape="poly" id="edge33_Node000031_Node000003" title=" " alt="" coords="1545,107,1484,126,1422,154,1381,185,1348,217,1344,213,1377,181,1419,150,1483,121,1544,102"/>
+<area shape="rect" id="Node000032" href="$_o_m_sim_hit_manager_8hh.html" title="Defines structures and classes related to optical module photon hit management." alt="" coords="1789,225,1953,251"/>
+<area shape="poly" id="edge34_Node000031_Node000032" title=" " alt="" coords="1619,102,1839,217,1836,221,1616,107"/>
+<area shape="poly" id="edge38_Node000032_Node000016" title=" " alt="" coords="1870,252,1841,336,1821,382,1801,414,1782,431,1760,445,1714,465,1712,460,1757,440,1778,427,1797,410,1816,380,1836,334,1865,250"/>
+<area shape="poly" id="edge39_Node000032_Node000017" title=" " alt="" coords="1873,251,1864,320,1846,413,1833,455,1828,454,1841,411,1858,319,1867,250"/>
+<area shape="poly" id="edge35_Node000032_Node000024" title=" " alt="" coords="1844,253,1739,296,1737,291,1842,248"/>
+<area shape="rect" id="Node000033" title=" " alt="" coords="1913,299,2051,324"/>
+<area shape="poly" id="edge36_Node000032_Node000033" title=" " alt="" coords="1891,248,1954,289,1951,293,1888,253"/>
+<area shape="rect" id="Node000034" title=" " alt="" coords="2075,299,2148,324"/>
+<area shape="poly" id="edge37_Node000032_Node000034" title=" " alt="" coords="1911,248,2062,293,2060,298,1909,253"/>
 </map>

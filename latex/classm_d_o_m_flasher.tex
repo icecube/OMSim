@@ -1,8 +1,8 @@
-\hypertarget{classm_d_o_m_flasher}{}\doxysection{m\+DOMFlasher Class Reference}
-\label{classm_d_o_m_flasher}\index{mDOMFlasher@{mDOMFlasher}}
+\doxysection{m\+DOMFlasher Class Reference}
+\hypertarget{classm_d_o_m_flasher}{}\label{classm_d_o_m_flasher}\index{mDOMFlasher@{mDOMFlasher}}
 
 
-The \mbox{\hyperlink{classm_d_o_m_flasher}{m\+DOMFlasher}} class represents the 10 flashers in an \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} optical module.  
+The \doxylink{classm_d_o_m_flasher}{m\+DOMFlasher} class represents the 10 flashers in an \doxylink{classm_d_o_m}{m\+DOM} optical module.  
 
 
 
@@ -28,68 +28,142 @@ Collaboration diagram for m\+DOMFlasher\+:
 
 
 \doxysubsection{Detailed Description}
-This class is responsible for creating the flashers in the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}}, which includes a LED, the air around it, and a glass window on top of it. This class also has methods for retrieving flasher solids, activating a specific flasher in a particular module, and configuring the GPS for flasher simulations. \doxysubsection*{Public Member Functions}
+This class is responsible for creating the flashers in the \doxylink{classm_d_o_m}{m\+DOM}, which includes a LED, the air around it, and a glass window on top of it. This class also has methods for retrieving flasher solids, activating a specific flasher in a particular module, and configuring the GPS for flasher simulations. \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_aac8c466bbcc6d952ad82fbd29daa675f}\label{classm_d_o_m_flasher_aac8c466bbcc6d952ad82fbd29daa675f}} 
 void \mbox{\hyperlink{classm_d_o_m_flasher_aac8c466bbcc6d952ad82fbd29daa675f}{construction}} ()
-\begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_ac779772218d50699e05de2e1fa785180}\label{classm_d_o_m_flasher_ac779772218d50699e05de2e1fa785180}} 
-std\+::tuple$<$ G4\+Union\+Solid $\ast$, G4\+Union\+Solid $\ast$, G4\+Tubs $\ast$ $>$ {\bfseries get\+Solids} ()
+\begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}. \end{DoxyCompactList}\item 
+\Hypertarget{classm_d_o_m_flasher_ac779772218d50699e05de2e1fa785180}\label{classm_d_o_m_flasher_ac779772218d50699e05de2e1fa785180} 
+std\+::tuple$<$ G4\+Union\+Solid \texorpdfstring{$\ast$}{*}, G4\+Union\+Solid \texorpdfstring{$\ast$}{*}, G4\+Tubs \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Solids} ()
 \item 
-void \mbox{\hyperlink{classm_d_o_m_flasher_a268494f8d27175e1ae391789e1d66faf}{run\+Beam\+On\+Flasher}} (\mbox{\hyperlink{classm_d_o_m}{m\+DOM}} $\ast$p\+MDOMInstance, G4int p\+Module\+Index, G4int p\+LEDIndex)
+void \mbox{\hyperlink{classm_d_o_m_flasher_a268494f8d27175e1ae391789e1d66faf}{run\+Beam\+On\+Flasher}} (\mbox{\hyperlink{classm_d_o_m}{m\+DOM}} \texorpdfstring{$\ast$}{*}p\+MDOMInstance, G4int p\+Module\+Index, G4int p\+LEDIndex)
 \begin{DoxyCompactList}\small\item\em run/beam\+On the specified flasher. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_aabf2d4ba14e3d072472ec7c46201362b}\label{classm_d_o_m_flasher_aabf2d4ba14e3d072472ec7c46201362b}} 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}{append\+Component}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Solid, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}p\+Logical, G4\+Three\+Vector p\+Vector, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Append component to Components vector. \end{DoxyCompactList}\item 
+G4bool \mbox{\hyperlink{class_o_m_sim_detector_component_a698a458599ff1d3045010636717e4da8}{check\+If\+Exists}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Check if a component with a certain name exists in the Components map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}} \mbox{\hyperlink{class_o_m_sim_detector_component_afe9d1fa2893a0ae67ab6f9afb6d377f4}{get\+Component}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Retrieves a specified component from the Components map. \end{DoxyCompactList}\item 
+G4\+Transform3D \mbox{\hyperlink{class_o_m_sim_detector_component_aa4a3ef0899866c61c3e6185946e04985}{get\+New\+Position}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Three\+Vector p\+Object\+Position, G4\+Rotation\+Matrix p\+Object\+Rotation)
+\begin{DoxyCompactList}\small\item\em Computes a new position for a sub-\/component, based on a given global position and rotation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a60b149056e8998772582544271288189}{integrate\+Detector\+Component}} (\mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} \texorpdfstring{$\ast$}{*}p\+To\+Integrate, G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name\+Extension)
+\begin{DoxyCompactList}\small\item\em Integrates the components of another \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26}{delete\+Component}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Deletes a specified component from the Components map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{place\+It}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&p\+Mother, G4\+String p\+Name\+Extension="{}"{})
+\begin{DoxyCompactList}\small\item\em Placement of the Detector\+Component. Each \doxylink{struct_o_m_sim_detector_component_1_1_component}{Component} is placed in the same mother. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a4b2ca76a8864a82cd9717f75577188d7}{place\+It}} (G4\+Transform3D p\+Trans, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&p\+Mother, G4\+String p\+Name\+Extension="{}"{})
+\begin{DoxyCompactList}\small\item\em Places the components in a specified mother volume using a provided transformation. \end{DoxyCompactList}\item 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d}{substract\+To\+Volume}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Input\+Volume, G4\+Three\+Vector p\+Substraction\+Pos, G4\+Rotation\+Matrix p\+Substraction\+Rot, G4\+String p\+New\+Volume\+Name)
+\begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume using position and rotation. \end{DoxyCompactList}\item 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_component_a6b09340b9d4a93f5a269cfc116acf8c3}{substract\+To\+Volume}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Input\+Volume, G4\+Transform3D p\+Trans, G4\+String p\+New\+Volume\+Name)
+\begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classm_d_o_m_flasher_aabf2d4ba14e3d072472ec7c46201362b}\label{classm_d_o_m_flasher_aabf2d4ba14e3d072472ec7c46201362b} 
 void {\bfseries make\+Solids} ()
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_a1a6e011d8de8d5201d9ed320e8775aae}\label{classm_d_o_m_flasher_a1a6e011d8de8d5201d9ed320e8775aae}} 
+\Hypertarget{classm_d_o_m_flasher_a1a6e011d8de8d5201d9ed320e8775aae}\label{classm_d_o_m_flasher_a1a6e011d8de8d5201d9ed320e8775aae} 
 void {\bfseries make\+Logical\+Volumes} ()
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_a4c7d36af1760026c53a9164bf02dc057}\label{classm_d_o_m_flasher_a4c7d36af1760026c53a9164bf02dc057}} 
-void \mbox{\hyperlink{classm_d_o_m_flasher_a4c7d36af1760026c53a9164bf02dc057}{read\+Flasher\+Profile}} ()
-\begin{DoxyCompactList}\small\item\em Loads profile of \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} flasher measured in the lab. See Section 7.\+3 of C. Lozanos PhD Thesis\+: \href{https://doi.org/10.5281/zenodo.8107177}{\texttt{ https\+://doi.\+org/10.\+5281/zenodo.\+8107177}} or Anna-\/\+Sophia\textquotesingle{}s Bachelor thesis (german) \href{https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/bachelorarbeiten/ba_tenbruck.pdf}{\texttt{ https\+://www.\+uni-\/muenster.\+de/imperia/md/content/physik\+\_\+kp/agkappes/abschlussarbeiten/bachelorarbeiten/ba\+\_\+tenbruck.\+pdf}}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_global_position}{Global\+Position}} \mbox{\hyperlink{classm_d_o_m_flasher_aa74e2bfee6f21cb652e7dd9929e8e688}{get\+Flasher\+Position\+Info}} (\mbox{\hyperlink{classm_d_o_m}{m\+DOM}} $\ast$p\+MDOMInstance, G4int p\+Module\+Index, G4int p\+LEDIndex)
-\begin{DoxyCompactList}\small\item\em Retrieves the global position and orientation of a specific flasher in an \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} module. \end{DoxyCompactList}\item 
+\Hypertarget{classm_d_o_m_flasher_a4c7d36af1760026c53a9164bf02dc057}\label{classm_d_o_m_flasher_a4c7d36af1760026c53a9164bf02dc057} 
+void {\bfseries read\+Flasher\+Profile} ()
+\begin{DoxyCompactList}\small\item\em Loads profile of \doxylink{classm_d_o_m}{m\+DOM} flasher measured in the lab. See Section 7.\+3 of C. Lozanos PhD Thesis\+: \href{https://doi.org/10.5281/zenodo.8107177}{\texttt{ https\+://doi.\+org/10.\+5281/zenodo.\+8107177}} or Anna-\/\+Sophia\textquotesingle{}s Bachelor thesis (german) \href{https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/bachelorarbeiten/ba_tenbruck.pdf}{\texttt{ https\+://www.\+uni-\/muenster.\+de/imperia/md/content/physik\+\_\+kp/agkappes/abschlussarbeiten/bachelorarbeiten/ba\+\_\+tenbruck.\+pdf}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_global_position}{Global\+Position}} \mbox{\hyperlink{classm_d_o_m_flasher_aa74e2bfee6f21cb652e7dd9929e8e688}{get\+Flasher\+Position\+Info}} (\mbox{\hyperlink{classm_d_o_m}{m\+DOM}} \texorpdfstring{$\ast$}{*}p\+MDOMInstance, G4int p\+Module\+Index, G4int p\+LEDIndex)
+\begin{DoxyCompactList}\small\item\em Retrieves the global position and orientation of a specific flasher in an \doxylink{classm_d_o_m}{m\+DOM} module. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classm_d_o_m_flasher_a364e96471e231b5b7838cc8df92529fc}{configure\+GPS}} (\mbox{\hyperlink{struct_global_position}{Global\+Position}} flasher\+Info)
 \begin{DoxyCompactList}\small\item\em Configures the GPS for the flasher simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_a5f3da2a94fa9f21ba461cb7734ad1878}\label{classm_d_o_m_flasher_a5f3da2a94fa9f21ba461cb7734ad1878}} 
-G4\+Union\+Solid $\ast$ {\bfseries m\+\_\+\+LEDSolid}
+\Hypertarget{classm_d_o_m_flasher_a5f3da2a94fa9f21ba461cb7734ad1878}\label{classm_d_o_m_flasher_a5f3da2a94fa9f21ba461cb7734ad1878} 
+G4\+Union\+Solid \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+LEDSolid}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_a089cbf6beccfcba776d258d4ffb6b740}\label{classm_d_o_m_flasher_a089cbf6beccfcba776d258d4ffb6b740}} 
-G4\+Union\+Solid $\ast$ {\bfseries m\+\_\+flasher\+Hole\+Solid}
+\Hypertarget{classm_d_o_m_flasher_a089cbf6beccfcba776d258d4ffb6b740}\label{classm_d_o_m_flasher_a089cbf6beccfcba776d258d4ffb6b740} 
+G4\+Union\+Solid \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+flasher\+Hole\+Solid}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_aade9a58943312be53fc63291bf3919b2}\label{classm_d_o_m_flasher_aade9a58943312be53fc63291bf3919b2}} 
-G4\+Tubs $\ast$ {\bfseries m\+\_\+glass\+Window\+Solid}
+\Hypertarget{classm_d_o_m_flasher_aade9a58943312be53fc63291bf3919b2}\label{classm_d_o_m_flasher_aade9a58943312be53fc63291bf3919b2} 
+G4\+Tubs \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+glass\+Window\+Solid}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_a182cb1f290cd987b45919962c57dfad6}\label{classm_d_o_m_flasher_a182cb1f290cd987b45919962c57dfad6}} 
-G4\+Logical\+Volume $\ast$ {\bfseries m\+\_\+flasher\+Hole\+Logical}
+\Hypertarget{classm_d_o_m_flasher_a182cb1f290cd987b45919962c57dfad6}\label{classm_d_o_m_flasher_a182cb1f290cd987b45919962c57dfad6} 
+G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+flasher\+Hole\+Logical}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_a74e713ee84a8ddbd33d94f46974a169f}\label{classm_d_o_m_flasher_a74e713ee84a8ddbd33d94f46974a169f}} 
-G4\+Logical\+Volume $\ast$ {\bfseries m\+\_\+glass\+Window\+Logical}
+\Hypertarget{classm_d_o_m_flasher_a74e713ee84a8ddbd33d94f46974a169f}\label{classm_d_o_m_flasher_a74e713ee84a8ddbd33d94f46974a169f} 
+G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+glass\+Window\+Logical}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_abe202586641134e372dffaffb18204bd}\label{classm_d_o_m_flasher_abe202586641134e372dffaffb18204bd}} 
-G4\+Logical\+Volume $\ast$ {\bfseries m\+\_\+\+LEDLogical}
+\Hypertarget{classm_d_o_m_flasher_abe202586641134e372dffaffb18204bd}\label{classm_d_o_m_flasher_abe202586641134e372dffaffb18204bd} 
+G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+LEDLogical}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_ac52d330c980684ba35362b840c536c4a}\label{classm_d_o_m_flasher_ac52d330c980684ba35362b840c536c4a}} 
+\Hypertarget{classm_d_o_m_flasher_ac52d330c980684ba35362b840c536c4a}\label{classm_d_o_m_flasher_ac52d330c980684ba35362b840c536c4a} 
 G4bool {\bfseries m\+\_\+flasher\+Profile\+Available} = false
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_a669a45599bac259aaac114bd9d8efa70}\label{classm_d_o_m_flasher_a669a45599bac259aaac114bd9d8efa70}} 
+\Hypertarget{classm_d_o_m_flasher_a669a45599bac259aaac114bd9d8efa70}\label{classm_d_o_m_flasher_a669a45599bac259aaac114bd9d8efa70} 
 std\+::vector$<$ double $>$ {\bfseries m\+\_\+profileX}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_flasher_a07e44d54a36e346fd470805fe11cc517}\label{classm_d_o_m_flasher_a07e44d54a36e346fd470805fe11cc517}} 
+\Hypertarget{classm_d_o_m_flasher_a07e44d54a36e346fd470805fe11cc517}\label{classm_d_o_m_flasher_a07e44d54a36e346fd470805fe11cc517} 
 std\+::vector$<$ double $>$ {\bfseries m\+\_\+profileY}
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+data}
+\begin{DoxyCompactList}\small\item\em Instance of OMSim\+Inputdata, which should be started only once. \end{DoxyCompactList}\item 
+bool {\bfseries m\+\_\+check\+Overlaps} = false
+\item 
+std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+\_\+placed\+Positions}
+\begin{DoxyCompactList}\small\item\em store the positions each time the components are placed \end{DoxyCompactList}\item 
+std\+::vector$<$ G4\+Rotation\+Matrix $>$ {\bfseries m\+\_\+placed\+Orientations}
+\begin{DoxyCompactList}\small\item\em store the orientations each time the components are placed \end{DoxyCompactList}\item 
+std\+::vector$<$ G4\+Transform3D $>$ {\bfseries m\+\_\+placed\+Translations}
+\begin{DoxyCompactList}\small\item\em store the translation each time the components are placed \end{DoxyCompactList}\item 
+std\+::map$<$ G4\+String, \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}} $>$ {\bfseries m\+\_\+components}
+\begin{DoxyCompactList}\small\item\em dictionary with each component \end{DoxyCompactList}\item 
+std\+::map$<$ G4\+String, G4\+PVPlacement \texorpdfstring{$\ast$}{*} $>$ {\bfseries m\+\_\+last\+Physicals}
+\begin{DoxyCompactList}\small\item\em dictionary with the (last) G4\+PVPlacement of each component m\+Components produced after calling place\+It \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+glass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+gel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+steel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+alu\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+8, 0.\+8, 0.\+9, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+white\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1, 1, 1, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Semi\+Transparent\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 1, 0, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+blue\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+air\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+air\+Vis2} = G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0, 1., 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+red\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+0, 0.\+0, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+black\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0.\+0, 0.\+0, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+LEDvis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 1.\+0, 0.\+0, 0.\+1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classm_d_o_m_flasher_a364e96471e231b5b7838cc8df92529fc}\label{classm_d_o_m_flasher_a364e96471e231b5b7838cc8df92529fc}} 
+\Hypertarget{classm_d_o_m_flasher_a364e96471e231b5b7838cc8df92529fc}\label{classm_d_o_m_flasher_a364e96471e231b5b7838cc8df92529fc} 
 \index{mDOMFlasher@{mDOMFlasher}!configureGPS@{configureGPS}}
 \index{configureGPS@{configureGPS}!mDOMFlasher@{mDOMFlasher}}
 \doxysubsubsection{\texorpdfstring{configureGPS()}{configureGPS()}}
@@ -100,15 +174,25 @@ std\+::vector$<$ double $>$ {\bfseries m\+\_\+profileY}
 {\em flasher\+Info} & The position and orientation information of the flasher. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classm_d_o_m_flasher_aa74e2bfee6f21cb652e7dd9929e8e688}\label{classm_d_o_m_flasher_aa74e2bfee6f21cb652e7dd9929e8e688}} 
+\Hypertarget{classm_d_o_m_flasher_aac8c466bbcc6d952ad82fbd29daa675f}\label{classm_d_o_m_flasher_aac8c466bbcc6d952ad82fbd29daa675f} 
+\index{mDOMFlasher@{mDOMFlasher}!construction@{construction}}
+\index{construction@{construction}!mDOMFlasher@{mDOMFlasher}}
+\doxysubsubsection{\texorpdfstring{construction()}{construction()}}
+{\footnotesize\ttfamily void m\+DOMFlasher\+::construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_detector_component_a82774227bd10e2fe94f1612f12929004}{OMSim\+Detector\+Component}}.
+
+\Hypertarget{classm_d_o_m_flasher_aa74e2bfee6f21cb652e7dd9929e8e688}\label{classm_d_o_m_flasher_aa74e2bfee6f21cb652e7dd9929e8e688} 
 \index{mDOMFlasher@{mDOMFlasher}!getFlasherPositionInfo@{getFlasherPositionInfo}}
 \index{getFlasherPositionInfo@{getFlasherPositionInfo}!mDOMFlasher@{mDOMFlasher}}
 \doxysubsubsection{\texorpdfstring{getFlasherPositionInfo()}{getFlasherPositionInfo()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_global_position}{Global\+Position}} m\+DOMFlasher\+::get\+Flasher\+Position\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classm_d_o_m}{m\+DOM}} $\ast$}]{p\+\_\+instance\+MDOM,  }\item[{G4int}]{p\+\_\+module\+Index,  }\item[{G4int}]{p\+\_\+\+LEDIndex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_global_position}{Global\+Position}} m\+DOMFlasher\+::get\+Flasher\+Position\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classm_d_o_m}{m\+DOM}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+instance\+MDOM,  }\item[{G4int}]{p\+\_\+module\+Index,  }\item[{G4int}]{p\+\_\+\+LEDIndex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+\_\+instance\+MDOM} & Reference to the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} instance, which contains the placement details of the module. \\
+{\em p\+\_\+instance\+MDOM} & Reference to the \doxylink{classm_d_o_m}{m\+DOM} instance, which contains the placement details of the module. \\
 \hline
 {\em p\+\_\+module\+Index} & Index of the module. \\
 \hline
@@ -116,19 +200,19 @@ std\+::vector$<$ double $>$ {\bfseries m\+\_\+profileY}
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The global position and orientation of the flasher, represented by a \mbox{\hyperlink{struct_global_position}{Global\+Position}} struct. 
+The global position and orientation of the flasher, represented by a \doxylink{struct_global_position}{Global\+Position} struct. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classm_d_o_m_flasher_a268494f8d27175e1ae391789e1d66faf}\label{classm_d_o_m_flasher_a268494f8d27175e1ae391789e1d66faf}} 
+\Hypertarget{classm_d_o_m_flasher_a268494f8d27175e1ae391789e1d66faf}\label{classm_d_o_m_flasher_a268494f8d27175e1ae391789e1d66faf} 
 \index{mDOMFlasher@{mDOMFlasher}!runBeamOnFlasher@{runBeamOnFlasher}}
 \index{runBeamOnFlasher@{runBeamOnFlasher}!mDOMFlasher@{mDOMFlasher}}
 \doxysubsubsection{\texorpdfstring{runBeamOnFlasher()}{runBeamOnFlasher()}}
-{\footnotesize\ttfamily void m\+DOMFlasher\+::run\+Beam\+On\+Flasher (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classm_d_o_m}{m\+DOM}} $\ast$}]{p\+\_\+instance\+MDOM,  }\item[{G4int}]{p\+\_\+module\+Index,  }\item[{G4int}]{p\+\_\+\+LEDIndex }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void m\+DOMFlasher\+::run\+Beam\+On\+Flasher (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classm_d_o_m}{m\+DOM}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+instance\+MDOM,  }\item[{G4int}]{p\+\_\+module\+Index,  }\item[{G4int}]{p\+\_\+\+LEDIndex }\end{DoxyParamCaption})}
 
 This method triggers the flasher at the given index in the specified module. 
 \begin{DoxyParams}{Parameters}
-{\em p\+\_\+instance\+MDOM} & The \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} instance to access to the placement OM positions and orientations. \\
+{\em p\+\_\+instance\+MDOM} & The \doxylink{classm_d_o_m}{m\+DOM} instance to access to the placement OM positions and orientations. \\
 \hline
-{\em p\+\_\+module\+Index} & The index of the module to be flashed (if only one \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} placed, then 0, otherwise depending on \mbox{\hyperlink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{place\+It()}} order) \\
+{\em p\+\_\+module\+Index} & The index of the module to be flashed (if only one \doxylink{classm_d_o_m}{m\+DOM} placed, then 0, otherwise depending on \doxylink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{place\+It()} order) \\
 \hline
 {\em p\+\_\+\+LEDIndex} & The index of the flasher within the module. \\
 \hline

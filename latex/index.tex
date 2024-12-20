@@ -1,97 +1,95 @@
-\label{index_md__home_runner_work_OMSim_OMSim_README}%
-\Hypertarget{index_md__home_runner_work_OMSim_OMSim_README}%
+\chapter{OMSim Geant4 Framework}
+\hypertarget{index}{}\label{index}\index{OMSim Geant4 Framework@{OMSim Geant4 Framework}}
+\label{index_md__2home_2runner_2work_2_o_m_sim_2_o_m_sim_2_r_e_a_d_m_e}%
+\Hypertarget{index_md__2home_2runner_2work_2_o_m_sim_2_o_m_sim_2_r_e_a_d_m_e}%
 
 
-{\bfseries{Note\+:}} This project is under active development. If you\textquotesingle{}re interested in using \mbox{\hyperlink{class_o_m_sim}{OMSim}}, please contact martin.\+u on IC-\/slack.
+{\bfseries{Note\+:}} This project is under active development. If you\textquotesingle{}re interested in using \doxylink{class_o_m_sim}{OMSim}, please contact martin.\+u on IC-\/slack.
 
-{\bfseries{\mbox{\hyperlink{class_o_m_sim}{OMSim}}}} is a Geant4 framework for simulating optical modules of the Ice\+Cube Observatory. It comprises multiple modules for different studies such as background investigations with radioactive decays and sensitivity analyses. These modules share common files (in the \char`\"{}common\char`\"{} folder) that define, for example, geometries of modules and PMTs, as well as material properties.
+{\bfseries{\doxylink{class_o_m_sim}{OMSim}}} is a Geant4 framework for simulating optical modules of the Ice\+Cube Observatory. It comprises multiple modules for different studies such as background investigations with radioactive decays and sensitivity analyses. These modules share common files (in the "{}common"{} folder) that define, for example, geometries of modules and PMTs, as well as material properties.
 
 For more information, please refer to our \href{https://icecube.github.io/OMSim/}{\texttt{ documentation}}.
 
-For the latest updates and information, check our \href{https://github.com/icecube/OMSim}{\texttt{ Git\+Hub repository}}. If you need assistance or want to report problems, please open an issue on our Git\+Hub page or contact the maintainers directly.\hypertarget{index_autotoc_md58}{}\doxysection{Installation}\label{index_autotoc_md58}
-\hypertarget{index_autotoc_md59}{}\doxysubsection{Installing Geant4}\label{index_autotoc_md59}
+For the latest updates and information, check our \href{https://github.com/icecube/OMSim}{\texttt{ Git\+Hub repository}}. If you need assistance or want to report problems, please open an issue on our Git\+Hub page or contact the maintainers directly.\hypertarget{index_autotoc_md58}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{index_autotoc_md58}
+\hypertarget{index_autotoc_md59}{}\doxysubsection{\texorpdfstring{Installing Geant4}{Installing Geant4}}\label{index_autotoc_md59}
 
 \begin{DoxyEnumerate}
-\item Install Geant4 following \href{https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html}{\texttt{ the guide provided by CERN}}. \mbox{\hyperlink{class_o_m_sim}{OMSim}} is currently optimised for Geant4-\/11 (last tested with 11.\+2.\+2).
+\item Install Geant4 following \href{https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html}{\texttt{ the guide provided by CERN}}. \doxylink{class_o_m_sim}{OMSim} is currently optimised for Geant4-\/11 (last tested with 11.\+2.\+2).
 \item For visualisation tools, include the following CMake options\+:
-\end{DoxyEnumerate}
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{-\/DGEANT4\_INSTALL\_DATA=ON -\/DGEANT4\_USE\_GDML=ON -\/DGEANT4\_USE\_OPENGL\_X11=ON -\/DGEANT4\_USE\_QT=ON -\/DGEANT4\_USE\_RAYTRACER\_X11=ON -\/DGEANT4\_USE\_XM=ON}
+\DoxyCodeLine{-\/DGEANT4\_INSTALL\_DATA=ON\ -\/DGEANT4\_USE\_GDML=ON\ -\/DGEANT4\_USE\_OPENGL\_X11=ON\ -\/DGEANT4\_USE\_QT=ON\ -\/DGEANT4\_USE\_RAYTRACER\_X11=ON\ -\/DGEANT4\_USE\_XM=ON}
 
 \end{DoxyCode}
 
 
-Note\+: Do not change {\ttfamily GEANT4\+\_\+\+BUILD\+\_\+\+MULTITHREADED} to OFF, as \mbox{\hyperlink{class_o_m_sim}{OMSim}} supports multithreading.
-
-
-\begin{DoxyEnumerate}
-\item Source the Geant4 library and add this to your .bashrc, where \char`\"{}\+YOUR\+\_\+\+G4\+\_\+\+INSTALL\char`\"{} is the path to the install folder of Geant4 in your system\+: 
+Note\+: Do not change {\ttfamily GEANT4\+\_\+\+BUILD\+\_\+\+MULTITHREADED} to OFF, as \doxylink{class_o_m_sim}{OMSim} supports multithreading.
+\item Source the Geant4 library and add this to your .bashrc, where "{}\+YOUR\+\_\+\+G4\+\_\+\+INSTALL"{} is the path to the install folder of Geant4 in your system\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{source YOUR\_G4\_INSTALL\_PATH/bin/geant4.sh}
+\DoxyCodeLine{source\ YOUR\_G4\_INSTALL\_PATH/bin/geant4.sh}
 
 \end{DoxyCode}
 
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md60}{}\doxysubsection{Installing Dependencies}\label{index_autotoc_md60}
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md60}{}\doxysubsection{\texorpdfstring{Installing Dependencies}{Installing Dependencies}}\label{index_autotoc_md60}
 Install the required dependencies using\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{sudo apt-\/get -\/y install libxerces-\/c-\/dev libxmu-\/dev libxpm-\/dev libglu1-\/mesa-\/dev qtbase5-\/dev libmotif-\/dev libargtable2-\/0 libboost-\/all-\/dev libqt53dextras5 libfmt-\/dev spdlog-\/dev}
+\DoxyCodeLine{sudo\ apt-\/get\ -\/y\ install\ libxerces-\/c-\/dev\ libxmu-\/dev\ libxpm-\/dev\ libglu1-\/mesa-\/dev\ qtbase5-\/dev\ libmotif-\/dev\ libargtable2-\/0\ libboost-\/all-\/dev\ libqt53dextras5\ libfmt-\/dev\ spdlog-\/dev}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md61}{}\doxysubsection{Installing ROOT}\label{index_autotoc_md61}
+\hypertarget{index_autotoc_md61}{}\doxysubsection{\texorpdfstring{Installing ROOT}{Installing ROOT}}\label{index_autotoc_md61}
 
 \begin{DoxyEnumerate}
 \item Download the latest ROOT binary from \href{https://root.cern/releases/}{\texttt{ ROOT\textquotesingle{}s official website}} (e.\+g., version 6.\+28/04 at the time of writing), or compile from source.
 \item Add the following to your .bashrc for convenience\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{export ROOTSYS=YOUR\_ROOT\_PATH}
-\DoxyCodeLine{source \$ROOTSYS/bin/thisroot.sh}
+\DoxyCodeLine{export\ ROOTSYS=YOUR\_ROOT\_PATH}
+\DoxyCodeLine{source\ \$ROOTSYS/bin/thisroot.sh}
 
 \end{DoxyCode}
 
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md62}{}\doxysubsection{Compiling OMSim}\label{index_autotoc_md62}
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md62}{}\doxysubsection{\texorpdfstring{Compiling OMSim}{Compiling OMSim}}\label{index_autotoc_md62}
 
 \begin{DoxyEnumerate}
 \item Clone this repository\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{git clone https://github.com/icecube/OMSim.git}
-\DoxyCodeLine{cd OMSim}
+\DoxyCodeLine{git\ clone\ https://github.com/icecube/OMSim.git}
+\DoxyCodeLine{cd\ OMSim}
 
 \end{DoxyCode}
 
 \item Create a build directory\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{mkdir build \&\& cd build}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
 
 \end{DoxyCode}
 
 \item Run CMake\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{cmake ..}
+\DoxyCodeLine{cmake\ ..}
 
 \end{DoxyCode}
- If CMake doesn\textquotesingle{}t find Geant4, use the following, where \char`\"{}\+YOUR\+\_\+\+G4\+\_\+\+INSTALL\char`\"{} is the path to the install folder of Geant4 in your system\+: 
+ If CMake doesn\textquotesingle{}t find Geant4, use the following, where "{}\+YOUR\+\_\+\+G4\+\_\+\+INSTALL"{} is the path to the install folder of Geant4 in your system\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{cmake -\/DGeant4\_DIR=YOUR\_G4\_INSTALL/lib/Geant4-\/11.2.2/ ..}
+\DoxyCodeLine{cmake\ -\/DGeant4\_DIR=YOUR\_G4\_INSTALL/lib/Geant4-\/11.2.2/\ ..}
 
 \end{DoxyCode}
 
 \item Compile the project\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{make -\/j\$(nproc)}
+\DoxyCodeLine{make\ -\/j\$(nproc)}
 
 \end{DoxyCode}
 
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md63}{}\doxysection{Available studies}\label{index_autotoc_md63}
-\mbox{\hyperlink{class_o_m_sim}{OMSim}} has been utilized in a range of studies, each simulating unique physics, thereby necessitating distinct Physicslist/analysis setups. In this repository, we have compiled a selection of these studies, each contained within its own folder and accompanied by its own main file. Currently available\+:
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md63}{}\doxysection{\texorpdfstring{Available studies}{Available studies}}\label{index_autotoc_md63}
+\doxylink{class_o_m_sim}{OMSim} has been utilized in a range of studies, each simulating unique physics, thereby necessitating distinct Physicslist/analysis setups. In this repository, we have compiled a selection of these studies, each contained within its own folder and accompanied by its own main file. Currently available\+:
 
 
 \begin{DoxyItemize}
 \item \href{https://icecube.github.io/OMSim/md_2_effective_area.html}{\texttt{ Effective area}}\+: calculates the effective area of the optical modules/\+PMTs.
 \item \href{https://icecube.github.io/OMSim/md_3_radioactive_decays.html}{\texttt{ Radioactive decays}}\+: simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.
 \item \href{https://icecube.github.io/OMSim/md_4__s_n.html}{\texttt{ Supernova studies}}\+: used for the development of an improved SN trigger for Ice\+Cube using multi-\/\+PMT modules.
-\end{DoxyItemize}\hypertarget{index_autotoc_md64}{}\doxysubsection{Customising Compilation}\label{index_autotoc_md64}
+\end{DoxyItemize}\hypertarget{index_autotoc_md64}{}\doxysubsection{\texorpdfstring{Customising Compilation}{Customising Compilation}}\label{index_autotoc_md64}
 To exclude certain studies from compilation, edit the {\ttfamily simulations/\+CMake\+Lists.\+tx} file and comment out the unwanted {\ttfamily add\+\_\+subdirectory()} calls before running CMake. 

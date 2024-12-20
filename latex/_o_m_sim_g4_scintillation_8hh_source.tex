@@ -1,0 +1,286 @@
+\doxysection{OMSim\+G4\+Scintillation.\+hh}
+\hypertarget{_o_m_sim_g4_scintillation_8hh_source}{}\label{_o_m_sim_g4_scintillation_8hh_source}\index{OMSimG4Scintillation.hh@{OMSimG4Scintillation.hh}}
+\mbox{\hyperlink{_o_m_sim_g4_scintillation_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ *\ License\ and\ Disclaimer\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ *\ The\ \ Geant4\ software\ \ is\ \ copyright\ of\ the\ Copyright\ Holders\ \ of\ *}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ *\ the\ Geant4\ Collaboration.\ \ It\ is\ provided\ \ under\ \ the\ terms\ \ and\ *}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ *\ conditions\ of\ the\ Geant4\ Software\ License,\ \ included\ in\ the\ file\ *}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ *\ LICENSE\ and\ available\ at\ \ http://cern.ch/geant4/license\ .\ \ These\ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ *\ include\ a\ list\ of\ copyright\ holders.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ *\ Neither\ the\ authors\ of\ this\ software\ system,\ nor\ their\ employing\ *}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ *\ institutes,nor\ the\ agencies\ providing\ financial\ support\ for\ this\ *}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ *\ work\ \ make\ \ any\ representation\ or\ \ warranty,\ express\ or\ implied,\ *}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ *\ regarding\ \ this\ \ software\ system\ or\ assume\ any\ liability\ for\ its\ *}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ *\ use.\ \ Please\ see\ the\ license\ in\ the\ file\ \ LICENSE\ \ and\ URL\ above\ *}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ *\ for\ the\ full\ disclaimer\ and\ the\ limitation\ of\ liability.\ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ *\ This\ \ code\ \ implementation\ is\ the\ result\ of\ \ the\ \ scientific\ and\ *}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ *\ technical\ work\ of\ the\ GEANT4\ collaboration.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ *\ By\ using,\ \ copying,\ \ modifying\ or\ \ distributing\ the\ software\ (or\ *}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ *\ any\ work\ based\ \ on\ the\ software)\ \ you\ \ agree\ \ to\ acknowledge\ its\ *}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ *\ use\ \ in\ \ resulting\ \ scientific\ \ publications,\ \ and\ indicate\ your\ *}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ *\ acceptance\ of\ all\ terms\ of\ the\ Geant4\ Software\ license.\ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ Scintillation\ Light\ Class\ Definition}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ File:\ \ \ \ \ \ \ \ G4Scintillation.hh}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Description:\ Discrete\ Process\ -\/\ Generation\ of\ Scintillation\ Photons}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ Version:\ \ \ \ \ 1.0}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ Created:\ \ \ \ \ 1998-\/11-\/07}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ Author:\ \ \ \ \ \ Peter\ Gumplinger}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ Updated:\ \ \ \ \ 2010-\/10-\/20\ Allow\ the\ scintillation\ yield\ to\ be\ a\ function}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ energy\ deposited\ by\ particle\ type}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Thanks\ to\ Zach\ Hartwig\ (Department\ of\ Nuclear}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Science\ and\ Engineeering\ -\/\ MIT)}}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 2005-\/07-\/28\ add\ G4ProcessType\ to\ constructor}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 2002-\/11-\/21\ change\ to\ user\ G4Poisson\ for\ small\ MeanNumPotons}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 2002-\/11-\/07\ allow\ for\ fast\ and\ slow\ scintillation}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 2002-\/11-\/05\ make\ use\ of\ constant\ material\ properties}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 2002-\/05-\/16\ changed\ to\ inherit\ from\ VRestDiscreteProcess}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 2002-\/05-\/09\ changed\ IsApplicable\ method}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 1999-\/10-\/29\ add\ method\ and\ class\ descriptors}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#ifndef\ G4Scintillation\_h}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ G4Scintillation\_h\ 1}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#include\ "{}G4EmSaturation.hh"{}}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#include\ "{}G4OpticalPhoton.hh"{}}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#include\ "{}G4VRestDiscreteProcess.hh"{}}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{class\ }G4PhysicsTable;}
+\DoxyCodeLine{00065\ \textcolor{keyword}{class\ }G4Step;}
+\DoxyCodeLine{00066\ \textcolor{keyword}{class\ }G4Track;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ Class\ Description:}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ RestDiscrete\ Process\ -\/\ Generation\ of\ Scintillation\ Photons.}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ Class\ inherits\ publicly\ from\ G4VRestDiscreteProcess.}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ Class\ Description\ -\/\ End:}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_g4_scintillation}{OMSimG4Scintillation}}\ :\ \textcolor{keyword}{public}\ G4VRestDiscreteProcess}
+\DoxyCodeLine{00074\ \{}
+\DoxyCodeLine{00075\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00076\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_o_m_sim_g4_scintillation}{OMSimG4Scintillation}}(\textcolor{keyword}{const}\ G4String\&\ processName\ =\ \textcolor{stringliteral}{"{}Scintillation"{}},}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4ProcessType\ type\ \ \ \ \ \ \ \ \ \ =\ fElectromagnetic);}
+\DoxyCodeLine{00078\ \ \ \mbox{\hyperlink{class_o_m_sim_g4_scintillation}{\string~OMSimG4Scintillation}}();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \mbox{\hyperlink{class_o_m_sim_g4_scintillation}{OMSimG4Scintillation}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_g4_scintillation}{OMSimG4Scintillation}}\&\ right)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00081\ \ \ \mbox{\hyperlink{class_o_m_sim_g4_scintillation}{OMSimG4Scintillation}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_g4_scintillation}{OMSimG4Scintillation}}\&\ right)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \textcolor{comment}{//\ G4Scintillation\ Process\ has\ both\ PostStepDoIt\ (for\ energy}}
+\DoxyCodeLine{00084\ \ \ \textcolor{comment}{//\ deposition\ of\ particles\ in\ flight)\ and\ AtRestDoIt\ (for\ energy}}
+\DoxyCodeLine{00085\ \ \ \textcolor{comment}{//\ given\ to\ the\ medium\ by\ particles\ at\ rest)}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ G4bool\ IsApplicable(\textcolor{keyword}{const}\ G4ParticleDefinition\&\ aParticleType)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00088\ \ \ \textcolor{comment}{//\ Returns\ true\ -\/>\ 'is\ applicable',\ for\ any\ particle\ type\ except}}
+\DoxyCodeLine{00089\ \ \ \textcolor{comment}{//\ for\ an\ 'opticalphoton'\ and\ for\ short-\/lived\ particles}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordtype}{void}\ ProcessDescription(std::ostream\&)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordtype}{void}\ DumpInfo()\textcolor{keyword}{\ const\ override\ }\{ProcessDescription(G4cout);\};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{void}\ BuildPhysicsTable(\textcolor{keyword}{const}\ G4ParticleDefinition\&\ aParticleType)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00095\ \ \ \textcolor{comment}{//\ Build\ table\ at\ the\ right\ time}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{void}\ PreparePhysicsTable(\textcolor{keyword}{const}\ G4ParticleDefinition\&\ part)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{void}\ Initialise();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ G4double\ GetMeanFreePath(\textcolor{keyword}{const}\ G4Track\&\ aTrack,\ G4double,}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4ForceCondition*)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00102\ \ \ \textcolor{comment}{//\ Returns\ infinity;\ i.\ e.\ the\ process\ does\ not\ limit\ the\ step,}}
+\DoxyCodeLine{00103\ \ \ \textcolor{comment}{//\ but\ sets\ the\ 'StronglyForced'\ condition\ for\ the\ DoIt\ to\ be}}
+\DoxyCodeLine{00104\ \ \ \textcolor{comment}{//\ invoked\ at\ every\ step.}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ G4double\ GetMeanLifeTime(\textcolor{keyword}{const}\ G4Track\&\ aTrack,\ G4ForceCondition*)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00107\ \ \ \textcolor{comment}{//\ Returns\ infinity;\ i.\ e.\ the\ process\ does\ not\ limit\ the\ time,}}
+\DoxyCodeLine{00108\ \ \ \textcolor{comment}{//\ but\ sets\ the\ 'StronglyForced'\ condition\ for\ the\ DoIt\ to\ be}}
+\DoxyCodeLine{00109\ \ \ \textcolor{comment}{//\ invoked\ at\ every\ step.}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ G4VParticleChange*\ PostStepDoIt(\textcolor{keyword}{const}\ G4Track\&\ aTrack,}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4Step\&\ aStep)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00113\ \ \ G4VParticleChange*\ AtRestDoIt(\textcolor{keyword}{const}\ G4Track\&\ aTrack,}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4Step\&\ aStep)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ G4double\ GetScintillationYieldByParticleType(\textcolor{keyword}{const}\ G4Track\&\ aTrack,}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4Step\&\ aStep,}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\&\ yield1,}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\&\ yield2,}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\&\ yield3);}
+\DoxyCodeLine{00121\ \ \ \textcolor{comment}{//\ allow\ multiple\ time\ constants\ with\ scint\ by\ particle\ type}}
+\DoxyCodeLine{00122\ \ \ \textcolor{comment}{//\ Returns\ the\ number\ of\ scintillation\ photons\ calculated\ when}}
+\DoxyCodeLine{00123\ \ \ \textcolor{comment}{//\ scintillation\ depends\ on\ the\ particle\ type\ and\ energy}}
+\DoxyCodeLine{00124\ \ \ \textcolor{comment}{//\ deposited\ (includes\ nonlinear\ dependendency)\ and\ updates\ the}}
+\DoxyCodeLine{00125\ \ \ \textcolor{comment}{//\ yields\ for\ each\ channel}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \textcolor{keywordtype}{void}\ SetTrackSecondariesFirst(\textcolor{keyword}{const}\ G4bool\ state);}
+\DoxyCodeLine{00128\ \ \ \textcolor{comment}{//\ If\ set,\ the\ primary\ particle\ tracking\ is\ interrupted\ and\ any}}
+\DoxyCodeLine{00129\ \ \ \textcolor{comment}{//\ produced\ scintillation\ photons\ are\ tracked\ next.\ When\ all}}
+\DoxyCodeLine{00130\ \ \ \textcolor{comment}{//\ have\ been\ tracked,\ the\ tracking\ of\ the\ primary\ resumes.}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ G4bool\ GetTrackSecondariesFirst()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00133\ \ \ \textcolor{comment}{//\ Returns\ the\ boolean\ flag\ for\ tracking\ secondaries\ first.}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \textcolor{keywordtype}{void}\ SetFiniteRiseTime(\textcolor{keyword}{const}\ G4bool\ state);}
+\DoxyCodeLine{00136\ \ \ \textcolor{comment}{//\ If\ set,\ the\ G4Scintillation\ process\ expects\ the\ user\ to\ have}}
+\DoxyCodeLine{00137\ \ \ \textcolor{comment}{//\ set\ the\ constant\ material\ property\ SCINTILLATIONRISETIME\{1,2,3\}.}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ G4bool\ GetFiniteRiseTime()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00140\ \ \ \textcolor{comment}{//\ Returns\ the\ boolean\ flag\ for\ a\ finite\ scintillation\ rise\ time.}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ G4PhysicsTable*\ GetIntegralTable1()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00143\ \ \ \textcolor{comment}{//\ Returns\ the\ address\ of\ scintillation\ integral\ table\ \#1.}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ G4PhysicsTable*\ GetIntegralTable2()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00146\ \ \ \textcolor{comment}{//\ Returns\ the\ address\ of\ scintillation\ integral\ table\ \#2.}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ G4PhysicsTable*\ GetIntegralTable3()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00149\ \ \ \textcolor{comment}{//\ Returns\ the\ address\ of\ scintillation\ integral\ table\ \#3.}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \textcolor{keywordtype}{void}\ AddSaturation(G4EmSaturation*\ sat);}
+\DoxyCodeLine{00152\ \ \ \textcolor{comment}{//\ Adds\ Birks\ Saturation\ to\ the\ process.}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \textcolor{keywordtype}{void}\ RemoveSaturation();}
+\DoxyCodeLine{00155\ \ \ \textcolor{comment}{//\ Removes\ the\ Birks\ Saturation\ from\ the\ process.}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ G4EmSaturation*\ GetSaturation()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00158\ \ \ \textcolor{comment}{//\ Returns\ the\ Birks\ Saturation.}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \textcolor{keywordtype}{void}\ SetScintillationByParticleType(\textcolor{keyword}{const}\ G4bool);}
+\DoxyCodeLine{00161\ \ \ \textcolor{comment}{//\ Called\ by\ the\ user\ to\ set\ the\ scintillation\ yield\ as\ a\ function}}
+\DoxyCodeLine{00162\ \ \ \textcolor{comment}{//\ of\ energy\ deposited\ by\ particle\ type}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ G4bool\ GetScintillationByParticleType()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00165\ \ \ \textcolor{comment}{//\ Return\ the\ boolean\ that\ determines\ the\ method\ of\ scintillation}}
+\DoxyCodeLine{00166\ \ \ \textcolor{comment}{//\ production}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \textcolor{keywordtype}{void}\ SetScintillationTrackInfo(\textcolor{keyword}{const}\ G4bool\ trackType);}
+\DoxyCodeLine{00169\ \ \ \textcolor{comment}{//\ Call\ by\ the\ user\ to\ set\ the\ G4ScintillationTrackInformation}}
+\DoxyCodeLine{00170\ \ \ \textcolor{comment}{//\ to\ scintillation\ photon\ track}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ G4bool\ GetScintillationTrackInfo()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00173\ \ \ \textcolor{comment}{//\ Return\ the\ boolean\ for\ whether\ or\ not\ the}}
+\DoxyCodeLine{00174\ \ \ \textcolor{comment}{//\ G4ScintillationTrackInformation\ is\ set\ to\ the\ scint.\ photon\ track}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \textcolor{keywordtype}{void}\ SetStackPhotons(\textcolor{keyword}{const}\ G4bool);}
+\DoxyCodeLine{00177\ \ \ \textcolor{comment}{//\ Call\ by\ the\ user\ to\ set\ the\ flag\ for\ stacking\ the\ scint.\ photons}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ G4bool\ GetStackPhotons()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00180\ \ \ \textcolor{comment}{//\ Return\ the\ boolean\ for\ whether\ or\ not\ the\ scint.\ photons\ are\ stacked}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ G4int\ GetNumPhotons()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00183\ \ \ \textcolor{comment}{//\ Returns\ the\ current\ number\ of\ scint.\ photons\ (after\ PostStepDoIt)}}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \textcolor{keywordtype}{void}\ DumpPhysicsTable()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00186\ \ \ \textcolor{comment}{//\ Prints\ the\ fast\ and\ slow\ scintillation\ integral\ tables.}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \textcolor{keywordtype}{void}\ SetVerboseLevel(G4int);}
+\DoxyCodeLine{00189\ \ \ \textcolor{comment}{//\ sets\ verbosity}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ G4PhysicsTable*\ fIntegralTable1;}
+\DoxyCodeLine{00194\ \ \ G4PhysicsTable*\ fIntegralTable2;}
+\DoxyCodeLine{00195\ \ \ G4PhysicsTable*\ fIntegralTable3;}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ G4EmSaturation*\ fEmSaturation;}
+\DoxyCodeLine{00198\ \ \ \textcolor{keyword}{const}\ G4ParticleDefinition*\ opticalphoton\ =}
+\DoxyCodeLine{00199\ \ \ \ \ G4OpticalPhoton::OpticalPhotonDefinition();}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ G4int\ fNumPhotons;}
+\DoxyCodeLine{00202\ \ \ }
+\DoxyCodeLine{00203\ \ \ G4bool\ fScintillationByParticleType;}
+\DoxyCodeLine{00204\ \ \ G4bool\ fScintillationTrackInfo;}
+\DoxyCodeLine{00205\ \ \ G4bool\ fStackingFlag;}
+\DoxyCodeLine{00206\ \ \ G4bool\ fTrackSecondariesFirst;}
+\DoxyCodeLine{00207\ \ \ G4bool\ fFiniteRiseTime;}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#ifdef\ G4DEBUG\_SCINTILLATION}}
+\DoxyCodeLine{00210\ \ \ G4double\ ScintTrackEDep,\ ScintTrackYield;}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ G4double\ single\_exp(G4double\ t,\ G4double\ tau2);}
+\DoxyCodeLine{00214\ \ \ G4double\ bi\_exp(G4double\ t,\ G4double\ tau1,\ G4double\ tau2);}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \textcolor{comment}{//\ emission\ time\ distribution\ when\ there\ is\ a\ finite\ rise\ time}}
+\DoxyCodeLine{00217\ \ \ G4double\ sample\_time(G4double\ tau1,\ G4double\ tau2);}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ G4int\ secID\ =\ -\/1;\ \ \textcolor{comment}{//\ creator\ modelID}}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \};}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00224\ \textcolor{comment}{//\ Inline\ methods}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \textcolor{keyword}{inline}\ G4bool\ OMSimG4Scintillation::GetTrackSecondariesFirst()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00228\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00229\ \ \ \textcolor{keywordflow}{return}\ fTrackSecondariesFirst;}
+\DoxyCodeLine{00230\ \}}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \textcolor{keyword}{inline}\ G4bool\ OMSimG4Scintillation::GetFiniteRiseTime()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00233\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00234\ \ \ \textcolor{keywordflow}{return}\ fFiniteRiseTime;}
+\DoxyCodeLine{00235\ \}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \textcolor{keyword}{inline}\ G4PhysicsTable*\ OMSimG4Scintillation::GetIntegralTable1()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00238\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00239\ \ \ \textcolor{keywordflow}{return}\ fIntegralTable1;}
+\DoxyCodeLine{00240\ \}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \textcolor{keyword}{inline}\ G4PhysicsTable*\ OMSimG4Scintillation::GetIntegralTable2()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00243\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00244\ \ \ \textcolor{keywordflow}{return}\ fIntegralTable2;}
+\DoxyCodeLine{00245\ \}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \textcolor{keyword}{inline}\ G4PhysicsTable*\ OMSimG4Scintillation::GetIntegralTable3()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00248\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00249\ \ \ \textcolor{keywordflow}{return}\ fIntegralTable3;}
+\DoxyCodeLine{00250\ \}}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ OMSimG4Scintillation::AddSaturation(G4EmSaturation*\ sat)}
+\DoxyCodeLine{00253\ \{}
+\DoxyCodeLine{00254\ \ \ fEmSaturation\ =\ sat;}
+\DoxyCodeLine{00255\ \}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ OMSimG4Scintillation::RemoveSaturation()\ \{\ fEmSaturation\ =\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \textcolor{keyword}{inline}\ G4EmSaturation*\ OMSimG4Scintillation::GetSaturation()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00260\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00261\ \ \ \textcolor{keywordflow}{return}\ fEmSaturation;}
+\DoxyCodeLine{00262\ \}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \textcolor{keyword}{inline}\ G4bool\ OMSimG4Scintillation::GetScintillationByParticleType()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00265\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00266\ \ \ \textcolor{keywordflow}{return}\ fScintillationByParticleType;}
+\DoxyCodeLine{00267\ \}}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \textcolor{keyword}{inline}\ G4bool\ OMSimG4Scintillation::GetScintillationTrackInfo()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00270\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00271\ \ \ \textcolor{keywordflow}{return}\ fScintillationTrackInfo;}
+\DoxyCodeLine{00272\ \}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \textcolor{keyword}{inline}\ G4bool\ OMSimG4Scintillation::GetStackPhotons()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ fStackingFlag;\ \}}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00276\ \textcolor{keyword}{inline}\ G4int\ OMSimG4Scintillation::GetNumPhotons()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ fNumPhotons;\ \}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \textcolor{keyword}{inline}\ G4double\ OMSimG4Scintillation::single\_exp(G4double\ t,\ G4double\ tau2)}
+\DoxyCodeLine{00279\ \{}
+\DoxyCodeLine{00280\ \ \ \textcolor{keywordflow}{return}\ std::exp(-\/1.0\ *\ t\ /\ tau2)\ /\ tau2;}
+\DoxyCodeLine{00281\ \}}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \textcolor{keyword}{inline}\ G4double\ OMSimG4Scintillation::bi\_exp(G4double\ t,\ G4double\ tau1,}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ tau2)}
+\DoxyCodeLine{00285\ \{}
+\DoxyCodeLine{00286\ \ \ \textcolor{keywordflow}{return}\ std::exp(-\/1.0\ *\ t\ /\ tau2)\ *\ (1\ -\/\ std::exp(-\/1.0\ *\ t\ /\ tau1))\ /\ tau2\ /}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ tau2\ *\ (tau1\ +\ tau2);}
+\DoxyCodeLine{00288\ \}}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ G4Scintillation\_h\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

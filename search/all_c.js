@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['lexer_147',['Lexer',['../class_c_a_d_mesh_1_1_file_1_1_lexer.html',1,'CADMesh::File']]],
-  ['linspace_148',['linspace',['../namespace_tools.html#a052be79128cb3b90b6a4701455307246',1,'Tools']]],
-  ['loadtxt_149',['loadtxt',['../namespace_tools.html#aefa5ecd8f1fb3d69a65d517494e99669',1,'Tools']]],
-  ['localposition_150',['localPosition',['../struct_hit_stats.html#a82333e4544d85c231e0aab2660f99cda',1,'HitStats::localPosition()'],['../struct_photon_info.html#afdd5b9d7e5365a4aa7abd854ab7f4915',1,'PhotonInfo::localPosition()']]],
-  ['localtime_151',['localTime',['../struct_photon_info.html#abb511bb057118b060b12d84ed9315851',1,'PhotonInfo']]],
-  ['logspace_152',['logspace',['../namespace_tools.html#adf257eb5c348836614a3c10de47bcf6e',1,'Tools']]],
-  ['lom16_153',['LOM16',['../class_l_o_m16.html',1,'']]],
-  ['lom18_154',['LOM18',['../class_l_o_m18.html',1,'']]]
+  ['handlearguments_0',['handleArguments',['../class_o_m_sim.html#a07759a6885ca398dd1e7c3a9954ceded',1,'OMSim']]],
+  ['handlegeneralphotondetector_1',['handleGeneralPhotonDetector',['../class_o_m_sim_sensitive_detector.html#a4b3d72f7aa132ea975541843a30a2f22',1,'OMSimSensitiveDetector']]],
+  ['handlepmt_2',['handlePMT',['../class_o_m_sim_sensitive_detector.html#a0e8d0c59cdefec63a33c443ff903d2cf',1,'OMSimSensitiveDetector']]],
+  ['handling_3',['Material Handling',['../md_extra__doc_20__common.html#autotoc_md3',1,'']]],
+  ['healpy_4',['Example using healpy',['../md_extra__doc_230__effective__area.html#autotoc_md43',1,'']]],
+  ['histogram_5',['histogram',['../namespace_tools.html#ab58e9ef8ed3fc6fe3cd85e26136f5be7',1,'Tools']]],
+  ['hit_20storage_6',['Hit storage',['../md_extra__doc_20__common.html#autotoc_md15',1,'']]],
+  ['hits_20and_20pmt_20response_7',['Storing hits and PMT response',['../md_extra__doc_20__common.html#autotoc_md13',1,'']]],
+  ['hitstats_8',['HitStats',['../struct_hit_stats.html',1,'']]],
+  ['hittime_9',['hitTime',['../struct_hit_stats.html#ae0c5192a6db7a2fc8dec37e62a6a1e76',1,'HitStats']]]
 ];

@@ -1,0 +1,27 @@
+\doxysection{effective\+\_\+area/include/\+OMSim\+Primary\+Generator\+Action.hh}
+\hypertarget{effective__area_2include_2_o_m_sim_primary_generator_action_8hh_source}{}\label{effective__area_2include_2_o_m_sim_primary_generator_action_8hh_source}\index{OMSimPrimaryGeneratorAction.hh@{OMSimPrimaryGeneratorAction.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <G4VUserPrimaryGeneratorAction.hh>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <G4AutoLock.hh>}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }G4GeneralParticleSource;}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }G4Event;}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_primary_generator_action}{OMSimPrimaryGeneratorAction}}\ :\ \textcolor{keyword}{public}\ G4VUserPrimaryGeneratorAction}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_action}{OMSimPrimaryGeneratorAction}}();}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_action}{\string~OMSimPrimaryGeneratorAction}}();}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ GeneratePrimaries(G4Event*\ anEvent)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{thread\_local}\ std::unique\_ptr<G4GeneralParticleSource>\ m\_particleSource;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ G4Mutex\ m\_mutex;}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+
+\end{DoxyCode}

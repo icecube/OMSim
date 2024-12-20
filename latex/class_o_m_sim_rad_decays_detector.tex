@@ -1,5 +1,5 @@
-\hypertarget{class_o_m_sim_rad_decays_detector}{}\doxysection{OMSim\+Rad\+Decays\+Detector Class Reference}
-\label{class_o_m_sim_rad_decays_detector}\index{OMSimRadDecaysDetector@{OMSimRadDecaysDetector}}
+\doxysection{OMSim\+Rad\+Decays\+Detector Class Reference}
+\hypertarget{class_o_m_sim_rad_decays_detector}{}\label{class_o_m_sim_rad_decays_detector}\index{OMSimRadDecaysDetector@{OMSimRadDecaysDetector}}
 
 
 Detector construction of radioactive decays simulation.  
@@ -25,22 +25,68 @@ Collaboration diagram for OMSim\+Rad\+Decays\+Detector\+:
 \includegraphics[width=350pt]{class_o_m_sim_rad_decays_detector__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Attributes}
+\doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_rad_decays_detector_a4175ec91c00118f33aeed20f2a2c72df}\label{class_o_m_sim_rad_decays_detector_a4175ec91c00118f33aeed20f2a2c72df}} 
-\mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}} $\ast$ {\bfseries m\+\_\+optical\+Module}
+\Hypertarget{class_o_m_sim_rad_decays_detector_a4175ec91c00118f33aeed20f2a2c72df}\label{class_o_m_sim_rad_decays_detector_a4175ec91c00118f33aeed20f2a2c72df} 
+\mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+optical\+Module}
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_rad_decays_detector_a7616ce083479e613cd3d9dfa9ac8b1fa}\label{class_o_m_sim_rad_decays_detector_a7616ce083479e613cd3d9dfa9ac8b1fa}} 
+G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Physical}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
 void \mbox{\hyperlink{class_o_m_sim_rad_decays_detector_a7616ce083479e613cd3d9dfa9ac8b1fa}{construct\+World}} ()
 \begin{DoxyCompactList}\small\item\em Constructs the world volume (sphere). \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_rad_decays_detector_a57f6a622e962ea5217caabd9d2161af8}\label{class_o_m_sim_rad_decays_detector_a57f6a622e962ea5217caabd9d2161af8}} 
 void \mbox{\hyperlink{class_o_m_sim_rad_decays_detector_a57f6a622e962ea5217caabd9d2161af8}{construct\+Detector}} ()
 \begin{DoxyCompactList}\small\item\em Constructs the selected detector from the command line argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_construction_a9e16ad5da3921b502473b303609caad0}{Construct}} ()
+\begin{DoxyCompactList}\small\item\em Constructs the selected detector from the command line argument and returns the physical world volume. \end{DoxyCompactList}\item 
+void {\bfseries Construct\+SDand\+Field} () override
+\item 
+void {\bfseries register\+Sensitive\+Detector} (G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}log\+Vol, G4\+VSensitive\+Detector \texorpdfstring{$\ast$}{*}a\+SD)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+VSolid \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Solid}
+\item 
+G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Logical}
+\item 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+data}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_o_m_sim_detector_construction_1_1_s_d_info}{SDInfo}} $>$ {\bfseries m\+\_\+sensitive\+Detectors}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_o_m_sim_rad_decays_detector_a57f6a622e962ea5217caabd9d2161af8}\label{class_o_m_sim_rad_decays_detector_a57f6a622e962ea5217caabd9d2161af8} 
+\index{OMSimRadDecaysDetector@{OMSimRadDecaysDetector}!constructDetector@{constructDetector}}
+\index{constructDetector@{constructDetector}!OMSimRadDecaysDetector@{OMSimRadDecaysDetector}}
+\doxysubsubsection{\texorpdfstring{constructDetector()}{constructDetector()}}
+{\footnotesize\ttfamily void OMSim\+Rad\+Decays\+Detector\+::construct\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}.
+
+\Hypertarget{class_o_m_sim_rad_decays_detector_a7616ce083479e613cd3d9dfa9ac8b1fa}\label{class_o_m_sim_rad_decays_detector_a7616ce083479e613cd3d9dfa9ac8b1fa} 
+\index{OMSimRadDecaysDetector@{OMSimRadDecaysDetector}!constructWorld@{constructWorld}}
+\index{constructWorld@{constructWorld}!OMSimRadDecaysDetector@{OMSimRadDecaysDetector}}
+\doxysubsubsection{\texorpdfstring{constructWorld()}{constructWorld()}}
+{\footnotesize\ttfamily void OMSim\+Rad\+Decays\+Detector\+::construct\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

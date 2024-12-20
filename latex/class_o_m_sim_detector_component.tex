@@ -1,5 +1,5 @@
-\hypertarget{class_o_m_sim_detector_component}{}\doxysection{OMSim\+Detector\+Component Class Reference}
-\label{class_o_m_sim_detector_component}\index{OMSimDetectorComponent@{OMSimDetectorComponent}}
+\doxysection{OMSim\+Detector\+Component Class Reference}
+\hypertarget{class_o_m_sim_detector_component}{}\label{class_o_m_sim_detector_component}\index{OMSimDetectorComponent@{OMSimDetectorComponent}}
 
 
 Abstract base class used for constructing detector components.  
@@ -28,18 +28,17 @@ Collaboration diagram for OMSim\+Detector\+Component\+:
 
 
 \doxysubsection{Detailed Description}
-This class serves as a base class for constructing and manipulating detector components in \mbox{\hyperlink{class_o_m_sim}{OMSim}}. It provides a set of helper functions for creating and arranging components within a detector, as well as methods for altering the geometry, such as subtracting one component from another. The class maintains an internal list of components, allowing for operations to be performed on all components simultaneously. The {\ttfamily place\+It} methods allow for the placement of components within a specified logical volume, either via individual positioning and rotation parameters, or via a Geant4 transformation. Furthermore, components from one {\ttfamily \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}} instance can be integrated into another, with user-\/specified position, rotation, and name extension. This makes it possible to build complex geometrical structures in a modular fashion in cases where a single mother volume cannot be used. \doxysubsection*{Classes}
+This class serves as a base class for constructing and manipulating detector components in \doxylink{class_o_m_sim}{OMSim}. It provides a set of helper functions for creating and arranging components within a detector, as well as methods for altering the geometry, such as subtracting one component from another. The class maintains an internal list of components, allowing for operations to be performed on all components simultaneously. The {\ttfamily place\+It} methods allow for the placement of components within a specified logical volume, either via individual positioning and rotation parameters, or via a Geant4 transformation. Furthermore, components from one {\ttfamily \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} instance can be integrated into another, with user-\/specified position, rotation, and name extension. This makes it possible to build complex geometrical structures in a modular fashion in cases where a single mother volume cannot be used. \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}}
-\begin{DoxyCompactList}\small\item\em This struct represents a single detector component within an \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactList}\small\item\em This struct represents a single detector component within an \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a82774227bd10e2fe94f1612f12929004}\label{class_o_m_sim_detector_component_a82774227bd10e2fe94f1612f12929004}} 
 virtual void \mbox{\hyperlink{class_o_m_sim_detector_component_a82774227bd10e2fe94f1612f12929004}{construction}} ()=0
-\begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}{append\+Component}} (G4\+VSolid $\ast$p\+Solid, G4\+Logical\+Volume $\ast$p\+Logical, G4\+Three\+Vector p\+Vector, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}{append\+Component}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Solid, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}p\+Logical, G4\+Three\+Vector p\+Vector, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name)
 \begin{DoxyCompactList}\small\item\em Append component to Components vector. \end{DoxyCompactList}\item 
 G4bool \mbox{\hyperlink{class_o_m_sim_detector_component_a698a458599ff1d3045010636717e4da8}{check\+If\+Exists}} (G4\+String p\+Name)
 \begin{DoxyCompactList}\small\item\em Check if a component with a certain name exists in the Components map. \end{DoxyCompactList}\item 
@@ -47,101 +46,101 @@ G4bool \mbox{\hyperlink{class_o_m_sim_detector_component_a698a458599ff1d30450106
 \begin{DoxyCompactList}\small\item\em Retrieves a specified component from the Components map. \end{DoxyCompactList}\item 
 G4\+Transform3D \mbox{\hyperlink{class_o_m_sim_detector_component_aa4a3ef0899866c61c3e6185946e04985}{get\+New\+Position}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Three\+Vector p\+Object\+Position, G4\+Rotation\+Matrix p\+Object\+Rotation)
 \begin{DoxyCompactList}\small\item\em Computes a new position for a sub-\/component, based on a given global position and rotation. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_detector_component_a60b149056e8998772582544271288189}{integrate\+Detector\+Component}} (\mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} $\ast$p\+To\+Integrate, G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name\+Extension)
-\begin{DoxyCompactList}\small\item\em Integrates the components of another \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a60b149056e8998772582544271288189}{integrate\+Detector\+Component}} (\mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} \texorpdfstring{$\ast$}{*}p\+To\+Integrate, G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name\+Extension)
+\begin{DoxyCompactList}\small\item\em Integrates the components of another \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} instance. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26}{delete\+Component}} (G4\+String p\+Name)
 \begin{DoxyCompactList}\small\item\em Deletes a specified component from the Components map. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{place\+It}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Logical\+Volume $\ast$\&p\+Mother, G4\+String p\+Name\+Extension=\char`\"{}\char`\"{})
-\begin{DoxyCompactList}\small\item\em Placement of the Detector\+Component. Each \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}} is placed in the same mother. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_detector_component_a4b2ca76a8864a82cd9717f75577188d7}{place\+It}} (G4\+Transform3D p\+Trans, G4\+Logical\+Volume $\ast$\&p\+Mother, G4\+String p\+Name\+Extension=\char`\"{}\char`\"{})
+void \mbox{\hyperlink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{place\+It}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&p\+Mother, G4\+String p\+Name\+Extension="{}"{})
+\begin{DoxyCompactList}\small\item\em Placement of the Detector\+Component. Each \doxylink{struct_o_m_sim_detector_component_1_1_component}{Component} is placed in the same mother. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a4b2ca76a8864a82cd9717f75577188d7}{place\+It}} (G4\+Transform3D p\+Trans, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&p\+Mother, G4\+String p\+Name\+Extension="{}"{})
 \begin{DoxyCompactList}\small\item\em Places the components in a specified mother volume using a provided transformation. \end{DoxyCompactList}\item 
-G4\+Subtraction\+Solid $\ast$ \mbox{\hyperlink{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d}{substract\+To\+Volume}} (G4\+VSolid $\ast$p\+Input\+Volume, G4\+Three\+Vector p\+Substraction\+Pos, G4\+Rotation\+Matrix p\+Substraction\+Rot, G4\+String p\+New\+Volume\+Name)
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d}{substract\+To\+Volume}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Input\+Volume, G4\+Three\+Vector p\+Substraction\+Pos, G4\+Rotation\+Matrix p\+Substraction\+Rot, G4\+String p\+New\+Volume\+Name)
 \begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume using position and rotation. \end{DoxyCompactList}\item 
-G4\+Subtraction\+Solid $\ast$ \mbox{\hyperlink{class_o_m_sim_detector_component_a6b09340b9d4a93f5a269cfc116acf8c3}{substract\+To\+Volume}} (G4\+VSolid $\ast$p\+Input\+Volume, G4\+Transform3D p\+Trans, G4\+String p\+New\+Volume\+Name)
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_component_a6b09340b9d4a93f5a269cfc116acf8c3}{substract\+To\+Volume}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Input\+Volume, G4\+Transform3D p\+Trans, G4\+String p\+New\+Volume\+Name)
 \begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a0e483a65980f76c4b691a17c21c9ee0e}\label{class_o_m_sim_detector_component_a0e483a65980f76c4b691a17c21c9ee0e}} 
-\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} $\ast$ \mbox{\hyperlink{class_o_m_sim_detector_component_a0e483a65980f76c4b691a17c21c9ee0e}{m\+\_\+data}}
+\Hypertarget{class_o_m_sim_detector_component_a0e483a65980f76c4b691a17c21c9ee0e}\label{class_o_m_sim_detector_component_a0e483a65980f76c4b691a17c21c9ee0e} 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+data}
 \begin{DoxyCompactList}\small\item\em Instance of OMSim\+Inputdata, which should be started only once. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a61f09676686410a6a8f69a0b03d5a0de}\label{class_o_m_sim_detector_component_a61f09676686410a6a8f69a0b03d5a0de}} 
+\Hypertarget{class_o_m_sim_detector_component_a61f09676686410a6a8f69a0b03d5a0de}\label{class_o_m_sim_detector_component_a61f09676686410a6a8f69a0b03d5a0de} 
 bool {\bfseries m\+\_\+check\+Overlaps} = false
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a08d6710ee0ac4dd277e7993459c612ca}\label{class_o_m_sim_detector_component_a08d6710ee0ac4dd277e7993459c612ca}} 
-std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{class_o_m_sim_detector_component_a08d6710ee0ac4dd277e7993459c612ca}{m\+\_\+placed\+Positions}}
+\Hypertarget{class_o_m_sim_detector_component_a08d6710ee0ac4dd277e7993459c612ca}\label{class_o_m_sim_detector_component_a08d6710ee0ac4dd277e7993459c612ca} 
+std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+\_\+placed\+Positions}
 \begin{DoxyCompactList}\small\item\em store the positions each time the components are placed \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a083b71621fcf32eee318c2c73165ee5c}\label{class_o_m_sim_detector_component_a083b71621fcf32eee318c2c73165ee5c}} 
-std\+::vector$<$ G4\+Rotation\+Matrix $>$ \mbox{\hyperlink{class_o_m_sim_detector_component_a083b71621fcf32eee318c2c73165ee5c}{m\+\_\+placed\+Orientations}}
+\Hypertarget{class_o_m_sim_detector_component_a083b71621fcf32eee318c2c73165ee5c}\label{class_o_m_sim_detector_component_a083b71621fcf32eee318c2c73165ee5c} 
+std\+::vector$<$ G4\+Rotation\+Matrix $>$ {\bfseries m\+\_\+placed\+Orientations}
 \begin{DoxyCompactList}\small\item\em store the orientations each time the components are placed \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_af581e8054f6efb960137898a30132664}\label{class_o_m_sim_detector_component_af581e8054f6efb960137898a30132664}} 
-std\+::vector$<$ G4\+Transform3D $>$ \mbox{\hyperlink{class_o_m_sim_detector_component_af581e8054f6efb960137898a30132664}{m\+\_\+placed\+Translations}}
+\Hypertarget{class_o_m_sim_detector_component_af581e8054f6efb960137898a30132664}\label{class_o_m_sim_detector_component_af581e8054f6efb960137898a30132664} 
+std\+::vector$<$ G4\+Transform3D $>$ {\bfseries m\+\_\+placed\+Translations}
 \begin{DoxyCompactList}\small\item\em store the translation each time the components are placed \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a3482ee7c6cddb8576977787671c7cbf5}\label{class_o_m_sim_detector_component_a3482ee7c6cddb8576977787671c7cbf5}} 
-std\+::map$<$ G4\+String, \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}} $>$ \mbox{\hyperlink{class_o_m_sim_detector_component_a3482ee7c6cddb8576977787671c7cbf5}{m\+\_\+components}}
+\Hypertarget{class_o_m_sim_detector_component_a3482ee7c6cddb8576977787671c7cbf5}\label{class_o_m_sim_detector_component_a3482ee7c6cddb8576977787671c7cbf5} 
+std\+::map$<$ G4\+String, \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}} $>$ {\bfseries m\+\_\+components}
 \begin{DoxyCompactList}\small\item\em dictionary with each component \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_af332b816b5d4fb603c237b4967fc6388}\label{class_o_m_sim_detector_component_af332b816b5d4fb603c237b4967fc6388}} 
-std\+::map$<$ G4\+String, G4\+PVPlacement $\ast$ $>$ \mbox{\hyperlink{class_o_m_sim_detector_component_af332b816b5d4fb603c237b4967fc6388}{m\+\_\+last\+Physicals}}
+\Hypertarget{class_o_m_sim_detector_component_af332b816b5d4fb603c237b4967fc6388}\label{class_o_m_sim_detector_component_af332b816b5d4fb603c237b4967fc6388} 
+std\+::map$<$ G4\+String, G4\+PVPlacement \texorpdfstring{$\ast$}{*} $>$ {\bfseries m\+\_\+last\+Physicals}
 \begin{DoxyCompactList}\small\item\em dictionary with the (last) G4\+PVPlacement of each component m\+Components produced after calling place\+It \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Static Protected Attributes}
+\doxysubsubsection*{Static Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_ac236df29d75de15fd767d760a1b9ce3a}\label{class_o_m_sim_detector_component_ac236df29d75de15fd767d760a1b9ce3a}} 
+\Hypertarget{class_o_m_sim_detector_component_ac236df29d75de15fd767d760a1b9ce3a}\label{class_o_m_sim_detector_component_ac236df29d75de15fd767d760a1b9ce3a} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+glass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_aa402e21997ac5003d9582e405b649f7c}\label{class_o_m_sim_detector_component_aa402e21997ac5003d9582e405b649f7c}} 
+\Hypertarget{class_o_m_sim_detector_component_aa402e21997ac5003d9582e405b649f7c}\label{class_o_m_sim_detector_component_aa402e21997ac5003d9582e405b649f7c} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+gel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_ac6981ac862d44561bfcd0e7a74c322e7}\label{class_o_m_sim_detector_component_ac6981ac862d44561bfcd0e7a74c322e7}} 
+\Hypertarget{class_o_m_sim_detector_component_ac6981ac862d44561bfcd0e7a74c322e7}\label{class_o_m_sim_detector_component_ac6981ac862d44561bfcd0e7a74c322e7} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+steel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a8186f7d5ed2f69b351f3c8f26a13f8f9}\label{class_o_m_sim_detector_component_a8186f7d5ed2f69b351f3c8f26a13f8f9}} 
+\Hypertarget{class_o_m_sim_detector_component_a8186f7d5ed2f69b351f3c8f26a13f8f9}\label{class_o_m_sim_detector_component_a8186f7d5ed2f69b351f3c8f26a13f8f9} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+alu\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+8, 0.\+8, 0.\+9, 1.\+0))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_ab7ae14075f3a5bffc3518ef45d684081}\label{class_o_m_sim_detector_component_ab7ae14075f3a5bffc3518ef45d684081}} 
+\Hypertarget{class_o_m_sim_detector_component_ab7ae14075f3a5bffc3518ef45d684081}\label{class_o_m_sim_detector_component_ab7ae14075f3a5bffc3518ef45d684081} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+white\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1, 1, 1, 1.\+0))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_aab89fa5b6e7633c2d6fd47085b63081f}\label{class_o_m_sim_detector_component_aab89fa5b6e7633c2d6fd47085b63081f}} 
+\Hypertarget{class_o_m_sim_detector_component_aab89fa5b6e7633c2d6fd47085b63081f}\label{class_o_m_sim_detector_component_aab89fa5b6e7633c2d6fd47085b63081f} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Semi\+Transparent\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 0.\+5))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_ad46283b503f1476c7884d02dcbab7939}\label{class_o_m_sim_detector_component_ad46283b503f1476c7884d02dcbab7939}} 
+\Hypertarget{class_o_m_sim_detector_component_ad46283b503f1476c7884d02dcbab7939}\label{class_o_m_sim_detector_component_ad46283b503f1476c7884d02dcbab7939} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a90080cba46cdfd4515adb82ac733e2cf}\label{class_o_m_sim_detector_component_a90080cba46cdfd4515adb82ac733e2cf}} 
+\Hypertarget{class_o_m_sim_detector_component_a90080cba46cdfd4515adb82ac733e2cf}\label{class_o_m_sim_detector_component_a90080cba46cdfd4515adb82ac733e2cf} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 1, 0, 1))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_ab1fcabce0f13a0cd57051ae816b81802}\label{class_o_m_sim_detector_component_ab1fcabce0f13a0cd57051ae816b81802}} 
+\Hypertarget{class_o_m_sim_detector_component_ab1fcabce0f13a0cd57051ae816b81802}\label{class_o_m_sim_detector_component_ab1fcabce0f13a0cd57051ae816b81802} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+blue\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_ae3550aea970713a778452c0e87d81ef5}\label{class_o_m_sim_detector_component_ae3550aea970713a778452c0e87d81ef5}} 
+\Hypertarget{class_o_m_sim_detector_component_ae3550aea970713a778452c0e87d81ef5}\label{class_o_m_sim_detector_component_ae3550aea970713a778452c0e87d81ef5} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+air\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+2))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_afe3cd6117404157dc7766c2c1460f436}\label{class_o_m_sim_detector_component_afe3cd6117404157dc7766c2c1460f436}} 
+\Hypertarget{class_o_m_sim_detector_component_afe3cd6117404157dc7766c2c1460f436}\label{class_o_m_sim_detector_component_afe3cd6117404157dc7766c2c1460f436} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+air\+Vis2} = G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0, 1., 0.\+5))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_aa05817323ffde3c38118e3efb58d2a8c}\label{class_o_m_sim_detector_component_aa05817323ffde3c38118e3efb58d2a8c}} 
+\Hypertarget{class_o_m_sim_detector_component_aa05817323ffde3c38118e3efb58d2a8c}\label{class_o_m_sim_detector_component_aa05817323ffde3c38118e3efb58d2a8c} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+red\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+0, 0.\+0, 1))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a3cad44317c21d757b9361bf5deb06af7}\label{class_o_m_sim_detector_component_a3cad44317c21d757b9361bf5deb06af7}} 
+\Hypertarget{class_o_m_sim_detector_component_a3cad44317c21d757b9361bf5deb06af7}\label{class_o_m_sim_detector_component_a3cad44317c21d757b9361bf5deb06af7} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+black\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0.\+0, 0.\+0, 1.\+0))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a2d31d1968706c03d9aae1365d2b5e8d3}\label{class_o_m_sim_detector_component_a2d31d1968706c03d9aae1365d2b5e8d3}} 
+\Hypertarget{class_o_m_sim_detector_component_a2d31d1968706c03d9aae1365d2b5e8d3}\label{class_o_m_sim_detector_component_a2d31d1968706c03d9aae1365d2b5e8d3} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+LEDvis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a934774c9a68abdce04b16ca7219e78c3}\label{class_o_m_sim_detector_component_a934774c9a68abdce04b16ca7219e78c3}} 
+\Hypertarget{class_o_m_sim_detector_component_a934774c9a68abdce04b16ca7219e78c3}\label{class_o_m_sim_detector_component_a934774c9a68abdce04b16ca7219e78c3} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 1.\+0, 0.\+0, 0.\+1))
 \item 
-\mbox{\Hypertarget{class_o_m_sim_detector_component_abb917266382de7d87270ce7b7a3fdbfd}\label{class_o_m_sim_detector_component_abb917266382de7d87270ce7b7a3fdbfd}} 
+\Hypertarget{class_o_m_sim_detector_component_abb917266382de7d87270ce7b7a3fdbfd}\label{class_o_m_sim_detector_component_abb917266382de7d87270ce7b7a3fdbfd} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}\label{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}} 
+\Hypertarget{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}\label{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814} 
 \index{OMSimDetectorComponent@{OMSimDetectorComponent}!appendComponent@{appendComponent}}
 \index{appendComponent@{appendComponent}!OMSimDetectorComponent@{OMSimDetectorComponent}}
 \doxysubsubsection{\texorpdfstring{appendComponent()}{appendComponent()}}
-{\footnotesize\ttfamily void OMSim\+Detector\+Component\+::append\+Component (\begin{DoxyParamCaption}\item[{G4\+VSolid $\ast$}]{p\+\_\+solid,  }\item[{G4\+Logical\+Volume $\ast$}]{p\+\_\+logical,  }\item[{G4\+Three\+Vector}]{p\+\_\+vector,  }\item[{G4\+Rotation\+Matrix}]{p\+\_\+rotation,  }\item[{G4\+String}]{p\+\_\+name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+Detector\+Component\+::append\+Component (\begin{DoxyParamCaption}\item[{G4\+VSolid \texorpdfstring{$\ast$}{*}}]{p\+\_\+solid,  }\item[{G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}}]{p\+\_\+logical,  }\item[{G4\+Three\+Vector}]{p\+\_\+vector,  }\item[{G4\+Rotation\+Matrix}]{p\+\_\+rotation,  }\item[{G4\+String}]{p\+\_\+name }\end{DoxyParamCaption})}
 
 This function is used to add a new component to the \textquotesingle{}Components\textquotesingle{} vector. Each component contains the solid volume, logical volume, position, rotation, and a unique name. It checks first if a component with the same name already exists. If it does, a warning message is generated and the name of the new component is appended with a unique suffix to avoid conflicts. The new component is then added to the \textquotesingle{}Components\textquotesingle{} vector.
 
@@ -158,7 +157,7 @@ This function is used to add a new component to the \textquotesingle{}Components
 {\em p\+\_\+name} & A G4\+String object representing the unique name of the component. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a698a458599ff1d3045010636717e4da8}\label{class_o_m_sim_detector_component_a698a458599ff1d3045010636717e4da8}} 
+\Hypertarget{class_o_m_sim_detector_component_a698a458599ff1d3045010636717e4da8}\label{class_o_m_sim_detector_component_a698a458599ff1d3045010636717e4da8} 
 \index{OMSimDetectorComponent@{OMSimDetectorComponent}!checkIfExists@{checkIfExists}}
 \index{checkIfExists@{checkIfExists}!OMSimDetectorComponent@{OMSimDetectorComponent}}
 \doxysubsubsection{\texorpdfstring{checkIfExists()}{checkIfExists()}}
@@ -172,7 +171,17 @@ This function is used to add a new component to the \textquotesingle{}Components
 \begin{DoxyReturn}{Returns}
 G4bool True if the component exists in the map, false otherwise. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26}\label{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26}} 
+\Hypertarget{class_o_m_sim_detector_component_a82774227bd10e2fe94f1612f12929004}\label{class_o_m_sim_detector_component_a82774227bd10e2fe94f1612f12929004} 
+\index{OMSimDetectorComponent@{OMSimDetectorComponent}!construction@{construction}}
+\index{construction@{construction}!OMSimDetectorComponent@{OMSimDetectorComponent}}
+\doxysubsubsection{\texorpdfstring{construction()}{construction()}}
+{\footnotesize\ttfamily virtual void OMSim\+Detector\+Component\+::construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}{DEGG}}, \mbox{\hyperlink{class_d_egg_harness_ac0985f2ad731e93da36117cd2368fa7e}{DEgg\+Harness}}, \mbox{\hyperlink{class_l_o_m16_ab837d810e22d601fc1a298ba0dfddd48}{LOM16}}, \mbox{\hyperlink{class_l_o_m18_a0744107f29517a84a06b2544e81b00e0}{LOM18}}, \mbox{\hyperlink{classm_d_o_m_a115f5e689062ac82b8f55a18f7f96376}{m\+DOM}}, \mbox{\hyperlink{classm_d_o_m_flasher_aac8c466bbcc6d952ad82fbd29daa675f}{m\+DOMFlasher}}, \mbox{\hyperlink{classm_d_o_m_harness_ab87b8f216298817923b91063fee12b3b}{m\+DOMHarness}}, \mbox{\hyperlink{classp_d_o_m_a6fc9511f8287a69ef498167162a92ec4}{p\+DOM}}, and \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a5ab3a93d9e44fb38004cfd9d30c6d6aa}{OMSim\+PMTConstruction}}.
+
+\Hypertarget{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26}\label{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26} 
 \index{OMSimDetectorComponent@{OMSimDetectorComponent}!deleteComponent@{deleteComponent}}
 \index{deleteComponent@{deleteComponent}!OMSimDetectorComponent@{OMSimDetectorComponent}}
 \doxysubsubsection{\texorpdfstring{deleteComponent()}{deleteComponent()}}
@@ -183,7 +192,7 @@ G4bool True if the component exists in the map, false otherwise.
 {\em p\+\_\+name} & A G4\+String representing the name of the component to delete. The component must exist in the \textquotesingle{}Components\textquotesingle{} map. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_detector_component_afe9d1fa2893a0ae67ab6f9afb6d377f4}\label{class_o_m_sim_detector_component_afe9d1fa2893a0ae67ab6f9afb6d377f4}} 
+\Hypertarget{class_o_m_sim_detector_component_afe9d1fa2893a0ae67ab6f9afb6d377f4}\label{class_o_m_sim_detector_component_afe9d1fa2893a0ae67ab6f9afb6d377f4} 
 \index{OMSimDetectorComponent@{OMSimDetectorComponent}!getComponent@{getComponent}}
 \index{getComponent@{getComponent}!OMSimDetectorComponent@{OMSimDetectorComponent}}
 \doxysubsubsection{\texorpdfstring{getComponent()}{getComponent()}}
@@ -195,9 +204,9 @@ G4bool True if the component exists in the map, false otherwise.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{OMSim\+Detector\+Component\+::\+Component}} structure containing the solid volume, logical volume, position, rotation, and name of component. 
+\doxylink{struct_o_m_sim_detector_component_1_1_component}{OMSim\+Detector\+Component\+::\+Component} structure containing the solid volume, logical volume, position, rotation, and name of component. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_detector_component_aa4a3ef0899866c61c3e6185946e04985}\label{class_o_m_sim_detector_component_aa4a3ef0899866c61c3e6185946e04985}} 
+\Hypertarget{class_o_m_sim_detector_component_aa4a3ef0899866c61c3e6185946e04985}\label{class_o_m_sim_detector_component_aa4a3ef0899866c61c3e6185946e04985} 
 \index{OMSimDetectorComponent@{OMSimDetectorComponent}!getNewPosition@{getNewPosition}}
 \index{getNewPosition@{getNewPosition}!OMSimDetectorComponent@{OMSimDetectorComponent}}
 \doxysubsubsection{\texorpdfstring{getNewPosition()}{getNewPosition()}}
@@ -217,30 +226,30 @@ G4bool True if the component exists in the map, false otherwise.
 \begin{DoxyReturn}{Returns}
 G4\+Transform3D representing the new position and orientation of the component 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a60b149056e8998772582544271288189}\label{class_o_m_sim_detector_component_a60b149056e8998772582544271288189}} 
+\Hypertarget{class_o_m_sim_detector_component_a60b149056e8998772582544271288189}\label{class_o_m_sim_detector_component_a60b149056e8998772582544271288189} 
 \index{OMSimDetectorComponent@{OMSimDetectorComponent}!integrateDetectorComponent@{integrateDetectorComponent}}
 \index{integrateDetectorComponent@{integrateDetectorComponent}!OMSimDetectorComponent@{OMSimDetectorComponent}}
 \doxysubsubsection{\texorpdfstring{integrateDetectorComponent()}{integrateDetectorComponent()}}
-{\footnotesize\ttfamily void OMSim\+Detector\+Component\+::integrate\+Detector\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} $\ast$}]{p\+\_\+to\+Integrate,  }\item[{G4\+Three\+Vector}]{p\+\_\+position,  }\item[{G4\+Rotation\+Matrix}]{p\+\_\+rotation,  }\item[{G4\+String}]{p\+\_\+name\+Extension }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+Detector\+Component\+::integrate\+Detector\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+to\+Integrate,  }\item[{G4\+Three\+Vector}]{p\+\_\+position,  }\item[{G4\+Rotation\+Matrix}]{p\+\_\+rotation,  }\item[{G4\+String}]{p\+\_\+name\+Extension }\end{DoxyParamCaption})}
 
-This function is used to incorporate the components of another instance of \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} into the current instance. The provided position and rotation parameters are used to transform the components from the input \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} instance before integrating. Each transformed component from the input instance is then appended to the current instance using the \mbox{\hyperlink{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}{append\+Component()}} function. A name extension is applied to the original component names for distinction after integration.
+This function is used to incorporate the components of another instance of \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} into the current instance. The provided position and rotation parameters are used to transform the components from the input \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} instance before integrating. Each transformed component from the input instance is then appended to the current instance using the \doxylink{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}{append\+Component()} function. A name extension is applied to the original component names for distinction after integration.
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+\_\+to\+Integrate} & The \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} instance whose components are to be integrated. \\
+{\em p\+\_\+to\+Integrate} & The \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} instance whose components are to be integrated. \\
 \hline
-{\em p\+\_\+position} & The G4\+Three\+Vector representing the position where the new \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} instance will be integrated. \\
+{\em p\+\_\+position} & The G4\+Three\+Vector representing the position where the new \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} instance will be integrated. \\
 \hline
-{\em p\+\_\+rotation} & The G4\+Rotation\+Matrix representing the rotation of the new \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} instance. \\
+{\em p\+\_\+rotation} & The G4\+Rotation\+Matrix representing the rotation of the new \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} instance. \\
 \hline
 {\em p\+\_\+name\+Extension} & A G4\+String used to extend the original name of the component. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}\label{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}} 
+\Hypertarget{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}\label{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae} 
 \index{OMSimDetectorComponent@{OMSimDetectorComponent}!placeIt@{placeIt}}
 \index{placeIt@{placeIt}!OMSimDetectorComponent@{OMSimDetectorComponent}}
 \doxysubsubsection{\texorpdfstring{placeIt()}{placeIt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void OMSim\+Detector\+Component\+::place\+It (\begin{DoxyParamCaption}\item[{G4\+Three\+Vector}]{p\+\_\+position,  }\item[{G4\+Rotation\+Matrix}]{p\+\_\+rotation,  }\item[{G4\+Logical\+Volume $\ast$\&}]{p\+\_\+mother,  }\item[{G4\+String}]{p\+\_\+name\+Extension = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+Detector\+Component\+::place\+It (\begin{DoxyParamCaption}\item[{G4\+Three\+Vector}]{p\+\_\+position,  }\item[{G4\+Rotation\+Matrix}]{p\+\_\+rotation,  }\item[{G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&}]{p\+\_\+mother,  }\item[{G4\+String}]{p\+\_\+name\+Extension = {\ttfamily "{}"{}} }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -253,11 +262,11 @@ This function is used to incorporate the components of another instance of \mbox
 {\em p\+\_\+name\+Extension} & G4\+String name of the physical volume. You should not have two physicals with the same name. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a4b2ca76a8864a82cd9717f75577188d7}\label{class_o_m_sim_detector_component_a4b2ca76a8864a82cd9717f75577188d7}} 
+\Hypertarget{class_o_m_sim_detector_component_a4b2ca76a8864a82cd9717f75577188d7}\label{class_o_m_sim_detector_component_a4b2ca76a8864a82cd9717f75577188d7} 
 \index{OMSimDetectorComponent@{OMSimDetectorComponent}!placeIt@{placeIt}}
 \index{placeIt@{placeIt}!OMSimDetectorComponent@{OMSimDetectorComponent}}
 \doxysubsubsection{\texorpdfstring{placeIt()}{placeIt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void OMSim\+Detector\+Component\+::place\+It (\begin{DoxyParamCaption}\item[{G4\+Transform3D}]{p\+\_\+trans,  }\item[{G4\+Logical\+Volume $\ast$\&}]{p\+\_\+mother,  }\item[{G4\+String}]{p\+\_\+name\+Extension = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+Detector\+Component\+::place\+It (\begin{DoxyParamCaption}\item[{G4\+Transform3D}]{p\+\_\+trans,  }\item[{G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&}]{p\+\_\+mother,  }\item[{G4\+String}]{p\+\_\+name\+Extension = {\ttfamily "{}"{}} }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -268,11 +277,11 @@ This function is used to incorporate the components of another instance of \mbox
 {\em p\+\_\+name\+Extension} & G4\+String name of the physical volume. You should not have two physicals with the same name. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d}\label{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d}} 
+\Hypertarget{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d}\label{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d} 
 \index{OMSimDetectorComponent@{OMSimDetectorComponent}!substractToVolume@{substractToVolume}}
 \index{substractToVolume@{substractToVolume}!OMSimDetectorComponent@{OMSimDetectorComponent}}
 \doxysubsubsection{\texorpdfstring{substractToVolume()}{substractToVolume()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily G4\+Subtraction\+Solid $\ast$ OMSim\+Detector\+Component\+::substract\+To\+Volume (\begin{DoxyParamCaption}\item[{G4\+VSolid $\ast$}]{p\+\_\+input\+Volume,  }\item[{G4\+Three\+Vector}]{p\+\_\+substraction\+Pos,  }\item[{G4\+Rotation\+Matrix}]{p\+\_\+substraction\+Rot,  }\item[{G4\+String}]{p\+\_\+new\+Volume\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} OMSim\+Detector\+Component\+::substract\+To\+Volume (\begin{DoxyParamCaption}\item[{G4\+VSolid \texorpdfstring{$\ast$}{*}}]{p\+\_\+input\+Volume,  }\item[{G4\+Three\+Vector}]{p\+\_\+substraction\+Pos,  }\item[{G4\+Rotation\+Matrix}]{p\+\_\+substraction\+Rot,  }\item[{G4\+String}]{p\+\_\+new\+Volume\+Name }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -286,15 +295,15 @@ This function is used to incorporate the components of another instance of \mbox
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Returns a G4\+Subtraction\+Solid which is the result of subtracting the \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}\textquotesingle{}s components from p\+\_\+input\+Volume. 
+Returns a G4\+Subtraction\+Solid which is the result of subtracting the \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}\textquotesingle{}s components from p\+\_\+input\+Volume. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_o_m_sim_detector_component_a6b09340b9d4a93f5a269cfc116acf8c3}\label{class_o_m_sim_detector_component_a6b09340b9d4a93f5a269cfc116acf8c3}} 
+\Hypertarget{class_o_m_sim_detector_component_a6b09340b9d4a93f5a269cfc116acf8c3}\label{class_o_m_sim_detector_component_a6b09340b9d4a93f5a269cfc116acf8c3} 
 \index{OMSimDetectorComponent@{OMSimDetectorComponent}!substractToVolume@{substractToVolume}}
 \index{substractToVolume@{substractToVolume}!OMSimDetectorComponent@{OMSimDetectorComponent}}
 \doxysubsubsection{\texorpdfstring{substractToVolume()}{substractToVolume()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily G4\+Subtraction\+Solid $\ast$ OMSim\+Detector\+Component\+::substract\+To\+Volume (\begin{DoxyParamCaption}\item[{G4\+VSolid $\ast$}]{p\+\_\+input\+Volume,  }\item[{G4\+Transform3D}]{p\+\_\+trans,  }\item[{G4\+String}]{p\+\_\+new\+Volume\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} OMSim\+Detector\+Component\+::substract\+To\+Volume (\begin{DoxyParamCaption}\item[{G4\+VSolid \texorpdfstring{$\ast$}{*}}]{p\+\_\+input\+Volume,  }\item[{G4\+Transform3D}]{p\+\_\+trans,  }\item[{G4\+String}]{p\+\_\+new\+Volume\+Name }\end{DoxyParamCaption})}
 
-This function enables you to subtract the shape defined by components of the \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} instance from a specified input volume. This can be useful for modeling complex geometries where a solid needs to have some parts \char`\"{}cut out\char`\"{} from it. The method goes through each component of the \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}, computes the transformation needed, and subtracts it from the input volume. The resulting subtracted solid is returned.
+This function enables you to subtract the shape defined by components of the \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} instance from a specified input volume. This can be useful for modeling complex geometries where a solid needs to have some parts "{}cut out"{} from it. The method goes through each component of the \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}, computes the transformation needed, and subtracts it from the input volume. The resulting subtracted solid is returned.
 
 
 \begin{DoxyParams}{Parameters}
@@ -306,7 +315,7 @@ This function enables you to subtract the shape defined by components of the \mb
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Returns a G4\+Subtraction\+Solid which is the result of subtracting the \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}\textquotesingle{}s components from p\+\_\+input\+Volume. 
+Returns a G4\+Subtraction\+Solid which is the result of subtracting the \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}\textquotesingle{}s components from p\+\_\+input\+Volume. 
 \end{DoxyReturn}
 
 

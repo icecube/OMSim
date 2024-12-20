@@ -1,0 +1,85 @@
+\doxysection{OMSim\+MDOM.\+hh}
+\hypertarget{_o_m_sim_m_d_o_m_8hh_source}{}\label{_o_m_sim_m_d_o_m_8hh_source}\index{OMSimMDOM.hh@{OMSimMDOM.hh}}
+\mbox{\hyperlink{_o_m_sim_m_d_o_m_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_m_d_o_m_flasher_8hh}{OMSimMDOMFlasher.hh}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_p_m_t_construction_8hh}{OMSimPMTConstruction.hh}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}OMSimOpticalModule.hh"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classm_d_o_m_harness}{mDOMHarness}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classm_d_o_m}{mDOM}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSimOpticalModule}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classm_d_o_m}{mDOM}}(G4bool\ p\_placeHarness\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classm_d_o_m_afd95205edb92f86b5c8d4e5642a58e3c}{\string~mDOM}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm_d_o_m_a115f5e689062ac82b8f55a18f7f96376}{construction}}();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classm_d_o_m_a1fd32bb6eeff5f49f9ebbd09825b2e91}{getPressureVesselWeight}}()\ \{\ \textcolor{keywordflow}{return}\ 13.0\ *\ kg;\ \};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classm_d_o_m_ad7e07f1380a50158f7cede9aa84721be}{getNumberOfPMTs}}()\ \{\ \textcolor{keywordflow}{return}\ m\_totalNumberPMTs;\ \};}
+\DoxyCodeLine{00021\ \ \ \ \ G4String\ getName()}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}/mDOM/"{}}\ <<\ m\_index;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ss.str();}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ G4int\ m\_NrTotalLED;}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<G4Transform3D>\ \mbox{\hyperlink{classm_d_o_m_ab56e69ed881ca89d4e0164ad5316b69d}{m\_LEDTransformers}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<std::vector<G4double>>\ \mbox{\hyperlink{classm_d_o_m_a6047144e49a3969896f69bb1a9054685}{m\_LEDAngFromSphere}};\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm_d_o_m_adf748d77a8bae2516db1ba79b805841b}{runBeamOnFlasher}}(G4int\ pModuleIndex,\ G4int\ pLEDIndex)\ \{\ m\_flashers-\/>\mbox{\hyperlink{classm_d_o_m_flasher_a268494f8d27175e1ae391789e1d66faf}{runBeamOnFlasher}}(\textcolor{keyword}{this},\ pModuleIndex,\ pLEDIndex);\ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classm_d_o_m_flasher}{mDOMFlasher}}\ *m\_flashers;}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classm_d_o_m_harness}{mDOMHarness}}\ *m\_harness;}
+\DoxyCodeLine{00043\ \ \ \ \ G4SubtractionSolid\ *equatorialReflector(G4VSolid\ *pSupportStructure,\ G4Cons\ *pReflCone,\ G4double\ pAngle,\ G4String\ pSuffix);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ setPMTPositions();}
+\DoxyCodeLine{00045\ \ \ \ \ G4UnionSolid\ *pressureVessel(\textcolor{keyword}{const}\ G4double\ pOutRad,\ G4String\ pSuffix);}
+\DoxyCodeLine{00046\ \ \ \ \ G4SubtractionSolid\ *substractHarnessPlug(G4VSolid\ *pSolid);}
+\DoxyCodeLine{00047\ \ \ \ \ std::tuple<G4SubtractionSolid\ *,\ G4UnionSolid\ *>\ supportStructure();}
+\DoxyCodeLine{00048\ \ \ \ \ G4SubtractionSolid\ *substractFlashers(G4VSolid\ *lSupStructureSolid);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ setLEDPositions();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ G4bool\ m\_placeHarness\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00052\ \ \ \ \ G4bool\ m\_harnessUnion\ =\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ it\ should\ be\ true\ for\ the\ first\ module\ that\ you\ build,\ and\ then\ false}}
+\DoxyCodeLine{00053\ \ \ \ \ std::vector<G4ThreeVector>\ m\_positionsPMT;}
+\DoxyCodeLine{00054\ \ \ \ \ std::vector<G4RotationMatrix>\ m\_PMTRotations;}
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<G4RotationMatrix>\ m\_PMTRotPhi;}
+\DoxyCodeLine{00056\ \ \ \ \ std::vector<G4ThreeVector>\ m\_reflectorPositions;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ G4double\ m\_PMToffset;}
+\DoxyCodeLine{00059\ \ \ \ \ G4double\ m\_refConeIdealInRad;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ \mbox{\hyperlink{classm_d_o_m_a020769f4b10c962ab9b5841bbc969d7d}{m\_glassThick}}\ =\ 13.5\ *\ mm;\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ \mbox{\hyperlink{classm_d_o_m_a4fd6b5d14b388dc32faac91fc24f7530}{m\_cylinderAngle}}\ =\ 2.8\ *\ deg;\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ \mbox{\hyperlink{classm_d_o_m_a331bad1dc28b4f79cbdcb853c0808942}{m\_glassOutRad}}\ =\ 176.5\ *\ mm;\ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ \mbox{\hyperlink{classm_d_o_m_a8b6dc40b477765fea8a4492ce5c9f2fa}{m\_cylinderHeight}}\ =\ 27.5\ *\ mm;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_glassInRad\ =\ \mbox{\hyperlink{classm_d_o_m_a331bad1dc28b4f79cbdcb853c0808942}{m\_glassOutRad}}\ -\/\ \mbox{\hyperlink{classm_d_o_m_a020769f4b10c962ab9b5841bbc969d7d}{m\_glassThick}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ \mbox{\hyperlink{classm_d_o_m_abc6e80be6c1efb187c679181cb091952}{m\_gelThicknessFrontPMT}}\ =\ 3.6\ *\ mm;\ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ \mbox{\hyperlink{classm_d_o_m_a0b9eacd67a9ede02b00abd7955051a3a}{m\_gelThickness}}\ =\ 4.5\ *\ mm;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ \mbox{\hyperlink{classm_d_o_m_a9cb91ceb21a3babddcafe8e017cbe48f}{m\_EqPMTrOffset}}\ =\ 2.6\ *\ mm;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ \mbox{\hyperlink{classm_d_o_m_a69476b128857a811b37e49a361f2ae45}{m\_EqPMTzOffset}}\ =\ 10.0\ *\ mm;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ \mbox{\hyperlink{classm_d_o_m_a3e2474c86c34ae72e0d233a6433db207}{m\_reflectorHalfZ}}\ =\ 15\ *\ mm;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ \mbox{\hyperlink{classm_d_o_m_af6fbf12c7717cdae8cc77cd4062e9720}{m\_reflectorConeSheetThickness}}\ =\ 0.5\ *\ mm;\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ \mbox{\hyperlink{classm_d_o_m_a3e2581f3dcc369d43b6779bb87b4f533}{m\_reflectorConeToHolder}}\ =\ 1.55\ *\ mm;\ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_thetaPolar\ =\ 33.0\ *\ deg;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_thetaEquatorial\ =\ 72.0\ *\ deg;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{const}\ G4int\ m\_numberPolarPMTs\ =\ 4;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{const}\ G4int\ m\_numberEqPMTs\ =\ 8;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{const}\ G4int\ mRefConeAngle\ =\ 51;}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_polarEquatorialPMTphiPhase\ =\ 0\ *\ deg;}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{const}\ G4int\ m\_totalNumberPMTs\ =\ (m\_numberPolarPMTs\ +\ m\_numberEqPMTs)\ *\ 2;}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_supStructureRad\ =\ \mbox{\hyperlink{classm_d_o_m_a331bad1dc28b4f79cbdcb853c0808942}{m\_glassOutRad}}\ -\/\ \mbox{\hyperlink{classm_d_o_m_a020769f4b10c962ab9b5841bbc969d7d}{m\_glassThick}}\ -\/\ \mbox{\hyperlink{classm_d_o_m_a0b9eacd67a9ede02b00abd7955051a3a}{m\_gelThickness}};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_thetaEqLED\ =\ 61\ *\ deg;\ \ \ \textcolor{comment}{//\ 61\ upper\ sphere,\ 180-\/61\ lower\ sphere}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_thetaPolLED\ =\ 8.2\ *\ deg;\ \textcolor{comment}{//\ 8.2\ upper\ sphere,\ 180-\/8.2\ lower\ sphere}}
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00088\ }
+
+\end{DoxyCode}

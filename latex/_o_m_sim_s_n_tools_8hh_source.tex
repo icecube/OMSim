@@ -1,0 +1,57 @@
+\doxysection{OMSim\+SNTools.\+hh}
+\hypertarget{_o_m_sim_s_n_tools_8hh_source}{}\label{_o_m_sim_s_n_tools_8hh_source}\index{OMSimSNTools.hh@{OMSimSNTools.hh}}
+\mbox{\hyperlink{_o_m_sim_s_n_tools_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <globals.hh>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <G4ThreeVector.hh>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <TGraph.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_distribution_sampler}{DistributionSampler}}}
+\DoxyCodeLine{00024\ \{\ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_distribution_sampler}{DistributionSampler}}()\{\};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_distribution_sampler}{\string~DistributionSampler}}();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ G4double\ \mbox{\hyperlink{class_distribution_sampler_aa3a2ca8ec78298b7c58b3f2af0e549ce}{sampleFromDistribution}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_distribution_sampler_a62407876667af623ba546ef60b9fca3a}{setData}}(\textcolor{keyword}{const}\ std::vector<G4double>\&\ pX,\ \textcolor{keyword}{const}\ std::vector<G4double>\&\ pY,\ G4String\ pName);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_distribution_sampler_ae4ab826da2e1b14517fcd38ac3d8e7bd}{makeInterpolator}}();}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_distribution_sampler_ad5fde5096dabc0cd2cf6fc4e5f2d2dd8}{setUnits}}(G4double\ pX,\ G4double\ pY);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ G4double\ \mbox{\hyperlink{class_distribution_sampler_a2e254930c735ca208b6d1b6c330cf64e}{interpolate}}(G4double\ pX);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_distribution_sampler_aa0b62effce220e28d3a08c8904c6ee76}{calculateSlopesAndCDF}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ G4double\ m\_XUnit;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ G4double\ m\_YUnit;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::vector<G4double>\ m\_X;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ std::vector<G4double>\ m\_Y;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ std::vector<G4double>\ m\_slopes;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ std::vector<G4double>\ m\_CDF;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ G4String\ m\_distName;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ TGraph\ *m\_interpolator\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_s_n_tools}{OMSimSNTools}}}
+\DoxyCodeLine{00056\ \{}
+\DoxyCodeLine{00057\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_s_n_tools}{OMSimSNTools}}()\{\};\ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_s_n_tools}{\string~OMSimSNTools}}()\{\};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ G4ThreeVector\ \mbox{\hyperlink{class_o_m_sim_s_n_tools_a7e746f08979e8ead130088b7396871a1}{randomPosition}}();}
+\DoxyCodeLine{00063\ \ \ \ \ std::pair<std::string,\ std::string>\ \mbox{\hyperlink{class_o_m_sim_s_n_tools_a89a22f20d0aff91704cf6cab1b48d266}{getFileNames}}(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00064\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_s_n_tools_a48caade81da87bfc2a0ac9da94b57110}{sampleEnergy}}(G4double\ Emean,\ G4double\ Emean2,\ G4double\&\ alpha);}
+\DoxyCodeLine{00065\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_s_n_tools_aeb59462c439834b0bb9c5a5be3ad612c}{getAlpha}}(G4double\ Emean,G4double\ Emean2);}
+\DoxyCodeLine{00066\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_s_n_tools_a7b3c3433f4c60bd5a48d97600b1e8496}{calculateWeight}}(G4double\ sigma,\ G4double\ NTargets);}
+\DoxyCodeLine{00067\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_s_n_tools_a34d75fd490a03c6c6131c5ea8fbec3f2}{numberOfTargets}}(G4int\ targetPerMolecule);}
+\DoxyCodeLine{00068\ \textcolor{keyword}{private}:\ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ std::vector\ <G4double>\ m\_DOMpos;}
+\DoxyCodeLine{00070\ \ \ \ \ G4double\ m\_rMin;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_o_m_sim_s_n_tools_a0b663ee3b96216ee943a681a496dffc5}{checkVolumeForOMs}}(G4ThreeVector\ position);}
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+
+\end{DoxyCode}

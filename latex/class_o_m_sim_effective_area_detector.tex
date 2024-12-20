@@ -1,5 +1,5 @@
-\hypertarget{class_o_m_sim_effective_area_detector}{}\doxysection{OMSim\+Effective\+Area\+Detector Class Reference}
-\label{class_o_m_sim_effective_area_detector}\index{OMSimEffectiveAreaDetector@{OMSimEffectiveAreaDetector}}
+\doxysection{OMSim\+Effective\+Area\+Detector Class Reference}
+\hypertarget{class_o_m_sim_effective_area_detector}{}\label{class_o_m_sim_effective_area_detector}\index{OMSimEffectiveAreaDetector@{OMSimEffectiveAreaDetector}}
 
 
 Class for detector construction in the effective area simulation.  
@@ -25,19 +25,43 @@ Collaboration diagram for OMSim\+Effective\+Area\+Detector\+:
 \includegraphics[width=350pt]{class_o_m_sim_effective_area_detector__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Private Member Functions}
+\doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_effective_area_detector_a6c4ccbdfac66c2820f9480d518614fa3}\label{class_o_m_sim_effective_area_detector_a6c4ccbdfac66c2820f9480d518614fa3}} 
 void \mbox{\hyperlink{class_o_m_sim_effective_area_detector_a6c4ccbdfac66c2820f9480d518614fa3}{construct\+World}} ()
 \begin{DoxyCompactList}\small\item\em Constructs the world volume (sphere). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_effective_area_detector_a9bf2d906954805cea5fb5008af710d13}{construct\+Detector}} ()
 \begin{DoxyCompactList}\small\item\em Constructs the selected detector from the command line argument and returns the physical world volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_construction_a9e16ad5da3921b502473b303609caad0}{Construct}} ()
+\begin{DoxyCompactList}\small\item\em Constructs the selected detector from the command line argument and returns the physical world volume. \end{DoxyCompactList}\item 
+void {\bfseries Construct\+SDand\+Field} () override
+\item 
+void {\bfseries register\+Sensitive\+Detector} (G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}log\+Vol, G4\+VSensitive\+Detector \texorpdfstring{$\ast$}{*}a\+SD)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Physical}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+VSolid \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Solid}
+\item 
+G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Logical}
+\item 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+data}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_o_m_sim_detector_construction_1_1_s_d_info}{SDInfo}} $>$ {\bfseries m\+\_\+sensitive\+Detectors}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_effective_area_detector_a9bf2d906954805cea5fb5008af710d13}\label{class_o_m_sim_effective_area_detector_a9bf2d906954805cea5fb5008af710d13}} 
+\Hypertarget{class_o_m_sim_effective_area_detector_a9bf2d906954805cea5fb5008af710d13}\label{class_o_m_sim_effective_area_detector_a9bf2d906954805cea5fb5008af710d13} 
 \index{OMSimEffectiveAreaDetector@{OMSimEffectiveAreaDetector}!constructDetector@{constructDetector}}
 \index{constructDetector@{constructDetector}!OMSimEffectiveAreaDetector@{OMSimEffectiveAreaDetector}}
 \doxysubsubsection{\texorpdfstring{constructDetector()}{constructDetector()}}
@@ -46,6 +70,16 @@ void \mbox{\hyperlink{class_o_m_sim_effective_area_detector_a9bf2d906954805cea5f
 \begin{DoxyReturn}{Returns}
 Pointer to the physical world volume 
 \end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}.
+
+\Hypertarget{class_o_m_sim_effective_area_detector_a6c4ccbdfac66c2820f9480d518614fa3}\label{class_o_m_sim_effective_area_detector_a6c4ccbdfac66c2820f9480d518614fa3} 
+\index{OMSimEffectiveAreaDetector@{OMSimEffectiveAreaDetector}!constructWorld@{constructWorld}}
+\index{constructWorld@{constructWorld}!OMSimEffectiveAreaDetector@{OMSimEffectiveAreaDetector}}
+\doxysubsubsection{\texorpdfstring{constructWorld()}{constructWorld()}}
+{\footnotesize\ttfamily void OMSim\+Effective\+Area\+Detector\+::construct\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
 
 
 Implements \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}.

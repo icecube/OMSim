@@ -1,68 +1,68 @@
-\hypertarget{class_o_m_sim_command_args_table}{}\doxysection{OMSim\+Command\+Args\+Table Class Reference}
-\label{class_o_m_sim_command_args_table}\index{OMSimCommandArgsTable@{OMSimCommandArgsTable}}
+\doxysection{OMSim\+Command\+Args\+Table Class Reference}
+\hypertarget{class_o_m_sim_command_args_table}{}\label{class_o_m_sim_command_args_table}\index{OMSimCommandArgsTable@{OMSimCommandArgsTable}}
 
 
-A class used to hold \mbox{\hyperlink{class_o_m_sim}{OMSim}} command arguments with global instance access.  
+A class used to hold \doxylink{class_o_m_sim}{OMSim} command arguments with global instance access.  
 
 
 
 
 \doxysubsection{Detailed Description}
-This class uses a map to hold key-\/value pairs of simulation command arguments. It provides a method to write the parameters to a JSON file. Its lifecycle is managed by the \mbox{\hyperlink{class_o_m_sim}{OMSim}} class. \doxysubsection*{Public Types}
+This class uses a map to hold key-\/value pairs of simulation command arguments. It provides a method to write the parameters to a JSON file. Its lifecycle is managed by the \doxylink{class_o_m_sim}{OMSim} class. \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_a83cfd0564d03cb198f91926cd5c4f731}\label{class_o_m_sim_command_args_table_a83cfd0564d03cb198f91926cd5c4f731}} 
-using {\bfseries Key} = std\+::string
+\Hypertarget{class_o_m_sim_command_args_table_a83cfd0564d03cb198f91926cd5c4f731}\label{class_o_m_sim_command_args_table_a83cfd0564d03cb198f91926cd5c4f731} 
+\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{using}} {\bfseries Key} = std\+::string
 \item 
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_a696523e7750390e2a8f1cc4dd9871ddc}\label{class_o_m_sim_command_args_table_a696523e7750390e2a8f1cc4dd9871ddc}} 
-using {\bfseries Value} = boost\+::any
+\Hypertarget{class_o_m_sim_command_args_table_a696523e7750390e2a8f1cc4dd9871ddc}\label{class_o_m_sim_command_args_table_a696523e7750390e2a8f1cc4dd9871ddc} 
+\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{using}} {\bfseries Value} = boost\+::any
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_o_m_sim_command_args_table_a89368614d0c565dd2687c2560af8c79e}{set\+Parameter}} (const Key \&p\+\_\+key, const Value \&p\+\_\+value)
+\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{void}} \mbox{\hyperlink{class_o_m_sim_command_args_table_a89368614d0c565dd2687c2560af8c79e}{set\+Parameter}} (\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{const}} Key \&\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{p\+\_\+key}}, \mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{const}} Value \&\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{p\+\_\+value}})
 \begin{DoxyCompactList}\small\item\em Sets a parameter in the arg table. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_adb19aee69981d7a591cc2a56345a9982}\label{class_o_m_sim_command_args_table_adb19aee69981d7a591cc2a56345a9982}} 
-bool {\bfseries key\+Exists} (const Key \&p\+\_\+key)
+\Hypertarget{class_o_m_sim_command_args_table_adb19aee69981d7a591cc2a56345a9982}\label{class_o_m_sim_command_args_table_adb19aee69981d7a591cc2a56345a9982} 
+\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{bool}} {\bfseries key\+Exists} (\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{const}} Key \&\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{p\+\_\+key}})
 \item 
-void \mbox{\hyperlink{class_o_m_sim_command_args_table_a0bd61682f1c4bef12e41084acfee02dd}{write\+To\+Json}} (std\+::string p\+\_\+file\+Name)
+\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{void}} \mbox{\hyperlink{class_o_m_sim_command_args_table_a0bd61682f1c4bef12e41084acfee02dd}{write\+To\+Json}} (std\+::string \mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{p\+\_\+file\+Name}})
 \begin{DoxyCompactList}\small\item\em Writes the parameters to a JSON-\/formatted file. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_acd0700b601ac3b3279657ad1bc1363e8}\label{class_o_m_sim_command_args_table_acd0700b601ac3b3279657ad1bc1363e8}} 
-void \mbox{\hyperlink{class_o_m_sim_command_args_table_acd0700b601ac3b3279657ad1bc1363e8}{finalize}} ()
+\Hypertarget{class_o_m_sim_command_args_table_acd0700b601ac3b3279657ad1bc1363e8}\label{class_o_m_sim_command_args_table_acd0700b601ac3b3279657ad1bc1363e8} 
+\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{void}} {\bfseries finalize} ()
 \begin{DoxyCompactList}\small\item\em Finalizes the table, setting a random seed if none was provided. m\+\_\+finalized is set to true preventing any further modifications. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{get}} (const std\+::string \&p\+\_\+key)
 \begin{DoxyCompactList}\small\item\em Retrieves a parameter from the table. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Static Public Member Functions}
+\doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \mbox{\hyperlink{class_o_m_sim_command_args_table_a6b23f4e37663c7cf07a7f4d3f44ffdab}{init}} ()
-\begin{DoxyCompactList}\small\item\em Initializes the global instance of \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{class_o_m_sim_command_args_table_ae25665b0429b0bfcfe0aac11ef982290}{shutdown}} ()
-\begin{DoxyCompactList}\small\item\em Deletes the global instance of \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}}. \end{DoxyCompactList}\item 
-static \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} \& \mbox{\hyperlink{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}{get\+Instance}} ()
+\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{static}} \mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{void}} \mbox{\hyperlink{class_o_m_sim_command_args_table_a6b23f4e37663c7cf07a7f4d3f44ffdab}{init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the global instance of \doxylink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{static}} \mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{void}} \mbox{\hyperlink{class_o_m_sim_command_args_table_ae25665b0429b0bfcfe0aac11ef982290}{shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Deletes the global instance of \doxylink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{static}} \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} \& \mbox{\hyperlink{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}{get\+Instance}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_aa3a0d47899b32f775636eb921ed44037}\label{class_o_m_sim_command_args_table_aa3a0d47899b32f775636eb921ed44037}} 
-{\bfseries OMSim\+Command\+Args\+Table} (const \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} \&)=delete
+\Hypertarget{class_o_m_sim_command_args_table_aa3a0d47899b32f775636eb921ed44037}\label{class_o_m_sim_command_args_table_aa3a0d47899b32f775636eb921ed44037} 
+{\bfseries OMSim\+Command\+Args\+Table} (\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{const}} \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} \&)=\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{delete}}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_a99ffce1b38ff88b262c0cc38aa2dd288}\label{class_o_m_sim_command_args_table_a99ffce1b38ff88b262c0cc38aa2dd288}} 
-\mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} \&)=delete
+\Hypertarget{class_o_m_sim_command_args_table_abf7572cc6ccefed26b848db1496d37a8}\label{class_o_m_sim_command_args_table_abf7572cc6ccefed26b848db1496d37a8} 
+\mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} \& {\bfseries operator=} (\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{const}} \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} \&)=\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{delete}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_a7127ad94f64a48104a6398253119ef15}\label{class_o_m_sim_command_args_table_a7127ad94f64a48104a6398253119ef15}} 
-bool {\bfseries m\+\_\+finalized} = false
+\Hypertarget{class_o_m_sim_command_args_table_a7127ad94f64a48104a6398253119ef15}\label{class_o_m_sim_command_args_table_a7127ad94f64a48104a6398253119ef15} 
+\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{bool}} {\bfseries m\+\_\+finalized} = \mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{false}}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_a6b8b340f1f2869fb3088ee3d10877d7d}\label{class_o_m_sim_command_args_table_a6b8b340f1f2869fb3088ee3d10877d7d}} 
+\Hypertarget{class_o_m_sim_command_args_table_a6b8b340f1f2869fb3088ee3d10877d7d}\label{class_o_m_sim_command_args_table_a6b8b340f1f2869fb3088ee3d10877d7d} 
 std\+::map$<$ Key, Value $>$ {\bfseries m\+\_\+parameters}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}\label{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}} 
+\Hypertarget{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}\label{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f} 
 \index{OMSimCommandArgsTable@{OMSimCommandArgsTable}!get@{get}}
 \index{get@{get}!OMSimCommandArgsTable@{OMSimCommandArgsTable}}
 \doxysubsubsection{\texorpdfstring{get()}{get()}}
@@ -82,31 +82,31 @@ The parameter value.
 {\em std\+::invalid\+\_\+argument} & If the parameter is not of type T, or if the key does not exist. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}\label{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}} 
+\Hypertarget{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}\label{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214} 
 \index{OMSimCommandArgsTable@{OMSimCommandArgsTable}!getInstance@{getInstance}}
 \index{getInstance@{getInstance}!OMSimCommandArgsTable@{OMSimCommandArgsTable}}
 \doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} \& OMSim\+Command\+Args\+Table\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \begin{DoxyReturn}{Returns}
-A reference to the \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}} instance. 
+A reference to the \doxylink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table} instance. 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
 {\em std\+::runtime\+\_\+error} & if accessed before initialization or after shutdown. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_a6b23f4e37663c7cf07a7f4d3f44ffdab}\label{class_o_m_sim_command_args_table_a6b23f4e37663c7cf07a7f4d3f44ffdab}} 
+\Hypertarget{class_o_m_sim_command_args_table_a6b23f4e37663c7cf07a7f4d3f44ffdab}\label{class_o_m_sim_command_args_table_a6b23f4e37663c7cf07a7f4d3f44ffdab} 
 \index{OMSimCommandArgsTable@{OMSimCommandArgsTable}!init@{init}}
 \index{init@{init}!OMSimCommandArgsTable@{OMSimCommandArgsTable}}
 \doxysubsubsection{\texorpdfstring{init()}{init()}}
-{\footnotesize\ttfamily void OMSim\+Command\+Args\+Table\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{void}} OMSim\+Command\+Args\+Table\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-This method is normally called in the constructor of \mbox{\hyperlink{class_o_m_sim}{OMSim}}. \mbox{\Hypertarget{class_o_m_sim_command_args_table_a89368614d0c565dd2687c2560af8c79e}\label{class_o_m_sim_command_args_table_a89368614d0c565dd2687c2560af8c79e}} 
+This method is normally called in the constructor of \doxylink{class_o_m_sim}{OMSim}. \Hypertarget{class_o_m_sim_command_args_table_a89368614d0c565dd2687c2560af8c79e}\label{class_o_m_sim_command_args_table_a89368614d0c565dd2687c2560af8c79e} 
 \index{OMSimCommandArgsTable@{OMSimCommandArgsTable}!setParameter@{setParameter}}
 \index{setParameter@{setParameter}!OMSimCommandArgsTable@{OMSimCommandArgsTable}}
 \doxysubsubsection{\texorpdfstring{setParameter()}{setParameter()}}
-{\footnotesize\ttfamily void OMSim\+Command\+Args\+Table\+::set\+Parameter (\begin{DoxyParamCaption}\item[{const Key \&}]{p\+\_\+key,  }\item[{const Value \&}]{p\+\_\+value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{void}} OMSim\+Command\+Args\+Table\+::set\+Parameter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{const}} Key \&}]{p\+\_\+key,  }\item[{\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{const}} Value \&}]{p\+\_\+value }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -120,17 +120,17 @@ This method is normally called in the constructor of \mbox{\hyperlink{class_o_m_
 {\em std\+::runtime\+\_\+error} & If the table is already finalized (i.\+e. somebody is trying to set a new arg parameter after args were parsed (?!)). \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_o_m_sim_command_args_table_ae25665b0429b0bfcfe0aac11ef982290}\label{class_o_m_sim_command_args_table_ae25665b0429b0bfcfe0aac11ef982290}} 
+\Hypertarget{class_o_m_sim_command_args_table_ae25665b0429b0bfcfe0aac11ef982290}\label{class_o_m_sim_command_args_table_ae25665b0429b0bfcfe0aac11ef982290} 
 \index{OMSimCommandArgsTable@{OMSimCommandArgsTable}!shutdown@{shutdown}}
 \index{shutdown@{shutdown}!OMSimCommandArgsTable@{OMSimCommandArgsTable}}
 \doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
-{\footnotesize\ttfamily void OMSim\+Command\+Args\+Table\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{void}} OMSim\+Command\+Args\+Table\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-This method is normally called in the destructor $\sim$\+OMSim. \mbox{\Hypertarget{class_o_m_sim_command_args_table_a0bd61682f1c4bef12e41084acfee02dd}\label{class_o_m_sim_command_args_table_a0bd61682f1c4bef12e41084acfee02dd}} 
+This method is normally called in the destructor \texorpdfstring{$\sim$}{\string~}\+OMSim. \Hypertarget{class_o_m_sim_command_args_table_a0bd61682f1c4bef12e41084acfee02dd}\label{class_o_m_sim_command_args_table_a0bd61682f1c4bef12e41084acfee02dd} 
 \index{OMSimCommandArgsTable@{OMSimCommandArgsTable}!writeToJson@{writeToJson}}
 \index{writeToJson@{writeToJson}!OMSimCommandArgsTable@{OMSimCommandArgsTable}}
 \doxysubsubsection{\texorpdfstring{writeToJson()}{writeToJson()}}
-{\footnotesize\ttfamily void OMSim\+Command\+Args\+Table\+::write\+To\+Json (\begin{DoxyParamCaption}\item[{std\+::string}]{p\+\_\+file\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{void}} OMSim\+Command\+Args\+Table\+::write\+To\+Json (\begin{DoxyParamCaption}\item[{std\+::string}]{p\+\_\+file\+Name }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}

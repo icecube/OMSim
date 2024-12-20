@@ -1,57 +1,57 @@
-\hypertarget{class_o_m_sim_u_iinterface}{}\doxysection{OMSim\+UIinterface Class Reference}
-\label{class_o_m_sim_u_iinterface}\index{OMSimUIinterface@{OMSimUIinterface}}
+\doxysection{OMSim\+UIinterface Class Reference}
+\hypertarget{class_o_m_sim_u_iinterface}{}\label{class_o_m_sim_u_iinterface}\index{OMSimUIinterface@{OMSimUIinterface}}
 
 
 Singleton interface to Geant4\textquotesingle{}s UI manager.  
 
 
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename... Args$>$ }\\void \mbox{\hyperlink{class_o_m_sim_u_iinterface_a795e5290544dc4bcc879388816d69a12}{apply\+Command}} (const std\+::string \&p\+\_\+command, const Args \&...p\+\_\+args)
-\begin{DoxyCompactList}\small\item\em Apply a command to Geant4\textquotesingle{}s UI manager and log it. It accept any number of arguments that are then appended; e.\+g. apply\+Command(\char`\"{}cmd\char`\"{}, 1, 2, 3) will apply a UI command \char`\"{}cmd 1 2 3\char`\"{}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_o_m_sim_u_iinterface_aebd8bceca0c4d305f6bad38afbf2d70b}{set\+UI}} (G4\+UImanager $\ast$p\+\_\+ui)
-\begin{DoxyCompactList}\small\item\em Set the UI manager for the \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface}} class. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Apply a command to Geant4\textquotesingle{}s UI manager and log it. It accept any number of arguments that are then appended; e.\+g. apply\+Command("{}cmd"{}, 1, 2, 3) will apply a UI command "{}cmd 1 2 3"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_u_iinterface_aebd8bceca0c4d305f6bad38afbf2d70b}{set\+UI}} (G4\+UImanager \texorpdfstring{$\ast$}{*}p\+\_\+ui)
+\begin{DoxyCompactList}\small\item\em Set the UI manager for the \doxylink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface} class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_u_iinterface_a880d9879e9373b6af3bc0c3b691160f8}{run\+Beam\+On}} (G4int p\+\_\+number\+Of\+Events=-\/1)
 \begin{DoxyCompactList}\small\item\em Executes a run with a given number of events. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Static Public Member Functions}
+\doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a42aab88ea8ba7886c93407279e7770f8}\label{class_o_m_sim_u_iinterface_a42aab88ea8ba7886c93407279e7770f8}} 
+\Hypertarget{class_o_m_sim_u_iinterface_aac3c4b03c74ef4309ca2cbce6da0bd12}\label{class_o_m_sim_u_iinterface_aac3c4b03c74ef4309ca2cbce6da0bd12} 
 static \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface}} \& {\bfseries get\+Instance} ()
 \item 
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_ad5517f9564cb68e02a1f4efabf852b61}\label{class_o_m_sim_u_iinterface_ad5517f9564cb68e02a1f4efabf852b61}} 
-static void \mbox{\hyperlink{class_o_m_sim_u_iinterface_ad5517f9564cb68e02a1f4efabf852b61}{init}} ()
-\begin{DoxyCompactList}\small\item\em Initializes the global instance of \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface}} This method is normally called in \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{OMSim\+::initialise\+Simulation}}. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_ae184798f646ff27968fd3cf89904298d}\label{class_o_m_sim_u_iinterface_ae184798f646ff27968fd3cf89904298d}} 
-static void \mbox{\hyperlink{class_o_m_sim_u_iinterface_ae184798f646ff27968fd3cf89904298d}{shutdown}} ()
-\begin{DoxyCompactList}\small\item\em Deletes the global instance of \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface}} This method is normally called in the destructor $\sim$\+OMSim. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\Hypertarget{class_o_m_sim_u_iinterface_ad5517f9564cb68e02a1f4efabf852b61}\label{class_o_m_sim_u_iinterface_ad5517f9564cb68e02a1f4efabf852b61} 
+static void {\bfseries init} ()
+\begin{DoxyCompactList}\small\item\em Initializes the global instance of \doxylink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface} This method is normally called in \doxylink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{OMSim\+::initialise\+Simulation}. \end{DoxyCompactList}\item 
+\Hypertarget{class_o_m_sim_u_iinterface_ae184798f646ff27968fd3cf89904298d}\label{class_o_m_sim_u_iinterface_ae184798f646ff27968fd3cf89904298d} 
+static void {\bfseries shutdown} ()
+\begin{DoxyCompactList}\small\item\em Deletes the global instance of \doxylink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface} This method is normally called in the destructor \texorpdfstring{$\sim$}{\string~}\+OMSim. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a1b3d6760eea8af428a9766d716bf875b}\label{class_o_m_sim_u_iinterface_a1b3d6760eea8af428a9766d716bf875b}} 
+\Hypertarget{class_o_m_sim_u_iinterface_a1b3d6760eea8af428a9766d716bf875b}\label{class_o_m_sim_u_iinterface_a1b3d6760eea8af428a9766d716bf875b} 
 {\bfseries OMSim\+UIinterface} (const \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface}} \&)=delete
 \item 
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a64c42abc8252d14cbfa36e3b4a8c6818}\label{class_o_m_sim_u_iinterface_a64c42abc8252d14cbfa36e3b4a8c6818}} 
+\Hypertarget{class_o_m_sim_u_iinterface_ae48be1374f30eb4f1227de3692b7664a}\label{class_o_m_sim_u_iinterface_ae48be1374f30eb4f1227de3692b7664a} 
 \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_o_m_sim_u_iinterface}{OMSim\+UIinterface}} \&)=delete
 \item 
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a18be1a26bda28742e12c349afe79969c}\label{class_o_m_sim_u_iinterface_a18be1a26bda28742e12c349afe79969c}} 
+\Hypertarget{class_o_m_sim_u_iinterface_a18be1a26bda28742e12c349afe79969c}\label{class_o_m_sim_u_iinterface_a18be1a26bda28742e12c349afe79969c} 
 void {\bfseries append\+To\+Stream} (std\+::stringstream \&p\+\_\+stream)
 \item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_o_m_sim_u_iinterface_a3762f6dcd5d107958ee90f1a68edb26e}{append\+To\+Stream}} (std\+::stringstream \&p\+\_\+stream, const T \&p\+\_\+val)
 \begin{DoxyCompactList}\small\item\em Append arguments to the command string p\+\_\+stream. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T , typename... Args$>$ }\\void \mbox{\hyperlink{class_o_m_sim_u_iinterface_a3fa29b24b1df7d09d8852ca276f3375e}{append\+To\+Stream}} (std\+::stringstream \&p\+\_\+stream, const T \&p\+\_\+val, const Args \&...p\+\_\+args)
 \begin{DoxyCompactList}\small\item\em Append multiple arguments to the command string p\+\_\+stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a81dc107116551299fb700378d0761a57}\label{class_o_m_sim_u_iinterface_a81dc107116551299fb700378d0761a57}} 
-G4\+UImanager $\ast$ {\bfseries m\+\_\+ui\+Manager}
+\Hypertarget{class_o_m_sim_u_iinterface_a81dc107116551299fb700378d0761a57}\label{class_o_m_sim_u_iinterface_a81dc107116551299fb700378d0761a57} 
+G4\+UImanager \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+ui\+Manager}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a3762f6dcd5d107958ee90f1a68edb26e}\label{class_o_m_sim_u_iinterface_a3762f6dcd5d107958ee90f1a68edb26e}} 
+\Hypertarget{class_o_m_sim_u_iinterface_a3762f6dcd5d107958ee90f1a68edb26e}\label{class_o_m_sim_u_iinterface_a3762f6dcd5d107958ee90f1a68edb26e} 
 \index{OMSimUIinterface@{OMSimUIinterface}!appendToStream@{appendToStream}}
 \index{appendToStream@{appendToStream}!OMSimUIinterface@{OMSimUIinterface}}
 \doxysubsubsection{\texorpdfstring{appendToStream()}{appendToStream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
@@ -73,7 +73,7 @@ void OMSim\+UIinterface\+::append\+To\+Stream (\begin{DoxyParamCaption}\item[{st
 {\em p\+\_\+val} & The value of the argument to append. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a3fa29b24b1df7d09d8852ca276f3375e}\label{class_o_m_sim_u_iinterface_a3fa29b24b1df7d09d8852ca276f3375e}} 
+\Hypertarget{class_o_m_sim_u_iinterface_a3fa29b24b1df7d09d8852ca276f3375e}\label{class_o_m_sim_u_iinterface_a3fa29b24b1df7d09d8852ca276f3375e} 
 \index{OMSimUIinterface@{OMSimUIinterface}!appendToStream@{appendToStream}}
 \index{appendToStream@{appendToStream}!OMSimUIinterface@{OMSimUIinterface}}
 \doxysubsubsection{\texorpdfstring{appendToStream()}{appendToStream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
@@ -99,7 +99,7 @@ void OMSim\+UIinterface\+::append\+To\+Stream (\begin{DoxyParamCaption}\item[{st
 {\em p\+\_\+args} & The values of the additional arguments to append. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a795e5290544dc4bcc879388816d69a12}\label{class_o_m_sim_u_iinterface_a795e5290544dc4bcc879388816d69a12}} 
+\Hypertarget{class_o_m_sim_u_iinterface_a795e5290544dc4bcc879388816d69a12}\label{class_o_m_sim_u_iinterface_a795e5290544dc4bcc879388816d69a12} 
 \index{OMSimUIinterface@{OMSimUIinterface}!applyCommand@{applyCommand}}
 \index{applyCommand@{applyCommand}!OMSimUIinterface@{OMSimUIinterface}}
 \doxysubsubsection{\texorpdfstring{applyCommand()}{applyCommand()}}
@@ -118,7 +118,7 @@ void OMSim\+UIinterface\+::apply\+Command (\begin{DoxyParamCaption}\item[{const 
 {\em Args} & Variadic template for accepting multiple arguments. \\
 \hline
 \end{DoxyTemplParams}
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_a880d9879e9373b6af3bc0c3b691160f8}\label{class_o_m_sim_u_iinterface_a880d9879e9373b6af3bc0c3b691160f8}} 
+\Hypertarget{class_o_m_sim_u_iinterface_a880d9879e9373b6af3bc0c3b691160f8}\label{class_o_m_sim_u_iinterface_a880d9879e9373b6af3bc0c3b691160f8} 
 \index{OMSimUIinterface@{OMSimUIinterface}!runBeamOn@{runBeamOn}}
 \index{runBeamOn@{runBeamOn}!OMSimUIinterface@{OMSimUIinterface}}
 \doxysubsubsection{\texorpdfstring{runBeamOn()}{runBeamOn()}}
@@ -129,11 +129,11 @@ void OMSim\+UIinterface\+::apply\+Command (\begin{DoxyParamCaption}\item[{const 
 {\em p\+\_\+number\+Of\+Events} & An optional parameter to specify the number of events to be run. If not provided or less than zero, the number of events is taken from the command arguments table. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_o_m_sim_u_iinterface_aebd8bceca0c4d305f6bad38afbf2d70b}\label{class_o_m_sim_u_iinterface_aebd8bceca0c4d305f6bad38afbf2d70b}} 
+\Hypertarget{class_o_m_sim_u_iinterface_aebd8bceca0c4d305f6bad38afbf2d70b}\label{class_o_m_sim_u_iinterface_aebd8bceca0c4d305f6bad38afbf2d70b} 
 \index{OMSimUIinterface@{OMSimUIinterface}!setUI@{setUI}}
 \index{setUI@{setUI}!OMSimUIinterface@{OMSimUIinterface}}
 \doxysubsubsection{\texorpdfstring{setUI()}{setUI()}}
-{\footnotesize\ttfamily void OMSim\+UIinterface\+::set\+UI (\begin{DoxyParamCaption}\item[{G4\+UImanager $\ast$}]{p\+\_\+ui }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void OMSim\+UIinterface\+::set\+UI (\begin{DoxyParamCaption}\item[{G4\+UImanager \texorpdfstring{$\ast$}{*}}]{p\+\_\+ui }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}

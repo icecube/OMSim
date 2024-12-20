@@ -1,5 +1,5 @@
-\hypertarget{class_o_m_sim_s_ndetector}{}\doxysection{OMSim\+SNdetector Class Reference}
-\label{class_o_m_sim_s_ndetector}\index{OMSimSNdetector@{OMSimSNdetector}}
+\doxysection{OMSim\+SNdetector Class Reference}
+\hypertarget{class_o_m_sim_s_ndetector}{}\label{class_o_m_sim_s_ndetector}\index{OMSimSNdetector@{OMSimSNdetector}}
 
 
 Class for detector construction in the SN neutrino simulation.  
@@ -25,19 +25,53 @@ Collaboration diagram for OMSim\+SNdetector\+:
 \includegraphics[width=350pt]{class_o_m_sim_s_ndetector__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Private Member Functions}
+\doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_o_m_sim_s_ndetector_aa331476cc1f56d3bee80c954f7a2d793}{construct\+World}} ()
 \begin{DoxyCompactList}\small\item\em Constructs the world volume (cylinder). \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_o_m_sim_s_ndetector_aff89e8572059ee731fa4c778ee3f3b0c}\label{class_o_m_sim_s_ndetector_aff89e8572059ee731fa4c778ee3f3b0c}} 
-void {\bfseries construct\+Detector} ()
+void \mbox{\hyperlink{class_o_m_sim_s_ndetector_aff89e8572059ee731fa4c778ee3f3b0c}{construct\+Detector}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_construction_a9e16ad5da3921b502473b303609caad0}{Construct}} ()
+\begin{DoxyCompactList}\small\item\em Constructs the selected detector from the command line argument and returns the physical world volume. \end{DoxyCompactList}\item 
+void {\bfseries Construct\+SDand\+Field} () override
+\item 
+void {\bfseries register\+Sensitive\+Detector} (G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}log\+Vol, G4\+VSensitive\+Detector \texorpdfstring{$\ast$}{*}a\+SD)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Physical}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+VSolid \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Solid}
+\item 
+G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Logical}
+\item 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+data}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_o_m_sim_detector_construction_1_1_s_d_info}{SDInfo}} $>$ {\bfseries m\+\_\+sensitive\+Detectors}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_o_m_sim_s_ndetector_aa331476cc1f56d3bee80c954f7a2d793}\label{class_o_m_sim_s_ndetector_aa331476cc1f56d3bee80c954f7a2d793}} 
+\Hypertarget{class_o_m_sim_s_ndetector_aff89e8572059ee731fa4c778ee3f3b0c}\label{class_o_m_sim_s_ndetector_aff89e8572059ee731fa4c778ee3f3b0c} 
+\index{OMSimSNdetector@{OMSimSNdetector}!constructDetector@{constructDetector}}
+\index{constructDetector@{constructDetector}!OMSimSNdetector@{OMSimSNdetector}}
+\doxysubsubsection{\texorpdfstring{constructDetector()}{constructDetector()}}
+{\footnotesize\ttfamily void OMSim\+SNdetector\+::construct\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}.
+
+\Hypertarget{class_o_m_sim_s_ndetector_aa331476cc1f56d3bee80c954f7a2d793}\label{class_o_m_sim_s_ndetector_aa331476cc1f56d3bee80c954f7a2d793} 
 \index{OMSimSNdetector@{OMSimSNdetector}!constructWorld@{constructWorld}}
 \index{constructWorld@{constructWorld}!OMSimSNdetector@{OMSimSNdetector}}
 \doxysubsubsection{\texorpdfstring{constructWorld()}{constructWorld()}}

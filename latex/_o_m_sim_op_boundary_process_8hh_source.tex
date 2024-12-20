@@ -1,0 +1,413 @@
+\doxysection{OMSim\+Op\+Boundary\+Process.\+hh}
+\hypertarget{_o_m_sim_op_boundary_process_8hh_source}{}\label{_o_m_sim_op_boundary_process_8hh_source}\index{OMSimOpBoundaryProcess.hh@{OMSimOpBoundaryProcess.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ *\ License\ and\ Disclaimer\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ *\ The\ \ Geant4\ software\ \ is\ \ copyright\ of\ the\ Copyright\ Holders\ \ of\ *}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ *\ the\ Geant4\ Collaboration.\ \ It\ is\ provided\ \ under\ \ the\ terms\ \ and\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ *\ conditions\ of\ the\ Geant4\ Software\ License,\ \ included\ in\ the\ file\ *}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ *\ LICENSE\ and\ available\ at\ \ http://cern.ch/geant4/license\ .\ \ These\ *}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ *\ include\ a\ list\ of\ copyright\ holders.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ *\ Neither\ the\ authors\ of\ this\ software\ system,\ nor\ their\ employing\ *}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ *\ institutes,nor\ the\ agencies\ providing\ financial\ support\ for\ this\ *}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ *\ work\ \ make\ \ any\ representation\ or\ \ warranty,\ express\ or\ implied,\ *}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ *\ regarding\ \ this\ \ software\ system\ or\ assume\ any\ liability\ for\ its\ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ *\ use.\ \ Please\ see\ the\ license\ in\ the\ file\ \ LICENSE\ \ and\ URL\ above\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ *\ for\ the\ full\ disclaimer\ and\ the\ limitation\ of\ liability.\ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ *\ This\ \ code\ \ implementation\ is\ the\ result\ of\ \ the\ \ scientific\ and\ *}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ *\ technical\ work\ of\ the\ GEANT4\ collaboration.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ *\ By\ using,\ \ copying,\ \ modifying\ or\ \ distributing\ the\ software\ (or\ *}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ *\ any\ work\ based\ \ on\ the\ software)\ \ you\ \ agree\ \ to\ acknowledge\ its\ *}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ *\ use\ \ in\ \ resulting\ \ scientific\ \ publications,\ \ and\ indicate\ your\ *}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ *\ acceptance\ of\ all\ terms\ of\ the\ Geant4\ Software\ license.\ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ Optical\ Photon\ Boundary\ Process\ Class\ Definition}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ File:\ \ \ \ \ \ \ \ G4OpBoundaryProcess.hh}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Description:\ Discrete\ Process\ -\/-\/\ reflection/refraction\ at}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ optical\ interfaces}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ Version:\ \ \ \ \ 1.1}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Created:\ \ \ \ \ 1997-\/06-\/18}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ Modified:\ \ \ \ 2005-\/07-\/28\ add\ G4ProcessType\ to\ constructor}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 1999-\/10-\/29\ add\ method\ and\ class\ descriptors}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 1999-\/10-\/10\ -\/\ Fill\ NewMomentum/NewPolarization\ in}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DoAbsorption.\ These\ members\ need\ to\ be}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ filled\ since\ DoIt\ calls}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aParticleChange.SetMomentumChange\ etc.}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ upon\ return\ (thanks\ to:\ Clark\ McGrew)}}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 2006-\/11-\/04\ -\/\ add\ capability\ of\ calculating\ the\ reflectivity}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ off\ a\ metal\ surface\ by\ way\ of\ a\ complex\ index}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ refraction\ -\/\ Thanks\ to\ Sehwook\ Lee\ and\ John}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Hauptman\ (Dept.\ of\ Physics\ -\/\ Iowa\ State\ Univ.)}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 2009-\/11-\/10\ -\/\ add\ capability\ of\ simulating\ surface\ reflections}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ with\ Look-\/Up-\/Tables\ (LUT)\ containing\ measured}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ optical\ reflectance\ for\ a\ variety\ of\ surface}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ treatments\ -\/\ Thanks\ to\ Martin\ Janecek\ and}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ William\ Moses\ (Lawrence\ Berkeley\ National\ Lab.)}}
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 2013-\/06-\/01\ -\/\ add\ the\ capability\ of\ simulating\ the\ transmission}}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ a\ dichronic\ filter}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 2017-\/02-\/24\ -\/\ add\ capability\ of\ simulating\ surface\ reflections}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ with\ Look-\/Up-\/Tables\ (LUT)\ developed\ in\ DAVIS}}
+\DoxyCodeLine{00058\ \textcolor{comment}{//}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ Author:\ \ \ \ \ \ Peter\ Gumplinger}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ adopted\ from\ work\ by\ Werner\ Keil\ -\/\ April\ 2/96}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#include\ "{}G4OpticalPhoton.hh"{}}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#include\ "{}G4OpticalSurface.hh"{}}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#include\ "{}G4RandomTools.hh"{}}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#include\ "{}G4VDiscreteProcess.hh"{}}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#include\ "{}G4VUserTrackInformation.hh"{}}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#include\ <G4AutoLock.hh>}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#include\ <G4Threading.hh>}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_photon_material_tracking}{PhotonMaterialTracking}}\ :\ \textcolor{keyword}{public}\ G4VUserTrackInformation}
+\DoxyCodeLine{00074\ \{}
+\DoxyCodeLine{00075\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{class_photon_material_tracking}{PhotonMaterialTracking}}()\ :\ G4VUserTrackInformation()\ \{\}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_photon_material_tracking}{\string~PhotonMaterialTracking}}()\ \{\}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ addVolume(G4MaterialPropertiesTable*\ mpt)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mVolumeHistory.empty()\ ||\ mpt\ !=\ mVolumeHistory.back())\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ mVolumeHistory.push\_back(mpt);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ G4MaterialPropertiesTable*\ getNthPreviousVolume(G4int\ n)\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ mVolumeHistory.size())}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mVolumeHistory[mVolumeHistory.size()\ -\/\ 1\ -\/\ n];}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ G4int\ getVolumeHistorySize()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mVolumeHistory.size();\ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00094\ \ \ \ \ std::vector<G4MaterialPropertiesTable*>\ mVolumeHistory;}
+\DoxyCodeLine{00095\ \};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_optical_layer_result}{OpticalLayerResult}}}
+\DoxyCodeLine{00098\ \{}
+\DoxyCodeLine{00099\ \ \ G4double\ Reflectivity;}
+\DoxyCodeLine{00100\ \ \ G4double\ Transmittance;}
+\DoxyCodeLine{00101\ \ \ G4double\ Absorption;}
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_fresnel_coefficients}{FresnelCoefficients}}}
+\DoxyCodeLine{00104\ \{}
+\DoxyCodeLine{00105\ \ \ G4complex\ rTE;}
+\DoxyCodeLine{00106\ \ \ G4complex\ rTM;}
+\DoxyCodeLine{00107\ \ \ G4complex\ tTE;}
+\DoxyCodeLine{00108\ \ \ G4complex\ tTM;}
+\DoxyCodeLine{00109\ \};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{enum}\ G4OpBoundaryProcessStatus}
+\DoxyCodeLine{00112\ \{}
+\DoxyCodeLine{00113\ \ \ Undefined,}
+\DoxyCodeLine{00114\ \ \ Transmission,}
+\DoxyCodeLine{00115\ \ \ FresnelRefraction,}
+\DoxyCodeLine{00116\ \ \ FresnelReflection,}
+\DoxyCodeLine{00117\ \ \ TotalInternalReflection,}
+\DoxyCodeLine{00118\ \ \ LambertianReflection,}
+\DoxyCodeLine{00119\ \ \ LobeReflection,}
+\DoxyCodeLine{00120\ \ \ SpikeReflection,}
+\DoxyCodeLine{00121\ \ \ BackScattering,}
+\DoxyCodeLine{00122\ \ \ Absorption,}
+\DoxyCodeLine{00123\ \ \ Detection,}
+\DoxyCodeLine{00124\ \ \ NotAtBoundary,}
+\DoxyCodeLine{00125\ \ \ SameMaterial,}
+\DoxyCodeLine{00126\ \ \ StepTooSmall,}
+\DoxyCodeLine{00127\ \ \ NoRINDEX,}
+\DoxyCodeLine{00128\ \ \ PolishedLumirrorAirReflection,}
+\DoxyCodeLine{00129\ \ \ PolishedLumirrorGlueReflection,}
+\DoxyCodeLine{00130\ \ \ PolishedAirReflection,}
+\DoxyCodeLine{00131\ \ \ PolishedTeflonAirReflection,}
+\DoxyCodeLine{00132\ \ \ PolishedTiOAirReflection,}
+\DoxyCodeLine{00133\ \ \ PolishedTyvekAirReflection,}
+\DoxyCodeLine{00134\ \ \ PolishedVM2000AirReflection,}
+\DoxyCodeLine{00135\ \ \ PolishedVM2000GlueReflection,}
+\DoxyCodeLine{00136\ \ \ EtchedLumirrorAirReflection,}
+\DoxyCodeLine{00137\ \ \ EtchedLumirrorGlueReflection,}
+\DoxyCodeLine{00138\ \ \ EtchedAirReflection,}
+\DoxyCodeLine{00139\ \ \ EtchedTeflonAirReflection,}
+\DoxyCodeLine{00140\ \ \ EtchedTiOAirReflection,}
+\DoxyCodeLine{00141\ \ \ EtchedTyvekAirReflection,}
+\DoxyCodeLine{00142\ \ \ EtchedVM2000AirReflection,}
+\DoxyCodeLine{00143\ \ \ EtchedVM2000GlueReflection,}
+\DoxyCodeLine{00144\ \ \ GroundLumirrorAirReflection,}
+\DoxyCodeLine{00145\ \ \ GroundLumirrorGlueReflection,}
+\DoxyCodeLine{00146\ \ \ GroundAirReflection,}
+\DoxyCodeLine{00147\ \ \ GroundTeflonAirReflection,}
+\DoxyCodeLine{00148\ \ \ GroundTiOAirReflection,}
+\DoxyCodeLine{00149\ \ \ GroundTyvekAirReflection,}
+\DoxyCodeLine{00150\ \ \ GroundVM2000AirReflection,}
+\DoxyCodeLine{00151\ \ \ GroundVM2000GlueReflection,}
+\DoxyCodeLine{00152\ \ \ Dichroic,}
+\DoxyCodeLine{00153\ \ \ CoatedDielectricReflection,}
+\DoxyCodeLine{00154\ \ \ CoatedDielectricRefraction,}
+\DoxyCodeLine{00155\ \ \ CoatedDielectricFrustratedTransmission}
+\DoxyCodeLine{00156\ \};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_g4_op_boundary_process}{G4OpBoundaryProcess}}\ :\ \textcolor{keyword}{public}\ G4VDiscreteProcess}
+\DoxyCodeLine{00159\ \{}
+\DoxyCodeLine{00160\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00161\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_g4_op_boundary_process}{G4OpBoundaryProcess}}(\textcolor{keyword}{const}\ G4String\ \&processName\ =\ \textcolor{stringliteral}{"{}OpBoundary"{}},}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4ProcessType\ type\ =\ fOptical);}
+\DoxyCodeLine{00163\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_g4_op_boundary_process}{\string~G4OpBoundaryProcess}}();}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \textcolor{keyword}{virtual}\ G4bool\ IsApplicable(}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4ParticleDefinition\ \&aParticleType)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00167\ \ \ \textcolor{comment}{//\ Returns\ true\ -\/>\ 'is\ applicable'\ only\ for\ an\ optical\ photon.}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \textcolor{keyword}{virtual}\ G4double\ GetMeanFreePath(\textcolor{keyword}{const}\ G4Track\ \&,\ G4double,}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4ForceCondition\ *condition)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00171\ \ \ \textcolor{comment}{//\ Returns\ infinity;\ i.\ e.\ the\ process\ does\ not\ limit\ the\ step,\ but\ sets\ the}}
+\DoxyCodeLine{00172\ \ \ \textcolor{comment}{//\ 'Forced'\ condition\ for\ the\ DoIt\ to\ be\ invoked\ at\ every\ step.\ However,\ only}}
+\DoxyCodeLine{00173\ \ \ \textcolor{comment}{//\ at\ a\ boundary\ will\ any\ action\ be\ taken.}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ G4VParticleChange\ *PostStepDoIt(\textcolor{keyword}{const}\ G4Track\ \&aTrack,}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4Step\ \&aStep)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00177\ \ \ \textcolor{comment}{//\ This\ is\ the\ method\ implementing\ boundary\ processes.}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \textcolor{keyword}{virtual}\ G4OpBoundaryProcessStatus\ GetStatus()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00180\ \ \ \textcolor{comment}{//\ Returns\ the\ current\ status.}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ SetInvokeSD(G4bool);}
+\DoxyCodeLine{00183\ \ \ \textcolor{comment}{//\ Set\ flag\ for\ call\ to\ InvokeSD\ method.}}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ PreparePhysicsTable(\textcolor{keyword}{const}\ G4ParticleDefinition\ \&)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Initialise();}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \textcolor{keywordtype}{void}\ SetVerboseLevel(G4int);}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00192\ \ \ \mbox{\hyperlink{class_g4_op_boundary_process}{G4OpBoundaryProcess}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_g4_op_boundary_process}{G4OpBoundaryProcess}}\ \&right)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00193\ \ \ \mbox{\hyperlink{class_g4_op_boundary_process}{G4OpBoundaryProcess}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_g4_op_boundary_process}{G4OpBoundaryProcess}}\ \&right)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ G4bool\ G4BooleanRand(\textcolor{keyword}{const}\ G4double\ prob)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ G4ThreeVector\ GetFacetNormal(\textcolor{keyword}{const}\ G4ThreeVector\ \&Momentum,}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4ThreeVector\ \&Normal)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00199\ \ \ G4Mutex\ boundaryProcessMutex;\ }
+\DoxyCodeLine{00200\ \ \ \textcolor{keywordtype}{void}\ DielectricMetal();}
+\DoxyCodeLine{00201\ \ \ \textcolor{keywordtype}{void}\ DielectricDielectric();}
+\DoxyCodeLine{00202\ \ }
+\DoxyCodeLine{00203\ \ \ \textcolor{keywordtype}{void}\ DielectricLUT();}
+\DoxyCodeLine{00204\ \ \ \textcolor{keywordtype}{void}\ DielectricLUTDAVIS();}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \textcolor{keywordtype}{void}\ DielectricDichroic();}
+\DoxyCodeLine{00207\ \ \ \textcolor{keywordtype}{void}\ PhotocathodeCoatedComplex(\textcolor{keyword}{const}\ G4Track*\ pTrack);}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \textcolor{keywordtype}{void}\ ChooseReflection();}
+\DoxyCodeLine{00210\ \ \ \textcolor{keywordtype}{void}\ DoAbsorption();}
+\DoxyCodeLine{00211\ \ \ \textcolor{keywordtype}{void}\ DoReflection();}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ G4double\ GetIncidentAngle();}
+\DoxyCodeLine{00214\ \ \ \textcolor{comment}{//\ Returns\ the\ incident\ angle\ of\ optical\ photon}}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ G4double\ GetReflectivity(G4double\ E1\_perp,\ G4double\ E1\_parl,}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ incidentangle,\ G4double\ RealRindex,}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ ImaginaryRindex);}
+\DoxyCodeLine{00219\ \ \ \textcolor{comment}{//\ Returns\ the\ Reflectivity\ on\ a\ metallic\ surface}}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \mbox{\hyperlink{struct_fresnel_coefficients}{FresnelCoefficients}}\ ThreeLayerSystem(\mbox{\hyperlink{struct_fresnel_coefficients}{FresnelCoefficients}}\ pCoefficientsL1,\ \mbox{\hyperlink{struct_fresnel_coefficients}{FresnelCoefficients}}\ pCoefficientsL2,\ G4complex\ pFactor);}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ G4OpBoundaryProcessStatus\ getStatus(\mbox{\hyperlink{struct_optical_layer_result}{OpticalLayerResult}}\ pResults);}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \textcolor{comment}{//\ complex\ angle\ functions}}
+\DoxyCodeLine{00226\ \ \ \mbox{\hyperlink{struct_optical_layer_result}{OpticalLayerResult}}\ CalculateThinLayerCoefficientsComplex(G4double\ sinTL,\ G4double\ wavelength,}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4complex\ cost1,\ G4complex\ cost2,\ G4Track\ pTrack);}
+\DoxyCodeLine{00228\ \ \ \mbox{\hyperlink{struct_fresnel_coefficients}{FresnelCoefficients}}\ CalculateFresnelCoefficientsComplex(G4complex\ pComplexRindex1,}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4complex\ pComplexRindex2,}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4complex\ pCost1,}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4complex\ pCost2);}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \mbox{\hyperlink{struct_optical_layer_result}{OpticalLayerResult}}\ Fresnel2ProbabilityComplex(\mbox{\hyperlink{struct_fresnel_coefficients}{FresnelCoefficients}}\ pCoefficients,}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pRindex1,}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pRindex2,}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pImagRIndex1,}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pImagRIndex2,}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4complex\ pCost1,}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4complex\ pCost2);}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \textcolor{keywordtype}{void}\ CalculateReflectivity();}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \textcolor{keywordtype}{void}\ BoundaryProcessVerbose()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \textcolor{comment}{//\ Invoke\ SD\ for\ post\ step\ point\ if\ the\ photon\ is\ 'detected'}}
+\DoxyCodeLine{00246\ \ \ G4bool\ InvokeSD(\textcolor{keyword}{const}\ G4Step\ *step);}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \ \ G4ThreeVector\ fOldMomentum;}
+\DoxyCodeLine{00249\ \ \ G4ThreeVector\ fOldPolarization;}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ G4ThreeVector\ fNewMomentum;}
+\DoxyCodeLine{00252\ \ \ G4ThreeVector\ fNewPolarization;}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \ \ G4ThreeVector\ fGlobalNormal;}
+\DoxyCodeLine{00255\ \ \ G4ThreeVector\ fFacetNormal;}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \textcolor{keyword}{const}\ G4Material\ *fMaterial1;}
+\DoxyCodeLine{00258\ \ \ \textcolor{keyword}{const}\ G4Material\ *fMaterial2;}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \ \ G4OpticalSurface\ *fOpticalSurface;}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ G4MaterialPropertyVector\ *fRealRIndexMPV;}
+\DoxyCodeLine{00263\ \ \ G4MaterialPropertyVector\ *fImagRIndexMPV;}
+\DoxyCodeLine{00264\ \ \ G4Physics2DVector\ *fDichroicVector;}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ G4double\ fPhotonMomentum;}
+\DoxyCodeLine{00267\ \ \ G4double\ fRindex1;}
+\DoxyCodeLine{00268\ \ \ G4double\ fRindex2;}
+\DoxyCodeLine{00269\ \ \ \textcolor{comment}{//\ newly\ added}}
+\DoxyCodeLine{00270\ \ \ G4double\ fAbsorptionLength1;}
+\DoxyCodeLine{00271\ \ \ G4double\ fAbsorptionLength2;}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ G4double\ sint1;}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ G4double\ fReflectivity;}
+\DoxyCodeLine{00276\ \ \ G4double\ fEfficiency;}
+\DoxyCodeLine{00277\ \ \ G4double\ fTransmittance;}
+\DoxyCodeLine{00278\ \ \ G4double\ fSurfaceRoughness;}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ G4double\ fProb\_sl,\ fProb\_ss,\ fProb\_bs;}
+\DoxyCodeLine{00281\ \ \ G4double\ fCarTolerance;}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \textcolor{comment}{//\ Used\ by\ CoatedDielectricDielectric()}}
+\DoxyCodeLine{00284\ \ \ G4double\ fCoatedRindex,\ fCoatedThickness;}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ G4OpBoundaryProcessStatus\ fStatus;}
+\DoxyCodeLine{00287\ \ \ G4OpticalSurfaceModel\ fModel;}
+\DoxyCodeLine{00288\ \ \ G4OpticalSurfaceFinish\ fFinish;}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ G4int\ f\_iTE,\ f\_iTM;}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ G4int\ fNumWarnings;\ \textcolor{comment}{//\ number\ of\ times\ small\ step\ warning\ printed}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_dichroicX\ =\ 0;}
+\DoxyCodeLine{00295\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_dichroicY\ =\ 0;}
+\DoxyCodeLine{00296\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_rindex1\ =\ 0;}
+\DoxyCodeLine{00297\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_rindex\_surface\ =\ 0;}
+\DoxyCodeLine{00298\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_reflect\ =\ 0;}
+\DoxyCodeLine{00299\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_eff\ =\ 0;}
+\DoxyCodeLine{00300\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_trans\ =\ 0;}
+\DoxyCodeLine{00301\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_lobe\ =\ 0;}
+\DoxyCodeLine{00302\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_spike\ =\ 0;}
+\DoxyCodeLine{00303\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_back\ =\ 0;}
+\DoxyCodeLine{00304\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_rindex2\ =\ 0;}
+\DoxyCodeLine{00305\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_groupvel\ =\ 0;}
+\DoxyCodeLine{00306\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_rrindex\ =\ 0;}
+\DoxyCodeLine{00307\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_irindex\ =\ 0;}
+\DoxyCodeLine{00308\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_coatedrindex\ =\ 0;}
+\DoxyCodeLine{00309\ \ \ \textcolor{comment}{//\ newly\ added}}
+\DoxyCodeLine{00310\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_abslength1\ =\ 0;}
+\DoxyCodeLine{00311\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_abslength2\ =\ 0;}
+\DoxyCodeLine{00312\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_coatedimagindex\ =\ 0;}
+\DoxyCodeLine{00313\ \ \ \textcolor{keywordtype}{size\_t}\ idx\_coatedabslength\ =\ 0;}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ \ G4bool\ fInvokeSD;}
+\DoxyCodeLine{00316\ \};}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00319\ \textcolor{comment}{//\ Inline\ methods}}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \textcolor{keyword}{inline}\ G4bool\ G4OpBoundaryProcess::G4BooleanRand(\textcolor{keyword}{const}\ G4double\ prob)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00323\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00324\ \ \ \textcolor{comment}{//\ Returns\ a\ random\ boolean\ variable\ with\ the\ specified\ probability}}
+\DoxyCodeLine{00325\ \ \ \textcolor{keywordflow}{return}\ (G4UniformRand()\ <\ prob);}
+\DoxyCodeLine{00326\ \}}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00328\ \textcolor{keyword}{inline}\ G4bool\ G4OpBoundaryProcess::IsApplicable(}
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keyword}{const}\ G4ParticleDefinition\ \&aParticleType)}
+\DoxyCodeLine{00330\ \{}
+\DoxyCodeLine{00331\ \ \ \textcolor{keywordflow}{return}\ (\&aParticleType\ ==\ G4OpticalPhoton::OpticalPhoton());}
+\DoxyCodeLine{00332\ \}}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \textcolor{keyword}{inline}\ G4OpBoundaryProcessStatus\ G4OpBoundaryProcess::GetStatus()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00335\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00337\ \ \ \textcolor{keywordflow}{return}\ fStatus;}
+\DoxyCodeLine{00338\ \}}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ G4OpBoundaryProcess::ChooseReflection()}
+\DoxyCodeLine{00341\ \{}
+\DoxyCodeLine{00342\ \ \ G4double\ rand\ =\ G4UniformRand();}
+\DoxyCodeLine{00343\ \ \ \textcolor{keywordflow}{if}\ (rand\ <\ fProb\_ss)}
+\DoxyCodeLine{00344\ \ \ \{}
+\DoxyCodeLine{00345\ \ \ \ \ fStatus\ =\ SpikeReflection;}
+\DoxyCodeLine{00346\ \ \ \ \ fFacetNormal\ =\ fGlobalNormal;}
+\DoxyCodeLine{00347\ \ \ \}}
+\DoxyCodeLine{00348\ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rand\ <\ fProb\_ss\ +\ fProb\_sl)}
+\DoxyCodeLine{00349\ \ \ \{}
+\DoxyCodeLine{00350\ \ \ \ \ fStatus\ =\ LobeReflection;}
+\DoxyCodeLine{00351\ \ \ \}}
+\DoxyCodeLine{00352\ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rand\ <\ fProb\_ss\ +\ fProb\_sl\ +\ fProb\_bs)}
+\DoxyCodeLine{00353\ \ \ \{}
+\DoxyCodeLine{00354\ \ \ \ \ fStatus\ =\ BackScattering;}
+\DoxyCodeLine{00355\ \ \ \}}
+\DoxyCodeLine{00356\ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00357\ \ \ \{}
+\DoxyCodeLine{00358\ \ \ \ \ fStatus\ =\ LambertianReflection;}
+\DoxyCodeLine{00359\ \ \ \}}
+\DoxyCodeLine{00360\ \}}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ G4OpBoundaryProcess::DoAbsorption()}
+\DoxyCodeLine{00363\ \{}
+\DoxyCodeLine{00364\ \ \ fStatus\ =\ Absorption;}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00366\ \ \ \textcolor{keywordflow}{if}\ (G4BooleanRand(fEfficiency))}
+\DoxyCodeLine{00367\ \ \ \{}
+\DoxyCodeLine{00368\ \ \ \ \ \textcolor{comment}{//\ EnergyDeposited\ =/=\ 0\ means:\ photon\ has\ been\ detected}}
+\DoxyCodeLine{00369\ \ \ \ \ fStatus\ =\ Detection;}
+\DoxyCodeLine{00370\ \ \ \ \ aParticleChange.ProposeLocalEnergyDeposit(fPhotonMomentum);}
+\DoxyCodeLine{00371\ \ \ \}}
+\DoxyCodeLine{00372\ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00373\ \ \ \{}
+\DoxyCodeLine{00374\ \ \ \ \ aParticleChange.ProposeLocalEnergyDeposit(0.0);}
+\DoxyCodeLine{00375\ \ \ \}}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00377\ \ \ fNewMomentum\ =\ fOldMomentum;}
+\DoxyCodeLine{00378\ \ \ fNewPolarization\ =\ fOldPolarization;}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \ \ aParticleChange.ProposeTrackStatus(fStopAndKill);}
+\DoxyCodeLine{00381\ \}}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00383\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ G4OpBoundaryProcess::DoReflection()}
+\DoxyCodeLine{00384\ \{}
+\DoxyCodeLine{00385\ \ \ \textcolor{keywordflow}{if}\ (fStatus\ ==\ LambertianReflection)}
+\DoxyCodeLine{00386\ \ \ \{}
+\DoxyCodeLine{00387\ \ \ \ \ fNewMomentum\ =\ G4LambertianRand(fGlobalNormal);}
+\DoxyCodeLine{00388\ \ \ \ \ fFacetNormal\ =\ (fNewMomentum\ -\/\ fOldMomentum).unit();}
+\DoxyCodeLine{00389\ \ \ \}}
+\DoxyCodeLine{00390\ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (fFinish\ ==\ ground)}
+\DoxyCodeLine{00391\ \ \ \{}
+\DoxyCodeLine{00392\ \ \ \ \ fStatus\ =\ LobeReflection;}
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{keywordflow}{if}\ (!fRealRIndexMPV\ ||\ !fImagRIndexMPV)}
+\DoxyCodeLine{00394\ \ \ \ \ \{}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ fFacetNormal\ =\ GetFacetNormal(fOldMomentum,\ fGlobalNormal);}
+\DoxyCodeLine{00396\ \ \ \ \ \}}
+\DoxyCodeLine{00397\ \ \ \ \ \textcolor{comment}{//\ else}}
+\DoxyCodeLine{00398\ \ \ \ \ \textcolor{comment}{//\ complex\ ref.\ index\ to\ be\ implemented}}
+\DoxyCodeLine{00399\ \ \ \ \ fNewMomentum\ =}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ fOldMomentum\ -\/\ (2.\ *\ fOldMomentum\ *\ fFacetNormal\ *\ fFacetNormal);}
+\DoxyCodeLine{00401\ \ \ \}}
+\DoxyCodeLine{00402\ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00403\ \ \ \{}
+\DoxyCodeLine{00404\ \ \ \ \ fStatus\ =\ SpikeReflection;}
+\DoxyCodeLine{00405\ \ \ \ \ fFacetNormal\ =\ fGlobalNormal;}
+\DoxyCodeLine{00406\ \ \ \ \ fNewMomentum\ =}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ fOldMomentum\ -\/\ (2.\ *\ fOldMomentum\ *\ fFacetNormal\ *\ fFacetNormal);}
+\DoxyCodeLine{00408\ \ \ \}}
+\DoxyCodeLine{00409\ \ \ fNewPolarization\ =}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ -\/fOldPolarization\ +\ (2.\ *\ fOldPolarization\ *\ fFacetNormal\ *\ fFacetNormal);}
+\DoxyCodeLine{00411\ \}}
+\DoxyCodeLine{00412\ }
+
+\end{DoxyCode}

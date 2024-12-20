@@ -1,0 +1,65 @@
+\doxysection{OMSim\+PMTResponse.\+hh}
+\hypertarget{_o_m_sim_p_m_t_response_8hh_source}{}\label{_o_m_sim_p_m_t_response_8hh_source}\index{OMSimPMTResponse.hh@{OMSimPMTResponse.hh}}
+\mbox{\hyperlink{_o_m_sim_p_m_t_response_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <G4SystemOfUnits.hh>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <G4Types.hh>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <TGraph.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <TH2D.h>}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSimPMTResponse}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a80b379bc78ca06d23011703aae3341d7}{OMSimPMTResponse}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{\string~OMSimPMTResponse}}();}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}}}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ G4double\ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse_a36649e95b6f7a081fbd15e799ea12584}{PE}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ G4double\ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse_a842337fbd6979ff70f1b5ab67ca52493}{transitTime}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ G4double\ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse_a87f21652e10a0bc82870ded9697b57f2}{detectionProbability}};\ }
+\DoxyCodeLine{00033\ \ \ \ \ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}{processPhotocathodeHit}}(G4double\ pX,\ G4double\ pY,\ G4double\ pWavelength);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_ac921d86b7d02d3b4a3a4e3710147420d}{makeQEweightInterpolator}}(\textcolor{keyword}{const}\ std::string\&\ p\_FileNameAbsorbedFraction);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_aa0b6a91aa1bbac5c1f02a6e29ce9b34b}{makeQEInterpolator}}(\textcolor{keyword}{const}\ std::string\&\ p\_FileName);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a0d82672908050add72cb0f7af15808b4}{makeCEweightInterpolator}}(\textcolor{keyword}{const}\ std::string\&\ p\_FileName);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ makeScansInterpolators(\textcolor{keyword}{const}\ std::string\ \&p\_PathToFiles);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a2036bbe888ac1d7ac89295ef78621f11}{setScannedWavelengths}}(std::vector<double>\ p\_wavelengths);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_ad175b3ea4665684d2891c7107e12abeb}{getCharge}}(G4double\ p\_WavelengthKey);}
+\DoxyCodeLine{00045\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_ad175b3ea4665684d2891c7107e12abeb}{getCharge}}(G4double\ p\_WavelengthKey1,\ G4double\ p\_WavelengthKey2);}
+\DoxyCodeLine{00046\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_ac428b8732a0aec1da45ee72dcacc91f1}{getTransitTime}}(G4double\ p\_WavelengthKey);}
+\DoxyCodeLine{00047\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_ac428b8732a0aec1da45ee72dcacc91f1}{getTransitTime}}(G4double\ p\_WavelengthKey1,\ G4double\ p\_WavelengthKey2);}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_ad26fd3db4c3455618291da85e9c1f73e}{getPulseFromInterpolation}}(G4double\ p\_WavelengthKey1,\ G4double\ p\_WavelengthKey2);}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{PMTPulse}}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_a0cbb8567eb918314ecf42b0f724a80c3}{getPulseFromKey}}(G4double\ p\_WavelengthKey);}
+\DoxyCodeLine{00050\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_ac206cd005e6b634472ff6eb0da1f1100}{wavelengthInterpolatedValue}}(std::map<G4double,\ TH2D\ *>\ p\_Map,\ G4double\ p\_WavelengthKey1,\ G4double\ p\_WavelengthKey2);}
+\DoxyCodeLine{00051\ \ \ \ \ std::vector<G4double>\ \mbox{\hyperlink{class_o_m_sim_p_m_t_response_abccaeb61ad40513e580f4f3369d8f70c}{getScannedWavelengths}}();}
+\DoxyCodeLine{00052\ \ \ \ \ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_scansInterpolatorsAvailable\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_QEWeightInterpolatorAvailable\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_QEInterpolatorAvailable\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_CEWeightInterpolatorAvailable\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_simplePMT;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{double}\ m\_X;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{double}\ m\_Y;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ G4double\ m\_wavelength;}
+\DoxyCodeLine{00063\ \ \ \ \ std::vector<G4double>\ m\_scannedWavelengths;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ TGraph\ *m\_relativeDetectionEfficiencyInterpolator;}
+\DoxyCodeLine{00066\ \ \ \ \ TGraph\ *m\_QEfileInterpolator;}
+\DoxyCodeLine{00067\ \ \ \ \ TGraph\ *m\_weightAbsorbedToQEInterpolator;}
+\DoxyCodeLine{00068\ \ \ \ \ std::map<G4double,\ TH2D\ *>\ m\_gainG2Dmap;}
+\DoxyCodeLine{00069\ \ \ \ \ std::map<G4double,\ TH2D\ *>\ m\_gainResolutionG2Dmap;}
+\DoxyCodeLine{00070\ \ \ \ \ std::map<G4double,\ TH2D\ *>\ m\_transitTimeG2Dmap;}
+\DoxyCodeLine{00071\ \ \ \ \ std::map<G4double,\ TH2D\ *>\ m\_transitTimeSpreadG2Dmap;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \};}
+
+\end{DoxyCode}

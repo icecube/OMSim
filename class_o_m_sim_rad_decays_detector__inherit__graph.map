@@ -1,5 +1,7 @@
 <map id="OMSimRadDecaysDetector" name="OMSimRadDecaysDetector">
-<area shape="rect" id="node1" title="Detector construction of radioactive decays simulation." alt="" coords="15,155,213,181"/>
-<area shape="rect" id="node2" href="$class_o_m_sim_detector_construction.html" title="Class for detector construction in the effective area simulation." alt="" coords="11,80,217,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,223,32"/>
+<area shape="rect" id="Node000001" title="Detector construction of radioactive decays simulation." alt="" coords="15,152,213,177"/>
+<area shape="rect" id="Node000002" href="$class_o_m_sim_detector_construction.html" title="Class for detector construction in the effective area simulation." alt="" coords="11,79,217,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,118,117,152,111,152,111,118"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,223,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="117,44,117,79,111,79,111,44"/>
 </map>

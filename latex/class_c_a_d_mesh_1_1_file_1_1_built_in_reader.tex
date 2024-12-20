@@ -1,5 +1,5 @@
-\hypertarget{class_c_a_d_mesh_1_1_file_1_1_built_in_reader}{}\doxysection{CADMesh\+::File\+::Built\+In\+Reader Class Reference}
-\label{class_c_a_d_mesh_1_1_file_1_1_built_in_reader}\index{CADMesh::File::BuiltInReader@{CADMesh::File::BuiltInReader}}
+\doxysection{CADMesh\+::File\+::Built\+In\+Reader Class Reference}
+\hypertarget{class_c_a_d_mesh_1_1_file_1_1_built_in_reader}{}\label{class_c_a_d_mesh_1_1_file_1_1_built_in_reader}\index{CADMesh::File::BuiltInReader@{CADMesh::File::BuiltInReader}}
 
 
 Inheritance diagram for CADMesh\+::File\+::Built\+In\+Reader\+:
@@ -20,16 +20,61 @@ Collaboration diagram for CADMesh\+::File\+::Built\+In\+Reader\+:
 \includegraphics[width=239pt]{class_c_a_d_mesh_1_1_file_1_1_built_in_reader__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_built_in_reader_ad44e0f3e603c0ebfb3a07ab1cb2fb0b3}\label{class_c_a_d_mesh_1_1_file_1_1_built_in_reader_ad44e0f3e603c0ebfb3a07ab1cb2fb0b3}} 
-G4bool {\bfseries Read} (G4\+String filepath)
+G4bool \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_built_in_reader_ad44e0f3e603c0ebfb3a07ab1cb2fb0b3}{Read}} (G4\+String filepath)
 \item 
-\mbox{\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_built_in_reader_a4b41e883ff98647109f8031f1917f3a1}\label{class_c_a_d_mesh_1_1_file_1_1_built_in_reader_a4b41e883ff98647109f8031f1917f3a1}} 
-G4bool {\bfseries Can\+Read} (File\+::\+Type file\+\_\+type)
+G4bool \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_built_in_reader_a4b41e883ff98647109f8031f1917f3a1}{Can\+Read}} (File\+::\+Type file\+\_\+type)
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{CADMesh\+::\+File\+::\+Reader}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Reader} (G4\+String reader\+\_\+name)
+\item 
+G4\+String {\bfseries Get\+Name} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ {\bfseries Get\+Mesh} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ {\bfseries Get\+Mesh} (size\+\_\+t index)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ {\bfseries Get\+Mesh} (G4\+String name, G4bool exact=true)
+\item 
+size\+\_\+t {\bfseries Get\+Number\+Of\+Meshes} ()
+\item 
+Meshes {\bfseries Get\+Meshes} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{CADMesh\+::\+File\+::\+Reader}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t {\bfseries Add\+Mesh} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_c_a_d_mesh_1_1_mesh}{Mesh}} $>$ mesh)
+\item 
+void {\bfseries Set\+Meshes} (Meshes meshs)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_built_in_reader_a4b41e883ff98647109f8031f1917f3a1}\label{class_c_a_d_mesh_1_1_file_1_1_built_in_reader_a4b41e883ff98647109f8031f1917f3a1} 
+\index{CADMesh::File::BuiltInReader@{CADMesh::File::BuiltInReader}!CanRead@{CanRead}}
+\index{CanRead@{CanRead}!CADMesh::File::BuiltInReader@{CADMesh::File::BuiltInReader}}
+\doxysubsubsection{\texorpdfstring{CanRead()}{CanRead()}}
+{\footnotesize\ttfamily G4bool CADMesh\+::\+File\+::\+Built\+In\+Reader\+::\+Can\+Read (\begin{DoxyParamCaption}\item[{File\+::\+Type}]{file\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{CADMesh\+::\+File\+::\+Reader}}.
+
+\Hypertarget{class_c_a_d_mesh_1_1_file_1_1_built_in_reader_ad44e0f3e603c0ebfb3a07ab1cb2fb0b3}\label{class_c_a_d_mesh_1_1_file_1_1_built_in_reader_ad44e0f3e603c0ebfb3a07ab1cb2fb0b3} 
+\index{CADMesh::File::BuiltInReader@{CADMesh::File::BuiltInReader}!Read@{Read}}
+\index{Read@{Read}!CADMesh::File::BuiltInReader@{CADMesh::File::BuiltInReader}}
+\doxysubsubsection{\texorpdfstring{Read()}{Read()}}
+{\footnotesize\ttfamily G4bool CADMesh\+::\+File\+::\+Built\+In\+Reader\+::\+Read (\begin{DoxyParamCaption}\item[{G4\+String}]{filepath }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_a_d_mesh_1_1_file_1_1_reader}{CADMesh\+::\+File\+::\+Reader}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

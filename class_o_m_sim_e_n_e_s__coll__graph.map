@@ -1,7 +1,11 @@
 <map id="OMSimENES" name="OMSimENES">
-<area shape="rect" id="node1" title="Class in charge of generating electrons from Electron&#45;electron_Neutrino Elastic Scattering (ENES) nu_..." alt="" coords="291,200,393,227"/>
-<area shape="rect" id="node2" href="$class_s_n_base_particle_generator.html" title=" " alt="" coords="249,124,435,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,241,32"/>
-<area shape="rect" id="node4" href="$class_distribution_sampler.html" title="Utility class for sampling from a given distribution using the inverse cumulative function and interp..." alt="" coords="266,5,418,32"/>
-<area shape="rect" id="node5" href="$class_o_m_sim_s_n_tools.html" title="Provides utility methods for generating ENES and IBD interactions." alt="" coords="545,5,665,32"/>
+<area shape="rect" id="Node000001" title="Class in charge of generating electrons from Electron&#45;electron_Neutrino Elastic Scattering (ENES) nu_..." alt="" coords="275,197,377,223"/>
+<area shape="rect" id="Node000002" href="$class_s_n_base_particle_generator.html" title=" " alt="" coords="233,123,419,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="329,162,329,197,323,197,323,162"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,241,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="157,35,307,120,305,125,154,40"/>
+<area shape="rect" id="Node000004" href="$class_o_m_sim_s_n_tools.html" title="Provides utility methods for generating ENES and IBD interactions." alt="" coords="266,5,386,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="329,44,329,123,323,123,323,44"/>
+<area shape="rect" id="Node000005" href="$class_distribution_sampler.html" title="Utility class for sampling from a given distribution using the inverse cumulative function and interp..." alt="" coords="410,5,562,31"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="475,44,455,73,426,101,402,115,376,125,374,120,399,110,423,97,451,70,471,41"/>
 </map>

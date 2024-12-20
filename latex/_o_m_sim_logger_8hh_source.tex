@@ -1,0 +1,25 @@
+\doxysection{OMSim\+Logger.\+hh}
+\hypertarget{_o_m_sim_logger_8hh_source}{}\label{_o_m_sim_logger_8hh_source}\index{OMSimLogger.hh@{OMSimLogger.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <spdlog/spdlog.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <spdlog/sinks/stdout\_color\_sinks.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}spdlog/fmt/fmt.h"{}}\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Global\ logger\ instance}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{extern}\ std::shared\_ptr<spdlog::logger>\ g\_logger;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ Custom\ logging\ function}}
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{void}\ customLog(spdlog::level::level\_enum\ log\_level,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{int}\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ func,\ \textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ log\_trace(...)\ \ \ customLog(spdlog::level::trace,\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_func\_\_,\ fmt::format(\_\_VA\_ARGS\_\_))}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ log\_debug(...)\ \ \ customLog(spdlog::level::debug,\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_func\_\_,\ fmt::format(\_\_VA\_ARGS\_\_))}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ log\_info(...)\ \ \ \ customLog(spdlog::level::info,\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_func\_\_,\ fmt::format(\_\_VA\_ARGS\_\_))}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ log\_notice(...)\ \ \ \ customLog(spdlog::level::info,\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_func\_\_,\ fmt::format(\_\_VA\_ARGS\_\_))}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ log\_warning(...)\ \ \ \ customLog(spdlog::level::warn,\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_func\_\_,\ fmt::format(\_\_VA\_ARGS\_\_))}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ log\_error(...)\ \ \ customLog(spdlog::level::err,\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_func\_\_,\ fmt::format(\_\_VA\_ARGS\_\_))}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ log\_critical(...)\ customLog(spdlog::level::critical,\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_func\_\_,\ fmt::format(\_\_VA\_ARGS\_\_))}}
+
+\end{DoxyCode}

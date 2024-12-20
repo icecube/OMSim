@@ -1,0 +1,53 @@
+\doxysection{supernova/include/\+OMSim\+Primary\+Generator\+Action.hh}
+\hypertarget{supernova_2include_2_o_m_sim_primary_generator_action_8hh_source}{}\label{supernova_2include_2_o_m_sim_primary_generator_action_8hh_source}\index{OMSimPrimaryGeneratorAction.hh@{OMSimPrimaryGeneratorAction.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_s_n_particle_generators_8hh}{OMSimSNParticleGenerators.hh}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}OMSimPrimaryGeneratorMessenger.hh"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_s_n_tools_8hh}{OMSimSNTools.hh}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <globals.hh>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <G4PhysicalConstants.hh>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <G4SystemOfUnits.hh>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <G4VUserPrimaryGeneratorAction.hh>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }G4ParticleGun;}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }G4Event;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_primary_generator_action}{OMSimPrimaryGeneratorAction}}\ :\ \textcolor{keyword}{public}\ G4VUserPrimaryGeneratorAction}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_action}{OMSimPrimaryGeneratorAction}}();\ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_action}{\string~OMSimPrimaryGeneratorAction}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ GeneratePrimaries(G4Event*);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ G4ParticleGun*\ GetParticleGun()\ \{\ \textcolor{keywordflow}{return}\ m\_particleGun;\ \};}
+\DoxyCodeLine{00028\ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ SelectAction(G4int\ i)\ \{\ m\_selectedAction\ =\ i;\ \};\ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ G4int\ GetSelectedAction()\ \ \{\ \textcolor{keywordflow}{return}\ m\_selectedAction;\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_i_b_d}{OMSimIBD}}*\ \ GetAction0()\ \{\ \textcolor{keywordflow}{return}\ m\_action0;\ \};}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_e_n_e_s}{OMSimENES}}*\ \ GetAction1()\ \{\ \textcolor{keywordflow}{return}\ m\_action1;\ \};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00037\ \ \ \ \ G4ParticleGun*\ \ \ \ \ \ \ \ \ \ \ m\_particleGun;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_i_b_d}{OMSimIBD}}*\ m\_action0;}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_e_n_e_s}{OMSimENES}}*\ m\_action1;}
+\DoxyCodeLine{00042\ \ \ \ \ G4int\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_selectedAction;}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_messenger}{OMSimPrimaryGeneratorMessenger}}*\ m\_gunMessenger;\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+
+\end{DoxyCode}

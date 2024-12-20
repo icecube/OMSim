@@ -1,8 +1,13 @@
 <map id="OMSimDetectorConstruction" name="OMSimDetectorConstruction">
-<area shape="rect" id="node1" title="Class for detector construction in the effective area simulation." alt="" coords="271,81,477,108"/>
-<area shape="rect" id="node3" href="$class_o_m_sim_effective_area_detector.html" title="Class for detector construction in the effective area simulation." alt="" coords="525,5,737,32"/>
-<area shape="rect" id="node4" href="$class_o_m_sim_effi_cali_detector.html" title=" " alt="" coords="546,56,717,83"/>
-<area shape="rect" id="node5" href="$class_o_m_sim_rad_decays_detector.html" title="Detector construction of radioactive decays simulation." alt="" coords="532,107,731,133"/>
-<area shape="rect" id="node6" href="$class_o_m_sim_s_ndetector.html" title="Class for detector construction in the SN neutrino simulation." alt="" coords="561,157,702,184"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,81,223,108"/>
+<area shape="rect" id="Node000001" title="Class for detector construction in the effective area simulation." alt="" coords="271,80,477,105"/>
+<area shape="rect" id="Node000003" href="$class_o_m_sim_effective_area_detector.html" title="Class for detector construction in the effective area simulation." alt="" coords="525,5,737,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="422,73,525,39,569,28,571,33,526,45,424,78"/>
+<area shape="rect" id="Node000004" href="$class_o_m_sim_effi_cali_detector.html" title=" " alt="" coords="546,55,717,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="491,79,546,73,546,78,491,84"/>
+<area shape="rect" id="Node000005" href="$class_o_m_sim_rad_decays_detector.html" title="Detector construction of radioactive decays simulation." alt="" coords="532,104,731,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="491,101,532,105,531,110,491,106"/>
+<area shape="rect" id="Node000006" href="$class_o_m_sim_s_ndetector.html" title="Class for detector construction in the SN neutrino simulation." alt="" coords="561,153,702,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="424,107,526,139,571,151,569,156,525,145,423,112"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,223,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,90,270,90,270,95,237,95"/>
 </map>

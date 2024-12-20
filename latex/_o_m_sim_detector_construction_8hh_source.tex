@@ -1,0 +1,37 @@
+\doxysection{OMSim\+Detector\+Construction.\+hh}
+\hypertarget{_o_m_sim_detector_construction_8hh_source}{}\label{_o_m_sim_detector_construction_8hh_source}\index{OMSimDetectorConstruction.hh@{OMSimDetectorConstruction.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}OMSimOpticalModule.hh"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <G4Orb.hh>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <G4VUserDetectorConstruction.hh>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSimDetectorConstruction}}\ :\ \textcolor{keyword}{public}\ G4VUserDetectorConstruction}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSimDetectorConstruction}}();}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_detector_construction}{\string~OMSimDetectorConstruction}}();}
+\DoxyCodeLine{00023\ \ \ \ \ G4VPhysicalVolume\ *\mbox{\hyperlink{class_o_m_sim_detector_construction_a9e16ad5da3921b502473b303609caad0}{Construct}}();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ ConstructSDandField()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ registerSensitiveDetector(G4LogicalVolume*\ logVol,\ G4VSensitiveDetector*\ aSD);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ G4VPhysicalVolume\ *m\_worldPhysical;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ constructWorld()\ =\ 0;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ constructDetector()\ =\ 0;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ G4VSolid\ *m\_worldSolid;}
+\DoxyCodeLine{00034\ \ \ \ \ G4LogicalVolume\ *m\_worldLogical;}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_input_data}{OMSimInputData}}\ *m\_data;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_o_m_sim_detector_construction_1_1_s_d_info}{SDInfo}}\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ G4LogicalVolume*\ logicalVolume;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ G4VSensitiveDetector*\ sensitiveDetector;}
+\DoxyCodeLine{00039\ \ \ \ \ \};}
+\DoxyCodeLine{00040\ \ \ \ \ std::vector<SDInfo>\ m\_sensitiveDetectors;}
+\DoxyCodeLine{00041\ \};}
+
+\end{DoxyCode}

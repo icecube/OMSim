@@ -1,4 +1,6 @@
 <map id="OMSimDecaysAnalysis" name="OMSimDecaysAnalysis">
-<area shape="rect" id="node1" title="Singleton class responsible for managing, analysing, and saving decay&#45;related data." alt="" coords="5,95,177,121"/>
-<area shape="rect" id="node2" href="$struct_decay_stats.html" title="A structure to store information about decays." alt="" coords="43,5,139,32"/>
+<area shape="rect" id="Node000001" title="Singleton class responsible for managing, analysing, and saving decay&#45;related data." alt="" coords="5,93,177,119"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="192,98,204,106,196,113,178,116,177,111,194,108,199,106,190,103"/>
+<area shape="rect" id="Node000002" href="$struct_decay_stats.html" title="A structure to store information about decays." alt="" coords="43,5,139,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,45,94,93,89,93,89,45"/>
 </map>

@@ -1,7 +1,11 @@
 <map id="OMSimSensitiveDetector" name="OMSimSensitiveDetector">
-<area shape="rect" id="node1" title="Represents a sensitive detector." alt="" coords="187,171,373,197"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,81,171,108"/>
-<area shape="rect" id="node3" href="$class_g4_op_boundary_process.html" title=" " alt="" coords="195,81,365,108"/>
-<area shape="rect" id="node4" title=" " alt="" coords="203,5,357,32"/>
-<area shape="rect" id="node5" href="$class_o_m_sim_p_m_t_response.html" title="Class to simulate PMT response." alt="" coords="389,81,549,108"/>
+<area shape="rect" id="Node000001" title="Represents a sensitive detector." alt="" coords="182,168,367,193"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,171,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,109,250,165,248,170,124,114"/>
+<area shape="rect" id="Node000003" href="$class_o_m_sim_p_m_t_response.html" title="Class to simulate PMT response." alt="" coords="195,80,355,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="277,119,277,167,272,167,272,119"/>
+<area shape="rect" id="Node000004" href="$class_g4_op_boundary_process.html" title=" " alt="" coords="379,80,549,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="442,116,397,146,363,160,330,170,328,165,362,155,395,142,439,112"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="387,5,541,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="467,45,467,80,461,80,461,45"/>
 </map>

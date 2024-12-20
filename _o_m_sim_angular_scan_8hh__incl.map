@@ -1,4 +1,5 @@
 <map id="OMSimAngularScan.hh" name="OMSimAngularScan.hh">
-<area shape="rect" id="node1" title="Defines the AngularScan class for configuring and running GPS beam with angular scans." alt="" coords="5,5,176,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="46,80,135,107"/>
+<area shape="rect" id="Node000001" title="Defines the AngularScan class for configuring and running GPS beam with angular scans." alt="" coords="5,5,176,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="46,79,135,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,31,93,65,88,65,88,31"/>
 </map>

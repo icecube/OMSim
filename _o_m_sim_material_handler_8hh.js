@@ -1,6 +1,5 @@
 var _o_m_sim_material_handler_8hh =
 [
-    [ "ProcessorFunction", "_o_m_sim_material_handler_8hh.html#a030608390bf9859c4fc37aa70788b5a2", null ],
     [ "extractLifeTimes", "_o_m_sim_material_handler_8hh.html#a4b5f070aafaee94ed8cf02d0b48ac622", null ],
     [ "extractLifeTimesForTemperature", "_o_m_sim_material_handler_8hh.html#abe0857366dc77cb950049d701a7cd87a", null ],
     [ "extractSpectrum", "_o_m_sim_material_handler_8hh.html#a57a3ea3b51e632208b21dddd6c254b9d", null ],

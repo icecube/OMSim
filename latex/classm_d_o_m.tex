@@ -1,5 +1,5 @@
-\hypertarget{classm_d_o_m}{}\doxysection{m\+DOM Class Reference}
-\label{classm_d_o_m}\index{mDOM@{mDOM}}
+\doxysection{m\+DOM Class Reference}
+\hypertarget{classm_d_o_m}{}\label{classm_d_o_m}\index{mDOM@{mDOM}}
 
 
 Inheritance diagram for m\+DOM\+:
@@ -20,170 +20,262 @@ Collaboration diagram for m\+DOM\+:
 \includegraphics[width=333pt]{classm_d_o_m__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_af9e063301c2ab10049a214b87a9a0f50}\label{classm_d_o_m_af9e063301c2ab10049a214b87a9a0f50}} 
+\Hypertarget{classm_d_o_m_af9e063301c2ab10049a214b87a9a0f50}\label{classm_d_o_m_af9e063301c2ab10049a214b87a9a0f50} 
 {\bfseries m\+DOM} (G4bool p\+\_\+place\+Harness=true)
 \item 
-\mbox{\hyperlink{classm_d_o_m_afd95205edb92f86b5c8d4e5642a58e3c}{$\sim$m\+DOM}} ()
+\mbox{\hyperlink{classm_d_o_m_afd95205edb92f86b5c8d4e5642a58e3c}{\texorpdfstring{$\sim$}{\string~}m\+DOM}} ()
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a115f5e689062ac82b8f55a18f7f96376}\label{classm_d_o_m_a115f5e689062ac82b8f55a18f7f96376}} 
 void \mbox{\hyperlink{classm_d_o_m_a115f5e689062ac82b8f55a18f7f96376}{construction}} ()
-\begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classm_d_o_m_a1fd32bb6eeff5f49f9ebbd09825b2e91}{get\+Pressure\+Vessel\+Weight}} ()
 \begin{DoxyCompactList}\small\item\em Virtual method to get the weight of the pressure vessel. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classm_d_o_m_ad7e07f1380a50158f7cede9aa84721be}{get\+Number\+Of\+PMTs}} ()
 \begin{DoxyCompactList}\small\item\em Virtual method to get the number of PMTs in the optical module. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_a6ad860a00a1fd6d2a41d14d8e3d834ad}\label{classm_d_o_m_a6ad860a00a1fd6d2a41d14d8e3d834ad}} 
-G4\+String {\bfseries get\+Name} ()
+G4\+String \mbox{\hyperlink{classm_d_o_m_a6ad860a00a1fd6d2a41d14d8e3d834ad}{get\+Name}} ()
 \item 
 void \mbox{\hyperlink{classm_d_o_m_adf748d77a8bae2516db1ba79b805841b}{run\+Beam\+On\+Flasher}} (G4int p\+Module\+Index, G4int p\+LEDIndex)
 \begin{DoxyCompactList}\small\item\em run/beam\+On the specified flasher. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a5160e07a0b0534ea66a098a0988bac21}\label{classm_d_o_m_a5160e07a0b0534ea66a098a0988bac21}} 
+{\bfseries OMSim\+Optical\+Module} (\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} \texorpdfstring{$\ast$}{*}p\+PMTManager)
+\item 
+void {\bfseries configure\+Sensitive\+Volume} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} \texorpdfstring{$\ast$}{*}p\+Det\+Const)
+\item 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} \texorpdfstring{$\ast$}{*} {\bfseries get\+PMTmanager} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}{append\+Component}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Solid, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}p\+Logical, G4\+Three\+Vector p\+Vector, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Append component to Components vector. \end{DoxyCompactList}\item 
+G4bool \mbox{\hyperlink{class_o_m_sim_detector_component_a698a458599ff1d3045010636717e4da8}{check\+If\+Exists}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Check if a component with a certain name exists in the Components map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}} \mbox{\hyperlink{class_o_m_sim_detector_component_afe9d1fa2893a0ae67ab6f9afb6d377f4}{get\+Component}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Retrieves a specified component from the Components map. \end{DoxyCompactList}\item 
+G4\+Transform3D \mbox{\hyperlink{class_o_m_sim_detector_component_aa4a3ef0899866c61c3e6185946e04985}{get\+New\+Position}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Three\+Vector p\+Object\+Position, G4\+Rotation\+Matrix p\+Object\+Rotation)
+\begin{DoxyCompactList}\small\item\em Computes a new position for a sub-\/component, based on a given global position and rotation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a60b149056e8998772582544271288189}{integrate\+Detector\+Component}} (\mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} \texorpdfstring{$\ast$}{*}p\+To\+Integrate, G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name\+Extension)
+\begin{DoxyCompactList}\small\item\em Integrates the components of another \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26}{delete\+Component}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Deletes a specified component from the Components map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{place\+It}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&p\+Mother, G4\+String p\+Name\+Extension="{}"{})
+\begin{DoxyCompactList}\small\item\em Placement of the Detector\+Component. Each \doxylink{struct_o_m_sim_detector_component_1_1_component}{Component} is placed in the same mother. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a4b2ca76a8864a82cd9717f75577188d7}{place\+It}} (G4\+Transform3D p\+Trans, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&p\+Mother, G4\+String p\+Name\+Extension="{}"{})
+\begin{DoxyCompactList}\small\item\em Places the components in a specified mother volume using a provided transformation. \end{DoxyCompactList}\item 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d}{substract\+To\+Volume}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Input\+Volume, G4\+Three\+Vector p\+Substraction\+Pos, G4\+Rotation\+Matrix p\+Substraction\+Rot, G4\+String p\+New\+Volume\+Name)
+\begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume using position and rotation. \end{DoxyCompactList}\item 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_component_a6b09340b9d4a93f5a269cfc116acf8c3}{substract\+To\+Volume}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Input\+Volume, G4\+Transform3D p\+Trans, G4\+String p\+New\+Volume\+Name)
+\begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classm_d_o_m_a5160e07a0b0534ea66a098a0988bac21}\label{classm_d_o_m_a5160e07a0b0534ea66a098a0988bac21} 
 G4int {\bfseries m\+\_\+\+Nr\+Total\+LED}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_ab56e69ed881ca89d4e0164ad5316b69d}\label{classm_d_o_m_ab56e69ed881ca89d4e0164ad5316b69d}} 
-std\+::vector$<$ G4\+Transform3D $>$ \mbox{\hyperlink{classm_d_o_m_ab56e69ed881ca89d4e0164ad5316b69d}{m\+\_\+\+LEDTransformers}}
+\Hypertarget{classm_d_o_m_ab56e69ed881ca89d4e0164ad5316b69d}\label{classm_d_o_m_ab56e69ed881ca89d4e0164ad5316b69d} 
+std\+::vector$<$ G4\+Transform3D $>$ {\bfseries m\+\_\+\+LEDTransformers}
 \begin{DoxyCompactList}\small\item\em coordinates from center of the module \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_a6047144e49a3969896f69bb1a9054685}\label{classm_d_o_m_a6047144e49a3969896f69bb1a9054685}} 
-std\+::vector$<$ std\+::vector$<$ G4double $>$ $>$ \mbox{\hyperlink{classm_d_o_m_a6047144e49a3969896f69bb1a9054685}{m\+\_\+\+LEDAng\+From\+Sphere}}
+\Hypertarget{classm_d_o_m_a6047144e49a3969896f69bb1a9054685}\label{classm_d_o_m_a6047144e49a3969896f69bb1a9054685} 
+std\+::vector$<$ std\+::vector$<$ G4double $>$ $>$ {\bfseries m\+\_\+\+LEDAng\+From\+Sphere}
 \begin{DoxyCompactList}\small\item\em stores rho (mm),theta (deg),phi (deg) of each LED from the center of its corresponding spherical part. Useful to run the particles. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_a4fd6b5d14b388dc32faac91fc24f7530}\label{classm_d_o_m_a4fd6b5d14b388dc32faac91fc24f7530}} 
-const G4double \mbox{\hyperlink{classm_d_o_m_a4fd6b5d14b388dc32faac91fc24f7530}{m\+\_\+cylinder\+Angle}} = 2.\+8 $\ast$ deg
+\Hypertarget{classm_d_o_m_a4fd6b5d14b388dc32faac91fc24f7530}\label{classm_d_o_m_a4fd6b5d14b388dc32faac91fc24f7530} 
+const G4double {\bfseries m\+\_\+cylinder\+Angle} = 2.\+8 \texorpdfstring{$\ast$}{*} deg
 \begin{DoxyCompactList}\small\item\em Deviation angle of cylindrical part of the pressure vessel. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_a331bad1dc28b4f79cbdcb853c0808942}\label{classm_d_o_m_a331bad1dc28b4f79cbdcb853c0808942}} 
-const G4double \mbox{\hyperlink{classm_d_o_m_a331bad1dc28b4f79cbdcb853c0808942}{m\+\_\+glass\+Out\+Rad}} = 176.\+5 $\ast$ mm
+\Hypertarget{classm_d_o_m_a331bad1dc28b4f79cbdcb853c0808942}\label{classm_d_o_m_a331bad1dc28b4f79cbdcb853c0808942} 
+const G4double {\bfseries m\+\_\+glass\+Out\+Rad} = 176.\+5 \texorpdfstring{$\ast$}{*} mm
 \begin{DoxyCompactList}\small\item\em outer radius of galss cylinder (pressure vessel) \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_a8b6dc40b477765fea8a4492ce5c9f2fa}\label{classm_d_o_m_a8b6dc40b477765fea8a4492ce5c9f2fa}} 
-const G4double \mbox{\hyperlink{classm_d_o_m_a8b6dc40b477765fea8a4492ce5c9f2fa}{m\+\_\+cylinder\+Height}} = 27.\+5 $\ast$ mm
+\Hypertarget{classm_d_o_m_a8b6dc40b477765fea8a4492ce5c9f2fa}\label{classm_d_o_m_a8b6dc40b477765fea8a4492ce5c9f2fa} 
+const G4double {\bfseries m\+\_\+cylinder\+Height} = 27.\+5 \texorpdfstring{$\ast$}{*} mm
 \begin{DoxyCompactList}\small\item\em height of cylindrical part of glass half-\/vessel \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_aba65440e2b4b7398ada538e46ddfada2}\label{classm_d_o_m_aba65440e2b4b7398ada538e46ddfada2}} 
+\Hypertarget{classm_d_o_m_aba65440e2b4b7398ada538e46ddfada2}\label{classm_d_o_m_aba65440e2b4b7398ada538e46ddfada2} 
 const G4double {\bfseries m\+\_\+glass\+In\+Rad} = \mbox{\hyperlink{classm_d_o_m_a331bad1dc28b4f79cbdcb853c0808942}{m\+\_\+glass\+Out\+Rad}} -\/ \mbox{\hyperlink{classm_d_o_m_a020769f4b10c962ab9b5841bbc969d7d}{m\+\_\+glass\+Thick}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a3b2aaa5321719dfb3b800a3c1f8b9f25}\label{classm_d_o_m_a3b2aaa5321719dfb3b800a3c1f8b9f25}} 
-G4\+Subtraction\+Solid $\ast$ {\bfseries equatorial\+Reflector} (G4\+VSolid $\ast$p\+Support\+Structure, G4\+Cons $\ast$p\+Refl\+Cone, G4double p\+Angle, G4\+String p\+Suffix)
+G4int {\bfseries m\+\_\+index}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_aa787ab8bfad6c8d820050a7d8c1f9bf5}\label{classm_d_o_m_aa787ab8bfad6c8d820050a7d8c1f9bf5}} 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+data}
+\begin{DoxyCompactList}\small\item\em Instance of OMSim\+Inputdata, which should be started only once. \end{DoxyCompactList}\item 
+bool {\bfseries m\+\_\+check\+Overlaps} = false
+\item 
+std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+\_\+placed\+Positions}
+\begin{DoxyCompactList}\small\item\em store the positions each time the components are placed \end{DoxyCompactList}\item 
+std\+::vector$<$ G4\+Rotation\+Matrix $>$ {\bfseries m\+\_\+placed\+Orientations}
+\begin{DoxyCompactList}\small\item\em store the orientations each time the components are placed \end{DoxyCompactList}\item 
+std\+::vector$<$ G4\+Transform3D $>$ {\bfseries m\+\_\+placed\+Translations}
+\begin{DoxyCompactList}\small\item\em store the translation each time the components are placed \end{DoxyCompactList}\item 
+std\+::map$<$ G4\+String, \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}} $>$ {\bfseries m\+\_\+components}
+\begin{DoxyCompactList}\small\item\em dictionary with each component \end{DoxyCompactList}\item 
+std\+::map$<$ G4\+String, G4\+PVPlacement \texorpdfstring{$\ast$}{*} $>$ {\bfseries m\+\_\+last\+Physicals}
+\begin{DoxyCompactList}\small\item\em dictionary with the (last) G4\+PVPlacement of each component m\+Components produced after calling place\+It \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classm_d_o_m_a3b2aaa5321719dfb3b800a3c1f8b9f25}\label{classm_d_o_m_a3b2aaa5321719dfb3b800a3c1f8b9f25} 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} {\bfseries equatorial\+Reflector} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Support\+Structure, G4\+Cons \texorpdfstring{$\ast$}{*}p\+Refl\+Cone, G4double p\+Angle, G4\+String p\+Suffix)
+\item 
+\Hypertarget{classm_d_o_m_aa787ab8bfad6c8d820050a7d8c1f9bf5}\label{classm_d_o_m_aa787ab8bfad6c8d820050a7d8c1f9bf5} 
 void {\bfseries set\+PMTPositions} ()
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a95cb59294f27f0e119d27d4b7e4f2cfe}\label{classm_d_o_m_a95cb59294f27f0e119d27d4b7e4f2cfe}} 
-G4\+Union\+Solid $\ast$ {\bfseries pressure\+Vessel} (const G4double p\+Out\+Rad, G4\+String p\+Suffix)
+\Hypertarget{classm_d_o_m_a95cb59294f27f0e119d27d4b7e4f2cfe}\label{classm_d_o_m_a95cb59294f27f0e119d27d4b7e4f2cfe} 
+G4\+Union\+Solid \texorpdfstring{$\ast$}{*} {\bfseries pressure\+Vessel} (const G4double p\+Out\+Rad, G4\+String p\+Suffix)
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a3d936da0f23132258600d0825d3998f5}\label{classm_d_o_m_a3d936da0f23132258600d0825d3998f5}} 
-G4\+Subtraction\+Solid $\ast$ {\bfseries substract\+Harness\+Plug} (G4\+VSolid $\ast$p\+Solid)
+\Hypertarget{classm_d_o_m_a3d936da0f23132258600d0825d3998f5}\label{classm_d_o_m_a3d936da0f23132258600d0825d3998f5} 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} {\bfseries substract\+Harness\+Plug} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Solid)
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a1f14d2c150c096e608d244a125c5b33e}\label{classm_d_o_m_a1f14d2c150c096e608d244a125c5b33e}} 
-std\+::tuple$<$ G4\+Subtraction\+Solid $\ast$, G4\+Union\+Solid $\ast$ $>$ {\bfseries support\+Structure} ()
+\Hypertarget{classm_d_o_m_a1f14d2c150c096e608d244a125c5b33e}\label{classm_d_o_m_a1f14d2c150c096e608d244a125c5b33e} 
+std\+::tuple$<$ G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*}, G4\+Union\+Solid \texorpdfstring{$\ast$}{*} $>$ {\bfseries support\+Structure} ()
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a7096fa5b925a0be159c56f415daf8f89}\label{classm_d_o_m_a7096fa5b925a0be159c56f415daf8f89}} 
-G4\+Subtraction\+Solid $\ast$ {\bfseries substract\+Flashers} (G4\+VSolid $\ast$l\+Sup\+Structure\+Solid)
+\Hypertarget{classm_d_o_m_a7096fa5b925a0be159c56f415daf8f89}\label{classm_d_o_m_a7096fa5b925a0be159c56f415daf8f89} 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} {\bfseries substract\+Flashers} (G4\+VSolid \texorpdfstring{$\ast$}{*}l\+Sup\+Structure\+Solid)
 \item 
-\mbox{\Hypertarget{classm_d_o_m_ae1946d5874274ca30123bbbcd7af1411}\label{classm_d_o_m_ae1946d5874274ca30123bbbcd7af1411}} 
+\Hypertarget{classm_d_o_m_ae1946d5874274ca30123bbbcd7af1411}\label{classm_d_o_m_ae1946d5874274ca30123bbbcd7af1411} 
 void {\bfseries set\+LEDPositions} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_ab7238b86afb2bbec3d590bf801332026}\label{classm_d_o_m_ab7238b86afb2bbec3d590bf801332026}} 
-\mbox{\hyperlink{classm_d_o_m_flasher}{m\+DOMFlasher}} $\ast$ {\bfseries m\+\_\+flashers}
+\Hypertarget{classm_d_o_m_ab7238b86afb2bbec3d590bf801332026}\label{classm_d_o_m_ab7238b86afb2bbec3d590bf801332026} 
+\mbox{\hyperlink{classm_d_o_m_flasher}{m\+DOMFlasher}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+flashers}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_af10b14abb6423e5fc76dd947afbe3258}\label{classm_d_o_m_af10b14abb6423e5fc76dd947afbe3258}} 
-\mbox{\hyperlink{classm_d_o_m_harness}{m\+DOMHarness}} $\ast$ {\bfseries m\+\_\+harness}
+\Hypertarget{classm_d_o_m_af10b14abb6423e5fc76dd947afbe3258}\label{classm_d_o_m_af10b14abb6423e5fc76dd947afbe3258} 
+\mbox{\hyperlink{classm_d_o_m_harness}{m\+DOMHarness}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+harness}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_ab21594f4eaf5fe76a4f16dc01f1dfcea}\label{classm_d_o_m_ab21594f4eaf5fe76a4f16dc01f1dfcea}} 
+\Hypertarget{classm_d_o_m_ab21594f4eaf5fe76a4f16dc01f1dfcea}\label{classm_d_o_m_ab21594f4eaf5fe76a4f16dc01f1dfcea} 
 G4bool {\bfseries m\+\_\+place\+Harness} = true
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a0aa3cb3e2037050bd77ffae6699cf134}\label{classm_d_o_m_a0aa3cb3e2037050bd77ffae6699cf134}} 
+\Hypertarget{classm_d_o_m_a0aa3cb3e2037050bd77ffae6699cf134}\label{classm_d_o_m_a0aa3cb3e2037050bd77ffae6699cf134} 
 G4bool {\bfseries m\+\_\+harness\+Union} = true
 \item 
-\mbox{\Hypertarget{classm_d_o_m_aef7d27d8fa891786d4b0b2e2e71c556e}\label{classm_d_o_m_aef7d27d8fa891786d4b0b2e2e71c556e}} 
+\Hypertarget{classm_d_o_m_aef7d27d8fa891786d4b0b2e2e71c556e}\label{classm_d_o_m_aef7d27d8fa891786d4b0b2e2e71c556e} 
 std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+\_\+positions\+PMT}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_adad843a3513940b24265aa3d08fc64a1}\label{classm_d_o_m_adad843a3513940b24265aa3d08fc64a1}} 
+\Hypertarget{classm_d_o_m_adad843a3513940b24265aa3d08fc64a1}\label{classm_d_o_m_adad843a3513940b24265aa3d08fc64a1} 
 std\+::vector$<$ G4\+Rotation\+Matrix $>$ {\bfseries m\+\_\+\+PMTRotations}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_af7c4035955dfcbccfca783cb7b4a047b}\label{classm_d_o_m_af7c4035955dfcbccfca783cb7b4a047b}} 
+\Hypertarget{classm_d_o_m_af7c4035955dfcbccfca783cb7b4a047b}\label{classm_d_o_m_af7c4035955dfcbccfca783cb7b4a047b} 
 std\+::vector$<$ G4\+Rotation\+Matrix $>$ {\bfseries m\+\_\+\+PMTRot\+Phi}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_ac2681cda4980782067e303a5d57f9257}\label{classm_d_o_m_ac2681cda4980782067e303a5d57f9257}} 
+\Hypertarget{classm_d_o_m_ac2681cda4980782067e303a5d57f9257}\label{classm_d_o_m_ac2681cda4980782067e303a5d57f9257} 
 std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+\_\+reflector\+Positions}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a34778a68df0a111bc5b18bac3585115c}\label{classm_d_o_m_a34778a68df0a111bc5b18bac3585115c}} 
+\Hypertarget{classm_d_o_m_a34778a68df0a111bc5b18bac3585115c}\label{classm_d_o_m_a34778a68df0a111bc5b18bac3585115c} 
 G4double {\bfseries m\+\_\+\+PMToffset}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_ac838ab41954400a6db9269224c5854fb}\label{classm_d_o_m_ac838ab41954400a6db9269224c5854fb}} 
+\Hypertarget{classm_d_o_m_ac838ab41954400a6db9269224c5854fb}\label{classm_d_o_m_ac838ab41954400a6db9269224c5854fb} 
 G4double {\bfseries m\+\_\+ref\+Cone\+Ideal\+In\+Rad}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a020769f4b10c962ab9b5841bbc969d7d}\label{classm_d_o_m_a020769f4b10c962ab9b5841bbc969d7d}} 
-const G4double \mbox{\hyperlink{classm_d_o_m_a020769f4b10c962ab9b5841bbc969d7d}{m\+\_\+glass\+Thick}} = 13.\+5 $\ast$ mm
+\Hypertarget{classm_d_o_m_a020769f4b10c962ab9b5841bbc969d7d}\label{classm_d_o_m_a020769f4b10c962ab9b5841bbc969d7d} 
+const G4double {\bfseries m\+\_\+glass\+Thick} = 13.\+5 \texorpdfstring{$\ast$}{*} mm
 \begin{DoxyCompactList}\small\item\em maximum Glass thickness \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_abc6e80be6c1efb187c679181cb091952}\label{classm_d_o_m_abc6e80be6c1efb187c679181cb091952}} 
-const G4double \mbox{\hyperlink{classm_d_o_m_abc6e80be6c1efb187c679181cb091952}{m\+\_\+gel\+Thickness\+Front\+PMT}} = 3.\+6 $\ast$ mm
+\Hypertarget{classm_d_o_m_abc6e80be6c1efb187c679181cb091952}\label{classm_d_o_m_abc6e80be6c1efb187c679181cb091952} 
+const G4double {\bfseries m\+\_\+gel\+Thickness\+Front\+PMT} = 3.\+6 \texorpdfstring{$\ast$}{*} mm
 \begin{DoxyCompactList}\small\item\em distance between inner glass surface and tip of PMTs \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_a0b9eacd67a9ede02b00abd7955051a3a}\label{classm_d_o_m_a0b9eacd67a9ede02b00abd7955051a3a}} 
-const G4double \mbox{\hyperlink{classm_d_o_m_a0b9eacd67a9ede02b00abd7955051a3a}{m\+\_\+gel\+Thickness}} = 4.\+5 $\ast$ mm
+\Hypertarget{classm_d_o_m_a0b9eacd67a9ede02b00abd7955051a3a}\label{classm_d_o_m_a0b9eacd67a9ede02b00abd7955051a3a} 
+const G4double {\bfseries m\+\_\+gel\+Thickness} = 4.\+5 \texorpdfstring{$\ast$}{*} mm
 \begin{DoxyCompactList}\small\item\em distance between inner glass surface and holding structure, filled with gel \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_a9cb91ceb21a3babddcafe8e017cbe48f}\label{classm_d_o_m_a9cb91ceb21a3babddcafe8e017cbe48f}} 
-const G4double \mbox{\hyperlink{classm_d_o_m_a9cb91ceb21a3babddcafe8e017cbe48f}{m\+\_\+\+Eq\+PMTr\+Offset}} = 2.\+6 $\ast$ mm
+\Hypertarget{classm_d_o_m_a9cb91ceb21a3babddcafe8e017cbe48f}\label{classm_d_o_m_a9cb91ceb21a3babddcafe8e017cbe48f} 
+const G4double {\bfseries m\+\_\+\+Eq\+PMTr\+Offset} = 2.\+6 \texorpdfstring{$\ast$}{*} mm
 \begin{DoxyCompactList}\small\item\em middle PMT circles are slightly further out due to m\+\_\+\+Eq\+PMTz\+Offset \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_a69476b128857a811b37e49a361f2ae45}\label{classm_d_o_m_a69476b128857a811b37e49a361f2ae45}} 
-const G4double \mbox{\hyperlink{classm_d_o_m_a69476b128857a811b37e49a361f2ae45}{m\+\_\+\+Eq\+PMTz\+Offset}} = 10.\+0 $\ast$ mm
+\Hypertarget{classm_d_o_m_a69476b128857a811b37e49a361f2ae45}\label{classm_d_o_m_a69476b128857a811b37e49a361f2ae45} 
+const G4double {\bfseries m\+\_\+\+Eq\+PMTz\+Offset} = 10.\+0 \texorpdfstring{$\ast$}{*} mm
 \begin{DoxyCompactList}\small\item\em z-\/offset of middle PMT circles w.\+r.\+t. center of glass sphere \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_a3e2474c86c34ae72e0d233a6433db207}\label{classm_d_o_m_a3e2474c86c34ae72e0d233a6433db207}} 
-const G4double \mbox{\hyperlink{classm_d_o_m_a3e2474c86c34ae72e0d233a6433db207}{m\+\_\+reflector\+HalfZ}} = 15 $\ast$ mm
+\Hypertarget{classm_d_o_m_a3e2474c86c34ae72e0d233a6433db207}\label{classm_d_o_m_a3e2474c86c34ae72e0d233a6433db207} 
+const G4double {\bfseries m\+\_\+reflector\+HalfZ} = 15 \texorpdfstring{$\ast$}{*} mm
 \begin{DoxyCompactList}\small\item\em half-\/height of reflector (before cutting to right form) \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_af6fbf12c7717cdae8cc77cd4062e9720}\label{classm_d_o_m_af6fbf12c7717cdae8cc77cd4062e9720}} 
-const G4double \mbox{\hyperlink{classm_d_o_m_af6fbf12c7717cdae8cc77cd4062e9720}{m\+\_\+reflector\+Cone\+Sheet\+Thickness}} = 0.\+5 $\ast$ mm
+\Hypertarget{classm_d_o_m_af6fbf12c7717cdae8cc77cd4062e9720}\label{classm_d_o_m_af6fbf12c7717cdae8cc77cd4062e9720} 
+const G4double {\bfseries m\+\_\+reflector\+Cone\+Sheet\+Thickness} = 0.\+5 \texorpdfstring{$\ast$}{*} mm
 \begin{DoxyCompactList}\small\item\em aluminum sheet thickness true for all reflective cones \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_a3e2581f3dcc369d43b6779bb87b4f533}\label{classm_d_o_m_a3e2581f3dcc369d43b6779bb87b4f533}} 
-const G4double \mbox{\hyperlink{classm_d_o_m_a3e2581f3dcc369d43b6779bb87b4f533}{m\+\_\+reflector\+Cone\+To\+Holder}} = 1.\+55 $\ast$ mm
+\Hypertarget{classm_d_o_m_a3e2581f3dcc369d43b6779bb87b4f533}\label{classm_d_o_m_a3e2581f3dcc369d43b6779bb87b4f533} 
+const G4double {\bfseries m\+\_\+reflector\+Cone\+To\+Holder} = 1.\+55 \texorpdfstring{$\ast$}{*} mm
 \begin{DoxyCompactList}\small\item\em horizontal distance from K??rcher\textquotesingle{}s construction \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classm_d_o_m_a47e3f0f54563b058e0d121637e6d5228}\label{classm_d_o_m_a47e3f0f54563b058e0d121637e6d5228}} 
-const G4double {\bfseries m\+\_\+theta\+Polar} = 33.\+0 $\ast$ deg
+\Hypertarget{classm_d_o_m_a47e3f0f54563b058e0d121637e6d5228}\label{classm_d_o_m_a47e3f0f54563b058e0d121637e6d5228} 
+const G4double {\bfseries m\+\_\+theta\+Polar} = 33.\+0 \texorpdfstring{$\ast$}{*} deg
 \item 
-\mbox{\Hypertarget{classm_d_o_m_af9114b222f1914dc38dcd25f471ee29e}\label{classm_d_o_m_af9114b222f1914dc38dcd25f471ee29e}} 
-const G4double {\bfseries m\+\_\+theta\+Equatorial} = 72.\+0 $\ast$ deg
+\Hypertarget{classm_d_o_m_af9114b222f1914dc38dcd25f471ee29e}\label{classm_d_o_m_af9114b222f1914dc38dcd25f471ee29e} 
+const G4double {\bfseries m\+\_\+theta\+Equatorial} = 72.\+0 \texorpdfstring{$\ast$}{*} deg
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a301c5328ce72cf249c75538c96c03333}\label{classm_d_o_m_a301c5328ce72cf249c75538c96c03333}} 
+\Hypertarget{classm_d_o_m_a301c5328ce72cf249c75538c96c03333}\label{classm_d_o_m_a301c5328ce72cf249c75538c96c03333} 
 const G4int {\bfseries m\+\_\+number\+Polar\+PMTs} = 4
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a66f2fa13d686eae61cb5ecb604a5a9da}\label{classm_d_o_m_a66f2fa13d686eae61cb5ecb604a5a9da}} 
+\Hypertarget{classm_d_o_m_a66f2fa13d686eae61cb5ecb604a5a9da}\label{classm_d_o_m_a66f2fa13d686eae61cb5ecb604a5a9da} 
 const G4int {\bfseries m\+\_\+number\+Eq\+PMTs} = 8
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a9a9ed5076d3b0d679b1dd26e2fb2e292}\label{classm_d_o_m_a9a9ed5076d3b0d679b1dd26e2fb2e292}} 
+\Hypertarget{classm_d_o_m_a9a9ed5076d3b0d679b1dd26e2fb2e292}\label{classm_d_o_m_a9a9ed5076d3b0d679b1dd26e2fb2e292} 
 const G4int {\bfseries m\+Ref\+Cone\+Angle} = 51
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a88532c5e90e2565003b4a2087c027caf}\label{classm_d_o_m_a88532c5e90e2565003b4a2087c027caf}} 
-const G4double {\bfseries m\+\_\+polar\+Equatorial\+PMTphi\+Phase} = 0 $\ast$ deg
+\Hypertarget{classm_d_o_m_a88532c5e90e2565003b4a2087c027caf}\label{classm_d_o_m_a88532c5e90e2565003b4a2087c027caf} 
+const G4double {\bfseries m\+\_\+polar\+Equatorial\+PMTphi\+Phase} = 0 \texorpdfstring{$\ast$}{*} deg
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a613a0adb39ab70be2f7a2aed5939281e}\label{classm_d_o_m_a613a0adb39ab70be2f7a2aed5939281e}} 
-const G4int {\bfseries m\+\_\+total\+Number\+PMTs} = (m\+\_\+number\+Polar\+PMTs + m\+\_\+number\+Eq\+PMTs) $\ast$ 2
+\Hypertarget{classm_d_o_m_a613a0adb39ab70be2f7a2aed5939281e}\label{classm_d_o_m_a613a0adb39ab70be2f7a2aed5939281e} 
+const G4int {\bfseries m\+\_\+total\+Number\+PMTs} = (m\+\_\+number\+Polar\+PMTs + m\+\_\+number\+Eq\+PMTs) \texorpdfstring{$\ast$}{*} 2
 \item 
-\mbox{\Hypertarget{classm_d_o_m_a9f751d02235f108ee640228976e034a3}\label{classm_d_o_m_a9f751d02235f108ee640228976e034a3}} 
+\Hypertarget{classm_d_o_m_a9f751d02235f108ee640228976e034a3}\label{classm_d_o_m_a9f751d02235f108ee640228976e034a3} 
 const G4double {\bfseries m\+\_\+sup\+Structure\+Rad} = \mbox{\hyperlink{classm_d_o_m_a331bad1dc28b4f79cbdcb853c0808942}{m\+\_\+glass\+Out\+Rad}} -\/ \mbox{\hyperlink{classm_d_o_m_a020769f4b10c962ab9b5841bbc969d7d}{m\+\_\+glass\+Thick}} -\/ \mbox{\hyperlink{classm_d_o_m_a0b9eacd67a9ede02b00abd7955051a3a}{m\+\_\+gel\+Thickness}}
 \item 
-\mbox{\Hypertarget{classm_d_o_m_ad4ae7c168c3dcaab8e081c379d9e4c7d}\label{classm_d_o_m_ad4ae7c168c3dcaab8e081c379d9e4c7d}} 
-const G4double {\bfseries m\+\_\+theta\+Eq\+LED} = 61 $\ast$ deg
+\Hypertarget{classm_d_o_m_ad4ae7c168c3dcaab8e081c379d9e4c7d}\label{classm_d_o_m_ad4ae7c168c3dcaab8e081c379d9e4c7d} 
+const G4double {\bfseries m\+\_\+theta\+Eq\+LED} = 61 \texorpdfstring{$\ast$}{*} deg
 \item 
-\mbox{\Hypertarget{classm_d_o_m_ab245f8ec18cf64d30cd55af109ef90e3}\label{classm_d_o_m_ab245f8ec18cf64d30cd55af109ef90e3}} 
-const G4double {\bfseries m\+\_\+theta\+Pol\+LED} = 8.\+2 $\ast$ deg
+\Hypertarget{classm_d_o_m_ab245f8ec18cf64d30cd55af109ef90e3}\label{classm_d_o_m_ab245f8ec18cf64d30cd55af109ef90e3} 
+const G4double {\bfseries m\+\_\+theta\+Pol\+LED} = 8.\+2 \texorpdfstring{$\ast$}{*} deg
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSim\+PMTConstruction}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+manager\+PMT}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+glass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+gel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+steel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+alu\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+8, 0.\+8, 0.\+9, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+white\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1, 1, 1, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Semi\+Transparent\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 1, 0, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+blue\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+air\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+air\+Vis2} = G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0, 1., 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+red\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+0, 0.\+0, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+black\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0.\+0, 0.\+0, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+LEDvis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 1.\+0, 0.\+0, 0.\+1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classm_d_o_m_afd95205edb92f86b5c8d4e5642a58e3c}\label{classm_d_o_m_afd95205edb92f86b5c8d4e5642a58e3c}} 
-\index{mDOM@{mDOM}!````~mDOM@{$\sim$mDOM}}
-\index{````~mDOM@{$\sim$mDOM}!mDOM@{mDOM}}
-\doxysubsubsection{\texorpdfstring{$\sim$mDOM()}{~mDOM()}}
-{\footnotesize\ttfamily m\+DOM\+::$\sim$m\+DOM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\Hypertarget{classm_d_o_m_afd95205edb92f86b5c8d4e5642a58e3c}\label{classm_d_o_m_afd95205edb92f86b5c8d4e5642a58e3c} 
+\index{mDOM@{mDOM}!````~mDOM@{\texorpdfstring{$\sim$}{\string~}mDOM}}
+\index{````~mDOM@{\texorpdfstring{$\sim$}{\string~}mDOM}!mDOM@{mDOM}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}mDOM()}{\string~mDOM()}}
+{\footnotesize\ttfamily m\+DOM\+::\texorpdfstring{$\sim$}{\string~}m\+DOM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Todo}
 \item[\mbox{\hyperlink{todo__todo000007}{Todo}}]
@@ -193,7 +285,27 @@ const G4double {\bfseries m\+\_\+theta\+Pol\+LED} = 8.\+2 $\ast$ deg
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classm_d_o_m_ad7e07f1380a50158f7cede9aa84721be}\label{classm_d_o_m_ad7e07f1380a50158f7cede9aa84721be}} 
+\Hypertarget{classm_d_o_m_a115f5e689062ac82b8f55a18f7f96376}\label{classm_d_o_m_a115f5e689062ac82b8f55a18f7f96376} 
+\index{mDOM@{mDOM}!construction@{construction}}
+\index{construction@{construction}!mDOM@{mDOM}}
+\doxysubsubsection{\texorpdfstring{construction()}{construction()}}
+{\footnotesize\ttfamily void m\+DOM\+::construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_detector_component_a82774227bd10e2fe94f1612f12929004}{OMSim\+Detector\+Component}}.
+
+\Hypertarget{classm_d_o_m_a6ad860a00a1fd6d2a41d14d8e3d834ad}\label{classm_d_o_m_a6ad860a00a1fd6d2a41d14d8e3d834ad} 
+\index{mDOM@{mDOM}!getName@{getName}}
+\index{getName@{getName}!mDOM@{mDOM}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily G4\+String m\+DOM\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}.
+
+\Hypertarget{classm_d_o_m_ad7e07f1380a50158f7cede9aa84721be}\label{classm_d_o_m_ad7e07f1380a50158f7cede9aa84721be} 
 \index{mDOM@{mDOM}!getNumberOfPMTs@{getNumberOfPMTs}}
 \index{getNumberOfPMTs@{getNumberOfPMTs}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{getNumberOfPMTs()}{getNumberOfPMTs()}}
@@ -206,7 +318,7 @@ Number of PMTs in the optical module.
 
 Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a802253f7f4b4cb4759c57fbff51023ae}{OMSim\+Optical\+Module}}.
 
-\mbox{\Hypertarget{classm_d_o_m_a1fd32bb6eeff5f49f9ebbd09825b2e91}\label{classm_d_o_m_a1fd32bb6eeff5f49f9ebbd09825b2e91}} 
+\Hypertarget{classm_d_o_m_a1fd32bb6eeff5f49f9ebbd09825b2e91}\label{classm_d_o_m_a1fd32bb6eeff5f49f9ebbd09825b2e91} 
 \index{mDOM@{mDOM}!getPressureVesselWeight@{getPressureVesselWeight}}
 \index{getPressureVesselWeight@{getPressureVesselWeight}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{getPressureVesselWeight()}{getPressureVesselWeight()}}
@@ -219,7 +331,7 @@ Weight of the pressure vessel.
 
 Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dcb84a82c70d}{OMSim\+Optical\+Module}}.
 
-\mbox{\Hypertarget{classm_d_o_m_adf748d77a8bae2516db1ba79b805841b}\label{classm_d_o_m_adf748d77a8bae2516db1ba79b805841b}} 
+\Hypertarget{classm_d_o_m_adf748d77a8bae2516db1ba79b805841b}\label{classm_d_o_m_adf748d77a8bae2516db1ba79b805841b} 
 \index{mDOM@{mDOM}!runBeamOnFlasher@{runBeamOnFlasher}}
 \index{runBeamOnFlasher@{runBeamOnFlasher}!mDOM@{mDOM}}
 \doxysubsubsection{\texorpdfstring{runBeamOnFlasher()}{runBeamOnFlasher()}}
@@ -227,7 +339,7 @@ Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dc
 
 This method triggers the flasher at the given index in the specified module. 
 \begin{DoxyParams}{Parameters}
-{\em p\+Module\+Index} & The index of the module to be flashed (if only one \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} placed, then 0, otherwise depending on \mbox{\hyperlink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{place\+It()}} order) \\
+{\em p\+Module\+Index} & The index of the module to be flashed (if only one \doxylink{classm_d_o_m}{m\+DOM} placed, then 0, otherwise depending on \doxylink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{place\+It()} order) \\
 \hline
 {\em p\+LEDIndex} & The index of the flasher within the module. \\
 \hline

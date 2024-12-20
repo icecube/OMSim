@@ -1,6 +1,30 @@
 var searchData=
 [
-  ['_7elom16_366',['~LOM16',['../class_l_o_m16.html#a93c141790620554394cdf9864096d011',1,'LOM16']]],
-  ['_7emdom_367',['~mDOM',['../classm_d_o_m.html#afd95205edb92f86b5c8d4e5642a58e3c',1,'mDOM']]],
-  ['_7eomsimsensitivedetector_368',['~OMSimSensitiveDetector',['../class_o_m_sim_sensitive_detector.html#a86abb731f3b352ee3609b6f844380862',1,'OMSimSensitiveDetector']]]
+  ['technicalities_20for_20developers_0',['Technicalities for Developers',['../md_extra__doc_22__technicalities.html',1,'']]],
+  ['tessellatedmesh_1',['TessellatedMesh',['../class_c_a_d_mesh_1_1_tessellated_mesh.html',1,'CADMesh']]],
+  ['the_20output_2',['2. Analyse the Output',['../md_extra__doc_21__multithreading.html#autotoc_md27',1,'']]],
+  ['the_20tools_20namespace_3',['The Tools namespace',['../md_extra__doc_22__technicalities.html#autotoc_md31',1,'']]],
+  ['thread_4',['Example: Saving Data Per Thread',['../md_extra__doc_21__multithreading.html#autotoc_md23',1,'']]],
+  ['thread_20safe_20containers_5',['Best Practices for Creating New Thread-Safe Containers',['../md_extra__doc_21__multithreading.html#autotoc_md24',1,'']]],
+  ['thread_20safe_20global_20instance_20implementation_6',['Thread-Safe Global Instance Implementation',['../md_extra__doc_21__multithreading.html#autotoc_md21',1,'']]],
+  ['thread_20safety_20guidelines_7',['Thread Safety Guidelines',['../md_extra__doc_21__multithreading.html#autotoc_md20',1,'']]],
+  ['threading_20issues_8',['Troubleshooting Multi-threading Issues',['../md_extra__doc_21__multithreading.html#autotoc_md25',1,'']]],
+  ['threading_20mode_9',['Multi-threading mode',['../md_extra__doc_21__multithreading.html',1,'']]],
+  ['threadlocaldata_10',['ThreadLocalData',['../struct_o_m_sim_hit_manager_1_1_thread_local_data.html',1,'OMSimHitManager']]],
+  ['time_20and_20detection_20probability_11',['PMTs Charge, transit time and detection probability',['../md_extra__doc_20__common.html#autotoc_md14',1,'']]],
+  ['time_20scans_12',['Step 4: Matching gain / transit time scans',['../md_extra__doc_22__technicalities.html#autotoc_md39',1,'']]],
+  ['to_20effective_20areas_13',['Introduction to effective areas',['../md_extra__doc_230__effective__area.html#autotoc_md42',1,'']]],
+  ['to_20measurements_14',['Matching PMT to Measurements',['../md_extra__doc_22__technicalities.html#autotoc_md35',1,'']]],
+  ['to_20photons_15',['Making other volumes sensitive to photons',['../md_extra__doc_20__common.html#autotoc_md17',1,'']]],
+  ['todo_20list_16',['Todo List',['../todo.html',1,'']]],
+  ['token_17',['Token',['../struct_c_a_d_mesh_1_1_file_1_1_token.html',1,'CADMesh::File']]],
+  ['tools_18',['tools',['../md_extra__doc_21__multithreading.html#autotoc_md26',1,'1. Use Valgrind Tools'],['../namespace_tools.html',1,'Tools']]],
+  ['tools_20namespace_19',['The Tools namespace',['../md_extra__doc_22__technicalities.html#autotoc_md31',1,'']]],
+  ['totalcrosssection_20',['totalcrosssection',['../class_o_m_sim_i_b_d.html#aad2e0e4a3f6501f4d2c3fb896b032ade',1,'OMSimIBD::totalCrossSection()'],['../class_o_m_sim_e_n_e_s.html#af2e3aedc5ca2d1006891540c0d038eb7',1,'OMSimENES::totalCrossSection()']]],
+  ['tracklength_21',['trackLength',['../struct_photon_info.html#ab4de62ab2d0c39d43c7d85f0fd995745',1,'PhotonInfo']]],
+  ['transit_20time_20and_20detection_20probability_22',['PMTs Charge, transit time and detection probability',['../md_extra__doc_20__common.html#autotoc_md14',1,'']]],
+  ['transit_20time_20scans_23',['Step 4: Matching gain / transit time scans',['../md_extra__doc_22__technicalities.html#autotoc_md39',1,'']]],
+  ['transittime_24',['transitTime',['../struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html#a842337fbd6979ff70f1b5ab67ca52493',1,'OMSimPMTResponse::PMTPulse']]],
+  ['troubleshooting_20multi_20threading_20issues_25',['Troubleshooting Multi-threading Issues',['../md_extra__doc_21__multithreading.html#autotoc_md25',1,'']]],
+  ['types_26',['Special Material Types',['../md_extra__doc_20__common.html#autotoc_md5',1,'']]]
 ];

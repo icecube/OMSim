@@ -1,14 +1,14 @@
-\hypertarget{namespace_ice_processor}{}\doxysection{Ice\+Processor Namespace Reference}
-\label{namespace_ice_processor}\index{IceProcessor@{IceProcessor}}
+\doxysection{Ice\+Processor Namespace Reference}
+\hypertarget{namespace_ice_processor}{}\label{namespace_ice_processor}\index{IceProcessor@{IceProcessor}}
 
 
 Namespace containing functions for processing Ice\+Cube ice properties from file.  
 
 
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespace_ice_processor_ae62c8b69efbfeaf9eaf3110b52ba9d37}{process}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table $\ast$p\+\_\+\+MPT)
+void \mbox{\hyperlink{namespace_ice_processor_ae62c8b69efbfeaf9eaf3110b52ba9d37}{process}} (\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} \texorpdfstring{$\ast$}{*}p\+\_\+data\+File, const boost\+::property\+\_\+tree\+::ptree \&p\+\_\+json\+Tree, G4\+Material\+Properties\+Table \texorpdfstring{$\ast$}{*}p\+\_\+\+MPT)
 \begin{DoxyCompactList}\small\item\em Process Ice\+Cube ice properties and create corresponding materials. \end{DoxyCompactList}\item 
 G4double \mbox{\hyperlink{namespace_ice_processor_a1880256fa33d9e645ae86e2057f66297}{spice\+Temperature}} (G4double p\+\_\+depth)
 \begin{DoxyCompactList}\small\item\em Calculate temperature of ice depending on the depth. \end{DoxyCompactList}\item 
@@ -21,11 +21,11 @@ G4double \mbox{\hyperlink{namespace_ice_processor_a394c6aa008d203aaeda7c2f28bfa3
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{namespace_ice_processor_a394c6aa008d203aaeda7c2f28bfa3361}\label{namespace_ice_processor_a394c6aa008d203aaeda7c2f28bfa3361}} 
+\Hypertarget{namespace_ice_processor_a394c6aa008d203aaeda7c2f28bfa3361}\label{namespace_ice_processor_a394c6aa008d203aaeda7c2f28bfa3361} 
 \index{IceProcessor@{IceProcessor}!mieScattering@{mieScattering}}
 \index{mieScattering@{mieScattering}!IceProcessor@{IceProcessor}}
 \doxysubsubsection{\texorpdfstring{mieScattering()}{mieScattering()}}
-{\footnotesize\ttfamily G4double Ice\+Processor\+::mie\+Scattering (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+lambda,  }\item[{const std\+::vector$<$ G4double $>$ \&}]{p\+\_\+spicebe400inv }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4double Ice\+Processor\+::mie\+Scattering (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+lambda,  }\item[{const std\+::vector$<$ G4double $>$ \&}]{p\+\_\+spicebe400inv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -35,28 +35,28 @@ G4double \mbox{\hyperlink{namespace_ice_processor_a394c6aa008d203aaeda7c2f28bfa3
 \begin{DoxyReturn}{Returns}
 Mie scattering length in m. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{namespace_ice_processor_ae62c8b69efbfeaf9eaf3110b52ba9d37}\label{namespace_ice_processor_ae62c8b69efbfeaf9eaf3110b52ba9d37}} 
+\Hypertarget{namespace_ice_processor_ae62c8b69efbfeaf9eaf3110b52ba9d37}\label{namespace_ice_processor_ae62c8b69efbfeaf9eaf3110b52ba9d37} 
 \index{IceProcessor@{IceProcessor}!process@{process}}
 \index{process@{process}!IceProcessor@{IceProcessor}}
 \doxysubsubsection{\texorpdfstring{process()}{process()}}
-{\footnotesize\ttfamily void Ice\+Processor\+::process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} $\ast$}]{p\+\_\+data\+File,  }\item[{const boost\+::property\+\_\+tree\+::ptree \&}]{p\+\_\+json\+Tree,  }\item[{G4\+Material\+Properties\+Table $\ast$}]{p\+\_\+\+MPT }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Ice\+Processor\+::process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+data\+File,  }\item[{const boost\+::property\+\_\+tree\+::ptree \&}]{p\+\_\+json\+Tree,  }\item[{G4\+Material\+Properties\+Table \texorpdfstring{$\ast$}{*}}]{p\+\_\+\+MPT }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 This function extracts ice properties from the provided data, calculates various optical properties, and sets up the material properties for Ice\+Cube ice simulation.
 
 
 \begin{DoxyParams}{Parameters}
-{\em p\+\_\+data\+File} & Pointer to the \mbox{\hyperlink{class_parameter_table}{Parameter\+Table}} containing file data. \\
+{\em p\+\_\+data\+File} & Pointer to the \doxylink{class_parameter_table}{Parameter\+Table} containing file data. \\
 \hline
 {\em p\+\_\+json\+Tree} & The JSON property tree containing ice data. \\
 \hline
 {\em p\+\_\+\+MPT} & Pointer to the G4\+Material\+Properties\+Table to be modified. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{namespace_ice_processor_a29002db125bd3d2b67998403db6afc60}\label{namespace_ice_processor_a29002db125bd3d2b67998403db6afc60}} 
+\Hypertarget{namespace_ice_processor_a29002db125bd3d2b67998403db6afc60}\label{namespace_ice_processor_a29002db125bd3d2b67998403db6afc60} 
 \index{IceProcessor@{IceProcessor}!spiceAbsorption@{spiceAbsorption}}
 \index{spiceAbsorption@{spiceAbsorption}!IceProcessor@{IceProcessor}}
 \doxysubsubsection{\texorpdfstring{spiceAbsorption()}{spiceAbsorption()}}
-{\footnotesize\ttfamily G4double Ice\+Processor\+::spice\+Absorption (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+lambda,  }\item[{const std\+::vector$<$ G4double $>$ \&}]{p\+\_\+spicea400inv,  }\item[{const std\+::vector$<$ G4double $>$ \&}]{p\+\_\+spice\+Depth }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4double Ice\+Processor\+::spice\+Absorption (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+lambda,  }\item[{const std\+::vector$<$ G4double $>$ \&}]{p\+\_\+spicea400inv,  }\item[{const std\+::vector$<$ G4double $>$ \&}]{p\+\_\+spice\+Depth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -66,11 +66,11 @@ This function extracts ice properties from the provided data, calculates various
 \begin{DoxyReturn}{Returns}
 Absorption length in m. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{namespace_ice_processor_ad82640f5524b52f1604c3e19ff819be5}\label{namespace_ice_processor_ad82640f5524b52f1604c3e19ff819be5}} 
+\Hypertarget{namespace_ice_processor_ad82640f5524b52f1604c3e19ff819be5}\label{namespace_ice_processor_ad82640f5524b52f1604c3e19ff819be5} 
 \index{IceProcessor@{IceProcessor}!spiceRefraction@{spiceRefraction}}
 \index{spiceRefraction@{spiceRefraction}!IceProcessor@{IceProcessor}}
 \doxysubsubsection{\texorpdfstring{spiceRefraction()}{spiceRefraction()}}
-{\footnotesize\ttfamily G4double Ice\+Processor\+::spice\+Refraction (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+lambda }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4double Ice\+Processor\+::spice\+Refraction (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+lambda }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -80,11 +80,11 @@ Absorption length in m.
 \begin{DoxyReturn}{Returns}
 Refraction index. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{namespace_ice_processor_a1880256fa33d9e645ae86e2057f66297}\label{namespace_ice_processor_a1880256fa33d9e645ae86e2057f66297}} 
+\Hypertarget{namespace_ice_processor_a1880256fa33d9e645ae86e2057f66297}\label{namespace_ice_processor_a1880256fa33d9e645ae86e2057f66297} 
 \index{IceProcessor@{IceProcessor}!spiceTemperature@{spiceTemperature}}
 \index{spiceTemperature@{spiceTemperature}!IceProcessor@{IceProcessor}}
 \doxysubsubsection{\texorpdfstring{spiceTemperature()}{spiceTemperature()}}
-{\footnotesize\ttfamily G4double Ice\+Processor\+::spice\+Temperature (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+depth }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily G4double Ice\+Processor\+::spice\+Temperature (\begin{DoxyParamCaption}\item[{G4double}]{p\+\_\+depth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 This function is needed for the calculation of scattering and absorption length of the ice.
 

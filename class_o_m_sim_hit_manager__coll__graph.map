@@ -1,4 +1,6 @@
 <map id="OMSimHitManager" name="OMSimHitManager">
-<area shape="rect" id="node1" title="Manages detected photon information." alt="" coords="64,95,209,121"/>
-<area shape="rect" id="node2" href="$struct_o_m_sim_hit_manager_1_1_thread_local_data.html" title=" " alt="" coords="5,5,268,32"/>
+<area shape="rect" id="Node000001" title="Manages detected photon information." alt="" coords="64,93,209,119"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="225,98,236,106,228,113,210,116,209,111,226,109,231,106,222,102"/>
+<area shape="rect" id="Node000002" href="$struct_o_m_sim_hit_manager_1_1_thread_local_data.html" title=" " alt="" coords="5,5,268,31"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="139,45,139,93,134,93,134,45"/>
 </map>

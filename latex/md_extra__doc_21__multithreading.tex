@@ -1,0 +1,321 @@
+\chapter{Multi-\/threading mode}
+\hypertarget{md_extra__doc_21__multithreading}{}\label{md_extra__doc_21__multithreading}\index{Multi-\/threading mode@{Multi-\/threading mode}}
+\label{md_extra__doc_21__multithreading_autotoc_md18}%
+\Hypertarget{md_extra__doc_21__multithreading_autotoc_md18}%
+
+
+The OMSim-\/\+Framework allows for multi-\/threading. The number of threads can be controlled with the {\ttfamily -\/-\/threads} argument (default 1). If you specify more threads than available, only the maximum available will be used.\hypertarget{md_extra__doc_21__multithreading_autotoc_md19}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{md_extra__doc_21__multithreading_autotoc_md19}
+Geant4 implements multi-\/threading using a master-\/worker model\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Master Thread}}\+: Responsible for initialization, geometry construction, and coordinating worker threads.
+\item {\bfseries{Worker Threads}}\+: Each simulates complete events independently.
+\end{DoxyEnumerate}
+
+Key points\+:
+\begin{DoxyItemize}
+\item Geometry and physics tables are shared read-\/only among threads.
+\item Each thread has its own instance of sensitive detectors, event and tracking managers.
+\item Random number generators are designed to produce independent streams for each thread.
+\end{DoxyItemize}\hypertarget{md_extra__doc_21__multithreading_autotoc_md20}{}\doxysection{\texorpdfstring{Thread Safety Guidelines}{Thread Safety Guidelines}}\label{md_extra__doc_21__multithreading_autotoc_md20}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Use Thread-\/\+Local Storage}}\+: For data unique to each thread, use {\ttfamily G4\+Thread\+Local}.
+\item {\bfseries{Protect Shared Resources}}\+: Use mutex locks when accessing shared resources.
+\item {\bfseries{Minimize Global Variables}}\+: Prefer class members or local variables instead.
+\item {\bfseries{Implement Thread-\/\+Safe Containers}}\+: Ensure thread-\/safe access and modification of containers.
+\end{DoxyEnumerate}\hypertarget{md_extra__doc_21__multithreading_autotoc_md21}{}\doxysection{\texorpdfstring{Thread-\/\+Safe Global Instance Implementation}{Thread-Safe Global Instance Implementation}}\label{md_extra__doc_21__multithreading_autotoc_md21}
+Both {\ttfamily \doxylink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} and {\ttfamily \doxylink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} utilize a global instance pattern. This approach provides better control over the lifecycle of the instance and can prevent potential memory leaks when integrated into larger frameworks. The process works as follows\+:
+
+
+\begin{DoxyEnumerate}
+\item Initialize the global instance explicitly at the start of the program. This is means, before the multi-\/threading starts.
+\item Access the instance through a global pointer.
+\item Shut down and clean up the instance explicitly at the end of the program.
+\end{DoxyEnumerate}
+
+Implementation of the global instance pattern\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ In\ the\ header\ file}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}{init}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}{shutdown}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\&\ \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{getInstance}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...\ other\ methods\ ...}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...\ other\ members\ ...}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}*\ g\_hitManager\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ In\ the\ source\ file}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_ac26f7ad778584ece58f86d60192ef671}{OMSimHitManager::init}}()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!g\_hitManager)\ g\_hitManager\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_ad8a139a9068c92b7babf471c9ec23ecf}{OMSimHitManager::shutdown}}()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{delete}\ g\_hitManager;}
+\DoxyCodeLine{\ \ \ \ g\_hitManager\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}\&\ \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ assert(g\_hitManager);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ *g\_hitManager;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+{\bfseries{Note}}\+: While this global instance implementation provides better control over the instance lifecycle, it requires explicit initialization and shutdown. Ensure these are called at appropriate times (single-\/thread) in your application (for example in main before/after run). \end{quote}
+\hypertarget{md_extra__doc_21__multithreading_autotoc_md22}{}\doxysubsection{\texorpdfstring{Example\+: OMSim\+Hit\+Manager}{Example: OMSimHitManager}}\label{md_extra__doc_21__multithreading_autotoc_md22}
+The {\ttfamily \doxylink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} class demonstrates several thread-\/safety techniques for saving data\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_hit_manager}{OMSimHitManager}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_aaf4ca3c29c6dbe8721aaafd4fd39d436}{appendHitInfo}}(\textcolor{comment}{/*\ parameters\ */});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ mergeThreadData();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...\ other\ methods\ ...}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ G4Mutex\ m\_mutex;\ \ \textcolor{comment}{//\ Mutex\ for\ thread\ synchronization}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{struct\ }ThreadLocalData\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::map<G4int,\ HitStats>\ moduleHits;}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Thread-\/local\ storage\ for\ hit\ data}}
+\DoxyCodeLine{\ \ \ \ G4ThreadLocal\ \textcolor{keyword}{static}\ ThreadLocalData*\ m\_threadData;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...\ }}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Key features\+:
+\begin{DoxyItemize}
+\item Thread-\/local storage for hit data ({\ttfamily m\+\_\+thread\+Data}), each thread will start one
+\item Mutex ({\ttfamily m\+\_\+mutex}) for thread synchronization.
+\end{DoxyItemize}
+
+The {\ttfamily append\+Hit\+Info} method is used by all threads and uses to the thread-\/local {\ttfamily m\+\_\+thread\+Data}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_hit_manager_aaf4ca3c29c6dbe8721aaafd4fd39d436}{OMSimHitManager::appendHitInfo}}(\textcolor{comment}{/*\ parameters\ */})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!m\_threadData)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ thread-\/local\ data\ on\ first\ use}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_threadData\ =\ \textcolor{keyword}{new}\ ThreadLocalData();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ \&moduleHits\ =\ m\_threadData-\/>moduleHits[p\_moduleNumber];}
+\DoxyCodeLine{\ \ \ \ G4int\ eventID\ =\ G4EventManager::GetEventManager()-\/>GetConstCurrentEvent()-\/>GetEventID();}
+\DoxyCodeLine{\ \ \ \ moduleHits.eventId.push\_back(eventID);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//...}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The {\ttfamily merge\+Thread\+Data} method combines data from all threads into a single vector\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ OMSimHitManager::mergeThreadData()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ G4AutoLock\ lock(\&m\_mutex);\ \ \textcolor{comment}{//\ Ensure\ thread-\/safe\ access\ to\ shared\ data}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (m\_threadData)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Merge\ thread-\/local\ data\ into\ a\ single\ container}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ is\ where\ data\ from\ all\ threads\ is\ combined}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clean\ up\ thread-\/local\ data\ after\ merging}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ m\_threadData;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_threadData\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+{\bfseries{Important}}\+: Call {\ttfamily merge\+Thread\+Data} after all threads have finished simulating (after a run has completed). \end{quote}
+\hypertarget{md_extra__doc_21__multithreading_autotoc_md23}{}\doxysubsection{\texorpdfstring{Example\+: Saving Data Per Thread}{Example: Saving Data Per Thread}}\label{md_extra__doc_21__multithreading_autotoc_md23}
+In scenarios where merging data is unnecessary, or the amount of data is too large to wait until end of run, each thread can save its data in separate files. This is demonstrated in the {\ttfamily \doxylink{class_o_m_sim_decays_analysis}{OMSim\+Decays\+Analysis}} class.
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{append\+Decay}}\+: Collects decay data for each thread.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//from\ radioactive\_decays/src/OMSimDecaysAnalysis.cc}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_a35aa71b0f55694ab682eb12e33e773d3}{OMSimDecaysAnalysis::appendDecay}}(G4String\ pParticleName,\ G4double\ pDecayTime,\ G4ThreeVector\ pDecayPosition)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!m\_threadDecayStats)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_threadDecayStats\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_decay_stats}{DecayStats}}();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ G4int\ lEventID\ =\ G4EventManager::GetEventManager()-\/>GetConstCurrentEvent()-\/>GetEventID();}
+\DoxyCodeLine{\ \ \ \ m\_threadDecayStats-\/>\mbox{\hyperlink{struct_decay_stats_a7cead323e226455fe4c847ff5043bd20}{eventId}}.push\_back(lEventID);}
+\DoxyCodeLine{\ \ \ \ (...)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{write\+Thread\+Decay\+Information}}\+: Writes decay data to a file specific to each thread.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//from\ radioactive\_decays/src/OMSimDecaysAnalysis.cc}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{OMSimDecaysAnalysis::writeThreadDecayInformation}}()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ G4String\ outputSuffix\ =\ \mbox{\hyperlink{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}{OMSimCommandArgsTable::getInstance}}().\mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{get}}<std::string>(\textcolor{stringliteral}{"{}output\_file"{}});}
+\DoxyCodeLine{\ \ \ \ G4String\ decaysFileName\ =\ outputSuffix\ +\ \textcolor{stringliteral}{"{}\_"{}}\ +\ \mbox{\hyperlink{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}{Tools::getThreadIDStr}}()\ +\ \textcolor{stringliteral}{"{}\_decays.dat"{}};\ \textcolor{comment}{//\ one\ file\ per\ thread,\ appending\ thread\ id\ to\ file\ name}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ std::fstream\ dataFile;}
+\DoxyCodeLine{\ \ \ \ dataFile.open(decaysFileName.c\_str(),\ std::ios::out\ |\ std::ios::app);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (m\_threadDecayStats-\/>\mbox{\hyperlink{struct_decay_stats_a7cead323e226455fe4c847ff5043bd20}{eventId}}.size()\ >\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (...)}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ dataFile.close();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Data is saved after each event in the {\ttfamily End\+Of\+Event\+Action} method to handle large volumes of data\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//from\ radioactive\_decays/src/OMSimEventAction.cc}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_event_action_a10298c7dff0337cec4ee06a25ca9c116}{OMSimEventAction::EndOfEventAction}}(\textcolor{keyword}{const}\ G4Event\ *p\_evt)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}{OMSimCommandArgsTable::getInstance}}().get<bool>(\textcolor{stringliteral}{"{}multiplicity\_study"{}}))}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&analysisManager\ =\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}{OMSimDecaysAnalysis::getInstance}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ analysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}{writeThreadHitInformation}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ analysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{writeThreadDecayInformation}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ analysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}}();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+As you can see, in case of multiplicity study, we need to merge the data, as we are looking for coincidences. In that case we have to merge\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//from\ radioactive\_decays/OMSim\_radioactive\_decays.cc}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lArgs.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"{}multiplicity\_study"{}}))}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ G4double\ coincidenceTimeWindow\ =\ lArgs.get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"{}multiplicity\_time\_window"{}})*ns;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ analysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_af747109a424e5878d2a4e42b6308f3cb}{writeMultiplicity}}(coincidenceTimeWindow);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ analysisManager.\mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\hypertarget{md_extra__doc_21__multithreading_autotoc_md24}{}\doxysection{\texorpdfstring{Best Practices for Creating New Thread-\/\+Safe Containers}{Best Practices for Creating New Thread-Safe Containers}}\label{md_extra__doc_21__multithreading_autotoc_md24}
+When implementing new thread-\/safe containers in Geant4\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Use Thread-\/\+Local Storage}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Declare\ thread-\/local\ storage}}
+\DoxyCodeLine{G4ThreadLocal\ \textcolor{keyword}{static}\ YourDataType*\ threadLocalData\ =\ \textcolor{keyword}{nullptr};}
+
+\end{DoxyCode}
+
+\item {\bfseries{Initialize on First Use}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (!threadLocalData)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Initialize\ thread-\/local\ data\ only\ when\ first\ accessed}}
+\DoxyCodeLine{\ \ \ \ threadLocalData\ =\ \textcolor{keyword}{new}\ YourDataType();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\item {\bfseries{Implement Data Merging (if necessary)}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ mergeThreadData()\ \{}
+\DoxyCodeLine{\ \ \ \ G4AutoLock\ lock(\&m\_mutex);\ \ \textcolor{comment}{//\ Ensure\ thread-\/safe\ access}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Merge\ threadLocalData\ into\ a\ global\ container}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ This\ is\ where\ you\ combine\ data\ from\ all\ threads}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\item {\bfseries{Ensure Proper Cleanup}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ reset()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Clean\ up\ thread-\/local\ data}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{delete}\ threadLocalData;}
+\DoxyCodeLine{\ \ \ \ threadLocalData\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\item {\bfseries{Implement Thread-\/\+Safe Access}}\+: Use mutex locks for shared resource access\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{G4AutoLock\ lock(\&m\_mutex);\ \ \textcolor{comment}{//\ Protect\ access\ to\ shared\ resources}}
+\DoxyCodeLine{\textcolor{comment}{//\ Access\ or\ modify\ shared\ resources}}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+
+By following these guidelines and studying the provided examples, you can create thread-\/safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-\/threaded environments.\hypertarget{md_extra__doc_21__multithreading_autotoc_md25}{}\doxysection{\texorpdfstring{Troubleshooting Multi-\/threading Issues}{Troubleshooting Multi-threading Issues}}\label{md_extra__doc_21__multithreading_autotoc_md25}
+When developing new code with multi-\/threaded simulations in Geant4, you may encounter race conditions or other thread-\/related issues. Here\textquotesingle{}s a general approach to diagnose and resolve these problems\+:\hypertarget{md_extra__doc_21__multithreading_autotoc_md26}{}\doxysubsection{\texorpdfstring{1. Use Valgrind Tools}{1. Use Valgrind Tools}}\label{md_extra__doc_21__multithreading_autotoc_md26}
+Valgrind provides powerful tools for detecting thread-\/related issues\+:
+
+a) Helgrind\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{valgrind\ -\/-\/log-\/file="{}output\_helgrind.txt"{}\ -\/-\/tool=helgrind\ ./OMSim\_*\ [arguments]}
+
+\end{DoxyCode}
+
+
+b) DRD (Data Race Detector)\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{valgrind\ -\/-\/log-\/file="{}output\_helgrind.txt"{}\ -\/-\/tool=drd\ ./OMSim\_*\ [arguments]}
+
+\end{DoxyCode}
+
+
+These tools can identify potential race conditions and other thread-\/related issues. \hypertarget{md_extra__doc_21__multithreading_autotoc_md27}{}\doxysubsection{\texorpdfstring{2. Analyse the Output}{2. Analyse the Output}}\label{md_extra__doc_21__multithreading_autotoc_md27}
+
+\begin{DoxyItemize}
+\item Review the Valgrind output carefully. Look for\+:
+\item Data race warnings
+\item Mutex-\/related issues
+\item Potential deadlocks
+\item Tip\+: Use an LLM (like Chat\+GPT) to help interpret complex error messages and suggest potential solutions.
+\end{DoxyItemize}\hypertarget{md_extra__doc_21__multithreading_autotoc_md28}{}\doxysubsection{\texorpdfstring{4. Modify and repeat}{4. Modify and repeat}}\label{md_extra__doc_21__multithreading_autotoc_md28}
+
+\begin{DoxyItemize}
+\item Once you identify the object/method causing the error, check if it\textquotesingle{}s obviously not thread-\/safe and being shared during simulation.
+\item For a deeper understanding, provide the complete class (header + source) to the LLM for more detailed guidance.
+\item Make changes to address the identified issues.
+\item Use Valgrind tools again to verify if the issues have been resolved. 
+\end{DoxyItemize}

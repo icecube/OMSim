@@ -1,0 +1,82 @@
+\doxysection{OMSim\+Command\+Args\+Table.\+hh}
+\hypertarget{_o_m_sim_command_args_table_8hh_source}{}\label{_o_m_sim_command_args_table_8hh_source}\index{OMSimCommandArgsTable.hh@{OMSimCommandArgsTable.hh}}
+\mbox{\hyperlink{_o_m_sim_command_args_table_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ WRITE\_TO\_JSON\_IF\_TYPE\_MATCHES(VARIANT,\ TYPE)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ if\ (type\ ==\ typeid(TYPE))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ outputFile\ <<\ "{}\(\backslash\)t\(\backslash\)"{}"{}\ <<\ kv.first\ <<\ "{}\(\backslash\)"{}:\ "{};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (typeid(TYPE)\ ==\ typeid(std::string))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ outputFile\ <<\ "{}\(\backslash\)"{}"{}\ <<\ boost::any\_cast<TYPE>(VARIANT)\ <<\ "{}\(\backslash\)"{}"{};\ \(\backslash\)}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ else\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ outputFile\ <<\ boost::any\_cast<TYPE>(VARIANT);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \}}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}OMSimLogger.hh"{}}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <boost/any.hpp>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <sys/time.h>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Forward\ declaration\ of\ the\ class}}
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSimCommandArgsTable}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Declaration\ and\ definition\ of\ the\ inline\ global\ pointer}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSimCommandArgsTable}}*\ g\_commandArgsTable\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSimCommandArgsTable}}}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSimCommandArgsTable}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSimCommandArgsTable}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSimCommandArgsTable}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSimCommandArgsTable}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSimCommandArgsTable}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_command_args_table}{\string~OMSimCommandArgsTable}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{using\ }Key\ =\ std::string;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{using\ }Value\ =\ boost::any;\ \textcolor{comment}{//\ \ Using\ boost::any\ to\ hold\ any\ type}}
+\DoxyCodeLine{00061\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_finalized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00063\ \ \ \ \ std::map<Key,\ Value>\ m\_parameters;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_command_args_table_a6b23f4e37663c7cf07a7f4d3f44ffdab}{init}}();}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_command_args_table_ae25665b0429b0bfcfe0aac11ef982290}{shutdown}}();}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_command_args_table}{OMSimCommandArgsTable}}\ \&\mbox{\hyperlink{class_o_m_sim_command_args_table_ac6f8ed95981671d5df9b029bcef93214}{getInstance}}();}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_command_args_table_a89368614d0c565dd2687c2560af8c79e}{setParameter}}(\textcolor{keyword}{const}\ Key\ \&p\_key,\ \textcolor{keyword}{const}\ Value\ \&p\_value);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ keyExists(\textcolor{keyword}{const}\ Key\ \&p\_key);\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_command_args_table_a0bd61682f1c4bef12e41084acfee02dd}{writeToJson}}(std::string\ p\_fileName);}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_command_args_table_acd0700b601ac3b3279657ad1bc1363e8}{finalize}}();}
+\DoxyCodeLine{00074\ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00082\ \ \ \ \ T\ \mbox{\hyperlink{class_o_m_sim_command_args_table_a6a455736ab058037381fd786c52ca86f}{get}}(\textcolor{keyword}{const}\ std::string\ \&p\_key)}
+\DoxyCodeLine{00083\ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ boost::any\_cast<T>(m\_parameters.at(p\_key));}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ boost::bad\_any\_cast\ \&e)}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ log\_error((\textcolor{stringliteral}{"{}Failed\ to\ get\ parameter\ '"{}}\ +\ p\_key\ +\ \textcolor{stringliteral}{"{}'\ as\ type\ "{}}\ +\ \textcolor{keyword}{typeid}(T).name()).c\_str());}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Failed\ to\ get\ parameter\ "{}}\ +\ p\_key\ +\ \textcolor{stringliteral}{"{}\ as\ type\ "{}}\ +\ \textcolor{keyword}{typeid}(T).name());}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::out\_of\_range\ \&e)}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ log\_error((\textcolor{stringliteral}{"{}Parameter\ '"{}}\ +\ p\_key\ +\ \textcolor{stringliteral}{"{}'does\ not\ exist"{}}).c\_str());}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Parameter\ '"{}}\ +\ p\_key\ +\ \textcolor{stringliteral}{"{}'\ does\ not\ exist"{}});}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \};}
+
+\end{DoxyCode}

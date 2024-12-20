@@ -1,0 +1,84 @@
+\doxysection{OMSim\+PMTConstruction.\+hh}
+\hypertarget{_o_m_sim_p_m_t_construction_8hh_source}{}\label{_o_m_sim_p_m_t_construction_8hh_source}\index{OMSimPMTConstruction.hh@{OMSimPMTConstruction.hh}}
+\mbox{\hyperlink{_o_m_sim_p_m_t_construction_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_detector_component_8hh}{OMSimDetectorComponent.hh}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_p_m_t_construction_8hh}{OMSimPMTConstruction.hh}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_p_m_t_response_8hh}{OMSimPMTResponse.hh}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\#include\ "{}OMSimDetectorConstruction.hh"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <G4UnionSolid.hh>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <G4Tubs.hh>}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSimDetectorConstruction}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSimPMTConstruction}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSimDetectorComponent}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction}{OMSimPMTConstruction}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a5ab3a93d9e44fb38004cfd9d30c6d6aa}{construction}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ configureSensitiveVolume(\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSimDetectorConstruction}}*\ pDetConst,\ G4String\ pName);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a9c780686ad7ab5cb712c494b7e1b20a5}{getDistancePMTCenterToTip}}();}
+\DoxyCodeLine{00028\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_adcf95adc7d522883934e592e3c551617}{getMaxPMTRadius}}();}
+\DoxyCodeLine{00029\ \ \ \ \ G4VSolid\ *\mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a869ff1b5f34736e14784d1a3fc4d94a1}{getPMTSolid}}();}
+\DoxyCodeLine{00030\ \ \ \ \ G4LogicalVolume\ *\mbox{\hyperlink{class_o_m_sim_p_m_t_construction_af3b6282d6a0c3caa3f13244cdf2ed65a}{getLogicalVolume}}();}
+\DoxyCodeLine{00031\ \ \ \ \ G4LogicalVolume*\ getPhotocathodeLV()\{\textcolor{keywordflow}{return}\ m\_photocathodeLV;\};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{double}\ getPMTGlassWeight();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a1f7915c14fc9eee203f861e59f26f333}{placeIt}}(G4ThreeVector\ pPosition,\ G4RotationMatrix\ pRotation,\ G4LogicalVolume\ *\&pMother,\ G4String\ pNameExtension\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a1f7915c14fc9eee203f861e59f26f333}{placeIt}}(G4Transform3D\ pTrans,\ G4LogicalVolume\ *\&pMother,\ G4String\ pNameExtension\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a1a8373e9ae3095062edb477245133a9e}{selectPMT}}(G4String\ pPMTtoSelect);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ includeHAcoating();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ G4LogicalVolume*\ m\_photocathodeLV;}
+\DoxyCodeLine{00041\ \ \ \ \ G4String\ m\_selectedPMT;}
+\DoxyCodeLine{00042\ \ \ \ \ G4bool\ m\_dynodeSystem\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00043\ \ \ \ \ G4bool\ m\_internalReflections\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00044\ \ \ \ \ G4bool\ m\_HACoatingBool\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00045\ \ \ \ \ G4bool\ m\_constructionFinished\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00046\ \ \ \ \ G4double\ m\_centreToTipDistance;}
+\DoxyCodeLine{00047\ \ \ \ \ std::tuple<G4VSolid\ *,\ G4VSolid\ *>\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a759f6d30a70f3a9f34997e5dc9d38680}{getBulbSolid}}(G4String\ pSide);}
+\DoxyCodeLine{00048\ \ \ \ \ std::tuple<G4VSolid\ *,\ G4VSolid\ *>\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a3faaf0d512f9a3fe15c6f33efe6d062c}{simpleBulbConstruction}}(G4String\ pSide);}
+\DoxyCodeLine{00049\ \ \ \ \ std::tuple<G4VSolid\ *,\ G4VSolid\ *>\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a6b84182c7a5b45461160c954e9a384f0}{fullBulbConstruction}}(G4String\ pSide);}
+\DoxyCodeLine{00050\ \ \ \ \ G4VSolid\ *frontalBulbConstruction(G4String\ pSide);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_ac869819aa23b922e7cff347cd082b5f4}{readGlobalParameters}}(G4String\ pSide);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ G4VSolid\ *\mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a63cdaa281909c9bd7fa3e50f1fdda932}{sphereEllipsePhotocathode}}(G4String\ p\_side);}
+\DoxyCodeLine{00055\ \ \ \ \ G4VSolid\ *\mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a35928d2a8eba920e768c64baedd3432f}{doubleEllipsePhotocathode}}(G4String\ pSide);}
+\DoxyCodeLine{00056\ \ \ \ \ G4VSolid\ *\mbox{\hyperlink{class_o_m_sim_p_m_t_construction_ae05f2a608436cc3001a7ee09ed34ddaa}{ellipsePhotocathode}}(G4String\ p\_side);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ constructHAcoating();}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a07f99802d73ddd8d9a9f838725cc0354}{constructCathodeBackshield}}(G4LogicalVolume\ *pPMTIinner);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_aa54a3c69f09d875e1c1891d35517d9e8}{constructCADdynodeSystem}}(G4LogicalVolume\ *p\_mother);}
+\DoxyCodeLine{00062\ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSimPMTResponse}}*\ \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a4b59217e8d9ffcae6ffa95ffab8af10f}{getPMTResponseInstance}}();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ G4bool\ m\_simpleBulb\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00066\ \ \ \ \ G4double\ m\_missingTubeLength;}
+\DoxyCodeLine{00067\ \ \ \ \ G4PVPlacement\ *m\_vacuumBackPhysical;}
+\DoxyCodeLine{00068\ \ \ \ \ G4PVPlacement*\ m\_photocathodeRegionVacuumPhysical;}
+\DoxyCodeLine{00069\ \ \ \ \ G4OpticalSurface*\ m\_photocathodeOpticalSurface;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_checkOverlaps;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ Variables\ from\ json\ files\ are\ saved\ in\ the\ following\ members}}
+\DoxyCodeLine{00074\ \ \ \ \ G4double\ m\_totalLenght;}
+\DoxyCodeLine{00075\ \ \ \ \ G4double\ m\_tubeWidth;}
+\DoxyCodeLine{00076\ \ \ \ \ G4double\ m\_outRad;}
+\DoxyCodeLine{00077\ \ \ \ \ G4double\ m\_ellipseXYaxis;}
+\DoxyCodeLine{00078\ \ \ \ \ G4double\ m\_ellipseZaxis;}
+\DoxyCodeLine{00079\ \ \ \ \ G4double\ m\_sphereEllipseTransition\_r;}
+\DoxyCodeLine{00080\ \ \ \ \ G4double\ m\_spherePosY;}
+\DoxyCodeLine{00081\ \ \ \ \ G4double\ m\_ellipsePosY;}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+
+\end{DoxyCode}

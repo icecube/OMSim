@@ -1,0 +1,32 @@
+\doxysection{OMSim\+Primary\+Generator\+Messenger.\+hh}
+\hypertarget{_o_m_sim_primary_generator_messenger_8hh_source}{}\label{_o_m_sim_primary_generator_messenger_8hh_source}\index{OMSimPrimaryGeneratorMessenger.hh@{OMSimPrimaryGeneratorMessenger.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}G4UImessenger.hh"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_primary_generator_action}{OMSimPrimaryGeneratorAction}};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }G4UIdirectory;}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }G4UIcmdWithAnInteger;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_primary_generator_messenger}{OMSimPrimaryGeneratorMessenger}}:\ \textcolor{keyword}{public}\ G4UImessenger}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_messenger}{OMSimPrimaryGeneratorMessenger}}(\mbox{\hyperlink{class_o_m_sim_primary_generator_action}{OMSimPrimaryGeneratorAction}}*);}
+\DoxyCodeLine{00015\ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_messenger}{\string~OMSimPrimaryGeneratorMessenger}}();}
+\DoxyCodeLine{00016\ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ SetNewValue(G4UIcommand*,\ G4String);}
+\DoxyCodeLine{00018\ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_action}{OMSimPrimaryGeneratorAction}}*\ m\_action;}
+\DoxyCodeLine{00021\ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ G4UIdirectory*\ \ \ \ \ \ \ \ m\_directory;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ G4UIcmdWithAnInteger*\ m\_selectedActionCmd;}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+
+\end{DoxyCode}

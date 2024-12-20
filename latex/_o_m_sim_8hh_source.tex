@@ -1,0 +1,57 @@
+\doxysection{OMSim.\+hh}
+\hypertarget{_o_m_sim_8hh_source}{}\label{_o_m_sim_8hh_source}\index{OMSim.hh@{OMSim.hh}}
+\mbox{\hyperlink{_o_m_sim_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}OMSimDetectorConstruction.hh"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}OMSimPhysicsList.hh"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}OMSimPrimaryGeneratorAction.hh"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}OMSimRunAction.hh"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}OMSimEventAction.hh"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}OMSimTrackingAction.hh"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_stepping_action_8hh}{OMSimSteppingAction.hh}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_u_iinterface_8hh}{OMSimUIinterface.hh}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <G4MTRunManager.hh>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <G4VisExecutive.hh>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <G4UIExecutive.hh>}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <boost/program\_options.hpp>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{namespace\ }po\ =\ boost::program\_options;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim}{OMSim}}}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim}{OMSim}}();}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim}{\string~OMSim}}();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}{initialiseSimulation}}(\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSimDetectorConstruction}}\ *pDetectorConstruction);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ configureLogger();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}{handleArguments}}(\textcolor{keywordtype}{int}\ pArgumentCount,\ \textcolor{keywordtype}{char}\ *pArgumentVector[]);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_a42d86958aba31a17fb0c8a39fbc9c9b5}{startVisualisation}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ G4Navigator\ *getNavigator()\ \{\ \textcolor{keywordflow}{return}\ m\_navigator.get();\ \};}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}{extendOptions}}(po::options\_description\ pNewOptions);}
+\DoxyCodeLine{00055\ \ \ \ \ po::options\_description\ m\_generalOptions;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ initialLoggerConfiguration();}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ determineNumberOfThreads();}
+\DoxyCodeLine{00060\ \ \ \ \ po::variables\_map\ \mbox{\hyperlink{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}{parseArguments}}(\textcolor{keywordtype}{int}\ pArgumentCount,\ \textcolor{keywordtype}{char}\ *pArgumentVector[]);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}{setUserArgumentsToArgTable}}(po::variables\_map\ pVariablesMap);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ setGeneralOptions();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ std::unique\_ptr<G4MTRunManager>\ m\_runManager;}
+\DoxyCodeLine{00065\ \ \ \ \ std::unique\_ptr<G4VisExecutive>\ m\_visManager;}
+\DoxyCodeLine{00066\ \ \ \ \ std::unique\_ptr<G4VUserPhysicsList>\ m\_physics;}
+\DoxyCodeLine{00067\ \ \ \ \ std::unique\_ptr<G4TouchableHistory>\ m\_history;}
+\DoxyCodeLine{00068\ \ \ \ \ std::unique\_ptr<G4Navigator>\ m\_navigator;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ std::chrono::high\_resolution\_clock::time\_point\ m\_startingTime;}
+\DoxyCodeLine{00071\ \};}
+
+\end{DoxyCode}

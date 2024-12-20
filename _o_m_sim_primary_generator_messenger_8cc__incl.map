@@ -1,9 +1,15 @@
 <map id="OMSimPrimaryGeneratorMessenger.cc" name="OMSimPrimaryGeneratorMessenger.cc">
-<area shape="rect" id="node1" title="Primary generator messenger to choose the corresponding primary generator." alt="" coords="403,5,676,32"/>
-<area shape="rect" id="node2" href="$_o_m_sim_primary_generator_messenger_8hh_source.html" title=" " alt="" coords="11,80,286,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="311,80,557,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="581,80,711,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="735,80,930,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,155,151,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="175,155,264,181"/>
+<area shape="rect" id="Node000001" title="Primary generator messenger to choose the corresponding primary generator." alt="" coords="403,5,676,31"/>
+<area shape="rect" id="Node000002" href="$_o_m_sim_primary_generator_messenger_8hh_source.html" title=" " alt="" coords="11,79,286,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="477,33,226,79,225,74,476,28"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="311,79,557,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="524,33,464,73,461,69,521,28"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="581,79,711,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="558,28,619,69,616,73,555,33"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="735,79,930,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="587,28,773,73,771,78,586,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,151,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="139,106,101,144,97,140,135,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="175,152,264,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="162,102,200,140,196,144,158,106"/>
 </map>

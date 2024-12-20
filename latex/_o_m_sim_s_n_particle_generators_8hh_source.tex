@@ -1,0 +1,91 @@
+\doxysection{OMSim\+SNParticle\+Generators.\+hh}
+\hypertarget{_o_m_sim_s_n_particle_generators_8hh_source}{}\label{_o_m_sim_s_n_particle_generators_8hh_source}\index{OMSimSNParticleGenerators.hh@{OMSimSNParticleGenerators.hh}}
+\mbox{\hyperlink{_o_m_sim_s_n_particle_generators_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}G4VUserPrimaryGeneratorAction.hh"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}OMSimPrimaryGeneratorMessenger.hh"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_s_n_tools_8hh}{OMSimSNTools.hh}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <globals.hh>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <G4PhysicalConstants.hh>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <G4SystemOfUnits.hh>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }G4ParticleGun;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }G4Event;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_s_n_base_particle_generator}{SNBaseParticleGenerator}}\ :\ \textcolor{keyword}{public}\ G4VUserPrimaryGeneratorAction}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBaseParticleGenerator}}(G4ParticleGun*);\ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_s_n_base_particle_generator}{\string~SNBaseParticleGenerator}}()\{\};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ GeneratePrimaries(G4Event*\ anEvent);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{protected}:\ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ G4ParticleGun*\ m\_particleGun;}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_s_n_tools}{OMSimSNTools}}\ m\_SNToolBox;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ initialiseDistribution(\textcolor{keywordtype}{int}\ column,\ \textcolor{keywordtype}{int}\ targets);}
+\DoxyCodeLine{00040\ \ \ \ \ G4double\ calculateNeutrinoEnergy();}
+\DoxyCodeLine{00041\ \ \ \ \ G4ThreeVector\ calculateMomentumDirection(G4double\ pNeutrinoEnergy);}
+\DoxyCodeLine{00042\ \ \ \ \ G4double\ calculateWeight(G4double\ pNuEnergy);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_Gf\ =\ 1.166e-\/5\ *\ 1e-\/6\ /\ (MeV\ *\ MeV);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_Consg\ =\ 1.26;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_deltaMass\ =\ neutron\_mass\_c2\ -\/\ proton\_mass\_c2;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_massSquaredDifference\ =\ (pow(m\_deltaMass,\ 2)\ -\/\ pow(electron\_mass\_c2,\ 2))\ /\ 2.;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ G4double\ m\_NrTargets;\ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_distribution_sampler}{DistributionSampler}}\ m\_timeDistribution;}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_distribution_sampler}{DistributionSampler}}\ m\_meanEnergyDistribution;}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_distribution_sampler}{DistributionSampler}}\ m\_meanEnergySquaredDistribution;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ initialiseParticle()\ =\ 0;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_distribution_sampler}{DistributionSampler}}\ angularDistribution(G4double\ Enu)\ =\ 0;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{virtual}\ G4double\ calculateSecondaryParticleEnergy(G4double\ nu\_energy,\ G4double\ costheta)\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{virtual}\ G4double\ totalCrossSection(G4double\ energy)\ =\ 0;}
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_e_n_e_s}{OMSimENES}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBaseParticleGenerator}}}
+\DoxyCodeLine{00073\ \{}
+\DoxyCodeLine{00074\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_e_n_e_s}{OMSimENES}}(G4ParticleGun*);\ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_e_n_e_s}{\string~OMSimENES}}()\{\};}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \textcolor{keyword}{private}:\ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ initialiseParticle();}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{class_distribution_sampler}{DistributionSampler}}\ \mbox{\hyperlink{class_o_m_sim_e_n_e_s_aa8f2d71f822873410a9f6816fd00786b}{angularDistribution}}(G4double\ Enu);}
+\DoxyCodeLine{00082\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_e_n_e_s_afdc34f3f9559919c54f29804c337481a}{calculateSecondaryParticleEnergy}}(G4double\ nu\_energy,\ G4double\ costheta);}
+\DoxyCodeLine{00083\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_e_n_e_s_af2e3aedc5ca2d1006891540c0d038eb7}{totalCrossSection}}(G4double\ energy);}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_i_b_d}{OMSimIBD}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_s_n_base_particle_generator}{SNBaseParticleGenerator}}}
+\DoxyCodeLine{00098\ \{}
+\DoxyCodeLine{00099\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_i_b_d}{OMSimIBD}}(G4ParticleGun*);\ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_i_b_d}{\string~OMSimIBD}}()\{\};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{private}:\ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ initialiseParticle();}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{class_distribution_sampler}{DistributionSampler}}\ \mbox{\hyperlink{class_o_m_sim_i_b_d_a99e9ba505d7c148ea66c63f9c31ed952}{angularDistribution}}(G4double\ Enu);}
+\DoxyCodeLine{00107\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_i_b_d_af04e93cf44abe395e2b65cad4b385d1f}{calculateSecondaryParticleEnergy}}(G4double\ nu\_energy,\ G4double\ costheta);}
+\DoxyCodeLine{00108\ \ \ \ \ G4double\ \mbox{\hyperlink{class_o_m_sim_i_b_d_aad2e0e4a3f6501f4d2c3fb896b032ade}{totalCrossSection}}(G4double\ energy);}
+\DoxyCodeLine{00109\ \};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ }
+
+\end{DoxyCode}

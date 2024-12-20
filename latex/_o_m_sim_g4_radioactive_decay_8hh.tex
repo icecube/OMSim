@@ -1,5 +1,5 @@
-\hypertarget{_o_m_sim_g4_radioactive_decay_8hh}{}\doxysection{OMSim\+G4\+Radioactive\+Decay.\+hh File Reference}
-\label{_o_m_sim_g4_radioactive_decay_8hh}\index{OMSimG4RadioactiveDecay.hh@{OMSimG4RadioactiveDecay.hh}}
+\doxysection{OMSim\+G4\+Radioactive\+Decay.\+hh File Reference}
+\hypertarget{_o_m_sim_g4_radioactive_decay_8hh}{}\label{_o_m_sim_g4_radioactive_decay_8hh}\index{OMSimG4RadioactiveDecay.hh@{OMSimG4RadioactiveDecay.hh}}
 
 
 Modified version of the original Geant4 Radioactive\+Decay class to define custom decay time.  
@@ -16,18 +16,18 @@ Include dependency graph for OMSim\+G4\+Radioactive\+Decay.\+hh\+:
 
 
 \doxysubsection{Detailed Description}
-By default, the decay time is derived from the isotope\textquotesingle{}s lifetime, leading to prolonged float values when aiming for nanosecond precision. In the context of assuming secular equilibrium, \mbox{\hyperlink{class_o_m_sim}{OMSim}} adjusts the decay time based on the simulated time window when the decay time surpasses 100ms.
+By default, the decay time is derived from the isotope\textquotesingle{}s lifetime, leading to prolonged float values when aiming for nanosecond precision. In the context of assuming secular equilibrium, \doxylink{class_o_m_sim}{OMSim} adjusts the decay time based on the simulated time window when the decay time surpasses 100ms.
 
-The choice of a 100ms threshold ensures the capture of correlations between consecutive decays when the intervals are brief. Given that the average time gap for the random component of the dark rate in the \mbox{\hyperlink{classm_d_o_m}{m\+DOM}} PMT is approximately 10ms (for low DR PMTs, and even shorter for those with higher radioactivity), correlations longer than 100ms cannot be distinguished.
+The choice of a 100ms threshold ensures the capture of correlations between consecutive decays when the intervals are brief. Given that the average time gap for the random component of the dark rate in the \doxylink{classm_d_o_m}{m\+DOM} PMT is approximately 10ms (for low DR PMTs, and even shorter for those with higher radioactivity), correlations longer than 100ms cannot be distinguished.
 
-You can expand this threshold in line 1240 of OMSim\+G4\+Radioactive\+Decay.\+cc if you want to simulation low-\/background Optical Modules (OMs), however, it\textquotesingle{}s anticipated that the results would exhibit marginal differences (if any). \doxysubsection*{Classes}
+You can expand this threshold in line 1240 of OMSim\+G4\+Radioactive\+Decay.\+cc if you want to simulation low-\/background Optical Modules (OMs), however, it\textquotesingle{}s anticipated that the results would exhibit marginal differences (if any). \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_g4_radioactive_decay}{G4\+Radioactive\+Decay}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
+\doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{_o_m_sim_g4_radioactive_decay_8hh_a8d3a69544d741312b4836c149a7bbb06}\label{_o_m_sim_g4_radioactive_decay_8hh_a8d3a69544d741312b4836c149a7bbb06}} 
-typedef std\+::map$<$ G4\+String, G4\+Decay\+Table $\ast$ $>$ {\bfseries Decay\+Table\+Map}
+\Hypertarget{_o_m_sim_g4_radioactive_decay_8hh_a8d3a69544d741312b4836c149a7bbb06}\label{_o_m_sim_g4_radioactive_decay_8hh_a8d3a69544d741312b4836c149a7bbb06} 
+typedef std\+::map$<$ G4\+String, G4\+Decay\+Table \texorpdfstring{$\ast$}{*} $>$ {\bfseries Decay\+Table\+Map}
 \end{DoxyCompactItemize}

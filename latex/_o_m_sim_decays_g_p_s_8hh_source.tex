@@ -1,0 +1,59 @@
+\doxysection{OMSim\+Decays\+GPS.\+hh}
+\hypertarget{_o_m_sim_decays_g_p_s_8hh_source}{}\label{_o_m_sim_decays_g_p_s_8hh_source}\index{OMSimDecaysGPS.hh@{OMSimDecaysGPS.hh}}
+\mbox{\hyperlink{_o_m_sim_decays_g_p_s_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}OMSimOpticalModule.hh"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <globals.hh>}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSimDecaysGPS}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSimDecaysGPS}}\ \&getInstance()}
+\DoxyCodeLine{00020\ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSimDecaysGPS}}\ instance;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00023\ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_a2bba4e779b0200d277e01053c521587b}{simulateDecaysInPMTs}}(G4double\ pTimeWindow);}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_ae43dceede1c8f2c332964fb43242cc76}{simulateDecaysInPressureVessel}}(G4double\ pTimeWindow);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_a351e76b3b115c13a571a700ab03b7a8a}{setOpticalModule}}(\mbox{\hyperlink{class_o_m_sim_optical_module}{OMSimOpticalModule}}\ *p\_opticalModule)\ \{\ m\_opticalModule\ =\ p\_opticalModule;\ \};}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{void}\ setProductionRadius(G4double\ pProductionRadius);}
+\DoxyCodeLine{00034\ \ \ G4String\ getDecayTerminationNuclide();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00037\ \ \ \textcolor{comment}{//\ Define\ a\ map\ that\ maps\ isotopes\ to\ their\ GPS\ commands}}
+\DoxyCodeLine{00038\ \ \ std::map<G4String,\ G4String>\ m\_isotopeCommands\ =\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}U238"{}},\ \textcolor{stringliteral}{"{}/gps/ion\ 92\ 238\ 0"{}}\},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}U235"{}},\ \textcolor{stringliteral}{"{}/gps/ion\ 92\ 235\ 0"{}}\},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Ra226"{}},\ \textcolor{stringliteral}{"{}/gps/ion\ 88\ 226\ 0"{}}\},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Ra224"{}},\ \textcolor{stringliteral}{"{}/gps/ion\ 88\ 224\ 0"{}}\},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Th232"{}},\ \textcolor{stringliteral}{"{}/gps/ion\ 90\ 232\ 0"{}}\},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}K40"{}},\ \textcolor{stringliteral}{"{}/gps/ion\ 19\ 40\ 0"{}}\}\};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{comment}{//\ Define\ a\ map\ that\ maps\ isotopes\ to\ their\ termination\ isotope\ (Ra\ is\ gas\ state\ and\ chains\ are\ often\ not\ in\ secular\ equilibrium)}}
+\DoxyCodeLine{00047\ \ \ \textcolor{comment}{//\ Ra224\ with\ a\ lifetime\ of\ \string~4d\ breaks\ equilibrium\ far\ less\ than\ Ra226,\ with\ half\ life\ \string~1600y,\ so\ activity\ of\ Th232\ and\ Ra224\ will\ probably\ be\ very\ similar}}
+\DoxyCodeLine{00048\ \ \ std::map<G4String,\ G4String>\ m\_terminationIsotopes\ =\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}U238"{}},\ \textcolor{stringliteral}{"{}Ra226"{}}\},}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Th232"{}},\ \textcolor{stringliteral}{"{}Ra224"{}}\},}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Ra226"{}},\ \textcolor{stringliteral}{"{}none"{}}\},}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Ra224"{}},\ \textcolor{stringliteral}{"{}none"{}}\},}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}U235"{}},\ \textcolor{stringliteral}{"{}none"{}}\},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}K40"{}},\ \textcolor{stringliteral}{"{}none"{}}\}\};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_abc1684c40b022ef35aa1c4eea6a7e557}{generalGPS}}();}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_ac6ba3293a0826c4da9b9a7a06c777fe5}{configureIsotopeGPS}}(G4String\ Isotope,\ G4String\ location);}
+\DoxyCodeLine{00058\ \ \ std::map<G4String,\ G4int>\ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s_a61c910b065587f27f3e08b2e1e897cb2}{calculateNumberOfDecays}}(G4MaterialPropertiesTable\ *pMPT,\ G4double\ pTimeWindow,\ G4double\ pMass);}
+\DoxyCodeLine{00059\ \ \ \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSimOpticalModule}}\ *m\_opticalModule;}
+\DoxyCodeLine{00060\ \ \ G4double\ m\_productionRadius;}
+\DoxyCodeLine{00061\ \ \ G4String\ m\_nuclideStopName;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSimDecaysGPS}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00064\ \ \ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{\string~OMSimDecaysGPS}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00065\ \ \ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSimDecaysGPS}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSimDecaysGPS}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00066\ \ \ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSimDecaysGPS}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_decays_g_p_s}{OMSimDecaysGPS}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00067\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,148 @@
+\doxysection{OMSim\+Input\+Data.\+hh}
+\hypertarget{_o_m_sim_input_data_8hh_source}{}\label{_o_m_sim_input_data_8hh_source}\index{OMSimInputData.hh@{OMSimInputData.hh}}
+\mbox{\hyperlink{_o_m_sim_input_data_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}OMSimLogger.hh"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}OMSimOpBoundaryProcess.hh"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <G4SystemOfUnits.hh>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <boost/property\_tree/json\_parser.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }pt\ =\ boost::property\_tree;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_parameter_table}{ParameterTable}}}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_parameter_table}{ParameterTable}}()\{\};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00052\ \ \ \ \ T\ \mbox{\hyperlink{class_parameter_table_adb1234ccb47c9e44ecd7f8c5cb9e0407}{getValue}}(G4String\ pKey,\ G4String\ pParameter)}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ log\_trace(\textcolor{stringliteral}{"{}Fetching\ parameter\ \{\}\ in\ key\ \{\}"{}},\ pParameter,\ pKey);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ T\ lValue\ =\ \mbox{\hyperlink{class_parameter_table_ae5dba23c394122524bab7cb8f61a2fe4}{m\_table}}.at(pKey).get<T>(pParameter);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lValue;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ log\_error(\textcolor{stringliteral}{"{}Fetching\ parameter\ \{\}\ in\ key\ \{\}\ from\ table\ failed!"{}},\ pParameter,\ pKey);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Fetching\ parameter\ failed"{}});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ G4bool\ \mbox{\hyperlink{class_parameter_table_a462edf8d5284908b7c59c851e367b779}{checkIfTreeNameInTable}}(G4String\ pKey);}
+\DoxyCodeLine{00069\ \ \ \ \ G4bool\ \mbox{\hyperlink{class_parameter_table_a8181a3c7b97c75eae98e3d6fb5d3e048}{checkIfKeyInTree}}(G4String\ p\_treeName,\ G4String\ p\_key);}
+\DoxyCodeLine{00070\ \ \ \ \ G4double\ \mbox{\hyperlink{class_parameter_table_aa7546560723ba3b94c08229266b27307}{getValueWithUnit}}(G4String\ pKey,\ G4String\ pParameter);}
+\DoxyCodeLine{00071\ \ \ \ \ pt::ptree\ \mbox{\hyperlink{class_parameter_table_a131ddfbbf38d27b59f454a4ec96b2b9e}{appendAndReturnTree}}(G4String\ pFileName);}
+\DoxyCodeLine{00072\ \ \ \ \ pt::ptree\ \mbox{\hyperlink{class_parameter_table_a042ee0eca2c9daa755d7a472608e6d66}{getJSONTree}}(G4String\ pKey);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parameter_table_a3c2a94b50a41341c104b5b1585d15efc}{parseKeyContentToVector}}(std::vector<T>\ \&pVector,\ pt::ptree\ pTree,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::basic\_string<char>\ pKey,\ G4double\ pScaling,}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ pInverse)}
+\DoxyCodeLine{00089\ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ log\_trace(\textcolor{stringliteral}{"{}Parsing\ content\ in\ key\ \{\}\ to\ a\ vector"{}},\ pKey);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (pt::ptree::value\_type\ \&ridx\ :\ pTree.get\_child(}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pKey))}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ get\ array\ from\ element\ with\ key\ "{}pKey"{}\ of\ the\ json}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pInverse)}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ if\ we\ need\ 1/x}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pVector.push\_back(pScaling\ /\ ridx.second.get\_value<T>());}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ otherwise\ we\ only\ by\ scaling\ factor}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pVector.push\_back(ridx.second.get\_value<T>()\ *\ pScaling);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parameter_table_aa74f75099b364ec36386ffc64d8dd3c7}{parseKeyContentToVector}}(std::vector<T>\ \&pVector,}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::basic\_string<char>\ p\_MapKey,}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::basic\_string<char>\ pKey,\ G4double\ pScaling,}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ pInverse)}
+\DoxyCodeLine{00123\ \ \ \ \ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ log\_trace(\textcolor{stringliteral}{"{}Parsing\ content\ in\ key\ \{\}\ to\ a\ vector"{}},\ pKey);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ JSON\ tree}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ boost::property\_tree::ptree\ lTree\ =\ \mbox{\hyperlink{class_parameter_table_a042ee0eca2c9daa755d7a472608e6d66}{getJSONTree}}(p\_MapKey);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ tree\ is\ empty}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lTree.empty())}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ log\_warning(\textcolor{stringliteral}{"{}JSON\ tree\ is\ empty\ for\ key\ \{\}"{}},\ p\_MapKey);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Access\ the\ child\ node\ with\ the\ key\ "{}pKey"{}}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ lChildNode\ =\ lTree.get\_child\_optional(pKey);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ child\ node\ exists}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!lChildNode)}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ log\_warning(\textcolor{stringliteral}{"{}Child\ node\ with\ key\ \{\}\ not\ found\ in\ JSON\ tree"{}},\ pKey);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ the\ child\ nodes\ and\ parse\ the\ content}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&ridx\ :\ *lChildNode)}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pInverse)}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ need\ 1/x}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pVector.push\_back(pScaling\ /\ ridx.second.get\_value<T>());}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ otherwise\ we\ only\ multiply\ by\ scaling\ factor}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pVector.push\_back(ridx.second.get\_value<T>()\ *\ pScaling);}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \};}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00163\ \ \ \ \ std::map<G4String,\ boost::property\_tree::ptree>\ \mbox{\hyperlink{class_parameter_table_ae5dba23c394122524bab7cb8f61a2fe4}{m\_table}};\ }
+\DoxyCodeLine{00164\ \ \ \ \ std::map<G4String,\ G4String>\ \mbox{\hyperlink{class_parameter_table_ab9926eb10d015f83f6a058af89941467}{m\_keyToFileName}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00165\ \};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00188\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_input_data}{OMSimInputData}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_parameter_table}{ParameterTable}}}
+\DoxyCodeLine{00189\ \{}
+\DoxyCodeLine{00190\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_input_data_ae785a4cec814dcf95b2a4c0c0f2119db}{init}}();}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_input_data_a9ba12328d251141daeb086ae37f95f98}{shutdown}}();}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_input_data}{OMSimInputData}}\&\ \mbox{\hyperlink{class_o_m_sim_input_data_a810d7ae3b652d05e7b85eb568873eed2}{getInstance}}();}
+\DoxyCodeLine{00194\ \ \ \ \ G4Material\ *\mbox{\hyperlink{class_o_m_sim_input_data_a12e64f3ec83f33c173da0cd5954dd5b2}{getMaterial}}(G4String\ pName);}
+\DoxyCodeLine{00195\ \ \ \ \ G4OpticalSurface\ *\mbox{\hyperlink{class_o_m_sim_input_data_aca56b05e268bbb47761dbcc8e487c283}{getOpticalSurface}}(G4String\ pName);}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_input_data_a84781faca6d03b8f9f13777c85a1c9dc}{searchFolders}}();}
+\DoxyCodeLine{00197\ \ \ \ \ std::map<G4String,\ G4OpticalSurface\ *>\ \mbox{\hyperlink{class_o_m_sim_input_data_a692d89c9fbdd287aa13c3bb5ddba8278}{m\_opticalSurfaceMap}};\ }
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{enum\ class}\ FileType\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ IceCubeICE,}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ Scintillator,}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ Extra,}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ Table,}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ Surface,}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ Material}
+\DoxyCodeLine{00207\ \ \ \ \ \};}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ FileType>\ fileTypePrefixes;}
+\DoxyCodeLine{00210\ \ \ \ \ FileType\ getFileType(\textcolor{keyword}{const}\ std::string\&\ fileName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_input_data}{OMSimInputData}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_input_data}{\string~OMSimInputData}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00214\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_input_data}{OMSimInputData}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_input_data}{OMSimInputData}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00215\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_input_data}{OMSimInputData}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_input_data}{OMSimInputData}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{void}\ scannDataDirectory();}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_input_data_a85c2bfa74bb3ac64f0e5f628d81bf4be}{processFile}}(\textcolor{keyword}{const}\ std::string\ \&filePath,\ \textcolor{keyword}{const}\ std::string\ \&fileName);}
+\DoxyCodeLine{00218\ \ \ \ \ G4String\ \mbox{\hyperlink{class_o_m_sim_input_data_ad606b2982529624542cb6cd4184160d3}{m\_dataDirectory}};\ }
+\DoxyCodeLine{00219\ \};}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{class_o_m_sim_input_data}{OMSimInputData}}*\ g\_OMSimInputData\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00222\ }
+
+\end{DoxyCode}

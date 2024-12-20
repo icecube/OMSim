@@ -1,6 +1,9 @@
 <map id="OMSimDecaysAnalysis.hh" name="OMSimDecaysAnalysis.hh">
-<area shape="rect" id="node1" title="Defines the OMSimDecaysAnalysis class and DecayStats struct for the radioactive decays simulation." alt="" coords="107,5,299,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,143,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="167,80,240,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="265,80,385,107"/>
+<area shape="rect" id="Node000001" title="Defines the OMSimDecaysAnalysis class and DecayStats struct for the radioactive decays simulation." alt="" coords="107,5,299,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,143,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,33,109,74,106,69,181,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="167,79,240,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="206,31,206,65,201,65,201,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="265,79,385,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="224,28,295,69,292,74,221,33"/>
 </map>

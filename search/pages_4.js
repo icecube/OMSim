@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['technicalities_20for_20developers_743',['Technicalities for Developers',['../md_extra_doc_2_technicalities.html',1,'']]],
-  ['todo_20list_744',['Todo List',['../todo.html',1,'']]]
+  ['geant4_20framework_0',['OMSim Geant4 Framework',['../index.html',1,'']]]
 ];

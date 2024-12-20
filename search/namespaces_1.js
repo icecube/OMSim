@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['scintillationprocessor_445',['ScintillationProcessor',['../namespace_scintillation_processor.html',1,'']]]
+  ['scintillationprocessor_0',['ScintillationProcessor',['../namespace_scintillation_processor.html',1,'']]]
 ];

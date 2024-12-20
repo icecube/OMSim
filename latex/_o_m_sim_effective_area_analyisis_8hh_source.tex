@@ -1,0 +1,84 @@
+\doxysection{OMSim\+Effective\+Area\+Analyisis.\+hh}
+\hypertarget{_o_m_sim_effective_area_analyisis_8hh_source}{}\label{_o_m_sim_effective_area_analyisis_8hh_source}\index{OMSimEffectiveAreaAnalyisis.hh@{OMSimEffectiveAreaAnalyisis.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_p_m_t_response_8hh}{OMSimPMTResponse.hh}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_hit_manager_8hh}{OMSimHitManager.hh}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <G4ThreeVector.hh>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structeffective_area_result}{effectiveAreaResult}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structeffective_area_result_a3acf96bff88a577c68bff29f1ec3ad05}{EA}};\ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structeffective_area_result_ae691bfd6fd88abed6217d739ed8ca36a}{EAError}};\ }
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_effective_area_analyisis}{OMSimEffectiveAreaAnalyisis}}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis}{OMSimEffectiveAreaAnalyisis}}()\{\};}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis}{\string~OMSimEffectiveAreaAnalyisis}}()\{\};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a7ef0a66e08c129142dc841ed2f51c43a}{writeScan}}(Args...\ p\_args);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a3a5a82cceb0c27238801e0b3108e09a8}{writeHeader}}(Args...\ p\_args);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{structeffective_area_result}{effectiveAreaResult}}\ \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a1f36e6517ffd998ead38348faf906455}{calculateEffectiveArea}}(\textcolor{keywordtype}{double}\ weightedTotal,\ \textcolor{keywordtype}{double}\ countTotal);}
+\DoxyCodeLine{00040\ \ \ \ \ G4String\ m\_outputFileName;}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a7ef0a66e08c129142dc841ed2f51c43a}{OMSimEffectiveAreaAnalyisis::writeScan}}(Args...\ p\_args)}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ std::vector<double>\ hits\ =\ \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}().\mbox{\hyperlink{class_o_m_sim_hit_manager_a954b4f28a89275da58d4e2e3328d1467}{countMergedHits}}(0,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ std::fstream\ dataFile;}
+\DoxyCodeLine{00053\ \ \ \ \ dataFile.open(m\_outputFileName.c\_str(),\ std::ios::out\ |\ std::ios::app);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ Write\ all\ arguments\ to\ the\ file}}
+\DoxyCodeLine{00056\ \ \ \ \ ((dataFile\ <<\ p\_args\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}}),\ ...);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ G4double\ weightedTotal\ =\ 0;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&hit\ :\ hits)}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ dataFile\ <<\ hit\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ weightedTotal\ =\ hit;}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ hits\ =\ \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}().\mbox{\hyperlink{class_o_m_sim_hit_manager_a954b4f28a89275da58d4e2e3328d1467}{countMergedHits}}();\ \textcolor{comment}{//unweighted}}
+\DoxyCodeLine{00066\ \ \ \ \ G4double\ totalHits\ =\ 0;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&hit\ :\ hits)}
+\DoxyCodeLine{00068\ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ totalHits\ =\ hit;\ }
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{structeffective_area_result}{effectiveAreaResult}}\ effectiveArea\ =\ \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a1f36e6517ffd998ead38348faf906455}{calculateEffectiveArea}}(weightedTotal,\ totalHits);}
+\DoxyCodeLine{00073\ \ \ \ \ dataFile\ <<\ effectiveArea.\mbox{\hyperlink{structeffective_area_result_a3acf96bff88a577c68bff29f1ec3ad05}{EA}}\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}}\ <<\ effectiveArea.\mbox{\hyperlink{structeffective_area_result_ae691bfd6fd88abed6217d739ed8ca36a}{EAError}}\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}};}
+\DoxyCodeLine{00074\ \ \ \ \ dataFile\ <<\ G4endl;}
+\DoxyCodeLine{00075\ \ \ \ \ dataFile.close();}
+\DoxyCodeLine{00076\ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_effective_area_analyisis_a3a5a82cceb0c27238801e0b3108e09a8}{OMSimEffectiveAreaAnalyisis::writeHeader}}(Args...\ p\_args)}
+\DoxyCodeLine{00083\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ std::fstream\ dataFile;}
+\DoxyCodeLine{00085\ \ \ \ \ dataFile.open(m\_outputFileName.c\_str(),\ std::ios::out\ |\ std::ios::app);}
+\DoxyCodeLine{00086\ \ \ \ \ dataFile\ <<\ \textcolor{stringliteral}{"{}\#\ "{}};}
+\DoxyCodeLine{00087\ \ \ \ \ ((dataFile\ <<\ p\_args\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}}),\ ...);}
+\DoxyCodeLine{00088\ \ \ \ \ dataFile\ <<\ \textcolor{stringliteral}{"{}hits[1perPMT]"{}}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}total\_hits"{}}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}EA\_Total(cm\string^2)"{}}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}EA\_Total\_error(cm\string^2)"{}}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}}\ <<\ G4endl;}
+\DoxyCodeLine{00096\ \ \ \ \ dataFile.close();}
+\DoxyCodeLine{00097\ \}}
+
+\end{DoxyCode}
