@@ -12,12 +12,12 @@
 <area shape="poly" id="edge37_Node000000_Node000010" title=" " alt="" coords="142,183,194,211,254,238,289,249,287,254,252,243,192,216,139,188"/>
 <area shape="rect" id="Node000003" href="$class_d_e_g_g.html" title="Construction of the DEGG detector geometry." alt="" coords="483,5,543,31"/>
 <area shape="poly" id="edge30_Node000002_Node000003" title=" " alt="" coords="415,97,431,89,446,78,455,67,478,40,492,29,496,33,482,44,459,70,449,82,433,94,418,101"/>
-<area shape="rect" id="Node000004" href="$class_l_o_m16.html" title=" " alt="" coords="480,55,547,80"/>
-<area shape="poly" id="edge31_Node000002_Node000004" title=" " alt="" coords="401,98,431,89,479,75,480,80,433,94,403,103"/>
-<area shape="rect" id="Node000005" href="$class_l_o_m18.html" title=" " alt="" coords="480,104,547,129"/>
+<area shape="rect" id="Node000004" href="$class_d_o_m.html" title="DOM class represents the construction of pDOM (deepcore) or Gen1 DOM." alt="" coords="486,55,541,80"/>
+<area shape="poly" id="edge31_Node000002_Node000004" title=" " alt="" coords="401,98,431,89,485,73,486,78,433,94,403,103"/>
+<area shape="rect" id="Node000005" href="$class_l_o_m16.html" title=" " alt="" coords="480,104,547,129"/>
 <area shape="poly" id="edge32_Node000002_Node000005" title=" " alt="" coords="437,114,480,114,480,119,437,119"/>
-<area shape="rect" id="Node000006" href="$classm_d_o_m.html" title=" " alt="" coords="480,153,547,179"/>
+<area shape="rect" id="Node000006" href="$class_l_o_m18.html" title=" " alt="" coords="480,153,547,179"/>
 <area shape="poly" id="edge33_Node000002_Node000006" title=" " alt="" coords="406,130,433,138,481,153,479,158,431,143,404,136"/>
-<area shape="rect" id="Node000007" href="$classp_d_o_m.html" title="pDOM class represents the construction of pDOM/Gen1 DOM." alt="" coords="482,203,545,228"/>
+<area shape="rect" id="Node000007" href="$classm_d_o_m.html" title=" " alt="" coords="480,203,547,228"/>
 <area shape="poly" id="edge34_Node000002_Node000007" title=" " alt="" coords="421,132,433,138,449,150,459,162,482,188,496,200,493,204,478,192,455,165,446,154,431,143,419,137"/>
 </map>

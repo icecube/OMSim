@@ -128,9 +128,9 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="class_l_o_m16.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="406,-167 356,-167 356,-148 406,-148 406,-167"/>
-<text text-anchor="middle" x="381" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">LOM16</text>
+<g id="a_Node000004"><a xlink:href="class_d_o_m.html" target="_top" xlink:title="DOM class represents the construction of pDOM (deepcore) or Gen1 DOM.">
+<polygon fill="white" stroke="#666666" points="401.5,-167 360.5,-167 360.5,-148 401.5,-148 401.5,-167"/>
+<text text-anchor="middle" x="381" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">DOM</text>
 </a>
 </g>
 </g>
@@ -138,7 +138,7 @@
 <g id="edge31_Node000002_Node000004" class="edge">
 <title>Node2&#45;&gt;Node4</title>
 <g id="a_edge31_Node000002_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M297.34,-132.9C304.9,-135.09 312.68,-137.35 320,-139.5 331.79,-142.97 344.86,-146.88 355.79,-150.17"/>
+<path fill="none" stroke="#63b8ff" d="M297.34,-132.9C304.9,-135.09 312.68,-137.35 320,-139.5 333.46,-143.46 348.59,-148 360.29,-151.53"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="298.18,-129.5 287.6,-130.09 296.24,-136.23 298.18,-129.5"/>
 </a>
 </g>
@@ -146,9 +146,9 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="class_l_o_m18.html" target="_top" xlink:title=" ">
+<g id="a_Node000005"><a xlink:href="class_l_o_m16.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="406,-130 356,-130 356,-111 406,-111 406,-130"/>
-<text text-anchor="middle" x="381" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">LOM18</text>
+<text text-anchor="middle" x="381" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">LOM16</text>
 </a>
 </g>
 </g>
@@ -164,9 +164,9 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="classm_d_o_m.html" target="_top" xlink:title=" ">
+<g id="a_Node000006"><a xlink:href="class_l_o_m18.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="406,-93 356,-93 356,-74 406,-74 406,-93"/>
-<text text-anchor="middle" x="381" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">mDOM</text>
+<text text-anchor="middle" x="381" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">LOM18</text>
 </a>
 </g>
 </g>
@@ -182,9 +182,9 @@
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="classp_d_o_m.html" target="_top" xlink:title="pDOM class represents the construction of pDOM/Gen1 DOM.">
-<polygon fill="white" stroke="#666666" points="404.5,-56 357.5,-56 357.5,-37 404.5,-37 404.5,-56"/>
-<text text-anchor="middle" x="381" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">pDOM</text>
+<g id="a_Node000007"><a xlink:href="classm_d_o_m.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="406,-56 356,-56 356,-37 406,-37 406,-56"/>
+<text text-anchor="middle" x="381" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">mDOM</text>
 </a>
 </g>
 </g>

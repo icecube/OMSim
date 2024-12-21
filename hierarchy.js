@@ -82,10 +82,10 @@ var hierarchy =
       [ "DEggHarness", "class_d_egg_harness.html", null ],
       [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html", [
         [ "DEGG", "class_d_e_g_g.html", null ],
+        [ "DOM", "class_d_o_m.html", null ],
         [ "LOM16", "class_l_o_m16.html", null ],
         [ "LOM18", "class_l_o_m18.html", null ],
-        [ "mDOM", "classm_d_o_m.html", null ],
-        [ "pDOM", "classp_d_o_m.html", null ]
+        [ "mDOM", "classm_d_o_m.html", null ]
       ] ],
       [ "OMSimPMTConstruction", "class_o_m_sim_p_m_t_construction.html", null ],
       [ "mDOMFlasher", "classm_d_o_m_flasher.html", null ],

@@ -1,15 +1,15 @@
 <map id="OMSimOpticalModule" name="OMSimOpticalModule">
-<area shape="rect" id="Node000001" title="Base class for OMs works as interface." alt="" coords="133,79,295,104"/>
+<area shape="rect" id="Node000001" title="Base class for OMs works as interface." alt="" coords="121,79,283,104"/>
 <area shape="rect" id="Node000003" href="$class_d_e_g_g.html" title="Construction of the DEGG detector geometry." alt="" coords="5,152,65,177"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,111,66,154,64,149,172,106"/>
-<area shape="rect" id="Node000004" href="$class_l_o_m16.html" title=" " alt="" coords="90,152,157,177"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="190,115,140,154,137,150,187,110"/>
-<area shape="rect" id="Node000005" href="$class_l_o_m18.html" title=" " alt="" coords="181,152,247,177"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="217,118,217,152,211,152,211,118"/>
-<area shape="rect" id="Node000006" href="$classm_d_o_m.html" title=" " alt="" coords="271,152,338,177"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="241,110,291,150,288,154,238,115"/>
-<area shape="rect" id="Node000007" href="$classp_d_o_m.html" title="pDOM class represents the construction of pDOM/Gen1 DOM." alt="" coords="363,152,425,177"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="256,106,366,149,364,154,254,111"/>
-<area shape="rect" id="Node000002" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="114,5,314,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,44,217,79,211,79,211,44"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,112,64,154,62,149,162,107"/>
+<area shape="rect" id="Node000004" href="$class_d_o_m.html" title="DOM class represents the construction of pDOM (deepcore) or Gen1 DOM." alt="" coords="89,152,144,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="180,115,132,154,129,150,176,110"/>
+<area shape="rect" id="Node000005" href="$class_l_o_m16.html" title=" " alt="" coords="169,152,235,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="205,118,205,152,199,152,199,118"/>
+<area shape="rect" id="Node000006" href="$class_l_o_m18.html" title=" " alt="" coords="259,152,326,177"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="229,110,279,150,276,154,226,115"/>
+<area shape="rect" id="Node000007" href="$classm_d_o_m.html" title=" " alt="" coords="350,152,417,177"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="245,106,355,149,353,154,243,111"/>
+<area shape="rect" id="Node000002" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="102,5,302,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,44,205,79,199,79,199,44"/>
 </map>

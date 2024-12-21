@@ -40,7 +40,7 @@
 <area shape="poly" id="edge25_Node000006_Node000019" title=" " alt="" coords="1329,177,1609,223,1608,228,1328,182"/>
 <area shape="rect" id="Node000021" href="$_o_m_sim_m_d_o_m_8hh.html" title="Construction of mDOM." alt="" coords="1768,225,1901,251"/>
 <area shape="poly" id="edge27_Node000006_Node000021" title=" " alt="" coords="1352,175,1756,223,1768,224,1767,230,1756,228,1352,180"/>
-<area shape="rect" id="Node000022" href="$_o_m_sim_p_d_o_m_8hh.html" title="Implementation of the pDOM/Gen1 DOM class." alt="" coords="793,225,922,251"/>
+<area shape="rect" id="Node000022" href="$_o_m_sim_p_d_o_m_8hh.html" title="Implementation of the pDOM (deepcore) or Gen1 DOM.." alt="" coords="793,225,922,251"/>
 <area shape="poly" id="edge28_Node000006_Node000022" title=" " alt="" coords="1171,182,921,228,920,223,1170,177"/>
 <area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="1509,329,1254,375,1253,369,1508,324"/>
 <area shape="rect" id="Node000011" href="$_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="577,299,666,324"/>

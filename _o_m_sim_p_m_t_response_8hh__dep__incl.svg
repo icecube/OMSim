@@ -380,7 +380,7 @@
 <!-- Node22 -->
 <g id="Node000022" class="node">
 <title>Node22</title>
-<g id="a_Node000022"><a xlink:href="_o_m_sim_p_d_o_m_8hh.html" target="_top" xlink:title="Implementation of the pDOM/Gen1 DOM class.">
+<g id="a_Node000022"><a xlink:href="_o_m_sim_p_d_o_m_8hh.html" target="_top" xlink:title="Implementation of the pDOM (deepcore) or Gen1 DOM..">
 <polygon fill="white" stroke="#666666" points="687.5,-129 590.5,-129 590.5,-110 687.5,-110 687.5,-129"/>
 <text text-anchor="middle" x="639" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPDOM.hh</text>
 </a>

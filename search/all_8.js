@@ -20,5 +20,6 @@ var searchData=
   ['developers_17',['Technicalities for Developers',['../md_extra__doc_22__technicalities.html',1,'']]],
   ['direction_18',['direction',['../struct_hit_stats.html#a383cfeda6e6e515b56aee0a369ec5085',1,'HitStats']]],
   ['distributionsampler_19',['DistributionSampler',['../class_distribution_sampler.html',1,'']]],
-  ['doubleellipsephotocathode_20',['doubleEllipsePhotocathode',['../class_o_m_sim_p_m_t_construction.html#a35928d2a8eba920e768c64baedd3432f',1,'OMSimPMTConstruction']]]
+  ['dom_20',['DOM',['../class_d_o_m.html',1,'']]],
+  ['doubleellipsephotocathode_21',['doubleEllipsePhotocathode',['../class_o_m_sim_p_m_t_construction.html#a35928d2a8eba920e768c64baedd3432f',1,'OMSimPMTConstruction']]]
 ];

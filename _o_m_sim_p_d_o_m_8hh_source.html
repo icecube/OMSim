@@ -135,37 +135,37 @@ $(document).ready(function(){initNavTree('_o_m_sim_p_d_o_m_8hh_source.html','');
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;OMSimOpticalModule.hh&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classp_d_o_m.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="classp_d_o_m.html">pDOM</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_o_m_sim_optical_module.html">OMSimOpticalModule</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_d_o_m.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="class_d_o_m.html">DOM</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_o_m_sim_optical_module.html">OMSimOpticalModule</a></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_class" href="classp_d_o_m.html">pDOM</a>(G4bool pPlaceHarness = <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_class" href="classp_d_o_m.html">~pDOM</a>(){};</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classp_d_o_m.html#a6fc9511f8287a69ef498167162a92ec4">construction</a>();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_class" href="class_d_o_m.html">DOM</a>(G4bool p_placeHarness = <span class="keyword">true</span>, G4bool p_deepcore = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_class" href="class_d_o_m.html">~DOM</a>(){};</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_d_o_m.html#a44de3031fbc88d028c9df9b2654dc8c1">construction</a>();</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    G4bool m_placeHarness;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    G4String getName()</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        std::stringstream ss;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        ss &lt;&lt; <span class="stringliteral">&quot;/pDOM/&quot;</span> &lt;&lt; m_index;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        ss &lt;&lt; <span class="stringliteral">&quot;/DOM/&quot;</span> &lt;&lt; m_index;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">return</span> ss.str();</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classp_d_o_m.html#aff18b63813f3940d3cc8c0c49a3595d5">   29</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="classp_d_o_m.html#aff18b63813f3940d3cc8c0c49a3595d5">getPressureVesselWeight</a>() {<span class="keywordflow">return</span> 9.07*kg;};</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classp_d_o_m.html#a1e2c5cf50a25e2b234d9326f4fbbee9d">   30</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classp_d_o_m.html#a1e2c5cf50a25e2b234d9326f4fbbee9d">getNumberOfPMTs</a>() { <span class="keywordflow">return</span> 1;};</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_d_o_m.html#ab3eeaeeabb45abcae37ba10ee05012cc">   29</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_d_o_m.html#ab3eeaeeabb45abcae37ba10ee05012cc">getPressureVesselWeight</a>() {<span class="keywordflow">return</span> 9.07*kg;};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_d_o_m.html#a31c78c3f67f9824048c0365513cb5b93">   30</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_d_o_m.html#a31c78c3f67f9824048c0365513cb5b93">getNumberOfPMTs</a>() { <span class="keywordflow">return</span> 1;};</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>};</div>
 </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="ttc" id="a_o_m_sim_p_m_t_construction_8hh_html"><div class="ttname"><a href="_o_m_sim_p_m_t_construction_8hh.html">OMSimPMTConstruction.hh</a></div><div class="ttdoc">Construction of the PMTs.</div></div>
+<div class="ttc" id="aclass_d_o_m_html"><div class="ttname"><a href="class_d_o_m.html">DOM</a></div><div class="ttdoc">DOM class represents the construction of pDOM (deepcore) or Gen1 DOM.</div><div class="ttdef"><b>Definition</b> OMSimPDOM.hh:17</div></div>
+<div class="ttc" id="aclass_d_o_m_html_a31c78c3f67f9824048c0365513cb5b93"><div class="ttname"><a href="class_d_o_m.html#a31c78c3f67f9824048c0365513cb5b93">DOM::getNumberOfPMTs</a></div><div class="ttdeci">int getNumberOfPMTs()</div><div class="ttdoc">Virtual method to get the number of PMTs in the optical module.</div><div class="ttdef"><b>Definition</b> OMSimPDOM.hh:30</div></div>
+<div class="ttc" id="aclass_d_o_m_html_a44de3031fbc88d028c9df9b2654dc8c1"><div class="ttname"><a href="class_d_o_m.html#a44de3031fbc88d028c9df9b2654dc8c1">DOM::construction</a></div><div class="ttdeci">void construction()</div><div class="ttdoc">Abstract method you have to define in order to make a derived class from OMSimDetectorComponent.</div><div class="ttdef"><b>Definition</b> OMSimPDOM.cc:19</div></div>
+<div class="ttc" id="aclass_d_o_m_html_ab3eeaeeabb45abcae37ba10ee05012cc"><div class="ttname"><a href="class_d_o_m.html#ab3eeaeeabb45abcae37ba10ee05012cc">DOM::getPressureVesselWeight</a></div><div class="ttdeci">double getPressureVesselWeight()</div><div class="ttdoc">Virtual method to get the weight of the pressure vessel.</div><div class="ttdef"><b>Definition</b> OMSimPDOM.hh:29</div></div>
 <div class="ttc" id="aclass_o_m_sim_optical_module_html"><div class="ttname"><a href="class_o_m_sim_optical_module.html">OMSimOpticalModule</a></div><div class="ttdoc">Base class for OMs works as interface.</div><div class="ttdef"><b>Definition</b> OMSimOpticalModule.hh:23</div></div>
-<div class="ttc" id="aclassp_d_o_m_html"><div class="ttname"><a href="classp_d_o_m.html">pDOM</a></div><div class="ttdoc">pDOM class represents the construction of pDOM/Gen1 DOM.</div><div class="ttdef"><b>Definition</b> OMSimPDOM.hh:17</div></div>
-<div class="ttc" id="aclassp_d_o_m_html_a1e2c5cf50a25e2b234d9326f4fbbee9d"><div class="ttname"><a href="classp_d_o_m.html#a1e2c5cf50a25e2b234d9326f4fbbee9d">pDOM::getNumberOfPMTs</a></div><div class="ttdeci">int getNumberOfPMTs()</div><div class="ttdoc">Virtual method to get the number of PMTs in the optical module.</div><div class="ttdef"><b>Definition</b> OMSimPDOM.hh:30</div></div>
-<div class="ttc" id="aclassp_d_o_m_html_a6fc9511f8287a69ef498167162a92ec4"><div class="ttname"><a href="classp_d_o_m.html#a6fc9511f8287a69ef498167162a92ec4">pDOM::construction</a></div><div class="ttdeci">void construction()</div><div class="ttdoc">Abstract method you have to define in order to make a derived class from OMSimDetectorComponent.</div><div class="ttdef"><b>Definition</b> OMSimPDOM.cc:19</div></div>
-<div class="ttc" id="aclassp_d_o_m_html_aff18b63813f3940d3cc8c0c49a3595d5"><div class="ttname"><a href="classp_d_o_m.html#aff18b63813f3940d3cc8c0c49a3595d5">pDOM::getPressureVesselWeight</a></div><div class="ttdeci">double getPressureVesselWeight()</div><div class="ttdoc">Virtual method to get the weight of the pressure vessel.</div><div class="ttdef"><b>Definition</b> OMSimPDOM.hh:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_9c3954a29433d21caebe71551a91150a.html">geometry_construction</a></li><li class="navelem"><a class="el" href="dir_218371b85f6c667e47e4a2c498ee505b.html">include</a></li><li class="navelem"><a class="el" href="_o_m_sim_p_d_o_m_8hh.html">OMSimPDOM.hh</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 12:54:14 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sat Dec 21 2024 20:43:55 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

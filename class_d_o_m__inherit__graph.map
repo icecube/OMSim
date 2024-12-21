@@ -1,5 +1,5 @@
-<map id="pDOM" name="pDOM">
-<area shape="rect" id="Node000001" title="pDOM class represents the construction of pDOM/Gen1 DOM." alt="" coords="74,152,137,177"/>
+<map id="DOM" name="DOM">
+<area shape="rect" id="Node000001" title="DOM class represents the construction of pDOM (deepcore) or Gen1 DOM." alt="" coords="78,152,133,177"/>
 <area shape="rect" id="Node000002" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="24,79,187,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,118,108,152,103,152,103,118"/>
 <area shape="rect" id="Node000003" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="5,5,205,31"/>
