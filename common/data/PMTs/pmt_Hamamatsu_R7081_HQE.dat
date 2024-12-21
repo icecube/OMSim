@@ -1,7 +1,7 @@
 {
-   "jName": "pmt_Hamamatsu_R7081",
+   "jName": "pmt_Hamamatsu_R7081_HQE",
    "jFrontalShape": "TwoEllipses",
-   "jDefaultQEFileName": "../common/data/PMTs/measurement_matching_data/QE/DOM_Hamamatsu_R7081_QE.dat",
+   "jDefaultQEFileName": "../common/data/PMTs/measurement_matching_data/QE/pDOM_Hamamatsu_R7081_HQE.dat",
    "jAbsorbedFractionFileName": "../common/data/PMTs/measurement_matching_data/QE/DOM_Hamamatsu_R7081_CT_intrinsic_QE.dat",
    "jCEweightsFileName": "../common/data/PMTs/measurement_matching_data/CE_weight/241011_PDOM.dat",
    "jScanDataPath" : "../common/data/PMTs/measurement_matching_data/scans/pDOM/",

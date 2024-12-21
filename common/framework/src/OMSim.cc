@@ -45,12 +45,12 @@ void OMSim::setGeneralOptions()
     ("efficiency_cut", po::bool_switch(), "if given, the photons will be deleted if they don't pass QE")
     ("pmt_response", po::bool_switch(), "if given, simulates PMT response using scan data (currently only for mDOM PMT)")
     ("place_harness",po::bool_switch(),"place OM harness (if implemented)")
-	("detector_type", po::value<G4int>()->default_value(2), "module type [custom = 0, Single PMT = 1, mDOM = 2, pDDOM = 3, LOM16 = 4], LOM18 = 4]")
+	("detector_type", po::value<G4int>()->default_value(2), "module type [custom = 0, Single PMT = 1, mDOM = 2, DOM = 3, LOM16 = 4, LOM18 = 5, DEGG = 6, pDOM (HQE deepcore) = 7]")
     ("check_overlaps", po::bool_switch()->default_value(false), "check overlaps between volumes during construction")
     ("glass", po::value<G4int>()->default_value(0), "DEPRECATED. Index to select glass type [VITROVEX = 0, Chiba = 1, Kopp = 2, myVitroVex = 3, myChiba = 4, WOMQuartz = 5, fusedSilica = 6]")
     ("gel", po::value<G4int>()->default_value(1), "DEPRECATED. Index to select gel type [Wacker = 0, Chiba = 1, IceCube = 2, Wacker_company = 3]")
     ("reflective_surface", po::value<G4int>()->default_value(0), "DEPRECATED. Index to select reflective surface type [Surf_V95Gel = 0, Surf_V98Gel = 1, Surf_Aluminium = 2, Surf_Total98 = 3]")
-    ("pmt_model", po::value<G4int>()->default_value(0), "DEPRECATED. R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3")
+    ("pmt_model", po::value<G4int>()->default_value(0), "DEPRECATED. R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3, R7081_HQE (pDOM) = 4")
     ("threads", po::value<int>()->default_value(1), "number of threads to use.");
 }
 

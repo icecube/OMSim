@@ -65,7 +65,7 @@ void OMSimEffectiveAreaDetector::constructDetector()
     case 3:
     {
 
-        opticalModule = new pDOM(placeHarness);
+        opticalModule = new DOM(placeHarness);
         break;
     }
     case 4:
@@ -83,6 +83,11 @@ void OMSimEffectiveAreaDetector::constructDetector()
     case 6:
     {
         opticalModule = new DEGG(placeHarness);
+        break;
+    }
+    case 7:
+    {
+        opticalModule = new DOM(placeHarness, true);
         break;
     }
     }

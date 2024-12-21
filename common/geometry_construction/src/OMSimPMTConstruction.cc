@@ -460,7 +460,7 @@ void OMSimPMTConstruction::selectPMT(G4String p_selectedPMT)
 {
     if (p_selectedPMT.substr(0, 6) == "argPMT")
     {
-        const G4String listPMT[] = {"pmt_Hamamatsu_R15458_CT", "pmt_Hamamatsu_R7081", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100"};
+        const G4String listPMT[] = {"pmt_Hamamatsu_R15458_CT", "pmt_Hamamatsu_R7081", "pmt_Hamamatsu_4inch", "pmt_Hamamatsu_R5912_20_100", "pmt_Hamamatsu_R7081_HQE"};
         p_selectedPMT = listPMT[OMSimCommandArgsTable::getInstance().get<G4int>("pmt_model")];
     }
 

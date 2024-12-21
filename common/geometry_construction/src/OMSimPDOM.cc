@@ -7,16 +7,16 @@
 #include <G4Orb.hh>
 #include <G4Polycone.hh>
 
-pDOM::pDOM(G4bool p_placeHarness): OMSimOpticalModule(new OMSimPMTConstruction()), m_placeHarness(p_placeHarness)
+DOM::DOM(G4bool p_placeHarness, G4bool p_deepcore): OMSimOpticalModule(new OMSimPMTConstruction()), m_placeHarness(p_placeHarness)
 {
     log_info("Constructing pDOM");
-    m_managerPMT->selectPMT("pmt_Hamamatsu_R7081");
+    (p_deepcore) ? m_managerPMT->selectPMT("pmt_Hamamatsu_R7081_HQE") : m_managerPMT->selectPMT("pmt_Hamamatsu_R7081");
     m_managerPMT->construction();
     construction();
 }
 
 
-void pDOM::construction()
+void DOM::construction()
 {
     m_components.clear();
 
