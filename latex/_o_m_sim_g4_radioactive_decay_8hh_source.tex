@@ -3,197 +3,152 @@
 \mbox{\hyperlink{_o_m_sim_g4_radioactive_decay_8hh}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#ifndef\ G4RadioactiveDecay\_h}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ G4RadioactiveDecay\_h\ 1}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_g4_v_radioactive_decay_8hh}{OMSimG4VRadioactiveDecay.hh}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <CLHEP/Units/SystemOfUnits.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}G4ios.hh"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}G4VRestDiscreteProcess.hh"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}OMSimG4ParticleChangeForRadDecay.hh"{}}}
 \DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <CLHEP/Units/SystemOfUnits.h>}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}G4ios.hh"{}}}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}G4VRestDiscreteProcess.hh"{}}}
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}G4ParticleChangeForRadDecay.hh"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}G4NucleusLimits.hh"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}G4RadioactiveDecayRatesToDaughter.hh"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}G4RadioactiveDecayChainsFromParent.hh"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}G4RadioactivityTable.hh"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}G4ThreeVector.hh"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}G4Threading.hh"{}}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }G4Fragment;}
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }G4RadioactivationMessenger;}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}G4NucleusLimits.hh"{}}}
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}G4ThreeVector.hh"{}}}
-\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}G4RadioactiveDecayMode.hh"{}}}
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ std::vector<G4RadioactiveDecayChainsFromParent>\ G4RadioactiveDecayParentChainTable;}
+\DoxyCodeLine{00031\ \textcolor{keyword}{typedef}\ std::vector<G4RadioactiveDecayRatesToDaughter>\ G4RadioactiveDecayRates;}
+\DoxyCodeLine{00032\ \textcolor{keyword}{typedef}\ std::map<G4String,\ G4DecayTable*>\ DecayTableMap;}
 \DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}OMSimLogger.hh"{}}}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }G4Fragment;}
-\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }G4RadioactiveDecayMessenger;}
-\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }G4PhotonEvaporation;}
-\DoxyCodeLine{00039\ \textcolor{keyword}{class\ }G4Ions;}
-\DoxyCodeLine{00040\ \textcolor{keyword}{class\ }G4DecayTable;}
-\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }G4ITDecay;}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \textcolor{keyword}{typedef}\ std::map<G4String,\ G4DecayTable*>\ DecayTableMap;}
+\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_g4_v_radioactive_decay}{G4VRadioactiveDecay}}}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{public}:\ \textcolor{comment}{//\ with\ description}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}(\textcolor{keyword}{const}\ G4String\&\ processName=\textcolor{stringliteral}{"{}RadioactiveDecay"{}},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4double\ timeThresholdForRadioactiveDecays=-\/1.0);}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_g4_radioactive_decay}{\string~G4RadioactiveDecay}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ G4VParticleChange*\ DecayIt(\textcolor{keyword}{const}\ G4Track\&\ theTrack,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4Step\&\ \ theStep)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}\ :\ \textcolor{keyword}{public}\ G4VRestDiscreteProcess\ }
-\DoxyCodeLine{00047\ \{}
-\DoxyCodeLine{00048\ \ \ \textcolor{comment}{//\ class\ description}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ ProcessDescription(std::ostream\&\ outFile)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ decay\ biasing\ scheme\ using\ the\ data\ in\ "{}filename"{}}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ SetDecayBias(\textcolor{keyword}{const}\ G4String\&\ filename);}
 \DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \ \ \textcolor{comment}{//\ Implementation\ of\ the\ radioactive\ decay\ process\ which\ simulates\ the}}
-\DoxyCodeLine{00051\ \ \ \textcolor{comment}{//\ decays\ of\ radioactive\ nuclei.\ \ These\ nuclei\ are\ submitted\ to\ RDM\ as}}
-\DoxyCodeLine{00052\ \ \ \textcolor{comment}{//\ G4Ions.\ \ The\ required\ half-\/lives\ and\ decay\ schemes\ are\ retrieved\ from}}
-\DoxyCodeLine{00053\ \ \ \textcolor{comment}{//\ the\ Radioactivity\ database\ which\ was\ derived\ from\ ENSDF.}}
-\DoxyCodeLine{00054\ \ \ \textcolor{comment}{//\ All\ decay\ products\ are\ submitted\ back\ to\ the\ particle\ tracking\ process}}
-\DoxyCodeLine{00055\ \ \ \textcolor{comment}{//\ through\ the\ G4ParticleChangeForRadDecay\ object.}}
-\DoxyCodeLine{00056\ \ \ \textcolor{comment}{//\ class\ description\ -\/\ end\ }}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{public}:\ \textcolor{comment}{//\ with\ description}}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}(\textcolor{keyword}{const}\ G4String\&\ processName=\textcolor{stringliteral}{"{}RadioactiveDecay"{}},}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4double\ timeThreshold=-\/1.0);}
-\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{class_g4_radioactive_decay}{\string~G4RadioactiveDecay}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \ \ \ \ G4bool\ IsApplicable(\textcolor{keyword}{const}\ G4ParticleDefinition\&)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Return\ true\ if\ the\ specified\ isotope\ is}}
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ \ 1)\ defined\ as\ "{}nucleus"{}\ and}}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ \ 2)\ it\ is\ within\ theNucleusLimit}}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \ \ \ \ G4VParticleChange*\ AtRestDoIt(\textcolor{keyword}{const}\ G4Track\&\ theTrack,}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4Step\&\ theStep)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \ \ \ \ G4VParticleChange*\ PostStepDoIt(\textcolor{keyword}{const}\ G4Track\&\ theTrack,}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4Step\&\ theStep)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildPhysicsTable(\textcolor{keyword}{const}\ G4ParticleDefinition\ \&)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ ProcessDescription(std::ostream\&\ outFile)\ \textcolor{keyword}{const\ override};}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{virtual}\ G4VParticleChange*\ DecayIt(\textcolor{keyword}{const}\ G4Track\&\ theTrack,}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4Step\&\ theStep);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ half-\/life\ threshold\ for\ isomer\ production}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ SetHLThreshold(G4double\ hl)\ \{halflifethreshold\ =\ hl;\}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSourceTimeProfile(\textcolor{keyword}{const}\ G4String\&\ filename);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ Set\ source\ exposure\ function\ using\ histograms\ in\ "{}filename"{}}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ G4bool\ IsRateTableReady(\textcolor{keyword}{const}\ G4ParticleDefinition\ \&);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ Returns\ true\ if\ the\ coefficient\ and\ decay\ time\ table\ for\ all\ the}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ descendants\ of\ the\ specified\ isotope\ are\ ready.}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ used\ in\ VR\ decay\ mode\ only}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ CalculateChainsFromParent(\textcolor{keyword}{const}\ G4ParticleDefinition\&);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ Calculates\ the\ coefficient\ and\ decay\ time\ table\ for\ all\ the\ descendents}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ of\ the\ specified\ isotope.\ \ Adds\ the\ calculated\ table\ to\ the\ private\ data}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ member\ "{}theParentChainTable"{}.}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ used\ in\ VR\ decay\ mode\ only\ }}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ GetChainsFromParent(\textcolor{keyword}{const}\ G4ParticleDefinition\&);}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ Used\ to\ retrieve\ the\ coefficient\ and\ decay\ time\ table\ for\ all\ the}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//\ descendants\ of\ the\ specified\ isotope\ from\ "{}theParentChainTable"{}}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ and\ place\ it\ in\ "{}chainsFromParent"{}.}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ used\ in\ VR\ decay\ mode\ only\ }}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ SetDecayRate(G4int,G4int,G4double,\ G4int,\ std::vector<G4double>\&,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<G4double>\&);}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ Sets\ "{}theDecayRate"{}\ with\ data\ supplied\ in\ the\ arguements.}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ used\ in\ VR\ decay\ mode\ only\ }}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ std::vector<G4RadioactivityTable*>\&\ GetTheRadioactivityTables()}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \{\textcolor{keywordflow}{return}\ theRadioactivityTables;\}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Return\ vector\ of\ G4Radioactivity\ map\ -\/\ should\ be\ used\ in\ VR\ mode\ only}}
 \DoxyCodeLine{00081\ }
-\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ Return\ decay\ table\ if\ it\ exists,\ if\ not,\ load\ it\ from\ file}}
-\DoxyCodeLine{00083\ \ \ \ \ G4DecayTable*\ GetDecayTable(\textcolor{keyword}{const}\ G4ParticleDefinition*);}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ Select\ a\ logical\ volume\ in\ which\ RDM\ applies}}
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ SelectAVolume(\textcolor{keyword}{const}\ G4String\&\ aVolume);}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ Remove\ a\ logical\ volume\ from\ the\ RDM\ applied\ list}}
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ DeselectAVolume(\textcolor{keyword}{const}\ G4String\&\ aVolume);}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ Select\ all\ logical\ volumes\ for\ the\ application\ of\ RDM}}
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ SelectAllVolumes();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ Controls\ whether\ G4RadioactiveDecay\ runs\ in\ analogue\ mode\ or}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ variance\ reduction\ mode.\ \ SetBRBias,\ SetSplitNuclei\ and}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ SetSourceTimeProfile\ all\ turn\ off\ analogue\ mode\ and\ use\ VR\ mode}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetAnalogueMonteCarlo\ (G4bool\ r)\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ AnalogueMC\ =\ r;}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ Returns\ true\ if\ the\ simulation\ is\ an\ analogue\ Monte\ Carlo,\ and\ false\ if}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ any\ of\ the\ biassing\ schemes\ have\ been\ selected.}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{inline}\ G4bool\ IsAnalogueMonteCarlo\ ()\ \{\textcolor{keywordflow}{return}\ AnalogueMC;\}}
 \DoxyCodeLine{00093\ }
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ Remove\ all\ logical\ volumes\ from\ RDM\ applications}}
-\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ DeselectAllVolumes();}
-\DoxyCodeLine{00096\ }
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{comment}{//\ Enable/disable\ ARM}}
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ SetARM(G4bool\ arm)\ \{applyARM\ =\ arm;\}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \textcolor{comment}{//\ Sets\ whether\ branching\ ration\ bias\ scheme\ applies.}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetBRBias(G4bool\ r)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ BRBias\ =\ r;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ AnalogueMC\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
 \DoxyCodeLine{00099\ }
-\DoxyCodeLine{00100\ \ \ \ \ G4DecayTable*\ LoadDecayTable(\textcolor{keyword}{const}\ G4Ions*);}
-\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ Load\ the\ decay\ data\ of\ isotope\ theParentNucleus}}
-\DoxyCodeLine{00102\ }
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ AddUserDecayDataFile(G4int\ Z,\ G4int\ A,\ \textcolor{keyword}{const}\ G4String\&\ filename);}
-\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//\ Allow\ the\ user\ to\ replace\ the\ radio-\/active\ decay\ data\ provided\ in\ Geant4}}
-\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ by\ its\ own\ data\ file\ for\ a\ given\ isotope}}
-\DoxyCodeLine{00106\ }
-\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetNucleusLimits(G4NucleusLimits\ theNucleusLimits1)}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \{theNucleusLimits\ =\ theNucleusLimits1\ ;\}}
-\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{//\ Sets\ theNucleusLimits\ which\ specifies\ the\ range\ of\ isotopes}}
-\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ the\ G4RadioactiveDecay\ applies.}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ Sets\ the\ number\ of\ times\ a\ nucleus\ will\ decay\ when\ biased}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetSplitNuclei(G4int\ r)\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ NSplit\ =\ r;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ AnalogueMC\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ \ Returns\ the\ nuclear\ splitting\ number}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{inline}\ G4int\ GetSplitNuclei\ ()\ \{\textcolor{keywordflow}{return}\ NSplit;\}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}\&\ right)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}\&\ right)\ =\ \textcolor{keyword}{delete};}
 \DoxyCodeLine{00111\ }
-\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//\ Returns\ theNucleusLimits\ which\ specifies\ the\ range\ of\ isotopes\ used}}
-\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ by\ G4RadioactiveDecay}}
-\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{inline}\ G4NucleusLimits\ GetNucleusLimits()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ theNucleusLimits;\}}
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetDecayDirection(\textcolor{keyword}{const}\ G4ThreeVector\&\ theDir)\ \{}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ forceDecayDirection\ =\ theDir.unit();}
-\DoxyCodeLine{00118\ \ \ \ \ \}}
-\DoxyCodeLine{00119\ }
-\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ G4ThreeVector\&\ GetDecayDirection()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ forceDecayDirection;\ }
-\DoxyCodeLine{00122\ \ \ \ \ \}}
-\DoxyCodeLine{00123\ }
-\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetDecayHalfAngle(G4double\ halfAngle=0.*CLHEP::deg)\ \{}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ forceDecayHalfAngle\ =\ std::min(std::max(0.*CLHEP::deg,halfAngle),180.*CLHEP::deg);}
-\DoxyCodeLine{00126\ \ \ \ \ \}}
-\DoxyCodeLine{00127\ }
-\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{inline}\ G4double\ GetDecayHalfAngle()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ forceDecayHalfAngle;\}}
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ Force\ direction\ (random\ within\ half-\/angle)\ for\ "{}visible"{}\ daughters}}
-\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\ (applies\ to\ electrons,\ positrons,\ gammas,\ neutrons,\ protons\ or\ alphas)}}
-\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetDecayCollimation(\textcolor{keyword}{const}\ G4ThreeVector\&\ theDir,}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ halfAngle\ =\ 0.*CLHEP::deg)\ \{}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ SetDecayDirection(theDir);}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ SetDecayHalfAngle(halfAngle);}
-\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ G4double\ ConvolveSourceTimeProfile(\textcolor{keyword}{const}\ G4double,\ \textcolor{keyword}{const}\ G4double);}
+\DoxyCodeLine{00115\ \ \ \ \ G4double\ GetDecayTime();}
+\DoxyCodeLine{00116\ \ \ \ \ G4int\ GetDecayTimeBin(\textcolor{keyword}{const}\ G4double\ aDecayTime);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ G4double\ GetMeanLifeTime(\textcolor{keyword}{const}\ G4Track\&\ theTrack,}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4ForceCondition*\ condition)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//Add\ gamma,Xray,conversion,and\ auger\ electrons\ for\ bias\ mode}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ AddDeexcitationSpectrumForBiasMode(G4ParticleDefinition*\ apartDef,}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ weight,}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ currenTime,}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<double>\&\ weights\_v,}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<double>\&\ times\_v,}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<G4DynamicParticle*>\&\ secondaries\_v);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ G4RadioactivationMessenger*\ theRadioactivationMessenger;}
+\DoxyCodeLine{00132\ \ \ \ \ G4bool\ AnalogueMC;}
+\DoxyCodeLine{00133\ \ \ \ \ G4bool\ BRBias;}
+\DoxyCodeLine{00134\ \ \ \ \ G4int\ NSplit;}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ G4double\ halflifethreshold;}
 \DoxyCodeLine{00137\ }
-\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ Ignore\ radioactive\ decays\ at\ rest\ of\ nuclides\ happening\ after\ this\ (very\ long)\ time\ threshold}}
-\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetThresholdForVeryLongDecayTime(\textcolor{keyword}{const}\ G4double\ inputThreshold)\ \{}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ fThresholdForVeryLongDecayTime\ =\ std::max(\ 0.0,\ inputThreshold\ );}
-\DoxyCodeLine{00141\ \ \ \ \ \}}
-\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{inline}\ G4double\ GetThresholdForVeryLongDecayTime()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ fThresholdForVeryLongDecayTime;\}}
-\DoxyCodeLine{00143\ }
-\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{void}\ StreamInfo(std::ostream\&\ os,\ \textcolor{keyword}{const}\ G4String\&\ endline);}
-\DoxyCodeLine{00145\ }
-\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}\&\ right)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_g4_radioactive_decay}{G4RadioactiveDecay}}\&\ right)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00149\ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00150\ \ \ G4VParticleChange*\ TerminateDecay();}
-\DoxyCodeLine{00151\ \ \ \ \ G4double\ GetMeanFreePath(\textcolor{keyword}{const}\ G4Track\&\ theTrack,\ G4double\ previousStepSize,}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4ForceCondition*\ condition)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00153\ }
-\DoxyCodeLine{00154\ \ \ \ \ G4double\ GetMeanLifeTime(\textcolor{keyword}{const}\ G4Track\&\ theTrack,}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4ForceCondition*\ condition)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00156\ }
-\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ sampling\ of\ products\ }}
-\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{void}\ DecayAnalog(\textcolor{keyword}{const}\ G4Track\&\ theTrack,\ G4DecayTable*);}
-\DoxyCodeLine{00159\ }
-\DoxyCodeLine{00160\ \ \ \ \ \textcolor{comment}{//\ sampling\ products\ at\ rest}}
-\DoxyCodeLine{00161\ \ \ \ \ G4DecayProducts*\ DoDecay(\textcolor{keyword}{const}\ G4ParticleDefinition\&,\ G4DecayTable*);}
-\DoxyCodeLine{00162\ }
-\DoxyCodeLine{00163\ \ \ \ \ \textcolor{comment}{//\ Apply\ directional\ bias\ for\ "{}visible"{}\ daughters\ (e+-\/,\ gamma,\ n,\ p,\ alpha)}}
-\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{void}\ CollimateDecay(G4DecayProducts*\ products);}
-\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{void}\ CollimateDecayProduct(G4DynamicParticle*\ product);}
-\DoxyCodeLine{00166\ \ \ \ \ G4ThreeVector\ ChooseCollimationDirection()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00167\ }
-\DoxyCodeLine{00168\ \ \ \ \ \textcolor{comment}{//\ ParticleChange\ for\ decay\ process}}
-\DoxyCodeLine{00169\ \ \ \ \ G4ParticleChangeForRadDecay\ fParticleChangeForRadDecay;}
-\DoxyCodeLine{00170\ }
-\DoxyCodeLine{00171\ \ \ \ \ G4RadioactiveDecayMessenger*\ theRadioactiveDecayMessenger;}
-\DoxyCodeLine{00172\ \ \ \ \ G4PhotonEvaporation*\ photonEvaporation;}
-\DoxyCodeLine{00173\ \ \ \ \ G4ITDecay*\ decayIT;}
-\DoxyCodeLine{00174\ }
-\DoxyCodeLine{00175\ \ \ \ \ std::vector<G4String>\ ValidVolumes;}
-\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{bool}\ isAllVolumesMode\{\textcolor{keyword}{true}\};}
-\DoxyCodeLine{00177\ }
-\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4double\ levelTolerance;}
-\DoxyCodeLine{00179\ }
-\DoxyCodeLine{00180\ \ \ \ \ \textcolor{comment}{//\ Library\ of\ decay\ tables}}
-\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{static}\ DecayTableMap*\ master\_dkmap;}
-\DoxyCodeLine{00182\ }
-\DoxyCodeLine{00183\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00184\ }
-\DoxyCodeLine{00185\ \ \ \ \ G4NucleusLimits\ theNucleusLimits;}
-\DoxyCodeLine{00186\ }
-\DoxyCodeLine{00187\ \ \ \ \ G4bool\ isInitialised\{\textcolor{keyword}{false}\};}
-\DoxyCodeLine{00188\ \ \ \ \ G4bool\ applyARM\{\textcolor{keyword}{true}\};}
-\DoxyCodeLine{00189\ }
-\DoxyCodeLine{00190\ \ \ \ \ \textcolor{comment}{//\ Parameters\ for\ pre-\/collimated\ (biased)\ decay\ products}}
-\DoxyCodeLine{00191\ \ \ \ \ G4ThreeVector\ forceDecayDirection\{G4ThreeVector(0.,\ 0.,\ 0.)\};}
-\DoxyCodeLine{00192\ \ \ \ \ G4double\ forceDecayHalfAngle\{0.0\};}
-\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ G4ThreeVector\ origin;\ \ \textcolor{comment}{//\ (0,0,0)\ for\ convenience}}
-\DoxyCodeLine{00194\ }
-\DoxyCodeLine{00195\ \ \ \ \ \textcolor{comment}{//\ Radioactive\ decay\ database\ directory\ path\ }}
-\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keyword}{static}\ G4String\ dirPath;}
-\DoxyCodeLine{00197\ }
-\DoxyCodeLine{00198\ \ \ \ \ \textcolor{comment}{//\ User\ define\ radioactive\ decay\ data\ files\ replacing\ some\ files\ in\ the\ G4RADECAY\ database}}
-\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keyword}{static}\ std::map<G4int,\ G4String>*\ theUserRDataFiles;}
-\DoxyCodeLine{00200\ }
-\DoxyCodeLine{00201\ \ \ \ \ \textcolor{comment}{//\ The\ last\ RadDecayMode}}
-\DoxyCodeLine{00202\ \ \ \ \ G4RadioactiveDecayMode\ theRadDecayMode\{G4RadioactiveDecayMode::IT\};}
-\DoxyCodeLine{00203\ \ }
-\DoxyCodeLine{00204\ \ \ \ \ \textcolor{comment}{//\ Ignore\ radioactive\ decays\ at\ rest\ of\ nuclides\ happening\ after\ this\ (very\ long)\ time\ threshold}}
-\DoxyCodeLine{00205\ \ \ \ \ G4double\ fThresholdForVeryLongDecayTime;}
-\DoxyCodeLine{00206\ \};}
-\DoxyCodeLine{00207\ }
-\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00138\ \ \ \ \ G4int\ NSourceBin;}
+\DoxyCodeLine{00139\ \ \ \ \ G4double\ SBin[100];}
+\DoxyCodeLine{00140\ \ \ \ \ G4double\ SProfile[100];}
+\DoxyCodeLine{00141\ \ \ \ \ G4int\ NDecayBin;}
+\DoxyCodeLine{00142\ \ \ \ \ G4double\ DBin[100];}
+\DoxyCodeLine{00143\ \ \ \ \ G4double\ DProfile[100];}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ G4RadioactiveDecayRatesToDaughter\ ratesToDaughter;}
+\DoxyCodeLine{00146\ \ \ \ \ G4RadioactiveDecayRates\ theDecayRateVector;}
+\DoxyCodeLine{00147\ \ \ \ \ G4RadioactiveDecayChainsFromParent\ chainsFromParent;}
+\DoxyCodeLine{00148\ \ \ \ \ G4RadioactiveDecayParentChainTable\ theParentChainTable;}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{comment}{//\ for\ the\ radioactivity\ tables}}
+\DoxyCodeLine{00151\ \ \ \ \ std::vector<G4RadioactivityTable*>\ theRadioactivityTables;}
+\DoxyCodeLine{00152\ \ \ \ \ G4int\ decayWindows[100];}
+\DoxyCodeLine{00153\ \};}
 
 \end{DoxyCode}

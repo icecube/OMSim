@@ -1,0 +1,97 @@
+\doxysection{G4\+Particle\+Change\+For\+Rad\+Decay Class Reference}
+\hypertarget{class_g4_particle_change_for_rad_decay}{}\label{class_g4_particle_change_for_rad_decay}\index{G4ParticleChangeForRadDecay@{G4ParticleChangeForRadDecay}}
+
+
+Inheritance diagram for G4\+Particle\+Change\+For\+Rad\+Decay\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{class_g4_particle_change_for_rad_decay__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for G4\+Particle\+Change\+For\+Rad\+Decay\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{class_g4_particle_change_for_rad_decay__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_af1fa592367f406deea4af0eca14cf181}\label{class_g4_particle_change_for_rad_decay_af1fa592367f406deea4af0eca14cf181} 
+{\bfseries G4\+Particle\+Change\+For\+Rad\+Decay} (const \mbox{\hyperlink{class_g4_particle_change_for_rad_decay}{G4\+Particle\+Change\+For\+Rad\+Decay}} \&right)=delete
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_a89bcdca052ef65072e4d539dfcf69344}\label{class_g4_particle_change_for_rad_decay_a89bcdca052ef65072e4d539dfcf69344} 
+\mbox{\hyperlink{class_g4_particle_change_for_rad_decay}{G4\+Particle\+Change\+For\+Rad\+Decay}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_g4_particle_change_for_rad_decay}{G4\+Particle\+Change\+For\+Rad\+Decay}} \&right)=delete
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_a6f398d0108ead5041dd0bda7eb292578}\label{class_g4_particle_change_for_rad_decay_a6f398d0108ead5041dd0bda7eb292578} 
+G4\+Step \texorpdfstring{$\ast$}{*} {\bfseries Update\+Step\+For\+At\+Rest} (G4\+Step \texorpdfstring{$\ast$}{*}Step) final
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_af3d7694ad73e604832a18fac892750df}\label{class_g4_particle_change_for_rad_decay_af3d7694ad73e604832a18fac892750df} 
+G4\+Step \texorpdfstring{$\ast$}{*} {\bfseries Update\+Step\+For\+Post\+Step} (G4\+Step \texorpdfstring{$\ast$}{*}Step) final
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_afd845561574c9965091a81ebfbac181e}\label{class_g4_particle_change_for_rad_decay_afd845561574c9965091a81ebfbac181e} 
+void {\bfseries Initialize} (const G4\+Track \&) final
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_a3732a964abfe4764cb85d75bcf883ebe}\label{class_g4_particle_change_for_rad_decay_a3732a964abfe4764cb85d75bcf883ebe} 
+void {\bfseries Propose\+Global\+Time} (G4double t)
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_a77950ca48c0b2b8de471221cbe19a8e9}\label{class_g4_particle_change_for_rad_decay_a77950ca48c0b2b8de471221cbe19a8e9} 
+void {\bfseries Propose\+Local\+Time} (G4double t)
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_abff64f8e869e1de199f7c2114510370e}\label{class_g4_particle_change_for_rad_decay_abff64f8e869e1de199f7c2114510370e} 
+G4double {\bfseries Get\+Global\+Time} (G4double time\+Delay=0.\+0) const
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_a7174f50f1f405ab0d6a8628531ea222b}\label{class_g4_particle_change_for_rad_decay_a7174f50f1f405ab0d6a8628531ea222b} 
+G4double {\bfseries Get\+Local\+Time} (G4double time\+Delay=0.\+0) const
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_ac3bf6f32d617a4d42dd1589a65bb0a11}\label{class_g4_particle_change_for_rad_decay_ac3bf6f32d617a4d42dd1589a65bb0a11} 
+const G4\+Three\+Vector \texorpdfstring{$\ast$}{*} {\bfseries Get\+Polarization} () const
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_ab6b81db82792132ac399869316f8e91e}\label{class_g4_particle_change_for_rad_decay_ab6b81db82792132ac399869316f8e91e} 
+void {\bfseries Propose\+Polarization} (G4double Px, G4double Py, G4double Pz)
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_a5332d7b462e2bc8b46654bd5af7ccd8b}\label{class_g4_particle_change_for_rad_decay_a5332d7b462e2bc8b46654bd5af7ccd8b} 
+void {\bfseries Propose\+Polarization} (const G4\+Three\+Vector \&final\+Poralization)
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_ae68fd0f69a3e40dec106ca172576c868}\label{class_g4_particle_change_for_rad_decay_ae68fd0f69a3e40dec106ca172576c868} 
+void {\bfseries Add\+Secondary} (G4\+Track \texorpdfstring{$\ast$}{*}a\+Track)
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_aa7cc243da0afea2083408c15f58c6aea}\label{class_g4_particle_change_for_rad_decay_aa7cc243da0afea2083408c15f58c6aea} 
+void {\bfseries Dump\+Info} () const final
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_abfffd049d9dd4df8f058bb38dbe4a44b}\label{class_g4_particle_change_for_rad_decay_abfffd049d9dd4df8f058bb38dbe4a44b} 
+G4bool {\bfseries Check\+It} (const G4\+Track \&) final
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_a9ffaf661c8cb5af3faa18b35b37cc4f2}\label{class_g4_particle_change_for_rad_decay_a9ffaf661c8cb5af3faa18b35b37cc4f2} 
+G4bool {\bfseries Check\+Secondary} (G4\+Track \&)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_a43d6172c409a5446dd85df1f307e92b5}\label{class_g4_particle_change_for_rad_decay_a43d6172c409a5446dd85df1f307e92b5} 
+G4double {\bfseries the\+Global\+Time0} = 0.\+0
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_a0cadbc04d51a96b930c31466736bc6a3}\label{class_g4_particle_change_for_rad_decay_a0cadbc04d51a96b930c31466736bc6a3} 
+G4double {\bfseries the\+Local\+Time0} = 0.\+0
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_a4150e8507731926e66ab1922f431a57e}\label{class_g4_particle_change_for_rad_decay_a4150e8507731926e66ab1922f431a57e} 
+G4double {\bfseries the\+Time\+Change} = 0.\+0
+\item 
+\Hypertarget{class_g4_particle_change_for_rad_decay_a32b9810670e82d43693f2ba0a5c91513}\label{class_g4_particle_change_for_rad_decay_a32b9810670e82d43693f2ba0a5c91513} 
+G4\+Three\+Vector {\bfseries the\+Polarization\+Change}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+OMSim\+G4\+Particle\+Change\+For\+Rad\+Decay.\+hh\item 
+OMSim\+G4\+Particle\+Change\+For\+Rad\+Decay.\+cc\end{DoxyCompactItemize}

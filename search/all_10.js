@@ -40,14 +40,15 @@ var searchData=
   ['materials_20and_20user_20data_37',['Materials and User Data',['../md_extra__doc_20__common.html#autotoc_md2',1,'']]],
   ['mdom_38',['mDOM',['../classm_d_o_m.html',1,'']]],
   ['mdomflasher_39',['mDOMFlasher',['../classm_d_o_m_flasher.html',1,'']]],
-  ['mdomharness_40',['mdomharness',['../classm_d_o_m_harness.html',1,'mDOMHarness'],['../classm_d_o_m_harness.html#ad83b869a9aa373be038889f61608d3c6',1,'mDOMHarness::mDOMHarness()']]],
+  ['mdomharness_40',['mdomharness',['../classm_d_o_m_harness.html#ad83b869a9aa373be038889f61608d3c6',1,'mDOMHarness::mDOMHarness()'],['../classm_d_o_m_harness.html',1,'mDOMHarness']]],
   ['measurements_41',['Matching PMT to Measurements',['../md_extra__doc_22__technicalities.html#autotoc_md35',1,'']]],
   ['mesh_42',['Mesh',['../class_c_a_d_mesh_1_1_mesh.html',1,'CADMesh']]],
   ['miescattering_43',['mieScattering',['../namespace_ice_processor.html#a394c6aa008d203aaeda7c2f28bfa3361',1,'IceProcessor']]],
   ['minimal_20example_44',['Minimal example',['../class_parameter_table.html#ExampleUsageParameterTable',1,'']]],
   ['mode_45',['Multi-threading mode',['../md_extra__doc_21__multithreading.html',1,'']]],
-  ['modify_20and_20repeat_46',['4. Modify and repeat',['../md_extra__doc_21__multithreading.html#autotoc_md28',1,'']]],
-  ['momentumdirection_47',['momentumDirection',['../struct_photon_info.html#a7966e888affcb35d71e07c7cc78afc74',1,'PhotonInfo']]],
-  ['multi_20threading_20issues_48',['Troubleshooting Multi-threading Issues',['../md_extra__doc_21__multithreading.html#autotoc_md25',1,'']]],
-  ['multi_20threading_20mode_49',['Multi-threading mode',['../md_extra__doc_21__multithreading.html',1,'']]]
+  ['modifications_46',['Developer Notes: Geant4 Dependencies and Modifications',['../md_extra__doc_231__radioactive__decays.html#autotoc_md45',1,'']]],
+  ['modify_20and_20repeat_47',['4. Modify and repeat',['../md_extra__doc_21__multithreading.html#autotoc_md28',1,'']]],
+  ['momentumdirection_48',['momentumDirection',['../struct_photon_info.html#a7966e888affcb35d71e07c7cc78afc74',1,'PhotonInfo']]],
+  ['multi_20threading_20issues_49',['Troubleshooting Multi-threading Issues',['../md_extra__doc_21__multithreading.html#autotoc_md25',1,'']]],
+  ['multi_20threading_20mode_50',['Multi-threading mode',['../md_extra__doc_21__multithreading.html',1,'']]]
 ];

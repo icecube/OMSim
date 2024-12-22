@@ -73,19 +73,19 @@ var NAVTREE =
     ] ],
     [ "> Radioactive Decays Studies", "md_extra__doc_231__radioactive__decays.html", null ],
     [ "> Supernova Studies", "md_extra__doc_232___s_n.html", [
-      [ "Input Parameters", "md_extra__doc_232___s_n.html#autotoc_md46", [
-        [ "General Parameters", "md_extra__doc_232___s_n.html#autotoc_md47", null ],
-        [ "SN Framework Parameters", "md_extra__doc_232___s_n.html#autotoc_md48", null ],
-        [ "Fixed Energy Studies", "md_extra__doc_232___s_n.html#autotoc_md49", null ]
+      [ "Input Parameters", "md_extra__doc_232___s_n.html#autotoc_md47", [
+        [ "General Parameters", "md_extra__doc_232___s_n.html#autotoc_md48", null ],
+        [ "SN Framework Parameters", "md_extra__doc_232___s_n.html#autotoc_md49", null ],
+        [ "Fixed Energy Studies", "md_extra__doc_232___s_n.html#autotoc_md50", null ]
       ] ],
-      [ "Output Files", "md_extra__doc_232___s_n.html#autotoc_md50", [
-        [ "*_info.dat", "md_extra__doc_232___s_n.html#autotoc_md51", null ],
-        [ "*_data.dat", "md_extra__doc_232___s_n.html#autotoc_md52", null ]
+      [ "Output Files", "md_extra__doc_232___s_n.html#autotoc_md51", [
+        [ "*_info.dat", "md_extra__doc_232___s_n.html#autotoc_md52", null ],
+        [ "*_data.dat", "md_extra__doc_232___s_n.html#autotoc_md53", null ]
       ] ],
-      [ "Weights", "md_extra__doc_232___s_n.html#autotoc_md53", [
-        [ "Interaction Probability Weight:", "md_extra__doc_232___s_n.html#autotoc_md54", null ],
-        [ "Flux Weight:", "md_extra__doc_232___s_n.html#autotoc_md55", null ],
-        [ "Effective Weight:", "md_extra__doc_232___s_n.html#autotoc_md56", null ]
+      [ "Weights", "md_extra__doc_232___s_n.html#autotoc_md54", [
+        [ "Interaction Probability Weight:", "md_extra__doc_232___s_n.html#autotoc_md55", null ],
+        [ "Flux Weight:", "md_extra__doc_232___s_n.html#autotoc_md56", null ],
+        [ "Effective Weight:", "md_extra__doc_232___s_n.html#autotoc_md57", null ]
       ] ]
     ] ],
     [ "Todo List", "todo.html", null ],
@@ -113,7 +113,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "5__group__definitions_8h_source.html",
-"md_extra__doc_22__technicalities.html#autotoc_md33"
+"md_extra__doc_22__technicalities.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

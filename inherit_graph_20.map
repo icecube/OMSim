@@ -1,7 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,188,56"/>
-<area shape="rect" id="Node000001" href="$class_g4_radioactive_decay.html" title=" " alt="" coords="239,5,397,31"/>
-<area shape="poly" id="edge13_Node000000_Node000001" title=" " alt="" coords="201,29,238,24,239,30,202,34"/>
-<area shape="rect" id="Node000002" href="$class_o_m_sim_g4_scintillation.html" title=" " alt="" coords="236,55,400,80"/>
-<area shape="poly" id="edge14_Node000000_Node000002" title=" " alt="" coords="202,52,236,56,235,61,201,57"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,152,31"/>
+<area shape="rect" id="Node000001" href="$class_g4_particle_change_for_rad_decay.html" title=" " alt="" coords="200,5,423,31"/>
+<area shape="poly" id="edge13_Node000000_Node000001" title=" " alt="" coords="166,15,200,15,200,21,166,21"/>
 </map>

@@ -27,5 +27,34 @@ Currently, there are two analysis modes\+:
 
 \begin{DoxyEnumerate}
 \item With the {\ttfamily -\/-\/multiplicity\+\_\+study} argument\+: After each t\+\_\+w time window, the multiplicity is calculated and saved to a file. Raw data isn\textquotesingle{}t stored, as multiplicity studies generally involve extended simulation durations, leading to large volumes of photon data.
-\item Without the {\ttfamily -\/-\/multiplicity\+\_\+study} argument\+: Data pertaining to photons and decayed isotopes is saved to files. If you are using multithreaded mode, then each thread will produce its own file. 
+\item Without the {\ttfamily -\/-\/multiplicity\+\_\+study} argument\+: Data pertaining to photons and decayed isotopes is saved to files. If you are using multithreaded mode, then each thread will produce its own file.
+\end{DoxyEnumerate}\hypertarget{md_extra__doc_231__radioactive__decays_autotoc_md45}{}\doxysubsection{\texorpdfstring{Developer Notes\+: Geant4 Dependencies and Modifications}{Developer Notes: Geant4 Dependencies and Modifications}}\label{md_extra__doc_231__radioactive__decays_autotoc_md45}
+This simulation module requires modifications to several Geant4 classes to enable custom handling of decay times. Unfortunately, the Geant4 physics library is not designed with extensibility in mind, making inheritance or selective function overrides impractical. As a result, we had to copy and modify entire class implementations. This approach makes the module highly dependent on the specific Geant4 version being used.
+
+With each Geant4 update, class structures and function implementations may change, requiring updates to this module—an admittedly tedious but necessary process. For Geant4 version 4.\+13, the following modifications were made\+:
+
+
+\begin{DoxyEnumerate}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{class_g4_v_radioactive_decay}{G4\+VRadioactive\+Decay}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} ~\newline
+
+\begin{DoxyItemize}
+\item Modified the {\ttfamily Decay\+Analog} method to customize the handling of decay times.
+\end{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{class_g4_radioactive_decay}{G4\+Radioactive\+Decay}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} ~\newline
+
+\begin{DoxyItemize}
+\item Adjusted the {\ttfamily Decay\+It} method to terminate decay processes when a specified termination isotope is reached, allowing for the intentional disruption of secular equilibrium.
+\end{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{class_g4_particle_change_for_rad_decay}{G4\+Particle\+Change\+For\+Rad\+Decay}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} ~\newline
+
+\begin{DoxyItemize}
+\item Overrode the {\ttfamily Check\+Secondary} method to disable time consistency checks for secondary particles. By default, Geant4 adjusts the secondary particle time if it is earlier than the parent particle\textquotesingle{}s time, which conflicts with our approach. ~\newline
+
+\item Additionally, the {\ttfamily Add\+Secondary} method from the base class was copied, as otherwise the wrong {\ttfamily Check\+Secondary} would be called.
+\end{DoxyItemize}
 \end{DoxyEnumerate}
+
+These changes highlight the module\textquotesingle{}s dependance on specific Geant4 implementations. For example, the time consistency checks in {\ttfamily \doxylink{class_g4_particle_change_for_rad_decay}{G4\+Particle\+Change\+For\+Rad\+Decay}} were introduced in Geant4 version 4.\+12, requiring additional adjustments. ~\newline
+
+
+{\bfseries{Important\+:}} Always review and update these modifications whenever Geant4 is upgraded to ensure compatibility and correct functionality. 

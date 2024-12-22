@@ -123,10 +123,7 @@ $(document).ready(function(){initNavTree('class_g4_radioactive_decay.html',''); 
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_g4_radioactive_decay-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">G4RadioactiveDecay Class Reference</div></div>
 </div><!--header-->
@@ -134,191 +131,311 @@ $(document).ready(function(){initNavTree('class_g4_radioactive_decay.html',''); 
 <div class="dynheader">
 Inheritance diagram for G4RadioactiveDecay:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_g4_radioactive_decay__inherit__graph.svg" width="194" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_g4_radioactive_decay__inherit__graph.svg" width="194" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for G4RadioactiveDecay:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_g4_radioactive_decay__coll__graph.svg" width="194" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_g4_radioactive_decay__coll__graph.svg" width="452" height="274"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afe96a7de5161c20b55f8296e3db7f930" id="r_afe96a7de5161c20b55f8296e3db7f930"><td class="memItemLeft" align="right" valign="top"><a id="afe96a7de5161c20b55f8296e3db7f930" name="afe96a7de5161c20b55f8296e3db7f930"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>G4RadioactiveDecay</b> (const G4String &amp;processName=&quot;RadioactiveDecay&quot;, const G4double timeThreshold=-1.0)</td></tr>
-<tr class="separator:afe96a7de5161c20b55f8296e3db7f930"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22c5f73943580cefeca9a64ce08d52f9" id="r_a22c5f73943580cefeca9a64ce08d52f9"><td class="memItemLeft" align="right" valign="top"><a id="a22c5f73943580cefeca9a64ce08d52f9" name="a22c5f73943580cefeca9a64ce08d52f9"></a>
-G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsApplicable</b> (const G4ParticleDefinition &amp;) override</td></tr>
-<tr class="separator:a22c5f73943580cefeca9a64ce08d52f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3034ef068df8b570f5a9cb2aaf1d7e2f" id="r_a3034ef068df8b570f5a9cb2aaf1d7e2f"><td class="memItemLeft" align="right" valign="top"><a id="a3034ef068df8b570f5a9cb2aaf1d7e2f" name="a3034ef068df8b570f5a9cb2aaf1d7e2f"></a>
-G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>AtRestDoIt</b> (const G4Track &amp;theTrack, const G4Step &amp;theStep) override</td></tr>
-<tr class="separator:a3034ef068df8b570f5a9cb2aaf1d7e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a552ffe8df78412a563b9f778e1521464" id="r_a552ffe8df78412a563b9f778e1521464"><td class="memItemLeft" align="right" valign="top"><a id="a552ffe8df78412a563b9f778e1521464" name="a552ffe8df78412a563b9f778e1521464"></a>
-G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>PostStepDoIt</b> (const G4Track &amp;theTrack, const G4Step &amp;theStep) override</td></tr>
-<tr class="separator:a552ffe8df78412a563b9f778e1521464"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf41ce4818e4904299e97a3ad46e71b3" id="r_acf41ce4818e4904299e97a3ad46e71b3"><td class="memItemLeft" align="right" valign="top"><a id="acf41ce4818e4904299e97a3ad46e71b3" name="acf41ce4818e4904299e97a3ad46e71b3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>BuildPhysicsTable</b> (const G4ParticleDefinition &amp;) override</td></tr>
-<tr class="separator:acf41ce4818e4904299e97a3ad46e71b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab746b086fc06ee85c4d45e9e1ade93cd" id="r_ab746b086fc06ee85c4d45e9e1ade93cd"><td class="memItemLeft" align="right" valign="top"><a id="ab746b086fc06ee85c4d45e9e1ade93cd" name="ab746b086fc06ee85c4d45e9e1ade93cd"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>G4RadioactiveDecay</b> (const G4String &amp;processName=&quot;RadioactiveDecay&quot;, const G4double timeThresholdForRadioactiveDecays=-1.0)</td></tr>
+<tr class="separator:ab746b086fc06ee85c4d45e9e1ade93cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a027302935bb736fb1e706edbf83d4c9e" id="r_a027302935bb736fb1e706edbf83d4c9e"><td class="memItemLeft" align="right" valign="top">G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g4_radioactive_decay.html#a027302935bb736fb1e706edbf83d4c9e">DecayIt</a> (const G4Track &amp;theTrack, const G4Step &amp;theStep) override</td></tr>
+<tr class="separator:a027302935bb736fb1e706edbf83d4c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a467cc2af8b7fb9ce098df6e56146fdd1" id="r_a467cc2af8b7fb9ce098df6e56146fdd1"><td class="memItemLeft" align="right" valign="top"><a id="a467cc2af8b7fb9ce098df6e56146fdd1" name="a467cc2af8b7fb9ce098df6e56146fdd1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ProcessDescription</b> (std::ostream &amp;outFile) const override</td></tr>
 <tr class="separator:a467cc2af8b7fb9ce098df6e56146fdd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99665f00c3be293c00a1e94108faf7fb" id="r_a99665f00c3be293c00a1e94108faf7fb"><td class="memItemLeft" align="right" valign="top"><a id="a99665f00c3be293c00a1e94108faf7fb" name="a99665f00c3be293c00a1e94108faf7fb"></a>
-virtual G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>DecayIt</b> (const G4Track &amp;theTrack, const G4Step &amp;theStep)</td></tr>
-<tr class="separator:a99665f00c3be293c00a1e94108faf7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7441d66e1db789dc443ec966db47344d" id="r_a7441d66e1db789dc443ec966db47344d"><td class="memItemLeft" align="right" valign="top"><a id="a7441d66e1db789dc443ec966db47344d" name="a7441d66e1db789dc443ec966db47344d"></a>
-G4DecayTable *&#160;</td><td class="memItemRight" valign="bottom"><b>GetDecayTable</b> (const G4ParticleDefinition *)</td></tr>
-<tr class="separator:a7441d66e1db789dc443ec966db47344d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f9b4f68bd0edeecbab09ecd6e21eaa8" id="r_a0f9b4f68bd0edeecbab09ecd6e21eaa8"><td class="memItemLeft" align="right" valign="top"><a id="a0f9b4f68bd0edeecbab09ecd6e21eaa8" name="a0f9b4f68bd0edeecbab09ecd6e21eaa8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SelectAVolume</b> (const G4String &amp;aVolume)</td></tr>
-<tr class="separator:a0f9b4f68bd0edeecbab09ecd6e21eaa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec97e42ddda491f72631794fdcdf06ea" id="r_aec97e42ddda491f72631794fdcdf06ea"><td class="memItemLeft" align="right" valign="top"><a id="aec97e42ddda491f72631794fdcdf06ea" name="aec97e42ddda491f72631794fdcdf06ea"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DeselectAVolume</b> (const G4String &amp;aVolume)</td></tr>
-<tr class="separator:aec97e42ddda491f72631794fdcdf06ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ac81bcbd648e6d821bc2663ec508bcd" id="r_a5ac81bcbd648e6d821bc2663ec508bcd"><td class="memItemLeft" align="right" valign="top"><a id="a5ac81bcbd648e6d821bc2663ec508bcd" name="a5ac81bcbd648e6d821bc2663ec508bcd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SelectAllVolumes</b> ()</td></tr>
-<tr class="separator:a5ac81bcbd648e6d821bc2663ec508bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae60ab51a6cd8018cbfd1c4ab7a05f7e7" id="r_ae60ab51a6cd8018cbfd1c4ab7a05f7e7"><td class="memItemLeft" align="right" valign="top"><a id="ae60ab51a6cd8018cbfd1c4ab7a05f7e7" name="ae60ab51a6cd8018cbfd1c4ab7a05f7e7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DeselectAllVolumes</b> ()</td></tr>
-<tr class="separator:ae60ab51a6cd8018cbfd1c4ab7a05f7e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab450aa133b96ead6300d65f39564d090" id="r_ab450aa133b96ead6300d65f39564d090"><td class="memItemLeft" align="right" valign="top"><a id="ab450aa133b96ead6300d65f39564d090" name="ab450aa133b96ead6300d65f39564d090"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetARM</b> (G4bool arm)</td></tr>
-<tr class="separator:ab450aa133b96ead6300d65f39564d090"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00a8c16a7c534f0f60ea08e495d17ebf" id="r_a00a8c16a7c534f0f60ea08e495d17ebf"><td class="memItemLeft" align="right" valign="top"><a id="a00a8c16a7c534f0f60ea08e495d17ebf" name="a00a8c16a7c534f0f60ea08e495d17ebf"></a>
-G4DecayTable *&#160;</td><td class="memItemRight" valign="bottom"><b>LoadDecayTable</b> (const G4Ions *)</td></tr>
-<tr class="separator:a00a8c16a7c534f0f60ea08e495d17ebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a33ce684d41876fe93a74f326551e8c" id="r_a0a33ce684d41876fe93a74f326551e8c"><td class="memItemLeft" align="right" valign="top"><a id="a0a33ce684d41876fe93a74f326551e8c" name="a0a33ce684d41876fe93a74f326551e8c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddUserDecayDataFile</b> (G4int Z, G4int A, const G4String &amp;filename)</td></tr>
-<tr class="separator:a0a33ce684d41876fe93a74f326551e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfc1885bba313fea9c5974dc280c0115" id="r_adfc1885bba313fea9c5974dc280c0115"><td class="memItemLeft" align="right" valign="top"><a id="adfc1885bba313fea9c5974dc280c0115" name="adfc1885bba313fea9c5974dc280c0115"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetNucleusLimits</b> (G4NucleusLimits theNucleusLimits1)</td></tr>
-<tr class="separator:adfc1885bba313fea9c5974dc280c0115"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67a7261676282d1b448cd8e36f090f74" id="r_a67a7261676282d1b448cd8e36f090f74"><td class="memItemLeft" align="right" valign="top"><a id="a67a7261676282d1b448cd8e36f090f74" name="a67a7261676282d1b448cd8e36f090f74"></a>
-G4NucleusLimits&#160;</td><td class="memItemRight" valign="bottom"><b>GetNucleusLimits</b> () const</td></tr>
-<tr class="separator:a67a7261676282d1b448cd8e36f090f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa77b46adaf1fd2a863434d4ab10ad091" id="r_aa77b46adaf1fd2a863434d4ab10ad091"><td class="memItemLeft" align="right" valign="top"><a id="aa77b46adaf1fd2a863434d4ab10ad091" name="aa77b46adaf1fd2a863434d4ab10ad091"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDecayDirection</b> (const G4ThreeVector &amp;theDir)</td></tr>
-<tr class="separator:aa77b46adaf1fd2a863434d4ab10ad091"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a783e944dd1c8a6d2304dee17cd78f8a3" id="r_a783e944dd1c8a6d2304dee17cd78f8a3"><td class="memItemLeft" align="right" valign="top"><a id="a783e944dd1c8a6d2304dee17cd78f8a3" name="a783e944dd1c8a6d2304dee17cd78f8a3"></a>
-const G4ThreeVector &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetDecayDirection</b> () const</td></tr>
-<tr class="separator:a783e944dd1c8a6d2304dee17cd78f8a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b7b2d5189d8312602692f4f66b6be91" id="r_a9b7b2d5189d8312602692f4f66b6be91"><td class="memItemLeft" align="right" valign="top"><a id="a9b7b2d5189d8312602692f4f66b6be91" name="a9b7b2d5189d8312602692f4f66b6be91"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDecayHalfAngle</b> (G4double halfAngle=0.*CLHEP::deg)</td></tr>
-<tr class="separator:a9b7b2d5189d8312602692f4f66b6be91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f101a0632308483d80dbe133de916b5" id="r_a3f101a0632308483d80dbe133de916b5"><td class="memItemLeft" align="right" valign="top"><a id="a3f101a0632308483d80dbe133de916b5" name="a3f101a0632308483d80dbe133de916b5"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetDecayHalfAngle</b> () const</td></tr>
-<tr class="separator:a3f101a0632308483d80dbe133de916b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0b9afb12838abf86d8ca83ced1259f9" id="r_ac0b9afb12838abf86d8ca83ced1259f9"><td class="memItemLeft" align="right" valign="top"><a id="ac0b9afb12838abf86d8ca83ced1259f9" name="ac0b9afb12838abf86d8ca83ced1259f9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDecayCollimation</b> (const G4ThreeVector &amp;theDir, G4double halfAngle=0.*CLHEP::deg)</td></tr>
-<tr class="separator:ac0b9afb12838abf86d8ca83ced1259f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac628f95a5eea7a8c446b5a69e336514f" id="r_ac628f95a5eea7a8c446b5a69e336514f"><td class="memItemLeft" align="right" valign="top"><a id="ac628f95a5eea7a8c446b5a69e336514f" name="ac628f95a5eea7a8c446b5a69e336514f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetThresholdForVeryLongDecayTime</b> (const G4double inputThreshold)</td></tr>
-<tr class="separator:ac628f95a5eea7a8c446b5a69e336514f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affbc5fe75a2f1d4053c7c6d11925a419" id="r_affbc5fe75a2f1d4053c7c6d11925a419"><td class="memItemLeft" align="right" valign="top"><a id="affbc5fe75a2f1d4053c7c6d11925a419" name="affbc5fe75a2f1d4053c7c6d11925a419"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetThresholdForVeryLongDecayTime</b> () const</td></tr>
-<tr class="separator:affbc5fe75a2f1d4053c7c6d11925a419"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ec560e7f26a5e7f951b141ef2f0b0fd" id="r_a1ec560e7f26a5e7f951b141ef2f0b0fd"><td class="memItemLeft" align="right" valign="top"><a id="a1ec560e7f26a5e7f951b141ef2f0b0fd" name="a1ec560e7f26a5e7f951b141ef2f0b0fd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>StreamInfo</b> (std::ostream &amp;os, const G4String &amp;endline)</td></tr>
-<tr class="separator:a1ec560e7f26a5e7f951b141ef2f0b0fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a438e9da2e9251ea57bd15f713299f5c5" id="r_a438e9da2e9251ea57bd15f713299f5c5"><td class="memItemLeft" align="right" valign="top"><a id="a438e9da2e9251ea57bd15f713299f5c5" name="a438e9da2e9251ea57bd15f713299f5c5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDecayBias</b> (const G4String &amp;filename)</td></tr>
+<tr class="separator:a438e9da2e9251ea57bd15f713299f5c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe9a23fc4435908ba1faa551f138bbe6" id="r_abe9a23fc4435908ba1faa551f138bbe6"><td class="memItemLeft" align="right" valign="top"><a id="abe9a23fc4435908ba1faa551f138bbe6" name="abe9a23fc4435908ba1faa551f138bbe6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetHLThreshold</b> (G4double hl)</td></tr>
+<tr class="separator:abe9a23fc4435908ba1faa551f138bbe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad48d3142966a3f4b49b5868a52c9841c" id="r_ad48d3142966a3f4b49b5868a52c9841c"><td class="memItemLeft" align="right" valign="top"><a id="ad48d3142966a3f4b49b5868a52c9841c" name="ad48d3142966a3f4b49b5868a52c9841c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetSourceTimeProfile</b> (const G4String &amp;filename)</td></tr>
+<tr class="separator:ad48d3142966a3f4b49b5868a52c9841c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada03030f5958c59545a666c174cbb45d" id="r_ada03030f5958c59545a666c174cbb45d"><td class="memItemLeft" align="right" valign="top"><a id="ada03030f5958c59545a666c174cbb45d" name="ada03030f5958c59545a666c174cbb45d"></a>
+G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsRateTableReady</b> (const G4ParticleDefinition &amp;)</td></tr>
+<tr class="separator:ada03030f5958c59545a666c174cbb45d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2df89151fb5f31f8e617f8bce1bef77" id="r_ab2df89151fb5f31f8e617f8bce1bef77"><td class="memItemLeft" align="right" valign="top"><a id="ab2df89151fb5f31f8e617f8bce1bef77" name="ab2df89151fb5f31f8e617f8bce1bef77"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>CalculateChainsFromParent</b> (const G4ParticleDefinition &amp;)</td></tr>
+<tr class="separator:ab2df89151fb5f31f8e617f8bce1bef77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe34717a0dbf78eb2d436bbe73911b36" id="r_afe34717a0dbf78eb2d436bbe73911b36"><td class="memItemLeft" align="right" valign="top"><a id="afe34717a0dbf78eb2d436bbe73911b36" name="afe34717a0dbf78eb2d436bbe73911b36"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>GetChainsFromParent</b> (const G4ParticleDefinition &amp;)</td></tr>
+<tr class="separator:afe34717a0dbf78eb2d436bbe73911b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb7eab1aca72f1fbe0166a5a90c34602" id="r_afb7eab1aca72f1fbe0166a5a90c34602"><td class="memItemLeft" align="right" valign="top"><a id="afb7eab1aca72f1fbe0166a5a90c34602" name="afb7eab1aca72f1fbe0166a5a90c34602"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDecayRate</b> (G4int, G4int, G4double, G4int, std::vector&lt; G4double &gt; &amp;, std::vector&lt; G4double &gt; &amp;)</td></tr>
+<tr class="separator:afb7eab1aca72f1fbe0166a5a90c34602"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a864d1724ebdb0064c6513e4a29f9310e" id="r_a864d1724ebdb0064c6513e4a29f9310e"><td class="memItemLeft" align="right" valign="top"><a id="a864d1724ebdb0064c6513e4a29f9310e" name="a864d1724ebdb0064c6513e4a29f9310e"></a>
+std::vector&lt; G4RadioactivityTable * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetTheRadioactivityTables</b> ()</td></tr>
+<tr class="separator:a864d1724ebdb0064c6513e4a29f9310e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ba4b7a77a2d94c46d84c9068450435e" id="r_a9ba4b7a77a2d94c46d84c9068450435e"><td class="memItemLeft" align="right" valign="top"><a id="a9ba4b7a77a2d94c46d84c9068450435e" name="a9ba4b7a77a2d94c46d84c9068450435e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetAnalogueMonteCarlo</b> (G4bool r)</td></tr>
+<tr class="separator:a9ba4b7a77a2d94c46d84c9068450435e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bf017944cd91aac2b009a608dae470f" id="r_a6bf017944cd91aac2b009a608dae470f"><td class="memItemLeft" align="right" valign="top"><a id="a6bf017944cd91aac2b009a608dae470f" name="a6bf017944cd91aac2b009a608dae470f"></a>
+G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsAnalogueMonteCarlo</b> ()</td></tr>
+<tr class="separator:a6bf017944cd91aac2b009a608dae470f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5633af097d646804488127d739aeef18" id="r_a5633af097d646804488127d739aeef18"><td class="memItemLeft" align="right" valign="top"><a id="a5633af097d646804488127d739aeef18" name="a5633af097d646804488127d739aeef18"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetBRBias</b> (G4bool r)</td></tr>
+<tr class="separator:a5633af097d646804488127d739aeef18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f48db16268e728e8ff2a7fbc16f77c7" id="r_a0f48db16268e728e8ff2a7fbc16f77c7"><td class="memItemLeft" align="right" valign="top"><a id="a0f48db16268e728e8ff2a7fbc16f77c7" name="a0f48db16268e728e8ff2a7fbc16f77c7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetSplitNuclei</b> (G4int r)</td></tr>
+<tr class="separator:a0f48db16268e728e8ff2a7fbc16f77c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a468633c21928d54b1df07af5c65e0cd2" id="r_a468633c21928d54b1df07af5c65e0cd2"><td class="memItemLeft" align="right" valign="top"><a id="a468633c21928d54b1df07af5c65e0cd2" name="a468633c21928d54b1df07af5c65e0cd2"></a>
+G4int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSplitNuclei</b> ()</td></tr>
+<tr class="separator:a468633c21928d54b1df07af5c65e0cd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad51f35cd684d4dc41d2c8e7085a0a753" id="r_ad51f35cd684d4dc41d2c8e7085a0a753"><td class="memItemLeft" align="right" valign="top"><a id="ad51f35cd684d4dc41d2c8e7085a0a753" name="ad51f35cd684d4dc41d2c8e7085a0a753"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>G4RadioactiveDecay</b> (const <a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a> &amp;right)=delete</td></tr>
 <tr class="separator:ad51f35cd684d4dc41d2c8e7085a0a753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a110aff889618190396b8dac9518286bc" id="r_a110aff889618190396b8dac9518286bc"><td class="memItemLeft" align="right" valign="top"><a id="a110aff889618190396b8dac9518286bc" name="a110aff889618190396b8dac9518286bc"></a>
 <a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a> &amp;right)=delete</td></tr>
 <tr class="separator:a110aff889618190396b8dac9518286bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_g4_v_radioactive_decay"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_g4_v_radioactive_decay')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_g4_v_radioactive_decay.html">G4VRadioactiveDecay</a></td></tr>
+<tr class="memitem:a32523aa7086ff480a6b65c9589759b68 inherit pub_methods_class_g4_v_radioactive_decay" id="r_a32523aa7086ff480a6b65c9589759b68"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>G4VRadioactiveDecay</b> (const G4String &amp;processName=&quot;RadioactiveDecay&quot;, const G4double timeThreshold=-1.0)</td></tr>
+<tr class="separator:a32523aa7086ff480a6b65c9589759b68 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab07a3bf10dad67b585583d4f64602219 inherit pub_methods_class_g4_v_radioactive_decay" id="r_ab07a3bf10dad67b585583d4f64602219"><td class="memItemLeft" align="right" valign="top">
+G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsApplicable</b> (const G4ParticleDefinition &amp;) override</td></tr>
+<tr class="separator:ab07a3bf10dad67b585583d4f64602219 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7654d1e92efc56078488bc713d53afce inherit pub_methods_class_g4_v_radioactive_decay" id="r_a7654d1e92efc56078488bc713d53afce"><td class="memItemLeft" align="right" valign="top">
+G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>AtRestDoIt</b> (const G4Track &amp;theTrack, const G4Step &amp;theStep) override</td></tr>
+<tr class="separator:a7654d1e92efc56078488bc713d53afce inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa188e0e0e83df3fa684cf81b1eadd0f inherit pub_methods_class_g4_v_radioactive_decay" id="r_afa188e0e0e83df3fa684cf81b1eadd0f"><td class="memItemLeft" align="right" valign="top">
+G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>PostStepDoIt</b> (const G4Track &amp;theTrack, const G4Step &amp;theStep) override</td></tr>
+<tr class="separator:afa188e0e0e83df3fa684cf81b1eadd0f inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dfd9f87f51f930f69cf925023f04533 inherit pub_methods_class_g4_v_radioactive_decay" id="r_a5dfd9f87f51f930f69cf925023f04533"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BuildPhysicsTable</b> (const G4ParticleDefinition &amp;) override</td></tr>
+<tr class="separator:a5dfd9f87f51f930f69cf925023f04533 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48e8a049f5638608d2a30e788f025eb6 inherit pub_methods_class_g4_v_radioactive_decay" id="r_a48e8a049f5638608d2a30e788f025eb6"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ProcessDescription</b> (std::ostream &amp;outFile) const override</td></tr>
+<tr class="separator:a48e8a049f5638608d2a30e788f025eb6 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af954c2e4db371235aadf50a5ca51a530 inherit pub_methods_class_g4_v_radioactive_decay" id="r_af954c2e4db371235aadf50a5ca51a530"><td class="memItemLeft" align="right" valign="top">
+G4DecayTable *&#160;</td><td class="memItemRight" valign="bottom"><b>GetDecayTable</b> (const G4ParticleDefinition *)</td></tr>
+<tr class="separator:af954c2e4db371235aadf50a5ca51a530 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80ea51436b9362df1c429f39acaf3f8a inherit pub_methods_class_g4_v_radioactive_decay" id="r_a80ea51436b9362df1c429f39acaf3f8a"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SelectAVolume</b> (const G4String &amp;aVolume)</td></tr>
+<tr class="separator:a80ea51436b9362df1c429f39acaf3f8a inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9ac11397de3dbca3bb33cffd25b9ca4 inherit pub_methods_class_g4_v_radioactive_decay" id="r_ae9ac11397de3dbca3bb33cffd25b9ca4"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>DeselectAVolume</b> (const G4String &amp;aVolume)</td></tr>
+<tr class="separator:ae9ac11397de3dbca3bb33cffd25b9ca4 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a013226ad3b668ff610a6f810e8e146a5 inherit pub_methods_class_g4_v_radioactive_decay" id="r_a013226ad3b668ff610a6f810e8e146a5"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SelectAllVolumes</b> ()</td></tr>
+<tr class="separator:a013226ad3b668ff610a6f810e8e146a5 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86cfd7a3d18140fbf9383838347bb4a inherit pub_methods_class_g4_v_radioactive_decay" id="r_af86cfd7a3d18140fbf9383838347bb4a"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>DeselectAllVolumes</b> ()</td></tr>
+<tr class="separator:af86cfd7a3d18140fbf9383838347bb4a inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a379d2c4294dc7932547fd6a858e3de inherit pub_methods_class_g4_v_radioactive_decay" id="r_a6a379d2c4294dc7932547fd6a858e3de"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetARM</b> (G4bool arm)</td></tr>
+<tr class="separator:a6a379d2c4294dc7932547fd6a858e3de inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f78d094d6f4127aaf66e9c508cc6081 inherit pub_methods_class_g4_v_radioactive_decay" id="r_a9f78d094d6f4127aaf66e9c508cc6081"><td class="memItemLeft" align="right" valign="top">
+G4DecayTable *&#160;</td><td class="memItemRight" valign="bottom"><b>LoadDecayTable</b> (const G4Ions *)</td></tr>
+<tr class="separator:a9f78d094d6f4127aaf66e9c508cc6081 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eee9f3bf1484e83b267f52c6b103888 inherit pub_methods_class_g4_v_radioactive_decay" id="r_a3eee9f3bf1484e83b267f52c6b103888"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddUserDecayDataFile</b> (G4int Z, G4int A, const G4String &amp;filename)</td></tr>
+<tr class="separator:a3eee9f3bf1484e83b267f52c6b103888 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54f73c73fc66c6d5568331689856fde6 inherit pub_methods_class_g4_v_radioactive_decay" id="r_a54f73c73fc66c6d5568331689856fde6"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetNucleusLimits</b> (G4NucleusLimits theNucleusLimits1)</td></tr>
+<tr class="separator:a54f73c73fc66c6d5568331689856fde6 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad3458c632a89ae76b5db511e95fef8e inherit pub_methods_class_g4_v_radioactive_decay" id="r_aad3458c632a89ae76b5db511e95fef8e"><td class="memItemLeft" align="right" valign="top">
+G4NucleusLimits&#160;</td><td class="memItemRight" valign="bottom"><b>GetNucleusLimits</b> () const</td></tr>
+<tr class="separator:aad3458c632a89ae76b5db511e95fef8e inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab12ccd49d1827ddfb575a08f4861b255 inherit pub_methods_class_g4_v_radioactive_decay" id="r_ab12ccd49d1827ddfb575a08f4861b255"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDecayDirection</b> (const G4ThreeVector &amp;theDir)</td></tr>
+<tr class="separator:ab12ccd49d1827ddfb575a08f4861b255 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a415e6c9525c4827e0b9e22b895ec35d9 inherit pub_methods_class_g4_v_radioactive_decay" id="r_a415e6c9525c4827e0b9e22b895ec35d9"><td class="memItemLeft" align="right" valign="top">
+const G4ThreeVector &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetDecayDirection</b> () const</td></tr>
+<tr class="separator:a415e6c9525c4827e0b9e22b895ec35d9 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76853d1873fde0667a9a323688453080 inherit pub_methods_class_g4_v_radioactive_decay" id="r_a76853d1873fde0667a9a323688453080"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDecayHalfAngle</b> (G4double halfAngle=0.*CLHEP::deg)</td></tr>
+<tr class="separator:a76853d1873fde0667a9a323688453080 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b9425d02a5834b1f0e63b7466bbf475 inherit pub_methods_class_g4_v_radioactive_decay" id="r_a9b9425d02a5834b1f0e63b7466bbf475"><td class="memItemLeft" align="right" valign="top">
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetDecayHalfAngle</b> () const</td></tr>
+<tr class="separator:a9b9425d02a5834b1f0e63b7466bbf475 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed22d1d1d430be27f9bf00db53526d34 inherit pub_methods_class_g4_v_radioactive_decay" id="r_aed22d1d1d430be27f9bf00db53526d34"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDecayCollimation</b> (const G4ThreeVector &amp;theDir, G4double halfAngle=0.*CLHEP::deg)</td></tr>
+<tr class="separator:aed22d1d1d430be27f9bf00db53526d34 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a034ed6eb25abd996696b63dd96b8391b inherit pub_methods_class_g4_v_radioactive_decay" id="r_a034ed6eb25abd996696b63dd96b8391b"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetThresholdForVeryLongDecayTime</b> (const G4double inputThreshold)</td></tr>
+<tr class="separator:a034ed6eb25abd996696b63dd96b8391b inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14690146e1f76b3fc9aa9b9478e763ec inherit pub_methods_class_g4_v_radioactive_decay" id="r_a14690146e1f76b3fc9aa9b9478e763ec"><td class="memItemLeft" align="right" valign="top">
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetThresholdForVeryLongDecayTime</b> () const</td></tr>
+<tr class="separator:a14690146e1f76b3fc9aa9b9478e763ec inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a998ad30dcf2d595bb3240622b29f917b inherit pub_methods_class_g4_v_radioactive_decay" id="r_a998ad30dcf2d595bb3240622b29f917b"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>StreamInfo</b> (std::ostream &amp;os, const G4String &amp;endline)</td></tr>
+<tr class="separator:a998ad30dcf2d595bb3240622b29f917b inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae568ccff9049368d13f4b03b74578643 inherit pub_methods_class_g4_v_radioactive_decay" id="r_ae568ccff9049368d13f4b03b74578643"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>G4VRadioactiveDecay</b> (const <a class="el" href="class_g4_v_radioactive_decay.html">G4VRadioactiveDecay</a> &amp;right)=delete</td></tr>
+<tr class="separator:ae568ccff9049368d13f4b03b74578643 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4106bb3c62b98239a9bf450bc770b007 inherit pub_methods_class_g4_v_radioactive_decay" id="r_a4106bb3c62b98239a9bf450bc770b007"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_g4_v_radioactive_decay.html">G4VRadioactiveDecay</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_g4_v_radioactive_decay.html">G4VRadioactiveDecay</a> &amp;right)=delete</td></tr>
+<tr class="separator:a4106bb3c62b98239a9bf450bc770b007 inherit pub_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a1b4603308481a14604ee75cb96dfe5e5" id="r_a1b4603308481a14604ee75cb96dfe5e5"><td class="memItemLeft" align="right" valign="top"><a id="a1b4603308481a14604ee75cb96dfe5e5" name="a1b4603308481a14604ee75cb96dfe5e5"></a>
-G4VParticleChange *&#160;</td><td class="memItemRight" valign="bottom"><b>TerminateDecay</b> ()</td></tr>
-<tr class="separator:a1b4603308481a14604ee75cb96dfe5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a089028f5661dacf49e154f2b448b06c4" id="r_a089028f5661dacf49e154f2b448b06c4"><td class="memItemLeft" align="right" valign="top"><a id="a089028f5661dacf49e154f2b448b06c4" name="a089028f5661dacf49e154f2b448b06c4"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMeanFreePath</b> (const G4Track &amp;theTrack, G4double previousStepSize, G4ForceCondition *condition) override</td></tr>
-<tr class="separator:a089028f5661dacf49e154f2b448b06c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae701b5a12dc26b3d8840a587a7f6cca9" id="r_ae701b5a12dc26b3d8840a587a7f6cca9"><td class="memItemLeft" align="right" valign="top"><a id="ae701b5a12dc26b3d8840a587a7f6cca9" name="ae701b5a12dc26b3d8840a587a7f6cca9"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>ConvolveSourceTimeProfile</b> (const G4double, const G4double)</td></tr>
+<tr class="separator:ae701b5a12dc26b3d8840a587a7f6cca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ff02c58a603202cc52e17413a497755" id="r_a9ff02c58a603202cc52e17413a497755"><td class="memItemLeft" align="right" valign="top"><a id="a9ff02c58a603202cc52e17413a497755" name="a9ff02c58a603202cc52e17413a497755"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetDecayTime</b> ()</td></tr>
+<tr class="separator:a9ff02c58a603202cc52e17413a497755"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d03806ce52b018f2b61d10cd61d4b92" id="r_a8d03806ce52b018f2b61d10cd61d4b92"><td class="memItemLeft" align="right" valign="top"><a id="a8d03806ce52b018f2b61d10cd61d4b92" name="a8d03806ce52b018f2b61d10cd61d4b92"></a>
+G4int&#160;</td><td class="memItemRight" valign="bottom"><b>GetDecayTimeBin</b> (const G4double aDecayTime)</td></tr>
+<tr class="separator:a8d03806ce52b018f2b61d10cd61d4b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3b88e46c9d4ffd3fadcbb39e8b7a3a6" id="r_ac3b88e46c9d4ffd3fadcbb39e8b7a3a6"><td class="memItemLeft" align="right" valign="top"><a id="ac3b88e46c9d4ffd3fadcbb39e8b7a3a6" name="ac3b88e46c9d4ffd3fadcbb39e8b7a3a6"></a>
 G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMeanLifeTime</b> (const G4Track &amp;theTrack, G4ForceCondition *condition) override</td></tr>
 <tr class="separator:ac3b88e46c9d4ffd3fadcbb39e8b7a3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71207bb55371a35fdc6ea36be800dc86" id="r_a71207bb55371a35fdc6ea36be800dc86"><td class="memItemLeft" align="right" valign="top"><a id="a71207bb55371a35fdc6ea36be800dc86" name="a71207bb55371a35fdc6ea36be800dc86"></a>
+<tr class="memitem:ae8ef8b60a2cc957bc81c539527e55ffc" id="r_ae8ef8b60a2cc957bc81c539527e55ffc"><td class="memItemLeft" align="right" valign="top"><a id="ae8ef8b60a2cc957bc81c539527e55ffc" name="ae8ef8b60a2cc957bc81c539527e55ffc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddDeexcitationSpectrumForBiasMode</b> (G4ParticleDefinition *apartDef, G4double weight, G4double currenTime, std::vector&lt; double &gt; &amp;weights_v, std::vector&lt; double &gt; &amp;times_v, std::vector&lt; G4DynamicParticle * &gt; &amp;secondaries_v)</td></tr>
+<tr class="separator:ae8ef8b60a2cc957bc81c539527e55ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_g4_v_radioactive_decay"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_g4_v_radioactive_decay')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_g4_v_radioactive_decay.html">G4VRadioactiveDecay</a></td></tr>
+<tr class="memitem:a8d1d86c557a3b9c7b42c0d47fe392ceb inherit pro_methods_class_g4_v_radioactive_decay" id="r_a8d1d86c557a3b9c7b42c0d47fe392ceb"><td class="memItemLeft" align="right" valign="top">
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMeanFreePath</b> (const G4Track &amp;theTrack, G4double previousStepSize, G4ForceCondition *condition) override</td></tr>
+<tr class="separator:a8d1d86c557a3b9c7b42c0d47fe392ceb inherit pro_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa637e168e2df3afc6c6dfe195466995c inherit pro_methods_class_g4_v_radioactive_decay" id="r_aa637e168e2df3afc6c6dfe195466995c"><td class="memItemLeft" align="right" valign="top">
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMeanLifeTime</b> (const G4Track &amp;theTrack, G4ForceCondition *condition) override</td></tr>
+<tr class="separator:aa637e168e2df3afc6c6dfe195466995c inherit pro_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ba6595b340abd8c02dfb6c8857e5390 inherit pro_methods_class_g4_v_radioactive_decay" id="r_a3ba6595b340abd8c02dfb6c8857e5390"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>DecayAnalog</b> (const G4Track &amp;theTrack, G4DecayTable *)</td></tr>
-<tr class="separator:a71207bb55371a35fdc6ea36be800dc86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55718516640ece8413e4be22d57cacdb" id="r_a55718516640ece8413e4be22d57cacdb"><td class="memItemLeft" align="right" valign="top"><a id="a55718516640ece8413e4be22d57cacdb" name="a55718516640ece8413e4be22d57cacdb"></a>
+<tr class="separator:a3ba6595b340abd8c02dfb6c8857e5390 inherit pro_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52c953bee2a0368cdd0f7da5dd2bf080 inherit pro_methods_class_g4_v_radioactive_decay" id="r_a52c953bee2a0368cdd0f7da5dd2bf080"><td class="memItemLeft" align="right" valign="top">
 G4DecayProducts *&#160;</td><td class="memItemRight" valign="bottom"><b>DoDecay</b> (const G4ParticleDefinition &amp;, G4DecayTable *)</td></tr>
-<tr class="separator:a55718516640ece8413e4be22d57cacdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5927ac94113c1dd369940177877a1d4" id="r_af5927ac94113c1dd369940177877a1d4"><td class="memItemLeft" align="right" valign="top"><a id="af5927ac94113c1dd369940177877a1d4" name="af5927ac94113c1dd369940177877a1d4"></a>
+<tr class="separator:a52c953bee2a0368cdd0f7da5dd2bf080 inherit pro_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e784f99689dc5371bb690c7a8c02892 inherit pro_methods_class_g4_v_radioactive_decay" id="r_a9e784f99689dc5371bb690c7a8c02892"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>CollimateDecay</b> (G4DecayProducts *products)</td></tr>
-<tr class="separator:af5927ac94113c1dd369940177877a1d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6de9bdf90cdaa9b0ea38fe0070fdd0ff" id="r_a6de9bdf90cdaa9b0ea38fe0070fdd0ff"><td class="memItemLeft" align="right" valign="top"><a id="a6de9bdf90cdaa9b0ea38fe0070fdd0ff" name="a6de9bdf90cdaa9b0ea38fe0070fdd0ff"></a>
+<tr class="separator:a9e784f99689dc5371bb690c7a8c02892 inherit pro_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcdf7addcca2eaee68b08d3ae502ab16 inherit pro_methods_class_g4_v_radioactive_decay" id="r_afcdf7addcca2eaee68b08d3ae502ab16"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>CollimateDecayProduct</b> (G4DynamicParticle *product)</td></tr>
-<tr class="separator:a6de9bdf90cdaa9b0ea38fe0070fdd0ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89d20ee694e4e4d88c465b4c4fc7a027" id="r_a89d20ee694e4e4d88c465b4c4fc7a027"><td class="memItemLeft" align="right" valign="top"><a id="a89d20ee694e4e4d88c465b4c4fc7a027" name="a89d20ee694e4e4d88c465b4c4fc7a027"></a>
+<tr class="separator:afcdf7addcca2eaee68b08d3ae502ab16 inherit pro_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab76ab3611f39be58d18db84cf44cd0a3 inherit pro_methods_class_g4_v_radioactive_decay" id="r_ab76ab3611f39be58d18db84cf44cd0a3"><td class="memItemLeft" align="right" valign="top">
 G4ThreeVector&#160;</td><td class="memItemRight" valign="bottom"><b>ChooseCollimationDirection</b> () const</td></tr>
-<tr class="separator:a89d20ee694e4e4d88c465b4c4fc7a027"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a7b927b067ae53e9c1c43840219001e68" id="r_a7b927b067ae53e9c1c43840219001e68"><td class="memItemLeft" align="right" valign="top"><a id="a7b927b067ae53e9c1c43840219001e68" name="a7b927b067ae53e9c1c43840219001e68"></a>
-G4ParticleChangeForRadDecay&#160;</td><td class="memItemRight" valign="bottom"><b>fParticleChangeForRadDecay</b></td></tr>
-<tr class="separator:a7b927b067ae53e9c1c43840219001e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1850997eb2c205e01212450791d6149f" id="r_a1850997eb2c205e01212450791d6149f"><td class="memItemLeft" align="right" valign="top"><a id="a1850997eb2c205e01212450791d6149f" name="a1850997eb2c205e01212450791d6149f"></a>
-G4RadioactiveDecayMessenger *&#160;</td><td class="memItemRight" valign="bottom"><b>theRadioactiveDecayMessenger</b></td></tr>
-<tr class="separator:a1850997eb2c205e01212450791d6149f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcc1ecf157b9115a51d0465aa4d13351" id="r_afcc1ecf157b9115a51d0465aa4d13351"><td class="memItemLeft" align="right" valign="top"><a id="afcc1ecf157b9115a51d0465aa4d13351" name="afcc1ecf157b9115a51d0465aa4d13351"></a>
-G4PhotonEvaporation *&#160;</td><td class="memItemRight" valign="bottom"><b>photonEvaporation</b></td></tr>
-<tr class="separator:afcc1ecf157b9115a51d0465aa4d13351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a767b667309018dd11993d46d77b284d4" id="r_a767b667309018dd11993d46d77b284d4"><td class="memItemLeft" align="right" valign="top"><a id="a767b667309018dd11993d46d77b284d4" name="a767b667309018dd11993d46d77b284d4"></a>
-G4ITDecay *&#160;</td><td class="memItemRight" valign="bottom"><b>decayIT</b></td></tr>
-<tr class="separator:a767b667309018dd11993d46d77b284d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e7a5e24d24c5d8030b888c56f4e0153" id="r_a3e7a5e24d24c5d8030b888c56f4e0153"><td class="memItemLeft" align="right" valign="top"><a id="a3e7a5e24d24c5d8030b888c56f4e0153" name="a3e7a5e24d24c5d8030b888c56f4e0153"></a>
-std::vector&lt; G4String &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ValidVolumes</b></td></tr>
-<tr class="separator:a3e7a5e24d24c5d8030b888c56f4e0153"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8ac2ed7df46d38b09ab346703b21ecc" id="r_ac8ac2ed7df46d38b09ab346703b21ecc"><td class="memItemLeft" align="right" valign="top"><a id="ac8ac2ed7df46d38b09ab346703b21ecc" name="ac8ac2ed7df46d38b09ab346703b21ecc"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isAllVolumesMode</b> {true}</td></tr>
-<tr class="separator:ac8ac2ed7df46d38b09ab346703b21ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
-Static Protected Attributes</h2></td></tr>
-<tr class="memitem:a793bd97ccc35a2bf9949b29fd74590cd" id="r_a793bd97ccc35a2bf9949b29fd74590cd"><td class="memItemLeft" align="right" valign="top"><a id="a793bd97ccc35a2bf9949b29fd74590cd" name="a793bd97ccc35a2bf9949b29fd74590cd"></a>
-static const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>levelTolerance</b> = 10.0*CLHEP::eV</td></tr>
-<tr class="separator:a793bd97ccc35a2bf9949b29fd74590cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30975c3a39a6cd48247059048f21a3a6" id="r_a30975c3a39a6cd48247059048f21a3a6"><td class="memItemLeft" align="right" valign="top"><a id="a30975c3a39a6cd48247059048f21a3a6" name="a30975c3a39a6cd48247059048f21a3a6"></a>
-static DecayTableMap *&#160;</td><td class="memItemRight" valign="bottom"><b>master_dkmap</b> = nullptr</td></tr>
-<tr class="separator:a30975c3a39a6cd48247059048f21a3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ab76ab3611f39be58d18db84cf44cd0a3 inherit pro_methods_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a6e1e33959a2b99584debcc6332fa5941" id="r_a6e1e33959a2b99584debcc6332fa5941"><td class="memItemLeft" align="right" valign="top"><a id="a6e1e33959a2b99584debcc6332fa5941" name="a6e1e33959a2b99584debcc6332fa5941"></a>
-G4NucleusLimits&#160;</td><td class="memItemRight" valign="bottom"><b>theNucleusLimits</b></td></tr>
-<tr class="separator:a6e1e33959a2b99584debcc6332fa5941"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfa13bc524b27fd247fc9e0984d124d6" id="r_acfa13bc524b27fd247fc9e0984d124d6"><td class="memItemLeft" align="right" valign="top"><a id="acfa13bc524b27fd247fc9e0984d124d6" name="acfa13bc524b27fd247fc9e0984d124d6"></a>
-G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>isInitialised</b> {false}</td></tr>
-<tr class="separator:acfa13bc524b27fd247fc9e0984d124d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed109fef1bc4bec284610743f40bb589" id="r_aed109fef1bc4bec284610743f40bb589"><td class="memItemLeft" align="right" valign="top"><a id="aed109fef1bc4bec284610743f40bb589" name="aed109fef1bc4bec284610743f40bb589"></a>
-G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>applyARM</b> {true}</td></tr>
-<tr class="separator:aed109fef1bc4bec284610743f40bb589"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b979e5fba50448622226134848311fd" id="r_a7b979e5fba50448622226134848311fd"><td class="memItemLeft" align="right" valign="top"><a id="a7b979e5fba50448622226134848311fd" name="a7b979e5fba50448622226134848311fd"></a>
-G4ThreeVector&#160;</td><td class="memItemRight" valign="bottom"><b>forceDecayDirection</b> {G4ThreeVector(0., 0., 0.)}</td></tr>
-<tr class="separator:a7b979e5fba50448622226134848311fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7411e879eded8d31c7eb58f7e7e2f7ba" id="r_a7411e879eded8d31c7eb58f7e7e2f7ba"><td class="memItemLeft" align="right" valign="top"><a id="a7411e879eded8d31c7eb58f7e7e2f7ba" name="a7411e879eded8d31c7eb58f7e7e2f7ba"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>forceDecayHalfAngle</b> {0.0}</td></tr>
-<tr class="separator:a7411e879eded8d31c7eb58f7e7e2f7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1fffcce67590b3cc8b2c4c76894015e" id="r_ab1fffcce67590b3cc8b2c4c76894015e"><td class="memItemLeft" align="right" valign="top"><a id="ab1fffcce67590b3cc8b2c4c76894015e" name="ab1fffcce67590b3cc8b2c4c76894015e"></a>
-G4RadioactiveDecayMode&#160;</td><td class="memItemRight" valign="bottom"><b>theRadDecayMode</b> {G4RadioactiveDecayMode::IT}</td></tr>
-<tr class="separator:ab1fffcce67590b3cc8b2c4c76894015e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebe3069dff9f56e964a89708d3518a1b" id="r_aebe3069dff9f56e964a89708d3518a1b"><td class="memItemLeft" align="right" valign="top"><a id="aebe3069dff9f56e964a89708d3518a1b" name="aebe3069dff9f56e964a89708d3518a1b"></a>
-G4double&#160;</td><td class="memItemRight" valign="bottom"><b>fThresholdForVeryLongDecayTime</b></td></tr>
-<tr class="separator:aebe3069dff9f56e964a89708d3518a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80088c1abc33195692ab6d6393b73d50" id="r_a80088c1abc33195692ab6d6393b73d50"><td class="memItemLeft" align="right" valign="top"><a id="a80088c1abc33195692ab6d6393b73d50" name="a80088c1abc33195692ab6d6393b73d50"></a>
+G4RadioactivationMessenger *&#160;</td><td class="memItemRight" valign="bottom"><b>theRadioactivationMessenger</b></td></tr>
+<tr class="separator:a80088c1abc33195692ab6d6393b73d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e2a10e601ac33f32618ef69e929a4f5" id="r_a8e2a10e601ac33f32618ef69e929a4f5"><td class="memItemLeft" align="right" valign="top"><a id="a8e2a10e601ac33f32618ef69e929a4f5" name="a8e2a10e601ac33f32618ef69e929a4f5"></a>
+G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>AnalogueMC</b></td></tr>
+<tr class="separator:a8e2a10e601ac33f32618ef69e929a4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af77a21c222eb72104ae31bbee2565a05" id="r_af77a21c222eb72104ae31bbee2565a05"><td class="memItemLeft" align="right" valign="top"><a id="af77a21c222eb72104ae31bbee2565a05" name="af77a21c222eb72104ae31bbee2565a05"></a>
+G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>BRBias</b></td></tr>
+<tr class="separator:af77a21c222eb72104ae31bbee2565a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff625c86e681c28f46dc992dacbd26c0" id="r_aff625c86e681c28f46dc992dacbd26c0"><td class="memItemLeft" align="right" valign="top"><a id="aff625c86e681c28f46dc992dacbd26c0" name="aff625c86e681c28f46dc992dacbd26c0"></a>
+G4int&#160;</td><td class="memItemRight" valign="bottom"><b>NSplit</b></td></tr>
+<tr class="separator:aff625c86e681c28f46dc992dacbd26c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af63336e581dc2c439ac075f5cb9a0c73" id="r_af63336e581dc2c439ac075f5cb9a0c73"><td class="memItemLeft" align="right" valign="top"><a id="af63336e581dc2c439ac075f5cb9a0c73" name="af63336e581dc2c439ac075f5cb9a0c73"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>halflifethreshold</b></td></tr>
+<tr class="separator:af63336e581dc2c439ac075f5cb9a0c73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ef994ddb6912a278308a189d430e7b2" id="r_a6ef994ddb6912a278308a189d430e7b2"><td class="memItemLeft" align="right" valign="top"><a id="a6ef994ddb6912a278308a189d430e7b2" name="a6ef994ddb6912a278308a189d430e7b2"></a>
+G4int&#160;</td><td class="memItemRight" valign="bottom"><b>NSourceBin</b></td></tr>
+<tr class="separator:a6ef994ddb6912a278308a189d430e7b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f94aa6c6ef9dab3681dc0b75b7b265c" id="r_a3f94aa6c6ef9dab3681dc0b75b7b265c"><td class="memItemLeft" align="right" valign="top"><a id="a3f94aa6c6ef9dab3681dc0b75b7b265c" name="a3f94aa6c6ef9dab3681dc0b75b7b265c"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>SBin</b> [100]</td></tr>
+<tr class="separator:a3f94aa6c6ef9dab3681dc0b75b7b265c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae793c517e60a7f235da52b5c538aa5d3" id="r_ae793c517e60a7f235da52b5c538aa5d3"><td class="memItemLeft" align="right" valign="top"><a id="ae793c517e60a7f235da52b5c538aa5d3" name="ae793c517e60a7f235da52b5c538aa5d3"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>SProfile</b> [100]</td></tr>
+<tr class="separator:ae793c517e60a7f235da52b5c538aa5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fd7827b566d6ef52af78d2b6a3e6faa" id="r_a1fd7827b566d6ef52af78d2b6a3e6faa"><td class="memItemLeft" align="right" valign="top"><a id="a1fd7827b566d6ef52af78d2b6a3e6faa" name="a1fd7827b566d6ef52af78d2b6a3e6faa"></a>
+G4int&#160;</td><td class="memItemRight" valign="bottom"><b>NDecayBin</b></td></tr>
+<tr class="separator:a1fd7827b566d6ef52af78d2b6a3e6faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adae5669e1f1dc423be6711c6d15ca3d0" id="r_adae5669e1f1dc423be6711c6d15ca3d0"><td class="memItemLeft" align="right" valign="top"><a id="adae5669e1f1dc423be6711c6d15ca3d0" name="adae5669e1f1dc423be6711c6d15ca3d0"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>DBin</b> [100]</td></tr>
+<tr class="separator:adae5669e1f1dc423be6711c6d15ca3d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2e18f36313dda8e40b17a4dab85a62b" id="r_aa2e18f36313dda8e40b17a4dab85a62b"><td class="memItemLeft" align="right" valign="top"><a id="aa2e18f36313dda8e40b17a4dab85a62b" name="aa2e18f36313dda8e40b17a4dab85a62b"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>DProfile</b> [100]</td></tr>
+<tr class="separator:aa2e18f36313dda8e40b17a4dab85a62b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7820cb969bb0b2a2e2015c921702aa0" id="r_ae7820cb969bb0b2a2e2015c921702aa0"><td class="memItemLeft" align="right" valign="top"><a id="ae7820cb969bb0b2a2e2015c921702aa0" name="ae7820cb969bb0b2a2e2015c921702aa0"></a>
+G4RadioactiveDecayRatesToDaughter&#160;</td><td class="memItemRight" valign="bottom"><b>ratesToDaughter</b></td></tr>
+<tr class="separator:ae7820cb969bb0b2a2e2015c921702aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab19a859c5ad79300d50f76575e1824ee" id="r_ab19a859c5ad79300d50f76575e1824ee"><td class="memItemLeft" align="right" valign="top"><a id="ab19a859c5ad79300d50f76575e1824ee" name="ab19a859c5ad79300d50f76575e1824ee"></a>
+G4RadioactiveDecayRates&#160;</td><td class="memItemRight" valign="bottom"><b>theDecayRateVector</b></td></tr>
+<tr class="separator:ab19a859c5ad79300d50f76575e1824ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c1c99417e7ed4f6186f912378d7bdb0" id="r_a5c1c99417e7ed4f6186f912378d7bdb0"><td class="memItemLeft" align="right" valign="top"><a id="a5c1c99417e7ed4f6186f912378d7bdb0" name="a5c1c99417e7ed4f6186f912378d7bdb0"></a>
+G4RadioactiveDecayChainsFromParent&#160;</td><td class="memItemRight" valign="bottom"><b>chainsFromParent</b></td></tr>
+<tr class="separator:a5c1c99417e7ed4f6186f912378d7bdb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2fb072f047b9edbad2d8461be1da836" id="r_ac2fb072f047b9edbad2d8461be1da836"><td class="memItemLeft" align="right" valign="top"><a id="ac2fb072f047b9edbad2d8461be1da836" name="ac2fb072f047b9edbad2d8461be1da836"></a>
+G4RadioactiveDecayParentChainTable&#160;</td><td class="memItemRight" valign="bottom"><b>theParentChainTable</b></td></tr>
+<tr class="separator:ac2fb072f047b9edbad2d8461be1da836"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad03e244a7d5c34b6cecd1880a9e3233a" id="r_ad03e244a7d5c34b6cecd1880a9e3233a"><td class="memItemLeft" align="right" valign="top"><a id="ad03e244a7d5c34b6cecd1880a9e3233a" name="ad03e244a7d5c34b6cecd1880a9e3233a"></a>
+std::vector&lt; G4RadioactivityTable * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>theRadioactivityTables</b></td></tr>
+<tr class="separator:ad03e244a7d5c34b6cecd1880a9e3233a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0778beb303afc96e5cbbd2101c54125" id="r_ac0778beb303afc96e5cbbd2101c54125"><td class="memItemLeft" align="right" valign="top"><a id="ac0778beb303afc96e5cbbd2101c54125" name="ac0778beb303afc96e5cbbd2101c54125"></a>
+G4int&#160;</td><td class="memItemRight" valign="bottom"><b>decayWindows</b> [100]</td></tr>
+<tr class="separator:ac0778beb303afc96e5cbbd2101c54125"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a0206ac122b2b996b9e996670f2dc24d2" id="r_a0206ac122b2b996b9e996670f2dc24d2"><td class="memItemLeft" align="right" valign="top"><a id="a0206ac122b2b996b9e996670f2dc24d2" name="a0206ac122b2b996b9e996670f2dc24d2"></a>
-static const G4ThreeVector&#160;</td><td class="memItemRight" valign="bottom"><b>origin</b></td></tr>
-<tr class="separator:a0206ac122b2b996b9e996670f2dc24d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc82499e6f2713a39451c04b19d45322" id="r_acc82499e6f2713a39451c04b19d45322"><td class="memItemLeft" align="right" valign="top"><a id="acc82499e6f2713a39451c04b19d45322" name="acc82499e6f2713a39451c04b19d45322"></a>
-static G4String&#160;</td><td class="memItemRight" valign="bottom"><b>dirPath</b> = &quot;&quot;</td></tr>
-<tr class="separator:acc82499e6f2713a39451c04b19d45322"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae55ec400147e893353907b438c8f2433" id="r_ae55ec400147e893353907b438c8f2433"><td class="memItemLeft" align="right" valign="top"><a id="ae55ec400147e893353907b438c8f2433" name="ae55ec400147e893353907b438c8f2433"></a>
-static std::map&lt; G4int, G4String &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>theUserRDataFiles</b> = nullptr</td></tr>
-<tr class="separator:ae55ec400147e893353907b438c8f2433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_attribs_class_g4_v_radioactive_decay"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_g4_v_radioactive_decay')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_g4_v_radioactive_decay.html">G4VRadioactiveDecay</a></td></tr>
+<tr class="memitem:a1f9a757e65334b4f417ae205e84aca4b inherit pro_attribs_class_g4_v_radioactive_decay" id="r_a1f9a757e65334b4f417ae205e84aca4b"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_g4_particle_change_for_rad_decay.html">G4ParticleChangeForRadDecay</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fParticleChangeForRadDecay</b></td></tr>
+<tr class="separator:a1f9a757e65334b4f417ae205e84aca4b inherit pro_attribs_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94dac57b66b4473b9cb5300c60305a26 inherit pro_attribs_class_g4_v_radioactive_decay" id="r_a94dac57b66b4473b9cb5300c60305a26"><td class="memItemLeft" align="right" valign="top">
+G4RadioactiveDecayMessenger *&#160;</td><td class="memItemRight" valign="bottom"><b>theRadioactiveDecayMessenger</b></td></tr>
+<tr class="separator:a94dac57b66b4473b9cb5300c60305a26 inherit pro_attribs_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a462e9d6b399fcc2ba6e396d1fba57256 inherit pro_attribs_class_g4_v_radioactive_decay" id="r_a462e9d6b399fcc2ba6e396d1fba57256"><td class="memItemLeft" align="right" valign="top">
+G4PhotonEvaporation *&#160;</td><td class="memItemRight" valign="bottom"><b>photonEvaporation</b></td></tr>
+<tr class="separator:a462e9d6b399fcc2ba6e396d1fba57256 inherit pro_attribs_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0921b37211a8486b7ef1bd9020e5300f inherit pro_attribs_class_g4_v_radioactive_decay" id="r_a0921b37211a8486b7ef1bd9020e5300f"><td class="memItemLeft" align="right" valign="top">
+G4ITDecay *&#160;</td><td class="memItemRight" valign="bottom"><b>decayIT</b></td></tr>
+<tr class="separator:a0921b37211a8486b7ef1bd9020e5300f inherit pro_attribs_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60f6a8f3115e9716f80d849fa3185459 inherit pro_attribs_class_g4_v_radioactive_decay" id="r_a60f6a8f3115e9716f80d849fa3185459"><td class="memItemLeft" align="right" valign="top">
+std::vector&lt; G4String &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ValidVolumes</b></td></tr>
+<tr class="separator:a60f6a8f3115e9716f80d849fa3185459 inherit pro_attribs_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a384d0bf5691ef440a3b38f6240ce0ef6 inherit pro_attribs_class_g4_v_radioactive_decay" id="r_a384d0bf5691ef440a3b38f6240ce0ef6"><td class="memItemLeft" align="right" valign="top">
+G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>isAllVolumesMode</b> {true}</td></tr>
+<tr class="separator:a384d0bf5691ef440a3b38f6240ce0ef6 inherit pro_attribs_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_class_g4_v_radioactive_decay"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_class_g4_v_radioactive_decay')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="class_g4_v_radioactive_decay.html">G4VRadioactiveDecay</a></td></tr>
+<tr class="memitem:ad505afa6f752b9ee227e1ad0972db828 inherit pro_static_attribs_class_g4_v_radioactive_decay" id="r_ad505afa6f752b9ee227e1ad0972db828"><td class="memItemLeft" align="right" valign="top">
+static const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>levelTolerance</b> = 10.0*CLHEP::eV</td></tr>
+<tr class="separator:ad505afa6f752b9ee227e1ad0972db828 inherit pro_static_attribs_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac384a640c10d05fff8cbdc7563ccbe90 inherit pro_static_attribs_class_g4_v_radioactive_decay" id="r_ac384a640c10d05fff8cbdc7563ccbe90"><td class="memItemLeft" align="right" valign="top">
+static DecayTableMap *&#160;</td><td class="memItemRight" valign="bottom"><b>master_dkmap</b> = nullptr</td></tr>
+<tr class="separator:ac384a640c10d05fff8cbdc7563ccbe90 inherit pro_static_attribs_class_g4_v_radioactive_decay"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a027302935bb736fb1e706edbf83d4c9e" name="a027302935bb736fb1e706edbf83d4c9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a027302935bb736fb1e706edbf83d4c9e">&#9670;&#160;</a></span>DecayIt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">G4VParticleChange * G4RadioactiveDecay::DecayIt </td>
+          <td>(</td>
+          <td class="paramtype">const G4Track &amp;&#160;</td>
+          <td class="paramname"><em>theTrack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const G4Step &amp;&#160;</td>
+          <td class="paramname"><em>theStep</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="class_g4_v_radioactive_decay.html">G4VRadioactiveDecay</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_o_m_sim_g4_radioactive_decay_8hh_source.html">OMSimG4RadioactiveDecay.hh</a></li>
 <li><b>OMSimG4RadioactiveDecay.cc</b></li>
@@ -329,7 +446,7 @@ static std::map&lt; G4int, G4String &gt; *&#160;</td><td class="memItemRight" va
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a></li>
-    <li class="footer">Generated on Sat Dec 21 2024 20:43:55 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sun Dec 22 2024 16:15:54 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

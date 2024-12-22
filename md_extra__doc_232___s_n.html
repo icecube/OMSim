@@ -124,23 +124,23 @@ $(document).ready(function(){initNavTree('md_extra__doc_232___s_n.html',''); ini
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md46">Input Parameters</a><ul><li class="level2"><a href="#autotoc_md47">General Parameters</a></li>
-<li class="level2"><a href="#autotoc_md48">SN Framework Parameters</a></li>
-<li class="level2"><a href="#autotoc_md49">Fixed Energy Studies</a></li>
+<ul><li class="level1"><a href="#autotoc_md47">Input Parameters</a><ul><li class="level2"><a href="#autotoc_md48">General Parameters</a></li>
+<li class="level2"><a href="#autotoc_md49">SN Framework Parameters</a></li>
+<li class="level2"><a href="#autotoc_md50">Fixed Energy Studies</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md50">Output Files</a><ul><li class="level2"><a href="#autotoc_md51">*_info.dat</a></li>
-<li class="level2"><a href="#autotoc_md52">*_data.dat</a></li>
+<li class="level1"><a href="#autotoc_md51">Output Files</a><ul><li class="level2"><a href="#autotoc_md52">*_info.dat</a></li>
+<li class="level2"><a href="#autotoc_md53">*_data.dat</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md53">Weights</a><ul><li class="level2"><a href="#autotoc_md54">Interaction Probability Weight:</a></li>
-<li class="level2"><a href="#autotoc_md55">Flux Weight:</a></li>
-<li class="level2"><a href="#autotoc_md56">Effective Weight:</a></li>
+<li class="level1"><a href="#autotoc_md54">Weights</a><ul><li class="level2"><a href="#autotoc_md55">Interaction Probability Weight:</a></li>
+<li class="level2"><a href="#autotoc_md56">Flux Weight:</a></li>
+<li class="level2"><a href="#autotoc_md57">Effective Weight:</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="textblock"><p><a class="anchor" id="autotoc_md45"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md46"></a></p>
 <p>This module provides a comprehensive analysis and simulations focusing on the detection of CCSN neutrinos with segmented sensors.</p>
 <p>This simulation is designed to emulate the detection of Core Collapse Supernova (CCSN or simply SN in the following) neutrinos using segmented sensors. It directly generates particles resulting from Inverse Beta Decay (IBD) and Electron Neutrino-Electron Elastic Scattering (ENES).</p>
 <ul>
@@ -160,18 +160,18 @@ $(document).ready(function(){initNavTree('md_extra__doc_232___s_n.html',''); ini
 <li>The energy of <code>e⁻/e⁺</code> is deduced from <code>θ</code> and <code>E_ν</code>. The interaction probability for such an event is ascertained using the total cross section, facilitating the computation of the interaction weight, as further described below.</li>
 <li>The <code>e⁻/e⁺</code> is manifested at a random position within the ice volume.</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md46"></a>
+<h1><a class="anchor" id="autotoc_md47"></a>
 Input Parameters</h1>
 <p>Execute <code>./OMSim_supernova --help</code> to display all possible input parameters.</p>
 <p>A typical command to run the simulation is:</p>
 <div class="fragment"><div class="line">./OMSim_supernova -n 100 --wheight 20 --wradius 20 --depth_pos 75 --SNgun 0 --SNtype 0</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md47"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md48"></a>
 General Parameters</h2>
 <ul>
 <li><code>--depth_pos</code>: Index of the vector determining the depth of the simulated modules. Notable values include the dust layer (65), mean ice properties (approx) 75, and the cleanes ice (88). This selection affects the effective scattering and absorption lengths of the ice at the specified depth.</li>
 <li><code>-o</code>: Output file name. By default, two output files are created: one containing the simulated event information, and another with detection data.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md48"></a>
+<h2><a class="anchor" id="autotoc_md49"></a>
 SN Framework Parameters</h2>
 <ul>
 <li><code>--wheight</code>: Height of the ice's simulated world cylinder.</li>
@@ -179,7 +179,7 @@ SN Framework Parameters</h2>
 <li><code>--SNgun</code>: Chooses the interaction type (0 for IBD, 1 for ENES).</li>
 <li><code>--SNtype</code>: Selects the CCSN model. Two models are currently available, provided by the Garching group. These models represent the expected fluxes from two CCSNs resulting in neutron stars, with different progenitor masses (27 and 9.6 solar masses). Simulations yielding this data can be found at <a href="https://arxiv.org/abs/1510.04643">https://arxiv.org/abs/1510.04643</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md49"></a>
+<h2><a class="anchor" id="autotoc_md50"></a>
 Fixed Energy Studies</h2>
 <p>The user can also manually set the mean energy of generated events by providing specific input parameters. For instance:</p>
 <div class="fragment"><div class="line">--SNfixEnergy --SNmeanE 10.0 --SNalpha 3.0</div>
@@ -189,10 +189,10 @@ Fixed Energy Studies</h2>
 <li><code>--SNalpha</code>: Defines the pinching parameter of the energy distribution (see <a href="https://arxiv.org/pdf/1211.3920.pdf">this paper</a>).</li>
 </ul>
 <p>Consequently, the neutrinos' energy is sampled from the distribution, derived from these two parameters and the previously mentioned model.</p>
-<h1><a class="anchor" id="autotoc_md50"></a>
+<h1><a class="anchor" id="autotoc_md51"></a>
 Output Files</h1>
 <p>Two files are produced:</p>
-<h2><a class="anchor" id="autotoc_md51"></a>
+<h2><a class="anchor" id="autotoc_md52"></a>
 *_info.dat</h2>
 <p>This file encapsulates data concerning each generated neutrino event. Each entry contains:</p>
 <ul>
@@ -210,28 +210,28 @@ Output Files</h1>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md52"></a>
+<h2><a class="anchor" id="autotoc_md53"></a>
 *_data.dat</h2>
 <p>This file contains the detection information. Its structure is designed to facilitate various trigger studies, allowing the examination of different time windows. Users might evaluate its structure for convenience, particularly if the trigger check is integrated within the simulation (requiring a predefined time window).</p>
 <p>The default content structure is as follows:</p>
 <div class="fragment"><div class="line">Nr of sim. modules &gt; Number of hits per module &gt; for each PMT hit starting with module 0: { PMT number | Hit time | Det. probability }</div>
 </div><!-- fragment --><p>Note that the number of columns varies per line, contingent on the number of photons detected for the simulated neutrinos.</p>
-<h1><a class="anchor" id="autotoc_md53"></a>
+<h1><a class="anchor" id="autotoc_md54"></a>
 Weights</h1>
 <p>The output files contain the interaction weight. However, users should also consider a weight factor depending on the total flux and the number of simulated events. In the most general case of simulating a single depth and then extrapolating the results to the entire detector, another weight factor is needed. This factor accounts for the ice properties of the simulated depth with respect to the whole detector. This last factor decreases in importance when using high multiplicity conditions, since these events generally interact closer to the module, making the photons less sensitive to changes in the optical properties.</p>
 <p>These weight factors can be added similarly as explained in <a href="https://zenodo.org/record/8107177">this thesis, section 6.4.2</a>.</p>
 <p>The total weight is composed of 3 components: the interaction probability, the SN flux through the simulated volume, and the different optical properties of the modules at different depths:</p>
 <div class="fragment"><div class="line">W = W_int(E) · W_flux(d) · W_eff.</div>
 </div><!-- fragment --><p>Each component is explained as follows:</p>
-<h2><a class="anchor" id="autotoc_md54"></a>
+<h2><a class="anchor" id="autotoc_md55"></a>
 Interaction Probability Weight:</h2>
 <div class="fragment"><div class="line">W_int(E_ν) = σ(E) · n_target · l,</div>
 </div><!-- fragment --><p> where <code>σ(E_ν)</code> is the total cross section for the interaction, <code>n_target</code> is the number of targets per unit of volume for such interaction, and <code>l=40 m</code> is the length of the generation volume along the neutrino direction axis. This is the length of the cylinder facing the CCSN.</p>
-<h2><a class="anchor" id="autotoc_md55"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 Flux Weight:</h2>
 <div class="fragment"><div class="line">W_flux(d) = (1 / N_gen) · (r² / d²) · ∫ (L(t) / &lt;E(t)&gt;) dt,</div>
 </div><!-- fragment --><p> where <code>r</code> is the cylindrical generation volume's radius, <code>d</code> is the distance from Earth where the CCSN is assumed to occur, and <code>N_gen</code> is the number of generated events.</p>
-<h2><a class="anchor" id="autotoc_md56"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 Effective Weight:</h2>
 <div class="fragment"><div class="line">W_eff = N_modules · (&lt;V_eff(m)&gt; / V_eff(m,z_sim)),</div>
 </div><!-- fragment --><p> where <code>N_modules</code> is the total modules in the simulated detector, <code>V_eff(m, z_sim)</code> is the effective volume at the simulation depth, and <code>&lt;V_eff(m)&gt;</code> is the mean effective volume for all modules in simulated detector. The term <code>m</code> represents multiplicity, defined as the count of different PMTs within a single module that detected the event within a specific time window.</p>
@@ -259,7 +259,7 @@ Effective Weight:</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Dec 21 2024 20:43:55 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sun Dec 22 2024 16:15:54 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

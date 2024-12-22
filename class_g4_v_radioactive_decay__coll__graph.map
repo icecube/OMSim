@@ -1,0 +1,9 @@
+<map id="G4VRadioactiveDecay" name="G4VRadioactiveDecay">
+<area shape="rect" id="Node000001" title=" " alt="" coords="80,168,247,193"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,188,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,115,156,166,152,169,112,118"/>
+<area shape="rect" id="Node000003" href="$class_g4_particle_change_for_rad_decay.html" title=" " alt="" coords="212,80,435,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="291,114,186,170,184,165,288,110"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="250,5,397,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="326,45,326,80,321,80,321,45"/>
+</map>

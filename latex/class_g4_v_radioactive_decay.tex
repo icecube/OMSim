@@ -1,0 +1,202 @@
+\doxysection{G4\+VRadioactive\+Decay Class Reference}
+\hypertarget{class_g4_v_radioactive_decay}{}\label{class_g4_v_radioactive_decay}\index{G4VRadioactiveDecay@{G4VRadioactiveDecay}}
+
+
+Inheritance diagram for G4\+VRadioactive\+Decay\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{class_g4_v_radioactive_decay__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for G4\+VRadioactive\+Decay\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_g4_v_radioactive_decay__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a32523aa7086ff480a6b65c9589759b68}\label{class_g4_v_radioactive_decay_a32523aa7086ff480a6b65c9589759b68} 
+{\bfseries G4\+VRadioactive\+Decay} (const G4\+String \&process\+Name="{}Radioactive\+Decay"{}, const G4double time\+Threshold=-\/1.\+0)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_ab07a3bf10dad67b585583d4f64602219}\label{class_g4_v_radioactive_decay_ab07a3bf10dad67b585583d4f64602219} 
+G4bool {\bfseries Is\+Applicable} (const G4\+Particle\+Definition \&) override
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a7654d1e92efc56078488bc713d53afce}\label{class_g4_v_radioactive_decay_a7654d1e92efc56078488bc713d53afce} 
+G4\+VParticle\+Change \texorpdfstring{$\ast$}{*} {\bfseries At\+Rest\+Do\+It} (const G4\+Track \&the\+Track, const G4\+Step \&the\+Step) override
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_afa188e0e0e83df3fa684cf81b1eadd0f}\label{class_g4_v_radioactive_decay_afa188e0e0e83df3fa684cf81b1eadd0f} 
+G4\+VParticle\+Change \texorpdfstring{$\ast$}{*} {\bfseries Post\+Step\+Do\+It} (const G4\+Track \&the\+Track, const G4\+Step \&the\+Step) override
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a5dfd9f87f51f930f69cf925023f04533}\label{class_g4_v_radioactive_decay_a5dfd9f87f51f930f69cf925023f04533} 
+void {\bfseries Build\+Physics\+Table} (const G4\+Particle\+Definition \&) override
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a48e8a049f5638608d2a30e788f025eb6}\label{class_g4_v_radioactive_decay_a48e8a049f5638608d2a30e788f025eb6} 
+void {\bfseries Process\+Description} (std\+::ostream \&out\+File) const override
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a0e6ce70bbab746207291422cb8ae1974}\label{class_g4_v_radioactive_decay_a0e6ce70bbab746207291422cb8ae1974} 
+virtual G4\+VParticle\+Change \texorpdfstring{$\ast$}{*} {\bfseries Decay\+It} (const G4\+Track \&the\+Track, const G4\+Step \&the\+Step)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_af954c2e4db371235aadf50a5ca51a530}\label{class_g4_v_radioactive_decay_af954c2e4db371235aadf50a5ca51a530} 
+G4\+Decay\+Table \texorpdfstring{$\ast$}{*} {\bfseries Get\+Decay\+Table} (const G4\+Particle\+Definition \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a80ea51436b9362df1c429f39acaf3f8a}\label{class_g4_v_radioactive_decay_a80ea51436b9362df1c429f39acaf3f8a} 
+void {\bfseries Select\+AVolume} (const G4\+String \&a\+Volume)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_ae9ac11397de3dbca3bb33cffd25b9ca4}\label{class_g4_v_radioactive_decay_ae9ac11397de3dbca3bb33cffd25b9ca4} 
+void {\bfseries Deselect\+AVolume} (const G4\+String \&a\+Volume)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a013226ad3b668ff610a6f810e8e146a5}\label{class_g4_v_radioactive_decay_a013226ad3b668ff610a6f810e8e146a5} 
+void {\bfseries Select\+All\+Volumes} ()
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_af86cfd7a3d18140fbf9383838347bb4a}\label{class_g4_v_radioactive_decay_af86cfd7a3d18140fbf9383838347bb4a} 
+void {\bfseries Deselect\+All\+Volumes} ()
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a6a379d2c4294dc7932547fd6a858e3de}\label{class_g4_v_radioactive_decay_a6a379d2c4294dc7932547fd6a858e3de} 
+void {\bfseries Set\+ARM} (G4bool arm)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a9f78d094d6f4127aaf66e9c508cc6081}\label{class_g4_v_radioactive_decay_a9f78d094d6f4127aaf66e9c508cc6081} 
+G4\+Decay\+Table \texorpdfstring{$\ast$}{*} {\bfseries Load\+Decay\+Table} (const G4\+Ions \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a3eee9f3bf1484e83b267f52c6b103888}\label{class_g4_v_radioactive_decay_a3eee9f3bf1484e83b267f52c6b103888} 
+void {\bfseries Add\+User\+Decay\+Data\+File} (G4int Z, G4int A, const G4\+String \&filename)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a54f73c73fc66c6d5568331689856fde6}\label{class_g4_v_radioactive_decay_a54f73c73fc66c6d5568331689856fde6} 
+void {\bfseries Set\+Nucleus\+Limits} (G4\+Nucleus\+Limits the\+Nucleus\+Limits1)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_aad3458c632a89ae76b5db511e95fef8e}\label{class_g4_v_radioactive_decay_aad3458c632a89ae76b5db511e95fef8e} 
+G4\+Nucleus\+Limits {\bfseries Get\+Nucleus\+Limits} () const
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_ab12ccd49d1827ddfb575a08f4861b255}\label{class_g4_v_radioactive_decay_ab12ccd49d1827ddfb575a08f4861b255} 
+void {\bfseries Set\+Decay\+Direction} (const G4\+Three\+Vector \&the\+Dir)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a415e6c9525c4827e0b9e22b895ec35d9}\label{class_g4_v_radioactive_decay_a415e6c9525c4827e0b9e22b895ec35d9} 
+const G4\+Three\+Vector \& {\bfseries Get\+Decay\+Direction} () const
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a76853d1873fde0667a9a323688453080}\label{class_g4_v_radioactive_decay_a76853d1873fde0667a9a323688453080} 
+void {\bfseries Set\+Decay\+Half\+Angle} (G4double half\+Angle=0.\texorpdfstring{$\ast$}{*}CLHEP\+::deg)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a9b9425d02a5834b1f0e63b7466bbf475}\label{class_g4_v_radioactive_decay_a9b9425d02a5834b1f0e63b7466bbf475} 
+G4double {\bfseries Get\+Decay\+Half\+Angle} () const
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_aed22d1d1d430be27f9bf00db53526d34}\label{class_g4_v_radioactive_decay_aed22d1d1d430be27f9bf00db53526d34} 
+void {\bfseries Set\+Decay\+Collimation} (const G4\+Three\+Vector \&the\+Dir, G4double half\+Angle=0.\texorpdfstring{$\ast$}{*}CLHEP\+::deg)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a034ed6eb25abd996696b63dd96b8391b}\label{class_g4_v_radioactive_decay_a034ed6eb25abd996696b63dd96b8391b} 
+void {\bfseries Set\+Threshold\+For\+Very\+Long\+Decay\+Time} (const G4double input\+Threshold)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a14690146e1f76b3fc9aa9b9478e763ec}\label{class_g4_v_radioactive_decay_a14690146e1f76b3fc9aa9b9478e763ec} 
+G4double {\bfseries Get\+Threshold\+For\+Very\+Long\+Decay\+Time} () const
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a998ad30dcf2d595bb3240622b29f917b}\label{class_g4_v_radioactive_decay_a998ad30dcf2d595bb3240622b29f917b} 
+void {\bfseries Stream\+Info} (std\+::ostream \&os, const G4\+String \&endline)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_ae568ccff9049368d13f4b03b74578643}\label{class_g4_v_radioactive_decay_ae568ccff9049368d13f4b03b74578643} 
+{\bfseries G4\+VRadioactive\+Decay} (const \mbox{\hyperlink{class_g4_v_radioactive_decay}{G4\+VRadioactive\+Decay}} \&right)=delete
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a4106bb3c62b98239a9bf450bc770b007}\label{class_g4_v_radioactive_decay_a4106bb3c62b98239a9bf450bc770b007} 
+\mbox{\hyperlink{class_g4_v_radioactive_decay}{G4\+VRadioactive\+Decay}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_g4_v_radioactive_decay}{G4\+VRadioactive\+Decay}} \&right)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a8d1d86c557a3b9c7b42c0d47fe392ceb}\label{class_g4_v_radioactive_decay_a8d1d86c557a3b9c7b42c0d47fe392ceb} 
+G4double {\bfseries Get\+Mean\+Free\+Path} (const G4\+Track \&the\+Track, G4double previous\+Step\+Size, G4\+Force\+Condition \texorpdfstring{$\ast$}{*}condition) override
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_aa637e168e2df3afc6c6dfe195466995c}\label{class_g4_v_radioactive_decay_aa637e168e2df3afc6c6dfe195466995c} 
+G4double {\bfseries Get\+Mean\+Life\+Time} (const G4\+Track \&the\+Track, G4\+Force\+Condition \texorpdfstring{$\ast$}{*}condition) override
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a3ba6595b340abd8c02dfb6c8857e5390}\label{class_g4_v_radioactive_decay_a3ba6595b340abd8c02dfb6c8857e5390} 
+void {\bfseries Decay\+Analog} (const G4\+Track \&the\+Track, G4\+Decay\+Table \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a52c953bee2a0368cdd0f7da5dd2bf080}\label{class_g4_v_radioactive_decay_a52c953bee2a0368cdd0f7da5dd2bf080} 
+G4\+Decay\+Products \texorpdfstring{$\ast$}{*} {\bfseries Do\+Decay} (const G4\+Particle\+Definition \&, G4\+Decay\+Table \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a9e784f99689dc5371bb690c7a8c02892}\label{class_g4_v_radioactive_decay_a9e784f99689dc5371bb690c7a8c02892} 
+void {\bfseries Collimate\+Decay} (G4\+Decay\+Products \texorpdfstring{$\ast$}{*}products)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_afcdf7addcca2eaee68b08d3ae502ab16}\label{class_g4_v_radioactive_decay_afcdf7addcca2eaee68b08d3ae502ab16} 
+void {\bfseries Collimate\+Decay\+Product} (G4\+Dynamic\+Particle \texorpdfstring{$\ast$}{*}product)
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_ab76ab3611f39be58d18db84cf44cd0a3}\label{class_g4_v_radioactive_decay_ab76ab3611f39be58d18db84cf44cd0a3} 
+G4\+Three\+Vector {\bfseries Choose\+Collimation\+Direction} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a1f9a757e65334b4f417ae205e84aca4b}\label{class_g4_v_radioactive_decay_a1f9a757e65334b4f417ae205e84aca4b} 
+\mbox{\hyperlink{class_g4_particle_change_for_rad_decay}{G4\+Particle\+Change\+For\+Rad\+Decay}} {\bfseries f\+Particle\+Change\+For\+Rad\+Decay}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a94dac57b66b4473b9cb5300c60305a26}\label{class_g4_v_radioactive_decay_a94dac57b66b4473b9cb5300c60305a26} 
+G4\+Radioactive\+Decay\+Messenger \texorpdfstring{$\ast$}{*} {\bfseries the\+Radioactive\+Decay\+Messenger}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a462e9d6b399fcc2ba6e396d1fba57256}\label{class_g4_v_radioactive_decay_a462e9d6b399fcc2ba6e396d1fba57256} 
+G4\+Photon\+Evaporation \texorpdfstring{$\ast$}{*} {\bfseries photon\+Evaporation}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a0921b37211a8486b7ef1bd9020e5300f}\label{class_g4_v_radioactive_decay_a0921b37211a8486b7ef1bd9020e5300f} 
+G4\+ITDecay \texorpdfstring{$\ast$}{*} {\bfseries decay\+IT}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a60f6a8f3115e9716f80d849fa3185459}\label{class_g4_v_radioactive_decay_a60f6a8f3115e9716f80d849fa3185459} 
+std\+::vector$<$ G4\+String $>$ {\bfseries Valid\+Volumes}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a384d0bf5691ef440a3b38f6240ce0ef6}\label{class_g4_v_radioactive_decay_a384d0bf5691ef440a3b38f6240ce0ef6} 
+G4bool {\bfseries is\+All\+Volumes\+Mode} \{true\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_ad505afa6f752b9ee227e1ad0972db828}\label{class_g4_v_radioactive_decay_ad505afa6f752b9ee227e1ad0972db828} 
+static const G4double {\bfseries level\+Tolerance} = 10.\+0\texorpdfstring{$\ast$}{*}CLHEP\+::eV
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_ac384a640c10d05fff8cbdc7563ccbe90}\label{class_g4_v_radioactive_decay_ac384a640c10d05fff8cbdc7563ccbe90} 
+static Decay\+Table\+Map \texorpdfstring{$\ast$}{*} {\bfseries master\+\_\+dkmap} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_aff438d4aba0faa691e85493f26fae253}\label{class_g4_v_radioactive_decay_aff438d4aba0faa691e85493f26fae253} 
+G4\+Nucleus\+Limits {\bfseries the\+Nucleus\+Limits}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a9bd13dad7ad2e53cdbdcaf81a1fea9be}\label{class_g4_v_radioactive_decay_a9bd13dad7ad2e53cdbdcaf81a1fea9be} 
+G4bool {\bfseries is\+Initialised} \{false\}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a3fac8366479faecbcece92e53a5eb18c}\label{class_g4_v_radioactive_decay_a3fac8366479faecbcece92e53a5eb18c} 
+G4bool {\bfseries apply\+ARM} \{true\}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a12b1f6020c6315cfae5ceeeaf179ef1e}\label{class_g4_v_radioactive_decay_a12b1f6020c6315cfae5ceeeaf179ef1e} 
+G4\+Three\+Vector {\bfseries force\+Decay\+Direction} \{G4\+Three\+Vector(0., 0., 0.)\}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a3ba0aa9bf6fb889e5aa23599c3ffd96f}\label{class_g4_v_radioactive_decay_a3ba0aa9bf6fb889e5aa23599c3ffd96f} 
+G4double {\bfseries force\+Decay\+Half\+Angle} \{0.\+0\}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a9bf25c9b86d8c034b32cdec23889b719}\label{class_g4_v_radioactive_decay_a9bf25c9b86d8c034b32cdec23889b719} 
+G4\+Radioactive\+Decay\+Mode {\bfseries the\+Rad\+Decay\+Mode} \{G4\+Radioactive\+Decay\+Mode\+::\+IT\}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a0c216691a1bce4cb985cbf6b239091b7}\label{class_g4_v_radioactive_decay_a0c216691a1bce4cb985cbf6b239091b7} 
+G4double {\bfseries f\+Threshold\+For\+Very\+Long\+Decay\+Time}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a49ca327227abec9ad764303cf01c9476}\label{class_g4_v_radioactive_decay_a49ca327227abec9ad764303cf01c9476} 
+static const G4\+Three\+Vector {\bfseries origin}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_ab8b1d2e793597ef2b4dc88f7b12150a3}\label{class_g4_v_radioactive_decay_ab8b1d2e793597ef2b4dc88f7b12150a3} 
+static G4\+String {\bfseries dir\+Path} = "{}"{}
+\item 
+\Hypertarget{class_g4_v_radioactive_decay_a86a0fd3d2a50a57d541b55c221e63626}\label{class_g4_v_radioactive_decay_a86a0fd3d2a50a57d541b55c221e63626} 
+static std\+::map$<$ G4int, G4\+String $>$ \texorpdfstring{$\ast$}{*} {\bfseries the\+User\+RData\+Files} = nullptr
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_g4_v_radioactive_decay_8hh}{OMSim\+G4\+VRadioactive\+Decay.\+hh}}\item 
+OMSim\+G4\+VRadioactive\+Decay.\+cc\end{DoxyCompactItemize}

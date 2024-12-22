@@ -140,15 +140,41 @@ $(document).ready(function(){initNavTree('md_extra__doc_231__radioactive__decays
 <p>Currently, there are two analysis modes:</p>
 <ol type="1">
 <li>With the <code>--multiplicity_study</code> argument: After each t_w time window, the multiplicity is calculated and saved to a file. Raw data isn't stored, as multiplicity studies generally involve extended simulation durations, leading to large volumes of photon data.</li>
-<li>Without the <code>--multiplicity_study</code> argument: Data pertaining to photons and decayed isotopes is saved to files. If you are using multithreaded mode, then each thread will produce its own file. </li>
+<li>Without the <code>--multiplicity_study</code> argument: Data pertaining to photons and decayed isotopes is saved to files. If you are using multithreaded mode, then each thread will produce its own file.</li>
 </ol>
+<h2><a class="anchor" id="autotoc_md45"></a>
+Developer Notes: Geant4 Dependencies and Modifications</h2>
+<p>This simulation module requires modifications to several Geant4 classes to enable custom handling of decay times. Unfortunately, the Geant4 physics library is not designed with extensibility in mind, making inheritance or selective function overrides impractical. As a result, we had to copy and modify entire class implementations. This approach makes the module highly dependent on the specific Geant4 version being used.</p>
+<p>With each Geant4 update, class structures and function implementations may change, requiring updates to this module—an admittedly tedious but necessary process. For Geant4 version 4.13, the following modifications were made:</p>
+<ol type="1">
+<li>**<code><a class="el" href="class_g4_v_radioactive_decay.html">G4VRadioactiveDecay</a></code>** <br  />
+<ul>
+<li>Modified the <code>DecayAnalog</code> method to customize the handling of decay times.</li>
+</ul>
+</li>
+<li>**<code><a class="el" href="class_g4_radioactive_decay.html">G4RadioactiveDecay</a></code>** <br  />
+<ul>
+<li>Adjusted the <code>DecayIt</code> method to terminate decay processes when a specified termination isotope is reached, allowing for the intentional disruption of secular equilibrium.</li>
+</ul>
+</li>
+<li>**<code><a class="el" href="class_g4_particle_change_for_rad_decay.html">G4ParticleChangeForRadDecay</a></code>** <br  />
+<ul>
+<li>Overrode the <code>CheckSecondary</code> method to disable time consistency checks for secondary particles. By default, Geant4 adjusts the secondary particle time if it is earlier than the parent particle's time, which conflicts with our approach. <br  />
+</li>
+<li>Additionally, the <code>AddSecondary</code> method from the base class was copied, as otherwise the wrong <code>CheckSecondary</code> would be called.</li>
+</ul>
+</li>
+</ol>
+<p>These changes highlight the module's dependance on specific Geant4 implementations. For example, the time consistency checks in <code><a class="el" href="class_g4_particle_change_for_rad_decay.html">G4ParticleChangeForRadDecay</a></code> were introduced in Geant4 version 4.12, requiring additional adjustments. <br  />
+</p>
+<p><b>Important:</b> Always review and update these modifications whenever Geant4 is upgraded to ensure compatibility and correct functionality. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Dec 21 2024 20:43:55 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sun Dec 22 2024 16:15:54 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -1,5 +1,11 @@
 <map id="G4RadioactiveDecay" name="G4RadioactiveDecay">
-<area shape="rect" id="Node000001" title=" " alt="" coords="17,79,176,104"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,188,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,44,99,79,94,79,94,44"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="84,243,243,268"/>
+<area shape="rect" id="Node000002" href="$class_g4_v_radioactive_decay.html" title=" " alt="" coords="80,168,247,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,208,166,242,161,242,161,208"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,80,188,105"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="116,115,156,166,152,169,112,118"/>
+<area shape="rect" id="Node000004" href="$class_g4_particle_change_for_rad_decay.html" title=" " alt="" coords="212,80,435,105"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="291,114,186,170,184,165,288,110"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="250,5,397,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="326,45,326,80,321,80,321,45"/>
 </map>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['parameters_0',['parameters',['../md_extra__doc_232___s_n.html#autotoc_md47',1,'General Parameters'],['../md_extra__doc_232___s_n.html#autotoc_md46',1,'Input Parameters'],['../md_extra__doc_232___s_n.html#autotoc_md48',1,'SN Framework Parameters']]],
+  ['parameters_0',['parameters',['../md_extra__doc_232___s_n.html#autotoc_md48',1,'General Parameters'],['../md_extra__doc_232___s_n.html#autotoc_md47',1,'Input Parameters'],['../md_extra__doc_232___s_n.html#autotoc_md49',1,'SN Framework Parameters']]],
   ['parametertable_1',['ParameterTable',['../class_parameter_table.html',1,'']]],
   ['parsearguments_2',['parseArguments',['../class_o_m_sim.html#a22f2335b943429a2697c0c8b3747e658',1,'OMSim']]],
   ['parsekeycontenttovector_3',['parsekeycontenttovector',['../class_parameter_table.html#a3c2a94b50a41341c104b5b1585d15efc',1,'ParameterTable::parseKeyContentToVector(std::vector&lt; T &gt; &amp;pVector, pt::ptree pTree, std::basic_string&lt; char &gt; pKey, G4double pScaling, bool pInverse)'],['../class_parameter_table.html#aa74f75099b364ec36386ffc64d8dd3c7',1,'ParameterTable::parseKeyContentToVector(std::vector&lt; T &gt; &amp;pVector, std::basic_string&lt; char &gt; p_MapKey, std::basic_string&lt; char &gt; pKey, G4double pScaling, bool pInverse)']]],
@@ -21,13 +21,13 @@ var searchData=
   ['pmtnr_18',['PMTnr',['../struct_hit_stats.html#af603afdc7e643ea0246cb0b642ae8bb5',1,'HitStats']]],
   ['pmtnumber_19',['pmtNumber',['../struct_photon_info.html#aa3e4260bf5368e799bbe85afe42a45ce',1,'PhotonInfo']]],
   ['pmtpulse_20',['PMTPulse',['../struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html',1,'OMSimPMTResponse']]],
-  ['pmtresponse_21',['pmtresponse',['../struct_photon_info.html#a1669c552fd4a31bb23d4920eb946fafc',1,'PhotonInfo::PMTResponse'],['../struct_hit_stats.html#a3c8b0736ba6927c644ee1b9e62e02e64',1,'HitStats::PMTresponse']]],
+  ['pmtresponse_21',['pmtresponse',['../struct_hit_stats.html#a3c8b0736ba6927c644ee1b9e62e02e64',1,'HitStats::PMTresponse'],['../struct_photon_info.html#a1669c552fd4a31bb23d4920eb946fafc',1,'PhotonInfo::PMTResponse']]],
   ['pmts_20and_20oms_20sensitive_22',['Making PMTs and OMs sensitive',['../md_extra__doc_20__common.html#autotoc_md11',1,'']]],
   ['pmts_20charge_20transit_20time_20and_20detection_20probability_23',['PMTs Charge, transit time and detection probability',['../md_extra__doc_20__common.html#autotoc_md14',1,'']]],
   ['position_24',['Position',['../struct_o_m_sim_detector_component_1_1_component.html#acb8ab651f8f834f1926ef2b4e571db19',1,'OMSimDetectorComponent::Component']]],
   ['practices_20for_20creating_20new_20thread_20safe_20containers_25',['Best Practices for Creating New Thread-Safe Containers',['../md_extra__doc_21__multithreading.html#autotoc_md24',1,'']]],
   ['probability_26',['PMTs Charge, transit time and detection probability',['../md_extra__doc_20__common.html#autotoc_md14',1,'']]],
-  ['probability_20weight_3a_27',['Interaction Probability Weight:',['../md_extra__doc_232___s_n.html#autotoc_md54',1,'']]],
+  ['probability_20weight_3a_27',['Interaction Probability Weight:',['../md_extra__doc_232___s_n.html#autotoc_md55',1,'']]],
   ['process_28',['process',['../namespace_ice_processor.html#ae62c8b69efbfeaf9eaf3110b52ba9d37',1,'IceProcessor::process()'],['../namespace_scintillation_processor.html#a697d365515e84fa024fa106fc8d2cee7',1,'ScintillationProcessor::process()']]],
   ['processconstproperties_29',['processConstProperties',['../class_o_m_sim_material_handler.html#a0f799e0b10b1d0e37eb849b401b0d5e7',1,'OMSimMaterialHandler']]],
   ['processextraproperties_30',['processExtraProperties',['../class_o_m_sim_material_handler.html#a2e87189ae05d3d960df85957c799ebf9',1,'OMSimMaterialHandler']]],

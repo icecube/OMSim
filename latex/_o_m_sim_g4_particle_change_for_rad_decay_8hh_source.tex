@@ -1,0 +1,131 @@
+\doxysection{OMSim\+G4\+Particle\+Change\+For\+Rad\+Decay.\+hh}
+\hypertarget{_o_m_sim_g4_particle_change_for_rad_decay_8hh_source}{}\label{_o_m_sim_g4_particle_change_for_rad_decay_8hh_source}\index{OMSimG4ParticleChangeForRadDecay.hh@{OMSimG4ParticleChangeForRadDecay.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}G4ios.hh"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}G4ThreeVector.hh"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}G4VParticleChange.hh"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }G4DynamicParticle;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_g4_particle_change_for_rad_decay}{G4ParticleChangeForRadDecay}}\ final\ :\ \textcolor{keyword}{public}\ G4VParticleChange}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_g4_particle_change_for_rad_decay}{G4ParticleChangeForRadDecay}}();}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_g4_particle_change_for_rad_decay}{\string~G4ParticleChangeForRadDecay}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_g4_particle_change_for_rad_decay}{G4ParticleChangeForRadDecay}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_g4_particle_change_for_rad_decay}{G4ParticleChangeForRadDecay}}\&\ right)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_g4_particle_change_for_rad_decay}{G4ParticleChangeForRadDecay}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_g4_particle_change_for_rad_decay}{G4ParticleChangeForRadDecay}}\&\ right)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \textcolor{comment}{//\ -\/-\/-\/\ the\ following\ methods\ are\ for\ updating\ G4Step\ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00023\ \ \ \textcolor{comment}{//\ Return\ the\ pointer\ to\ the\ G4Step\ after\ updating\ the\ step\ information}}
+\DoxyCodeLine{00024\ \ \ \textcolor{comment}{//\ by\ using\ final\ state\ information\ of\ the\ track\ given\ by\ a\ physics\ process}}
+\DoxyCodeLine{00025\ \ \ \textcolor{comment}{//\ !!!\ No\ effect\ for\ \ AlongSteyp}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ G4Step*\ UpdateStepForAtRest(G4Step*\ Step)\ \textcolor{keyword}{final};}
+\DoxyCodeLine{00028\ \ \ \ \ G4Step*\ UpdateStepForPostStep(G4Step*\ Step)\ \textcolor{keyword}{final};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ Initialize(\textcolor{keyword}{const}\ G4Track\&)\ \textcolor{keyword}{final};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ all\ properties\ by\ using\ G4Track\ information}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ ProposeGlobalTime(G4double\ t);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ ProposeLocalTime(G4double\ t);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \textcolor{comment}{//\ Get/Propose\ the\ final\ global/local\ time}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \textcolor{comment}{//\ NOTE:\ DO\ NOT\ INVOKE\ both\ methods\ in\ a\ step}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ Each\ method\ affects\ both\ local\ and\ global\ time}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ G4double\ GetGlobalTime(G4double\ timeDelay\ =\ 0.0)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ \ \ \ \ G4double\ GetLocalTime(G4double\ timeDelay\ =\ 0.0)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ time\ delay\ to\ the\ glocbal/local\ time.}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \textcolor{comment}{//\ Can\ get\ \ the\ final\ global/local\ time\ without\ argument}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{const}\ G4ThreeVector*\ GetPolarization()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ ProposePolarization(G4double\ Px,\ G4double\ Py,\ G4double\ Pz);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ ProposePolarization(\textcolor{keyword}{const}\ G4ThreeVector\&\ finalPoralization);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ AddSecondary(G4Track*\ aTrack);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \textcolor{comment}{//\ Get/Propose\ the\ final\ Polarization\ vector}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Dump\ and\ debug\ methods\ -\/-\/-\/}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ DumpInfo()\ \textcolor{keyword}{const}\ \textcolor{keyword}{final};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ G4bool\ CheckIt(\textcolor{keyword}{const}\ G4Track\&)\ \textcolor{keyword}{final};}
+\DoxyCodeLine{00055\ \ \ \ \ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ G4double\ theGlobalTime0\ =\ 0.0;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \textcolor{comment}{//\ The\ global\ time\ at\ Initial}}
+\DoxyCodeLine{00061\ \ \ \ \ G4double\ theLocalTime0\ =\ 0.0;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \textcolor{comment}{//\ The\ local\ time\ at\ Initial}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ G4double\ theTimeChange\ =\ 0.0;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \textcolor{comment}{//\ The\ change\ of\ local\ time\ of\ a\ given\ particle}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ G4ThreeVector\ thePolarizationChange;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \textcolor{comment}{//\ The\ changed\ (final)\ polarization\ of\ a\ given\ track}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ G4bool\ CheckSecondary(G4Track\&);}
+\DoxyCodeLine{00071\ \ \ \ \ }
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ Inline\ methods}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{inline}}
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ G4ParticleChangeForRadDecay::ProposeGlobalTime(G4double\ t)}
+\DoxyCodeLine{00080\ \{}
+\DoxyCodeLine{00081\ \ \ theTimeChange\ =\ (t\ -\/\ theGlobalTime0)\ +\ theLocalTime0;}
+\DoxyCodeLine{00082\ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{inline}}
+\DoxyCodeLine{00085\ G4double\ G4ParticleChangeForRadDecay::GetGlobalTime(G4double\ timeDelay)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00086\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00087\ \ \ \textcolor{comment}{//\ \ Convert\ the\ time\ delay\ to\ the\ global\ time.}}
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordflow}{return}\ theGlobalTime0\ +\ (theTimeChange\ -\/\ theLocalTime0)\ +\ timeDelay;}
+\DoxyCodeLine{00089\ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{inline}}
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ G4ParticleChangeForRadDecay::ProposeLocalTime(G4double\ t)}
+\DoxyCodeLine{00093\ \{}
+\DoxyCodeLine{00094\ \ \ theTimeChange\ =\ t;}
+\DoxyCodeLine{00095\ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{inline}}
+\DoxyCodeLine{00098\ G4double\ G4ParticleChangeForRadDecay::GetLocalTime(G4double\ timeDelay)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00099\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00100\ \ \ \textcolor{comment}{//\ \ Convert\ the\ time\ delay\ to\ the\ local\ time.}}
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordflow}{return}\ theTimeChange\ +\ timeDelay;}
+\DoxyCodeLine{00102\ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{inline}}
+\DoxyCodeLine{00105\ \textcolor{keyword}{const}\ G4ThreeVector*\ G4ParticleChangeForRadDecay::GetPolarization()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00106\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordflow}{return}\ \&thePolarizationChange;}
+\DoxyCodeLine{00108\ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{inline}}
+\DoxyCodeLine{00111\ \textcolor{keywordtype}{void}\ G4ParticleChangeForRadDecay::ProposePolarization(}
+\DoxyCodeLine{00112\ \ \ \textcolor{keyword}{const}\ G4ThreeVector\&\ finalPoralization)}
+\DoxyCodeLine{00113\ \{}
+\DoxyCodeLine{00114\ \ \ thePolarizationChange\ =\ finalPoralization;}
+\DoxyCodeLine{00115\ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{keyword}{inline}}
+\DoxyCodeLine{00118\ \textcolor{keywordtype}{void}\ G4ParticleChangeForRadDecay::ProposePolarization(G4double\ Px,}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ Py,}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ Pz)}
+\DoxyCodeLine{00121\ \{}
+\DoxyCodeLine{00122\ \ \ thePolarizationChange.setX(Px);}
+\DoxyCodeLine{00123\ \ \ thePolarizationChange.setY(Py);}
+\DoxyCodeLine{00124\ \ \ thePolarizationChange.setZ(Pz);}
+\DoxyCodeLine{00125\ \}}
+
+\end{DoxyCode}

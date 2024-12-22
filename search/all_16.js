@@ -29,7 +29,7 @@ var searchData=
   ['simplebulbconstruction_26',['simpleBulbConstruction',['../class_o_m_sim_p_m_t_construction.html#a3faaf0d512f9a3fe15c6f33efe6d062c',1,'OMSimPMTConstruction']]],
   ['simulatedecaysinpmts_27',['simulateDecaysInPMTs',['../class_o_m_sim_decays_g_p_s.html#a2bba4e779b0200d277e01053c521587b',1,'OMSimDecaysGPS']]],
   ['simulatedecaysinpressurevessel_28',['simulateDecaysInPressureVessel',['../class_o_m_sim_decays_g_p_s.html#ae43dceede1c8f2c332964fb43242cc76',1,'OMSimDecaysGPS']]],
-  ['sn_20framework_20parameters_29',['SN Framework Parameters',['../md_extra__doc_232___s_n.html#autotoc_md48',1,'']]],
+  ['sn_20framework_20parameters_29',['SN Framework Parameters',['../md_extra__doc_232___s_n.html#autotoc_md49',1,'']]],
   ['snbaseparticlegenerator_30',['SNBaseParticleGenerator',['../class_s_n_base_particle_generator.html',1,'']]],
   ['sneventstats_31',['SNEventStats',['../struct_s_n_event_stats.html',1,'']]],
   ['sorthitstatsbytime_32',['sortHitStatsByTime',['../class_o_m_sim_hit_manager.html#a756d2a85121e00d2a2d8b6c04cd0ebd1',1,'OMSimHitManager']]],
@@ -49,7 +49,7 @@ var searchData=
   ['storage_46',['Hit storage',['../md_extra__doc_20__common.html#autotoc_md15',1,'']]],
   ['storephotonhit_47',['storePhotonHit',['../class_o_m_sim_sensitive_detector.html#a329ead0f229868eaf8ac21132cbc6746',1,'OMSimSensitiveDetector']]],
   ['storing_20hits_20and_20pmt_20response_48',['Storing hits and PMT response',['../md_extra__doc_20__common.html#autotoc_md13',1,'']]],
-  ['studies_49',['studies',['../md_extra__doc_230__effective__area.html',1,'&gt; Effective Area Studies'],['../md_extra__doc_231__radioactive__decays.html',1,'&gt; Radioactive Decays Studies'],['../md_extra__doc_232___s_n.html',1,'&gt; Supernova Studies'],['../index.html#autotoc_md63',1,'Available studies'],['../md_extra__doc_232___s_n.html#autotoc_md49',1,'Fixed Energy Studies'],['../group__sngroup.html',1,'Supernova Studies']]],
+  ['studies_49',['studies',['../md_extra__doc_230__effective__area.html',1,'&gt; Effective Area Studies'],['../md_extra__doc_231__radioactive__decays.html',1,'&gt; Radioactive Decays Studies'],['../md_extra__doc_232___s_n.html',1,'&gt; Supernova Studies'],['../index.html#autotoc_md64',1,'Available studies'],['../md_extra__doc_232___s_n.html#autotoc_md50',1,'Fixed Energy Studies'],['../group__sngroup.html',1,'Supernova Studies']]],
   ['substracttovolume_50',['substracttovolume',['../class_o_m_sim_detector_component.html#a6b09340b9d4a93f5a269cfc116acf8c3',1,'OMSimDetectorComponent::substractToVolume(G4VSolid *pInputVolume, G4Transform3D pTrans, G4String pNewVolumeName)'],['../class_o_m_sim_detector_component.html#a63d099234b89f1cf149535962c636a1d',1,'OMSimDetectorComponent::substractToVolume(G4VSolid *pInputVolume, G4ThreeVector pSubstractionPos, G4RotationMatrix pSubstractionRot, G4String pNewVolumeName)']]],
   ['supernova_20studies_51',['supernova studies',['../md_extra__doc_232___s_n.html',1,'&gt; Supernova Studies'],['../group__sngroup.html',1,'Supernova Studies']]],
   ['surfaces_52',['Optical Surfaces',['../md_extra__doc_20__common.html#autotoc_md4',1,'']]]

@@ -1,0 +1,5 @@
+<map id="OMSimG4VRadioactiveDecay.hh" name="OMSimG4VRadioactiveDecay.hh">
+<area shape="rect" id="Node000001" title="Modified version of the original Geant4 RadioactiveDecay class to define custom decay time." alt="" coords="5,5,237,31"/>
+<area shape="rect" id="Node000002" href="$_o_m_sim_g4_radioactive_decay_8hh.html" title="Modified version of the original Geant4 RadioactiveDecay class to stop decay chain early." alt="" coords="10,79,233,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,44,124,79,119,79,119,44"/>
+</map>

@@ -32,8 +32,13 @@ var hierarchy =
     [ "G4VDiscreteProcess", null, [
       [ "G4OpBoundaryProcess", "class_g4_op_boundary_process.html", null ]
     ] ],
+    [ "G4VParticleChange", null, [
+      [ "G4ParticleChangeForRadDecay", "class_g4_particle_change_for_rad_decay.html", null ]
+    ] ],
     [ "G4VRestDiscreteProcess", null, [
-      [ "G4RadioactiveDecay", "class_g4_radioactive_decay.html", null ],
+      [ "G4VRadioactiveDecay", "class_g4_v_radioactive_decay.html", [
+        [ "G4RadioactiveDecay", "class_g4_radioactive_decay.html", null ]
+      ] ],
       [ "OMSimG4Scintillation", "class_o_m_sim_g4_scintillation.html", null ]
     ] ],
     [ "G4VSensitiveDetector", null, [

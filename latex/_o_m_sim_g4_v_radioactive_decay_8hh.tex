@@ -1,0 +1,37 @@
+\doxysection{OMSim\+G4\+VRadioactive\+Decay.\+hh File Reference}
+\hypertarget{_o_m_sim_g4_v_radioactive_decay_8hh}{}\label{_o_m_sim_g4_v_radioactive_decay_8hh}\index{OMSimG4VRadioactiveDecay.hh@{OMSimG4VRadioactiveDecay.hh}}
+
+
+Modified version of the original Geant4 Radioactive\+Decay class to define custom decay time.  
+
+
+Include dependency graph for OMSim\+G4\+VRadioactive\+Decay.\+hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_o_m_sim_g4_v_radioactive_decay_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{_o_m_sim_g4_v_radioactive_decay_8hh__dep__incl}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Detailed Description}
+By default, the decay time is derived from the isotope\textquotesingle{}s lifetime, leading to prolonged float values when aiming for nanosecond precision. \doxylink{class_o_m_sim}{OMSim} randomly adjusts the decay time based on the simulated time window when the decay time is larger than the window. \doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_g4_v_radioactive_decay}{G4\+VRadioactive\+Decay}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_o_m_sim_g4_v_radioactive_decay_8hh_a8d3a69544d741312b4836c149a7bbb06}\label{_o_m_sim_g4_v_radioactive_decay_8hh_a8d3a69544d741312b4836c149a7bbb06} 
+typedef std\+::map$<$ G4\+String, G4\+Decay\+Table \texorpdfstring{$\ast$}{*} $>$ {\bfseries Decay\+Table\+Map}
+\end{DoxyCompactItemize}
