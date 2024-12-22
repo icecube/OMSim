@@ -13,7 +13,7 @@ For the latest updates and information, check our [GitHub repository](https://gi
 
 ### Installing Geant4
 
-1. Install Geant4 following [the guide provided by CERN](https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html). OMSim is currently optimised for Geant4-11 (last tested with 11.2.2).
+1. Install Geant4 following [the guide provided by CERN](https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html). OMSim is currently optimised for Geant4 11.3.0.
 
 2. For visualisation tools, include the following CMake options:
 
@@ -38,7 +38,7 @@ sudo apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev q
 
 ### Installing ROOT
 
-1. Download the latest ROOT binary from [ROOT's official website](https://root.cern/releases/) (e.g., version 6.28/04 at the time of writing), or compile from source.
+1. Download the latest ROOT binary from [ROOT's official website](https://root.cern/releases/) (e.g., version 6.32.08 at the time of writing), or compile from source.
 
 2. Add the following to your .bashrc for convenience:
    ```bash
@@ -79,7 +79,7 @@ sudo apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev q
 OMSim has been utilized in a range of studies, each simulating unique physics, thereby necessitating distinct Physicslist/analysis setups. In this repository, we have compiled a selection of these studies, each contained within its own folder and accompanied by its own main file. Currently available:
 
 - [Effective area](https://icecube.github.io/OMSim/md_2_effective_area.html): calculates the effective area of the optical modules/PMTs.
-- [Radioactive decays](https://icecube.github.io/OMSim/md_3_radioactive_decays.html): simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules.
+- [Radioactive decays](https://icecube.github.io/OMSim/md_3_radioactive_decays.html): simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules. **Requires Geant4 version 11.3.0**
 - [Supernova studies](https://icecube.github.io/OMSim/md_4__s_n.html): used for the development of an improved SN trigger for IceCube using multi-PMT modules.
 
 ### Customising Compilation

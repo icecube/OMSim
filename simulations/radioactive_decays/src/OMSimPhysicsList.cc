@@ -72,6 +72,7 @@ void OMSimPhysicsList::ConstructProcess()
 
 	G4PhotoElectricEffect *thePhotoElectricEffectModel = new G4PhotoElectricEffect();
 	thePhotoElectricEffectModel->SetEmModel(new G4LivermorePhotoElectricModel());
+	thePhotoElectricEffectModel->SetVerboseLevel(0);
 
 	G4GammaConversion *theGammaConversionModel = new G4GammaConversion();
 	theGammaConversionModel->SetEmModel(new G4LivermoreGammaConversionModel());
@@ -81,10 +82,11 @@ void OMSimPhysicsList::ConstructProcess()
 	theScintProcess->SetTrackSecondariesFirst(false);
 	theScintProcess->SetVerboseLevel(0);
 
-	G4RadioactiveDecay *theRadioactiveDecay = new G4RadioactiveDecay();
+	G4RadioactiveDecay *theRadioactiveDecay = new G4RadioactiveDecay("RadioactiveDecay", 1.0e+30 * CLHEP::second);
 	theRadioactiveDecay->SetVerboseLevel(0);
 	// theRadioactiveDecay->SetICM(true); // Internal Conversion
 	theRadioactiveDecay->SetARM(true); // Atomic Rearangement
+	theRadioactiveDecay->SetVerboseLevel(0);
 
 	G4ionIonisation *theBragg = new G4ionIonisation();
 	theBragg->SetVerboseLevel(0);
@@ -103,9 +105,11 @@ void OMSimPhysicsList::ConstructProcess()
 	ph->RegisterProcess(multiple, G4GenericIon::GenericIon());
 
 	G4UAtomicDeexcitation *de = new G4UAtomicDeexcitation();
+	de->SetVerboseLevel(0);
 	de->SetFluo(true);
 	de->SetAuger(true);
 	de->SetPIXE(true);
+	
 	G4LossTableManager::Instance()->SetAtomDeexcitation(de);
 
 	auto theParticleIterator = GetParticleIterator();

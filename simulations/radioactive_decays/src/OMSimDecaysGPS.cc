@@ -26,10 +26,9 @@ void OMSimDecaysGPS::generalGPS()
     ui.applyCommand("/run/verbose 0");
     ui.applyCommand("/event/verbose 0");
     ui.applyCommand("/tracking/verbose 0");
+    ui.applyCommand("/process/verbose 0");
+    ui.applyCommand("/process/setVerbose 0");
     ui.applyCommand("/run/initialize");
-    ui.applyCommand("/process/em/fluo true");
-    ui.applyCommand("/process/em/auger true");
-    ui.applyCommand("/process/em/pixe true");
     ui.applyCommand("/gps/particle ion");
     G4ThreeVector position = m_opticalModule->m_placedPositions.at(0);
     ui.applyCommand("/gps/pos/centre ", position.x()/m, " ", position.y()/m, " ", position.z()/m, " m");
@@ -62,7 +61,7 @@ void OMSimDecaysGPS::generalGPS()
  */
 void OMSimDecaysGPS::configureIsotopeGPS(G4String p_isotope, G4String p_volumeName)
 {
-    log_trace("Configuring GPS for isotope {} in volume {}", p_isotope, p_volumeName);
+    log_debug("Configuring GPS for isotope {} in volume {}", p_isotope, p_volumeName);
     OMSimUIinterface &ui = OMSimUIinterface::getInstance();
 
     generalGPS();
