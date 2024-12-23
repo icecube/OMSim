@@ -124,7 +124,7 @@ Figure 3: <i>PMT response compared to measurement for different light sources. I
 </div>
 </div>
 
-If you use the complex PMT model, you will obtain detection probability weights, which are the product of quantum efficiency (QE)—which varies with photon wavelength—and collection efficiency weight (which depends on absorption position). These weights are calibrated to match measurements. For more technical details, see the section [Matching PMT Efficiency to Measurements](md_extra_doc_2_technicalities.html#autotoc_md21).
+If you use the complex PMT model, you will obtain detection probability weights, which are the product of quantum efficiency (QE)—which varies with photon wavelength—and collection efficiency weight (which depends on absorption position). These weights are calibrated to match measurements. For more technical details, see the section [Matching PMT Efficiency to Measurements](md_extra__doc_22__technicalities.html#autotoc_md35).
 
 In contrast, with the simple PMT model, the detection probability weight is solely the QE. Since the measured QE is reduced due to absorption in the PMT glass, the simulated tube glass will have no defined absorption length.
 
