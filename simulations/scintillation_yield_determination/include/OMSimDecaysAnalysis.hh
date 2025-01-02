@@ -38,8 +38,9 @@ public:
     void writeMultiplicity(G4double pTimeWindow);
     void writeThreadDecayInformation();
     void writeThreadHitInformation();
+    void writeHitInformation();
     void reset();
-    
+    void countHits();
 private:
     G4ThreadLocal static DecayStats *m_threadDecayStats;
     void mergeThreadFiles(G4String p_FileEnd);

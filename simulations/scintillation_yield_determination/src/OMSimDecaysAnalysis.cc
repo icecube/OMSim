@@ -208,3 +208,57 @@ void OMSimDecaysAnalysis::mergeFiles()
 	mergeThreadFiles(G4String("_hits.dat"));
 	mergeThreadFiles(G4String("_decays.dat"));
 }
+
+
+
+void OMSimDecaysAnalysis::writeHitInformation()
+{
+	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
+	G4String lHitsFileName = outputSufix + "_hits.dat";
+
+	OMSimHitManager::getInstance().mergeThreadData();
+	HitStats lHits = OMSimHitManager::getInstance().getMergedHitsOfModule();
+
+	std::fstream dataFile;
+	dataFile.open(lHitsFileName.c_str(), std::ios::out | std::ios::app);
+	if (lHits.eventId.size() > 0)
+	{
+		for (int i = 0; i < (int)lHits.eventId.size(); i++)
+		{
+			dataFile << lHits.eventId.at(i) << "\t";
+			dataFile << std::setprecision(13);
+			dataFile << lHits.hitTime.at(i) / s << "\t";
+			dataFile << std::setprecision(4);
+			dataFile << lHits.PMTnr.at(i) << "\t";
+			dataFile << lHits.energy.at(i) << "\t";
+			dataFile << lHits.globalPosition.at(i).x() << "\t";
+			dataFile << lHits.globalPosition.at(i).y() << "\t";
+			dataFile << lHits.globalPosition.at(i).z() << "\t";
+			dataFile << lHits.PMTresponse.at(i).PE << "\t";
+			dataFile << lHits.PMTresponse.at(i).transitTime << "\t";
+			dataFile << lHits.PMTresponse.at(i).detectionProbability << "\t";
+			dataFile << G4endl;
+		}
+	}
+	dataFile.close();
+	log_trace("Finished writing decay information");
+}
+
+void OMSimDecaysAnalysis::countHits() {
+
+    std::vector<double> lHits = OMSimHitManager::getInstance().countMergedHits();
+
+	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
+	G4String fileName = outputSufix + "_counts.dat";
+
+	std::fstream dataFile;
+    dataFile.open(fileName.c_str(), std::ios::out | std::ios::app);
+
+    G4double totalhits = 0;
+    for (const auto &hit : lHits) {
+        dataFile << hit << "\t";
+        totalhits = hit; // last element is total nr of hits
+    }
+    dataFile << G4endl;
+    dataFile.close();
+}
