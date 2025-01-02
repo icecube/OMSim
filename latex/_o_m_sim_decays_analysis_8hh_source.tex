@@ -22,21 +22,23 @@
 \DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&\mbox{\hyperlink{class_o_m_sim_decays_analysis_a4aea9bd04b3f168cfcae98808b33f90c}{getInstance}}();}
 \DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_a35aa71b0f55694ab682eb12e33e773d3}{appendDecay}}(G4String\ pParticleName,\ G4double\ pDecayTime,\ G4ThreeVector\ pDecayPosition);}
 \DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ mergeDecayData();}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_af747109a424e5878d2a4e42b6308f3cb}{writeMultiplicity}}(G4double\ pTimeWindow);}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{writeThreadDecayInformation}}();}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}{writeThreadHitInformation}}();}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}}();}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00043\ \ \ \ \ G4ThreadLocal\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_decay_stats}{DecayStats}}\ *m\_threadDecayStats;}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ G4Mutex\ m\_mutex;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ mergeFiles();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_af747109a424e5878d2a4e42b6308f3cb}{writeMultiplicity}}(G4double\ pTimeWindow);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_abf3b99f2998f27c9ad1f792dfc716e0c}{writeThreadDecayInformation}}();}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_a78449c898f237d5a40c75042123c19af}{writeThreadHitInformation}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis_aa111935e44e66f005b9b59a3ee5919e0}{reset}}();}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00044\ \ \ \ \ G4ThreadLocal\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_decay_stats}{DecayStats}}\ *m\_threadDecayStats;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ mergeThreadFiles(G4String\ p\_FileEnd);}
 \DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}*\ m\_instance;}
-\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{\string~OMSimDecaysAnalysis}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ G4Mutex\ m\_mutex;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}*\ m\_instance;}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{\string~OMSimDecaysAnalysis}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_o_m_sim_decays_analysis}{OMSimDecaysAnalysis}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00054\ \};}
 
 \end{DoxyCode}
