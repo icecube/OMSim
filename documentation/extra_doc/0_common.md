@@ -61,7 +61,7 @@ This inheritance ensures the definition of functions to retrieve the pressure ve
 
 The `OMSimPMTConstruction` class constructs PMTs. There are two PMT construction approaches. The first is simple, with a solid photocathode where all entering photons are recorded. This mode can be activated using the argument `--simple_PMT`. The second, default, approach simulates the photocathode as a thin layer, also representing the internal components accounting for internal reflections. For more information, refer to Chapter 9 of [this thesis](https://zenodo.org/record/8121321). 
 
-In the complex PMT model, the photocathodes are not real volumes, but are defined as a boundary condition between the glass and internal vacuum. The original `G4OpBoundaryProcess` of Geant4 was modified in `OMSimOpBoundaryProcess.cc` in order to simulate the optical propierties of thin layers (see [Nicolai Krybus's thesis]()).
+In the complex PMT model, the photocathodes are not real volumes, but are defined as a boundary condition between the glass and internal vacuum. The original `G4OpBoundaryProcess` of Geant4 was modified in `OMSimOpBoundaryProcess.cc` in order to simulate the optical propierties of thin layers (see [Nicolai Krybus's thesis](https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/masterarbeiten/ma_krybus.pdf)).
 
 The construction of different PMT models (e.g. the 3'' or 10'' PMTs) is quite similar. However, the frontal window shape varies among models, leading to diverse combinations of ellipsoids and spheres.
 
