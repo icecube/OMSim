@@ -57,7 +57,7 @@ Each optical module and harness is defined in its respective class, located in t
 
 This inheritance ensures the definition of functions to retrieve the pressure vessel's weight (necessary for radioactive decay studies) and the count of PMTs inside the module. The `OMSimOpticalModule` interface inherits from `OMSimDetectorComponent`, a general helper class simplifying construction. Most OMSim geometries inherit from this class, as illustrated in the dependency diagram below:
 
-![Inheritance diagram](classabc_detector_component__inherit__graph.svg)
+![Inheritance diagram](class_o_m_sim_detector_component__inherit__graph.svg)
 
 The `OMSimPMTConstruction` class constructs PMTs. There are two PMT construction approaches. The first is simple, with a solid photocathode where all entering photons are recorded. This mode can be activated using the argument `--simple_PMT`. The second, default, approach simulates the photocathode as a thin layer, also representing the internal components accounting for internal reflections. For more information, refer to Chapter 9 of [this thesis](https://zenodo.org/record/8121321). 
 
