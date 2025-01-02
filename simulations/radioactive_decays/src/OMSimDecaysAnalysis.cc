@@ -57,7 +57,7 @@ void OMSimDecaysAnalysis::writeMultiplicity(G4double p_timeWindow)
 
 	OMSimHitManager::getInstance().mergeThreadData();
 	std::vector<int> multiplicity = OMSimHitManager::getInstance().calculateMultiplicity(p_timeWindow);
-	
+
 	std::fstream dataFile;
 	dataFile.open(fileName.c_str(), std::ios::out | std::ios::app);
 
@@ -74,7 +74,8 @@ void OMSimDecaysAnalysis::writeMultiplicity(G4double p_timeWindow)
  */
 void OMSimDecaysAnalysis::writeThreadDecayInformation()
 {
-	if (!m_threadDecayStats) return;
+	if (!m_threadDecayStats)
+		return;
 	log_trace("Writing decay information of {} decays", m_threadDecayStats->eventId.size());
 
 	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
@@ -108,7 +109,8 @@ void OMSimDecaysAnalysis::writeThreadDecayInformation()
 void OMSimDecaysAnalysis::writeThreadHitInformation()
 {
 	OMSimHitManager &lHitManager = OMSimHitManager::getInstance();
-	if (!lHitManager.areThereHitsInModuleSingleThread()) return;
+	if (!lHitManager.areThereHitsInModuleSingleThread())
+		return;
 
 	HitStats lHits = lHitManager.getSingleThreadHitsOfModule();
 	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
@@ -149,4 +151,60 @@ void OMSimDecaysAnalysis::reset()
 	delete m_threadDecayStats;
 	m_threadDecayStats = nullptr;
 	OMSimHitManager::getInstance().reset();
+}
+
+void OMSimDecaysAnalysis::mergeThreadFiles(G4String p_fileEnd)
+{
+	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
+
+	G4String mergedFileName = outputSufix + p_fileEnd;
+
+	std::ofstream mergedFile;
+	mergedFile.open(mergedFileName.c_str(), std::ios::out | std::ios::app);
+	if (!mergedFile.is_open())
+	{
+		log_error("Failed to open merged decay file: {}", mergedFileName);
+		return;
+	}
+
+	int numThreads = OMSimCommandArgsTable::getInstance().get<int>("threads");
+
+	for (int threadID = 0; threadID < numThreads; ++threadID)
+	{
+		G4String threadFileName = outputSufix + "_" + std::to_string(threadID) + p_fileEnd;
+
+		std::ifstream threadFile(threadFileName.c_str(), std::ios::in);
+		if (!threadFile.is_open())
+		{
+			log_warning("Failed to open thread file: {}", threadFileName);
+			continue;
+		}
+
+		G4String line;
+		while (std::getline(threadFile, line))
+		{
+			mergedFile << line << G4endl;
+		}
+
+		threadFile.close();
+
+		// Delete the processed thread file
+		if (std::remove(threadFileName.c_str()) != 0)
+		{
+			log_warning("Failed to delete thread file: {}", threadFileName);
+		}
+		else
+		{
+			log_trace("Deleted thread file: {}", threadFileName);
+		}
+	}
+
+	mergedFile.close();
+	log_trace("Merged all thread files into: {}", mergedFileName);
+}
+
+void OMSimDecaysAnalysis::mergeFiles()
+{
+	mergeThreadFiles(G4String("_hits.dat"));
+	mergeThreadFiles(G4String("_decays.dat"));
 }

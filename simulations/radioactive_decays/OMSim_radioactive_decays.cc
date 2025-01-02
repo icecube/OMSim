@@ -52,6 +52,7 @@ void runRadioactiveDecays(OMSimRadDecaysDetector *p_detector)
 			analysisManager.reset();
 		}
 	}
+	analysisManager.mergeFiles();
 }
 
 

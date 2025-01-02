@@ -34,13 +34,15 @@ public:
     static OMSimDecaysAnalysis &getInstance();
     void appendDecay(G4String pParticleName, G4double pDecayTime, G4ThreeVector pDecayPosition);
     void mergeDecayData();
+    void mergeFiles();
     void writeMultiplicity(G4double pTimeWindow);
     void writeThreadDecayInformation();
     void writeThreadHitInformation();
     void reset();
-
+    
 private:
     G4ThreadLocal static DecayStats *m_threadDecayStats;
+    void mergeThreadFiles(G4String p_FileEnd);
 
     static G4Mutex m_mutex;
 
