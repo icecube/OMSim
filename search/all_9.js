@@ -13,7 +13,7 @@ var searchData=
   ['energy_10',['energy',['../struct_hit_stats.html#a542a1e55040646afe6966f281194117b',1,'HitStats']]],
   ['energy_20studies_11',['Fixed Energy Studies',['../md_extra__doc_232___s_n.html#autotoc_md50',1,'']]],
   ['ensuredirectoryexists_12',['ensureDirectoryExists',['../namespace_tools.html#a79deeeb2ed49181f097d55b88f6831f9',1,'Tools']]],
-  ['eventid_13',['eventid',['../struct_decay_stats.html#a7cead323e226455fe4c847ff5043bd20',1,'DecayStats::eventId'],['../struct_photon_info.html#a44bce76bf7aad156523f10d4aa58ee5e',1,'PhotonInfo::eventID'],['../struct_hit_stats.html#a5b5b61f1096a1e02d495d7bab1fff259',1,'HitStats::eventId']]],
+  ['eventid_13',['eventid',['../struct_hit_stats.html#a5b5b61f1096a1e02d495d7bab1fff259',1,'HitStats::eventId'],['../struct_decay_stats.html#a7cead323e226455fe4c847ff5043bd20',1,'DecayStats::eventId'],['../struct_photon_info.html#a44bce76bf7aad156523f10d4aa58ee5e',1,'PhotonInfo::eventID']]],
   ['example_14',['Minimal example',['../class_parameter_table.html#ExampleUsageParameterTable',1,'']]],
   ['example_20using_20healpy_15',['Example using healpy',['../md_extra__doc_230__effective__area.html#autotoc_md43',1,'']]],
   ['example_3a_20omsimhitmanager_16',['Example: OMSimHitManager',['../md_extra__doc_21__multithreading.html#autotoc_md22',1,'']]],
