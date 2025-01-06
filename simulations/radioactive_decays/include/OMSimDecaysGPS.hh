@@ -32,6 +32,7 @@ public:
   void setOpticalModule(OMSimOpticalModule *p_opticalModule) { m_opticalModule = p_opticalModule; };
   void setProductionRadius(G4double pProductionRadius);
   G4String getDecayTerminationNuclide();
+  G4ThreeVector sampleNextDecayPosition(G4ThreeVector p_currentPosition);
 
 private:
   // Define a map that maps isotopes to their GPS commands

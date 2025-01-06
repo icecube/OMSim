@@ -1017,6 +1017,7 @@ void G4VRadioactiveDecay::DecayAnalog(const G4Track& theTrack,
     G4double ParentEnergy = theParticle->GetKineticEnergy() + theParticle->GetParticleDefinition()->GetPDGMass();
     G4ThreeVector ParentDirection(theParticle->GetMomentumDirection());
 
+    G4bool randomisePosition = false;
     if (theTrack.GetTrackStatus() == fStopButAlive)
     {
         // this condition seems to be always True, further investigation is needed (L.Desorgher)
@@ -1036,8 +1037,10 @@ void G4VRadioactiveDecay::DecayAnalog(const G4Track& theTrack,
         ////OMSIM//////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////
         G4double timeWindow = OMSimCommandArgsTable::getInstance().get<G4double>("time_window") * s;
+        
         if (finalGlobalTime > timeWindow)
         {
+            randomisePosition = true;
             temptime = G4UniformRand() * timeWindow;
             finalGlobalTime = temptime;
             finalLocalTime = temptime;
@@ -1080,10 +1083,19 @@ void G4VRadioactiveDecay::DecayAnalog(const G4Track& theTrack,
         G4PhysicsModelCatalog::GetModelID("model_RDM_AtomicRelaxation");
     for (G4int index = 0; index < numberOfSecondaries; ++index)
     {
-        G4Track *secondary = new G4Track(products->PopProducts(), finalGlobalTime,
-                                         theTrack.GetPosition());
+        G4DynamicParticle* nextProduct = products->PopProducts();
+        G4ThreeVector secondaryPosition = theTrack.GetPosition();
+
+        if (randomisePosition && nextProduct->GetParticleDefinition()-> GetParticleType() == "nucleus")
+        {
+          secondaryPosition = OMSimDecaysGPS::getInstance().sampleNextDecayPosition(theTrack.GetPosition());
+        }
+        G4Track *secondary = new G4Track(nextProduct, finalGlobalTime, secondaryPosition);
+
         secondary->SetWeight(theTrack.GetWeight());
         secondary->SetCreatorModelID(modelID);
+        
+        
         // Change for atomics relaxation
         if (theRadDecayMode == IT && index > 0)
         {

@@ -3,6 +3,8 @@
 #include "OMSimUIinterface.hh"
 #include <G4SystemOfUnits.hh>
 #include <G4Poisson.hh>
+#include <G4Navigator.hh>
+#include "G4TransportationManager.hh"
 
 void OMSimDecaysGPS::setProductionRadius(G4double p_productionRadius)
 {
@@ -31,7 +33,7 @@ void OMSimDecaysGPS::generalGPS()
     ui.applyCommand("/run/initialize");
     ui.applyCommand("/gps/particle ion");
     G4ThreeVector position = m_opticalModule->m_placedPositions.at(0);
-    ui.applyCommand("/gps/pos/centre ", position.x()/m, " ", position.y()/m, " ", position.z()/m, " m");
+    ui.applyCommand("/gps/pos/centre ", position.x() / m, " ", position.y() / m, " ", position.z() / m, " m");
     ui.applyCommand("/gps/ene/mono 0 eV");
     ui.applyCommand("/gps/pos/type Volume");
     ui.applyCommand("/gps/pos/shape Sphere");
@@ -146,10 +148,56 @@ void OMSimDecaysGPS::simulateDecaysInPMTs(G4double p_timeWindow)
             G4int decayCount = pair.second;
             m_nuclideStopName = m_terminationIsotopes[pair.first];
 
-            configureIsotopeGPS(isotope, "PMT"+std::to_string(pmt));
+            configureIsotopeGPS(isotope, "PMT_" + std::to_string(pmt));
 
             log_trace("Simulating {} decays of {} in PMT {}", decayCount, isotope, pmt);
             ui.runBeamOn(decayCount);
         }
+    }
+}
+
+G4ThreeVector OMSimDecaysGPS::sampleNextDecayPosition(G4ThreeVector p_currentPosition)
+{
+    G4Navigator *navigator = G4TransportationManager::GetTransportationManager()->GetNavigatorForTracking();
+    G4VPhysicalVolume *currentVolume = navigator->LocateGlobalPointAndSetup(p_currentPosition, nullptr, true);
+    G4ThreeVector centreOfVolume = currentVolume->GetTranslation();
+
+    if (!currentVolume)
+    {
+        G4Exception("sampleNextDecayPosition", "NoVolume", FatalException,
+                    "Mother isotope position is not inside any volume.");
+    }
+    int counter = 0;
+    while (true)
+    {
+        G4double u = G4UniformRand(); // Random value in [0, 1)
+        G4double v = G4UniformRand();
+        G4double w = G4UniformRand();
+
+        // Generate spherical coordinates
+        G4double r = m_productionRadius * std::cbrt(u) * mm; // Scales radius for uniform distribution
+        G4double theta = std::acos(1 - 2 * v);               // Polar angle
+        G4double phi = 2 * CLHEP::pi * w;                    // Azimuthal angle
+
+        // Convert to Cartesian coordinates
+        G4double x = r * std::sin(theta) * std::cos(phi);
+        G4double y = r * std::sin(theta) * std::sin(phi);
+        G4double z = r * std::cos(theta);
+        G4ThreeVector randomPoint = G4ThreeVector(x, y, z) + centreOfVolume;
+        // Check if the random point is inside the same volume
+        G4VPhysicalVolume *locatedVolume = navigator->LocateGlobalPointAndSetup(randomPoint, nullptr, true);
+
+        if (currentVolume == locatedVolume)
+        {
+            if (counter > 100000)
+            {
+                log_error("Could not find next decay position. Exciting...");
+                G4Exception("sampleNextDecayPosition", "NoVolume", FatalException,
+                            "Could not find next decay position!");
+            }
+
+            return randomPoint;
+        }
+        counter++;
     }
 }
