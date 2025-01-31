@@ -23,6 +23,11 @@ Currently, there are two analysis modes:
 
 2. Without the `--multiplicity_study` argument: Data pertaining to photons and decayed isotopes is saved to files. If you are using multithreaded mode, then each thread will produce its own file.
 
+To run the Simulation use the examplary line below:
+
+`./OMSim_radioactive_decays --no_PMT_decays --efficiency_cut -n 1 --time_window 60 --temperature -30 -o outputname --environment 1 --threads 3 --detector_type 2`
+
+
 ### Developer Notes: Geant4 Dependencies and Modifications
 
 This simulation module requires modifications to several Geant4 classes to enable custom handling of decay times. Unfortunately, the Geant4 physics library is not designed with extensibility in mind, making inheritance or selective function overrides impractical. As a result, we had to copy and modify entire class implementations. This approach makes the module highly dependent on the specific Geant4 version being used.
