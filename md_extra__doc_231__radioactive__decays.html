@@ -142,6 +142,8 @@ $(document).ready(function(){initNavTree('md_extra__doc_231__radioactive__decays
 <li>With the <code>--multiplicity_study</code> argument: After each t_w time window, the multiplicity is calculated and saved to a file. Raw data isn't stored, as multiplicity studies generally involve extended simulation durations, leading to large volumes of photon data.</li>
 <li>Without the <code>--multiplicity_study</code> argument: Data pertaining to photons and decayed isotopes is saved to files. If you are using multithreaded mode, then each thread will produce its own file.</li>
 </ol>
+<p>To run the Simulation use the examplary line below:</p>
+<p><code>./OMSim_radioactive_decays --no_PMT_decays --efficiency_cut -n 1 --time_window 60 --temperature -30 -o outputname --environment 1 --threads 3 --detector_type 2</code></p>
 <h2><a class="anchor" id="autotoc_md45"></a>
 Developer Notes: Geant4 Dependencies and Modifications</h2>
 <p>This simulation module requires modifications to several Geant4 classes to enable custom handling of decay times. Unfortunately, the Geant4 physics library is not designed with extensibility in mind, making inheritance or selective function overrides impractical. As a result, we had to copy and modify entire class implementations. This approach makes the module highly dependent on the specific Geant4 version being used.</p>
@@ -174,7 +176,7 @@ Developer Notes: Geant4 Dependencies and Modifications</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jan 31 2025 12:23:18 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Fri Jan 31 2025 15:40:28 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

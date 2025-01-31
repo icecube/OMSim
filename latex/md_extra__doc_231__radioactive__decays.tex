@@ -28,7 +28,11 @@ Currently, there are two analysis modes\+:
 \begin{DoxyEnumerate}
 \item With the {\ttfamily -\/-\/multiplicity\+\_\+study} argument\+: After each t\+\_\+w time window, the multiplicity is calculated and saved to a file. Raw data isn\textquotesingle{}t stored, as multiplicity studies generally involve extended simulation durations, leading to large volumes of photon data.
 \item Without the {\ttfamily -\/-\/multiplicity\+\_\+study} argument\+: Data pertaining to photons and decayed isotopes is saved to files. If you are using multithreaded mode, then each thread will produce its own file.
-\end{DoxyEnumerate}\hypertarget{md_extra__doc_231__radioactive__decays_autotoc_md45}{}\doxysubsection{\texorpdfstring{Developer Notes\+: Geant4 Dependencies and Modifications}{Developer Notes: Geant4 Dependencies and Modifications}}\label{md_extra__doc_231__radioactive__decays_autotoc_md45}
+\end{DoxyEnumerate}
+
+To run the Simulation use the examplary line below\+:
+
+{\ttfamily ./\+OMSim\+\_\+radioactive\+\_\+decays -\/-\/no\+\_\+\+PMT\+\_\+decays -\/-\/efficiency\+\_\+cut -\/n 1 -\/-\/time\+\_\+window 60 -\/-\/temperature -\/30 -\/o outputname -\/-\/environment 1 -\/-\/threads 3 -\/-\/detector\+\_\+type 2}\hypertarget{md_extra__doc_231__radioactive__decays_autotoc_md45}{}\doxysubsection{\texorpdfstring{Developer Notes\+: Geant4 Dependencies and Modifications}{Developer Notes: Geant4 Dependencies and Modifications}}\label{md_extra__doc_231__radioactive__decays_autotoc_md45}
 This simulation module requires modifications to several Geant4 classes to enable custom handling of decay times. Unfortunately, the Geant4 physics library is not designed with extensibility in mind, making inheritance or selective function overrides impractical. As a result, we had to copy and modify entire class implementations. This approach makes the module highly dependent on the specific Geant4 version being used.
 
 With each Geant4 update, class structures and function implementations may change, requiring updates to this module—an admittedly tedious but necessary process. For Geant4 version 4.\+13, the following modifications were made\+:
