@@ -108,27 +108,29 @@ G4VSolid *internalVolume = createEggSolid(innSegments1,
 
    // Substract all internal components to internal volume to obtain gel and append it
    G4VSolid *lGelLayers = substractToVolume(internalVolume, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "DeggGelLayersSolid");
-   G4LogicalVolume *lGelLogical = new G4LogicalVolume(lGelLayers, m_data->getMaterial("RiAbs_Gel_Shin-Etsu"), "DeggGelLayersLogical");
-   appendComponent(lGelLayers, lGelLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "DeggGelLayers");
+
 
    // Delete dummy box from internal components
    deleteComponent("SubstractionBox");
-   // appendInternalComponentsFromCAD();
+   appendInternalComponentsFromCAD();
 
    // Logicals
    G4LogicalVolume *lDEggGlassLogical = new G4LogicalVolume(outerGlass, m_data->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "Glass_log");
    G4LogicalVolume *lInnerVolumeLogical = new G4LogicalVolume(internalVolume, m_data->getMaterial("Ri_Air"), "InnerVolume");
 
-   // Placements
-   // place all internal components in internal volume
-   placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), lInnerVolumeLogical, "");
+
 
    // place internal volume in glass
    new G4PVPlacement(new G4RotationMatrix(), G4ThreeVector(0, 0, 0), lInnerVolumeLogical, "VacuumGlass", lDEggGlassLogical, false, 0, m_checkOverlaps);
 
    //Place PMTs into that volume
-   placePMTs(lInnerVolumeLogical);
+   lGelLayers = placePMTs(lInnerVolumeLogical, lGelLayers);
+   G4LogicalVolume *lGelLogical = new G4LogicalVolume(lGelLayers, m_data->getMaterial("RiAbs_Gel_Shin-Etsu"), "DeggGelLayersLogical");
+   appendComponent(lGelLayers, lGelLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "DeggGelLayers");
 
+   // Placements
+   // place all internal components in internal volume
+   placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), lInnerVolumeLogical, "");
    // Delete all internal components from dictionary, as they were placed in a volume inside the largest volume.
    m_components.clear();
 
@@ -140,10 +142,12 @@ G4VSolid *internalVolume = createEggSolid(innSegments1,
    // ---------------- visualisation attributes --------------------------------------------------------------------------------
    lDEggGlassLogical->SetVisAttributes(m_glassVis);
    lInnerVolumeLogical->SetVisAttributes(G4VisAttributes::GetInvisible());
+   lGelLogical->SetVisAttributes(m_gelVis);
+   lLogicalDummy->SetVisAttributes(m_airVis);
 }
 
 
-void DEGG::placePMTs(G4LogicalVolume *p_innerVolume)
+G4VSolid* DEGG::placePMTs(G4LogicalVolume *p_innerVolume, G4VSolid* p_gelLayer)
 {  G4double distancePMT = 176.7 * mm;
    for (int k = 0; k <= 2 - 1; k++)
     {
@@ -158,7 +162,10 @@ void DEGG::placePMTs(G4LogicalVolume *p_innerVolume)
 
         G4Transform3D transformers = G4Transform3D(*rot2, G4ThreeVector(0, 0, distancePMT * std::pow(-1, k)));
         m_managerPMT->placeIt(transformers, p_innerVolume, m_converter.str());
+
+        p_gelLayer = new G4SubtractionSolid("SubstractedVolume", p_gelLayer, m_managerPMT->getPMTSolid(), transformers);
     }
+    return p_gelLayer;
 }
 
 

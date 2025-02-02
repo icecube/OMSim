@@ -41,7 +41,7 @@ private:
 
 
     void appendPMTs();
-    void placePMTs(G4LogicalVolume* lInnerVolumeLogical);
+    G4VSolid* placePMTs(G4LogicalVolume *p_innerVolume, G4VSolid* p_gelLayer);
     void appendInternalComponentsFromCAD();
     void appendPressureVesselFromCAD();
 
