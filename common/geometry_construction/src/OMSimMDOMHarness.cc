@@ -196,7 +196,7 @@ void mDOMHarness::pads()
     const G4double padWidth = 11.0 * mm;  // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
     const G4double padAngle = 44.5 * deg / (2 * CLHEP::pi * m_opticalModule->m_glassOutRad) * 360.;
 
-    G4Tubs *padSolid = new G4Tubs("padSolid", m_opticalModule->m_glassOutRad + m_teraThickness, m_opticalModule->m_glassOutRad + m_teraThickness + m_padThickness, padWidth / 2.0, padAngle / 2.0, padAngle);
+    G4Tubs *padSolid = new G4Tubs("padSolid", m_opticalModule->m_glassOutRad + m_teraThickness+0.5*mm, m_opticalModule->m_glassOutRad + m_teraThickness + m_padThickness, padWidth / 2.0, padAngle / 2.0, padAngle);
 
     G4RotationMatrix rot = G4RotationMatrix();
 
