@@ -540,15 +540,6 @@ namespace ScintillationProcessor
   void extractYieldAlpha(ParameterTable *p_dataFile, const boost::property_tree::ptree &p_jsonTree, G4MaterialPropertiesTable *p_MPT, G4String p_temperature)
   {
     extractYield(p_dataFile, p_jsonTree, p_MPT, p_temperature, "SCINTILLATIONYIELD", "yield_alphas", "jYieldAlphaTemperature", "jYieldAlpha");
-    
-    // Scale the Vitrovex alpha yield by a temperature dependant factor resulting from PMT simulation changes. (See OMSim/documentation/notebooks/scintillation_yield_PMTefficiencyCorrection/GetYieldFactorAndRescale.ipynb). 
-    if (p_jsonTree.get<G4String>("jMaterialName") == "RiAbs_Glass_Vitrovex")
-    {
-    log_info("Vitrovex alpha yield will be scaled due to PMT efficiency changes.");
-    G4double alphaYield = p_MPT->GetConstProperty("SCINTILLATIONYIELD");
-    alphaYield *= 0.0009725 * std::stod(p_temperature) + 1.40;
-    p_MPT->AddConstProperty("SCINTILLATIONYIELD", alphaYield, true);
-    }  
   }
   /**
    * @brief Extracts and interpolates the electron scintillation yield for a given temperature.
@@ -560,31 +551,17 @@ namespace ScintillationProcessor
    */
   void extractYieldElectron(ParameterTable *p_dataFile, const boost::property_tree::ptree &p_jsonTree, G4MaterialPropertiesTable *p_MPT, G4String p_temperature)
   {
-    // Scale Vitrovex electron yield with the temperature dependant measured electron yield. (See OMSim/documentation/notebooks/scintillation_yield_PMTefficiencyCorrection/GetYieldFactorAndRescale.ipynb). 
-    if (p_jsonTree.get<G4String>("jMaterialName") == "RiAbs_Glass_Vitrovex")
+    try
     {
-      log_info("Vitrovex electron yield set to alpha yield scaled by electron yield factor.");
-
-      G4double alphaYield = p_MPT->GetConstProperty("SCINTILLATIONYIELD");
-      G4double temperature = std::stod(p_temperature);
-      G4double electronYield = alphaYield * (-0.0028602 * temperature + 1.66032);  //2018 glass batch 
-      
-      p_MPT->AddConstProperty("SCINTILLATIONYIELDELECTRONS", electronYield, true);
-      log_trace("Alpha yield: {} Electron yield: {}", alphaYield, electronYield);
+      extractYield(p_dataFile, p_jsonTree, p_MPT, p_temperature, "SCINTILLATIONYIELDELECTRONS", "yield_electrons", "jYieldElectronTemperature", "jYieldElectron");
     }
-    else
+    catch (...)
     {
-      try
-      {
-        extractYield(p_dataFile, p_jsonTree, p_MPT, p_temperature, "SCINTILLATIONYIELDELECTRONS", "yield_electrons", "jYieldElectronTemperature", "jYieldElectron");
-      }
-      catch (...)
-      {
-        log_warning("Electron yield not found, using alpha yield.");
-        extractYield(p_dataFile, p_jsonTree, p_MPT, p_temperature, "SCINTILLATIONYIELDELECTRONS", "yield_alphas", "jYieldAlphaTemperature", "jYieldAlpha");
-      }
+      log_warning("Electron yield not found, using alpha yield.");
+      extractYield(p_dataFile, p_jsonTree, p_MPT, p_temperature, "SCINTILLATIONYIELDELECTRONS", "yield_alphas", "jYieldAlphaTemperature", "jYieldAlpha");
     }
   }
+
 }
 
 /**
