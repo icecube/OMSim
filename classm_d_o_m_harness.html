@@ -226,7 +226,7 @@ const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_ropeRMax<
 const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_bridgeAddedThickness</b> = 14.6 * mm</td></tr>
 <tr class="separator:a09f58f48bd990288980677b2d26f05ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec602c5cbcc4f8bac849ff5043bb2b24" id="r_aec602c5cbcc4f8bac849ff5043bb2b24"><td class="memItemLeft" align="right" valign="top"><a id="aec602c5cbcc4f8bac849ff5043bb2b24" name="aec602c5cbcc4f8bac849ff5043bb2b24"></a>
-const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_ropeRotationAngleX</b> = 11.245557 * deg</td></tr>
+const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_ropeRotationAngleX</b> = 11.*deg</td></tr>
 <tr class="separator:aec602c5cbcc4f8bac849ff5043bb2b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad13c2a19401d6fd0e2f859d0fc71c5e5" id="r_ad13c2a19401d6fd0e2f859d0fc71c5e5"><td class="memItemLeft" align="right" valign="top"><a id="ad13c2a19401d6fd0e2f859d0fc71c5e5" name="ad13c2a19401d6fd0e2f859d0fc71c5e5"></a>
 const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_ropeDz</b> = 509.5 * mm</td></tr>
@@ -234,12 +234,12 @@ const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_ropeDz</b
 <tr class="memitem:a9b20d12f835c5bacf0dccb0a93a03d93" id="r_a9b20d12f835c5bacf0dccb0a93a03d93"><td class="memItemLeft" align="right" valign="top"><a id="a9b20d12f835c5bacf0dccb0a93a03d93" name="a9b20d12f835c5bacf0dccb0a93a03d93"></a>
 const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_bridgeCorrection</b> = 7.85*mm * tan(m_ropeRotationAngleX)</td></tr>
 <tr class="separator:a9b20d12f835c5bacf0dccb0a93a03d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4be12dd42736500f300c2695ae62bfcd" id="r_a4be12dd42736500f300c2695ae62bfcd"><td class="memItemLeft" align="right" valign="top"><a id="a4be12dd42736500f300c2695ae62bfcd" name="a4be12dd42736500f300c2695ae62bfcd"></a>
-const G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_ropeStartingPoint</b> = m_totalWidth + m_bridgeCorrection + m_ropeRMax / cos(m_ropeRotationAngleX)</td></tr>
-<tr class="separator:a4be12dd42736500f300c2695ae62bfcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b20e8fce117f4c218721bcd3b9a19b2" id="r_a7b20e8fce117f4c218721bcd3b9a19b2"><td class="memItemLeft" align="right" valign="top"><a id="a7b20e8fce117f4c218721bcd3b9a19b2" name="a7b20e8fce117f4c218721bcd3b9a19b2"></a>
 G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_totalWidth</b></td></tr>
 <tr class="separator:a7b20e8fce117f4c218721bcd3b9a19b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80e054d4186034c0f7f920ae171ad0e2" id="r_a80e054d4186034c0f7f920ae171ad0e2"><td class="memItemLeft" align="right" valign="top"><a id="a80e054d4186034c0f7f920ae171ad0e2" name="a80e054d4186034c0f7f920ae171ad0e2"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>m_ropeStartingPoint</b></td></tr>
+<tr class="separator:a80e054d4186034c0f7f920ae171ad0e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -249,7 +249,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memdesc:a0e483a65980f76c4b691a17c21c9ee0e inherit pub_attribs_class_o_m_sim_detector_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance of OMSimInputdata, which should be started only once. <br /></td></tr>
 <tr class="separator:a0e483a65980f76c4b691a17c21c9ee0e inherit pub_attribs_class_o_m_sim_detector_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61f09676686410a6a8f69a0b03d5a0de inherit pub_attribs_class_o_m_sim_detector_component" id="r_a61f09676686410a6a8f69a0b03d5a0de"><td class="memItemLeft" align="right" valign="top">
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_checkOverlaps</b> = false</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_checkOverlaps</b> = true</td></tr>
 <tr class="separator:a61f09676686410a6a8f69a0b03d5a0de inherit pub_attribs_class_o_m_sim_detector_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08d6710ee0ac4dd277e7993459c612ca inherit pub_attribs_class_o_m_sim_detector_component" id="r_a08d6710ee0ac4dd277e7993459c612ca"><td class="memItemLeft" align="right" valign="top">
 std::vector&lt; G4ThreeVector &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_placedPositions</b></td></tr>
@@ -382,7 +382,7 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classm_d_o_m_harness.html">mDOMHarness</a></li>
-    <li class="footer">Generated on Sun Feb 2 2025 16:04:05 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Wed Feb 5 2025 10:30:22 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

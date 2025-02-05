@@ -99,7 +99,7 @@ const G4double {\bfseries m\+\_\+rope\+RMax} = 3.\+0 \texorpdfstring{$\ast$}{*} 
 const G4double {\bfseries m\+\_\+bridge\+Added\+Thickness} = 14.\+6 \texorpdfstring{$\ast$}{*} mm
 \item 
 \Hypertarget{classm_d_o_m_harness_aec602c5cbcc4f8bac849ff5043bb2b24}\label{classm_d_o_m_harness_aec602c5cbcc4f8bac849ff5043bb2b24} 
-const G4double {\bfseries m\+\_\+rope\+Rotation\+AngleX} = 11.\+245557 \texorpdfstring{$\ast$}{*} deg
+const G4double {\bfseries m\+\_\+rope\+Rotation\+AngleX} = 11.\texorpdfstring{$\ast$}{*}deg
 \item 
 \Hypertarget{classm_d_o_m_harness_ad13c2a19401d6fd0e2f859d0fc71c5e5}\label{classm_d_o_m_harness_ad13c2a19401d6fd0e2f859d0fc71c5e5} 
 const G4double {\bfseries m\+\_\+rope\+Dz} = 509.\+5 \texorpdfstring{$\ast$}{*} mm
@@ -107,11 +107,11 @@ const G4double {\bfseries m\+\_\+rope\+Dz} = 509.\+5 \texorpdfstring{$\ast$}{*} 
 \Hypertarget{classm_d_o_m_harness_a9b20d12f835c5bacf0dccb0a93a03d93}\label{classm_d_o_m_harness_a9b20d12f835c5bacf0dccb0a93a03d93} 
 const G4double {\bfseries m\+\_\+bridge\+Correction} = 7.\+85\texorpdfstring{$\ast$}{*}mm \texorpdfstring{$\ast$}{*} tan(m\+\_\+rope\+Rotation\+AngleX)
 \item 
-\Hypertarget{classm_d_o_m_harness_a4be12dd42736500f300c2695ae62bfcd}\label{classm_d_o_m_harness_a4be12dd42736500f300c2695ae62bfcd} 
-const G4double {\bfseries m\+\_\+rope\+Starting\+Point} = m\+\_\+total\+Width + m\+\_\+bridge\+Correction + m\+\_\+rope\+RMax / cos(m\+\_\+rope\+Rotation\+AngleX)
-\item 
 \Hypertarget{classm_d_o_m_harness_a7b20e8fce117f4c218721bcd3b9a19b2}\label{classm_d_o_m_harness_a7b20e8fce117f4c218721bcd3b9a19b2} 
 G4double {\bfseries m\+\_\+total\+Width}
+\item 
+\Hypertarget{classm_d_o_m_harness_a80e054d4186034c0f7f920ae171ad0e2}\label{classm_d_o_m_harness_a80e054d4186034c0f7f920ae171ad0e2} 
+G4double {\bfseries m\+\_\+rope\+Starting\+Point}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
@@ -119,7 +119,7 @@ G4double {\bfseries m\+\_\+total\+Width}
 \item 
 \mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+data}
 \begin{DoxyCompactList}\small\item\em Instance of OMSim\+Inputdata, which should be started only once. \end{DoxyCompactList}\item 
-bool {\bfseries m\+\_\+check\+Overlaps} = false
+bool {\bfseries m\+\_\+check\+Overlaps} = true
 \item 
 std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+\_\+placed\+Positions}
 \begin{DoxyCompactList}\small\item\em store the positions each time the components are placed \end{DoxyCompactList}\item 

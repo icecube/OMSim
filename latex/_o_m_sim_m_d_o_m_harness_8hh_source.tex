@@ -32,12 +32,12 @@
 \DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_teraThickness\ =\ 1.0\ *\ mm;}
 \DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_ropeRMax\ =\ 3.0\ *\ mm;}
 \DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_bridgeAddedThickness\ =\ 14.6\ *\ mm;}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_ropeRotationAngleX\ =\ 11.245557\ *\ deg;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_ropeRotationAngleX\ =\ 11.*deg;}
 \DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_ropeDz\ =\ 509.5\ *\ mm;}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_bridgeCorrection\ =\ \ 7.85*mm\ *\ tan(m\_ropeRotationAngleX);\ \ \textcolor{comment}{//\ \ }}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_ropeStartingPoint\ =\ m\_totalWidth\ +\ m\_bridgeCorrection\ +\ m\_ropeRMax\ /\ cos(m\_ropeRotationAngleX);\ \textcolor{comment}{//\ this\ is\ the\ actual\ starting\ point\ of\ the\ rope,\ i.e.\ the\ distance\ to\ the\ z-\/axis,\ which\ has\ to\ be\ larger\ than\ lBridgeROuter[2]\ in\ order\ for\ the\ rope\ not\ to\ cut\ the\ bridge.}}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ G4double\ m\_totalWidth;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_bridgeCorrection\ =\ \ 7.85*mm\ *\ tan(m\_ropeRotationAngleX);\ \ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ G4double\ m\_totalWidth;}
+\DoxyCodeLine{00039\ \ \ \ \ G4double\ m\_ropeStartingPoint;}
 \DoxyCodeLine{00040\ \};}
 
 \end{DoxyCode}
