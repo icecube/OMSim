@@ -10,10 +10,12 @@
 #include <G4LogicalSkinSurface.hh>
 #include <G4Polycone.hh>
 #include <G4Torus.hh>
+#include <G4MultiUnion.hh>
 
 mDOMHarness::mDOMHarness(mDOM *p_MDOM): OMSimDetectorComponent(), m_opticalModule(p_MDOM)
 {
     m_totalWidth = m_opticalModule->m_glassOutRad + m_teraThickness + m_padThickness + m_bridgeAddedThickness;
+    m_ropeStartingPoint = m_totalWidth + m_bridgeCorrection + m_ropeRMax / cos(m_ropeRotationAngleX); // this is the actual starting point of the rope, i.e. the distance to the z-axis, which has to be larger than lBridgeROuter[2] in order for the rope not to cut the bridge.
     construction();
 };
 
@@ -21,7 +23,7 @@ void mDOMHarness::construction()
 {
 
     bandsAndClamps();
-    // bridgeRopesSolid();
+    bridgeRopesSolid();
     mainDataCable();
     pads();
     PCA();
@@ -135,36 +137,37 @@ void mDOMHarness::bridgeRopesSolid()
 
     G4Tubs *ropesSolid = new G4Tubs("ropesSolid", 0.0, m_ropeRMax, m_ropeDz - ropesZShift, 0.0, 360.0 * deg);
 
-    // First union
+    G4MultiUnion* multi_union = new G4MultiUnion("united_bridge_rope");
+    G4Transform3D transformers;
+    multi_union->AddNode(bridgeSolid, G4Transform3D(G4RotationMatrix(), G4ThreeVector(0,0,0)));
+
     G4RotationMatrix rot = G4RotationMatrix();
     rot.rotateX(m_ropeRotationAngleX);
-
     G4ThreeVector unionPos = G4ThreeVector(0, m_opticalModule->m_glassOutRad - m_ropeDz * sin(m_ropeRotationAngleX) + 2.25 * cm, (m_ropeDz)*cos(m_ropeRotationAngleX));
-    G4UnionSolid *tempUnion1 = new G4UnionSolid("temp1", bridgeSolid, ropesSolid, G4Transform3D(rot, unionPos));
+    multi_union->AddNode(ropesSolid, G4Transform3D(rot, unionPos));
 
-    // second union, rope in the other side
     rot = G4RotationMatrix();
     rot.rotateX(-m_ropeRotationAngleX);
     unionPos = G4ThreeVector(0, m_opticalModule->m_glassOutRad - m_ropeDz * sin(m_ropeRotationAngleX) + 2.25 * cm, -(m_ropeDz)*cos(m_ropeRotationAngleX));
-    G4UnionSolid *lTempUnion2 = new G4UnionSolid("temp2", tempUnion1, ropesSolid, G4Transform3D(rot, unionPos));
+    multi_union->AddNode(ropesSolid, G4Transform3D(rot, unionPos));
+    multi_union ->Voxelize();
 
-    // and now this same object 3 more times, with 90 degrees difference
-    rot = G4RotationMatrix();
-    rot.rotateZ(90 * deg);
-    G4UnionSolid *tempUnion3 = new G4UnionSolid("temp3", lTempUnion2, lTempUnion2, G4Transform3D(rot, G4ThreeVector(0, 0, 0)));
-    rot.rotateZ(90 * deg);
-    G4UnionSolid *tempUnion4 = new G4UnionSolid("temp4", tempUnion3, lTempUnion2, G4Transform3D(rot, G4ThreeVector(0, 0, 0)));
-    rot.rotateZ(90 * deg);
-
-    G4UnionSolid *ropesUnionSolid = new G4UnionSolid("ropesUnionSolid", tempUnion4, lTempUnion2, G4Transform3D(rot, G4ThreeVector(0, 0, 0)));
-    G4LogicalVolume *ropesUnionLogical = new G4LogicalVolume(ropesUnionSolid, m_data->getMaterial("NoOptic_Stahl"), "");
+    G4LogicalVolume *ropesUnionLogical = new G4LogicalVolume(multi_union, m_data->getMaterial("NoOptic_Stahl"), "");
 
     new G4LogicalSkinSurface("ropes_skin", ropesUnionLogical, m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 
     G4RotationMatrix ropesRot = G4RotationMatrix();
     ropesRot.rotateZ(m_harnessRotAngle);
+    appendComponent(multi_union, ropesUnionLogical, G4ThreeVector(0, 0, 0), ropesRot, "Ropes_0");
 
-    appendComponent(ropesUnionSolid, ropesUnionLogical, G4ThreeVector(0, 0, 0), ropesRot, "Ropes");
+    std::stringstream converter;
+    for (int k = 1; k <= 3; k++)
+    {
+        converter.str("");
+        converter << "Ropes_" << k;
+        ropesRot.rotateZ(90*deg);
+        appendComponent(multi_union, ropesUnionLogical, G4ThreeVector(0, 0, 0), ropesRot, converter.str());
+    } 
 }
 
 void mDOMHarness::mainDataCable()
@@ -180,6 +183,7 @@ void mDOMHarness::mainDataCable()
 
     G4double mainCableAngle = 90.0 * deg;
     G4double mainCableRadius = (m_ropeStartingPoint + dataCableRadius + m_ropeRMax + 0.2 * cm - m_bridgeAddedThickness - 0.75 * cm);
+
     G4ThreeVector dataCablePosition = G4ThreeVector(mainCableRadius * sin(mainCableAngle),
                                                      mainCableRadius * cos(mainCableAngle),
                                                      0.0);
@@ -190,7 +194,7 @@ void mDOMHarness::mainDataCable()
 void mDOMHarness::pads()
 {
     const G4double padWidth = 11.0 * mm;  // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
-    const G4double padAngle = 44.5 * deg; // (taken from construction sketch of the rubber pads provided by Anna Pollmann)
+    const G4double padAngle = 44.5 * deg / (2 * CLHEP::pi * m_opticalModule->m_glassOutRad) * 360.;
 
     G4Tubs *padSolid = new G4Tubs("padSolid", m_opticalModule->m_glassOutRad + m_teraThickness, m_opticalModule->m_glassOutRad + m_teraThickness + m_padThickness, padWidth / 2.0, padAngle / 2.0, padAngle);
 
@@ -255,7 +259,7 @@ void mDOMHarness::PCA()
     const G4double wireRadius = 17.78 * cm;                                                                                                                                                                                                                                                                                                                                                                                                                                                       // minimum bending diameter of the cable (14 inches)
     const G4double disanceTubeToRope = ((m_ropeStartingPoint) + m_ropeRMax * (1 - cos(m_ropeRotationAngleX)) - ((m_opticalModule->m_glassOutRad + mushHeight - tubeRadius) * cos(m_plugAngle) + tubeLength * sin(m_plugAngle) + m_opticalModule->m_cylinderHeight) * tan(m_ropeRotationAngleX) - (m_opticalModule->m_glassOutRad + mushHeight - tubeRadius) * sin(m_plugAngle) + tubeLength * cos(m_plugAngle)) / cos(m_ropeRotationAngleX) - (wireThickness / 2 + m_ropeRMax) - m_ropeDz * (1 - cos(m_ropeRotationAngleX)) * sin(m_ropeRotationAngleX); // Modified distance between start of first torus and end of second torus
 
-    const G4double anglePCA2 = acos((0.5) * (disanceTubeToRope / wireRadius + sin(m_plugAngle + m_ropeRotationAngleX) + 1.));
+    const G4double anglePCA2 = acos((0.5) * (-disanceTubeToRope / wireRadius + sin(m_plugAngle + m_ropeRotationAngleX) + 1.));
     const G4double anglePCA1 = 90. * deg + anglePCA2 - (m_plugAngle + m_ropeRotationAngleX);
     const G4double extnLength = 30. * 2.54 * cm - wireRadius * (anglePCA1 + anglePCA2) - tubeLength;
 
@@ -290,6 +294,7 @@ void mDOMHarness::PCA()
 
     G4ThreeVector positionPCA = G4ThreeVector((m_opticalModule->m_glassOutRad + (2 * mushCylinderHeight + mushConeHeight) / 2.) * (cos(m_harnessRotAngle)) * sin(m_plugAngle), (m_opticalModule->m_glassOutRad + (2 * mushCylinderHeight + mushConeHeight) / 2) * sin(m_harnessRotAngle) * sin(m_plugAngle), (m_opticalModule->m_glassOutRad + (2 * mushCylinderHeight + mushConeHeight) / 2) * cos(m_plugAngle) + m_opticalModule->m_cylinderHeight);
     appendComponent(solidPCA, logicalPCA, positionPCA, mushRot, "PCA");
+    
 }
 
 void mDOMHarness::plug()

@@ -112,7 +112,7 @@ G4VSolid *internalVolume = createEggSolid(innSegments1,
 
    // Delete dummy box from internal components
    deleteComponent("SubstractionBox");
-   appendInternalComponentsFromCAD();
+   //appendInternalComponentsFromCAD();
 
    // Logicals
    G4LogicalVolume *lDEggGlassLogical = new G4LogicalVolume(outerGlass, m_data->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "Glass_log");

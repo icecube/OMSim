@@ -29,7 +29,7 @@ public:
     virtual void construction() = 0; ///<  Abstract method you have to define in order to make a derived class from OMSimDetectorComponent
 
     OMSimInputData *m_data; ///<  Instance of OMSimInputdata, which should be started only once.
-    bool m_checkOverlaps = false;
+    bool m_checkOverlaps = true;
 
     /**
      *  @struct OMSimDetectorComponent::Component
