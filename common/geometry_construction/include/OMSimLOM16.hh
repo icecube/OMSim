@@ -8,11 +8,13 @@
 #include "OMSimPMTConstruction.hh"
 #include "OMSimOpticalModule.hh"
 
+class LOM16Harness;
+
 class LOM16 : public OMSimOpticalModule
 {
 public:
-    LOM16(G4bool pPlaceHarness = false);
-    ~LOM16();
+    LOM16(G4bool p_placeHarness = true);
+    ~LOM16(){};
     void construction();
     double getPressureVesselWeight() {return (5.38+5.35)*kg;};
     int getNumberOfPMTs() { return m_totalNumberPMTs;};
@@ -24,23 +26,24 @@ public:
         return ss.str();
     }
 private:
+    //selection variables
+    LOM16Harness *m_harness;
+    G4bool m_placeHarness = true;
+    G4bool m_harnessUnion = true; //it should be true for the first module that you build, and then false
+    G4SubtractionSolid *substractHarnessPCA(G4VSolid *pSolid);
+
     G4UnionSolid* pressureVessel(const G4double pOutRad, G4String pSuffix);
 
     //Lom specific functions
-    void placeCADSupportStructure();
-
+    void InternalCADComponents(G4LogicalVolume* lInnerVolumeLogical);
     void appendEquatorBand();
     
     //for gelpad and PMT creation
-    void placePMTsAndGelpads(G4VSolid* lGelSolid,G4LogicalVolume* lGelLogical);
+    void placePMTsAndGelpads(G4VSolid* lGelSolid, G4LogicalVolume* lGelLogical);
     void setPMTAndGelpadPositions();
     void createGelpadLogicalVolumes(G4VSolid* lGelSolid);
     void placePMTs(G4LogicalVolume* lInnerVolumeLogical);
     void placeGelpads(G4LogicalVolume* lInnerVolumeLogical);
-
-    //selection variables
-    G4bool m_placeHarness = true;
-    G4bool m_harnessUnion = true; //it should be true for the first module that you build, and then false
 
     //vectors for positions and rotations
     std::vector<G4ThreeVector> m_positionsPMT;
@@ -87,5 +90,5 @@ private:
     G4double m_maxPMTRadius;
 
     const G4double m_equatorialBandWidth = 45 * mm; //Total width (both halves)
-    const G4double m_equatorialBandThickness = 1 * mm; //Thickness since its a 3D object
+    const G4double m_equatorialBandThickness = 0.5 * mm; //Thickness since its a 3D object
 };

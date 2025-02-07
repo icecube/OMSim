@@ -38,16 +38,15 @@ public:
 
 private:
     DEggHarness *m_harness;
-
+    G4bool m_placeHarness = true;
+    G4SubtractionSolid *substractHarnessPCA(G4VSolid *pSolid);
 
     void appendPMTs();
     G4VSolid* placePMTs(G4LogicalVolume *p_innerVolume, G4VSolid* p_gelLayer);
     void appendInternalComponentsFromCAD();
-    void appendPressureVesselFromCAD();
 
-    //helper variables
     std::stringstream m_converter;
-
+    
     G4VSolid *createEggSolid(G4int p_segments_1,
                              G4double pSphereRmax,
                              G4double pSpheredTheta,

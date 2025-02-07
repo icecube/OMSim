@@ -19,8 +19,10 @@ public:
 private:
     DEGG *m_opticalModule;
 
-    void placeCADHarness();
-    void placeCADPenetrator();
+    void CADHarnessRopes();
+    void CADHarnessPCA();
+    void PlaceCADString();
+    void CADHarnessWaistband();
     void mainDataCable();
     G4VSolid *buildHarnessSolid(G4double rmin, G4double rmax, G4double sphi, G4double dphi, G4double stheta, G4double dtheta);
 

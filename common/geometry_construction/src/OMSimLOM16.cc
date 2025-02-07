@@ -4,8 +4,9 @@
  *          - Write documentation and parse current comments into Doxygen style
  */
 #include "OMSimLOM16.hh"
+#include "OMSimLOM16Harness.hh"
+#include "OMSimTools.hh"
 #include "OMSimLogger.hh"
-#include "CADMesh.hh"
 #include "OMSimCommandArgsTable.hh"
 
 #include <G4Cons.hh>
@@ -14,12 +15,8 @@
 #include <G4Polycone.hh>
 #include <G4EllipticalCone.hh>
 
-LOM16::~LOM16()
-{
-    // delete m_harness;
-}
 
-LOM16::LOM16(G4bool pPlaceHarness): OMSimOpticalModule(new OMSimPMTConstruction()), m_placeHarness(pPlaceHarness)
+LOM16::LOM16(G4bool p_placeHarness) : OMSimOpticalModule(new OMSimPMTConstruction()), m_placeHarness(p_placeHarness)
 {
     log_info("Constructing LOM16");
     m_managerPMT->includeHAcoating();
@@ -27,16 +24,11 @@ LOM16::LOM16(G4bool pPlaceHarness): OMSimOpticalModule(new OMSimPMTConstruction(
     m_managerPMT->construction();
     m_PMToffset = m_managerPMT->getDistancePMTCenterToTip();
     m_maxPMTRadius = m_managerPMT->getMaxPMTRadius() + 2 * mm;
-    if (m_placeHarness)
-    {
-        // m_harness = new mDOMHarness(this, m_data);
-        // integrateDetectorComponent(m_harness, G4ThreeVector(0,0,0), G4RotationMatrix(), "");
-        log_error("LOM16 harness not implemented yet");
-    }
-
+    if (p_placeHarness) m_harness = new LOM16Harness(this);
     construction();
+    if (p_placeHarness) integrateDetectorComponent(m_harness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
+    log_trace("Finished constructing LOM16");
 }
-
 
 void LOM16::construction()
 {
@@ -46,28 +38,41 @@ void LOM16::construction()
     // Set positions and rotations of PMTs and gelpads
     setPMTAndGelpadPositions();
 
-    // CAD internal components
-
-    placeCADSupportStructure();
-    glassSolid = substractToVolume(glassSolid, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Glass");
-    airSolid = substractToVolume(airSolid, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Gel");
+    // Main volumes
+    //glassSolid = substractToVolume(glassSolid, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Glass");
+    //airSolid = substractToVolume(airSolid, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Gel");
     
     // Logicals
-    G4LogicalVolume *glassLogical = new G4LogicalVolume(glassSolid, m_data->getMaterial("RiAbs_Glass_Vitrovex"), " Glass_log"); // Vessel
-    G4LogicalVolume *p_innerVolume = new G4LogicalVolume(airSolid, m_data->getMaterial("Ri_Air"), "Inner volume logical"); // Inner volume of vessel (mothervolume of all internal components)
+    G4LogicalVolume *lglassLogical = new G4LogicalVolume(glassSolid, m_data->getMaterial("RiAbs_Glass_Vitrovex"), " Glass_log"); // Vessel
+    G4LogicalVolume *p_innerVolume = new G4LogicalVolume(airSolid, m_data->getMaterial("Ri_Air"), "InnerVolume"); // Inner volume of vessel (mothervolume of all internal components)
+    
+   //subtract PCA
+   if (m_placeHarness)
+    {
+        p_innerVolume = new G4LogicalVolume(substractHarnessPCA(airSolid),
+                                         m_data->getMaterial("Ri_Air"),
+                                         "InnerVolume");
+        lglassLogical = new G4LogicalVolume(substractHarnessPCA(glassSolid),
+                                           m_data->getMaterial("RiAbs_Glass_Vitrovex"),
+                                           "Glass_log");
+    }
+    
     createGelpadLogicalVolumes(airSolid);                                                                                       // logicalvolumes of all gelpads saved globally to be placed below
 
     // Placements
-    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), p_innerVolume, "Gel_physical", glassLogical, false, 0, m_checkOverlaps);
+    new G4PVPlacement(0, G4ThreeVector(0, 0, 0), p_innerVolume, "Gel_physical", lglassLogical, false, 0, m_checkOverlaps);
 
     placePMTs(p_innerVolume);
     placeGelpads(p_innerVolume);
 
-    appendComponent(glassSolid, glassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(m_index));
-    appendEquatorBand();
+    InternalCADComponents(p_innerVolume);
+
+    appendComponent(glassSolid, lglassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(m_index));
+    
+    if (m_placeHarness) appendEquatorBand();
 
     // ---------------- visualisation attributes --------------------------------------------------------------------------------
-    glassLogical->SetVisAttributes(m_glassVis);
+    lglassLogical->SetVisAttributes(m_glassVis);
     p_innerVolume->SetVisAttributes(m_invisibleVis); // Material defined as Ri_Air
     for (int i = 0; i <= m_totalNumberPMTs - 1; i++)
     {
@@ -93,9 +98,8 @@ G4UnionSolid *LOM16::pressureVessel(const G4double pOutRad, G4String pSuffix)
 
 void LOM16::appendEquatorBand()
 {
-
     G4Box *cuttingBox = new G4Box("Cutter", m_glassOutRad + 10 * mm, m_glassOutRad + 10 * mm, m_equatorialBandWidth / 2.);
-    G4UnionSolid *outerSolid = pressureVessel(m_glassOutRad + m_equatorialBandThickness, "BandOuter");
+    G4UnionSolid *outerSolid = pressureVessel(m_glassOutRad + 0.01 * mm + m_equatorialBandThickness, "BandOuter");
 
     G4IntersectionSolid *intersectionSolid = new G4IntersectionSolid("BandThicknessBody", cuttingBox, outerSolid, 0, G4ThreeVector(0, 0, 0));
     G4SubtractionSolid *equatorBandSolid = new G4SubtractionSolid("Equatorband_solid", intersectionSolid,
@@ -106,31 +110,37 @@ void LOM16::appendEquatorBand()
     appendComponent(equatorBandSolid, equatorBandLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "TeraTape");
 }
 
+G4SubtractionSolid *LOM16::substractHarnessPCA(G4VSolid *p_solid)
+{
+    Component plug = m_harness->getComponent("CAD_PCA");
+    G4Transform3D plugTransform = G4Transform3D(plug.Rotation, plug.Position);
+    G4SubtractionSolid *solidSubstracted = new G4SubtractionSolid(p_solid->GetName() + "_PCASubstracted", p_solid, plug.VSolid, plugTransform);
+    return solidSubstracted;
+}
 // ---------------- Module specific funtions below --------------------------------------------------------------------------------
 
-// Places internal components based on a CAD file. OBJ filetype, modified by python script, tesselated via mesh.cc / Documentation here: https://github.com/christopherpoole/CADMesh
-// To do:
-// Recreate CAD obj files (no SetScale & more variety to choose from)
-// Each component has its own label in visualizer -> just one ... another function for penetrator, dummy main boards, ...
-void LOM16::placeCADSupportStructure()
+void LOM16::InternalCADComponents(G4LogicalVolume *p_innerVolume)
 {
+    G4RotationMatrix lRotationInternal;
+    G4ThreeVector lOriginInternal(0 * mm, 0 * mm, 68.8 * mm);
+    lRotationInternal.rotateZ(45 * deg);
 
-    G4String filePath = "../common/data/CADmeshes/LOM16/LOM_Internal_WithPen_WithCali.obj";
-    G4String mssg = "Using the following CAD file for LOM16 internal structure: " + filePath;
-    log_info(mssg);
-
-    // load mesh
-    auto mesh = CADMesh::TessellatedMesh::FromOBJ(filePath);
-    G4ThreeVector lCADoffset = G4ThreeVector(m_xInternalCAD, m_yInternalCAD, m_zInternalCAD);
-    mesh->SetOffset(lCADoffset);
-
-    // mesh->SetScale(10); //did a mistake...this LOM_Internal file needs cm -> mm -> x10
-    // Place all of the meshes it can find in the file as solids individually.
-    for (auto iSolid : mesh->GetSolids())
+    //Support structure
+    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/SupportStructure_edited.obj", "CAD_SupportStructure", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
     {
-        G4LogicalVolume *supportStructureLogical = new G4LogicalVolume(iSolid, m_data->getMaterial("NoOptic_Absorber"), "SupportStructureCAD_Logical");
-        supportStructureLogical->SetVisAttributes(m_absorberVis);
-        appendComponent(iSolid, supportStructureLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SupportStructureCAD");
+    auto comp = getComponent("CAD_SupportStructure");
+    new G4PVPlacement(G4Transform3D(lRotationInternal, G4ThreeVector()),
+        comp.VLogical, "CAD_SupportStructure_physical", p_innerVolume, false, 0, m_checkOverlaps);
+    deleteComponent("CAD_SupportStructure");
+    }
+
+    //Electronics
+    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/Electronics_simplified.obj", "CAD_Electronics", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
+    {
+    auto comp = getComponent("CAD_Electronics");
+    new G4PVPlacement(G4Transform3D(lRotationInternal, G4ThreeVector()),
+        comp.VLogical, "CAD_Electronics_physical", p_innerVolume, false, 0, m_checkOverlaps);
+    deleteComponent("CAD_Electronics");
     }
 }
 

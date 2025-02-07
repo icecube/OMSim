@@ -1,7 +1,9 @@
-
 #include "OMSimPDOM.hh"
+#include "OMSimPDOMHarness.hh"
+#include "OMSimTools.hh"
 #include "OMSimLogger.hh"
 #include "OMSimCommandArgsTable.hh"
+
 #include <G4Ellipsoid.hh>
 #include <G4LogicalSkinSurface.hh>
 #include <G4Orb.hh>
@@ -12,9 +14,11 @@ DOM::DOM(G4bool p_placeHarness, G4bool p_deepcore): OMSimOpticalModule(new OMSim
     log_info("Constructing pDOM");
     (p_deepcore) ? m_managerPMT->selectPMT("pmt_Hamamatsu_R7081_HQE") : m_managerPMT->selectPMT("pmt_Hamamatsu_R7081");
     m_managerPMT->construction();
+    if (p_placeHarness) m_harness = new DOMHarness(this);
     construction();
+    if (p_placeHarness) integrateDetectorComponent(m_harness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
+    log_trace("Finished constructing pDOM");
 }
-
 
 void DOM::construction()
 {
@@ -34,21 +38,12 @@ void DOM::construction()
     G4SubtractionSolid *airSolid = new G4SubtractionSolid("PDOM_Air solid", airAuxSolid, solidPMT, 0, G4ThreeVector(0, 0, zPMT));
     G4Tubs *boardSolid = new G4Tubs("PDOM_Board solid", 52 * mm, 0.5 * 11 * 25.4 * mm, 2 * mm, 0, 2 * CLHEP::pi);
     G4Tubs *baseSolid = new G4Tubs("PDOM_Board solid", 0 * mm, 6 * cm, 2 * mm, 0, 2 * CLHEP::pi);
-
-    // Harness
-    G4double harnessInner[] = {0, 0, 0, 0};
-    G4double harnessRadii[] = {(0.5 * 365.76 - 8.3) * mm, 0.5 * 365.76 * mm, 0.5 * 365.76 * mm, (0.5 * 365.76 - 8.3) * mm};
-    G4double harnessZplanes[] = {-31.75 * mm, -10 * mm, 10 * mm, 31.75 * mm};
-    G4Polycone *harnessAuxSolid = new G4Polycone("PDOM_HarnessAux solid", 0, 2 * CLHEP::pi, 4, harnessZplanes, harnessInner, harnessRadii);
-    G4SubtractionSolid *harnessSolid = new G4SubtractionSolid("PDOM_Harness solid", harnessAuxSolid, glassSphereSolid);
-
+ 
     // Logicals mData
     G4LogicalVolume *glassSphereLogical = new G4LogicalVolume(glassSphereSolid,
                                                                m_data->getMaterial("RiAbs_Glass_Benthos"),
                                                                "PDOM_Glass logical");
-    G4LogicalVolume *harnessLogical = new G4LogicalVolume(harnessSolid,
-                                                           m_data->getMaterial("NoOptic_Stahl"),
-                                                           "PDOM_Harness logical");
+
 
     G4LogicalVolume *gelLogical = new G4LogicalVolume(gelSphereSolid,
                                                        m_data->getMaterial("RiAbs_Gel_QGel900"),
@@ -66,8 +61,19 @@ void DOM::construction()
                                                        m_data->getMaterial("Ri_Vacuum"),
                                                        "PDOM_Air logical");
 
-    G4PVPlacement *boardPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, -40 * mm), boardLogical, "pDOMBoardPhys", airLogical, false, 0, m_checkOverlaps);
-    G4PVPlacement *basePhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, -105 * mm), baseLogical, "pDOMBasePhys", airLogical, false, 0, m_checkOverlaps);
+    // Internal components
+    //G4PVPlacement *boardPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, -40 * mm), boardLogical, "pDOMBoardPhys", airLogical, false, 0, m_checkOverlaps);
+    //G4PVPlacement *basePhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, -105 * mm), baseLogical, "pDOMBasePhys", airLogical, false, 0, m_checkOverlaps);
+
+    // CAD internal components
+    G4RotationMatrix lRotInternals = G4RotationMatrix().rotateX(-90 * deg);
+    Tools::AppendCADComponent(this, 1.0, G4ThreeVector(), lRotInternals,
+        "DOM/Internal_edit.obj", "CAD_Internal", 
+        m_data->getMaterial("NoOptic_Absorber"), m_steelVis);
+    auto comp = getComponent("CAD_Internal");
+    new G4PVPlacement(G4Transform3D(lRotInternals, G4ThreeVector()),
+        comp.VLogical, "CAD_Internal_physical", airLogical, false, 0, m_checkOverlaps);
+    deleteComponent("CAD_Internal");
 
     G4PVPlacement *airPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), airLogical, "pDOMAirPhys ", gelLogical, false, 0, m_checkOverlaps);
 
@@ -75,16 +81,11 @@ void DOM::construction()
 
     G4PVPlacement *gelPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), gelLogical, "pDOMGelPhys", glassSphereLogical, false, 0, m_checkOverlaps);
 
-    if (m_placeHarness)
-        appendComponent(harnessSolid, harnessLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "pDOM_Harness");
-
     appendComponent(glassSphereSolid, glassSphereLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "pDOM_" + std::to_string(m_index));
 
     // ------------------- optical border surfaces --------------------------------------------------------------------------------
-    new G4LogicalSkinSurface("PDOM_Harness_skin", harnessLogical, m_data->getOpticalSurface("Surf_StainlessSteelGround"));
-
+    
     glassSphereLogical->SetVisAttributes(m_glassVis);
-    harnessLogical->SetVisAttributes(m_steelVis);
     gelLogical->SetVisAttributes(m_gelVis);
     airLogical->SetVisAttributes(m_airVis);
     boardLogical->SetVisAttributes(m_boardVis);

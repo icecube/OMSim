@@ -6,11 +6,22 @@
 #pragma once
 
 #include "OMSimLogger.hh"
+#include "OMSimDetectorComponent.hh"
+#include "OMSimCommandArgsTable.hh"
 #include "globals.hh"
 #include <TGraph.h>
 #include <TH2D.h>
 #include <variant>
 #include <optional>
+
+
+#include <G4ThreeVector.hh>
+#include <G4RotationMatrix.hh>
+#include <G4LogicalVolume.hh>
+#include <CADMesh.hh>
+#include <G4MultiUnion.hh>
+
+
 /**
  * @namespace Tools
  * @brief A collection of helper functions for numerical operations.
@@ -52,5 +63,14 @@ namespace Tools
     std::vector<G4String> splitStringByDelimiter(G4String const &p_string, char p_delim);
     std::vector<G4String> splitStringByDelimiter(char *p_char, char p_delim);
     extern std::string visualisationURL;
+
+    void AppendCADComponent(OMSimDetectorComponent* component,
+                            const G4double scaleCAD,
+                            const G4ThreeVector& offsetCAD,
+                            const G4RotationMatrix& rotation,
+                            const std::string& filename,
+                            const std::string& componentname,
+                            G4Material* material,
+                            G4VisAttributes visAttributes);
 };
 

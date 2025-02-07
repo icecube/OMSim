@@ -1,32 +1,29 @@
 /**
  * @todo
- *       - I am not sure if the harness is correctly implemented!
- *       - Clean up the code.
- *       - Subtract CAD penetrator from the vessel.
  *       - Investigate why the gel does not reach the photocathode edge.
  *         (Should the photocathode edge end earlier? Gel, Vessel, and PMT shape are correct.)
  */
 #include "OMSimDEGG.hh"
-#include "CADMesh.hh"
+#include "OMSimDEGGHarness.hh"
+#include "OMSimTools.hh"
 #include "OMSimLogger.hh"
 #include "OMSimCommandArgsTable.hh"
 
 #include <G4Sphere.hh>
 #include <G4Polycone.hh>
-#include <G4MultiUnion.hh>
 
-DEGG::DEGG(G4bool pPlaceHarness) : OMSimOpticalModule(new OMSimPMTConstruction())
+
+DEGG::DEGG(G4bool p_placeHarness) : OMSimOpticalModule(new OMSimPMTConstruction()), m_placeHarness(p_placeHarness)
 {
-   log_info("Constructing DEGG");
+   log_info("Constructing D-Egg");
    m_managerPMT->selectPMT("pmt_Hamamatsu_R5912_20_100");
    m_managerPMT->construction();
-   construction(); // always before harness, otherwise harness will be deleted :(
-   /*
-      if (pPlaceHarness) {
-         m_harness = new DEggHarness(this, m_data);
-         integrateDetectorComponent(m_harness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
-      }*/
+    if (p_placeHarness) m_harness = new DEggHarness(this);
+    construction();
+    if (p_placeHarness) integrateDetectorComponent(m_harness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
+   log_trace("Finished constructing D-Egg");
 }
+
 
 /**
  * @brief Construction of the whole DEGG. If you want to change any component, you have to change it at the specific function.
@@ -99,8 +96,9 @@ void DEGG::construction()
                                              innTorusZ0,
                                              innTorusTransformZ);
 
-   // Make box to substract empty space
+   
 
+   // Make box to substract empty space
    G4Box *lSubstractionBox = new G4Box("SubstractionBox", 20 * cm, 20 * cm, gelHeight);
    G4LogicalVolume *lLogicalDummy = new G4LogicalVolume(lSubstractionBox, m_data->getMaterial("Ri_Air"), "Temp");
 
@@ -112,11 +110,28 @@ void DEGG::construction()
 
    // Delete dummy box from internal components
    deleteComponent("SubstractionBox");
-   //appendInternalComponentsFromCAD();
 
+   //Internal components
+   G4RotationMatrix lRotationInternal;
+   G4ThreeVector lOriginInternal(-427.6845 * mm, 318.6396 * mm, 154 * mm);
+   Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "DEGG/Internal_OnlyCones.obj", "CAD_Internal", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
+   //Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "DEGG/Internal_Everything_NoMainboard.obj", "CAD_Internal", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
+   
    // Logicals
    G4LogicalVolume *lDEggGlassLogical = new G4LogicalVolume(outerGlass, m_data->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "Glass_log");
    G4LogicalVolume *lInnerVolumeLogical = new G4LogicalVolume(internalVolume, m_data->getMaterial("Ri_Air"), "InnerVolume");
+
+
+   //subtract PCA
+   if (m_placeHarness)
+    {
+        lInnerVolumeLogical = new G4LogicalVolume(substractHarnessPCA(internalVolume),
+                                         m_data->getMaterial("Ri_Air"),
+                                         "InnerVolume");
+        lDEggGlassLogical = new G4LogicalVolume(substractHarnessPCA(outerGlass),
+                                           m_data->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"),
+                                           "Glass_log");
+    }
 
    // place internal volume in glass
    new G4PVPlacement(new G4RotationMatrix(), G4ThreeVector(0, 0, 0), lInnerVolumeLogical, "VacuumGlass", lDEggGlassLogical, false, 0, m_checkOverlaps);
@@ -132,14 +147,15 @@ void DEGG::construction()
    // Delete all internal components from dictionary, as they were placed in a volume inside the largest volume.
    m_components.clear();
 
+
+
    // Add glass volume to component map
    // appendComponent(lInternalVolume, lInnerVolumeLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Internal");
    appendComponent(outerGlass, lDEggGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(m_index));
-   // appendPressureVesselFromCAD();
 
    // ---------------- visualisation attributes --------------------------------------------------------------------------------
    lDEggGlassLogical->SetVisAttributes(m_glassVis);
-   lInnerVolumeLogical->SetVisAttributes(G4VisAttributes::GetInvisible());
+   lInnerVolumeLogical->SetVisAttributes(m_airVis);
    lGelLogical->SetVisAttributes(m_gelVis);
    lLogicalDummy->SetVisAttributes(m_airVis);
 }
@@ -165,59 +181,6 @@ G4VSolid *DEGG::placePMTs(G4LogicalVolume *p_innerVolume, G4VSolid *p_gelLayer)
       p_gelLayer = new G4SubtractionSolid("SubstractedVolume", p_gelLayer, m_managerPMT->getPMTSolid(), transformers);
    }
    return p_gelLayer;
-}
-
-void DEGG::appendInternalComponentsFromCAD()
-{
-   G4String filePath = "../common/data/CADmeshes/DEGG/Internal_Everything_NoMainboard.obj";
-   G4double scaleCAD = 1.0;
-   G4double xInternalCAD = -427.6845 * mm;
-   G4double yInternalCAD = 318.6396 * mm;
-   G4double zInternalCAD = 154 * mm;
-   // load mesh
-   auto mesh = CADMesh::TessellatedMesh::FromOBJ(filePath);
-
-   G4ThreeVector offsetCAD = G4ThreeVector(xInternalCAD, yInternalCAD, zInternalCAD); // measured from CAD file since origin =!= Module origin
-   mesh->SetScale(scaleCAD);
-   mesh->SetOffset(offsetCAD * scaleCAD);
-
-   // Place all of the meshes it can find in the file as solids individually.
-   G4MultiUnion *cad_solid = new G4MultiUnion("cad_union");
-   for (auto iSolid : mesh->GetSolids())
-   {
-      cad_solid->AddNode(iSolid, G4Transform3D(G4RotationMatrix(), G4ThreeVector(0, 0, 0)));
-   }
-   cad_solid->Voxelize();
-   G4LogicalVolume *supportStructureLogical = new G4LogicalVolume(cad_solid, m_data->getMaterial("NoOptic_Absorber"), "SupportStructureCAD_Logical");
-   supportStructureLogical->SetVisAttributes(m_aluVis);
-   appendComponent(cad_solid, supportStructureLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "SupportStructureCAD");
-}
-
-void DEGG::appendPressureVesselFromCAD()
-{
-   G4String filePath = "../common/data/CADmeshes/DEGG/pressure_vessel_noPenetratorHole.obj";
-   G4double scaleCAD = 1.0;
-
-   auto mesh = CADMesh::TessellatedMesh::FromOBJ(filePath);
-
-   G4ThreeVector offsetCAD = G4ThreeVector(0, 0, 0); // measured from CAD file since origin =!= Module origin
-   mesh->SetScale(scaleCAD);
-   mesh->SetOffset(offsetCAD * scaleCAD);
-
-   G4RotationMatrix *rot = new G4RotationMatrix();
-   rot->rotateX(180 * deg);
-
-   // Place all of the meshes it can find in the file as solids individually.
-   G4UnionSolid *pressureVessel = new G4UnionSolid("CADPV", mesh->GetSolids().at(0), mesh->GetSolids().at(0), rot, G4ThreeVector(0, -2 * 111 * mm, 0));
-
-   G4LogicalVolume *CADPressureVesselLogical = new G4LogicalVolume(pressureVessel, m_data->getMaterial("RiAbs_Glass_Okamoto_DOUMEKI"), "Glass_log");
-   CADPressureVesselLogical->SetVisAttributes(m_aluVis);
-
-   G4RotationMatrix rotNP = G4RotationMatrix();
-   rotNP.rotateX(90 * deg);
-   CADPressureVesselLogical->SetVisAttributes(m_glassVis);
-
-   appendComponent(pressureVessel, CADPressureVesselLogical, G4ThreeVector(0, 0, 111 * mm), rotNP, "PressureVessel_" + std::to_string(m_index));
 }
 
 /**
@@ -309,4 +272,12 @@ G4VSolid *DEGG::createEggSolid(G4int p_segments1,
    rot->rotateY(180.0 * deg);
    G4UnionSolid *shapeSolidDegg = new G4UnionSolid("degg", solid, solid, rot, G4ThreeVector(0, 0, 0));
    return shapeSolidDegg;
+}
+
+G4SubtractionSolid *DEGG::substractHarnessPCA(G4VSolid *p_solid)
+{
+    Component plug = m_harness->getComponent("CAD_PCA");
+    G4Transform3D plugTransform = G4Transform3D(plug.Rotation, plug.Position);
+    G4SubtractionSolid *solidSubstracted = new G4SubtractionSolid(p_solid->GetName() + "_PCASubstracted", p_solid, plug.VSolid, plugTransform);
+    return solidSubstracted;
 }
