@@ -1,7 +1,6 @@
 
 /** @file OMSimLOM16Harness.hh
  *  @brief Construction of the LOM16 harness.
- *  @todo Write documentation
  *  @ingroup common
  */
 

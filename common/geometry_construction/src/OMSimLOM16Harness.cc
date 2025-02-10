@@ -1,3 +1,6 @@
+/** 
+ *  @todo  - Add main data cable
+ */
 #include "OMSimLOM16Harness.hh"
 #include "OMSimLOM16.hh"
 #include "OMSimTools.hh"
@@ -17,14 +20,15 @@ LOM16Harness::LOM16Harness(LOM16 *pLOM16): OMSimDetectorComponent(), m_opticalMo
 
 void LOM16Harness::construction()
 {
+    // Non-CAD
     // mainDataCable();
 
-    log_info("All CAD components are currently defined as absorber material!");
+    // CAD-based
     CADHarnessBridges();
     CADHarnessRopes();
     CADHarnessStringConnector();
     CADHarnessPCA();
-    CADString();
+    //CADString();
 }
 
 
@@ -47,7 +51,7 @@ void LOM16Harness::CADHarnessBridges()
 
 void LOM16Harness::CADHarnessPCA()
 {
-    G4ThreeVector lCADorigin(0 * mm, 0 * mm, 0 * mm);
+    G4ThreeVector lCADorigin(0 * mm, 0 * mm, 68.8 * mm);
     G4RotationMatrix lRotationCAD;
     //lRotationCAD.rotateX(90 * deg);
     lRotationCAD.rotateZ(45 * deg);
@@ -60,7 +64,8 @@ void LOM16Harness::CADHarnessPCA()
     "LOM16/Harness_PCA_simplified.obj",
     "CAD_PCA",
     m_data->getMaterial("NoOptic_Absorber"), 
-    m_absorberVis);
+    m_absorberVis,
+    m_data->getOpticalSurface("Surf_BlackDuctTapePolished"));   
 }
 
 void LOM16Harness::CADHarnessRopes()

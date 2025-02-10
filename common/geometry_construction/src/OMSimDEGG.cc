@@ -1,7 +1,7 @@
-/**
- * @todo
- *       - Investigate why the gel does not reach the photocathode edge.
- *         (Should the photocathode edge end earlier? Gel, Vessel, and PMT shape are correct.)
+
+/** 
+ *  @todo  - Investigate why the gel does not reach the photocathode edge.
+ *         - Should the photocathode edge end earlier? Back PMT shape further collides with 'standard' CAD cones.
  */
 #include "OMSimDEGG.hh"
 #include "OMSimDEGGHarness.hh"
@@ -113,8 +113,10 @@ void DEGG::construction()
 
    //Internal components
    G4RotationMatrix lRotationInternal;
-   G4ThreeVector lOriginInternal(-427.6845 * mm, 318.6396 * mm, 154 * mm);
-   Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "DEGG/Internal_OnlyCones.obj", "CAD_Internal", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
+   G4ThreeVector lOriginInternal(-179 * mm, 34.15 * mm, 32.25 * mm);
+   Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "DEGG/Internal_modified.obj", "CAD_Internal", m_data->getMaterial("NoOptic_Stahl"), m_aluVis,  m_data->getOpticalSurface("Surf_StainlessSteelGround"));
+   //G4ThreeVector lOriginInternal(-427.6845 * mm, 318.6396 * mm, 154 * mm); //files below are original but have overlaps with PMT
+   //Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "DEGG/Internal_OnlyCones.obj", "CAD_Internal", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
    //Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "DEGG/Internal_Everything_NoMainboard.obj", "CAD_Internal", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
    
    // Logicals
@@ -142,7 +144,7 @@ void DEGG::construction()
    appendComponent(lGelLayers, lGelLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "DeggGelLayers");
 
    // Placements
-   // place all internal components in internal volume
+   // Place all internal components in internal volume
    placeIt(G4ThreeVector(0, 0, 0), G4RotationMatrix(), lInnerVolumeLogical, "");
    // Delete all internal components from dictionary, as they were placed in a volume inside the largest volume.
    m_components.clear();
@@ -150,7 +152,6 @@ void DEGG::construction()
 
 
    // Add glass volume to component map
-   // appendComponent(lInternalVolume, lInnerVolumeLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "Internal");
    appendComponent(outerGlass, lDEggGlassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(m_index));
 
    // ---------------- visualisation attributes --------------------------------------------------------------------------------

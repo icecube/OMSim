@@ -1,3 +1,7 @@
+/** 
+ *  @todo  - Check mu metal cage.
+ */
+
 #include "OMSimPDOM.hh"
 #include "OMSimPDOMHarness.hh"
 #include "OMSimTools.hh"
@@ -67,9 +71,7 @@ void DOM::construction()
 
     // CAD internal components
     G4RotationMatrix lRotInternals = G4RotationMatrix().rotateX(-90 * deg);
-    Tools::AppendCADComponent(this, 1.0, G4ThreeVector(), lRotInternals,
-        "DOM/Internal_edit.obj", "CAD_Internal", 
-        m_data->getMaterial("NoOptic_Absorber"), m_steelVis);
+    Tools::AppendCADComponent(this, 1.0, G4ThreeVector(), lRotInternals, "DOM/Internal_edit.obj", "CAD_Internal", m_data->getMaterial("NoOptic_Absorber"), m_steelVis, m_data->getOpticalSurface("Surf_BlackDuctTapePolished")); //unknown material -> absorber. Will not impact performance anyways.
     auto comp = getComponent("CAD_Internal");
     new G4PVPlacement(G4Transform3D(lRotInternals, G4ThreeVector()),
         comp.VLogical, "CAD_Internal_physical", airLogical, false, 0, m_checkOverlaps);

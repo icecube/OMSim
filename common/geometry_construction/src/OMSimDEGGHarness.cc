@@ -1,3 +1,6 @@
+/** 
+ *  @todo  - Add main data cable
+ */
 #include "OMSimDEGGHarness.hh"
 #include "OMSimDEGG.hh"
 #include "OMSimTools.hh"
@@ -14,17 +17,21 @@ DEggHarness::DEggHarness(DEGG *pDEGG): OMSimDetectorComponent(), m_opticalModule
 }
 
 
-
 void DEggHarness::construction()
 {
-    // mainDataCable();
+    // Non-CAD
+    //mainDataCable();
+    //G4VSolid *solidDEGGHarness = buildHarnessSolid(m_rMin, m_rMax, m_sPhi, m_dPhi, m_sTheta, m_dTheta);
+    //G4LogicalVolume *logicalDEGGHarness = new G4LogicalVolume(solidDEGGHarness, m_data->getMaterial("NoOptic_Reflector"), "");
+    //appendComponent(solidDEGGHarness, logicalDEGGHarness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "dEGG_Harness");
 
-    log_info("All CAD components are currently defined as absorber material!");
+    // CAD-based
     CADHarnessWaistband();
     CADHarnessRopes();
     CADHarnessPCA();
     //PlaceCADString();
 }
+
 
 G4VSolid *DEggHarness::buildHarnessSolid(G4double p_rMin, G4double p_rMax, G4double p_sPhi, G4double p_dPhi, G4double p_sTheta, G4double p_dTheta)
 {
@@ -44,8 +51,9 @@ void DEggHarness::CADHarnessWaistband()
     lRotationWaistband,
     "DEGG/Harness_WaistBand.obj",
     "CAD_WaistBand",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    m_data->getMaterial("NoOptic_Stahl"), 
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 }
 
 void DEggHarness::CADHarnessPCA()
@@ -60,7 +68,8 @@ void DEggHarness::CADHarnessPCA()
     "DEGG/Harness_PCA_simplified.obj",
     "CAD_PCA",
     m_data->getMaterial("NoOptic_Absorber"), 
-    m_absorberVis);
+    m_absorberVis,
+    m_data->getOpticalSurface("Surf_BlackDuctTapePolished"));   
 }
 
 void DEggHarness::CADHarnessRopes()
@@ -74,10 +83,10 @@ void DEggHarness::CADHarnessRopes()
     lRotationRopes,
     "DEGG/Harness_Ropes_simplified.obj",
     "CAD_Ropes",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    m_data->getMaterial("NoOptic_Stahl"), 
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 }
-
 
 void DEggHarness::PlaceCADString()
 {
@@ -91,8 +100,9 @@ void DEggHarness::PlaceCADString()
     lRotationString,
     "Shared/Gen1String.obj",
     "CAD_String_1",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    m_data->getMaterial("NoOptic_Stahl"), 
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 
 
     lRotationString.rotateX(180*deg);
@@ -103,10 +113,9 @@ void DEggHarness::PlaceCADString()
     "Shared/Gen1String.obj",
     "CAD_String_2",
     m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 }
-
-
 
 void DEggHarness::mainDataCable()
 {

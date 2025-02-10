@@ -1,6 +1,5 @@
 /** 
- *  @todo   - 18/07/22 Solve collisions of CAD with PMTs
- *          - Clean up magic number variables and comment their meaning
+ *  @todo   - Clean up magic number variables and comment their meaning
  *          - Write documentation and parse current comments into Doxygen style
  */
 #include "OMSimLOM16.hh"
@@ -126,16 +125,16 @@ void LOM16::InternalCADComponents(G4LogicalVolume *p_innerVolume)
     lRotationInternal.rotateZ(45 * deg);
 
     //Support structure
-    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/SupportStructure_edited.obj", "CAD_SupportStructure", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
+    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/SupportStructure_edited.obj", "CAD_SupportStructure", m_data->getMaterial("NoOptic_Stahl"), m_steelVis, m_data->getOpticalSurface("Surf_StainlessSteelGround"));
     {
     auto comp = getComponent("CAD_SupportStructure");
     new G4PVPlacement(G4Transform3D(lRotationInternal, G4ThreeVector()),
         comp.VLogical, "CAD_SupportStructure_physical", p_innerVolume, false, 0, m_checkOverlaps);
     deleteComponent("CAD_SupportStructure");
     }
-
+    
     //Electronics
-    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/Electronics_simplified.obj", "CAD_Electronics", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
+    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/Electronics_simplified.obj", "CAD_Electronics", m_data->getMaterial("NoOptic_Stahl"), m_steelVis, m_data->getOpticalSurface("Surf_StainlessSteelGround"));
     {
     auto comp = getComponent("CAD_Electronics");
     new G4PVPlacement(G4Transform3D(lRotationInternal, G4ThreeVector()),

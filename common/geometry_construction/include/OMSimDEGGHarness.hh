@@ -1,7 +1,6 @@
 
 /** @file OMSimDEGGHarness.hh
  *  @brief Construction of the DEGG harness.
- *  @todo Write documentation
  *  @ingroup common
  */
 
@@ -12,12 +11,15 @@ class DEGG;
 class DEggHarness : public OMSimDetectorComponent
 {
 public:
+    /** @brief Constructor for DEGG harness
+     *  @param pDEGG Pointer to parent DEGG module
+     */
     DEggHarness(DEGG *pDEGG);
     void construction();
     G4String mDataKey = "om_DEGG_Harness";
 
 private:
-    DEGG *m_opticalModule;
+    DEGG *m_opticalModule; ///< Pointer to parent module
 
     void CADHarnessRopes();
     void CADHarnessPCA();

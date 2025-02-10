@@ -8,19 +8,19 @@
 #include "OMSimLogger.hh"
 #include "OMSimDetectorComponent.hh"
 #include "OMSimCommandArgsTable.hh"
+#include <G4LogicalSkinSurface.hh>
+
 #include "globals.hh"
 #include <TGraph.h>
 #include <TH2D.h>
 #include <variant>
 #include <optional>
 
-
 #include <G4ThreeVector.hh>
 #include <G4RotationMatrix.hh>
 #include <G4LogicalVolume.hh>
 #include <CADMesh.hh>
 #include <G4MultiUnion.hh>
-
 
 /**
  * @namespace Tools
@@ -71,6 +71,7 @@ namespace Tools
                             const std::string& filename,
                             const std::string& componentname,
                             G4Material* material,
-                            G4VisAttributes visAttributes);
+                            G4VisAttributes visAttributes,
+                            G4OpticalSurface* opticalSurface = nullptr); 
 };
 

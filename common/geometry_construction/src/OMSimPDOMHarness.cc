@@ -1,3 +1,6 @@
+/** 
+ *  @todo  - Add main data cable
+ */
 #include "OMSimPDOM.hh"
 #include "OMSimPDOMHarness.hh"
 #include "OMSimTools.hh"
@@ -17,11 +20,10 @@ DOMHarness::DOMHarness(DOM *pDOM): OMSimDetectorComponent(), m_opticalModule(pDO
 void DOMHarness::construction()
 {
     //Non-CAD
-    // mainDataCable();
+    //mainDataCable();
     //buildHarnessSolid();
 
-
-    log_info("All CAD components are currently defined as absorber material!");
+    // CAD-based
     CADHarnessWaistband();
     CADHarnessRopes();
     //PlaceCADString();
@@ -59,8 +61,9 @@ void DOMHarness::CADHarnessWaistband()
     lRotationWaistband,
     "DOM/Harness_WaistBand.obj",
     "CAD_WaistBand",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    m_data->getMaterial("NoOptic_Stahl"), 
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 }
 
 void DOMHarness::CADHarnessRopes()
@@ -75,8 +78,9 @@ void DOMHarness::CADHarnessRopes()
     lRotationRopes,
     "DOM/Harness_Ropes.obj",
     "CAD_Ropes",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    m_data->getMaterial("NoOptic_Stahl"), 
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 }
 
 
@@ -92,8 +96,9 @@ void DOMHarness::PlaceCADString()
     lRotationString,
     "Shared/Gen1String.obj",
     "CAD_String_1",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    m_data->getMaterial("NoOptic_Stahl"), 
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 
 
     lRotationString.rotateX(180*deg);
@@ -103,8 +108,9 @@ void DOMHarness::PlaceCADString()
     lRotationString,
     "Shared/Gen1String.obj",
     "CAD_String_2",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    m_data->getMaterial("NoOptic_Stahl"), 
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 }
 
 

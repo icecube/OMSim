@@ -577,67 +577,63 @@ namespace Tools
 	void AppendCADComponent(OMSimDetectorComponent* component, const G4double scaleCAD,
 							const G4ThreeVector& offsetCAD, const G4RotationMatrix& rotation,
 							const std::string& filename, const std::string& componentname,
-							G4Material* material, G4VisAttributes visAttributes) {
-		
-		
+							G4Material* material, G4VisAttributes visAttributes, 
+							G4OpticalSurface* opticalSurface) {
 		G4cout << "Using the following CAD file: " << filename << G4endl;
 
+		// Load and configure mesh
 		auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/" + filename);
 		mesh->SetScale(scaleCAD);
 		mesh->SetOffset(offsetCAD * scaleCAD);
 
-		// Check if the mesh contains anything.
+		// Validate mesh
 		const auto& solids = mesh->GetSolids();
 		if (solids.empty()) {
 			log_error("No solids found in CAD file: %s", filename.data());
-			return; 
+			return;
 		}
 
-
-		// Check if the mesh contains more than one submesh.
-		G4bool multimeshflag = false;
-		int k = 0;
-		for (auto iSolid : mesh->GetSolids()) {
-			k++;
-			if (k > 1) {
-				log_info("This mesh contains multiple submeshes due to a more complex geometry. MultiUnion will be applied.");
-				multimeshflag = true;
-				break;
+		// Helper function to create logical volume
+		auto createLogical = [&](G4VSolid* solid, const G4String& name) {
+			auto logical = new G4LogicalVolume(solid, material, name + "_Logical");
+			if (opticalSurface) {
+				new G4LogicalSkinSurface(name + "_skin", logical, opticalSurface);
 			}
+			logical->SetVisAttributes(visAttributes);
+			return logical;
+		};
 
+		// Handle single vs multi-mesh cases
+		bool isMultiMesh = solids.size() > 1;
+		bool isVisMode = OMSimCommandArgsTable::getInstance().get<bool>("visual");
+
+		if (isMultiMesh && !isVisMode) {
+			// Case 1: Multi-mesh with MultiUnion
+			auto multiUnion = new G4MultiUnion("cad_union");
+			for (auto solid : solids) {
+				multiUnion->AddNode(solid, G4Transform3D(rotation, G4ThreeVector()));
+			}
+			multiUnion->Voxelize();
+			auto logical = createLogical(multiUnion, componentname);
+			component->appendComponent(multiUnion, logical, G4ThreeVector(), rotation, componentname);
 		}
-
-		if (multimeshflag && !OMSimCommandArgsTable::getInstance().get<bool>("visual")) {
-			// Case 1: More than one mesh, visualization off -> Multiunion
-			G4MultiUnion* cad_solid = new G4MultiUnion("cad_union");
-			for (auto iSolid : mesh->GetSolids()) {
-				cad_solid->AddNode(iSolid, G4Transform3D(rotation, G4ThreeVector(0, 0, 0)));
+		else if (isMultiMesh) {
+			// Case 2: Multi-mesh for visualization
+			log_warning("Placing individual sub-meshes for visualization");
+			int idx = 0;
+			for (auto solid : solids) {
+				G4String name = componentname + "_" + std::to_string(idx++);
+				auto logical = createLogical(solid, name);
+				component->appendComponent(solid, logical, G4ThreeVector(), rotation, name);
 			}
-			cad_solid->Voxelize();
-			G4LogicalVolume* CADcomponentLogical = new G4LogicalVolume(cad_solid, material, componentname + "_Logical");
-			CADcomponentLogical->SetVisAttributes(visAttributes);
-			component->appendComponent(cad_solid, CADcomponentLogical, G4ThreeVector(0, 0, 0), rotation, componentname);
-		} else if (multimeshflag) {
-			// Case 2: More than one mesh, visualization on -> Place each mesh individually
-			log_warning("The visualization for CAD components placed as MultiUnion components is too complicated. For visualization only, each sub-mesh will be placed individually without overlap-checks and might result in a large scene tree.");
-			k = 0;
-			std::stringstream converter;
-			for (auto iSolid : mesh->GetSolids()) {
-				converter.str("");
-				converter << componentname << "_" << k;
-				G4LogicalVolume* CADcomponentLogical = new G4LogicalVolume(iSolid, material, converter.str() + "_Logical");
-				CADcomponentLogical->SetVisAttributes(visAttributes);
-				component->appendComponent(iSolid, CADcomponentLogical, G4ThreeVector(0, 0, 0), rotation, converter.str());
-				k++;
-			}
-		} else {
-			// Case 3: Just one mesh -> Place it
-			auto iSolid = mesh->GetSolid();
-			G4LogicalVolume* CADcomponentLogical = new G4LogicalVolume(iSolid, material, componentname + "_Logical");
-			CADcomponentLogical->SetVisAttributes(visAttributes);
-			component->appendComponent(iSolid, CADcomponentLogical, G4ThreeVector(0, 0, 0), rotation, componentname);
 		}
-	}	
+		else {
+			// Case 3: Single mesh
+			auto solid = mesh->GetSolid();
+			auto logical = createLogical(solid, componentname);
+			component->appendComponent(solid, logical, G4ThreeVector(), rotation, componentname);
+		}
+	}
 
 	std::string visualisationURL = "https://icecube.github.io/OMSim/md_extra__doc_22__technicalities.html#autotoc_md30";
 }

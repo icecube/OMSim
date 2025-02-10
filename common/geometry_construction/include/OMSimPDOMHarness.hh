@@ -1,7 +1,6 @@
 
 /** @file OMSimDOMHarness.hh
  *  @brief Construction of the DOM harness.
- *  @todo Write documentation
  *  @ingroup common
  */
 
