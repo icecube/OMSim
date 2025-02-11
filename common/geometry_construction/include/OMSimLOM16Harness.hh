@@ -18,10 +18,9 @@ public:
 private:
     LOM16 *m_opticalModule;
 
-    void CADHarnessBridges();
+    void CADHarnessWaistband();
     void CADHarnessRopes();
     void CADHarnessPCA();
-    void CADHarnessStringConnector();
     void CADString();
     
     void mainDataCable();

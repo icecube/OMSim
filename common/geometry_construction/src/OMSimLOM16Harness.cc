@@ -16,23 +16,20 @@ LOM16Harness::LOM16Harness(LOM16 *pLOM16): OMSimDetectorComponent(), m_opticalMo
     construction();
 }
 
-
-
 void LOM16Harness::construction()
 {
     // Non-CAD
     // mainDataCable();
 
     // CAD-based
-    CADHarnessBridges();
+    CADHarnessWaistband();
     CADHarnessRopes();
-    CADHarnessStringConnector();
     CADHarnessPCA();
     //CADString();
 }
 
 
-void LOM16Harness::CADHarnessBridges()
+void LOM16Harness::CADHarnessWaistband()
 {
     G4ThreeVector lCADorigin(0 * mm, 0 * mm, 0 * mm);
     G4RotationMatrix lRotationCAD;
@@ -43,10 +40,11 @@ void LOM16Harness::CADHarnessBridges()
     1.0, 
     lCADorigin, 
     lRotationCAD,
-    "LOM16/Harness_Bridges_edit.obj",
-    "CAD_Bridges",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    "LOM16/Harness_Waistband_240604.obj",
+    "CAD_Waistband",
+    m_data->getMaterial("NoOptic_Stahl"), 
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 }
 
 void LOM16Harness::CADHarnessPCA()
@@ -79,29 +77,12 @@ void LOM16Harness::CADHarnessRopes()
     1.0, 
     lCADorigin, 
     lRotationCAD,
-    "LOM16/Harness_Ropes.obj",
+    "LOM16/Harness_Ropes_240604.obj",
     "CAD_Ropes",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    m_data->getMaterial("NoOptic_Stahl"), 
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 }
-
-void LOM16Harness::CADHarnessStringConnector()
-{
-    G4ThreeVector lCADorigin(0 * mm, 0 * mm, 0 * mm);
-    G4RotationMatrix lRotationCAD;
-    lRotationCAD.rotateX(90 * deg);
-    lRotationCAD.rotateZ(45 * deg);
-
-    Tools::AppendCADComponent(this, 
-    1.0, 
-    lCADorigin, 
-    lRotationCAD,
-    "LOM16/Harness_StringConnection.obj",
-    "CAD_StringhConnection",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
-}
-
 
 void LOM16Harness::CADString()
 {
@@ -116,8 +97,9 @@ void LOM16Harness::CADString()
     lRotationString,
     "Shared/Gen1String.obj",
     "CAD_String_1",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    m_data->getMaterial("NoOptic_Stahl"), 
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 
 
     lRotationString.rotateX(180*deg);
@@ -127,11 +109,10 @@ void LOM16Harness::CADString()
     lRotationString,
     "Shared/Gen1String.obj",
     "CAD_String_2",
-    m_data->getMaterial("NoOptic_Absorber"), 
-    m_steelVis);
+    m_data->getMaterial("NoOptic_Stahl"), 
+    m_steelVis,
+    m_data->getOpticalSurface("Surf_StainlessSteelGround"));
 }
-
-
 
 void LOM16Harness::mainDataCable()
 {
