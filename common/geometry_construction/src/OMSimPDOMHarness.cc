@@ -117,8 +117,8 @@ void DOMHarness::PlaceCADString()
 
 void DOMHarness::mainDataCable()
 {
-    const G4double dataCableRadius = m_data->getValueWithUnit(mDataKey, "jDataCableRadius"); // Radius of the main data cable (according to Prof. Kappes)
-    const G4double dataCableLength = m_data->getValueWithUnit(mDataKey, "jDataCableLength"); // Length of main data cable
+    const G4double dataCableRadius = 50.0 * mm; // Radius of the main data cable (according to Prof. Kappes)
+    const G4double dataCableLength = 4.0 * m;   // Length of main data cable
 
     G4Tubs *dataCable= new G4Tubs("MainDataCable_solid", 0, dataCableRadius, dataCableLength / 2., 0, 2 * CLHEP::pi);
 

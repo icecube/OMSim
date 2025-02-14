@@ -26,6 +26,6 @@ private:
     void mainDataCable();
     
     const G4double m_ropeRotationAngleX = 11.245557 * deg;
-    const G4double m_harnessRotAngle = 30 * deg;
-    const G4double m_totalWidth = 170 * mm;
+    const G4double m_harnessRotAngle = 0 * deg;
+    const G4double m_totalWidth = 170 * mm; //Verify this value!
 };

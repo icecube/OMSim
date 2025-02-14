@@ -19,7 +19,7 @@ LOM16Harness::LOM16Harness(LOM16 *pLOM16): OMSimDetectorComponent(), m_opticalMo
 void LOM16Harness::construction()
 {
     // Non-CAD
-    // mainDataCable();
+    //mainDataCable();
 
     // CAD-based
     CADHarnessWaistband();
@@ -77,7 +77,7 @@ void LOM16Harness::CADHarnessRopes()
     1.0, 
     lCADorigin, 
     lRotationCAD,
-    "LOM16/Harness_Ropes_240604.obj",
+    "LOM16/Harness_Ropes_250212.obj",
     "CAD_Ropes",
     m_data->getMaterial("NoOptic_Stahl"), 
     m_steelVis,
@@ -116,8 +116,8 @@ void LOM16Harness::CADString()
 
 void LOM16Harness::mainDataCable()
 {
-    const G4double dataCableRadius = m_data->getValueWithUnit(mDataKey, "jDataCableRadius"); // Radius of the main data cable (according to Prof. Kappes)
-    const G4double dataCableLength = m_data->getValueWithUnit(mDataKey, "jDataCableLength"); // Length of main data cable
+    const G4double dataCableRadius = 50.0 * mm; // Radius of the main data cable (according to Prof. Kappes)
+    const G4double dataCableLength = 4.0 * m;   // Length of main data cable
 
     G4Tubs *dataCable= new G4Tubs("MainDataCable_solid", 0, dataCableRadius, dataCableLength / 2., 0, 2 * CLHEP::pi);
 

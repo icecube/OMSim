@@ -114,7 +114,8 @@ void DEGG::construction()
    //Internal components
    G4RotationMatrix lRotationInternal;
    G4ThreeVector lOriginInternal(-179 * mm, 34.15 * mm, 32.25 * mm);
-   Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "DEGG/Internal_modified.obj", "CAD_Internal", m_data->getMaterial("NoOptic_Stahl"), m_aluVis,  m_data->getOpticalSurface("Surf_StainlessSteelGround"));
+   log_info("Simplified DEgg internals are defined as absorber!");
+   Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "DEGG/Internal_modified.obj", "CAD_Internal", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
    //G4ThreeVector lOriginInternal(-427.6845 * mm, 318.6396 * mm, 154 * mm); //files below are original but have overlaps with PMT
    //Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "DEGG/Internal_OnlyCones.obj", "CAD_Internal", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
    //Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "DEGG/Internal_Everything_NoMainboard.obj", "CAD_Internal", m_data->getMaterial("NoOptic_Absorber"), m_aluVis);

@@ -428,7 +428,7 @@ void LOM18::setPMTPositions()
         //lower equatorial
         if (i>=m_totalNumberPMTs-m_NrEquatorialPMTs && i<=m_totalNumberPMTs-1){ 
             //rotation
-            thetaPMT = 180*deg + m_thetaEquatorial;
+            thetaPMT = 180*deg - m_thetaEquatorial; //this was + before but makes no difference...check this!
             phiPMT = m_EqPMTPhiPhase + (i - m_numberPolarPMTs - m_NrCenterPMTs + 0.5) * 360. * deg / m_NrEquatorialPMTs; //i*90.0*deg; for 4 
 
             //PMT position

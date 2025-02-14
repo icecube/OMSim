@@ -89,6 +89,6 @@ private:
     G4double m_PMToffset;
     G4double m_maxPMTRadius;
 
-    const G4double m_equatorialBandWidth = 45 * mm; //Total width (both halves)
+    const G4double m_equatorialBandWidth = 35 * mm; //Total width (both halves)
     const G4double m_equatorialBandThickness = 0.5 * mm; //Thickness since its a 3D object
 };
