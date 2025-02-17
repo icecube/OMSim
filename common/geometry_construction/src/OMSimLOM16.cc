@@ -72,7 +72,7 @@ void LOM16::construction()
 
     // ---------------- visualisation attributes --------------------------------------------------------------------------------
     lglassLogical->SetVisAttributes(m_glassVis);
-    p_innerVolume->SetVisAttributes(m_invisibleVis); // Material defined as Ri_Air
+    p_innerVolume->SetVisAttributes(m_airVis); // Material defined as Ri_Air
     for (int i = 0; i <= m_totalNumberPMTs - 1; i++)
     {
         m_gelPadLogical[i]->SetVisAttributes(m_gelVis); // m_gelVis
@@ -121,20 +121,20 @@ G4SubtractionSolid *LOM16::substractHarnessPCA(G4VSolid *p_solid)
 void LOM16::InternalCADComponents(G4LogicalVolume *p_innerVolume)
 {
     G4RotationMatrix lRotationInternal;
-    G4ThreeVector lOriginInternal(0 * mm, 0 * mm, 68.8 * mm);
-    lRotationInternal.rotateZ(45 * deg);
+    G4ThreeVector lOriginInternal(0 * mm, 0 * mm, 0 * mm);
 
     //Support structure
-    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/SupportStructure_edited.obj", "CAD_SupportStructure", m_data->getMaterial("NoOptic_Stahl"), m_steelVis, m_data->getOpticalSurface("Surf_StainlessSteelGround"));
+    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/SupportStructure_250213.obj", "CAD_SupportStructure", m_data->getMaterial("NoOptic_Stahl"), m_steelVis, m_data->getOpticalSurface("Surf_StainlessSteelGround"));
     {
     auto comp = getComponent("CAD_SupportStructure");
     new G4PVPlacement(G4Transform3D(lRotationInternal, G4ThreeVector()),
         comp.VLogical, "CAD_SupportStructure_physical", p_innerVolume, false, 0, m_checkOverlaps);
     deleteComponent("CAD_SupportStructure");
     }
-    
-    //Electronics
-    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/Electronics_simplified.obj", "CAD_Electronics", m_data->getMaterial("NoOptic_Stahl"), m_steelVis, m_data->getOpticalSurface("Surf_StainlessSteelGround"));
+
+    //Electronics...Electronics_250213 file causes warning messages. InternalAll_250213 could be used instead
+    log_info("Simplified LOM electronics are defined as absorber!");
+    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/Electronics_250213.obj", "CAD_Electronics", m_data->getMaterial("NoOptic_Absorber"), m_absorberSemiTransparentVis);
     {
     auto comp = getComponent("CAD_Electronics");
     new G4PVPlacement(G4Transform3D(lRotationInternal, G4ThreeVector()),

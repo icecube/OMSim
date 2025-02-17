@@ -49,17 +49,15 @@ void LOM16Harness::CADHarnessWaistband()
 
 void LOM16Harness::CADHarnessPCA()
 {
-    G4ThreeVector lCADorigin(0 * mm, 0 * mm, 68.8 * mm);
+    G4ThreeVector lCADorigin(0 * mm, 0 * mm, -0.5 * mm);
     G4RotationMatrix lRotationCAD;
-    //lRotationCAD.rotateX(90 * deg);
-    lRotationCAD.rotateZ(45 * deg);
+    lRotationCAD.rotateX(180 * deg);
 
     Tools::AppendCADComponent(this, 
     1.0, 
     lCADorigin, 
     lRotationCAD,
-    //"LOM16/Harness_PCA.obj",
-    "LOM16/Harness_PCA_simplified.obj",
+    "LOM16/Harness_PCA_simplified_250213.obj",
     "CAD_PCA",
     m_data->getMaterial("NoOptic_Absorber"), 
     m_absorberVis,

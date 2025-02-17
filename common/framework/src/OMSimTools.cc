@@ -589,7 +589,7 @@ namespace Tools
 		// Validate mesh
 		const auto& solids = mesh->GetSolids();
 		if (solids.empty()) {
-			log_error("No solids found in CAD file: %s", filename.data());
+			log_error("No solids found in CAD file: {}", filename.data());
 			return;
 		}
 
