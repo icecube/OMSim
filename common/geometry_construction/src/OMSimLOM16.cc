@@ -132,7 +132,7 @@ void LOM16::InternalCADComponents(G4LogicalVolume *p_innerVolume)
     deleteComponent("CAD_SupportStructure");
     }
 
-    //Electronics...Electronics_250213 file causes warning messages. InternalAll_250213 could be used instead
+    //Electronics
     log_info("Simplified LOM electronics are defined as absorber!");
     Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/Electronics_250213.obj", "CAD_Electronics", m_data->getMaterial("NoOptic_Absorber"), m_absorberSemiTransparentVis);
     {
