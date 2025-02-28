@@ -8,6 +8,7 @@
  *         - Write documentation and parse current comments into Doxygen style
  */
 #include "OMSimLOM18.hh"
+#include "OMSimLOM18Harness.hh"
 #include "OMSimTools.hh"
 #include "OMSimLogger.hh"
 #include "OMSimCommandArgsTable.hh"
@@ -16,12 +17,8 @@
 #include <G4IntersectionSolid.hh>
 
 
-LOM18::~LOM18()
-{
-    //delete m_harness;
-}
 
-LOM18::LOM18(G4bool p_placeHarness): OMSimOpticalModule(new OMSimPMTConstruction()), m_placeHarness(p_placeHarness)
+LOM18::LOM18(G4bool p_placeHarness) : OMSimOpticalModule(new OMSimPMTConstruction()), m_placeHarness(p_placeHarness)
  {
     log_info("Constructing LOM18");
     m_managerPMT->includeHAcoating();
@@ -30,13 +27,10 @@ LOM18::LOM18(G4bool p_placeHarness): OMSimOpticalModule(new OMSimPMTConstruction
     m_PMToffset = m_managerPMT->getDistancePMTCenterToTip();
     m_maxPMTRadius = m_managerPMT->getMaxPMTRadius() + 2 * mm;
 
-    m_placeHarness = p_placeHarness;
-    if (m_placeHarness){
-        //m_harness = new mDOMHarness(this, m_data);
-        //integrateDetectorComponent(m_harness, G4ThreeVector(0,0,0), G4RotationMatrix(), "");
-        log_error("LOM18 harness not implemented yet");
-    }
+    if (p_placeHarness) m_harness = new LOM18Harness(this);
     construction();
+    if (p_placeHarness) integrateDetectorComponent(m_harness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
+    log_trace("Finished constructing LOM18");
 }
 
 
@@ -72,7 +66,7 @@ void LOM18::construction()
     // ------------------ Add outer shape solid to MultiUnion in case you need substraction -------------------------------------------
     //Each Component needs to be appended to be places in OMSimDetectorComponent. Everything is placed in the InnerVolume which is placed in the glass which is the mother volume. This is the reason why not everything is appended on its own
     appendComponent(glassSolid, glassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(m_index));
-    appendEquatorBand();
+    if (m_placeHarness) appendEquatorBand();
     // ---------------- visualisation attributes --------------------------------------------------------------------------------
     glassLogical->SetVisAttributes(m_glassVis);
     innerVolumeLogical->SetVisAttributes(m_airVis);
@@ -238,8 +232,8 @@ G4Polycone* LOM18::createLOM18InnerSolid()
 
 void LOM18::appendEquatorBand()
 {
-    G4double tapeWidth = 45.0 * mm;
-    G4double thicknessTape = 1.0*mm;
+    G4double tapeWidth = 38.1* mm; 
+    G4double thicknessTape = 0.5 * mm;
 
     G4int nsegments = 3;
     G4double rInner[3], rOuter[3], zPlane[3];

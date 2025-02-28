@@ -1,5 +1,5 @@
 /** 
- *  @todo  - Add main data cable
+ *  @todo  - Verify main data cable
  */
 #include "OMSimDEGGHarness.hh"
 #include "OMSimDEGG.hh"

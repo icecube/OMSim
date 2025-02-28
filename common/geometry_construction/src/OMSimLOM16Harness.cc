@@ -1,5 +1,5 @@
 /** 
- *  @todo  - Add main data cable
+ *  @todo  - Verify main data cable
  */
 #include "OMSimLOM16Harness.hh"
 #include "OMSimLOM16.hh"

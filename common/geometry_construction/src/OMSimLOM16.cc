@@ -23,6 +23,7 @@ LOM16::LOM16(G4bool p_placeHarness) : OMSimOpticalModule(new OMSimPMTConstructio
     m_managerPMT->construction();
     m_PMToffset = m_managerPMT->getDistancePMTCenterToTip();
     m_maxPMTRadius = m_managerPMT->getMaxPMTRadius() + 2 * mm;
+    
     if (p_placeHarness) m_harness = new LOM16Harness(this);
     construction();
     if (p_placeHarness) integrateDetectorComponent(m_harness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
@@ -72,10 +73,10 @@ void LOM16::construction()
 
     // ---------------- visualisation attributes --------------------------------------------------------------------------------
     lglassLogical->SetVisAttributes(m_glassVis);
-    p_innerVolume->SetVisAttributes(m_airVis); // Material defined as Ri_Air
+    p_innerVolume->SetVisAttributes(m_airVis); 
     for (int i = 0; i <= m_totalNumberPMTs - 1; i++)
     {
-        m_gelPadLogical[i]->SetVisAttributes(m_gelVis); // m_gelVis
+        m_gelPadLogical[i]->SetVisAttributes(m_gelpadVis); 
     }
 }
 
@@ -134,7 +135,7 @@ void LOM16::InternalCADComponents(G4LogicalVolume *p_innerVolume)
 
     //Electronics
     log_info("Simplified LOM electronics are defined as absorber!");
-    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/Electronics_250213.obj", "CAD_Electronics", m_data->getMaterial("NoOptic_Absorber"), m_absorberSemiTransparentVis);
+    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM16/Electronics_250213.obj", "CAD_Electronics", m_data->getMaterial("NoOptic_Absorber"), m_boardVis);
     {
     auto comp = getComponent("CAD_Electronics");
     new G4PVPlacement(G4Transform3D(lRotationInternal, G4ThreeVector()),
