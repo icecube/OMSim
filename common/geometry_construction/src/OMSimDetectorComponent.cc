@@ -234,18 +234,20 @@ G4SubtractionSolid *OMSimDetectorComponent::substractToVolume(G4VSolid *p_inputV
 
 
 const G4VisAttributes OMSimDetectorComponent::m_glassVis = G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.25));
+const G4VisAttributes OMSimDetectorComponent::m_PMTglassVis = G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.4));
 const G4VisAttributes OMSimDetectorComponent::m_gelVis = G4VisAttributes(G4Colour(0.45, 0.5, 0.35, 0.2));
+const G4VisAttributes OMSimDetectorComponent::m_gelpadVis = G4VisAttributes(G4Colour(0.45, 0.5, 0.35, 0.3));
 const G4VisAttributes OMSimDetectorComponent::m_steelVis = G4VisAttributes(G4Colour(0.6, 0.6, 0.7, 1.0));
 const G4VisAttributes OMSimDetectorComponent::m_aluVis = G4VisAttributes(G4Colour(0.8, 0.8, 0.9, 1.0));
 const G4VisAttributes OMSimDetectorComponent::m_whiteVis = G4VisAttributes(G4Colour(1, 1, 1, 1.0));
 const G4VisAttributes OMSimDetectorComponent::m_absorberSemiTransparentVis = G4VisAttributes(G4Colour(0.2, 0.2, 0.2, 0.5));
 const G4VisAttributes OMSimDetectorComponent::m_absorberVis = G4VisAttributes(G4Colour(0.2, 0.2, 0.2, 1.0));
-const G4VisAttributes OMSimDetectorComponent::m_boardVis = G4VisAttributes(G4Colour(0, 1, 0, 1));
+const G4VisAttributes OMSimDetectorComponent::m_boardVis = G4VisAttributes(G4Colour(0, 0.6, 0, 1));
 const G4VisAttributes OMSimDetectorComponent::m_blueVis = G4VisAttributes(G4Colour(0, 0, 1, 1));
 const G4VisAttributes OMSimDetectorComponent::m_airVis = G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.2));
 const G4VisAttributes OMSimDetectorComponent::m_airVis2 = G4VisAttributes(G4Colour(0.0, 0, 1., 0.5));
 const G4VisAttributes OMSimDetectorComponent::m_redVis = G4VisAttributes(G4Colour(1.0, 0.0, 0.0, 1));
 const G4VisAttributes OMSimDetectorComponent::m_blackVis = G4VisAttributes(G4Colour(0.0, 0.0, 0.0, 1.0));
 const G4VisAttributes OMSimDetectorComponent::m_LEDvis = G4VisAttributes(G4Colour(0.2, 0.6, 0.8, 0.5));
-const G4VisAttributes OMSimDetectorComponent::m_photocathodeVis = G4VisAttributes(G4Colour(1.0, 1.0, 0.0, 0.1));
+const G4VisAttributes OMSimDetectorComponent::m_photocathodeVis = G4VisAttributes(G4Colour(1.0, 0.7, 0.0, 1));
 const G4VisAttributes OMSimDetectorComponent::m_invisibleVis = G4VisAttributes::GetInvisible();
