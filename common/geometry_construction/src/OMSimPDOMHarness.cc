@@ -26,6 +26,7 @@ void DOMHarness::construction()
     // CAD-based
     CADHarnessWaistband();
     CADHarnessRopes();
+    CADHarnessPCA();
     //PlaceCADString();
 }
 
@@ -81,6 +82,23 @@ void DOMHarness::CADHarnessRopes()
     m_data->getMaterial("NoOptic_Stahl"), 
     m_steelVis,
     m_data->getOpticalSurface("Surf_StainlessSteelGround"));
+}
+
+void DOMHarness::CADHarnessPCA()
+{
+    G4ThreeVector lCADorigin(0 * mm, 0 * mm, -0.5 * mm);
+    G4RotationMatrix lRotationCAD;
+    lRotationCAD.rotateX(-90 * deg);
+
+    Tools::AppendCADComponent(this, 
+    1.0, 
+    lCADorigin, 
+    lRotationCAD,
+    "DOM/PCA_simplified.obj",
+    "CAD_PCA",
+    m_data->getMaterial("NoOptic_Absorber"), 
+    m_absorberVis,
+    m_data->getOpticalSurface("Surf_BlackDuctTapePolished"));   
 }
 
 

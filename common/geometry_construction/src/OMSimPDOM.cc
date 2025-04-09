@@ -43,6 +43,10 @@ void DOM::construction()
     G4Tubs *boardSolid = new G4Tubs("PDOM_Board solid", 52 * mm, 0.5 * 11 * 25.4 * mm, 2 * mm, 0, 2 * CLHEP::pi);
     G4Tubs *baseSolid = new G4Tubs("PDOM_Board solid", 0 * mm, 6 * cm, 2 * mm, 0, 2 * CLHEP::pi);
  
+
+
+
+
     // Logicals mData
     G4LogicalVolume *glassSphereLogical = new G4LogicalVolume(glassSphereSolid,
                                                                m_data->getMaterial("RiAbs_Glass_Benthos"),
@@ -64,6 +68,17 @@ void DOM::construction()
     G4LogicalVolume *airLogical = new G4LogicalVolume(airSolid,
                                                        m_data->getMaterial("Ri_Vacuum"),
                                                        "PDOM_Air logical");
+
+    //subtract PCA
+    if (m_placeHarness)
+    {
+        airLogical = new G4LogicalVolume(substractHarnessPCA(airSolid),
+                                         m_data->getMaterial("Ri_Vacuum"),
+                                         "PDOM_Air logical");
+        glassSphereLogical = new G4LogicalVolume(substractHarnessPCA(glassSphereSolid),
+                                           m_data->getMaterial("RiAbs_Glass_Benthos"),
+                                           "Glass_log");
+    }
 
     // Internal components
     //G4PVPlacement *boardPhysical = new G4PVPlacement(0, G4ThreeVector(0, 0, -40 * mm), boardLogical, "pDOMBoardPhys", airLogical, false, 0, m_checkOverlaps);
@@ -92,4 +107,13 @@ void DOM::construction()
     airLogical->SetVisAttributes(m_airVis);
     boardLogical->SetVisAttributes(m_boardVis);
     baseLogical->SetVisAttributes(m_boardVis);
+}
+
+
+G4SubtractionSolid *DOM::substractHarnessPCA(G4VSolid *p_solid)
+{
+    Component plug = m_harness->getComponent("CAD_PCA");
+    G4Transform3D plugTransform = G4Transform3D(plug.Rotation, plug.Position);
+    G4SubtractionSolid *solidSubstracted = new G4SubtractionSolid(p_solid->GetName() + "_PCASubstracted", p_solid, plug.VSolid, plugTransform);
+    return solidSubstracted;
 }

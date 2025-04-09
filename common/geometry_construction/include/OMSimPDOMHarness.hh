@@ -20,8 +20,8 @@ private:
 
     void CADHarnessWaistband();
     void CADHarnessRopes();
+    void CADHarnessPCA();
     void PlaceCADString();
-    
 
     void mainDataCable();
     void buildHarnessSolid();

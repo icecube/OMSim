@@ -22,6 +22,8 @@ public:
     void construction();
     DOMHarness *m_harness;
     G4bool m_placeHarness = true;
+    G4SubtractionSolid *substractHarnessPCA(G4VSolid *pSolid);
+
     G4String getName()
     {
         std::stringstream ss;
