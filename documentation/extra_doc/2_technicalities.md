@@ -234,7 +234,7 @@ The next step is to create the collection efficiency weights to match the relati
 The scan data of transit time / gain must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-glass boundary refracts the beam. 
 
  - As before, we have to simulate the beam used during the scan measurement. 
- - Change the profile vector and rLim in `runfrontalProfileScannNKT()` under `simulations/efficiency_calibration/OMSim_efficiency_calibration.cc`
+ - Change the profile vector and rLim in `runfrontalProfileScanNKT()` under `simulations/efficiency_calibration/OMSim_efficiency_calibration.cc`
  - Run the XY grid simulation **using the simple PMT**, check the function being used under step 4
 
 ```bash
