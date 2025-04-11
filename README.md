@@ -1,7 +1,7 @@
 #  OMSim Geant4 Framework
 [TOC]
 
-**Note:** This project is under active development. If you're interested in using OMSim, feel free to join the channel OMSim on IceCube-slack.
+**Note:** This project is under active development. If you're interested in using or contributing to OMSim, feel free to join the channel [OMSim](https://icecube-spno.slack.com/archives/C08N2UBPEQG) on IceCube-slack.
 
 **OMSim** is a Geant4 framework for simulating optical modules of the IceCube Observatory. It comprises multiple modules for different studies such as background investigations with radioactive decays and sensitivity analyses. These modules share common files (in the "common" folder) that define, for example, geometries of modules and PMTs, as well as material properties.
 
