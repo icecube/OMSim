@@ -9,6 +9,7 @@
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "OMSimPrimaryGeneratorMessenger.hh"
 #include "OMSimSNTools.hh"
+#include "G4RandomTools.hh"
 
 #include <globals.hh>
 #include <vector>
@@ -108,7 +109,5 @@ private:
     G4double totalCrossSection(G4double energy);
 };
 
-
-#endif
 
 
