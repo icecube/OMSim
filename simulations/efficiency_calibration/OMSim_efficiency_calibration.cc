@@ -75,7 +75,7 @@ void runXYZfrontalScan()
 }
 
 
-void runfrontalXYScannNKT()
+void runfrontalXYScanNKT()
 {
 	OMSimEffiCaliAnalyisis analysisManager;
 	OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
@@ -109,7 +109,7 @@ void runfrontalXYScannNKT()
 	
 }
 
-void runfrontalProfileScannNKT()
+void runfrontalProfileScanNKT()
 {
 	OMSimEffiCaliAnalyisis analysisManager;
 	OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
@@ -188,12 +188,12 @@ int main(int p_argumentCount, char *p_argumentVector[])
 	}
 	case 4:
 	{
-		runfrontalProfileScannNKT();
+		runfrontalProfileScanNKT();
 		break;
 	}
 	case 5:
 	{
-		runfrontalXYScannNKT();
+		runfrontalXYScanNKT();
 		break;
 	}
 	}

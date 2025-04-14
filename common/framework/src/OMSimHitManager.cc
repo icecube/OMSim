@@ -292,7 +292,7 @@ std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double p_timeWin
 			continue;
 		}
 
-		int hitPMT[numberOfPMTs] = {0};
+		std::vector<int> hitPMT(numberOfPMTs, 0);
 		hitPMT[hitsOfModule.PMTnr.at(i)] = 1;
 		int currentSum = 0;
 
