@@ -134,110 +134,109 @@ $(document).ready(function(){initNavTree('_o_m_sim_s_n_particle_generators_8hh_s
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;G4VUserPrimaryGeneratorAction.hh&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;OMSimPrimaryGeneratorMessenger.hh&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="_o_m_sim_s_n_tools_8hh.html">OMSimSNTools.hh</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;globals.hh&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;G4PhysicalConstants.hh&gt;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;G4SystemOfUnits.hh&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">class </span>G4ParticleGun;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">class </span>G4Event;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="class_s_n_base_particle_generator.html">   26</a></span><span class="keyword">class </span><a class="code hl_class" href="class_s_n_base_particle_generator.html">SNBaseParticleGenerator</a> : <span class="keyword">public</span> G4VUserPrimaryGeneratorAction</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_class" href="class_s_n_base_particle_generator.html">SNBaseParticleGenerator</a>(G4ParticleGun*);    </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_class" href="class_s_n_base_particle_generator.html">~SNBaseParticleGenerator</a>(){};</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> GeneratePrimaries(G4Event* anEvent);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">protected</span>:    </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    G4ParticleGun* m_particleGun;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_class" href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a> m_SNToolBox;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> initialiseDistribution(<span class="keywordtype">int</span> column, <span class="keywordtype">int</span> targets);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    G4double calculateNeutrinoEnergy();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    G4ThreeVector calculateMomentumDirection(G4double pNeutrinoEnergy);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    G4double calculateWeight(G4double pNuEnergy);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">const</span> G4double m_Gf = 1.166e-5 * 1e-6 / (MeV * MeV);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">const</span> G4double m_Consg = 1.26;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">const</span> G4double m_deltaMass = neutron_mass_c2 - proton_mass_c2;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">const</span> G4double m_massSquaredDifference = (pow(m_deltaMass, 2) - pow(electron_mass_c2, 2)) / 2.;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    G4double m_NrTargets;      </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> m_timeDistribution;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> m_meanEnergyDistribution;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> m_meanEnergySquaredDistribution;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> initialiseParticle() = 0;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> angularDistribution(G4double Enu) = 0;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keyword">virtual</span> G4double calculateSecondaryParticleEnergy(G4double nu_energy, G4double costheta) = 0;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">virtual</span> G4double totalCrossSection(G4double energy) = 0;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>};</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;G4RandomTools.hh&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;globals.hh&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;G4PhysicalConstants.hh&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;G4SystemOfUnits.hh&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">class </span>G4ParticleGun;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">class </span>G4Event;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="class_s_n_base_particle_generator.html">   27</a></span><span class="keyword">class </span><a class="code hl_class" href="class_s_n_base_particle_generator.html">SNBaseParticleGenerator</a> : <span class="keyword">public</span> G4VUserPrimaryGeneratorAction</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_class" href="class_s_n_base_particle_generator.html">SNBaseParticleGenerator</a>(G4ParticleGun*);    </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_class" href="class_s_n_base_particle_generator.html">~SNBaseParticleGenerator</a>(){};</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> GeneratePrimaries(G4Event* anEvent);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">protected</span>:    </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    G4ParticleGun* m_particleGun;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_class" href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a> m_SNToolBox;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> initialiseDistribution(<span class="keywordtype">int</span> column, <span class="keywordtype">int</span> targets);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    G4double calculateNeutrinoEnergy();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    G4ThreeVector calculateMomentumDirection(G4double pNeutrinoEnergy);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    G4double calculateWeight(G4double pNuEnergy);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">const</span> G4double m_Gf = 1.166e-5 * 1e-6 / (MeV * MeV);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">const</span> G4double m_Consg = 1.26;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">const</span> G4double m_deltaMass = neutron_mass_c2 - proton_mass_c2;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">const</span> G4double m_massSquaredDifference = (pow(m_deltaMass, 2) - pow(electron_mass_c2, 2)) / 2.;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    G4double m_NrTargets;      </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> m_timeDistribution;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> m_meanEnergyDistribution;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> m_meanEnergySquaredDistribution;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> initialiseParticle() = 0;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> angularDistribution(G4double Enu) = 0;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">virtual</span> G4double calculateSecondaryParticleEnergy(G4double nu_energy, G4double costheta) = 0;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">virtual</span> G4double totalCrossSection(G4double energy) = 0;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>};</div>
 </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="foldopen" id="foldopen00072" data-start="{" data-end="};">
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="class_o_m_sim_e_n_e_s.html">   72</a></span><span class="keyword">class </span><a class="code hl_class" href="class_o_m_sim_e_n_e_s.html">OMSimENES</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_s_n_base_particle_generator.html">SNBaseParticleGenerator</a></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>{</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_class" href="class_o_m_sim_e_n_e_s.html">OMSimENES</a>(G4ParticleGun*);    </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_class" href="class_o_m_sim_e_n_e_s.html">~OMSimENES</a>(){};</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>      </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keyword">private</span>:     </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">void</span> initialiseParticle();</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> <a class="code hl_function" href="class_o_m_sim_e_n_e_s.html#aa8f2d71f822873410a9f6816fd00786b">angularDistribution</a>(G4double Enu);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    G4double <a class="code hl_function" href="class_o_m_sim_e_n_e_s.html#afdc34f3f9559919c54f29804c337481a">calculateSecondaryParticleEnergy</a>(G4double nu_energy, G4double costheta);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    G4double <a class="code hl_function" href="class_o_m_sim_e_n_e_s.html#af2e3aedc5ca2d1006891540c0d038eb7">totalCrossSection</a>(G4double energy);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>};</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="foldopen" id="foldopen00073" data-start="{" data-end="};">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="class_o_m_sim_e_n_e_s.html">   73</a></span><span class="keyword">class </span><a class="code hl_class" href="class_o_m_sim_e_n_e_s.html">OMSimENES</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_s_n_base_particle_generator.html">SNBaseParticleGenerator</a></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>{</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_class" href="class_o_m_sim_e_n_e_s.html">OMSimENES</a>(G4ParticleGun*);    </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_class" href="class_o_m_sim_e_n_e_s.html">~OMSimENES</a>(){};</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>      </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">private</span>:     </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span> initialiseParticle();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> <a class="code hl_function" href="class_o_m_sim_e_n_e_s.html#aa8f2d71f822873410a9f6816fd00786b">angularDistribution</a>(G4double Enu);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    G4double <a class="code hl_function" href="class_o_m_sim_e_n_e_s.html#afdc34f3f9559919c54f29804c337481a">calculateSecondaryParticleEnergy</a>(G4double nu_energy, G4double costheta);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    G4double <a class="code hl_function" href="class_o_m_sim_e_n_e_s.html#af2e3aedc5ca2d1006891540c0d038eb7">totalCrossSection</a>(G4double energy);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>};</div>
 </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="foldopen" id="foldopen00097" data-start="{" data-end="};">
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="class_o_m_sim_i_b_d.html">   97</a></span><span class="keyword">class </span><a class="code hl_class" href="class_o_m_sim_i_b_d.html">OMSimIBD</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_s_n_base_particle_generator.html">SNBaseParticleGenerator</a></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>{</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <a class="code hl_class" href="class_o_m_sim_i_b_d.html">OMSimIBD</a>(G4ParticleGun*);    </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <a class="code hl_class" href="class_o_m_sim_i_b_d.html">~OMSimIBD</a>(){};</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>      </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">private</span>:     </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> initialiseParticle();</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> <a class="code hl_function" href="class_o_m_sim_i_b_d.html#a99e9ba505d7c148ea66c63f9c31ed952">angularDistribution</a>(G4double Enu);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    G4double <a class="code hl_function" href="class_o_m_sim_i_b_d.html#af04e93cf44abe395e2b65cad4b385d1f">calculateSecondaryParticleEnergy</a>(G4double nu_energy, G4double costheta);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    G4double <a class="code hl_function" href="class_o_m_sim_i_b_d.html#aad2e0e4a3f6501f4d2c3fb896b032ade">totalCrossSection</a>(G4double energy);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>};</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="};">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="class_o_m_sim_i_b_d.html">   98</a></span><span class="keyword">class </span><a class="code hl_class" href="class_o_m_sim_i_b_d.html">OMSimIBD</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_s_n_base_particle_generator.html">SNBaseParticleGenerator</a></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <a class="code hl_class" href="class_o_m_sim_i_b_d.html">OMSimIBD</a>(G4ParticleGun*);    </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_class" href="class_o_m_sim_i_b_d.html">~OMSimIBD</a>(){};</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>      </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keyword">private</span>:     </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">void</span> initialiseParticle();</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <a class="code hl_class" href="class_distribution_sampler.html">DistributionSampler</a> <a class="code hl_function" href="class_o_m_sim_i_b_d.html#a99e9ba505d7c148ea66c63f9c31ed952">angularDistribution</a>(G4double Enu);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    G4double <a class="code hl_function" href="class_o_m_sim_i_b_d.html#af04e93cf44abe395e2b65cad4b385d1f">calculateSecondaryParticleEnergy</a>(G4double nu_energy, G4double costheta);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    G4double <a class="code hl_function" href="class_o_m_sim_i_b_d.html#aad2e0e4a3f6501f4d2c3fb896b032ade">totalCrossSection</a>(G4double energy);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>};</div>
 </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
 <div class="ttc" id="a_o_m_sim_s_n_tools_8hh_html"><div class="ttname"><a href="_o_m_sim_s_n_tools_8hh.html">OMSimSNTools.hh</a></div><div class="ttdoc">Provides the definition for the OMSimSNTools class, centralizing utility methods for Supernova (SN) n...</div></div>
 <div class="ttc" id="aclass_distribution_sampler_html"><div class="ttname"><a href="class_distribution_sampler.html">DistributionSampler</a></div><div class="ttdoc">Utility class for sampling from a given distribution using the inverse cumulative function and interp...</div><div class="ttdef"><b>Definition</b> OMSimSNTools.hh:24</div></div>
-<div class="ttc" id="aclass_o_m_sim_e_n_e_s_html"><div class="ttname"><a href="class_o_m_sim_e_n_e_s.html">OMSimENES</a></div><div class="ttdoc">Class in charge of generating electrons from Electron-electron_Neutrino Elastic Scattering (ENES) nu_...</div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.hh:73</div></div>
+<div class="ttc" id="aclass_o_m_sim_e_n_e_s_html"><div class="ttname"><a href="class_o_m_sim_e_n_e_s.html">OMSimENES</a></div><div class="ttdoc">Class in charge of generating electrons from Electron-electron_Neutrino Elastic Scattering (ENES) nu_...</div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.hh:74</div></div>
 <div class="ttc" id="aclass_o_m_sim_e_n_e_s_html_aa8f2d71f822873410a9f6816fd00786b"><div class="ttname"><a href="class_o_m_sim_e_n_e_s.html#aa8f2d71f822873410a9f6816fd00786b">OMSimENES::angularDistribution</a></div><div class="ttdeci">DistributionSampler angularDistribution(G4double Enu)</div><div class="ttdoc">Computes the angular distribution for electron scattering based on incident neutrino energy.</div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.cc:177</div></div>
 <div class="ttc" id="aclass_o_m_sim_e_n_e_s_html_af2e3aedc5ca2d1006891540c0d038eb7"><div class="ttname"><a href="class_o_m_sim_e_n_e_s.html#af2e3aedc5ca2d1006891540c0d038eb7">OMSimENES::totalCrossSection</a></div><div class="ttdeci">G4double totalCrossSection(G4double energy)</div><div class="ttdoc">Computes the total cross section for ENES based on incident neutrino energy.</div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.cc:240</div></div>
 <div class="ttc" id="aclass_o_m_sim_e_n_e_s_html_afdc34f3f9559919c54f29804c337481a"><div class="ttname"><a href="class_o_m_sim_e_n_e_s.html#afdc34f3f9559919c54f29804c337481a">OMSimENES::calculateSecondaryParticleEnergy</a></div><div class="ttdeci">G4double calculateSecondaryParticleEnergy(G4double nu_energy, G4double costheta)</div><div class="ttdoc">Computes the electron energy from elastic scattering based on incident neutrino energy and scatter an...</div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.cc:223</div></div>
-<div class="ttc" id="aclass_o_m_sim_i_b_d_html"><div class="ttname"><a href="class_o_m_sim_i_b_d.html">OMSimIBD</a></div><div class="ttdoc">Class in charge of generating positrons from IBD of supernova antineutrino interactions.</div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.hh:98</div></div>
+<div class="ttc" id="aclass_o_m_sim_i_b_d_html"><div class="ttname"><a href="class_o_m_sim_i_b_d.html">OMSimIBD</a></div><div class="ttdoc">Class in charge of generating positrons from IBD of supernova antineutrino interactions.</div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.hh:99</div></div>
 <div class="ttc" id="aclass_o_m_sim_i_b_d_html_a99e9ba505d7c148ea66c63f9c31ed952"><div class="ttname"><a href="class_o_m_sim_i_b_d.html#a99e9ba505d7c148ea66c63f9c31ed952">OMSimIBD::angularDistribution</a></div><div class="ttdeci">DistributionSampler angularDistribution(G4double Enu)</div><div class="ttdoc">Computes the angular distribution of the reaction ( \bar{\nu}_e + p \rightarrow e^+ + n ).</div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.cc:285</div></div>
 <div class="ttc" id="aclass_o_m_sim_i_b_d_html_aad2e0e4a3f6501f4d2c3fb896b032ade"><div class="ttname"><a href="class_o_m_sim_i_b_d.html#aad2e0e4a3f6501f4d2c3fb896b032ade">OMSimIBD::totalCrossSection</a></div><div class="ttdeci">G4double totalCrossSection(G4double energy)</div><div class="ttdoc">Calculates the total cross-section of the inverse beta decay reaction for a given energy.</div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.cc:367</div></div>
 <div class="ttc" id="aclass_o_m_sim_i_b_d_html_af04e93cf44abe395e2b65cad4b385d1f"><div class="ttname"><a href="class_o_m_sim_i_b_d.html#af04e93cf44abe395e2b65cad4b385d1f">OMSimIBD::calculateSecondaryParticleEnergy</a></div><div class="ttdeci">G4double calculateSecondaryParticleEnergy(G4double nu_energy, G4double costheta)</div><div class="ttdoc">Computes the energy of a positron resulting from the inverse beta decay.</div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.cc:343</div></div>
 <div class="ttc" id="aclass_o_m_sim_s_n_tools_html"><div class="ttname"><a href="class_o_m_sim_s_n_tools.html">OMSimSNTools</a></div><div class="ttdoc">Provides utility methods for generating ENES and IBD interactions.</div><div class="ttdef"><b>Definition</b> OMSimSNTools.hh:56</div></div>
-<div class="ttc" id="aclass_s_n_base_particle_generator_html"><div class="ttname"><a href="class_s_n_base_particle_generator.html">SNBaseParticleGenerator</a></div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.hh:27</div></div>
+<div class="ttc" id="aclass_s_n_base_particle_generator_html"><div class="ttname"><a href="class_s_n_base_particle_generator.html">SNBaseParticleGenerator</a></div><div class="ttdef"><b>Definition</b> OMSimSNParticleGenerators.hh:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_83271c016684bff04ce022d17a2ba8ac.html">simulations</a></li><li class="navelem"><a class="el" href="dir_553094e69e8206429061833255d80122.html">supernova</a></li><li class="navelem"><a class="el" href="dir_a50532433148dd6238491228bd0c578b.html">include</a></li><li class="navelem"><a class="el" href="_o_m_sim_s_n_particle_generators_8hh.html">OMSimSNParticleGenerators.hh</a></li>
-    <li class="footer">Generated on Fri Apr 11 2025 10:17:12 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Mon May 19 2025 15:10:07 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
