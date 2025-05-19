@@ -83,6 +83,44 @@ Figure 2: <i>Side view of complex mDOM PMT model. Image from <a href="https://ze
 
 ---
 
+## Optical Modules and Harness Construction
+
+For most optical modules, complex geometries like holding structures and harnesses are constructed from CAD files (`.obj`) using the `mesh.hh` class (see `mesh.hh`). Depending on the loaded geometry, computing times may increase if the geometry is built multiple times instead of performing long simulations. The mDOM is however fully constructed natively in Geant4. For details on the harness implementation, refer to [this Bachelor thesis](https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/bachelorarbeiten/ba_moritz_schlechtriem.pdf).
+
+
+The following geometries cannot be visualized:
+
+- PMT HA-coating
+- DOM/pDOM complex PMT (use `--simple_PMT` instead)
+- mDOM support structure
+
+
+
+Below is an overview of the available geometries:
+
+<div style="width: 100%; text-align: center;">
+<img src="optical_modules.png" width="280" height="320" alt="Cross section of simple mDOM PMT model" />
+<div style="width: 80%; margin: auto;">
+<br/>
+Figure 1: <i>Real-world optical modules (top) compared to their respective visualization in OMSim (bottom).</i>
+</div>
+</div>
+
+
+To recreate the geometries, use the following commands:
+
+```bash
+./OMSim_effective_area --detector_type 2 --place_harness -v
+```
+
+or
+
+```bash
+./OMSim_effective_area --detector_type 3 --place_harness -v --simple_PMT
+```
+
+---
+
 ## Making PMTs and OMs sensitive
 
 For photon detection in both simple and complex geometries, the photons must be absorbed within the photocathode. The photocathodes are made sensitive through the OMSimSensitiveDetector class, following Geant4's G4VSensitiveDetector pattern. This configuration is achieved by invoking `OMSimOpticalModule::configureSensitiveVolume` (or `OMSimPMTConstruction::configureSensitiveVolume` when simulating a single PMT). 
