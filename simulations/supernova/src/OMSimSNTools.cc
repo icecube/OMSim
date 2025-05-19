@@ -21,7 +21,7 @@
  */
 std::pair<std::string, std::string> OMSimSNTools::getFileNames(int p_value)
 {
-    const std::string basePath = "../supernova/models/";
+    const std::string basePath = "../simulations/supernova/models/";
 
     const std::map<int, std::pair<std::string, std::string>> fileMap = {
         {0, {basePath + "Flux_Nu_Heavy_ls220.cfg", basePath + "Flux_Nubar_Heavy_ls220.cfg"}}, // 27 solar masses type II model
