@@ -8,7 +8,8 @@
  *         - Write documentation and parse current comments into Doxygen style
  */
 #include "OMSimLOM18.hh"
-#include "CADMesh.hh" 
+#include "OMSimLOM18Harness.hh"
+#include "OMSimTools.hh"
 #include "OMSimLogger.hh"
 #include "OMSimCommandArgsTable.hh"
 
@@ -16,12 +17,8 @@
 #include <G4IntersectionSolid.hh>
 
 
-LOM18::~LOM18()
-{
-    //delete m_harness;
-}
 
-LOM18::LOM18(G4bool p_placeHarness): OMSimOpticalModule(new OMSimPMTConstruction()), m_placeHarness(p_placeHarness)
+LOM18::LOM18(G4bool p_placeHarness) : OMSimOpticalModule(new OMSimPMTConstruction()), m_placeHarness(p_placeHarness)
  {
     log_info("Constructing LOM18");
     m_managerPMT->includeHAcoating();
@@ -30,13 +27,10 @@ LOM18::LOM18(G4bool p_placeHarness): OMSimOpticalModule(new OMSimPMTConstruction
     m_PMToffset = m_managerPMT->getDistancePMTCenterToTip();
     m_maxPMTRadius = m_managerPMT->getMaxPMTRadius() + 2 * mm;
 
-    m_placeHarness = p_placeHarness;
-    if (m_placeHarness){
-        //m_harness = new mDOMHarness(this, m_data);
-        //integrateDetectorComponent(m_harness, G4ThreeVector(0,0,0), G4RotationMatrix(), "");
-        log_error("LOM18 harness not implemented yet");
-    }
+    if (p_placeHarness) m_harness = new LOM18Harness(this);
     construction();
+    if (p_placeHarness) integrateDetectorComponent(m_harness, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "");
+    log_trace("Finished constructing LOM18");
 }
 
 
@@ -61,9 +55,9 @@ void LOM18::construction()
     //Placements 
     placePMTs(innerVolumeLogical);
     placeGelpads(innerVolumeLogical);
+    placeCADSupportStructure(innerVolumeLogical);
 
-    //if (true) placeCADSupportStructure(innerVolumeLogical);
-    //if (gCADImport) placeCADPenetrator(innerVolumeLogical);
+    //if (harness) subtractpca(innerVolumeLogical);
 
     //Place InnerVolume (Mother of every other component) into GlassVolume (Mother of all)
     new G4PVPlacement(0, G4ThreeVector(0, 0, 0), innerVolumeLogical, "Gel_physical", glassLogical, false, 0, m_checkOverlaps); //Innervolume (mother volume for all components)   
@@ -72,12 +66,12 @@ void LOM18::construction()
     // ------------------ Add outer shape solid to MultiUnion in case you need substraction -------------------------------------------
     //Each Component needs to be appended to be places in OMSimDetectorComponent. Everything is placed in the InnerVolume which is placed in the glass which is the mother volume. This is the reason why not everything is appended on its own
     appendComponent(glassSolid, glassLogical, G4ThreeVector(0, 0, 0), G4RotationMatrix(), "PressureVessel_" + std::to_string(m_index));
-    appendEquatorBand();
+    if (m_placeHarness) appendEquatorBand();
     // ---------------- visualisation attributes --------------------------------------------------------------------------------
     glassLogical->SetVisAttributes(m_glassVis);
-    innerVolumeLogical->SetVisAttributes(m_invisibleVis); //Material defined as Ri_Air
+    innerVolumeLogical->SetVisAttributes(m_airVis);
     for (int i = 0; i <= m_totalNumberPMTs-1; i++) {
-        m_gelPadLogical[i]->SetVisAttributes(m_gelVis); //m_gelVis
+        m_gelPadLogical[i]->SetVisAttributes(m_gelVis); 
     }
     
 }
@@ -238,8 +232,8 @@ G4Polycone* LOM18::createLOM18InnerSolid()
 
 void LOM18::appendEquatorBand()
 {
-    G4double tapeWidth = 45.0 * mm;
-    G4double thicknessTape = 1.0*mm;
+    G4double tapeWidth = 38.1* mm; 
+    G4double thicknessTape = 0.5 * mm;
 
     G4int nsegments = 3;
     G4double rInner[3], rOuter[3], zPlane[3];
@@ -263,41 +257,52 @@ void LOM18::appendEquatorBand()
 }
 
 
-
-/**
- * Imports inner components of module from CAD file and places them as an absorber (non optical compenents only since the tesselation is strong!)
- */
-void LOM18::placeCADSupportStructure(G4LogicalVolume* p_innerVolume)
+void LOM18::placeCADSupportStructure(G4LogicalVolume* innerVolumeLogical)
 {
-    //select file
-    std::stringstream CADfile;
-    CADfile.str(""); 
-    CADfile << "EverythingButPMTsGelpadsVesselPenetrator.obj";
-    //CADfile << "Internal.obj";
-    
-    log_debug("Using the following CAD file for support structure: {}", CADfile.str());
+    G4RotationMatrix lRotationInternal;
+    //G4ThreeVector lOriginInternal( 53.441 * mm, 68.032 * mm, 273.604 * mm);
+    G4ThreeVector lOriginInternal(-68.032 * mm, -273.604*mm, -53.441  * mm);
+    lRotationInternal.rotateX(90 * deg);
+    lRotationInternal.rotateZ(45 * deg);
 
-    //load mesh
-    auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/LOM18/" + CADfile.str() );
+    //Support structure
+    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM18/Internals_NoBoards.obj", "CAD_SupportStructure", m_data->getMaterial("NoOptic_Stahl"), m_steelVis, m_data->getOpticalSurface("Surf_StainlessSteelGround"));
+    {
+    auto comp = getComponent("CAD_SupportStructure");
+    new G4PVPlacement(G4Transform3D(lRotationInternal, G4ThreeVector()),
+        comp.VLogical, "CAD_SupportStructure_physical", innerVolumeLogical, false, 0, m_checkOverlaps);
+    deleteComponent("CAD_SupportStructure");
+    }
 
-    //Offset
-    G4ThreeVector CADoffset = G4ThreeVector(0, 0, 0); //measured from CAD file since origin =!= Module origin
-    mesh->SetOffset(CADoffset);
 
-    //rotate
-    G4RotationMatrix* rot = new G4RotationMatrix();
-    //rot->rotateY(m_thetaPMT[k]);
-    rot->rotateZ(45*deg);
-    
-    // Place all of the meshes it can find in the file as solids individually.
-    for (auto solid : mesh->GetSolids())
-    { 
-        G4LogicalVolume* supportStructureLogical  = new G4LogicalVolume( solid , m_data->getMaterial("NoOptic_Absorber") , "logical" , 0, 0, 0); //should be Surf_AluminiumGround
-        supportStructureLogical->SetVisAttributes(m_aluVis);
-        new G4PVPlacement( rot , G4ThreeVector(0, 0, 0) , supportStructureLogical, "Support structure" , p_innerVolume, false, 0, m_checkOverlaps);
+    //Support structure with boards
+    lRotationInternal.rotateX(180 * deg);
+    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM18/Internals_WithBoards.obj", "CAD_SupportStructure2", m_data->getMaterial("NoOptic_Stahl"), m_steelVis, m_data->getOpticalSurface("Surf_StainlessSteelGround"));
+    {
+    auto comp = getComponent("CAD_SupportStructure2");
+    new G4PVPlacement(G4Transform3D(lRotationInternal, G4ThreeVector()),
+        comp.VLogical, "CAD_SupportStructure2_physical", innerVolumeLogical, false, 0, m_checkOverlaps);
+    deleteComponent("CAD_SupportStructure2");
+    }
+
+    //Polar PMT support structure and flasher ring
+    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM18/Internals_PolarPMT.obj", "CAD_Polar", m_data->getMaterial("NoOptic_Stahl"), m_steelVis, m_data->getOpticalSurface("Surf_StainlessSteelGround"));
+    {
+    auto comp = getComponent("CAD_Polar");
+    new G4PVPlacement(G4Transform3D(lRotationInternal, G4ThreeVector()),
+        comp.VLogical, "CAD_Polar_physical", innerVolumeLogical, false, 0, m_checkOverlaps);
+    deleteComponent("CAD_Polar");
+    }
+
+    lRotationInternal.rotateX(180 * deg);
+    Tools::AppendCADComponent(this, 1.0, lOriginInternal, lRotationInternal, "LOM18/Internals_PolarPMT.obj", "CAD_Polar2", m_data->getMaterial("NoOptic_Stahl"), m_steelVis, m_data->getOpticalSurface("Surf_StainlessSteelGround"));
+    {
+    auto comp = getComponent("CAD_Polar2");
+    new G4PVPlacement(G4Transform3D(lRotationInternal, G4ThreeVector()),
+        comp.VLogical, "CAD_Polar2_physical", innerVolumeLogical, false, 0, m_checkOverlaps);
+    deleteComponent("CAD_Polar2");
     }
 }
-
 /**
  * Imports inner Penetrator of module from CAD file and places them as an absorber (non optical compenents only since the tesselation is strong!)
  */
@@ -417,7 +422,7 @@ void LOM18::setPMTPositions()
         //lower equatorial
         if (i>=m_totalNumberPMTs-m_NrEquatorialPMTs && i<=m_totalNumberPMTs-1){ 
             //rotation
-            thetaPMT = 180*deg + m_thetaEquatorial;
+            thetaPMT = 180*deg - m_thetaEquatorial; //this was + before but makes no difference...check this!
             phiPMT = m_EqPMTPhiPhase + (i - m_numberPolarPMTs - m_NrCenterPMTs + 0.5) * 360. * deg / m_NrEquatorialPMTs; //i*90.0*deg; for 4 
 
             //PMT position

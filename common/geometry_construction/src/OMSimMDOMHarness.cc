@@ -21,14 +21,15 @@ mDOMHarness::mDOMHarness(mDOM *p_MDOM): OMSimDetectorComponent(), m_opticalModul
 
 void mDOMHarness::construction()
 {
+    //mainDataCable();
 
     bandsAndClamps();
-    bridgeRopesSolid();
-    mainDataCable();
     pads();
+    bridgeRopesSolid();
+    teraBelt();
+    
     PCA();
     plug();
-    teraBelt();
 }
 
 void mDOMHarness::bandsAndClamps()
@@ -172,7 +173,7 @@ void mDOMHarness::bridgeRopesSolid()
 
 void mDOMHarness::mainDataCable()
 {
-    const G4double dataCableRadius = 26.0 * mm; // Radius of the main data cable (according to Prof. Kappes)
+    const G4double dataCableRadius = 50.0 * mm; // Radius of the main data cable (according to Prof. Kappes)
     const G4double dataCableLength = 4.0 * m;   // Length of main data cable
 
     G4Tubs *dataCableSolid = new G4Tubs("MainDataCable_solid", 0, dataCableRadius, dataCableLength / 2.0, 0, 2 * CLHEP::pi);

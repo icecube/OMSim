@@ -7,6 +7,7 @@
 
 #include "OMSimPMTConstruction.hh"
 #include "OMSimOpticalModule.hh"
+class DOMHarness;
 
 /**
  * @class DOM
@@ -19,7 +20,10 @@ public:
     DOM(G4bool p_placeHarness = true, G4bool p_deepcore = false);
     ~DOM(){};
     void construction();
-    G4bool m_placeHarness;
+    DOMHarness *m_harness;
+    G4bool m_placeHarness = true;
+    G4SubtractionSolid *substractHarnessPCA(G4VSolid *pSolid);
+
     G4String getName()
     {
         std::stringstream ss;

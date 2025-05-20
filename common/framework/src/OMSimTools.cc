@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <TH1D.h>
 
+
 namespace Tools
 {
 
@@ -573,5 +574,66 @@ namespace Tools
 		}
 	}
 
-	std::string visualisationURL = "https://icecube.github.io/OMSim/md_extra_doc_2_technicalities.html#autotoc_md30";
+	void AppendCADComponent(OMSimDetectorComponent* component, const G4double scaleCAD,
+							const G4ThreeVector& offsetCAD, const G4RotationMatrix& rotation,
+							const std::string& filename, const std::string& componentname,
+							G4Material* material, G4VisAttributes visAttributes, 
+							G4OpticalSurface* opticalSurface) {
+		G4cout << "Using the following CAD file: " << filename << G4endl;
+
+		// Load and configure mesh
+		auto mesh = CADMesh::TessellatedMesh::FromOBJ("../common/data/CADmeshes/" + filename);
+		mesh->SetScale(scaleCAD);
+		mesh->SetOffset(offsetCAD * scaleCAD);
+
+		// Validate mesh
+		const auto& solids = mesh->GetSolids();
+		if (solids.empty()) {
+			log_error("No solids found in CAD file: {}", filename.data());
+			return;
+		}
+
+		// Helper function to create logical volume
+		auto createLogical = [&](G4VSolid* solid, const G4String& name) {
+			auto logical = new G4LogicalVolume(solid, material, name + "_Logical");
+			if (opticalSurface) {
+				new G4LogicalSkinSurface(name + "_skin", logical, opticalSurface);
+			}
+			logical->SetVisAttributes(visAttributes);
+			return logical;
+		};
+
+		// Handle single vs multi-mesh cases
+		bool isMultiMesh = solids.size() > 1;
+		bool isVisMode = OMSimCommandArgsTable::getInstance().get<bool>("visual");
+
+		if (isMultiMesh && !isVisMode) {
+			// Case 1: Multi-mesh with MultiUnion
+			auto multiUnion = new G4MultiUnion("cad_union");
+			for (auto solid : solids) {
+				multiUnion->AddNode(solid, G4Transform3D(rotation, G4ThreeVector()));
+			}
+			multiUnion->Voxelize();
+			auto logical = createLogical(multiUnion, componentname);
+			component->appendComponent(multiUnion, logical, G4ThreeVector(), rotation, componentname);
+		}
+		else if (isMultiMesh) {
+			// Case 2: Multi-mesh for visualization
+			log_warning("Placing individual sub-meshes for visualization");
+			int idx = 0;
+			for (auto solid : solids) {
+				G4String name = componentname + "_" + std::to_string(idx++);
+				auto logical = createLogical(solid, name);
+				component->appendComponent(solid, logical, G4ThreeVector(), rotation, name);
+			}
+		}
+		else {
+			// Case 3: Single mesh
+			auto solid = mesh->GetSolid();
+			auto logical = createLogical(solid, componentname);
+			component->appendComponent(solid, logical, G4ThreeVector(), rotation, componentname);
+		}
+	}
+
+	std::string visualisationURL = "https://icecube.github.io/OMSim/md_extra__doc_22__technicalities.html#autotoc_md30";
 }

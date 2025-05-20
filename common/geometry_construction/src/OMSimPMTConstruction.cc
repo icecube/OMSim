@@ -66,8 +66,8 @@ void OMSimPMTConstruction::construction()
     m_photocathodeLV->SetVisAttributes(m_photocathodeVis);
     if (m_internalReflections && OMSimCommandArgsTable::getInstance().get<bool>("visual"))
     {
-        log_warning("PMT shape too complicated for visualiser, and tube can't be visualised. Use simple_PMT or check {} if you want to try with another visualiser!", Tools::visualisationURL);
-        logicalPMT->SetVisAttributes(m_invisibleVis);
+        log_warning("PMT shape might be too complicated for visualiser, and tube can't be visualised. Use simple_PMT or check {} if you want to try with another visualiser!", Tools::visualisationURL);
+        logicalPMT->SetVisAttributes(m_PMTglassVis);
         tubeVacuum->SetVisAttributes(m_invisibleVis);
         vacuumBackLogical->SetVisAttributes(m_invisibleVis);
     }

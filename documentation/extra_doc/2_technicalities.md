@@ -254,4 +254,45 @@ If you need to add more parameters (for example low gain probability, which is a
 ---
 
 
+## CAD geometries
 
+- **Creating new geometries**
+   - Use the CAD program of your choice to load/modify geometries. Module geometries are available in SharePoint, Docushare or Google Drive.
+   - Take note of the origin of the part in respect to the module center.
+   - Simplify geometries by removing/editing parts unlikely to affect detector response to minimize compile times.
+   - Split complex geometries into separate assemblies for flexibility (e.g., harness into waistband and ropes).
+   - Note: Non-touching volumes in (sub)geometries will generate separate meshes.
+   - Export geometry as `.obj` format.
+   - Store in `common/data/CADmeshes` with descriptive naming. The `.mtl` file can be omitted.
+
+- **Implementing CAD geometries**
+   - Implementation uses [CADMesh](https://github.com/christopherpoole/CADMesh) via `OMSimTools::AppendCADComponent`.
+   - Multiple bodies in geometry generate separate meshes, requiring if-clauses and resulting in MultiUnion when not visualized.
+   - Example implementation:
+     ```cpp
+     Tools::AppendCADComponent(this, 1.0, lOrigin, lRotation,
+         "DEGG/Internal_OnlyCones.obj", "CAD_Internal",
+         m_data->getMaterial("NoOptic_Absorber"), m_aluVis);
+     ```
+   - Ensure correct volume placement.
+
+- **Overlap checking**
+    -  Run simulation with `--check_overlaps` flag and verify output...all volumes should report 'OK!'.
+   - Launch with visualization to verify placement: `./OMSim_effective_area --detector_type 6 --place_harness -v`
+   - Example OpenGL viewer commands for inspection:
+     ```
+     /vis/viewer/addCutawayPlane 0 0 0 mm 1 0 0
+     /vis/scene/add/axes 0 0 0 250 mm
+     /vis/scene/add/arrow 0 0 0 0 90 40 mm
+     ```
+   - Verify proper component placement in scene tree (internal components inside module, harness in world volume)
+   - For overlaps: verify origin/rotation, check CAD vs OMSim differences (and track them!), consider thinning CAD geometry.
+
+- **Verification**
+   - Double-check for overlaps.
+   - Test photon interactions with new geometry. This will depend on the material properties that you assigned.
+   - Optionally compare effective area scans with/without new geometry
+
+
+---
+---

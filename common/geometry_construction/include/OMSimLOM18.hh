@@ -10,11 +10,13 @@
 #include <G4LogicalVolume.hh>
 #include <G4Polycone.hh>
 
+class LOM18Harness;
+
 class LOM18 : public OMSimOpticalModule
 {
 public:
-    LOM18(G4bool pPlaceHarness = false);
-    ~LOM18();
+    LOM18(G4bool pPlaceHarness = true);
+    ~LOM18(){};
     void construction();
     double getPressureVesselWeight() {return 17.0*kg;};
     int getNumberOfPMTs() { return m_totalNumberPMTs;};
@@ -25,7 +27,13 @@ public:
         return ss.str();
     }
 private:
+    //selection variables
+    LOM18Harness *m_harness;
+    G4bool m_placeHarness = true;
+    G4bool m_harnessUnion = true; //it should be true for the first module that you build, and then false
+    G4SubtractionSolid *substractHarnessPCA(G4VSolid *pSolid);
 
+    //Lom specific functions
     G4Polycone* createLOM18OuterSolid();
     G4Polycone* createLOM18InnerSolid();
 
@@ -40,17 +48,12 @@ private:
     void placePMTs(G4LogicalVolume* lInnerVolumeLogical);
     void placeGelpads(G4LogicalVolume* lInnerVolumeLogical);
 
-    //selection variables
-    G4bool m_placeHarness = true;
-    G4bool m_harnessUnion = true; //it should be true for the first module that you build, and then false
 
     //vectors for positions and rotations
     std::vector<G4ThreeVector> m_positionsPMT;
     std::vector<G4ThreeVector> m_positionsGelpad;
     std::vector<G4double> m_thetaPMT;
     std::vector<G4double> m_phiPMT;
-
-
 
 
     //from PMTConstruction class (not readable directly...needs to be changed)

@@ -70,7 +70,9 @@ public:
 protected:
     // Use static const members for G4VisAttributes
     static const G4VisAttributes m_glassVis;
+    static const G4VisAttributes m_PMTglassVis;
     static const G4VisAttributes m_gelVis;
+    static const G4VisAttributes m_gelpadVis;
     static const G4VisAttributes m_steelVis;
     static const G4VisAttributes m_aluVis;
     static const G4VisAttributes m_whiteVis;

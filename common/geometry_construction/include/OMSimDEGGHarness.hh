@@ -1,7 +1,6 @@
 
 /** @file OMSimDEGGHarness.hh
  *  @brief Construction of the DEGG harness.
- *  @todo Write documentation
  *  @ingroup common
  */
 
@@ -12,15 +11,20 @@ class DEGG;
 class DEggHarness : public OMSimDetectorComponent
 {
 public:
+    /** @brief Constructor for DEGG harness
+     *  @param pDEGG Pointer to parent DEGG module
+     */
     DEggHarness(DEGG *pDEGG);
     void construction();
     G4String mDataKey = "om_DEGG_Harness";
 
 private:
-    DEGG *m_opticalModule;
+    DEGG *m_opticalModule; ///< Pointer to parent module
 
-    void placeCADHarness();
-    void placeCADPenetrator();
+    void CADHarnessRopes();
+    void CADHarnessPCA();
+    void PlaceCADString();
+    void CADHarnessWaistband();
     void mainDataCable();
     G4VSolid *buildHarnessSolid(G4double rmin, G4double rmax, G4double sphi, G4double dphi, G4double stheta, G4double dtheta);
 
@@ -31,7 +35,7 @@ private:
     const G4double m_sTheta = 1.383031327; // This is in radians
     const G4double m_dTheta = 0.37553;     // This is in radians
     const G4double m_ropeRotationAngleX = 11.245557 * deg;
-    const G4double m_harnessRotAngle = 30 * deg;
-    const G4double m_totalWidth = 170 * mm;
+    const G4double m_harnessRotAngle = 330 * deg;
+    const G4double m_totalWidth = 170 * mm; //Verify this value!
 };
 
