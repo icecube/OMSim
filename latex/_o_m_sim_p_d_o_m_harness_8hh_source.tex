@@ -1,0 +1,40 @@
+\doxysection{OMSim\+PDOMHarness.\+hh}
+\hypertarget{_o_m_sim_p_d_o_m_harness_8hh_source}{}\label{_o_m_sim_p_d_o_m_harness_8hh_source}\index{OMSimPDOMHarness.hh@{OMSimPDOMHarness.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_detector_component_8hh}{OMSimDetectorComponent.hh}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_d_o_m}{DOM}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_d_o_m_harness}{DOMHarness}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSimDetectorComponent}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_d_o_m_harness}{DOMHarness}}(\mbox{\hyperlink{class_d_o_m}{DOM}}\ *pDOM);}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_o_m_harness_a625782a656eab8eb29760e32d37cb21c}{construction}}();}
+\DoxyCodeLine{00016\ \ \ \ \ G4String\ mDataKey\ =\ \textcolor{stringliteral}{"{}om\_DOM\_Harness"{}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_d_o_m}{DOM}}\ *m\_opticalModule;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ CADHarnessWaistband();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ CADHarnessRopes();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ CADHarnessPCA();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ PlaceCADString();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ mainDataCable();}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ buildHarnessSolid();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_rMin\ =\ 150.0\ *\ mm;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_rMax\ =\ 155.0\ *\ mm;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_sPhi\ =\ 0.0\ *\ deg;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_dPhi\ =\ 6.283185307;\ \ \ \textcolor{comment}{//\ This\ is\ already\ in\ radians}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_sTheta\ =\ 1.383031327;\ \textcolor{comment}{//\ This\ is\ in\ radians}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_dTheta\ =\ 0.37553;\ \ \ \ \ \textcolor{comment}{//\ This\ is\ in\ radians}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_ropeRotationAngleX\ =\ 11.245557\ *\ deg;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_harnessRotAngle\ =\ 30\ *\ deg;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_totalWidth\ =\ 185\ *\ mm;\ \textcolor{comment}{//Verify\ this\ value!}}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+
+\end{DoxyCode}

@@ -23,9 +23,8 @@ Collaboration diagram for DEgg\+Harness\+:
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_d_egg_harness_af47314ae371c5e3bef6e690c0588349b}\label{class_d_egg_harness_af47314ae371c5e3bef6e690c0588349b} 
-{\bfseries DEgg\+Harness} (\mbox{\hyperlink{class_d_e_g_g}{DEGG}} \texorpdfstring{$\ast$}{*}p\+DEGG)
-\item 
+\mbox{\hyperlink{class_d_egg_harness_af47314ae371c5e3bef6e690c0588349b}{DEgg\+Harness}} (\mbox{\hyperlink{class_d_e_g_g}{DEGG}} \texorpdfstring{$\ast$}{*}p\+DEGG)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_d_e_g_g}{DEGG} harness. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_d_egg_harness_ac0985f2ad731e93da36117cd2368fa7e}{construction}} ()
 \begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
@@ -77,11 +76,17 @@ std\+::map$<$ G4\+String, G4\+PVPlacement \texorpdfstring{$\ast$}{*} $>$ {\bfser
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_d_egg_harness_a918a1cdf90db1baabd9ce5bdc0e83a19}\label{class_d_egg_harness_a918a1cdf90db1baabd9ce5bdc0e83a19} 
-void {\bfseries place\+CADHarness} ()
+\Hypertarget{class_d_egg_harness_a9caa0bb22a38c3220211ffddd273ced3}\label{class_d_egg_harness_a9caa0bb22a38c3220211ffddd273ced3} 
+void {\bfseries CADHarness\+Ropes} ()
 \item 
-\Hypertarget{class_d_egg_harness_afa139bcf866bd9c5fabc42d3d431af16}\label{class_d_egg_harness_afa139bcf866bd9c5fabc42d3d431af16} 
-void {\bfseries place\+CADPenetrator} ()
+\Hypertarget{class_d_egg_harness_ab97202d26cab1129797ce6c00ab5cc29}\label{class_d_egg_harness_ab97202d26cab1129797ce6c00ab5cc29} 
+void {\bfseries CADHarness\+PCA} ()
+\item 
+\Hypertarget{class_d_egg_harness_abdd0d99f014151bb412307c00e548341}\label{class_d_egg_harness_abdd0d99f014151bb412307c00e548341} 
+void {\bfseries Place\+CADString} ()
+\item 
+\Hypertarget{class_d_egg_harness_ae1103b4c27eaf23f39fb6851fb5fbdad}\label{class_d_egg_harness_ae1103b4c27eaf23f39fb6851fb5fbdad} 
+void {\bfseries CADHarness\+Waistband} ()
 \item 
 \Hypertarget{class_d_egg_harness_a1d3368dc24c2d519005455b8f005c513}\label{class_d_egg_harness_a1d3368dc24c2d519005455b8f005c513} 
 void {\bfseries main\+Data\+Cable} ()
@@ -94,7 +99,7 @@ G4\+VSolid \texorpdfstring{$\ast$}{*} {\bfseries build\+Harness\+Solid} (G4doubl
 \item 
 \Hypertarget{class_d_egg_harness_ad7d17b89f08e51dd85a088f0bdd95046}\label{class_d_egg_harness_ad7d17b89f08e51dd85a088f0bdd95046} 
 \mbox{\hyperlink{class_d_e_g_g}{DEGG}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+optical\+Module}
-\item 
+\begin{DoxyCompactList}\small\item\em Pointer to parent module. \end{DoxyCompactList}\item 
 \Hypertarget{class_d_egg_harness_a3763a62f2db3fbf5bdf02fd70a4778ea}\label{class_d_egg_harness_a3763a62f2db3fbf5bdf02fd70a4778ea} 
 const G4double {\bfseries m\+\_\+r\+Min} = 150.\+0 \texorpdfstring{$\ast$}{*} mm
 \item 
@@ -117,7 +122,7 @@ const G4double {\bfseries m\+\_\+d\+Theta} = 0.\+37553
 const G4double {\bfseries m\+\_\+rope\+Rotation\+AngleX} = 11.\+245557 \texorpdfstring{$\ast$}{*} deg
 \item 
 \Hypertarget{class_d_egg_harness_a8908ea1ab77bcfc273c6778879711b87}\label{class_d_egg_harness_a8908ea1ab77bcfc273c6778879711b87} 
-const G4double {\bfseries m\+\_\+harness\+Rot\+Angle} = 30 \texorpdfstring{$\ast$}{*} deg
+const G4double {\bfseries m\+\_\+harness\+Rot\+Angle} = 330 \texorpdfstring{$\ast$}{*} deg
 \item 
 \Hypertarget{class_d_egg_harness_a8762ceb55b19cf9e5d3c6ecf376f21df}\label{class_d_egg_harness_a8762ceb55b19cf9e5d3c6ecf376f21df} 
 const G4double {\bfseries m\+\_\+total\+Width} = 170 \texorpdfstring{$\ast$}{*} mm
@@ -128,7 +133,11 @@ const G4double {\bfseries m\+\_\+total\+Width} = 170 \texorpdfstring{$\ast$}{*} 
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+glass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
 \item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+PMTglass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+4))
+\item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+gel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+gelpad\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+3))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+steel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
 \item 
@@ -140,7 +149,7 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Semi\+Transparent\+
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
 \item 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 1, 0, 1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0.\+6, 0, 1))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+blue\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
 \item 
@@ -154,10 +163,29 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+black\+Vis} = G4\+Vis\+Attrib
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+LEDvis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
 \item 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 1.\+0, 0.\+0, 0.\+1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+7, 0.\+0, 1))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_d_egg_harness_af47314ae371c5e3bef6e690c0588349b}\label{class_d_egg_harness_af47314ae371c5e3bef6e690c0588349b} 
+\index{DEggHarness@{DEggHarness}!DEggHarness@{DEggHarness}}
+\index{DEggHarness@{DEggHarness}!DEggHarness@{DEggHarness}}
+\doxysubsubsection{\texorpdfstring{DEggHarness()}{DEggHarness()}}
+{\footnotesize\ttfamily DEgg\+Harness\+::\+DEgg\+Harness (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_d_e_g_g}{DEGG}} \texorpdfstring{$\ast$}{*}}]{p\+DEGG }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+DEGG} & Pointer to parent \doxylink{class_d_e_g_g}{DEGG} module\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000004}{Todo}}]
+\begin{DoxyItemize}
+\item Verify main data cable 
+\end{DoxyItemize}\end{DoxyRefDesc}
 
 
 \doxysubsection{Member Function Documentation}

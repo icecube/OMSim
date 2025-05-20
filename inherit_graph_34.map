@@ -1,23 +1,29 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="5,153,205,179"/>
-<area shape="rect" id="Node000001" href="$class_d_egg_harness.html" title=" " alt="" coords="288,55,397,80"/>
-<area shape="poly" id="edge30_Node000000_Node000001" title=" " alt="" coords="139,144,192,116,252,89,287,78,289,83,254,94,194,121,142,149"/>
-<area shape="rect" id="Node000002" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="261,104,424,129"/>
-<area shape="poly" id="edge31_Node000000_Node000002" title=" " alt="" coords="180,148,280,127,281,132,181,153"/>
-<area shape="rect" id="Node000008" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="253,153,432,179"/>
-<area shape="poly" id="edge37_Node000000_Node000008" title=" " alt="" coords="219,163,253,163,253,169,219,169"/>
-<area shape="rect" id="Node000009" href="$classm_d_o_m_flasher.html" title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module." alt="" coords="285,203,400,228"/>
-<area shape="poly" id="edge38_Node000000_Node000009" title=" " alt="" coords="181,179,286,201,285,206,180,184"/>
-<area shape="rect" id="Node000010" href="$classm_d_o_m_harness.html" title=" " alt="" coords="283,252,403,277"/>
-<area shape="poly" id="edge39_Node000000_Node000010" title=" " alt="" coords="142,183,194,211,254,238,289,249,287,254,252,243,192,216,139,188"/>
-<area shape="rect" id="Node000003" href="$class_d_e_g_g.html" title="Construction of the DEGG detector geometry." alt="" coords="483,5,543,31"/>
-<area shape="poly" id="edge32_Node000002_Node000003" title=" " alt="" coords="415,97,431,89,446,78,455,67,478,40,492,29,496,33,482,44,459,70,449,82,433,94,418,101"/>
-<area shape="rect" id="Node000004" href="$class_d_o_m.html" title="DOM class represents the construction of pDOM (deepcore) or Gen1 DOM." alt="" coords="486,55,541,80"/>
-<area shape="poly" id="edge33_Node000002_Node000004" title=" " alt="" coords="401,98,431,89,485,73,486,78,433,94,403,103"/>
-<area shape="rect" id="Node000005" href="$class_l_o_m16.html" title=" " alt="" coords="480,104,547,129"/>
-<area shape="poly" id="edge34_Node000002_Node000005" title=" " alt="" coords="437,114,480,114,480,119,437,119"/>
-<area shape="rect" id="Node000006" href="$class_l_o_m18.html" title=" " alt="" coords="480,153,547,179"/>
-<area shape="poly" id="edge35_Node000002_Node000006" title=" " alt="" coords="406,130,433,138,481,153,479,158,431,143,404,136"/>
-<area shape="rect" id="Node000007" href="$classm_d_o_m.html" title=" " alt="" coords="480,203,547,228"/>
-<area shape="poly" id="edge36_Node000002_Node000007" title=" " alt="" coords="421,132,433,138,449,150,459,162,482,188,496,200,493,204,478,192,455,165,446,154,431,143,419,137"/>
+<area shape="rect" id="Node000000" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="5,179,205,204"/>
+<area shape="rect" id="Node000001" href="$class_d_egg_harness.html" title=" " alt="" coords="288,5,397,31"/>
+<area shape="poly" id="edge30_Node000000_Node000001" title=" " alt="" coords="122,166,175,103,211,69,252,40,287,25,289,30,255,44,215,73,179,106,126,169"/>
+<area shape="rect" id="Node000002" href="$class_d_o_m_harness.html" title=" " alt="" coords="289,55,396,80"/>
+<area shape="poly" id="edge31_Node000000_Node000002" title=" " alt="" coords="131,168,185,128,252,89,288,76,290,81,254,94,188,132,134,172"/>
+<area shape="rect" id="Node000003" href="$class_l_o_m16_harness.html" title=" " alt="" coords="283,104,403,129"/>
+<area shape="poly" id="edge32_Node000000_Node000003" title=" " alt="" coords="153,171,253,138,292,127,293,132,254,143,155,177"/>
+<area shape="rect" id="Node000004" href="$class_l_o_m18_harness.html" title=" " alt="" coords="283,153,403,179"/>
+<area shape="poly" id="edge33_Node000000_Node000004" title=" " alt="" coords="219,177,282,170,283,175,219,182"/>
+<area shape="rect" id="Node000005" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="261,203,424,228"/>
+<area shape="poly" id="edge34_Node000000_Node000005" title=" " alt="" coords="219,200,261,204,261,210,219,205"/>
+<area shape="rect" id="Node000011" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="253,252,432,277"/>
+<area shape="poly" id="edge40_Node000000_Node000011" title=" " alt="" coords="158,206,254,237,297,249,295,255,253,242,156,211"/>
+<area shape="rect" id="Node000012" href="$classm_d_o_m_flasher.html" title="The mDOMFlasher class represents the 10 flashers in an mDOM optical module." alt="" coords="285,301,400,327"/>
+<area shape="poly" id="edge41_Node000000_Node000012" title=" " alt="" coords="135,210,188,249,254,286,288,299,286,304,252,291,185,253,131,215"/>
+<area shape="rect" id="Node000013" href="$classm_d_o_m_harness.html" title=" " alt="" coords="283,351,403,376"/>
+<area shape="poly" id="edge42_Node000000_Node000013" title=" " alt="" coords="126,213,179,276,215,309,255,337,283,349,281,354,252,342,211,313,175,279,122,217"/>
+<area shape="rect" id="Node000006" href="$class_d_e_g_g.html" title=" " alt="" coords="483,104,543,129"/>
+<area shape="poly" id="edge35_Node000005_Node000006" title=" " alt="" coords="415,195,431,188,446,177,455,165,478,139,492,127,496,131,482,143,459,169,449,180,433,192,418,200"/>
+<area shape="rect" id="Node000007" href="$class_d_o_m.html" title="DOM class represents the construction of pDOM (deepcore) or Gen1 DOM." alt="" coords="486,153,541,179"/>
+<area shape="poly" id="edge36_Node000005_Node000007" title=" " alt="" coords="401,196,431,187,485,171,486,177,433,193,403,201"/>
+<area shape="rect" id="Node000008" href="$class_l_o_m16.html" title=" " alt="" coords="480,203,547,228"/>
+<area shape="poly" id="edge37_Node000005_Node000008" title=" " alt="" coords="437,213,480,213,480,218,437,218"/>
+<area shape="rect" id="Node000009" href="$class_l_o_m18.html" title=" " alt="" coords="480,252,547,277"/>
+<area shape="poly" id="edge38_Node000005_Node000009" title=" " alt="" coords="406,229,433,237,481,252,479,257,431,242,404,234"/>
+<area shape="rect" id="Node000010" href="$classm_d_o_m.html" title=" " alt="" coords="480,301,547,327"/>
+<area shape="poly" id="edge39_Node000005_Node000010" title=" " alt="" coords="421,231,433,237,449,249,459,260,482,287,496,299,493,303,478,291,455,264,446,253,431,242,419,236"/>
 </map>

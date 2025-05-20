@@ -29,7 +29,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="_o_m_sim_d_e_g_g_8hh.html" target="_top" xlink:title="Construction of the DEGG class. From DOUMEKI.">
+<g id="a_Node000002"><a xlink:href="_o_m_sim_d_e_g_g_8hh.html" target="_top" xlink:title="Construction of the DEGG class.">
 <polygon fill="white" stroke="#666666" points="113,-129 18,-129 18,-110 113,-110 113,-129"/>
 <text text-anchor="middle" x="65.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimDEGG.hh</text>
 </a>

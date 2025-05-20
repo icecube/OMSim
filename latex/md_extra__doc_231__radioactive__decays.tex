@@ -1,7 +1,7 @@
 \chapter{\texorpdfstring{$>$}{>} Radioactive Decays Studies}
 \hypertarget{md_extra__doc_231__radioactive__decays}{}\label{md_extra__doc_231__radioactive__decays}\index{$>$ Radioactive Decays Studies@{$>$ Radioactive Decays Studies}}
-\label{md_extra__doc_231__radioactive__decays_autotoc_md44}%
-\Hypertarget{md_extra__doc_231__radioactive__decays_autotoc_md44}%
+\label{md_extra__doc_231__radioactive__decays_autotoc_md48}%
+\Hypertarget{md_extra__doc_231__radioactive__decays_autotoc_md48}%
  Study for understanding the background produced by radioactive decays in borosilicate glass of optical modules \& PMTs.
 
 \begin{quote}
@@ -32,7 +32,7 @@ Currently, there are two analysis modes\+:
 
 To run the Simulation use the examplary line below\+:
 
-{\ttfamily ./\+OMSim\+\_\+radioactive\+\_\+decays -\/-\/no\+\_\+\+PMT\+\_\+decays -\/-\/efficiency\+\_\+cut -\/n 1 -\/-\/time\+\_\+window 60 -\/-\/temperature -\/30 -\/o outputname -\/-\/environment 1 -\/-\/threads 3 -\/-\/detector\+\_\+type 2}\hypertarget{md_extra__doc_231__radioactive__decays_autotoc_md45}{}\doxysubsection{\texorpdfstring{Developer Notes\+: Geant4 Dependencies and Modifications}{Developer Notes: Geant4 Dependencies and Modifications}}\label{md_extra__doc_231__radioactive__decays_autotoc_md45}
+{\ttfamily ./\+OMSim\+\_\+radioactive\+\_\+decays -\/-\/no\+\_\+\+PMT\+\_\+decays -\/-\/efficiency\+\_\+cut -\/n 1 -\/-\/time\+\_\+window 60 -\/-\/temperature -\/30 -\/o outputname -\/-\/environment 1 -\/-\/threads 3 -\/-\/detector\+\_\+type 2}\hypertarget{md_extra__doc_231__radioactive__decays_autotoc_md49}{}\doxysubsection{\texorpdfstring{Developer Notes\+: Geant4 Dependencies and Modifications}{Developer Notes: Geant4 Dependencies and Modifications}}\label{md_extra__doc_231__radioactive__decays_autotoc_md49}
 This simulation module requires modifications to several Geant4 classes to enable custom handling of decay times. Unfortunately, the Geant4 physics library is not designed with extensibility in mind, making inheritance or selective function overrides impractical. As a result, we had to copy and modify entire class implementations. This approach makes the module highly dependent on the specific Geant4 version being used.
 
 With each Geant4 update, class structures and function implementations may change, requiring updates to this module—an admittedly tedious but necessary process. For Geant4 version 4.\+13, the following modifications were made\+:

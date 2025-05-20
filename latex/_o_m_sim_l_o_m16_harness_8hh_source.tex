@@ -1,0 +1,32 @@
+\doxysection{OMSim\+LOM16\+Harness.\+hh}
+\hypertarget{_o_m_sim_l_o_m16_harness_8hh_source}{}\label{_o_m_sim_l_o_m16_harness_8hh_source}\index{OMSimLOM16Harness.hh@{OMSimLOM16Harness.hh}}
+\mbox{\hyperlink{_o_m_sim_l_o_m16_harness_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_detector_component_8hh}{OMSimDetectorComponent.hh}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_l_o_m16}{LOM16}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_l_o_m16_harness}{LOM16Harness}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSimDetectorComponent}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_l_o_m16_harness}{LOM16Harness}}(\mbox{\hyperlink{class_l_o_m16}{LOM16}}\ *pLOM16);}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_l_o_m16_harness_a9ef2e174d326894ed311f9c8daeece30}{construction}}();}
+\DoxyCodeLine{00016\ \ \ \ \ G4String\ mDataKey\ =\ \textcolor{stringliteral}{"{}om\_LOM16\_Harness"{}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_l_o_m16}{LOM16}}\ *m\_opticalModule;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ CADHarnessWaistband();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ CADHarnessRopes();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ CADHarnessPCA();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ CADString();}
+\DoxyCodeLine{00025\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ mainDataCable();}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_ropeRotationAngleX\ =\ 11.245557\ *\ deg;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_harnessRotAngle\ =\ 0\ *\ deg;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{const}\ G4double\ m\_totalWidth\ =\ 170\ *\ mm;\ \textcolor{comment}{//Verify\ this\ value!}}
+\DoxyCodeLine{00031\ \};}
+
+\end{DoxyCode}

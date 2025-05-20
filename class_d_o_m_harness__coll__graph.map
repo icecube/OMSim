@@ -1,0 +1,18 @@
+<map id="DOMHarness" name="DOMHarness">
+<area shape="rect" id="Node000001" title=" " alt="" coords="36,243,143,268"/>
+<area shape="rect" id="Node000005" href="$class_d_o_m.html" title="DOM class represents the construction of pDOM (deepcore) or Gen1 DOM." alt="" coords="62,405,117,431"/>
+<area shape="poly" id="edge9_Node000005_Node000001" title=" " alt="" coords="60,278,32,301,11,332,8,343,10,353,22,373,43,390,65,403,63,407,40,394,18,376,5,355,3,342,6,330,28,298,56,274"/>
+<area shape="rect" id="Node000002" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="86,168,286,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,204,107,244,104,240,158,200"/>
+<area shape="rect" id="Node000006" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="231,331,394,356"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="191,207,199,237,213,267,230,286,250,303,290,328,287,333,247,308,227,290,209,269,194,239,186,208"/>
+<area shape="rect" id="Node000007" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="223,243,402,268"/>
+<area shape="poly" id="edge8_Node000007_Node000002" title=" " alt="" coords="219,198,293,240,291,245,217,203"/>
+<area shape="rect" id="Node000003" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="119,80,252,105"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="188,119,188,167,183,167,183,119"/>
+<area shape="rect" id="Node000004" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="124,5,247,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="188,45,188,80,183,80,183,45"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="87,392,87,268,92,268,92,392"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="265,363,118,410,116,405,263,358"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="315,282,315,330,310,330,310,282"/>
+</map>

@@ -9,50 +9,50 @@
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}OMSimOpticalModule.hh"{}}}
 \DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_d_egg_harness}{DEggHarness}};}
 \DoxyCodeLine{00012\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_d_e_g_g}{DEGG}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSimOpticalModule}}}
-\DoxyCodeLine{00023\ \{}
-\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_d_e_g_g}{DEGG}}(G4bool\ p\_placeHarness\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_d_e_g_g}{\string~DEGG}}()\{\};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}{construction}}();}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076}{getPressureVesselWeight}}()\ \{\ \textcolor{keywordflow}{return}\ 18.0\ *\ kg;\ \};}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}{getNumberOfPMTs}}()\ \{\ \textcolor{keywordflow}{return}\ 2;\ \};}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ G4String\ getName()}
-\DoxyCodeLine{00033\ \ \ \ \ \{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ std::stringstream\ ss;}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}/DEGG/"{}}\ <<\ m\_index;}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ss.str();}
-\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_d_e_g_g}{DEGG}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSimOpticalModule}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_d_e_g_g}{DEGG}}(G4bool\ p\_placeHarness\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_d_e_g_g}{\string~DEGG}}()\{\};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}{construction}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_d_e_g_g_affbc4905f52992f3d1f206f26466c076}{getPressureVesselWeight}}()\ \{\ \textcolor{keywordflow}{return}\ 18.0\ *\ kg;\ \};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_d_e_g_g_a322fe20cae9cfce1b05817c0ac3f1393}{getNumberOfPMTs}}()\ \{\ \textcolor{keywordflow}{return}\ 2;\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ G4String\ getName()}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}/DEGG/"{}}\ <<\ m\_index;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ss.str();}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_d_egg_harness}{DEggHarness}}\ *m\_harness;}
+\DoxyCodeLine{00032\ \ \ \ \ G4bool\ m\_placeHarness\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00033\ \ \ \ \ G4SubtractionSolid\ *substractHarnessPCA(G4VSolid\ *pSolid);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ appendPMTs();}
+\DoxyCodeLine{00036\ \ \ \ \ G4VSolid*\ placePMTs(G4LogicalVolume\ *p\_innerVolume,\ G4VSolid*\ p\_gelLayer);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ appendInternalComponentsFromCAD();}
 \DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_d_egg_harness}{DEggHarness}}\ *m\_harness;}
+\DoxyCodeLine{00039\ \ \ \ \ std::stringstream\ m\_converter;}
+\DoxyCodeLine{00040\ \ \ \ \ }
 \DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ appendPMTs();}
-\DoxyCodeLine{00044\ \ \ \ \ G4VSolid*\ placePMTs(G4LogicalVolume\ *p\_innerVolume,\ G4VSolid*\ p\_gelLayer);}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ appendInternalComponentsFromCAD();}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ appendPressureVesselFromCAD();}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//helper\ variables}}
-\DoxyCodeLine{00049\ \ \ \ \ std::stringstream\ m\_converter;}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ G4VSolid\ *\mbox{\hyperlink{class_d_e_g_g_a2c81a45df01d703ed34559a514880220}{createEggSolid}}(G4int\ p\_segments\_1,}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pSphereRmax,}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pSpheredTheta,}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pSphereTransformZ,}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus1R,}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pCenterOfTorus1R,}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4int\ pSegments\_2,}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus2R,}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pCenterOfTorus2R,}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pCenterOfTorus2\_z,}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus2\_Zmin,}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus2\_Zmax,}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus2\_Z0,}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus1TransformZ);}
-\DoxyCodeLine{00065\ \};}
-\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00066\ \ \ \ \ G4VSolid\ *\mbox{\hyperlink{class_d_e_g_g_a2c81a45df01d703ed34559a514880220}{createEggSolid}}(G4int\ p\_segments\_1,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pSphereRmax,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pSpheredTheta,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pSphereTransformZ,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus1R,}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pCenterOfTorus1R,}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4int\ pSegments\_2,}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus2R,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pCenterOfTorus2R,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pCenterOfTorus2\_z,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus2\_Zmin,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus2\_Zmax,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus2\_Z0,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4double\ pTorus1TransformZ);}
+\DoxyCodeLine{00080\ \};}
+\DoxyCodeLine{00081\ }
 
 \end{DoxyCode}

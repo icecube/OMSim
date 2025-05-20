@@ -35,57 +35,59 @@ var NAVTREE =
         [ "Adding New Data", "md_extra__doc_20__common.html#autotoc_md7", null ]
       ] ],
       [ "Geometry construction", "md_extra__doc_20__common.html#autotoc_md9", null ],
-      [ "Making PMTs and OMs sensitive", "md_extra__doc_20__common.html#autotoc_md11", null ],
-      [ "Storing hits and PMT response", "md_extra__doc_20__common.html#autotoc_md13", [
-        [ "PMTs Charge, transit time and detection probability", "md_extra__doc_20__common.html#autotoc_md14", null ],
-        [ "Hit storage", "md_extra__doc_20__common.html#autotoc_md15", null ]
+      [ "Optical Modules and Harness Construction", "md_extra__doc_20__common.html#autotoc_md11", null ],
+      [ "Making PMTs and OMs sensitive", "md_extra__doc_20__common.html#autotoc_md13", null ],
+      [ "Storing hits and PMT response", "md_extra__doc_20__common.html#autotoc_md15", [
+        [ "PMTs Charge, transit time and detection probability", "md_extra__doc_20__common.html#autotoc_md16", null ],
+        [ "Hit storage", "md_extra__doc_20__common.html#autotoc_md17", null ]
       ] ],
-      [ "Making other volumes sensitive to photons", "md_extra__doc_20__common.html#autotoc_md17", null ]
+      [ "Making other volumes sensitive to photons", "md_extra__doc_20__common.html#autotoc_md19", null ]
     ] ],
     [ "Multi-threading mode", "md_extra__doc_21__multithreading.html", [
-      [ "Introduction", "md_extra__doc_21__multithreading.html#autotoc_md19", null ],
-      [ "Thread Safety Guidelines", "md_extra__doc_21__multithreading.html#autotoc_md20", null ],
-      [ "Thread-Safe Global Instance Implementation", "md_extra__doc_21__multithreading.html#autotoc_md21", [
-        [ "Example: OMSimHitManager", "md_extra__doc_21__multithreading.html#autotoc_md22", null ],
-        [ "Example: Saving Data Per Thread", "md_extra__doc_21__multithreading.html#autotoc_md23", null ]
+      [ "Introduction", "md_extra__doc_21__multithreading.html#autotoc_md21", null ],
+      [ "Thread Safety Guidelines", "md_extra__doc_21__multithreading.html#autotoc_md22", null ],
+      [ "Thread-Safe Global Instance Implementation", "md_extra__doc_21__multithreading.html#autotoc_md23", [
+        [ "Example: OMSimHitManager", "md_extra__doc_21__multithreading.html#autotoc_md24", null ],
+        [ "Example: Saving Data Per Thread", "md_extra__doc_21__multithreading.html#autotoc_md25", null ]
       ] ],
-      [ "Best Practices for Creating New Thread-Safe Containers", "md_extra__doc_21__multithreading.html#autotoc_md24", null ],
-      [ "Troubleshooting Multi-threading Issues", "md_extra__doc_21__multithreading.html#autotoc_md25", [
-        [ "1. Use Valgrind Tools", "md_extra__doc_21__multithreading.html#autotoc_md26", null ],
-        [ "2. Analyse the Output", "md_extra__doc_21__multithreading.html#autotoc_md27", null ],
-        [ "4. Modify and repeat", "md_extra__doc_21__multithreading.html#autotoc_md28", null ]
+      [ "Best Practices for Creating New Thread-Safe Containers", "md_extra__doc_21__multithreading.html#autotoc_md26", null ],
+      [ "Troubleshooting Multi-threading Issues", "md_extra__doc_21__multithreading.html#autotoc_md27", [
+        [ "1. Use Valgrind Tools", "md_extra__doc_21__multithreading.html#autotoc_md28", null ],
+        [ "2. Analyse the Output", "md_extra__doc_21__multithreading.html#autotoc_md29", null ],
+        [ "4. Modify and repeat", "md_extra__doc_21__multithreading.html#autotoc_md30", null ]
       ] ]
     ] ],
     [ "Technicalities for Developers", "md_extra__doc_22__technicalities.html", [
-      [ "Visualization of Complex Objects", "md_extra__doc_22__technicalities.html#autotoc_md30", null ],
-      [ "The Tools namespace", "md_extra__doc_22__technicalities.html#autotoc_md31", null ],
-      [ "Nomenclature", "md_extra__doc_22__technicalities.html#autotoc_md33", null ],
-      [ "Matching PMT to Measurements", "md_extra__doc_22__technicalities.html#autotoc_md35", [
-        [ "Step 1: Fraction of absorbed photons", "md_extra__doc_22__technicalities.html#autotoc_md36", null ],
-        [ "Step 2: Expand OMSimPMTResponse and Verify QE", "md_extra__doc_22__technicalities.html#autotoc_md37", null ],
-        [ "Step 3: Matching detection efficiency scan", "md_extra__doc_22__technicalities.html#autotoc_md38", null ],
-        [ "Step 4: Matching gain / transit time scans", "md_extra__doc_22__technicalities.html#autotoc_md39", null ]
-      ] ]
+      [ "Visualization of Complex Objects", "md_extra__doc_22__technicalities.html#autotoc_md32", null ],
+      [ "The Tools namespace", "md_extra__doc_22__technicalities.html#autotoc_md33", null ],
+      [ "Nomenclature", "md_extra__doc_22__technicalities.html#autotoc_md35", null ],
+      [ "Matching PMT to Measurements", "md_extra__doc_22__technicalities.html#autotoc_md37", [
+        [ "Step 1: Fraction of absorbed photons", "md_extra__doc_22__technicalities.html#autotoc_md38", null ],
+        [ "Step 2: Expand OMSimPMTResponse and Verify QE", "md_extra__doc_22__technicalities.html#autotoc_md39", null ],
+        [ "Step 3: Matching detection efficiency scan", "md_extra__doc_22__technicalities.html#autotoc_md40", null ],
+        [ "Step 4: Matching gain / transit time scans", "md_extra__doc_22__technicalities.html#autotoc_md41", null ]
+      ] ],
+      [ "CAD geometries", "md_extra__doc_22__technicalities.html#autotoc_md43", null ]
     ] ],
     [ "> Effective Area Studies", "md_extra__doc_230__effective__area.html", [
-      [ "Introduction to effective areas", "md_extra__doc_230__effective__area.html#autotoc_md42", null ],
-      [ "Example using healpy", "md_extra__doc_230__effective__area.html#autotoc_md43", null ]
+      [ "Introduction to effective areas", "md_extra__doc_230__effective__area.html#autotoc_md46", null ],
+      [ "Example using healpy", "md_extra__doc_230__effective__area.html#autotoc_md47", null ]
     ] ],
     [ "> Radioactive Decays Studies", "md_extra__doc_231__radioactive__decays.html", null ],
     [ "> Supernova Studies", "md_extra__doc_232___s_n.html", [
-      [ "Input Parameters", "md_extra__doc_232___s_n.html#autotoc_md47", [
-        [ "General Parameters", "md_extra__doc_232___s_n.html#autotoc_md48", null ],
-        [ "SN Framework Parameters", "md_extra__doc_232___s_n.html#autotoc_md49", null ],
-        [ "Fixed Energy Studies", "md_extra__doc_232___s_n.html#autotoc_md50", null ]
+      [ "Input Parameters", "md_extra__doc_232___s_n.html#autotoc_md51", [
+        [ "General Parameters", "md_extra__doc_232___s_n.html#autotoc_md52", null ],
+        [ "SN Framework Parameters", "md_extra__doc_232___s_n.html#autotoc_md53", null ],
+        [ "Fixed Energy Studies", "md_extra__doc_232___s_n.html#autotoc_md54", null ]
       ] ],
-      [ "Output Files", "md_extra__doc_232___s_n.html#autotoc_md51", [
-        [ "*_info.dat", "md_extra__doc_232___s_n.html#autotoc_md52", null ],
-        [ "*_data.dat", "md_extra__doc_232___s_n.html#autotoc_md53", null ]
+      [ "Output Files", "md_extra__doc_232___s_n.html#autotoc_md55", [
+        [ "*_info.dat", "md_extra__doc_232___s_n.html#autotoc_md56", null ],
+        [ "*_data.dat", "md_extra__doc_232___s_n.html#autotoc_md57", null ]
       ] ],
-      [ "Weights", "md_extra__doc_232___s_n.html#autotoc_md54", [
-        [ "Interaction Probability Weight:", "md_extra__doc_232___s_n.html#autotoc_md55", null ],
-        [ "Flux Weight:", "md_extra__doc_232___s_n.html#autotoc_md56", null ],
-        [ "Effective Weight:", "md_extra__doc_232___s_n.html#autotoc_md57", null ]
+      [ "Weights", "md_extra__doc_232___s_n.html#autotoc_md58", [
+        [ "Interaction Probability Weight:", "md_extra__doc_232___s_n.html#autotoc_md59", null ],
+        [ "Flux Weight:", "md_extra__doc_232___s_n.html#autotoc_md60", null ],
+        [ "Effective Weight:", "md_extra__doc_232___s_n.html#autotoc_md61", null ]
       ] ]
     ] ],
     [ "Todo List", "todo.html", null ],
@@ -113,7 +115,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "5__group__definitions_8h_source.html",
-"md_extra__doc_22__technicalities.html"
+"md_extra__doc_20__common.html#autotoc_md19"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

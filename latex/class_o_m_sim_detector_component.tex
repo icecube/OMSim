@@ -88,8 +88,14 @@ std\+::map$<$ G4\+String, G4\+PVPlacement \texorpdfstring{$\ast$}{*} $>$ {\bfser
 \Hypertarget{class_o_m_sim_detector_component_ac236df29d75de15fd767d760a1b9ce3a}\label{class_o_m_sim_detector_component_ac236df29d75de15fd767d760a1b9ce3a} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+glass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
 \item 
+\Hypertarget{class_o_m_sim_detector_component_a31234fd0941e8afd6a8e2dadd0f6cffe}\label{class_o_m_sim_detector_component_a31234fd0941e8afd6a8e2dadd0f6cffe} 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+PMTglass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+4))
+\item 
 \Hypertarget{class_o_m_sim_detector_component_aa402e21997ac5003d9582e405b649f7c}\label{class_o_m_sim_detector_component_aa402e21997ac5003d9582e405b649f7c} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+gel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
+\item 
+\Hypertarget{class_o_m_sim_detector_component_a7b103d9729b2a46b0cbf4781ae2506c2}\label{class_o_m_sim_detector_component_a7b103d9729b2a46b0cbf4781ae2506c2} 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+gelpad\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+3))
 \item 
 \Hypertarget{class_o_m_sim_detector_component_ac6981ac862d44561bfcd0e7a74c322e7}\label{class_o_m_sim_detector_component_ac6981ac862d44561bfcd0e7a74c322e7} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+steel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
@@ -107,7 +113,7 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Semi\+Transparent\+
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
 \item 
 \Hypertarget{class_o_m_sim_detector_component_a90080cba46cdfd4515adb82ac733e2cf}\label{class_o_m_sim_detector_component_a90080cba46cdfd4515adb82ac733e2cf} 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 1, 0, 1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0.\+6, 0, 1))
 \item 
 \Hypertarget{class_o_m_sim_detector_component_ab1fcabce0f13a0cd57051ae816b81802}\label{class_o_m_sim_detector_component_ab1fcabce0f13a0cd57051ae816b81802} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+blue\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
@@ -128,7 +134,7 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+black\+Vis} = G4\+Vis\+Attrib
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+LEDvis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
 \item 
 \Hypertarget{class_o_m_sim_detector_component_a934774c9a68abdce04b16ca7219e78c3}\label{class_o_m_sim_detector_component_a934774c9a68abdce04b16ca7219e78c3} 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 1.\+0, 0.\+0, 0.\+1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+7, 0.\+0, 1))
 \item 
 \Hypertarget{class_o_m_sim_detector_component_abb917266382de7d87270ce7b7a3fdbfd}\label{class_o_m_sim_detector_component_abb917266382de7d87270ce7b7a3fdbfd} 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
@@ -179,7 +185,7 @@ G4bool True if the component exists in the map, false otherwise.
 
 
 
-Implemented in \mbox{\hyperlink{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}{DEGG}}, \mbox{\hyperlink{class_d_egg_harness_ac0985f2ad731e93da36117cd2368fa7e}{DEgg\+Harness}}, \mbox{\hyperlink{class_l_o_m16_ab837d810e22d601fc1a298ba0dfddd48}{LOM16}}, \mbox{\hyperlink{class_l_o_m18_a0744107f29517a84a06b2544e81b00e0}{LOM18}}, \mbox{\hyperlink{classm_d_o_m_a115f5e689062ac82b8f55a18f7f96376}{m\+DOM}}, \mbox{\hyperlink{classm_d_o_m_flasher_aac8c466bbcc6d952ad82fbd29daa675f}{m\+DOMFlasher}}, \mbox{\hyperlink{classm_d_o_m_harness_ab87b8f216298817923b91063fee12b3b}{m\+DOMHarness}}, \mbox{\hyperlink{class_d_o_m_a44de3031fbc88d028c9df9b2654dc8c1}{DOM}}, and \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a5ab3a93d9e44fb38004cfd9d30c6d6aa}{OMSim\+PMTConstruction}}.
+Implemented in \mbox{\hyperlink{class_d_e_g_g_ac36a2968b6da47bd35dc1f4d14e93904}{DEGG}}, \mbox{\hyperlink{class_d_egg_harness_ac0985f2ad731e93da36117cd2368fa7e}{DEgg\+Harness}}, \mbox{\hyperlink{class_l_o_m16_ab837d810e22d601fc1a298ba0dfddd48}{LOM16}}, \mbox{\hyperlink{class_l_o_m16_harness_a9ef2e174d326894ed311f9c8daeece30}{LOM16\+Harness}}, \mbox{\hyperlink{class_l_o_m18_a0744107f29517a84a06b2544e81b00e0}{LOM18}}, \mbox{\hyperlink{class_l_o_m18_harness_aa4c18d34bee5c34d3bd6d80d29a3ed1d}{LOM18\+Harness}}, \mbox{\hyperlink{classm_d_o_m_a115f5e689062ac82b8f55a18f7f96376}{m\+DOM}}, \mbox{\hyperlink{classm_d_o_m_flasher_aac8c466bbcc6d952ad82fbd29daa675f}{m\+DOMFlasher}}, \mbox{\hyperlink{classm_d_o_m_harness_ab87b8f216298817923b91063fee12b3b}{m\+DOMHarness}}, \mbox{\hyperlink{class_d_o_m_a44de3031fbc88d028c9df9b2654dc8c1}{DOM}}, \mbox{\hyperlink{class_d_o_m_harness_a625782a656eab8eb29760e32d37cb21c}{DOMHarness}}, and \mbox{\hyperlink{class_o_m_sim_p_m_t_construction_a5ab3a93d9e44fb38004cfd9d30c6d6aa}{OMSim\+PMTConstruction}}.
 
 \Hypertarget{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26}\label{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26} 
 \index{OMSimDetectorComponent@{OMSimDetectorComponent}!deleteComponent@{deleteComponent}}

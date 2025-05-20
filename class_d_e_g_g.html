@@ -125,12 +125,9 @@ $(document).ready(function(){initNavTree('class_d_e_g_g.html',''); initResizable
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_d_e_g_g-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">DEGG Class Reference<div class="ingroups"><a class="el" href="group__common.html">Common framework</a></div></div></div>
+  <div class="headertitle"><div class="title">DEGG Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Construction of the <a class="el" href="class_d_e_g_g.html" title="Construction of the DEGG detector geometry.">DEGG</a> detector geometry.  
- <a href="class_d_e_g_g.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for DEGG:</div>
 <div class="dyncontent">
@@ -141,15 +138,13 @@ Collaboration diagram for DEGG:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="class_d_e_g_g__coll__graph.svg" width="280" height="524"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="class_d_e_g_g.html" title="Construction of the DEGG detector geometry.">DEGG</a> class is responsible for constructing the D-Egg detector geometry. It creates the pressure vessel, the inner volume, and places the PMTs inside the logical volume of the gel. The class is derived from the <code><a class="el" href="class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components.">OMSimDetectorComponent</a></code> base class. </p>
-</div><table class="memberdecls">
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6af6697e49866ad1c9c15a8182b86cbf" id="r_a6af6697e49866ad1c9c15a8182b86cbf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_e_g_g.html#a6af6697e49866ad1c9c15a8182b86cbf">DEGG</a> (G4bool p_placeHarness=true)</td></tr>
 <tr class="separator:a6af6697e49866ad1c9c15a8182b86cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac36a2968b6da47bd35dc1f4d14e93904" id="r_ac36a2968b6da47bd35dc1f4d14e93904"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_e_g_g.html#ac36a2968b6da47bd35dc1f4d14e93904">construction</a> ()</td></tr>
-<tr class="memdesc:ac36a2968b6da47bd35dc1f4d14e93904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construction of the whole <a class="el" href="class_d_e_g_g.html" title="Construction of the DEGG detector geometry.">DEGG</a>. If you want to change any component, you have to change it at the specific function.  <br /></td></tr>
+<tr class="memdesc:ac36a2968b6da47bd35dc1f4d14e93904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construction of the whole <a class="el" href="class_d_e_g_g.html">DEGG</a>. If you want to change any component, you have to change it at the specific function.  <br /></td></tr>
 <tr class="separator:ac36a2968b6da47bd35dc1f4d14e93904"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affbc4905f52992f3d1f206f26466c076" id="r_affbc4905f52992f3d1f206f26466c076"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_e_g_g.html#affbc4905f52992f3d1f206f26466c076">getPressureVesselWeight</a> ()</td></tr>
 <tr class="memdesc:affbc4905f52992f3d1f206f26466c076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual method to get the weight of the pressure vessel.  <br /></td></tr>
@@ -203,6 +198,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>configureSensitiveVol
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a2d910cd123f7849a9255226f78bf5d40" id="r_a2d910cd123f7849a9255226f78bf5d40"><td class="memItemLeft" align="right" valign="top"><a id="a2d910cd123f7849a9255226f78bf5d40" name="a2d910cd123f7849a9255226f78bf5d40"></a>
+G4SubtractionSolid *&#160;</td><td class="memItemRight" valign="bottom"><b>substractHarnessPCA</b> (G4VSolid *pSolid)</td></tr>
+<tr class="separator:a2d910cd123f7849a9255226f78bf5d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98d1b6beb474e30f11f1668c15f26954" id="r_a98d1b6beb474e30f11f1668c15f26954"><td class="memItemLeft" align="right" valign="top"><a id="a98d1b6beb474e30f11f1668c15f26954" name="a98d1b6beb474e30f11f1668c15f26954"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>appendPMTs</b> ()</td></tr>
 <tr class="separator:a98d1b6beb474e30f11f1668c15f26954"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,11 +210,8 @@ G4VSolid *&#160;</td><td class="memItemRight" valign="bottom"><b>placePMTs</b> (
 <tr class="memitem:ab670e114ce175ce302631a49d8518236" id="r_ab670e114ce175ce302631a49d8518236"><td class="memItemLeft" align="right" valign="top"><a id="ab670e114ce175ce302631a49d8518236" name="ab670e114ce175ce302631a49d8518236"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>appendInternalComponentsFromCAD</b> ()</td></tr>
 <tr class="separator:ab670e114ce175ce302631a49d8518236"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfe23f1994f5a35d19bcebdf1163eb5f" id="r_adfe23f1994f5a35d19bcebdf1163eb5f"><td class="memItemLeft" align="right" valign="top"><a id="adfe23f1994f5a35d19bcebdf1163eb5f" name="adfe23f1994f5a35d19bcebdf1163eb5f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>appendPressureVesselFromCAD</b> ()</td></tr>
-<tr class="separator:adfe23f1994f5a35d19bcebdf1163eb5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c81a45df01d703ed34559a514880220" id="r_a2c81a45df01d703ed34559a514880220"><td class="memItemLeft" align="right" valign="top">G4VSolid *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_e_g_g.html#a2c81a45df01d703ed34559a514880220">createEggSolid</a> (G4int p_segments_1, G4double pSphereRmax, G4double pSpheredTheta, G4double pSphereTransformZ, G4double pTorus1R, G4double pCenterOfTorus1R, G4int pSegments_2, G4double pTorus2R, G4double pCenterOfTorus2R, G4double pCenterOfTorus2_z, G4double pTorus2_Zmin, G4double pTorus2_Zmax, G4double pTorus2_Z0, G4double pTorus1TransformZ)</td></tr>
-<tr class="memdesc:a2c81a45df01d703ed34559a514880220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the solid shape for the <a class="el" href="class_d_e_g_g.html" title="Construction of the DEGG detector geometry.">DEGG</a> pressure vessel.  <br /></td></tr>
+<tr class="memdesc:a2c81a45df01d703ed34559a514880220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the egg-shaped pressure vessel solid.  <br /></td></tr>
 <tr class="separator:a2c81a45df01d703ed34559a514880220"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -224,6 +219,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a5670706998ff6df38c37a7df7564f339" id="r_a5670706998ff6df38c37a7df7564f339"><td class="memItemLeft" align="right" valign="top"><a id="a5670706998ff6df38c37a7df7564f339" name="a5670706998ff6df38c37a7df7564f339"></a>
 <a class="el" href="class_d_egg_harness.html">DEggHarness</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_harness</b></td></tr>
 <tr class="separator:a5670706998ff6df38c37a7df7564f339"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a886fe02d33a2d5f43c8ee8076ca83811" id="r_a886fe02d33a2d5f43c8ee8076ca83811"><td class="memItemLeft" align="right" valign="top"><a id="a886fe02d33a2d5f43c8ee8076ca83811" name="a886fe02d33a2d5f43c8ee8076ca83811"></a>
+G4bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_placeHarness</b> = true</td></tr>
+<tr class="separator:a886fe02d33a2d5f43c8ee8076ca83811"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6449659b20818345cbb25eea0322af5e" id="r_a6449659b20818345cbb25eea0322af5e"><td class="memItemLeft" align="right" valign="top"><a id="a6449659b20818345cbb25eea0322af5e" name="a6449659b20818345cbb25eea0322af5e"></a>
 std::stringstream&#160;</td><td class="memItemRight" valign="bottom"><b>m_converter</b></td></tr>
 <tr class="separator:a6449659b20818345cbb25eea0322af5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -270,9 +268,15 @@ std::map&lt; G4String, G4PVPlacement * &gt;&#160;</td><td class="memItemRight" v
 <tr class="memitem:ac236df29d75de15fd767d760a1b9ce3a inherit pro_static_attribs_class_o_m_sim_detector_component" id="r_ac236df29d75de15fd767d760a1b9ce3a"><td class="memItemLeft" align="right" valign="top">
 static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_glassVis</b> = G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.25))</td></tr>
 <tr class="separator:ac236df29d75de15fd767d760a1b9ce3a inherit pro_static_attribs_class_o_m_sim_detector_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31234fd0941e8afd6a8e2dadd0f6cffe inherit pro_static_attribs_class_o_m_sim_detector_component" id="r_a31234fd0941e8afd6a8e2dadd0f6cffe"><td class="memItemLeft" align="right" valign="top">
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_PMTglassVis</b> = G4VisAttributes(G4Colour(0.7, 0.7, 0.8, 0.4))</td></tr>
+<tr class="separator:a31234fd0941e8afd6a8e2dadd0f6cffe inherit pro_static_attribs_class_o_m_sim_detector_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa402e21997ac5003d9582e405b649f7c inherit pro_static_attribs_class_o_m_sim_detector_component" id="r_aa402e21997ac5003d9582e405b649f7c"><td class="memItemLeft" align="right" valign="top">
 static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_gelVis</b> = G4VisAttributes(G4Colour(0.45, 0.5, 0.35, 0.2))</td></tr>
 <tr class="separator:aa402e21997ac5003d9582e405b649f7c inherit pro_static_attribs_class_o_m_sim_detector_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b103d9729b2a46b0cbf4781ae2506c2 inherit pro_static_attribs_class_o_m_sim_detector_component" id="r_a7b103d9729b2a46b0cbf4781ae2506c2"><td class="memItemLeft" align="right" valign="top">
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_gelpadVis</b> = G4VisAttributes(G4Colour(0.45, 0.5, 0.35, 0.3))</td></tr>
+<tr class="separator:a7b103d9729b2a46b0cbf4781ae2506c2 inherit pro_static_attribs_class_o_m_sim_detector_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6981ac862d44561bfcd0e7a74c322e7 inherit pro_static_attribs_class_o_m_sim_detector_component" id="r_ac6981ac862d44561bfcd0e7a74c322e7"><td class="memItemLeft" align="right" valign="top">
 static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_steelVis</b> = G4VisAttributes(G4Colour(0.6, 0.6, 0.7, 1.0))</td></tr>
 <tr class="separator:ac6981ac862d44561bfcd0e7a74c322e7 inherit pro_static_attribs_class_o_m_sim_detector_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -289,7 +293,7 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
 static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_absorberVis</b> = G4VisAttributes(G4Colour(0.2, 0.2, 0.2, 1.0))</td></tr>
 <tr class="separator:ad46283b503f1476c7884d02dcbab7939 inherit pro_static_attribs_class_o_m_sim_detector_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90080cba46cdfd4515adb82ac733e2cf inherit pro_static_attribs_class_o_m_sim_detector_component" id="r_a90080cba46cdfd4515adb82ac733e2cf"><td class="memItemLeft" align="right" valign="top">
-static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_boardVis</b> = G4VisAttributes(G4Colour(0, 1, 0, 1))</td></tr>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_boardVis</b> = G4VisAttributes(G4Colour(0, 0.6, 0, 1))</td></tr>
 <tr class="separator:a90080cba46cdfd4515adb82ac733e2cf inherit pro_static_attribs_class_o_m_sim_detector_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1fcabce0f13a0cd57051ae816b81802 inherit pro_static_attribs_class_o_m_sim_detector_component" id="r_ab1fcabce0f13a0cd57051ae816b81802"><td class="memItemLeft" align="right" valign="top">
 static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_blueVis</b> = G4VisAttributes(G4Colour(0, 0, 1, 1))</td></tr>
@@ -310,7 +314,7 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
 static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_LEDvis</b> = G4VisAttributes(G4Colour(0.2, 0.6, 0.8, 0.5))</td></tr>
 <tr class="separator:a2d31d1968706c03d9aae1365d2b5e8d3 inherit pro_static_attribs_class_o_m_sim_detector_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a934774c9a68abdce04b16ca7219e78c3 inherit pro_static_attribs_class_o_m_sim_detector_component" id="r_a934774c9a68abdce04b16ca7219e78c3"><td class="memItemLeft" align="right" valign="top">
-static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_photocathodeVis</b> = G4VisAttributes(G4Colour(1.0, 1.0, 0.0, 0.1))</td></tr>
+static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_photocathodeVis</b> = G4VisAttributes(G4Colour(1.0, 0.7, 0.0, 1))</td></tr>
 <tr class="separator:a934774c9a68abdce04b16ca7219e78c3 inherit pro_static_attribs_class_o_m_sim_detector_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb917266382de7d87270ce7b7a3fdbfd inherit pro_static_attribs_class_o_m_sim_detector_component" id="r_abb917266382de7d87270ce7b7a3fdbfd"><td class="memItemLeft" align="right" valign="top">
 static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom"><b>m_invisibleVis</b> = G4VisAttributes::GetInvisible()</td></tr>
@@ -327,16 +331,16 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
           <td class="memname">DEGG::DEGG </td>
           <td>(</td>
           <td class="paramtype">G4bool&#160;</td>
-          <td class="paramname"><em>pPlaceHarness</em> = <code>true</code></td><td>)</td>
+          <td class="paramname"><em>p_placeHarness</em> = <code>true</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd><ul>
-<li>I am not sure if the harness is correctly implemented!</li>
-<li>Clean up the code.</li>
-<li>Subtract CAD penetrator from the vessel.</li>
-<li>Investigate why the gel does not reach the photocathode edge. (Should the photocathode edge end earlier? Gel, Vessel, and PMT shape are correct.) </li>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd><ul>
+<li>Investigate why the gel does not reach the photocathode edge.<ul>
+<li>Should the photocathode edge end earlier? Back PMT shape further collides with 'standard' CAD cones. </li>
+</ul>
+</li>
 </ul>
 </dd></dl>
 
@@ -475,6 +479,31 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Creates the solid shape for the <a class="el" href="class_d_e_g_g.html">DEGG</a> pressure vessel.</p>
+<p>Constructs the D-Egg vessel shape using spheres and tori. The vessel consists of two main parts:</p><ol type="1">
+<li>Upper/lower spherical sections</li>
+<li>Connecting torus sections forming the waist</li>
+</ol>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_segments1</td><td>Number of segments for the small spindle torus sphere </td></tr>
+    <tr><td class="paramname">p_sphereRmax</td><td>Maximum radius of the spherical sections </td></tr>
+    <tr><td class="paramname">p_spheredTheta</td><td>Opening angle of spherical sections </td></tr>
+    <tr><td class="paramname">p_sphereTransformZ</td><td>Z-axis translation of spherical sections </td></tr>
+    <tr><td class="paramname">p_torus1R</td><td>Radius of the small spindle torus sphere </td></tr>
+    <tr><td class="paramname">p_centreOfTorus1R</td><td>Distance from center of torus 1 to z-axis </td></tr>
+    <tr><td class="paramname">p_segments2</td><td>Number of segments for the large spindle torus sphere </td></tr>
+    <tr><td class="paramname">p_torus2R</td><td>Radius of the large spindle torus sphere </td></tr>
+    <tr><td class="paramname">p_centreOfTorus2R</td><td>Distance from center of torus 2 to z-axis </td></tr>
+    <tr><td class="paramname">p_centreOfTorus2z</td><td>Z-position of torus 2 center </td></tr>
+    <tr><td class="paramname">p_torus2Zmin</td><td>Minimum z-position of torus 2 </td></tr>
+    <tr><td class="paramname">p_torus2Zmax</td><td>Maximum z-position of torus 2 </td></tr>
+    <tr><td class="paramname">p_torus2Z0</td><td>Z-offset for torus 2 </td></tr>
+    <tr><td class="paramname">p_torus1TransformZ</td><td>Z-translation of torus 1</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>G4VSolid* The complete egg-shaped vessel solid</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p_segments1</td><td>Number of segments for the G4Sphere representing the outer glass. </td></tr>
@@ -591,7 +620,7 @@ static const G4VisAttributes&#160;</td><td class="memItemRight" valign="bottom">
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_d_e_g_g.html">DEGG</a></li>
-    <li class="footer">Generated on Mon May 19 2025 15:10:07 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue May 20 2025 16:07:14 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

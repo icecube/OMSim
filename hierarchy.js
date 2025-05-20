@@ -85,6 +85,9 @@ var hierarchy =
     [ "OMSimDecaysGPS", "class_o_m_sim_decays_g_p_s.html", null ],
     [ "OMSimDetectorComponent", "class_o_m_sim_detector_component.html", [
       [ "DEggHarness", "class_d_egg_harness.html", null ],
+      [ "DOMHarness", "class_d_o_m_harness.html", null ],
+      [ "LOM16Harness", "class_l_o_m16_harness.html", null ],
+      [ "LOM18Harness", "class_l_o_m18_harness.html", null ],
       [ "OMSimOpticalModule", "class_o_m_sim_optical_module.html", [
         [ "DEGG", "class_d_e_g_g.html", null ],
         [ "DOM", "class_d_o_m.html", null ],

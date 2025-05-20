@@ -2,11 +2,6 @@
 \hypertarget{class_d_e_g_g}{}\label{class_d_e_g_g}\index{DEGG@{DEGG}}
 
 
-Construction of the \doxylink{class_d_e_g_g}{DEGG} detector geometry.  
-
-
-
-
 Inheritance diagram for DEGG\+:
 \nopagebreak
 \begin{figure}[H]
@@ -25,10 +20,7 @@ Collaboration diagram for DEGG\+:
 \includegraphics[width=282pt]{class_d_e_g_g__coll__graph}
 \end{center}
 \end{figure}
-
-
-\doxysubsection{Detailed Description}
-The \doxylink{class_d_e_g_g}{DEGG} class is responsible for constructing the D-\/\+Egg detector geometry. It creates the pressure vessel, the inner volume, and places the PMTs inside the logical volume of the gel. The class is derived from the {\ttfamily \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} base class. \doxysubsubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_d_e_g_g_a6af6697e49866ad1c9c15a8182b86cbf}{DEGG}} (G4bool p\+\_\+place\+Harness=true)
@@ -76,6 +68,9 @@ G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\Hypertarget{class_d_e_g_g_a2d910cd123f7849a9255226f78bf5d40}\label{class_d_e_g_g_a2d910cd123f7849a9255226f78bf5d40} 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} {\bfseries substract\+Harness\+PCA} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Solid)
+\item 
 \Hypertarget{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954}\label{class_d_e_g_g_a98d1b6beb474e30f11f1668c15f26954} 
 void {\bfseries append\+PMTs} ()
 \item 
@@ -85,16 +80,16 @@ G4\+VSolid \texorpdfstring{$\ast$}{*} {\bfseries place\+PMTs} (G4\+Logical\+Volu
 \Hypertarget{class_d_e_g_g_ab670e114ce175ce302631a49d8518236}\label{class_d_e_g_g_ab670e114ce175ce302631a49d8518236} 
 void {\bfseries append\+Internal\+Components\+From\+CAD} ()
 \item 
-\Hypertarget{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f}\label{class_d_e_g_g_adfe23f1994f5a35d19bcebdf1163eb5f} 
-void {\bfseries append\+Pressure\+Vessel\+From\+CAD} ()
-\item 
 G4\+VSolid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_d_e_g_g_a2c81a45df01d703ed34559a514880220}{create\+Egg\+Solid}} (G4int p\+\_\+segments\+\_\+1, G4double p\+Sphere\+Rmax, G4double p\+Sphered\+Theta, G4double p\+Sphere\+TransformZ, G4double p\+Torus1R, G4double p\+Center\+Of\+Torus1R, G4int p\+Segments\+\_\+2, G4double p\+Torus2R, G4double p\+Center\+Of\+Torus2R, G4double p\+Center\+Of\+Torus2\+\_\+z, G4double p\+Torus2\+\_\+\+Zmin, G4double p\+Torus2\+\_\+\+Zmax, G4double p\+Torus2\+\_\+\+Z0, G4double p\+Torus1\+TransformZ)
-\begin{DoxyCompactList}\small\item\em Creates the solid shape for the \doxylink{class_d_e_g_g}{DEGG} pressure vessel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates the egg-\/shaped pressure vessel solid. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_d_e_g_g_a5670706998ff6df38c37a7df7564f339}\label{class_d_e_g_g_a5670706998ff6df38c37a7df7564f339} 
 \mbox{\hyperlink{class_d_egg_harness}{DEgg\+Harness}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+harness}
+\item 
+\Hypertarget{class_d_e_g_g_a886fe02d33a2d5f43c8ee8076ca83811}\label{class_d_e_g_g_a886fe02d33a2d5f43c8ee8076ca83811} 
+G4bool {\bfseries m\+\_\+place\+Harness} = true
 \item 
 \Hypertarget{class_d_e_g_g_a6449659b20818345cbb25eea0322af5e}\label{class_d_e_g_g_a6449659b20818345cbb25eea0322af5e} 
 std\+::stringstream {\bfseries m\+\_\+converter}
@@ -132,7 +127,11 @@ std\+::map$<$ G4\+String, G4\+PVPlacement \texorpdfstring{$\ast$}{*} $>$ {\bfser
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+glass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
 \item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+PMTglass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+4))
+\item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+gel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+gelpad\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+3))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+steel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
 \item 
@@ -144,7 +143,7 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Semi\+Transparent\+
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
 \item 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 1, 0, 1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0.\+6, 0, 1))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+blue\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
 \item 
@@ -158,7 +157,7 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+black\+Vis} = G4\+Vis\+Attrib
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+LEDvis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
 \item 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 1.\+0, 0.\+0, 0.\+1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+7, 0.\+0, 1))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
 \end{DoxyCompactItemize}
@@ -169,15 +168,15 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+At
 \index{DEGG@{DEGG}!DEGG@{DEGG}}
 \index{DEGG@{DEGG}!DEGG@{DEGG}}
 \doxysubsubsection{\texorpdfstring{DEGG()}{DEGG()}}
-{\footnotesize\ttfamily DEGG\+::\+DEGG (\begin{DoxyParamCaption}\item[{G4bool}]{p\+Place\+Harness = {\ttfamily true} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily DEGG\+::\+DEGG (\begin{DoxyParamCaption}\item[{G4bool}]{p\+\_\+place\+Harness = {\ttfamily true} }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000004}{Todo}}]
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]
 \begin{DoxyItemize}
-\item I am not sure if the harness is correctly implemented!
-\item Clean up the code.
-\item Subtract CAD penetrator from the vessel.
-\item Investigate why the gel does not reach the photocathode edge. (Should the photocathode edge end earlier? Gel, Vessel, and PMT shape are correct.) 
+\item Investigate why the gel does not reach the photocathode edge.
+\begin{DoxyItemize}
+\item Should the photocathode edge end earlier? Back PMT shape further collides with \textquotesingle{}standard\textquotesingle{} CAD cones. 
+\end{DoxyItemize}
 \end{DoxyItemize}\end{DoxyRefDesc}
 
 
@@ -198,6 +197,48 @@ Implements \mbox{\hyperlink{class_o_m_sim_detector_component_a82774227bd10e2fe94
 \doxysubsubsection{\texorpdfstring{createEggSolid()}{createEggSolid()}}
 {\footnotesize\ttfamily G4\+VSolid \texorpdfstring{$\ast$}{*} DEGG\+::create\+Egg\+Solid (\begin{DoxyParamCaption}\item[{G4int}]{p\+\_\+segments1,  }\item[{G4double}]{p\+\_\+sphere\+Rmax,  }\item[{G4double}]{p\+\_\+sphered\+Theta,  }\item[{G4double}]{p\+\_\+sphere\+TransformZ,  }\item[{G4double}]{p\+\_\+torus1R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus1R,  }\item[{G4int}]{p\+\_\+segments2,  }\item[{G4double}]{p\+\_\+torus2R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus2R,  }\item[{G4double}]{p\+\_\+centre\+Of\+Torus2z,  }\item[{G4double}]{p\+\_\+torus2\+Zmin,  }\item[{G4double}]{p\+\_\+torus2\+Zmax,  }\item[{G4double}]{p\+\_\+torus2\+Z0,  }\item[{G4double}]{p\+\_\+torus1\+TransformZ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+Creates the solid shape for the \doxylink{class_d_e_g_g}{DEGG} pressure vessel.
+
+Constructs the D-\/\+Egg vessel shape using spheres and tori. The vessel consists of two main parts\+:
+\begin{DoxyEnumerate}
+\item Upper/lower spherical sections
+\item Connecting torus sections forming the waist
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+segments1} & Number of segments for the small spindle torus sphere \\
+\hline
+{\em p\+\_\+sphere\+Rmax} & Maximum radius of the spherical sections \\
+\hline
+{\em p\+\_\+sphered\+Theta} & Opening angle of spherical sections \\
+\hline
+{\em p\+\_\+sphere\+TransformZ} & Z-\/axis translation of spherical sections \\
+\hline
+{\em p\+\_\+torus1R} & Radius of the small spindle torus sphere \\
+\hline
+{\em p\+\_\+centre\+Of\+Torus1R} & Distance from center of torus 1 to z-\/axis \\
+\hline
+{\em p\+\_\+segments2} & Number of segments for the large spindle torus sphere \\
+\hline
+{\em p\+\_\+torus2R} & Radius of the large spindle torus sphere \\
+\hline
+{\em p\+\_\+centre\+Of\+Torus2R} & Distance from center of torus 2 to z-\/axis \\
+\hline
+{\em p\+\_\+centre\+Of\+Torus2z} & Z-\/position of torus 2 center \\
+\hline
+{\em p\+\_\+torus2\+Zmin} & Minimum z-\/position of torus 2 \\
+\hline
+{\em p\+\_\+torus2\+Zmax} & Maximum z-\/position of torus 2 \\
+\hline
+{\em p\+\_\+torus2\+Z0} & Z-\/offset for torus 2 \\
+\hline
+{\em p\+\_\+torus1\+TransformZ} & Z-\/translation of torus 1\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+G4\+VSolid\texorpdfstring{$\ast$}{*} The complete egg-\/shaped vessel solid
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em p\+\_\+segments1} & Number of segments for the G4\+Sphere representing the outer glass. \\

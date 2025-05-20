@@ -125,29 +125,31 @@ $(document).ready(function(){initNavTree('todo.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt>Member <a class="el" href="class_d_e_g_g.html#a6af6697e49866ad1c9c15a8182b86cbf">DEGG::DEGG</a>  (G4bool p_placeHarness=true)</dt>
-<dd><a class="anchor" id="_todo000004"></a><ul>
-<li>I am not sure if the harness is correctly implemented!</li>
-<li>Clean up the code.</li>
-<li>Subtract CAD penetrator from the vessel.</li>
-<li>Investigate why the gel does not reach the photocathode edge. (Should the photocathode edge end earlier? Gel, Vessel, and PMT shape are correct.)  </li>
+<dd><a class="anchor" id="_todo000003"></a>- Investigate why the gel does not reach the photocathode edge.<ul>
+<li>Should the photocathode edge end earlier? Back PMT shape further collides with 'standard' CAD cones.  </li>
 </ul>
 </dd>
-<dt>Member <a class="el" href="class_l_o_m16.html#a93c141790620554394cdf9864096d011">LOM16::~LOM16</a>  ()</dt>
-<dd><a class="anchor" id="_todo000005"></a>- 18/07/22 Solve collisions of CAD with PMTs<ul>
-<li>Clean up magic number variables and comment their meaning</li>
+<dt>Member <a class="el" href="class_d_egg_harness.html#af47314ae371c5e3bef6e690c0588349b">DEggHarness::DEggHarness</a>  (<a class="el" href="class_d_e_g_g.html">DEGG</a> *pDEGG)</dt>
+<dd><a class="anchor" id="_todo000004"></a>- Verify main data cable  </dd>
+<dt>Member <a class="el" href="class_d_o_m.html#acc106b0711597a156073a5f2fe3e852e">DOM::DOM</a>  (G4bool p_placeHarness=true, G4bool p_deepcore=false)</dt>
+<dd><a class="anchor" id="_todo000011"></a>- Check mu metal cage.  </dd>
+<dt>Member <a class="el" href="class_d_o_m_harness.html#afe8ca76b7535f76bb80492cde5bfa8f5">DOMHarness::DOMHarness</a>  (<a class="el" href="class_d_o_m.html" title="DOM class represents the construction of pDOM (deepcore) or Gen1 DOM.">DOM</a> *pDOM)</dt>
+<dd><a class="anchor" id="_todo000012"></a>- Add main data cable  </dd>
+<dt>Member <a class="el" href="class_l_o_m16.html#a34ba419fa385afb5fa2efeeb870f1a05">LOM16::LOM16</a>  (G4bool p_placeHarness=true)</dt>
+<dd><a class="anchor" id="_todo000005"></a>- Clean up magic number variables and comment their meaning<ul>
 <li>Write documentation and parse current comments into Doxygen style  </li>
 </ul>
 </dd>
+<dt>Member <a class="el" href="class_l_o_m16_harness.html#aad977edb7ed722ea42eeeb89ca2ff818">LOM16Harness::LOM16Harness</a>  (<a class="el" href="class_l_o_m16.html">LOM16</a> *pLOM16)</dt>
+<dd><a class="anchor" id="_todo000006"></a>- Verify main data cable  </dd>
+<dt>Member <a class="el" href="class_l_o_m18_harness.html#a800da6699b505a8a1e1d51137f2c9e7b">LOM18Harness::LOM18Harness</a>  (<a class="el" href="class_l_o_m18.html">LOM18</a> *pLOM18)</dt>
+<dd><a class="anchor" id="_todo000008"></a>- Verify main data cable  </dd>
 <dt>Member <a class="el" href="classm_d_o_m.html#afd95205edb92f86b5c8d4e5642a58e3c">mDOM::~mDOM</a>  ()</dt>
-<dd><a class="anchor" id="_todo000007"></a>- Write documentation and parse current comments into Doxygen style  </dd>
+<dd><a class="anchor" id="_todo000009"></a>- Write documentation and parse current comments into Doxygen style  </dd>
 <dt>Member <a class="el" href="classm_d_o_m_harness.html#ad83b869a9aa373be038889f61608d3c6">mDOMHarness::mDOMHarness</a>  (<a class="el" href="classm_d_o_m.html">mDOM</a> *pMDOM)</dt>
-<dd><a class="anchor" id="_todo000008"></a>- Write documentation and parse current comments into Doxygen style  </dd>
-<dt>File <a class="el" href="_o_m_sim_d_e_g_g_harness_8hh.html">OMSimDEGGHarness.hh</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000003"></a>Write documentation</p>
-<p class="enddd"></p>
-</dd>
+<dd><a class="anchor" id="_todo000010"></a>- Write documentation and parse current comments into Doxygen style  </dd>
 <dt>File <a class="el" href="_o_m_sim_l_o_m18_8cc.html">OMSimLOM18.cc</a>  </dt>
-<dd><a class="anchor" id="_todo000006"></a>- 18/07/22 Solve collisions of CAD with PMTs<ul>
+<dd><a class="anchor" id="_todo000007"></a>- 18/07/22 Solve collisions of CAD with PMTs<ul>
 <li>Clean up needed variables</li>
 <li>Move "magic numbers" to header, add comment with their meaning</li>
 <li>Gel pads have to be tilted</li>
@@ -167,7 +169,7 @@ $(document).ready(function(){initNavTree('todo.html',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon May 19 2025 15:10:07 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue May 20 2025 16:07:14 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

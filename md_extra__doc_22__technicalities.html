@@ -124,19 +124,20 @@ $(document).ready(function(){initNavTree('md_extra__doc_22__technicalities.html'
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md30">Visualization of Complex Objects</a></li>
-<li class="level1"><a href="#autotoc_md31">The Tools namespace</a></li>
-<li class="level1"><a href="#autotoc_md33">Nomenclature</a></li>
-<li class="level1"><a href="#autotoc_md35">Matching PMT to Measurements</a><ul><li class="level2"><a href="#autotoc_md36">Step 1: Fraction of absorbed photons</a></li>
-<li class="level2"><a href="#autotoc_md37">Step 2: Expand OMSimPMTResponse and Verify QE</a></li>
-<li class="level2"><a href="#autotoc_md38">Step 3: Matching detection efficiency scan</a></li>
-<li class="level2"><a href="#autotoc_md39">Step 4: Matching gain / transit time scans</a></li>
+<ul><li class="level1"><a href="#autotoc_md32">Visualization of Complex Objects</a></li>
+<li class="level1"><a href="#autotoc_md33">The Tools namespace</a></li>
+<li class="level1"><a href="#autotoc_md35">Nomenclature</a></li>
+<li class="level1"><a href="#autotoc_md37">Matching PMT to Measurements</a><ul><li class="level2"><a href="#autotoc_md38">Step 1: Fraction of absorbed photons</a></li>
+<li class="level2"><a href="#autotoc_md39">Step 2: Expand OMSimPMTResponse and Verify QE</a></li>
+<li class="level2"><a href="#autotoc_md40">Step 3: Matching detection efficiency scan</a></li>
+<li class="level2"><a href="#autotoc_md41">Step 4: Matching gain / transit time scans</a></li>
 </ul>
 </li>
+<li class="level1"><a href="#autotoc_md43">CAD geometries</a></li>
 </ul>
 </div>
-<div class="textblock"><p><a class="anchor" id="autotoc_md29"></a></p>
-<h1><a class="anchor" id="autotoc_md30"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md31"></a></p>
+<h1><a class="anchor" id="autotoc_md32"></a>
 Visualization of Complex Objects</h1>
 <p>The complex shapes of PMTs and other intricate objects may not render correctly with the default OpenGL (OGL) visualization engine. To ensure the visualizer remains functional, these objects are set to invisible by default.</p>
 <p>For a more detailed visualization that can handle complex geometries, you can use the RayTracer engine. While slower and more complex to use, RayTracer can visualize all volumes, regardless of their complexity. Here's how to set it up:</p>
@@ -191,7 +192,7 @@ Visualization of Complex Objects</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md31"></a>
+<h1><a class="anchor" id="autotoc_md33"></a>
 The Tools namespace</h1>
 <p>The tools namespace provide several methods that could help you. For example, <code><a class="el" href="namespace_tools.html#aefa5ecd8f1fb3d69a65d517494e99669" title="Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.">Tools::loadtxt</a></code>, <code><a class="el" href="namespace_tools.html#a052be79128cb3b90b6a4701455307246" title="Generates a linearly spaced vector.">Tools::linspace</a></code> and <code><a class="el" href="namespace_tools.html#adf257eb5c348836614a3c10de47bcf6e" title="Generates a logarithmically spaced vector.">Tools::logspace</a></code> operate similarly to their Python's numpy counterparts:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_o_m_sim_tools_8hh.html">OMSimTools.hh</a>&quot;</span></div>
@@ -207,13 +208,13 @@ The Tools namespace</h1>
 <div class="line"> </div>
 <div class="line"><span class="comment">// ...</span></div>
 <div class="ttc" id="a_o_m_sim_tools_8hh_html"><div class="ttname"><a href="_o_m_sim_tools_8hh.html">OMSimTools.hh</a></div><div class="ttdoc">Definition of Tools namespace, a collection of helper methods.</div></div>
-<div class="ttc" id="anamespace_tools_html_a052be79128cb3b90b6a4701455307246"><div class="ttname"><a href="namespace_tools.html#a052be79128cb3b90b6a4701455307246">Tools::linspace</a></div><div class="ttdeci">std::vector&lt; double &gt; linspace(double start, double end, int num_points, bool endpoint=true)</div><div class="ttdoc">Generates a linearly spaced vector.</div><div class="ttdef"><b>Definition</b> OMSimTools.cc:330</div></div>
-<div class="ttc" id="anamespace_tools_html_ab58e9ef8ed3fc6fe3cd85e26136f5be7"><div class="ttname"><a href="namespace_tools.html#ab58e9ef8ed3fc6fe3cd85e26136f5be7">Tools::histogram</a></div><div class="ttdeci">std::pair&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt; histogram(const std::vector&lt; double &gt; &amp;data, const std::variant&lt; int, std::vector&lt; double &gt; &gt; &amp;bins=10, const std::optional&lt; std::pair&lt; double, double &gt; &gt; &amp;range=std::nullopt, const std::vector&lt; double &gt; &amp;weights=std::vector&lt; double &gt;())</div><div class="ttdoc">Compute the histogram of a dataset.</div><div class="ttdef"><b>Definition</b> OMSimTools.cc:161</div></div>
-<div class="ttc" id="anamespace_tools_html_adf257eb5c348836614a3c10de47bcf6e"><div class="ttname"><a href="namespace_tools.html#adf257eb5c348836614a3c10de47bcf6e">Tools::logspace</a></div><div class="ttdeci">std::vector&lt; double &gt; logspace(double start, double end, int num_points, double base=10.0, bool endpoint=true)</div><div class="ttdoc">Generates a logarithmically spaced vector.</div><div class="ttdef"><b>Definition</b> OMSimTools.cc:364</div></div>
-<div class="ttc" id="anamespace_tools_html_aefa5ecd8f1fb3d69a65d517494e99669"><div class="ttname"><a href="namespace_tools.html#aefa5ecd8f1fb3d69a65d517494e99669">Tools::loadtxt</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; loadtxt(const std::string &amp;pFilePath, bool pUnpack=true, size_t pSkipRows=0, char pDelimiter=' ', char pComments='#')</div><div class="ttdoc">Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.</div><div class="ttdef"><b>Definition</b> OMSimTools.cc:264</div></div>
+<div class="ttc" id="anamespace_tools_html_a052be79128cb3b90b6a4701455307246"><div class="ttname"><a href="namespace_tools.html#a052be79128cb3b90b6a4701455307246">Tools::linspace</a></div><div class="ttdeci">std::vector&lt; double &gt; linspace(double start, double end, int num_points, bool endpoint=true)</div><div class="ttdoc">Generates a linearly spaced vector.</div><div class="ttdef"><b>Definition</b> OMSimTools.cc:331</div></div>
+<div class="ttc" id="anamespace_tools_html_ab58e9ef8ed3fc6fe3cd85e26136f5be7"><div class="ttname"><a href="namespace_tools.html#ab58e9ef8ed3fc6fe3cd85e26136f5be7">Tools::histogram</a></div><div class="ttdeci">std::pair&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt; histogram(const std::vector&lt; double &gt; &amp;data, const std::variant&lt; int, std::vector&lt; double &gt; &gt; &amp;bins=10, const std::optional&lt; std::pair&lt; double, double &gt; &gt; &amp;range=std::nullopt, const std::vector&lt; double &gt; &amp;weights=std::vector&lt; double &gt;())</div><div class="ttdoc">Compute the histogram of a dataset.</div><div class="ttdef"><b>Definition</b> OMSimTools.cc:162</div></div>
+<div class="ttc" id="anamespace_tools_html_adf257eb5c348836614a3c10de47bcf6e"><div class="ttname"><a href="namespace_tools.html#adf257eb5c348836614a3c10de47bcf6e">Tools::logspace</a></div><div class="ttdeci">std::vector&lt; double &gt; logspace(double start, double end, int num_points, double base=10.0, bool endpoint=true)</div><div class="ttdoc">Generates a logarithmically spaced vector.</div><div class="ttdef"><b>Definition</b> OMSimTools.cc:365</div></div>
+<div class="ttc" id="anamespace_tools_html_aefa5ecd8f1fb3d69a65d517494e99669"><div class="ttname"><a href="namespace_tools.html#aefa5ecd8f1fb3d69a65d517494e99669">Tools::loadtxt</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; loadtxt(const std::string &amp;pFilePath, bool pUnpack=true, size_t pSkipRows=0, char pDelimiter=' ', char pComments='#')</div><div class="ttdoc">Reads numerical data from a file and returns it as a 2D vector. Similar to numpy.loadtxt.</div><div class="ttdef"><b>Definition</b> OMSimTools.cc:265</div></div>
 </div><!-- fragment --><hr  />
  <hr  />
-<h1><a class="anchor" id="autotoc_md33"></a>
+<h1><a class="anchor" id="autotoc_md35"></a>
 Nomenclature</h1>
 <p>We follow these naming conventions:</p>
 <p>Methods:</p><ul>
@@ -257,10 +258,10 @@ Nomenclature</h1>
 <p>Remember to apply these conventions consistently across all new code and when refactoring existing code.</p>
 <hr  />
  <hr  />
-<h1><a class="anchor" id="autotoc_md35"></a>
+<h1><a class="anchor" id="autotoc_md37"></a>
 Matching PMT to Measurements</h1>
 <p>In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (<a href="md_extra_doc_0_common.html#autotoc_md5">click here</a> for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module <code>efficiency_calibration</code> facilitates this procedure. In the following, the <a class="el" href="classm_d_o_m.html">mDOM</a> PMT is used as an example.</p>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 Step 1: Fraction of absorbed photons</h2>
 <p>The optical properties (refractive index, thickness, and absorption length) of the glass tube and photocathode determine the number of photons absorbed in the photocathode. The optical properties of the photocathode (defined in file <code>Surf_Generic_Photocathode_20nm.dat</code>) are from this paper <a href="https://arxiv.org/abs/physics/0408075">https://arxiv.org/abs/physics/0408075</a> .</p>
 <p>To calculate the quantum efficiency weight, we have to know how many photons are absorbed in the photocathode in the simulation. For this, go through the following steps:</p><ul>
@@ -291,7 +292,7 @@ Step 1: Fraction of absorbed photons</h2>
 <p>&zwj;<b>Note</b>: Ensure that the (interpolated) QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! </p>
 </blockquote>
 <p>If everything looks good, save the file (in the example above <code>mDOM_Hamamatsu_R15458_CT_intrinsic_QE.dat</code>) in <code>common/data/PMTs/measurement_matching_data/QE/</code> and move to step 2.</p>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 Step 2: Expand OMSimPMTResponse and Verify QE</h2>
 <p>Add the path to the created file in your PMT file under the key <code>jAbsorbedFractionFileName</code> and also a default QE file under the key <code>jDefaultQEFileName</code> (check <code>pmt_Hamamatsu_R15458_CAT.dat</code> for guidance).</p>
 <p>Now run the simulation again </p><div class="fragment"><div class="line">./OMSim_efficiency_calibration --pmt_model 0 --simulation_step 2 -n 100000 --threads 4 --output_file step2 --detector_type 1</div>
@@ -309,7 +310,7 @@ Step 2: Expand OMSimPMTResponse and Verify QE</h2>
 <div class="line">plt.grid()</div>
 <div class="line">plt.legend()</div>
 </div><!-- fragment --><div style="width: 100%; text-align: center;"> <img src="step2_qe.png" alt="" width="450" height="320" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
- </div> </div><h2><a class="anchor" id="autotoc_md38"></a>
+ </div> </div><h2><a class="anchor" id="autotoc_md40"></a>
 Step 3: Matching detection efficiency scan</h2>
 <p>The next step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.</p>
 <ul>
@@ -328,7 +329,7 @@ Step 3: Matching detection efficiency scan</h2>
 <li>Add to this file in the PMT data file under the key <code>jCEweightsFileName</code>.</li>
 <li>Run the simulation again and check if the weights are correct.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md41"></a>
 Step 4: Matching gain / transit time scans</h2>
 <p>The scan data of transit time / gain must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-glass boundary refracts the beam.</p>
 <ul>
@@ -346,13 +347,56 @@ Step 4: Matching gain / transit time scans</h2>
 </div><!-- fragment --><p>If you need to add more parameters (for example low gain probability, which is also photocathode position dependent and yet to be implemented), you will have to add a new interpolator map and <code>OMSimPMTResponse::makeScansInterpolators</code> accordingly.</p>
 <hr  />
  <hr  />
+<h1><a class="anchor" id="autotoc_md43"></a>
+CAD geometries</h1>
+<ul>
+<li><b>Creating new geometries</b><ul>
+<li>Use the CAD program of your choice to load/modify geometries. Module geometries are available in SharePoint, Docushare or Google Drive.</li>
+<li>Take note of the origin of the part in respect to the module center.</li>
+<li>Simplify geometries by removing/editing parts unlikely to affect detector response to minimize compile times.</li>
+<li>Split complex geometries into separate assemblies for flexibility (e.g., harness into waistband and ropes).</li>
+<li>Note: Non-touching volumes in (sub)geometries will generate separate meshes.</li>
+<li>Export geometry as <code>.obj</code> format.</li>
+<li>Store in <code>common/data/CADmeshes</code> with descriptive naming. The <code>.mtl</code> file can be omitted.</li>
+</ul>
+</li>
+<li><b>Implementing CAD geometries</b><ul>
+<li>Implementation uses <a href="https://github.com/christopherpoole/CADMesh">CADMesh</a> via <code>OMSimTools::AppendCADComponent</code>.</li>
+<li>Multiple bodies in geometry generate separate meshes, requiring if-clauses and resulting in MultiUnion when not visualized.</li>
+<li>Example implementation: <div class="fragment"><div class="line">Tools::AppendCADComponent(<span class="keyword">this</span>, 1.0, lOrigin, lRotation,</div>
+<div class="line">    <span class="stringliteral">&quot;DEGG/Internal_OnlyCones.obj&quot;</span>, <span class="stringliteral">&quot;CAD_Internal&quot;</span>,</div>
+<div class="line">    m_data-&gt;getMaterial(<span class="stringliteral">&quot;NoOptic_Absorber&quot;</span>), m_aluVis);</div>
+</div><!-- fragment --></li>
+<li>Ensure correct volume placement.</li>
+</ul>
+</li>
+<li><b>Overlap checking</b><ul>
+<li>Run simulation with <code>--check_overlaps</code> flag and verify output...all volumes should report 'OK!'.</li>
+</ul>
+</li>
+</ul>
+<p>Launch with visualization to verify placement: <code>./OMSim_effective_area --detector_type 6 --place_harness -v</code></p><ul>
+<li>Example OpenGL viewer commands for inspection: <div class="fragment"><div class="line">/vis/viewer/addCutawayPlane 0 0 0 mm 1 0 0</div>
+<div class="line">/vis/scene/add/axes 0 0 0 250 mm</div>
+<div class="line">/vis/scene/add/arrow 0 0 0 0 90 40 mm</div>
+</div><!-- fragment --></li>
+<li>Verify proper component placement in scene tree (internal components inside module, harness in world volume)</li>
+<li>For overlaps: verify origin/rotation, check CAD vs <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> differences (and track them!), consider thinning CAD geometry.</li>
+</ul>
+<p><b>Verification</b></p><ul>
+<li>Double-check for overlaps.</li>
+<li>Test photon interactions with new geometry. This will depend on the material properties that you assigned.</li>
+<li>Optionally compare effective area scans with/without new geometry</li>
+</ul>
+<hr  />
+ <hr  />
  </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon May 19 2025 15:10:07 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue May 20 2025 16:07:14 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

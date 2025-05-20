@@ -7,7 +7,6 @@ var class_l_o_m18 =
     [ "getNumberOfPMTs", "class_l_o_m18.html#ac61b9f417138d26d168abbf48f0c0379", null ],
     [ "getPressureVesselWeight", "class_l_o_m18.html#a6e42615d2a84e6b94ec28a32ede7ec25", null ],
     [ "placeCADPenetrator", "class_l_o_m18.html#a6f6f50683c9c78ded2c92ca1b9177446", null ],
-    [ "placeCADSupportStructure", "class_l_o_m18.html#ab12d337504e3ec8be903b391acd6bef2", null ],
     [ "placeGelpads", "class_l_o_m18.html#a1275540bdcd8b359b7332690e7c8da4b", null ],
     [ "placePMTs", "class_l_o_m18.html#a2d136add4da3246223c611155412321a", null ],
     [ "setPMTPositions", "class_l_o_m18.html#a07ecf58441de167ca0d41650a14a7190", null ]

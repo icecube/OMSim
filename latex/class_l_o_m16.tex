@@ -17,16 +17,13 @@ Collaboration diagram for LOM16\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=305pt]{class_l_o_m16__coll__graph}
+\includegraphics[width=282pt]{class_l_o_m16__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_l_o_m16_ac675e8f354491e6ff46d798dd0f1ed14}\label{class_l_o_m16_ac675e8f354491e6ff46d798dd0f1ed14} 
-{\bfseries LOM16} (G4bool p\+Place\+Harness=false)
-\item 
-\mbox{\hyperlink{class_l_o_m16_a93c141790620554394cdf9864096d011}{\texorpdfstring{$\sim$}{\string~}\+LOM16}} ()
+\mbox{\hyperlink{class_l_o_m16_a34ba419fa385afb5fa2efeeb870f1a05}{LOM16}} (G4bool p\+\_\+place\+Harness=true)
 \item 
 void \mbox{\hyperlink{class_l_o_m16_ab837d810e22d601fc1a298ba0dfddd48}{construction}} ()
 \begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}. \end{DoxyCompactList}\item 
@@ -71,11 +68,14 @@ G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\Hypertarget{class_l_o_m16_a61b74a26881a392f6e01c3805bff15e5}\label{class_l_o_m16_a61b74a26881a392f6e01c3805bff15e5} 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} {\bfseries substract\+Harness\+PCA} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Solid)
+\item 
 \Hypertarget{class_l_o_m16_a3d939b60805ad33dbe422c966bc6b7ee}\label{class_l_o_m16_a3d939b60805ad33dbe422c966bc6b7ee} 
 G4\+Union\+Solid \texorpdfstring{$\ast$}{*} {\bfseries pressure\+Vessel} (const G4double p\+Out\+Rad, G4\+String p\+Suffix)
 \item 
-\Hypertarget{class_l_o_m16_af5fcdb9e252d6a72b939673d5f67d419}\label{class_l_o_m16_af5fcdb9e252d6a72b939673d5f67d419} 
-void {\bfseries place\+CADSupport\+Structure} ()
+\Hypertarget{class_l_o_m16_af7fe0f3e39e5e6f1e81dea95217c06cc}\label{class_l_o_m16_af7fe0f3e39e5e6f1e81dea95217c06cc} 
+void {\bfseries Internal\+CADComponents} (G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}l\+Inner\+Volume\+Logical)
 \item 
 \Hypertarget{class_l_o_m16_a95892bef682cd9694232bf0ef1faae6c}\label{class_l_o_m16_a95892bef682cd9694232bf0ef1faae6c} 
 void {\bfseries append\+Equator\+Band} ()
@@ -97,6 +97,9 @@ void {\bfseries place\+Gelpads} (G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}l
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_l_o_m16_ac8f83fdcd2b40cea1011bb099454a3f1}\label{class_l_o_m16_ac8f83fdcd2b40cea1011bb099454a3f1} 
+\mbox{\hyperlink{class_l_o_m16_harness}{LOM16\+Harness}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+harness}
 \item 
 \Hypertarget{class_l_o_m16_a877bb5dddca87df471082674589ae4eb}\label{class_l_o_m16_a877bb5dddca87df471082674589ae4eb} 
 G4bool {\bfseries m\+\_\+place\+Harness} = true
@@ -210,10 +213,10 @@ G4double {\bfseries m\+\_\+\+PMToffset}
 G4double {\bfseries m\+\_\+max\+PMTRadius}
 \item 
 \Hypertarget{class_l_o_m16_ae72887fd21154a58e067722ee4429553}\label{class_l_o_m16_ae72887fd21154a58e067722ee4429553} 
-const G4double {\bfseries m\+\_\+equatorial\+Band\+Width} = 45 \texorpdfstring{$\ast$}{*} mm
+const G4double {\bfseries m\+\_\+equatorial\+Band\+Width} = 35 \texorpdfstring{$\ast$}{*} mm
 \item 
 \Hypertarget{class_l_o_m16_aca2b5d29c3f40589dbcb45ee86594f1f}\label{class_l_o_m16_aca2b5d29c3f40589dbcb45ee86594f1f} 
-const G4double {\bfseries m\+\_\+equatorial\+Band\+Thickness} = 1 \texorpdfstring{$\ast$}{*} mm
+const G4double {\bfseries m\+\_\+equatorial\+Band\+Thickness} = 0.\+5 \texorpdfstring{$\ast$}{*} mm
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}}
@@ -248,7 +251,11 @@ std\+::map$<$ G4\+String, G4\+PVPlacement \texorpdfstring{$\ast$}{*} $>$ {\bfser
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+glass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
 \item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+PMTglass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+4))
+\item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+gel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+gelpad\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+3))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+steel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
 \item 
@@ -260,7 +267,7 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Semi\+Transparent\+
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
 \item 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 1, 0, 1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0.\+6, 0, 1))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+blue\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
 \item 
@@ -274,25 +281,24 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+black\+Vis} = G4\+Vis\+Attrib
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+LEDvis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
 \item 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 1.\+0, 0.\+0, 0.\+1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+7, 0.\+0, 1))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_l_o_m16_a93c141790620554394cdf9864096d011}\label{class_l_o_m16_a93c141790620554394cdf9864096d011} 
-\index{LOM16@{LOM16}!````~LOM16@{\texorpdfstring{$\sim$}{\string~}LOM16}}
-\index{````~LOM16@{\texorpdfstring{$\sim$}{\string~}LOM16}!LOM16@{LOM16}}
-\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}LOM16()}{\string~LOM16()}}
-{\footnotesize\ttfamily LOM16\+::\texorpdfstring{$\sim$}{\string~}\+LOM16 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\Hypertarget{class_l_o_m16_a34ba419fa385afb5fa2efeeb870f1a05}\label{class_l_o_m16_a34ba419fa385afb5fa2efeeb870f1a05} 
+\index{LOM16@{LOM16}!LOM16@{LOM16}}
+\index{LOM16@{LOM16}!LOM16@{LOM16}}
+\doxysubsubsection{\texorpdfstring{LOM16()}{LOM16()}}
+{\footnotesize\ttfamily LOM16\+::\+LOM16 (\begin{DoxyParamCaption}\item[{G4bool}]{p\+\_\+place\+Harness = {\ttfamily true} }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Todo}
 \item[\mbox{\hyperlink{todo__todo000005}{Todo}}]
 \begin{DoxyItemize}
-\item 18/07/22 Solve collisions of CAD with PMTs
-\begin{DoxyItemize}
 \item Clean up magic number variables and comment their meaning
+\begin{DoxyItemize}
 \item Write documentation and parse current comments into Doxygen style 
 \end{DoxyItemize}
 \end{DoxyItemize}\end{DoxyRefDesc}

@@ -1,61 +1,75 @@
 <map id="OMSimDetectorComponent.hh" name="OMSimDetectorComponent.hh">
-<area shape="rect" id="Node000001" title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i..." alt="" coords="443,5,663,31"/>
-<area shape="rect" id="Node000002" href="$_o_m_sim_d_e_g_g_harness_8hh.html" title="Construction of the DEGG harness." alt="" coords="119,79,299,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="485,36,266,81,264,76,484,31"/>
-<area shape="rect" id="Node000003" href="$_o_m_sim_m_d_o_m_flasher_8hh.html" title="Defines the mDOMFlasher class for simulating the 10 flashers in an mDOM optical module." alt="" coords="18,152,198,177"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="497,37,432,56,362,81,312,106,230,134,156,155,155,149,228,129,310,102,360,76,430,51,495,32"/>
-<area shape="rect" id="Node000005" href="$_o_m_sim_m_d_o_m_harness_8hh.html" title="Construction of mDOM harness." alt="" coords="1189,79,1376,104"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="677,28,1171,76,1189,78,1189,83,1170,81,677,34"/>
-<area shape="rect" id="Node000006" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="534,152,717,177"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="580,38,596,56,610,78,623,117,628,151,622,152,618,118,606,80,592,59,576,42"/>
-<area shape="rect" id="Node000017" href="$_o_m_sim_rad_decays_detector_8hh.html" title="Defines the OMSimRadDecaysDetector class for the radioactive decays simulation." alt="" coords="1043,299,1261,324"/>
-<area shape="poly" id="edge36_Node000001_Node000017" title=" " alt="" coords="678,29,786,50,846,66,907,86,968,111,1026,142,1080,180,1129,224,1141,242,1149,262,1154,298,1149,299,1144,264,1136,244,1125,227,1077,184,1023,147,965,116,905,91,844,71,785,55,677,34"/>
-<area shape="rect" id="Node000023" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="374,79,573,104"/>
-<area shape="poly" id="edge28_Node000001_Node000023" title=" " alt="" coords="532,42,488,80,485,76,529,38"/>
-<area shape="rect" id="Node000004" href="$_o_m_sim_m_d_o_m_8hh.html" title="Construction of mDOM." alt="" coords="5,225,139,251"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="98,191,80,226,75,224,94,188"/>
-<area shape="poly" id="edge25_Node000006_Node000004" title=" " alt="" coords="520,181,151,228,139,230,139,224,150,223,520,176"/>
-<area shape="rect" id="Node000007" href="$_o_m_sim_d_e_g_g_8hh.html" title="Construction of the DEGG class. From DOUMEKI." alt="" coords="475,225,602,251"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="603,188,555,227,551,223,599,184"/>
-<area shape="rect" id="Node000008" href="$_o_m_sim_decays_g_p_s_8hh.html" title="Defines the OMSimDecaysGPS class for the radioactive decays simulation." alt="" coords="1285,299,1448,324"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="721,177,815,196,914,223,941,236,967,248,1097,270,1286,297,1285,302,1096,276,966,253,939,241,912,228,814,201,720,182"/>
-<area shape="rect" id="Node000010" href="$_o_m_sim_detector_construction_8hh_source.html" title=" " alt="" coords="627,225,853,251"/>
-<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="657,182,723,223,720,227,654,187"/>
-<area shape="poly" id="edge27_Node000006_Node000017" title=" " alt="" coords="697,178,779,197,866,223,924,248,1015,276,1099,296,1097,301,1014,281,922,253,864,228,777,202,696,183"/>
-<area shape="rect" id="Node000019" href="$_o_m_sim_l_o_m16_8hh.html" title="Construction of LOM16." alt="" coords="979,225,1114,251"/>
-<area shape="poly" id="edge22_Node000006_Node000019" title=" " alt="" coords="707,177,980,223,979,228,706,182"/>
-<area shape="rect" id="Node000020" href="$_o_m_sim_l_o_m18_8hh.html" title="Construction of LOM18." alt="" coords="163,225,298,251"/>
-<area shape="poly" id="edge23_Node000006_Node000020" title=" " alt="" coords="549,182,295,228,294,223,548,177"/>
-<area shape="rect" id="Node000022" href="$_o_m_sim_p_d_o_m_8hh.html" title="Implementation of the pDOM (deepcore) or Gen1 DOM.." alt="" coords="322,225,451,251"/>
-<area shape="poly" id="edge26_Node000006_Node000022" title=" " alt="" coords="575,184,426,228,425,223,573,179"/>
-<area shape="rect" id="Node000009" href="$_o_m_sim__radioactive__decays_8cc.html" title="Main of the radioactive decay study." alt="" coords="1042,372,1262,397"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1320,331,1188,374,1186,369,1318,326"/>
-<area shape="rect" id="Node000011" href="$_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="675,299,765,324"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="736,265,726,299,721,298,730,263"/>
-<area shape="rect" id="Node000015" href="$_o_m_sim_effective_area_detector_8hh.html" title="Defines the OMSimEffectiveAreaDetector class for effective area simulation detector construction." alt="" coords="789,299,1019,324"/>
-<area shape="poly" id="edge15_Node000010_Node000015" title=" " alt="" coords="780,254,878,296,876,301,778,259"/>
-<area shape="rect" id="Node000016" href="$_o_m_sim_effi_cali_detector_8hh_source.html" title=" " alt="" coords="461,299,651,324"/>
-<area shape="poly" id="edge17_Node000010_Node000016" title=" " alt="" coords="699,258,587,301,585,296,697,253"/>
-<area shape="poly" id="edge18_Node000010_Node000017" title=" " alt="" coords="820,250,1086,296,1085,301,819,256"/>
-<area shape="rect" id="Node000018" href="$_o_m_sim_s_ndetector_8hh_source.html" title=" " alt="" coords="276,299,436,324"/>
-<area shape="poly" id="edge20_Node000010_Node000018" title=" " alt="" coords="665,256,419,301,418,296,664,251"/>
-<area shape="poly" id="edge14_Node000011_Node000009" title=" " alt="" coords="779,322,1074,369,1073,375,778,327"/>
-<area shape="rect" id="Node000012" href="$_o_m_sim_8cc.html" title="Implementation of the OMSim class." alt="" coords="677,372,763,397"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="723,338,723,372,717,372,717,338"/>
-<area shape="rect" id="Node000013" href="$_o_m_sim_supernova_8cc.html" title="Main of the supernova study." alt="" coords="387,372,543,397"/>
-<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="666,330,507,374,506,369,665,325"/>
-<area shape="rect" id="Node000014" href="$_o_m_sim__effective__area_8cc.html" title="Main for the calculation of effective areas." alt="" coords="800,372,987,397"/>
-<area shape="poly" id="edge13_Node000011_Node000014" title=" " alt="" coords="761,327,866,369,864,374,759,332"/>
-<area shape="poly" id="edge16_Node000015_Node000014" title=" " alt="" coords="903,338,898,372,892,371,898,337"/>
-<area shape="poly" id="edge19_Node000017_Node000009" title=" " alt="" coords="1155,338,1155,372,1149,372,1149,338"/>
-<area shape="poly" id="edge21_Node000018_Node000013" title=" " alt="" coords="386,329,449,370,446,374,384,334"/>
-<area shape="rect" id="Node000021" href="$_o_m_sim_l_o_m18_8cc.html" title=" " alt="" coords="119,299,251,324"/>
-<area shape="poly" id="edge24_Node000020_Node000021" title=" " alt="" coords="218,264,195,300,190,297,214,261"/>
-<area shape="poly" id="edge32_Node000023_Node000004" title=" " alt="" coords="430,111,105,228,103,223,428,106"/>
-<area shape="poly" id="edge33_Node000023_Node000006" title=" " alt="" coords="511,107,602,149,599,154,509,112"/>
-<area shape="poly" id="edge29_Node000023_Node000007" title=" " alt="" coords="487,116,536,224,531,226,482,118"/>
-<area shape="poly" id="edge30_Node000023_Node000019" title=" " alt="" coords="538,104,729,149,1006,223,1005,228,727,155,537,110"/>
-<area shape="poly" id="edge31_Node000023_Node000020" title=" " alt="" coords="443,114,251,228,249,223,441,109"/>
-<area shape="poly" id="edge34_Node000023_Node000022" title=" " alt="" coords="462,117,396,226,391,224,457,115"/>
-<area shape="poly" id="edge35_Node000023_Node000023" title=" " alt="" coords="545,75,582,78,594,83,599,91,593,101,577,106,531,107,531,101,576,100,590,96,594,91,591,87,581,83,544,81"/>
+<area shape="rect" id="Node000001" title="Provides helper base class OMSimDetectorComponent for constructing and managing detector components i..." alt="" coords="737,5,957,31"/>
+<area shape="rect" id="Node000002" href="$_o_m_sim_d_e_g_g_harness_8hh.html" title="Construction of the DEGG harness." alt="" coords="5,79,185,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="724,33,198,81,186,83,185,77,198,76,723,27"/>
+<area shape="rect" id="Node000003" href="$_o_m_sim_l_o_m16_harness_8hh.html" title="Construction of the LOM16 harness." alt="" coords="210,79,397,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="747,35,391,81,391,76,746,30"/>
+<area shape="rect" id="Node000004" href="$_o_m_sim_l_o_m18_harness_8hh.html" title="Construction of the LOM18 harness." alt="" coords="1386,152,1573,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="971,21,1084,28,1205,38,1314,54,1358,64,1391,76,1417,92,1441,112,1473,150,1469,153,1437,116,1414,97,1389,81,1356,70,1313,60,1204,44,1084,33,971,26"/>
+<area shape="rect" id="Node000006" href="$_o_m_sim_m_d_o_m_flasher_8hh.html" title="Defines the mDOMFlasher class for simulating the 10 flashers in an mDOM optical module." alt="" coords="495,152,675,177"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="786,37,732,55,678,81,630,118,596,154,592,150,627,114,675,76,730,50,784,32"/>
+<area shape="rect" id="Node000008" href="$_o_m_sim_m_d_o_m_harness_8hh.html" title="Construction of mDOM harness." alt="" coords="689,79,875,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="829,43,795,80,791,77,825,39"/>
+<area shape="rect" id="Node000009" href="$_o_m_sim_optical_module_8hh_source.html" title=" " alt="" coords="824,152,1007,177"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="867,40,890,77,906,118,915,151,910,153,901,119,885,80,862,43"/>
+<area shape="rect" id="Node000020" href="$_o_m_sim_rad_decays_detector_8hh.html" title="Defines the OMSimRadDecaysDetector class for the radioactive decays simulation." alt="" coords="323,299,540,324"/>
+<area shape="poly" id="edge40_Node000001_Node000020" title=" " alt="" coords="727,36,664,51,598,74,536,108,509,129,484,154,460,191,446,232,438,270,435,299,429,298,433,269,441,230,456,188,480,150,505,125,534,104,596,70,662,46,726,31"/>
+<area shape="rect" id="Node000025" href="$_o_m_sim_p_d_o_m_harness_8hh_source.html" title=" " alt="" coords="1196,79,1379,104"/>
+<area shape="poly" id="edge31_Node000001_Node000025" title=" " alt="" coords="932,30,1217,76,1216,81,931,35"/>
+<area shape="rect" id="Node000026" href="$_o_m_sim_p_m_t_construction_8hh.html" title="Construction of the PMTs." alt="" coords="949,79,1148,104"/>
+<area shape="poly" id="edge32_Node000001_Node000026" title=" " alt="" coords="894,33,1017,76,1015,81,892,38"/>
+<area shape="rect" id="Node000027" href="$_o_m_sim_tools_8hh.html" title="Definition of Tools namespace, a collection of helper methods." alt="" coords="1654,225,1777,251"/>
+<area shape="poly" id="edge41_Node000001_Node000027" title=" " alt="" coords="971,17,1071,22,1187,32,1309,50,1428,76,1513,108,1592,150,1658,191,1702,223,1699,227,1655,196,1590,154,1511,113,1427,81,1308,55,1186,38,1071,27,971,23"/>
+<area shape="rect" id="Node000005" href="$_o_m_sim_l_o_m18_8cc.html" title=" " alt="" coords="1520,299,1652,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1538,180,1569,198,1594,224,1601,244,1601,264,1593,299,1588,298,1596,264,1595,245,1589,227,1566,202,1535,185"/>
+<area shape="rect" id="Node000007" href="$_o_m_sim_m_d_o_m_8hh.html" title="Construction of mDOM." alt="" coords="471,225,605,251"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="572,190,548,227,543,224,567,187"/>
+<area shape="poly" id="edge28_Node000009_Node000007" title=" " alt="" coords="842,182,600,228,599,223,841,177"/>
+<area shape="rect" id="Node000010" href="$_o_m_sim_d_e_g_g_8hh.html" title="Construction of the DEGG class." alt="" coords="1140,225,1267,251"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="975,178,1157,223,1156,228,974,183"/>
+<area shape="rect" id="Node000011" href="$_o_m_sim_decays_g_p_s_8hh.html" title="Defines the OMSimDecaysGPS class for the radioactive decays simulation." alt="" coords="565,299,727,324"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="831,183,774,201,719,228,699,244,681,264,655,300,651,297,676,261,695,240,717,223,772,196,829,178"/>
+<area shape="rect" id="Node000013" href="$_o_m_sim_detector_construction_8hh_source.html" title=" " alt="" coords="730,225,957,251"/>
+<area shape="poly" id="edge12_Node000009_Node000013" title=" " alt="" coords="895,189,857,227,853,223,892,185"/>
+<area shape="poly" id="edge30_Node000009_Node000020" title=" " alt="" coords="853,183,687,228,618,253,469,301,468,296,616,248,685,223,852,178"/>
+<area shape="rect" id="Node000022" href="$_o_m_sim_l_o_m16_8hh.html" title="Construction of LOM16." alt="" coords="1291,225,1425,251"/>
+<area shape="poly" id="edge25_Node000009_Node000022" title=" " alt="" coords="1001,177,1291,223,1290,228,1000,182"/>
+<area shape="rect" id="Node000023" href="$_o_m_sim_l_o_m18_8hh.html" title="Construction of LOM18." alt="" coords="981,225,1116,251"/>
+<area shape="poly" id="edge26_Node000009_Node000023" title=" " alt="" coords="950,181,1028,223,1026,227,947,186"/>
+<area shape="rect" id="Node000024" href="$_o_m_sim_p_d_o_m_8hh.html" title="Implementation of the pDOM (deepcore) or Gen1 DOM.." alt="" coords="1449,225,1579,251"/>
+<area shape="poly" id="edge29_Node000009_Node000024" title=" " alt="" coords="1021,174,1437,223,1449,224,1449,230,1436,228,1020,180"/>
+<area shape="rect" id="Node000012" href="$_o_m_sim__radioactive__decays_8cc.html" title="Main of the radioactive decay study." alt="" coords="536,372,756,397"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="649,338,649,372,643,372,643,338"/>
+<area shape="rect" id="Node000014" href="$_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="1152,299,1241,324"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="914,251,1152,298,1151,304,913,256"/>
+<area shape="rect" id="Node000018" href="$_o_m_sim_effective_area_detector_8hh.html" title="Defines the OMSimEffectiveAreaDetector class for effective area simulation detector construction." alt="" coords="1265,299,1496,324"/>
+<area shape="poly" id="edge18_Node000013_Node000018" title=" " alt="" coords="943,250,1294,296,1294,301,943,255"/>
+<area shape="rect" id="Node000019" href="$_o_m_sim_effi_cali_detector_8hh_source.html" title=" " alt="" coords="752,299,943,324"/>
+<area shape="poly" id="edge20_Node000013_Node000019" title=" " alt="" coords="847,264,849,298,844,299,842,265"/>
+<area shape="poly" id="edge21_Node000013_Node000020" title=" " alt="" coords="764,256,498,301,497,296,763,250"/>
+<area shape="rect" id="Node000021" href="$_o_m_sim_s_ndetector_8hh_source.html" title=" " alt="" coords="967,299,1127,324"/>
+<area shape="poly" id="edge23_Node000013_Node000021" title=" " alt="" coords="890,253,1015,296,1013,301,888,258"/>
+<area shape="poly" id="edge17_Node000014_Node000012" title=" " alt="" coords="1139,327,932,355,756,375,756,370,931,350,1138,321"/>
+<area shape="rect" id="Node000015" href="$_o_m_sim_8cc.html" title="Implementation of the OMSim class." alt="" coords="1597,372,1684,397"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="1256,322,1450,353,1597,375,1597,380,1449,359,1255,327"/>
+<area shape="rect" id="Node000016" href="$_o_m_sim_supernova_8cc.html" title="Main of the supernova study." alt="" coords="1037,372,1193,397"/>
+<area shape="poly" id="edge15_Node000014_Node000016" title=" " alt="" coords="1175,335,1130,374,1127,370,1172,331"/>
+<area shape="rect" id="Node000017" href="$_o_m_sim__effective__area_8cc.html" title="Main for the calculation of effective areas." alt="" coords="1287,372,1474,397"/>
+<area shape="poly" id="edge16_Node000014_Node000017" title=" " alt="" coords="1240,326,1352,369,1350,374,1238,331"/>
+<area shape="poly" id="edge19_Node000018_Node000017" title=" " alt="" coords="1383,338,1383,372,1378,372,1378,338"/>
+<area shape="poly" id="edge22_Node000020_Node000012" title=" " alt="" coords="480,326,612,369,610,374,478,331"/>
+<area shape="poly" id="edge24_Node000021_Node000016" title=" " alt="" coords="1070,332,1106,370,1102,374,1066,336"/>
+<area shape="poly" id="edge27_Node000023_Node000005" title=" " alt="" coords="1130,248,1509,296,1520,298,1519,303,1508,301,1129,254"/>
+<area shape="poly" id="edge36_Node000026_Node000007" title=" " alt="" coords="987,110,812,155,574,228,572,223,811,149,986,105"/>
+<area shape="poly" id="edge37_Node000026_Node000009" title=" " alt="" coords="1017,113,938,154,936,149,1014,108"/>
+<area shape="poly" id="edge33_Node000026_Node000010" title=" " alt="" coords="1073,112,1193,223,1189,227,1070,116"/>
+<area shape="poly" id="edge34_Node000026_Node000022" title=" " alt="" coords="1087,107,1335,223,1332,228,1085,112"/>
+<area shape="poly" id="edge35_Node000026_Node000023" title=" " alt="" coords="1051,118,1051,225,1046,225,1046,118"/>
+<area shape="poly" id="edge38_Node000026_Node000024" title=" " alt="" coords="1099,106,1478,223,1476,228,1098,111"/>
+<area shape="poly" id="edge39_Node000026_Node000026" title=" " alt="" coords="1120,75,1157,78,1169,83,1175,91,1168,101,1152,106,1106,107,1106,101,1151,100,1165,96,1169,91,1166,87,1156,83,1120,81"/>
+<area shape="poly" id="edge43_Node000027_Node000005" title=" " alt="" coords="1684,260,1608,301,1606,296,1681,255"/>
+<area shape="poly" id="edge42_Node000027_Node000015" title=" " alt="" coords="1721,265,1720,294,1711,325,1689,354,1663,374,1660,370,1685,350,1706,323,1715,294,1716,265"/>
+<area shape="poly" id="edge45_Node000027_Node000017" title=" " alt="" coords="1710,265,1693,297,1681,313,1666,326,1621,351,1572,369,1522,379,1475,385,1474,380,1521,374,1570,364,1619,347,1663,322,1677,309,1689,294,1705,262"/>
+<area shape="rect" id="Node000028" href="$_o_m_sim_s_n_analysis_8cc.html" title="Analyze data and write output files." alt="" coords="1778,299,1938,324"/>
+<area shape="poly" id="edge44_Node000027_Node000028" title=" " alt="" coords="1752,254,1836,296,1833,301,1749,259"/>
 </map>

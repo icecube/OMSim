@@ -22,17 +22,19 @@ Collaboration diagram for DOM\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=305pt]{class_d_o_m__coll__graph}
+\includegraphics[width=282pt]{class_d_o_m__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_d_o_m_acc106b0711597a156073a5f2fe3e852e}\label{class_d_o_m_acc106b0711597a156073a5f2fe3e852e} 
-{\bfseries DOM} (G4bool p\+\_\+place\+Harness=true, G4bool p\+\_\+deepcore=false)
+\mbox{\hyperlink{class_d_o_m_acc106b0711597a156073a5f2fe3e852e}{DOM}} (G4bool p\+\_\+place\+Harness=true, G4bool p\+\_\+deepcore=false)
 \item 
 void \mbox{\hyperlink{class_d_o_m_a44de3031fbc88d028c9df9b2654dc8c1}{construction}} ()
 \begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}. \end{DoxyCompactList}\item 
+\Hypertarget{class_d_o_m_aac2736d68a42e65da0ac1b903761f193}\label{class_d_o_m_aac2736d68a42e65da0ac1b903761f193} 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} {\bfseries substract\+Harness\+PCA} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Solid)
+\item 
 G4\+String \mbox{\hyperlink{class_d_o_m_a840e25dee641d3cdaa8df5ce35b63e14}{get\+Name}} ()
 \item 
 double \mbox{\hyperlink{class_d_o_m_ab3eeaeeabb45abcae37ba10ee05012cc}{get\+Pressure\+Vessel\+Weight}} ()
@@ -74,8 +76,11 @@ G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\Hypertarget{class_d_o_m_a3801eb653017cd7232cdf976861c89fd}\label{class_d_o_m_a3801eb653017cd7232cdf976861c89fd} 
+\mbox{\hyperlink{class_d_o_m_harness}{DOMHarness}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+harness}
+\item 
 \Hypertarget{class_d_o_m_a7c325bad22287eadf43374a75a4ba610}\label{class_d_o_m_a7c325bad22287eadf43374a75a4ba610} 
-G4bool {\bfseries m\+\_\+place\+Harness}
+G4bool {\bfseries m\+\_\+place\+Harness} = true
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_optical_module}{OMSim\+Optical\+Module}}}
 \begin{DoxyCompactItemize}
@@ -110,7 +115,11 @@ std\+::map$<$ G4\+String, G4\+PVPlacement \texorpdfstring{$\ast$}{*} $>$ {\bfser
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+glass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
 \item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+PMTglass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+4))
+\item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+gel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+gelpad\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+3))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+steel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
 \item 
@@ -122,7 +131,7 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Semi\+Transparent\+
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
 \item 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 1, 0, 1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0.\+6, 0, 1))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+blue\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
 \item 
@@ -136,10 +145,24 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+black\+Vis} = G4\+Vis\+Attrib
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+LEDvis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
 \item 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 1.\+0, 0.\+0, 0.\+1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+7, 0.\+0, 1))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_d_o_m_acc106b0711597a156073a5f2fe3e852e}\label{class_d_o_m_acc106b0711597a156073a5f2fe3e852e} 
+\index{DOM@{DOM}!DOM@{DOM}}
+\index{DOM@{DOM}!DOM@{DOM}}
+\doxysubsubsection{\texorpdfstring{DOM()}{DOM()}}
+{\footnotesize\ttfamily DOM\+::\+DOM (\begin{DoxyParamCaption}\item[{G4bool}]{p\+\_\+place\+Harness = {\ttfamily true},  }\item[{G4bool}]{p\+\_\+deepcore = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000011}{Todo}}]
+\begin{DoxyItemize}
+\item Check mu metal cage. 
+\end{DoxyItemize}\end{DoxyRefDesc}
 
 
 \doxysubsection{Member Function Documentation}

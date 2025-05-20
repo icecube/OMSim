@@ -1,14 +1,18 @@
 <map id="LOM16" name="LOM16">
-<area shape="rect" id="Node000001" title=" " alt="" coords="77,405,144,431"/>
-<area shape="rect" id="Node000002" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="29,331,192,356"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,370,113,405,108,405,108,370"/>
-<area shape="rect" id="Node000003" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="5,168,205,193"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,207,113,331,108,331,104,207"/>
-<area shape="rect" id="Node000006" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="127,243,305,268"/>
-<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="136,199,200,240,197,245,133,203"/>
-<area shape="rect" id="Node000004" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="39,80,172,105"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="108,119,108,167,103,167,103,119"/>
-<area shape="rect" id="Node000005" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="44,5,167,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="108,45,108,80,103,80,103,45"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="193,279,127,332,123,328,190,275"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="53,405,120,431"/>
+<area shape="rect" id="Node000007" href="$class_l_o_m16_harness.html" title=" " alt="" coords="119,493,239,519"/>
+<area shape="poly" id="edge9_Node000007_Node000001" title=" " alt="" coords="45,439,28,453,26,460,29,468,42,477,64,485,119,496,118,501,62,490,39,482,25,471,20,460,23,450,42,435"/>
+<area shape="rect" id="Node000002" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="5,331,168,356"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,370,89,405,84,405,84,370"/>
+<area shape="rect" id="Node000003" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="48,168,248,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="100,201,71,219,49,244,44,266,51,290,64,312,78,329,73,332,59,315,46,292,39,266,44,241,68,215,97,197"/>
+<area shape="rect" id="Node000006" href="$class_o_m_sim_p_m_t_construction.html" title=" " alt="" coords="59,243,237,268"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="151,208,151,242,145,242,145,208"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="224,195,244,205,261,217,273,234,277,254,277,420,271,445,254,467,232,483,209,496,207,491,229,479,250,463,266,443,272,419,272,254,268,236,257,221,241,209,222,200"/>
+<area shape="rect" id="Node000004" href="$class_o_m_sim_input_data.html" title="Manages the input data, including parsing and storing material properties." alt="" coords="81,80,215,105"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="151,119,151,167,145,167,145,119"/>
+<area shape="rect" id="Node000005" href="$class_parameter_table.html" title="A utility class for managing JSON&#45;based data tables." alt="" coords="87,5,209,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="151,45,151,80,145,80,145,45"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="134,281,97,332,93,329,129,278"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="166,483,147,457,112,433,115,428,151,453,170,479"/>
 </map>

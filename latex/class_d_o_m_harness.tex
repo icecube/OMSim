@@ -1,0 +1,202 @@
+\doxysection{DOMHarness Class Reference}
+\hypertarget{class_d_o_m_harness}{}\label{class_d_o_m_harness}\index{DOMHarness@{DOMHarness}}
+
+
+Inheritance diagram for DOMHarness\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{class_d_o_m_harness__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for DOMHarness\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_d_o_m_harness__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_d_o_m_harness_afe8ca76b7535f76bb80492cde5bfa8f5}{DOMHarness}} (\mbox{\hyperlink{class_d_o_m}{DOM}} \texorpdfstring{$\ast$}{*}p\+DOM)
+\item 
+void \mbox{\hyperlink{class_d_o_m_harness_a625782a656eab8eb29760e32d37cb21c}{construction}} ()
+\begin{DoxyCompactList}\small\item\em Abstract method you have to define in order to make a derived class from \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_af079cb221a23adc315b1b0b3dc55c814}{append\+Component}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Solid, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}p\+Logical, G4\+Three\+Vector p\+Vector, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Append component to Components vector. \end{DoxyCompactList}\item 
+G4bool \mbox{\hyperlink{class_o_m_sim_detector_component_a698a458599ff1d3045010636717e4da8}{check\+If\+Exists}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Check if a component with a certain name exists in the Components map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}} \mbox{\hyperlink{class_o_m_sim_detector_component_afe9d1fa2893a0ae67ab6f9afb6d377f4}{get\+Component}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Retrieves a specified component from the Components map. \end{DoxyCompactList}\item 
+G4\+Transform3D \mbox{\hyperlink{class_o_m_sim_detector_component_aa4a3ef0899866c61c3e6185946e04985}{get\+New\+Position}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Three\+Vector p\+Object\+Position, G4\+Rotation\+Matrix p\+Object\+Rotation)
+\begin{DoxyCompactList}\small\item\em Computes a new position for a sub-\/component, based on a given global position and rotation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a60b149056e8998772582544271288189}{integrate\+Detector\+Component}} (\mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}} \texorpdfstring{$\ast$}{*}p\+To\+Integrate, G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+String p\+Name\+Extension)
+\begin{DoxyCompactList}\small\item\em Integrates the components of another \doxylink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component} instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a83ef8679b7ca74b7b2bc8c8417e32f26}{delete\+Component}} (G4\+String p\+Name)
+\begin{DoxyCompactList}\small\item\em Deletes a specified component from the Components map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_aecf7746af4735a02ea2cb11ea6d4f5ae}{place\+It}} (G4\+Three\+Vector p\+Position, G4\+Rotation\+Matrix p\+Rotation, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&p\+Mother, G4\+String p\+Name\+Extension="{}"{})
+\begin{DoxyCompactList}\small\item\em Placement of the Detector\+Component. Each \doxylink{struct_o_m_sim_detector_component_1_1_component}{Component} is placed in the same mother. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_detector_component_a4b2ca76a8864a82cd9717f75577188d7}{place\+It}} (G4\+Transform3D p\+Trans, G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}\&p\+Mother, G4\+String p\+Name\+Extension="{}"{})
+\begin{DoxyCompactList}\small\item\em Places the components in a specified mother volume using a provided transformation. \end{DoxyCompactList}\item 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_component_a63d099234b89f1cf149535962c636a1d}{substract\+To\+Volume}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Input\+Volume, G4\+Three\+Vector p\+Substraction\+Pos, G4\+Rotation\+Matrix p\+Substraction\+Rot, G4\+String p\+New\+Volume\+Name)
+\begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume using position and rotation. \end{DoxyCompactList}\item 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_component_a6b09340b9d4a93f5a269cfc116acf8c3}{substract\+To\+Volume}} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Input\+Volume, G4\+Transform3D p\+Trans, G4\+String p\+New\+Volume\+Name)
+\begin{DoxyCompactList}\small\item\em Subtracts components from a given solid volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_d_o_m_harness_aa7fc89795f19de697df86f93fe2b1aeb}\label{class_d_o_m_harness_aa7fc89795f19de697df86f93fe2b1aeb} 
+G4\+String {\bfseries m\+Data\+Key} = "{}om\+\_\+\+DOM\+\_\+\+Harness"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+data}
+\begin{DoxyCompactList}\small\item\em Instance of OMSim\+Inputdata, which should be started only once. \end{DoxyCompactList}\item 
+bool {\bfseries m\+\_\+check\+Overlaps} = true
+\item 
+std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries m\+\_\+placed\+Positions}
+\begin{DoxyCompactList}\small\item\em store the positions each time the components are placed \end{DoxyCompactList}\item 
+std\+::vector$<$ G4\+Rotation\+Matrix $>$ {\bfseries m\+\_\+placed\+Orientations}
+\begin{DoxyCompactList}\small\item\em store the orientations each time the components are placed \end{DoxyCompactList}\item 
+std\+::vector$<$ G4\+Transform3D $>$ {\bfseries m\+\_\+placed\+Translations}
+\begin{DoxyCompactList}\small\item\em store the translation each time the components are placed \end{DoxyCompactList}\item 
+std\+::map$<$ G4\+String, \mbox{\hyperlink{struct_o_m_sim_detector_component_1_1_component}{Component}} $>$ {\bfseries m\+\_\+components}
+\begin{DoxyCompactList}\small\item\em dictionary with each component \end{DoxyCompactList}\item 
+std\+::map$<$ G4\+String, G4\+PVPlacement \texorpdfstring{$\ast$}{*} $>$ {\bfseries m\+\_\+last\+Physicals}
+\begin{DoxyCompactList}\small\item\em dictionary with the (last) G4\+PVPlacement of each component m\+Components produced after calling place\+It \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_d_o_m_harness_a1b017587fb536a6d59c9a9ed5612c86f}\label{class_d_o_m_harness_a1b017587fb536a6d59c9a9ed5612c86f} 
+void {\bfseries CADHarness\+Waistband} ()
+\item 
+\Hypertarget{class_d_o_m_harness_ad03d4492ec7bc36fbf024a8088beac1b}\label{class_d_o_m_harness_ad03d4492ec7bc36fbf024a8088beac1b} 
+void {\bfseries CADHarness\+Ropes} ()
+\item 
+\Hypertarget{class_d_o_m_harness_ab8305d68459c5594e3702aedb2e628bd}\label{class_d_o_m_harness_ab8305d68459c5594e3702aedb2e628bd} 
+void {\bfseries CADHarness\+PCA} ()
+\item 
+\Hypertarget{class_d_o_m_harness_a2c986c02b5ff43c3be52ff8ae2df07a0}\label{class_d_o_m_harness_a2c986c02b5ff43c3be52ff8ae2df07a0} 
+void {\bfseries Place\+CADString} ()
+\item 
+\Hypertarget{class_d_o_m_harness_a25d7d4a04dff05447d1dea66e0740a5c}\label{class_d_o_m_harness_a25d7d4a04dff05447d1dea66e0740a5c} 
+void {\bfseries main\+Data\+Cable} ()
+\item 
+\Hypertarget{class_d_o_m_harness_a2eee039a6fecac556d0dcb86c35d4a66}\label{class_d_o_m_harness_a2eee039a6fecac556d0dcb86c35d4a66} 
+void {\bfseries build\+Harness\+Solid} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_d_o_m_harness_a8eda1ef1794dfabed844f4f65b48af83}\label{class_d_o_m_harness_a8eda1ef1794dfabed844f4f65b48af83} 
+\mbox{\hyperlink{class_d_o_m}{DOM}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+optical\+Module}
+\item 
+\Hypertarget{class_d_o_m_harness_a56b81b813957c7a51e9146d76a1d2fed}\label{class_d_o_m_harness_a56b81b813957c7a51e9146d76a1d2fed} 
+const G4double {\bfseries m\+\_\+r\+Min} = 150.\+0 \texorpdfstring{$\ast$}{*} mm
+\item 
+\Hypertarget{class_d_o_m_harness_a357071e100e514d970f255927c1a1e1d}\label{class_d_o_m_harness_a357071e100e514d970f255927c1a1e1d} 
+const G4double {\bfseries m\+\_\+r\+Max} = 155.\+0 \texorpdfstring{$\ast$}{*} mm
+\item 
+\Hypertarget{class_d_o_m_harness_a2d9ad07e70b1223438fa4b283dbe9dea}\label{class_d_o_m_harness_a2d9ad07e70b1223438fa4b283dbe9dea} 
+const G4double {\bfseries m\+\_\+s\+Phi} = 0.\+0 \texorpdfstring{$\ast$}{*} deg
+\item 
+\Hypertarget{class_d_o_m_harness_abf1036f89e10d1019b6464ff2ec7912c}\label{class_d_o_m_harness_abf1036f89e10d1019b6464ff2ec7912c} 
+const G4double {\bfseries m\+\_\+d\+Phi} = 6.\+283185307
+\item 
+\Hypertarget{class_d_o_m_harness_a931d66864ecb7f1caffe2a66be8c98c5}\label{class_d_o_m_harness_a931d66864ecb7f1caffe2a66be8c98c5} 
+const G4double {\bfseries m\+\_\+s\+Theta} = 1.\+383031327
+\item 
+\Hypertarget{class_d_o_m_harness_ab9d11a7a4c60f5152cdbd0f4aa34bce1}\label{class_d_o_m_harness_ab9d11a7a4c60f5152cdbd0f4aa34bce1} 
+const G4double {\bfseries m\+\_\+d\+Theta} = 0.\+37553
+\item 
+\Hypertarget{class_d_o_m_harness_a3013cc54c3c96b4d4342f067107c7a48}\label{class_d_o_m_harness_a3013cc54c3c96b4d4342f067107c7a48} 
+const G4double {\bfseries m\+\_\+rope\+Rotation\+AngleX} = 11.\+245557 \texorpdfstring{$\ast$}{*} deg
+\item 
+\Hypertarget{class_d_o_m_harness_a0efe5cd83487b51e14a42c3cca687950}\label{class_d_o_m_harness_a0efe5cd83487b51e14a42c3cca687950} 
+const G4double {\bfseries m\+\_\+harness\+Rot\+Angle} = 30 \texorpdfstring{$\ast$}{*} deg
+\item 
+\Hypertarget{class_d_o_m_harness_a5e4538ca5555832d217a6a66a94d232d}\label{class_d_o_m_harness_a5e4538ca5555832d217a6a66a94d232d} 
+const G4double {\bfseries m\+\_\+total\+Width} = 185 \texorpdfstring{$\ast$}{*} mm
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_component}{OMSim\+Detector\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+glass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+PMTglass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+4))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+gel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+gelpad\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+3))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+steel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+alu\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+8, 0.\+8, 0.\+9, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+white\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1, 1, 1, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Semi\+Transparent\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0.\+6, 0, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+blue\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+air\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+air\+Vis2} = G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0, 1., 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+red\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+0, 0.\+0, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+black\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+0, 0.\+0, 0.\+0, 1.\+0))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+LEDvis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+7, 0.\+0, 1))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_d_o_m_harness_afe8ca76b7535f76bb80492cde5bfa8f5}\label{class_d_o_m_harness_afe8ca76b7535f76bb80492cde5bfa8f5} 
+\index{DOMHarness@{DOMHarness}!DOMHarness@{DOMHarness}}
+\index{DOMHarness@{DOMHarness}!DOMHarness@{DOMHarness}}
+\doxysubsubsection{\texorpdfstring{DOMHarness()}{DOMHarness()}}
+{\footnotesize\ttfamily DOMHarness\+::\+DOMHarness (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_d_o_m}{DOM}} \texorpdfstring{$\ast$}{*}}]{p\+DOM }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000012}{Todo}}]
+\begin{DoxyItemize}
+\item Add main data cable 
+\end{DoxyItemize}\end{DoxyRefDesc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_d_o_m_harness_a625782a656eab8eb29760e32d37cb21c}\label{class_d_o_m_harness_a625782a656eab8eb29760e32d37cb21c} 
+\index{DOMHarness@{DOMHarness}!construction@{construction}}
+\index{construction@{construction}!DOMHarness@{DOMHarness}}
+\doxysubsubsection{\texorpdfstring{construction()}{construction()}}
+{\footnotesize\ttfamily void DOMHarness\+::construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_detector_component_a82774227bd10e2fe94f1612f12929004}{OMSim\+Detector\+Component}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+OMSim\+PDOMHarness.\+hh\item 
+OMSim\+PDOMHarness.\+cc\end{DoxyCompactItemize}

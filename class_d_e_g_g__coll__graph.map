@@ -1,5 +1,5 @@
 <map id="DEGG" name="DEGG">
-<area shape="rect" id="Node000001" title="Construction of the DEGG detector geometry." alt="" coords="57,405,117,431"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="57,405,117,431"/>
 <area shape="rect" id="Node000007" href="$class_d_egg_harness.html" title=" " alt="" coords="124,493,233,519"/>
 <area shape="poly" id="edge9_Node000007_Node000001" title=" " alt="" coords="46,438,28,453,26,460,29,468,43,477,66,485,124,496,123,502,65,491,40,482,25,471,20,460,24,450,43,434"/>
 <area shape="rect" id="Node000002" href="$class_o_m_sim_optical_module.html" title="Base class for OMs works as interface." alt="" coords="5,331,168,356"/>

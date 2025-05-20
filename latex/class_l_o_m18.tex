@@ -17,14 +17,14 @@ Collaboration diagram for LOM18\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=305pt]{class_l_o_m18__coll__graph}
+\includegraphics[width=282pt]{class_l_o_m18__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_l_o_m18_ac5aa1e0e7f9290425113ec1eae2bf601}\label{class_l_o_m18_ac5aa1e0e7f9290425113ec1eae2bf601} 
-{\bfseries LOM18} (G4bool p\+Place\+Harness=false)
+\Hypertarget{class_l_o_m18_aaa5fb2eacc0e21cf908004e9284b5b9c}\label{class_l_o_m18_aaa5fb2eacc0e21cf908004e9284b5b9c} 
+{\bfseries LOM18} (G4bool p\+Place\+Harness=true)
 \item 
 void \mbox{\hyperlink{class_l_o_m18_a0744107f29517a84a06b2544e81b00e0}{construction}} ()
 \item 
@@ -100,6 +100,9 @@ std\+::map$<$ G4\+String, G4\+PVPlacement \texorpdfstring{$\ast$}{*} $>$ {\bfser
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\Hypertarget{class_l_o_m18_a750d5f525839b78f94c2670372396fc0}\label{class_l_o_m18_a750d5f525839b78f94c2670372396fc0} 
+G4\+Subtraction\+Solid \texorpdfstring{$\ast$}{*} {\bfseries substract\+Harness\+PCA} (G4\+VSolid \texorpdfstring{$\ast$}{*}p\+Solid)
+\item 
 G4\+Polycone \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_l_o_m18_a0c6423e526bb3c38904cde7ef6673ec2}{create\+LOM18\+Outer\+Solid}} ()
 \item 
 G4\+Polycone \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_l_o_m18_a45b2c68239eac03aaf1b76225dc377f1}{create\+LOM18\+Inner\+Solid}} ()
@@ -107,7 +110,8 @@ G4\+Polycone \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_l_o_m18_a45b2c682
 \Hypertarget{class_l_o_m18_a9b4e4a3c6f9a41931bc299a4fb53d730}\label{class_l_o_m18_a9b4e4a3c6f9a41931bc299a4fb53d730} 
 void {\bfseries append\+Equator\+Band} ()
 \item 
-void \mbox{\hyperlink{class_l_o_m18_ab12d337504e3ec8be903b391acd6bef2}{place\+CADSupport\+Structure}} (G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}l\+Inner\+Volume\+Logical)
+\Hypertarget{class_l_o_m18_ab12d337504e3ec8be903b391acd6bef2}\label{class_l_o_m18_ab12d337504e3ec8be903b391acd6bef2} 
+void {\bfseries place\+CADSupport\+Structure} (G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}l\+Inner\+Volume\+Logical)
 \item 
 void \mbox{\hyperlink{class_l_o_m18_a6f6f50683c9c78ded2c92ca1b9177446}{place\+CADPenetrator}} (G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}l\+Inner\+Volume\+Logical)
 \item 
@@ -121,6 +125,9 @@ void \mbox{\hyperlink{class_l_o_m18_a1275540bdcd8b359b7332690e7c8da4b}{place\+Ge
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_l_o_m18_a8d2b887592e901710ffa51dd516c8333}\label{class_l_o_m18_a8d2b887592e901710ffa51dd516c8333} 
+\mbox{\hyperlink{class_l_o_m18_harness}{LOM18\+Harness}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+harness}
 \item 
 \Hypertarget{class_l_o_m18_a695800c92e1eeb1609c06e11cec7cef7}\label{class_l_o_m18_a695800c92e1eeb1609c06e11cec7cef7} 
 G4bool {\bfseries m\+\_\+place\+Harness} = true
@@ -235,7 +242,11 @@ G4double {\bfseries m\+\_\+max\+PMTRadius}
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+glass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+25))
 \item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+PMTglass\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+7, 0.\+7, 0.\+8, 0.\+4))
+\item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+gel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+2))
+\item 
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+gelpad\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+45, 0.\+5, 0.\+35, 0.\+3))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+steel\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+6, 0.\+6, 0.\+7, 1.\+0))
 \item 
@@ -247,7 +258,7 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Semi\+Transparent\+
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+absorber\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+2, 0.\+2, 1.\+0))
 \item 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 1, 0, 1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+board\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0.\+6, 0, 1))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+blue\+Vis} = G4\+Vis\+Attributes(G4\+Colour(0, 0, 1, 1))
 \item 
@@ -261,7 +272,7 @@ static const G4\+Vis\+Attributes {\bfseries m\+\_\+black\+Vis} = G4\+Vis\+Attrib
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+\+LEDvis} = G4\+Vis\+Attributes(G4\+Colour(0.\+2, 0.\+6, 0.\+8, 0.\+5))
 \item 
-static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 1.\+0, 0.\+0, 0.\+1))
+static const G4\+Vis\+Attributes {\bfseries m\+\_\+photocathode\+Vis} = G4\+Vis\+Attributes(G4\+Colour(1.\+0, 0.\+7, 0.\+0, 1))
 \item 
 static const G4\+Vis\+Attributes {\bfseries m\+\_\+invisible\+Vis} = G4\+Vis\+Attributes\+::\+Get\+Invisible()
 \end{DoxyCompactItemize}
@@ -349,13 +360,7 @@ Implements \mbox{\hyperlink{class_o_m_sim_optical_module_a10f0f95b9b84e8cc4837dc
 \doxysubsubsection{\texorpdfstring{placeCADPenetrator()}{placeCADPenetrator()}}
 {\footnotesize\ttfamily void LOM18\+::place\+CADPenetrator (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}}]{inner\+Volume\+Logical }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Imports inner Penetrator of module from CAD file and places them as an absorber (non optical compenents only since the tesselation is strong!) \Hypertarget{class_l_o_m18_ab12d337504e3ec8be903b391acd6bef2}\label{class_l_o_m18_ab12d337504e3ec8be903b391acd6bef2} 
-\index{LOM18@{LOM18}!placeCADSupportStructure@{placeCADSupportStructure}}
-\index{placeCADSupportStructure@{placeCADSupportStructure}!LOM18@{LOM18}}
-\doxysubsubsection{\texorpdfstring{placeCADSupportStructure()}{placeCADSupportStructure()}}
-{\footnotesize\ttfamily void LOM18\+::place\+CADSupport\+Structure (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}}]{p\+\_\+inner\+Volume }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-Imports inner components of module from CAD file and places them as an absorber (non optical compenents only since the tesselation is strong!) \Hypertarget{class_l_o_m18_a1275540bdcd8b359b7332690e7c8da4b}\label{class_l_o_m18_a1275540bdcd8b359b7332690e7c8da4b} 
+Imports inner Penetrator of module from CAD file and places them as an absorber (non optical compenents only since the tesselation is strong!) \Hypertarget{class_l_o_m18_a1275540bdcd8b359b7332690e7c8da4b}\label{class_l_o_m18_a1275540bdcd8b359b7332690e7c8da4b} 
 \index{LOM18@{LOM18}!placeGelpads@{placeGelpads}}
 \index{placeGelpads@{placeGelpads}!LOM18@{LOM18}}
 \doxysubsubsection{\texorpdfstring{placeGelpads()}{placeGelpads()}}

@@ -18,13 +18,14 @@ var searchData=
   ['m_5fledtransformers_15',['m_LEDTransformers',['../classm_d_o_m.html#ab56e69ed881ca89d4e0164ad5316b69d',1,'mDOM']]],
   ['m_5fmodulehits_16',['m_moduleHits',['../class_o_m_sim_hit_manager.html#a0fc9285c7ecc4cc283e883ceebbe423e',1,'OMSimHitManager']]],
   ['m_5fnumberofpmts_17',['m_numberOfPMTs',['../class_o_m_sim_hit_manager.html#a8f1ac71e89bfb8d4f0db4b56c7152e50',1,'OMSimHitManager']]],
-  ['m_5fopticalsurfacemap_18',['m_opticalSurfaceMap',['../class_o_m_sim_input_data.html#a692d89c9fbdd287aa13c3bb5ddba8278',1,'OMSimInputData']]],
-  ['m_5fplacedorientations_19',['m_placedOrientations',['../class_o_m_sim_detector_component.html#a083b71621fcf32eee318c2c73165ee5c',1,'OMSimDetectorComponent']]],
-  ['m_5fplacedpositions_20',['m_placedPositions',['../class_o_m_sim_detector_component.html#a08d6710ee0ac4dd277e7993459c612ca',1,'OMSimDetectorComponent']]],
-  ['m_5fplacedtranslations_21',['m_placedTranslations',['../class_o_m_sim_detector_component.html#af581e8054f6efb960137898a30132664',1,'OMSimDetectorComponent']]],
-  ['m_5freflectorconesheetthickness_22',['m_reflectorConeSheetThickness',['../classm_d_o_m.html#af6fbf12c7717cdae8cc77cd4062e9720',1,'mDOM']]],
-  ['m_5freflectorconetoholder_23',['m_reflectorConeToHolder',['../classm_d_o_m.html#a3e2581f3dcc369d43b6779bb87b4f533',1,'mDOM']]],
-  ['m_5freflectorhalfz_24',['m_reflectorHalfZ',['../classm_d_o_m.html#a3e2474c86c34ae72e0d233a6433db207',1,'mDOM']]],
-  ['m_5ftable_25',['m_table',['../class_parameter_table.html#ae5dba23c394122524bab7cb8f61a2fe4',1,'ParameterTable']]],
-  ['momentumdirection_26',['momentumDirection',['../struct_photon_info.html#a7966e888affcb35d71e07c7cc78afc74',1,'PhotonInfo']]]
+  ['m_5fopticalmodule_18',['m_opticalModule',['../class_d_egg_harness.html#ad7d17b89f08e51dd85a088f0bdd95046',1,'DEggHarness']]],
+  ['m_5fopticalsurfacemap_19',['m_opticalSurfaceMap',['../class_o_m_sim_input_data.html#a692d89c9fbdd287aa13c3bb5ddba8278',1,'OMSimInputData']]],
+  ['m_5fplacedorientations_20',['m_placedOrientations',['../class_o_m_sim_detector_component.html#a083b71621fcf32eee318c2c73165ee5c',1,'OMSimDetectorComponent']]],
+  ['m_5fplacedpositions_21',['m_placedPositions',['../class_o_m_sim_detector_component.html#a08d6710ee0ac4dd277e7993459c612ca',1,'OMSimDetectorComponent']]],
+  ['m_5fplacedtranslations_22',['m_placedTranslations',['../class_o_m_sim_detector_component.html#af581e8054f6efb960137898a30132664',1,'OMSimDetectorComponent']]],
+  ['m_5freflectorconesheetthickness_23',['m_reflectorConeSheetThickness',['../classm_d_o_m.html#af6fbf12c7717cdae8cc77cd4062e9720',1,'mDOM']]],
+  ['m_5freflectorconetoholder_24',['m_reflectorConeToHolder',['../classm_d_o_m.html#a3e2581f3dcc369d43b6779bb87b4f533',1,'mDOM']]],
+  ['m_5freflectorhalfz_25',['m_reflectorHalfZ',['../classm_d_o_m.html#a3e2474c86c34ae72e0d233a6433db207',1,'mDOM']]],
+  ['m_5ftable_26',['m_table',['../class_parameter_table.html#ae5dba23c394122524bab7cb8f61a2fe4',1,'ParameterTable']]],
+  ['momentumdirection_27',['momentumDirection',['../struct_photon_info.html#a7966e888affcb35d71e07c7cc78afc74',1,'PhotonInfo']]]
 ];

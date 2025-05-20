@@ -1,6 +1,6 @@
 <map id="DEggHarness" name="DEggHarness">
 <area shape="rect" id="Node000001" title=" " alt="" coords="35,243,144,268"/>
-<area shape="rect" id="Node000005" href="$class_d_e_g_g.html" title="Construction of the DEGG detector geometry." alt="" coords="60,405,120,431"/>
+<area shape="rect" id="Node000005" href="$class_d_e_g_g.html" title=" " alt="" coords="60,405,120,431"/>
 <area shape="poly" id="edge9_Node000005_Node000001" title=" " alt="" coords="60,278,32,301,11,332,8,343,10,353,22,373,43,390,65,403,63,407,40,394,18,376,5,355,3,342,6,330,28,298,56,274"/>
 <area shape="rect" id="Node000002" href="$class_o_m_sim_detector_component.html" title="Abstract base class used for constructing detector components." alt="" coords="86,168,286,193"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,204,107,244,104,240,158,200"/>

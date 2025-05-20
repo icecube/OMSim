@@ -10,8 +10,8 @@
 
 For more information, please refer to our \href{https://icecube.github.io/OMSim/}{\texttt{ documentation}}.
 
-For the latest updates and information, check our \href{https://github.com/icecube/OMSim}{\texttt{ Git\+Hub repository}}. If you need assistance or want to report problems, please open an issue on our Git\+Hub page or contact the maintainers directly.\hypertarget{index_autotoc_md59}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{index_autotoc_md59}
-\hypertarget{index_autotoc_md60}{}\doxysubsection{\texorpdfstring{Installing Geant4}{Installing Geant4}}\label{index_autotoc_md60}
+For the latest updates and information, check our \href{https://github.com/icecube/OMSim}{\texttt{ Git\+Hub repository}}. If you need assistance or want to report problems, please open an issue on our Git\+Hub page or contact the maintainers directly.\hypertarget{index_autotoc_md63}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{index_autotoc_md63}
+\hypertarget{index_autotoc_md64}{}\doxysubsection{\texorpdfstring{Installing Geant4}{Installing Geant4}}\label{index_autotoc_md64}
 
 \begin{DoxyEnumerate}
 \item Install Geant4 following \href{https://geant4-userdoc.web.cern.ch/UsersGuides/InstallationGuide/html/installguide.html}{\texttt{ the guide provided by CERN}}. \doxylink{class_o_m_sim}{OMSim} is currently optimised for Geant4 11.\+3.\+0.
@@ -31,7 +31,7 @@ Note\+: Do not change {\ttfamily GEANT4\+\_\+\+BUILD\+\_\+\+MULTITHREADED} to OF
 
 \end{DoxyCode}
 
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md61}{}\doxysubsection{\texorpdfstring{Installing Dependencies}{Installing Dependencies}}\label{index_autotoc_md61}
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md65}{}\doxysubsection{\texorpdfstring{Installing Dependencies}{Installing Dependencies}}\label{index_autotoc_md65}
 Install the required dependencies using\+:
 
 
@@ -39,7 +39,7 @@ Install the required dependencies using\+:
 \DoxyCodeLine{sudo\ apt-\/get\ -\/y\ install\ libxerces-\/c-\/dev\ libxmu-\/dev\ libxpm-\/dev\ libglu1-\/mesa-\/dev\ qtbase5-\/dev\ libmotif-\/dev\ libargtable2-\/0\ libboost-\/all-\/dev\ libqt53dextras5\ libfmt-\/dev\ libspdlog-\/dev}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md62}{}\doxysubsection{\texorpdfstring{Installing ROOT}{Installing ROOT}}\label{index_autotoc_md62}
+\hypertarget{index_autotoc_md66}{}\doxysubsection{\texorpdfstring{Installing ROOT}{Installing ROOT}}\label{index_autotoc_md66}
 
 \begin{DoxyEnumerate}
 \item Download the latest ROOT binary from \href{https://root.cern/releases/}{\texttt{ ROOT\textquotesingle{}s official website}} (e.\+g., version 6.\+32.\+08 at the time of writing), or compile from source.
@@ -50,7 +50,7 @@ Install the required dependencies using\+:
 
 \end{DoxyCode}
 
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md63}{}\doxysubsection{\texorpdfstring{Compiling OMSim}{Compiling OMSim}}\label{index_autotoc_md63}
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md67}{}\doxysubsection{\texorpdfstring{Compiling OMSim}{Compiling OMSim}}\label{index_autotoc_md67}
 
 \begin{DoxyEnumerate}
 \item Clone this repository\+: 
@@ -83,7 +83,7 @@ Install the required dependencies using\+:
 
 \end{DoxyCode}
 
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md64}{}\doxysection{\texorpdfstring{Available studies}{Available studies}}\label{index_autotoc_md64}
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md68}{}\doxysection{\texorpdfstring{Available studies}{Available studies}}\label{index_autotoc_md68}
 \doxylink{class_o_m_sim}{OMSim} has been utilized in a range of studies, each simulating unique physics, thereby necessitating distinct Physicslist/analysis setups. In this repository, we have compiled a selection of these studies, each contained within its own folder and accompanied by its own main file. Currently available\+:
 
 
@@ -91,5 +91,5 @@ Install the required dependencies using\+:
 \item \href{https://icecube.github.io/OMSim/md_extra__doc_230__effective__area.html}{\texttt{ Effective area}}\+: calculates the effective area of the optical modules/\+PMTs.
 \item \href{https://icecube.github.io/OMSim/md_extra__doc_231__radioactive__decays.html}{\texttt{ Radioactive decays}}\+: simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules. {\bfseries{Requires Geant4 version 11.\+3.\+0}}
 \item \href{https://icecube.github.io/OMSim/md_extra__doc_232___s_n.html}{\texttt{ Supernova studies}}\+: used for the development of an improved SN trigger for Ice\+Cube using multi-\/\+PMT modules.
-\end{DoxyItemize}\hypertarget{index_autotoc_md65}{}\doxysubsection{\texorpdfstring{Customising Compilation}{Customising Compilation}}\label{index_autotoc_md65}
+\end{DoxyItemize}\hypertarget{index_autotoc_md69}{}\doxysubsection{\texorpdfstring{Customising Compilation}{Customising Compilation}}\label{index_autotoc_md69}
 To exclude certain studies from compilation, edit the {\ttfamily simulations/\+CMake\+Lists.\+tx} file and comment out the unwanted {\ttfamily add\+\_\+subdirectory()} calls before running CMake. 

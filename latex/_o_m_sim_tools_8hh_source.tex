@@ -6,43 +6,64 @@
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00007\ }
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}OMSimLogger.hh"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <TGraph.h>}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <TH2D.h>}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <variant>}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <optional>}}
-\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_tools}{Tools}}}
-\DoxyCodeLine{00025\ \{}
-\DoxyCodeLine{00026\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{namespace_tools_afc07e23ed8113c72927202c1762c91a4}{arange}}(\textcolor{keywordtype}{double}\ start,\ \textcolor{keywordtype}{double}\ stop,\ \textcolor{keywordtype}{double}\ step);}
-\DoxyCodeLine{00027\ \ \ \ \ TGraph*\ \mbox{\hyperlink{namespace_tools_a71949435269d3e8f0671dc8be431b939}{create1dInterpolator}}(\textcolor{keyword}{const}\ std::vector<double>\&\ pX,\ \textcolor{keyword}{const}\ std::vector<double>\&\ pY,\ \textcolor{keyword}{const}\ std::string\&\ pName);}
-\DoxyCodeLine{00028\ \ \ \ \ TGraph*\ \mbox{\hyperlink{namespace_tools_a71949435269d3e8f0671dc8be431b939}{create1dInterpolator}}(\textcolor{keyword}{const}\ std::string\&\ pFileName);}
-\DoxyCodeLine{00029\ \ \ \ \ TH2D\ *\mbox{\hyperlink{namespace_tools_ac7412f9ce8a57a3efde80e4fdbb0b364}{create2DHistogramFromDataFile}}(\textcolor{keyword}{const}\ std::string\ \&pFilePath);}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_tools_a79deeeb2ed49181f097d55b88f6831f9}{ensureDirectoryExists}}(\textcolor{keyword}{const}\ std::string\ \&filepath);}
-\DoxyCodeLine{00032\ \ \ \ \ std::pair<std::vector<double>,\ std::vector<double>>\ \mbox{\hyperlink{namespace_tools_ab58e9ef8ed3fc6fe3cd85e26136f5be7}{histogram}}(}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&data,}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::variant<\textcolor{keywordtype}{int},\ std::vector<double>>\ \&bins\ =\ 10,}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::pair<double,\ double>>\ \&range\ =\ std::nullopt,}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&weights\ =\ std::vector<double>());}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ G4String\ \mbox{\hyperlink{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}{getThreadIDStr}}();}
-\DoxyCodeLine{00039\ \ \ \ \ std::vector<std::vector<double>>\ \mbox{\hyperlink{namespace_tools_aefa5ecd8f1fb3d69a65d517494e99669}{loadtxt}}(\textcolor{keyword}{const}\ std::string\ \&pFilePath,}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ pUnpack\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pSkipRows\ =\ 0,}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ pDelimiter\ =\ \textcolor{charliteral}{'\ '},}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ pComments\ =\ \textcolor{charliteral}{'\#'});}
-\DoxyCodeLine{00044\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{namespace_tools_a052be79128cb3b90b6a4701455307246}{linspace}}(\textcolor{keywordtype}{double}\ start,\ \textcolor{keywordtype}{double}\ end,\ \textcolor{keywordtype}{int}\ num\_points,\ \textcolor{keywordtype}{bool}\ endpoint\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00045\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{namespace_tools_adf257eb5c348836614a3c10de47bcf6e}{logspace}}(\textcolor{keywordtype}{double}\ start,\ \textcolor{keywordtype}{double}\ end,\ \textcolor{keywordtype}{int}\ num\_points,\ \textcolor{keywordtype}{double}\ base\ =\ 10.0,\ \textcolor{keywordtype}{bool}\ endpoint\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_tools_a3269713e8f36608124048bda75a02a49}{sortVectorByReference}}(std::vector<G4double>\ \&referenceVector,\ std::vector<G4double>\ \&sortVector);}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{double}\ median(std::vector<double>\ p\_vec);}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{double}\ mean(\textcolor{keyword}{const}\ std::vector<double>\ \&p\_vec,\ \textcolor{keyword}{const}\ std::vector<double>\ \&p\_weights\ =\ \{\});}
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{double}\ std(\textcolor{keyword}{const}\ std::vector<double>\&\ vec,\ \ \textcolor{keyword}{const}\ std::vector<double>\ \&p\_weights\ =\ \{\});}
-\DoxyCodeLine{00050\ \ \ \ \ }
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ throwError(\textcolor{keyword}{const}\ G4String\&\ message);}
-\DoxyCodeLine{00052\ \ \ \ \ std::vector<G4String>\ splitStringByDelimiter(G4String\ \textcolor{keyword}{const}\ \&p\_string,\ \textcolor{keywordtype}{char}\ p\_delim);}
-\DoxyCodeLine{00053\ \ \ \ \ std::vector<G4String>\ splitStringByDelimiter(\textcolor{keywordtype}{char}\ *p\_char,\ \textcolor{keywordtype}{char}\ p\_delim);}
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{extern}\ std::string\ visualisationURL;}
-\DoxyCodeLine{00055\ \};}
-\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_detector_component_8hh}{OMSimDetectorComponent.hh}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_command_args_table_8hh}{OMSimCommandArgsTable.hh}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <G4LogicalSkinSurface.hh>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <TGraph.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <TH2D.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <G4ThreeVector.hh>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <G4RotationMatrix.hh>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <G4LogicalVolume.hh>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <CADMesh.hh>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <G4MultiUnion.hh>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_tools}{Tools}}}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{namespace_tools_afc07e23ed8113c72927202c1762c91a4}{arange}}(\textcolor{keywordtype}{double}\ start,\ \textcolor{keywordtype}{double}\ stop,\ \textcolor{keywordtype}{double}\ step);}
+\DoxyCodeLine{00038\ \ \ \ \ TGraph*\ \mbox{\hyperlink{namespace_tools_a71949435269d3e8f0671dc8be431b939}{create1dInterpolator}}(\textcolor{keyword}{const}\ std::vector<double>\&\ pX,\ \textcolor{keyword}{const}\ std::vector<double>\&\ pY,\ \textcolor{keyword}{const}\ std::string\&\ pName);}
+\DoxyCodeLine{00039\ \ \ \ \ TGraph*\ \mbox{\hyperlink{namespace_tools_a71949435269d3e8f0671dc8be431b939}{create1dInterpolator}}(\textcolor{keyword}{const}\ std::string\&\ pFileName);}
+\DoxyCodeLine{00040\ \ \ \ \ TH2D\ *\mbox{\hyperlink{namespace_tools_ac7412f9ce8a57a3efde80e4fdbb0b364}{create2DHistogramFromDataFile}}(\textcolor{keyword}{const}\ std::string\ \&pFilePath);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_tools_a79deeeb2ed49181f097d55b88f6831f9}{ensureDirectoryExists}}(\textcolor{keyword}{const}\ std::string\ \&filepath);}
+\DoxyCodeLine{00043\ \ \ \ \ std::pair<std::vector<double>,\ std::vector<double>>\ \mbox{\hyperlink{namespace_tools_ab58e9ef8ed3fc6fe3cd85e26136f5be7}{histogram}}(}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&data,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::variant<\textcolor{keywordtype}{int},\ std::vector<double>>\ \&bins\ =\ 10,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::pair<double,\ double>>\ \&range\ =\ std::nullopt,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&weights\ =\ std::vector<double>());}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ G4String\ \mbox{\hyperlink{namespace_tools_aee9fb48a4947040e59508fd02baa6b4f}{getThreadIDStr}}();}
+\DoxyCodeLine{00050\ \ \ \ \ std::vector<std::vector<double>>\ \mbox{\hyperlink{namespace_tools_aefa5ecd8f1fb3d69a65d517494e99669}{loadtxt}}(\textcolor{keyword}{const}\ std::string\ \&pFilePath,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ pUnpack\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pSkipRows\ =\ 0,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ pDelimiter\ =\ \textcolor{charliteral}{'\ '},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ pComments\ =\ \textcolor{charliteral}{'\#'});}
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{namespace_tools_a052be79128cb3b90b6a4701455307246}{linspace}}(\textcolor{keywordtype}{double}\ start,\ \textcolor{keywordtype}{double}\ end,\ \textcolor{keywordtype}{int}\ num\_points,\ \textcolor{keywordtype}{bool}\ endpoint\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00056\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{namespace_tools_adf257eb5c348836614a3c10de47bcf6e}{logspace}}(\textcolor{keywordtype}{double}\ start,\ \textcolor{keywordtype}{double}\ end,\ \textcolor{keywordtype}{int}\ num\_points,\ \textcolor{keywordtype}{double}\ base\ =\ 10.0,\ \textcolor{keywordtype}{bool}\ endpoint\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_tools_a3269713e8f36608124048bda75a02a49}{sortVectorByReference}}(std::vector<G4double>\ \&referenceVector,\ std::vector<G4double>\ \&sortVector);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{double}\ median(std::vector<double>\ p\_vec);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{double}\ mean(\textcolor{keyword}{const}\ std::vector<double>\ \&p\_vec,\ \textcolor{keyword}{const}\ std::vector<double>\ \&p\_weights\ =\ \{\});}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{double}\ std(\textcolor{keyword}{const}\ std::vector<double>\&\ vec,\ \ \textcolor{keyword}{const}\ std::vector<double>\ \&p\_weights\ =\ \{\});}
+\DoxyCodeLine{00061\ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ throwError(\textcolor{keyword}{const}\ G4String\&\ message);}
+\DoxyCodeLine{00063\ \ \ \ \ std::vector<G4String>\ splitStringByDelimiter(G4String\ \textcolor{keyword}{const}\ \&p\_string,\ \textcolor{keywordtype}{char}\ p\_delim);}
+\DoxyCodeLine{00064\ \ \ \ \ std::vector<G4String>\ splitStringByDelimiter(\textcolor{keywordtype}{char}\ *p\_char,\ \textcolor{keywordtype}{char}\ p\_delim);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{extern}\ std::string\ visualisationURL;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ AppendCADComponent(\mbox{\hyperlink{class_o_m_sim_detector_component}{OMSimDetectorComponent}}*\ component,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4double\ scaleCAD,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4ThreeVector\&\ offsetCAD,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4RotationMatrix\&\ rotation,}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ filename,}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ componentname,}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4Material*\ material,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4VisAttributes\ visAttributes,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ G4OpticalSurface*\ opticalSurface\ =\ \textcolor{keyword}{nullptr});\ }
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
 
 \end{DoxyCode}
