@@ -195,7 +195,7 @@ Geometry construction</h1>
  Figure 2: <em>Side view of complex <a class="el" href="classm_d_o_m.html">mDOM</a> PMT model. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</em> </div> </div><hr  />
 <h1><a class="anchor" id="autotoc_md11"></a>
 Optical Modules and Harness Construction</h1>
-<p>For most optical modules, complex geometries like holding structures and harnesses are constructed from CAD files (<code>.obj</code>) using the <code>mesh.hh</code> class (see <code>mesh.hh</code>). Depending on the loaded geometry, computing times may increase if the geometry is built multiple times instead of performing long simulations. The <a class="el" href="classm_d_o_m.html">mDOM</a> is however fully constructed natively in Geant4. For details on the harness implementation, refer to <a href="https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/bachelorarbeiten/ba_moritz_schlechtriem.pdf">this Bachelor thesis</a>.</p>
+<p>For most optical modules, complex geometries like holding structures and harnesses are constructed from CAD files (<code>.obj</code> - see <a href="2_technicalities.md#cad-geometries">CAD geometries</a>). Using CAD files might increase the geometry construction time. However, once the geometry is initialized, the rest of the simulation proceeds as usual. Therefore, users are advised to structure their simulations to minimize repeated geometry construction. The <a class="el" href="classm_d_o_m.html">mDOM</a> is however fully constructed natively in Geant4. For details on the harness implementation, refer to <a href="https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/bachelorarbeiten/ba_moritz_schlechtriem.pdf">this Bachelor thesis</a>.</p>
 <p>The following geometries cannot be visualized:</p>
 <ul>
 <li>PMT HA-coating</li>
@@ -267,7 +267,7 @@ Making other volumes sensitive to photons</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue May 20 2025 16:07:14 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue May 20 2025 16:24:18 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
