@@ -38,7 +38,7 @@ sudo apt-get -y install libxerces-c-dev libxmu-dev libxpm-dev libglu1-mesa-dev q
 
 ### Installing ROOT
 
-1. Download the latest ROOT binary from [ROOT's official website](https://root.cern/releases/) (e.g., version 6.32.08 at the time of writing), or compile from source.
+1. Download the latest ROOT binary from [ROOT's official website](https://root.cern/install/all_releases/) (e.g., version 6.32.08 at the time of writing), or compile from source.
 
 2. Add the following to your .bashrc for convenience:
    ```bash
