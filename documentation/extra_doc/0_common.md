@@ -85,7 +85,7 @@ Figure 2: <i>Side view of complex mDOM PMT model. Image from <a href="https://ze
 
 ## Optical Modules and Harness Construction
 
-For most optical modules, complex geometries like holding structures and harnesses are constructed from CAD files (`.obj` - see [CAD geometries](2_technicalities.md#cad-geometries)). Using CAD files might increase the geometry construction time. However, once the geometry is initialized, the rest of the simulation proceeds as usual. Therefore, users are advised to structure their simulations to minimize repeated geometry construction. The mDOM is however fully constructed natively in Geant4. For details on the harness implementation, refer to [this Bachelor thesis](https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/bachelorarbeiten/ba_moritz_schlechtriem.pdf).
+For most optical modules, complex geometries like holding structures and harnesses are constructed from CAD files (`.obj` - see [CAD geometries](md_extra__doc_22__technicalities.html#autotoc_md43)). Using CAD files might increase the geometry construction time. However, once the geometry is initialized, the rest of the simulation proceeds as usual. Therefore, users are advised to structure their simulations to minimize repeated geometry construction. The mDOM is however fully constructed natively in Geant4. For details on the harness implementation, refer to [this Bachelor thesis](https://www.uni-muenster.de/imperia/md/content/physik_kp/agkappes/abschlussarbeiten/bachelorarbeiten/ba_moritz_schlechtriem.pdf).
 
 
 The following geometries cannot be visualized:
@@ -162,7 +162,7 @@ Figure 3: <i>PMT response compared to measurement for different light sources. I
 </div>
 </div>
 
-If you use the complex PMT model, you will obtain detection probability weights, which are the product of quantum efficiency (QE)—which varies with photon wavelength—and collection efficiency weight (which depends on absorption position). These weights are calibrated to match measurements. For more technical details, see the section [Matching PMT Efficiency to Measurements](md_extra__doc_22__technicalities.html#autotoc_md35).
+If you use the complex PMT model, you will obtain detection probability weights, which are the product of quantum efficiency (QE)—which varies with photon wavelength—and collection efficiency weight (which depends on absorption position). These weights are calibrated to match measurements. For more technical details, see the section [Matching PMT Efficiency to Measurements](md_extra__doc_22__technicalities.html#autotoc_md37).
 
 In contrast, with the simple PMT model, the detection probability weight is solely the QE. Since the measured QE is reduced due to absorption in the PMT glass, the simulated tube glass will have no defined absorption length.
 
