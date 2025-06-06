@@ -212,6 +212,7 @@ If there's a need to make a volume sensitive to particles other than photons, ad
 
 If you want to inspect the properties of photons at a given location in your simulation without terminating them, you can use the `BoundaryShellDetector`. 
 >**Important**: This detector captures information when a photon leaves the corresponding logical volume.
+
 Example from Figure 1:
 
 ```
