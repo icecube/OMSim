@@ -145,6 +145,19 @@ Every step of a particle through the photocathode triggers the `OMSimSensitiveDe
 
 ---
 
+## Other sensitive detectors
+
+If you want to inspect the properties of photons at a given location in your simulation without terminating them, you can use the `BoundaryShellDetector`. Example:
+
+``
+OMSimHitManager &hitManager =  OMSimHitManager::getInstance();
+OMSimSensitiveDetector* SensitiveDetector = new OMSimSensitiveDetector("myDetector", DetectorType::BoundaryShellDetector);
+hitManager.setNumberOfPMTs(1, hitManager.getNextDetectorIndex());
+registerSensitiveDetector(LogicVolume, SensitiveDetector);
+``
+
+>**Important**: This detector captures information when a photon leaves the corresponding logical volume.
+---
 
 ## Storing hits and PMT response
 
