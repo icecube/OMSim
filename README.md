@@ -85,4 +85,9 @@ OMSim has been utilized in a range of studies, each simulating unique physics, t
 ### Customising Compilation
 To exclude certain studies from compilation, edit the `simulations/CMakeLists.tx` file and comment out the unwanted `add_subdirectory()` calls before running CMake.
 
+### Troubleshooting 
 
+Depending on your system configuration, you may encounter compilation errors related to `libtbb2`. You can resolve this by installing it with:
+```
+sudo apt install libtbb2
+```

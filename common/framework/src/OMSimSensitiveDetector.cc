@@ -100,6 +100,9 @@ G4bool OMSimSensitiveDetector::ProcessHits(G4Step *p_step, G4TouchableHistory *p
     if (checkBoundaryAbsorption(p_step))
       return handlePMT(p_step, p_touchableHistory);
     return false;
+  
+  case DetectorType::BoundaryShellDetector:
+    return handleShellDetector(p_step, p_touchableHistory);
 
   case DetectorType::PerfectPMT:
     return handlePMT(p_step, p_touchableHistory);
@@ -244,7 +247,37 @@ G4bool OMSimSensitiveDetector::handleGeneralPhotonDetector(G4Step *p_step, G4Tou
   killParticle(p_step->GetTrack());
   return true;
 }
+/**
+ * @brief Handles hits for shell photon detectors. This detector does not kill the particle.
+ * @param p_step The current step information.
+ * @param p_touchableHistory The history of touchable objects.
+ * @return True if the hit was stored.alignas
+ */
+G4bool OMSimSensitiveDetector::handleShellDetector(G4Step *p_step, G4TouchableHistory *p_touchableHistory)
 
+{
+
+  G4StepPoint* postStepPoint = p_step->GetPostStepPoint();
+
+
+
+  // Get the physical volume associated with the post-step point
+
+  G4VPhysicalVolume* currentVolume = postStepPoint->GetPhysicalVolume();
+
+  //log_info("Step passed to thehandleerrr  volume name {}, sensitive {}", currentVolume->GetName(), GetName());
+
+
+
+  PhotonInfo info = getPhotonInfo(p_step);
+
+  info.pmtNumber = 0; // placeholder
+
+  storePhotonHit(info);
+
+  return true;
+
+}
 /**
  * @brief Stores photon hit information into the HitManager
  * @param p_info The photon hit information.
