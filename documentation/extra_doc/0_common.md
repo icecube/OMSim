@@ -222,26 +222,11 @@ OMSimHitManager &hitManager =  OMSimHitManager::getInstance();
 
 G4Orb* lSolidSphere1 = new G4Orb("random_sphere_1", 0.24 * m);
 G4LogicalVolume* llogicSphere1 = new G4LogicalVolume(lSolidSphere1, m_data->getMaterial("argWorld"), "LogicSphericalShell1");
-G4PVPlacement* l_spherePhysical1 = new G4PVPlacement(0,                  // no rotation
-                    G4ThreeVector(),    // at (0,0,0)
-                    llogicSphere1,        // logical volume
-                    "PhysSphere1", // name
-                    m_worldLogical,        // mother volume (world)
-                    false,              // no boolean operation
-                    0);              // check for overlaps
 
 // Create smaller sphere contained by the large one
 
 G4Orb* lSolidSphere2 = new G4Orb("random_sphere", 0.23 * m);
 G4LogicalVolume* llogicSphere2 = new G4LogicalVolume(lSolidSphere2, m_data->getMaterial("argWorld"), "LogicSphericalShell");
-// Place the spherical shell in the world volume
-G4PVPlacement* l_spherePhysical2 = new G4PVPlacement(0,                  // no rotation
-                    G4ThreeVector(),    // at (0,0,0)
-                    llogicSphere2,        // logical volume
-                    "PhysSphere2", // name
-                    llogicSphere1,        // mother volume (world)
-                    false,              // no boolean operation
-                    0);              // check for overlaps
 
 // Optionally set visualization attributes
 G4VisAttributes* visAttr = new G4VisAttributes(G4Colour(0.0, 1.0, 0.0, 0.2)); // green color
@@ -254,7 +239,7 @@ OMSimSensitiveDetector* SpheresensitiveDetector = new OMSimSensitiveDetector("my
 hitManager.setNumberOfPMTs(1, hitManager.getNextDetectorIndex());
 registerSensitiveDetector(llogicSphere1, SpheresensitiveDetector);
 ```
-With this configuration, photon information will be recorded at the exit of the sphere with a radius of 24 cm, either because the photon entered the 23 cm sphere or because it left the volume without ever touching it. 
+With this configuration, photon information will be recorded at the exit of the sphere with a radius of 24 cm, either because the photon entered the 23 cm-radius sphere or because it left the volume without ever touching it. 
 <div style="width: 100%; text-align: center;">
 <img src="shell_detector.png" width="320" height="320" alt="Cross section of simple mDOM PMT model" />
 <div style="width: 80%; margin: auto;">
