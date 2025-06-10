@@ -85,4 +85,28 @@ OMSim has been utilized in a range of studies, each simulating unique physics, t
 ### Customising Compilation
 To exclude certain studies from compilation, edit the `simulations/CMakeLists.tx` file and comment out the unwanted `add_subdirectory()` calls before running CMake.
 
+### Troubleshooting 
 
+Depending on your system configuration, you may encounter compilation errors related to missing dependencies. For example, after running:
+
+```
+make -j 4
+[  2%] Linking CXX executable ../../OMSim_effective_area
+/usr/bin/ld: warning: libtbb.so.2, needed by ...
+```
+
+you can resolve this by installing `libtbb2`:
+```
+sudo apt install libtbb2
+```
+
+Please report any other related errors to the #omsim Slack channel or open an issue so we can track them.
+
+Another known issue is that Anaconda3 installations can interfere with library paths. You can temporarily disable Anaconda by renaming its directory before compiling:
+
+```
+mv /path/to/anaconda3 /path/to/anaconda3_temp
+```
+
+
+Check carefully your `cmake ..` and `make` output to identify and resolve potential issues and consult your system administrator if applicable. Please note that we cannot guarantee full support for all system configurations.

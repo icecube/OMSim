@@ -99,7 +99,7 @@ The following geometries cannot be visualized:
 Below is an overview of the available geometries:
 
 <div style="width: 100%; text-align: center;">
-<img src="optical_modules.png" width="280" height="320" alt="Cross section of simple mDOM PMT model" />
+<img src="optical_modules.png" width="400" height="320" alt="Cross section of simple mDOM PMT model" />
 <div style="width: 80%; margin: auto;">
 <br/>
 Figure 1: <i>Real-world optical modules (top) compared to their respective visualization in OMSim (bottom).</i>
@@ -141,10 +141,6 @@ for (int i = 0; i < numberOfModules; ++i) {
 ```
 
 Every step of a particle through the photocathode triggers the `OMSimSensitiveDetector::ProcessHits` method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4's philosophy concerning G4VSensitiveDetector, consult the [Geant4 guide for application developers](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector#g4vsensitivedetector).
-
-
----
-
 
 ## Storing hits and PMT response
 
@@ -213,3 +209,44 @@ registerSensitiveDetector(lDetectorLV, sensitiveDetector);
 In this case, `OMSimSensitiveDetector::ProcessHits` will store all absorbed photons. The number of photons absorbed will depend on the absorption length of the material connected to the logical volume. If you want it to be 100% efficient, use the material `RiAbs_Absorber`.
 
 If there's a need to make a volume sensitive to particles other than photons, add a new entry to the `DetectorType` enum (in `OMSimSensitiveDetector.hh`) and incorporate a new method that handles this scenario in `OMSimSensitiveDetector::ProcessHits`. You might also track these particles in `OMSimTrackingAction` or `OMSimSteppingAction`, but using a class derived from `G4VSensitiveDetector` aligns with the philosophy of Geant4.
+
+## Non-terminating sensitive volumes for photon tracking
+If you want to inspect the properties of photons at a given location in your simulation without terminating them, you can use the `BoundaryShellDetector`. 
+>**Important**: This detector captures information when a photon leaves the corresponding logical volume.
+
+Example from Figure 1:
+
+```
+OMSimHitManager &hitManager =  OMSimHitManager::getInstance();
+    
+// Create large sphere
+
+G4Orb* lSolidSphere1 = new G4Orb("random_sphere_1", 0.24 * m);
+G4LogicalVolume* llogicSphere1 = new G4LogicalVolume(lSolidSphere1, m_data->getMaterial("argWorld"), "LogicSphericalShell1");
+
+// Create smaller sphere contained by the large one
+
+G4Orb* lSolidSphere2 = new G4Orb("random_sphere", 0.23 * m);
+G4LogicalVolume* llogicSphere2 = new G4LogicalVolume(lSolidSphere2, m_data->getMaterial("argWorld"), "LogicSphericalShell");
+
+// Optionally set visualization attributes
+G4VisAttributes* visAttr = new G4VisAttributes(G4Colour(0.0, 1.0, 0.0, 0.2)); // green color
+llogicSphere1->SetVisAttributes(visAttr);
+G4VisAttributes* visAttr2 = new G4VisAttributes(G4Colour(0.0, 1.0, 0.0, 0.0)); // green color
+llogicSphere2->SetVisAttributes(visAttr2);
+
+// Set sensitive detector
+OMSimSensitiveDetector* SpheresensitiveDetector = new OMSimSensitiveDetector("myDetector", DetectorType::BoundaryShellDetector);
+hitManager.setNumberOfPMTs(1, hitManager.getNextDetectorIndex());
+registerSensitiveDetector(llogicSphere1, SpheresensitiveDetector);
+```
+With this configuration, photon information will be recorded at the exit of the sphere with a radius of 24 cm, either because the photon entered the 23 cm-radius sphere or because it left the volume without ever touching it. 
+<div style="width: 100%; text-align: center;">
+<img src="shell_detector.png" width="320" height="320" alt="Cross section of simple mDOM PMT model" />
+<div style="width: 80%; margin: auto;">
+<br/>
+Figure 1: <i>Usage of BoundaryShell detector.</i>
+</div>
+
+
+---

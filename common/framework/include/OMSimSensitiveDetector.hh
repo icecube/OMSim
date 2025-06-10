@@ -19,6 +19,7 @@ enum class DetectorType {
     PMT,                           ///< Photomultiplier tube detector.
     VolumePhotonDetector,          ///< Photon detector based on absorption in volume.
     BoundaryPhotonDetector,         ///< Photon detector based on absorption in boundary.
+    BoundaryShellDetector,         ///< Shell detector that does not kill the particle.
     PerfectPMT                           ///< Photomultiplier tube detector.
 };
 
@@ -68,6 +69,7 @@ private:
     PhotonInfo getPhotonInfo(G4Step *pStep);
     G4bool handlePMT(G4Step *pStep, G4TouchableHistory *pTouchableHistory);
     G4bool handleGeneralPhotonDetector(G4Step *pStep, G4TouchableHistory *pTouchableHistory);
+    G4bool handleShellDetector(G4Step *pStep, G4TouchableHistory *pTouchableHistory);
     bool isPhotonDetected(double p_efficiency);
     void storePhotonHit(PhotonInfo &pInfo);
     void fetchBoundaryProcess();
