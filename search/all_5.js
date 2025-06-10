@@ -1,18 +1,18 @@
 var searchData=
 [
-  ['absorbed_20photons_0',['Step 1: Fraction of absorbed photons',['../md_extra__doc_22__technicalities.html#autotoc_md38',1,'']]],
+  ['absorbed_20photons_0',['Step 1: Fraction of absorbed photons',['../md_extra__doc_22__technicalities.html#autotoc_md39',1,'']]],
   ['adding_20new_20data_1',['Adding New Data',['../md_extra__doc_20__common.html#autotoc_md7',1,'']]],
   ['addmoduleoptions_2',['addmoduleoptions',['../_o_m_sim__radioactive__decays_8cc.html#adde1651fede3814290b88f78e76abe82',1,'addModuleOptions(OMSim *p_simulation):&#160;OMSim_radioactive_decays.cc'],['../_o_m_sim_supernova_8cc.html#adde1651fede3814290b88f78e76abe82',1,'addModuleOptions(OMSim *p_simulation):&#160;OMSimSupernova.cc'],['../_o_m_sim__effective__area_8cc.html#adde1651fede3814290b88f78e76abe82',1,'addModuleOptions(OMSim *p_simulation):&#160;OMSim_effective_area.cc']]],
   ['addproperty_3',['addProperty',['../class_o_m_sim_material_handler.html#a4205415c818cd65b9121e070179e3f99',1,'OMSimMaterialHandler']]],
-  ['analyse_20the_20output_4',['2. Analyse the Output',['../md_extra__doc_21__multithreading.html#autotoc_md29',1,'']]],
-  ['and_20detection_20probability_5',['PMTs Charge, transit time and detection probability',['../md_extra__doc_20__common.html#autotoc_md16',1,'']]],
+  ['analyse_20the_20output_4',['2. Analyse the Output',['../md_extra__doc_21__multithreading.html#autotoc_md30',1,'']]],
+  ['and_20detection_20probability_5',['PMTs Charge, transit time and detection probability',['../md_extra__doc_20__common.html#autotoc_md15',1,'']]],
   ['and_20harness_20construction_6',['Optical Modules and Harness Construction',['../md_extra__doc_20__common.html#autotoc_md11',1,'']]],
-  ['and_20modifications_7',['Developer Notes: Geant4 Dependencies and Modifications',['../md_extra__doc_231__radioactive__decays.html#autotoc_md49',1,'']]],
+  ['and_20modifications_7',['Developer Notes: Geant4 Dependencies and Modifications',['../md_extra__doc_231__radioactive__decays.html#autotoc_md50',1,'']]],
   ['and_20oms_20sensitive_8',['Making PMTs and OMs sensitive',['../md_extra__doc_20__common.html#autotoc_md13',1,'']]],
-  ['and_20pmt_20response_9',['Storing hits and PMT response',['../md_extra__doc_20__common.html#autotoc_md15',1,'']]],
-  ['and_20repeat_10',['4. Modify and repeat',['../md_extra__doc_21__multithreading.html#autotoc_md30',1,'']]],
+  ['and_20pmt_20response_9',['Storing hits and PMT response',['../md_extra__doc_20__common.html#autotoc_md14',1,'']]],
+  ['and_20repeat_10',['4. Modify and repeat',['../md_extra__doc_21__multithreading.html#autotoc_md31',1,'']]],
   ['and_20user_20data_11',['Materials and User Data',['../md_extra__doc_20__common.html#autotoc_md2',1,'']]],
-  ['and_20verify_20qe_12',['Step 2: Expand OMSimPMTResponse and Verify QE',['../md_extra__doc_22__technicalities.html#autotoc_md39',1,'']]],
+  ['and_20verify_20qe_12',['Step 2: Expand OMSimPMTResponse and Verify QE',['../md_extra__doc_22__technicalities.html#autotoc_md40',1,'']]],
   ['angulardistribution_13',['angulardistribution',['../class_o_m_sim_i_b_d.html#a99e9ba505d7c148ea66c63f9c31ed952',1,'OMSimIBD::angularDistribution()'],['../class_o_m_sim_e_n_e_s.html#aa8f2d71f822873410a9f6816fd00786b',1,'OMSimENES::angularDistribution()']]],
   ['angularscan_14',['angularscan',['../class_angular_scan.html#af7d054657e56a97db60274f30ff737e6',1,'AngularScan::AngularScan()'],['../class_angular_scan.html',1,'AngularScan']]],
   ['appendandreturntree_15',['appendAndReturnTree',['../class_parameter_table.html#a131ddfbbf38d27b59f454a4ec96b2b9e',1,'ParameterTable']]],
@@ -24,6 +24,6 @@ var searchData=
   ['arange_21',['arange',['../namespace_tools.html#afc07e23ed8113c72927202c1762c91a4',1,'Tools']]],
   ['area_22',['Effective area',['../group___effective_area.html',1,'']]],
   ['area_20studies_23',['&gt; Effective Area Studies',['../md_extra__doc_230__effective__area.html',1,'']]],
-  ['areas_24',['Introduction to effective areas',['../md_extra__doc_230__effective__area.html#autotoc_md46',1,'']]],
-  ['available_20studies_25',['Available studies',['../index.html#autotoc_md68',1,'']]]
+  ['areas_24',['Introduction to effective areas',['../md_extra__doc_230__effective__area.html#autotoc_md47',1,'']]],
+  ['available_20studies_25',['Available studies',['../index.html#autotoc_md69',1,'']]]
 ];

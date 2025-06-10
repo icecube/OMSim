@@ -134,11 +134,12 @@ $(document).ready(function(){initNavTree('md_extra__doc_20__common.html',''); in
 <li class="level1"><a href="#autotoc_md9">Geometry construction</a></li>
 <li class="level1"><a href="#autotoc_md11">Optical Modules and Harness Construction</a></li>
 <li class="level1"><a href="#autotoc_md13">Making PMTs and OMs sensitive</a></li>
-<li class="level1"><a href="#autotoc_md15">Storing hits and PMT response</a><ul><li class="level2"><a href="#autotoc_md16">PMTs Charge, transit time and detection probability</a></li>
-<li class="level2"><a href="#autotoc_md17">Hit storage</a></li>
+<li class="level1"><a href="#autotoc_md14">Storing hits and PMT response</a><ul><li class="level2"><a href="#autotoc_md15">PMTs Charge, transit time and detection probability</a></li>
+<li class="level2"><a href="#autotoc_md16">Hit storage</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md19">Making other volumes sensitive to photons</a></li>
+<li class="level1"><a href="#autotoc_md18">Making other volumes sensitive to photons</a></li>
+<li class="level1"><a href="#autotoc_md19">Non-terminating sensitive volumes for photon tracking</a></li>
 </ul>
 </div>
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
@@ -203,7 +204,7 @@ Optical Modules and Harness Construction</h1>
 <li><a class="el" href="classm_d_o_m.html">mDOM</a> support structure</li>
 </ul>
 <p>Below is an overview of the available geometries:</p>
-<div style="width: 100%; text-align: center;"> <img src="optical_modules.png" alt="Cross section of simple mDOM PMT model" width="280" height="320" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
+<div style="width: 100%; text-align: center;"> <img src="optical_modules.png" alt="Cross section of simple mDOM PMT model" width="400" height="320" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
  Figure 1: <em>Real-world optical modules (top) compared to their respective visualization in <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> (bottom).</em> </div> </div><p>To recreate the geometries, use the following commands:</p>
 <div class="fragment"><div class="line">./OMSim_effective_area --detector_type 2 --place_harness -v</div>
 </div><!-- fragment --><p>or</p>
@@ -225,10 +226,9 @@ Making PMTs and OMs sensitive</h1>
 <div class="line">}</div>
 <div class="ttc" id="aclassm_d_o_m_html"><div class="ttname"><a href="classm_d_o_m.html">mDOM</a></div><div class="ttdef"><b>Definition</b> OMSimMDOM.hh:13</div></div>
 </div><!-- fragment --><p>Every step of a particle through the photocathode triggers the <code><a class="el" href="class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4" title="Processes hits for optical photons in the detector.">OMSimSensitiveDetector::ProcessHits</a></code> method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4's philosophy concerning G4VSensitiveDetector, consult the <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector#g4vsensitivedetector">Geant4 guide for application developers</a>.</p>
-<hr  />
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 Storing hits and PMT response</h1>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 PMTs Charge, transit time and detection probability</h2>
 <p>In <code>OMSimPMTConstruction::configureSensitiveVolume</code>, PMTs are associated with an instance of <code><a class="el" href="class_o_m_sim_p_m_t_response.html" title="Class to simulate PMT response.">OMSimPMTResponse</a></code>, contingent on the PMT under simulation. This class offers a precise PMT simulation by sampling from real measurements, obtaining the relative transit time, charge (in PE), and detection probability (using the measured scans from <a href="https://zenodo.org/record/8121321">this thesis</a>). For details, refer to Section 9.3.4 of the linked thesis.</p>
 <p>This sampling is performed for every absorbed photon in <code><a class="el" href="class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4" title="Processes hits for optical photons in the detector.">OMSimSensitiveDetector::ProcessHits</a></code> invoking <code><a class="el" href="class_o_m_sim_p_m_t_response.html#a55aabd8f8fd9be58eca3ba0753974d08" title="Process a hit on the photocathode into a PMT pulse.">OMSimPMTResponse::processPhotocathodeHit</a></code>. The position of the photon on the photocathode is retrieved, the 2D-histograms of the gain, SPE resolution, transit time and TTS are interpolated for that position and the charge / transit time of the photon is sampled from a Gaussian using the interpolated values as mean (in case of gain / transit time) and standard deviation (in case of SPE resolution / TTS).</p>
@@ -237,12 +237,12 @@ PMTs Charge, transit time and detection probability</h2>
 <p>In contrast, with the simple PMT model, the detection probability weight is solely the QE. Since the measured QE is reduced due to absorption in the PMT glass, the simulated tube glass will have no defined absorption length.</p>
 <div style="width: 100%; text-align: center;"> <img src="QE_meas_VS_simulation.png" alt="QE of simulation compared to measurements" width="360" height="308" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
  Figure 4: <em>QE of simulation with the absorption length currently used compared to measurements. Image from <a href="https://zenodo.org/record/8121321">this thesis</a>.</em> </div> </div><div style="width: 100%; text-align: center;"> <img src="rel_de.png" alt="DE of simulation compared to measurements" width="600" height="250" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
- Figure 5: <em>Detection efficiency simulation (left) compared to measurement (right) using the calculated collection efficiency weights. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</em> </div> </div><h2><a class="anchor" id="autotoc_md17"></a>
+ Figure 5: <em>Detection efficiency simulation (left) compared to measurement (right) using the calculated collection efficiency weights. Image from <a href="https://zenodo.org/record/8121321">M. Unland's thesis</a>.</em> </div> </div><h2><a class="anchor" id="autotoc_md16"></a>
 Hit storage</h2>
 <p>The absorbed photon data is managed by the <code><a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a></code> global instance. It maintains a vector of hit information (<code><a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a></code> struct) for each sensitive detector. To analyze and export this data, use the <code><a class="el" href="class_o_m_sim_hit_manager.html#a45a63dbb6cdb3815db3cfde00ae36f70" title="Retrieves the HitStats structure for the specified module of single thread.">OMSimHitManager::getSingleThreadHitsOfModule</a></code> method to retrieve data for the current thread, or <code><a class="el" href="class_o_m_sim_hit_manager.html#ae10481ea62eca89b774ced9e01b991ab" title="Retrieves the HitStats structure for the specified module, should be called after data between thread...">OMSimHitManager::getMergedHitsOfModule</a></code> to obtain merged data from all threads. Note that <code><a class="el" href="class_o_m_sim_hit_manager.html#ae10481ea62eca89b774ced9e01b991ab" title="Retrieves the HitStats structure for the specified module, should be called after data between thread...">OMSimHitManager::getMergedHitsOfModule</a></code> works only if <code>OMSimHitManager::mergeThreadData</code> has been called (happens at the end of the run when <code>OMSimRunActio::EndOfRunAction</code> is called). For analysis or storage at the end of an event, handle each thread separately as events end asynchronously. For practical examples, refer to the methods in <code>OMSimEffectiveAreaAnalysis</code> and <code>OMSimSNAnalysis::writeDataFile</code>.</p>
 <p>An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in <code><a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a></code>. To enable this feature, provide the "efficiency_cut" argument via the command line. In this case <code><a class="el" href="class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4" title="Processes hits for optical photons in the detector.">OMSimSensitiveDetector::ProcessHits</a></code> will call <code><a class="el" href="class_o_m_sim_sensitive_detector.html#a8e4a324ae342e9e91ddc33fcc0be8789" title="Monte carlo if the photon was detected based on the detection probability.">OMSimSensitiveDetector::isPhotonDetected</a></code> and break early if it returns false, without storing the photon information. In most scenarios, it's not recommended to use &ndash;efficiency_cut since it reduces your statistics. It's generally better to perform post-analysis using the saved <code><a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html#a87f21652e10a0bc82870ded9697b57f2" title="Probability of photon being detected.">OMSimPMTResponse::PMTPulse::detectionProbability</a></code> for each absorbed photon. In case that efficiency_cut is active and the photon is stored, its <code><a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html#a87f21652e10a0bc82870ded9697b57f2" title="Probability of photon being detected.">OMSimPMTResponse::PMTPulse::detectionProbability</a></code> will change to 1, since it was detected.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
 Making other volumes sensitive to photons</h1>
 <p>For some studies, you might want a volume to detect photons, without this necessarily being a PMT. For such cases, the framework has a provision in place: use the <code><a class="el" href="class_o_m_sim_sensitive_detector.html" title="Represents a sensitive detector.">OMSimSensitiveDetector</a></code> and pass <code>DetectorType::GeneralPhotonDetector</code> as its constructor argument.</p>
 <p>In this case, the <code><a class="el" href="class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4" title="Processes hits for optical photons in the detector.">OMSimSensitiveDetector::ProcessHits</a></code> will use an instance <code>NoResponse</code> as PMT response, which is just a dummy placeholder. <br  />
@@ -258,16 +258,44 @@ Making other volumes sensitive to photons</h1>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html"><div class="ttname"><a href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div><div class="ttdoc">Manages detected photon information.</div><div class="ttdef"><b>Definition</b> OMSimHitManager.hh:56</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_aaa3e7a28d658d8e2e6db704b910cc35c"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">OMSimHitManager::getInstance</a></div><div class="ttdeci">static OMSimHitManager &amp; getInstance()</div><div class="ttdef"><b>Definition</b> OMSimHitManager.cc:44</div></div>
 <div class="ttc" id="aclass_o_m_sim_hit_manager_html_ab4a1060283a53660e52626d08a77ebc8"><div class="ttname"><a href="class_o_m_sim_hit_manager.html#ab4a1060283a53660e52626d08a77ebc8">OMSimHitManager::setNumberOfPMTs</a></div><div class="ttdeci">void setNumberOfPMTs(int pNumberOfPMTs, int pModuleIndex=0)</div><div class="ttdoc">Stores the number of PMTs in a module for correct data handling.</div><div class="ttdef"><b>Definition</b> OMSimHitManager.cc:148</div></div>
-<div class="ttc" id="aclass_o_m_sim_sensitive_detector_html"><div class="ttname"><a href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a></div><div class="ttdoc">Represents a sensitive detector.</div><div class="ttdef"><b>Definition</b> OMSimSensitiveDetector.hh:52</div></div>
+<div class="ttc" id="aclass_o_m_sim_sensitive_detector_html"><div class="ttname"><a href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a></div><div class="ttdoc">Represents a sensitive detector.</div><div class="ttdef"><b>Definition</b> OMSimSensitiveDetector.hh:53</div></div>
 </div><!-- fragment --><p>In this case, <code><a class="el" href="class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4" title="Processes hits for optical photons in the detector.">OMSimSensitiveDetector::ProcessHits</a></code> will store all absorbed photons. The number of photons absorbed will depend on the absorption length of the material connected to the logical volume. If you want it to be 100% efficient, use the material <code>RiAbs_Absorber</code>.</p>
-<p>If there's a need to make a volume sensitive to particles other than photons, add a new entry to the <code>DetectorType</code> enum (in <code><a class="el" href="_o_m_sim_sensitive_detector_8hh_source.html">OMSimSensitiveDetector.hh</a></code>) and incorporate a new method that handles this scenario in <code><a class="el" href="class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4" title="Processes hits for optical photons in the detector.">OMSimSensitiveDetector::ProcessHits</a></code>. You might also track these particles in <code><a class="el" href="class_o_m_sim_tracking_action.html">OMSimTrackingAction</a></code> or <code><a class="el" href="class_o_m_sim_stepping_action.html">OMSimSteppingAction</a></code>, but using a class derived from <code>G4VSensitiveDetector</code> aligns with the philosophy of Geant4. </p>
-</div></div><!-- contents -->
+<p>If there's a need to make a volume sensitive to particles other than photons, add a new entry to the <code>DetectorType</code> enum (in <code><a class="el" href="_o_m_sim_sensitive_detector_8hh_source.html">OMSimSensitiveDetector.hh</a></code>) and incorporate a new method that handles this scenario in <code><a class="el" href="class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4" title="Processes hits for optical photons in the detector.">OMSimSensitiveDetector::ProcessHits</a></code>. You might also track these particles in <code><a class="el" href="class_o_m_sim_tracking_action.html">OMSimTrackingAction</a></code> or <code><a class="el" href="class_o_m_sim_stepping_action.html">OMSimSteppingAction</a></code>, but using a class derived from <code>G4VSensitiveDetector</code> aligns with the philosophy of Geant4.</p>
+<h1><a class="anchor" id="autotoc_md19"></a>
+Non-terminating sensitive volumes for photon tracking</h1>
+<p>If you want to inspect the properties of photons at a given location in your simulation without terminating them, you can use the <code>BoundaryShellDetector</code>. &gt;<b>Important</b>: This detector captures information when a photon leaves the corresponding logical volume.</p>
+<p>Example from Figure 1:</p>
+<div class="fragment"><div class="line">OMSimHitManager &amp;hitManager =  OMSimHitManager::getInstance();</div>
+<div class="line">    </div>
+<div class="line">// Create large sphere</div>
+<div class="line"> </div>
+<div class="line">G4Orb* lSolidSphere1 = new G4Orb(&quot;random_sphere_1&quot;, 0.24 * m);</div>
+<div class="line">G4LogicalVolume* llogicSphere1 = new G4LogicalVolume(lSolidSphere1, m_data-&gt;getMaterial(&quot;argWorld&quot;), &quot;LogicSphericalShell1&quot;);</div>
+<div class="line"> </div>
+<div class="line">// Create smaller sphere contained by the large one</div>
+<div class="line"> </div>
+<div class="line">G4Orb* lSolidSphere2 = new G4Orb(&quot;random_sphere&quot;, 0.23 * m);</div>
+<div class="line">G4LogicalVolume* llogicSphere2 = new G4LogicalVolume(lSolidSphere2, m_data-&gt;getMaterial(&quot;argWorld&quot;), &quot;LogicSphericalShell&quot;);</div>
+<div class="line"> </div>
+<div class="line">// Optionally set visualization attributes</div>
+<div class="line">G4VisAttributes* visAttr = new G4VisAttributes(G4Colour(0.0, 1.0, 0.0, 0.2)); // green color</div>
+<div class="line">llogicSphere1-&gt;SetVisAttributes(visAttr);</div>
+<div class="line">G4VisAttributes* visAttr2 = new G4VisAttributes(G4Colour(0.0, 1.0, 0.0, 0.0)); // green color</div>
+<div class="line">llogicSphere2-&gt;SetVisAttributes(visAttr2);</div>
+<div class="line"> </div>
+<div class="line">// Set sensitive detector</div>
+<div class="line">OMSimSensitiveDetector* SpheresensitiveDetector = new OMSimSensitiveDetector(&quot;myDetector&quot;, DetectorType::BoundaryShellDetector);</div>
+<div class="line">hitManager.setNumberOfPMTs(1, hitManager.getNextDetectorIndex());</div>
+<div class="line">registerSensitiveDetector(llogicSphere1, SpheresensitiveDetector);</div>
+</div><!-- fragment --><p> With this configuration, photon information will be recorded at the exit of the sphere with a radius of 24 cm, either because the photon entered the 23 cm-radius sphere or because it left the volume without ever touching it. </p><div style="width: 100%; text-align: center;"> <img src="shell_detector.png" alt="Cross section of simple mDOM PMT model" width="320" height="320" class="inline"/> <div style="width: 80%; margin: auto;"> <br  />
+ Figure 1: <em>Usage of BoundaryShell detector.</em> </div></div><div style="width: 100%; text-align: center;"><hr  />
+ </div></div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jun 5 2025 12:36:41 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jun 10 2025 15:42:40 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

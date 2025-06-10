@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['objects_0',['Visualization of Complex Objects',['../md_extra__doc_22__technicalities.html#autotoc_md32',1,'']]],
+  ['objects_0',['Visualization of Complex Objects',['../md_extra__doc_22__technicalities.html#autotoc_md33',1,'']]],
   ['objreader_1',['OBJReader',['../class_c_a_d_mesh_1_1_file_1_1_o_b_j_reader.html',1,'CADMesh::File']]],
-  ['of_20absorbed_20photons_2',['Step 1: Fraction of absorbed photons',['../md_extra__doc_22__technicalities.html#autotoc_md38',1,'']]],
-  ['of_20complex_20objects_3',['Visualization of Complex Objects',['../md_extra__doc_22__technicalities.html#autotoc_md32',1,'']]],
+  ['of_20absorbed_20photons_2',['Step 1: Fraction of absorbed photons',['../md_extra__doc_22__technicalities.html#autotoc_md39',1,'']]],
+  ['of_20complex_20objects_3',['Visualization of Complex Objects',['../md_extra__doc_22__technicalities.html#autotoc_md33',1,'']]],
   ['oms_20sensitive_4',['Making PMTs and OMs sensitive',['../md_extra__doc_20__common.html#autotoc_md13',1,'']]],
-  ['omsim_5',['omsim',['../index.html#autotoc_md67',1,'Compiling OMSim'],['../class_o_m_sim.html',1,'OMSim']]],
+  ['omsim_5',['omsim',['../index.html#autotoc_md68',1,'Compiling OMSim'],['../class_o_m_sim.html',1,'OMSim']]],
   ['omsim_20geant4_20framework_6',['OMSim Geant4 Framework',['../index.html',1,'']]],
   ['omsim_2ecc_7',['OMSim.cc',['../_o_m_sim_8cc.html',1,'']]],
   ['omsim_2ehh_8',['OMSim.hh',['../_o_m_sim_8hh.html',1,'']]],
@@ -35,7 +35,7 @@ var searchData=
   ['omsimg4scintillation_32',['OMSimG4Scintillation',['../class_o_m_sim_g4_scintillation.html',1,'']]],
   ['omsimg4scintillation_2ehh_33',['OMSimG4Scintillation.hh',['../_o_m_sim_g4_scintillation_8hh.html',1,'']]],
   ['omsimg4vradioactivedecay_2ehh_34',['OMSimG4VRadioactiveDecay.hh',['../_o_m_sim_g4_v_radioactive_decay_8hh.html',1,'']]],
-  ['omsimhitmanager_35',['omsimhitmanager',['../md_extra__doc_21__multithreading.html#autotoc_md24',1,'Example: OMSimHitManager'],['../class_o_m_sim_hit_manager.html',1,'OMSimHitManager']]],
+  ['omsimhitmanager_35',['omsimhitmanager',['../md_extra__doc_21__multithreading.html#autotoc_md25',1,'Example: OMSimHitManager'],['../class_o_m_sim_hit_manager.html',1,'OMSimHitManager']]],
   ['omsimhitmanager_2ehh_36',['OMSimHitManager.hh',['../_o_m_sim_hit_manager_8hh.html',1,'']]],
   ['omsimibd_37',['omsimibd',['../class_o_m_sim_i_b_d.html#a5d6c43352e94f00acf16a4e27e2dff3a',1,'OMSimIBD::OMSimIBD()'],['../class_o_m_sim_i_b_d.html',1,'OMSimIBD']]],
   ['omsiminputdata_38',['OMSimInputData',['../class_o_m_sim_input_data.html',1,'']]],
@@ -56,7 +56,7 @@ var searchData=
   ['omsimpmtconstruction_53',['OMSimPMTConstruction',['../class_o_m_sim_p_m_t_construction.html',1,'']]],
   ['omsimpmtconstruction_2ehh_54',['OMSimPMTConstruction.hh',['../_o_m_sim_p_m_t_construction_8hh.html',1,'']]],
   ['omsimpmtresponse_55',['omsimpmtresponse',['../class_o_m_sim_p_m_t_response.html',1,'OMSimPMTResponse'],['../class_o_m_sim_p_m_t_response.html#a80b379bc78ca06d23011703aae3341d7',1,'OMSimPMTResponse::OMSimPMTResponse()']]],
-  ['omsimpmtresponse_20and_20verify_20qe_56',['Step 2: Expand OMSimPMTResponse and Verify QE',['../md_extra__doc_22__technicalities.html#autotoc_md39',1,'']]],
+  ['omsimpmtresponse_20and_20verify_20qe_56',['Step 2: Expand OMSimPMTResponse and Verify QE',['../md_extra__doc_22__technicalities.html#autotoc_md40',1,'']]],
   ['omsimpmtresponse_2ehh_57',['OMSimPMTResponse.hh',['../_o_m_sim_p_m_t_response_8hh.html',1,'']]],
   ['omsimprimarygeneratoraction_58',['OMSimPrimaryGeneratorAction',['../class_o_m_sim_primary_generator_action.html',1,'']]],
   ['omsimprimarygeneratormessenger_59',['OMSimPrimaryGeneratorMessenger',['../class_o_m_sim_primary_generator_messenger.html',1,'']]],
@@ -81,7 +81,7 @@ var searchData=
   ['optical_20modules_20and_20harness_20construction_78',['Optical Modules and Harness Construction',['../md_extra__doc_20__common.html#autotoc_md11',1,'']]],
   ['optical_20surfaces_79',['Optical Surfaces',['../md_extra__doc_20__common.html#autotoc_md4',1,'']]],
   ['opticallayerresult_80',['OpticalLayerResult',['../struct_optical_layer_result.html',1,'']]],
-  ['other_20volumes_20sensitive_20to_20photons_81',['Making other volumes sensitive to photons',['../md_extra__doc_20__common.html#autotoc_md19',1,'']]],
-  ['output_82',['2. Analyse the Output',['../md_extra__doc_21__multithreading.html#autotoc_md29',1,'']]],
-  ['output_20files_83',['Output Files',['../md_extra__doc_232___s_n.html#autotoc_md55',1,'']]]
+  ['other_20volumes_20sensitive_20to_20photons_81',['Making other volumes sensitive to photons',['../md_extra__doc_20__common.html#autotoc_md18',1,'']]],
+  ['output_82',['2. Analyse the Output',['../md_extra__doc_21__multithreading.html#autotoc_md30',1,'']]],
+  ['output_20files_83',['Output Files',['../md_extra__doc_232___s_n.html#autotoc_md56',1,'']]]
 ];

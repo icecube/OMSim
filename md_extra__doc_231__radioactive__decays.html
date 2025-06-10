@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('md_extra__doc_231__radioactive__decays
   <div class="headertitle"><div class="title">&gt; Radioactive Decays Studies</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md48"></a> Study for understanding the background produced by radioactive decays in borosilicate glass of optical modules &amp; PMTs.</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md49"></a> Study for understanding the background produced by radioactive decays in borosilicate glass of optical modules &amp; PMTs.</p>
 <blockquote class="doxtable">
 <p>&zwj;<b>Warning</b>: This study has been tested only for Vitrovex glass (mDOM/LOM16) and the 80mm <a class="el" href="classm_d_o_m.html">mDOM</a> PMTs. Okamoto glass (D-Egg/LOM18) is currently under investigation. </p>
 </blockquote>
@@ -144,7 +144,7 @@ $(document).ready(function(){initNavTree('md_extra__doc_231__radioactive__decays
 </ol>
 <p>To run the Simulation use the examplary line below:</p>
 <p><code>./OMSim_radioactive_decays --no_PMT_decays --efficiency_cut -n 1 --time_window 60 --temperature -30 -o outputname --environment 1 --threads 3 --detector_type 2</code></p>
-<h2><a class="anchor" id="autotoc_md49"></a>
+<h2><a class="anchor" id="autotoc_md50"></a>
 Developer Notes: Geant4 Dependencies and Modifications</h2>
 <p>This simulation module requires modifications to several Geant4 classes to enable custom handling of decay times. Unfortunately, the Geant4 physics library is not designed with extensibility in mind, making inheritance or selective function overrides impractical. As a result, we had to copy and modify entire class implementations. This approach makes the module highly dependent on the specific Geant4 version being used.</p>
 <p>With each Geant4 update, class structures and function implementations may change, requiring updates to this module—an admittedly tedious but necessary process. For Geant4 version 4.13, the following modifications were made:</p>
@@ -176,7 +176,7 @@ Developer Notes: Geant4 Dependencies and Modifications</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jun 5 2025 12:36:41 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jun 10 2025 15:42:40 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

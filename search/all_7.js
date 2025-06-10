@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['cad_20geometries_0',['CAD geometries',['../md_extra__doc_22__technicalities.html#autotoc_md43',1,'']]],
+  ['cad_20geometries_0',['CAD geometries',['../md_extra__doc_22__technicalities.html#autotoc_md44',1,'']]],
   ['cadmeshtemplate_1',['CADMeshTemplate',['../class_c_a_d_mesh_1_1_c_a_d_mesh_template.html',1,'CADMesh']]],
   ['cadmeshtemplate_3c_20tessellatedmesh_20_3e_2',['CADMeshTemplate&lt; TessellatedMesh &gt;',['../class_c_a_d_mesh_1_1_c_a_d_mesh_template.html',1,'CADMesh']]],
   ['calculateeffectivearea_3',['calculateEffectiveArea',['../class_o_m_sim_effective_area_analyisis.html#a1f36e6517ffd998ead38348faf906455',1,'OMSimEffectiveAreaAnalyisis']]],
@@ -9,7 +9,7 @@ var searchData=
   ['calculatesecondaryparticleenergy_6',['calculatesecondaryparticleenergy',['../class_o_m_sim_e_n_e_s.html#afdc34f3f9559919c54f29804c337481a',1,'OMSimENES::calculateSecondaryParticleEnergy()'],['../class_o_m_sim_i_b_d.html#af04e93cf44abe395e2b65cad4b385d1f',1,'OMSimIBD::calculateSecondaryParticleEnergy()']]],
   ['calculateslopesandcdf_7',['calculateSlopesAndCDF',['../class_distribution_sampler.html#aa0b62effce220e28d3a08c8904c6ee76',1,'DistributionSampler']]],
   ['calculateweight_8',['calculateWeight',['../class_o_m_sim_s_n_tools.html#a7b3c3433f4c60bd5a48d97600b1e8496',1,'OMSimSNTools']]],
-  ['charge_20transit_20time_20and_20detection_20probability_9',['PMTs Charge, transit time and detection probability',['../md_extra__doc_20__common.html#autotoc_md16',1,'']]],
+  ['charge_20transit_20time_20and_20detection_20probability_9',['PMTs Charge, transit time and detection probability',['../md_extra__doc_20__common.html#autotoc_md15',1,'']]],
   ['checkboundaryabsorption_10',['checkBoundaryAbsorption',['../class_o_m_sim_sensitive_detector.html#aee2e914dd514bf5c949d45e12def5447',1,'OMSimSensitiveDetector']]],
   ['checkifexists_11',['checkIfExists',['../class_o_m_sim_detector_component.html#a698a458599ff1d3045010636717e4da8',1,'OMSimDetectorComponent']]],
   ['checkifkeyintree_12',['checkIfKeyInTree',['../class_parameter_table.html#a8181a3c7b97c75eae98e3d6fb5d3e048',1,'ParameterTable']]],
@@ -17,9 +17,9 @@ var searchData=
   ['checkvolumeabsorption_14',['checkVolumeAbsorption',['../class_o_m_sim_sensitive_detector.html#a9d70226340ca6ca44a09efebd7acb1e0',1,'OMSimSensitiveDetector']]],
   ['checkvolumeforoms_15',['checkVolumeForOMs',['../class_o_m_sim_s_n_tools.html#a0b663ee3b96216ee943a681a496dffc5',1,'OMSimSNTools']]],
   ['common_20framework_16',['Common framework',['../group__common.html',1,'']]],
-  ['compilation_17',['Customising Compilation',['../index.html#autotoc_md69',1,'']]],
-  ['compiling_20omsim_18',['Compiling OMSim',['../index.html#autotoc_md67',1,'']]],
-  ['complex_20objects_19',['Visualization of Complex Objects',['../md_extra__doc_22__technicalities.html#autotoc_md32',1,'']]],
+  ['compilation_17',['Customising Compilation',['../index.html#autotoc_md70',1,'']]],
+  ['compiling_20omsim_18',['Compiling OMSim',['../index.html#autotoc_md68',1,'']]],
+  ['complex_20objects_19',['Visualization of Complex Objects',['../md_extra__doc_22__technicalities.html#autotoc_md33',1,'']]],
   ['component_20',['Component',['../struct_o_m_sim_detector_component_1_1_component.html',1,'OMSimDetectorComponent']]],
   ['configureangcoordinates_21',['configureAngCoordinates',['../class_angular_scan.html#a9c3d30d0e4f7dfb200ae7dd5fca68c4f',1,'AngularScan']]],
   ['configuregps_22',['configureGPS',['../classm_d_o_m_flasher.html#a364e96471e231b5b7838cc8df92529fc',1,'mDOMFlasher']]],
@@ -34,7 +34,7 @@ var searchData=
   ['constructparticle_31',['ConstructParticle',['../class_o_m_sim_physics_list.html#a8bf61a70f663c754304fc56073e3ac95',1,'OMSimPhysicsList']]],
   ['constructprocess_32',['ConstructProcess',['../class_o_m_sim_physics_list.html#a52292caf7091b6a7666c07f29189a9d1',1,'OMSimPhysicsList']]],
   ['constructworld_33',['constructworld',['../class_o_m_sim_effi_cali_detector.html#a38dbbcd0d08fd25291839ed03b609217',1,'OMSimEffiCaliDetector::constructWorld()'],['../class_o_m_sim_effective_area_detector.html#a6c4ccbdfac66c2820f9480d518614fa3',1,'OMSimEffectiveAreaDetector::constructWorld()'],['../class_o_m_sim_rad_decays_detector.html#a7616ce083479e613cd3d9dfa9ac8b1fa',1,'OMSimRadDecaysDetector::constructWorld()'],['../class_o_m_sim_s_ndetector.html#aa331476cc1f56d3bee80c954f7a2d793',1,'OMSimSNdetector::constructWorld()']]],
-  ['containers_34',['Best Practices for Creating New Thread-Safe Containers',['../md_extra__doc_21__multithreading.html#autotoc_md26',1,'']]],
+  ['containers_34',['Best Practices for Creating New Thread-Safe Containers',['../md_extra__doc_21__multithreading.html#autotoc_md27',1,'']]],
   ['countmergedhits_35',['countMergedHits',['../class_o_m_sim_hit_manager.html#a954b4f28a89275da58d4e2e3328d1467',1,'OMSimHitManager']]],
   ['create1dinterpolator_36',['create1dinterpolator',['../namespace_tools.html#a09abd2f325d0bef58f108c277cda429e',1,'Tools::create1dInterpolator(const std::string &amp;p_filename)'],['../namespace_tools.html#a71949435269d3e8f0671dc8be431b939',1,'Tools::create1dInterpolator(const std::vector&lt; double &gt; &amp;p_X, const std::vector&lt; double &gt; &amp;p_y, const std::string &amp;p_name)']]],
   ['create2dhistogramfromdatafile_37',['create2DHistogramFromDataFile',['../namespace_tools.html#ac7412f9ce8a57a3efde80e4fdbb0b364',1,'Tools']]],
@@ -43,6 +43,6 @@ var searchData=
   ['createlom18innersolid_40',['createLOM18InnerSolid',['../class_l_o_m18.html#a45b2c68239eac03aaf1b76225dc377f1',1,'LOM18']]],
   ['createlom18outersolid_41',['createLOM18OuterSolid',['../class_l_o_m18.html#a0c6423e526bb3c38904cde7ef6673ec2',1,'LOM18']]],
   ['creatematerial_42',['createMaterial',['../class_o_m_sim_material_handler.html#a6d25aa1ea0cfae2ca9c3ea9d539fdcca',1,'OMSimMaterialHandler']]],
-  ['creating_20new_20thread_20safe_20containers_43',['Best Practices for Creating New Thread-Safe Containers',['../md_extra__doc_21__multithreading.html#autotoc_md26',1,'']]],
-  ['customising_20compilation_44',['Customising Compilation',['../index.html#autotoc_md69',1,'']]]
+  ['creating_20new_20thread_20safe_20containers_43',['Best Practices for Creating New Thread-Safe Containers',['../md_extra__doc_21__multithreading.html#autotoc_md27',1,'']]],
+  ['customising_20compilation_44',['Customising Compilation',['../index.html#autotoc_md70',1,'']]]
 ];

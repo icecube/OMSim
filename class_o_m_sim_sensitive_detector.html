@@ -176,6 +176,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a4b3d72f7aa132ea975541843a30a2f22" id="r_a4b3d72f7aa132ea975541843a30a2f22"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a4b3d72f7aa132ea975541843a30a2f22">handleGeneralPhotonDetector</a> (G4Step *pStep, G4TouchableHistory *pTouchableHistory)</td></tr>
 <tr class="memdesc:a4b3d72f7aa132ea975541843a30a2f22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles hits for general photon detectors.  <br /></td></tr>
 <tr class="separator:a4b3d72f7aa132ea975541843a30a2f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ef25f1a368af356a4e040772fd137e5" id="r_a8ef25f1a368af356a4e040772fd137e5"><td class="memItemLeft" align="right" valign="top">G4bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a8ef25f1a368af356a4e040772fd137e5">handleShellDetector</a> (G4Step *pStep, G4TouchableHistory *pTouchableHistory)</td></tr>
+<tr class="memdesc:a8ef25f1a368af356a4e040772fd137e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles hits for shell photon detectors. This detector does not kill the particle.  <br /></td></tr>
+<tr class="separator:a8ef25f1a368af356a4e040772fd137e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e4a324ae342e9e91ddc33fcc0be8789" id="r_a8e4a324ae342e9e91ddc33fcc0be8789"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_sensitive_detector.html#a8e4a324ae342e9e91ddc33fcc0be8789">isPhotonDetected</a> (double p_efficiency)</td></tr>
 <tr class="memdesc:a8e4a324ae342e9e91ddc33fcc0be8789"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monte carlo if the photon was detected based on the detection probability.  <br /></td></tr>
 <tr class="separator:a8e4a324ae342e9e91ddc33fcc0be8789"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -457,6 +460,50 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a8ef25f1a368af356a4e040772fd137e5" name="a8ef25f1a368af356a4e040772fd137e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ef25f1a368af356a4e040772fd137e5">&#9670;&#160;</a></span>handleShellDetector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">G4bool OMSimSensitiveDetector::handleShellDetector </td>
+          <td>(</td>
+          <td class="paramtype">G4Step *&#160;</td>
+          <td class="paramname"><em>p_step</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">G4TouchableHistory *&#160;</td>
+          <td class="paramname"><em>p_touchableHistory</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_step</td><td>The current step information. </td></tr>
+    <tr><td class="paramname">p_touchableHistory</td><td>The history of touchable objects. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the hit was stored.alignas </dd></dl>
+
+</div>
+</div>
 <a id="a8e4a324ae342e9e91ddc33fcc0be8789" name="a8e4a324ae342e9e91ddc33fcc0be8789"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8e4a324ae342e9e91ddc33fcc0be8789">&#9670;&#160;</a></span>isPhotonDetected()</h2>
 
@@ -625,7 +672,7 @@ Static Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_sensitive_detector.html">OMSimSensitiveDetector</a></li>
-    <li class="footer">Generated on Thu Jun 5 2025 12:36:41 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jun 10 2025 15:42:40 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

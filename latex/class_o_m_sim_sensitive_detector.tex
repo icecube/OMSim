@@ -50,6 +50,8 @@ G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a0e8d0c59cdefec63a33c44
 \begin{DoxyCompactList}\small\item\em Handles hits for PMT detectors. \end{DoxyCompactList}\item 
 G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a4b3d72f7aa132ea975541843a30a2f22}{handle\+General\+Photon\+Detector}} (G4\+Step \texorpdfstring{$\ast$}{*}p\+Step, G4\+Touchable\+History \texorpdfstring{$\ast$}{*}p\+Touchable\+History)
 \begin{DoxyCompactList}\small\item\em Handles hits for general photon detectors. \end{DoxyCompactList}\item 
+G4bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a8ef25f1a368af356a4e040772fd137e5}{handle\+Shell\+Detector}} (G4\+Step \texorpdfstring{$\ast$}{*}p\+Step, G4\+Touchable\+History \texorpdfstring{$\ast$}{*}p\+Touchable\+History)
+\begin{DoxyCompactList}\small\item\em Handles hits for shell photon detectors. This detector does not kill the particle. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a8e4a324ae342e9e91ddc33fcc0be8789}{is\+Photon\+Detected}} (double p\+\_\+efficiency)
 \begin{DoxyCompactList}\small\item\em Monte carlo if the photon was detected based on the detection probability. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a329ead0f229868eaf8ac21132cbc6746}{store\+Photon\+Hit}} (\mbox{\hyperlink{struct_photon_info}{Photon\+Info}} \&p\+Info)
@@ -174,6 +176,22 @@ True if the hit was stored, always true for general photon detectors.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if the hit was stored, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_o_m_sim_sensitive_detector_a8ef25f1a368af356a4e040772fd137e5}\label{class_o_m_sim_sensitive_detector_a8ef25f1a368af356a4e040772fd137e5} 
+\index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!handleShellDetector@{handleShellDetector}}
+\index{handleShellDetector@{handleShellDetector}!OMSimSensitiveDetector@{OMSimSensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{handleShellDetector()}{handleShellDetector()}}
+{\footnotesize\ttfamily G4bool OMSim\+Sensitive\+Detector\+::handle\+Shell\+Detector (\begin{DoxyParamCaption}\item[{G4\+Step \texorpdfstring{$\ast$}{*}}]{p\+\_\+step,  }\item[{G4\+Touchable\+History \texorpdfstring{$\ast$}{*}}]{p\+\_\+touchable\+History }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+step} & The current step information. \\
+\hline
+{\em p\+\_\+touchable\+History} & The history of touchable objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the hit was stored.\+alignas 
 \end{DoxyReturn}
 \Hypertarget{class_o_m_sim_sensitive_detector_a8e4a324ae342e9e91ddc33fcc0be8789}\label{class_o_m_sim_sensitive_detector_a8e4a324ae342e9e91ddc33fcc0be8789} 
 \index{OMSimSensitiveDetector@{OMSimSensitiveDetector}!isPhotonDetected@{isPhotonDetected}}

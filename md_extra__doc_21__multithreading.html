@@ -124,23 +124,23 @@ $(document).ready(function(){initNavTree('md_extra__doc_21__multithreading.html'
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md21">Introduction</a></li>
-<li class="level1"><a href="#autotoc_md22">Thread Safety Guidelines</a></li>
-<li class="level1"><a href="#autotoc_md23">Thread-Safe Global Instance Implementation</a><ul><li class="level2"><a href="#autotoc_md24">Example: OMSimHitManager</a></li>
-<li class="level2"><a href="#autotoc_md25">Example: Saving Data Per Thread</a></li>
+<ul><li class="level1"><a href="#autotoc_md22">Introduction</a></li>
+<li class="level1"><a href="#autotoc_md23">Thread Safety Guidelines</a></li>
+<li class="level1"><a href="#autotoc_md24">Thread-Safe Global Instance Implementation</a><ul><li class="level2"><a href="#autotoc_md25">Example: OMSimHitManager</a></li>
+<li class="level2"><a href="#autotoc_md26">Example: Saving Data Per Thread</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md26">Best Practices for Creating New Thread-Safe Containers</a></li>
-<li class="level1"><a href="#autotoc_md27">Troubleshooting Multi-threading Issues</a><ul><li class="level2"><a href="#autotoc_md28">1. Use Valgrind Tools</a></li>
-<li class="level2"><a href="#autotoc_md29">2. Analyse the Output</a></li>
-<li class="level2"><a href="#autotoc_md30">4. Modify and repeat</a></li>
+<li class="level1"><a href="#autotoc_md27">Best Practices for Creating New Thread-Safe Containers</a></li>
+<li class="level1"><a href="#autotoc_md28">Troubleshooting Multi-threading Issues</a><ul><li class="level2"><a href="#autotoc_md29">1. Use Valgrind Tools</a></li>
+<li class="level2"><a href="#autotoc_md30">2. Analyse the Output</a></li>
+<li class="level2"><a href="#autotoc_md31">4. Modify and repeat</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="textblock"><p><a class="anchor" id="autotoc_md20"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md21"></a></p>
 <p>The OMSim-Framework allows for multi-threading. The number of threads can be controlled with the <code>--threads</code> argument (default 1). If you specify more threads than available, only the maximum available will be used.</p>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md22"></a>
 Introduction</h1>
 <p>Geant4 implements multi-threading using a master-worker model:</p>
 <ol type="1">
@@ -152,7 +152,7 @@ Introduction</h1>
 <li>Each thread has its own instance of sensitive detectors, event and tracking managers.</li>
 <li>Random number generators are designed to produce independent streams for each thread.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md23"></a>
 Thread Safety Guidelines</h1>
 <ol type="1">
 <li><b>Use Thread-Local Storage</b>: For data unique to each thread, use <code>G4ThreadLocal</code>.</li>
@@ -160,7 +160,7 @@ Thread Safety Guidelines</h1>
 <li><b>Minimize Global Variables</b>: Prefer class members or local variables instead.</li>
 <li><b>Implement Thread-Safe Containers</b>: Ensure thread-safe access and modification of containers.</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md23"></a>
+<h1><a class="anchor" id="autotoc_md24"></a>
 Thread-Safe Global Instance Implementation</h1>
 <p>Both <code><a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a></code> and <code><a class="el" href="class_o_m_sim_decays_analysis.html" title="Singleton class responsible for managing, analysing, and saving decay-related data.">OMSimDecaysAnalysis</a></code> utilize a global instance pattern. This approach provides better control over the lifecycle of the instance and can prevent potential memory leaks when integrated into larger frameworks. The process works as follows:</p>
 <ol type="1">
@@ -208,7 +208,7 @@ Thread-Safe Global Instance Implementation</h1>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;<b>Note</b>: While this global instance implementation provides better control over the instance lifecycle, it requires explicit initialization and shutdown. Ensure these are called at appropriate times (single-thread) in your application (for example in main before/after run). </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 Example: OMSimHitManager</h2>
 <p>The <code><a class="el" href="class_o_m_sim_hit_manager.html" title="Manages detected photon information.">OMSimHitManager</a></code> class demonstrates several thread-safety techniques for saving data:</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_class" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></div>
@@ -266,7 +266,7 @@ Example: OMSimHitManager</h2>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;<b>Important</b>: Call <code>mergeThreadData</code> after all threads have finished simulating (after a run has completed). </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 Example: Saving Data Per Thread</h2>
 <p>In scenarios where merging data is unnecessary, or the amount of data is too large to wait until end of run, each thread can save its data in separate files. This is demonstrated in the <code><a class="el" href="class_o_m_sim_decays_analysis.html" title="Singleton class responsible for managing, analysing, and saving decay-related data.">OMSimDecaysAnalysis</a></code> class.</p>
 <ol type="1">
@@ -332,7 +332,7 @@ Example: Saving Data Per Thread</h2>
 <div class="line">            analysisManager.<a class="code hl_function" href="class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0">reset</a>();</div>
 <div class="line">        }</div>
 <div class="ttc" id="aclass_o_m_sim_decays_analysis_html_af747109a424e5878d2a4e42b6308f3cb"><div class="ttname"><a href="class_o_m_sim_decays_analysis.html#af747109a424e5878d2a4e42b6308f3cb">OMSimDecaysAnalysis::writeMultiplicity</a></div><div class="ttdeci">void writeMultiplicity(G4double pTimeWindow)</div><div class="ttdoc">Calls calculateMultiplicity and writes the results to the output file.</div><div class="ttdef"><b>Definition</b> OMSimDecaysAnalysis.cc:53</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md26"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md27"></a>
 Best Practices for Creating New Thread-Safe Containers</h1>
 <p>When implementing new thread-safe containers in Geant4:</p>
 <ol type="1">
@@ -361,16 +361,16 @@ Best Practices for Creating New Thread-Safe Containers</h1>
 </div><!-- fragment --></li>
 </ol>
 <p>By following these guidelines and studying the provided examples, you can create thread-safe containers and classes for your Geant4 simulations, ensuring proper behavior in multi-threaded environments.</p>
-<h1><a class="anchor" id="autotoc_md27"></a>
+<h1><a class="anchor" id="autotoc_md28"></a>
 Troubleshooting Multi-threading Issues</h1>
 <p>When developing new code with multi-threaded simulations in Geant4, you may encounter race conditions or other thread-related issues. Here's a general approach to diagnose and resolve these problems:</p>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 1. Use Valgrind Tools</h2>
 <p>Valgrind provides powerful tools for detecting thread-related issues:</p>
 <p>a) Helgrind: </p><div class="fragment"><div class="line">valgrind --log-file=&quot;output_helgrind.txt&quot; --tool=helgrind ./OMSim_* [arguments]</div>
 </div><!-- fragment --><p>b) DRD (Data Race Detector): </p><div class="fragment"><div class="line">valgrind --log-file=&quot;output_helgrind.txt&quot; --tool=drd ./OMSim_* [arguments]</div>
 </div><!-- fragment --><p>These tools can identify potential race conditions and other thread-related issues. </p>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md30"></a>
 2. Analyse the Output</h2>
 <ul>
 <li>Review the Valgrind output carefully. Look for:</li>
@@ -379,7 +379,7 @@ Troubleshooting Multi-threading Issues</h1>
 <li>Potential deadlocks</li>
 <li>Tip: Use an LLM (like ChatGPT) to help interpret complex error messages and suggest potential solutions.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md31"></a>
 4. Modify and repeat</h2>
 <ul>
 <li>Once you identify the object/method causing the error, check if it's obviously not thread-safe and being shared during simulation.</li>
@@ -393,7 +393,7 @@ Troubleshooting Multi-threading Issues</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jun 5 2025 12:36:41 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jun 10 2025 15:42:40 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -121,11 +121,8 @@ Here\textquotesingle{}s an example of how to properly create and configure sensi
 \end{DoxyCode}
 
 
-Every step of a particle through the photocathode triggers the {\ttfamily \doxylink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}} method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4\textquotesingle{}s philosophy concerning G4\+VSensitive\+Detector, consult the \href{https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector\#g4vsensitivedetector}{\texttt{ Geant4 guide for application developers}}.
-
-\DoxyHorRuler{0}
-\hypertarget{md_extra__doc_20__common_autotoc_md15}{}\doxysection{\texorpdfstring{Storing hits and PMT response}{Storing hits and PMT response}}\label{md_extra__doc_20__common_autotoc_md15}
-\hypertarget{md_extra__doc_20__common_autotoc_md16}{}\doxysubsection{\texorpdfstring{PMTs Charge, transit time and detection probability}{PMTs Charge, transit time and detection probability}}\label{md_extra__doc_20__common_autotoc_md16}
+Every step of a particle through the photocathode triggers the {\ttfamily \doxylink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}} method. It verifies if the particle is a photon and whether it was absorbed. For a deeper understanding of Geant4\textquotesingle{}s philosophy concerning G4\+VSensitive\+Detector, consult the \href{https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=g4vsensitivedetector\#g4vsensitivedetector}{\texttt{ Geant4 guide for application developers}}.\hypertarget{md_extra__doc_20__common_autotoc_md14}{}\doxysection{\texorpdfstring{Storing hits and PMT response}{Storing hits and PMT response}}\label{md_extra__doc_20__common_autotoc_md14}
+\hypertarget{md_extra__doc_20__common_autotoc_md15}{}\doxysubsection{\texorpdfstring{PMTs Charge, transit time and detection probability}{PMTs Charge, transit time and detection probability}}\label{md_extra__doc_20__common_autotoc_md15}
 In {\ttfamily OMSim\+PMTConstruction\+::configure\+Sensitive\+Volume}, PMTs are associated with an instance of {\ttfamily \doxylink{class_o_m_sim_p_m_t_response}{OMSim\+PMTResponse}}, contingent on the PMT under simulation. This class offers a precise PMT simulation by sampling from real measurements, obtaining the relative transit time, charge (in PE), and detection probability (using the measured scans from \href{https://zenodo.org/record/8121321}{\texttt{ this thesis}}). For details, refer to Section 9.\+3.\+4 of the linked thesis.
 
 This sampling is performed for every absorbed photon in {\ttfamily \doxylink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}} invoking {\ttfamily \doxylink{class_o_m_sim_p_m_t_response_a55aabd8f8fd9be58eca3ba0753974d08}{OMSim\+PMTResponse\+::process\+Photocathode\+Hit}}. The position of the photon on the photocathode is retrieved, the 2D-\/histograms of the gain, SPE resolution, transit time and TTS are interpolated for that position and the charge / transit time of the photon is sampled from a Gaussian using the interpolated values as mean (in case of gain / transit time) and standard deviation (in case of SPE resolution / TTS).
@@ -141,13 +138,13 @@ In contrast, with the simple PMT model, the detection probability weight is sole
  Figure 4\+: {\itshape QE of simulation with the absorption length currently used compared to measurements. Image from \href{https://zenodo.org/record/8121321}{\texttt{ this thesis}}.}  
 
    ~\newline
- Figure 5\+: {\itshape Detection efficiency simulation (left) compared to measurement (right) using the calculated collection efficiency weights. Image from \href{https://zenodo.org/record/8121321}{\texttt{ M. Unland\textquotesingle{}s thesis}}.}  \hypertarget{md_extra__doc_20__common_autotoc_md17}{}\doxysubsection{\texorpdfstring{Hit storage}{Hit storage}}\label{md_extra__doc_20__common_autotoc_md17}
+ Figure 5\+: {\itshape Detection efficiency simulation (left) compared to measurement (right) using the calculated collection efficiency weights. Image from \href{https://zenodo.org/record/8121321}{\texttt{ M. Unland\textquotesingle{}s thesis}}.}  \hypertarget{md_extra__doc_20__common_autotoc_md16}{}\doxysubsection{\texorpdfstring{Hit storage}{Hit storage}}\label{md_extra__doc_20__common_autotoc_md16}
 The absorbed photon data is managed by the {\ttfamily \doxylink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}} global instance. It maintains a vector of hit information ({\ttfamily \doxylink{struct_hit_stats}{Hit\+Stats}} struct) for each sensitive detector. To analyze and export this data, use the {\ttfamily \doxylink{class_o_m_sim_hit_manager_a45a63dbb6cdb3815db3cfde00ae36f70}{OMSim\+Hit\+Manager\+::get\+Single\+Thread\+Hits\+Of\+Module}} method to retrieve data for the current thread, or {\ttfamily \doxylink{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}{OMSim\+Hit\+Manager\+::get\+Merged\+Hits\+Of\+Module}} to obtain merged data from all threads. Note that {\ttfamily \doxylink{class_o_m_sim_hit_manager_ae10481ea62eca89b774ced9e01b991ab}{OMSim\+Hit\+Manager\+::get\+Merged\+Hits\+Of\+Module}} works only if {\ttfamily OMSim\+Hit\+Manager\+::merge\+Thread\+Data} has been called (happens at the end of the run when {\ttfamily OMSim\+Run\+Actio\+::\+End\+Of\+Run\+Action} is called). For analysis or storage at the end of an event, handle each thread separately as events end asynchronously. For practical examples, refer to the methods in {\ttfamily OMSim\+Effective\+Area\+Analysis} and {\ttfamily OMSim\+SNAnalysis\+::write\+Data\+File}.
 
 An additional feature allows for the direct application of a QE cut. This ensures that only absorbed photons passing the QE test are retained in {\ttfamily \doxylink{class_o_m_sim_hit_manager}{OMSim\+Hit\+Manager}}. To enable this feature, provide the "{}efficiency\+\_\+cut"{} argument via the command line. In this case {\ttfamily \doxylink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}} will call {\ttfamily \doxylink{class_o_m_sim_sensitive_detector_a8e4a324ae342e9e91ddc33fcc0be8789}{OMSim\+Sensitive\+Detector\+::is\+Photon\+Detected}} and break early if it returns false, without storing the photon information. In most scenarios, it\textquotesingle{}s not recommended to use --efficiency\+\_\+cut since it reduces your statistics. It\textquotesingle{}s generally better to perform post-\/analysis using the saved {\ttfamily \doxylink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse_a87f21652e10a0bc82870ded9697b57f2}{OMSim\+PMTResponse\+::\+PMTPulse\+::detection\+Probability}} for each absorbed photon. In case that efficiency\+\_\+cut is active and the photon is stored, its {\ttfamily \doxylink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse_a87f21652e10a0bc82870ded9697b57f2}{OMSim\+PMTResponse\+::\+PMTPulse\+::detection\+Probability}} will change to 1, since it was detected.
 
 \DoxyHorRuler{0}
-\hypertarget{md_extra__doc_20__common_autotoc_md19}{}\doxysection{\texorpdfstring{Making other volumes sensitive to photons}{Making other volumes sensitive to photons}}\label{md_extra__doc_20__common_autotoc_md19}
+\hypertarget{md_extra__doc_20__common_autotoc_md18}{}\doxysection{\texorpdfstring{Making other volumes sensitive to photons}{Making other volumes sensitive to photons}}\label{md_extra__doc_20__common_autotoc_md18}
 For some studies, you might want a volume to detect photons, without this necessarily being a PMT. For such cases, the framework has a provision in place\+: use the {\ttfamily \doxylink{class_o_m_sim_sensitive_detector}{OMSim\+Sensitive\+Detector}} and pass {\ttfamily Detector\+Type\+::\+General\+Photon\+Detector} as its constructor argument.
 
 In this case, the {\ttfamily \doxylink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}} will use an instance {\ttfamily No\+Response} as PMT response, which is just a dummy placeholder. ~\newline
@@ -171,4 +168,39 @@ This approach ensures a smooth integration of the photosensitive volume within t
 
 In this case, {\ttfamily \doxylink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}} will store all absorbed photons. The number of photons absorbed will depend on the absorption length of the material connected to the logical volume. If you want it to be 100\% efficient, use the material {\ttfamily Ri\+Abs\+\_\+\+Absorber}.
 
-If there\textquotesingle{}s a need to make a volume sensitive to particles other than photons, add a new entry to the {\ttfamily Detector\+Type} enum (in {\ttfamily \doxylink{_o_m_sim_sensitive_detector_8hh_source}{OMSim\+Sensitive\+Detector.\+hh}}) and incorporate a new method that handles this scenario in {\ttfamily \doxylink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}. You might also track these particles in {\ttfamily \doxylink{class_o_m_sim_tracking_action}{OMSim\+Tracking\+Action}} or {\ttfamily \doxylink{class_o_m_sim_stepping_action}{OMSim\+Stepping\+Action}}, but using a class derived from {\ttfamily G4\+VSensitive\+Detector} aligns with the philosophy of Geant4. 
+If there\textquotesingle{}s a need to make a volume sensitive to particles other than photons, add a new entry to the {\ttfamily Detector\+Type} enum (in {\ttfamily \doxylink{_o_m_sim_sensitive_detector_8hh_source}{OMSim\+Sensitive\+Detector.\+hh}}) and incorporate a new method that handles this scenario in {\ttfamily \doxylink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{OMSim\+Sensitive\+Detector\+::\+Process\+Hits}}. You might also track these particles in {\ttfamily \doxylink{class_o_m_sim_tracking_action}{OMSim\+Tracking\+Action}} or {\ttfamily \doxylink{class_o_m_sim_stepping_action}{OMSim\+Stepping\+Action}}, but using a class derived from {\ttfamily G4\+VSensitive\+Detector} aligns with the philosophy of Geant4.\hypertarget{md_extra__doc_20__common_autotoc_md19}{}\doxysection{\texorpdfstring{Non-\/terminating sensitive volumes for photon tracking}{Non-terminating sensitive volumes for photon tracking}}\label{md_extra__doc_20__common_autotoc_md19}
+If you want to inspect the properties of photons at a given location in your simulation without terminating them, you can use the {\ttfamily Boundary\+Shell\+Detector}. \texorpdfstring{$>$}{>}{\bfseries{Important}}\+: This detector captures information when a photon leaves the corresponding logical volume.
+
+Example from Figure 1\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{OMSimHitManager\ \&hitManager\ =\ \ OMSimHitManager::getInstance();}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{//\ Create\ large\ sphere}
+\DoxyCodeLine{}
+\DoxyCodeLine{G4Orb*\ lSolidSphere1\ =\ new\ G4Orb("{}random\_sphere\_1"{},\ 0.24\ *\ m);}
+\DoxyCodeLine{G4LogicalVolume*\ llogicSphere1\ =\ new\ G4LogicalVolume(lSolidSphere1,\ m\_data-\/>getMaterial("{}argWorld"{}),\ "{}LogicSphericalShell1"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Create\ smaller\ sphere\ contained\ by\ the\ large\ one}
+\DoxyCodeLine{}
+\DoxyCodeLine{G4Orb*\ lSolidSphere2\ =\ new\ G4Orb("{}random\_sphere"{},\ 0.23\ *\ m);}
+\DoxyCodeLine{G4LogicalVolume*\ llogicSphere2\ =\ new\ G4LogicalVolume(lSolidSphere2,\ m\_data-\/>getMaterial("{}argWorld"{}),\ "{}LogicSphericalShell"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Optionally\ set\ visualization\ attributes}
+\DoxyCodeLine{G4VisAttributes*\ visAttr\ =\ new\ G4VisAttributes(G4Colour(0.0,\ 1.0,\ 0.0,\ 0.2));\ //\ green\ color}
+\DoxyCodeLine{llogicSphere1-\/>SetVisAttributes(visAttr);}
+\DoxyCodeLine{G4VisAttributes*\ visAttr2\ =\ new\ G4VisAttributes(G4Colour(0.0,\ 1.0,\ 0.0,\ 0.0));\ //\ green\ color}
+\DoxyCodeLine{llogicSphere2-\/>SetVisAttributes(visAttr2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Set\ sensitive\ detector}
+\DoxyCodeLine{OMSimSensitiveDetector*\ SpheresensitiveDetector\ =\ new\ OMSimSensitiveDetector("{}myDetector"{},\ DetectorType::BoundaryShellDetector);}
+\DoxyCodeLine{hitManager.setNumberOfPMTs(1,\ hitManager.getNextDetectorIndex());}
+\DoxyCodeLine{registerSensitiveDetector(llogicSphere1,\ SpheresensitiveDetector);}
+
+\end{DoxyCode}
+ With this configuration, photon information will be recorded at the exit of the sphere with a radius of 24 cm, either because the photon entered the 23 cm-\/radius sphere or because it left the volume without ever touching it.    ~\newline
+ Figure 1\+: {\itshape Usage of Boundary\+Shell detector.} 
+
+\DoxyHorRuler{0}
+ 

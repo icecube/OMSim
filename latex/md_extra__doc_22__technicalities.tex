@@ -1,8 +1,8 @@
 \chapter{Technicalities for Developers}
 \hypertarget{md_extra__doc_22__technicalities}{}\label{md_extra__doc_22__technicalities}\index{Technicalities for Developers@{Technicalities for Developers}}
-\label{md_extra__doc_22__technicalities_autotoc_md31}%
-\Hypertarget{md_extra__doc_22__technicalities_autotoc_md31}%
-\hypertarget{md_extra__doc_22__technicalities_autotoc_md32}{}\doxysection{\texorpdfstring{Visualization of Complex Objects}{Visualization of Complex Objects}}\label{md_extra__doc_22__technicalities_autotoc_md32}
+\label{md_extra__doc_22__technicalities_autotoc_md32}%
+\Hypertarget{md_extra__doc_22__technicalities_autotoc_md32}%
+\hypertarget{md_extra__doc_22__technicalities_autotoc_md33}{}\doxysection{\texorpdfstring{Visualization of Complex Objects}{Visualization of Complex Objects}}\label{md_extra__doc_22__technicalities_autotoc_md33}
 The complex shapes of PMTs and other intricate objects may not render correctly with the default Open\+GL (OGL) visualization engine. To ensure the visualizer remains functional, these objects are set to invisible by default.
 
 For a more detailed visualization that can handle complex geometries, you can use the Ray\+Tracer engine. While slower and more complex to use, Ray\+Tracer can visualize all volumes, regardless of their complexity. Here\textquotesingle{}s how to set it up\+:
@@ -64,7 +64,7 @@ Example for PMT glass visibility\+:
 \item Background color
 \end{DoxyItemize}
 \end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md_extra__doc_22__technicalities_autotoc_md33}{}\doxysection{\texorpdfstring{The Tools namespace}{The Tools namespace}}\label{md_extra__doc_22__technicalities_autotoc_md33}
+\end{DoxyItemize}\hypertarget{md_extra__doc_22__technicalities_autotoc_md34}{}\doxysection{\texorpdfstring{The Tools namespace}{The Tools namespace}}\label{md_extra__doc_22__technicalities_autotoc_md34}
 The tools namespace provide several methods that could help you. For example, {\ttfamily \doxylink{namespace_tools_aefa5ecd8f1fb3d69a65d517494e99669}{Tools\+::loadtxt}}, {\ttfamily \doxylink{namespace_tools_a052be79128cb3b90b6a4701455307246}{Tools\+::linspace}} and {\ttfamily \doxylink{namespace_tools_adf257eb5c348836614a3c10de47bcf6e}{Tools\+::logspace}} operate similarly to their Python\textquotesingle{}s numpy counterparts\+:
 
 
@@ -87,7 +87,7 @@ The tools namespace provide several methods that could help you. For example, {\
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
-\hypertarget{md_extra__doc_22__technicalities_autotoc_md35}{}\doxysection{\texorpdfstring{Nomenclature}{Nomenclature}}\label{md_extra__doc_22__technicalities_autotoc_md35}
+\hypertarget{md_extra__doc_22__technicalities_autotoc_md36}{}\doxysection{\texorpdfstring{Nomenclature}{Nomenclature}}\label{md_extra__doc_22__technicalities_autotoc_md36}
 We follow these naming conventions\+:
 
 Methods\+:
@@ -148,8 +148,8 @@ Remember to apply these conventions consistently across all new code and when re
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
-\hypertarget{md_extra__doc_22__technicalities_autotoc_md37}{}\doxysection{\texorpdfstring{Matching PMT to Measurements}{Matching PMT to Measurements}}\label{md_extra__doc_22__technicalities_autotoc_md37}
-In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (\href{md_extra_doc_0_common.html\#autotoc_md5}{\texttt{ click here}} for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module {\ttfamily efficiency\+\_\+calibration} facilitates this procedure. In the following, the \doxylink{classm_d_o_m}{m\+DOM} PMT is used as an example.\hypertarget{md_extra__doc_22__technicalities_autotoc_md38}{}\doxysubsection{\texorpdfstring{Step 1\+: Fraction of absorbed photons}{Step 1: Fraction of absorbed photons}}\label{md_extra__doc_22__technicalities_autotoc_md38}
+\hypertarget{md_extra__doc_22__technicalities_autotoc_md38}{}\doxysection{\texorpdfstring{Matching PMT to Measurements}{Matching PMT to Measurements}}\label{md_extra__doc_22__technicalities_autotoc_md38}
+In order to simulate the PMT efficiency correctly, each photon is given a weight that corresponds to the detection probability (\href{md_extra_doc_0_common.html\#autotoc_md5}{\texttt{ click here}} for more details). These weights are calculated using data files to match measurements. These data files have to be generated for each new PMT that is to be added to the framework. The module {\ttfamily efficiency\+\_\+calibration} facilitates this procedure. In the following, the \doxylink{classm_d_o_m}{m\+DOM} PMT is used as an example.\hypertarget{md_extra__doc_22__technicalities_autotoc_md39}{}\doxysubsection{\texorpdfstring{Step 1\+: Fraction of absorbed photons}{Step 1: Fraction of absorbed photons}}\label{md_extra__doc_22__technicalities_autotoc_md39}
 The optical properties (refractive index, thickness, and absorption length) of the glass tube and photocathode determine the number of photons absorbed in the photocathode. The optical properties of the photocathode (defined in file {\ttfamily Surf\+\_\+\+Generic\+\_\+\+Photocathode\+\_\+20nm.\+dat}) are from this paper \href{https://arxiv.org/abs/physics/0408075}{\texttt{ https\+://arxiv.\+org/abs/physics/0408075}} .
 
 To calculate the quantum efficiency weight, we have to know how many photons are absorbed in the photocathode in the simulation. For this, go through the following steps\+:
@@ -192,7 +192,7 @@ To obtain the fraction I just run this python code\+:
 
 \begin{quote}
 {\bfseries{Note}}\+: Ensure that the (interpolated) QE of the PMT you intend to use is always smaller than the obtained absorbed fraction. If this is not the case you will have to change the optical properties of the photocathode and/or the tube glass! \end{quote}
-If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra__doc_22__technicalities_autotoc_md39}{}\doxysubsection{\texorpdfstring{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}{Step 2: Expand OMSimPMTResponse and Verify QE}}\label{md_extra__doc_22__technicalities_autotoc_md39}
+If everything looks good, save the file (in the example above {\ttfamily m\+DOM\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CT\+\_\+intrinsic\+\_\+\+QE.\+dat}) in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+QE/} and move to step 2.\hypertarget{md_extra__doc_22__technicalities_autotoc_md40}{}\doxysubsection{\texorpdfstring{Step 2\+: Expand OMSim\+PMTResponse and Verify QE}{Step 2: Expand OMSimPMTResponse and Verify QE}}\label{md_extra__doc_22__technicalities_autotoc_md40}
 Add the path to the created file in your PMT file under the key {\ttfamily j\+Absorbed\+Fraction\+File\+Name} and also a default QE file under the key {\ttfamily j\+Default\+QEFile\+Name} (check {\ttfamily pmt\+\_\+\+Hamamatsu\+\_\+\+R15458\+\_\+\+CAT.\+dat} for guidance).
 
 Now run the simulation again 
@@ -223,7 +223,7 @@ and check that the weights are being calculated correctly
 
 
    ~\newline
-  \hypertarget{md_extra__doc_22__technicalities_autotoc_md40}{}\doxysubsection{\texorpdfstring{Step 3\+: Matching detection efficiency scan}{Step 3: Matching detection efficiency scan}}\label{md_extra__doc_22__technicalities_autotoc_md40}
+  \hypertarget{md_extra__doc_22__technicalities_autotoc_md41}{}\doxysubsection{\texorpdfstring{Step 3\+: Matching detection efficiency scan}{Step 3: Matching detection efficiency scan}}\label{md_extra__doc_22__technicalities_autotoc_md41}
 The next step is to create the collection efficiency weights to match the relative detection efficiency scans. For this the scan measurement is replicated in the simulation, scanning the PMT in a XY grid. The output file of the simulation of this step is a histogram with the position of absorbed photons for each beam position.
 
 
@@ -250,7 +250,7 @@ The next step is to create the collection efficiency weights to match the relati
 \item Save the weights in a file and store it in {\ttfamily common/data/\+PMTs/measurement\+\_\+matching\+\_\+data/\+CE\+\_\+weight/}
 \item Add to this file in the PMT data file under the key {\ttfamily j\+CEweights\+File\+Name}.
 \item Run the simulation again and check if the weights are correct.
-\end{DoxyItemize}\hypertarget{md_extra__doc_22__technicalities_autotoc_md41}{}\doxysubsection{\texorpdfstring{Step 4\+: Matching gain / transit time scans}{Step 4: Matching gain / transit time scans}}\label{md_extra__doc_22__technicalities_autotoc_md41}
+\end{DoxyItemize}\hypertarget{md_extra__doc_22__technicalities_autotoc_md42}{}\doxysubsection{\texorpdfstring{Step 4\+: Matching gain / transit time scans}{Step 4: Matching gain / transit time scans}}\label{md_extra__doc_22__technicalities_autotoc_md42}
 The scan data of transit time / gain must be corrected before use, as the coordinates of the beam do not necessarily correspond to the primary spot on the photocathode that is illuminated, since air-\/glass boundary refracts the beam.
 
 
@@ -283,7 +283,7 @@ If you need to add more parameters (for example low gain probability, which is a
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
-\hypertarget{md_extra__doc_22__technicalities_autotoc_md43}{}\doxysection{\texorpdfstring{CAD geometries}{CAD geometries}}\label{md_extra__doc_22__technicalities_autotoc_md43}
+\hypertarget{md_extra__doc_22__technicalities_autotoc_md44}{}\doxysection{\texorpdfstring{CAD geometries}{CAD geometries}}\label{md_extra__doc_22__technicalities_autotoc_md44}
 
 \begin{DoxyItemize}
 \item {\bfseries{Creating new geometries}}

@@ -8,6 +8,7 @@ var class_o_m_sim_sensitive_detector =
     [ "getPhotonInfo", "class_o_m_sim_sensitive_detector.html#a4312e760ce38246d09e2933aa37b8725", null ],
     [ "handleGeneralPhotonDetector", "class_o_m_sim_sensitive_detector.html#a4b3d72f7aa132ea975541843a30a2f22", null ],
     [ "handlePMT", "class_o_m_sim_sensitive_detector.html#a0e8d0c59cdefec63a33c443ff903d2cf", null ],
+    [ "handleShellDetector", "class_o_m_sim_sensitive_detector.html#a8ef25f1a368af356a4e040772fd137e5", null ],
     [ "isPhotonDetected", "class_o_m_sim_sensitive_detector.html#a8e4a324ae342e9e91ddc33fcc0be8789", null ],
     [ "killParticle", "class_o_m_sim_sensitive_detector.html#aad0ef54caf4fd1505aed2959d59b1e3d", null ],
     [ "ProcessHits", "class_o_m_sim_sensitive_detector.html#a2d12fa5869b30eee35a85793522e98f4", null ],
