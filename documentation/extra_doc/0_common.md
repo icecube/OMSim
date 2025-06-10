@@ -210,6 +210,7 @@ In this case, `OMSimSensitiveDetector::ProcessHits` will store all absorbed phot
 
 If there's a need to make a volume sensitive to particles other than photons, add a new entry to the `DetectorType` enum (in `OMSimSensitiveDetector.hh`) and incorporate a new method that handles this scenario in `OMSimSensitiveDetector::ProcessHits`. You might also track these particles in `OMSimTrackingAction` or `OMSimSteppingAction`, but using a class derived from `G4VSensitiveDetector` aligns with the philosophy of Geant4.
 
+## Non-terminating sensitive volumes for photon tracking
 If you want to inspect the properties of photons at a given location in your simulation without terminating them, you can use the `BoundaryShellDetector`. 
 >**Important**: This detector captures information when a photon leaves the corresponding logical volume.
 
