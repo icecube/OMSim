@@ -99,7 +99,7 @@ The following geometries cannot be visualized:
 Below is an overview of the available geometries:
 
 <div style="width: 100%; text-align: center;">
-<img src="optical_modules.png" width="320" height="320" alt="Cross section of simple mDOM PMT model" />
+<img src="optical_modules.png" width="400" height="320" alt="Cross section of simple mDOM PMT model" />
 <div style="width: 80%; margin: auto;">
 <br/>
 Figure 1: <i>Real-world optical modules (top) compared to their respective visualization in OMSim (bottom).</i>
