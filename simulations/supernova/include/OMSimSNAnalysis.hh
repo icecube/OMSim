@@ -30,11 +30,8 @@ public:
 	 * @brief Returns the singleton instance of the OMSimSNAnalysis.
 	 * @return A reference to the singleton instance.
 	 */
-	static OMSimSNAnalysis &getInstance()
-	{
-		static OMSimSNAnalysis instance;
-		return instance;
-	}
+	static OMSimSNAnalysis &getInstance();
+	
 	
 	void analyseEvent();
 	void initEventStat();
@@ -44,11 +41,15 @@ public:
 	void writeDataFileHeader();
 	void writeInfoFile();
 	void writeDataFile();
+	void mergeFiles();
+	void mergeThreadFiles(G4String);
 
 	G4ThreadLocal static SNEventStats *m_eventStat;
 	G4ThreadLocal static bool m_headerWasWritten;
 
 private:
 	G4String m_outputSufix;
+    static OMSimSNAnalysis* m_instance; 
+    static G4Mutex m_mutex;             
 };
 
