@@ -28,7 +28,9 @@ std::pair<std::string, std::string> OMSimSNTools::getFileNames(int p_value)
         {1, {basePath + "Flux_Nu_light_ls220.cfg", basePath + "Flux_Nubar_light_ls220.cfg"}}, // 9.6 solar masses type II model
         {2, {basePath + "nu_DDT.cfg", basePath + "nubar_DDT.cfg"}},                          // type 1 SN
         {3, {basePath + "nu_GCD.cfg", basePath + "nubar_GCD.cfg"}},                          // type 1 SN
-        {4, {basePath + "Flux_Nu_tailSN.cfg", basePath + "Flux_Nubar_tailSN.cfg"}}           // long tailed type II
+        {4, {basePath + "Flux_Nu_tailSN.cfg", basePath + "Flux_Nubar_tailSN.cfg"}},          // long tailed type II
+        {5, {basePath + "CorrectFlux_Nu_heavy.cfg", basePath + "CorrectFlux_Nubar_heavy.cfg"}},// DFigitised heavy modfel grom Ctistian's thesis
+        {6, {basePath + "CorrectFlux_Nu_light.cfg", basePath + "CorrectFlux_Nubar_light.cfg"}} // DFigitised light modfel grom Ctistian's thesis
     };
 
     auto it = fileMap.find(p_value);

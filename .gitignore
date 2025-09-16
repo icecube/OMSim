@@ -30,6 +30,8 @@
 *.out
 *.app
 
+# Ignore macOS metadata files
+.DS_Store
 
 build/
 build*/
