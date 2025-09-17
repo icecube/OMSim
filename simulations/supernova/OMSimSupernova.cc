@@ -62,6 +62,8 @@ int main(int p_argumentCount, char *p_argumentVector[])
 
 	if (OMSimCommandArgsTable::getInstance().get<bool>("visual"))
 		simulation.startVisualisation();
+
+	// just adding a brute merge threads at the end
 	OMSimSNAnalysis::getInstance().mergeFiles();
 	return 0;
 }
