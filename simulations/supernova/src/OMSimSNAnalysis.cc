@@ -67,7 +67,7 @@ void OMSimSNAnalysis::writeDataFileHeader()
     dataFile << "#" << G4endl;
 }
 
-void OMSimSNAnalysis::processEvent()
+void OMSimSNAnalysis::processEvent(G4int eventID)
 {
     log_trace("Processing SN event");
 //    if (!m_headerWasWritten)
@@ -75,25 +75,27 @@ void OMSimSNAnalysis::processEvent()
 //        writeHeaders();
 //    }
 
-    writeInfoFile();
-    writeDataFile();
+    writeInfoFile(eventID);
+    writeDataFile(eventID);
 }
 
-void OMSimSNAnalysis::writeInfoFile()
+void OMSimSNAnalysis::writeInfoFile(G4int eventID)
 {
     log_trace("Writing SN event info file");
     G4String fileName = m_outputSufix + "_" + Tools::getThreadIDStr() + "_info.dat";
 
     std::fstream dataFile(fileName, std::ios::out | std::ios::app);
+    dataFile << eventID << "\t";
     dataFile << m_eventStat->neutrinoTime / s << "\t";
     dataFile << m_eventStat->meanEnergy / MeV << "\t";
     dataFile << m_eventStat->neutrinoEnergy / MeV << "\t";
     dataFile << m_eventStat->cosTheta << "\t";
     dataFile << m_eventStat->primaryEnergy / MeV << "\t";
-    dataFile << m_eventStat->weight << "\n";
+    dataFile << m_eventStat->weight << "\t";
+    dataFile << m_eventStat->vertexDistance / m << "\n";
 }
 
-void OMSimSNAnalysis::writeDataFile()
+void OMSimSNAnalysis::writeDataFile(G4int eventID)
 {
     log_trace("Writing SN event hit data file");
     OMSimHitManager &hitManager = OMSimHitManager::getInstance();
@@ -101,6 +103,7 @@ void OMSimSNAnalysis::writeDataFile()
     G4String fileName = m_outputSufix + "_" + Tools::getThreadIDStr() + "_data.dat";
     std::fstream dataFile(fileName, std::ios::out | std::ios::app);
     
+    dataFile << eventID << "\t";
     dataFile << hitManager.getNumberOfModules() << "\t";
 
     // write hit count for each module
@@ -126,6 +129,7 @@ void OMSimSNAnalysis::writeDataFile()
             {
                 dataFile << hits.PMTnr.at(i) << "\t";   // FIX: no division by ns here
                 dataFile << hits.hitTime.at(i) / ns << "\t";
+                // dataFile << hits.generationDetectionDistance.at(i) / m << "\t";
                 dataFile << hits.PMTresponse.at(i).detectionProbability << "\t";
             }
         }
@@ -151,14 +155,14 @@ void OMSimSNAnalysis::mergeThreadFiles(G4String p_fileEnd)
     if (p_fileEnd == "_info.dat")
     {
         mergedFile << "#" << G4endl;
-        mergedFile << "# Time of Flux [s] | Mean energy of nu/nubar | nu energy | "
-                   << "costheta of e-/e+ from z dir | e-/e+ energy | event weight" << G4endl;
+        mergedFile << "# EventID | Time of Flux [s] | Mean energy of nu/nubar | nu energy | "
+                   << "costheta of e-/e+ from z dir | e-/e+ energy | event weight | Abs distance (m)" << G4endl;
         mergedFile << "#" << G4endl;
     }
     else if (p_fileEnd == "_data.dat")
     {
         mergedFile << "#" << G4endl;
-        mergedFile << "# Nr of modules | For each module, hit counts |";
+        mergedFile << "#EventID | Nr of modules | For each module, hit counts |";
         mergedFile << " For each hit, starting with module 0: PMT nr \t hit time (ns) \t Detection probability ";
         mergedFile << "#" << G4endl;
     }

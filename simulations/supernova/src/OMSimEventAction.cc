@@ -15,6 +15,7 @@ void OMSimEventAction::BeginOfEventAction(const G4Event* evt)
 
 void OMSimEventAction::EndOfEventAction(const G4Event* evt)
 {	
-	OMSimSNAnalysis::getInstance().processEvent();
+	G4int eventID = evt->GetEventID();
+	OMSimSNAnalysis::getInstance().processEvent(eventID);
 	OMSimHitManager::getInstance().reset();
 }

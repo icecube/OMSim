@@ -58,6 +58,11 @@ void SNBaseParticleGenerator::GeneratePrimaries(G4Event *p_event)
     initialiseParticle();
     OMSimSNAnalysis &analysisManager = OMSimSNAnalysis::getInstance();
     OMSimSNAnalysis::getInstance().initEventStat();
+
+    // Adding the vertex dist to analysis
+    G4ThreeVector pos = m_particleGun->GetParticlePosition();
+    analysisManager.m_eventStat->vertexDistance = pos.mag();
+    
     G4double neutrinoEnergy = calculateNeutrinoEnergy();
 
     G4ThreeVector momentumDirection = calculateMomentumDirection(neutrinoEnergy);

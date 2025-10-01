@@ -18,6 +18,7 @@ struct SNEventStats
 	G4double cosTheta;
 	G4double primaryEnergy;
 	G4double weight;
+	G4double vertexDistance;
 };
 
 class OMSimSNAnalysis
@@ -35,12 +36,12 @@ public:
 	
 	void analyseEvent();
 	void initEventStat();
-	void processEvent();
+	void processEvent(G4int);
 	void writeHeaders();
 	void writeInfoFileHeader();
 	void writeDataFileHeader();
-	void writeInfoFile();
-	void writeDataFile();
+	void writeInfoFile(G4int);
+	void writeDataFile(G4int);
 	void mergeFiles();
 	void mergeThreadFiles(G4String);
 
