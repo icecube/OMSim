@@ -30,7 +30,10 @@ std::pair<std::string, std::string> OMSimSNTools::getFileNames(int p_value)
         {3, {basePath + "nu_GCD.cfg", basePath + "nubar_GCD.cfg"}},                          // type 1 SN
         {4, {basePath + "Flux_Nu_tailSN.cfg", basePath + "Flux_Nubar_tailSN.cfg"}},          // long tailed type II
         {5, {basePath + "CorrectFlux_Nu_heavy.cfg", basePath + "CorrectFlux_Nubar_heavy.cfg"}},// DFigitised heavy modfel grom Ctistian's thesis
-        {6, {basePath + "CorrectFlux_Nu_light.cfg", basePath + "CorrectFlux_Nubar_light.cfg"}} // DFigitised light modfel grom Ctistian's thesis
+        {6, {basePath + "CorrectFlux_Nu_light.cfg", basePath + "CorrectFlux_Nubar_light.cfg"}}, // DFigitised light modfel grom Ctistian's thesis
+        {7, {basePath + "27M_Sukhbold_2015_nue.cfg", basePath + "27M_Sukhbold_2015_nuebar.cfg"}},
+        {8, {basePath + "27M_Fornax_2022_nue.cfg", basePath + "27M_Fornax_2022_nuebar.cfg"}}, 
+        {9, {basePath + "27M_Warren_2020_nue.cfg", basePath + "27M_Warren_2020_nuebar.cfg"}} 
     };
 
     auto it = fileMap.find(p_value);
