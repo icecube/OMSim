@@ -33,6 +33,7 @@
 # Ignore macOS metadata files
 .DS_Store
 
+.ipynb_checkpoints/
 build/
 build*/
 documentation/html
