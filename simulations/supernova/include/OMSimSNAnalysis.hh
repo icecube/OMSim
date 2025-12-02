@@ -50,6 +50,7 @@ public:
 
 private:
 	G4String m_outputSufix;
+	G4bool m_shortInfo;
     static OMSimSNAnalysis* m_instance; 
     static G4Mutex m_mutex;             
 };

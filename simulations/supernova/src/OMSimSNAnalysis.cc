@@ -30,7 +30,9 @@ OMSimSNAnalysis &OMSimSNAnalysis::getInstance()
     return *m_instance;
 }
 
-OMSimSNAnalysis::OMSimSNAnalysis() : m_outputSufix(OMSimCommandArgsTable::getInstance().get<std::string>("output_file"))
+OMSimSNAnalysis::OMSimSNAnalysis()
+ : m_outputSufix(OMSimCommandArgsTable::getInstance().get<std::string>("output_file")),
+   m_shortInfo(OMSimCommandArgsTable::getInstance().get<bool>("ShortInfo"))
 {
 }
 
@@ -81,6 +83,25 @@ void OMSimSNAnalysis::processEvent(G4int eventID)
 
 void OMSimSNAnalysis::writeInfoFile(G4int eventID)
 {
+
+    OMSimHitManager &hitManager = OMSimHitManager::getInstance();
+
+    bool anyHit = false;
+    if (m_shortInfo)
+    {
+        for (int iModule = 0; iModule < hitManager.getNumberOfModules(); iModule++)
+        {
+            if (hitManager.areThereHitsInModuleSingleThread(iModule))
+            {
+                anyHit = true;
+                break;
+            }
+        }
+
+        // Skip writing if no hit and ShortInfo is enabled
+        if (!anyHit)
+            return;
+    }
     log_trace("Writing SN event info file");
     G4String fileName = m_outputSufix + "_" + Tools::getThreadIDStr() + "_info.dat";
 
@@ -97,8 +118,26 @@ void OMSimSNAnalysis::writeInfoFile(G4int eventID)
 
 void OMSimSNAnalysis::writeDataFile(G4int eventID)
 {
-    log_trace("Writing SN event hit data file");
     OMSimHitManager &hitManager = OMSimHitManager::getInstance();
+
+    bool anyHit = false;
+    if (m_shortInfo)
+    {
+        for (int iModule = 0; iModule < hitManager.getNumberOfModules(); iModule++)
+        {
+            if (hitManager.areThereHitsInModuleSingleThread(iModule))
+            {
+                anyHit = true;
+                break;
+            }
+        }
+
+        // Skip writing if no hit and ShortInfo is enabled
+        if (!anyHit)
+            return;
+    }
+    
+    log_trace("Writing SN event hit data file");
 
     G4String fileName = m_outputSufix + "_" + Tools::getThreadIDStr() + "_data.dat";
     std::fstream dataFile(fileName, std::ios::out | std::ios::app);

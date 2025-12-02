@@ -41,7 +41,8 @@ void addModuleOptions(OMSim* p_simulation)
 	("SNgun", po::value<G4int>()->default_value(0), "Select interaction to simulate: 0=IBD (no neutron capture included), 1=ENES")
 	("SNfixEnergy", po::bool_switch(), "Instead of using the energy distribution of the model, it generates all neutrinos from an energy distribution with fixed mean energy and alpha")
 	("SNmeanE", po::value<G4double>()->default_value(10.0), "If --SNfixEnergy, use this mean energy to generate the neutrinos ")
-	("SNalpha", po::value<G4double>()->default_value(2.5), "If --SNfixEnergy, pinching (alpha) parameter of nu/nubar energy spectrum");
+	("SNalpha", po::value<G4double>()->default_value(2.5), "If --SNfixEnergy, pinching (alpha) parameter of nu/nubar energy spectrum")
+	("ShortInfo", po::bool_switch(), "Only keeps crucial data when there's at least one hit");
 
 
 	p_simulation->extendOptions(extraOptions);
