@@ -77,7 +77,8 @@ void addModuleOptions(OMSim* p_simulation)
 	("multiplicity_time_window", po::value<double>()->default_value(20.), "time window in ns for coincidences in multiplicity calculation")
 	("yield_alphas", po::value<G4double>(), "scintillation yield for alpha particles. This affects all materials with scintillation properties!")
 	("yield_electrons", po::value<G4double>(), "scintillation yield for electrons. This affects all materials with scintillation properties!")
-	("no_header", po::bool_switch(), "if given, the header of the output file will not be written");
+	("no_header", po::bool_switch(), "if given, the header of the output file will not be written")
+	("LightOutput", po::bool_switch(), "if given, only save eventID, hitTime and PMTnr");
 
 	p_simulation->extendOptions(moduleOptions);
 }

@@ -24,8 +24,6 @@ struct SNEventStats
 class OMSimSNAnalysis
 {
 public:
-	OMSimSNAnalysis();
-	~OMSimSNAnalysis(){};
 
 	/**
 	 * @brief Returns the singleton instance of the OMSimSNAnalysis.
@@ -49,9 +47,16 @@ public:
 	G4ThreadLocal static bool m_headerWasWritten;
 
 private:
+
+    static G4Mutex m_mutex;             
+    static OMSimSNAnalysis* m_instance; 
+
+	OMSimSNAnalysis();
+	~OMSimSNAnalysis() = default;
+	OMSimSNAnalysis(const OMSimSNAnalysis &) = delete;
+	OMSimSNAnalysis &operator=(const OMSimSNAnalysis &) = delete;
+
 	G4String m_outputSufix;
 	G4bool m_shortInfo;
-    static OMSimSNAnalysis* m_instance; 
-    static G4Mutex m_mutex;             
 };
 

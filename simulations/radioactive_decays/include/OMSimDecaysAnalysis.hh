@@ -47,8 +47,12 @@ private:
     static G4Mutex m_mutex;
 
     static OMSimDecaysAnalysis* m_instance;
-    OMSimDecaysAnalysis() = default;
+    OMSimDecaysAnalysis();
     ~OMSimDecaysAnalysis() = default;
     OMSimDecaysAnalysis(const OMSimDecaysAnalysis &) = delete;
     OMSimDecaysAnalysis &operator=(const OMSimDecaysAnalysis &) = delete;
+
+	G4String outputSufix;
+    G4bool LightOutput;
+
 };

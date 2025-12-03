@@ -27,6 +27,12 @@ OMSimDecaysAnalysis &OMSimDecaysAnalysis::getInstance()
 	return *m_instance;
 }
 
+OMSimDecaysAnalysis::OMSimDecaysAnalysis()
+ : outputSufix(OMSimCommandArgsTable::getInstance().get<std::string>("output_file")),
+   LightOutput(OMSimCommandArgsTable::getInstance().get<bool>("LightOutput"))
+{
+}
+
 /**
  * @brief Append decay information to internal data structures.
  * @param p_particleName Name of the particle.
@@ -52,7 +58,6 @@ void OMSimDecaysAnalysis::appendDecay(G4String p_particleName, G4double p_decayT
  */
 void OMSimDecaysAnalysis::writeMultiplicity(G4double p_timeWindow)
 {
-	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
 	G4String fileName = outputSufix + "_multiplicity.dat";
 
 	OMSimHitManager::getInstance().mergeThreadData();
@@ -74,11 +79,11 @@ void OMSimDecaysAnalysis::writeMultiplicity(G4double p_timeWindow)
  */
 void OMSimDecaysAnalysis::writeThreadDecayInformation()
 {
+	if (LightOutput)
+		return;
 	if (!m_threadDecayStats)
 		return;
 	log_trace("Writing decay information of {} decays", m_threadDecayStats->eventId.size());
-
-	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
 
 	G4String lDecaysFileName = outputSufix + "_" + Tools::getThreadIDStr() + "_decays.dat";
 
@@ -113,13 +118,26 @@ void OMSimDecaysAnalysis::writeThreadHitInformation()
 		return;
 
 	HitStats lHits = lHitManager.getSingleThreadHitsOfModule();
-	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
 	G4String lHitsFileName = outputSufix + "_" + Tools::getThreadIDStr() + "_hits.dat";
 	log_trace("Writing hit information of {} hits", lHits.eventId.size());
 
 	std::fstream dataFile;
 	dataFile.open(lHitsFileName.c_str(), std::ios::out | std::ios::app);
-	if (lHits.eventId.size() > 0)
+	if (lHits.eventId.size() == 0)
+		return;
+	if (LightOutput)
+	{
+		for (int i = 0; i < (int)lHits.eventId.size(); i++)
+		{
+			dataFile << lHits.eventId.at(i) << "\t";
+			dataFile << std::setprecision(13);
+			dataFile << lHits.hitTime.at(i) / s << "\t";
+			dataFile << std::setprecision(4);
+			dataFile << lHits.PMTnr.at(i) << "\t";
+			dataFile << G4endl;
+		}
+	}
+	else
 	{
 		for (int i = 0; i < (int)lHits.eventId.size(); i++)
 		{
@@ -155,8 +173,6 @@ void OMSimDecaysAnalysis::reset()
 
 void OMSimDecaysAnalysis::mergeThreadFiles(G4String p_fileEnd)
 {
-	G4String outputSufix = OMSimCommandArgsTable::getInstance().get<std::string>("output_file");
-
 	G4String mergedFileName = outputSufix + p_fileEnd;
 
 	std::ofstream mergedFile;
@@ -206,5 +222,8 @@ void OMSimDecaysAnalysis::mergeThreadFiles(G4String p_fileEnd)
 void OMSimDecaysAnalysis::mergeFiles()
 {
 	mergeThreadFiles(G4String("_hits.dat"));
-	mergeThreadFiles(G4String("_decays.dat"));
+	if (!LightOutput)
+	{
+		mergeThreadFiles(G4String("_decays.dat"));
+	}
 }
