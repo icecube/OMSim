@@ -1,0 +1,55 @@
+# Visualization macro: 20 GeV electron, 1m from DOM
+# Auto-fires 1 event on startup
+
+/control/verbose 0
+/run/verbose 0
+/run/initialize
+
+/vis/open OGLSQt 900x900-0+0
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+
+/vis/drawVolume
+/vis/viewer/set/style surface
+/vis/viewer/set/hiddenMarker true
+/vis/viewer/set/viewpointVector 0 1 0
+/vis/viewer/set/upVector 0 0 1
+/vis/viewer/set/background white
+
+# Zoom out: factor < 1 zooms out, world is 30m radius
+/vis/viewer/zoom 0.03
+
+/vis/scene/add/trajectories smooth
+/vis/scene/endOfEventAction accumulate
+
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByParticleID-0/default/setStepPtsSize 1
+/vis/modeling/trajectories/drawByParticleID-0/set e- blue
+/vis/modeling/trajectories/drawByParticleID-0/set mu- red
+/vis/modeling/trajectories/drawByParticleID-0/set gamma cyan
+/vis/modeling/trajectories/drawByParticleID-0/setRGBA opticalphoton 0 0 0 0
+
+# Filter out optical photons and neutrinos
+/vis/filtering/trajectories/create/particleFilter
+/vis/filtering/trajectories/particleFilter-0/add opticalphoton
+/vis/filtering/trajectories/particleFilter-0/add nu_mu
+/vis/filtering/trajectories/particleFilter-0/add anti_nu_mu
+/vis/filtering/trajectories/particleFilter-0/add nu_e
+/vis/filtering/trajectories/particleFilter-0/add anti_nu_e
+/vis/filtering/trajectories/particleFilter-0/invert true
+
+/vis/scene/add/hits
+
+/vis/geometry/set/visibility World_log 0 0
+
+# 20 GeV electron, 1m away, heading straight at the DOM
+/gps/particle e-
+/gps/energy 20 GeV
+/gps/position -1 0 0 m
+/gps/direction 1 0 0
+
+/vis/viewer/set/autoRefresh true
+
+# Auto-fire 1 event
+/run/beamOn 1

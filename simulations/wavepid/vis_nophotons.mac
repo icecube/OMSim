@@ -2,11 +2,9 @@
 # Based on working 2vis.mac from original WavePID
 # Filters out optical photons to prevent memory exhaustion
 
-# Initialization (from init_vis.mac)
+# NOTE: /run/initialize is NOT called here - already done by the main executable
 /control/verbose 0
-/control/saveHistory
 /run/verbose 0
-/run/initialize
 
 /vis/geometry/list
 
@@ -87,4 +85,10 @@
 /vis/viewer/set/viewpointVector 0 1 0
 /vis/viewer/set/background white
 /vis/viewer/set/lineSegmentsPerCircle 50
+
+# 50 GeV muon, 5m impact parameter, entering along x-axis
+/gps/particle mu-
+/gps/energy 50 GeV
+/gps/position -8.5 0 5 m
+/gps/direction 1 0 0
 
