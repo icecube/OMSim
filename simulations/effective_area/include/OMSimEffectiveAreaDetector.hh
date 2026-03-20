@@ -22,4 +22,7 @@ public:
 private:
     void constructWorld();
     void constructDetector();
+    G4LogicalVolume *mWaterLogical;
+    G4VPhysicalVolume *mWaterPhysical;
 };
+

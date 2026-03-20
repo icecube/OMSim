@@ -39,10 +39,12 @@ public:
     void writeThreadDecayInformation();
     void writeThreadHitInformation();
     void reset();
-    
-private:
     G4ThreadLocal static DecayStats *m_threadDecayStats;
     void mergeThreadFiles(G4String p_FileEnd);
+    
+private:
+   // G4ThreadLocal static DecayStats *m_threadDecayStats;
+    //void mergeThreadFiles(G4String p_FileEnd);
 
     static G4Mutex m_mutex;
 

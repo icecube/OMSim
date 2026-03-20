@@ -1,0 +1,20 @@
+{
+   "jName": "Surf_Refl_tank_plastic",
+   "jModel": "unified",
+   "jFinish": "ground",
+   "jType": "dielectric_metal",
+    "jProperties": {
+      "REFLECTIVITY": {
+         "jWavelength": [
+            150.0,
+            730.0
+         ],
+         "jValue": [
+            0.01,
+            0.01
+            
+         ]
+      }
+   }
+}
+

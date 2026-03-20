@@ -36,3 +36,11 @@ build*/
 documentation/html
 documentation/latex
 .vscode/
+
+build/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+*.o
+simulations/CMakeFiles/
+simulations/Makefile

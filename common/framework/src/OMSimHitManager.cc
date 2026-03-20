@@ -137,6 +137,7 @@ void OMSimHitManager::appendHitInfo(
 	moduleHits.localPosition.push_back(p_localPos);
 	moduleHits.generationDetectionDistance.push_back(p_distance);
 	moduleHits.PMTresponse.push_back(p_response);
+
 	log_trace("Saved hit nr {} on module {} sensor {} (thread {})", moduleHits.eventId.size(), p_moduleNumber, p_PMTHitNumber, G4Threading::G4GetThreadId());
 }
 
@@ -271,7 +272,7 @@ void OMSimHitManager::sortHitStatsByTime(HitStats &p_hits)
  * @param p_moduleIndex The index of the module for which to calculate the multiplicity. Default is 0.
  * @return A vector containing the multiplicity data.
  */
-std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double p_timeWindow, int p_moduleIndex)
+/*std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double p_timeWindow, int p_moduleIndex)
 {
 	log_trace("Calculating multiplicity in time window {} for module with index", p_timeWindow, p_moduleIndex);
 
@@ -318,15 +319,68 @@ std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double p_timeWin
 		multiplicity[currentSum - 1] += 1;
 	}
 	return multiplicity;
+}*/
+
+//##############################
+// no sliding, but fix window
+std::vector<int> OMSimHitManager::calculateMultiplicity(const G4double p_timeWindow, int p_moduleIndex)
+{
+    log_trace("Calculating multiplicity in time window {} for module with index", p_timeWindow, p_moduleIndex);
+
+    HitStats hitsOfModule = m_moduleHits[p_moduleIndex];
+    G4int numberOfPMTs = m_numberOfPMTs[p_moduleIndex];
+
+    sortHitStatsByTime(hitsOfModule);
+
+    std::vector<int> multiplicity(numberOfPMTs, 0);
+    int vectorSize = hitsOfModule.hitTime.size();
+
+    std::size_t i = 0;
+
+    while (i < vectorSize) 
+    {
+        int hitPMT[numberOfPMTs] = {0};
+        int currentSum = 0;
+
+        G4double startTime = hitsOfModule.hitTime.at(i);
+        std::size_t j = i;
+
+        while (j < vectorSize && (hitsOfModule.hitTime.at(j) - startTime) <= p_timeWindow)
+        {
+            hitPMT[hitsOfModule.PMTnr.at(j)] = 1;
+            j++;
+        }
+
+        for (std::size_t k = 0; k < numberOfPMTs; ++k)
+        {
+            currentSum += hitPMT[k];
+        }
+
+        if (currentSum > 0)
+        {
+            multiplicity[currentSum - 1] += 1;
+        }
+
+        i = j;
+    }
+
+    return multiplicity;
 }
+
+//#################################
+
+
 
 void OMSimHitManager::mergeThreadData()
 {
 	log_trace("Merge thread data was called");
+
 	G4AutoLock lock(&m_mutex);
+
 	if (m_threadData)
 	{
 		log_debug("Merging data for thread {}", G4Threading::G4GetThreadId());
+
 		for (const auto &[moduleIndex, hits] : m_threadData->moduleHits)
 		{
 			auto &globalHits = m_moduleHits[moduleIndex];
@@ -346,7 +400,23 @@ void OMSimHitManager::mergeThreadData()
 			globalHits.generationDetectionDistance.insert(globalHits.generationDetectionDistance.end(), hits.generationDetectionDistance.begin(), hits.generationDetectionDistance.end());
 			globalHits.PMTresponse.insert(globalHits.PMTresponse.end(), hits.PMTresponse.begin(), hits.PMTresponse.end());
 		}
+
 		delete m_threadData;
 		m_threadData = nullptr;
 	}
+
+	// test only to store arrival times of photons from both, muon flux and radioactive decays for external alalysis
+/*	if (!m_moduleHits.empty()) {
+		const HitStats &hits = m_moduleHits[0];  //  module index 0 
+		std::vector<G4double> arrivalTimes = hits.hitTime;
+		std::sort(arrivalTimes.begin(), arrivalTimes.end());
+
+		std::ofstream outFile("photon_hits.csv");
+		outFile << "time_ns,pmt\n";
+		for (size_t i = 0; i < hits.hitTime.size(); ++i)
+			outFile << hits.hitTime[i] / ns << std::setprecision(13) << "," << hits.PMTnr[i] << "\n";
+		outFile.close();
+
+	}*/
 }
+

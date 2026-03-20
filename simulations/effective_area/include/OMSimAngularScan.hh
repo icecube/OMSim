@@ -21,12 +21,11 @@ class AngularScan
 {
 public:
 
-  AngularScan(G4double pBeamRadius, G4double pBeamDistance, G4double pWavelength);
+  AngularScan(G4double p_beamRadius, G4double p_beamDistance, G4double p_wavelength);
   ~AngularScan();
 
-
   void configureScan();
-  void runSingleAngularScan(G4double pPhi, G4double pTheta);
+  void runSingleAngularScan(G4double p_phi, G4double p_theta);
 
 private:
 

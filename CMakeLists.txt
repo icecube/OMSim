@@ -1,5 +1,6 @@
 # Minimum version of CMake required
 cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
+set(spdlog_DIR /Applic.HPC/gruppen/p0kapp/software/spdlog/install/lib64/cmake/spdlog)
 
 # Project name
 project(OMSim)
@@ -23,14 +24,19 @@ add_definitions(-DBOOST_BIND_GLOBAL_PLACEHOLDERS)
 
 # Set path to Geant4 libraries
 list(APPEND CMAKE_MODULE_PATH ${Geant4_DIR}/Modules)
+#set (CMAKE_MODULE_PATH /data/geant4/geant4-v11.1.1/install/lib/Geant4-10.7.1/Modules)
+#set(CMAKE_MODULE_PATH "/data/geant4/geant4-v11.3.0/install/lib/Geant4-11.3.0/Modules")
+
 
 # Set paths for OpenSSL
-set(OPENSSL_ROOT_DIR /usr/lib/x86_64-linux-gnu)
-set(OPENSSL_LIBRARIES /usr/lib/x86_64-linux-gnu)
+#set(OPENSSL_ROOT_DIR /usr/lib/x86_64-linux-gnu)
+#set(OPENSSL_LIBRARIES /usr/lib/x86_64-linux-gnu)
 find_package(OpenSSL REQUIRED)
+
 
 # For logging with spdlog
 find_package(spdlog REQUIRED)
+
 
 # Include OpenSSL's headers in the project
 include_directories(${OPENSSL_INCLUDE_DIR})

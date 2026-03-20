@@ -200,7 +200,7 @@ G4Material *OMSimInputData::getMaterial(G4String p_name)
         G4String gel[] = {"RiAbs_Gel_Wacker612Measured", "RiAbs_Gel_Shin-Etsu",
                            "RiAbs_Gel_QGel900", "RiAbs_Gel_Wacker612Company",
                            "Ri_Vacuum"};
-        G4String world[] = {"Ri_Air", "IceCubeICE", "IceCubeICE_SPICE"};
+        G4String world[] = {"Ri_Air", "IceCubeICE", "IceCubeICE_SPICE", "Ri_Water"};
 
         // Get user argument parameters
         OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();

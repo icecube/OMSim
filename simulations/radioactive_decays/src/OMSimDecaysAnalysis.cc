@@ -129,12 +129,12 @@ void OMSimDecaysAnalysis::writeThreadHitInformation()
 			dataFile << std::setprecision(4);
 			dataFile << lHits.PMTnr.at(i) << "\t";
 			dataFile << lHits.energy.at(i) << "\t";
-			dataFile << lHits.globalPosition.at(i).x() << "\t";
-			dataFile << lHits.globalPosition.at(i).y() << "\t";
-			dataFile << lHits.globalPosition.at(i).z() << "\t";
-			dataFile << lHits.PMTresponse.at(i).PE << "\t";
-			dataFile << lHits.PMTresponse.at(i).transitTime << "\t";
-			dataFile << lHits.PMTresponse.at(i).detectionProbability << "\t";
+			//dataFile << lHits.globalPosition.at(i).x() << "\t";
+			//dataFile << lHits.globalPosition.at(i).y() << "\t";
+			//dataFile << lHits.globalPosition.at(i).z() << "\t";
+			//dataFile << lHits.PMTresponse.at(i).PE << "\t";
+			//dataFile << lHits.PMTresponse.at(i).transitTime << "\t";
+			//dataFile << lHits.PMTresponse.at(i).detectionProbability << "\t";
 			dataFile << G4endl;
 		}
 	}
@@ -142,16 +142,7 @@ void OMSimDecaysAnalysis::writeThreadHitInformation()
 	log_trace("Finished writing detailed hit information");
 }
 
-/**
- * @brief Resets (deletes) decay and hits data.
- */
-void OMSimDecaysAnalysis::reset()
-{
-	log_trace("Deleting m_threadDecayStats of Thread ID {}", G4Threading::G4GetThreadId());
-	delete m_threadDecayStats;
-	m_threadDecayStats = nullptr;
-	OMSimHitManager::getInstance().reset();
-}
+
 
 void OMSimDecaysAnalysis::mergeThreadFiles(G4String p_fileEnd)
 {
@@ -206,5 +197,16 @@ void OMSimDecaysAnalysis::mergeThreadFiles(G4String p_fileEnd)
 void OMSimDecaysAnalysis::mergeFiles()
 {
 	mergeThreadFiles(G4String("_hits.dat"));
-	mergeThreadFiles(G4String("_decays.dat"));
+	//mergeThreadFiles(G4String("_decays.dat"));
+}
+
+/**
+ * @brief Resets (deletes) decay and hits data.
+ */
+void OMSimDecaysAnalysis::reset()
+{
+	log_trace("Deleting m_threadDecayStats of Thread ID {}", G4Threading::G4GetThreadId());
+	delete m_threadDecayStats;
+	m_threadDecayStats = nullptr;
+	OMSimHitManager::getInstance().reset();
 }

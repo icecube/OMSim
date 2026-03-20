@@ -1,3 +1,4 @@
+
 #include "OMSimPhysicsList.hh"
 #include "OMSimG4Scintillation.hh"
 #include "OMSimG4RadioactiveDecay.hh"
@@ -35,9 +36,18 @@
 #include "G4ionIonisation.hh"
 #include "G4hMultipleScattering.hh"
 
+
+#include "G4MuonMinus.hh"
+#include "G4MuonPlus.hh"
+#include "G4MuMultipleScattering.hh"
+#include "G4MuIonisation.hh"
+#include "G4MuBremsstrahlung.hh"
+#include "G4MuPairProduction.hh"
+#include "G4StepLimiter.hh"
+
 OMSimPhysicsList::OMSimPhysicsList() : G4VUserPhysicsList()
 {
-	defaultCutValue = 0.1 * um;
+	defaultCutValue = 1 * um;
 	SetVerboseLevel(0);
 }
 
@@ -55,6 +65,8 @@ void OMSimPhysicsList::ConstructParticle()
 	G4NeutrinoMu::NeutrinoMuDefinition();
 	G4AntiNeutrinoMu::AntiNeutrinoMuDefinition();
 	G4Proton::ProtonDefinition();
+	G4MuonMinus::MuonMinusDefinition();
+    G4MuonPlus::MuonPlusDefinition();
 }
 
 void OMSimPhysicsList::ConstructProcess()
@@ -152,6 +164,14 @@ void OMSimPhysicsList::ConstructProcess()
 			pmanager->AddProcess(new G4eBremsstrahlung(), -1, -1, 3);
 			pmanager->AddProcess(new G4eplusAnnihilation, 0, -1, 4);
 		}
+        else if (particleName == "mu-" || particleName == "mu+") 
+       	{
+            pmanager->AddProcess(new G4MuMultipleScattering(), -1, 1, -1);
+            pmanager->AddProcess(new G4MuIonisation(),         -1, 2, 2);
+            pmanager->AddProcess(new G4MuBremsstrahlung(),     -1, 3, 3);
+            pmanager->AddProcess(new G4StepLimiter(),          -1,-1, 5);
+            pmanager->AddProcess(new G4MuPairProduction(),     -1,-1, 3);
+        }
 
 		if (theCerenkovProcess->IsApplicable(*particle))
 		{
@@ -170,6 +190,7 @@ void OMSimPhysicsList::ConstructProcess()
 /**
  * @brief Sets the production cuts with default values.
  */
+
 void OMSimPhysicsList::SetCuts()
 {
 	SetCutsWithDefault();

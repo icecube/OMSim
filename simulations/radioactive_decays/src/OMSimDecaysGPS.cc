@@ -1,3 +1,6 @@
+
+#include "OMSimCommandArgsTable.hh"
+#include <cmath>
 #include "OMSimDecaysGPS.hh"
 #include "OMSimLogger.hh"
 #include "OMSimUIinterface.hh"
@@ -5,6 +8,17 @@
 #include <G4Poisson.hh>
 #include <G4Navigator.hh>
 #include "G4TransportationManager.hh"
+#include <sstream>
+#include <iomanip>
+
+namespace {
+inline std::string fmt_time_precise(double t_seconds) {
+    std::ostringstream oss;
+    oss.setf(std::ios::scientific);               // or defaultfloat
+    oss << std::setprecision(17) << t_seconds << " s";
+    return oss.str();
+}
+}
 
 void OMSimDecaysGPS::setProductionRadius(G4double p_productionRadius)
 {
@@ -18,6 +32,7 @@ G4String OMSimDecaysGPS::getDecayTerminationNuclide()
 /**
  * @brief Configures common GPS commands for the radioactive decays.
  */
+
 void OMSimDecaysGPS::generalGPS()
 {
     log_trace("Configuring general GPS");
@@ -61,6 +76,7 @@ void OMSimDecaysGPS::generalGPS()
  * @param p_isotope The isotope which is going to be produced.
  * @param p_volumeName The volume name where the isotope decays.
  */
+
 void OMSimDecaysGPS::configureIsotopeGPS(G4String p_isotope, G4String p_volumeName)
 {
     log_debug("Configuring GPS for isotope {} in volume {}", p_isotope, p_volumeName);
@@ -75,6 +91,7 @@ void OMSimDecaysGPS::configureIsotopeGPS(G4String p_isotope, G4String p_volumeNa
     ui.applyCommand("/gps/pos/confine " + p_volumeName);
 }
 
+
 /**
  * @brief Calculates the number of decays for isotopes.
  * @param p_MPT Pointer to the material properties table.
@@ -82,6 +99,7 @@ void OMSimDecaysGPS::configureIsotopeGPS(G4String p_isotope, G4String p_volumeNa
  * @param p_mass Mass of the volume in which decays occur.
  * @return Map of isotopes and their respective number of decays.
  */
+
 std::map<G4String, G4int> OMSimDecaysGPS::calculateNumberOfDecays(G4MaterialPropertiesTable *p_MPT, G4double p_timeWindow, G4double p_mass)
 {
     std::map<G4String, G4int> numberDecays;
@@ -100,6 +118,7 @@ std::map<G4String, G4int> OMSimDecaysGPS::calculateNumberOfDecays(G4MaterialProp
  * @brief Simulates the decays in the pressure vessel of the optical module.
  * @param p_timeWindow The livetime that should be simulated.
  */
+
 void OMSimDecaysGPS::simulateDecaysInPressureVessel(G4double p_timeWindow)
 {
     log_trace("Simulating radioactive decays in pressure vessel in a time window of {} seconds", p_timeWindow);
@@ -122,7 +141,15 @@ void OMSimDecaysGPS::simulateDecaysInPressureVessel(G4double p_timeWindow)
         configureIsotopeGPS(isotope, pressureVesselName);
 
         log_trace("Simulating {} decays of {} in pressure vessel", decayCount, isotope);
-        ui.runBeamOn(decayCount);
+        //ui.runBeamOn(decayCount);
+        for (int i = 0; i < decayCount; ++i) {
+            double decayTime = G4UniformRand() * p_timeWindow;
+            //ui.applyCommand("/gps/time " + std::to_string(decayTime) + " s");
+            ui.applyCommand(std::string("/gps/time ") + fmt_time_precise(decayTime));
+            ui.runBeamOn(1);
+        }
+
+
     }
 }
 
@@ -130,6 +157,7 @@ void OMSimDecaysGPS::simulateDecaysInPressureVessel(G4double p_timeWindow)
  * @brief Simulates the decays in the PMTs of the optical module.
  * @param p_timeWindow The livetime that should be simulated.
  */
+
 void OMSimDecaysGPS::simulateDecaysInPMTs(G4double p_timeWindow)
 {
     log_trace("Simulating radioactive decays in glass of PMTs in a time window of {} seconds", p_timeWindow);
@@ -151,7 +179,14 @@ void OMSimDecaysGPS::simulateDecaysInPMTs(G4double p_timeWindow)
             configureIsotopeGPS(isotope, "PMT_" + std::to_string(pmt));
 
             log_trace("Simulating {} decays of {} in PMT {}", decayCount, isotope, pmt);
-            ui.runBeamOn(decayCount);
+           // ui.runBeamOn(decayCount);
+            for (int i = 0; i < decayCount; ++i) {
+                double decayTime = G4UniformRand() * p_timeWindow;
+                //ui.applyCommand("/gps/time " + std::to_string(decayTime) + " s");
+                ui.applyCommand(std::string("/gps/time ") + fmt_time_precise(decayTime));
+                ui.runBeamOn(1);
+            }
+
         }
     }
 }
@@ -200,4 +235,136 @@ G4ThreeVector OMSimDecaysGPS::sampleNextDecayPosition(G4ThreeVector p_currentPos
         }
         counter++;
     }
+}
+
+
+// -------------------- MUON SCAN ------------------------
+
+/*void OMSimDecaysGPS::setMuonScanParameters()
+{
+    double poolWidth = 346.8 * cm;
+    double poolHeight = 168.6 * cm;
+    double poolDiagonal = std::sqrt(std::pow(poolWidth, 2) + std::pow(poolHeight, 2));
+
+    m_beamRadius = poolDiagonal / 2 + 10 * cm;
+    m_beamDistance = 200 * cm;
+}*/
+
+/* wrong muon normalization */
+
+/*
+void OMSimDecaysGPS::setMuonScanParameters() {
+    const double X = 3.468*m, Y = 1.686*m, Z = 1.440*m;
+    const double R_bounding = 0.5 * std::sqrt(X*X + Y*Y + Z*Z);
+    m_beamRadius   = R_bounding + 0.15*m;
+    m_beamDistance = 2.0*m;
+}
+
+void OMSimDecaysGPS::runSingleAngularScan(G4double p_phi, G4double p_theta)
+{
+    m_theta = p_theta * deg;
+    m_phi = p_phi * deg;
+    configureScan();
+    OMSimUIinterface::getInstance().runBeamOn(1);
+}
+
+void OMSimDecaysGPS::configureScan()
+{
+    OMSimUIinterface &ui = OMSimUIinterface::getInstance();
+    OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
+
+    ui.applyCommand("/event/verbose 0");
+    ui.applyCommand("/control/verbose 0");
+    ui.applyCommand("/run/verbose 0");
+
+    ui.applyCommand("/gps/particle mu+");
+    ui.applyCommand("/gps/energy 1e9 eV");
+
+    ui.applyCommand("/gps/pos/type Plane");
+    ui.applyCommand("/gps/pos/shape Circle");
+    ui.applyCommand("/gps/pos/radius", m_beamRadius, "mm");
+    ui.applyCommand("/gps/pos/centre 0 0", m_beamDistance, "mm");
+
+    ui.applyCommand("/gps/pos/rot1 0 1 0");
+    ui.applyCommand("/gps/pos/rot2 0 0 1");
+    ui.applyCommand("/gps/ang/rot1 0 1 0");
+    ui.applyCommand("/gps/ang/rot2 0 0 1");
+    ui.applyCommand("/gps/ang/type beam2d");
+    ui.applyCommand("/gps/ang/sigma_x 0");
+    ui.applyCommand("/gps/ang/sigma_y 0");
+
+    if (args.get<bool>("scint_off"))
+    {
+        log_debug("Inactivating scintillation process");
+        ui.applyCommand("/process/inactivate Scintillation");
+    }
+
+    configurePosCoordinates();
+    configureAngCoordinates();
+}
+
+void OMSimDecaysGPS::configurePosCoordinates()
+{
+    double rho = m_beamDistance * sin(m_theta);
+    double x = rho * cos(m_phi);
+    double y = rho * sin(m_phi);
+    double z = m_beamDistance * cos(m_theta);
+
+    OMSimUIinterface::getInstance().applyCommand("/gps/pos/centre", x, y, z, "mm");
+}
+
+void OMSimDecaysGPS::configureAngCoordinates()
+{
+    OMSimUIinterface &ui = OMSimUIinterface::getInstance();
+    double x, y, z;
+
+    x = -sin(m_phi);
+    y = cos(m_phi);
+    z = 0;
+    ui.applyCommand("/gps/pos/rot1", x, y, z);
+    ui.applyCommand("/gps/ang/rot1", x, y, z);
+
+    x = -cos(m_phi) * cos(m_theta);
+    y = -sin(m_phi) * cos(m_theta);
+    z = sin(m_theta);
+    ui.applyCommand("/gps/pos/rot2", x, y, z);
+    ui.applyCommand("/gps/ang/rot2", x, y, z);
+}
+*/
+
+
+
+
+/* correct muon normalization */
+
+/*void OMSimDecaysGPS::setMuonScanParameters()
+{
+    double poolWidth = 346.8 * cm;
+    double poolHeight = 168.6 * cm;
+    double poolDiagonal = std::sqrt(std::pow(poolWidth, 2) + std::pow(poolHeight, 2));
+
+    m_beamRadius = poolDiagonal / 2 + 10 * cm;
+    m_beamDistance = 200 * cm;
+}*/
+void OMSimDecaysGPS::setMuonScanParameters() {
+    //const double X = 3.468*m, Y = 1.686*m, Z = 1.440*m;
+   // const double R_bounding = 0.5 * std::sqrt(X*X + Y*Y + Z*Z);
+   // m_beamRadius   = R_bounding + 0.15*m;
+    m_beamRadius = 12.74*m;
+    m_beamDistance = 2.0*m;
+}
+
+void OMSimDecaysGPS::configureScan()
+{
+    OMSimUIinterface &ui = OMSimUIinterface::getInstance();
+    OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
+
+
+    ui.applyCommand("/gps/pos/type Plane");
+    ui.applyCommand("/gps/pos/shape Circle");
+    ui.applyCommand("/gps/pos/radius", m_beamRadius, "mm");
+    ui.applyCommand("/gps/pos/centre 0 0", m_beamDistance, "mm");
+
+    ui.applyCommand("/gps/ang/type direction");
+
 }

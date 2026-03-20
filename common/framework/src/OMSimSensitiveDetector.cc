@@ -6,7 +6,7 @@
 #include "OMSimPMTResponse.hh"
 #include "OMSimCommandArgsTable.hh"
 #include "OMSimHitManager.hh"
-
+#include "G4Event.hh"
 #include "G4ios.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4ParticleTypes.hh"
