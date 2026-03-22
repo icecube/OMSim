@@ -33,49 +33,6 @@ std::shared_ptr<spdlog::logger> g_logger;
 
 namespace po = boost::program_options;
 
-/**
- * @brief Runs the decay simulation for the specified optical module.
- * @param p_detector Pointer to the OMSimRadDecaysDetector object representing the detector 
- *                  for which the decay simulation is to be performed.
- * @see OMSimDecaysGPS, OMSimDecaysAnalysis
- */
-/*
-void runRadioactiveDecays(OMSimRadDecaysDetector *p_detector)
-{
-    OMSimDecaysAnalysis &analysisManager = OMSimDecaysAnalysis::getInstance();
-    OMSimCommandArgsTable &args = OMSimCommandArgsTable::getInstance();
-
-    OMSimDecaysGPS &decaysGPS = OMSimDecaysGPS::getInstance();
-    decaysGPS.setOpticalModule(p_detector->m_opticalModule);
-    decaysGPS.setProductionRadius(280*mm);
-    const bool simulateVesselDecays = !args.get<bool>("no_PV_decays");
-    const bool simulatePMTDecays = !args.get<bool>("no_PMT_decays");
-
-    for (int i = 0; i < (int)args.get<G4int>("numevents"); i++)
-    {
-        if (simulateVesselDecays)
-        {
-            decaysGPS.simulateDecaysInPressureVessel(args.get<G4double>("time_window"));
-        }
-
-        if (simulatePMTDecays)
-        {
-            decaysGPS.simulateDecaysInPMTs(args.get<G4double>("time_window"));
-        }
-
-        if (args.get<bool>("multiplicity_study"))
-        {
-            G4double coincidenceTimeWindow = args.get<double>("multiplicity_time_window")*ns;
-            analysisManager.writeMultiplicity(coincidenceTimeWindow);
-			//analysisManager.writeThreadHitInformation();
-			analysisManager.reset();
-
-        }
-    }
-  //  analysisManager.mergeFiles();
-	
-}*/
-
 // this is for the energy spectrum simulation
 namespace MuSurf {
 
@@ -168,10 +125,10 @@ void runRadioactiveDecays(OMSimRadDecaysDetector *p_detector) {
     const double R_disk = decaysGPS.getBeamRadius() / m;    // <-- use the exact radius used by GPS
     const double A_disk = CLHEP::pi * R_disk * R_disk;   // [m^2]
 
-    // --- Local intensity law from your fit: I(θ)=I0 cos^n θ ---
-    const double I0 = 46.3;//30.4;//12.2;49.5;//70.0;//31.0;//9.36;//31.0;//9.36;     // [m^-2 s^-1 sr^-1]
+    // --- intensity law from fit I(θ)=I0 cos^n θ ---
+    const double I0 = 46.3;//30.4;//12.2;49.5;//70.0;//9.36;//31.0;//9.36;     // [m^-2 s^-1 sr^-1]
     const double n_mu = 2.5;//2.5;//2.0;//0.78;//1.5;//0.78;
-    const double Phi_hemi = (2.0 * CLHEP::pi * I0) / (n_mu + 1.0);  // ∫ I dΩ over hemisphere ≈  m^-2 s^-1
+    const double Phi_hemi = (2.0 * CLHEP::pi * I0) / (n_mu + 1.0);  // integral I dΩ over hemisphere ≈  m^-2 s^-1
 
     // --- Number of muons to shoot over T_sim ---
     const int numMuonEvents = G4Poisson(Phi_hemi * A_disk * T_sim);
@@ -232,7 +189,7 @@ void runRadioactiveDecays(OMSimRadDecaysDetector *p_detector) {
         uiInterface.applyCommand("/gps/particle mu+");
         else
         uiInterface.applyCommand("/gps/particle mu-");
-        // Time stamp and fire one muon
+        // Timestamp and fire one muon
         //uiInterface.applyCommand("/gps/time " + std::to_string(time) + " s");
         uiInterface.applyCommand(std::string("/gps/time ") + fmt_time_precise(time));
 
