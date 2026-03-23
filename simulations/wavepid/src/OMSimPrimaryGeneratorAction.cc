@@ -66,7 +66,7 @@ void OMSimPrimaryGeneratorAction::setupParticleGun()
     m_position = G4ThreeVector(startX, 0.0, impactParameter * m);
     m_direction = G4ThreeVector(1.0, 0.0, 0.0);
 
-    log_info("Impact parameter mode: r = {} m", impactParameter);
+    log_info("Impact parameter mode: d = {} m", impactParameter);
     log_info("Particle: {}, Energy: {} GeV", particleName, energy);
     log_info("Start position: ({}, {}, {}) m",
              m_position.x()/m, m_position.y()/m, m_position.z()/m);

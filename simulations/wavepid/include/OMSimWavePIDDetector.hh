@@ -10,8 +10,8 @@
  * @class OMSimWavePIDDetector
  * @brief Detector construction for WavePID photon origin tracking study.
  *
- * Constructs a pDOM optical module in IceCube ice with configurable
- * orientation for studying photon origin classification.
+ * Constructs the selected optical module (via --detector_type) in the
+ * chosen environment (via --environment) for photon origin classification.
  */
 class OMSimWavePIDDetector : public OMSimDetectorConstruction
 {

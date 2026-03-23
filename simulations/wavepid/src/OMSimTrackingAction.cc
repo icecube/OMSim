@@ -9,8 +9,8 @@
 #include "G4SystemOfUnits.hh"
 #include <stdexcept>
 
-// Initialize static instance pointer
-OMSimTrackingAction* OMSimTrackingAction::instance = nullptr;
+// Thread-local instance pointer — each Geant4 worker thread gets its own instance
+thread_local OMSimTrackingAction* OMSimTrackingAction::instance = nullptr;
 
 OMSimTrackingAction& OMSimTrackingAction::GetInstance()
 {
@@ -38,8 +38,6 @@ OMSimTrackingAction::~OMSimTrackingAction()
 
 void OMSimTrackingAction::PreUserTrackingAction(const G4Track* track)
 {
-    std::lock_guard<std::mutex> lock(m_mapMutex);
-
     G4int trackID = track->GetTrackID();
     std::string particleName = track->GetDefinition()->GetParticleName();
 
@@ -72,7 +70,6 @@ void OMSimTrackingAction::PostUserTrackingAction(const G4Track* /*track*/)
 
 std::string OMSimTrackingAction::GetParticleType(G4int trackID) const
 {
-    std::lock_guard<std::mutex> lock(m_mapMutex);
     auto it = m_trackIDToParticleTypeMap.find(trackID);
     if (it != m_trackIDToParticleTypeMap.end()) {
         return it->second;
@@ -82,7 +79,6 @@ std::string OMSimTrackingAction::GetParticleType(G4int trackID) const
 
 std::string OMSimTrackingAction::GetCreatorProcess(G4int trackID) const
 {
-    std::lock_guard<std::mutex> lock(m_mapMutex);
     auto it = m_trackIDToCreatorProcessMap.find(trackID);
     if (it != m_trackIDToCreatorProcessMap.end()) {
         return it->second;

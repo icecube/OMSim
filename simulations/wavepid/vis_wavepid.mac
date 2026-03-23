@@ -1,6 +1,9 @@
-# Macro file for visualization settings in the initialization phase
-# Based on working 2vis.mac from original WavePID
-# Filters out optical photons to prevent memory exhaustion
+# WavePID primary visualization macro
+# Usage: ./OMSim_WavePID_study --detector_type 3 --simple_PMT -v --macro vis_wavepid.mac
+#
+# Shows full trajectory display with particle coloring.
+# Filters out optical photons, neutrinos, and gammas to prevent memory exhaustion.
+# Includes a default GPS setup: 30 GeV mu-, 5m impact parameter.
 
 # NOTE: /run/initialize is NOT called here - already done by the main executable
 /control/verbose 0
@@ -86,9 +89,9 @@
 /vis/viewer/set/background white
 /vis/viewer/set/lineSegmentsPerCircle 50
 
-# 50 GeV muon, 5m impact parameter, entering along x-axis
+# 30 GeV muon, 5m impact parameter, entering along x-axis
 /gps/particle mu-
-/gps/energy 50 GeV
+/gps/energy 30 GeV
 /gps/position -8.5 0 5 m
 /gps/direction 1 0 0
 

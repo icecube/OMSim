@@ -11,7 +11,6 @@
 #include "G4Track.hh"
 #include <unordered_map>
 #include <string>
-#include <mutex>
 
 /**
  * @class OMSimTrackingAction
@@ -60,7 +59,5 @@ private:
     std::unordered_map<G4int, std::string> m_trackIDToParticleTypeMap;
     std::unordered_map<G4int, std::string> m_trackIDToCreatorProcessMap;
 
-    mutable std::mutex m_mapMutex;  ///< Mutex for thread-safe map access
-
-    static OMSimTrackingAction* instance;  ///< Singleton instance pointer
+    static thread_local OMSimTrackingAction* instance;  ///< Thread-local instance pointer
 };
