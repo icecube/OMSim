@@ -46,7 +46,8 @@ void OMSim::setGeneralOptions()
     ("gel", po::value<G4int>()->default_value(1), "DEPRECATED. Index to select gel type [Wacker = 0, Chiba = 1, IceCube = 2, Wacker_company = 3]")
     ("reflective_surface", po::value<G4int>()->default_value(0), "DEPRECATED. Index to select reflective surface type [Surf_V95Gel = 0, Surf_V98Gel = 1, Surf_Aluminium = 2, Surf_Total98 = 3]")
     ("pmt_model", po::value<G4int>()->default_value(0), "DEPRECATED. R15458 (mDOM) = 0,  R7081 (DOM) = 1, 4inch (LOM) = 2, R5912_20_100 (D-Egg)= 3, R7081_HQE (pDOM) = 4")
-    ("threads", po::value<int>()->default_value(1), "number of threads to use.");
+    ("threads", po::value<int>()->default_value(1), "number of threads to use (only active with --multithreading).")
+    ("multithreading", po::bool_switch()->default_value(false), "enable multithreaded mode (G4MTRunManager); disabled by default because the Geant4 Qt GUI crashes in MT mode due to a SetupShadowProcess failure in G4WorkerRunManagerKernel");
 }
 
 void OMSim::initialLoggerConfiguration()
@@ -125,12 +126,22 @@ void OMSim::initialiseSimulation(OMSimDetectorConstruction* p_detectorConstructi
     G4Random::setTheEngine(new CLHEP::MixMaxRng(seed));
     G4Random::setTheSeed(seed);
 
-    m_runManager = std::make_unique<G4MTRunManager>();
+    // Default: single-threaded G4RunManager. The Geant4 Qt GUI crashes in
+    // G4MTRunManager mode because G4WorkerRunManagerKernel::SetupShadowProcess()
+    // fails for particles (e.g. alpha) that have no process manager in worker
+    // threads during interactive vis sessions. Pass --multithreading to opt in
+    // to G4MTRunManager for large batch runs where the GUI is not used.
+    bool useMultithreading = args.get<bool>("multithreading");
+    if (useMultithreading) {
+        auto mtManager = std::make_unique<G4MTRunManager>();
+        int nThreads = determineNumberOfThreads();
+        mtManager->SetNumberOfThreads(nThreads);
+        m_runManager = std::move(mtManager);
+    } else {
+        m_runManager = std::make_unique<G4RunManager>();
+    }
     m_visManager = std::make_unique<G4VisExecutive>();
     m_navigator = std::make_unique<G4Navigator>();
-
-    int nThreads = determineNumberOfThreads();
-    m_runManager->SetNumberOfThreads(nThreads);
 
     m_runManager->SetUserInitialization(p_detectorConstruction);
 

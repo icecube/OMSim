@@ -16,6 +16,7 @@
 #include "OMSimSteppingAction.hh"
 #include "OMSimUIinterface.hh"
 
+#include <G4RunManager.hh>
 #include <G4MTRunManager.hh>
 #include <G4VisExecutive.hh>
 #include <G4UIExecutive.hh>
@@ -54,7 +55,7 @@ private:
     void setUserArgumentsToArgTable(po::variables_map pVariablesMap);
     void setGeneralOptions();
 
-    std::unique_ptr<G4MTRunManager> m_runManager;
+    std::unique_ptr<G4RunManager> m_runManager;
     std::unique_ptr<G4VisExecutive> m_visManager;
     std::unique_ptr<G4VUserPhysicsList> m_physics;
     std::unique_ptr<G4TouchableHistory> m_history;

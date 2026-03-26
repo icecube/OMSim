@@ -54,7 +54,8 @@ void OMSimWavePIDDetector::constructWorld()
     m_worldPhysical = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.),
                                         m_worldLogical, "World_phys", 0, false, 0);
 
-    G4VisAttributes* worldVis = new G4VisAttributes(G4Colour(0.45, 0.5, 0.35, 0.));
+    G4VisAttributes* worldVis = new G4VisAttributes(G4Colour(0.0, 0.0, 1.0, 0.1));
+    worldVis->SetVisibility(true);
     m_worldLogical->SetVisAttributes(worldVis);
 
     log_debug("World volume constructed: 30m radius sphere");

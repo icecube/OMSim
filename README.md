@@ -81,7 +81,7 @@ OMSim has been utilized in a range of studies, each simulating unique physics, t
 - [Effective area](https://icecube.github.io/OMSim/md_extra__doc_230__effective__area.html): calculates the effective area of the optical modules/PMTs.
 - [Radioactive decays](https://icecube.github.io/OMSim/md_extra__doc_231__radioactive__decays.html): simulates radioactive decays within the glass of the pressure vessel and the PMT glass. Essential for understanding the primary background of optical modules. **Requires Geant4 version 11.3.0**
 - [Supernova studies](https://icecube.github.io/OMSim/md_extra__doc_232___s_n.html): used for the development of an improved SN trigger for IceCube using multi-PMT modules.
-- [WavePID](https://icecube.github.io/OMSim/md_extra__doc_233__wavepid.html): tracks photon origins (Cherenkov, Scintillation, Bremsstrahlung, etc.) for studying photon arrival time distributions in IceCube optical modules.
+- [WavePID](https://icecube.github.io/OMSim/md_extra__doc_233__wavepid.html): simulates a charged particle track (typically a muon) passing an IceCube optical module at a configurable impact parameter, records each detected photon's arrival time and origin, and produces the photon arrival time distributions used in the WavePID particle identification method.
 
 ### Customising Compilation
 To exclude certain studies from compilation, edit the `simulations/CMakeLists.tx` file and comment out the unwanted `add_subdirectory()` calls before running CMake.

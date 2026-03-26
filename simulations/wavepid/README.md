@@ -17,8 +17,8 @@ make OMSim_WavePID_study -j$(nproc)
 # Run: 10 events, DOM in SPICE ice, 30 GeV mu- at 5m impact parameter
 ./OMSim_WavePID_study -n 10 --detector_type 3 --environment 2 -d 5 -e 30 -p mu- -o output
 
-# Visualization
-./OMSim_WavePID_study --detector_type 3 --simple_PMT -v --macro vis_wavepid.mac
+# Visualization (vis_nophotons.mac loaded automatically from ../simulations/wavepid/)
+./OMSim_WavePID_study --detector_type 3 --simple_PMT -v
 ```
 
 ## Output

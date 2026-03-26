@@ -5,7 +5,7 @@ In the folder `simulations/wavepid` you find the files pertinent to the WavePID 
 
 ## Introduction
 
-The WavePID simulation tracks the origin of each detected photon in IceCube optical modules. By classifying photons by their production mechanism and parent particle, this study enables analysis of photon arrival time distributions used in the WavePID particle identification method.
+The WavePID simulation studies photon arrival time distributions at IceCube optical modules. A primary particle (typically a muon) is injected as a straight track passing the DOM at a configurable perpendicular distance (impact parameter) and energy. Along its path, the particle produces Cherenkov radiation and electromagnetic secondaries (e.g. brems-photons or pair-produced positrons and electrons). Each optical photon that reaches the DOM photocathode is recorded together with its origin — the production mechanism and parent particle type — enabling classification into categories such as "Cherenkov from Muon", "Cherenkov from Electron", "Scintillation", etc. These photon arrival time distributions form the basis of the WavePID particle identification method.
 
 > **Note:** This study was applied and tested solely with `--detector_type 3` (standard DOM with normal quantum efficiency). Other module types are technically supported via the `--detector_type` flag but have not been used or validated in the scope of the WavePID study. The `--efficiency_cut` flag was not used — all photons arriving at the sensitive volume were recorded, as the QE-based die roll affects all photon origins equally and does not impact the origin-based timing distributions.
 
@@ -51,8 +51,9 @@ The classification is performed in `OMSimSensitiveDetector::getPhotonInfo()` usi
 | `--place_harness` | Place the OM harness geometry (if implemented for the module) | false |
 | `--efficiency_cut` | Apply QE-based detection efficiency cut (rolls a detection probability dice per photon) | false |
 | `--simple_PMT` | Use simplified PMT model without scan data | false |
-| `-t, --threads` | Number of worker threads | 1 |
-| `-v, --visual` | Enable visualization mode | false |
+| `--multithreading` | Enable multithreaded mode (G4MTRunManager); not compatible with `-v` | false |
+| `-t, --threads` | Number of worker threads (only active with `--multithreading`) | 1 |
+| `-v, --visual` | Enable visualization mode (requires single-threaded mode, i.e. no `--multithreading`) | false |
 
 ### Command-Line vs. Macro File Parameters
 
@@ -66,14 +67,19 @@ For simple configurations, command-line arguments are sufficient. For complex se
 
 ## Usage Examples
 
-### Basic muon simulation with DOM
+### Basic muon simulation with DOM (single-threaded)
 ```bash
 ./OMSim_WavePID_study -n 10 --detector_type 3 --environment 2 -d 5 -e 30 -p mu- -o output
 ```
 
+### Large batch run with multithreading
+```bash
+./OMSim_WavePID_study -n 1000 --detector_type 3 --environment 2 -d 5 -e 30 -p mu- --multithreading --threads 8 -o output
+```
+
 ### Using a macro file
 ```bash
-./OMSim_WavePID_study -o output --macro muon_config.mac
+./OMSim_WavePID_study -n 10 --detector_type 3 --environment 2 --macro muon_config.mac -o output
 ```
 
 Example macro file (`muon_config.mac`):
@@ -87,8 +93,11 @@ Example macro file (`muon_config.mac`):
 
 ### Visualization
 ```bash
-./OMSim_WavePID_study --detector_type 3 --simple_PMT -v --macro vis_wavepid.mac
+./OMSim_WavePID_study --detector_type 3 --simple_PMT -v
 ```
+
+> **Note:** The visualization macro (`vis_nophotons.mac`) is loaded automatically when `-v` is passed. It is located at `../simulations/wavepid/vis_nophotons.mac` relative to the build directory, so `-v` must be run from a build directory one level below the repo root (e.g. `OMSim-fork/build/`). The `--macro` flag is for GPS configuration only (overriding the particle source), not for visualization.
+
 
 ## Output Format
 
@@ -121,7 +130,7 @@ A visualization macro is provided in `simulations/wavepid/`:
 
 | Macro | Description |
 |-------|-------------|
-| `vis_wavepid.mac` | Full trajectory display with particle coloring. Filters optical photons, neutrinos, and gammas. Includes default GPS: 30 GeV mu- at 5m impact parameter. |
+| `vis_nophotons.mac` | Full trajectory display with particle coloring. Filters optical photons, neutrinos, and gammas. Includes default GPS: 30 GeV mu- at 5m impact parameter. Loaded automatically when `-v` is passed. |
 
 ## Notes on World Volume Size
 
@@ -138,7 +147,17 @@ The flag can be enabled if desired:
 
 ## Notes on Multithreading
 
-The simulation supports multithreading via `--threads`. Each thread maintains its own hit data storage (using `G4ThreadLocal`), which is merged at the end of each run. The `TrackingAction` track-to-particle maps are also `thread_local`, so no mutex is needed — each worker thread owns its maps independently.
+By default the simulation uses a single-threaded `G4RunManager`. This is intentional: the Geant4 Qt GUI (`-v`) crashes in `G4MTRunManager` mode because `G4WorkerRunManagerKernel::SetupShadowProcess()` fails for particles (such as alpha) that lack a process manager in worker threads during interactive sessions.
+
+To enable multithreading for large batch runs (where the GUI is not needed), pass `--multithreading`:
+
+```bash
+./OMSim_WavePID_study -n 1000 --detector_type 3 --environment 2 -d 5 -e 30 --multithreading --threads 8 -o output
+```
+
+Do **not** combine `--multithreading` with `-v` — the GUI will crash.
+
+When multithreading is active, each worker thread maintains its own hit data storage (using `G4ThreadLocal`), which is merged at the end of each run. The `TrackingAction` track-to-particle maps are also `thread_local`, so no mutex is needed — each worker thread owns its maps independently.
 
 Note that running with different thread counts may produce different event-to-thread assignments, so exact hit-by-hit reproducibility across different thread counts is not guaranteed. However, statistical results should be consistent.
 
