@@ -1,0 +1,68 @@
+# WavePID visualization macro
+# Loaded automatically when running with -v (do not pass via --macro).
+# Shows trajectory display with particle coloring.
+# Filters out optical photons, neutrinos, and gammas to prevent memory exhaustion.
+# Particle source is configured via command-line args (-d, -e, -p).
+
+# NOTE: /run/initialize is NOT called here - already done by the main executable
+/control/verbose 0
+/run/verbose 0
+
+/vis/geometry/list
+
+/vis/open OGLSQt 800x800-0+0
+
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+
+/vis/drawVolume
+
+/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/set/lightsVector -1 0 0
+
+/vis/viewer/set/style surface
+/vis/viewer/set/hiddenMarker true
+/vis/viewer/set/lineSegmentsPerCircle 100
+
+# Draw smooth trajectories at end of event; accumulate across events
+/vis/scene/add/trajectories smooth
+/vis/scene/endOfEventAction accumulate
+
+# Color trajectories by particle type; step points on (optical photons filtered below)
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByParticleID-0/set mu- blue
+/vis/modeling/trajectories/drawByParticleID-0/set mu+ blue
+/vis/modeling/trajectories/drawByParticleID-0/set e- red
+/vis/modeling/trajectories/drawByParticleID-0/set e+ red
+
+# Draw hits at end of event
+/vis/scene/add/hits
+
+# Filter out neutrinos, optical photons, and gammas (invert=true shows everything EXCEPT these)
+/vis/filtering/trajectories/create/particleFilter
+/vis/filtering/trajectories/particleFilter-0/add nu_e
+/vis/filtering/trajectories/particleFilter-0/add anti_nu_e
+/vis/filtering/trajectories/particleFilter-0/add nu_mu
+/vis/filtering/trajectories/particleFilter-0/add anti_nu_mu
+/vis/filtering/trajectories/particleFilter-0/add nu_tau
+/vis/filtering/trajectories/particleFilter-0/add anti_nu_tau
+/vis/filtering/trajectories/particleFilter-0/add opticalphoton
+/vis/filtering/trajectories/particleFilter-0/add gamma
+/vis/filtering/trajectories/particleFilter-0/invert true
+
+/vis/viewer/set/style surface
+/vis/viewer/set/hiddenMarker true
+/vis/viewer/set/viewpointThetaPhi 120 150
+
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings
+
+/vis/viewer/set/upVector 0 0 1
+/vis/viewer/set/viewpointVector 0 1 0
+/vis/viewer/set/background white
+/vis/viewer/set/lineSegmentsPerCircle 50
+
+# Particle settings come from command-line args (-d, -e, -p).
+# If using --macro for GPS override, the GPS commands in the macro file
+# will configure the particle source instead.
