@@ -1,0 +1,92 @@
+\doxysection{OMSim\+Wave\+PIDDetector Class Reference}
+\hypertarget{class_o_m_sim_wave_p_i_d_detector}{}\label{class_o_m_sim_wave_p_i_d_detector}\index{OMSimWavePIDDetector@{OMSimWavePIDDetector}}
+
+
+Detector construction for Wave\+PID photon origin tracking study.  
+
+
+
+
+Inheritance diagram for OMSim\+Wave\+PIDDetector\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{class_o_m_sim_wave_p_i_d_detector__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for OMSim\+Wave\+PIDDetector\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_o_m_sim_wave_p_i_d_detector__coll__graph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Detailed Description}
+Constructs the selected optical module (via --detector\+\_\+type) in the chosen environment (via --environment) for photon origin classification. \doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_o_m_sim_wave_p_i_d_detector_ab1e90e32dd18d2de179b7704da4aab65}{construct\+World}} ()
+\begin{DoxyCompactList}\small\item\em Constructs the world volume using the environment material from --environment flag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_o_m_sim_wave_p_i_d_detector_ade46225773fb938cfee76a9e60882c61}{construct\+Detector}} ()
+\begin{DoxyCompactList}\small\item\em Constructs and places the selected optical module at the origin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_o_m_sim_detector_construction_a9e16ad5da3921b502473b303609caad0}{Construct}} ()
+\begin{DoxyCompactList}\small\item\em Constructs the selected detector from the command line argument and returns the physical world volume. \end{DoxyCompactList}\item 
+void {\bfseries Construct\+SDand\+Field} () override
+\item 
+void {\bfseries register\+Sensitive\+Detector} (G4\+Logical\+Volume \texorpdfstring{$\ast$}{*}log\+Vol, G4\+VSensitive\+Detector \texorpdfstring{$\ast$}{*}a\+SD)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Physical}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}}
+\begin{DoxyCompactItemize}
+\item 
+G4\+VSolid \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Solid}
+\item 
+G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+world\+Logical}
+\item 
+\mbox{\hyperlink{class_o_m_sim_input_data}{OMSim\+Input\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+data}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_o_m_sim_detector_construction_1_1_s_d_info}{SDInfo}} $>$ {\bfseries m\+\_\+sensitive\+Detectors}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_o_m_sim_wave_p_i_d_detector_ade46225773fb938cfee76a9e60882c61}\label{class_o_m_sim_wave_p_i_d_detector_ade46225773fb938cfee76a9e60882c61} 
+\index{OMSimWavePIDDetector@{OMSimWavePIDDetector}!constructDetector@{constructDetector}}
+\index{constructDetector@{constructDetector}!OMSimWavePIDDetector@{OMSimWavePIDDetector}}
+\doxysubsubsection{\texorpdfstring{constructDetector()}{constructDetector()}}
+{\footnotesize\ttfamily void OMSim\+Wave\+PIDDetector\+::construct\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}.
+
+\Hypertarget{class_o_m_sim_wave_p_i_d_detector_ab1e90e32dd18d2de179b7704da4aab65}\label{class_o_m_sim_wave_p_i_d_detector_ab1e90e32dd18d2de179b7704da4aab65} 
+\index{OMSimWavePIDDetector@{OMSimWavePIDDetector}!constructWorld@{constructWorld}}
+\index{constructWorld@{constructWorld}!OMSimWavePIDDetector@{OMSimWavePIDDetector}}
+\doxysubsubsection{\texorpdfstring{constructWorld()}{constructWorld()}}
+{\footnotesize\ttfamily void OMSim\+Wave\+PIDDetector\+::construct\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_o_m_sim_wave_p_i_d_detector_8hh}{OMSim\+Wave\+PIDDetector.\+hh}}\item 
+\mbox{\hyperlink{_o_m_sim_wave_p_i_d_detector_8cc}{OMSim\+Wave\+PIDDetector.\+cc}}\end{DoxyCompactItemize}

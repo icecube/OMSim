@@ -1,5 +1,6 @@
 <map id="OMSimRunAction" name="OMSimRunAction">
 <area shape="rect" id="Node000001" title=" " alt="" coords="6,79,141,104"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,5,141,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,44,76,79,71,79,71,44"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,44,69,78,64,79,62,45"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="85,45,83,79,78,78,79,44"/>
 </map>

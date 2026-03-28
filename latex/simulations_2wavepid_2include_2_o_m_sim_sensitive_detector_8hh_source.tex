@@ -1,0 +1,78 @@
+\doxysection{simulations/wavepid/include/\+OMSim\+Sensitive\+Detector.hh}
+\hypertarget{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_source}{}\label{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_source}\index{OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}}
+\mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}G4VSensitiveDetector.hh"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}G4ThreeVector.hh"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_o_m_sim_p_m_t_response_8hh}{OMSimPMTResponse.hh}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }G4Step;}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }G4Track;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }G4TouchableHistory;}
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_g4_op_boundary_process}{G4OpBoundaryProcess}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{enum\ class}\ DetectorType\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a412b54f662be36d98a3c518fc71e4568}{PMT}},}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a1a9b1c585275651eaa5ddc9d48560162}{VolumePhotonDetector}},}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a6d615a8de3479e15a0b21956527ecde2}{BoundaryPhotonDetector}},}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a5d46e1648fb1ce03125dc90ab4d373c9}{BoundaryShellDetector}},}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a99c2f51db5706413f8554414be9d0cc7}{PerfectPMT}}}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_photon_info}{PhotonInfo}}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ G4int\ \mbox{\hyperlink{struct_photon_info_a44bce76bf7aad156523f10d4aa58ee5e}{eventID}};}
+\DoxyCodeLine{00037\ \ \ \ \ G4double\ \mbox{\hyperlink{struct_photon_info_a046d8a141ff4cadbafba5b077adf205e}{globalTime}};}
+\DoxyCodeLine{00038\ \ \ \ \ G4double\ \mbox{\hyperlink{struct_photon_info_abb511bb057118b060b12d84ed9315851}{localTime}};}
+\DoxyCodeLine{00039\ \ \ \ \ G4double\ \mbox{\hyperlink{struct_photon_info_ab4de62ab2d0c39d43c7d85f0fd995745}{trackLength}};}
+\DoxyCodeLine{00040\ \ \ \ \ G4double\ \mbox{\hyperlink{struct_photon_info_a20a8691860c91f4dcd139524c3f262e8}{kineticEnergy}};}
+\DoxyCodeLine{00041\ \ \ \ \ G4double\ \mbox{\hyperlink{struct_photon_info_a3c68773a51a00e88867661737627172e}{wavelength}};}
+\DoxyCodeLine{00042\ \ \ \ \ G4ThreeVector\ \mbox{\hyperlink{struct_photon_info_a54890230d7b73b50210ae32d3d3f8785}{globalPosition}};}
+\DoxyCodeLine{00043\ \ \ \ \ G4ThreeVector\ \mbox{\hyperlink{struct_photon_info_afdd5b9d7e5365a4aa7abd854ab7f4915}{localPosition}};}
+\DoxyCodeLine{00044\ \ \ \ \ G4ThreeVector\ \mbox{\hyperlink{struct_photon_info_a7966e888affcb35d71e07c7cc78afc74}{momentumDirection}};}
+\DoxyCodeLine{00045\ \ \ \ \ G4ThreeVector\ \mbox{\hyperlink{struct_photon_info_a1bbbf9b8b9f55898a98f6da0cb8972f0}{deltaPosition}};}
+\DoxyCodeLine{00046\ \ \ \ \ G4int\ \mbox{\hyperlink{struct_photon_info_aa3e4260bf5368e799bbe85afe42a45ce}{pmtNumber}};}
+\DoxyCodeLine{00047\ \ \ \ \ G4int\ \mbox{\hyperlink{struct_photon_info_ad6ed8e117168b3f741793572bde83b18}{detectorID}};}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSimPMTResponse::PMTPulse}}\ \mbox{\hyperlink{struct_photon_info_a1669c552fd4a31bb23d4920eb946fafc}{PMTResponse}};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ WavePID\ extensions\ for\ photon\ origin\ tracking}}
+\DoxyCodeLine{00050\ \ \ \ \ G4String\ \mbox{\hyperlink{struct_photon_info_a5dd4585a27843db32ebfed31ab5247df}{photonOrigin}};\ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ G4int\ \mbox{\hyperlink{struct_photon_info_accfc3d2706d7edf1b41294ccea5eb625}{parentID}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_photon_info_a2041e2821ee40a3bb25a612845bec66c}{parentType}};\ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ G4String\ \mbox{\hyperlink{struct_photon_info_ae49655cd86eaa9c4463b12f6d1d3ce97}{parentProcess}};\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ G4double\ \mbox{\hyperlink{struct_photon_info_adb07e24459b748981a5530c68885b5bb}{entryTime}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}\ :\ \textcolor{keyword}{public}\ G4VSensitiveDetector}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSimSensitiveDetector}}(G4String\ pName,\ DetectorType\ pDetectorType);}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a86abb731f3b352ee3609b6f844380862}{\string~OMSimSensitiveDetector}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ G4bool\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a2d12fa5869b30eee35a85793522e98f4}{ProcessHits}}(G4Step*\ pStep,\ G4TouchableHistory*\ pTouchableHistory)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a345025c68ea4ff0d4a0f7ad017f06778}{setPMTResponse}}(\mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSimPMTResponse}}*\ pResponse);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_QEcut;}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_p_m_t_response}{OMSimPMTResponse}}*\ m\_PMTResponse;}
+\DoxyCodeLine{00073\ \ \ \ \ DetectorType\ m\_detectorType;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{thread\_local}\ \mbox{\hyperlink{class_g4_op_boundary_process}{G4OpBoundaryProcess}}*\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a8a0377d3ae13a48c1b3b08cd56bfaa08}{m\_boundaryProcess}};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ G4bool\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a9d70226340ca6ca44a09efebd7acb1e0}{checkVolumeAbsorption}}(G4Step*\ pStep);}
+\DoxyCodeLine{00078\ \ \ \ \ G4bool\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_aee2e914dd514bf5c949d45e12def5447}{checkBoundaryAbsorption}}(G4Step*\ pStep);}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{struct_photon_info}{PhotonInfo}}\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a4312e760ce38246d09e2933aa37b8725}{getPhotonInfo}}(G4Step*\ pStep);}
+\DoxyCodeLine{00080\ \ \ \ \ G4bool\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a0e8d0c59cdefec63a33c443ff903d2cf}{handlePMT}}(G4Step*\ pStep,\ G4TouchableHistory*\ pTouchableHistory);}
+\DoxyCodeLine{00081\ \ \ \ \ G4bool\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a4b3d72f7aa132ea975541843a30a2f22}{handleGeneralPhotonDetector}}(G4Step*\ pStep,\ G4TouchableHistory*\ pTouchableHistory);}
+\DoxyCodeLine{00082\ \ \ \ \ G4bool\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a8ef25f1a368af356a4e040772fd137e5}{handleShellDetector}}(G4Step*\ pStep,\ G4TouchableHistory*\ pTouchableHistory);}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a8e4a324ae342e9e91ddc33fcc0be8789}{isPhotonDetected}}(\textcolor{keywordtype}{double}\ p\_efficiency);}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a329ead0f229868eaf8ac21132cbc6746}{storePhotonHit}}(\mbox{\hyperlink{struct_photon_info}{PhotonInfo}}\&\ pInfo);}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_a9086dbe47568c71cba08feef8b665146}{fetchBoundaryProcess}}();}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_o_m_sim_sensitive_detector_aad0ef54caf4fd1505aed2959d59b1e3d}{killParticle}}(G4Track*\ pTrack);}
+\DoxyCodeLine{00087\ \};}
+
+\end{DoxyCode}

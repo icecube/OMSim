@@ -1,0 +1,11 @@
+<map id="OMSimTrackingAction.hh" name="OMSimTrackingAction.hh">
+<area shape="rect" id="Node000001" title="Enhanced tracking action for WavePID photon origin tracking." alt="" coords="237,5,421,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,191,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="292,33,149,77,147,72,291,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="215,79,309,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="320,33,284,70,280,67,316,29"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="333,79,457,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="342,29,377,67,373,70,338,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="482,79,541,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="359,28,470,71,468,76,357,33"/>
+</map>

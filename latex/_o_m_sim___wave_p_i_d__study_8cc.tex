@@ -1,0 +1,36 @@
+\doxysection{OMSim\+\_\+\+Wave\+PID\+\_\+study.\+cc File Reference}
+\hypertarget{_o_m_sim___wave_p_i_d__study_8cc}{}\label{_o_m_sim___wave_p_i_d__study_8cc}\index{OMSim\_WavePID\_study.cc@{OMSim\_WavePID\_study.cc}}
+
+
+Main executable for Wave\+PID photon origin tracking study.  
+
+
+Include dependency graph for OMSim\+\_\+\+Wave\+PID\+\_\+study.\+cc\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_o_m_sim___wave_p_i_d__study_8cc__incl}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Detailed Description}
+This simulation tracks photon origins (Cerenkov from Muon, Cerenkov from Electron, Scintillation, etc.) for Ice\+Cube optical modules. \doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_o_m_sim___wave_p_i_d__study_8cc_adde1651fede3814290b88f78e76abe82}\label{_o_m_sim___wave_p_i_d__study_8cc_adde1651fede3814290b88f78e76abe82} 
+void {\bfseries add\+Module\+Options} (\mbox{\hyperlink{class_o_m_sim}{OMSim}} \texorpdfstring{$\ast$}{*}p\+\_\+simulation)
+\begin{DoxyCompactList}\small\item\em Add Wave\+PID-\/specific command-\/line options. \end{DoxyCompactList}\item 
+\Hypertarget{_o_m_sim___wave_p_i_d__study_8cc_a5253f0130a2f775679e8fee638d03577}\label{_o_m_sim___wave_p_i_d__study_8cc_a5253f0130a2f775679e8fee638d03577} 
+void {\bfseries run\+Wave\+PIDSimulation} ()
+\begin{DoxyCompactList}\small\item\em Run the Wave\+PID simulation. \end{DoxyCompactList}\item 
+\Hypertarget{_o_m_sim___wave_p_i_d__study_8cc_a0ddf1224851353fc92bfbff6f499fa97}\label{_o_m_sim___wave_p_i_d__study_8cc_a0ddf1224851353fc92bfbff6f499fa97} 
+int {\bfseries main} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_o_m_sim___wave_p_i_d__study_8cc_a8f413d7863ebc85fa92d90eec3cbd91e}\label{_o_m_sim___wave_p_i_d__study_8cc_a8f413d7863ebc85fa92d90eec3cbd91e} 
+std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ {\bfseries g\+\_\+logger}
+\end{DoxyCompactItemize}

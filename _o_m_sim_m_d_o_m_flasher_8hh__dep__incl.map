@@ -1,5 +1,7 @@
 <map id="OMSimMDOMFlasher.hh" name="OMSimMDOMFlasher.hh">
-<area shape="rect" id="Node000001" title="Defines the mDOMFlasher class for simulating the 10 flashers in an mDOM optical module." alt="" coords="5,5,185,31"/>
-<area shape="rect" id="Node000002" href="$_o_m_sim_m_d_o_m_8hh.html" title="Construction of mDOM." alt="" coords="29,79,162,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,44,98,79,93,79,93,44"/>
+<area shape="rect" id="Node000001" title="Defines the mDOMFlasher class for simulating the 10 flashers in an mDOM optical module." alt="" coords="15,5,195,31"/>
+<area shape="rect" id="Node000002" href="$_o_m_sim_m_d_o_m_8hh.html" title="Construction of mDOM." alt="" coords="39,79,172,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,44,108,79,103,79,103,44"/>
+<area shape="rect" id="Node000003" href="$_o_m_sim_wave_p_i_d_detector_8cc.html" title="Implementation of detector construction for WavePID study." alt="" coords="5,152,205,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="108,118,108,152,103,152,103,118"/>
 </map>

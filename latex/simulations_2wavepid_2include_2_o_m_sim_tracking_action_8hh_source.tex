@@ -1,0 +1,37 @@
+\doxysection{simulations/wavepid/include/\+OMSim\+Tracking\+Action.hh}
+\hypertarget{simulations_2wavepid_2include_2_o_m_sim_tracking_action_8hh_source}{}\label{simulations_2wavepid_2include_2_o_m_sim_tracking_action_8hh_source}\index{OMSimTrackingAction.hh@{OMSimTrackingAction.hh}}
+\mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_tracking_action_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}G4UserTrackingAction.hh"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}G4Track.hh"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSimTrackingAction}}\ :\ \textcolor{keyword}{public}\ G4UserTrackingAction}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSimTrackingAction}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_o_m_sim_tracking_action}{\string~OMSimTrackingAction}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ PreUserTrackingAction(\textcolor{keyword}{const}\ G4Track*\ track)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ PostUserTrackingAction(\textcolor{keyword}{const}\ G4Track*\ track)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00036\ \ \ \ \ std::string\ \mbox{\hyperlink{class_o_m_sim_tracking_action_a9055f335eef576aa0e60b5eaf98c749f}{GetParticleType}}(G4int\ trackID)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \ \ \ \ std::string\ \mbox{\hyperlink{class_o_m_sim_tracking_action_a8d3d3a7b3a4650002e75477dbb31734a}{GetCreatorProcess}}(G4int\ trackID)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSimTrackingAction}}\&\ \mbox{\hyperlink{class_o_m_sim_tracking_action_aa82d925cd37ecd87e5d11aad4bd0f510}{GetInstance}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_o_m_sim_tracking_action_a928fd32a3078c6e32976564b6f84cc58}{HasInstance}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_o_m_sim_tracking_action_adcc19e433eb67df79c94f5cb467502da}{instance}}\ !=\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \ \ std::unordered\_map<G4int,\ std::string>\ m\_trackIDToParticleTypeMap;}
+\DoxyCodeLine{00060\ \ \ \ \ std::unordered\_map<G4int,\ std::string>\ m\_trackIDToCreatorProcessMap;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{thread\_local}\ \mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSimTrackingAction}}*\ \mbox{\hyperlink{class_o_m_sim_tracking_action_adcc19e433eb67df79c94f5cb467502da}{instance}};\ \ }
+\DoxyCodeLine{00063\ \};}
+
+\end{DoxyCode}

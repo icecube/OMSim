@@ -1,0 +1,71 @@
+\doxysection{simulations/wavepid/include/\+OMSim\+Sensitive\+Detector.hh File Reference}
+\hypertarget{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh}{}\label{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh}\index{OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}}
+
+
+Enhanced sensitive detector for Wave\+PID with photon origin tracking.  
+
+
+Include dependency graph for simulations/wavepid/include/\+OMSim\+Sensitive\+Detector.hh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_photon_info}{Photon\+Info}}
+\begin{DoxyCompactList}\small\item\em Contains information about a detected photon which will be appended in Hit\+Manager. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_o_m_sim_sensitive_detector}{OMSim\+Sensitive\+Detector}}
+\begin{DoxyCompactList}\small\item\em Represents a sensitive detector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729}{Detector\+Type}} \{ \newline
+\mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a412b54f662be36d98a3c518fc71e4568}{PMT}}
+, \mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a1a9b1c585275651eaa5ddc9d48560162}{Volume\+Photon\+Detector}}
+, \mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a6d615a8de3479e15a0b21956527ecde2}{Boundary\+Photon\+Detector}}
+, \mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a5d46e1648fb1ce03125dc90ab4d373c9}{Boundary\+Shell\+Detector}}
+, \newline
+\mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a99c2f51db5706413f8554414be9d0cc7}{Perfect\+PMT}}
+, {\bfseries PMT}
+, {\bfseries Volume\+Photon\+Detector}
+, {\bfseries Boundary\+Photon\+Detector}
+, \newline
+{\bfseries Boundary\+Shell\+Detector}
+, {\bfseries Perfect\+PMT}
+ \}
+\begin{DoxyCompactList}\small\item\em Types of detectors supported by \doxylink{class_o_m_sim_sensitive_detector}{OMSim\+Sensitive\+Detector}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729}\label{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729} 
+\index{OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}!DetectorType@{DetectorType}}
+\index{DetectorType@{DetectorType}!OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}}
+\doxysubsubsection{\texorpdfstring{DetectorType}{DetectorType}}
+{\footnotesize\ttfamily enum class Detector\+Type\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PMT@{PMT}!OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}}\index{OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}!PMT@{PMT}}}\Hypertarget{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a412b54f662be36d98a3c518fc71e4568}\label{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a412b54f662be36d98a3c518fc71e4568} 
+PMT&Photomultiplier tube detector. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VolumePhotonDetector@{VolumePhotonDetector}!OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}}\index{OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}!VolumePhotonDetector@{VolumePhotonDetector}}}\Hypertarget{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a1a9b1c585275651eaa5ddc9d48560162}\label{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a1a9b1c585275651eaa5ddc9d48560162} 
+Volume\+Photon\+Detector&Photon detector based on absorption in volume. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BoundaryPhotonDetector@{BoundaryPhotonDetector}!OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}}\index{OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}!BoundaryPhotonDetector@{BoundaryPhotonDetector}}}\Hypertarget{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a6d615a8de3479e15a0b21956527ecde2}\label{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a6d615a8de3479e15a0b21956527ecde2} 
+Boundary\+Photon\+Detector&Photon detector based on absorption in boundary. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BoundaryShellDetector@{BoundaryShellDetector}!OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}}\index{OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}!BoundaryShellDetector@{BoundaryShellDetector}}}\Hypertarget{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a5d46e1648fb1ce03125dc90ab4d373c9}\label{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a5d46e1648fb1ce03125dc90ab4d373c9} 
+Boundary\+Shell\+Detector&Shell detector that does not kill the particle. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PerfectPMT@{PerfectPMT}!OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}}\index{OMSimSensitiveDetector.hh@{OMSimSensitiveDetector.hh}!PerfectPMT@{PerfectPMT}}}\Hypertarget{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a99c2f51db5706413f8554414be9d0cc7}\label{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_aba5019e335fb2939e79e0e5b62202729a99c2f51db5706413f8554414be9d0cc7} 
+Perfect\+PMT&Photomultiplier tube detector. \\
+\hline
+
+\end{DoxyEnumFields}

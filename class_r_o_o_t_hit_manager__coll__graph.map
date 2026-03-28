@@ -1,0 +1,5 @@
+<map id="ROOTHitManager" name="ROOTHitManager">
+<area shape="rect" id="Node000001" title="Manages ROOT file output for photon hit data." alt="" coords="5,93,140,119"/>
+<area shape="rect" id="Node000002" href="$struct_photon_info_r_o_o_t.html" title="Structure for storing photon hit data in ROOT format." alt="" coords="8,5,137,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,45,75,93,70,93,70,45"/>
+</map>

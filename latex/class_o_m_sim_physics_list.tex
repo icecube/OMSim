@@ -28,7 +28,11 @@ Collaboration diagram for OMSim\+Physics\+List\+:
 
 
 \doxysubsection{Detailed Description}
-This physics list initializes the optical photon processes including absorption, boundary interactions, Rayleigh scattering, and Mie scattering. \doxysubsubsection*{Protected Member Functions}
+Custom physics list for Wave\+PID photon origin tracking.
+
+This physics list initializes the optical photon processes including absorption, boundary interactions, Rayleigh scattering, and Mie scattering.
+
+This physics list initializes particles and processes needed for tracking Cerenkov radiation from muons and electrons in ice. \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_o_m_sim_physics_list_a8bf61a70f663c754304fc56073e3ac95}{Construct\+Particle}} ()
@@ -63,6 +67,15 @@ void {\bfseries Construct\+Process} ()
 \item 
 \Hypertarget{class_o_m_sim_physics_list_a21a650f31fd33e281cdb144f755875e4}\label{class_o_m_sim_physics_list_a21a650f31fd33e281cdb144f755875e4} 
 void {\bfseries Set\+Cuts} ()
+\item 
+\Hypertarget{class_o_m_sim_physics_list_a90d45a13f7c46e232718bc106080492c}\label{class_o_m_sim_physics_list_a90d45a13f7c46e232718bc106080492c} 
+void {\bfseries Construct\+Particle} () override
+\item 
+\Hypertarget{class_o_m_sim_physics_list_a0ec93edc4af59fb60b96669ff50d58b6}\label{class_o_m_sim_physics_list_a0ec93edc4af59fb60b96669ff50d58b6} 
+void {\bfseries Construct\+Process} () override
+\item 
+\Hypertarget{class_o_m_sim_physics_list_a56b116e74d914cc7cc372443382543af}\label{class_o_m_sim_physics_list_a56b116e74d914cc7cc372443382543af} 
+void {\bfseries Set\+Cuts} () override
 \end{DoxyCompactItemize}
 
 
@@ -93,7 +106,9 @@ effective\+\_\+area/include/\+OMSim\+Physics\+List.\+hh\item
 efficiency\+\_\+calibration/include/\+OMSim\+Physics\+List.\+hh\item 
 \mbox{\hyperlink{radioactive__decays_2include_2_o_m_sim_physics_list_8hh}{radioactive\+\_\+decays/include/\+OMSim\+Physics\+List.\+hh}}\item 
 supernova/include/\+OMSim\+Physics\+List.\+hh\item 
+\mbox{\hyperlink{wavepid_2include_2_o_m_sim_physics_list_8hh}{wavepid/include/\+OMSim\+Physics\+List.\+hh}}\item 
 effective\+\_\+area/src/\+OMSim\+Physics\+List.\+cc\item 
 efficiency\+\_\+calibration/src/\+OMSim\+Physics\+List.\+cc\item 
 radioactive\+\_\+decays/src/\+OMSim\+Physics\+List.\+cc\item 
-supernova/src/\+OMSim\+Physics\+List.\+cc\end{DoxyCompactItemize}
+supernova/src/\+OMSim\+Physics\+List.\+cc\item 
+\mbox{\hyperlink{wavepid_2src_2_o_m_sim_physics_list_8cc}{wavepid/src/\+OMSim\+Physics\+List.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,37 @@
+\doxysection{wavepid/include/\+OMSim\+Primary\+Generator\+Action.hh}
+\hypertarget{wavepid_2include_2_o_m_sim_primary_generator_action_8hh_source}{}\label{wavepid_2include_2_o_m_sim_primary_generator_action_8hh_source}\index{OMSimPrimaryGeneratorAction.hh@{OMSimPrimaryGeneratorAction.hh}}
+\mbox{\hyperlink{wavepid_2include_2_o_m_sim_primary_generator_action_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <G4VUserPrimaryGeneratorAction.hh>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <G4AutoLock.hh>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <G4ThreeVector.hh>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }G4ParticleGun;}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }G4GeneralParticleSource;}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }G4Event;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_primary_generator_action}{OMSimPrimaryGeneratorAction}}\ :\ \textcolor{keyword}{public}\ G4VUserPrimaryGeneratorAction}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_action}{OMSimPrimaryGeneratorAction}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_primary_generator_action}{\string~OMSimPrimaryGeneratorAction}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ GeneratePrimaries(G4Event*\ anEvent)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ setupParticleGun();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{thread\_local}\ std::unique\_ptr<G4ParticleGun>\ m\_particleGun;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{thread\_local}\ std::unique\_ptr<G4GeneralParticleSource>\ m\_particleSource;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ G4Mutex\ m\_mutex;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_o_m_sim_primary_generator_action_aca4b4d1e557577afcd160638c7b74ea6}{m\_useParticleGun}};\ \ }
+\DoxyCodeLine{00041\ \ \ \ \ G4ThreeVector\ m\_position;}
+\DoxyCodeLine{00042\ \ \ \ \ G4ThreeVector\ m\_direction;}
+\DoxyCodeLine{00043\ \};}
+
+\end{DoxyCode}

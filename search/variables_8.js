@@ -16,8 +16,8 @@ var searchData=
   ['m_5flastphysicals_13',['m_lastPhysicals',['../class_o_m_sim_detector_component.html#af332b816b5d4fb603c237b4967fc6388',1,'OMSimDetectorComponent']]],
   ['m_5fledangfromsphere_14',['m_LEDAngFromSphere',['../classm_d_o_m.html#a6047144e49a3969896f69bb1a9054685',1,'mDOM']]],
   ['m_5fledtransformers_15',['m_LEDTransformers',['../classm_d_o_m.html#ab56e69ed881ca89d4e0164ad5316b69d',1,'mDOM']]],
-  ['m_5fmodulehits_16',['m_moduleHits',['../class_o_m_sim_hit_manager.html#a0fc9285c7ecc4cc283e883ceebbe423e',1,'OMSimHitManager']]],
-  ['m_5fnumberofpmts_17',['m_numberOfPMTs',['../class_o_m_sim_hit_manager.html#a8f1ac71e89bfb8d4f0db4b56c7152e50',1,'OMSimHitManager']]],
+  ['m_5fmodulehits_16',['m_moduleHits',['../class_o_m_sim_hit_manager.html#aca6c2e52807e78109bd97551bbf63e9b',1,'OMSimHitManager']]],
+  ['m_5fnumberofpmts_17',['m_numberOfPMTs',['../class_o_m_sim_hit_manager.html#a13d43bcdd102f0f1bfeadf7f4844354f',1,'OMSimHitManager']]],
   ['m_5fopticalmodule_18',['m_opticalModule',['../class_d_egg_harness.html#ad7d17b89f08e51dd85a088f0bdd95046',1,'DEggHarness']]],
   ['m_5fopticalsurfacemap_19',['m_opticalSurfaceMap',['../class_o_m_sim_input_data.html#a692d89c9fbdd287aa13c3bb5ddba8278',1,'OMSimInputData']]],
   ['m_5fplacedorientations_20',['m_placedOrientations',['../class_o_m_sim_detector_component.html#a083b71621fcf32eee318c2c73165ee5c',1,'OMSimDetectorComponent']]],
@@ -27,5 +27,6 @@ var searchData=
   ['m_5freflectorconetoholder_24',['m_reflectorConeToHolder',['../classm_d_o_m.html#a3e2581f3dcc369d43b6779bb87b4f533',1,'mDOM']]],
   ['m_5freflectorhalfz_25',['m_reflectorHalfZ',['../classm_d_o_m.html#a3e2474c86c34ae72e0d233a6433db207',1,'mDOM']]],
   ['m_5ftable_26',['m_table',['../class_parameter_table.html#ae5dba23c394122524bab7cb8f61a2fe4',1,'ParameterTable']]],
-  ['momentumdirection_27',['momentumDirection',['../struct_photon_info.html#a7966e888affcb35d71e07c7cc78afc74',1,'PhotonInfo']]]
+  ['m_5fuseparticlegun_27',['m_useParticleGun',['../class_o_m_sim_primary_generator_action.html#aca4b4d1e557577afcd160638c7b74ea6',1,'OMSimPrimaryGeneratorAction']]],
+  ['momentumdirection_28',['momentumDirection',['../struct_photon_info.html#a7966e888affcb35d71e07c7cc78afc74',1,'PhotonInfo']]]
 ];

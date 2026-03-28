@@ -1,0 +1,36 @@
+<map id="OMSimHitManager.hh" name="OMSimHitManager.hh">
+<area shape="rect" id="Node000001" title="Enhanced hit manager for WavePID with photon origin tracking." alt="" coords="733,5,897,31"/>
+<area shape="rect" id="Node000002" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="263,79,443,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="741,33,442,79,441,74,740,28"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,152,56,177"/>
+<area shape="poly" id="edge17_Node000001_Node000005" title=" " alt="" coords="732,24,634,29,513,39,382,56,251,81,150,114,68,149,66,144,149,109,250,76,381,51,513,34,634,24,732,19"/>
+<area shape="rect" id="Node000008" href="$_r_o_o_t_hit_manager_8hh.html" title="ROOT&#45;based output manager for WavePID photon hit data." alt="" coords="585,79,740,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="791,33,701,75,699,70,789,28"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="873,152,1010,177"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="811,32,800,66,800,85,806,103,832,128,866,145,863,150,829,133,802,105,795,86,795,65,806,30"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="815,79,889,104"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="823,30,842,65,837,68,818,32"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="913,79,1033,104"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="841,28,936,71,934,75,839,33"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1057,79,1183,104"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="864,28,1058,73,1057,78,863,33"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1207,79,1270,104"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="897,27,1032,47,1194,76,1193,81,1032,52,897,32"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="81,152,239,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="323,107,205,150,203,145,321,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="463,152,561,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="380,102,475,144,473,149,378,106"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="291,107,191,127,70,154,69,149,190,121,290,101"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="263,152,345,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="347,106,322,142,318,139,343,103"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="369,152,439,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="364,103,390,139,386,142,360,106"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="640,106,550,148,548,144,637,102"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="585,152,650,177"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="657,106,634,142,630,139,653,103"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="675,152,744,177"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="673,103,696,139,692,142,668,106"/>
+<area shape="poly" id="edge11_Node000008_Node000011" title=" " alt="" coords="708,101,884,146,882,151,707,107"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="768,152,848,177"/>
+<area shape="poly" id="edge12_Node000008_Node000012" title=" " alt="" coords="687,102,773,144,771,148,685,106"/>
+</map>

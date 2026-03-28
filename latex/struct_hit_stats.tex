@@ -5,44 +5,106 @@
 A structure of vectors to store information about detected photons.  
 
 
-\doxysubsubsection*{Public Attributes}
+
+
+\doxysubsection{Detailed Description}
+Extended structure for storing detected photon information with origin tracking. \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{struct_hit_stats_a5b5b61f1096a1e02d495d7bab1fff259}\label{struct_hit_stats_a5b5b61f1096a1e02d495d7bab1fff259} 
+\Hypertarget{struct_hit_stats_aea0852e7ab1eefeba29058ecfa5bfedf}\label{struct_hit_stats_aea0852e7ab1eefeba29058ecfa5bfedf} 
 std\+::vector$<$ G4long $>$ {\bfseries event\+Id}
 \begin{DoxyCompactList}\small\item\em ID of the event. \end{DoxyCompactList}\item 
-\Hypertarget{struct_hit_stats_ae0c5192a6db7a2fc8dec37e62a6a1e76}\label{struct_hit_stats_ae0c5192a6db7a2fc8dec37e62a6a1e76} 
+\Hypertarget{struct_hit_stats_acfccde834aef3c0bf97abeceb7b9d735}\label{struct_hit_stats_acfccde834aef3c0bf97abeceb7b9d735} 
 std\+::vector$<$ G4double $>$ {\bfseries hit\+Time}
 \begin{DoxyCompactList}\small\item\em Time of detection. \end{DoxyCompactList}\item 
-\Hypertarget{struct_hit_stats_a254bd94585df0605a6e2e863e3e00851}\label{struct_hit_stats_a254bd94585df0605a6e2e863e3e00851} 
+\Hypertarget{struct_hit_stats_a125d28b6b3801c26f11f510023f96c74}\label{struct_hit_stats_a125d28b6b3801c26f11f510023f96c74} 
 std\+::vector$<$ G4double $>$ {\bfseries flight\+Time}
 \begin{DoxyCompactList}\small\item\em Photon flight time. \end{DoxyCompactList}\item 
-\Hypertarget{struct_hit_stats_ae7c3d380f7f961927f73fef4ee20fe4d}\label{struct_hit_stats_ae7c3d380f7f961927f73fef4ee20fe4d} 
-std\+::vector$<$ G4double $>$ {\bfseries path\+Lenght}
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_a33752f9229972b8e3f84a9e5fea2417b}{path\+Lenght}}
 \begin{DoxyCompactList}\small\item\em Length of the photon\textquotesingle{}s path before hitting. \end{DoxyCompactList}\item 
-\Hypertarget{struct_hit_stats_a542a1e55040646afe6966f281194117b}\label{struct_hit_stats_a542a1e55040646afe6966f281194117b} 
-std\+::vector$<$ G4double $>$ {\bfseries energy}
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_a4a08cf3df1340952c3fbca860db6b9e0}{energy}}
 \begin{DoxyCompactList}\small\item\em Energy of the detected photon. \end{DoxyCompactList}\item 
-\Hypertarget{struct_hit_stats_af603afdc7e643ea0246cb0b642ae8bb5}\label{struct_hit_stats_af603afdc7e643ea0246cb0b642ae8bb5} 
-std\+::vector$<$ G4int $>$ {\bfseries PMTnr}
+std\+::vector$<$ G4int $>$ \mbox{\hyperlink{struct_hit_stats_adfcbdc046c3480da0f88d37449a3889b}{PMTnr}}
 \begin{DoxyCompactList}\small\item\em ID of the PMT that detected the photon. \end{DoxyCompactList}\item 
-\Hypertarget{struct_hit_stats_a383cfeda6e6e515b56aee0a369ec5085}\label{struct_hit_stats_a383cfeda6e6e515b56aee0a369ec5085} 
-std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries direction}
+std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_a440d23ddb084a09793539abba0d02f5a}{direction}}
 \begin{DoxyCompactList}\small\item\em Momentum direction of the photon at the time of detection. \end{DoxyCompactList}\item 
-\Hypertarget{struct_hit_stats_a82333e4544d85c231e0aab2660f99cda}\label{struct_hit_stats_a82333e4544d85c231e0aab2660f99cda} 
-std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries local\+Position}
+std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_affd592d69cb93ec261a9bd440fe2a821}{local\+Position}}
 \begin{DoxyCompactList}\small\item\em Local position of the detected photon within the PMT. \end{DoxyCompactList}\item 
-\Hypertarget{struct_hit_stats_a6a80e0ae23f39c939f1e46737cc80dd4}\label{struct_hit_stats_a6a80e0ae23f39c939f1e46737cc80dd4} 
-std\+::vector$<$ G4\+Three\+Vector $>$ {\bfseries global\+Position}
+std\+::vector$<$ G4\+Three\+Vector $>$ \mbox{\hyperlink{struct_hit_stats_ab3c4339a1de0643e7eb14c6625ce7d39}{global\+Position}}
 \begin{DoxyCompactList}\small\item\em Global position of the detected photon. \end{DoxyCompactList}\item 
-\Hypertarget{struct_hit_stats_ae73c03f4d9024845eb1bfd5de71eb653}\label{struct_hit_stats_ae73c03f4d9024845eb1bfd5de71eb653} 
-std\+::vector$<$ G4double $>$ {\bfseries generation\+Detection\+Distance}
+std\+::vector$<$ G4double $>$ \mbox{\hyperlink{struct_hit_stats_a4279d62678eb4ae4f0b0c11a7805cb20}{generation\+Detection\+Distance}}
 \begin{DoxyCompactList}\small\item\em Distance between generation and detection of photon. \end{DoxyCompactList}\item 
-\Hypertarget{struct_hit_stats_a3c8b0736ba6927c644ee1b9e62e02e64}\label{struct_hit_stats_a3c8b0736ba6927c644ee1b9e62e02e64} 
-std\+::vector$<$ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} $>$ {\bfseries PMTresponse}
-\begin{DoxyCompactList}\small\item\em PMT\textquotesingle{}s response to the detected photon, encapsulated as a {\ttfamily PMTPulse}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+std\+::vector$<$ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} $>$ \mbox{\hyperlink{struct_hit_stats_af0c644a27a315c687853e786e4f23f36}{PMTresponse}}
+\begin{DoxyCompactList}\small\item\em PMT\textquotesingle{}s response to the detected photon, encapsulated as a {\ttfamily PMTPulse}. \end{DoxyCompactList}\item 
+\Hypertarget{struct_hit_stats_a35576be0379acf12114b32ad54e96354}\label{struct_hit_stats_a35576be0379acf12114b32ad54e96354} 
+std\+::vector$<$ G4double $>$ {\bfseries entry\+Time}
+\begin{DoxyCompactList}\small\item\em Time photon entered \doxylink{class_d_o_m}{DOM}. \end{DoxyCompactList}\item 
+\Hypertarget{struct_hit_stats_a71c2ad1cc8df75a5dd9240b426bb26f3}\label{struct_hit_stats_a71c2ad1cc8df75a5dd9240b426bb26f3} 
+std\+::vector$<$ G4\+String $>$ {\bfseries photon\+Origin}
+\begin{DoxyCompactList}\small\item\em Origin classification (e.\+g., "{}\+Cerenkov from Muon"{}) \end{DoxyCompactList}\item 
+\Hypertarget{struct_hit_stats_aa7879c5b61863088287ebd39ab8935a0}\label{struct_hit_stats_aa7879c5b61863088287ebd39ab8935a0} 
+std\+::vector$<$ G4int $>$ {\bfseries parent\+ID}
+\begin{DoxyCompactList}\small\item\em Parent track ID. \end{DoxyCompactList}\item 
+\Hypertarget{struct_hit_stats_a52fb2b5eecf5a1ad8321ae9eb8a04d63}\label{struct_hit_stats_a52fb2b5eecf5a1ad8321ae9eb8a04d63} 
+std\+::vector$<$ G4\+String $>$ {\bfseries parent\+Type}
+\begin{DoxyCompactList}\small\item\em Parent particle type (e.\+g., "{}mu-\/"{}, "{}e-\/"{}) \end{DoxyCompactList}\item 
+\Hypertarget{struct_hit_stats_ac9f6c212327fbf303b347b70b7204ead}\label{struct_hit_stats_ac9f6c212327fbf303b347b70b7204ead} 
+std\+::vector$<$ G4\+String $>$ {\bfseries parent\+Process}
+\begin{DoxyCompactList}\small\item\em Process that created parent. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_hit_stats_a440d23ddb084a09793539abba0d02f5a}\label{struct_hit_stats_a440d23ddb084a09793539abba0d02f5a} 
+\index{HitStats@{HitStats}!direction@{direction}}
+\index{direction@{direction}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily std\+::vector$<$ G4\+Three\+Vector $>$ Hit\+Stats\+::direction}
+
+Momentum direction. \Hypertarget{struct_hit_stats_a4a08cf3df1340952c3fbca860db6b9e0}\label{struct_hit_stats_a4a08cf3df1340952c3fbca860db6b9e0} 
+\index{HitStats@{HitStats}!energy@{energy}}
+\index{energy@{energy}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{energy}{energy}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ Hit\+Stats\+::energy}
+
+Energy of detected photon. \Hypertarget{struct_hit_stats_a4279d62678eb4ae4f0b0c11a7805cb20}\label{struct_hit_stats_a4279d62678eb4ae4f0b0c11a7805cb20} 
+\index{HitStats@{HitStats}!generationDetectionDistance@{generationDetectionDistance}}
+\index{generationDetectionDistance@{generationDetectionDistance}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{generationDetectionDistance}{generationDetectionDistance}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ Hit\+Stats\+::generation\+Detection\+Distance}
+
+Distance from generation to detection. \Hypertarget{struct_hit_stats_ab3c4339a1de0643e7eb14c6625ce7d39}\label{struct_hit_stats_ab3c4339a1de0643e7eb14c6625ce7d39} 
+\index{HitStats@{HitStats}!globalPosition@{globalPosition}}
+\index{globalPosition@{globalPosition}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{globalPosition}{globalPosition}}
+{\footnotesize\ttfamily std\+::vector$<$ G4\+Three\+Vector $>$ Hit\+Stats\+::global\+Position}
+
+Global position. \Hypertarget{struct_hit_stats_affd592d69cb93ec261a9bd440fe2a821}\label{struct_hit_stats_affd592d69cb93ec261a9bd440fe2a821} 
+\index{HitStats@{HitStats}!localPosition@{localPosition}}
+\index{localPosition@{localPosition}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{localPosition}{localPosition}}
+{\footnotesize\ttfamily std\+::vector$<$ G4\+Three\+Vector $>$ Hit\+Stats\+::local\+Position}
+
+Local position in PMT. \Hypertarget{struct_hit_stats_a33752f9229972b8e3f84a9e5fea2417b}\label{struct_hit_stats_a33752f9229972b8e3f84a9e5fea2417b} 
+\index{HitStats@{HitStats}!pathLenght@{pathLenght}}
+\index{pathLenght@{pathLenght}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{pathLenght}{pathLenght}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ Hit\+Stats\+::path\+Lenght}
+
+Length of photon path. \Hypertarget{struct_hit_stats_adfcbdc046c3480da0f88d37449a3889b}\label{struct_hit_stats_adfcbdc046c3480da0f88d37449a3889b} 
+\index{HitStats@{HitStats}!PMTnr@{PMTnr}}
+\index{PMTnr@{PMTnr}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{PMTnr}{PMTnr}}
+{\footnotesize\ttfamily std\+::vector$<$ G4int $>$ Hit\+Stats\+::\+PMTnr}
+
+PMT number. \Hypertarget{struct_hit_stats_af0c644a27a315c687853e786e4f23f36}\label{struct_hit_stats_af0c644a27a315c687853e786e4f23f36} 
+\index{HitStats@{HitStats}!PMTresponse@{PMTresponse}}
+\index{PMTresponse@{PMTresponse}!HitStats@{HitStats}}
+\doxysubsubsection{\texorpdfstring{PMTresponse}{PMTresponse}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} $>$ Hit\+Stats\+::\+PMTresponse}
+
+PMT response. 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{_o_m_sim_hit_manager_8hh}{OMSim\+Hit\+Manager.\+hh}}\end{DoxyCompactItemize}
+\mbox{\hyperlink{common_2framework_2include_2_o_m_sim_hit_manager_8hh}{common/framework/include/\+OMSim\+Hit\+Manager.\+hh}}\item 
+\mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_hit_manager_8hh}{simulations/wavepid/include/\+OMSim\+Hit\+Manager.\+hh}}\end{DoxyCompactItemize}

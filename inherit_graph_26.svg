@@ -20,16 +20,16 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:href="class_o_m_sim_primary_generator_action.html" target="_top" xlink:title=" ">
+<g id="a_Node000001"><a xlink:href="class_o_m_sim_primary_generator_action.html" target="_top" xlink:title="Generates primary particles for WavePID simulation.">
 <polygon fill="white" stroke="#666666" points="383,-74 213,-74 213,-55 383,-55 383,-74"/>
 <text text-anchor="middle" x="298" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimPrimaryGeneratorAction</text>
 </a>
 </g>
 </g>
 <!-- Node0&#45;&gt;Node1 -->
-<g id="edge25_Node000000_Node000001" class="edge">
+<g id="edge26_Node000000_Node000001" class="edge">
 <title>Node0&#45;&gt;Node1</title>
-<g id="a_edge25_Node000000_Node000001"><a xlink:title=" ">
+<g id="a_edge26_Node000000_Node000001"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M187.24,-54.45C195.82,-55.24 204.46,-56.03 212.92,-56.8"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="187.48,-50.96 177.2,-53.53 186.84,-57.93 187.48,-50.96"/>
 </a>
@@ -45,9 +45,9 @@
 </g>
 </g>
 <!-- Node0&#45;&gt;Node2 -->
-<g id="edge26_Node000000_Node000002" class="edge">
+<g id="edge27_Node000000_Node000002" class="edge">
 <title>Node0&#45;&gt;Node2</title>
-<g id="a_edge26_Node000000_Node000002"><a xlink:title=" ">
+<g id="a_edge27_Node000000_Node000002"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M187.3,-37.02C201.22,-35.81 215.29,-34.59 228.49,-33.44"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="186.86,-33.54 177.2,-37.89 187.46,-40.52 186.86,-33.54"/>
 </a>
@@ -63,9 +63,9 @@
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
-<g id="edge27_Node000002_Node000003" class="edge">
+<g id="edge28_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<g id="a_edge27_Node000002_Node000003"><a xlink:title=" ">
+<g id="a_edge28_Node000002_Node000003"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M377.56,-36.98C391.94,-38.71 406.34,-40.45 418.82,-41.95"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="377.97,-33.5 367.62,-35.78 377.13,-40.45 377.97,-33.5"/>
 </a>
@@ -81,9 +81,9 @@
 </g>
 </g>
 <!-- Node2&#45;&gt;Node4 -->
-<g id="edge28_Node000002_Node000004" class="edge">
+<g id="edge29_Node000002_Node000004" class="edge">
 <title>Node2&#45;&gt;Node4</title>
-<g id="a_edge28_Node000002_Node000004"><a xlink:title=" ">
+<g id="a_edge29_Node000002_Node000004"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M377.95,-18.48C393.71,-16.68 409.46,-14.88 422.67,-13.37"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="377.16,-15.04 367.62,-19.66 377.96,-22 377.16,-15.04"/>
 </a>

@@ -2,7 +2,8 @@ var searchData=
 [
   ['parametertable_0',['ParameterTable',['../class_parameter_table.html',1,'']]],
   ['photoninfo_1',['PhotonInfo',['../struct_photon_info.html',1,'']]],
-  ['photonmaterialtracking_2',['PhotonMaterialTracking',['../class_photon_material_tracking.html',1,'']]],
-  ['plyreader_3',['PLYReader',['../class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html',1,'CADMesh::File']]],
-  ['pmtpulse_4',['PMTPulse',['../struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html',1,'OMSimPMTResponse']]]
+  ['photoninforoot_2',['PhotonInfoROOT',['../struct_photon_info_r_o_o_t.html',1,'']]],
+  ['photonmaterialtracking_3',['PhotonMaterialTracking',['../class_photon_material_tracking.html',1,'']]],
+  ['plyreader_4',['PLYReader',['../class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html',1,'CADMesh::File']]],
+  ['pmtpulse_5',['PMTPulse',['../struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html',1,'OMSimPMTResponse']]]
 ];

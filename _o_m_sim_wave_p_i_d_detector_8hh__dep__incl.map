@@ -1,0 +1,7 @@
+<map id="OMSimWavePIDDetector.hh" name="OMSimWavePIDDetector.hh">
+<area shape="rect" id="Node000001" title="Detector construction for WavePID simulation study." alt="" coords="115,5,317,31"/>
+<area shape="rect" id="Node000002" href="$_o_m_sim_wave_p_i_d_detector_8cc.html" title="Implementation of detector construction for WavePID study." alt="" coords="5,79,205,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,40,125,81,122,76,185,36"/>
+<area shape="rect" id="Node000003" href="$_o_m_sim___wave_p_i_d__study_8cc.html" title="Main executable for WavePID photon origin tracking study." alt="" coords="230,79,423,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="247,36,310,76,307,81,244,40"/>
+</map>

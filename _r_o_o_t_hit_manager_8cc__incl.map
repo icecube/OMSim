@@ -1,0 +1,27 @@
+<map id="ROOTHitManager.cc" name="ROOTHitManager.cc">
+<area shape="rect" id="Node000001" title="Implementation of ROOT&#45;based output manager for WavePID." alt="" coords="723,5,875,31"/>
+<area shape="rect" id="Node000002" href="$_r_o_o_t_hit_manager_8hh.html" title="ROOT&#45;based output manager for WavePID photon hit data." alt="" coords="231,79,386,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="724,33,400,80,399,74,723,28"/>
+<area shape="rect" id="Node000008" href="$_o_m_sim_logger_8hh_source.html" title=" " alt="" coords="733,79,865,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="802,31,802,65,797,65,797,31"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="889,79,976,104"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="822,28,900,70,898,74,820,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,159,71,185"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="258,107,176,127,84,155,78,157,76,152,83,149,175,122,257,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="95,159,165,185"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="284,106,169,156,167,151,282,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="189,159,287,185"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="300,106,260,151,256,147,296,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="311,159,448,185"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="321,102,362,147,358,151,317,106"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="473,159,553,185"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="339,102,471,152,469,157,337,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="577,159,701,185"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="777,106,676,156,674,151,775,102"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="725,152,873,192"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="802,104,802,138,797,138,797,104"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="898,159,975,185"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="821,102,906,150,903,155,818,106"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="999,159,1130,185"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="839,101,1014,153,1012,158,837,107"/>
+</map>

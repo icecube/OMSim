@@ -1,13 +1,9 @@
 <map id="OMSimUIinterface.hh" name="OMSimUIinterface.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="211,5,372,31"/>
-<area shape="rect" id="Node000002" href="$_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="247,79,336,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="294,44,294,79,289,79,289,44"/>
-<area shape="rect" id="Node000003" href="$_o_m_sim_8cc.html" title="Implementation of the OMSim class." alt="" coords="5,152,92,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="240,110,89,154,87,149,239,105"/>
-<area shape="rect" id="Node000004" href="$_o_m_sim_supernova_8cc.html" title="Main of the supernova study." alt="" coords="116,152,272,177"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="266,114,211,154,208,150,263,110"/>
-<area shape="rect" id="Node000005" href="$_o_m_sim__effective__area_8cc.html" title="Main for the calculation of effective areas." alt="" coords="297,152,483,177"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="320,110,375,150,372,154,316,114"/>
-<area shape="rect" id="Node000006" href="$_o_m_sim__radioactive__decays_8cc.html" title="Main of the radioactive decay study." alt="" coords="508,152,728,177"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="350,103,566,149,565,155,349,108"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="83,5,244,31"/>
+<area shape="rect" id="Node000002" href="$common_2framework_2include_2_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="5,79,95,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,40,70,81,67,76,132,36"/>
+<area shape="rect" id="Node000003" href="$simulations_2wavepid_2include_2_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation." alt="" coords="119,79,208,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,44,166,79,161,79,161,44"/>
+<area shape="rect" id="Node000004" href="$_o_m_sim___wave_p_i_d__study_8cc.html" title="Main executable for WavePID photon origin tracking study." alt="" coords="232,79,425,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="203,34,303,76,301,81,201,38"/>
 </map>

@@ -1,0 +1,29 @@
+\doxysection{wavepid/src/\+OMSim\+Primary\+Generator\+Action.cc File Reference}
+\hypertarget{wavepid_2src_2_o_m_sim_primary_generator_action_8cc}{}\label{wavepid_2src_2_o_m_sim_primary_generator_action_8cc}\index{OMSimPrimaryGeneratorAction.cc@{OMSimPrimaryGeneratorAction.cc}}
+
+
+Implementation of primary generator action for Wave\+PID.  
+
+
+Include dependency graph for wavepid/src/\+OMSim\+Primary\+Generator\+Action.cc\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wavepid_2src_2_o_m_sim_primary_generator_action_8cc__incl}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Detailed Description}
+Calculates muon starting position based on impact parameter to ensure the Cherenkov light cone hits the \doxylink{class_d_o_m}{DOM} at the origin.
+
+Geometry\+:
+\begin{DoxyItemize}
+\item \doxylink{class_d_o_m}{DOM} at origin (0, 0, 0)
+\item Muon travels in +x direction
+\item Muon track at perpendicular distance r (impact parameter) in z
+\item Starting x position\+: -\/1.\+7\texorpdfstring{$\ast$}{*}r (ensures Cherenkov cone reaches \doxylink{class_d_o_m}{DOM})
+\end{DoxyItemize}
+
+The factor 1.\+7 accounts for the Cherenkov angle in ice (\texorpdfstring{$\sim$}{\string~}41 deg)\+: tan(41°) ≈ 0.\+87, so light needs \texorpdfstring{$\sim$}{\string~}1.15\texorpdfstring{$\ast$}{*}r to reach \doxylink{class_d_o_m}{DOM} Using 1.\+7 provides margin for the full cone to illuminate the \doxylink{class_d_o_m}{DOM}. 

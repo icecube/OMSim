@@ -2,6 +2,11 @@
 \hypertarget{class_o_m_sim_primary_generator_action}{}\label{class_o_m_sim_primary_generator_action}\index{OMSimPrimaryGeneratorAction@{OMSimPrimaryGeneratorAction}}
 
 
+Generates primary particles for Wave\+PID simulation.  
+
+
+
+
 Inheritance diagram for OMSim\+Primary\+Generator\+Action\+:
 \nopagebreak
 \begin{figure}[H]
@@ -20,7 +25,14 @@ Collaboration diagram for OMSim\+Primary\+Generator\+Action\+:
 \includegraphics[width=350pt]{class_o_m_sim_primary_generator_action__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsubsection*{Public Member Functions}
+
+
+\doxysubsection{Detailed Description}
+Supports two modes\+:
+\begin{DoxyEnumerate}
+\item Impact parameter mode\+: Uses G4\+Particle\+Gun with position calculated to ensure Cherenkov cone hits \doxylink{class_d_o_m}{DOM} at origin.
+\item Macro mode\+: Uses G4\+General\+Particle\+Source controlled via macro commands. 
+\end{DoxyEnumerate}\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_o_m_sim_primary_generator_action_a77207c72543c23fef95a2db01a1915e0}\label{class_o_m_sim_primary_generator_action_a77207c72543c23fef95a2db01a1915e0} 
@@ -49,6 +61,15 @@ G4int {\bfseries Get\+Selected\+Action} ()
 \item 
 \Hypertarget{class_o_m_sim_primary_generator_action_a290c17f77fe6f291c8e6bce46ad101d7}\label{class_o_m_sim_primary_generator_action_a290c17f77fe6f291c8e6bce46ad101d7} 
 \mbox{\hyperlink{class_o_m_sim_e_n_e_s}{OMSim\+ENES}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Action1} ()
+\item 
+\Hypertarget{class_o_m_sim_primary_generator_action_a77207c72543c23fef95a2db01a1915e0}\label{class_o_m_sim_primary_generator_action_a77207c72543c23fef95a2db01a1915e0} 
+void {\bfseries Generate\+Primaries} (G4\+Event \texorpdfstring{$\ast$}{*}an\+Event) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_o_m_sim_primary_generator_action_a5eba54fc2fdfde052a1944de37b231a4}\label{class_o_m_sim_primary_generator_action_a5eba54fc2fdfde052a1944de37b231a4} 
+void {\bfseries setup\+Particle\+Gun} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -56,7 +77,7 @@ G4int {\bfseries Get\+Selected\+Action} ()
 \Hypertarget{class_o_m_sim_primary_generator_action_a95fa0bd093e34cd9a3aac0a023b9e035}\label{class_o_m_sim_primary_generator_action_a95fa0bd093e34cd9a3aac0a023b9e035} 
 G4\+General\+Particle\+Source \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+particle\+Source}
 \item 
-\Hypertarget{class_o_m_sim_primary_generator_action_a43d6528683301e971b9ce5156deca203}\label{class_o_m_sim_primary_generator_action_a43d6528683301e971b9ce5156deca203} 
+\Hypertarget{class_o_m_sim_primary_generator_action_a72b2e450ffde6c54f3980ef7b0952f4a}\label{class_o_m_sim_primary_generator_action_a72b2e450ffde6c54f3980ef7b0952f4a} 
 G4\+Particle\+Gun \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+particle\+Gun}
 \item 
 \Hypertarget{class_o_m_sim_primary_generator_action_a61a317a806b29609c861240a8239dcc9}\label{class_o_m_sim_primary_generator_action_a61a317a806b29609c861240a8239dcc9} 
@@ -70,6 +91,15 @@ G4int {\bfseries m\+\_\+selected\+Action}
 \item 
 \Hypertarget{class_o_m_sim_primary_generator_action_af120759d108281fc52927543b3ac0418}\label{class_o_m_sim_primary_generator_action_af120759d108281fc52927543b3ac0418} 
 \mbox{\hyperlink{class_o_m_sim_primary_generator_messenger}{OMSim\+Primary\+Generator\+Messenger}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+gun\+Messenger}
+\item 
+\Hypertarget{class_o_m_sim_primary_generator_action_aca4b4d1e557577afcd160638c7b74ea6}\label{class_o_m_sim_primary_generator_action_aca4b4d1e557577afcd160638c7b74ea6} 
+bool {\bfseries m\+\_\+use\+Particle\+Gun}
+\begin{DoxyCompactList}\small\item\em True if using impact parameter mode. \end{DoxyCompactList}\item 
+\Hypertarget{class_o_m_sim_primary_generator_action_a70b1dc2fb4f0db3167c5a5823a4b5757}\label{class_o_m_sim_primary_generator_action_a70b1dc2fb4f0db3167c5a5823a4b5757} 
+G4\+Three\+Vector {\bfseries m\+\_\+position}
+\item 
+\Hypertarget{class_o_m_sim_primary_generator_action_a10bc6485b4bd08e1de7fd71a0c7fb7a0}\label{class_o_m_sim_primary_generator_action_a10bc6485b4bd08e1de7fd71a0c7fb7a0} 
+G4\+Three\+Vector {\bfseries m\+\_\+direction}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
@@ -79,6 +109,9 @@ static thread\+\_\+local std\+::unique\+\_\+ptr$<$ G4\+General\+Particle\+Source
 \item 
 \Hypertarget{class_o_m_sim_primary_generator_action_ac5e1fffc28ab1236116eda13879387df}\label{class_o_m_sim_primary_generator_action_ac5e1fffc28ab1236116eda13879387df} 
 static G4\+Mutex {\bfseries m\+\_\+mutex}
+\item 
+\Hypertarget{class_o_m_sim_primary_generator_action_aa9ef86e9dae6a60ac3db9464927bd943}\label{class_o_m_sim_primary_generator_action_aa9ef86e9dae6a60ac3db9464927bd943} 
+static thread\+\_\+local std\+::unique\+\_\+ptr$<$ G4\+Particle\+Gun $>$ {\bfseries m\+\_\+particle\+Gun}
 \end{DoxyCompactItemize}
 
 
@@ -88,7 +121,9 @@ effective\+\_\+area/include/\+OMSim\+Primary\+Generator\+Action.\+hh\item
 efficiency\+\_\+calibration/include/\+OMSim\+Primary\+Generator\+Action.\+hh\item 
 \mbox{\hyperlink{radioactive__decays_2include_2_o_m_sim_primary_generator_action_8hh}{radioactive\+\_\+decays/include/\+OMSim\+Primary\+Generator\+Action.\+hh}}\item 
 supernova/include/\+OMSim\+Primary\+Generator\+Action.\+hh\item 
+\mbox{\hyperlink{wavepid_2include_2_o_m_sim_primary_generator_action_8hh}{wavepid/include/\+OMSim\+Primary\+Generator\+Action.\+hh}}\item 
 effective\+\_\+area/src/\+OMSim\+Primary\+Generator\+Action.\+cc\item 
 efficiency\+\_\+calibration/src/\+OMSim\+Primary\+Generator\+Action.\+cc\item 
 radioactive\+\_\+decays/src/\+OMSim\+Primary\+Generator\+Action.\+cc\item 
-supernova/src/\+OMSim\+Primary\+Generator\+Action.\+cc\end{DoxyCompactItemize}
+supernova/src/\+OMSim\+Primary\+Generator\+Action.\+cc\item 
+\mbox{\hyperlink{wavepid_2src_2_o_m_sim_primary_generator_action_8cc}{wavepid/src/\+OMSim\+Primary\+Generator\+Action.\+cc}}\end{DoxyCompactItemize}

@@ -128,13 +128,15 @@ $(document).ready(function(){initNavTree('struct_photon_info.html',''); initResi
 <div class="contents">
 
 <p>Contains information about a detected photon which will be appended in HitManager.  
-</p>
+ <a href="struct_photon_info.html#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for PhotonInfo:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="struct_photon_info__coll__graph.svg" width="242" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Extended photon information with origin tracking for WavePID. </p>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a44bce76bf7aad156523f10d4aa58ee5e" id="r_a44bce76bf7aad156523f10d4aa58ee5e"><td class="memItemLeft" align="right" valign="top"><a id="a44bce76bf7aad156523f10d4aa58ee5e" name="a44bce76bf7aad156523f10d4aa58ee5e"></a>
@@ -189,9 +191,30 @@ G4int&#160;</td><td class="memItemRight" valign="bottom"><b>detectorID</b></td><
 <a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html">OMSimPMTResponse::PMTPulse</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PMTResponse</b></td></tr>
 <tr class="memdesc:a1669c552fd4a31bb23d4920eb946fafc"><td class="mdescLeft">&#160;</td><td class="mdescRight">PMT response to the photon hit. <br /></td></tr>
 <tr class="separator:a1669c552fd4a31bb23d4920eb946fafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dd4585a27843db32ebfed31ab5247df" id="r_a5dd4585a27843db32ebfed31ab5247df"><td class="memItemLeft" align="right" valign="top"><a id="a5dd4585a27843db32ebfed31ab5247df" name="a5dd4585a27843db32ebfed31ab5247df"></a>
+G4String&#160;</td><td class="memItemRight" valign="bottom"><b>photonOrigin</b></td></tr>
+<tr class="memdesc:a5dd4585a27843db32ebfed31ab5247df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Origin classification (e.g., "Cerenkov from Muon") <br /></td></tr>
+<tr class="separator:a5dd4585a27843db32ebfed31ab5247df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accfc3d2706d7edf1b41294ccea5eb625" id="r_accfc3d2706d7edf1b41294ccea5eb625"><td class="memItemLeft" align="right" valign="top"><a id="accfc3d2706d7edf1b41294ccea5eb625" name="accfc3d2706d7edf1b41294ccea5eb625"></a>
+G4int&#160;</td><td class="memItemRight" valign="bottom"><b>parentID</b></td></tr>
+<tr class="memdesc:accfc3d2706d7edf1b41294ccea5eb625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parent track ID. <br /></td></tr>
+<tr class="separator:accfc3d2706d7edf1b41294ccea5eb625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2041e2821ee40a3bb25a612845bec66c" id="r_a2041e2821ee40a3bb25a612845bec66c"><td class="memItemLeft" align="right" valign="top"><a id="a2041e2821ee40a3bb25a612845bec66c" name="a2041e2821ee40a3bb25a612845bec66c"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>parentType</b></td></tr>
+<tr class="memdesc:a2041e2821ee40a3bb25a612845bec66c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parent particle type (e.g., "mu-", "e-") <br /></td></tr>
+<tr class="separator:a2041e2821ee40a3bb25a612845bec66c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae49655cd86eaa9c4463b12f6d1d3ce97" id="r_ae49655cd86eaa9c4463b12f6d1d3ce97"><td class="memItemLeft" align="right" valign="top"><a id="ae49655cd86eaa9c4463b12f6d1d3ce97" name="ae49655cd86eaa9c4463b12f6d1d3ce97"></a>
+G4String&#160;</td><td class="memItemRight" valign="bottom"><b>parentProcess</b></td></tr>
+<tr class="memdesc:ae49655cd86eaa9c4463b12f6d1d3ce97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process that created parent particle. <br /></td></tr>
+<tr class="separator:ae49655cd86eaa9c4463b12f6d1d3ce97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb07e24459b748981a5530c68885b5bb" id="r_adb07e24459b748981a5530c68885b5bb"><td class="memItemLeft" align="right" valign="top"><a id="adb07e24459b748981a5530c68885b5bb" name="adb07e24459b748981a5530c68885b5bb"></a>
+G4double&#160;</td><td class="memItemRight" valign="bottom"><b>entryTime</b></td></tr>
+<tr class="memdesc:adb07e24459b748981a5530c68885b5bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time photon entered the <a class="el" href="class_d_o_m.html" title="DOM class represents the construction of pDOM (deepcore) or Gen1 DOM.">DOM</a>. <br /></td></tr>
+<tr class="separator:adb07e24459b748981a5530c68885b5bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="_o_m_sim_sensitive_detector_8hh_source.html">OMSimSensitiveDetector.hh</a></li>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li><a class="el" href="common_2framework_2include_2_o_m_sim_sensitive_detector_8hh_source.html">common/framework/include/OMSimSensitiveDetector.hh</a></li>
+<li><a class="el" href="simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh_source.html">simulations/wavepid/include/OMSimSensitiveDetector.hh</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -199,7 +222,7 @@ G4int&#160;</td><td class="memItemRight" valign="bottom"><b>detectorID</b></td><
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_photon_info.html">PhotonInfo</a></li>
-    <li class="footer">Generated on Fri Dec 12 2025 15:33:08 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sat Mar 28 2026 19:15:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

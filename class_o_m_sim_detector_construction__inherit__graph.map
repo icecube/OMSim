@@ -1,13 +1,15 @@
 <map id="OMSimDetectorConstruction" name="OMSimDetectorConstruction">
-<area shape="rect" id="Node000001" title="Class for detector construction in the effective area simulation." alt="" coords="271,80,477,105"/>
+<area shape="rect" id="Node000001" title="Class for detector construction in the effective area simulation." alt="" coords="271,104,477,129"/>
 <area shape="rect" id="Node000003" href="$class_o_m_sim_effective_area_detector.html" title="Class for detector construction in the effective area simulation." alt="" coords="525,5,737,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="422,73,525,39,569,28,571,33,526,45,424,78"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="407,95,461,67,524,39,563,28,564,33,526,45,464,71,410,100"/>
 <area shape="rect" id="Node000004" href="$class_o_m_sim_effi_cali_detector.html" title=" " alt="" coords="546,55,717,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="491,79,546,73,546,78,491,84"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="454,99,564,77,565,83,455,104"/>
 <area shape="rect" id="Node000005" href="$class_o_m_sim_rad_decays_detector.html" title="Detector construction of radioactive decays simulation." alt="" coords="532,104,731,129"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="491,101,532,105,531,110,491,106"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="491,114,532,114,532,119,491,119"/>
 <area shape="rect" id="Node000006" href="$class_o_m_sim_s_ndetector.html" title="Class for detector construction in the SN neutrino simulation." alt="" coords="561,153,702,179"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="424,107,526,139,571,151,569,156,525,145,423,112"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,223,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,90,270,90,270,95,237,95"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="455,129,565,151,564,156,454,135"/>
+<area shape="rect" id="Node000007" href="$class_o_m_sim_wave_p_i_d_detector.html" title="Detector construction for WavePID photon origin tracking study." alt="" coords="540,203,723,228"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="410,134,464,162,526,189,564,200,563,205,524,194,461,167,407,139"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,104,223,129"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,114,270,114,270,119,237,119"/>
 </map>

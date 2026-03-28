@@ -138,10 +138,11 @@ $(document).ready(function(){initNavTree('class_o_m_sim_hit_manager.html',''); i
 <div class="dynheader">
 Collaboration diagram for OMSimHitManager:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_o_m_sim_hit_manager__coll__graph.svg" width="319" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_o_m_sim_hit_manager__coll__graph.svg" width="460" height="212"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Stores, manages, and provides access information related to detected photons across multiple optical modules. The manager uses a global instance pattern, ensuring a unified access point for photon hit data. Its lifecycle is managed by the <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> class.</p>
+<div class="textblock"><p>Enhanced hit manager with photon origin tracking and ROOT output.</p>
+<p>Stores, manages, and provides access information related to detected photons across multiple optical modules. The manager uses a global instance pattern, ensuring a unified access point for photon hit data. Its lifecycle is managed by the <a class="el" href="class_o_m_sim.html" title="Controls the main simulation process.">OMSim</a> class.</p>
 <p>The hits are stored using '<a class="el" href="class_o_m_sim_hit_manager.html#aaf4ca3c29c6dbe8721aaafd4fd39d436" title="Appends hit information for a detected photon to the corresponding module&#39;s hit data.">OMSimHitManager::appendHitInfo</a>'. The analysis manager of each study is in charge of writing the stored information into a file (see for example '<a class="el" href="class_o_m_sim_effective_area_analyisis.html#a7ef0a66e08c129142dc841ed2f51c43a" title="Writes a scan result to the output file.">OMSimEffectiveAreaAnalyisis::writeScan</a>' or 'OMSimDecaysAnalysis::writeHitInformation'). If the simulation will continue after the data is written, do not forget calling '<a class="el" href="class_o_m_sim_hit_manager.html#a00bb034e7751905f8a8229de3f8a39b1" title="Deletes hit information in memory for all modules.">OMSimHitManager::reset</a>'!. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -188,6 +189,43 @@ G4int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumberOfModules</
 <tr class="memitem:aeaaa60e5b1a57b96a45e16e91128b4f0" id="r_aeaaa60e5b1a57b96a45e16e91128b4f0"><td class="memItemLeft" align="right" valign="top"><a id="aeaaa60e5b1a57b96a45e16e91128b4f0" name="aeaaa60e5b1a57b96a45e16e91128b4f0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>mergeThreadData</b> ()</td></tr>
 <tr class="separator:aeaaa60e5b1a57b96a45e16e91128b4f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cd1f222a2f066b6a1db5088c5df3c00" id="r_a1cd1f222a2f066b6a1db5088c5df3c00"><td class="memItemLeft" align="right" valign="top"><a id="a1cd1f222a2f066b6a1db5088c5df3c00" name="a1cd1f222a2f066b6a1db5088c5df3c00"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>appendHitInfo</b> (G4int p_eventid, G4double p_globalTime, G4double p_entryTime, G4double p_localTime, G4double p_trackLength, G4double p_energy, G4int pPMTHitNumber, G4ThreeVector pMomentumDirection, G4ThreeVector pGlobalPos, G4ThreeVector pLocalPos, G4double p_distance, <a class="el" href="struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html">OMSimPMTResponse::PMTPulse</a> pResponse, G4String pPhotonOrigin, G4int pParentID, std::string pParentType, G4String pParentProcess, G4double p_wavelength, G4int pModuleIndex)</td></tr>
+<tr class="memdesc:a1cd1f222a2f066b6a1db5088c5df3c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append hit information with photon origin data. <br /></td></tr>
+<tr class="separator:a1cd1f222a2f066b6a1db5088c5df3c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00bb034e7751905f8a8229de3f8a39b1" id="r_a00bb034e7751905f8a8229de3f8a39b1"><td class="memItemLeft" align="right" valign="top"><a id="a00bb034e7751905f8a8229de3f8a39b1" name="a00bb034e7751905f8a8229de3f8a39b1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
+<tr class="separator:a00bb034e7751905f8a8229de3f8a39b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a954b4f28a89275da58d4e2e3328d1467" id="r_a954b4f28a89275da58d4e2e3328d1467"><td class="memItemLeft" align="right" valign="top"><a id="a954b4f28a89275da58d4e2e3328d1467" name="a954b4f28a89275da58d4e2e3328d1467"></a>
+std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>countMergedHits</b> (int pModuleIndex=0, bool pDEweight=false)</td></tr>
+<tr class="separator:a954b4f28a89275da58d4e2e3328d1467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4a1060283a53660e52626d08a77ebc8" id="r_ab4a1060283a53660e52626d08a77ebc8"><td class="memItemLeft" align="right" valign="top"><a id="ab4a1060283a53660e52626d08a77ebc8" name="ab4a1060283a53660e52626d08a77ebc8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setNumberOfPMTs</b> (int pNumberOfPMTs, int pModuleIndex=0)</td></tr>
+<tr class="separator:ab4a1060283a53660e52626d08a77ebc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae10481ea62eca89b774ced9e01b991ab" id="r_ae10481ea62eca89b774ced9e01b991ab"><td class="memItemLeft" align="right" valign="top"><a id="ae10481ea62eca89b774ced9e01b991ab" name="ae10481ea62eca89b774ced9e01b991ab"></a>
+<a class="el" href="struct_hit_stats.html">HitStats</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getMergedHitsOfModule</b> (int pModuleIndex=0)</td></tr>
+<tr class="separator:ae10481ea62eca89b774ced9e01b991ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45a63dbb6cdb3815db3cfde00ae36f70" id="r_a45a63dbb6cdb3815db3cfde00ae36f70"><td class="memItemLeft" align="right" valign="top"><a id="a45a63dbb6cdb3815db3cfde00ae36f70" name="a45a63dbb6cdb3815db3cfde00ae36f70"></a>
+<a class="el" href="struct_hit_stats.html">HitStats</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getSingleThreadHitsOfModule</b> (int pModuleIndex=0)</td></tr>
+<tr class="separator:a45a63dbb6cdb3815db3cfde00ae36f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80e97d87c4e35e25870523939e458817" id="r_a80e97d87c4e35e25870523939e458817"><td class="memItemLeft" align="right" valign="top"><a id="a80e97d87c4e35e25870523939e458817" name="a80e97d87c4e35e25870523939e458817"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>areThereHitsInModuleSingleThread</b> (int pModuleIndex=0)</td></tr>
+<tr class="separator:a80e97d87c4e35e25870523939e458817"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a756d2a85121e00d2a2d8b6c04cd0ebd1" id="r_a756d2a85121e00d2a2d8b6c04cd0ebd1"><td class="memItemLeft" align="right" valign="top"><a id="a756d2a85121e00d2a2d8b6c04cd0ebd1" name="a756d2a85121e00d2a2d8b6c04cd0ebd1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>sortHitStatsByTime</b> (<a class="el" href="struct_hit_stats.html">HitStats</a> &amp;pHits)</td></tr>
+<tr class="separator:a756d2a85121e00d2a2d8b6c04cd0ebd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01638ba2c16fcde1244b90e9672425c0" id="r_a01638ba2c16fcde1244b90e9672425c0"><td class="memItemLeft" align="right" valign="top"><a id="a01638ba2c16fcde1244b90e9672425c0" name="a01638ba2c16fcde1244b90e9672425c0"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>calculateMultiplicity</b> (const G4double pTimeWindow, int pModuleNumber=0)</td></tr>
+<tr class="separator:a01638ba2c16fcde1244b90e9672425c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcdc764e8a8b756e6a1eb745403da57b" id="r_abcdc764e8a8b756e6a1eb745403da57b"><td class="memItemLeft" align="right" valign="top"><a id="abcdc764e8a8b756e6a1eb745403da57b" name="abcdc764e8a8b756e6a1eb745403da57b"></a>
+G4int&#160;</td><td class="memItemRight" valign="bottom"><b>getNextDetectorIndex</b> ()</td></tr>
+<tr class="separator:abcdc764e8a8b756e6a1eb745403da57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aad9c1f5979d9d5557dc6a1cf8cb838" id="r_a1aad9c1f5979d9d5557dc6a1cf8cb838"><td class="memItemLeft" align="right" valign="top"><a id="a1aad9c1f5979d9d5557dc6a1cf8cb838" name="a1aad9c1f5979d9d5557dc6a1cf8cb838"></a>
+G4int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumberOfModules</b> ()</td></tr>
+<tr class="separator:a1aad9c1f5979d9d5557dc6a1cf8cb838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaaa60e5b1a57b96a45e16e91128b4f0" id="r_aeaaa60e5b1a57b96a45e16e91128b4f0"><td class="memItemLeft" align="right" valign="top"><a id="aeaaa60e5b1a57b96a45e16e91128b4f0" name="aeaaa60e5b1a57b96a45e16e91128b4f0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mergeThreadData</b> ()</td></tr>
+<tr class="separator:aeaaa60e5b1a57b96a45e16e91128b4f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -199,13 +237,28 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ad8a139a9068c92b7babf471c9ec23ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa3e7a28d658d8e2e6db704b910cc35c" id="r_aaa3e7a28d658d8e2e6db704b910cc35c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#aaa3e7a28d658d8e2e6db704b910cc35c">getInstance</a> ()</td></tr>
 <tr class="separator:aaa3e7a28d658d8e2e6db704b910cc35c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a017afa88f53c1d6c5c20745943782e26" id="r_a017afa88f53c1d6c5c20745943782e26"><td class="memItemLeft" align="right" valign="top"><a id="a017afa88f53c1d6c5c20745943782e26" name="a017afa88f53c1d6c5c20745943782e26"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+<tr class="memdesc:a017afa88f53c1d6c5c20745943782e26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the global instance (called by <a class="el" href="class_o_m_sim.html#a48127177a39ead290b915dcbc1c759a2" title="Initialize the simulation constructing all Geant instances.">OMSim::initialiseSimulation</a>). <br /></td></tr>
+<tr class="separator:a017afa88f53c1d6c5c20745943782e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18f537efc4d4df64e5a893efc8695e9c" id="r_a18f537efc4d4df64e5a893efc8695e9c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_hit_manager.html#a18f537efc4d4df64e5a893efc8695e9c">setROOTOutputFile</a> (const std::string &amp;filename)</td></tr>
+<tr class="memdesc:a18f537efc4d4df64e5a893efc8695e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the ROOT output file (call after init, before simulation runs).  <br /></td></tr>
+<tr class="separator:a18f537efc4d4df64e5a893efc8695e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fdd806f19f78dc7008f0082257e1356" id="r_a0fdd806f19f78dc7008f0082257e1356"><td class="memItemLeft" align="right" valign="top"><a id="a0fdd806f19f78dc7008f0082257e1356" name="a0fdd806f19f78dc7008f0082257e1356"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> ()</td></tr>
+<tr class="memdesc:a0fdd806f19f78dc7008f0082257e1356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shutdown and cleanup the global instance. <br /></td></tr>
+<tr class="separator:a0fdd806f19f78dc7008f0082257e1356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dbc0bf53512c3e674b5ba833324825c" id="r_a4dbc0bf53512c3e674b5ba833324825c"><td class="memItemLeft" align="right" valign="top"><a id="a4dbc0bf53512c3e674b5ba833324825c" name="a4dbc0bf53512c3e674b5ba833324825c"></a>
+static <a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getInstance</b> ()</td></tr>
+<tr class="memdesc:a4dbc0bf53512c3e674b5ba833324825c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get reference to the global instance. <br /></td></tr>
+<tr class="separator:a4dbc0bf53512c3e674b5ba833324825c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a0fc9285c7ecc4cc283e883ceebbe423e" id="r_a0fc9285c7ecc4cc283e883ceebbe423e"><td class="memItemLeft" align="right" valign="top"><a id="a0fc9285c7ecc4cc283e883ceebbe423e" name="a0fc9285c7ecc4cc283e883ceebbe423e"></a>
+<tr class="memitem:aca6c2e52807e78109bd97551bbf63e9b" id="r_aca6c2e52807e78109bd97551bbf63e9b"><td class="memItemLeft" align="right" valign="top"><a id="aca6c2e52807e78109bd97551bbf63e9b" name="aca6c2e52807e78109bd97551bbf63e9b"></a>
 std::map&lt; G4int, <a class="el" href="struct_hit_stats.html">HitStats</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_moduleHits</b></td></tr>
-<tr class="memdesc:a0fc9285c7ecc4cc283e883ceebbe423e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of a <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> containing hit information for each simulated optical module. <br /></td></tr>
-<tr class="separator:a0fc9285c7ecc4cc283e883ceebbe423e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:aca6c2e52807e78109bd97551bbf63e9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of a <a class="el" href="struct_hit_stats.html" title="A structure of vectors to store information about detected photons.">HitStats</a> containing hit information for each simulated optical module. <br /></td></tr>
+<tr class="separator:aca6c2e52807e78109bd97551bbf63e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -215,16 +268,25 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:af4dcabbb882030b80005c35d5a20ce56" id="r_af4dcabbb882030b80005c35d5a20ce56"><td class="memItemLeft" align="right" valign="top"><a id="af4dcabbb882030b80005c35d5a20ce56" name="af4dcabbb882030b80005c35d5a20ce56"></a>
 <a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> &amp;)=delete</td></tr>
 <tr class="separator:af4dcabbb882030b80005c35d5a20ce56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a588ee2ee380c68a3a4904e2bab762268" id="r_a588ee2ee380c68a3a4904e2bab762268"><td class="memItemLeft" align="right" valign="top"><a id="a588ee2ee380c68a3a4904e2bab762268" name="a588ee2ee380c68a3a4904e2bab762268"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>OMSimHitManager</b> (const <a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> &amp;)=delete</td></tr>
+<tr class="separator:a588ee2ee380c68a3a4904e2bab762268"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4dcabbb882030b80005c35d5a20ce56" id="r_af4dcabbb882030b80005c35d5a20ce56"><td class="memItemLeft" align="right" valign="top"><a id="af4dcabbb882030b80005c35d5a20ce56" name="af4dcabbb882030b80005c35d5a20ce56"></a>
+<a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a> &amp;)=delete</td></tr>
+<tr class="separator:af4dcabbb882030b80005c35d5a20ce56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a8f1ac71e89bfb8d4f0db4b56c7152e50" id="r_a8f1ac71e89bfb8d4f0db4b56c7152e50"><td class="memItemLeft" align="right" valign="top"><a id="a8f1ac71e89bfb8d4f0db4b56c7152e50" name="a8f1ac71e89bfb8d4f0db4b56c7152e50"></a>
+<tr class="memitem:a13d43bcdd102f0f1bfeadf7f4844354f" id="r_a13d43bcdd102f0f1bfeadf7f4844354f"><td class="memItemLeft" align="right" valign="top"><a id="a13d43bcdd102f0f1bfeadf7f4844354f" name="a13d43bcdd102f0f1bfeadf7f4844354f"></a>
 std::map&lt; G4int, G4int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_numberOfPMTs</b></td></tr>
-<tr class="memdesc:a8f1ac71e89bfb8d4f0db4b56c7152e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of number of PMTs in the used optical modules. <br /></td></tr>
-<tr class="separator:a8f1ac71e89bfb8d4f0db4b56c7152e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a13d43bcdd102f0f1bfeadf7f4844354f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of number of PMTs in the used optical modules. <br /></td></tr>
+<tr class="separator:a13d43bcdd102f0f1bfeadf7f4844354f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af56b8c9e7948e1943093a2966af2baf2" id="r_af56b8c9e7948e1943093a2966af2baf2"><td class="memItemLeft" align="right" valign="top"><a id="af56b8c9e7948e1943093a2966af2baf2" name="af56b8c9e7948e1943093a2966af2baf2"></a>
 G4int&#160;</td><td class="memItemRight" valign="bottom"><b>m_currentIndex</b></td></tr>
 <tr class="separator:af56b8c9e7948e1943093a2966af2baf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae36f04f8c74c82575d0d9b3bcccd5bd5" id="r_ae36f04f8c74c82575d0d9b3bcccd5bd5"><td class="memItemLeft" align="right" valign="top"><a id="ae36f04f8c74c82575d0d9b3bcccd5bd5" name="ae36f04f8c74c82575d0d9b3bcccd5bd5"></a>
+<a class="el" href="class_r_o_o_t_hit_manager.html">ROOTHitManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_rootManager</b> = nullptr</td></tr>
+<tr class="separator:ae36f04f8c74c82575d0d9b3bcccd5bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -566,6 +628,38 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 
 </div>
 </div>
+<a id="a18f537efc4d4df64e5a893efc8695e9c" name="a18f537efc4d4df64e5a893efc8695e9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18f537efc4d4df64e5a893efc8695e9c">&#9670;&#160;</a></span>setROOTOutputFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OMSimHitManager::setROOTOutputFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Path to output ROOT file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ad8a139a9068c92b7babf471c9ec23ecf" name="ad8a139a9068c92b7babf471c9ec23ecf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad8a139a9068c92b7babf471c9ec23ecf">&#9670;&#160;</a></span>shutdown()</h2>
 
@@ -617,8 +711,10 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_o_m_sim_hit_manager_8hh_source.html">OMSimHitManager.hh</a></li>
-<li><b>OMSimHitManager.cc</b></li>
+<li><a class="el" href="common_2framework_2include_2_o_m_sim_hit_manager_8hh_source.html">common/framework/include/OMSimHitManager.hh</a></li>
+<li><a class="el" href="simulations_2wavepid_2include_2_o_m_sim_hit_manager_8hh_source.html">simulations/wavepid/include/OMSimHitManager.hh</a></li>
+<li><b>common/framework/src/OMSimHitManager.cc</b></li>
+<li><a class="el" href="simulations_2wavepid_2src_2_o_m_sim_hit_manager_8cc.html">simulations/wavepid/src/OMSimHitManager.cc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -626,7 +722,7 @@ static G4ThreadLocal <a class="el" href="struct_o_m_sim_hit_manager_1_1_thread_l
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_hit_manager.html">OMSimHitManager</a></li>
-    <li class="footer">Generated on Fri Dec 12 2025 15:33:08 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sat Mar 28 2026 19:15:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

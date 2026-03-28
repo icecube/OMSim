@@ -91,12 +91,34 @@ var NAVTREE =
         [ "Effective Weight:", "md_extra__doc_232___s_n.html#autotoc_md62", null ]
       ] ]
     ] ],
+    [ "> WavePID Photon Origin Tracking", "md_extra__doc_233__wavepid.html", [
+      [ "Introduction", "md_extra__doc_233__wavepid.html#autotoc_md64", null ],
+      [ "Photon Origin Classification", "md_extra__doc_233__wavepid.html#autotoc_md65", null ],
+      [ "Command-Line Arguments", "md_extra__doc_233__wavepid.html#autotoc_md66", [
+        [ "WavePID-Specific Arguments", "md_extra__doc_233__wavepid.html#autotoc_md67", null ],
+        [ "General OMSim Arguments", "md_extra__doc_233__wavepid.html#autotoc_md68", null ],
+        [ "Command-Line vs. Macro File Parameters", "md_extra__doc_233__wavepid.html#autotoc_md69", null ]
+      ] ],
+      [ "Usage Examples", "md_extra__doc_233__wavepid.html#autotoc_md70", [
+        [ "Basic muon simulation with DOM (single-threaded)", "md_extra__doc_233__wavepid.html#autotoc_md71", null ],
+        [ "Large batch run with multithreading", "md_extra__doc_233__wavepid.html#autotoc_md72", null ],
+        [ "Using a macro file", "md_extra__doc_233__wavepid.html#autotoc_md73", null ],
+        [ "Visualization", "md_extra__doc_233__wavepid.html#autotoc_md74", null ]
+      ] ],
+      [ "Output Format", "md_extra__doc_233__wavepid.html#autotoc_md75", null ],
+      [ "Visualization Macro", "md_extra__doc_233__wavepid.html#autotoc_md76", null ],
+      [ "Notes on World Volume Size", "md_extra__doc_233__wavepid.html#autotoc_md77", null ],
+      [ "Notes on <tt>--efficiency_cut</tt>", "md_extra__doc_233__wavepid.html#autotoc_md78", null ],
+      [ "Notes on Multithreading", "md_extra__doc_233__wavepid.html#autotoc_md79", null ],
+      [ "Architecture", "md_extra__doc_233__wavepid.html#autotoc_md80", null ]
+    ] ],
     [ "Todo List", "todo.html", null ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ],
@@ -116,7 +138,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "5__group__definitions_8h_source.html",
-"md_extra__doc_20__common.html#autotoc_md15"
+"functions_p.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

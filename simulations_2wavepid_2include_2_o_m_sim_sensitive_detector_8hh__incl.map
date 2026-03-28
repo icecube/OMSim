@@ -1,0 +1,23 @@
+<map id="OMSimSensitiveDetector.hh" name="OMSimSensitiveDetector.hh">
+<area shape="rect" id="Node000001" title="Enhanced sensitive detector for WavePID with photon origin tracking." alt="" coords="363,5,567,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,189,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="407,33,171,79,170,73,406,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="214,79,351,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="437,33,326,76,324,71,435,28"/>
+<area shape="rect" id="Node000004" href="$_o_m_sim_p_m_t_response_8hh.html" title="Simulation of PMT response." alt="" coords="375,79,555,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="468,31,468,65,463,65,463,31"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="579,79,642,104"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="490,28,576,70,574,75,488,33"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="667,79,725,104"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="503,28,654,74,652,79,502,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="135,152,294,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="426,107,269,151,268,146,424,101"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="318,152,415,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="451,106,395,146,392,142,448,102"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="440,152,491,177"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="468,104,468,138,463,138,463,104"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="515,152,597,177"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="482,102,532,141,529,145,478,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="621,152,691,177"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="497,102,613,144,611,149,495,107"/>
+</map>

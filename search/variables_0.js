@@ -5,5 +5,5 @@ var searchData=
   ['deltaposition_2',['deltaPosition',['../struct_photon_info.html#a1bbbf9b8b9f55898a98f6da0cb8972f0',1,'PhotonInfo']]],
   ['detectionprobability_3',['detectionProbability',['../struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html#a87f21652e10a0bc82870ded9697b57f2',1,'OMSimPMTResponse::PMTPulse']]],
   ['detectorid_4',['detectorID',['../struct_photon_info.html#ad6ed8e117168b3f741793572bde83b18',1,'PhotonInfo']]],
-  ['direction_5',['direction',['../struct_hit_stats.html#a383cfeda6e6e515b56aee0a369ec5085',1,'HitStats']]]
+  ['direction_5',['direction',['../struct_hit_stats.html#a440d23ddb084a09793539abba0d02f5a',1,'HitStats']]]
 ];

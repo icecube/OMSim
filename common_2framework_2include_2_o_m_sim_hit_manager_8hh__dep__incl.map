@@ -1,0 +1,7 @@
+<map id="OMSimHitManager.hh" name="OMSimHitManager.hh">
+<area shape="rect" id="Node000001" title="Defines structures and classes related to optical module photon hit management." alt="" coords="5,5,169,31"/>
+<area shape="rect" id="Node000002" href="$common_2framework_2include_2_o_m_sim_run_action_8hh_source.html" title=" " alt="" coords="10,79,165,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,44,90,79,85,79,85,44"/>
+<area shape="rect" id="Node000003" href="$common_2framework_2include_2_o_m_sim_8hh.html" title="Main simulation class for the Optical Module (OM) simulation. This file defines the OMSim class,..." alt="" coords="43,152,132,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="90,118,90,152,85,152,85,118"/>
+</map>

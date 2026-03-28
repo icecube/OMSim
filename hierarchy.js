@@ -18,15 +18,18 @@ var hierarchy =
       [ "OMSimEventAction", "class_o_m_sim_event_action.html", null ],
       [ "OMSimEventAction", "class_o_m_sim_event_action.html", null ],
       [ "OMSimEventAction", "class_o_m_sim_event_action.html", null ],
+      [ "OMSimEventAction", "class_o_m_sim_event_action.html", null ],
       [ "OMSimEventAction", "class_o_m_sim_event_action.html", null ]
     ] ],
     [ "G4UserRunAction", null, [
+      [ "OMSimRunAction", "class_o_m_sim_run_action.html", null ],
       [ "OMSimRunAction", "class_o_m_sim_run_action.html", null ]
     ] ],
     [ "G4UserSteppingAction", null, [
       [ "OMSimSteppingAction", "class_o_m_sim_stepping_action.html", null ]
     ] ],
     [ "G4UserTrackingAction", null, [
+      [ "OMSimTrackingAction", "class_o_m_sim_tracking_action.html", null ],
       [ "OMSimTrackingAction", "class_o_m_sim_tracking_action.html", null ]
     ] ],
     [ "G4VDiscreteProcess", null, [
@@ -42,6 +45,7 @@ var hierarchy =
       [ "OMSimG4Scintillation", "class_o_m_sim_g4_scintillation.html", null ]
     ] ],
     [ "G4VSensitiveDetector", null, [
+      [ "OMSimSensitiveDetector", "class_o_m_sim_sensitive_detector.html", null ],
       [ "OMSimSensitiveDetector", "class_o_m_sim_sensitive_detector.html", null ]
     ] ],
     [ "G4VUserActionInitialization", null, [
@@ -52,16 +56,19 @@ var hierarchy =
         [ "OMSimEffectiveAreaDetector", "class_o_m_sim_effective_area_detector.html", null ],
         [ "OMSimEffiCaliDetector", "class_o_m_sim_effi_cali_detector.html", null ],
         [ "OMSimRadDecaysDetector", "class_o_m_sim_rad_decays_detector.html", null ],
-        [ "OMSimSNdetector", "class_o_m_sim_s_ndetector.html", null ]
+        [ "OMSimSNdetector", "class_o_m_sim_s_ndetector.html", null ],
+        [ "OMSimWavePIDDetector", "class_o_m_sim_wave_p_i_d_detector.html", null ]
       ] ]
     ] ],
     [ "G4VUserPhysicsList", null, [
       [ "OMSimPhysicsList", "class_o_m_sim_physics_list.html", null ],
       [ "OMSimPhysicsList", "class_o_m_sim_physics_list.html", null ],
       [ "OMSimPhysicsList", "class_o_m_sim_physics_list.html", null ],
+      [ "OMSimPhysicsList", "class_o_m_sim_physics_list.html", null ],
       [ "OMSimPhysicsList", "class_o_m_sim_physics_list.html", null ]
     ] ],
     [ "G4VUserPrimaryGeneratorAction", null, [
+      [ "OMSimPrimaryGeneratorAction", "class_o_m_sim_primary_generator_action.html", null ],
       [ "OMSimPrimaryGeneratorAction", "class_o_m_sim_primary_generator_action.html", null ],
       [ "OMSimPrimaryGeneratorAction", "class_o_m_sim_primary_generator_action.html", null ],
       [ "OMSimPrimaryGeneratorAction", "class_o_m_sim_primary_generator_action.html", null ],
@@ -112,6 +119,7 @@ var hierarchy =
       [ "OMSimInputData", "class_o_m_sim_input_data.html", null ]
     ] ],
     [ "PhotonInfo", "struct_photon_info.html", null ],
+    [ "PhotonInfoROOT", "struct_photon_info_r_o_o_t.html", null ],
     [ "OMSimPMTResponse::PMTPulse", "struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse.html", null ],
     [ "CADMesh::File::Reader", "class_c_a_d_mesh_1_1_file_1_1_reader.html", [
       [ "CADMesh::File::BuiltInReader", "class_c_a_d_mesh_1_1_file_1_1_built_in_reader.html", null ],
@@ -119,6 +127,7 @@ var hierarchy =
       [ "CADMesh::File::PLYReader", "class_c_a_d_mesh_1_1_file_1_1_p_l_y_reader.html", null ],
       [ "CADMesh::File::STLReader", "class_c_a_d_mesh_1_1_file_1_1_s_t_l_reader.html", null ]
     ] ],
+    [ "ROOTHitManager", "class_r_o_o_t_hit_manager.html", null ],
     [ "OMSimDetectorConstruction::SDInfo", "struct_o_m_sim_detector_construction_1_1_s_d_info.html", null ],
     [ "SNEventStats", "struct_s_n_event_stats.html", null ],
     [ "CADMesh::File::State", "struct_c_a_d_mesh_1_1_file_1_1_state.html", [

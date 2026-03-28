@@ -1,0 +1,57 @@
+\doxysection{ROOTHit\+Manager.\+hh}
+\hypertarget{_r_o_o_t_hit_manager_8hh_source}{}\label{_r_o_o_t_hit_manager_8hh_source}\index{ROOTHitManager.hh@{ROOTHitManager.hh}}
+\mbox{\hyperlink{_r_o_o_t_hit_manager_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}G4Types.hh"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}G4ThreeVector.hh"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TString.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_photon_info_r_o_o_t}{PhotonInfoROOT}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ Int\_t\ \ \ \ eventID;}
+\DoxyCodeLine{00019\ \ \ \ \ Double\_t\ hitTime;}
+\DoxyCodeLine{00020\ \ \ \ \ Double\_t\ flightTime;}
+\DoxyCodeLine{00021\ \ \ \ \ Double\_t\ entryTime;}
+\DoxyCodeLine{00022\ \ \ \ \ Double\_t\ pathLenght;}
+\DoxyCodeLine{00023\ \ \ \ \ Double\_t\ generationDetectionDistance;}
+\DoxyCodeLine{00024\ \ \ \ \ Double\_t\ energy;}
+\DoxyCodeLine{00025\ \ \ \ \ Int\_t\ \ \ \ PMTnr;}
+\DoxyCodeLine{00026\ \ \ \ \ Double\_t\ dir\_x;}
+\DoxyCodeLine{00027\ \ \ \ \ Double\_t\ dir\_y;}
+\DoxyCodeLine{00028\ \ \ \ \ Double\_t\ dir\_z;}
+\DoxyCodeLine{00029\ \ \ \ \ Double\_t\ localPos\_x;}
+\DoxyCodeLine{00030\ \ \ \ \ Double\_t\ localPos\_y;}
+\DoxyCodeLine{00031\ \ \ \ \ Double\_t\ localPos\_z;}
+\DoxyCodeLine{00032\ \ \ \ \ Double\_t\ globalPos\_x;}
+\DoxyCodeLine{00033\ \ \ \ \ Double\_t\ globalPos\_y;}
+\DoxyCodeLine{00034\ \ \ \ \ Double\_t\ globalPos\_z;}
+\DoxyCodeLine{00035\ \ \ \ \ Double\_t\ deltaPos\_x;}
+\DoxyCodeLine{00036\ \ \ \ \ Double\_t\ deltaPos\_y;}
+\DoxyCodeLine{00037\ \ \ \ \ Double\_t\ deltaPos\_z;}
+\DoxyCodeLine{00038\ \ \ \ \ Double\_t\ wavelength;}
+\DoxyCodeLine{00039\ \ \ \ \ Int\_t\ \ \ \ parentID;}
+\DoxyCodeLine{00040\ \ \ \ \ TString\ \ parentType;}
+\DoxyCodeLine{00041\ \ \ \ \ TString\ \ photonOrigin;}
+\DoxyCodeLine{00042\ \ \ \ \ TString\ \ parentProcess;}
+\DoxyCodeLine{00043\ \ \ \ \ Int\_t\ \ \ \ nPhotoelectrons;}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_r_o_o_t_hit_manager}{ROOTHitManager}}\ \{}
+\DoxyCodeLine{00051\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_r_o_o_t_hit_manager}{ROOTHitManager}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{class_r_o_o_t_hit_manager_a2aed3f04bbe27926fb2e764a992b323f}{\string~ROOTHitManager}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_r_o_o_t_hit_manager_a4769442a5ca8109b15efbd2d7c1d64bd}{FillPhotonInfo}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_photon_info_r_o_o_t}{PhotonInfoROOT}}\&\ info);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00070\ \ \ \ \ TFile*\ m\_file;}
+\DoxyCodeLine{00071\ \ \ \ \ TTree*\ m\_tree;}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{struct_photon_info_r_o_o_t}{PhotonInfoROOT}}\ m\_photonInfo;}
+\DoxyCodeLine{00073\ \};}
+
+\end{DoxyCode}

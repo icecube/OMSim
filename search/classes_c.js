@@ -34,5 +34,6 @@ var searchData=
   ['omsimsteppingaction_31',['OMSimSteppingAction',['../class_o_m_sim_stepping_action.html',1,'']]],
   ['omsimtrackingaction_32',['OMSimTrackingAction',['../class_o_m_sim_tracking_action.html',1,'']]],
   ['omsimuiinterface_33',['OMSimUIinterface',['../class_o_m_sim_u_iinterface.html',1,'']]],
-  ['opticallayerresult_34',['OpticalLayerResult',['../struct_optical_layer_result.html',1,'']]]
+  ['omsimwavepiddetector_34',['OMSimWavePIDDetector',['../class_o_m_sim_wave_p_i_d_detector.html',1,'']]],
+  ['opticallayerresult_35',['OpticalLayerResult',['../struct_optical_layer_result.html',1,'']]]
 ];

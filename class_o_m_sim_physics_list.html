@@ -140,7 +140,9 @@ Collaboration diagram for OMSimPhysicsList:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="class_o_m_sim_physics_list__coll__graph.svg" width="162" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This physics list initializes the optical photon processes including absorption, boundary interactions, Rayleigh scattering, and Mie scattering. </p>
+<div class="textblock"><p>Custom physics list for WavePID photon origin tracking.</p>
+<p>This physics list initializes the optical photon processes including absorption, boundary interactions, Rayleigh scattering, and Mie scattering.</p>
+<p>This physics list initializes particles and processes needed for tracking Cerenkov radiation from muons and electrons in ice. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -180,6 +182,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ConstructProcess</b> 
 <tr class="memitem:a21a650f31fd33e281cdb144f755875e4" id="r_a21a650f31fd33e281cdb144f755875e4"><td class="memItemLeft" align="right" valign="top"><a id="a21a650f31fd33e281cdb144f755875e4" name="a21a650f31fd33e281cdb144f755875e4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCuts</b> ()</td></tr>
 <tr class="separator:a21a650f31fd33e281cdb144f755875e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90d45a13f7c46e232718bc106080492c" id="r_a90d45a13f7c46e232718bc106080492c"><td class="memItemLeft" align="right" valign="top"><a id="a90d45a13f7c46e232718bc106080492c" name="a90d45a13f7c46e232718bc106080492c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ConstructParticle</b> () override</td></tr>
+<tr class="separator:a90d45a13f7c46e232718bc106080492c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ec93edc4af59fb60b96669ff50d58b6" id="r_a0ec93edc4af59fb60b96669ff50d58b6"><td class="memItemLeft" align="right" valign="top"><a id="a0ec93edc4af59fb60b96669ff50d58b6" name="a0ec93edc4af59fb60b96669ff50d58b6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ConstructProcess</b> () override</td></tr>
+<tr class="separator:a0ec93edc4af59fb60b96669ff50d58b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56b116e74d914cc7cc372443382543af" id="r_a56b116e74d914cc7cc372443382543af"><td class="memItemLeft" align="right" valign="top"><a id="a56b116e74d914cc7cc372443382543af" name="a56b116e74d914cc7cc372443382543af"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCuts</b> () override</td></tr>
+<tr class="separator:a56b116e74d914cc7cc372443382543af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8bf61a70f663c754304fc56073e3ac95" name="a8bf61a70f663c754304fc56073e3ac95"></a>
@@ -265,10 +276,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCuts</b> ()</td></
 <li><a class="el" href="efficiency__calibration_2include_2_o_m_sim_physics_list_8hh_source.html">efficiency_calibration/include/OMSimPhysicsList.hh</a></li>
 <li><a class="el" href="radioactive__decays_2include_2_o_m_sim_physics_list_8hh_source.html">radioactive_decays/include/OMSimPhysicsList.hh</a></li>
 <li><a class="el" href="supernova_2include_2_o_m_sim_physics_list_8hh_source.html">supernova/include/OMSimPhysicsList.hh</a></li>
+<li><a class="el" href="wavepid_2include_2_o_m_sim_physics_list_8hh_source.html">wavepid/include/OMSimPhysicsList.hh</a></li>
 <li><b>effective_area/src/OMSimPhysicsList.cc</b></li>
 <li><b>efficiency_calibration/src/OMSimPhysicsList.cc</b></li>
 <li><b>radioactive_decays/src/OMSimPhysicsList.cc</b></li>
 <li><b>supernova/src/OMSimPhysicsList.cc</b></li>
+<li><a class="el" href="wavepid_2src_2_o_m_sim_physics_list_8cc.html">wavepid/src/OMSimPhysicsList.cc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -276,7 +289,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCuts</b> ()</td></
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_physics_list.html">OMSimPhysicsList</a></li>
-    <li class="footer">Generated on Fri Dec 12 2025 15:33:08 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sat Mar 28 2026 19:15:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -8,7 +8,9 @@ Controls the main simulation process.
 
 
 \doxysubsection{Detailed Description}
-The \doxylink{class_o_m_sim}{OMSim} class is the top-\/level controller for the simulation. It sets up and manages the individual components of the Geant4 simulation, such as the run manager, the visualization manager, and the navigator. It also enables user interaction with the simulation through a command line interface and visualisation tools. This class is used in the main function of all studies as provides the basic flow of control of any Geant4 simulation. \doxysubsubsection*{Public Member Functions}
+The \doxylink{class_o_m_sim}{OMSim} class is the top-\/level controller for the simulation. It sets up and manages the individual components of the Geant4 simulation, such as the run manager, the visualization manager, and the navigator. It also enables user interaction with the simulation through a command line interface and visualisation tools. This class is used in the main function of all studies as provides the basic flow of control of any Geant4 simulation.
+
+The \doxylink{class_o_m_sim}{OMSim} class is the top-\/level controller for the simulation. It sets up and manages the individual components of the Geant4 simulation, such as the run manager, the visualization manager, and the navigator. \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}\label{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2} 
@@ -27,7 +29,25 @@ G4\+Navigator \texorpdfstring{$\ast$}{*} {\bfseries get\+Navigator} ()
 \item 
 \Hypertarget{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}\label{class_o_m_sim_a4c86b790eaf609fd69919432d170d853} 
 void {\bfseries extend\+Options} (po\+::options\+\_\+description p\+New\+Options)
-\begin{DoxyCompactList}\small\item\em Adds options from the different simulation modules to the option description list (what is printed in --help). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Adds options from the different simulation modules to the option description list (what is printed in --help). \end{DoxyCompactList}\item 
+\Hypertarget{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2}\label{class_o_m_sim_a48127177a39ead290b915dcbc1c759a2} 
+void {\bfseries initialise\+Simulation} (\mbox{\hyperlink{class_o_m_sim_detector_construction}{OMSim\+Detector\+Construction}} \texorpdfstring{$\ast$}{*}p\+Detector\+Construction)
+\item 
+\Hypertarget{class_o_m_sim_a3e43df3d28f3e5e7cbec8a6e3ef1dcf5}\label{class_o_m_sim_a3e43df3d28f3e5e7cbec8a6e3ef1dcf5} 
+void {\bfseries configure\+Logger} ()
+\item 
+\Hypertarget{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded}\label{class_o_m_sim_a07759a6885ca398dd1e7c3a9954ceded} 
+bool {\bfseries handle\+Arguments} (int p\+Argument\+Count, char \texorpdfstring{$\ast$}{*}p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
+\item 
+\Hypertarget{class_o_m_sim_a42d86958aba31a17fb0c8a39fbc9c9b5}\label{class_o_m_sim_a42d86958aba31a17fb0c8a39fbc9c9b5} 
+void {\bfseries start\+Visualisation} ()
+\item 
+\Hypertarget{class_o_m_sim_a56db9e76980ff8914f86ba8cface5ced}\label{class_o_m_sim_a56db9e76980ff8914f86ba8cface5ced} 
+G4\+Navigator \texorpdfstring{$\ast$}{*} {\bfseries get\+Navigator} ()
+\item 
+\Hypertarget{class_o_m_sim_a4c86b790eaf609fd69919432d170d853}\label{class_o_m_sim_a4c86b790eaf609fd69919432d170d853} 
+void {\bfseries extend\+Options} (po\+::options\+\_\+description p\+New\+Options)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,6 +71,21 @@ void {\bfseries set\+User\+Arguments\+To\+Arg\+Table} (po\+::variables\+\_\+map 
 \begin{DoxyCompactList}\small\item\em Sets variables from a variables map to the instance of \doxylink{class_o_m_sim_command_args_table}{OMSim\+Command\+Args\+Table}. \end{DoxyCompactList}\item 
 \Hypertarget{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347}\label{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347} 
 void {\bfseries set\+General\+Options} ()
+\item 
+\Hypertarget{class_o_m_sim_a8718ff8784bfd2f381114d092e072b1c}\label{class_o_m_sim_a8718ff8784bfd2f381114d092e072b1c} 
+void {\bfseries initial\+Logger\+Configuration} ()
+\item 
+\Hypertarget{class_o_m_sim_a5821847aa7865e5f607e4d55a3c1f178}\label{class_o_m_sim_a5821847aa7865e5f607e4d55a3c1f178} 
+int {\bfseries determine\+Number\+Of\+Threads} ()
+\item 
+\Hypertarget{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658}\label{class_o_m_sim_a22f2335b943429a2697c0c8b3747e658} 
+po\+::variables\+\_\+map {\bfseries parse\+Arguments} (int p\+Argument\+Count, char \texorpdfstring{$\ast$}{*}p\+Argument\+Vector\mbox{[}$\,$\mbox{]})
+\item 
+\Hypertarget{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb}\label{class_o_m_sim_a1428504bbe25b1baeb0976e897a98bcb} 
+void {\bfseries set\+User\+Arguments\+To\+Arg\+Table} (po\+::variables\+\_\+map p\+Variables\+Map)
+\item 
+\Hypertarget{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347}\label{class_o_m_sim_a44734b9c775a2e3f44b3f734f62db347} 
+void {\bfseries set\+General\+Options} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -58,20 +93,23 @@ void {\bfseries set\+General\+Options} ()
 \Hypertarget{class_o_m_sim_aabe99410f111fd0ff35eea27e564f78f}\label{class_o_m_sim_aabe99410f111fd0ff35eea27e564f78f} 
 std\+::unique\+\_\+ptr$<$ G4\+MTRun\+Manager $>$ {\bfseries m\+\_\+run\+Manager}
 \item 
-\Hypertarget{class_o_m_sim_ab25805dc0c8e359b2171bc99249b035b}\label{class_o_m_sim_ab25805dc0c8e359b2171bc99249b035b} 
+\Hypertarget{class_o_m_sim_ab6297be6dd9be5154ed126e42558d7c0}\label{class_o_m_sim_ab6297be6dd9be5154ed126e42558d7c0} 
 std\+::unique\+\_\+ptr$<$ G4\+Vis\+Executive $>$ {\bfseries m\+\_\+vis\+Manager}
 \item 
-\Hypertarget{class_o_m_sim_ae1de824bad56567e9d5ecc8049424c89}\label{class_o_m_sim_ae1de824bad56567e9d5ecc8049424c89} 
+\Hypertarget{class_o_m_sim_a07f94fac7399731766cc5ba69a81eba0}\label{class_o_m_sim_a07f94fac7399731766cc5ba69a81eba0} 
 std\+::unique\+\_\+ptr$<$ G4\+VUser\+Physics\+List $>$ {\bfseries m\+\_\+physics}
 \item 
-\Hypertarget{class_o_m_sim_a916ab22940d9db8e02d116469ebaf39b}\label{class_o_m_sim_a916ab22940d9db8e02d116469ebaf39b} 
+\Hypertarget{class_o_m_sim_ae004b64cc7dbd8fb0075946955040d43}\label{class_o_m_sim_ae004b64cc7dbd8fb0075946955040d43} 
 std\+::unique\+\_\+ptr$<$ G4\+Touchable\+History $>$ {\bfseries m\+\_\+history}
 \item 
-\Hypertarget{class_o_m_sim_a871e818b44ca781ddc2568610efa80a8}\label{class_o_m_sim_a871e818b44ca781ddc2568610efa80a8} 
+\Hypertarget{class_o_m_sim_a3238a39ecd8b1f5febe6f47b0e22c576}\label{class_o_m_sim_a3238a39ecd8b1f5febe6f47b0e22c576} 
 std\+::unique\+\_\+ptr$<$ G4\+Navigator $>$ {\bfseries m\+\_\+navigator}
 \item 
 \Hypertarget{class_o_m_sim_a9050699744a3317493736b44ffc248d6}\label{class_o_m_sim_a9050699744a3317493736b44ffc248d6} 
 std\+::chrono\+::high\+\_\+resolution\+\_\+clock\+::time\+\_\+point {\bfseries m\+\_\+starting\+Time}
+\item 
+\Hypertarget{class_o_m_sim_a0bccd9dc4998846d0f94b2940092b77d}\label{class_o_m_sim_a0bccd9dc4998846d0f94b2940092b77d} 
+std\+::unique\+\_\+ptr$<$ G4\+Run\+Manager $>$ {\bfseries m\+\_\+run\+Manager}
 \end{DoxyCompactItemize}
 
 
@@ -89,5 +127,7 @@ true if simulation should continue, if --help is called it will return false and
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{_o_m_sim_8hh}{OMSim.\+hh}}\item 
-\mbox{\hyperlink{_o_m_sim_8cc}{OMSim.\+cc}}\end{DoxyCompactItemize}
+\mbox{\hyperlink{common_2framework_2include_2_o_m_sim_8hh}{common/framework/include/\+OMSim.\+hh}}\item 
+\mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_8hh}{simulations/wavepid/include/\+OMSim.\+hh}}\item 
+\mbox{\hyperlink{common_2framework_2src_2_o_m_sim_8cc}{common/framework/src/\+OMSim.\+cc}}\item 
+\mbox{\hyperlink{simulations_2wavepid_2src_2_o_m_sim_8cc}{simulations/wavepid/src/\+OMSim.\+cc}}\end{DoxyCompactItemize}

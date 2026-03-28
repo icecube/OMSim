@@ -1,5 +1,7 @@
 <map id="OMSimTrackingAction" name="OMSimTrackingAction">
-<area shape="rect" id="Node000001" title=" " alt="" coords="6,79,170,104"/>
+<area shape="rect" id="Node000001" title="Tracks particle information for photon origin classification." alt="" coords="6,80,170,105"/>
+<area shape="poly" id="edge3_Node000001_Node000001" title=" " alt="" coords="185,85,197,93,188,99,171,102,170,97,186,94,191,93,183,90"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,5,171,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,44,91,79,85,79,85,44"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,44,84,80,78,80,77,45"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="99,45,98,80,92,80,94,44"/>
 </map>

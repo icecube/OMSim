@@ -2,6 +2,11 @@
 \hypertarget{class_o_m_sim_tracking_action}{}\label{class_o_m_sim_tracking_action}\index{OMSimTrackingAction@{OMSimTrackingAction}}
 
 
+Tracks particle information for photon origin classification.  
+
+
+
+
 Inheritance diagram for OMSim\+Tracking\+Action\+:
 \nopagebreak
 \begin{figure}[H]
@@ -17,10 +22,13 @@ Collaboration diagram for OMSim\+Tracking\+Action\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=204pt]{class_o_m_sim_tracking_action__coll__graph}
+\includegraphics[width=267pt]{class_o_m_sim_tracking_action__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsubsection*{Public Member Functions}
+
+
+\doxysubsection{Detailed Description}
+This singleton class stores track ID to particle type and creator process mappings, which are used by \doxylink{class_o_m_sim_sensitive_detector}{OMSim\+Sensitive\+Detector} to classify photon origins. \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_o_m_sim_tracking_action_ad50e7b10221550f66d937cf6a8e3cca9}\label{class_o_m_sim_tracking_action_ad50e7b10221550f66d937cf6a8e3cca9} 
@@ -28,9 +36,97 @@ void {\bfseries Pre\+User\+Tracking\+Action} (const G4\+Track \texorpdfstring{$\
 \item 
 \Hypertarget{class_o_m_sim_tracking_action_a734f854a881bd97fa2cd056d98566421}\label{class_o_m_sim_tracking_action_a734f854a881bd97fa2cd056d98566421} 
 void {\bfseries Post\+User\+Tracking\+Action} (const G4\+Track \texorpdfstring{$\ast$}{*})
-\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-OMSim\+Tracking\+Action.\+hh\end{DoxyCompactItemize}
+\Hypertarget{class_o_m_sim_tracking_action_a4b73eda4ed0f253ecbaf3b60daccb433}\label{class_o_m_sim_tracking_action_a4b73eda4ed0f253ecbaf3b60daccb433} 
+virtual void {\bfseries Pre\+User\+Tracking\+Action} (const G4\+Track \texorpdfstring{$\ast$}{*}track) override
+\item 
+\Hypertarget{class_o_m_sim_tracking_action_a53412e7724c5189fff445326df28aa9d}\label{class_o_m_sim_tracking_action_a53412e7724c5189fff445326df28aa9d} 
+virtual void {\bfseries Post\+User\+Tracking\+Action} (const G4\+Track \texorpdfstring{$\ast$}{*}track) override
+\item 
+std\+::string \mbox{\hyperlink{class_o_m_sim_tracking_action_a9055f335eef576aa0e60b5eaf98c749f}{Get\+Particle\+Type}} (G4int track\+ID) const
+\begin{DoxyCompactList}\small\item\em Get the particle type for a given track ID. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_o_m_sim_tracking_action_a8d3d3a7b3a4650002e75477dbb31734a}{Get\+Creator\+Process}} (G4int track\+ID) const
+\begin{DoxyCompactList}\small\item\em Get the creator process for a given track ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSim\+Tracking\+Action}} \& \mbox{\hyperlink{class_o_m_sim_tracking_action_aa82d925cd37ecd87e5d11aad4bd0f510}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Access the singleton instance. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_o_m_sim_tracking_action_a928fd32a3078c6e32976564b6f84cc58}{Has\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Check if the singleton instance exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_o_m_sim_tracking_action_a0112e42d8d0eca28ce426bee6237f01a}\label{class_o_m_sim_tracking_action_a0112e42d8d0eca28ce426bee6237f01a} 
+std\+::unordered\+\_\+map$<$ G4int, std\+::string $>$ {\bfseries m\+\_\+track\+IDTo\+Particle\+Type\+Map}
+\item 
+\Hypertarget{class_o_m_sim_tracking_action_a1439c097c87f031dd4062e5ddfcc2b73}\label{class_o_m_sim_tracking_action_a1439c097c87f031dd4062e5ddfcc2b73} 
+std\+::unordered\+\_\+map$<$ G4int, std\+::string $>$ {\bfseries m\+\_\+track\+IDTo\+Creator\+Process\+Map}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_o_m_sim_tracking_action_adcc19e433eb67df79c94f5cb467502da}\label{class_o_m_sim_tracking_action_adcc19e433eb67df79c94f5cb467502da} 
+static thread\+\_\+local \mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSim\+Tracking\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries instance} = nullptr
+\begin{DoxyCompactList}\small\item\em Thread-\/local instance pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_o_m_sim_tracking_action_a8d3d3a7b3a4650002e75477dbb31734a}\label{class_o_m_sim_tracking_action_a8d3d3a7b3a4650002e75477dbb31734a} 
+\index{OMSimTrackingAction@{OMSimTrackingAction}!GetCreatorProcess@{GetCreatorProcess}}
+\index{GetCreatorProcess@{GetCreatorProcess}!OMSimTrackingAction@{OMSimTrackingAction}}
+\doxysubsubsection{\texorpdfstring{GetCreatorProcess()}{GetCreatorProcess()}}
+{\footnotesize\ttfamily std\+::string OMSim\+Tracking\+Action\+::\+Get\+Creator\+Process (\begin{DoxyParamCaption}\item[{G4int}]{track\+ID }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em track\+ID} & The track ID to look up. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The process name (e.\+g., "{}mu\+Ioni"{}, "{}\+Cerenkov"{}) or "{}\+Unknown"{} if not found. 
+\end{DoxyReturn}
+\Hypertarget{class_o_m_sim_tracking_action_aa82d925cd37ecd87e5d11aad4bd0f510}\label{class_o_m_sim_tracking_action_aa82d925cd37ecd87e5d11aad4bd0f510} 
+\index{OMSimTrackingAction@{OMSimTrackingAction}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!OMSimTrackingAction@{OMSimTrackingAction}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_o_m_sim_tracking_action}{OMSim\+Tracking\+Action}} \& OMSim\+Tracking\+Action\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+Reference to the singleton instance. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if instance not yet created. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_o_m_sim_tracking_action_a9055f335eef576aa0e60b5eaf98c749f}\label{class_o_m_sim_tracking_action_a9055f335eef576aa0e60b5eaf98c749f} 
+\index{OMSimTrackingAction@{OMSimTrackingAction}!GetParticleType@{GetParticleType}}
+\index{GetParticleType@{GetParticleType}!OMSimTrackingAction@{OMSimTrackingAction}}
+\doxysubsubsection{\texorpdfstring{GetParticleType()}{GetParticleType()}}
+{\footnotesize\ttfamily std\+::string OMSim\+Tracking\+Action\+::\+Get\+Particle\+Type (\begin{DoxyParamCaption}\item[{G4int}]{track\+ID }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em track\+ID} & The track ID to look up. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The particle name (e.\+g., "{}mu-\/"{}, "{}e-\/"{}) or "{}\+Unknown"{} if not found. 
+\end{DoxyReturn}
+\Hypertarget{class_o_m_sim_tracking_action_a928fd32a3078c6e32976564b6f84cc58}\label{class_o_m_sim_tracking_action_a928fd32a3078c6e32976564b6f84cc58} 
+\index{OMSimTrackingAction@{OMSimTrackingAction}!HasInstance@{HasInstance}}
+\index{HasInstance@{HasInstance}!OMSimTrackingAction@{OMSimTrackingAction}}
+\doxysubsubsection{\texorpdfstring{HasInstance()}{HasInstance()}}
+{\footnotesize\ttfamily static bool OMSim\+Tracking\+Action\+::\+Has\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+true if instance exists, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+common/framework/include/\+OMSim\+Tracking\+Action.\+hh\item 
+\mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_tracking_action_8hh}{simulations/wavepid/include/\+OMSim\+Tracking\+Action.\+hh}}\item 
+\mbox{\hyperlink{_o_m_sim_tracking_action_8cc}{OMSim\+Tracking\+Action.\+cc}}\end{DoxyCompactItemize}

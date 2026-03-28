@@ -1,6 +1,10 @@
 <map id="OMSimHitManager" name="OMSimHitManager">
-<area shape="rect" id="Node000001" title="Manages detected photon information." alt="" coords="64,93,209,119"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="225,98,236,106,228,113,210,116,209,111,226,109,231,106,222,102"/>
-<area shape="rect" id="Node000002" href="$struct_o_m_sim_hit_manager_1_1_thread_local_data.html" title=" " alt="" coords="5,5,268,31"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="139,45,139,93,134,93,134,45"/>
+<area shape="rect" id="Node000001" title="Manages detected photon information." alt="" coords="151,181,296,207"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="311,186,323,194,314,201,297,204,296,199,312,197,317,194,309,190"/>
+<area shape="rect" id="Node000002" href="$struct_o_m_sim_hit_manager_1_1_thread_local_data.html" title=" " alt="" coords="5,93,268,119"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="159,127,187,155,212,179,208,183,183,159,155,131"/>
+<area shape="rect" id="Node000003" href="$class_r_o_o_t_hit_manager.html" title="Manages ROOT file output for photon hit data." alt="" coords="292,93,427,119"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="332,129,283,160,244,183,242,179,281,155,329,124"/>
+<area shape="rect" id="Node000004" href="$struct_photon_info_r_o_o_t.html" title="Structure for storing photon hit data in ROOT format." alt="" coords="295,5,424,31"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="362,45,362,93,357,93,357,45"/>
 </map>

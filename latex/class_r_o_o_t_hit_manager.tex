@@ -1,0 +1,73 @@
+\doxysection{ROOTHit\+Manager Class Reference}
+\hypertarget{class_r_o_o_t_hit_manager}{}\label{class_r_o_o_t_hit_manager}\index{ROOTHitManager@{ROOTHitManager}}
+
+
+Manages ROOT file output for photon hit data.  
+
+
+
+
+Collaboration diagram for ROOTHit\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_r_o_o_t_hit_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_r_o_o_t_hit_manager_a01865b32edc9ec7c597f13d975e25409}{ROOTHit\+Manager}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Constructor -\/ opens ROOT file and creates TTree. \end{DoxyCompactList}\item 
+\Hypertarget{class_r_o_o_t_hit_manager_a2aed3f04bbe27926fb2e764a992b323f}\label{class_r_o_o_t_hit_manager_a2aed3f04bbe27926fb2e764a992b323f} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+ROOTHit\+Manager} ()
+\begin{DoxyCompactList}\small\item\em Destructor -\/ writes and closes ROOT file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_r_o_o_t_hit_manager_a4769442a5ca8109b15efbd2d7c1d64bd}{Fill\+Photon\+Info}} (const \mbox{\hyperlink{struct_photon_info_r_o_o_t}{Photon\+Info\+ROOT}} \&info)
+\begin{DoxyCompactList}\small\item\em Fills the TTree with photon hit information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_r_o_o_t_hit_manager_a6d519e31d52d0883d513471cf1ba2873}\label{class_r_o_o_t_hit_manager_a6d519e31d52d0883d513471cf1ba2873} 
+TFile \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+file}
+\item 
+\Hypertarget{class_r_o_o_t_hit_manager_abd66f660876c05c75c85eb245e9b76d4}\label{class_r_o_o_t_hit_manager_abd66f660876c05c75c85eb245e9b76d4} 
+TTree \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+tree}
+\item 
+\Hypertarget{class_r_o_o_t_hit_manager_ade474f1f31b52864e8fa121d4cab7e39}\label{class_r_o_o_t_hit_manager_ade474f1f31b52864e8fa121d4cab7e39} 
+\mbox{\hyperlink{struct_photon_info_r_o_o_t}{Photon\+Info\+ROOT}} {\bfseries m\+\_\+photon\+Info}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_r_o_o_t_hit_manager_a01865b32edc9ec7c597f13d975e25409}\label{class_r_o_o_t_hit_manager_a01865b32edc9ec7c597f13d975e25409} 
+\index{ROOTHitManager@{ROOTHitManager}!ROOTHitManager@{ROOTHitManager}}
+\index{ROOTHitManager@{ROOTHitManager}!ROOTHitManager@{ROOTHitManager}}
+\doxysubsubsection{\texorpdfstring{ROOTHitManager()}{ROOTHitManager()}}
+{\footnotesize\ttfamily ROOTHit\+Manager\+::\+ROOTHit\+Manager (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to the output ROOT file. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_r_o_o_t_hit_manager_a4769442a5ca8109b15efbd2d7c1d64bd}\label{class_r_o_o_t_hit_manager_a4769442a5ca8109b15efbd2d7c1d64bd} 
+\index{ROOTHitManager@{ROOTHitManager}!FillPhotonInfo@{FillPhotonInfo}}
+\index{FillPhotonInfo@{FillPhotonInfo}!ROOTHitManager@{ROOTHitManager}}
+\doxysubsubsection{\texorpdfstring{FillPhotonInfo()}{FillPhotonInfo()}}
+{\footnotesize\ttfamily void ROOTHit\+Manager\+::\+Fill\+Photon\+Info (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_photon_info_r_o_o_t}{Photon\+Info\+ROOT}} \&}]{info }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & \doxylink{struct_photon_info_r_o_o_t}{Photon\+Info\+ROOT} structure containing hit data. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_r_o_o_t_hit_manager_8hh}{ROOTHit\+Manager.\+hh}}\item 
+\mbox{\hyperlink{_r_o_o_t_hit_manager_8cc}{ROOTHit\+Manager.\+cc}}\end{DoxyCompactItemize}

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Tracks particle information for photon origin classification.">
 <polygon fill="#999999" stroke="#666666" points="123.5,-19 0.5,-19 0.5,0 123.5,0 123.5,-19"/>
 <text text-anchor="middle" x="62" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">OMSimTrackingAction</text>
 </a>
@@ -30,8 +30,17 @@
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node2&#45;&gt;Node1</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M62,-44.66C62,-35.93 62,-25.99 62,-19.09"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="58.5,-44.75 62,-54.75 65.5,-44.75 58.5,-44.75"/>
+<path fill="none" stroke="#63b8ff" d="M55.51,-44.66C54.91,-35.93 55.36,-25.99 56.87,-19.09"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="52.06,-45.29 56.83,-54.75 59,-44.38 52.06,-45.29"/>
+</a>
+</g>
+</g>
+<!-- Node2&#45;&gt;Node1 -->
+<g id="edge2_Node000001_Node000002" class="edge">
+<title>Node2&#45;&gt;Node1</title>
+<g id="a_edge2_Node000001_Node000002"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M68.49,-44.66C69.09,-35.93 68.64,-25.99 67.13,-19.09"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="65,-44.38 67.17,-54.75 71.94,-45.29 65,-44.38"/>
 </a>
 </g>
 </g>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['flighttime_0',['flightTime',['../struct_hit_stats.html#a254bd94585df0605a6e2e863e3e00851',1,'HitStats']]]
+  ['flighttime_0',['flightTime',['../struct_hit_stats.html#a125d28b6b3801c26f11f510023f96c74',1,'HitStats']]]
 ];

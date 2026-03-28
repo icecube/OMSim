@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['technicalities_20for_20developers_0',['Technicalities for Developers',['../md_extra__doc_22__technicalities.html',1,'']]],
-  ['threading_20mode_1',['Multi-threading mode',['../md_extra__doc_21__multithreading.html',1,'']]],
-  ['todo_20list_2',['Todo List',['../todo.html',1,'']]]
+  ['studies_0',['studies',['../md_extra__doc_230__effective__area.html',1,'&gt; Effective Area Studies'],['../md_extra__doc_231__radioactive__decays.html',1,'&gt; Radioactive Decays Studies'],['../md_extra__doc_232___s_n.html',1,'&gt; Supernova Studies']]],
+  ['supernova_20studies_1',['&gt; Supernova Studies',['../md_extra__doc_232___s_n.html',1,'']]]
 ];

@@ -122,10 +122,16 @@ $(document).ready(function(){initNavTree('class_o_m_sim_tracking_action.html',''
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_o_m_sim_tracking_action-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">OMSimTrackingAction Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Tracks particle information for photon origin classification.  
+ <a href="class_o_m_sim_tracking_action.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for OMSimTrackingAction:</div>
 <div class="dyncontent">
@@ -134,9 +140,11 @@ Inheritance diagram for OMSimTrackingAction:</div>
 <div class="dynheader">
 Collaboration diagram for OMSimTrackingAction:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_o_m_sim_tracking_action__coll__graph.svg" width="176" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_o_m_sim_tracking_action__coll__graph.svg" width="260" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This singleton class stores track ID to particle type and creator process mappings, which are used by <a class="el" href="class_o_m_sim_sensitive_detector.html" title="Represents a sensitive detector.">OMSimSensitiveDetector</a> to classify photon origins. </p>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad50e7b10221550f66d937cf6a8e3cca9" id="r_ad50e7b10221550f66d937cf6a8e3cca9"><td class="memItemLeft" align="right" valign="top"><a id="ad50e7b10221550f66d937cf6a8e3cca9" name="ad50e7b10221550f66d937cf6a8e3cca9"></a>
@@ -145,9 +153,157 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>PreUserTrackingAction
 <tr class="memitem:a734f854a881bd97fa2cd056d98566421" id="r_a734f854a881bd97fa2cd056d98566421"><td class="memItemLeft" align="right" valign="top"><a id="a734f854a881bd97fa2cd056d98566421" name="a734f854a881bd97fa2cd056d98566421"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>PostUserTrackingAction</b> (const G4Track *)</td></tr>
 <tr class="separator:a734f854a881bd97fa2cd056d98566421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b73eda4ed0f253ecbaf3b60daccb433" id="r_a4b73eda4ed0f253ecbaf3b60daccb433"><td class="memItemLeft" align="right" valign="top"><a id="a4b73eda4ed0f253ecbaf3b60daccb433" name="a4b73eda4ed0f253ecbaf3b60daccb433"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>PreUserTrackingAction</b> (const G4Track *track) override</td></tr>
+<tr class="separator:a4b73eda4ed0f253ecbaf3b60daccb433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53412e7724c5189fff445326df28aa9d" id="r_a53412e7724c5189fff445326df28aa9d"><td class="memItemLeft" align="right" valign="top"><a id="a53412e7724c5189fff445326df28aa9d" name="a53412e7724c5189fff445326df28aa9d"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>PostUserTrackingAction</b> (const G4Track *track) override</td></tr>
+<tr class="separator:a53412e7724c5189fff445326df28aa9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9055f335eef576aa0e60b5eaf98c749f" id="r_a9055f335eef576aa0e60b5eaf98c749f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_tracking_action.html#a9055f335eef576aa0e60b5eaf98c749f">GetParticleType</a> (G4int trackID) const</td></tr>
+<tr class="memdesc:a9055f335eef576aa0e60b5eaf98c749f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the particle type for a given track ID.  <br /></td></tr>
+<tr class="separator:a9055f335eef576aa0e60b5eaf98c749f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d3d3a7b3a4650002e75477dbb31734a" id="r_a8d3d3a7b3a4650002e75477dbb31734a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_tracking_action.html#a8d3d3a7b3a4650002e75477dbb31734a">GetCreatorProcess</a> (G4int trackID) const</td></tr>
+<tr class="memdesc:a8d3d3a7b3a4650002e75477dbb31734a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the creator process for a given track ID.  <br /></td></tr>
+<tr class="separator:a8d3d3a7b3a4650002e75477dbb31734a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aa82d925cd37ecd87e5d11aad4bd0f510" id="r_aa82d925cd37ecd87e5d11aad4bd0f510"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_m_sim_tracking_action.html">OMSimTrackingAction</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_tracking_action.html#aa82d925cd37ecd87e5d11aad4bd0f510">GetInstance</a> ()</td></tr>
+<tr class="memdesc:aa82d925cd37ecd87e5d11aad4bd0f510"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the singleton instance.  <br /></td></tr>
+<tr class="separator:aa82d925cd37ecd87e5d11aad4bd0f510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a928fd32a3078c6e32976564b6f84cc58" id="r_a928fd32a3078c6e32976564b6f84cc58"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_m_sim_tracking_action.html#a928fd32a3078c6e32976564b6f84cc58">HasInstance</a> ()</td></tr>
+<tr class="memdesc:a928fd32a3078c6e32976564b6f84cc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the singleton instance exists.  <br /></td></tr>
+<tr class="separator:a928fd32a3078c6e32976564b6f84cc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a0112e42d8d0eca28ce426bee6237f01a" id="r_a0112e42d8d0eca28ce426bee6237f01a"><td class="memItemLeft" align="right" valign="top"><a id="a0112e42d8d0eca28ce426bee6237f01a" name="a0112e42d8d0eca28ce426bee6237f01a"></a>
+std::unordered_map&lt; G4int, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_trackIDToParticleTypeMap</b></td></tr>
+<tr class="separator:a0112e42d8d0eca28ce426bee6237f01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1439c097c87f031dd4062e5ddfcc2b73" id="r_a1439c097c87f031dd4062e5ddfcc2b73"><td class="memItemLeft" align="right" valign="top"><a id="a1439c097c87f031dd4062e5ddfcc2b73" name="a1439c097c87f031dd4062e5ddfcc2b73"></a>
+std::unordered_map&lt; G4int, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_trackIDToCreatorProcessMap</b></td></tr>
+<tr class="separator:a1439c097c87f031dd4062e5ddfcc2b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:adcc19e433eb67df79c94f5cb467502da" id="r_adcc19e433eb67df79c94f5cb467502da"><td class="memItemLeft" align="right" valign="top"><a id="adcc19e433eb67df79c94f5cb467502da" name="adcc19e433eb67df79c94f5cb467502da"></a>
+static thread_local <a class="el" href="class_o_m_sim_tracking_action.html">OMSimTrackingAction</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>instance</b> = nullptr</td></tr>
+<tr class="memdesc:adcc19e433eb67df79c94f5cb467502da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread-local instance pointer. <br /></td></tr>
+<tr class="separator:adcc19e433eb67df79c94f5cb467502da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_o_m_sim_tracking_action_8hh_source.html">OMSimTrackingAction.hh</a></li>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8d3d3a7b3a4650002e75477dbb31734a" name="a8d3d3a7b3a4650002e75477dbb31734a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d3d3a7b3a4650002e75477dbb31734a">&#9670;&#160;</a></span>GetCreatorProcess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string OMSimTrackingAction::GetCreatorProcess </td>
+          <td>(</td>
+          <td class="paramtype">G4int&#160;</td>
+          <td class="paramname"><em>trackID</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">trackID</td><td>The track ID to look up. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The process name (e.g., "muIoni", "Cerenkov") or "Unknown" if not found. </dd></dl>
+
+</div>
+</div>
+<a id="aa82d925cd37ecd87e5d11aad4bd0f510" name="aa82d925cd37ecd87e5d11aad4bd0f510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa82d925cd37ecd87e5d11aad4bd0f510">&#9670;&#160;</a></span>GetInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_o_m_sim_tracking_action.html">OMSimTrackingAction</a> &amp; OMSimTrackingAction::GetInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Reference to the singleton instance. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if instance not yet created. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9055f335eef576aa0e60b5eaf98c749f" name="a9055f335eef576aa0e60b5eaf98c749f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9055f335eef576aa0e60b5eaf98c749f">&#9670;&#160;</a></span>GetParticleType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string OMSimTrackingAction::GetParticleType </td>
+          <td>(</td>
+          <td class="paramtype">G4int&#160;</td>
+          <td class="paramname"><em>trackID</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">trackID</td><td>The track ID to look up. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The particle name (e.g., "mu-", "e-") or "Unknown" if not found. </dd></dl>
+
+</div>
+</div>
+<a id="a928fd32a3078c6e32976564b6f84cc58" name="a928fd32a3078c6e32976564b6f84cc58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a928fd32a3078c6e32976564b6f84cc58">&#9670;&#160;</a></span>HasInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool OMSimTrackingAction::HasInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>true if instance exists, false otherwise. </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="common_2framework_2include_2_o_m_sim_tracking_action_8hh_source.html">common/framework/include/OMSimTrackingAction.hh</a></li>
+<li><a class="el" href="simulations_2wavepid_2include_2_o_m_sim_tracking_action_8hh_source.html">simulations/wavepid/include/OMSimTrackingAction.hh</a></li>
+<li><a class="el" href="_o_m_sim_tracking_action_8cc.html">OMSimTrackingAction.cc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -155,7 +311,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>PostUserTrackingActio
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_o_m_sim_tracking_action.html">OMSimTrackingAction</a></li>
-    <li class="footer">Generated on Fri Dec 12 2025 15:33:08 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sat Mar 28 2026 19:15:27 for OMSim by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

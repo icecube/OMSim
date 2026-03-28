@@ -15,7 +15,10 @@ Collaboration diagram for Photon\+Info\+:
 \includegraphics[width=253pt]{struct_photon_info__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsubsection*{Public Attributes}
+
+
+\doxysubsection{Detailed Description}
+Extended photon information with origin tracking for Wave\+PID. \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{struct_photon_info_a44bce76bf7aad156523f10d4aa58ee5e}\label{struct_photon_info_a44bce76bf7aad156523f10d4aa58ee5e} 
@@ -56,9 +59,25 @@ G4int {\bfseries detector\+ID}
 \begin{DoxyCompactList}\small\item\em ID of the detector registering the photon. \end{DoxyCompactList}\item 
 \Hypertarget{struct_photon_info_a1669c552fd4a31bb23d4920eb946fafc}\label{struct_photon_info_a1669c552fd4a31bb23d4920eb946fafc} 
 \mbox{\hyperlink{struct_o_m_sim_p_m_t_response_1_1_p_m_t_pulse}{OMSim\+PMTResponse\+::\+PMTPulse}} {\bfseries PMTResponse}
-\begin{DoxyCompactList}\small\item\em PMT response to the photon hit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em PMT response to the photon hit. \end{DoxyCompactList}\item 
+\Hypertarget{struct_photon_info_a5dd4585a27843db32ebfed31ab5247df}\label{struct_photon_info_a5dd4585a27843db32ebfed31ab5247df} 
+G4\+String {\bfseries photon\+Origin}
+\begin{DoxyCompactList}\small\item\em Origin classification (e.\+g., "{}\+Cerenkov from Muon"{}) \end{DoxyCompactList}\item 
+\Hypertarget{struct_photon_info_accfc3d2706d7edf1b41294ccea5eb625}\label{struct_photon_info_accfc3d2706d7edf1b41294ccea5eb625} 
+G4int {\bfseries parent\+ID}
+\begin{DoxyCompactList}\small\item\em Parent track ID. \end{DoxyCompactList}\item 
+\Hypertarget{struct_photon_info_a2041e2821ee40a3bb25a612845bec66c}\label{struct_photon_info_a2041e2821ee40a3bb25a612845bec66c} 
+std\+::string {\bfseries parent\+Type}
+\begin{DoxyCompactList}\small\item\em Parent particle type (e.\+g., "{}mu-\/"{}, "{}e-\/"{}) \end{DoxyCompactList}\item 
+\Hypertarget{struct_photon_info_ae49655cd86eaa9c4463b12f6d1d3ce97}\label{struct_photon_info_ae49655cd86eaa9c4463b12f6d1d3ce97} 
+G4\+String {\bfseries parent\+Process}
+\begin{DoxyCompactList}\small\item\em Process that created parent particle. \end{DoxyCompactList}\item 
+\Hypertarget{struct_photon_info_adb07e24459b748981a5530c68885b5bb}\label{struct_photon_info_adb07e24459b748981a5530c68885b5bb} 
+G4double {\bfseries entry\+Time}
+\begin{DoxyCompactList}\small\item\em Time photon entered the \doxylink{class_d_o_m}{DOM}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-OMSim\+Sensitive\+Detector.\+hh\end{DoxyCompactItemize}
+common/framework/include/\+OMSim\+Sensitive\+Detector.\+hh\item 
+\mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_sensitive_detector_8hh}{simulations/wavepid/include/\+OMSim\+Sensitive\+Detector.\+hh}}\end{DoxyCompactItemize}

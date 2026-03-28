@@ -1,0 +1,29 @@
+\doxysection{simulations/wavepid/include/\+OMSim\+Run\+Action.hh}
+\hypertarget{simulations_2wavepid_2include_2_o_m_sim_run_action_8hh_source}{}\label{simulations_2wavepid_2include_2_o_m_sim_run_action_8hh_source}\index{OMSimRunAction.hh@{OMSimRunAction.hh}}
+\mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_run_action_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <G4UserRunAction.hh>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{simulations_2wavepid_2include_2_o_m_sim_hit_manager_8hh}{OMSimHitManager.hh}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}OMSimLogger.hh"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Randomize.hh"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}G4Run.hh"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_o_m_sim_run_action}{OMSimRunAction}}\ :\ \textcolor{keyword}{public}\ G4UserRunAction}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_run_action}{OMSimRunAction}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_run_action}{\string~OMSimRunAction}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ BeginOfRunAction(\textcolor{keyword}{const}\ G4Run*\ run)\textcolor{keyword}{\ override\ }\{\}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ EndOfRunAction(\textcolor{keyword}{const}\ G4Run*\ run)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ log\_debug(\textcolor{stringliteral}{"{}EndOfRunAction\ called,\ nr\ of\ events\ \{\}"{}},\ run-\/>GetNumberOfEvent());}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_o_m_sim_hit_manager_aaa3e7a28d658d8e2e6db704b910cc35c}{OMSimHitManager::getInstance}}().mergeThreadData();}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \};}
+
+\end{DoxyCode}

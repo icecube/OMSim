@@ -12,10 +12,15 @@ var searchData=
   ['repeat_9',['4. Modify and repeat',['../md_extra__doc_21__multithreading.html#autotoc_md31',1,'']]],
   ['reset_10',['reset',['../class_o_m_sim_hit_manager.html#a00bb034e7751905f8a8229de3f8a39b1',1,'OMSimHitManager::reset()'],['../class_o_m_sim_decays_analysis.html#aa111935e44e66f005b9b59a3ee5919e0',1,'OMSimDecaysAnalysis::reset()']]],
   ['response_11',['Storing hits and PMT response',['../md_extra__doc_20__common.html#autotoc_md14',1,'']]],
-  ['root_12',['Installing ROOT',['../index.html#autotoc_md67',1,'']]],
-  ['rotation_13',['Rotation',['../struct_o_m_sim_detector_component_1_1_component.html#a365bc794fb0489168e7f325734b3d9eb',1,'OMSimDetectorComponent::Component']]],
-  ['runbeamon_14',['runBeamOn',['../class_o_m_sim_u_iinterface.html#a880d9879e9373b6af3bc0c3b691160f8',1,'OMSimUIinterface']]],
-  ['runbeamonflasher_15',['runbeamonflasher',['../classm_d_o_m_flasher.html#a268494f8d27175e1ae391789e1d66faf',1,'mDOMFlasher::runBeamOnFlasher()'],['../classm_d_o_m.html#adf748d77a8bae2516db1ba79b805841b',1,'mDOM::runBeamOnFlasher()']]],
-  ['runradioactivedecays_16',['runRadioactiveDecays',['../_o_m_sim__radioactive__decays_8cc.html#ae7458996c9e984b0c9c1aa948df35d09',1,'OMSim_radioactive_decays.cc']]],
-  ['runsingleangularscan_17',['runSingleAngularScan',['../class_angular_scan.html#a465f642ebbe30fc94f9ed8ec6e554ef4',1,'AngularScan']]]
+  ['root_12',['Installing ROOT',['../index.html#autotoc_md85',1,'']]],
+  ['roothitmanager_13',['roothitmanager',['../class_r_o_o_t_hit_manager.html',1,'ROOTHitManager'],['../class_r_o_o_t_hit_manager.html#a01865b32edc9ec7c597f13d975e25409',1,'ROOTHitManager::ROOTHitManager()']]],
+  ['roothitmanager_2ecc_14',['ROOTHitManager.cc',['../_r_o_o_t_hit_manager_8cc.html',1,'']]],
+  ['roothitmanager_2ehh_15',['ROOTHitManager.hh',['../_r_o_o_t_hit_manager_8hh.html',1,'']]],
+  ['rotation_16',['Rotation',['../struct_o_m_sim_detector_component_1_1_component.html#a365bc794fb0489168e7f325734b3d9eb',1,'OMSimDetectorComponent::Component']]],
+  ['run_20with_20multithreading_17',['Large batch run with multithreading',['../md_extra__doc_233__wavepid.html#autotoc_md72',1,'']]],
+  ['runbeamon_18',['runBeamOn',['../class_o_m_sim_u_iinterface.html#a880d9879e9373b6af3bc0c3b691160f8',1,'OMSimUIinterface']]],
+  ['runbeamonflasher_19',['runbeamonflasher',['../classm_d_o_m.html#adf748d77a8bae2516db1ba79b805841b',1,'mDOM::runBeamOnFlasher()'],['../classm_d_o_m_flasher.html#a268494f8d27175e1ae391789e1d66faf',1,'mDOMFlasher::runBeamOnFlasher()']]],
+  ['runradioactivedecays_20',['runRadioactiveDecays',['../_o_m_sim__radioactive__decays_8cc.html#ae7458996c9e984b0c9c1aa948df35d09',1,'OMSim_radioactive_decays.cc']]],
+  ['runsingleangularscan_21',['runSingleAngularScan',['../class_angular_scan.html#a465f642ebbe30fc94f9ed8ec6e554ef4',1,'AngularScan']]],
+  ['runwavepidsimulation_22',['runWavePIDSimulation',['../_o_m_sim___wave_p_i_d__study_8cc.html#a5253f0130a2f775679e8fee638d03577',1,'OMSim_WavePID_study.cc']]]
 ];
